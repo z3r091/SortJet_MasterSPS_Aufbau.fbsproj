@@ -25,6 +25,9 @@ VAR_INPUT
   pbpVorstopSensor        : REFERENCE TO BOOL;
   ppAntriebsInformationen : REFERENCE TO AntriebsInformationen;
 
+  // ENUM
+  epGlastyp               : GlasTyp_EN; // Default- oder Max-Scheibe, bestimmt die Ueberwachung des Einlaufsensors
+
   // STRUCT
   stStationsNummern       : Station_ST;
 

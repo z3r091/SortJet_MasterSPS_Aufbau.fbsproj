@@ -24,6 +24,9 @@ VAR_INPUT
   bpShuttleFaecherwagenSuche             : BOOL;
   bpLangsamfahrtNockenAktivieren         : BOOL;
 
+  (* WORD *)
+  wpAuftragsTyp                          : WORD; // Bit 1 = Positionierauftrag mit Messgeschwindigkeit (RackSuche); Anbindung folgt mit P2.1
+
   (* REAL *)
   rpDestinationPosition                  : REAL; (* ZielPosition *)  
   rpMinPosSwEsEingrenzung                : REAL;
