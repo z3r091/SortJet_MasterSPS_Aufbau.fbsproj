@@ -1,0 +1,27 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "b993620a-1860-4e50-9d7b-2c7793358f8c"
+	}
+}
+*)
+// {attribute 'qualified_only'} 
+TYPE AntriebsBetriebsart_EN :
+(
+  KEINE_FUNKTION               := 2#0000000000000000,
+  RESET                        := 2#0000000000000011,
+  REFERENZ                     := 2#0000000000000101,
+  HANDPLUS                     := 2#0000000000001001,
+  HANDMINUS                    := 2#0000000000010001,
+  ABSOLUT                      := 2#0000000000100001,
+  RELATIV                      := 2#0000000001000001,
+  RESTWEG                      := 2#0000000010000001,
+  SYNC_AUF_MASTER              := 2#0000000100000001,
+  INVERTIERTER_SYNC_AUF_MASTER := 2#0000001000000001,
+  SCHEIBENMESSUNG              := 2#0000010000000001,
+  FAHRE_RESTWEG_MESSUNG        := 2#1000000000000001,
+  FAHRE_RESTWEG_ABSOLUT        := 2#0000000011000001,
+  BREMSE_LOESEN                := 2#0000100000000001,
+  ABSOLUT_SETZEN               := 2#0001000000000001
+) WORD;
+END_TYPE

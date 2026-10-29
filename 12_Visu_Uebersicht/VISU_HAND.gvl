@@ -1,0 +1,74 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "6f32179b-dff3-42c9-9870-23893e477a6b"
+	}
+}
+*)
+{attribute 'qualified_only'}
+NAMESPACE VISU_HAND
+VAR_GLOBAL
+  st201  : VisuHand_Station_ST;
+  st202  : VisuHand_Station_ST;
+  st101  : VisuHand_Station_ST;
+  st151  : VisuHand_Station_ST;
+  astFW  : ARRAY[301..302] OF VisuHand_Station_ST;
+
+  bAnlageResetTaster : BOOL;          // Visu-Taster Anlagen-Reset (einfacher Druck)
+  bAnlageResetAktiv  : BOOL;          // Reset laeuft (min. 1 s angezeigt, solange eine Station noch bReset hat)
+  sAnlageReset       : STRING(40) := 'ANLAGE RESET';
+  dwAnlageResetFarbe : DWORD := 16#FFD64545;
+  sLblReset          : STRING(20) := 'Reset';
+
+  // Beschriftungen der Visu "Handbetrieb" (benannt, damit Visu und GVL nicht unbemerkt auseinanderlaufen)
+  sL_Riemen                                : STRING(120) := 'Riemen';
+  sL_Zur_Zurueck                           : STRING(120) := '<< Zurück';
+  sL_Vor_Vor                               : STRING(120) := 'Vor >>';
+  sL_Anschlag                              : STRING(120) := 'Anschlag';
+  sL_Ab                                    : STRING(120) := 'Ab';
+  sL_Auf                                   : STRING(120) := 'Auf';
+  sL_Hubrahmen                             : STRING(120) := 'Hubrahmen';
+  sL_Senken                                : STRING(120) := 'Senken';
+  sL_Heben                                 : STRING(120) := 'Heben';
+  sL_Messachse                             : STRING(120) := 'Messachse';
+  sL_Minus_Ab                              : STRING(120) := '- Ab';
+  sL_Plus_Auf                              : STRING(120) := '+ Auf';
+  sL_Referenz                              : STRING(120) := 'Referenz';
+  sL_Geblaese                              : STRING(120) := 'Gebläse';
+  sL_Ein_Aus                               : STRING(120) := 'Ein / Aus';
+  sL_Drosselkl                             : STRING(120) := 'Drosselkl.';
+  sL_Auf_Zu                                : STRING(120) := 'Auf / Zu';
+  sL_Kippen                                : STRING(120) := 'Kippen';
+  sL_Waagerecht                            : STRING(120) := 'Waagerecht';
+  sL_Senkrecht                             : STRING(120) := 'Senkrecht';
+  sL_Querfahrt                             : STRING(120) := 'Querfahrt';
+  sL_Minus_Minus                           : STRING(120) := '- Minus';
+  sL_Plus_Plus                             : STRING(120) := '+ Plus';
+  sL_84Grad                                : STRING(120) := '84°';
+  sL_90Grad                                : STRING(120) := '90°';
+  sL_Schmierung                            : STRING(120) := 'Schmierung';
+  sL_Starten                               : STRING(120) := 'Starten';
+  sL_Riemen_Hub                            : STRING(120) := 'Riemen Hub';
+  sL_Anheben                               : STRING(120) := 'Anheben';
+  sL_Abfr_Einl                             : STRING(120) := 'Abfr. Einl.';
+  sL_Luft_ein                              : STRING(120) := 'Luft ein';
+  sL_Abfr_Ausl                             : STRING(120) := 'Abfr. Ausl.';
+  sL_Rolltor                               : STRING(120) := 'Rolltor';
+  sL_Runter                                : STRING(120) := 'Runter';
+  sL_Hoch                                  : STRING(120) := 'Hoch';
+  sL_Linearein                             : STRING(120) := 'Linearein.';
+  sL_Zurueck                               : STRING(120) := 'Zurück';
+  sL_Vor                                   : STRING(120) := 'Vor';
+  sL_Shuttle                               : STRING(120) := 'Shuttle';
+  sL_Greifer                               : STRING(120) := 'Greifer';
+  sL_Oeffnen                               : STRING(120) := 'Öffnen';
+  sL_Schliessen                            : STRING(120) := 'Schließen';
+  sL_Entriegel                             : STRING(120) := 'Entriegel.';
+  sL_Gegenhalter                           : STRING(120) := 'Gegenhalter';
+  sL_Lichtschr                             : STRING(120) := 'Lichtschr.';
+  sL_Quittieren                            : STRING(120) := 'Quittieren';
+  sL_HANDBETRIEB                           : STRING(120) := 'HANDBETRIEB';
+  sL_Legende                               : STRING(120) := 'Taster (weiß) = Tippbetrieb solange gedrückt   |   Schalter (blau hinterlegt wenn EIN) = Ein/Aus   |   Gesperrt = grau';
+  sL_Titel                                 : STRING(120) := 'SortJet Area 22  -  Handbetrieb';
+END_VAR
+END_NAMESPACE

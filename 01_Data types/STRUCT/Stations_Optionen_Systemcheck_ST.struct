@@ -1,0 +1,17 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "31b060bc-5cd2-407c-8a70-ffe1e3f6d2cb"
+	}
+}
+*)
+TYPE Stations_Optionen_Systemcheck_ST :
+  STRUCT
+    bScheibenVermessenSystemCheck                                 : BOOL;    
+    bScheibeNachSystemcheckAufAuslauf                             : BOOL;
+    bSystemCheckMitVorgaengerBatchTransport                       : BOOL; 
+    bSystemCheckMitNachfolgerBatchTransport                       : BOOL;   
+    bOptionSystemCheckScheibeMittigLegen                          : BOOL;
+
+  END_STRUCT
+END_TYPE

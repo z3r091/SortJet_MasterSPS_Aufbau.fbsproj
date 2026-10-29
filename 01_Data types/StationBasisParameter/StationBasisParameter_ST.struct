@@ -1,0 +1,101 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "946685ee-cda2-4cef-b4c7-31ff94fcc640"
+	}
+}
+*)
+TYPE StationBasisParameter_ST :
+  STRUCT
+    bFreigabe                                 : BOOL; (* Freigabe  *)
+    bAutomatik                                : BOOL; (* Betriebsart Hand \ Automatik *)
+    bIstReferenziert                          : BOOL; (* Station ist referenziert *)
+   
+    bReset                                    : BOOL; (* Betriebsmodus *)
+    bCheck                                    : BOOL; (* Betriebsmodus *)
+    bCheckAbgeschlossen                       : BOOL; (* Betriebsmodus *)
+    bReferenz                                 : BOOL; (* Betriebsmodus *)
+    bReferenzAbgeschlossen                    : BOOL; (* Betriebsmodus *)
+    bStationBelegt                            : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Station belegt nach Systemcheck
+                                              
+    pAuftrag                                  : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Auftragsdaten_ST;
+    pAuftragNachSystemcheck                   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Auftraege_Station_EN;
+    pVorAbAuftragsdaten                       : ARRAY[cWAND_1..cANZAHL_WAENDE] OF VorAbAuftragsdaten_ST;
+    pAuftragVorabPositionierung               : Auftragsdaten_ST;
+    eStatusAuftrag                            : Auftragsstatus_EN;
+	
+    bAuftragAktiv                             : BOOL; // Status der Station ob ein Prozess \ Auftrag aktiv ist 
+    bSKFreigabeBeiAktivemAuftrag              : BOOL; // Der Sicherheitskreis soll bei aktivem Auftrag freigegeben werden
+    bSKOeffnenBlockierenDurchgang             : BOOL; // Der Sicherheitskreis soll nicht geöffnet werden. z.B. Sensor belegt
+        
+    // Fehlermanagment                                      
+    bFehler                                   : BOOL := FALSE;             
+    wFehlerNummer                             : WORD;                 
+    awFehlerInformationen                     : ARRAY[0..25] OF WORD;
+                                              
+    bCheckMitVorgaenger                       : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bCheckMitNachfolger                       : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+                                              
+    dwHandfunktionen                          : DWORD;
+                                              
+    InGlasTransportVorgaenger                 : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Interface_GlasTransport; 
+    InGlasTransportNachfolger                 : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Interface_GlasTransport; 
+    OutGlasTransport                          : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Interface_GlasTransport; 
+                                              
+    bEintransport                             : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bEintransportAbgeschlossen                : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bAustransport                             : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bAustransportAbgeschlossen                : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bDurchtransport                           : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bDurchtransportAbgeschlossen              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bVorabKomponentenAnsteuerung              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bVorabKomponentenAnsteuerungAbgeschlossen : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bVortransport                             : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bVortransportAbgeschlossen                : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bGlashoehenmessung                        : BOOL;
+    bGlashoehenmessungAbgeschlossen           : BOOL;
+    bGlaslaengenmessung                       : BOOL;
+    bGlaslaengenmessungAbgeschlossen          : BOOL;
+    bAbnehmen                                 : BOOL;
+    bInspektion                               : BOOL;
+    bAbnehmenAbgeschlossen                    : BOOL;
+    bAnlegen                                  : BOOL;
+    bAnlegenAbgeschlossen                     : BOOL;
+    bVorabpositionieren                       : BOOL;
+    bUpdateVorabPositionieren                 : BOOL;
+    bVorabpositionierenAbgeschlossen          : BOOL;
+    bVorabDrehen                              : BOOL;
+    bVorabDrehenAbgeschlossen                 : BOOL;
+    bTransportkopplung                        : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bMesskopplung                             : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bMesskopplungAbgeschlossen                : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bRueckwaertsTransportieren                : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bScheibentrennen                          : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+                                              
+    bTransferstationTransfershuttle           : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    
+    // Abbruch Positionierauftrag
+    bPositionierAuftragZuruecksetzen          : BOOL; // Wichtig für Stationen mit Querfahrt. Der abgebrochene Verfahrauftrag wird an das MMI gemeldet
+    bQuittungPositionierungZurueckgesetzt     : BOOL; // Bestätigung, dass die Meldung ans MMI geschickt wurde
+	                                          
+    wGlasTyp                                  : ARRAY [cWAND_1..cANZAHL_WAENDE] OF GlasTyp_EN;
+                                              
+    // Statistik                                    
+    dwWartezeit                               : ARRAY[cWAND_1..cANZAHL_WAENDE] OF DWORD; 
+                                              
+    // Positionen                                   
+    rAktuellePositionQuerfahrt                : REAL;
+    rAktuellePositionDrehen                   : REAL;
+    eDrehPositionsStatus                      : Drehen_EN;
+                                              
+    // Stations MK's                          
+    stMKs                                     : REFERENCE TO Parameter_Station;	
+   	                                          
+    // Antriebsparameter                      
+    stAntriebsparameter                       : Stations_Antriebsparameter_ST;
+	
+    // Parameter der Stationskomponenten 
+    stParameterStationskomponenten            : ParameterStationskomponenten_ST;                                         
+   
+  END_STRUCT
+END_TYPE

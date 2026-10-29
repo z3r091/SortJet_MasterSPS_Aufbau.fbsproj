@@ -1,0 +1,19 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "e349b325-a04d-4c58-85cc-36ff0e3dd852"
+	}
+}
+*)
+TYPE Parameter_Drehen :
+  STRUCT
+    tZeitAntriebsfreigabeErhalten  : TIME; // [ms \ s] Energieeinsparrung: Zeiteinheit nach der die Antriebsfreigabe entzogen werden soll wenn keine Aktion ansteht [1 s = 1000 ms ] *)
+    rToleranz                      : REAL; (* Toleranz beim entscheiden der Aktuellen Positionen *)
+    rDrehposition_0_Grad           : REAL; (* Drehposition fuer die 0 Grad *)
+    rDrehposition_90_Grad          : REAL; (* Drehposition fuer die 90 Grad *)
+    rDrehposition_180_Grad         : REAL; (* Drehposition fuer die 180 Grad *)
+    rDrehposition_270_Grad         : REAL; (* Drehposition fuer die 270 Grad *)
+    bArretierung                   : BOOL;
+    eZielDrehpositionLeer          : Drehen_EN;
+  END_STRUCT
+END_TYPE

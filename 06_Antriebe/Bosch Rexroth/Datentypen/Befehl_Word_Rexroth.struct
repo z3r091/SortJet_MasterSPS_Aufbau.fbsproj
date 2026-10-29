@@ -1,0 +1,28 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "e4cf12b0-f5f2-4fc6-9a47-57dce5aa7ed5"
+	}
+}
+*)
+(* Hinweis:
+   - Befehls- Struktur fuer einen MoviDrive Umrichter mit der Hegla- Application 2.0
+*)
+TYPE Befehl_Word_Rexroth :
+   STRUCT
+     wlSteuerword_1           : STW_1_ctrlX; // W 1
+     wlSteuerword_2           : STW_2_ctrlX; // W 2 
+     rlPositionier_Ziel       : REAL; // W 3 & 4
+     wlSollGeschwindigkeit    : WORD; // W 5
+     wlSollBeschleunigung     : WORD; // W 6
+     wlSollVerzoegerung       : WORD; // W 7
+     wlMasterAktivierung      : WORD; // W 8
+     rlPositionier_Restweg    : REAL; // W 9 und 10t
+     wlSlaveAktivierung       : WORD; // W 11
+     wlSollRuckzeit           : WORD; // W 12
+     wlAusgaengeUmrichter     : WORD; // W 13
+     wlDummyW14               : WORD; // W 14
+     wlDummyW15               : WORD; // W 15
+     wlDummyW16               : WORD; // W 16
+   END_STRUCT
+ END_TYPE

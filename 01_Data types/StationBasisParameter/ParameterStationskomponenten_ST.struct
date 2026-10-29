@@ -1,0 +1,23 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "ee89ba36-2ed2-4af9-85fc-6829d8c3a013"
+	}
+}
+*)
+{attribute 'strict'}
+TYPE ParameterStationskomponenten_ST :
+  STRUCT
+	
+    stGlastransport                 : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Glastransport;
+    stGlastransportShuttle          : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_ShuttleGlastransport;
+    stGlastransportTransferShuttle  : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_TransfershuttleGlastransport;
+    stKippen                        : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Kippen;
+    stMessachse                     : REFERENCE TO Parameter_Messachse;
+    stQuerfahrt                     : REFERENCE TO Parameter_Querfahrt;
+    stDrehen                        : REFERENCE TO Parameter_Drehen;
+    stHub                           : REFERENCE TO Parameter_Hub;
+    stZentralSchmierung             : REFERENCE TO Parameter_Zentralschmierung_DLS_4xxi;
+    stWandverstellung               : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Dickenverstellung;
+  END_STRUCT
+END_TYPE

@@ -1,0 +1,31 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "e57757c1-f710-4dcc-a0ae-cf841fa47914"
+	}
+}
+*)
+TYPE VisuUeb_Station_ST :
+STRUCT
+  sTitel               : STRING(40);
+  bDeaktiviert         : BOOL;  // Station per MK deaktiviert -> Karte ausblenden
+  bReferenzAnzeigen    : BOOL;  // Station besitzt referenzierbare Achsen
+  sReferenz            : STRING(20);
+  dwReferenzFarbe      : DWORD := 16#FF9AA5B1;
+  sZustand             : STRING(40);
+  dwZustandFarbe       : DWORD := 16#FF9AA5B1;
+  dwRahmenFarbe        : DWORD := 16#FFCBD2D9;
+  sFunktion            : STRING(60);
+  bGlas                : BOOL;
+  dwSensorEinlauf      : DWORD := 16#FFE4E7EB;
+  dwSensorEinlaufVorab : DWORD := 16#FFE4E7EB;
+  dwSensorAuslaufVorab : DWORD := 16#FFE4E7EB;
+  dwSensorAuslauf      : DWORD := 16#FFE4E7EB;
+  sInfo1               : STRING(60);
+  sInfo2               : STRING(60);
+  sInfo3               : STRING(60);
+  dwInfo1Farbe         : DWORD := 16#FF52606D;
+  dwInfo2Farbe         : DWORD := 16#FF52606D;
+  dwInfo3Farbe         : DWORD := 16#FF52606D;
+END_STRUCT
+END_TYPE

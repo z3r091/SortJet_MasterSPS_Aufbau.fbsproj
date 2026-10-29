@@ -1,0 +1,107 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "6a6a4a8e-ada4-4cf2-824b-6c461c89d65a"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE Antriebsinformationen_206
+VAR_GLOBAL
+
+(***************************************************************************************************)
+(* ANTRIEBSINFORMATION [KIPPTISCH] *)
+(***************************************************************************************************)
+
+  apgInfoStation206Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
+    (
+      wAchsID                     :=      4,  // Achs ID aus dem EConSet                                               
+      stTyp                       := 'Belt',  // Typ
+      wpSchaltschrank             :=   2060,  // Daten aus dem Schaltplan
+      wpSchaltplanreihe           :=     02,  // Daten aus dem Schaltplan                                              
+      wpSchaltplanseite           :=    100,  // Daten aus dem Schaltplan                                              
+      rpMaxGeschwindigkeit        :=   1000,  // [mm/s]   Max- Geschwindigkeit für den Automatikbetrieb                
+      rpHandGeschwindigkeit       :=    333,  // [mm/s]   Hand- Geschwindigkeit                                        
+      rpReduzierteGeschwindigkeit :=     67,  // [mm/s]   Reduzierte Geschwindigkeit                                   
+      rpReferenzGeschwindigkeit   :=      0,  // [mm/s]   Geschwindigkeit für die Referenzfahrt                        
+      rpEinrichtGeschwindigkeit   :=     50,  // [mm/s]   Max Geschwindigkeit während der Einrichtung der Anlage       
+      rpMaxBeschleunigung         :=   1500,  // [mm/s^2] Max Beschleunigung                                           
+      rpMaxVerzoegerung           :=   2000,  // [mm/s^2] Max Verzoegerung                                             
+      rpMaxRuckzeit               :=     50,  // [ms]     Ruckzeit des Antriebs                                        
+      rpReduzierteBeschleunigung  :=   1000,  // [mm/s^2] Reduzierte Beschleunigung                                    
+      rpReduzierteVerzoegerung    :=   1000,  // [mm/s^2] Reduzierte Verzoegerung                                      
+      rpBeschleunigungFremdanlage :=   1000,  // [mm/s^2] Beschleunigung zu einer Fremdanlage                          
+      rpGeschwindigkeitMessen     :=    667,  // [mm/s^2] Geschwindigkeit beim Scheiben messen                         
+      bpHardwareLimits            :=  FALSE   // Endschalter vorhanden                                                 
+    )];                                  
+
+  apgInfoStation206Glastransport_Slave : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
+    (
+      wAchsID                     :=     5,  // Achs ID aus dem EConSet                                              
+      stTyp                       := 'Rolls', // Typ
+      wpSchaltschrank             :=   2061,  // Daten aus dem Schaltplan                                              
+      wpSchaltplanreihe           :=     02,  // Daten aus dem Schaltplan                                              
+      wpSchaltplanseite           :=    100,  // Daten aus dem Schaltplan                                              
+      rpMaxGeschwindigkeit        :=   1000,  // [mm/s]   Max- Geschwindigkeit für den Automatikbetrieb                
+      rpHandGeschwindigkeit       :=    333,  // [mm/s]   Hand- Geschwindigkeit                                        
+      rpReduzierteGeschwindigkeit :=     67,  // [mm/s]   Reduzierte Geschwindigkeit                                   
+      rpReferenzGeschwindigkeit   :=      0,  // [mm/s]   Geschwindigkeit für die Referenzfahrt                        
+      rpEinrichtGeschwindigkeit   :=     50,  // [mm/s]   Max Geschwindigkeit während der Einrichtung der Anlage       
+      rpMaxBeschleunigung         :=   1500,  // [mm/s^2] Max Beschleunigung                                           
+      rpMaxVerzoegerung           :=   2000,  // [mm/s^2] Max Verzoegerung                                             
+      rpMaxRuckzeit               :=     50,  // [ms]     Ruckzeit des Antriebs                                        
+      rpReduzierteBeschleunigung  :=   1000,  // [mm/s^2] Reduzierte Beschleunigung                                    
+      rpReduzierteVerzoegerung    :=   1000,  // [mm/s^2] Reduzierte Verzoegerung                                      
+      rpBeschleunigungFremdanlage :=   1000,  // [mm/s^2] Beschleunigung zu einer Fremdanlage                          
+      rpGeschwindigkeitMessen     :=    667,  // [mm/s^2] Geschwindigkeit beim Scheiben messen                         
+      bpHardwareLimits            :=  FALSE   // Endschalter vorhanden
+    )];
+
+  apgInfoStation206Kippen : AntriebsInformationen :=
+    (  
+      wAchsID                     :=      6,  // Achs ID aus dem EConSet                                              
+      stTyp                       := 'Tilt',  // Typ                                                                  
+      wpSchaltschrank             :=   2062,  // Daten aus dem Schaltplan                                             
+      wpSchaltplanreihe           :=      2,  // Daten aus dem Schaltplan                                             
+      wpSchaltplanseite           :=    100,  // Daten aus dem Schaltplan                                             
+      rpMaxGeschwindigkeit        :=     65,  // [Grad/s]   Max- Geschwindigkeit für den Automatikbetrieb             
+      rpHandGeschwindigkeit       :=     65,  // [Grad/s]   Hand- Geschwindigkeit                                     
+      rpReduzierteGeschwindigkeit :=     30,  // [Grad/s]   Reduzierte Geschwindigkeit                                
+      rpReferenzGeschwindigkeit   :=      2,  // [Grad/s]   Geschwindigkeit für die Referenzfahrt                     
+      rpEinrichtGeschwindigkeit   :=      1,  // [Grad/s]   Max Geschwindigkeit während der Einrichtung der Anlage    
+      rpMaxBeschleunigung         :=     80,  // [Grad/s^2] Max Beschleunigung                                        
+      rpMaxVerzoegerung           :=     80,  // [Grad/s^2] Max Verzoegerung                                          
+      rpMaxRuckzeit               :=    100,  // [msec] Ruckzeit des Antriebs                                     
+      rpReduzierteBeschleunigung  :=     25,  // [Grad/s^2] Reduzierte Beschleunigung                                 
+      rpReduzierteVerzoegerung    :=     25,  // [Grad/s^2] Reduzierte Verzoegerung                                   
+      rpBeschleunigungFremdanlage :=      2,  // [Grad/s^2] Beschleunigung zu einer Fremdanlage                       
+      bpHardwareLimits            :=   TRUE   // [Grad/s^2] Geschwindigkeit beim Scheiben messen                      
+    );
+
+  // Querfahrt
+  apgInfoStation206Querfahrt : AntriebsInformationen :=
+    (        
+      wAchsID                     :=        65,  // Achs ID aus dem EConSet                                               
+      stTyp                       := 'Lateral',  // Typ                                                            
+      wpSchaltschrank             :=      2063,  // Daten aus dem Schaltplan                                            
+      wpSchaltplanreihe           :=        02,  // Daten aus dem Schaltplan                                            
+      wpSchaltplanseite           :=         0,  // Daten aus dem Schaltplan                                            
+      rpMaxGeschwindigkeit        :=      1000,  // [mm/s]   Max- Geschwindigkeit für den Automatikbetrieb              
+      rpHandGeschwindigkeit       :=      1000,  // [mm/s]   Hand- Geschwindigkeit                                      
+      rpReduzierteGeschwindigkeit :=        25,  // [mm/s]   Reduzierte Geschwindigkeit                                 
+      rpReferenzGeschwindigkeit   :=        10,  // [mm/s]   Geschwindigkeit für die Referenzfahrt                      
+      rpEinrichtGeschwindigkeit   :=        10,  // [mm/s]   Max Geschwindigkeit während der Einrichtung der Anlage     
+      rpMaxBeschleunigung         :=       500,  // [mm/s^2] Max Beschleunigung                                         
+      rpMaxVerzoegerung           :=       500,  // [mm/s^2] Max Verzoegerung                                           
+      rpMaxRuckzeit               :=      1000,  // [ms]     Ruckzeit des Antriebs                                      
+      rpReduzierteBeschleunigung  :=        10,  // [mm/s^2] Reduzierte Beschleunigung                                  
+      rpReduzierteVerzoegerung    :=        10,  // [mm/s^2] Reduzierte Verzoegerung                                    
+      rpBeschleunigungFremdanlage :=         0,  // [mm/s^2] Beschleunigung zu einer Fremdanlage                        
+      rpGeschwindigkeitMessen     :=         0,  // [mm/s^2] Geschwindigkeit beim Scheiben messen                       
+      bpHardwareLimits            :=      TRUE   // Endschalter vorhanden                              
+    );
+
+END_VAR
+
+
+END_NAMESPACE

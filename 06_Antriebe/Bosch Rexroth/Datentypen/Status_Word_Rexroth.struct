@@ -1,0 +1,22 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "55c7537b-63a3-41c5-b3e1-17b4f096406e"
+	}
+}
+*)
+(* Hinweis:
+   - Status- Struktur fuer einen MoviDrive Umrichter mit der Hegla- Application 2.0
+*)
+TYPE Status_Word_Rexroth :
+  STRUCT
+    wlStatus        : STATUS_ctrlX;
+    wlDummy1        : WORD;
+    rlActSpeed      : REAL;
+    rlActPos        : REAL;
+    rlMesslaenge    : REAL;
+    wlFehlerNr      : UDINT;
+    ilWirkstrom     : INT;
+    udiEingaenge    : UDINT;
+  END_STRUCT
+END_TYPE

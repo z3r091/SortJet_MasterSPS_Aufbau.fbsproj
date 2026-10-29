@@ -1,0 +1,14 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "1d348a5b-bf9a-4cf1-b2ad-49365df41a76"
+	}
+}
+*)
+TYPE ModusHoehenvermessung_EN :
+(
+  Modus_Positionieren_Auf_Oberkante_2_Sensoren := 1, // Alter Standard, vermessen indem auf Position gefahren wird und der untere Sensor belegt und der obere frei sein muss
+  Modus_Vermessen_Oberkante_1_Sensor           := 2, // Vermessung mittels Einlaufsensor 
+  Modus_Vermessen_OberUndUnterkante_2_Sensoren := 3  // [VSG Interface] - mit einem der oberen Baumersensoren wird die obere Scheibenkante ermittelt, mit einem 4. Sensor am Schlitten ganz unten die Scheibenunterkante
+) WORD;
+END_TYPE

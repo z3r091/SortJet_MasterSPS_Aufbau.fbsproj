@@ -1,0 +1,32 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "f49d25bd-79b2-4bb6-b9a3-75e0b6dfd3c2"
+	}
+}
+*)
+TYPE AntriebsInformationen :
+  STRUCT
+    wAchsID                                 : WORD := 65;
+    stTyp                                   : STRING(16) := 'N/A';
+    wpSchaltschrank                         : WORD; (* Daten aus dem Schaltplan *)
+    wpSchaltplanreihe                       : WORD; (* Daten aus dem Schaltplan *)
+    wpSchaltplanseite                       : WORD; (* Daten aus dem Schaltplan *)
+    rpMaxGeschwindigkeit                    : REAL; (* [mm/s] Max- Geschwindigkeit für die der Antrieb ausgelegt ist in mm/s  *)
+    rpHandGeschwindigkeit                   : REAL; (* [mm/s] Hand- Geschwindigkeit *)
+    rpReduzierteGeschwindigkeit             : REAL; (* [mm/s] Reduzierte Geschwindigkeit fuer die bestimmte Situationen  *)
+    rpReferenzGeschwindigkeit               : REAL; (* [mm/s] Geschwindigkeit fuer die Referenzfahrt *)
+    rpEinrichtGeschwindigkeit               : REAL; (* [mm/s] Max Geschwindigkeit während der Einrichtung der Anlage/ Einzuschalten per Schlüsselschalter am CAB *)
+    rpMaxBeschleunigung                     : REAL; (* [mm/s^2] max Beschleunigung für die der Antrieb ausgelegt ist  *)
+    rpMaxVerzoegerung                       : REAL; (* [mm/s^2] max Verzoegerung für die der Antrieb ausgelegt ist  *)
+    rpMaxRuckzeit                           : REAL; (* [mm/s^3] Ruckzeit des Antriebs *)
+    rpReduzierteBeschleunigung              : REAL; (* [mm/s^2] Reduzierte Beschleunigung *)
+    rpReduzierteVerzoegerung                : REAL; (* [mm/s^2] Reduzierte Verzoegerung   *)
+    rpBeschleunigungFremdanlage             : REAL; (* [mm/s^2] Beschleunigung zu einer Fremd-Anlage *)
+    rpGeschwindigkeitMessen                 : REAL;
+    rpGeschwindigkeitSystemcheck            : REAL := 500.0; (* [mm/s] Geschwindigkeit die im Systemcheck gefahren werden soll ; Nur für Glastransport relevant *)
+    rpGeschwindigkeitSystemcheckReduzierung : REAL := 167.0; (* [mm/s] Geschwindigkeit die im Systemcheck gefahren werden soll, wenn ein Vorstop-Sensor belegt wurde ; Nur für Glastransport relevant *)
+    bpHardwareLimits                        : BOOL := TRUE;
+    bpBremseLoesenFreigabe                  : BOOL := FALSE; // Der Antrieb darf über eine Betriebsart die Bremse lösen  
+  END_STRUCT
+END_TYPE

@@ -1,0 +1,16 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "2370c7b4-6774-4b2d-aef1-65cc27a6bfee"
+	}
+}
+*)
+TYPE InputOutput :
+STRUCT
+ aucInput  : ARRAY [0..127] OF BYTE;
+ aucOutput : ARRAY [0..127] OF BYTE;
+ (* ACHTUNG:
+    Dieses Arrays dürfen nicht verändert werden!
+ *)
+END_STRUCT
+END_TYPE

@@ -1,0 +1,22 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "83eb651b-a1ed-4130-a615-fa2c3b5cf53f"
+	}
+}
+*)
+TYPE Rexroth_Fehler :
+STRUCT
+
+  bDeleteable    : BOOL;
+  bCommandActive : BOOL;
+  bError         : BOOL;
+  bWarning       : BOOL;
+
+  eType          : Rexroth_Fehler_Type;
+  eWarningType   : Rexroth_Fehler_WarningType;
+  eErrorType     : Rexroth_Fehler_ErrorType;
+  wFehlerNr      : WORD;
+
+END_STRUCT
+END_TYPE

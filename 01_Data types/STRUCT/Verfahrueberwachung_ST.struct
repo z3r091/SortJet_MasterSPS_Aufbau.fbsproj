@@ -1,0 +1,29 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "aced2795-3242-4b4e-a506-39e3edc05a60"
+	}
+}
+*)
+TYPE Verfahrueberwachung_ST :
+STRUCT
+  ilShuttleNummer                   : INT;
+  rlAktuelleGeschwindigkeit         : REAL;
+  rlBerechneterBremsWeg             : REAL;
+  rlAltePosition                    : REAL;
+  rlNeuePosition                    : REAL;
+  rlPostionsveraenderung            : REAL;
+  rlErrechneteStillstandposition    : REAL;
+  rlVerzoegerung                    : REAL;
+  rlErrechneteGeschwindigkeit       : REAL;
+  rlErrechneteGeschwindigkeitNeu    : REAL;
+  dwlAktuelleZeit                   : DWORD;
+  rlAktSicherheitsAbstand           : REAL;
+  bpFreigabeBedingungShuttle103     : BOOL;
+  bpFreigabeBedingungShuttle104     : BOOL;
+  rlPositionsVeraenderungMittelWert : REAL;
+  blShuttleInParkPosition           : BOOL;
+  dwlSpeicherIndex                  : DWORD;
+  rlAktuelleGeschwindigkeitIstWert  : REAL;
+END_STRUCT
+END_TYPE

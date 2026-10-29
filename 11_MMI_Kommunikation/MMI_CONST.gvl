@@ -1,0 +1,120 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "b42c2871-ef06-40a1-9ac4-06faa3b26b72"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE MMI_CONST
+VAR_GLOBAL CONSTANT
+
+  sSpsVersion                                      : STRING(25) := 'ISO Sortierung V4.0.0.0';
+
+(* ************************ START SPS Nachrichtennummern ******************)
+
+  SB0_SPS_SPSVERSION                                 : WORD := 32768;
+  SB0_SPS_MSG_ERROR                                  : WORD := 32767;
+  SB0_SPS_ERROR                                      : WORD := 32766;
+  SB0_SPS_WARNUNG                                    : WORD := 32765;
+  SB0_SPS_HINWEIS                                    : WORD := 32764;
+  SB0_SPS_PARAMETER_CRC                              : WORD := 32763;
+  SB0_SPS_DEBUG                                      : WORD := 32762;
+  SB0_SPS_DEBUG_TRACE                                : WORD := 32761; (* Nachricht die in ein seperates Log-File geschrieben wird ( Void- Message ) *)
+  SB0_SPS_LOGSTRING                                  : WORD := 32770; (* Nachricht um einen String (60 Zeichen) in das Log zu schreiben *)
+
+(* Nachricht von der SPS zum MMI *)
+  SB0_SPS_SETBETRIEBSART                             : WORD :=  1;
+  SB0_SPS_SORTIERUNGQUITTINPUTINQUEUE                : WORD :=  2;
+  SB0_SPS_SORTIERUNGQUITTUNGVONISOLINIE              : WORD := 11;
+  SB0_SPS_SORTIERUNGQUITTEXTRACTIONSHUTTLEDATA       : WORD := 13;
+  SB0_SPS_SORTIERUNGRACKINPOS                        : WORD := 19;
+  SB0_SPS_SORTIERUNGRACKSTATIONSTATUS                : WORD := 23;
+  SB0_SPS_ERRORMSG                                   : WORD := 30;
+  SB0_SPS_TRANSPORTSTATE                             : WORD := 35; (* Antwort auf Eckübergabenstatus 0 = Rücktransport / 1 = Weitertransoport *)
+  SB0_SPS_RACKONLOADINGSTATION                       : WORD := 37; (* Fächerwagen auf Füllstation angedockt *)
+  SB0_SPS_RACKLOGIN                                  : WORD := 38; (* Fächerwagen auf Einschleusestation angedockt *)
+  SB0_SPS_STATUSRACKSTATION                          : WORD := 39; (* Antwort auf die Nachricht: SB0_SPS_STATUSRACKSTATION*)
+  SB0_SPS_SETSTATUSLOADINGSTATIONS                   : WORD := 44; (* Antwort auf REQUESTSTATUSLOADINGSTATIONS mit 1 = frei; 2 = belegt; 0 = ungültig *)
+  SB0_SPS_SHEETREMOVEDAPPROVALWALL                   : WORD := 45; 
+  SB0_SPS_SHEETONINPUTTABLE                          : WORD := 46;
+  SB0_SPS_RACKPOSITION                               : WORD := 48;
+  SB0_SPS_TURNSTATIONPOSITION                        : WORD := 49;
+
+  SB0_SPS_SYSTEMCHECKFINISHED                        : WORD := 51;
+  SB0_SPS_SETSHEETSONSHUTTLE                         : WORD := 53;
+  SB0_SPS_STATIONSTATUS                              : WORD := 62;
+  SBO_SPS_STATIONSEVENT                              : word := 65;
+  SB0_SPS_GETSTATIONSTATUS                           : WORD := 67; (* BEKOMMEN: Einen Station-Status bekommen -> SystemCheck: Ein/ Austransport etc. *)
+  SB0_SPS_SETSHEETSONSTATION                         : WORD := 68; (* Nachricht an die Oberflaeche fuer die Glasmessung auf den Stationen *)
+  SB0_SPS_SORTIERUNGSHUTTLEPOS                       : WORD := 69;
+  SB0_SPS_SHUTTLEVORABPOSITIONIERUNGUPDATE           : WORD := 70;
+  SB0_SPS_QUITTSHUTTLEVORABPOSITIONIERUNG            : WORD := 71;
+  SB0_SPS_SHUTTLEVORABPOSITIONIERUNGABBRUCH          : WORD := 72;
+  SB0_SPS_SHUTTLEVORABPOSITIONIERUNGREADY            : WORD := 73;
+  SB0_SPS_TRANSFERSHUTTLEFEHLER                      : WORD := 75;
+  SB0_SPS_FACHAUFNAHMEDATEN                          : WORD := 76;
+  SB0_SPS_TRANSFERSHUTTLECHECK_ABGESCHLOSSEN         : WORD := 77;
+  SB0_SPS_LIFTEDTRANSFERSHUTTLEPOSITION              : WORD := 78;
+  SB0_SPS_SCHNITTSTELLENDATENFREMDANLAGE             : WORD := 79;
+
+  SB0_SPS_POSITIONMEASUREDATA                        : WORD := 81; (* Fächerwagensuche: Wort 0 = (int) SPS Nr Shuttle  / Wort 1+2 = (real) Position rechte (?) Kante der Folie[-1 für nicht gefunden] *)
+  SB0_SPS_HANDFUNKTION_STATUS                        : WORD := 82; (* Antwort auf SB0_MMI_SETHANDFUNKTION [22] *)
+  SB0_SPS_SHUTTLEHANDFUNKTION_STATUS                 : WORD := 83; (* Antwort auf SB0_MMI_SETSHUTTLEHANDFUNKTION [23] *)
+  SB0_SPS_WATCHDOGTEST                               : WORD := 99;
+  SB0_SPS_TRANSFERSHUTTLEBUFFERSLOTPOS               : WORD := 100;
+  SB0_SPS_QUIT_SHEET_ORDER                           : WORD := 101;
+  SB0_SPS_QUIT_CARRIER_POSITION                      : WORD := 102;
+  SB0_SPS_STATION_UPDATE                             : WORD := 110;
+  SB0_SPS_PUFFERSTATUS                               : WORD := 111;
+
+
+(************************* START MMI Nachrichtennummern ******************)
+  SB0_MMI_SPSVERSION                                 : WORD := 32768;
+  SB0_MMI_GETBETRIEBSART                             : WORD :=  1;
+  SB0_MMI_SORTIERUNGINPUTINQUEUE                     : WORD :=  2;
+  SB0_MMI_SORTIERUNGCHECKINPUTQUEUE                  : WORD :=  5;
+  SB0_MMI_SORTIERUNGCANCELQUEUEDATA                  : WORD :=  7;
+  SB0_MMI_SORTIERUNGCANCELISOLINEEVENT               : WORD :=  8; (* ISO- Line Event stoppen [Cancel] *)
+  SB0_MMI_SORTIERUNGCANCELSHUTTLEDATA                : WORD :=  9;
+  SB0_MMI_SORTIERUNGAUTOMATIKSTART                   : WORD := 11;
+  SB0_MMI_SORTIERUNGAUTOMATIK_STOP                   : WORD := 12;
+  SB0_MMI_SORTIERUNGINSERTEXTRACTIONSHUTTLEDATA      : WORD := 14;
+  SB0_MMI_SORTIERUNGFAECHERWAGENWECHSEL              : WORD := 15;
+  SB0_MMI_SETHANDFUNKTION                            : WORD := 22;
+  SB0_MMI_SETSHUTTLEHANDFUNKTION                     : WORD := 23;
+  SB0_MMI_MEASSURERESULT                             : WORD := 30; (* Scheibenmessung OK -> Freigabe für die Eckübergabe des Sortjets  0 = nicht OK / 1 = OK  *)
+  SB0_MMI_ISOQUITTUNG                                : WORD := 31; (* unabhängige Quittung der Sondergläser durch Tasterdruck anfordern *)
+  SB0_MMI_RELEASERACKLOGIN                           : WORD := 39; (* Freigabe, dass der Fächerwagen eingeschleußt werden darf *)
+  SB0_MMI_GETSTATUSRACKSTATION                       : WORD := 40; (* Anfrage vom MMI nach dem Status einer EINZELNEN Fächerwagenstation => belegt, Muting OK, RFID-Nr.  *)
+  SB0_MMI_DOCKRACK                                   : WORD := 41; (* Freigabe den AGV Fächerwagen einzuschleusen bzw. das Tor zu öffnen  /  release to open the door for the AGV harp rack *)
+  SB0_MMI_REQUESTSTATUSLOADINGSTATIONS               : WORD := 43; (* Anfrage der Oberfläche welche Fächerwagenbeladestationen belegt sind *)
+  SB0_MMI_SETSLOTSFORSHUTTLECHECK                    : WORD := 44; (* Anfrage der aktuellen Shuttlepositionnen für den bevorstehenden Check der Maschine*)
+  SB0_MMI_REQUESTTILTSTATION                         : WORD := 51;
+  SB0_MMI_SHUTTLEVORABPOSITIONIERUNG                 : WORD := 53; (* Shuttle Vorapositionieren falls ein Transfershuttle (welches benötigt wird) gerade beschäftigt ist *)
+  SB0_MMI_FACHAUFNAHMESTART                          : WORD := 55;
+  SB0_MMI_POSITIONMEASUREONOFF                       : WORD := 56; (* FächerwagenSUCHE    Wort 0 = (int) 1 für AN oder 0 für AUS / Wort 2 = (int) SPS Nr Shuttle *)
+  SB0_MMI_STATIONSTATUS                              : WORD := 67; (* Stationsstatus [Antwort in welchem Modus sich die Station befunden hat -> SystemCheck] *)
+  SB0_MMI_SYSTEMCHECKSTATION                         : WORD := 68; (* Stationsstatus [Antwort in welchem Modus sich die Station befunden hat -> SystemCheck] *)
+  SB0_MMI_GETSORTIERUNGSHUTTLEPOS                    : WORD := 69;
+  SB0_MMI_IOANZEIGE_AKTIVIEREN_DEAKTIVIEREN          : WORD := 70; (* Anzeige der IO´s im MMI Service  WORT 0: 1 = sichtbar / 0 = unsichtbar *)
+  SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE                  : WORD := 71; (* Uebertragen von Daten ueber eine Hardwareschnittstelle \ DPD-Koppler an eine Fremdanlage *)
+  SB0_MMI_SHUTTLE_INFORMATION                        : WORD := 72; (* Uebertragen von Daten waehrend der Shuttle-Positionierung *)
+  SB0_MMI_TRANSFERSHUTTLECHECK                       : WORD := 76; (* Hinweis: Systemcheck mit Transfershuttles da Glas aus dem Speicher raus stand *)
+  SB0_MMI_LIFTTRANSFERSHUTTLE                        : WORD := 77;
+  SB0_MMI_DURCHTRANSPORT                             : WORD := 80;
+  SB0_MMI_RESET_ETHERCAT                             : WORD := 81;
+  SB0_MMI_WATCHDOGTEST                               : WORD := 99;
+  SB0_MMI_TRANSFERSHUTTLEBUFFERSLOTCHECK             : WORD := 100;
+  SB0_MMI_SHEET_ORDER                                : WORD := 101;
+  SB0_MMI_DRIVEOVERRIDE                              : WORD := 102;
+  SB0_MMI_START_BELT_CLEANING                        : WORD := 103;
+  SB0_MMI_CARRIER_POSITIONING                        : WORD := 104;
+  SB0_MMI_TS_REPOSITIONING_LITES                     : WORD := 110;  
+  SB0_MMI_ANFORDERUNG_PUFFER_AUSFAHREN               : WORD := 111;
+  SB0_MMI_ANFORDERUNG_PUFFER_EINFAHREN               : WORD := 112;
+
+
+END_VAR
+
+END_NAMESPACE

@@ -1,0 +1,14 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "82138fd7-f873-419a-910b-a78760df67d2"
+	}
+}
+*)
+TYPE Parkpositionen_ST :
+ STRUCT
+    eParkposition        : ParkpositionTyp_EN;
+    rParkpositionMinimum : REAL;
+    rParkpositionMaximum : REAL;
+	END_STRUCT
+END_TYPE

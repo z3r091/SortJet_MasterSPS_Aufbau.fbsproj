@@ -1,0 +1,19 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "97d371bc-b3dc-4cb0-bec9-dd6b7e30f73e"
+	}
+}
+*)
+TYPE StationsTyp_EN :
+  (
+    eUndefiniert        := 999,
+    eInputshuttle       := 1,
+    eOutputshuttle      := 2,
+    eTransfershuttle    := 3,
+    eStation            := 4,
+    eFaecherwagen       := 5,
+    eFremdanlage        := 6,
+    eHydraulikInsel     := 7
+  ) WORD;
+END_TYPE

@@ -1,0 +1,22 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "15eac17b-8212-432f-af8b-7dd4ec21f394"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE Konfiguration_150
+VAR_CONFIG
+(***************************************************************************************************)
+(* KONFIGURATION: BAUSTEIN IO´s  *)
+(***************************************************************************************************)
+         
+  // Leitungsschutzschalter                                                                                  
+  Globale_Bausteine.aTransfershuttles[150].in_bLeitungsschutz_Querfahrt_OK		                               AT %IX1.1    : BOOL; (* OK *)
+  Globale_Bausteine.aTransfershuttles[150].in_bDruckluftWartungseinheitOK                                    AT %IX4.6    : BOOL; (* OK *) // Sammelsignal 151-154
+                                                                                                             
+          
+END_VAR
+
+END_NAMESPACE

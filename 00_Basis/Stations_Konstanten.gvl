@@ -1,0 +1,166 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "55accb84-4b73-4dbf-8d20-edd3dcbc9a96"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE Stations_Konstanten
+VAR_GLOBAL CONSTANT
+
+  (* Anmerkung:
+     - Konstanten die immer gleichbleiben in ihrer Benamung und nicht mehr
+       angepasst werden muessen (ggf. der numerische Wert)
+  *)
+  
+  // TEMPORAERE STATIONS (PLATZHALTER)                                     
+  cSTATION_DYNAMISCH       : WORD := 998;
+  cSTATION_DEFAULT         : WORD := 999;
+  cSTATION_TEMP            : WORD := 999;
+
+  // Shuttle
+  cSHUTTLE_101             : WORD := 101;
+  cSHUTTLE_102             : WORD := 102;
+  cSHUTTLE_103             : WORD := 103;
+  cSHUTTLE_104             : WORD := 104;
+  cSHUTTLE_105             : WORD := 105;
+  cSHUTTLE_106             : WORD := 106;
+
+  // Transfershuttle
+  cSHUTTLE_150             : WORD := 150;
+  cSHUTTLE_151             : WORD := 151;
+  cSHUTTLE_152             : WORD := 152;
+  cSHUTTLE_153             : WORD := 153;
+  cSHUTTLE_154             : WORD := 154;
+  cSHUTTLE_155             : WORD := 155;
+  cSHUTTLE_156             : WORD := 156;
+  cSHUTTLE_157             : WORD := 157;
+  cSHUTTLE_158             : WORD := 158;
+
+  // Stationen
+  cSTATION_201             : WORD := 201;
+  cSTATION_202             : WORD := 202;
+  cSTATION_203             : WORD := 203;
+  cSTATION_204             : WORD := 204;
+  cSTATION_205             : WORD := 205;
+  cSTATION_206             : WORD := 206;
+  cSTATION_207             : WORD := 207;
+  cSTATION_208             : WORD := 208;
+  cSTATION_209             : WORD := 209;
+  cSTATION_210             : WORD := 210;
+  cSTATION_211             : WORD := 211;
+  cSTATION_212             : WORD := 212;
+  cSTATION_213             : WORD := 213;
+  cSTATION_214             : WORD := 214;
+  cSTATION_215             : WORD := 215;
+  cSTATION_216             : WORD := 216;
+  cSTATION_217             : WORD := 217;
+  cSTATION_218             : WORD := 218;
+  cSTATION_219             : WORD := 219;
+  cSTATION_220             : WORD := 220;
+  cSTATION_221             : WORD := 221;
+  cSTATION_222             : WORD := 222;
+  cSTATION_223             : WORD := 223;
+  cSTATION_224             : WORD := 224;
+  cSTATION_225             : WORD := 225;
+  cSTATION_226             : WORD := 226;
+  cSTATION_227             : WORD := 227;
+  cSTATION_228             : WORD := 228;
+  cSTATION_229             : WORD := 229;
+  cSTATION_230             : WORD := 230;
+                                     
+  // Faecherwagen                               
+  cSTATION_301             : WORD := 301;
+  cSTATION_302             : WORD := 302;
+  cSTATION_303             : WORD := 303;
+  cSTATION_304             : WORD := 304;
+  cSTATION_305             : WORD := 305;
+  cSTATION_306             : WORD := 306;
+  cSTATION_307             : WORD := 307;
+                                     
+  // Fremdanlagen                             
+  cSTATION_401             : WORD := 401;
+  cSTATION_402             : WORD := 402;
+  cSTATION_403             : WORD := 403;
+  cSTATION_404             : WORD := 404;                                     
+                                     
+  // Einlauflinien                                
+  cSTATION_501             : WORD := 501;
+  cSTATION_502             : WORD := 502;
+  cSTATION_503             : WORD := 503;
+
+
+(***************************************************************************************************)
+(* STATIONSNUMMERN [SPRECHEND] *)
+(***************************************************************************************************)
+  (* Anmerkung:
+     - Konstanten die immer gleichbleiben in ihrer Benamung und nicht mehr
+       angepasst werden muessen (ggf. der numerische Wert)
+  *)
+
+  // Speicher
+  cSPEICHER_1                 : WORD := 1;
+  cSPEICHER_2                 : WORD := 2;
+  cSPEICHER_3                 : WORD := 3;
+  cSPEICHER_4                 : WORD := 4;
+  cSPEICHER_5                 : WORD := 5;
+  cSPEICHER_6                 : WORD := 6;
+  cSPEICHER_7                 : WORD := 7;
+  cSPEICHER_8                 : WORD := 8;
+
+  // Fremdanlage
+  cFREMDANLAGE_AUSLAUF_1      : WORD := 401;
+  cFREMDANLAGE_AUSLAUF_2      : WORD := 402;
+  cFREMDANLAGE_AUSLAUF_3      : WORD := 403;
+  cFREMDANLAGE_AUSLAUF_4      : WORD := 404;
+
+  cFREMDANLAGE_EINLAUF_1      : WORD := 501;
+  cFREMDANLAGE_EINLAUF_2      : WORD := 502;
+  cFREMDANLAGE_EINLAUF_3      : WORD := 503;
+  
+  // Hydraulik-Kreise
+  cHYDRAULIKSTATION_1         : WORD := 1;
+  cHYDRAULIKSTATION_2         : WORD := 2;
+  cHYDRAULIKSTATION_3         : WORD := 3;
+
+  // Wird benutzt für Horn \ Ampel 
+  cEINLAUFSEITE                        : WORD := 1;
+  cAUSLAUFSEITE                        : WORD := 2;
+
+  // TUEREN
+  cTUER_1                              : WORD := 1;
+  cTUER_2                              : WORD := 2;
+  cTUER_3                              : WORD := 3;
+  cTUER_4                              : WORD := 4;
+  cTUER_5                              : WORD := 5;
+  cTUER_6                              : WORD := 6;
+  cTUER_7                              : WORD := 7;
+  cTUER_8                              : WORD := 8;
+  cTUER_9                              : WORD := 9;
+  cTUER_10                             : WORD := 10;
+
+  // Durchgänge Klappförderer
+  cDURCHGANG_1                         : WORD := 1;
+  cDURCHGANG_2                         : WORD := 2;
+  cDURCHGANG_3                         : WORD := 3;
+
+  (* MMI WANDNUMMER
+     - Wird gebraucht fuer die Fehlermeldung der Scheibenquittierung 
+  *)
+  cMMI_WAND_1                         : WORD := 0;
+  cMMI_WAND_2                         : WORD := 1;
+  cMMI_WAND_3                         : WORD := 2;
+  cMMI_WAND_4                         : WORD := 3;
+
+  // HUBRAHMEN 
+  cHUBRAHMEN_1                        : WORD := 0;
+  cHUBRAHMEN_2                        : WORD := 1;
+
+  // EBENEN
+  cEBENE_1                            : WORD := 2#0000000000000001; (* 1; *)
+  cEBENE_2                            : WORD := 2#0000000000000010; (* 2; *)
+
+END_VAR
+
+END_NAMESPACE

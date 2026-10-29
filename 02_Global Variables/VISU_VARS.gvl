@@ -1,0 +1,193 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "ca97481c-3185-43db-a213-215d556851fe"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE VISU_VARS
+VAR_GLOBAL
+
+  wgvisushuttlefehlernr  : WORD;
+
+  bgVisu2StationenDrehrichtungWechsel : BOOL;
+
+  abgVISUFreigabeFremdanlage                 : ARRAY[cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+
+  bgVISUAutomatikModusStation                : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUAutomatikModusShuttle                : ARRAY[cERSTES_SHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+
+  bgVISUGeblaese                             : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
+  bgVISUDrosselklappeAUF                     : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+
+  bgVISUGlastransportVor                     : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
+  bgVISUGlastransportZurueck                 : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
+
+  bgVISUQuerfahrtVor                         : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUQuerfahrtZurueck                     : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUQuerfahrtReferenz                    : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUQuerfahrtEintransportPos1            : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUQuerfahrtAustransportPos1            : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+
+  bgVISUVerfahreShuttle                      : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+
+  bgVISUAnschlaegeAuf                        : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUAnschlaegeAb                         : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+
+(* Hicham Aenderung vom 25.05.2022: Neue Visu Variablen fuer Handfunktion*)
+  bgVISUHubrahmenAuf_Ebene1                  : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   (* Um die zylinder 1 zu steuern: Heben  Ebene 1*)
+  bgVISUHubrahmenAb_Ebene1                   : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   (* Um die zylinder 1 zu steuern: Senken Ebene 1*)
+  bgVISUHubrahmenAuf_Ebene2                  : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   (* Um die zylinder 2 zu steuern: Heben  Ebene 2*)
+  bgVISUHubrahmenAb_Ebene2                   : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   (* Um die zylinder 2 zu steuern: Senken Ebene 2*)
+
+  bgVISUTransportsperreRunter                : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUTransportsperreHoch                  : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+
+  bgVISUZentralschmierungStarten             : ARRAY[cERSTES_SHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+
+  (* HANDFUNKTIONEN: HOEHENKONTROLLE *)
+  bgVISUHoehenkontrolleVor                   : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUHoehenkontrolleZurueck               : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUHoehenkontrolleReferenz              : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+
+  (* HANDFUNKTIONEN: DREHEN *)
+  bgVISUDrehen0Grad                          : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUDrehen90Grad                         : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUDrehen180Grad                        : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUDrehen270Grad                        : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUDrehenWechsel                        : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUDrehenReferenz                       : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+
+  (* HANDFUNKTIONEN: KIPPEN *)
+  bgVISUKippen_0_Grad                        : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippen_1_5_Grad                      : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippen_90_Grad                       : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippen_84_Grad                       : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippen_88_5_Grad                     : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippenW1Hoch                         : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippenW1Runter                       : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippenW1Referenz                     : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippenW2Hoch                         : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippenW2Runter                       : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippenW2Referenz                     : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippenW3Hoch                         : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippenW3Runter                       : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippenW3Referenz                     : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippenBremseLoesen                   : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  
+  bgVISUKippenGrundstellung                  : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippenUebergabePosition              : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUKippenReferenz                       : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+
+  (* HANDFUNKTIONEN: HUB WAND 1 *)
+  bgVISUHubW1Auf                             : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUHubW1Ab                              : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUHubW1Referenz                        : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+
+  bgVISUZylinder1Einfahren                   : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUZylinder2Einfahren                   : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUZylinder1Ausfahren                   : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUZylinder2Ausfahren                   : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+
+  (* HANDFUNKTIONEN: HUB ALLGEMEIN *)
+  bgVISUHubPositionW1                        : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUHubPositionW2                        : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUHubPositionNachfolger                : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+  bgVISUHubPositionVorgaenger                : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+
+  bgVISUGlastransportOeffnungGeschlossen     : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
+  bgVISUGlastransportOeffnungMinimal         : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
+  bgVISUGlastransportOeffnungMittel          : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
+  bgVISUGlastransportOeffnungMaximal         : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
+
+  bgVISUW1QuerverstellungMinimal             : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUW1QuerverstellungMittel              : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUW1QuerverstellungMaximal             : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+
+  bgVISUSicherungsbolzenEinfahren            : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
+
+  bgVISUZentrierbolzenEinfahren              : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+  bgVISUZentrierbolzenAusfahren              : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+
+  (* Transfershuttle (TFS) *)
+  wgVISUAuswahlTransferShuttle               : WORD := 151;
+  bgVisuTFSRiemenAnheben                     : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFSRiemenSenken                      : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFSAbfrageEinlaufAuf                 : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFSAbfrageAuslaufAuf                 : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFSAbfrageEinlaufEin                 : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFSAbfrageAuslaufEin                 : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFS_BreiteAbfrageEinlaufAuf          : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFS_BreiteAbfrageAuslaufAuf          : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFS_BreiteAbfrageEinlaufEin          : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFS_BreiteAbfrageAuslaufEin          : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFSScheibeZurueckHolen               : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFSGlastransporttestAktivieren       : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFSQuerfahrtVor                      : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFSQuerfahrtZurueck                  : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFSQuerfahrtReferenz                 : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  bgVisuTFSZentralschmierungStarten          : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+
+  (* HANDFUNKTIONEN: FAECHERWAGEN *)
+  bgVISUFWEntriegelungEinfahren              : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
+  bgVISUFWEntriegelungAusfahren              : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
+  bgVISUFWGreiferEinfahren                   : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
+  bgVISUFWGreiferAusfahren                   : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
+  bgVISUFWGegenhalterEinfahren               : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
+  bgVISUFWGegenhalterAusfahren               : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
+  bgVISUFWLinearEinheitVor                   : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
+  bgVISUFWLinearEinheitZurueck               : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
+  bgVISUFWLinearEinheitShuttle               : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
+  bgVISUFWRolltorHoch                        : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
+  bgVISUFWRolltorRunter                      : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
+  bgVISUFWQuittierungLichtschranke           : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
+
+  bgVISUSetWatchIO                           : BOOL;
+  wgVISUWatchIONr                            : WORD;
+  bgVISUWatchIOAktiv                         : BOOL;
+
+  bgVisuStart                                : BOOL := FALSE;
+
+  bgVISUDummy                                : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
+
+  bgVISUFehlerAusloesen                      : BOOL;
+
+  bgVisu2StationenVor                 : BOOL := FALSE;
+  bgVisu2StationenZurueck             : BOOL := FALSE;
+  iGewaehlteStation1                  : WORD := 101;
+  iGewaehlteStation2                  : WORD := 101;
+  bgStation1W1                        : BOOL := FALSE;
+  bgStation1W2                        : BOOL := FALSE;
+  bgStation2W1                        : BOOL := FALSE;
+  bgStation2W2                        : BOOL := FALSE;
+  bgVISU_EINLAUFSENSOR_STATION_1      : BOOL;
+  bgVISU_AUSLAUFSENSOR_STATION_1      : BOOL;
+  bgVISU_EINLAUFSENSOR_STATION_2      : BOOL;
+  bgVISU_AUSLAUFSENSOR_STATION_2      : BOOL;
+
+  (*Antriebsraddurchmesser berechenen*)
+
+  biDurchmesserIst                    : REAL := 0;
+  biDurchmesserSoll                   : REAL := 0;
+  biWegIst                            : REAL := 0;
+  biWegSoll                           : REAL := 0;
+  bgBerechnen                         : BOOL;
+
+  abgStationsstatusVisu               : ARRAY[101..cLETZTE_STATION] OF Stationsstatus_Visu_ST;
+  
+// Antriebe verfahren
+  bgVisuAntriebeVerfahrenAktiv        : BOOL;
+  wgAuswahlAchsID                     : WORD := 0;
+  rgZielPos                           : REAL := 0;
+  rgGeschwindigkeit                   : REAL := 0;
+  wgMasterNummer                      : WORD := 0;
+  
+  bgVISUTest : BOOL;
+  rtlVisuTest : R_TRIG;
+  // Test ofne Einlauflinie
+  bgVisuQuittEintransport             : ARRAY [101..cLETZTE_STATION] OF BOOL;
+
+END_VAR
+
+END_NAMESPACE

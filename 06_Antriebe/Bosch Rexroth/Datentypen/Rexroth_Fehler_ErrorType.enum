@@ -1,0 +1,22 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "9f0e6346-b94d-45b5-9994-f9201dec472f"
+	}
+}
+*)
+TYPE Rexroth_Fehler_ErrorType :
+(
+  eRexroth_Error_Fatal_PowerUnit         := 16#88,
+  eRexroth_Error_Fatal_Safety            := 16#83,
+  eRexroth_Error_Fatal                   := 16#8,
+  eRexroth_Error_Safety                  := 16#7,
+  eRexroth_Error_EmergencyStop_PowerUnit := 16#68,
+  eRexroth_Error_EmergencyStop           := 16#6,
+  eRexroth_Error_Interface               := 16#4,
+  eRexroth_Error_Non_Fatal_Safety        := 16#3,
+  eRexroth_Error_Non_Fatal_PowerUnit     := 16#28,
+  eRexroth_Error_Non_Fatal               := 16#2,
+  eRexroth_Error_No_Reaction             := 16#0
+) BYTE;
+END_TYPE

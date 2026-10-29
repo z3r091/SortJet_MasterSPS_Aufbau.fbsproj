@@ -1,0 +1,16 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "b20744f6-f15e-450e-8bbb-c478b2b2217d"
+	}
+}
+*)
+TYPE SPSTOMMI :
+STRUCT
+ wWatchdog        : WORD;
+ smbMessageBlock  : SpsMessageBlock;
+ aucControlSystem : ARRAY[0..255] OF BYTE;
+ ioSystem         : InputOutput;
+ aAntrieb         : ARRAY[0..19] OF Antrieb;
+END_STRUCT
+END_TYPE

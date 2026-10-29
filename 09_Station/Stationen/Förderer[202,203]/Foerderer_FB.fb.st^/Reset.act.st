@@ -1,0 +1,154 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "3a67f1d5-b91a-47a8-b2e1-739a6fa2b35e"
+	}
+}
+*)
+ACTION Reset
+(***************************************************************************************************)
+(* AKTION RESET *)
+(***************************************************************************************************)
+
+IF( blBetriebsartReset )THEN
+  CASE steplReset OF
+(*RESET ============================*)
+    STEP_0_E:    
+
+      BasisStationsParameter.eStatusAuftrag := eKeinStatus;   
+   
+      BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberEinlauf  := FALSE;
+      BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberAuslauf  := FALSE;
+      BasisStationsParameter.bStationBelegt[cWAND_1]                               := FALSE;
+      BasisStationsParameter.bCheckMitVorgaenger[cWAND_1]                          := FALSE;
+      BasisStationsParameter.bCheckMitNachfolger[cWAND_1]                          := FALSE;
+      BasisStationsParameter.bCheckAbgeschlossen                                   := FALSE;
+     
+      blNachSystemcheckMerker := FALSE;
+	  
+      steplReset := STEP_10_E;
+
+(*RESET ============================*)
+    STEP_10_E:
+      (* Hinweis:
+         - Zuruecksetzen der Unterbausteine die sich in einem Fehlerzustand befinden.
+      *)
+      Glastransport.bpReset   := TRUE;
+      Kippen.bpReset          := TRUE;
+      Hub.bpReset             := TRUE;
+      Roellchenleiste.bpReset := TRUE;
+      Wandverstellung.bpReset := TRUE;
+      Querfahrt.bpReset       := TRUE;
+
+      (* Hinweis:
+         - Bausteine welche sich selbst zurueck setzen
+      *)
+      Geblaese.bpReset        := TRUE;
+
+      steplReset := STEP_20_E;
+
+(*RESET ============================*)
+    STEP_20_E:
+      (* Hinweis:
+         - Warten bis die Antriebe ihren Reset durchgefuehrt haben
+      *)
+      IF ( Glastransport.bpDone
+        AND Kippen.bpDone
+        AND Hub.bpDone
+        AND Roellchenleiste.bpDone 
+        AND Wandverstellung.bpDone 
+        AND Querfahrt.bpDone)
+      THEN
+        Glastransport.bpReset   := FALSE;
+        Kippen.bpReset          := FALSE;
+        Geblaese.bpReset        := FALSE;
+        Hub.bpReset             := FALSE;
+        Roellchenleiste.bpReset := FALSE;
+        Wandverstellung.bpReset := FALSE;
+        Querfahrt.bpReset       := FALSE;
+
+        steplReset := STEP_1000_E;
+      END_IF
+
+      (* Fehlerbehandlung
+         - Reset-Schrittkette zuruecksetzen (Timer abgelaufen)
+         - Pruefen welcher Baustein seinen Reset nicht beenden konnte
+      *)
+      IF ( tonlMaxWarteAufResetErfolgreich.Q ) THEN
+        Glastransport.bpReset   := FALSE;
+        Kippen.bpReset          := FALSE;
+        Geblaese.bpReset        := FALSE;
+        Hub.bpReset             := FALSE;
+        Roellchenleiste.bpReset := FALSE;      
+        Wandverstellung.bpReset := FALSE;
+        Querfahrt.bpReset       := FALSE;
+
+        steplReset := STEP_900_E;
+
+        BasisStationsParameter.wFehlerNummer := cMELDUNG_STATION_NICHT_ZURUECKGESETZT;
+        SpsError( eFehler_Station, cMELDUNG_STATION_NICHT_ZURUECKGESETZT, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+
+        IF ( NOT Glastransport.bpDone OR Glastransport.bpFehler ) THEN
+          BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
+          SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+        END_IF
+
+        IF ( NOT Kippen.bpDone OR Kippen.bpFehler ) THEN
+          BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
+          SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+        END_IF
+
+        IF ( NOT Geblaese.bpDone OR Geblaese.bpFehler ) THEN
+          BasisStationsParameter.wFehlerNummer := Geblaese.wpFehlerNr;
+          SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+        END_IF
+
+        IF ( NOT Roellchenleiste.bpDone OR Roellchenleiste.bpFehler ) THEN
+          BasisStationsParameter.wFehlerNummer := Roellchenleiste.wpFehlerNr;
+          SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+        END_IF
+
+        IF ( NOT Wandverstellung.bpDone OR Wandverstellung.bpFehler ) THEN
+          BasisStationsParameter.wFehlerNummer := Wandverstellung.wpFehlerNr;
+          SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+        END_IF
+
+        IF ( NOT Querfahrt.bpDone OR Querfahrt.bpFehler ) THEN
+          BasisStationsParameter.wFehlerNummer := Querfahrt.wpFehlerNr;
+          SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+        END_IF
+
+      END_IF
+
+(*RESET ============================*)
+    STEP_900_E:
+      (* Fehlerbehandlung
+      *)
+      BasisStationsParameter.bFehler := TRUE;
+      BasisStationsParameter.bReset := FALSE;
+
+(*RESET ============================*)
+    STEP_1000_E:
+      BasisStationsParameter.wFehlerNummer := cMELDUNG_NULL;
+      BasisStationsParameter.bFehler := FALSE;
+
+      BasisStationsParameter.bReset := FALSE;
+
+(*RESET ============================*)
+  END_CASE
+ELSE
+
+  IF( steplReset > STEP_0_E )THEN
+    Glastransport.bpReset   := FALSE;
+    Kippen.bpReset          := FALSE;
+    Hub.bpReset             := FALSE;
+    Geblaese.bpReset        := FALSE;
+    Roellchenleiste.bpReset := FALSE;
+    Wandverstellung.bpReset := FALSE;
+    Querfahrt.bpReset       := FALSE;
+
+    steplReset := STEP_0_E;
+  END_IF
+
+END_IF
+END_ACTION

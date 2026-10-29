@@ -1,0 +1,14 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "9b7f8e64-81bc-45e3-b4d2-38b14b6ecc92"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE MKs
+VAR_GLOBAL
+  bgHardwareSimulation : BOOL;             (* Hardware-Simulation *)
+  bgMkParameterOk      : BOOL := FALSE;
+END_VAR
+END_NAMESPACE

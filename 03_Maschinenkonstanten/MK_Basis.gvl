@@ -1,0 +1,23 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "5958793f-1329-4a1b-bef1-2986cf668b20"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE MK_Basis
+VAR_GLOBAL
+
+(***************************************************************************************************)
+(* MASCHINEPARAMETER: LTR *)
+(***************************************************************************************************)
+
+  apgMKAutomatikkreise : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF Parameter_Automatikkreis := [
+  ( (* AK 1 *)
+    epAutomatikkreis_Transfershuttle := eAutomatikkreis_Mit_Transfershuttle_Input_Output
+  )];
+
+END_VAR
+
+END_NAMESPACE

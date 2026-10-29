@@ -1,0 +1,17 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "825d9501-06da-455c-bd81-ab05916cebf2"
+	}
+}
+*)
+TYPE SpsMessageBlock :
+STRUCT
+ wQuitCnt          : WORD;
+ wCnt1             : WORD;
+ wAnzAuftraege     : WORD;
+ asmSpsMessage     : ARRAY [0..4] OF SpsMessage;
+ wCnt2             : WORD;
+ dwCrc32Checksumme : DWORD;
+END_STRUCT
+END_TYPE

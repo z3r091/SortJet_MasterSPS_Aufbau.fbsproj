@@ -1,0 +1,18 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "4d561c86-934a-48d7-9dd9-cfb08ecb814b"
+	}
+}
+*)
+TYPE BeladungsStatus_EN :
+  (
+    eStatusStationFrei                          := 0,
+    eStatusStationBelegt                        := 1,
+    eStatusStationBelegtNachfolger              := 2,
+    eStatusStationBelegtVorgaenger              := 3,
+    eStatusStationBelegtVorgaengerUndNachfolger := 4,
+    eStatusStationBelegtAbnehmen                := 5,
+    eStatusStationBelegtAnlegen                 := 6
+  ) WORD;
+END_TYPE

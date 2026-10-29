@@ -1,0 +1,15 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "5032f498-2f7c-4781-b47b-7f765b91c312"
+	}
+}
+*)
+TYPE StationUpdate_ST :
+STRUCT
+  wStationsNummer : WORD;
+  eUpdateTyp      : StationUpdateTyp_EN;
+  wAnzahlWerte    : WORD;
+  astWerte        : ARRAY[1..13] OF UpdateWert_ST;
+END_STRUCT
+END_TYPE

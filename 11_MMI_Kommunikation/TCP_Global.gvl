@@ -1,0 +1,29 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "822ea3bc-9f3a-414f-ba8a-dc2da6267ba8"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE TCP_Global
+VAR_GLOBAL
+  g_bCallbackRegistered : BOOL;
+  bgTcpConnected        : BOOL;
+  bgCallback_ONLINE_CHANGE : BOOL;
+  bgCallback_BEFORE_RESET : BOOL;
+  bgCallback_BEFORE_DOWNLOAD : BOOL;
+  bgCallback_Shutdown : BOOL;
+  bgSteuerung_Eckelmann : BOOL := TRUE;
+END_VAR
+VAR_GLOBAL CONSTANT
+  (*Nachrichtenkonstanten der TCP Schnitstelle*)
+  cMsg_Watchdog      : WORD := 16#0001;
+  cMsg_MsgBlock      : WORD := 16#0002;
+  cMsg_ControlSystem : WORD := 16#0003;
+  cMsg_IOSystem      : WORD := 16#0004;
+  cMsg_Drives        : WORD := 16#0005;
+  cMsg_MsgDirect     : WORD := 16#0006;  
+  cMsg_MsgDirectAck  : WORD := 16#0007;
+END_VAR
+END_NAMESPACE

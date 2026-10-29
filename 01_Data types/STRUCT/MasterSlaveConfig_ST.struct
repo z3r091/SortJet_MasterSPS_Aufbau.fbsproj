@@ -1,0 +1,15 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "0399c4af-5590-437f-bc5f-e387b6814f53"
+	}
+}
+*)
+TYPE MasterSlaveConfig_ST :
+  STRUCT
+    wSlaveNrVorgaengerWand1 : WORD;
+    wSlaveNrVorgaengerWand2 : WORD;
+    wSlaveNrNachfolgerWand1 : WORD;
+    wSlaveNrNachfolgerWand2 : WORD;
+  END_STRUCT
+END_TYPE

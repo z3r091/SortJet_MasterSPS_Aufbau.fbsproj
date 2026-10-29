@@ -1,0 +1,15 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "bd6c7b83-e461-47b7-9d4c-07e9b7aa6e17"
+	}
+}
+*)
+(* Anmerkung:
+   - Struktur zum Abhandeln des Ein- und Aus- Transport
+*)
+TYPE Systemcheck_MK_ST :
+  STRUCT
+    wStationen : ARRAY[1..30] OF WORD;
+  END_STRUCT
+END_TYPE

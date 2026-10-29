@@ -1,0 +1,20 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "e729b003-2b64-4dd3-a858-86674f6fa310"
+	}
+}
+*)
+TYPE Parameter_Messachse :
+  STRUCT
+    rPositionUeberScheibenhoehe       : REAL; (* Position der Zentrierleiste ueber dem Glas so dass das Glas angelegt werden kann *)
+    rKorrekturOffset                  : REAL; (* Korrektur der Position um einen Bestimmten Wert (Offset) *) 
+    rVerfahrbereichsOffset            : REAL; (* Korrektur des Verfahrens wenn  *)
+    rKorrekturOffsetVSGEintransport   : REAL; (* Korrektur der Position um einen Bestimmten Wert (Offset) beim Eintransport von VSG *)
+    rOffsetMessung                    : REAL; (* ? *)
+    rStreckePositionieren             : REAL; (* ? *)
+    rToleranz                         : REAL; (* Toleranzwert in der Ausmessung der Höhe *)
+    rAbstandSensorenOberUndUnterkante : REAL; (* Rechnerischer Abstand zwischen dem Sensor der die Scheibenunterkante misst und dem Sensor der die Scheibenoberkante misst *)
+    rOffsetNullLinie                  : REAL; (* Offset das auf den Wert des Abstands zur Null-Linie aufgerechnet wird, um dies evtl zu korrigieren *)
+  END_STRUCT
+END_TYPE

@@ -1,0 +1,16 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "998b756b-aac8-4015-90e1-02395ccaf705"
+	}
+}
+*)
+TYPE UpdateWert_ST :
+STRUCT
+  eDatenTyp : UpdateDatenTyp_EN;
+  wWert     : WORD;
+  dwWert    : DWORD;
+  rWert     : REAL;
+  bWert     : BOOL;
+END_STRUCT
+END_TYPE

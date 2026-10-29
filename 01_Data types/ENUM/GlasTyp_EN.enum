@@ -1,0 +1,17 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "baa483a7-b8f2-435a-ba70-78330d4d9eae"
+	}
+}
+*)
+TYPE GlasTyp_EN :
+(
+	eScheibe_Minimal  := 1,
+	eScheibe_Mittel   := 2,
+	eScheibe_Gross    := 3,
+	eScheibe_Maximal  := 4,
+	eScheibe_Default  := 5,
+	eScheibe_Modell   := 6
+) WORD;
+END_TYPE

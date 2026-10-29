@@ -1,0 +1,29 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "48cd00e8-ec1d-483b-bc72-0f916467d76d"
+	}
+}
+*)
+TYPE STATUS_ctrlX :
+STRUCT
+  cBIT_ANTRIEB_LAEUFT : BIT; //Antrieb dreht
+  cBIT_REGLER_BEREIT : BIT; //Lasterversorgung 400V Versorgung
+  cBIT_ANTRIEB_IST_REFERENZIERT : BIT; //Antrieb referenziert
+  cBIT_ZIELPOSITION_ERREICHT : BIT; //Antrieb hat seine Zielposition erreicht
+  cBIT_ACHSE_SYNCHRON : BIT; //Achse im Synchron-Modus zum Master
+  cBIT_FEHLER_WARNUNG_AKTIV : BIT; //Umrichter/Antrieb meldet einen Fehler bzw. Warnung
+  cBIT_MESSTASTETER_1_BELEGT : BIT; //Messtaster 1
+  cBIT_MESSTASTETER_2_BELEGT : BIT; //Messtaster 2
+  cBIT_MESSUNG_FEHLERHAFT : BIT; //Vermessung fehlerhaft
+  cBIT_MESSUNG_OK : BIT; //Vermessung erfolgreich
+  cBIT_MAX_ENDSCHALTER_BELEGT : BIT; //Positiver Endlagenschalter
+  cBIT_MIN_ENDSCHALTER_BELEGT : BIT; //Negativer Endlagenschalter
+  cBIT_HOMING_BEENDET : BIT; //Homing abgeschlossen
+  cBIT_RESERVIERT_2 : BIT; //DI 07 geschaltet
+  cBIT_MOTION_AKTIV : BIT; //Motion der CORE ist noch in einer aktiven Betriebsart
+  cBIT_LIVEBIT : BIT; //livebit der core
+  cBIT_LANGSAMFAHR_MINIMUM : BIT; // langsamfahrnocke/laser minimum
+  cBIT_LANGSAMFAHR_MAXIMUM : BIT; // langsamfahrnocke/laser maximum 
+END_STRUCT
+END_TYPE

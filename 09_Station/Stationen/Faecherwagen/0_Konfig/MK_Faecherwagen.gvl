@@ -1,0 +1,33 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "4f007b85-dd1b-4818-92fb-7451563e5cb0"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE MK_Faecherwagen
+VAR_GLOBAL
+  apgMKFaecherwagenstation : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF Parameter_Station :=[
+    (
+	   stStationsNummern         := (  NummerIntern    :=   301,
+                                     NummerExtern    := 13301,
+                                     NummerSPS       :=   301 ),
+      bDeaktivieren             := TRUE,
+      wMeldungsNummer           := 1400,
+      eStationsTyp              := eFaecherwagen,
+      eaAutomatikkreis          := [eAutomatikkreis_1],
+	    eaSicherheitskreis        := [eSicherheitskreis_1], //Alle Sk's eintragen in dem die Station eingebunden ist
+      eSystemcheckZyklus        := eSystemcheckZyklus_1,
+      stStationsAufbau          := ( bAnschlag   := FALSE,
+                                     bRolltor    := TRUE,
+                                     bRFID       := TRUE,
+                                     bAGV        := FALSE 
+                                    )
+    )];
+
+
+END_VAR
+
+
+END_NAMESPACE

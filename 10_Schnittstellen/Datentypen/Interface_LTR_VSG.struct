@@ -1,0 +1,21 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "e8a7e169-fe19-4a43-bdf0-8e79033b9491"
+	}
+}
+*)
+(* Anmerkung:
+   - Struktur zum Abhandeln des Ein- und Aus- Transport
+*)
+TYPE Interface_LTR_VSG :
+  STRUCT
+    stStationsNummern        : Station_ST := ( NummerIntern := 999,
+                                               NummerExtern := 999,
+                                               NummerSPS    := 999 );
+    bBereitZumEintransport   : BOOL := FALSE;
+    bBereitZumAustransport   : BOOL := FALSE;
+    bAutomatikBetriebAktiv   : BOOL := FALSE;
+	 bSensorEinlauf           : BOOL := FALSE;
+  END_STRUCT
+END_TYPE

@@ -1,0 +1,20 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "d92df366-49a4-4434-b9e7-7221116054d3"
+	}
+}
+*)
+TYPE FremdanlagenTyp_EN :
+  ( 
+    eDefault    :=  0,
+    eLISEC      :=  1,
+    eFOREL      :=  2,
+    eBENTELER   :=  3,
+    eHEGLA_VSG  :=  4,
+    eHEGLA_BREAK:=  5,
+    eHEGLA_SJ   :=  6,
+    eGLASTON    :=  7,
+    eUNBEKANNT  := 99
+  ) WORD;
+END_TYPE

@@ -1,0 +1,22 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "f7fabc51-f861-4433-92f1-7ac011c7790c"
+	}
+}
+*)
+TYPE Tueren_EN :
+  (
+    eTuer_Undefiniert := 0,
+    eTuer_1           := 1,
+    eTuer_2           := 2,
+    eTuer_3           := 3,
+    eTuer_4           := 4,
+    eTuer_5           := 5,
+    eTuer_6           := 6,
+    eTuer_7           := 7,
+    eTuer_8           := 8,
+    eTuer_9           := 9,
+    eTuer_10          := 10
+  ) WORD;
+END_TYPE

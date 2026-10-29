@@ -1,0 +1,11 @@
+__V3_META__
+{
+	"objectGuid": "f4fb0eb0-d563-4d7c-a266-72ace797fca8",
+	"objectTypeGuid": "ef290667-72a3-4c4d-82f3-6cc077b4978d",
+	"embeddedObjectTypeGuids": []
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{ef290667-72a3-4c4d-82f3-6cc077b4978d}" Method="IArchivable">
+	<Single Name="DisableSynchronization" Type="bool">False</Single>
+</Single>

@@ -1,0 +1,22 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "37e343bd-edbf-4abd-b520-6f0ca7757e0b"
+	}
+}
+*)
+TYPE Auftrags_Optionen_ST :
+STRUCT
+  eKippen_SollPosition                   : Kippen_EN;
+  eKippen_SollPosition_NachEintransport  : Kippen_EN;
+  eKippen_SollPosition_NachAustransport  : Kippen_EN;
+  eDrehen_Sollposition                   : Drehen_EN;
+  eDrehen_Sollposition_NachEintransport  : Drehen_EN;
+  eDrehen_Sollposition_NachAustransport  : Drehen_EN;
+  eHub                                   : Hub_EN;
+  eDickenverstellung                     : PneumatikZylinderStatus_EN;
+  eGlastransport                         : Glastransport_EN;
+  eQuerachse                             : PneumatikZylinderStatus_EN;
+  wMaxTransportGeschwindigkeit           : WORD;
+END_STRUCT
+END_TYPE

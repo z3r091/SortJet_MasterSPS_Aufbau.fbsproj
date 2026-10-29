@@ -1,0 +1,702 @@
+__V3_META__
+{
+	"objectGuid": "08d4ad76-9961-4c5a-8d37-a3bcb05d0ef3",
+	"objectTypeGuid": "5861cd6f-95ff-4614-b597-9845cc9988e7",
+	"embeddedObjectTypeGuids": [],
+	"properties": {
+		"_3S.CoDeSys.DeviceObject.DeviceProperty": "<?xml version=\"1.0\" encoding=\"utf-8\"?><Single xml:space=\"preserve\" Type=\"{cdadfc2b-8598-4621-ad56-5b1df7db910f}\" Method=\"IArchivable\"><Single Name=\"DeviceIdentification\" Type=\"{05ee0b98-6639-4276-bc32-b75578b819ef}\" Method=\"IArchivable\"><Single Name=\"Type\" Type=\"int\">152</Single><Single Name=\"Id\" Type=\"string\">0000 000C</Single><Single Name=\"Version\" Type=\"string\">3.4.5.0</Single><Null Name=\"BaseName\" /></Single></Single>"
+	}
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{5861cd6f-95ff-4614-b597-9845cc9988e7}" Method="IArchivable">
+	<Single Name="UniqueIdGenerator" Type="string">5383</Single>
+	<Null Name="TypeList" />
+	<Single Name="NeedsBusCycle" Type="bool">False</Single>
+	<Single Name="Id" Type="{05ee0b98-6639-4276-bc32-b75578b819ef}" Method="IArchivable">
+		<Single Name="Type" Type="int">152</Single>
+		<Single Name="Id" Type="string">0000 000C</Single>
+		<Single Name="Version" Type="string">3.4.5.0</Single>
+		<Null Name="BaseName" />
+	</Single>
+	<Single Name="DefaultDeviceInfo" Type="{59a90934-c888-40db-a9df-306fcf36d75c}" Method="IArchivable">
+		<Single Name="Name" Type="string">Logical exchange object WORD 1xOut</Single>
+		<Single Name="Description" Type="string">Logical exchange object: Out: 1xINT</Single>
+		<Single Name="Vendor" Type="string">System</Single>
+		<Single Name="OrderNumber" Type="string">-</Single>
+		<Array Name="Categories" Type="int">mAAAAA==</Array>
+		<Array Name="Families" Type="string" />
+		<Single Name="Custom" Type="string"></Single>
+		<Null Name="DefaultInstanceName" />
+	</Single>
+	<Single Name="DeviceParameterSet" Type="{abc12bfe-e34e-4b2c-a058-42c6e7e03a13}" Method="IArchivable">
+		<List2 Name="Params" />
+		<Single Name="LmGuid" Type="System.Guid">b38e3e86-9915-432b-ad74-693a27760a96</Single>
+		<Null Name="Sections" />
+		<Single Name="InitOnOnlineChange" Type="bool">False</Single>
+		<Single Name="AlwaysMapping" Type="bool">False</Single>
+		<Null Name="EditorName" />
+		<Single Name="AlwaysMappingMode" Type="{9d1b24fb-5845-4978-8458-564ca7830fec}">OnlyIfUnused</Single>
+		<Single Name="CreateBitChannels" Type="bool">False</Single>
+	</Single>
+	<Single Name="Disable" Type="bool">False</Single>
+	<Single Name="Exclude" Type="bool">False</Single>
+	<List Name="Connectors" Type="System.Collections.ArrayList" />
+	<Single Name="ConnectorList" Type="{52a6325f-063a-4748-86b6-ec8aa02d3232}" Method="IArchivable">
+		<List Name="InnerList" Type="System.Collections.ArrayList">
+			<Single Type="{850f737d-2abf-45f4-89c1-63ed6b29593d}" Method="IArchivable">
+				<Single Name="VisibleInterfaceName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+					<Single Name="Namespace" Type="string">local</Single>
+					<Single Name="Identifier" Type="string">Exchange</Single>
+					<Single Name="Default" Type="string">Exchange</Single>
+				</Single>
+				<Single Name="ConnectorObjectGuid" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+				<Single Name="IsExplicit" Type="bool">False</Single>
+				<Single Name="ModuleType" Type="ushort">152</Single>
+				<Single Name="Interface" Type="string">Common.LogicalExchange</Single>
+				<Single Name="Role" Type="{6827a808-5967-49c4-a827-10f6c446e075}">Parent</Single>
+				<Single Name="ConnectorId" Type="int">1</Single>
+				<Single Name="Hostpath" Type="int">-1</Single>
+				<Single Name="Adapters" Type="{1da2f14a-1c63-4268-9171-3b6869b8ccd6}" Method="IArchivable">
+					<List Name="Adapters" Type="System.Collections.ArrayList">
+						<Single Type="{6d49a564-d0d1-4914-86ee-4465387ab144}" Method="IArchivable">
+							<Single Name="AllowEmptySlot" Type="bool">False</Single>
+							<Null Name="DefaultModules" />
+							<Array Name="Modules" Type="System.Guid">
+								<Single Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+							</Array>
+							<Single Name="IncludeSlotNumber" Type="bool">False</Single>
+							<Single Name="StartSlotNumber" Type="uint">0</Single>
+							<Null Name="SlotNames" />
+							<Single Name="HiddenSlot" Type="bool">False</Single>
+						</Single>
+					</List>
+				</Single>
+				<Single Name="HostParameterSet" Type="{abc12bfe-e34e-4b2c-a058-42c6e7e03a13}" Method="IArchivable">
+					<List2 Name="Params">
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">1</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5352</Single>
+								<Single Name="EditorPositionId" Type="long">5353</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5352</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_1</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit0</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">1</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">2</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5354</Single>
+								<Single Name="EditorPositionId" Type="long">5355</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5354</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_2</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit1</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">2</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">3</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5356</Single>
+								<Single Name="EditorPositionId" Type="long">5357</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5356</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_3</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit2</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">3</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">4</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5358</Single>
+								<Single Name="EditorPositionId" Type="long">5359</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5358</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_4</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit3</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">4</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">5</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5360</Single>
+								<Single Name="EditorPositionId" Type="long">5361</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5360</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_5</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit4</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">5</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">6</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5362</Single>
+								<Single Name="EditorPositionId" Type="long">5363</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5362</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_6</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit5</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">6</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">7</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5364</Single>
+								<Single Name="EditorPositionId" Type="long">5365</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5364</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_7</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit6</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">7</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">8</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5366</Single>
+								<Single Name="EditorPositionId" Type="long">5367</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5366</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_8</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit7</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">8</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">9</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5368</Single>
+								<Single Name="EditorPositionId" Type="long">5369</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5368</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_9</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit8</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">9</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">10</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5370</Single>
+								<Single Name="EditorPositionId" Type="long">5371</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5370</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_10</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit9</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">10</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">11</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5372</Single>
+								<Single Name="EditorPositionId" Type="long">5373</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5372</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_11</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit10</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">11</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">12</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5374</Single>
+								<Single Name="EditorPositionId" Type="long">5375</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5374</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_12</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit11</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">12</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">13</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5376</Single>
+								<Single Name="EditorPositionId" Type="long">5377</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5376</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_13</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit12</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">13</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">14</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5378</Single>
+								<Single Name="EditorPositionId" Type="long">5379</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5378</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_14</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit13</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">14</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">15</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5380</Single>
+								<Single Name="EditorPositionId" Type="long">5381</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5380</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_15</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit14</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">15</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">16</Single>
+							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">5382</Single>
+								<Single Name="EditorPositionId" Type="long">5383</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+										<List2 Name="Mappings">
+											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+												<Single Name="Id" Type="long">5382</Single>
+												<Single Name="CreateVariable" Type="bool">True</Single>
+												<Single Name="Variable" Type="string">EDM_ERROR_16</Single>
+											</Single>
+										</List2>
+									</Single>
+								</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">bit15</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">16</Single>
+								<Single Name="Type" Type="string">BIT</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:BIT</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">1879048216</Single>
+							<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">Read</Single>
+							<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">Read</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">Read</Single>
+								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">Read</Single>
+								<Single Name="PositionId" Type="long">4106</Single>
+								<Single Name="EditorPositionId" Type="long">4107</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">LogicalDeviceIdentification</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">1879048216</Single>
+								<Single Name="Value" Type="string">[16,65280,0,16]</Single>
+								<Single Name="Type" Type="string">ARRAY[0..7] OF DWORD</Single>
+							</Single>
+							<Single Name="ParamType" Type="string">std:ARRAY[0..7] OF DWORD</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
+						</Single>
+					</List2>
+					<Single Name="LmGuid" Type="System.Guid">9a529fe4-f39f-4762-8af6-afa1e7743081</Single>
+					<Null Name="Sections" />
+					<Single Name="InitOnOnlineChange" Type="bool">False</Single>
+					<Single Name="AlwaysMapping" Type="bool">False</Single>
+					<Null Name="EditorName" />
+					<Single Name="AlwaysMappingMode" Type="{9d1b24fb-5845-4978-8458-564ca7830fec}">OnlyIfUnused</Single>
+					<Single Name="CreateBitChannels" Type="bool">False</Single>
+				</Single>
+				<Single Name="BusCycleTaskGuid" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+				<Single Name="DriverInfo" Type="{4f958885-8d0a-4b58-83b6-29cfd1c9cfca}" Method="IArchivable">
+					<List Name="RequiredLibs" Type="System.Collections.ArrayList">
+						<Single Type="{94d8f601-f8e4-4aaa-8f48-f3c3ec33bec1}" Method="IArchivable">
+							<Single Name="LibName" Type="string">SafetySystemIO</Single>
+							<Single Name="Vendor" Type="string">System</Single>
+							<Single Name="Version" Type="string">*</Single>
+							<Single Name="Identifier" Type="string"></Single>
+							<List Name="FbInstances" Type="System.Collections.ArrayList">
+								<Single Type="{1a6d9caa-30e2-4c6c-aa84-7bcee3627153}" Method="IArchivable">
+									<Single Name="FbName" Type="string">NonSafeIO</Single>
+									<Single Name="BaseName" Type="string">$(DeviceName)</Single>
+									<Single Name="Instance" Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+										<Single Name="CreateVariable" Type="bool">True</Single>
+										<Single Name="Variable" Type="string">EV_ToPLC_EDM_1</Single>
+									</Single>
+									<Single Name="InitMethod" Type="string"></Single>
+									<List Name="CyclicCalls" Type="System.Collections.ArrayList" />
+									<Single Name="Location" Type="{4da2c5bd-5291-436b-b8b0-6a4480112db7}">GVL</Single>
+									<Single Name="FbNameDiag" Type="string"></Single>
+									<Single Name="PositionId" Type="long">4103</Single>
+								</Single>
+							</List>
+							<Single Name="PlaceHolderLib" Type="string">SafetySystemIO</Single>
+							<Single Name="loadAsSystemLibrary" Type="bool">True</Single>
+							<Single Name="IsDiagnosisLib" Type="bool">False</Single>
+							<Single Name="AddedByAP" Type="bool">False</Single>
+							<Single Name="Client" Type="string">onlyLocal</Single>
+						</Single>
+					</List>
+					<Null Name="RequiredTasks" />
+					<Single Name="NeedsBusCycle" Type="bool">False</Single>
+					<Single Name="BusCycleTask" Type="string"></Single>
+					<Single Name="IoApp" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+					<Single Name="IoAppSet" Type="bool">False</Single>
+					<Array Name="PositionIds" Type="long">BBAAAAAAAAAFEAAAAAAAAAYQAAAAAAAA</Array>
+					<Single Name="UseSlowestTask" Type="bool">False</Single>
+					<Single Name="NeedsBusCycleBeforeRead" Type="bool">False</Single>
+					<Single Name="GenerateForceVariables" Type="bool">False</Single>
+					<Single Name="EnableDiagnosis" Type="bool">False</Single>
+					<Single Name="AdditionalParameterSetting" Type="uint">0</Single>
+					<Single Name="ShowWarningsAsErrors" Type="bool">False</Single>
+					<Single Name="DiagnosisCheckboxMode" Type="{96a7290c-b036-44e1-a965-c279cddf134b}">Enabled</Single>
+					<Single Name="SkipOverlapCheck" Type="bool">False</Single>
+					<Single Name="SymbolicAccessMode" Type="{866ccdec-84a7-4590-aeab-383c7bd79437}">Disabled</Single>
+					<Single Name="OnlineChangeDevice" Type="{e1779e08-585f-4d22-83e1-f36476fd1df5}">Hidden</Single>
+					<Single Name="SupportOnlineChange" Type="bool">False</Single>
+					<Single Name="DeviceScanSupported" Type="bool">False</Single>
+					<Single Name="DeviceNominateSupported" Type="bool">False</Single>
+					<Single Name="DeviceIdentifySupported" Type="bool">False</Single>
+					<Single Name="DeviceUploadDescriptionSupported" Type="bool">False</Single>
+					<Single Name="UpdateIOsInStop" Type="bool">False</Single>
+					<Single Name="StopResetBehaviourSetting" Type="{f333ad6d-dc68-4baa-a3a3-20be74eb2e18}">KeepCurrentValues</Single>
+					<Single Name="StopResetBehaviourUserProgram" Type="string"></Single>
+					<Single Name="BusCycleTaskGuid" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+					<Single Name="PlcAlwaysMapping" Type="bool">False</Single>
+					<Single Name="PlCAlwaysMappingMode" Type="{9d1b24fb-5845-4978-8458-564ca7830fec}">OnlyIfUnused</Single>
+				</Single>
+				<List Name="CustomItems" Type="{7d23305a-7bb9-46e6-b58b-01ea5694add1}" />
+				<Single Name="ModuleId" Type="int">-1</Single>
+				<Null Name="IoUpdateTask" />
+				<List Name="AdditionalInterfaces" Type="System.Collections.ArrayList" />
+				<List Name="Constraints" Type="System.Collections.ArrayList" />
+				<Single Name="hideInStatusPage" Type="bool">False</Single>
+				<Single Name="updateAllowed" Type="bool">True</Single>
+				<Single Name="fixedInputAddress" Type="string"></Single>
+				<Single Name="fixedOutputAddress" Type="string"></Single>
+				<Single Name="DownloadParamsDevDescOrder" Type="bool">False</Single>
+				<List Name="AllowOnlyDevices" Type="System.Collections.ArrayList" />
+				<Single Name="InitialStatusFlag" Type="uint">1</Single>
+				<Single Name="UseBlobInitConst" Type="bool">False</Single>
+				<Single Name="AlwaysMappingMode" Type="{9d1b24fb-5845-4978-8458-564ca7830fec}">OnlyIfUnused</Single>
+				<Single Name="ConnectorGroup" Type="uint">0</Single>
+				<Array Name="AllowedPages" Type="string" />
+				<Single Name="AlwaysMapping" Type="bool">False</Single>
+				<Single Name="Client" Type="string"></Single>
+				<Single Name="MaxInputSize" Type="uint">0</Single>
+				<Single Name="MaxOutputSize" Type="uint">0</Single>
+				<Single Name="MaxInOutputSize" Type="uint">0</Single>
+				<Single Name="ClientTypeGuid" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+				<Single Name="ClientConnectorInterface" Type="string"></Single>
+				<Single Name="ClientConnectorId" Type="int">-1</Single>
+				<Single Name="AlwaysMappingDisabled" Type="bool">False</Single>
+			</Single>
+		</List>
+	</Single>
+	<Single Name="Attributes" Type="{1fdbedd8-b518-4ebd-99df-805f2f77c071}" Method="IArchivable">
+		<Dictionary Type="System.Collections.Hashtable" Name="Attributes" />
+	</Single>
+	<Single Name="CommunicationSettings" Type="{58f2b04d-505d-4589-9fcf-0ec83491f9b2}" Method="IArchivable">
+		<Single Name="SaveLocally" Type="bool">False</Single>
+		<Single Name="CommunicationSettingFilter" Type="int">1</Single>
+		<Single Name="CommunicationSettingSorting" Type="int">0</Single>
+		<Single Name="TrackingMode" Type="int">5</Single>
+		<Single Name="GatewayGuid" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+		<Null Name="Address" />
+		<Single Name="PromptAtLogin" Type="bool">False</Single>
+		<Single Name="SimulationMode" Type="bool">False</Single>
+		<Single Name="SecureOnlineMode" Type="bool">False</Single>
+		<Single Name="SecureOnlineModeExplicitelySet" Type="bool">False</Single>
+		<Single Name="Name" Type="string"></Single>
+		<Single Name="MonitoringIntervalMsec" Type="int">200</Single>
+		<Null Name="ScanInformation" />
+		<Single Name="IsCommunicationEncrypted" Type="bool">False</Single>
+		<Single Name="IsDefaultNameTrackingFromScanActive" Type="bool">False</Single>
+	</Single>
+	<Single Name="IoProviderBase" Type="{848f25ec-eecf-4290-8329-7f6500fd2e0f}" Method="IArchivable">
+		<Array Name="UserBaseAddress" Type="string">
+			<Null />
+			<Null />
+			<Null />
+		</Array>
+	</Single>
+	<Single Name="GuidBusCycleTask" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+	<Single Name="DriverInfo" Type="{4f958885-8d0a-4b58-83b6-29cfd1c9cfca}" Method="IArchivable">
+		<List Name="RequiredLibs" Type="System.Collections.ArrayList" />
+		<Null Name="RequiredTasks" />
+		<Single Name="NeedsBusCycle" Type="bool">False</Single>
+		<Single Name="BusCycleTask" Type="string"></Single>
+		<Single Name="IoApp" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+		<Single Name="IoAppSet" Type="bool">False</Single>
+		<Array Name="PositionIds" Type="long">ARAAAAAAAAACEAAAAAAAAAMQAAAAAAAA</Array>
+		<Single Name="UseSlowestTask" Type="bool">False</Single>
+		<Single Name="NeedsBusCycleBeforeRead" Type="bool">False</Single>
+		<Single Name="GenerateForceVariables" Type="bool">False</Single>
+		<Single Name="EnableDiagnosis" Type="bool">False</Single>
+		<Single Name="AdditionalParameterSetting" Type="uint">0</Single>
+		<Single Name="ShowWarningsAsErrors" Type="bool">False</Single>
+		<Single Name="DiagnosisCheckboxMode" Type="{96a7290c-b036-44e1-a965-c279cddf134b}">Enabled</Single>
+		<Single Name="SkipOverlapCheck" Type="bool">False</Single>
+		<Single Name="SymbolicAccessMode" Type="{866ccdec-84a7-4590-aeab-383c7bd79437}">Disabled</Single>
+		<Single Name="OnlineChangeDevice" Type="{e1779e08-585f-4d22-83e1-f36476fd1df5}">Hidden</Single>
+		<Single Name="SupportOnlineChange" Type="bool">False</Single>
+		<Single Name="DeviceScanSupported" Type="bool">False</Single>
+		<Single Name="DeviceNominateSupported" Type="bool">False</Single>
+		<Single Name="DeviceIdentifySupported" Type="bool">False</Single>
+		<Single Name="DeviceUploadDescriptionSupported" Type="bool">False</Single>
+		<Single Name="UpdateIOsInStop" Type="bool">False</Single>
+		<Single Name="StopResetBehaviourSetting" Type="{f333ad6d-dc68-4baa-a3a3-20be74eb2e18}">KeepCurrentValues</Single>
+		<Single Name="StopResetBehaviourUserProgram" Type="string"></Single>
+		<Single Name="BusCycleTaskGuid" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+		<Single Name="PlcAlwaysMapping" Type="bool">False</Single>
+		<Single Name="PlCAlwaysMappingMode" Type="{9d1b24fb-5845-4978-8458-564ca7830fec}">OnlyIfUnused</Single>
+	</Single>
+	<List Name="CustomItems" Type="{7d23305a-7bb9-46e6-b58b-01ea5694add1}">
+		<Single Type="{dd6be685-9be1-40f4-855e-c5c0352a5200}" Method="IArchivable">
+			<Single Name="Name" Type="string">MappingCode</Single>
+			<Single Name="Data" Type="string">&lt;MappingCode&gt;AAAAASQAAAB8BgAAAAAAAAEzEgD4Azcc//8AAP//AAABAAAAAAAAAzwAAAACAAAAAAAUAEVWX1RvUExDX0VETV8xAAABABwAQ09ERVNZUyBTYWZldHkgVjQuMy4wLjAAAAAAEEwDAABCAAAAAAAMAElPR1JPVVAAAQAIACQAAAACABAATm9uU2FmZUlPAAAABAAMAHBHcm91cAAABgAUAGxvZ2ljYWxNb2R1bGVJRAAIAAwAaW5zaXplAAAKAAwAb3V0c2l6ZQAMAAwAYkluT2sAAAANAAwARW5kSW4AAAAOABAARURNX0VSUk9SXzEAEQAMAG9mZnNldAAAEwAMAHZhbDAAAAAAFAAQAEVETV9FUlJPUl8yABYADAB2YWwxAAAAABcAEABFRE1fRVJST1JfMwAZAAwAdmFsMgAAAAAaABAARURNX0VSUk9SXzQAHAAMAHZhbDMAAAAAHQAQAEVETV9FUlJPUl81AB8ADAB2YWw0AAAAACAAEABFRE1fRVJST1JfNgAiAAwAdmFsNQAAAAAjABAARURNX0VSUk9SXzcAJQAMAHZhbDYAAAAAJgAQAEVETV9FUlJPUl84ACgADAB2YWw3AAAAACkAEABFRE1fRVJST1JfOQArAAwAdmFsOAAAAAAsABQARURNX0VSUk9SXzEwAAAAAC4ADAB2YWw5AAAAAC8AFABFRE1fRVJST1JfMTEAAAAAMQAMAHZhbDEwAAAAMgAUAEVETV9FUlJPUl8xMgAAAAA0AAwAdmFsMTEAAAA1ABQARURNX0VSUk9SXzEzAAAAADcADAB2YWwxMgAAADgAFABFRE1fRVJST1JfMTQAAAAAOgAMAHZhbDEzAAAAOwAUAEVETV9FUlJPUl8xNQAAAAA9AAwAdmFsMTQAAAA+ABQARURNX0VSUk9SXzE2AAAAAEAADAB2YWwxNQAAAA8AEABfUXdCT09MaQAAAAADAAiABAABAAUACIAGAAEABwAIgAgAAQAJAAiACgABAAsACIAMAAEAEAAIgBEADwASAAiAEwAPABUACIAWAA8AGAAIgBkADwAbAAiAHAAPAB4ACIAfAA8AIQAIgCIADwAkAAiAJQAPACcACIAoAA8AKgAIgCsADwAtAAiALgAPADAACIAxAA8AMwAIgDQADwA2AAiANwAPADkACIA6AA8APAAIgD0ADwA/AAiAQAAPAACAJABMb2dpY2FsIFhWYXIgV09SRCAxUS5zZGQueG1sAAAAAAAAABJsAAAABgAAAAAAAAAAAAAAkQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAgAAABAAAACzAQAAAAAAAAMAAAAAAAAAkQEAAAAAAAAEAAAAEAAAAJEBAAAAAAAAAACAAC49iKcAAAAAAAAAAAAAABVEAQAAJwAAAP//tAkBAAIA//8kFAUAAgD//yQUBwADAP//JBQJAAQA//8kBAsA/////yQBDwAPAP//JAQQAP////8kBBIA/////yQEFQD/////JAQYAP////8kBBsA/////yQEHgD/////JAQhAP////8kBCQA/////yQEJwD/////JAQqAP////8kBC0A/////yQEMAD/////JAQzAP////8kBDYA/////yQEOQD/////JAQ8AP////8kBD8A/////7AdDgABAP//sB0UAAEA//+wHRcAAQD//7AdGgABAP//sB0dAAEA//+wHSAAAQD//7AdIwABAP//sB0mAAEA//+wHSkAAQD//7AdLAABAP//sB0vAAEA//+wHTIAAQD//7AdNQABAP//sB04AAEA//+wHTsAAQD//7AdPgABAAAAACNMAAAAAAAAAQAAAEQCAAAIBQAAEwMAAAgHAAATBAAACAkAABMBAAAQAgAAGAAAAEUAAAABCwAAEQAAACANAAAEDQAAAgAAAAAAAAAl1AAAAAAAAAEAAABEAAAACBAAABMOAAAREgAAExQAABEVAAATFwAAERgAABMaAAARGwAAEx0AABEeAAATIAAAESEAABMjAAARJAAAEyYAABEnAAATKQAAESoAABMsAAARLQAAEy8AABEwAAATMgAAETMAABM1AAARNgAAEzgAABE5AAATOwAAETwAABM+AAARPwAAEw8AABAPAAAYAAAARQAAAAEAAABEAgAACAUAABMDAAAIBwAAEwQAAAgJAAATAQAAEAIAABgAAABFAAAAAB/HquQ=&lt;/MappingCode&gt;</Single>
+		</Single>
+		<Single Type="{dd6be685-9be1-40f4-855e-c5c0352a5200}" Method="IArchivable">
+			<Single Name="Name" Type="string">SddFileMapping</Single>
+			<Single Name="Data" Type="string">&lt;SddFileMapping&gt;PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8c2FmZXR5X2RldmljZV9mYWNldCB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiB4bWxuczp4c2Q9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hIiBuYW1lPSJEYXRhIEV4Y2hhbmdlIFdPUkQgMXhPdXQiPg0KCTxpbmZvPg0KCQk8ZmlsZV9pZD5Mb2dpY2FsIFhWYXIgV09SRCAxUS5zZGQueG1sPC9maWxlX2lkPg0KCQk8ZGV2aWNlX2luZm8+TG9naWNhbCBYVmFyIFdPUkQgMXhPdXQ8L2RldmljZV9pbmZvPg0KCQk8Y3JlYXRvcl9pbmZvPlN5c3RlbTwvY3JlYXRvcl9pbmZvPg0KCTwvaW5mbz4NCgk8cHJvdG9jb2xfaW5mbyBuYW1lPSJTdGFuZGFyZCBTREQgVjEuMCI+DQoJCTxwcm90b2NvbF90eXBlPjY1MjgwPC9wcm90b2NvbF90eXBlPg0KCTwvcHJvdG9jb2xfaW5mbz4NCgk8aW9fc3RydWN0dXJlPg0KCQk8aW5wdXRzIGJpdF9sZW5ndGg9IjAiLz4NCgkJPG91dHB1dHMgYml0X2xlbmd0aD0iMTYiPg0KCQkJPGNoYW5uZWwgYml0X29mZnNldD0iMCIgYml0X2xlbmd0aD0iMTYiIHR5cGU9ImJpdHMiPg0KCQkJPC9jaGFubmVsPg0KCQk8L291dHB1dHM+DQoJPC9pb19zdHJ1Y3R1cmU+DQo8L3NhZmV0eV9kZXZpY2VfZmFjZXQ+DQo=&lt;/SddFileMapping&gt;</Single>
+		</Single>
+		<Single Type="{dd6be685-9be1-40f4-855e-c5c0352a5200}" Method="IArchivable">
+			<Single Name="Name" Type="string">MappingSddCrc</Single>
+			<Single Name="Data" Type="string">&lt;MappingSddCrc&gt;2810723630&lt;/MappingSddCrc&gt;</Single>
+		</Single>
+		<Single Type="{dd6be685-9be1-40f4-855e-c5c0352a5200}" Method="IArchivable">
+			<Single Name="Name" Type="string">MappingFBList</Single>
+			<Single Name="Data" Type="string">&lt;MappingFBList&gt;NonSafeIO,_QwBOOLi&lt;/MappingFBList&gt;</Single>
+		</Single>
+	</List>
+	<Single Name="IoConfigGlobalsGuid" Type="System.Guid">67d57dce-65d6-4a13-a1cc-9257dd1a1cde</Single>
+	<Single Name="IoConfigGlobalsMappingGuid" Type="System.Guid">b5a8f51a-6732-4f10-8f64-ace545b3522c</Single>
+	<Single Name="IoConfigVarConfigGuid" Type="System.Guid">b91d5057-c26c-4b81-8671-47bf56083e23</Single>
+	<Single Name="IoConfigErrorPouGuid" Type="System.Guid">b1f84f6f-fb7e-4472-9768-fcd56fcfd96c</Single>
+	<Single Name="ModuleId" Type="int">-1</Single>
+	<Null Name="IoUpdateTask" />
+	<Array Name="FunctionalChildren" Type="System.Guid" />
+	<Null Name="UserManagement" />
+	<Null Name="RightsManagement" />
+	<Single Name="showParamsInDevDescOrder" Type="bool">False</Single>
+	<Single Name="fixedInputAddress" Type="string"></Single>
+	<Single Name="fixedOutputAddress" Type="string"></Single>
+	<Single Name="HostObjectGuid" Type="System.Guid">a5604d9f-fe4c-437c-9ca3-d973265ff2e7</Single>
+	<Single Name="DownloadParamsDevDescOrder" Type="bool">False</Single>
+	<Single Name="CreateBitChannels" Type="bool">False</Single>
+	<Null Name="AdditionalStringTable" />
+	<Null Name="OnlineHelpUrl" />
+	<Single Name="InteractiveLoginMode" Type="int">-1</Single>
+	<Single Name="UseDeviceApplicationStructure" Type="bool">False</Single>
+	<Single Name="AllowSymbolicVarAccessInSyncWithIecCycle" Type="bool">False</Single>
+	<Single Name="LogicalDeviceList" Type="{ec1f8a3a-98c6-404c-883e-ce9e54b42542}" Method="IArchivable">
+		<List Name="InnerList" Type="System.Collections.ArrayList">
+			<Single Type="{d303557e-44b8-43cc-bc47-79c510479a70}" Method="IArchivable">
+				<Single Name="MatchingLogicalDevices" Type="{7d152438-0516-4bcd-bbd9-7ecc295a171c}" Method="IArchivable">
+					<List Name="InnerList" Type="System.Collections.ArrayList" />
+				</Single>
+				<Single Name="MappedDevice" Type="string"></Single>
+				<Single Name="InsertAutoIndex" Type="int">-1</Single>
+			</Single>
+		</List>
+	</Single>
+	<Single Name="LogicalLanguageModelPositionId" Type="long">-1</Single>
+	<List Name="SupportedLogicalBusSystems" Type="System.Collections.ArrayList" />
+	<Single Name="MappingPossible" Type="bool">False</Single>
+	<Single Name="HidePropertiesDialog" Type="bool">True</Single>
+</Single>

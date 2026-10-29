@@ -1,0 +1,22 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "762b716e-8b6d-47d5-a56f-26343c18f605"
+	}
+}
+*)
+TYPE Durchgang_EN :
+  (
+    eDurchgang_Undefiniert := 0,
+    eDurchgang_1           := 1,
+    eDurchgang_2           := 2,
+    eDurchgang_3           := 3,
+    eDurchgang_4           := 4,
+    eDurchgang_5           := 5,
+    eDurchgang_6           := 6,
+    eDurchgang_7           := 7,
+    eDurchgang_8           := 8,
+    eDurchgang_9           := 9,
+    eDurchgang_10          := 10
+  ) WORD;
+END_TYPE

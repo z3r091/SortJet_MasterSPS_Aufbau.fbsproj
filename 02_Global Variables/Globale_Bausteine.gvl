@@ -1,0 +1,56 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "c0b2509b-d59e-4208-8460-0d0b0cc08bc5"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE Globale_Bausteine
+VAR_GLOBAL
+(***************************************************************************************************)
+(* DEKLARATION STATIONEN *)
+(***************************************************************************************************)
+  // Stationen           
+  aFaecherwagenstation  : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF Faecherwagenstation_V4_1_FB;
+  
+  Anlegetisch201                  : Anlegetisch_FB;
+  Foerderer202                    : Foerderer_FB;    
+  Foerderer203                    : Foerderer_FB;    
+  Anlegetisch204                  : Anlegetisch_FB;    
+  Eckuebergabe205                 : Eckuebergabe_FB;
+  Kipptisch206                    : Kipptisch_FB; 
+  Combiwand208                    : InspektionsWand_FB;   
+  Drehstation207                  : Drehstation_FB;
+
+  //  Shuttle
+  aShuttle                        : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Shuttle_FB; 
+  aTransfershuttles               : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Transfershuttle_FB;
+  
+  // Schnittstelle
+  aSchnittstelleAuslauf           : ARRAY[cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF] OF Schnittstelle_Auslauf_Schneidanlage;
+  aSchnittstelleEinlauf           : ARRAY[cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF Schnittstelle_Einlauf_Portale;
+  
+(***************************************************************************************************)
+(* DEKLARATION BASIS-BAUSTEINE *)
+(***************************************************************************************************)
+
+  //Sicherheitskreis 
+  Sicherheitskreis : ARRAY[cERSTER_SICHERHEITSKREIS..cLETZTER_SICHERHEITSKREIS] OF Sicherheitskreis_FB;
+
+  // Türen
+  aTuer      : ARRAY[cERSTE_TUER..cLETZTE_TUER] OF Tuerschalter_FB;  
+  aDurchgang : ARRAY[cERSTER_DURCHGANG..cLETZTER_DURCHGANG] OF Durchgang_FB;
+
+  // Ampel
+  Ampel_AK : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS,1..cANZAHL_AMPELN] OF Ampel_FB;
+
+  // Horn
+  Horn_AK  : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS,1..cANZAHL_HUPEN] OF Horn_FB;
+
+  // Betriebsstop
+  Stop_Baustein : BetriebsStop_FB;
+
+END_VAR
+
+END_NAMESPACE

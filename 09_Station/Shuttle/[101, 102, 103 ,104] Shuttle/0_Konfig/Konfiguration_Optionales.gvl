@@ -1,0 +1,26 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "a15d5673-fc2e-4b3d-8d8d-59c1778f3865"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE Konfiguration_Optionales
+VAR_CONFIG
+
+  // Sensoren  Wand 2
+  Globale_Bausteine.aShuttle[101].in_bSensorEinlaufVorabWand2                                        AT %MX1.0   : BOOL; (* OPTION *) 
+  Globale_Bausteine.aShuttle[101].in_bSensorAuslaufVorabWand2                                        AT %MX1.0   : BOOL; (* OPTION *) 
+  Globale_Bausteine.aShuttle[101].in_bSensorAuslaufStoppWand2                                        AT %MX1.0   : BOOL; (* OPTION *) 
+
+  //Geblaese Wand 2
+  Globale_Bausteine.aShuttle[101].Geblaese[2].in_bMotorschutzschalter_OK                             AT %MX1.1    : BOOL; (* OPTION *) 
+  Globale_Bausteine.aShuttle[101].Geblaese[2].out_bStarteGeblaese                                    AT %MX2.0    : BOOL; (* OPTION *) 
+
+  //Geblaese Wand 3
+  Globale_Bausteine.aShuttle[101].Geblaese[3].in_bMotorschutzschalter_OK                             AT %MX1.1    : BOOL; (* OPTION *) 
+  Globale_Bausteine.aShuttle[101].Geblaese[3].out_bStarteGeblaese                                    AT %MX2.0    : BOOL; (* OPTION *) 
+
+END_VAR
+END_NAMESPACE

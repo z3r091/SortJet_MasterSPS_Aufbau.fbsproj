@@ -1,0 +1,213 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "3eb4075d-cf2f-4b71-9fd2-f0699e9e6b81"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE MMI_Vars
+VAR_GLOBAL
+  bgMMIOK : BOOL;
+  
+  (* SPS -> MMI *)
+  dwSps2MmiHandfunktionenStatus                   : DWORD;
+  wSps2MmiErrorShuttleNumber                      : WORD;
+  wSps2MmiErrorShuttleSchritt                     : WORD;
+  wSps2MmiErrorNumber                             : WORD;
+  wSps2FaecherwagenStart                          : WORD;
+  wSps2MmiStatusforStation                        : WORD; (* Anfrage der Eckübergabe (Nr) wohin die Einlaufende Scheibe soll *)
+
+
+  wSps2MmiQuittISOLineNr                          : WORD;
+  wSPS2MMIStationsNummer                          : WORD;
+  wSPS2MMITRANSPORTSTATE                          : WORD;
+  wSPS2MMITransportstateStation                   : WORD;
+  rSPS2MMITransportStateLenght                    : REAL;
+  rSPS2MMITransportStateHigh                      : REAL;
+  wSPS2MMITransportstateGap                       : WORD;
+  wSps2FaecherwagenStationNr                      : WORD;
+  wSps2MmiInputtableNummer                        : WORD;
+  wSps2MmiRackNumber                              : WORD;
+
+  wSps2MmiWatchDogTestCount                       : WORD;
+
+  (* SB0_SPS_GLAS_SOLLPOSITION_ERREICHT *)
+  wgSps2MmiShuttleNr                              : WORD;
+  wSps2MmiRackPositionNummer                      : WORD;
+  wSps2MmiRackPosition                            : WORD;
+  wSps2MmiRackStatus                              : WORD;
+  wgSps2MmiPosDrehStation                         : WORD;
+  wgSps2MmiOldPosDrehStation                      : WORD;
+  wgSps2MmiDrehStation                            : WORD;
+  wSps2MmiCheckArea                               : WORD;
+  wSps2MmiCheckSuccessful                         : WORD;
+  wSps2MmiMeasureShuttleNummer                    : WORD;
+  wSps2MmiErrorShuttlePosition4                   : WORD;
+  wSps2MmiErrorShuttlePosition5                   : WORD;
+  wSps2MmiErrorShuttlePosition6                   : WORD;
+  wSps2MmiErrorShuttlePosition7                   : WORD;
+  wSps2MmiErrorShuttlePosition8                   : WORD;
+  wSps2MmiErrorShuttlePosition9                   : WORD;
+
+  (*Debug*)
+  wSps2MmiDebugLogWord1                           : WORD;
+  wSps2MmiDebugLogWord2                           : WORD;
+  wSps2MmiDebugLogWord3                           : WORD;
+  wSps2MmiDebugLogWord4                           : WORD;
+  wSps2MmiDebugLogWord5                           : WORD;
+  wSps2MmiDebugLogWord6                           : WORD;
+  wSps2MmiDebugLogWord7                           : WORD;
+  wSps2MmiDebugLogWord8                           : WORD;
+  wSps2MmiDebugLogWord9                           : WORD;
+
+  (* SB0_SPS_STATIONEVENT *)
+  wSPS2MMIStationEventStatus                      : WORD;
+
+  (* SB0_SPS_QUIT_SHEET_ORDER *)
+  wSps2MmiZielStation                             : WORD;
+  wSps2MmiQuellStation                            : WORD;
+  wSps2MmiZielWand                                : WORD;
+  wSps2MmiQuellWand                               : WORD;
+  wSPS2MMIAuftragstyp                             : WORD;
+  dwSPS2MMIGenutzteSauger                         : DWORD;
+
+  (*Offset*)
+  (*Nachricht: SB0_SPS_STATUSISOLINIE *)
+  wSPS2MMIISOLinieNummer                          : WORD;
+  wSPS2MMIShuttleNummer                           : WORD;
+  wSPS2MMIShuttleKippenStatus                     : WORD;
+  (* SB0_SPS_LIFTEDTRANSFERSHUTTLEPOSITION *)
+  wSps2MmiValidierungsPosition                    : REAL;
+  wSps2MmiValidierungsSpeicher                    : WORD;
+  wSps2MmiValidierungsFach                        : WORD;
+
+  (* SB0_SPS_TRANSFERSHUTTLEFEHLER *)
+  wSps2MmiFehlertyp                               : WORD;
+
+  (* SB0_SPS_TRANSFERSHUTTLECHECK_ABGESCHLOSSEN *)
+  wSps2MmiValidierungsStatus                      : WORD;
+
+  (* SB0_SPS_SORTIERUNGQUITTEXTRACTIONSHUTTLEDATA *)
+  wSps2MmiQuittierungVortransportStationsNr1      : WORD;
+  wSps2MmiQuittierungVortransportStationsNr2      : WORD;
+  wSps2MmiQuittierungVortransportStatus           : WORD;
+  rSps2MmiQuittierungVortransportWegStrecke       : REAL;
+
+  (* Stationsstatus *)
+  wSPS2MMIStationsStatusWord1                     : WORD;
+  wSPS2MMIStationsStatusWord2                     : WORD;
+
+ (* SB0_SPS_SETSHEETSONSTATION *)
+  rSps2MmiMessungScheibenlaenge                   : REAL;
+  wSps2MmiMessungStationNummer                    : WORD;
+  wSps2MmiMessungSlotNummer                       : WORD;
+  iSps2MmiMessungScheibenanzahl                   : INT;
+
+ (*Fachaufnahme*)
+  wSPS2MMIFachaufnahmeAnalogwert                  : WORD;
+  rSPS2MMIFachaufnahmePosition                    : REAL;
+
+  (* Nachricht: SB0_SPS_SETSTATUSLOADINGSTATIONS *)
+  awSps2MmiStatusFaecherwagenstationen             : ARRAY [0..29] OF WORD;
+
+  (*Verfahrlogik_Neu*)
+  wSps2MmiQuittVorabShuttleNr                     : WORD;
+  rgSPS2MMIExtractionShuttlePosition              : REAL;
+  rgSPS2MMIExtractionShuttlePositionHub           : REAL;
+  rSps2MmiShuttlePosition                         : ARRAY [0..30] OF REAL;
+  wSps2ShuttleStopped                             : ARRAY [cERSTES_SHUTTLE..cLETZTE_STATION] OF WORD;
+
+  rgSPS2MMIExtractionShuttleGefahrenerWeg         : REAL;
+  rSps2MmiMeasureResult                           : ARRAY [0..10] OF REAL;
+
+  dwSps2MmiWartezeit                              : DWORD; (* ZEIT-WERT MMI-STATISTIK: Beschreibt die Zeit zwischen Anlegeauftrag und dem betaetigen des Tasters zum Eintransport*)
+
+  (* SB0_SPS_STATUSRACKSTATION *)
+  igRackStationNumber                             : INT;   (* Fächerwagenstationsnummer / Harp Rack Station*)
+  wgRackPresent                                   : WORD;  (* BOOL (0 oder 1) *)
+  igRackNumber                                    : INT;   (* RFID Number *)
+  wgWriteSuccess                                  : WORD;  (* Zeigt an wie das Schreiben des RFID-Chips verlaufen ist (0=none|1=success|2=error) *)
+
+  wSps2Mmi_CarrierStation                         : WORD;
+  wSps2Mmi_CarrierPosition                        : REAL;
+
+  wSps2Mmi_SationsNummer                          : WORD;
+  wSps2Mmi_NachrichtenIndex                       : WORD;
+  wSps2Mmi_NachrichtenAnzahl                      : WORD;
+  wSps2Mmi_AnzahlScheiben                         : WORD;
+  adwSps2Mmi_Daten_1                              : ARRAY [0..3] OF DWORD;
+  adwSps2Mmi_Daten_2                              : ARRAY [0..3] OF DWORD;
+  adwSps2Mmi_Daten_3                              : ARRAY [0..3] OF DWORD;
+  
+  wSps2MmiKorrekturStatus                         : WORD;
+  
+  stStationUpdate                                  : StationUpdate_ST;
+  
+
+  (* ---------------------------------------------------------------------------------------
+  // MERKER - NACHRICHTEN
+  //         
+  // Hinweis:
+  // - Trigger das ein Auftrag in der SPS zugewiesen und bearbeitet wird  
+  // ---------------------------------------------------------------------------------------*)
+
+  M_SB0_MMI_SortierungInputInQueue                : BOOL;
+  M_SB0_MMI_SortierungCheckInputQueue             : BOOL;
+  M_SB0_MMI_SORTIERUNGCANCELISOLINEEVENT          : BOOL; (* Intern: ISO- Linie Event abbrechen [CANCEL] *)
+
+  M_SB0_MMI_SortierungInsertExtractionShuttleData : BOOL;(*NEU*)
+  M_SB0_MMI_TS_REPOSITIONING_LITES                : BOOL;
+  M_SB0_MMI_SortierungFaecherwagenwechsel         : BOOL;
+  M_SB0_MMI_SortierungCancelShuttleData           : BOOL;
+  M_SB0_MMI_SORTIERUNGCANCELQUEUEDATA             : BOOL;
+  M_SB0_MMI_SortierungAutomatik_Stop              : BOOL;
+  M_SB0_MMI_SORTIERUNGAUTOMATIKSTART              : BOOL;
+  M_SB0_MMI_SYSTEMCHECKSTATION                    : BOOL;
+  M_SB0_MMI_STATIONSTATUS                         : BOOL;
+  M_SB0_MMI_MEASSURERESULT                        : BOOL;
+  M_SB0_MMI_ISOQUITTUNG                           : BOOL;
+  M_SB0_MMI_GETSTATUSRACKSTATION                  : BOOL;
+  M_SB0_MMI_REQUESTSTATUSLOADINGSTATIONS          : BOOL;
+  M_SB0_MMI_REQUESTTILTSTATION                    : BOOL;
+  M_SB0_MMI_GETSORTIERUNGSHUTTLEPOS               : BOOL; (* VERFAHRLOGIK *)
+  M_SB0_MMI_SHUTTLEVORABPOSITIONIERUNG            : BOOL; (* VERFAHRLOGIK *)
+  M_SB0_MMI_SHEET_ORDER_SHUTTLE                   : BOOL;
+  M_SB0_MMI_SHEET_ORDER_STATION                   : BOOL;
+  M_SB0_MMI_RELEASERACKLOGIN                      : BOOL;
+  M_SB0_MMI_DOCKRACK                              : BOOL;
+  M_SB0_MMI_CARRIER_POSITIONING                   : BOOL;
+  M_SB0_MMI_DRIVEOVERRIDE                         : BOOL;
+  M_SB0_MMI_WATCHDOGTEST                          : BOOL;
+  M_SB0_MMI_RESET_ETHERCAT                        : BOOL;
+  M_SB0_MMI_IOANZEIGE_AKTIVIEREN_DEAKTIVIEREN     : BOOL; (* IOs Anzeigen *)
+
+  M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE             : BOOL; (* MERKER: Auftragsdaten fuer die Fremdanlage *)
+
+  M_SB0_MMI_SHUTTLE_INFORMATION                   : BOOL; (* MERKER: Shuttledaten- Waehrend einer Verfahrbewegung senden *)
+
+  M_SB0_MMI_POSITIONMEASUREONOFF                  : BOOL;
+  M_SB0_MMI_TRANSFERSHUTTLECHECK                  : BOOL; (* Merker: Systemcheck mit Transfershuttles da Glas aus dem Speicher raus stand *)
+
+
+  M_SB0_MMI_ANFORDERUNG_PUFFER_AUSFAHREN          : BOOL;
+  M_SB0_MMI_ANFORDERUNG_PUFFER_EINFAHREN          : BOOL;
+
+(*------------------------------------------*)
+
+ M_Send_MaschineStatus : BOOL;
+  (* ----- Sps Message Queue ----- *)
+ smqSpsMessageQueue : SpsMessageQueue;
+
+(* MMI -> SPS *)
+ tMmi2SpsInfo : Mmi2SpsInfo;
+
+(* Fehlerparameter zur Übergabe ans MMI *)
+ wpgFehlerdaten : ARRAY[0..25] OF WORD;
+
+(* SPS -> MMI *)
+ awSPS2MMIMaschineStatusWord : ARRAY[1..12] OF WORD;
+
+END_VAR
+
+END_NAMESPACE

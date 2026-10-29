@@ -1,0 +1,76 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "94633f29-785d-43e8-8fe9-544c355e9fea"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE Konfiguration_208
+VAR_CONFIG
+
+  // Taster
+  Globale_Bausteine.AnlegeAbnahmewand208.in_bFussTasterGlasAngelegt                               AT %MX1.0    : BOOL; (* OPTION *) // Signal Scheibe ist angelegt Fusstaster
+  Globale_Bausteine.AnlegeAbnahmewand208.in_bTasterGlasAngelegt                                   AT %IX3.0    : BOOL; (* OK *) // Signal Scheibe ist angelegt weißer Leuchtdrucktaster 
+  Globale_Bausteine.AnlegeAbnahmewand208.in_bTasterFehlmessungQuittiern                           AT %IX3.1    : BOOL; (* OPTION *) // Gelber Leuchtdrucktaster 
+  Globale_Bausteine.AnlegeAbnahmewand208.in_bKnebelGlastransportZurueck                           AT %IX3.3    : BOOL; (* OPTION *) // Knebelschalter: Glastransport zurück 
+  Globale_Bausteine.AnlegeAbnahmewand208.in_bKnebelGlastransportVor                               AT %IX3.2    : BOOL; (* OPTION *) // Knebelschalter: Glastransport vor 
+  Globale_Bausteine.AnlegeAbnahmewand208.in_bTasterGlasbruch                                      AT %IX3.4    : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.in_bTasterQuittierungGlasAbgenommen                      AT %IX3.0    : BOOL; (* OPTION *) // Doppelbelegung gewollt Abyat AREA 2 SJ1
+                                                                                          
+  // Lampen/Ampel                                                                         
+  Globale_Bausteine.AnlegeAbnahmewand208.out_bAmpelSignalGruen                                    AT %QX2.4    : BOOL; (* OPTION *) // Grüne Ampel an der Station
+  Globale_Bausteine.AnlegeAbnahmewand208.out_bSignalScheibeAufgegeben                             AT %MX2.0    : BOOL; (* OPTION *) // Weißer Leuchdrucktaster
+  Globale_Bausteine.AnlegeAbnahmewand208.out_bSignalScheibeFehlmessung                            AT %QX2.5    : BOOL; (* OPTION *) // Gelber Leuchdrucktaster *)
+  Globale_Bausteine.AnlegeAbnahmewand208.out_bSignalScheibeGlasbruch                              AT %QX2.6    : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.out_bSignalScheibeAbnehmen                               AT %MX2.0    : BOOL; (* OPTION *) 
+  
+                                                                                                        
+  // Lichtschranke                                                                                      
+  Globale_Bausteine.AnlegeAbnahmewand208.in_bLichtschrankeQuittiert                               AT %MX1.1    : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.in_bLichtschrankeFehler                                  AT %MX1.1    : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.out_bLichtschrankeAusgeloest                             AT %MX2.0    : BOOL; (* OPTION *) // Lichtschranke an der Station ausgelöst und nicht quittiert
+                                                                                                        
+                                                                                                        
+  // Gebläse                                                                                            
+  Globale_Bausteine.AnlegeAbnahmewand208.in_bTasterGeblaeseEin                                    AT %MX1.0     : BOOL; (* OPTION *) // Geblaese starten (Schuetz)
+  Globale_Bausteine.AnlegeAbnahmewand208.in_bMotorschutzGeblaese_Ok                               AT %MX1.1     : BOOL; (* OPTION *) // Motorschutzschalter / Sicherung des Antriebs
+  Globale_Bausteine.AnlegeAbnahmewand208.out_bGeblaeseEin                                         AT %MX2.0     : BOOL; (* OPTION *) // Geblaese starten (Schuetz)
+                                                                                                        
+                                                                                                        
+  // Dickenverstellung                                                                                  
+  Globale_Bausteine.AnlegeAbnahmewand208.Dickenverstellung.in_bStatusZylinder1Ausgefahren         AT %MX1.0     : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.Dickenverstellung.in_bStatusZylinder1Eingefahren         AT %MX1.0     : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.Dickenverstellung.in_bStatusZylinder2Ausgefahren         AT %MX1.0     : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.Dickenverstellung.in_bStatusZylinder2Eingefahren         AT %MX1.0     : BOOL; (* OPTION *)
+                                                                                                        
+  Globale_Bausteine.AnlegeAbnahmewand208.Dickenverstellung.out_bZylinder1Ausfahren                AT %MX2.0     : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.Dickenverstellung.out_bZylinder1Einfahren                AT %MX2.0     : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.Dickenverstellung.out_bZylinder2Ausfahren                AT %MX2.0     : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.Dickenverstellung.out_bZylinder2Einfahren                AT %MX2.0     : BOOL; (* OPTION *)
+                                                                                                        
+                                                                                                        
+  // Kippen                                                                                             
+  Globale_Bausteine.AnlegeAbnahmewand208.Kippen.in_bSensorNicht90Grad                             AT %MX1.0     : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.Kippen.in_bSensorNicht84Grad                             AT %MX1.0     : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.Kippen.in_bMotorschutzschalter_OK                        AT %MX1.1     : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.Kippen.in_bMotorstarter_OK                               AT %MX1.1     : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.Kippen.in_bLSBremse_OK                                   AT %MX1.1     : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.Kippen.in_bLS400V_OK                                     AT %MX1.1     : BOOL; (* OPTION *)
+                                                                                                        
+  Globale_Bausteine.AnlegeAbnahmewand208.Kippen.out_bKippen84Grad                                 AT %MX2.0     : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.Kippen.out_bKippen90Grad                                 AT %MX2.0     : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.Kippen.out_bBremseLoesen                                 AT %MX2.0     : BOOL; (* OPTION *)
+  Globale_Bausteine.AnlegeAbnahmewand208.Kippen.out_bReset                                        AT %MX2.0     : BOOL; (* OPTION *)
+  
+  //Inspektion
+  Globale_bausteine.AnlegeAbnahmewand208.in_b24VNetzteilLEDs_OK                                   AT %IX1.6 : BOOL; (* IO-L *)
+  Globale_bausteine.AnlegeAbnahmewand208.in_b24VSammelsicherungLEDs_OK                            AT %IX1.7 : BOOL; (* IO-L *)
+  Globale_Bausteine.AnlegeAbnahmewand208.out_bLeuchtsignalBIT_0                                   AT %QX5.5 : BOOL; (* IO-L *)
+  Globale_Bausteine.AnlegeAbnahmewand208.out_bLeuchtsignalBIT_1                                   AT %QX5.4 : BOOL; (* IO-L *)
+  Globale_Bausteine.AnlegeAbnahmewand208.out_bLeuchtsignalBIT_2                                   AT %QX5.6 : BOOL; (* IO-L *)
+ 
+
+
+END_VAR
+END_NAMESPACE

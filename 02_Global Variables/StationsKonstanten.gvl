@@ -1,0 +1,24 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "160674d4-fa8a-4395-ad23-cbe43462ea3f"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE StationsKonstanten
+VAR_GLOBAL CONSTANT
+ (*                              5432109876543210 *)
+ cStationHandbetrieb : WORD := 2#0000000000000000;
+ cStationReset       : WORD := 2#0000000000000001;
+ cStationCheck       : WORD := 2#0000000000000010;
+ cStationAutomatik   : WORD := 2#0000000000000100;
+ cStationReferenz    : WORD := 2#0000000000001000;
+
+ cEinzelStationsCheck       : WORD := 2#0000000000000000;
+ cMehrfachStationsCheckTyp1 : WORD := 2#0000000000000001;
+ cMehrfachStationsCheckTyp2 : WORD := 2#0000000000000010;
+ cMehrfachStationsCheckTyp3 : WORD := 2#0000000000000011;
+END_VAR
+
+END_NAMESPACE

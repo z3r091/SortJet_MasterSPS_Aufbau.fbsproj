@@ -1,0 +1,70 @@
+__V3_META__
+{
+	"objectGuid": "3b1b6314-1298-4f03-a676-5f3245e117c1",
+	"objectTypeGuid": "c3fc9989-e24b-4002-a2c7-827a0a2595f4",
+	"embeddedObjectTypeGuids": [
+		"a9ed5b7e-75c5-4651-af16-d2c27e98cb94",
+		"3b83b776-fb25-43b8-99f2-3c507c9143fc"
+	],
+	"properties": {
+		"_3S.CoDeSys.LanguageModelManager.BuildProperty": "<?xml version=\"1.0\" encoding=\"utf-8\"?><Single xml:space=\"preserve\" Type=\"{24568a24-c491-472c-a21f-ee5d33859fab}\" Method=\"IArchivable\"><Single Name=\"MemoryReserveForOnlineChange\" Type=\"int\">0</Single><Single Name=\"ExcludeFromBuild\" Type=\"bool\">False</Single><Single Name=\"External\" Type=\"bool\">False</Single><Single Name=\"EnableSystemCall\" Type=\"bool\">False</Single><Single Name=\"CompilerDefines\" Type=\"string\"></Single><Single Name=\"LinkAlways\" Type=\"bool\">False</Single><Array Name=\"Undefines\" Type=\"string\" /></Single>"
+	}
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{c3fc9989-e24b-4002-a2c7-827a0a2595f4}" Method="IArchivable">
+	<Single Name="Implementation" Type="{3b83b776-fb25-43b8-99f2-3c507c9143fc}" Method="IArchivable">
+		<Single Name="TextDocument" Type="{f3878285-8e4f-490b-bb1b-9acbb7eb04db}" Method="IArchivable">
+			<Single Name="TextBlobForSerialisation" Type="string">// Automatisch erzeugter Code: Es handelt sich hierbei um einen Implementierungsvorschlag.
+IF  index &lt; lower THEN
+	CheckBounds := lower;
+    SysExceptGenerateException( RtsExceptions.RTSEXCPT_ARRAYBOUNDS );
+ELSIF  index &gt; upper THEN
+	CheckBounds := upper;
+	    SysExceptGenerateException( RtsExceptions.RTSEXCPT_ARRAYBOUNDS );
+
+ELSE  
+	CheckBounds := index;
+END_IF
+
+(*Es ist auch möglich, einen Haltepunkt zu setzen, Meldungen aufzuzeichnen, oder beispielsweise an einer Exception anzuhalten:
+Add CmpApp.library, SysExcept.library and SysTypes2_Itf as newest.
+Declaration:
+VAR
+    _pApp : REFERENCE TO CmpApp.APPLICATION;
+    _result   : SysTypes.RTS_IEC_RESULT;
+END_VAR
+
+Implementation:
+_pApp := AppGetCurrent(pResult:=_result);
+IF  index &lt; lower THEN
+        CheckBounds := lower;
+        IF _pApp &lt;&gt; 0 THEN
+                AppGenerateException(pApp:=_pApp, ulException:=RtsExceptions.RTSEXCPT_ARRAYBOUNDS);
+        END_IF
+ELSIF  index &gt; upper THEN
+        CheckBounds := upper;
+        IF _pApp &lt;&gt; 0 THEN
+                AppGenerateException(pApp:=_pApp,   ulException:=RtsExceptions.RTSEXCPT_ARRAYBOUNDS);
+        END_IF
+ELSE  
+        CheckBounds := index;
+END_IF
+*)
+</Single>
+			<Single Name="LineInfoPersistence" Type="string">3b1b6314-1298-4f03-a676-5f3245e117c1_Impl_LineIds</Single>
+		</Single>
+	</Single>
+	<Single Name="Interface" Type="{a9ed5b7e-75c5-4651-af16-d2c27e98cb94}" Method="IArchivable">
+		<Single Name="TextDocument" Type="{f3878285-8e4f-490b-bb1b-9acbb7eb04db}" Method="IArchivable">
+			<Single Name="TextBlobForSerialisation" Type="string">// Automatisch erzeugter Code: NICHT EDITIEREN
+FUNCTION CheckBounds : DINT
+VAR_INPUT
+	index, lower, upper: DINT;
+END_VAR
+</Single>
+			<Single Name="LineInfoPersistence" Type="string">3b1b6314-1298-4f03-a676-5f3245e117c1_Decl_LineIds</Single>
+		</Single>
+	</Single>
+	<Single Name="SpecialFunc" Type="{0db3d7bb-cde0-4416-9a7b-ce49a0124323}">CheckBounds</Single>
+</Single>

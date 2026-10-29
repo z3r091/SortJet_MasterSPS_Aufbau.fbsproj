@@ -1,0 +1,19 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "42554879-429a-4276-a623-7bb9652504cd"
+	}
+}
+*)
+TYPE PneumatikZylinderStatus_EN :
+  (
+    eZylinderUndefiniert   := 0,
+    eZylinderStellung16mm  := 1,
+    eZylinderStellung23mm  := 2,
+    eZylinderStellung29mm  := 3,
+    eZylinderGeschlossen   := 4,
+	eZylinderGeoeffnet     := 5,
+	eZylinderAusgefahren   := 6,
+	eZylinderEingefahren   := 7
+  ) WORD;
+END_TYPE

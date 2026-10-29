@@ -1,0 +1,19 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "ebd9648d-873a-4cae-bc51-02e7035e4a55"
+	}
+}
+*)
+TYPE Auftragsstatus_EN :
+  (
+	 eKeinStatus              := 0,
+    eAuftragAktiv            := 1,
+    eAuftragErfolgreich      := 2,
+    eAuftragAbgebrochen      := 3,
+    eAuftragFehler           := 4,
+    eAuftragQuittiert        := 5,
+    eAuftragWiederholen      := 6,	 
+    eAuftragAktivWiederholen := 7
+  ) WORD;
+END_TYPE

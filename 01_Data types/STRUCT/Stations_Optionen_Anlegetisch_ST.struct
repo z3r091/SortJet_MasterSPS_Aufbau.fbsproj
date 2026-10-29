@@ -1,0 +1,15 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "7e764c6f-ca65-49b4-99c2-79048f26d347"
+	}
+}
+*)
+TYPE Stations_Optionen_Anlegetisch_ST :
+  STRUCT
+    bAnlegetischMitEintransportVorgaenger                         : BOOL;
+    bScheibeAbnehmenNachEintransport                              : BOOL;
+    bAnschlagAutomatischAusfahren                                 : BOOL;
+    
+  END_STRUCT
+END_TYPE

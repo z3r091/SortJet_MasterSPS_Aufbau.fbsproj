@@ -1,0 +1,49 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "be7548cf-d4f2-4d70-9447-6f3faff38ba9"
+	}
+}
+*)
+{attribute 'strict'}
+TYPE Restwegmode_SEW_EN :
+(
+  Keine                    := 2#0000000000000000,
+  Positiv_Steigend_Sensor1 := 2#0000000000010101,
+  Positiv_Fallend_Sensor1  := 2#0000000000000101,
+  Negativ_Steigend_Sensor1 := 2#0000000000010110,
+  Negativ_Fallend_Sensor1  := 2#0000000000000110,
+  Positiv_Steigend_Sensor2 := 2#0000000000011001,
+  Positiv_Fallend_Sensor2  := 2#0000000000001001,
+  Negativ_Steigend_Sensor2 := 2#0000000000011010,
+  Negativ_Fallend_Sensor2  := 2#0000000000001010,
+  Positiv_Steigend_Sensor3 := 2#0000000000110001,
+  Positiv_Fallend_Sensor3  := 2#0000000000100001,
+  Negativ_Steigend_Sensor3 := 2#0000000000110010,
+  Negativ_Fallend_Sensor3  := 2#0000000000100010,
+  Positiv_Steigend_Sensor4 := 2#0000000001010001,
+  Positiv_Fallend_Sensor4  := 2#0000000001000001,
+  Negativ_Steigend_Sensor4 := 2#0000000001010010,
+  Negativ_Fallend_Sensor4  := 2#0000000001000010,
+  Positiv_Steigend_Sensor5 := 2#0000000010010001,
+  Positiv_Fallend_Sensor5  := 2#0000000010000001,
+  Negativ_Steigend_Sensor5 := 2#0000000010010010,
+  Negativ_Fallend_Sensor5  := 2#0000000010000010,
+  Positiv_Steigend_Sensor6 := 2#0000000100010001,
+  Positiv_Fallend_Sensor6  := 2#0000000100000001,
+  Negativ_Steigend_Sensor6 := 2#0000000100010010,
+  Negativ_Fallend_Sensor6  := 2#0000000100000010,
+  Positiv_Steigend_Sensor7 := 2#0000001000010001,
+  Positiv_Fallend_Sensor7  := 2#0000001000000001,
+  Negativ_Steigend_Sensor7 := 2#0000001000010010,
+  Negativ_Fallend_Sensor7  := 2#0000001000000010,
+  Positiv_Steigend_Sensor8 := 2#0000010000010001,
+  Positiv_Fallend_Sensor8  := 2#0000010000000001,
+  Negativ_Steigend_Sensor8 := 2#0000010000010010,
+  Negativ_Fallend_Sensor8  := 2#0000010000000010,
+  Positiv_Steigend_Sensor9 := 2#0000100000010001,
+  Positiv_Fallend_Sensor9  := 2#0000100000000001, 
+  Negativ_Steigend_Sensor9 := 2#0000100000010010,
+  Negativ_Fallend_Sensor9  := 2#0000100000000010
+) WORD;
+END_TYPE

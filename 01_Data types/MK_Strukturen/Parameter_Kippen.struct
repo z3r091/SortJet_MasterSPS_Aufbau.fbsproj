@@ -1,0 +1,20 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "389838c8-c0c3-4691-8b76-b6aa1d955c90"
+	}
+}
+*)
+TYPE Parameter_Kippen :
+  STRUCT
+    tZeitlicheUeberwachungKippen   : TIME; // [ms \ s] Verwendet fuer Antriebe die Ueber einen Schuetz angesteuert werden  *)
+    tZeitAntriebsfreigabeErhalten  : TIME; // [ms \ s] Energieeinsparrung: Zeiteinheit nach der die Antriebsfreigabe entzogen werden soll wenn keine Aktion ansteht [1 s = 1000 ms ] *)
+    rToleranz                      : REAL; // Toleranz beim entscheiden der Aktuellen Positionen *)
+    rPosition0Grad                 : REAL; // Waagerechte- Position 0 Grad: Position auf die die Station gehoben werden soll *)
+    rPosition84Grad                : REAL; // Senkrechte- Position 84 Grad: Position auf die die Station gehoben werden soll *)
+    rPosition88_5Grad              : REAL; // Senkrechte- Position 84 Grad: Position auf die die Station gehoben werden soll *)
+    rPosition90Grad                : REAL; // Senkrechte-Position 90 Grad : Position auf die die Station gesenkt werden soll *)
+    rPosition96Grad                : REAL; // Senkrechte-Position 96 Grad : Position auf die die Station gesenkt werden soll *)
+    bKippenMitSchuetz              : BOOL; // Kippen per Umrichter oder Schütz *)
+  END_STRUCT
+END_TYPE

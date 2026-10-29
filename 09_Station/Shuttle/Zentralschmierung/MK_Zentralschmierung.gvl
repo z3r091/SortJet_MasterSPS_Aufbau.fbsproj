@@ -1,0 +1,55 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "cea505f7-1a84-4065-b281-2c700363fb8a"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE MK_Zentralschmierung
+VAR_GLOBAL
+	
+  // Zentralschmierung Shuttle
+  apgMKShuttleZentralschmierung : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Parameter_Zentralschmierung_DLS_4xxi :=[
+    (* ----------------------------------- SHUTTLE 101 --------------------------------------------------- *)
+    (
+      aiAnzahlHuebe                   := [3,20],             // Anzahl der Hübe die die Schmierung machen soll für die Schmierkreise 1,2
+      adiZuFahrenderWegBisSchmierung  := [21600000,24500000] // Strecke nach der geschmiert werden muss in mm für die Schmierkreise 1,2
+    ),
+    (* ----------------------------------- SHUTTLE 102 --------------------------------------------------- *)
+    (
+      aiAnzahlHuebe                   := [3,20],             // Anzahl der Hübe die die Schmierung machen soll für die Schmierkreise 1,2
+      adiZuFahrenderWegBisSchmierung  := [21600000,24500000] // Strecke nach der geschmiert werden muss in mm für die Schmierkreise 1,2
+    ),
+    (* ----------------------------------- SHUTTLE 103 --------------------------------------------------- *)
+    (
+      aiAnzahlHuebe                   := [3,20],             // Anzahl der Hübe die die Schmierung machen soll für die Schmierkreise 1,2
+      adiZuFahrenderWegBisSchmierung  := [21600000,24500000] // Strecke nach der geschmiert werden muss in mm für die Schmierkreise 1,2
+    ),
+    (* ----------------------------------- SHUTTLE 104 --------------------------------------------------- *)
+    (
+      aiAnzahlHuebe                   := [3,20],             // Anzahl der Hübe die die Schmierung machen soll für die Schmierkreise 1,2
+      adiZuFahrenderWegBisSchmierung  := [21600000,24500000] // Strecke nach der geschmiert werden muss in mm für die Schmierkreise 1,2
+    )];
+	
+
+  // Zentralschmierung Transfershuttle
+  apgMKTransfershuttleZentralschmierung : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE ] OF Parameter_Zentralschmierung_DLS_4xxi :=[
+    (* ----------------------------------- TRANSFERSHUTTLE 151 --------------------------------------------------- *)
+    (
+      aiAnzahlHuebe                   := [3,20],             // Anzahl der Hübe die die Schmierung machen soll  für die Schmierkreise 1,2
+      adiZuFahrenderWegBisSchmierung  := [11300000,40500000] // Strecke nach der geschmiert werden muss in mm für die Schmierkreise 1,2
+    ),
+    (* ----------------------------------- TRANSFERSHUTTLE 152 --------------------------------------------------- *)
+    (
+      aiAnzahlHuebe                   := [3,20],             // Anzahl der Hübe die die Schmierung machen soll  für die Schmierkreise 1,2
+      adiZuFahrenderWegBisSchmierung  := [11300000,40500000] // Strecke nach der geschmiert werden muss in mm für die Schmierkreise 1,2
+    ),
+    (* ----------------------------------- TRANSFERSHUTTLE 152 --------------------------------------------------- *)
+    (
+      aiAnzahlHuebe                   := [3,20],             // Anzahl der Hübe die die Schmierung machen soll  für die Schmierkreise 1,2
+      adiZuFahrenderWegBisSchmierung  := [11300000,40500000] // Strecke nach der geschmiert werden muss in mm für die Schmierkreise 1,2
+    )];
+	
+END_VAR
+END_NAMESPACE

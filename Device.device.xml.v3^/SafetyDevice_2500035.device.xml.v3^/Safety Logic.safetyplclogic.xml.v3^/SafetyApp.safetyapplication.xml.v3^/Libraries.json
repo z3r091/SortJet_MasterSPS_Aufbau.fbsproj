@@ -1,0 +1,38 @@
+{
+	"references": {
+		"SIODRVFSOE": {
+			"$type": "Placeholder",
+			"placeholder": "SafetyFSoEMaster",
+			"defaultResolution": "SafetyFSoEMaster, 1.1.1.0 (System)",
+			"allowUnqualifiedAccess": true
+		},
+		"SSF1": {
+			"$type": "ManagedLibrary",
+			"libraryId": "SafetyPLCopen, 1.1.1.0 (System)",
+			"allowUnqualifiedAccess": true
+		},
+		"SSTANDARD": {
+			"$type": "ManagedLibrary",
+			"libraryId": "SafetyStandard, 1.1.1.0 (System)",
+			"allowUnqualifiedAccess": true
+		}
+	},
+	"placeholderOverrides": {
+		"VisuSymbols": "VisuSymbols, 4.5.0.0 (System)"
+	},
+	"v3Meta": {
+		"objectGuid": "18182742-1df9-472a-81a6-aa89a971edf0",
+		"objectTypeGuid": "adb5cb65-8e1d-4a00-b70a-375ea27582f3"
+	},
+	"libraryParameters": {},
+	"v3SystemLibraries": [
+		{
+			"namespace": "SIOSTANDARD",
+			"libraryReference": {
+				"$type": "ManagedLibrary",
+				"libraryId": "SafetySystemIO, 1.1.1.0 (System)",
+				"allowUnqualifiedAccess": true
+			}
+		}
+	]
+}

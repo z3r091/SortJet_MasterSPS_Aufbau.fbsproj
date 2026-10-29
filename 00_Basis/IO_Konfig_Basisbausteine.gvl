@@ -1,0 +1,110 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "1032b1fd-266d-49f6-8f94-6c1a08687c16"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE IO_Konfig_Basisbausteine
+VAR_CONFIG
+
+(* KONFIGURATION: NETZTEILE \ DRUCKLUFT \ ETC. *)
+(***************************************************************************************************)
+
+(***************************************************************************************************)
+
+ Globale_Bausteine.Linescanner.A_Start_230V_Linescanner                  AT %MX2.0      : BOOL; (* OPTION *)
+
+(***************************************************************************************************)
+(* KONFIGURATION: AMPEL  *)
+(***************************************************************************************************)
+
+   // Ampel AK1
+  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; (* OK *) 
+  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteRot                      AT %QX0.6    : BOOL; (* OK *) 
+  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteGelb                     AT %QX0.5    : BOOL; (* OK *) 
+  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteGruen                    AT %QX0.4    : BOOL; (* OK *) 
+  Globale_Bausteine.Horn_AK[1,1].out_bHorn                                  AT %QX0.3    : BOOL; (* OK *)   
+
+   // Ampel AK1
+  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; (* Option *)       
+  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteRot                      AT %MX2.0    : BOOL; (* Option *)       
+  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteGelb                     AT %MX2.0    : BOOL; (* Option *)       
+  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteGruen                    AT %MX2.0    : BOOL; (* Option *)       
+  Globale_Bausteine.Horn_AK[1,2].out_bHorn                                  AT %MX2.0    : BOOL; (* Option *)         
+
+   // Ampe2 AK1
+  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; (* OK *) 
+  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteRot                      AT %QX1.3    : BOOL; (* OK *) 
+  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteGelb                     AT %QX1.2    : BOOL; (* OK *) 
+  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteGruen                    AT %QX1.1    : BOOL; (* OK *) 
+  Globale_Bausteine.Horn_AK[2,1].out_bHorn                                  AT %QX1.0    : BOOL; (* OK *)   
+
+   // Ampe2 AK1
+  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; (* Option *) 
+  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteRot                      AT %MX2.0    : BOOL; (* Option *) 
+  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteGelb                     AT %MX2.0    : BOOL; (* Option *) 
+  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteGruen                    AT %MX2.0    : BOOL; (* Option *) 
+  Globale_Bausteine.Horn_AK[2,2].out_bHorn                                  AT %MX2.0    : BOOL; (* Option *)           
+
+   // Ampe3 AK1
+  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; (* OK *) 
+  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteRot                      AT %QX5.1    : BOOL; (* OK *) 
+  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteGelb                     AT %QX5.0    : BOOL; (* OK *) 
+  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteGruen                    AT %QX4.7    : BOOL; (* OK *) 
+  Globale_Bausteine.Horn_AK[3,1].out_bHorn                                  AT %QX4.6    : BOOL; (* OK *)   
+
+   // Ampe3 AK1
+  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; (* Option *) 
+  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteRot                      AT %MX2.0    : BOOL; (* Option *) 
+  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteGelb                     AT %MX2.0    : BOOL; (* Option *) 
+  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteGruen                    AT %MX2.0    : BOOL; (* Option *) 
+  Globale_Bausteine.Horn_AK[3,2].out_bHorn                                  AT %MX2.0    : BOOL; (* Option *)                 
+
+   // Ampe4 AK1
+  Globale_Bausteine.Ampel_AK[4,1].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; (* OK *) 
+  Globale_Bausteine.Ampel_AK[4,1].out_bAmpelLeuchteRot                      AT %MX2.0    : BOOL; (* OK *) 
+  Globale_Bausteine.Ampel_AK[4,1].out_bAmpelLeuchteGelb                     AT %MX2.0    : BOOL; (* OK *) 
+  Globale_Bausteine.Ampel_AK[4,1].out_bAmpelLeuchteGruen                    AT %MX2.0    : BOOL; (* OK *) 
+  Globale_Bausteine.Horn_AK[4,1].out_bHorn                                  AT %MX2.0    : BOOL; (* OK *)   
+
+   // Ampe4 AK1
+  Globale_Bausteine.Ampel_AK[4,2].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; (* Option *) 
+  Globale_Bausteine.Ampel_AK[4,2].out_bAmpelLeuchteRot                      AT %MX2.0    : BOOL; (* Option *) 
+  Globale_Bausteine.Ampel_AK[4,2].out_bAmpelLeuchteGelb                     AT %MX2.0    : BOOL; (* Option *) 
+  Globale_Bausteine.Ampel_AK[4,2].out_bAmpelLeuchteGruen                    AT %MX2.0    : BOOL; (* Option *) 
+  Globale_Bausteine.Horn_AK[4,2].out_bHorn                                  AT %MX2.0    : BOOL; (* Option *)             
+
+
+(***************************************************************************************************)
+(* KONFIGURATION: NETZTEILE \ DRUCKLUFT \ ETC. *)
+(***************************************************************************************************)
+
+  (* HARDWARE EINGAENGE
+  *)
+  StatusAnlage.in_bDruckluft_FW_OK                         AT %MX1.1   : BOOL; (* OPTION *)
+  StatusAnlage.in_bDruckluft_Puffer101_103_OK              AT %MX1.1   : BOOL; (* OPTION *)
+  StatusAnlage.in_bDruckluft_Puffer102_104_OK              AT %MX1.1   : BOOL; (* OPTION *)
+  
+  StatusAnlage.in_bCAB2_LS_Netzteil_24V_OK                 AT %IX0.4   : BOOL; (* OK *)
+  StatusAnlage.in_bCAB2_KlimaGeraet_OK                     AT %IX0.2   : BOOL; (* OK *)
+  StatusAnlage.in_bCAB2_LS_Netzfilter_400V_OK              AT %IX0.0   : BOOL; (* OPTION *)
+  StatusAnlage.in_bCAB2_LS_400V_OK                         AT %MX1.1   : BOOL; (* OPTION *)
+  StatusAnlage.in_bCAB2_LS_24V_Schaltschrank_OK            AT %IX0.5   : BOOL; (* OK *)  
+  StatusAnlage.in_bCAB2_LS_24V_Boxen_OK                    AT %IX0.6   : BOOL; (* OK *)  
+  StatusAnlage.in_bCAB2_LS_230V_OK                         AT %IX0.3   : BOOL; (* OK *)
+  
+
+
+END_VAR
+
+
+
+
+
+
+
+
+
+END_NAMESPACE

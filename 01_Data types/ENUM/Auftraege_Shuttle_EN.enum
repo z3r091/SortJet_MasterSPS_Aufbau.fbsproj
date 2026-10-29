@@ -1,0 +1,19 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "a0485178-29c6-483a-90d4-404dd5ea8fc9"
+	}
+}
+*)
+TYPE Auftraege_Shuttle_EN :
+(
+   SHUTTLE_KEIN_AUFTRAG           := 0,
+   SHUTTLE_EINTRANSPORT           := 1,
+   SHUTTLE_AUSTRANSPORT           := 2,
+   SHUTTLE_VORTRANSPORT           := 3,
+   SHUTTLE_POSITIONIERUNG         := 4,
+   SHUTTLE_GRUNDSTELLUNG          := 5,
+   SHUTTLE_VORABPOSITIONIERUNG    := 6,
+   SHUTTLE_DURCHTRANSPORT         := 7
+) WORD;
+END_TYPE

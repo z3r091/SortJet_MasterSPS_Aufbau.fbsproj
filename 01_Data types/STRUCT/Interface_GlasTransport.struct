@@ -1,0 +1,31 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "f907b0a0-679d-4111-9289-1c980d1c55c2"
+	}
+}
+*)
+{attribute 'global_init_slot' := '300'}
+(* Anmerkung:
+   - Struktur zum Abhandeln des Ein- und Aus- Transport
+*)
+TYPE Interface_GlasTransport :
+  STRUCT
+    stStationsNummern          : Station_ST;
+    wStationsTyp               : StationsTyp_EN;
+    wAchsID                    : WORD;
+    bEinlaufsensor             : REFERENCE TO BOOL REF= bgFALSE;
+    bAuslaufsensor             : REFERENCE TO BOOL REF= bgFALSE; 
+    bBereitZumAustransport     : REFERENCE TO BOOL REF= bgFALSE;
+    bBereitZumEintransport     : REFERENCE TO BOOL REF= bgFALSE;
+    bTransportAbgeschlossen    : REFERENCE TO BOOL REF= bgFALSE;
+    rGeschwindigkeit           : REFERENCE TO REAL REF= rgNull;
+    bFehler                    : REFERENCE TO BOOL REF= bgFALSE;
+    bFreigabe                  : REFERENCE TO BOOL REF= bgFALSE;
+    bQuittScheibe              : REFERENCE TO BOOL REF= bgFALSE;
+    bScheibeFaehrtUeberAuslauf : REFERENCE TO BOOL REF= bgFALSE;
+    bScheibeFaehrtUeberEinlauf : REFERENCE TO BOOL REF= bgFALSE;
+	 bTransportRueckwaertig      : REFERENCE TO BOOL REF= bgFALSE;
+	 bAutomatikBetriebAktiv      : REFERENCE TO BOOL REF= bgFALSE;  
+  END_STRUCT
+END_TYPE

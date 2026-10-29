@@ -1,0 +1,13 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "fc71e311-519c-4071-8dac-70c0c87ef23e"
+	}
+}
+*)
+{attribute 'qualified_only'}
+TYPE StationUpdateTyp_EN : (
+  NONE := 0,
+  POSITIONSAENDERUNG := 1
+) WORD;
+END_TYPE

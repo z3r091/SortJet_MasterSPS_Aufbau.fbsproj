@@ -1,0 +1,14 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "fd1a8d06-65d1-4460-a8a0-65224b60bcc8"
+	}
+}
+*)
+TYPE Parameter_Zentralschmierung :
+  STRUCT
+    iAnzahlHuebe                     : INT;           (* Anzahl der Hübe die die Schmierung machen soll *)
+    diZuFahrenderWegBisSchmierung    : DINT;          (* Zu fahrende Strecke nach der geschmiert werden muss in mm *)
+    eStationsTyp                     : StationsTyp_EN;
+  END_STRUCT
+END_TYPE

@@ -1,0 +1,15 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "1f3ef552-4ec0-445e-b4bd-e52966ae52d5"
+	}
+}
+*)
+TYPE eAchsStatus_EN :
+(
+	AXIS_ERROR_OR_DISABLED :=  0,
+	AXIS_STOPPING          :=  1,
+	AXIS_VALID             :=  2,
+	AXIS_UNKNOWN           := 99
+) WORD;
+END_TYPE

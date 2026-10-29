@@ -1,0 +1,27 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "50f5b9ec-4a6a-4588-8fec-f81d0bf591ef"
+	}
+}
+*)
+TYPE STW_1_ctrlX :
+  STRUCT
+    cBitControllerEnable : BIT; //Antrieb freigeben
+    cBitEnableRapidStop : BIT; //Antrieb in Schnellstop setzen
+    cBitEnableStop : BIT; //Antrieb Stoppen
+    bReserve_1_3 : BIT;
+    bReserve_1_4 : BIT;
+    bReserve_1_5 : BIT;
+    cBitFaultReset : BIT; //Fehler zurücksetzen
+    cBitSpare_1_7 : BIT; //frei
+    cBitStart : BIT; //Betriebsart starten
+    cBitJogPlus : BIT; //Handfahren Positiv
+    cBitJogMinus : BIT; //Handfahren Negativ
+    cBitMode20 : BIT; //Betriebsart 2^0
+    cBitMode21 : BIT; //Betriebsart 2^1
+    cBitMode22 : BIT; //Betriebsart 2^2
+    cBitSpare_1_14 : BIT;
+    cBitSpare_1_15 : BIT;
+  END_STRUCT
+END_TYPE

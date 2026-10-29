@@ -1,0 +1,57 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "074d1ccb-f18e-48a2-bcb0-47bf8e0621d6"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE MK_Sicherheitskreise
+VAR_GLOBAL
+
+apgMKSicherheiskreis : ARRAY [cERSTER_SICHERHEITSKREIS ..cLETZTER_SICHERHEITSKREIS] OF Parameter_Schicherheitskreise := [
+  ( 
+    eSicherheitskreis   := eSicherheitskreis_1,
+	  eaAutomatikkreis    := [eAutomatikkreis_1, eAutomatikkreis_2],               // Alle Automatikkreise die von dem SIcherheitskreis betroffen sind
+    eaTueren            := [eTuer_1, eTuer_2, eTuer_3],                 // Alle Türen eintragen die zu dem Sicherheitskreis gehören
+    eaDurchgang         := [eDurchgang_Undefiniert]                             // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+  ),
+  (
+    eSicherheitskreis   := eSicherheitskreis_2,
+	  eaAutomatikkreis    := [eAutomatikkreis_3],               // Alle Automatikkreise die von dem SIcherheitskreis betroffen sind
+    eaTueren            := [eTuer_Undefiniert],               // Alle Türen eintragen die zu dem Sicherheitskreis gehören
+    eaDurchgang         := [eDurchgang_Undefiniert]           // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+  ),
+  (
+    eSicherheitskreis   := eSicherheitskreis_3,
+	  eaAutomatikkreis    := [eAutomatikkreis_3],               // Alle Automatikkreise die von dem SIcherheitskreis betroffen sind
+    eaTueren            := [eTuer_Undefiniert],               // Alle Türen eintragen die zu dem Sicherheitskreis gehören
+    eaDurchgang         := [eDurchgang_Undefiniert]           // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+  ),
+  (
+    eSicherheitskreis   := eSicherheitskreis_4,
+	  eaAutomatikkreis    := [eAutomatikkreis_4],               // Alle Automatikkreise die von dem SIcherheitskreis betroffen sind
+    eaTueren            := [eTuer_Undefiniert],                         // Alle Türen eintragen die zu dem Sicherheitskreis gehören
+    eaDurchgang         := [eDurchgang_1]           // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+  ),
+  (
+    eSicherheitskreis   := eSicherheitskreis_5,
+	  eaAutomatikkreis    := [eAutomatikkreis_1],               // Alle Automatikkreise die von dem SIcherheitskreis betroffen sind
+    eaTueren            := [eTuer_Undefiniert],                         // Alle Türen eintragen die zu dem Sicherheitskreis gehören
+    eaDurchgang         := [eDurchgang_Undefiniert]           // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+  ),
+  (
+    eSicherheitskreis   := eSicherheitskreis_6,
+	  eaAutomatikkreis    := [eAutomatikkreis_1],               // Alle Automatikkreise die von dem SIcherheitskreis betroffen sind
+    eaTueren            := [eTuer_Undefiniert],                         // Alle Türen eintragen die zu dem Sicherheitskreis gehören
+    eaDurchgang         := [eDurchgang_Undefiniert]           // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+  )];
+
+apgMKDurchgang : ARRAY [cERSTER_DURCHGANG..cANZAHL_DURCHGANGE] OF Parameter_Durchgang := [
+  (
+	 eDurchgang         := eDurchgang_1,
+	 eZuBlockierenderSK := eSicherheitskreis_3
+  )];
+
+END_VAR
+END_NAMESPACE

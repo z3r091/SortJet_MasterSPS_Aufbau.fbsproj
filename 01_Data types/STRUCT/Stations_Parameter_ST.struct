@@ -1,0 +1,18 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "000615e9-136f-4871-89d4-b98ea3db0180"
+	}
+}
+*)
+TYPE Stations_Parameter_ST :
+  STRUCT
+	  rLaengeUebergroesseScheibe              : REAL;
+	  rMinGlasHoeheAutomatischenEintransport  : REAL;
+	  rMinGlasLaengeAutomatischenEintransport : REAL;   
+    wMaximaleAnzahlAktiverAuftraege         : WORD;
+    rMinPosSwEsEingrenzung                  : REAL; // Externer zusaetzlicher Software-Endschalter MIN; 0 = inaktiv; darf den MK-MIN nur weiter eingrenzen 
+    rMaxPosSwEsEingrenzung                  : REAL; // Externer zusaetzlicher Software-Endschalter MAX; 0 = inaktiv; darf den MK-MAX nur weiter eingrenzen 
+    rPosFreigabePufferAusfahren             : REAL;
+  END_STRUCT
+END_TYPE

@@ -1,0 +1,40 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "41a82224-e9f8-4ce7-bf96-61ace32d9e6f"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE Konfiguration_212
+
+VAR_CONFIG
+(***************************************************************************************************)
+(* KONFIGURATION: BAUSTEIN IO´s  *)
+(***************************************************************************************************)
+  
+  // Rollenleiste
+  Globale_Bausteine.Kipptisch212.Rollenleiste.in_bGeoeffnet                      AT %MX1.0  : BOOL; (* OPTION *)
+  Globale_Bausteine.Kipptisch212.Rollenleiste.in_bGeschlossen                    AT %MX1.0  : BOOL; (* OPTION *)
+  Globale_Bausteine.Kipptisch212.Rollenleiste.out_bOeffnen                       AT %MX2.0  : BOOL; (* OPTION *) 
+  Globale_Bausteine.Kipptisch212.Rollenleiste.out_bSchliessen                    AT %MX2.0  : BOOL; (* OPTION *)
+
+  // Anlegen
+  Globale_Bausteine.Kipptisch212.in_bTasterGlasAngelegt                          AT %IX3.1  : BOOL; (* OK *)
+  Globale_Bausteine.Kipptisch212.in_bTasterGlasbruch                             AT %IX4.0  : BOOL; (* OK *)
+  
+  Globale_Bausteine.Kipptisch212.out_bSignalTasterScheibeAnlegen                 AT %QX2.4  : BOOL; (* OK *)
+
+
+  Globale_Bausteine.Kipptisch212.Kippen.Antriebseinheit.out_bAntriebseinheitHeben       AT %QX8.2  : BOOL; (* OK *)
+  Globale_Bausteine.Kipptisch212.Kippen.Antriebseinheit.out_bAntriebseinheitSenken      AT %QX8.3  : BOOL; (* OK *)
+  Globale_Bausteine.Kipptisch212.Kippen.Antriebseinheit.out_bAntriebseinheitVerriegeln  AT %QX8.4  : BOOL; (* OK *)
+  Globale_Bausteine.Kipptisch212.Kippen.Antriebseinheit.out_bAntriebseinheitEntriegeln  AT %QX8.5  : BOOL; (* OK *)
+
+
+
+
+
+END_VAR
+
+END_NAMESPACE

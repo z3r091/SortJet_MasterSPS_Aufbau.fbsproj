@@ -1,0 +1,25 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "aeef87e6-c04f-43ce-ac71-5fe94abb81b3"
+	}
+}
+*)
+TYPE Stations_Optionen_ST :
+  STRUCT
+    stSystemcheck                                                 : Stations_Optionen_Systemcheck_ST;
+    stTransfershuttle                                             : Stations_Optionen_Transfershuttle_ST;
+    stGlastransport                                               : Stations_Optionen_Glastransport_ST;
+    stAnlegetisch                                                 : Stations_Optionen_Anlegetisch_ST;
+
+    bVorAbKomponentenAnsteuerung                                  : BOOL; // VorAbKomponentenAnsteuerung Auftraege werden bearbeitet   
+    bVerstellungEinAusGefahrenLogikDrehen                         : BOOL;
+    bLangsamfahrtNockenQuerfahrtAktivieren                        : BOOL;
+
+    bSKBlockierenDurchVorabSensoren                               : BOOL;
+    bStationLeerfahrenBeiSkAnforderung                            : BOOL;
+
+    bGlasAbgenommenAutomatischQuittieren                          : BOOL;
+
+  END_STRUCT
+END_TYPE

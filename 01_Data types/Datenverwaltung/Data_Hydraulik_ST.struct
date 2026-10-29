@@ -1,0 +1,16 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "be05e110-7989-4c56-99e5-4a920756e316"
+	}
+}
+*)
+TYPE Data_Hydraulik_ST :
+  STRUCT
+    (* NEUE STRUKTUR *)
+    wAuftrag                             : WORD; (* 1 Einschleusen *)
+                                                 (* 2 Ausschleusen *)
+                                                 (* 3 Positionskorrektur (nur anheben) *)
+    wFaecherwagenStationsNr              : WORD;
+  END_STRUCT
+END_TYPE

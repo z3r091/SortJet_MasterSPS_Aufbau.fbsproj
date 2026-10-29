@@ -1,0 +1,16 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "44ad1bc3-096e-465b-b4ec-28e3c17631d4"
+	}
+}
+*)
+TYPE Stations_Optionen_Transfershuttle_ST :
+  STRUCT  
+    bMasterStation                                                : BOOL; // Ob es sich um ein Master (Master-Slave) - Station handelt. Aktuell gebraucht bei Transfershuttle- Verbund 
+    bTransferShuttleFuerFaecherwagen                              : BOOL;
+    bTransferShuttleMitUltraschallSensoren                        : BOOL;
+	  bTransfershuttleIstVerfahrbarerSpeicher                       : BOOL;
+
+  END_STRUCT
+END_TYPE

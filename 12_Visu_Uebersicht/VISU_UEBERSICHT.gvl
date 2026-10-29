@@ -1,0 +1,111 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "76464f8f-3613-4465-9c50-3e0a0f70c8ba"
+	}
+}
+*)
+{attribute 'qualified_only'}
+NAMESPACE VISU_UEBERSICHT
+VAR_GLOBAL
+  // Kopfzeile / Anlagenstatus
+  sTitel            : STRING(80) := 'SortJet Area 22  -  Anlagenübersicht';
+  sUntertitel       : STRING(100) := 'Anlegetisch 201  >  Kipptisch 202  >  Shuttle 101  >  Sortierspeicher  >  Transfershuttle 151  >  Fächerwagen';
+  stAutomatik       : VisuUeb_Lampe_ST;
+  stSK1             : VisuUeb_Lampe_ST;
+  stSK2             : VisuUeb_Lampe_ST;
+  astTuer               : ARRAY[1..cMAX_TUEREN] OF VisuUeb_Lampe_ST;      // je Tuer eine Anzeige
+  abTuerVorhanden       : ARRAY[1..cMAX_TUEREN] OF BOOL;
+  astDurchgang          : ARRAY[1..cMAX_DURCHGAENGE] OF VisuUeb_Lampe_ST;
+  abDurchgangVorhanden  : ARRAY[1..cMAX_DURCHGAENGE] OF BOOL;
+  sLblTueren            : STRING(20) := 'TÜREN';
+  sLblDurchgaenge       : STRING(20) := 'DURCHGÄNGE';
+  stDruckluft       : VisuUeb_Lampe_ST;
+  stSchaltschrank   : VisuUeb_Lampe_ST;
+  stEtherCAT        : VisuUeb_Lampe_ST;
+  stInit            : VisuUeb_Lampe_ST;
+  stMMI             : VisuUeb_Lampe_ST;
+  stBetriebsstop    : VisuUeb_Lampe_ST;
+  stInbetriebnahme  : VisuUeb_Lampe_ST;
+  stSimulation      : VisuUeb_Lampe_ST;
+  sStoerungen       : STRING(80);
+  dwStoerungenFarbe : DWORD := 16#FF2EAD5B;
+
+  // Stationen
+  st501             : VisuUeb_Station_ST;
+  st201             : VisuUeb_Station_ST;
+  st202             : VisuUeb_Station_ST;
+  st101             : VisuUeb_Station_ST;
+  st151             : VisuUeb_Station_ST;
+  st301             : VisuUeb_Station_ST;
+  st302             : VisuUeb_Station_ST;
+  st401             : VisuUeb_Station_ST;
+
+  // Achsen (Querfahrt)
+  stAchse101        : VisuUeb_Achse_ST;
+  stAchse151        : VisuUeb_Achse_ST;
+
+  // Beschriftungen Achsen
+  sLblMin101        : STRING(40);
+  sLblMax101        : STRING(40);
+  sLblMin151        : STRING(40);
+  sLblMax151        : STRING(40);
+
+  // feste Beschriftungen (Visu nutzt ausschließlich Textvariablen)
+  sLblSensoren      : STRING(40) := 'E       EV      AV       A';
+  sLblSpeicher      : STRING(40) := 'S O R T I E R S P E I C H E R';
+  sLblShuttle101    : STRING(40) := 'SHUTTLE 101';
+  sLblTS151         : STRING(40) := 'TRANSFERSHUTTLE 151';
+  sLblReset         : STRING(40) := 'Skalierung neu lernen';
+  sLblLegende       : STRING(120) := 'Grün = Automatik    Orange = Hand    Blau = Reset / Referenz    Rot = Störung    Grau = deaktiviert';
+  sLblNotHaltOK     : STRING(40) := 'NOT-HALT OK';
+  sLblNotHaltAus    : STRING(40) := 'NOT-HALT AUSGELÖST';
+  sLblStatus        : STRING(40) := 'ANLAGENSTATUS';
+  sLblZufuehrung    : STRING(40) := 'ZUFÜHRUNG';
+  sLblAbfuehrung    : STRING(40) := 'ABFÜHRUNG';
+  sLblQuerfahrt     : STRING(40) := 'QUERFAHRT';
+  sLblIst           : STRING(20) := 'Ist';
+  sLblZiel          : STRING(20) := 'Ziel';
+  sLblSpeed         : STRING(20) := 'v';
+  sLblE             : STRING(4)  := 'E';
+  sLblEV            : STRING(4)  := 'EV';
+  sLblAV            : STRING(4)  := 'AV';
+  sLblA             : STRING(4)  := 'A';
+  sLblQuer101       : STRING(60) := 'SHUTTLE 101   -   QUERFAHRT';
+  sLblQuer151       : STRING(60) := 'TRANSFERSHUTTLE 151   -   QUERFAHRT';
+  sLblWagen101      : STRING(20) := '101';
+  sLblWagen151      : STRING(20) := '151';
+  sLblZielMarke     : STRING(10) := 'ZIEL';
+
+  // Bedienung
+  bSkalierungNeuLernen : BOOL;
+END_VAR
+
+VAR_GLOBAL RETAIN
+  // Selbstlernende Skalierung der Fahrbahnen (min/max beobachtete Position)
+  bSkalierung101Init : BOOL;
+  rMin101            : REAL;
+  rMax101            : REAL;
+  bSkalierung151Init : BOOL;
+  rMin151            : REAL;
+  rMax151            : REAL;
+END_VAR
+
+VAR_GLOBAL CONSTANT
+  cMAX_TUEREN          : WORD := 8;     // Anzahl Tueranzeigen in der Visu
+  cMAX_DURCHGAENGE     : WORD := 3;     // Anzahl Durchganganzeigen in der Visu
+  cBAHN_BREITE_PX      : INT  := 1120;  // nutzbare Breite der Fahrbahn (muss zur Visu passen)
+  cWAGEN_BREITE_PX     : INT  := 140;   // Breite Fahrwagen (muss zur Visu passen)
+  cMIN_SPANNE_MM       : REAL := 500;   // minimale Skalierungsspanne
+
+  cFARBE_GRUEN         : DWORD := 16#FF2EAD5B;
+  cFARBE_ROT           : DWORD := 16#FFD64545;
+  cFARBE_ORANGE        : DWORD := 16#FFF0A202;
+  cFARBE_BLAU          : DWORD := 16#FF2F80ED;
+  cFARBE_GRAU          : DWORD := 16#FF9AA5B1;
+  cFARBE_GRAU_HELL     : DWORD := 16#FFE4E7EB;
+  cFARBE_RAHMEN        : DWORD := 16#FFCBD2D9;
+  cFARBE_TEXT          : DWORD := 16#FF52606D;
+  cFARBE_SENSOR_AN     : DWORD := 16#FFFFC531;
+END_VAR
+END_NAMESPACE

@@ -1,0 +1,208 @@
+__V3_META__
+{
+	"objectGuid": "dfdf395f-b28a-4c89-8721-84e195a2f6ad",
+	"objectTypeGuid": "00ee7ac2-edfa-48d8-bcc5-94fda36db48c",
+	"embeddedObjectTypeGuids": [
+		"dc15b5d9-c1aa-43bd-80f8-d39a11045849"
+	]
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{00ee7ac2-edfa-48d8-bcc5-94fda36db48c}" Method="IArchivable">
+	<Array Name="SafetyGVLCode" Type="byte">AAAAASQAAACEAwAAAAAAAAECAgArMfwF//8AAP//AAABAAAAAAAAAzAAAAACAAAAAAAIAEdWTAABABwAQ09ERVNZUyBTYWZldHkgVjQuNC4wLjAAAAAAEEgCAAAZAAAAAAAcAEdfTm90aGFsdF9PS192ZXJ6b2VnZXJ0AAEAFABHX05vdGhhbHRfT0sAAAAAAgAcAEdfSW5SZWFkeV9GU29FTWFzdGVyAAAAAAMAHABBbGxlIEZTb0VNYXN0ZXJfUmVhZHkAAAAEABAAR19TS18xX09LAAAABQAQAEdfU0tfMl9PSwAAAAYAEABHX1NLXzNfT0sAAAAHABAAR19TS180X09LAAAACAAQAEdfU0tfNV9PSwAAAAkAEABHX1NLXzZfT0sAAAAKABAAR19TS183X09LAAAACwAQAEdfU0tfOF9PSwAAAAwAEABHX1NLXzlfT0sAAAANABwAR19TS18xX09LX1ZlcnpvZWdlcnQAAAAADgAcAEdfU0tfMl9PS19WZXJ6b2VnZXJ0AAAAAA8AHABHX1NLXzNfT0tfVmVyem9lZ2VydAAAAAAQABwAR19TS180X09LX1ZlcnpvZWdlcnQAAAAAEQAcAEdfU0tfNV9PS19WZXJ6b2VnZXJ0AAAAABIAHABHX1NLXzZfT0tfVmVyem9lZ2VydAAAAAATABwAR19TS183X09LX1ZlcnpvZWdlcnQAAAAAFAAcAEdfU0tfOF9PS19WZXJ6b2VnZXJ0AAAAABUAHABHX1NLXzlfT0tfVmVyem9lZ2VydAAAAAAWABgATGljaHRzY2hyYW5rZTMwMV9PSwAXABgATGljaHRzY2hyYW5rZTMwMl9PSwAYABgATGljaHRzY2hyYW5rZTMwM19PSwAAAAASHAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAFcwAAAAYAAAA//+kGQAAAAD//6QZAQAAAAMApBkCAAAA//+kGQQAAAD//6QZBQAAAP//pBkGAAAA//+kGQcAAAD//6QZCAAAAP//pBkJAAAA//+kGQoAAAD//6QZCwAAAP//pBkMAAAA//+kGQ0AAAD//6QZDgAAAP//pBkPAAAA//+kGRAAAAD//6QZEQAAAP//pBkSAAAA//+kGRMAAAD//6QZFAAAAP//pBkVAAAA//+kGRYAAAD//6QZFwAAAP//pBkYAAAArwJ2vQ==</Array>
+	<Array Name="SafetyDeclIDTable" Type="byte">AAAARcwAAAAYAAAAAAAAAAQAAAABAAAAAQAAAAIAAAADAAAAAwAAAAkAAAAEAAAACAAAAAUAAAAHAAAABgAAAAYAAAAHAAAACgAAAAgAAAAVAAAACQAAACEAAAAKAAAAIgAAAAsAAAAYAAAADAAAAAsAAAANAAAADAAAAA4AAAANAAAADwAAAA4AAAAQAAAAGQAAABEAAAAaAAAAEgAAACMAAAATAAAAJAAAABQAAAAFAAAAFQAAABIAAAAWAAAAEwAAABcAAAARAAAAuKCQiw==</Array>
+	<Dictionary Type="System.Collections.Hashtable" Name="AllEntriesHashtable">
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776065</Single>
+			</Key>
+			<Value>
+				<Single Type="int">1</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776067</Single>
+			</Key>
+			<Value>
+				<Single Type="int">3</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776068</Single>
+			</Key>
+			<Value>
+				<Single Type="int">4</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776069</Single>
+			</Key>
+			<Value>
+				<Single Type="int">5</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776070</Single>
+			</Key>
+			<Value>
+				<Single Type="int">6</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776071</Single>
+			</Key>
+			<Value>
+				<Single Type="int">7</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776072</Single>
+			</Key>
+			<Value>
+				<Single Type="int">8</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776073</Single>
+			</Key>
+			<Value>
+				<Single Type="int">9</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776074</Single>
+			</Key>
+			<Value>
+				<Single Type="int">10</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776075</Single>
+			</Key>
+			<Value>
+				<Single Type="int">11</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776076</Single>
+			</Key>
+			<Value>
+				<Single Type="int">12</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776077</Single>
+			</Key>
+			<Value>
+				<Single Type="int">13</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776078</Single>
+			</Key>
+			<Value>
+				<Single Type="int">14</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776081</Single>
+			</Key>
+			<Value>
+				<Single Type="int">17</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776082</Single>
+			</Key>
+			<Value>
+				<Single Type="int">18</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776083</Single>
+			</Key>
+			<Value>
+				<Single Type="int">19</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776085</Single>
+			</Key>
+			<Value>
+				<Single Type="int">21</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776088</Single>
+			</Key>
+			<Value>
+				<Single Type="int">24</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776089</Single>
+			</Key>
+			<Value>
+				<Single Type="int">25</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776090</Single>
+			</Key>
+			<Value>
+				<Single Type="int">26</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776097</Single>
+			</Key>
+			<Value>
+				<Single Type="int">33</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776098</Single>
+			</Key>
+			<Value>
+				<Single Type="int">34</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776099</Single>
+			</Key>
+			<Value>
+				<Single Type="int">35</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776100</Single>
+			</Key>
+			<Value>
+				<Single Type="int">36</Single>
+			</Value>
+		</Entry>
+	</Dictionary>
+</Single>

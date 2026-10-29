@@ -1,0 +1,26 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "7637b519-9876-476d-bbb2-aba53baea77e"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE MK_Schnittstelle_Sortjet
+VAR_GLOBAL
+(***************************************************************************************************)
+(* MASCHINEPARAMETER: SCHNITTSTELLE SORTJET *)
+(***************************************************************************************************)
+
+  (* Hinweis:
+     Das MMI entscheidet wer Master und wer Slave ist. 
+     Das MMI, das den Status der Verbundstrecke verwaltet ist der Master!
+  *)
+  apgMKSchnittstelle_SortJet_Remnant : Schnittstelle_SortJet_ST :=
+  (
+    bDeaktivieren      := FALSE,
+    eSchnittstellenTyp := eSchnittstelle_Master
+  );
+
+END_VAR
+END_NAMESPACE

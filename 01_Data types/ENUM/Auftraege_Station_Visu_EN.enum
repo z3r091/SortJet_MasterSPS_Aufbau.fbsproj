@@ -1,0 +1,49 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "04d9fb03-6cef-4f49-a57b-49bf98e6fb88"
+	}
+}
+*)
+  TYPE Auftraege_Station_Visu_EN :
+(
+  Kein_Auftrag                           := 0,
+  Eintransport                           := 1,
+  Austransport                           := 2,
+  Vortransport                           := 3,
+  Anlegen                                := 4,
+  Abnehmen                               := 5,
+  Messfahrt                              := 6,
+  Einschleusen                           := 7,
+  Vorabpositionierung                    := 8,
+  Positionierung                         := 9,
+  Grundstellung                          := 10,
+  Durchtransport                         := 11,
+  GlasSuchfahrt                          := 12,
+  Ausrichten                             := 13,
+  GlasBereit                             := 14,
+  Warte_Auf_Folgeauftrag                 := 15,
+  Warte_Auf_Austransport                 := 16,
+  Warte_Auf_Eintransport                 := 17,
+  Warte_Auf_Transportkopplung            := 18,
+  Messkopplung                           := 19,
+  Transportkopplung                      := 20,
+  Kopplung_Nach_SystemCheck_Erneuern     := 21,
+  Interne_Kopplung_Nach_SystemCheck      := 22,
+  GlasZurueck                            := 23,
+  Auswertung_Glasfehlmessung             := 24,
+  Interner_Glaseintransport_Default_Glas := 25,
+  Interner_Glaseintransport_Grosses_Glas := 26,
+  Belegt                                 := 27,
+  Intern_Glaseintransport_DefaultGlas    := 28,
+  Intern_Glaseintransport_GrossesGlas    := 29,
+  Intern_Kopplung_Nach_SystemCheck       := 30,
+  Manuelle_Beladung                      := 31,
+  Ausschleusen                           := 32,
+  Positionskorrektur                     := 33,
+  Hoehenmessung                          := 34,
+  Scheibenkorrektur                      := 35,
+  VorabAuftrag                           := 36
+
+) WORD;
+END_TYPE

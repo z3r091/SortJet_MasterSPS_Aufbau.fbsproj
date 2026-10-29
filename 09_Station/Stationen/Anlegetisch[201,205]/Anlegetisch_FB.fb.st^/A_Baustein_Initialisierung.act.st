@@ -1,0 +1,29 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "8f958c44-ae7c-4154-a16d-aa850ff5818d"
+	}
+}
+*)
+ACTION A_Baustein_Initialisierung
+(***************************************************************************************************)
+(* BAUSTEIN INITIALISIERUNG *)
+(***************************************************************************************************)
+
+// Antriebsparameter zuweisen  
+Glastransport.ppAntriebsInformationen      REF= BasisStationsParameter.stAntriebsparameter.stGlastransport[1];
+Glastransport.ppAntriebsInformationenSlave REF= BasisStationsParameter.stAntriebsparameter.stGlastransportSlave[1];
+Messachse.ppAntriebsInformationen          REF= BasisStationsParameter.stAntriebsparameter.stMessachse;
+
+// Antriebsparameter zuweisen  
+Glastransport.ppParameterBaustein       REF= BasisStationsParameter.stParameterStationskomponenten.stGlastransport[1];
+Messachse.ppParameterBaustein           REF= BasisStationsParameter.stParameterStationskomponenten.stMessachse;
+
+(* Hinweis:
+   - Einige Bausteine einmalig aufrufen damit die Referenz auf Antriebe geschrieben wird
+*)
+Glastransport();
+Glastransport.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bGlastransport[cWAND_1];
+
+Messachse();
+END_ACTION

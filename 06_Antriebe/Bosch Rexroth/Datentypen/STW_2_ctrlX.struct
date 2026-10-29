@@ -1,0 +1,27 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "428c2afa-f134-47f4-b3b0-35a297fba50f"
+	}
+}
+*)
+TYPE STW_2_ctrlX :
+  STRUCT
+    cBitMaterialSensor1     : BIT; //Restweg auf Mat. Sensor 1
+    cBitMaterialSensor2     : BIT; //Restweg auf Mat. Sensor 2
+    cBitSteigendeFlanke     : BIT; //Restweg auf Steigende Flanke
+    cBitDrehrichtungsumkehr : BIT; //Master/Slave bzw. Messung Drehrichtung ändern
+    cBitFahreMessachse      : BIT; //Messung starten
+    cBitSpare_2_5           : BIT; //frei
+    cBitSpare_2_6           : BIT; //frei
+    cBitSpare_2_7           : BIT; //frei
+    cBitSpare_2_8  : BIT; //frei
+    cBitSpare_2_9  : BIT; //frei
+    cBitSpare_2_10  : BIT; //frei
+    cBitSpare_2_11  : BIT; //frei
+    cBitSpare_2_12  : BIT; //frei
+    cBitSpare_2_13  : BIT; //frei
+    cBitSpare_2_14  : BIT; //frei
+    cBitNutzeLangsamFahrtNocke : BIT; // Wie in der SEW Applikation; Langsamfahrt-Nocke aktivieren
+  END_STRUCT
+END_TYPE

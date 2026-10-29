@@ -1,0 +1,167 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "fbf2ea67-55fb-43fe-86aa-6069bb2190da"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE MK_Shuttle_103
+VAR_GLOBAL
+
+(***************************************************************************************************)
+(* MASCHINEPARAMETER: SHUTTLE *)
+(***************************************************************************************************)
+
+  apgMKShuttle103 : Parameter_Station :=
+    (
+      stStationsNummern                 := ( NummerIntern := 103,
+                                             NummerExtern := 2103,
+                                             NummerSPS    := 103 ),
+      bDeaktivieren                     := FALSE,
+      wMeldungsNummer                   := 700,
+      eStationsTyp                      := eInputshuttle,
+      eaAutomatikkreis                  := [eAutomatikkreis_2],
+      eaSicherheitskreis                := [eSicherheitskreis_1, eSicherheitskreis_4],
+      eSystemcheckZyklus                := eSystemcheckZyklus_1,
+
+      stSchnittstellendaten             := (
+                                            wVorgaengerStation := cSTATION_DEFAULT,
+                                            wNachfolgerStation := cSTATION_DEFAULT,
+                                            bStationIstShuttle := TRUE,
+                                            bVorgaengerShuttle := FALSE,
+                                            bNachfolgerShuttle := FALSE
+                                          ),
+
+      stStationsOptionen                := (
+                                            stSystemcheck := (
+                                              bScheibenVermessenSystemCheck           := TRUE,
+                                              bScheibeNachSystemcheckAufAuslauf       := FALSE,
+                                              bSystemCheckMitVorgaengerBatchTransport := FALSE,
+                                              bSystemCheckMitNachfolgerBatchTransport := FALSE
+                                            ),
+
+                                            stGlastransport := (
+                                              bVortransport                          := FALSE,
+                                              bTransportMasterSlaveEintransport      := FALSE,
+                                              bTransportMasterSlaveAustransport      := FALSE,
+                                              bGLasUebernahmeSenkrecht               := FALSE,
+                                              bAustransportISOLinie                  := FALSE,
+                                              bScheibenVermessen                     := FALSE,
+                                              bMessrichtungNegativ                   := FALSE,
+                                              bScheibenmessungEintransport           := FALSE,
+                                              bScheibenmessungSensorVorabAuslauf     := FALSE,
+                                              bMessrichtungNegativ                   := FALSE
+                                            ),
+
+                                            bVorAbKomponentenAnsteuerung            := TRUE,
+                                            bVerstellungEinAusGefahrenLogikDrehen   := FALSE,
+                                            bLangsamfahrtNockenQuerfahrtAktivieren  := TRUE,
+                                            bSKBlockierenDurchVorabSensoren         := FALSE,
+                                            bStationLeerfahrenBeiSkAnforderung      := FALSE
+                                          ),
+
+      stStationsAufbau                  := (
+                                            bGeblase                      := [cANZAHL_WAENDE(TRUE)],
+                                            bGlastransport                := [cANZAHL_WAENDE(TRUE)],
+                                            bKippen                       := [cANZAHL_WAENDE(TRUE)],
+                                            bKippenSchuetz                := TRUE,
+                                            bTransportVerstellung         := [cANZAHL_WAENDE(TRUE)],
+                                            bHub                          := FALSE,
+                                            bDrehen                       := FALSE,
+                                            bMessachse                    := FALSE,
+                                            bDruckluft                    := FALSE,
+                                            bAnschlag                     := FALSE,
+                                            bSensorAuslauf                := TRUE,
+                                            bSensorEinlauf                := TRUE,
+                                            bDurchlaufSperreZumNachfolger := FALSE,
+                                            bQuerfahrt                    := TRUE,
+                                            bDLSSchmiersystem             := TRUE,
+                                            bGlastransportSlaveVorhanden  := FALSE
+                                          ),
+
+      stStationsParameter               := (
+                                            rLaengeUebergroesseScheibe              := 5000,
+                                            rMinGlasHoeheAutomatischenEintransport  := 500,
+                                            rMinGlasLaengeAutomatischenEintransport := 500,
+                                            wMaximaleAnzahlAktiverAuftraege         := 1
+                                          ),
+
+      stGlasdaten                       := [
+                                            (
+                                              rlMinGlasLaenge := 350,
+                                              rlMaxGlasLaenge := 5000,
+                                              rlMinGlasHoehe  := 250,
+                                              rlMaxGlasHoehe  := 2800,
+                                              rlMinGlasDicke  := 0.5,
+                                              rlMaxGlasDicke  := 19
+                                            )],
+      // Generische Verfahrfreigabe-Ueberwachung für Shuttle 103:
+      astShuttleAnhaltenQuellen             := [
+                                                 // [1] Station 204 -> Auslaufsensor: Scheibe faehrt ueber Auslauf
+                                                 ( bAktiv := TRUE,  wQuellenNummer := cSTATION_204,   wWand := cWAND_1, eSensorTyp := eEinlaufsensor ),
+                                                 // [2] Transfershuttle 151 -> Auslaufsensor
+                                                 ( bAktiv := TRUE,  wQuellenNummer := cSHUTTLE_151,   wWand := cWAND_1, eSensorTyp := eAuslaufsensor ),
+                                                 // [3] Transfershuttle 152 -> Einlaufsensor
+                                                 ( bAktiv := TRUE,  wQuellenNummer := cSHUTTLE_152,   wWand := cWAND_1, eSensorTyp := eAuslaufsensor ),
+                                                 // [4] Transfershuttle 152 -> Einlaufsensor
+                                                 ( bAktiv := FALSE ),
+                                                 // [5] nicht belegt
+                                                 ( bAktiv := FALSE ),
+                                                 // [6] nicht belegt
+                                                 ( bAktiv := FALSE )
+                                               ]
+    );
+
+(***************************************************************************************************)
+(* SHUTTLE GLASTRANSPORT *)
+(***************************************************************************************************)
+
+apgMKShuttle103Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_ShuttleGlastransport := [
+  (
+    rLaengeStation                    := 5100,
+    rScheibenabstand                  := 300,
+    rWegUeberEinlauf                  := 250,
+    rWegUeberEinlaufRueck             := 50,
+    rUeberwachungEinlaufsensor        := 500,
+    rWegUeberAuslauf                  := 50,
+    rWegUeberAuslaufRueck             := 50,
+    rUeberwachungAuslaufsensor        := 500,
+    rWegUeberSensorLetzteScheibe      := 50,
+    rWegUeberSensorSystemCheck        := 15,
+    rWegUeberwachungSensor            := 500,
+    rMesstoleranz                     := 5,
+    rMessstrecke                      := 3656,
+    rWegstreckeBisZurVerzoegerung     := 3000
+  )];
+
+(***************************************************************************************************)
+(* SHUTTLE KIPPEN *)
+(***************************************************************************************************)
+
+apgMKShuttle103Kippen : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Kippen := [
+  (
+    tZeitlicheUeberwachungKippen      := TIME#20s0ms,
+    tZeitAntriebsfreigabeErhalten     := TIME#10s0ms,
+    rToleranz                         := 0.5,
+    rPosition0Grad                    := 0,
+    rPosition84Grad                   := 0,
+    rPosition88_5Grad                 := 120,
+    rPosition90Grad                   := 178,
+    rPosition96Grad                   := 0
+  )];
+
+(***************************************************************************************************)
+(* SHUTTLE SCHEIBENFUEHRUNG *)
+(***************************************************************************************************)
+
+  apgMKShutte103Scheibenfuehrung : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Dickenverstellung := [
+    (
+      rPosition_Minimal                 := 0,
+      rPosition_Mittel                  := 180,
+      rPosition_Maximal                 := 180,
+      rToleranz                         := 1
+    )];
+
+END_VAR
+END_NAMESPACE

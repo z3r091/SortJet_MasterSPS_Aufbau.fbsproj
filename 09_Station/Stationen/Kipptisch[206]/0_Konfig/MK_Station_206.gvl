@@ -1,0 +1,128 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "d056a025-7346-4412-a27e-a3ba4851b2d6"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE MK_Station_206
+
+VAR_GLOBAL
+
+(***************************************************************************************************)
+(* MASCHINEPARAMETER: KIPPTISCH *)
+(***************************************************************************************************)
+
+  apgMKStation206 : Parameter_Station:=
+    (
+      stStationsNummern                     := ( NummerIntern :=   206,
+                                                 NummerExtern :=  2206,
+                                                 NummerSPS    :=   206 ),
+      bDeaktivieren                         := FALSE,
+      wMeldungsNummer                       := 1760,
+      eStationsTyp                          := eStation,
+      eaAutomatikkreis                      := [eAutomatikkreis_2],
+      eaSicherheitskreis                    := [eSicherheitskreis_4],
+      eSystemcheckZyklus                    := eSystemcheckZyklus_1,
+      stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DYNAMISCH,
+                                                 wNachfolgerStation := cSTATION_205,
+                                                 bStationIstShuttle := FALSE,
+                                                 bVorgaengerShuttle := TRUE,
+                                                 bNachfolgerShuttle := FALSE
+                                               ),
+      stStationsOptionen                    := ( stSystemcheck :=  ( bScheibenVermessenSystemCheck               := TRUE,  
+                                                                     bScheibeNachSystemcheckAufAuslauf           := FALSE,
+                                                                     bSystemCheckMitVorgaengerBatchTransport     := FALSE,
+                                                                     bSystemCheckMitNachfolgerBatchTransport     := FALSE
+                                                                    ),  
+                                                                     
+                                                 stGlastransport :=  ( bVortransport                             := FALSE,
+                                                                       bTransportMasterSlaveEintransport         := FALSE, 
+                                                                       bTransportMasterSlaveAustransport         := FALSE,
+                                                                       bGLasUebernahmeSenkrecht                  := TRUE,
+                                                                       bAustransportISOLinie                     := FALSE,
+                                                                       bScheibenVermessen                        := FALSE,
+                                                                       bMessrichtungNegativ                      := FALSE,
+                                                                       bScheibenmessungEintransport              := FALSE,
+                                                                       bScheibenmessungSensorVorabAuslauf        := FALSE,
+                                                                       bMessrichtungNegativ                      := FALSE
+                                                                      ),   
+                                                 bVorAbKomponentenAnsteuerung              := FALSE,
+                                                 bVerstellungEinAusGefahrenLogikDrehen     := FALSE,
+                                                 bLangsamfahrtNockenQuerfahrtAktivieren    := FALSE,
+                                                 bSKBlockierenDurchVorabSensoren           := FALSE,
+                                                 bStationLeerfahrenBeiSkAnforderung        := FALSE
+                                               ),
+      stStationsAufbau                      := ( bGeblase                      := [ cANZAHL_WAENDE(FALSE) ],
+                                                 bGlastransport                := [ TRUE ],
+                                                 bKippen                       := [ TRUE ],
+                                                 bKippenSchuetz                := FALSE,
+                                                 bTransportVerstellung         := [ cANZAHL_WAENDE(FALSE) ],
+                                                 bHub                          := FALSE,
+                                                 bDrehen                       := FALSE,
+                                                 bMessachse                    := FALSE,
+                                                 bDruckluft                    := FALSE,
+                                                 bAnschlag                     := FALSE,
+                                                 bSensorAuslauf                := TRUE,
+                                                 bSensorEinlauf                := TRUE,
+                                                 bDurchlaufSperreZumNachfolger := FALSE,
+                                                 bQuerfahrt                    := FALSE,
+                                                 bKipparme                     := FALSE,
+                                                 bSlaveAntrieb                 := TRUE,
+                                                 bMessachseAmEndeVomTisch      := FALSE
+                                               ),
+      stStationsParameter                   := ( rLaengeUebergroesseScheibe              := 4240,
+                                                 rMinGlasHoeheAutomatischenEintransport  := 500,
+                                                 rMinGlasLaengeAutomatischenEintransport := 500,
+                                                 wMaximaleAnzahlAktiverAuftraege := 1
+		                                          ),
+      stGlasdaten                           := [( rlMinGlasLaenge := 350, 
+                                                  rlMaxGlasLaenge := 5000,
+                                                  rlMinGlasHoehe  := 250,
+                                                  rlMaxGlasHoehe  := 2800,
+                                                  rlMinGlasDicke  := 2.2,
+                                                  rlMaxGlasDicke  := 19
+                                               )]
+     );
+
+  apgMKStation206Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Glastransport := [
+    (
+      rLaengeStation                        := 5100, // Länge der Station                                                                                                                      
+      rScheibenabstand                      :=  300, // Der Abstand zwischen zwei Scheiben auf der Station                                                                                     
+      rWegUeberAuslauf                      :=   50, // So weit soll über den Auslaufsensor hinaus gefahren werden                                                                             
+      rWegUeberEinlauf                      :=   50, // So weit soll über den Einlaufsensor hinaus gefahren werden                                                                             
+      rWegUeberSensorenSystemCheck          :=   15, // Der Weg der beim Systemcheck über die Sensoren gefahren wird                                                                           
+      rUeberwachungAuslaufsensor            :=  500, // Ueberwachung des Auslaufsensors [Strecke in der der Auslaufsensor Frei / überfahren werden soll]                                       
+      rUeberwachungEinlaufsensor            :=  500, // Ueberwachung des Einlaufsensors [Strecke in der der Einlaufsensor Frei / überfahren werden soll]                                       
+      rWegUeberEinlaufEintransport          :=  150, // Lücke beim Eintransport zwischen Scheibenhinterkante und Sensor                                                                        
+      rWegUeberEinlaufAustransport          :=   50, // Lücke beim Austransport zwischen Scheibenhinterkante und Sensor                                                                        
+      rWegUeberAuslaufEintransport          :=   50, // Lücke beim Eintransport zwischen Scheibenhinterkante und Sensor                                                                        
+      rWegUeberAuslaufAustransport          :=   50, // Lücke beim Austransport zwischen Scheibenhinterkante und Sensor                                                                        
+      rWegEinlaufsensorZuVorStopSensor      := 3840, // Weg vom Einlaufsensor bis zwischen den Auslauf- und VorabAuslaufsensor                                                                 
+      rMesstoleranz                         :=   10, // Toleranz-Mass für die Scheibenlaengenmessung                                                                                           
+      rMessstrecke                          := 3805, // Weg zwischen Einlauf- und Auslaufsensor                                                                                                
+      rWegstreckeBisZurVerzoegerung         := 1900  // Weg die gefahren werden soll bis der Antrieb abgebremst, dies gilt für Eintransportauftraege die das Bit "Letzte Scheibe" gesetzt haben
+    )];
+
+  apgMKStation206Querfahrt : Parameter_Querfahrt :=
+    (
+      tZeitAntriebsfreigabeErhalten          := T#3M, // [s] Energieeinsparrung: Zeiteinheit nach der die Antriebsfreigabe entzogen werden soll wenn keine Aktion ansteht [1 s = 1000 ms ] *)
+      rParkPositionMinimum                   := 0,    // Parkposition min
+      rParkPositionMaximum                   := 0     // Parkposition max
+    );
+
+  apgMKStation206Kippen : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Kippen := [
+    (
+      tZeitlicheUeberwachungKippen          := TIME#5000MS, // [ms] Verwendet für Antriebe die über einen Schuetz angesteuert werden  
+      tZeitAntriebsfreigabeErhalten         :=   TIME#180S, // [s] Energieeinsparrung: Zeiteinheit nach der die Antriebsfreigabe entzogen werden soll wenn keine Aktion ansteht
+      rToleranz                             :=           1, // Toleranz beim entscheiden der aktuellen Positionen 
+      rPosition0Grad                        :=           0, // Position 0 
+      rPosition84Grad                       :=       836.4, // Senkrechte- Position 84 Grad: Position auf die die Station gehoben werden soll *)
+      rPosition90Grad                       :=       214.5, // Position 90 Totpunkt bei 222, Schwingen sind falsch eingestellt, daher vorläufig vorher anhalten
+      bKippenMitSchuetz                     :=       FALSE  // Option Kippen mit Schütz
+    )];
+
+END_VAR
+
+END_NAMESPACE

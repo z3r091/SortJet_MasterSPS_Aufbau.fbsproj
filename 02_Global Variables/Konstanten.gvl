@@ -1,0 +1,280 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "aefcf88b-f8e6-4fd5-9d29-077a37aead0e"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE Konstanten
+VAR_GLOBAL CONSTANT
+
+  (* Konstanten für die Profibus Master (falls mehrere vorhanden sind) *)
+  cPROFIBUSMASTER_1 : BYTE := 0;
+  cPROFIBUSMASTER_2 : BYTE := 1;
+
+  (* Konstanten als Ersatz für sizeof *)
+  cSizeOfByte  : WORD := 1;
+  cSizeOfWord  : WORD := 2;
+  cSizeOfDWord : WORD := 4;
+  cSizeOfSInt  : WORD := 1;
+  cSizeOfUSInt : WORD := 1;
+  cSizeOfInt   : WORD := 2;
+  cSizeOfUInt  : WORD := 2;
+  cSizeOfDInt  : WORD := 4;
+  cSizeOfUDInt : WORD := 4;
+  cSizeOfReal  : WORD := 0;
+
+  cMillisecToSec    : WORD  := 1000;
+  cMillisecToMinute : WORD  := 60000;
+
+(***************************************************************************************************)
+(*SYSTEMCHECK *)
+(***************************************************************************************************)
+  cMAX_ANZAHL_SYSTEMCHECKZYKLEN : WORD := 6;
+
+  // Maximale Anzahl konfigurierbarer Ueberwachungsquellen fuer bpShuttleAnhalten pro Shuttle
+  cMAX_SHUTTLE_ANHALTEN_QUELLEN  : WORD := 6;
+  
+(***************************************************************************************************)
+(* BIT- MASKEN *)
+(***************************************************************************************************)
+
+  (* Hinweis:
+     - Bit Maske
+  *)
+  (*                       5432109876543210 --- *)
+  Maske_Bit_0  : WORD := 2#0000000000000001 ;
+  Maske_Bit_1  : WORD := 2#0000000000000010 ;
+  Maske_Bit_2  : WORD := 2#0000000000000100 ;
+  Maske_Bit_3  : WORD := 2#0000000000001000 ;
+  Maske_Bit_4  : WORD := 2#0000000000010000 ;
+  Maske_Bit_5  : WORD := 2#0000000000100000 ;
+  Maske_Bit_6  : WORD := 2#0000000001000000 ;
+  Maske_Bit_7  : WORD := 2#0000000010000000 ;
+  Maske_Bit_8  : WORD := 2#0000000100000000 ;
+  Maske_Bit_9  : WORD := 2#0000001000000000 ;
+  Maske_Bit_10 : WORD := 2#0000010000000000 ;
+  Maske_Bit_11 : WORD := 2#0000100000000000 ;
+  Maske_Bit_12 : WORD := 2#0001000000000000 ;
+  Maske_Bit_13 : WORD := 2#0010000000000000 ;
+  Maske_Bit_14 : WORD := 2#0100000000000000 ;
+  Maske_Bit_15 : WORD := 2#1000000000000000 ;
+
+  (* ### KONFIGURIEREN ### *)
+
+  (* Hinweis:
+     - Die folgende Constante darf nicht vergrößert werden, weil es sonst zu einem
+       Ueberlauf in der Nachrichtenstruktur kommt
+  *)
+  cMaxScheibenBeiScheibenMessung  : WORD := 10;
+
+  cMELDUNGScheibe                 : WORD := 0;
+  cMAXSCHEIBE                     : WORD := 4;
+  cDEFAULTSCHEIBE                 : WORD := 5;
+  cMODELLSCHEIBE                  : WORD := 6;
+
+  cGLASDICKEBIS16MM               : WORD := 10;
+  cGLASDICKEBIS23MM               : WORD := 11;
+  cGLASDICKEBIS29MM               : WORD := 12;
+
+  GLASSTAERKE_DEFAULT_MIN         : WORD := WORD#3;
+  GLASSTAERKE_DEFAULT_MAX         : WORD := WORD#14;
+  
+  (* FAECHERWAGENSTATION *)
+  cEINSCHLEUSESTATION : WORD := 1;
+  cPUFFERSTATION      : WORD := 2;
+  cFUELLSTATION       : WORD := 3;
+  cAUSSCHLEUSESTATION : WORD := 4;
+  cKIPPSTATION        : WORD := 5;
+  cHUBSTATION         : WORD := 6;
+	cENTNAHMESTATION: BOOL := TRUE;
+
+  (* Hinweis:
+     - Konstanten fuer das Drehkreuz
+  *)
+  cGLASDEFAULT : WORD := 0;
+  cGLASDREHEN  : WORD := 1;
+
+  (* Hinweis:
+     - Grad-Konstanten fuer das Drehkreuz
+  *)
+  cPOSITION_0Grad    : WORD := 0;
+  cPOSITION_90Grad   : WORD := 90;
+  cPOSITION_180Grad  : WORD := 180;
+  cPOSITION_270Grad  : WORD := 270;
+  cPOSITION_360Grad  : WORD := 360;
+  rgPOSITION_0Grad   : REAL := REAL#0;
+  rgPOSITION_90Grad  : REAL := REAL#90;
+  rgPOSITION_180Grad : REAL := REAL#180;
+  rgPOSITION_270Grad : REAL := REAL#270;
+  rgPOSITION_360Grad : REAL := REAL#360;
+
+  (* Hinweis:
+     - Modus wie der FB den Antrieb ansteuern soll 
+  *)
+  cMODUS_MASTER_SLAVE : BYTE := 0;
+  cMODUS_HAND         : BYTE := 1;
+  cMODUS_RESTWEG      : BYTE := 2;
+
+  (* Hinweis:
+     - Unterscheidung Speicher-Einlaufbereich und Speicher-Auslaufbereich
+  *)
+  cSPEICHER_EINLAUFSEITE : BYTE := 1;
+  cSPEICHER_AUSLAUFSEITE : BYTE := 2;
+
+  (* Zuweisungskonstanten *)
+  cNULL              : WORD := 0;
+  cNULL_WORD_ARRAY   : ARRAY [0..3] OF WORD  :=[ 4(0)];
+  cNULL_DWORD_ARRAY  : ARRAY [0..3] OF DWORD :=[ 4(0)];
+
+  cFUEHRUNGSWAGEN    : WORD := 1;
+  cZAHNSTANGE        : WORD := 2;
+
+  cSCHMIERKREIS_1    : WORD := 1;
+  cSCHMIERKREIS_2    : WORD := 2;
+  cSCHMIERKREIS_1_2  : WORD := 3;
+
+
+(***************************************************************************************************)
+(* FOLGEAUFTRAGSTYPEN *)
+(***************************************************************************************************)
+  cFOLGEAUFTRAG_NICHT_AKTIV : WORD := 0;
+  cFOLGEAUFTRAG_AKTIV       : WORD := 1;
+
+
+(***************************************************************************************************)
+(* S T A R T - Beladungs- Typ fuer die Shuttle / Stationen nach einem SystemCheck  *)
+(***************************************************************************************************)
+  cSTATUS_STATION_FREI              : WORD := 0;
+  cSTATUS_STATION_BELEGT            : WORD := 1;
+  cSTATUS_STATION_BELEGT_NACHFOLGER : WORD := 2;
+  cSTATUS_STATION_BELEGT_VORGEANGER : WORD := 3;
+
+
+(***************************************************************************************************)
+(* BIT-ZUGRIFF WAENDE  *)
+(***************************************************************************************************)
+  (* Hinweis:
+     - Statuswort <wLetzteScheibe> / <wErsteScheibe>
+     - Globale Konstanetn fuer den <bitaccess> der Strukturen ErsteScheibe_ST und LetzteScheibe_ST
+     - Werde sind Bit-Codiert 
+  *)
+  cBIT_WAND1   : INT := 0 ;
+  cBIT_WAND2   : INT := 1 ;
+  cBIT_WAND3   : INT := 2 ;
+  cBIT_WAND4   : INT := 3 ;
+  cBIT_WAND5   : INT := 4 ;
+  cBIT_WAND6   : INT := 5 ;
+  cBIT_WAND7   : INT := 6 ;
+  cBIT_WAND8   : INT := 7 ;
+  cBIT_WAND9   : INT := 8 ;
+  cBIT_WAND10  : INT := 9 ;
+  cBIT_WAND11  : INT := 10;
+  cBIT_WAND12  : INT := 11;
+  cBIT_WAND13  : INT := 12;
+  cBIT_WAND14  : INT := 13;
+  cBIT_WAND15  : INT := 14;
+  cBIT_WAND16  : INT := 15;
+
+
+  (* Hinweis:
+     - Bit-Definition für die Auftragsinformationen
+  *)
+  cBIT_AUFTRAGSTYP          : WORD := 0;
+  cBIT_SRCSTATION_EMPTY     : WORD := 1;
+  cBIT_Reserve              : WORD := 2;
+  cBIT_WALL_1_EMPTY         : WORD := 3;
+  cBIT_WALL_2_EMPTY         : WORD := 4;
+  cBIT_WALL_3_EMPTY         : WORD := 5;
+  cBIT_WALL_4_EMPTY         : WORD := 6;
+  cBIT_SRC_WALL_1_EMPTY     : WORD := 7;
+  cBIT_SRC_WALL_2_EMPTY     : WORD := 8;
+  cBIT_UNUSED               : WORD := 9;
+  cBIT_BUFFERSLOT_THICKNESS : WORD := 10;
+
+
+(***************************************************************************************************)
+(* Sensorfehlertypen  *)
+(***************************************************************************************************)
+
+  cAUSNAHMESITUATION_KEIN_SENSOR            : WORD := 0;
+  cAUSNAHMESITUATION_EINLAUFSENSOR          : WORD := 1;
+  cAUSNAHMESITUATION_AUSLAUFSENSOR          : WORD := 2;
+  cAUSNAHMESITUATION_EINLAUF_AUSLAUF_SENSOR : WORD := 3;
+
+
+(***************************************************************************************************)
+(* Status Auftrag  *)
+(***************************************************************************************************)
+
+  cAUFTRAG_FEHLER      : BYTE := 0;
+  cAUFTRAG_ERFOLGREICH : BYTE := 1;
+  cAUFTRAG_KEIN_STATUS : BYTE := 99;
+
+(***************************************************************************************************)
+(* String- Verarbeitung  *)
+(***************************************************************************************************)
+
+   cLINE_FEED       : BYTE := BYTE#16#0A;
+   cCARRIAGE_RETURN : BYTE := BYTE#16#0D;
+
+(***************************************************************************************************)
+(* ASCII TABELLE  *)
+(***************************************************************************************************)
+
+  (* Hinweis:
+     - Datenwoerter in String konvertieren
+  *)
+	ascii : ARRAY[0..255] OF STRING(1) :=[ 33(' '), '!', '"','#','$$' ,'%' ,'&' ,' ','(' ,')' ,'*' ,'+' ,',' ,
+                                        '-' ,'.' ,'/' ,'0' ,'1' ,'2' ,'3' ,'4' ,'5' ,'6' ,'7' ,'8' ,'9' ,':' ,
+                                        ';' ,'<' ,'=' ,'>' ,'?' , '@','A' ,'B' ,'C' ,'D' ,'E' ,'F' ,'G' ,'H' ,
+                                        'I' ,'J' ,'K' ,'L' ,'M' ,'N' ,'O' ,'P' ,'Q' ,'R' ,'S' ,'T' ,'U' ,'V' ,
+                                        'W' ,'X' ,'Y' ,'Z' ,'[','\' ,']' ,'^' ,'_' ,'`' ,'a' ,'b' ,'c' ,'d' ,'e' ,
+                                        'f' ,'g' ,'h' ,'i' ,'j' ,'k' ,'l' ,'m' ,'n' ,'o' ,'p' ,'q' ,'r' ,'s' ,'t' ,
+                                        'u' ,'v' ,'w' ,'x' ,'y' ,'z' ,'{' ,'|' ,'}' ,'~'];
+
+
+(***************************************************************************************************)
+(* Globale Konstanetn  *)
+(***************************************************************************************************)
+  cEVENT_STATUS_STATION_BELADEN         : WORD := 16#1;
+  cEVENT_STATUS_FREIGEGEBEN             : WORD := 16#2;
+  cEVENT_STATUS_GLAS_NICHT_FREIGEGEBEN  : WORD := 16#4;
+  cEVENT_STATUS_QUITTUNG_ISO_LINE_EVENT : WORD := 16#8;
+  cEVENT_STATUS_GLASBRUCH               : WORD := 16#10;
+  cEVENT_STATUS_GLASABGENOMMEN          : WORD := 16#20;
+
+(***************************************************************************************************)
+(* IO am Umrichter*)
+(***************************************************************************************************)
+
+  // DI an XG31
+  cXG31_1_I_1     : WORD  := 16;
+  cXG31_2_I_2     : WORD  := 17;
+  cXG31_3_I_3     : WORD  := 18;
+  cXG31_6_I_4     : WORD  := 19;
+  cXG31_7_I_5     : WORD  := 20;
+  cXG31_8_I_6_O_1 : WORD  := 21;
+
+  // DI an XG37
+  cXG37_1_IO_1    : WORD  := 22;
+  cXG37_2_IO_2    : WORD  := 23;
+
+  cXG37_3_I_5     : WORD  := 26;
+  cXG37_4_I_6     : WORD  := 27;
+  cXG37_5_I_7     : WORD  := 28;
+  cXG37_6_I_8     : WORD  := 29;
+
+  // DO an XG37              Die Bits aus dem SignalSteuerwort!
+  cXG37_IO_3      : WORD  := 3;
+  cXG37_IO_4      : WORD  := 4;
+  cXG37_O_5       : WORD  := 5;
+  cXG37_O_6       : WORD  := 6;
+  cXG37_O_7       : WORD  := 7;
+  cXG37_O_8       : WORD  := 8;
+  
+  
+END_VAR
+
+END_NAMESPACE

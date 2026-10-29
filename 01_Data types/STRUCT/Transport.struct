@@ -1,0 +1,21 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "659bb7d1-2191-4704-988b-774fa8cbfa9e"
+	}
+}
+*)
+TYPE Transport :
+STRUCT
+    Station                  : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF TransportRichtung_EN;
+    Glastransport            : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Glastransport_EN;
+    Drehen                   : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Drehen_EN;
+    Kippen                   : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Kippen_EN;
+    KippenNachEintransport   : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Kippen_EN;
+    KippenNachAustransport   : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Kippen_EN;
+    Hub                      : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Hub_EN;
+    HubNachEintransport      : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Hub_EN;
+    HubNachAustransport      : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Hub_EN;
+    bStationQuittiertScheibe : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+END_STRUCT
+END_TYPE

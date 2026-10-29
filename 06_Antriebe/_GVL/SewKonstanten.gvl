@@ -1,0 +1,14 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "adc7aa3a-4b4d-4674-838f-e74f57d67202"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE SewKonstanten
+VAR_GLOBAL CONSTANT
+
+END_VAR
+
+END_NAMESPACE

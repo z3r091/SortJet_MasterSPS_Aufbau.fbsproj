@@ -1,0 +1,19 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "f15f2cc4-272f-4f01-bc83-471005cc2455"
+	}
+}
+*)
+TYPE TransfershuttleReservierungsTyp_EN :
+  (
+    TS_KEINE_RESERVIERUNG                      := 0,
+	  TS_EINTRANSPORT_RESERVIERUNG               := 1,
+	  TS_EINTRANSPORT_RUECKWERTIG_RESERVIERUNG   := 2,
+    TS_AUSTRANSPORT_RESERVIERUNG               := 3,
+    TS_AUSTRANSPORT_RUECKWERTIG_RESERVIERUNG   := 4,
+    TS_POSITIONIEREN_RESERVIERUNG              := 5,
+    TS_TRANSPORTKOPPLUNG_RESERVIERUNG          := 6,
+	  TS_VORTRANSPORT_RESERVIERUNG               := 7
+  ) WORD;
+END_TYPE

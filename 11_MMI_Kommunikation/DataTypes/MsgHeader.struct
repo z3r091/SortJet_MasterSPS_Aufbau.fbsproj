@@ -1,0 +1,13 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "a476ff61-aec7-4f12-8d88-b01865ebe224"
+	}
+}
+*)
+TYPE MsgHeader :
+STRUCT
+ wType   : WORD;
+ wLenght : WORD;
+END_STRUCT
+END_TYPE

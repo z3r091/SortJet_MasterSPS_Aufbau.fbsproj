@@ -1,0 +1,53 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "b811f970-5bb4-47d6-b3a4-7789b6b9af70"
+	}
+}
+*)
+TYPE Auftraege_Station_EN :
+(
+  eStation_Kein_Auftrag                           := 0,
+  eStation_Eintransport                           := 1,
+  eStation_Austransport                           := 2,
+  eStation_Vortransport                           := 3,
+  eStation_Anlegen                                := 4,
+  eStation_Abnehmen                               := 5,
+  eStation_Messfahrt                              := 6,
+  eStation_Einschleusen                           := 7,
+  eStation_Vorabpositionierung                    := 8,
+  eStation_Positionierung                         := 9,
+  eStation_Grundstellung                          := 10,
+  eStation_Durchtransport                         := 11,
+  eStation_GlasSuchfahrt                          := 12,
+  eStation_Ausrichten                             := 13,
+  eStation_GlasBereit                             := 14,
+  eStation_Warte_Auf_Folgeauftrag                 := 15,
+  eStation_Warte_Auf_Austransport                 := 16,
+  eStation_Warte_Auf_Eintransport                 := 17,
+  eStation_Warte_Auf_Transportkopplung            := 18,
+  eStation_Messkopplung                           := 19,
+  eStation_Transportkopplung                      := 20,
+  eStation_Kopplung_Nach_SystemCheck_Erneuern     := 21,
+  eStation_Interne_Kopplung_Nach_SystemCheck      := 22,
+  eStation_GlasZurueck                            := 23,
+  eStation_Auswertung_Glasfehlmessung             := 24,
+  eStation_Interner_Glaseintransport_Default_Glas := 25,
+  eStation_Interner_Glaseintransport_Grosses_Glas := 26,
+  eStation_Belegt                                 := 27,
+  eStation_Intern_Glaseintransport_DefaultGlas    := 28,
+  eStation_Intern_Glaseintransport_GrossesGlas    := 29,
+  eStation_Intern_Kopplung_Nach_SystemCheck       := 30,
+  eStation_Manuelle_Beladung                      := 31,
+  eStation_Ausschleusen                           := 32,
+  eStation_Positionskorrektur                     := 33,
+  eStation_Hoehenmessung                          := 34,
+  eStation_Scheibenkorrektur                      := 35,
+  eStation_VorabAuftrag                           := 36,
+  eStation_Warte_Auf_Austransport_Nachfolger      := 37, // Übergroße Scheibe liegt noch auf der Station und muss mit der Folgestation austransportiert werden
+  eStation_RackSuche                              := 39,
+  eStation_BelegtNachfolger                       := 40,
+  eStation_Geblockt                               := 41
+
+) WORD;
+END_TYPE

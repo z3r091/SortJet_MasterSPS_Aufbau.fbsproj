@@ -1,0 +1,46 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "76752317-7458-4fb9-a208-9fc6e377363f"
+	}
+}
+*)
+TYPE Fehlerkategorien_EN :
+(
+  (* KATEGORIE BETRIEBSARTEN *)
+  eFehler_KeineKategorie         := 0,
+
+  (* KATEGORIE STATIONEN *)
+  eFehler_Station                := 10,
+
+  (* KATEGORIE SCHNITTELLE *)
+  eFehler_Schnittstelle          := 20,
+
+  (* KATEGORIE ANTRIEB *)
+  eFehler_Sew_MoviDrive          := 50,
+  eFehler_Sew_MoviTrac           := 51,
+  eFehler_Antrieb                := 54,
+  eFehler_Rexroth_Fehler         := 60, // Benutzt 60, 62, 63, 64, 66, 67, 68, 100, 164, 191, 196
+  eFehler_Rexroth_Warnung        := 70, // Benutzt 72, 73, 74, 78, 201
+
+  (* KATEGORIE SONDERFAELLE *)
+  eFehler_Mmi                    := 101,
+  eFehler_Debug                  := 110,
+
+  (* KATEGORIE ISO- LINIE *)
+  eFehler_ISOLINIE               := 200,
+
+  (* KATEGORIE VERFAHRÜBERWACHUNG *)
+  eFehler_Verfahrueberwachung    := 250,
+
+  (* KATEGORIE Safety *)
+  eFehler_Safety_Allgemein       := 150,
+  eFehler_Safety_Phoenix_Devices := 151,
+  eFehler_Safety_Schmersal       := 152,
+
+  (* KATEGORIE SBT *)
+  eFehler_SBT_Allgemein         := 300,
+  eFehler_SBT_Devices           := 301
+
+) WORD;
+END_TYPE

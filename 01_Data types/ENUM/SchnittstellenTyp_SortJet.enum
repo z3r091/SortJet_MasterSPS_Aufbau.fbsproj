@@ -1,0 +1,13 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "b3a059c4-755e-4c85-a944-0810bb3b55f7"
+	}
+}
+*)
+TYPE SchnittstellenTyp_SortJet :
+(
+  eSchnittstelle_Master    := 1,
+  eSchnittstelle_Slave     := 2
+) WORD;
+END_TYPE

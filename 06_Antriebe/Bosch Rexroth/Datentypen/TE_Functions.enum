@@ -1,0 +1,106 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "40974c13-83c0-4d09-9ff3-0304a85526d3"
+	}
+}
+*)
+{attribute 'excludefrombuild'}
+{attribute 'qualified_only'}
+{attribute 'strict'}
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//
+//  ACHTUNG! Eine Zuweisungsaenderung oder neu einfuegen von Meldungen muessen in der dazugehoerigen
+//           Initialiserungsdatei angepasst werden! Wird dies nicht beruecksichtgt kann dies in  
+//           falsch Meldungen resultieren!
+//
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+TYPE TE_Functions ://ATTENTION: Synchronisation with HControl!!! Holds the IDs of the used functions.
+(
+  HomePosition                     :=  0,
+  HomePositionAxis                 :=  1,
+  HomePositionSeperationDevice     :=  2,
+  Referenz                         :=  3,
+  Couple                           :=  4,
+  Uncouple                         :=  5,
+  Extend                           :=  6,
+  Retract                          :=  7,
+  MoveAbsolut                      :=  8,
+  MoveRelative                     :=  9,
+  MoveTouch                        := 10,
+  MoveContinuous                   := 11,
+  Turn                             := 12,
+  Open                             := 13,
+  Close                            := 14,
+  SwitchOn                         := 15,
+  SwitchOff                        := 16,
+  Position                         := 17,
+  ReferenzMaterial                 := 18,
+  RetractFromMaterial              := 19,
+  CollectMaterial_Positiv          := 20,
+  CollectMaterial_Negativ          := 21,
+  Dispose                          := 22,
+  ObservationPoint                 := 23,
+  Heat                             := 24,
+  ExtendBreakingRoll               := 25,
+  RetractBreakingRoll              := 26,
+  ExtendCuttingWheel               := 27,
+  RetractCuttingWheel              := 28,
+  ExtendCuttingKnife               := 29,
+  RetractCuttingKnife              := 30,
+  UnfoldCuttingKnife               := 31,
+  CollapseCuttingKnife             := 32,
+  Fixate                           := 33,
+  Seperate                         := 34,
+  BreakWithBar                     := 35,
+  BreakWithRoll                    := 36,
+  BreakWithCylinder                := 37,
+  CutFoil                          := 38,
+  Cut                              := 39,
+  ReleasePresure                   := 40,
+  Stock                            := 41,
+  Unstock                          := 42,
+  ControllStockOccupation          := 43,
+  Check                            := 44,
+  Infeed                           := 45,
+  Outfeed                          := 46,
+  Align                            := 47,
+  TeachModus                       := 48,
+  TeachDistance                    := 49,
+  Idle                             := 50,
+  Test                             := 51,
+  ProcessRemasterJob               := 52,
+  Init                             := 53, 
+  Stop                             := 54,
+  Umgreifen                        := 55,
+  BlowOffVacuum                    := 56,
+  CloseTemporary                   := 57,
+  Lower                            := 58,
+  Raise                            := 59,
+  PositionTool                     := 60,
+  ManualOperation                  := 61,
+  StartUp                          := 62,
+  CheckOccupation                  := 63,
+  ExchangeTool                     := 64,
+  ReleaseMaterialTemporary         := 65,
+  RequestSafetyCircuit             := 66,
+  Calibrate                        := 67,
+  Measure                          := 68,
+  Reset                            := 69,
+  SetPosition                      := 70,
+  BuildGap                         := 71,
+  CleanWithWay                     := 72,
+  CleanWithTime                    := 73,
+  RoboterDeposite                  := 74,
+  RoboterPickUp                    := 75,
+  LaserPreparation                 := 76,
+  LaserFisnish                     := 77,
+  CorrectionOfPosition             := 78,
+  TransmitData                     := 79,
+  ManualLoading                    := 80,
+  JobManagment                     := 81,
+  EmptyDisposalBin                 := 82,
+  ControlTool                      := 83,
+  SearchForMaterial                := 84
+) UINT;
+END_TYPE

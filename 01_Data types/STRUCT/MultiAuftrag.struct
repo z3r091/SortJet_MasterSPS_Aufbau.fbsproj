@@ -1,0 +1,23 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "7de0f2f9-1410-4cfb-9d6f-bf5a4324e7e5"
+	}
+}
+*)
+(* Anmerkung:
+   - Verwaltung der Auftragsdaten [ Glasdaten]
+*)
+TYPE MultiAuftrag :
+  STRUCT
+    rLaenge              : REAL; (* Scheiben- Laenge *)
+    rHoehe               : REAL; (* Scheiben- Hoehe  *)
+    rBreite              : REAL; (* Scheiben- Breite *)
+    rModellVersatzVorne  : REAL; (* Scheiben- Modelversatz *)
+    rModellVersatzHinten : REAL; (* Scheiben- Modelversatz *)
+    wScheibenAnzahl      : WORD; (* Scheiben- Anzahl der Scheiben *)
+    wQuellStation        : WORD; (* Quell - Station: Von dieser Station kommt das Glas *)
+    wZielStation         : WORD; (* Ziel- Station: Auf diese Station soll das Glas gefahren werden *)
+    bModell              : BOOL; (* Scheibe ist ein Modell *)
+  END_STRUCT
+END_TYPE

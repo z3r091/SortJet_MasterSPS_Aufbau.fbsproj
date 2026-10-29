@@ -1,0 +1,22 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "cb27a407-46bb-45a0-85ae-2d2daa66def2"
+	}
+}
+*)
+(* Anmerkung:
+   - Struktur zum Abhandeln des Ein- und Aus- Transport
+*)
+TYPE Interface_TransfershuttleVerbund :
+  STRUCT
+    wpMmiNummer                  : WORD; (* Stationsnummer mit der gekoppelt wurde *)
+    bEinlaufsensor               : REFERENCE TO BOOL REF= bgFALSE; (* Sensoren der Station[Einlauf] *)
+    bAuslaufsensor               : REFERENCE TO BOOL REF= bgFALSE; (* Sensoren der Station[Auslauf] *)
+    bMasterSlaveVerbundAktiv     : REFERENCE TO BOOL REF= bgFALSE; (* Slave ist mit dem Master gekoppelt *)
+    bBereitZumTransportVerbund   : REFERENCE TO BOOL REF= bgFALSE;
+    bAnforderungTransportVerbund : REFERENCE TO BOOL REF= bgFALSE;
+    rGeschwindigkeit             : REFERENCE TO REAL REF= rgNULL;
+    bFehler                      : REFERENCE TO BOOL REF= bgFALSE;
+  END_STRUCT
+END_TYPE

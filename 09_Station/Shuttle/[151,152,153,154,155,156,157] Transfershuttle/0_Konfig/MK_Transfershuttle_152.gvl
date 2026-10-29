@@ -1,0 +1,118 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "e51deda7-4c76-464f-a8c8-8f73f5e7edb3"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE MK_Transfershuttle_152
+VAR_GLOBAL
+
+(***************************************************************************************************)
+(* TRANSFERSHUTTLE ALLGEMEIN *)
+(***************************************************************************************************)
+
+  apgMKTransfershuttle152 : Parameter_Station :=
+    (
+      stStationsNummern                 := ( NummerIntern := 152,
+                                             NummerExtern := 2152,
+                                             NummerSPS    := 152 ),
+      bDeaktivieren                     := TRUE,
+      wMeldungsNummer                   := 380,
+      eStationsTyp                      := eTransfershuttle,
+      eaAutomatikkreis                  := [eAutomatikkreis_1, eAutomatikkreis_2],
+      eaSicherheitskreis                := [eSicherheitskreis_1],
+      eSystemcheckZyklus                := eSystemcheckZyklus_1,
+
+      stStationsOptionen                := (
+                                            stSystemcheck := (
+                                              bScheibenVermessenSystemCheck           := FALSE,
+                                              bScheibeNachSystemcheckAufAuslauf       := FALSE,
+                                              bSystemCheckMitVorgaengerBatchTransport := FALSE,
+                                              bSystemCheckMitNachfolgerBatchTransport := FALSE
+                                            ),
+
+                                            stTransfershuttle := (
+                                              bMasterStation                          := TRUE,
+                                              bTransferShuttleFuerFaecherwagen        := FALSE,
+                                              bTransferShuttleMitUltraschallSensoren  := FALSE,
+																							bTransfershuttleIstVerfahrbarerSpeicher := FALSE
+                                            ),
+
+                                            stGlastransport := (
+                                              bVortransport                          := TRUE,
+                                              bTransportMasterSlaveEintransport      := FALSE,
+                                              bTransportMasterSlaveAustransport      := FALSE,
+                                              bGLasUebernahmeSenkrecht               := FALSE,
+                                              bAustransportISOLinie                  := FALSE,
+                                              bScheibenVermessen                     := FALSE,
+                                              bMessrichtungNegativ                   := FALSE,
+                                              bScheibenmessungEintransport           := FALSE,
+                                              bScheibenmessungSensorVorabAuslauf     := FALSE,
+                                              bMessrichtungNegativ                   := FALSE
+                                            ),
+
+                                            bVorAbKomponentenAnsteuerung            := FALSE,
+                                            bVerstellungEinAusGefahrenLogikDrehen   := FALSE,
+                                            bLangsamfahrtNockenQuerfahrtAktivieren  := FALSE,
+                                            bSKBlockierenDurchVorabSensoren         := FALSE,
+                                            bStationLeerfahrenBeiSkAnforderung      := FALSE
+                                          ),
+
+      stStationsAufbau                  := (
+                                            bGeblase                      := [cANZAHL_WAENDE(FALSE)],
+                                            bGlastransport                := [cANZAHL_WAENDE(TRUE)],
+                                            bKippen                       := [cANZAHL_WAENDE(FALSE)],
+                                            bKippenSchuetz                := FALSE,
+                                            bTransportVerstellung         := [cANZAHL_WAENDE(FALSE)],
+                                            bHub                          := FALSE,
+                                            bDrehen                       := FALSE,
+                                            bMessachse                    := FALSE,
+                                            bDruckluft                    := TRUE,
+                                            bAnschlag                     := FALSE,
+                                            bSensorAuslauf                := TRUE,
+                                            bSensorEinlauf                := TRUE,
+                                            bDurchlaufSperreZumNachfolger := FALSE,
+                                            bQuerfahrt                    := TRUE,
+                                            bDLSSchmiersystem             := TRUE
+                                          ),
+
+      stStationsParameter               := (
+                                            rLaengeUebergroesseScheibe              := 4240,
+                                            rMinGlasHoeheAutomatischenEintransport  := 500,
+                                            rMinGlasLaengeAutomatischenEintransport := 500,
+                                            wMaximaleAnzahlAktiverAuftraege         := 1
+                                          ),
+
+      stGlasdaten                       := [
+                                            (
+                                              rlMinGlasLaenge := 350,
+                                              rlMaxGlasLaenge := 5000,
+                                              rlMinGlasHoehe  := 250,
+                                              rlMaxGlasHoehe  := 2800,
+                                              rlMinGlasDicke  := 0.5,
+                                              rlMaxGlasDicke  := 19
+                                            )]
+    );
+
+(***************************************************************************************************)
+(* TRANSFERSHUTTLE GLASTRANSPORT *)
+(***************************************************************************************************)
+
+  apgTransfer152Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_TransfershuttleGlastransport := [
+    (
+      rlLaengeStation                    := 5100,
+      rStopFreiFahren                    := 300,
+      rWegUeberEinlaufEintransport       := 70,
+      rWegUeberEinlaufAustransport       := 50,
+      rWegUeberAuslaufEintransport       := 50,
+      rWegUeberAuslaufAustransport       := 50,
+      wEnergieSparZeit                   := 180,
+      rMaxPosAuslaufSensorFreiFahren     := 300,
+      rMaxPosEinlaufSensorFreiFahren     := 300,
+      rgAbstandLuftAbfrageAuslaufShuttle := 0
+    )];
+
+END_VAR
+END_NAMESPACE

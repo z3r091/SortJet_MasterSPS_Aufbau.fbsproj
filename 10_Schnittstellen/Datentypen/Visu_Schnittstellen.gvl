@@ -1,0 +1,33 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "2a9c7233-c077-4434-8d26-0dd340b5aeda"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE Visu_Schnittstellen
+VAR_GLOBAL
+	 
+// Signale zum Forcen
+bgVisu_Schnittstelle_Einlauf_Force_GlasBereit    : ARRAY[cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+bgVisu_Schnittstelle_Force_AutomatikBetrieb      : ARRAY[cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+
+bgVisu_Schnittstelle_Force_GlasAbruf             : ARRAY[cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+bgVisu_Schnittstelle_Force_AnforderungSK         : ARRAY[cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+
+
+
+//Visu Signale
+bgVisu_Schnittstelle_Einlauf_Status_GlasBereit   : ARRAY[cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+bgVisu_Schnittstelle_Status_AutomatikBetrieb     : ARRAY[cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+bgVisu_Schnittstelle_Status_Einlaufsensor        : ARRAY[cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+bgVisu_Schnittstelle_Status_BereitZumEintrasport : ARRAY[cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+
+bgVisu_Schnittstelle_GlasAbruf                   : ARRAY[cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+bgVisu_Schnittstelle_AnforderungSK               : ARRAY[cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+bgVisu_Schnittstelle_FreigabeSK                  : ARRAY[cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+bgVisu_Schnittstelle_GlasBereit                  : ARRAY[cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+
+END_VAR
+END_NAMESPACE

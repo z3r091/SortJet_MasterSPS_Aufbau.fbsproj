@@ -1,0 +1,46 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "40b5e71b-f854-4565-9b77-acb7772a88ea"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE MK_Station_501
+VAR_GLOBAL
+(***************************************************************************************************)
+(* MASCHINEPARAMETER: SCHNITTSTELLE 501 *)
+(***************************************************************************************************)
+
+  apgMKStation501 : Parameter_Station :=
+    (
+      stStationsNummern                     := ( NummerIntern    :=   501,
+                                                 NummerExtern    :=  1501,
+                                                 NummerSPS       :=   501 ),
+      bDeaktivieren                         := FALSE,
+      wMeldungsNummer                       := 1300,
+      eStationsTyp                          := eFremdanlage,
+      eaAutomatikkreis                      := [eAutomatikkreis_Undefiniert],
+      eaSicherheitskreis                    := [eSicherheitskreis_Undefiniert], //Alle Sk's eintragen in dem die Station eingebunden ist
+      stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DEFAULT,
+                                                 wNachfolgerStation := cSTATION_201,
+                                                 bVorgaengerShuttle := FALSE,
+                                                 bNachfolgerShuttle := FALSE
+                                               ),
+      stFremdanlage                         := ( bWerteSwappen                          := FALSE,
+                                                 bCounterSwappen                        := FALSE,
+                                                 bSignaleSwappen                        := FALSE,
+                                                 tZeitHornAktiv                         := T#5S,     
+                                                 rAnalogWertVerhaeltniss                := 32.768,   
+                                                 wMindestAnalogWert                     := 100,      
+                                                 bAnzeigeISOLinieEventAktiv             := FALSE,     
+                                                 bAnalogwertAktiv                       := FALSE,    
+                                                 rGeschwindigkeit                       := 350,      
+                                                 eTypSchnittstelle                      := eDefault, 
+                                                 bStationStatusZuGlasAbruf              := FALSE,    
+                                                 bSignaleLoggen                         := TRUE
+                                               )
+   );
+ 
+END_VAR
+END_NAMESPACE

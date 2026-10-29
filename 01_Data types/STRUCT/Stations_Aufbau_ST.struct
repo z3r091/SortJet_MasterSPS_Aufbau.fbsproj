@@ -1,0 +1,38 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "b39cee1a-c7a8-4c48-bdd9-063a9a4b3d32"
+	}
+}
+*)
+TYPE Stations_Aufbau_ST:
+  STRUCT
+    bGeblase                                : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bGlastransport                          : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bKippen                                 : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bTransportVerstellung                   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle
+    bWandverstellung                        : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Stationen
+    bRoellchenleiste                        : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Stationen
+    bHub                                    : BOOL;
+    bDrehen                                 : BOOL;
+    bMessachse                              : BOOL; (* seperate Messachse je Wand z.b: Anlegewand / LTR / etc...*)
+    bDruckluft                              : BOOL;
+    bAnschlag                               : BOOL;
+    bSensorAuslauf                          : BOOL;
+    bSensorEinlauf                          : BOOL;
+    bDurchlaufSperreZumNachfolger           : BOOL; (* bei LTR wenn die Nachfolgestation zum B. ein RKT ist *)
+    bKippenSchuetz                          : BOOL;
+    bQuerfahrt                              : BOOL;
+    bDurchgang                              : BOOL;
+    bSlaveAntrieb                           : BOOL;
+    bRolltor                                : BOOL; (* z.B.: FW - Rolltor *)
+    bRFID                                   : BOOL; (* z.B.: FW - Rolltor *)
+    bAGV                                    : BOOL; (* Hinweis: AGV Betrieb *)
+    bKipparme                               : BOOL;
+    bMessachseAmEndeVomTisch                : BOOL;
+    bDLSSchmiersystem                       : BOOL;
+    bGlastransportSlaveVorhanden            : BOOL;
+    bInspektionsStation                     : BOOL;
+
+  END_STRUCT
+END_TYPE

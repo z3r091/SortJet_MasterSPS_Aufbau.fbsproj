@@ -1,0 +1,21 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "9acd1e0c-1610-4893-adc1-bba1af2305a2"
+	}
+}
+*)
+TYPE VorAbAuftragsdaten_ST:
+  STRUCT
+    wAuftrag                : Auftraege_Station_EN; (* Hinweis: Auftragsart -> Ein- Aus- Transport etc.*)
+    wShuttleNummer          : WORD;
+    wShuttleWandNummer      : WORD;
+    wTransferStation        : WORD;
+    wTransferWand           : WORD;
+    rLaenge                 : REAL;
+    rDicke                  : REAL;
+    wAuftragstyp            : WORD;
+    stAuftragsOptionen      : Auftrags_Optionen_ST;
+    stAuftragsInformationen : Auftragsinformationen_ST;
+  END_STRUCT
+END_TYPE

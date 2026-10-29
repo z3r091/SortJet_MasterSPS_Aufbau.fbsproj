@@ -1,0 +1,17 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "7a869de3-c576-4771-b1d7-2950917302f9"
+	}
+}
+*)
+TYPE Schnittstelle_ScheibenIDs :
+  STRUCT
+    adwScheibenID_1 : ARRAY [0..3] OF DWORD;
+    adwScheibenID_2 : ARRAY [0..3] OF DWORD;
+    adwScheibenID_3 : ARRAY [0..3] OF DWORD;
+    adwScheibenID_4 : ARRAY [0..3] OF DWORD;
+    adwScheibenID_5 : ARRAY [0..3] OF DWORD;
+    adwScheibenID_6 : ARRAY [0..3] OF DWORD;
+  END_STRUCT
+END_TYPE

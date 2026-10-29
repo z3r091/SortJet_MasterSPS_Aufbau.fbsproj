@@ -1,0 +1,248 @@
+__V3_META__
+{
+	"objectGuid": "b919062b-a7b8-4ba6-9318-c9c02046955f",
+	"objectTypeGuid": "40989022-e4d2-4dc7-89d2-9a412930b20e",
+	"embeddedObjectTypeGuids": [
+		"a9ed5b7e-75c5-4651-af16-d2c27e98cb94"
+	]
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{40989022-e4d2-4dc7-89d2-9a412930b20e}" Method="IArchivable">
+	<Single Name="TextListObject" Type="{4b60233c-f940-4beb-b331-82133b520151}" Method="IArchivable">
+		<List Name="TextList" Type="System.Collections.ArrayList">
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eKeine_Info</Single>
+				<Single Name="TextDefault" Type="string">0</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Starten_0</Single>
+				<Single Name="TextDefault" Type="string">1</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Warte_Auf_Faecherwagen_In_Box_100</Single>
+				<Single Name="TextDefault" Type="string">2</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Warten_Auf_Lichtschranke_Und_Quittierung_105</Single>
+				<Single Name="TextDefault" Type="string">3</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Gegenhalter_Schliessen_110</Single>
+				<Single Name="TextDefault" Type="string">4</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_RFID_Auslesen_Gegenhalter_Schliessen_115</Single>
+				<Single Name="TextDefault" Type="string">5</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Rolltor_Oeffnen_120</Single>
+				<Single Name="TextDefault" Type="string">6</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Greifer_Oeffnen_125</Single>
+				<Single Name="TextDefault" Type="string">7</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Lineareinheit_Vor_130</Single>
+				<Single Name="TextDefault" Type="string">8</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Greifer_Schliessen_135</Single>
+				<Single Name="TextDefault" Type="string">9</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Entrieglung_Oeffnen_140</Single>
+				<Single Name="TextDefault" Type="string">10</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Lineareinheit_zurueck_145</Single>
+				<Single Name="TextDefault" Type="string">11</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Greifer_Oeffnen_150</Single>
+				<Single Name="TextDefault" Type="string">12</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Lineareinheit_Vor_155</Single>
+				<Single Name="TextDefault" Type="string">13</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Greifer_Schliessen_160</Single>
+				<Single Name="TextDefault" Type="string">14</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Lineareinheit_Shuttle_165</Single>
+				<Single Name="TextDefault" Type="string">15</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Rolltor_Ab_170</Single>
+				<Single Name="TextDefault" Type="string">16</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Auswertung_180</Single>
+				<Single Name="TextDefault" Type="string">17</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Fehler</Single>
+				<Single Name="TextDefault" Type="string">18</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Abgeschlossen_InBeladeposition</Single>
+				<Single Name="TextDefault" Type="string">19</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Starten_0</Single>
+				<Single Name="TextDefault" Type="string">21</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Warten_Auf_Start_10</Single>
+				<Single Name="TextDefault" Type="string">22</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Rolltor_Auf_Entriegeln_Festhalten_100</Single>
+				<Single Name="TextDefault" Type="string">23</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Lineareinheit_Vor_105</Single>
+				<Single Name="TextDefault" Type="string">24</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Greifer_Oeffnen_110</Single>
+				<Single Name="TextDefault" Type="string">25</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Lineareinheit_Zurueck_115</Single>
+				<Single Name="TextDefault" Type="string">26</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Greifer_Schliessen_120</Single>
+				<Single Name="TextDefault" Type="string">27</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Lineareinheit_Vor_125</Single>
+				<Single Name="TextDefault" Type="string">28</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Entrieglung_Schliessen_130</Single>
+				<Single Name="TextDefault" Type="string">29</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Greifer_Oeffnen_135</Single>
+				<Single Name="TextDefault" Type="string">30</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Lineareinheit_Zurueck_140</Single>
+				<Single Name="TextDefault" Type="string">31</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Rolltor_Ab_145</Single>
+				<Single Name="TextDefault" Type="string">32</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Abgeschlossen_150</Single>
+				<Single Name="TextDefault" Type="string">33</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Abgeschlossen_InGrundstellung</Single>
+				<Single Name="TextDefault" Type="string">34</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Fehler</Single>
+				<Single Name="TextDefault" Type="string">35</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string"></Single>
+				<Single Name="TextDefault" Type="string"></Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+		</List>
+		<List Name="Languages" Type="System.Collections.ArrayList" />
+		<Single Name="GuidInit" Type="System.Guid">f46c475e-8045-406a-b433-c1b2e987652e</Single>
+		<Single Name="GuidReInit" Type="System.Guid">729b8c05-6480-4bf8-b9fc-3b65d4a4e1ef</Single>
+		<Single Name="GuidExitX" Type="System.Guid">ee787cdc-4156-4bf2-80a6-128100decbde</Single>
+	</Single>
+	<Single Name="Interface" Type="{a9ed5b7e-75c5-4651-af16-d2c27e98cb94}" Method="IArchivable">
+		<Single Name="TextDocument" Type="{f3878285-8e4f-490b-bb1b-9acbb7eb04db}" Method="IArchivable">
+			<Single Name="TextBlobForSerialisation" Type="string">{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE eLetzter_FW_Status :
+(
+	eKeine_Info := 0,
+  eEinschleusen_Starten_0                                    := 1,
+  eEinschleusen_Warte_Auf_Faecherwagen_In_Box_100            := 2,
+  eEinschleusen_Warten_Auf_Lichtschranke_Und_Quittierung_105 := 3,
+  eEinschleusen_Gegenhalter_Schliessen_110                   := 4,
+  eEinschleusen_RFID_Auslesen_Gegenhalter_Schliessen_115     := 5,
+  eEinschleusen_Rolltor_Oeffnen_120                          := 6,
+  eEinschleusen_Greifer_Oeffnen_125                          := 7,
+  eEinschleusen_Lineareinheit_Vor_130                        := 8,
+  eEinschleusen_Greifer_Schliessen_135                       := 9,
+  eEinschleusen_Entrieglung_Oeffnen_140                      := 10,
+  eEinschleusen_Lineareinheit_zurueck_145                    := 11,
+  eEinschleusen_Greifer_Oeffnen_150                          := 12,
+  eEinschleusen_Lineareinheit_Vor_155                        := 13,
+  eEinschleusen_Greifer_Schliessen_160                       := 14,
+  eEinschleusen_Lineareinheit_Shuttle_165                    := 15,
+  eEinschleusen_Rolltor_Ab_170                               := 16,
+  eEinschleusen_Auswertung_180                               := 17,
+  eEinschleusen_Fehler                                       := 18,
+  eEinschleusen_Abgeschlossen_InBeladeposition               := 19,
+  eAusschleusen_Starten_0                                    := 21,
+  eAusschleusen_Warten_Auf_Start_10                          := 22,
+  eAusschleusen_Rolltor_Auf_Entriegeln_Festhalten_100        := 23,
+  eAusschleusen_Lineareinheit_Vor_105                        := 24,
+  eAusschleusen_Greifer_Oeffnen_110                          := 25,
+  eAusschleusen_Lineareinheit_Zurueck_115                    := 26,
+  eAusschleusen_Greifer_Schliessen_120                       := 27,
+  eAusschleusen_Lineareinheit_Vor_125                        := 28,
+  eAusschleusen_Entrieglung_Schliessen_130                   := 29,
+  eAusschleusen_Greifer_Oeffnen_135                          := 30,
+  eAusschleusen_Lineareinheit_Zurueck_140                    := 31,
+  eAusschleusen_Rolltor_Ab_145                               := 32,
+  eAusschleusen_Abgeschlossen_150                            := 33,
+  eAusschleusen_Abgeschlossen_InGrundstellung                := 34,
+  eAusschleusen_Fehler                                       := 35
+) WORD;
+END_TYPE
+</Single>
+			<Single Name="LineInfoPersistence" Type="string">b919062b-a7b8-4ba6-9318-c9c02046955f_Decl_LineIds</Single>
+		</Single>
+	</Single>
+	<List Name="RemovedTextListEntries" Type="System.Collections.ArrayList" />
+</Single>

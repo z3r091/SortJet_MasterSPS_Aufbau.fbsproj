@@ -1,0 +1,19 @@
+__V3_META__
+{
+	"objectGuid": "1c544aae-d91e-4149-bf45-652d49512075",
+	"objectTypeGuid": "4e1bf013-712b-4565-8a68-46a3ffefe3f0",
+	"embeddedObjectTypeGuids": []
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{4e1bf013-712b-4565-8a68-46a3ffefe3f0}" Method="IArchivable">
+	<Null Name="SafetyApplicationPinCode" />
+	<Array Name="SafetyApplicationDLCode" Type="byte">AAAAASQAAACIAAAAAAAAAAEDEAAboGJZ//8AAP//AAABAAAAAAAAAzgAAAACAAAAAAAQAFNhZmV0eUFwcAAAAAEAHABDT0RFU1lTIFNhZmV0eSBWNC4zLjAuMAAAAAAQDAAAAAAAAAAAAAAwIAAAAAAAAAEAAAAA/////////////////////8nM8TA=</Array>
+	<Null Name="AppParamMappingCode" />
+	<Null Name="AppParamConfigCode" />
+	<Null Name="AppParamValFile" />
+	<Null Name="AppParamValCrcFile" />
+	<Null Name="AppParamSddFile" />
+	<Null Name="AppParamSddCrcFile" />
+	<Null Name="AppParamSddFileName" />
+</Single>

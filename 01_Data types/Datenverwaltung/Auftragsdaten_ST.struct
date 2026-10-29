@@ -1,0 +1,53 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "a1d28af7-f737-4fc0-bc24-39c70d4b17b1"
+	}
+}
+*)
+TYPE Auftragsdaten_ST :
+  STRUCT
+    wStationsNr                          : WORD;
+    wStationsWand                        : WORD;
+    rStationsZielposition                : REAL;
+    wAuftrag                             : Auftraege_Station_EN; (* Hinweis: Auftragsart -> Ein- Aus- Transport etc.*)
+    rAuftragsLaenge                      : REAL;
+    rAuftragsHoehe                       : REAL;
+    rAuftragsDicke                       : REAL;
+    wAnzahlScheiben                      : WORD;
+    wErsteLetzteScheibe                  : WORD;
+    bErsteScheibe                        : BOOL;
+    bLetzteScheibe                       : BOOL;
+    rModellVersatzVorne                  : REAL;
+    rModellVersatzHinten                 : REAL;
+    bModell                              : BOOL;
+    wBeschichtung                        : WORD;
+
+    stAuftragsInformationen              : Auftragsinformationen_ST;
+
+    wTransferstationsNr1                 : WORD;
+    wTransferstationsNr2                 : WORD;
+    rTransferposition1                   : REAL;
+    rTransferposition2                   : REAL;
+    wTransferwand                        : WORD;
+	  wTransferVersatzVorne                : REAL;
+	  wTransferVersatzHinten               : REAL;
+
+    stAuftragsOptionen                   : Auftrags_Optionen_ST;
+
+    (*Verfahrlogik_Neu*)
+    pPositionierAuftrag                  : PositionierAuftrag_ST; (* Wichtig: Struktur fuer die neue Verfahrlogik - Ersetzt normal die folgenden Variablen *)
+    rVorabPosition                       : REAL;
+    rVorabUpdateZeit                     : REAL;
+    rVorabBeschleunigung                 : REAL;
+    rVorabBremsrampe                     : REAL;
+    rVorabGeschwindigkeit                : REAL;
+    rNennstromBeschleunigungsphase       : REAL;
+    rNennstromKonstantfahrt              : REAL;
+    rZeitintervalBeschleunigungsphase    : REAL;
+
+    rAuftragsGewicht                     : REAL;
+
+  END_STRUCT
+
+END_TYPE

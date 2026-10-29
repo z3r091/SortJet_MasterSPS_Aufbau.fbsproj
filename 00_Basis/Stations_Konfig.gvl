@@ -1,0 +1,132 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "ba3ca572-b5ea-4174-af08-a61d9ddd93e1"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE Stations_Konfig
+VAR_GLOBAL CONSTANT
+
+(***************************************************************************************************)
+(* KONFIG VORHANDENE STATIONEN *)
+(***************************************************************************************************)
+
+  // Antriebe
+  cANZAHL_ANTRIEBE                     : WORD := 29;
+  
+  // Ampeln / Hupen
+  cANZAHL_AMPELN                       : WORD := 2;
+  cANZAHL_HUPEN                        : WORD := 2;
+
+  //Station
+  cERSTE_STATION                       : WORD := 201;
+  cLETZTE_STATION                      : WORD := 208;
+
+  // Shuttle
+  cERSTES_SHUTTLE                      : WORD := 101;
+  cLETZTES_SHUTTLE                     : WORD := 102;
+
+  cERSTES_INPUTSHUTTLE                 : WORD := 101;
+  cLETZTES_INPUTSHUTTLE                : WORD := 101;
+
+  cERSTES_OUTPUTSHUTTLE                : WORD := 102;
+  cLETZTES_OUTPUTSHUTTLE               : WORD := 102;
+
+  // Transfershuttle
+  cERSTES_TRANSFERSHUTTLE              : WORD := 151;
+  cLETZTES_TRANSFERSHUTTLE             : WORD := 152;
+
+  // Speicher
+  cERSTER_SPEICHER                     : WORD := 1;
+  cLETZTER_SPEICHER                    : WORD := 1;
+  
+  // Faecherwagen
+  cERSTE_FAECHERWAGENSTATIONS_NR       : WORD := 301;
+  cLETZTE_FAECHERWAGENSTATIONS_NR      : WORD := 305;
+
+  // Fremdanlagen
+  cERSTE_FREMDANLAGE                   : WORD := 401;
+  cLETZTE_FREMDANLAGE                  : WORD := 401;
+
+  cERSTE_FREMDANLAGE_EINLAUF           : WORD := 501;
+  cLETZTE_FREMDANLAGE_EINLAUF          : WORD := 501;
+
+  cERSTE_FREMDANLAGE_AUSLAUF           : WORD := 401;
+  cLETZTE_FREMDANLAGE_AUSLAUF          : WORD := 401;
+
+  // Terminal
+  cERSTES_TERMINAL                     : WORD := 1;
+  cLETZTES_TERMINAL                    : WORD := 4; 
+
+  // Automatikkreise
+  cANZAHL_AUTOMATIKKREISE              : WORD := 3;
+  cERSTER_AUTOMATIKKREIS               : WORD := 1;         
+  cLETZTER_AUTOMATIKKREIS              : WORD := 3;
+
+  // SystemCheck - Shuttle
+  cERSTES_SHUTTLESTATIONENSYSTEMCHECK  : WORD := 101;
+  cLETZTES_SHUTTLESTATIONENSYSTEMCHECK : WORD := 102;
+
+  // Sicherheitskreise
+  cANZAHL_SICHERHEITSKREISE            : WORD := 6;
+  cERSTER_SICHERHEITSKREIS             : WORD := 1;
+  cLETZTER_SICHERHEITSKREIS            : WORD := 6;
+  
+  // Türen
+  cANZAHL_TUEREN                       : WORD := 2;
+  cERSTE_TUER                          : WORD := 1;
+  cLETZTE_TUER                         : WORD := 2;
+  
+  // Durchgänge Klappförderer/Türen in der Station
+  cANZAHL_DURCHGANGE                   : WORD := 1;
+  cERSTER_DURCHGANG                    : WORD := 1;
+  cLETZTER_DURCHGANG                   : WORD := 1;
+
+
+(***************************************************************************************************)
+(* KONFIGURATION *)
+(***************************************************************************************************)
+  (* Hinweis:
+     - Positionsüberprüfung aller Shuttles und Doppelfördererstationen,da diese als Shuttles gesehne werden 
+       => Wichtig: Anzahl ist die Ist-Anzahl - 1 [ Teutoglas: 10 Shuttle - 1 ] 
+  *)
+  cANZAHL_SHUTTLE                      : WORD := 2; (*Input-, Outputshuttles *)
+  cANZAHL_TRANSFERSHUTTLE              : WORD := 3; (* Transfershuttles *)
+  cANZAHL_SHUTTLESTATIONENSYSTEMCHECK  : WORD := 2;
+
+(***************************************************************************************************)
+(* DEFINITIONEN *)
+(***************************************************************************************************)
+ 
+  // AUTOMATIKKREISE 
+  cAUTOMATIKKREIS_1                     : WORD := 1;
+  cAUTOMATIKKREIS_2                     : WORD := 2;
+  cAUTOMATIKKREIS_3                     : WORD := 3;
+  cAUTOMATIKKREIS_4                     : WORD := 4;
+  cAUTOMATIKKREIS_5                     : WORD := 5;
+  cAUTOMATIKKREIS_6                     : WORD := 6;
+  cAUTOMATIKKREIS_TRANSFERSHUTTLE       : WORD := 1;
+
+  // STOPP AUTOMATIKKREISE
+  cSTOPP_AUTOMATIKKREIS_1                : WORD := 2#0000000000000001;
+  cSTOPP_AUTOMATIKKREIS_2                : WORD := 2#0000000000000010;
+  cSTOPP_AUTOMATIKKREIS_1_2              : WORD := 2#0000000000000011;
+  cSTOPP_AUTOMATIKKREIS_3                : WORD := 2#0000000000000100;
+  cSTOPP_AUTOMATIKKREIS_4                : WORD := 2#0000000000001000;
+  cSTOPP_AUTOMATIKKREIS_5                : WORD := 2#0000000000010000;
+  cSTOPP_AUTOMATIKKREIS_6                : WORD := 2#0000000000100000;
+  cSTOPP_AUTOMATIKKREIS_TRANSFERSHUTTLE  : WORD := 2#0000000000001000;
+  cSTOPP_ALLE_AUTOMATIKKREIS             : WORD := 2#0000000000000111;
+
+  // WAENDE 
+  cWAND_DEFAULT                        : WORD := 0;
+  cWAND_1                              : WORD := 2#0000000000000001;
+  cWAND_2                              : WORD := 2#0000000000000010;
+  cWAND_1_2                            : WORD := 2#0000000000000011;
+  cANZAHL_WAENDE                       : WORD := 2;
+
+END_VAR
+
+END_NAMESPACE

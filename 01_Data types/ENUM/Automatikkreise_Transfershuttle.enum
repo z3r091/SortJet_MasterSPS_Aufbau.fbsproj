@@ -1,0 +1,15 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "d07c7c56-39de-4417-8a33-fd2d4c4995eb"
+	}
+}
+*)
+TYPE Automatikkreise_Transfershuttle :
+  (
+    eAutomatikkreis_Ohne_Transfershuttle             := 1,
+    eAutomatikkreis_Mit_Transfershuttle_Input        := 2,
+    eAutomatikkreis_Mit_Transfershuttle_Output       := 3,
+    eAutomatikkreis_Mit_Transfershuttle_Input_Output := 4
+  ) WORD;
+END_TYPE

@@ -1,0 +1,16 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "cb60ac4e-0d61-4ad7-a3d2-3df77df73cf7"
+	}
+}
+*)
+{attribute 'qualified_only'}
+TYPE UpdateDatenTyp_EN : ( 
+  NONE       := 0,
+  TYP_WORD   := 1,
+  TYP_DWORD  := 2,
+  TYP_REAL   := 3,
+  TYP_BOOL   := 4
+) WORD;
+END_TYPE

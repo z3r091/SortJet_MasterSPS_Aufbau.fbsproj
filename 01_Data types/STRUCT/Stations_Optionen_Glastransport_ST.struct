@@ -1,0 +1,25 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "a8dc7489-26a8-4e65-b0df-aea17ff973bb"
+	}
+}
+*)
+{attribute 'strict'}
+TYPE Stations_Optionen_Glastransport_ST :
+  STRUCT
+    bVortransport                                                 : BOOL; // Voratransport aktivieren [Bsp.: Nach einem Eintransport mit gesetztem Bit <Letzte Scheibe>] *)
+    bTransportMasterSlaveEintransport                             : BOOL; 
+    bTransportMasterSlaveAustransport                             : BOOL; 
+    bGLasUebernahmeSenkrecht                                      : BOOL; // RKT - Eintransport in Senkrechter-Position bzw. in Waagerechter- Position [default] 
+    bAustransportISOLinie                                         : BOOL;
+    bScheibenVermessen                                            : BOOL; // Scheibenmessung am Anlgetisch/Anlegewand
+    bScheibenmessungEintransport                                  : BOOL; // Scheibenmessung beim Eintransport
+    bScheibenmessungSensorVorabAuslauf                            : BOOL; // Scheibenmessung mit SensorVorabAuslauf z.B. Anlegewand
+    bMessrichtungNegativ                                          : BOOL; // Negative Fahrtrichtung beim Messen
+    
+    
+    
+    
+  END_STRUCT
+END_TYPE

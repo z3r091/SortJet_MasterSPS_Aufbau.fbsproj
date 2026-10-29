@@ -1,0 +1,14 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "fc4a6d7f-87c2-445f-b7ac-9b0ead475f05"
+	}
+}
+*)
+TYPE TCP_CLIENT_ACCEPT :
+STRUCT
+  hSocket: RTS_IEC_HANDLE:= RTS_INVALID_HANDLE;
+  stIPAddress: STRING(80);
+END_STRUCT
+END_TYPE
+

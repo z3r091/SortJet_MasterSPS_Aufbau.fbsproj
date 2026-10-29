@@ -1,0 +1,16 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "a279a7a0-de04-472a-acbc-5dd5e8bc81ba"
+	}
+}
+*)
+TYPE Rexroth_Fehler_Type :
+(
+  eRexroth_Fehler_Condition     := 16#A,
+  eRexroth_Fehler_Command       := 16#C,
+  eRexroth_Fehler_CommandError  := 16#D,
+  eRexroth_Fehler_Warning       := 16#E,
+  eRexroth_Fehler_Error         := 16#F
+) BYTE;
+END_TYPE

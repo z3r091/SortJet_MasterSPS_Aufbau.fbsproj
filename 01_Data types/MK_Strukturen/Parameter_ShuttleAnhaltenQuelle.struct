@@ -1,0 +1,21 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "ecf30170-1aa7-4ab8-bb6b-aadbf5f2ca9d"
+	}
+}
+*)
+// Beschreibt eine einzelne Ueberwachungsquelle fuer bpShuttleAnhalten.
+// Pro Shuttle koennen bis zu cMAX_SHUTTLE_ANHALTEN_QUELLEN solcher Eintraege
+// konfiguriert werden. Nicht genutzte Eintraege: bAktiv := FALSE.
+// getBasis() loest Station / Shuttle / Transfershuttle anhand der wQuellenNummer
+// automatisch auf — eQuellenTyp wird nicht mehr benoetigt.
+TYPE Parameter_ShuttleAnhaltenQuelle :
+  STRUCT
+    bAktiv         : BOOL;                         // FALSE = Eintrag wird ignoriert
+    wQuellenNummer : WORD;                         // z.B. cSTATION_202, cSHUTTLE_150 usw.
+    wWand          : WORD;                         // Wand des Quellarrays (z.B. cWAND_1)
+    eSensorTyp     : ShuttleAnhaltenSensorTyp_EN;  // Einlauf- oder Auslaufsensor pruefen
+  END_STRUCT
+END_TYPE
+ 

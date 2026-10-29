@@ -1,0 +1,12 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "71287aad-cfd4-4685-b6e6-5d8b57ced204"
+	}
+}
+*)
+TYPE Parameter_Verfahrueberwachung :
+  STRUCT
+    rMaxVerzoegerungsRampeUeberwachung  : REAL; (* Maximale muss in mm/s^2 angegeben werden *)
+  END_STRUCT
+END_TYPE

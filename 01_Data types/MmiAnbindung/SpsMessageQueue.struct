@@ -1,0 +1,14 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "bd1005cf-b7b7-46c1-b7fa-bef1b59d38c8"
+	}
+}
+*)
+TYPE SpsMessageQueue:
+STRUCT
+ iInzeig  : INT;
+ iOutzeig : INT;
+ asmSpsMessage : ARRAY[0..24] OF SpsMessage;  (* 25 Einträge in Message-Queue möglich *)
+END_STRUCT
+END_TYPE

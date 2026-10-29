@@ -1,0 +1,81 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "329e1e03-e62e-4103-a2e8-78abc557d3d5"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE AllgemeineAntriebsKonstanten
+VAR_GLOBAL CONSTANT
+
+  (* Hinweis:
+     - Lenze / SEW Funktionen 
+  *)
+                           (* 5432109876543210 *)
+  cIDLE           : WORD := 2#0000000000000000; (* Leerlauf *)
+  cREFERENZ       : WORD := 2#0000000000000001; (* Referenzfahrt *)
+  cPOSABS         : WORD := 2#0000000000000010; (* absolut Positionieren *)
+  cHANDPLUS       : WORD := 2#0000000000000100; (* Handfahren positiv *)
+  cHANDMINUS      : WORD := 2#0000000000001000; (* Handfahren negativ *)
+  cPOSREL         : WORD := 2#0000000000010000; (* relativ Positionieren *)
+  cPOSREST        : WORD := 2#0000000000100000; (* Restweg Positionieren / Touchprobe erreichen eines Sensors und zu fahrenden Weg weiter *)
+  cSYNC           : WORD := 2#0000000001000000; (* Achse in den Slavebetrieb des vorgegebenen Master schalten / Aufsynchronisieren *)
+  cSYNCINVERT     : WORD := 2#0000000010000000; (* Achse in den Slavebetrieb des vorgegebenen Master schalten / Aufsynchronisieren *)
+  cRESET          : WORD := 2#0000000100000000; (* Reset Regler *)
+  cMESSEN         : WORD := 2#0000001000000000; (* Wegmessung zwischen der fallenden Flanke von Sensor 1 und der steigenden Flanke von Sensor 2 *)
+  cPOSMEASUREMODE : WORD := 2#0000010000000000; (* Messen mit Restwegpositionieren / TouchProbe *)
+
+  (******************************** Fieldbus Control Word*************************************************)
+  bAntriebsFreigabe              :INT:=0 ;
+  bAntriebsQSP                   :INT:=1 ;
+  bAntriebsReset                 :INT:=2 ;
+  bHandfahren_Plus               :INT:=3 ;
+  bHandfahren_Minus              :INT:=4 ;
+  bStartReferenz                 :INT:=5 ;
+  bAnwahlProfil1                 :INT:=6 ;
+  bAnwahlProfil2                 :INT:=7 ;
+  bAnwahlProfil3                 :INT:=8 ;
+  bTPAktivieren                  :INT:=9 ;
+  bTPFallendeFlanke              :INT:=10;
+  bSartPositionierung            :INT:=11;
+  bMasterBetriebAktivieren       :INT:=12;
+  bAnwahlMaster2                 :INT:=13;
+  bOdometerReset                 :INT:=14;
+  bReferenzSetzen                :INT:=15;
+
+
+  (********************************* Fieldbus Status Word **************************************************)
+  bReglerVersorgung              :INT:=0 ;
+  bLastVersorgung                :INT:=1 ;
+  bReglerBereit                  :INT:=2 ;
+  bFehlerAktiv                   :INT:=3 ;
+  bWarnungAktiv                  :INT:=4 ;
+  bAntriebSteht                  :INT:=5 ;
+  bAntriebIstReferenziert        :INT:=6 ;
+  bZielErreicht                  :INT:=7 ;
+  bGlassvorderkanteErkannt       :INT:=8 ;
+  bGlasshinterkanteErkannt       :INT:=9 ;
+  bMasterbetriebAktiv            :INT:=10;
+  bEndschalterPos                :INT:=11;
+  bEndschalterNeg                :INT:=12;
+
+  (* Hinweis:
+     - Interne Fehler aus den SEW-Bausteinen 
+  *)
+  cBetriebsartNichtUnterstuetzt                 : WORD := 101;
+  cBetriebsartUnbekannt                         : WORD := 102;
+  cKeinReferenzpunktBeiPosAbs                   : WORD := 103;
+  cKeineSoftwareReglerFreigabeBeiPositionierung : WORD := 104;
+  cKeineHardwareReglerFreigabeBeiPositionierung : WORD := 105;
+  cSensorZustandFehlerhaftBeiMessung            : WORD := 106;
+  cBetriebsartNichtUnterstuetzt1                : WORD := 107;
+  cMotionFehler                                 : WORD := 108;
+  cLMC_Home_Error                               : WORD := 109;
+  cMotionMinimumSoftwareEndschalterAusgeloest   : WORD := 110;
+  cMotionMaximumSoftwareEndschalterAusgeloest   : WORD := 111;
+  cKeineFreigabeZumBremseLoesen                 : WORD := 112; (* Keine Freigabe zum Loesen der Bremse *)
+
+END_VAR
+
+END_NAMESPACE

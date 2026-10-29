@@ -1,0 +1,14 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "f0a72b9b-bee0-4596-bc37-30beae129cc0"
+	}
+}
+*)
+TYPE TransportRichtung_EN :
+(
+    Default      := 0,
+    Vorwaertig   := 1,
+    Rueckwaertig := 2
+) WORD;
+END_TYPE

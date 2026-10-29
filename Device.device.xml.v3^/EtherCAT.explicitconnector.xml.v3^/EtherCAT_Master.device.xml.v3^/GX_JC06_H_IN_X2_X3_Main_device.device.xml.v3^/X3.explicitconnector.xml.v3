@@ -1,0 +1,154 @@
+__V3_META__
+{
+	"objectGuid": "918843b4-404e-4f40-9efd-a07854a66a54",
+	"objectTypeGuid": "e9159722-55bc-49e5-8034-fbd278ef718f",
+	"embeddedObjectTypeGuids": [],
+	"properties": {
+		"_3S.CoDeSys.DeviceObject.ModuleType": "<?xml version=\"1.0\" encoding=\"utf-8\"?><Single xml:space=\"preserve\" Type=\"{0f5fe9f2-6f78-44e8-be24-5879c0c99599}\" Method=\"IArchivable\"><Single Name=\"ModuleType\" Type=\"int\">67</Single></Single>"
+	}
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{e9159722-55bc-49e5-8034-fbd278ef718f}" Method="IArchivable">
+	<Single Name="VisibleInterfaceName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+		<Single Name="Namespace" Type="string">local</Single>
+		<Single Name="Identifier" Type="string">PortInterface1_1</Single>
+		<Single Name="Default" Type="string">X3</Single>
+	</Single>
+	<Single Name="ModuleType" Type="ushort">67</Single>
+	<Single Name="Interface" Type="string">Common.Ethercat</Single>
+	<Single Name="Role" Type="{6827a808-5967-49c4-a827-10f6c446e075}">Parent</Single>
+	<Single Name="ConnectorId" Type="int">11</Single>
+	<Single Name="Hostpath" Type="int">1</Single>
+	<Single Name="Adapters" Type="{1da2f14a-1c63-4268-9171-3b6869b8ccd6}" Method="IArchivable">
+		<List Name="Adapters" Type="System.Collections.ArrayList">
+			<Single Type="{3f828f0b-c67b-430a-8c93-1e9bc324df64}" Method="IArchivable">
+				<List Name="Modules" Type="System.Collections.ArrayList">
+					<Single Type="System.Guid">36073adc-66c9-4672-8e2d-3dafc47d702c</Single>
+					<Single Type="System.Guid">bf37d3e2-098f-4788-b22c-af9ca3a0d82e</Single>
+					<Single Type="System.Guid">8c0d2f44-a90b-4869-9d9e-f5d6478ea411</Single>
+					<Single Type="System.Guid">0d5bdc36-82d0-4ff9-b25d-395b667d4e75</Single>
+					<Single Type="System.Guid">d4644574-9db1-450b-a85c-1af8220b8290</Single>
+					<Single Type="System.Guid">7ff20a2a-21e4-416d-acb6-f7dd4cdaa1b7</Single>
+					<Single Type="System.Guid">346ee193-3b54-408d-9102-86ed62057c29</Single>
+					<Single Type="System.Guid">93d74d41-e861-43d3-a1f1-a57118a35045</Single>
+					<Single Type="System.Guid">174d7354-30e9-4f8d-a0ac-572c47cd2a9f</Single>
+					<Single Type="System.Guid">322de387-9b83-4451-ace2-849078b31d09</Single>
+					<Single Type="System.Guid">084ea6e8-7df4-4aa4-9588-8e00b1f0ce78</Single>
+				</List>
+				<Single Name="MaxDevices" Type="int">2147483647</Single>
+				<Single Name="SupportPlaceholderObjects" Type="bool">False</Single>
+			</Single>
+		</List>
+	</Single>
+	<Single Name="HostParameterSet" Type="{abc12bfe-e34e-4b2c-a058-42c6e7e03a13}" Method="IArchivable">
+		<List2 Name="Params">
+			<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+				<Single Name="Id" Type="uint">1074855952</Single>
+				<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+				<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+				<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+					<Null Name="FilterFlags" />
+					<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+					<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+					<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+						<Single Name="Namespace" Type="string">local</Single>
+						<Single Name="Identifier" Type="string">PortNumber</Single>
+						<Single Name="Default" Type="string">Port number</Single>
+					</Single>
+					<Single Name="Identifier" Type="string">1074855952</Single>
+					<Single Name="Value" Type="string">2</Single>
+					<Single Name="Type" Type="string">WORD</Single>
+					<Single Name="Default" Type="string">2</Single>
+				</Single>
+				<Single Name="ParamType" Type="string">std:WORD</Single>
+				<Single Name="IndexInDevDesc" Type="long">0</Single>
+			</Single>
+			<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+				<Single Name="Id" Type="uint">1074855953</Single>
+				<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+				<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+				<Single Name="Download" Type="bool">False</Single>
+				<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+					<Null Name="FilterFlags" />
+					<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+					<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+					<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+						<Single Name="Namespace" Type="string">local</Single>
+						<Single Name="Identifier" Type="string">PortName</Single>
+						<Single Name="Default" Type="string">Port name</Single>
+					</Single>
+					<Single Name="Identifier" Type="string">1074855953</Single>
+					<Single Name="Value" Type="string">'X3'</Single>
+					<Single Name="Type" Type="string">STRING</Single>
+					<Single Name="Default" Type="string">'X3'</Single>
+				</Single>
+				<Single Name="ParamType" Type="string">std:STRING</Single>
+				<Single Name="IndexInDevDesc" Type="long">1</Single>
+			</Single>
+		</List2>
+		<Single Name="LmGuid" Type="System.Guid">5f167378-632f-5784-978c-cda832beb103</Single>
+		<Null Name="Sections" />
+		<Single Name="InitOnOnlineChange" Type="bool">False</Single>
+		<Single Name="AlwaysMapping" Type="bool">False</Single>
+		<Null Name="EditorName" />
+		<Single Name="AlwaysMappingMode" Type="{9d1b24fb-5845-4978-8458-564ca7830fec}">OnlyIfUnused</Single>
+		<Single Name="CreateBitChannels" Type="bool">True</Single>
+	</Single>
+	<Single Name="BusCycleTaskGuid" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+	<Single Name="DriverInfo" Type="{4f958885-8d0a-4b58-83b6-29cfd1c9cfca}" Method="IArchivable">
+		<List Name="RequiredLibs" Type="System.Collections.ArrayList" />
+		<Null Name="RequiredTasks" />
+		<Single Name="NeedsBusCycle" Type="bool">False</Single>
+		<Single Name="BusCycleTask" Type="string"></Single>
+		<Single Name="IoApp" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+		<Single Name="IoAppSet" Type="bool">False</Single>
+		<Array Name="PositionIds" Type="long" />
+		<Single Name="UseSlowestTask" Type="bool">False</Single>
+		<Single Name="NeedsBusCycleBeforeRead" Type="bool">False</Single>
+		<Single Name="GenerateForceVariables" Type="bool">False</Single>
+		<Single Name="EnableDiagnosis" Type="bool">False</Single>
+		<Single Name="AdditionalParameterSetting" Type="uint">0</Single>
+		<Single Name="ShowWarningsAsErrors" Type="bool">False</Single>
+		<Single Name="DiagnosisCheckboxMode" Type="{96a7290c-b036-44e1-a965-c279cddf134b}">Enabled</Single>
+		<Single Name="SkipOverlapCheck" Type="bool">False</Single>
+		<Single Name="SymbolicAccessMode" Type="{866ccdec-84a7-4590-aeab-383c7bd79437}">Disabled</Single>
+		<Single Name="OnlineChangeDevice" Type="{e1779e08-585f-4d22-83e1-f36476fd1df5}">Hidden</Single>
+		<Single Name="SupportOnlineChange" Type="bool">False</Single>
+		<Single Name="DeviceScanSupported" Type="bool">False</Single>
+		<Single Name="DeviceNominateSupported" Type="bool">False</Single>
+		<Single Name="DeviceIdentifySupported" Type="bool">False</Single>
+		<Single Name="DeviceUploadDescriptionSupported" Type="bool">False</Single>
+		<Single Name="UpdateIOsInStop" Type="bool">False</Single>
+		<Single Name="StopResetBehaviourSetting" Type="{f333ad6d-dc68-4baa-a3a3-20be74eb2e18}">KeepCurrentValues</Single>
+		<Single Name="StopResetBehaviourUserProgram" Type="string"></Single>
+		<Single Name="BusCycleTaskGuid" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+		<Single Name="PlcAlwaysMapping" Type="bool">False</Single>
+		<Single Name="PlCAlwaysMappingMode" Type="{9d1b24fb-5845-4978-8458-564ca7830fec}">OnlyIfUnused</Single>
+	</Single>
+	<List Name="CustomItems" Type="{7d23305a-7bb9-46e6-b58b-01ea5694add1}" />
+	<Single Name="ModuleId" Type="int">-1</Single>
+	<Null Name="IoUpdateTask" />
+	<List Name="AdditionalInterfaces" Type="System.Collections.ArrayList" />
+	<List Name="Constraints" Type="System.Collections.ArrayList" />
+	<Single Name="hideInStatusPage" Type="bool">True</Single>
+	<Single Name="updateAllowed" Type="bool">True</Single>
+	<Single Name="fixedInputAddress" Type="string"></Single>
+	<Single Name="fixedOutputAddress" Type="string"></Single>
+	<Single Name="DownloadParamsDevDescOrder" Type="bool">False</Single>
+	<List Name="AllowOnlyDevices" Type="System.Collections.ArrayList" />
+	<Single Name="InitialStatusFlag" Type="uint">1</Single>
+	<Single Name="UseBlobInitConst" Type="bool">False</Single>
+	<Single Name="AlwaysMappingMode" Type="{9d1b24fb-5845-4978-8458-564ca7830fec}">OnlyIfUnused</Single>
+	<Single Name="ConnectorGroup" Type="uint">0</Single>
+	<Array Name="AllowedPages" Type="string" />
+	<Single Name="AlwaysMapping" Type="bool">False</Single>
+	<Single Name="Client" Type="string"></Single>
+	<Single Name="MaxInputSize" Type="uint">0</Single>
+	<Single Name="MaxOutputSize" Type="uint">0</Single>
+	<Single Name="MaxInOutputSize" Type="uint">0</Single>
+	<Single Name="ClientTypeGuid" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+	<Single Name="ClientConnectorInterface" Type="string"></Single>
+	<Single Name="ClientConnectorId" Type="int">-1</Single>
+	<Single Name="AlwaysMappingDisabled" Type="bool">False</Single>
+</Single>

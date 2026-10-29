@@ -1,0 +1,113 @@
+__V3_META__
+{
+	"objectGuid": "5552b866-b8ec-4412-8738-51c1c2b41af8",
+	"objectTypeGuid": "798a495b-0fcc-4a5e-b03f-8eea9279fe3f",
+	"embeddedObjectTypeGuids": [
+		"dc15b5d9-c1aa-43bd-80f8-d39a11045849",
+		"cf2cfce8-d0f1-4ec1-8159-87ed6ec03282"
+	]
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{798a495b-0fcc-4a5e-b03f-8eea9279fe3f}" Method="IArchivable">
+	<Array Name="SafetyPOUCode" Type="byte">AAAAASQAAAD0AwAAAAAAAAEiBACu85Y3//8AAP//AAABAAAAAAAAAzQAAAACAAAAAAAMAFR1ZXJfRkIAAQAcAENPREVTWVMgU2FmZXR5IFY0LjMuMC4wAAAAABBMAgAAEgAAAAAAEABBQ1RJVkFURQAAAAABAAwAQUNUSVZFAAACABQAUmVzZXRfTm90YXVzAAAAAAMAFABUdWVyX09lZmZuZW4AAAAABAAUAFR1ZXJfVmVycmllZ2VsdAAFABgAVHVlcl9HZXNjaGxvc3NlbgAAAAAGABgAU0lfVHVlcl9HZXNjaGxvc3NlbgAHABgAU0lfVHVlcl9WZXJyaWVnZWx0AAAIABQAU0lfVHVlcl9Ob3RoYWx0AAkAGABTT19UdWVyX1ZlcnJpZWdlbG4AAAoAGABTT19UdWVyX0VudHJpZWdlbG4AAAsAFABTT19SZXNldE5vdGF1cwAADAAIAE5PVAANADwATG9naWsgenVtIEVudHJpZWdlbG4gdW5kIFZlcnJpZWdlbG4gZGVzIFTDvHJzY2hhbHRlcnMAAAAOAAgAQU5EAA8AMABSZXNldCBkZXMgTm90YXVzIGFuIGRlbiBUw7xyc2NoYWx0ZXIgc2VuZGVuABAAZABTY2huaXR0c3RlbGxlbiBTaWduYWwgendpc2NoZW4gZGVyIHNpY2hlcmVuIHVuZCB1bnNpY2hlcmVuIFN0ZXVlcnVuZywgb2IgZGllIFTDvHIgdmVycmllZ2VsdAAAAAARAGgAU2Nobml0dHN0ZWxsZW4gU2lnbmFsIHp3aXNjaGVuIGRlciBzaWNoZXJlbiB1bmQgdW5zaWNoZXJlbiBTdGV1ZXJ1bmcsIG9iIGRpZSBUw7xyIGdlc2NobG9zc2VuIGlzdAAAAAAAABI8AAAAAwAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAgAAAAAAAACzAQAAAAAAAAAAABVsAAAADAAAAP//RBMAAAAA//9kEwEAAAD//0QTAgABAP//RBMDAAEA//9kEwQAAQD//2QTBQABAP//RBMGAAAA//9EEwcAAAD//0QTCAAAAP//ZBMJAAAA//9kEwoAAAD//2QTCwAAAAAAACaoAAAAAAAAAQIAAMAAAAARAAAAIAAAAAMAAAABAgAAwAAAABEBAAASAAAAAQIAAMANAADBAwAAEQAAABEAAAAhCgAAEgAAACAGAAARAAAAIQkAABIAAAABAgAAwA8AAMECAAARAAAAEQAAACELAAASAAAAAQIAAMAQAADBBgAAEQcAABEAAAAhBAAAEgAAAAECAADAEQAAwQYAABEFAAASAAAAANLuapo=</Array>
+	<Array Name="SafetyPOUIDTableCode" Type="byte">AAAARWwAAAAMAAAAAAAAAAgAAAABAAAABwAAAAIAAAANAAAAAwAAAAkAAAAEAAAAAgAAAAUAAAADAAAABgAAABEAAAAHAAAAEgAAAAgAAAAQAAAACQAAAA8AAAAKAAAAEwAAAAsAAAAOAAAAAAAARHwBAAAuAAAACAAAAFsAAAAQAAAAXAAAABEAAABdAAAAFAAAAGEAAAAYAAAAXwAAABkAAABjAAAAHAAAAFYAAAAkAAAAVwAAACUAAABYAAAAKAAAAFoAAAApAAAAWQAAACwAAAAcAAAAOAAAACgAAAA5AAAAKQAAADwAAAAqAAAAPQAAACsAAABAAAAAJwAAAEQAAAAxAAAARQAAADAAAABIAAAALQAAAEwAAAA2AAAATQAAADcAAABQAAAAMwAAAFQAAAA8AAAAVQAAADsAAABYAAAAGwAAAGQAAAAfAAAAZQAAACAAAABoAAAAIQAAAGkAAAAiAAAAbAAAAB4AAABwAAAAJQAAAHEAAAAkAAAAdAAAAAgAAACAAAAACwAAAIEAAAAMAAAAhAAAAA0AAACFAAAADgAAAIgAAAAKAAAAjAAAABEAAACNAAAAEAAAAJAAAAAWAAAAnAAAABcAAACdAAAAGAAAAKAAAAAaAAAAoQAAABkAAAD+1FJU</Array>
+	<Dictionary Type="System.Collections.Hashtable" Name="DeclIdsHashtable">
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776066</Single>
+			</Key>
+			<Value>
+				<Single Type="int">2</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776067</Single>
+			</Key>
+			<Value>
+				<Single Type="int">3</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776071</Single>
+			</Key>
+			<Value>
+				<Single Type="int">7</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776072</Single>
+			</Key>
+			<Value>
+				<Single Type="int">8</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776073</Single>
+			</Key>
+			<Value>
+				<Single Type="int">9</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776077</Single>
+			</Key>
+			<Value>
+				<Single Type="int">13</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776078</Single>
+			</Key>
+			<Value>
+				<Single Type="int">14</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776079</Single>
+			</Key>
+			<Value>
+				<Single Type="int">15</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776080</Single>
+			</Key>
+			<Value>
+				<Single Type="int">16</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776081</Single>
+			</Key>
+			<Value>
+				<Single Type="int">17</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776082</Single>
+			</Key>
+			<Value>
+				<Single Type="int">18</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776083</Single>
+			</Key>
+			<Value>
+				<Single Type="int">19</Single>
+			</Value>
+		</Entry>
+	</Dictionary>
+</Single>

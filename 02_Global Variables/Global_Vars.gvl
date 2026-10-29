@@ -1,0 +1,160 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "27064ae7-2a3c-4a30-8168-a3ab5c131298"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE Global_Vars
+
+VAR_GLOBAL
+(***************************************************************************************************)
+(* ALLGEMEINE VARIABLEN *)
+(***************************************************************************************************)
+
+  // Workaround für Output/Input Warnungen
+  bgDruckluftFaecherwagenstationenOK : BOOL;
+
+  // Pointer auf alle Antriebe
+  pgAntriebe   : ARRAY[0..65] OF Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_01;
+  bgEtherCatOK : BOOL;
+
+  // Aktivieren \ Deaktivieren des SystemChecks  
+  bgSystemCheck : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL :=[ TRUE, TRUE, TRUE, TRUE ]; // SystemCheck [AutomatikKreis 1]: FALSE -> Der SystemCheck wird sofort quittiert  TRUE -> SystemCheck wird normal ausgefuehrt
+
+  // Prüfung ob Reset in einem AK aktiv ist 
+  agbResetAktiv : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
+
+  bgSimulationSiKreisGeschlossen : ARRAY[cERSTER_SICHERHEITSKREIS..cLETZTER_SICHERHEITSKREIS] OF BOOL; // Damit synchronisiert wird, müssen die SKs geschlossen sein - da dies manchmal nicht gegeben ist, kann hiermit
+  
+  bgMeldungStromschienenUeberbrueckung : BOOL := FALSE;
+  
+  wgStatusPuffer101Oben    : WORD;
+  wgStatusPuffer102Unten   : WORD;
+  wgStatusPuffer103Oben    : WORD;
+  wgStatusPuffer104Unten   : WORD;
+  wgStatusTorOben          : WORD;
+  wgStatusTorUnten         : WORD;
+  // Override für ALLE Achsen - 100 = 100% ; 50 = 50% ;
+  rgMaschinenGeschwindigkeitsOverride : REAL := 100;
+
+  (* Hinweis:
+     - Pointer- Konstanten [Muessen Global definiert werden]
+       => Nicht veraendern
+  *)
+  bgShuttleEintransportSperren             : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF BOOL;
+  bgShuttleAustransportSperren             : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF BOOL;
+  
+  (* Hinweis:
+     - Pointer- Konstanten [Muessen Global definiert werden]
+       => Nicht veraendern
+  *)
+  bgTRUE      : BOOL  := TRUE;
+  bgFALSE     : BOOL  := FALSE;
+  rgNULL      : REAL  := 0;
+  wgNULL      : WORD  := 0;
+
+  (* HINWEIS:
+     Das Log-Level bestimmt ob und wie die Fehlermeldung geworfen werden->
+     Level 0 :=  Nur die übergeordneteten Bausteine werfen einen Fehler
+     Level 1 :=  Übergeordnetete Bausteine + Station werfen einen Fehler
+     Level 2 :=  Übergeordnetete Bausteine + Station + Unterbausteine werfen einen Fehler
+  *)
+  wgLogLevel : WORD := 0;
+  bgTSLog    : BOOL := TRUE;
+  
+  bgStepLogging : BOOL := FALSE;
+  
+  Visu_Start_Auto          : BOOL;
+  Visu_Notaus_OK           : BOOL := FALSE;
+
+  (* Globale Einstellungen *)
+  bgStartSimulation : BOOL;
+  bgSimAktiv        : BOOL; (* Messe: Simulation aktiv ODER kontrolliertes Beenden laeuft (gibt Handfunktionen frei) *)
+  bgSimAbbruch          : BOOL;         (* Messe: Harter Abbruch der Simulation (z.B. Automatik-Stop / NotHalt) -> sofort alles zuruecksetzen, kein kontrolliertes Beenden *)
+  bgSimFWSchleusenAktiv : BOOL := TRUE; (* Messe: FW nach n Zyklen aus-/einschleusen. FALSE -> FW-Ablauf wird abgebrochen/uebersprungen, Zyklus RKT/SH/TS laeuft weiter *)
+
+
+  (* Globale Einstellungen *)
+  bgInitialisierungUeberbruecken           : BOOL := FALSE; (* Init überspringen *)
+  bgInbetriebnahmeBit                      : BOOL := FALSE; (* Inbetriebnahme de/aktivieren *)
+  bgHornAktivieren                         : BOOL := FALSE;  (* Horn / Hupe an der Anlage de/aktivieren *)
+  bgSicherheitstechnikBruecken             : BOOL := FALSE; (* Inbetriebnahme de/aktivieren *)
+  bgMMIBruecken                            : BOOL := FALSE;
+  bgDeaktiviereWatchIOs                    : BOOL := FALSE;
+  bgSPS_SIMULATION                         : BOOL := FALSE;
+bgSimFehlmessungErzwingen                : BOOL; (* Simulation: TRUE = die NAECHSTE Scheibenlaengenmessung (Scheibenmessung_FB) liefert eine Fehlmessung; wird danach automatisch zurueckgesetzt *)
+bgSimFehlmessungDauer                    : BOOL; (* Simulation: TRUE = ALLE Scheibenlaengenmessungen liefern eine Fehlmessung, bis wieder FALSE *)
+rgSimFehlmessungAbweichung               : REAL := 100.0; (* Simulation: Abweichung [mm], die bei einer Fehlmessung auf die Scheibenlaenge addiert wird (muss groesser als rMesstoleranz sein) *)
+rgSimScheibenlaenge                      : REAL := 1000.0; (* Simulation (bgSPS_SIMULATION): virtuelle Scheibenlaenge [mm] fuer Scheibenmessung und Restwegmessung der simulierten Antriebe *)
+  bgTransfershuttleVortransportAktivieren  : BOOL := FALSE;  (* Quittierung des Vortransportauftrags (Ohne Ablauf) *)
+  bgNeueDialogeVerwenden                   : BOOL := TRUE;
+  bgNotHalt_SPS_OK                         : BOOL := TRUE;
+
+  (* Ausgaenger - Blink - *)
+  gbFlashbit02sec  : BOOL;
+  gbFlashbit05sec  : BOOL;
+  gbFlashbit1sec   : BOOL;
+  gbFlashbit03sec  : BOOL;
+  gbFlashbit12sec  : BOOL;
+
+  // Verfahrueberwachung
+  abgVerfahrfreigabeShuttle                    : ARRAY[cERSTES_SHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  argZuletztQuittiertePositionShuttle          : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF REAL;
+
+  // Init
+  M_Init_Ok        : BOOL;
+
+  (* Automatikkreise [Speicher - Shuttle - Transfershuttle - ggf. Perepherie *)
+  M_Automatik_Aktiv                         : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
+  tonAutomatik_Aktiv                        : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF TON;
+
+  (* SystemCheck:
+     - neue Strukturen aufrufen 
+  *)
+  abgDateStationCheck  : ARRAY[101..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF Auftragsdaten_ST; (* Daten die fuer den SystemCheck gebraucht werden *)
+
+(***************************************************************************************************)
+(* ALLGEMEINE STRUKTUREN *)
+(***************************************************************************************************)
+  igIndexFaecherwagenDatenEmpfangen : INT := 0;
+  igIndexFaecherwagenDatenSenden    : INT := 0;
+
+  (* Hinweis
+     - Puffer in der Shuttlebahn
+  *)
+  wgStatusPuffer                       : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF WORD;
+
+  (* Hinweis:
+     - Allgemeine Konstanten aus der Mathematik
+  *)
+(***************************************************************************************************)
+  (* Hinweis:
+     - Allgemeine Konstanten aus der Mathematik
+  *)
+  Mathe : CONSTANTS_MATH;
+
+(***************************************************************************************************)
+(* HANDFUNKTIONEN *)
+(***************************************************************************************************)
+
+  (* STATION *)
+  adwgHandfunktionenStationen             : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF DWORD;
+
+  (* SHUTTLE *)
+  adwgHandfunktionenShuttle               : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF DWORD;
+
+  (* TRANSFERSHUTTLE *)
+  adwgHandfunktionenTransfershuttle       : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF DWORD;
+
+  (* FAECHERWAGENSTATION *)
+  adwgHandfunktionenFaecherwagenStationen : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF DWORD;
+
+(***************************************************************************************************)
+(* SYSTEMCHECK *)
+(***************************************************************************************************)
+  wgAnzahlSystemcheckZyklen              : WORD; //  Wird automatisch erkannt
+ 
+END_VAR
+END_NAMESPACE

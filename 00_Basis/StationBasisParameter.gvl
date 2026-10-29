@@ -1,0 +1,23 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "5fda5f15-de2c-4c52-835d-2fee03387dc3"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE StationBasisParameter
+// ACHTUNG: Attribute nicht ändern!
+{attribute 'global_init_slot' := '310'}
+VAR_GLOBAL
+
+  starrShuttleBasisParameter                   : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE]                                OF StationBasisParameter_ST;
+  starrTransfershuttleBasisParameter           : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE]                OF StationBasisParameter_ST;
+  starrStationBasisParameter                   : ARRAY [cERSTE_STATION..cLETZTE_STATION]                                  OF StationBasisParameter_ST;
+  starrFaecherwagenBasisParameter              : ARRAY [cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR]  OF StationBasisParameter_ST;
+  starrFremdanlageAuslaufStationBasisParameter : ARRAY [cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF]          OF StationBasisParameter_ST;
+  starrFremdanlageEinlaufStationBasisParameter : ARRAY [cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF]          OF StationBasisParameter_ST;
+  
+END_VAR
+
+END_NAMESPACE

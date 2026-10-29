@@ -1,0 +1,90 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "244e22c5-e1be-4d8c-be1d-008c15b8f204"
+	}
+}
+*)
+TYPE Stationsstatus_Visu_ST :
+  STRUCT
+  
+    // Glastransport
+    bSensorEinlauf                  : ARRAY [1..3] OF BOOL;
+    bSensorEinlaufVorab             : ARRAY [1..3] OF BOOL;
+    bSensorAuslaufVorab             : ARRAY [1..3] OF BOOL;
+    bSensorAuslauf                  : ARRAY [1..3] OF BOOL;
+    bSensorAuslaufStopp             : ARRAY [1..3] OF BOOL;
+  
+	  // Gebläse
+	  bGeblaeseLaeuft                 : ARRAY [1..3] OF BOOL;
+	  bDrosselklappeOffen             : ARRAY [1..3] OF BOOL;
+	
+	  // Wandverstellung
+    epWandverstellungStatus         : ARRAY [1..3] OF PneumatikZylinderStatus_EN;
+	
+	  // Ampel 
+	  bAmpelRot                       : BOOL;
+	  bAmpelGruen                     : BOOL;
+	
+    // Messachse
+    bMessachseFehler                : BOOL;
+    bMessachseSensorOben            : BOOL;
+	  bMessachseSensorUnten           : BOOL;
+	  bMessachseMinEndschalter        : BOOL;
+	  rMessachseIstPos                : REAL;
+	
+    // Anschläge
+	  bAnschlagFehler                 : BOOL;
+    bAnschlagSensorAusgefahren      : BOOL;
+	  bAnschlagSensorEingefahren      : BOOL;	
+	
+	  // Hubpalette
+	  bHubpaletteFehler               : BOOL;
+    bHubpaletteSensorAusgefahren    : BOOL;
+	  bHubpaletteSensorEingefahren    : BOOL;	
+	
+    // Kippen
+    bKippenFehler                   : BOOL;
+    bKippenAntriebReferenziert      : BOOL;
+    rKippenIstPos                   : REAL;
+    epKippStatus                    : Kippen_EN;
+    bKippenMinEndschalter           : BOOL;
+    bKippenMaxEndschalter           : BOOL;
+  
+    // Drehen 
+    bDrehenFehler                   : BOOL;
+    bDrehenAntriebReferenziert      : BOOL;
+    rDrehenIstPos                   : REAL;
+    epDrehIstPosition               : Drehen_EN;
+    bDrehenMinEndschalter           : BOOL;
+    bDrehenMaxEndschalter           : BOOL;
+    bDrehenArretierungEingefahren   : BOOL;
+    bDrehenArretierungAusgefahren   : BOOL;
+  
+    // Querfahrt
+    bQuerfahrtFehler                : BOOL;
+    bQuerfahrtAntriebReferenziert   : BOOL;
+    rQuerfahrtIstPos                : REAL;
+    bQuerfahrtMinEndschalter        : BOOL;
+    bQuerfahrtMaxEndschalter        : BOOL;
+	 
+	  // Eingänge
+	  bInTasterGlasAngelegt           : BOOL;
+	  bInTasterGeblaese               : BOOL;
+	  bInTasterFehlmessung            : BOOL;
+	  bInTasterGlasbruch              : BOOL;
+	  bInRiemenZurueck                : BOOL;
+	  
+	  // Ausgänge           
+	  bOutAmpelRot                    : BOOL;
+	  bOutAmpelGruen                  : BOOL;
+	  bOutTasterFehlmessung           : BOOL;
+    
+    // Antriebseinheit 
+    bAntriebseinheitOben            : BOOL;
+    bAntriebseinheitUnten           : BOOL;
+    bAntriebseinheitVerriegelt      : BOOL;
+    bAntriebseinheitEntriegelt      : BOOL;
+	
+  END_STRUCT
+END_TYPE
