@@ -184,8 +184,8 @@ VISU_UEBERSICHT.st151.dwSensorEinlauf      := VisuUeb_Sensor(abgStationsstatusVi
 VISU_UEBERSICHT.st151.dwSensorEinlaufVorab := VisuUeb_Sensor(FALSE, FALSE);
 VISU_UEBERSICHT.st151.dwSensorAuslaufVorab := VisuUeb_Sensor(FALSE, FALSE);
 VISU_UEBERSICHT.st151.dwSensorAuslauf      := VisuUeb_Sensor(abgStationsstatusVisu[151].bSensorAuslauf[1]);
-VISU_UEBERSICHT.st151.sInfo1 := SEL(Global_Vars.abgVerfahrfreigabeTransfershuttle[151], 'Verfahrfreigabe: NEIN', 'Verfahrfreigabe: ja');
-VISU_UEBERSICHT.st151.dwInfo1Farbe := SEL(Global_Vars.abgVerfahrfreigabeTransfershuttle[151], VISU_UEBERSICHT.cFARBE_ORANGE, VISU_UEBERSICHT.cFARBE_TEXT);
+VISU_UEBERSICHT.st151.sInfo1 := SEL(Global_Vars.abgVerfahrfreigabeShuttle[151], 'Verfahrfreigabe: NEIN', 'Verfahrfreigabe: ja');
+VISU_UEBERSICHT.st151.dwInfo1Farbe := SEL(Global_Vars.abgVerfahrfreigabeShuttle[151], VISU_UEBERSICHT.cFARBE_ORANGE, VISU_UEBERSICHT.cFARBE_TEXT);
 
 // Fahrwegsgrenzen aus dem Antrieb (Software-Endlagen)
 IF __ISVALIDREF(Globale_Bausteine.aTransfershuttles[151].Querfahrt.Antrieb) THEN

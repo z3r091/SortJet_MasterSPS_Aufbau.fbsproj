@@ -277,14 +277,14 @@ IF arlErrechneteStillstandposition[cSHUTTLE_151] >
   AND aTransfershuttles[cSHUTTLE_151].Querfahrt.Antrieb.bpIstReferenziert
   AND aTransfershuttles[cSHUTTLE_152].Querfahrt.Antrieb.bpIstReferenziert
 THEN
-  abgVerfahrfreigabeTransfershuttle[cSHUTTLE_151] := FALSE;
+  abgVerfahrfreigabeShuttle[cSHUTTLE_151] := FALSE;
 END_IF
 IF arlErrechneteStillstandposition[cSHUTTLE_152] <
    (arlErrechneteStillstandposition[cSHUTTLE_151] + arlAktuellerSicherheitsabstand[cSHUTTLE_152])
   AND aTransfershuttles[cSHUTTLE_151].Querfahrt.Antrieb.bpIstReferenziert
   AND aTransfershuttles[cSHUTTLE_152].Querfahrt.Antrieb.bpIstReferenziert
 THEN
-  abgVerfahrfreigabeTransfershuttle[cSHUTTLE_152] := FALSE;
+  abgVerfahrfreigabeShuttle[cSHUTTLE_152] := FALSE;
 END_IF
 
 
@@ -296,7 +296,7 @@ IF arlErrechneteStillstandposition[cSHUTTLE_153] >
   AND aTransfershuttles[cSHUTTLE_153].Verfahrauftraege.Antrieb.bpIstReferenziert
   AND aTransfershuttles[cSHUTTLE_154].Verfahrauftraege.Antrieb.bpIstReferenziert
 THEN
-  abgVerfahrfreigabeTransfershuttle[cSHUTTLE_152] := FALSE;
+  abgVerfahrfreigabeShuttle[cSHUTTLE_152] := FALSE;
 END_IF
 
 IF arlErrechneteStillstandposition[cSHUTTLE_154] <
@@ -304,7 +304,7 @@ IF arlErrechneteStillstandposition[cSHUTTLE_154] <
   AND aTransfershuttles[cSHUTTLE_153].Verfahrauftraege.Antrieb.bpIstReferenziert
   AND aTransfershuttles[cSHUTTLE_154].Verfahrauftraege.Antrieb.bpIstReferenziert
 THEN
-  abgVerfahrfreigabeTransfershuttle[cSHUTTLE_154] := FALSE;
+  abgVerfahrfreigabeShuttle[cSHUTTLE_154] := FALSE;
 END_IF
 *)
 END_PROGRAM
