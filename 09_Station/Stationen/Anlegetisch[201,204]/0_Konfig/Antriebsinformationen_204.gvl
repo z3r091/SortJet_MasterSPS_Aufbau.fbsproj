@@ -6,14 +6,14 @@
 }
 *)
 {attribute 'allow_unqualified_access'}
-NAMESPACE Antriebsinformationen_205
+NAMESPACE Antriebsinformationen_204
 VAR_GLOBAL CONSTANT
 	
 (***************************************************************************************************)
 (* ANTRIEBSINFORMATION *)
 (***************************************************************************************************)
 
-  apgInfoStation205Glastransport : AntriebsInformationen :=
+  apgInfoStation204Glastransport : AntriebsInformationen :=
     (
       wAchsID                     :=     20,  // Achs ID aus dem EConSet 
       stTyp                       := 'Belt',  // Typ                           
@@ -35,7 +35,7 @@ VAR_GLOBAL CONSTANT
       bpHardwareLimits            :=  FALSE   // Endschalter vorhanden         
     );
 
-	apgInfoStation205Glastransport_Slave : AntriebsInformationen :=
+	apgInfoStation204Glastransport_Slave : AntriebsInformationen :=
     (
       wAchsID                     :=     65,  // Achs ID aus dem EConSet 
       stTyp                       := 'BeltSl',  // Typ                           
@@ -58,7 +58,7 @@ VAR_GLOBAL CONSTANT
     );
 
 
-  apgInfoStation205Messachse : AntriebsInformationen :=
+  apgInfoStation204Messachse : AntriebsInformationen :=
     (     
       wAchsID                     :=        21,  // Achs ID aus dem EConSet                                               
       stTyp                       := 'Measure',  // Typ                                                                           

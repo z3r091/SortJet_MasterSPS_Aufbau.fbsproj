@@ -6,18 +6,18 @@
 }
 *)
 {attribute 'allow_unqualified_access'}
-NAMESPACE MK_Station_205
+NAMESPACE MK_Station_204
 VAR_GLOBAL
 
 (***************************************************************************************************)
 (* MASCHINEPARAMETER: ANLEGETISCH *)
 (***************************************************************************************************)
 
-  apgMKStation205 : Parameter_Station :=
+  apgMKStation204 : Parameter_Station :=
     (
-      stStationsNummern                     := ( NummerIntern :=   205,
-                                                 NummerExtern :=  1205,
-                                                 NummerSPS    :=   205 ),
+      stStationsNummern                     := ( NummerIntern :=   204,
+                                                 NummerExtern :=  1204,
+                                                 NummerSPS    :=   204 ),
       bDeaktivieren                         := TRUE,
       wMeldungsNummer                       := 1820,
       eStationsTyp                          := eStation,
@@ -85,7 +85,7 @@ VAR_GLOBAL
                                                )]
     );
 
-  apgMKStation205Glastransport : Parameter_Glastransport :=
+  apgMKStation204Glastransport : Parameter_Glastransport :=
     (
       rLaengeStation                        := 2500, // Länge der Station                                                                                                                      
       rScheibenabstand                      :=  300, // Der Abstand zwischen zwei Scheiben auf der Station                                                                                     
@@ -104,7 +104,7 @@ VAR_GLOBAL
       rWegstreckeBisZurVerzoegerung         := 2000  // Weg die gefahren werden soll bis der Antrieb abgebremst, dies gilt für Eintransportauftraege die das Bit "Letzte Scheibe" gesetzt haben
     );
 
-  apgMKStation205Messachse : Parameter_Messachse :=
+  apgMKStation204Messachse : Parameter_Messachse :=
     (
       rPositionUeberScheibenhoehe           :=      0, //
       rKorrekturOffset                      :=      0, // Dieser Wert wird auf die Zielposition addiert
