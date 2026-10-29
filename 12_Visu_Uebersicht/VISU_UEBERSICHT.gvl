@@ -10,7 +10,7 @@ NAMESPACE VISU_UEBERSICHT
 VAR_GLOBAL
   // Kopfzeile / Anlagenstatus
   sTitel            : STRING(80) := 'SortJet Area 22  -  Anlagenübersicht';
-  sUntertitel       : STRING(100) := 'Anlegetisch 201  >  Kipptisch 202  >  Shuttle 101  >  Sortierspeicher  >  Transfershuttle 151  >  Fächerwagen';
+  sUntertitel       : STRING(109) := 'Anlegetisch 201  >  Kipptisch 202  >  Shuttle 101  >  Sortierspeicher  >  Transfershuttle 151  >  Fächerwagen';
   stAutomatik       : VisuUeb_Lampe_ST;
   stSK1             : VisuUeb_Lampe_ST;
   stSK2             : VisuUeb_Lampe_ST;
