@@ -11,6 +11,7 @@ TYPE Stations_Optionen_ST :
     stTransfershuttle                                             : Stations_Optionen_Transfershuttle_ST;
     stGlastransport                                               : Stations_Optionen_Glastransport_ST;
     stAnlegetisch                                                 : Stations_Optionen_Anlegetisch_ST;
+    stEckuebergabe                                                : Stations_Optionen_Eckuebergabe_ST;
 
     bVorAbKomponentenAnsteuerung                                  : BOOL; // VorAbKomponentenAnsteuerung Auftraege werden bearbeitet   
     bVerstellungEinAusGefahrenLogikDrehen                         : BOOL;

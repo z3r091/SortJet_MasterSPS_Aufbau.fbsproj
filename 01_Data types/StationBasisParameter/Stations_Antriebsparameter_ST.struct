@@ -10,6 +10,8 @@ TYPE Stations_Antriebsparameter_ST :
   STRUCT
     stGlastransport        : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen;
     stGlastransportSlave   : REFERENCE TO ARRAY[1..cANZAHL_WAENDE] OF AntriebsInformationen;
+    stGlastransportY       : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen;
+    stGlastransportYSlave  : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen;
     stWandverstellung      : REFERENCE TO ARRAY[1..cANZAHL_WAENDE] OF AntriebsInformationen;
     stHub                  : REFERENCE TO AntriebsInformationen;
     stMessachse            : REFERENCE TO AntriebsInformationen;

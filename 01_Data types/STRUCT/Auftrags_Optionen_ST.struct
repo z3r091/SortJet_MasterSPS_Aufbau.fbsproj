@@ -17,6 +17,7 @@ STRUCT
   eDickenverstellung                     : PneumatikZylinderStatus_EN;
   eGlastransport                         : Glastransport_EN;
   eQuerachse                             : PneumatikZylinderStatus_EN;
+  eAchsrichtung                          : Achsrichtung_EN;
   wMaxTransportGeschwindigkeit           : WORD;
 END_STRUCT
 END_TYPE
