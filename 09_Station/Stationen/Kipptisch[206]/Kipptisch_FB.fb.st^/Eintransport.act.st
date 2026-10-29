@@ -51,7 +51,6 @@ THEN
       IF ( blZielPositionErreicht ) THEN
         steplEintransport := STEP_10_E;   
       END_IF
-        steplEintransport := STEP_10_E;   
    
 (* EINTRANSPORT =========================*)
     STEP_10_E:
