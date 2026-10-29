@@ -28,11 +28,15 @@ IF ( bpReset ) THEN
       tonlMaximaleZeitEinlaufsensorFreiFahren( IN:= FALSE);
       tonlMaximaleZeitAuslaufsensorFreiFahren( IN:= FALSE);
 
-      Antrieb.wpBetriebsart := KEINE_FUNKTION;
+      Antrieb.wpBetriebsart       := KEINE_FUNKTION;
+      Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
 
-	  IF NOT Antrieb.bpAntrieblaeuft AND NOT Antrieb_Slave.bpAntrieblaeuft THEN
+      // Warten bis beide Antriebe stehen
+      IF (    NOT Antrieb.bpAntrieblaeuft
+          AND ( NOT Antrieb_Slave.bpAntrieblaeuft OR NOT bpOptionSlaveAntrieb ) )
+      THEN
         steplReset := STEP_10_E;
-	  END_IF
+      END_IF
 
 (*RESET ==========================*)
     STEP_10_E:
@@ -49,16 +53,12 @@ IF ( bpReset ) THEN
         steplReset := STEP_1000_E;
       END_IF
 
-      (* Fehlerbehandlung
-         - Antrieb
-      *)
-      IF ( NOT Antrieb.bpDone AND tonlMaxWarteAufResetErfolgreich.Q ) THEN
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_ZURUECKGESETZT;
-        steplReset := STEP_900_E;
-      END_IF
-
-      IF ( NOT Antrieb_Slave.bpDone AND tonlMaxWarteAufResetErfolgreich.Q ) AND bpOptionSlaveAntrieb THEN
+      // Fehlerbehandlung
+      // - Mindestens ein Antrieb hat seinen Reset nicht abgeschlossen => beide Antriebe abschalten
+      IF (    tonlMaxWarteAufResetErfolgreich.Q
+          AND NOT ( Antrieb.bpDone AND ( Antrieb_Slave.bpDone OR NOT bpOptionSlaveAntrieb ) ) )
+      THEN
+        Antrieb.wpBetriebsart       := KEINE_FUNKTION;
         Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_ZURUECKGESETZT;
         steplReset := STEP_900_E;
