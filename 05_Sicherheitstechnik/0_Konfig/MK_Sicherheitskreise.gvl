@@ -12,9 +12,9 @@ VAR_GLOBAL
 apgMKSicherheiskreis : ARRAY [cERSTER_SICHERHEITSKREIS ..cLETZTER_SICHERHEITSKREIS] OF Parameter_Schicherheitskreise := [
   ( 
     eSicherheitskreis   := eSicherheitskreis_1,
-	  eaAutomatikkreis    := [eAutomatikkreis_1, eAutomatikkreis_2],               // Alle Automatikkreise die von dem SIcherheitskreis betroffen sind
-    eaTueren            := [eTuer_1, eTuer_2, eTuer_3],                 // Alle Türen eintragen die zu dem Sicherheitskreis gehören
-    eaDurchgang         := [eDurchgang_Undefiniert]                             // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+	  eaAutomatikkreis    := [eAutomatikkreis_1, eAutomatikkreis_2],    // Alle Automatikkreise die von dem SIcherheitskreis betroffen sind
+    eaTueren            := [eTuer_1, eTuer_2],                        // Alle Türen eintragen die zu dem Sicherheitskreis gehören
+    eaDurchgang         := [eDurchgang_Undefiniert]                   // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
   ),
   (
     eSicherheitskreis   := eSicherheitskreis_2,

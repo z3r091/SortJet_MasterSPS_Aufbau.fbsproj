@@ -62,20 +62,6 @@ VAR_CONFIG
   Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteGruen                    AT %MX2.0    : BOOL; (* Option *) 
   Globale_Bausteine.Horn_AK[3,2].out_bHorn                                  AT %MX2.0    : BOOL; (* Option *)                 
 
-   // Ampe4 AK1
-  Globale_Bausteine.Ampel_AK[4,1].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; (* OK *) 
-  Globale_Bausteine.Ampel_AK[4,1].out_bAmpelLeuchteRot                      AT %MX2.0    : BOOL; (* OK *) 
-  Globale_Bausteine.Ampel_AK[4,1].out_bAmpelLeuchteGelb                     AT %MX2.0    : BOOL; (* OK *) 
-  Globale_Bausteine.Ampel_AK[4,1].out_bAmpelLeuchteGruen                    AT %MX2.0    : BOOL; (* OK *) 
-  Globale_Bausteine.Horn_AK[4,1].out_bHorn                                  AT %MX2.0    : BOOL; (* OK *)   
-
-   // Ampe4 AK1
-  Globale_Bausteine.Ampel_AK[4,2].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; (* Option *) 
-  Globale_Bausteine.Ampel_AK[4,2].out_bAmpelLeuchteRot                      AT %MX2.0    : BOOL; (* Option *) 
-  Globale_Bausteine.Ampel_AK[4,2].out_bAmpelLeuchteGelb                     AT %MX2.0    : BOOL; (* Option *) 
-  Globale_Bausteine.Ampel_AK[4,2].out_bAmpelLeuchteGruen                    AT %MX2.0    : BOOL; (* Option *) 
-  Globale_Bausteine.Horn_AK[4,2].out_bHorn                                  AT %MX2.0    : BOOL; (* Option *)             
-
 
 (***************************************************************************************************)
 (* KONFIGURATION: NETZTEILE \ DRUCKLUFT \ ETC. *)
