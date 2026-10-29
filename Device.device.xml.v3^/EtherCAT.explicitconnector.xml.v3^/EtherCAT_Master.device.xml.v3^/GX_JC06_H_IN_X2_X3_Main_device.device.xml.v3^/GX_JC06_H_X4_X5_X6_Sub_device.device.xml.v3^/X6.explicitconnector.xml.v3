@@ -26,10 +26,6 @@ __V3_CONTENT__
 				<List Name="Modules" Type="System.Collections.ArrayList">
 					<Single Type="System.Guid">0d3f3e4e-ac98-418c-aedc-1534bdeb2d01</Single>
 					<Single Type="System.Guid">5694ba1a-929b-44a4-baf4-291f7c5f3c1c</Single>
-					<Single Type="System.Guid">1ec3c2ee-dba2-462a-a4e3-d2fa5363dbf2</Single>
-					<Single Type="System.Guid">c360abbe-e6b3-4166-9b75-64ebdbf2d8d5</Single>
-					<Single Type="System.Guid">dbd1cb57-55f4-4bcf-a26e-c84a3777a159</Single>
-					<Single Type="System.Guid">78a15b09-aac6-4d18-8e1d-12ca1041f73d</Single>
 				</List>
 				<Single Name="MaxDevices" Type="int">2147483647</Single>
 				<Single Name="SupportPlaceholderObjects" Type="bool">False</Single>

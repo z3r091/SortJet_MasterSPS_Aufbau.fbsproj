@@ -1,6 +1,6 @@
 __V3_META__
 {
-	"objectGuid": "04a81ee8-9fc4-425d-97dc-d3c038f0c914",
+	"objectGuid": "9152b699-9ac5-4834-9afa-163fd6e88723",
 	"objectTypeGuid": "085766fd-043e-4545-8e8d-d651d56d5d3b",
 	"embeddedObjectTypeGuids": [],
 	"properties": {
@@ -15,12 +15,12 @@ __V3_CONTENT__
 		<List Name="InnerList" Type="System.Collections.ArrayList">
 			<Single Type="{850f737d-2abf-45f4-89c1-63ed6b29593d}" Method="IArchivable">
 				<Single Name="VisibleInterfaceName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
-					<Single Name="Default" Type="string">Ethercat_AD_Module_13429</Single>
+					<Single Name="Default" Type="string">Ethercat_693_Module_Class_Submodules</Single>
 				</Single>
 				<Single Name="ConnectorObjectGuid" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
 				<Single Name="IsExplicit" Type="bool">False</Single>
 				<Single Name="ModuleType" Type="ushort">0</Single>
-				<Single Name="Interface" Type="string">Ethercat_AD_Module_13429</Single>
+				<Single Name="Interface" Type="string">Ethercat_693_Module_Class_Submodules</Single>
 				<Single Name="Role" Type="{6827a808-5967-49c4-a827-10f6c446e075}">Child</Single>
 				<Single Name="ConnectorId" Type="int">1</Single>
 				<Single Name="Hostpath" Type="int">-1</Single>
@@ -30,7 +30,7 @@ __V3_CONTENT__
 							<Single Name="AllowEmptySlot" Type="bool">False</Single>
 							<Null Name="DefaultModules" />
 							<Array Name="Modules" Type="System.Guid">
-								<Single Type="System.Guid">0eaec7f0-d8e2-4ada-9ecf-fe56e0c2543e</Single>
+								<Single Type="System.Guid">0d5bdc36-82d0-4ff9-b25d-395b667d4e75</Single>
 							</Array>
 							<Single Name="IncludeSlotNumber" Type="bool">False</Single>
 							<Single Name="StartSlotNumber" Type="uint">0</Single>
@@ -41,7 +41,7 @@ __V3_CONTENT__
 				</Single>
 				<Single Name="HostParameterSet" Type="{abc12bfe-e34e-4b2c-a058-42c6e7e03a13}" Method="IArchivable">
 					<List2 Name="Params" />
-					<Single Name="LmGuid" Type="System.Guid">33ef69e2-2801-5df3-a92e-12446a3abc0f</Single>
+					<Single Name="LmGuid" Type="System.Guid">9455fd49-c0f4-5dfb-ab74-e5183c403a9a</Single>
 					<Null Name="Sections" />
 					<Single Name="InitOnOnlineChange" Type="bool">False</Single>
 					<Single Name="AlwaysMapping" Type="bool">False</Single>
@@ -84,7 +84,7 @@ __V3_CONTENT__
 				<Single Name="ModuleId" Type="int">-1</Single>
 				<Null Name="IoUpdateTask" />
 				<List Name="AdditionalInterfaces" Type="System.Collections.ArrayList">
-					<Single Type="string">Ethercat_AD_Module_13429_42E491F</Single>
+					<Single Type="string">Ethercat_693_Module_Class_Submodules_60</Single>
 				</List>
 				<List Name="Constraints" Type="System.Collections.ArrayList" />
 				<Single Name="hideInStatusPage" Type="bool">False</Single>
