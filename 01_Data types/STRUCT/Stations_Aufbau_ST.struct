@@ -12,6 +12,7 @@ TYPE Stations_Aufbau_ST:
     bKippen                                 : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
     bTransportVerstellung                   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle
     bWandverstellung                        : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Stationen
+    bWandverstellungMotorisch               : BOOL; // Shuttle: Transport-/Wandverstellung mit Antrieb statt pneumatisch
     bRoellchenleiste                        : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Stationen
     bHub                                    : BOOL;
     bDrehen                                 : BOOL;

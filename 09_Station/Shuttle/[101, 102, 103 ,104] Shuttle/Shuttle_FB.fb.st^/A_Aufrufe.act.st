@@ -40,7 +40,8 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   *)
   Wandverstellung[wlIndex]( bpFreigabe                                     := BasisStationsParameter.bFreigabe,
                             stStationsNummern                              := BasisStationsParameter.stMKs.stStationsNummern,
-                            bpAktivieren                                   := BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[wlIndex]);
+                            bpAktivieren                                   := BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[wlIndex],
+                            bpOptionMotorischAktivieren                    := BasisStationsParameter.stMKs.stStationsAufbau.bWandverstellungMotorisch );
 
   (* Aufruf:
      - Geblaese Zuweisung:

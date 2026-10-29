@@ -18,7 +18,7 @@ END_VAR
      => Wenn der Riemen verfahrern werden soll pruefen ob der autarke Vortransport aktiv ist
      => Aktion laeuft parallel zum Verfahrauftrag der Oberflaeche   
 *)
-IF (  BasisStationsParameter.bVorabKomponentenAnsteuerung[cWAND_1]
+IF (  BasisStationsParameter.bVorabKomponentenAnsteuerung[wWand]
   AND bpAutomatikAktiv )
 THEN
 
@@ -55,7 +55,7 @@ THEN
   CASE steplAktion OF
 (* VORAB KOMPONENTEN ANSTEUERUNG ======================== *)
     STEP_0_E:
-      BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[cWAND_1] := FALSE;
+      BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wWand] := FALSE;
 	    tonlTimeout( IN := FALSE );
 
       IF ( BasisStationsParameter.stMKs.stStationsOptionen.bVorAbKomponentenAnsteuerung ) THEN
@@ -161,18 +161,18 @@ THEN
        Wandverstellung.bpStartePositionierung          := FALSE;
        Kippen.bpPositionieren                          := FALSE;
        
-       BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[cWAND_1] := TRUE;
+       BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wWand] := TRUE;
 
 (* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
   END_CASE
 
 END_IF
 
-IF ( NOT BasisStationsParameter.bVorabKomponentenAnsteuerung[cWAND_1] ) THEN
+IF ( NOT BasisStationsParameter.bVorabKomponentenAnsteuerung[wWand] ) THEN
 
   IF ( steplAktion > STEP_0_E ) THEN
     
-    IF ( NOT BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[cWAND_1] ) THEN
+    IF ( NOT BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wWand] ) THEN
 
       Glastransport.bpVortransport                    := FALSE;
       Glastransport.bpVortransportRueck               := FALSE;
@@ -182,7 +182,7 @@ IF ( NOT BasisStationsParameter.bVorabKomponentenAnsteuerung[cWAND_1] ) THEN
       Kippen.bpPositionieren                                   := FALSE;
     END_IF
    
-    BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[cWAND_1] := FALSE;
+    BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wWand] := FALSE;
 
     steplAktion := STEP_0_E;
   END_IF

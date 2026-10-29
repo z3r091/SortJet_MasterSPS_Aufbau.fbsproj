@@ -93,10 +93,6 @@ VAR
   steplResetAntrieb                : STEPS_TE;
   steplReferenz                    : Steps_TE;
   steplVorabpositionierung         : STEPS_TE;
-  steplVorAbKomponentenAnsteuerung : ARRAY [cWAND_1..cANZAHL_WAENDE] OF Steps_TE;
-  steplEintransport                : ARRAY [cWAND_1..cANZAHL_WAENDE] OF Steps_TE;
-  steplAustransport                : ARRAY [cWAND_1..cANZAHL_WAENDE] OF Steps_TE;
-  steplDurchtransport              : ARRAY [cWAND_1..cANZAHL_WAENDE] OF Steps_TE;
   steplFaecherwagensuche           : STEPS_TE;
 
   // BAUSTEINE

@@ -26,7 +26,7 @@ END_FOR
 *)
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   blVorAbAuftragAktiv[wlIndex] :=    (  BasisStationsParameter.bVorabKomponentenAnsteuerung[wlIndex]
-                                  OR ( NOT BasisStationsParameter.bVorabKomponentenAnsteuerung[wlIndex] AND ( steplVorAbKomponentenAnsteuerung[wlIndex] > STEP_0_E )));
+                                  OR ( NOT BasisStationsParameter.bVorabKomponentenAnsteuerung[wlIndex] AND ( AnsteuerungRessourcen[wlIndex].steplAktion > STEP_0_E )));
 END_FOR
 
 (* Ausgaenge:

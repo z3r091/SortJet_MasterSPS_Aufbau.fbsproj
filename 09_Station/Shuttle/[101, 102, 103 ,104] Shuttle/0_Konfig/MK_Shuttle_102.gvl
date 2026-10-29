@@ -63,6 +63,7 @@ VAR_GLOBAL
                                             bKippen                       := [cANZAHL_WAENDE(TRUE)],
                                             bKippenSchuetz                := TRUE,
                                             bTransportVerstellung         := [cANZAHL_WAENDE(TRUE)],
+                                            bWandverstellungMotorisch     := FALSE,
                                             bHub                          := FALSE,
                                             bDrehen                       := FALSE,
                                             bMessachse                    := FALSE,

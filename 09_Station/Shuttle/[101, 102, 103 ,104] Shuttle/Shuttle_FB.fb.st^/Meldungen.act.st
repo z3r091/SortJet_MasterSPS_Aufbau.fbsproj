@@ -19,7 +19,10 @@ ACTION Meldungen
 *)
 blFehlerAktiv := FALSE;
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
-  blFehlerAktiv := blFehlerAktiv OR ( steplEintransport[wlIndex] = STEP_900_E ) OR ( steplAustransport[wlIndex] = STEP_900_E );
+  blFehlerAktiv := blFehlerAktiv OR ( Eintransport[wlIndex].steplAktion          = STEP_900_E )
+                                OR ( Austransport[wlIndex].steplAktion          = STEP_900_E )
+                                OR ( Durchtransport[wlIndex].steplAktion        = STEP_900_E )
+                                OR ( AnsteuerungRessourcen[wlIndex].steplAktion = STEP_900_E );
 END_FOR
 IF ( NOT ( blFehlerAktiv
   OR ( steplCheck        = STEP_900_E )
