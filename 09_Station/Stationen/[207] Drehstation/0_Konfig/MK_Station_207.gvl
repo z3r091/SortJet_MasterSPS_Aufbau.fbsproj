@@ -6,18 +6,18 @@
 }
 *)
 {attribute 'allow_unqualified_access'}
-NAMESPACE MK_Station_204
+NAMESPACE MK_Station_207
 VAR_GLOBAL
 
 (***************************************************************************************************)
 (* MASCHINEPARAMETER: DREHSTATION *)
 (***************************************************************************************************)
 
-  apgMKStation202 : Parameter_Station:=
+  apgMKStation207 : Parameter_Station:=
     (
-      stStationsNummern                     := ( NummerIntern :=   202,
-                                                 NummerExtern := 22202,
-                                                 NummerSPS    :=   202 ),
+      stStationsNummern                     := ( NummerIntern :=   207,
+                                                 NummerExtern :=  2207,
+                                                 NummerSPS    :=   207 ),
       bDeaktivieren                         := FALSE,
       wMeldungsNummer                       := 1762,
       eStationsTyp                          := eStation,
@@ -85,7 +85,7 @@ VAR_GLOBAL
                                                )]
     );
 
-  apgMKStation202Glastransport : Parameter_Glastransport :=
+  apgMKStation207Glastransport : Parameter_Glastransport :=
     (
       rLaengeStation                        := 2800, // Länge der Station                                                                                                                      
       rScheibenabstand                      :=  300, // Der Abstand zwischen zwei Scheiben auf der Station                                                                                     
@@ -104,7 +104,7 @@ VAR_GLOBAL
       rWegstreckeBisZurVerzoegerung         := 1900  // Weg die gefahren werden soll bis der Antrieb abgebremst, dies gilt für Eintransportauftraege die das Bit "Letzte Scheibe" gesetzt haben
 	  );
 
-  apgMKStation202Drehen : Parameter_Drehen :=
+  apgMKStation207Drehen : Parameter_Drehen :=
     (
       rZeitAntriebsfreigabeErhalten        :=   180, // [s] Energieeinsparrung: Zeiteinheit nach der die Antriebsfreigabe entzogen werden soll wenn keine Aktion ansteht [1 s = 1000 ms ] *)
       rToleranz                            :=   0.1, // Toleranz beim entscheiden der Aktuellen Positionen [GRAD]
@@ -116,7 +116,7 @@ VAR_GLOBAL
       eZielDrehpositionLeer                := eDrehPosition90Grad
     );
 
-  apgMKStation202Kippen : Parameter_Kippen :=
+  apgMKStation207Kippen : Parameter_Kippen :=
     (
        tZeitlicheUeberwachungKippen          :=  T#30S, // [ms] Verwendet für Antriebe die über einen Schuetz angesteuert werden                                           
        tZeitAntriebsfreigabeErhalten         := T#100S, // [s] Energieeinsparrung: Zeiteinheit nach der die Antriebsfreigabe entzogen werden soll wenn keine Aktion anstehtms ] *)
@@ -128,7 +128,7 @@ VAR_GLOBAL
        bKippenMitSchuetz                     :=  TRUE  // Option Kippen mit Schütz  
     );
 	
-  apgMKStation202Querfahrt : Parameter_Querfahrt :=
+  apgMKStation207Querfahrt : Parameter_Querfahrt :=
     (
       rZeitAntriebsfreigabeErhalten          :=   10,  // [s] Energieeinsparrung: Zeiteinheit nach der die Antriebsfreigabe entzogen werden soll wenn keine Aktion ansteht
       rMaximalePosition                      :=  279,  // Maximale Position, die das Shuttle erreichen kann 

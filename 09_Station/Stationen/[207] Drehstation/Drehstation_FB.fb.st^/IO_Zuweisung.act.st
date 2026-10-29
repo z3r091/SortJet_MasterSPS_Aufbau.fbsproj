@@ -12,7 +12,7 @@ ACTION IO_Zuweisung
 
 CASE BasisStationsParameter.stMKs.stStationsNummern.NummerSPS OF
  
-  cSTATION_204:	
+  cSTATION_207:	
   
 	// Gebläse
     in_bMotorstarter_Geblaese_OK := Glastransport.Antrieb.udipEingaengeUmrichter.cXG37_6_I_8;
