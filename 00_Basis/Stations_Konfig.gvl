@@ -125,7 +125,7 @@ VAR_GLOBAL CONSTANT
   cWAND_1                              : WORD := 2#0000000000000001;
   cWAND_2                              : WORD := 2#0000000000000010;
   cWAND_1_2                            : WORD := 2#0000000000000011;
-  cANZAHL_WAENDE                       : WORD := 2;
+  cANZAHL_WAENDE                       : WORD := 1;
 
 END_VAR
 

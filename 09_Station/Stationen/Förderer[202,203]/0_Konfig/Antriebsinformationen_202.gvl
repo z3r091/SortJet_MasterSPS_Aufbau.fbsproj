@@ -33,50 +33,10 @@ VAR_GLOBAL
       rpBeschleunigungFremdanlage :=   1000,  // [mm/s^2] Beschleunigung zu einer Fremdanlage                          
       rpGeschwindigkeitMessen     :=    667,  // [mm/s^2] Geschwindigkeit beim Scheiben messen                         
       bpHardwareLimits            :=  FALSE   // Endschalter vorhanden                                                 
-    ),
-    (
-      wAchsID                     :=     65,  // Achs ID aus dem EConSet                                              
-      stTyp                       := 'Belt',  // Typ                                                                
-      wpSchaltschrank             :=   2021,  // Daten aus dem Schaltplan                                           
-      wpSchaltplanreihe           :=     02,  // Daten aus dem Schaltplan                                           
-      wpSchaltplanseite           :=    100,  // Daten aus dem Schaltplan                                           
-      rpMaxGeschwindigkeit        :=      0,  // [mm/s]   Max- Geschwindigkeit für den Automatikbetrieb             
-      rpHandGeschwindigkeit       :=      0,  // [mm/s]   Hand- Geschwindigkeit                                     
-      rpReduzierteGeschwindigkeit :=      0,  // [mm/s]   Reduzierte Geschwindigkeit                                
-      rpReferenzGeschwindigkeit   :=      0,  // [mm/s]   Geschwindigkeit für die Referenzfahrt                     
-      rpEinrichtGeschwindigkeit   :=      0,  // [mm/s]   Max Geschwindigkeit während der Einrichtung der Anlage    
-      rpMaxBeschleunigung         :=      0,  // [mm/s^2] Max Beschleunigung                                        
-      rpMaxVerzoegerung           :=      0,  // [mm/s^2] Max Verzoegerung                                          
-      rpMaxRuckzeit               :=      0,  // [ms]     Ruckzeit des Antriebs                                     
-      rpReduzierteBeschleunigung  :=      0,  // [mm/s^2] Reduzierte Beschleunigung                                 
-      rpReduzierteVerzoegerung    :=      0,  // [mm/s^2] Reduzierte Verzoegerung                                   
-      rpBeschleunigungFremdanlage :=      0,  // [mm/s^2] Beschleunigung zu einer Fremdanlage                       
-      rpGeschwindigkeitMessen     :=      0,  // [mm/s^2] Geschwindigkeit beim Scheiben messen                      
-      bpHardwareLimits            :=  FALSE   // Endschalter vorhanden
     )];
 	
   apgInfoStation202Glastransport_Slave : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
-      wAchsID                     :=     65,  // Achs ID aus dem EConSet                                              
-      stTyp                       := 'Belt',  // Typ                                                                
-      wpSchaltschrank             :=   2021,  // Daten aus dem Schaltplan                                           
-      wpSchaltplanreihe           :=     02,  // Daten aus dem Schaltplan                                           
-      wpSchaltplanseite           :=    100,  // Daten aus dem Schaltplan                                           
-      rpMaxGeschwindigkeit        :=      0,  // [mm/s]   Max- Geschwindigkeit für den Automatikbetrieb             
-      rpHandGeschwindigkeit       :=      0,  // [mm/s]   Hand- Geschwindigkeit                                     
-      rpReduzierteGeschwindigkeit :=      0,  // [mm/s]   Reduzierte Geschwindigkeit                                
-      rpReferenzGeschwindigkeit   :=      0,  // [mm/s]   Geschwindigkeit für die Referenzfahrt                     
-      rpEinrichtGeschwindigkeit   :=      0,  // [mm/s]   Max Geschwindigkeit während der Einrichtung der Anlage    
-      rpMaxBeschleunigung         :=      0,  // [mm/s^2] Max Beschleunigung                                        
-      rpMaxVerzoegerung           :=      0,  // [mm/s^2] Max Verzoegerung                                          
-      rpMaxRuckzeit               :=      0,  // [ms]     Ruckzeit des Antriebs                                     
-      rpReduzierteBeschleunigung  :=      0,  // [mm/s^2] Reduzierte Beschleunigung                                 
-      rpReduzierteVerzoegerung    :=      0,  // [mm/s^2] Reduzierte Verzoegerung                                   
-      rpBeschleunigungFremdanlage :=      0,  // [mm/s^2] Beschleunigung zu einer Fremdanlage                       
-      rpGeschwindigkeitMessen     :=      0,  // [mm/s^2] Geschwindigkeit beim Scheiben messen                      
-      bpHardwareLimits            :=  FALSE   // Endschalter vorhanden
-    ),
-(
       wAchsID                     :=     65,  // Achs ID aus dem EConSet                                              
       stTyp                       := 'Belt',  // Typ                                                                
       wpSchaltschrank             :=   2021,  // Daten aus dem Schaltplan                                           
