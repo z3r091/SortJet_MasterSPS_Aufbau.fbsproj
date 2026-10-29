@@ -178,6 +178,7 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
       Auftragsdaten.stAuftragsOptionen.eGlastransport := 0;
       Auftragsdaten.stAuftragsOptionen.eHub := 0;
       Auftragsdaten.stAuftragsOptionen.eQuerachse := 0;
+      Auftragsdaten.stAuftragsOptionen.eAchsrichtung := 0;
       Auftragsdaten.stAuftragsOptionen.wMaxTransportGeschwindigkeit:= 0;
       Auftragsdaten.stAuftragsOptionen.eDrehen_Sollposition_NachEintransport := 0;
       Auftragsdaten.stAuftragsOptionen.eKippen_SollPosition_NachEintransport := 0;
