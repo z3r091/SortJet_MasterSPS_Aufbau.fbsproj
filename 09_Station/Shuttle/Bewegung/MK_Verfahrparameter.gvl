@@ -41,19 +41,7 @@ VAR_GLOBAL
   ),
   // Shuttle 102
   ( 
-   eParkposition                                       := PARKPOSITION_MAX,
-   rParkpositionMinimum                                :=  0,
-   rParkpositionMaximum                                :=  15983
-  ), 
-  // Shuttle 103
-  (
    eParkposition                                       := PARKPOSITION_MIN,
-   rParkpositionMinimum                                :=  -2829,
-   rParkpositionMaximum                                :=  0
-  ),
-  // Shuttle 104
-  ( 
-   eParkposition                                       := PARKPOSITION_MAX,
    rParkpositionMinimum                                :=  0,
    rParkpositionMaximum                                :=  15983
   )];
@@ -82,12 +70,6 @@ VAR_GLOBAL
     ),
     (
       rMaxVerzoegerungsRampeUeberwachung  := 2500  (* Maximale muss in mm/s^2 angegeben werden *)
-    ),
-    (
-      rMaxVerzoegerungsRampeUeberwachung  := 2500  (* Maximale muss in mm/s^2 angegeben werden *)
-    ),
-    (
-      rMaxVerzoegerungsRampeUeberwachung  := 2500  (* Maximale muss in mm/s^2 angegeben werden *)
     )];
 
   (* PARAMETER
@@ -95,10 +77,6 @@ VAR_GLOBAL
        => Einstellen der Geschwindigkeiten
   *)
   apgVerfahrueberwachungTransfershuttle : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Parameter_Verfahrueberwachung :=[
-	// Shuttle 150
-    (
-      rMaxVerzoegerungsRampeUeberwachung  := 5000  (* Maximale muss in mm/s^2 angegeben werden *)
-    ),
 	// Shuttle 151
     (
       rMaxVerzoegerungsRampeUeberwachung  := 5000  (* Maximale muss in mm/s^2 angegeben werden *)

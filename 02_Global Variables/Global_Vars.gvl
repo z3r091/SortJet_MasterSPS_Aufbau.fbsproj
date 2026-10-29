@@ -21,7 +21,7 @@ VAR_GLOBAL
   bgEtherCatOK : BOOL;
 
   // Aktivieren \ Deaktivieren des SystemChecks  
-  bgSystemCheck : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL :=[ TRUE, TRUE, TRUE, TRUE ]; // SystemCheck [AutomatikKreis 1]: FALSE -> Der SystemCheck wird sofort quittiert  TRUE -> SystemCheck wird normal ausgefuehrt
+  bgSystemCheck : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL := [ cANZAHL_AUTOMATIKKREISE(TRUE) ]; // SystemCheck [AutomatikKreis 1]: FALSE -> Der SystemCheck wird sofort quittiert  TRUE -> SystemCheck wird normal ausgefuehrt
 
   // Prüfung ob Reset in einem AK aktiv ist 
   agbResetAktiv : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
