@@ -194,7 +194,7 @@ toflReglerFreigabeErhalten( IN := (   bpStarteDrehBewegung
                                    OR bpHandfahrenMinus
                                    OR bpHandfahrenPlus
                                    OR bpReferenz ),
-                            PT:=( REAL_TO_TIME(wgZeitAutoabschaltungEnergiesparModus)* cMillisecToSec ) );
+                            PT := tgZeitAutoabschaltungEnergiesparModus );
 
 Antrieb.bpFreigabe         := (     toflReglerFreigabeErhalten.Q
                                                                      AND Arretierung.in_bStatusZylinderEingefahren

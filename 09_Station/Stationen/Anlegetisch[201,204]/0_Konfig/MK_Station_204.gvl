@@ -25,7 +25,7 @@ VAR_GLOBAL
       eaSicherheitskreis                    := [eSicherheitskreis_2,eSicherheitskreis_4],
       eSystemcheckZyklus                    := eSystemcheckZyklus_1,
       stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DEFAULT,
-                                                 wNachfolgerStation := cSTATION_202
+                                                 wNachfolgerStation := cSTATION_205
                                                ),
       stStationsOptionen                    := ( stSystemcheck   :=  ( bScheibenVermessenSystemCheck               := TRUE,
                                                                        bScheibeNachSystemcheckAufAuslauf           := FALSE,
@@ -57,7 +57,7 @@ VAR_GLOBAL
                                                  bKippen                       := [ cANZAHL_WAENDE(TRUE) ],
                                                  bKippenSchuetz                := FALSE,
                                                  bTransportVerstellung         := [ cANZAHL_WAENDE(FALSE) ],
-                                                 bHub                          := [ cANZAHL_WAENDE(FALSE) ],
+                                                 bHub                          := FALSE,
                                                  bDrehen                       := FALSE,
                                                  bMessachse                    := TRUE,
                                                  bDruckluft                    := TRUE,

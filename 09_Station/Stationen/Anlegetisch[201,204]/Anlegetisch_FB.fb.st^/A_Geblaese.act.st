@@ -32,7 +32,7 @@ tofGeblaeseFreigabeAusschalten ( IN := out_bGeblaese1Ein OR out_bGeblaese2Ein,
    - Energiesparmodus: Geblaese bei längerer Inaktivität ausschalten 
 *)
 toflGeblaeseEnergiesparModus( IN := ( rtlGeblaese.Q OR rtlTasterGeblaese.Q ),
-                              PT := ( WORD_TO_TIME(wgZeitAutoabschaltungEnergiesparModus)*cMillisecToSec*2));
+                              PT := tgZeitAutoabschaltungEnergiesparModus );
 
 ftTonGeblaesePowerSaving(CLK :=     toflGeblaeseEnergiesparModus.Q AND ( out_bGeblaese1Ein OR out_bGeblaese2Ein ) );
 

@@ -25,7 +25,7 @@ IF ( blBetriebsartAutomatik OR blBetriebartCheck OR blNachSystemcheckMerker ) TH
   *)
   toflGeblaeseEnergiesparModus( IN := (    BasisStationsParameter.bAuftragAktiv
                                         OR rtlAutomatikActiv.Q) ,
-                                PT := (WORD_TO_TIME(wgZeitAutoabschaltungEnergiesparModus) * 1000));
+                                PT := tgZeitAutoabschaltungEnergiesparModus );
 
   IF (  toflGeblaeseEnergiesparModus.Q
     AND BasisStationsParameter.bFreigabe )
