@@ -56,7 +56,8 @@ CASE BasisStationsParameter.stMKs.stFremdanlage.eTypSchnittstelle OF
 END_CASE
 
 // Glaettung der Geschwindigkeit zur Sortierung
-M_GeschwindigkeitGlaetten();
+M_GeschwindigkeitGlaetten( rpMindestGeschwindigkeitsAenderung   := BasisStationsParameter.stMKs.stFremdanlage.rMindestGeschwindigkeitsAenderung,
+                           tpMindestZeitZwischenGeschwAenderung := BasisStationsParameter.stMKs.stFremdanlage.tMindestZeitZwischenGeschwAenderung );
 
 IF BasisStationsParameter.stMKs.stFremdanlage.bStationStatusZuGlasAbruf THEN
   Status_ISO_Linie();

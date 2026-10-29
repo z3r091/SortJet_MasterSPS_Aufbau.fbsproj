@@ -156,7 +156,8 @@ Meldungen();
 AuftragsdatenVerwaltung();
 Auswertung();
 Signalverarbeitung();
-M_GeschwindigkeitGlaetten();
+M_GeschwindigkeitGlaetten( rpMindestGeschwindigkeitsAenderung   := BasisStationsParameter.stMKs.stFremdanlage.rMindestGeschwindigkeitsAenderung,
+                           tpMindestZeitZwischenGeschwAenderung := BasisStationsParameter.stMKs.stFremdanlage.tMindestZeitZwischenGeschwAenderung );
 Status_ISO_Linie();
 
 IF BasisStationsParameter.stMKs.stFremdanlage.bSignaleLoggen THEN

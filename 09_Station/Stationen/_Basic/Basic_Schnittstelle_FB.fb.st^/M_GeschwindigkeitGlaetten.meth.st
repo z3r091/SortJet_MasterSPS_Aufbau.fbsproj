@@ -7,6 +7,8 @@
 *)
 METHOD M_GeschwindigkeitGlaetten
 VAR_INPUT
+  rpMindestGeschwindigkeitsAenderung  : REAL; // MK stFremdanlage.rMindestGeschwindigkeitsAenderung
+  tpMindestZeitZwischenGeschwAenderung : TIME; // MK stFremdanlage.tMindestZeitZwischenGeschwAenderung
 END_VAR
 VAR
   rlGeschwindigkeitSoll              : REAL; // Ungeglaettete Geschwindigkeit aus der Schnittstelle
@@ -23,7 +25,7 @@ END_VAR
    - Stillstand (0) wird immer sofort ausgegeben, der erste Wert danach ebenfalls
 *)
 rlGeschwindigkeitSoll              := rpGeschwindigkeit;
-rlMindestGeschwindigkeitsAenderung := MAX( BasisStationsParameter.stMKs.stFremdanlage.rMindestGeschwindigkeitsAenderung, 0.0 );
+rlMindestGeschwindigkeitsAenderung := MAX( rpMindestGeschwindigkeitsAenderung, 0.0 );
 
 IF ( rlGeschwindigkeitSoll = 0.0 ) THEN
   rlGeschwindigkeitFreigegeben       := 0.0;
@@ -48,7 +50,7 @@ IF ( blGeschwindigkeitUpdateSperreAktiv AND tonlGeschwindigkeitUpdateSperre.Q ) 
 END_IF
 
 tonlGeschwindigkeitUpdateSperre( IN := blGeschwindigkeitUpdateSperreAktiv,
-                                 PT := BasisStationsParameter.stMKs.stFremdanlage.tMindestZeitZwischenGeschwAenderung );
+                                 PT := tpMindestZeitZwischenGeschwAenderung );
 
 rpGeschwindigkeit := rlGeschwindigkeitFreigegeben;
 END_METHOD
