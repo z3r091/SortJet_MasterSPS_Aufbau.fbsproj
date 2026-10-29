@@ -63,6 +63,12 @@ FOR i := cERSTE_STATION TO cLETZTE_STATION DO
   FOR k := cWAND_1 TO cANZAHL_WAENDE DO
       CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stGlastransport[k].wAchsID);
       CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportSlave[k].wAchsID);
+      IF __ISVALIDREF(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportY) THEN
+        CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportY[k].wAchsID);
+      END_IF
+      IF __ISVALIDREF(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportYSlave) THEN
+        CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportYSlave[k].wAchsID);
+      END_IF
       CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stWandverstellung[k].wAchsID);
   END_FOR
   CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stDrehen.wAchsID);
