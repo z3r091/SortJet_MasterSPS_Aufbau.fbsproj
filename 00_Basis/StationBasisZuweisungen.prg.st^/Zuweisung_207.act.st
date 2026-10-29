@@ -11,9 +11,16 @@ starrStationBasisParameter[cSTATION_207].stMKs REF= apgMKStation207;
 
 // Antriebsparameter zuweisen  
 starrStationBasisParameter[cSTATION_207].stAntriebsparameter.stGlastransport            REF= apgInfoStation207Glastransport;
+starrStationBasisParameter[cSTATION_207].stAntriebsparameter.stGlastransportSlave       REF= apgInfoStation207GlastransportSlave;
+starrStationBasisParameter[cSTATION_207].stAntriebsparameter.stDrehen                   REF= apgInfoStation207Drehen;
+starrStationBasisParameter[cSTATION_207].stAntriebsparameter.stKippen                   REF= apgInfoStation207Kippen;
+starrStationBasisParameter[cSTATION_207].stAntriebsparameter.stQuerfahrt                REF= apgInfoStation207Querfahrt;
 
 // Parameter der Stationskomponenten zuweisen  
 starrStationBasisParameter[cSTATION_207].stParameterStationskomponenten.stGlastransport REF= apgMKStation207Glastransport;
+starrStationBasisParameter[cSTATION_207].stParameterStationskomponenten.stDrehen        REF= apgMKStation207Drehen;
+starrStationBasisParameter[cSTATION_207].stParameterStationskomponenten.stKippen        REF= apgMKStation207Kippen;
+starrStationBasisParameter[cSTATION_207].stParameterStationskomponenten.stQuerfahrt     REF= apgMKStation207Querfahrt;
 
 (* Hinweis:
    - Zuweisung der Transportrichtungen im Automatik-Betrieb für die Glastransporte

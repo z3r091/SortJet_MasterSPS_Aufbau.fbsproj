@@ -7,13 +7,13 @@
 *)
 {attribute 'allow_unqualified_access'}
 NAMESPACE Antriebsinformationen_207
-VAR_GLOBAL CONSTANT
+VAR_GLOBAL
 
 (***************************************************************************************************)
 (* ANTRIEBSINFORMATION [DREHSTATION] *)
 (***************************************************************************************************)
 
-  apgInfoStation207Glastransport : AntriebsInformationen :=
+  apgInfoStation207Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
       wAchsID                     :=     10,  // Achs ID aus dem EConSet
       stTyp                       := 'Belt',  // Typ
@@ -33,9 +33,9 @@ VAR_GLOBAL CONSTANT
       rpBeschleunigungFremdanlage :=   1000,  // [mm/s^2] Beschleunigung zu einer Fremdanlage                          
       rpGeschwindigkeitMessen     :=    667,  // [mm/s^2] Geschwindigkeit beim Scheiben messen                         
       bpHardwareLimits            :=  FALSE   // Endschalter vorhanden
-    );
+    )];
 
-  apgInfoStation207GlastransportSlave : AntriebsInformationen :=
+  apgInfoStation207GlastransportSlave : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
       wAchsID                     :=     65,  // Achs ID aus dem EConSet                                              
       stTyp                       := 'Belt',  // Typ                                                                
@@ -55,7 +55,7 @@ VAR_GLOBAL CONSTANT
       rpBeschleunigungFremdanlage :=      0,  // [mm/s^2] Beschleunigung zu einer Fremdanlage                       
       rpGeschwindigkeitMessen     :=      0,  // [mm/s^2] Geschwindigkeit beim Scheiben messen                      
       bpHardwareLimits            :=  FALSE   // Endschalter vorhanden
-    );
+    )];
 
   apgInfoStation207Drehen : AntriebsInformationen :=
     (
