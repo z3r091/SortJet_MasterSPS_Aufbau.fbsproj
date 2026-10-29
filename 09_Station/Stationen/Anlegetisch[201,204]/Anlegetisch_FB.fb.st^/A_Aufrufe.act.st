@@ -24,7 +24,7 @@ Messachse( bpFreigabe                   := BasisStationsParameter.bFreigabe AND 
            stStationsNummern            := BasisStationsParameter.stMKs.stStationsNummern,
            bpBetriebsartHand            := blBetriebsartHand,
            bpFusstaster                 := rtlFussleisteStart.Q,
-           bpDeaktivieren               := NOT BasisStationsParameter.stMKs.stStationsAufbau.bMessachse );
+           bpAktivieren                 := BasisStationsParameter.stMKs.stStationsAufbau.bMessachse );
 
 // Hubrahmen
 Hubrahmen( );

@@ -59,7 +59,7 @@ THEN
          Antrieb.rpZielPosition := pAuftrag.rAuftragsLaenge - ppParameterBaustein.rWegUeberEinlaufEintransport;
 	   END_IF
 
-       Antrieb.wpRestwegMode     := cRestwegPositivAufDieSteigendeFlankeVonSensor1;
+       Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
        Antrieb.wpBetriebsart     := RESTWEG;
 
        steplEintransport := STEP_30_E;
@@ -137,7 +137,7 @@ THEN
 
         Antrieb.rpZielPosition := - ppParameterBaustein.rWegUeberEinlauf;
 
-        Antrieb.wpRestwegMode     := cRestwegNegativAufDieFallendeFlankeVonSensor2;
+        Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor2;
         Antrieb.wpBetriebsart     := RESTWEG;
         steplEintransport := STEP_500_E;
 
@@ -160,7 +160,7 @@ THEN
 
         Antrieb.rpZielPosition    :=  - ppParameterBaustein.rWegUeberEinlaufEintransport;
 
-        Antrieb.wpRestwegMode     := cRestwegNegativAufDieSteigendeFlankeVonSensor1;
+        Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
         Antrieb.wpBetriebsart     := RESTWEG;
         steplEintransport := STEP_500_E;
 

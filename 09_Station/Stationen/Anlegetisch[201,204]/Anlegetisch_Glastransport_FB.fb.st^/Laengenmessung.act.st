@@ -132,7 +132,7 @@ THEN
       Antrieb.rpZielPosition     := ( ppParameterBaustein.rWegUeberAuslauf + pAuftrag.rAuftragsLaenge )
                                      - pAuftrag.rModellVersatzVorne
                                      (* + pAuftrag.rModellVersatzHinten *) ;
-      Antrieb.wpRestwegMode      := cRestwegPositivAufDieSteigendeFlankeVonSensor2;
+      Antrieb.wpRestwegMode      := Positiv_Steigend_Sensor2;
       Antrieb.wpBetriebsart      := RESTWEG;
 
       steplGlaslaengenMessung := STEP_210_E;
