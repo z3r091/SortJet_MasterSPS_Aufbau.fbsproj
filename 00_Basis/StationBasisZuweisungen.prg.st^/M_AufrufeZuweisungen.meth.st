@@ -21,13 +21,14 @@ Zuweisung_101();
 Zuweisung_102();
 Zuweisung_151();
 Zuweisung_152();
-Zuweisung_203();
+Zuweisung_201();
 Zuweisung_202();
-Zuweisung_208();
-Zuweisung_206();
+Zuweisung_203();
+Zuweisung_204();
 Zuweisung_205();
 Zuweisung_206();
 Zuweisung_207();
+Zuweisung_208();
 
 Zuweisung_301();
 
