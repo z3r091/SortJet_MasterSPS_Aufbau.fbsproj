@@ -9,10 +9,11 @@ FUNCTION_BLOCK Tuerschalter_FB
 VAR_INPUT
 
   // BOOL
-  bpFreigabeZumOeffnenDerTuer : BOOL;
-  bpTuerRelaisQuittiert       : BOOL;
-  bpWeitereTuerenGeoeffnet    : BOOL;
-  bpTuerGeschlossen           : BOOL;
+  bpFreigabeZumOeffnenDerTuer     : BOOL;
+  bpTuerRelaisQuittiert           : BOOL;
+  bpWeitereTuerenGeoeffnet        : BOOL;
+  bpTuerGeschlossen               : BOOL;
+  in_bTasterNothaltNichtBetaetigt : BOOL := TRUE; // Oeffner - kommt von SLC (EV_ToPLC_Tueren_Nothalt_aktiv)
   
   // WORD
   wSicherheitskreis           : WORD;
@@ -40,7 +41,6 @@ END_VAR
 VAR
 
   // HARDWARE EINGAENGE 
-  in_bTasterNothaltNichtBetaetigt              : BOOL; // Oeffner
   in_bTasterAnforderungTuerOeffnen             : BOOL;
   in_bTasterQuittierungTuerGeschlossen         : BOOL;
 
