@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "d931bc38-7d87-4ca0-bbd2-35904d82fc52"
-	}
+  "v3Meta": {
+    "objectGuid": "d931bc38-7d87-4ca0-bbd2-35904d82fc52"
+  }
 }
 *)
 {attribute 'allow_unqualified_access'}
@@ -30,7 +30,7 @@ VAR_GLOBAL
 (* VERFAHREN - SHUTTLE BASIS PARAMETER  *)
 (***************************************************************************************************)
 
- apgShuttleVerfahrparameter : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Parameter_Querfahrt :=[
+ apgShuttleVerfahrparameter : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Parameter_Querfahrt_Shuttle :=[
   // Shuttle 101
   ( 
    eParkposition                                       := PARKPOSITION_MIN,
@@ -44,7 +44,7 @@ VAR_GLOBAL
    rParkpositionMaximum                                :=  15983
   )];
 
- apgTransfershuttleVerfahrparameter : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Parameter_Querfahrt :=[
+ apgTransfershuttleVerfahrparameter : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Parameter_Querfahrt_Shuttle :=[
   // Shuttle 151
   ( 
    eParkposition                                       := PARKPOSITION_MIN,
@@ -75,11 +75,11 @@ VAR_GLOBAL
        => Einstellen der Geschwindigkeiten
   *)
   apgVerfahrueberwachungTransfershuttle : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Parameter_Verfahrueberwachung :=[
-	// Shuttle 151
+  // Shuttle 151
     (
       rMaxVerzoegerungsRampeUeberwachung  := 5000  (* Maximale muss in mm/s^2 angegeben werden *)
     ),
-	// Shuttle 152
+  // Shuttle 152
     (
       rMaxVerzoegerungsRampeUeberwachung  := 5000  (* Maximale muss in mm/s^2 angegeben werden *)
     )];
