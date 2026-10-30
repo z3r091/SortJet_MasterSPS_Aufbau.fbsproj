@@ -137,7 +137,11 @@ THEN
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung * 2;
 
         Antrieb.rpZielPosition    := 50;
-        Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor1;
+        IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+          Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
+        ELSE
+          Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor1;
+        END_IF
 
         steplGlastransporttest := STEP_50_E;
 
@@ -187,7 +191,11 @@ THEN
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung * 2;
 
         Antrieb.rpZielPosition    := 50;
-        Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor2;
+        IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+          Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor2;
+        ELSE
+          Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor2;
+        END_IF
 
         steplGlastransporttest := STEP_80_E;
 
@@ -228,7 +236,11 @@ THEN
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung * 2;
 
         Antrieb.rpZielPosition    := 100;
-        Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor1;
+        IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+          Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
+        ELSE
+          Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor1;
+        END_IF
 
         steplGlastransporttest := STEP_110_E;
 

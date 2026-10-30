@@ -458,7 +458,7 @@ THEN
         steplAustransportDefaultLuftabfrage := STEP_130_E;
       END_IF
 
-      IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) AND NOT stStationsNummern.NummerSPS = 152 THEN // todo daraus eine option machen
+      IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) THEN
         bpOutBereitZumAustransport := FALSE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplAustransportDefaultLuftabfrage := STEP_140_E;
@@ -615,7 +615,12 @@ THEN
         END_IF
 
         Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberEinlaufAustransport;
-        Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor1;
+
+        IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+          Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
+        ELSE
+          Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor1;
+        END_IF
         Antrieb.wpBetriebsart     := RESTWEG;
 
         steplAustransportDefaultLuftabfrage := STEP_440_E;
@@ -853,7 +858,11 @@ THEN
       Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
 
       Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberEinlaufAustransport;
-      Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
+      IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+        Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor1;
+      ELSE
+        Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
+      END_IF
 
       Antrieb.wpBetriebsart     := RESTWEG;
 
@@ -910,7 +919,11 @@ THEN
 
       rlZielPosition            := (-1 * ( ppParameterBaustein.rWegUeberEinlaufEintransport));
       Antrieb.rpZielPosition    := rlZielPosition;
-      Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor1;
+      IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+        Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
+      ELSE
+        Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor1;
+      END_IF
       Antrieb.wpBetriebsart := RESTWEG;
 
       steplAustransportDefaultLuftabfrage := STEP_540_E;
