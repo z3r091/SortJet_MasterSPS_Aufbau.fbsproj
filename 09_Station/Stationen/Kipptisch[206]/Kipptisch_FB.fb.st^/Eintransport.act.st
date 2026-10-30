@@ -99,8 +99,8 @@ THEN
       IF ( ( Kippen.bpDone AND ( Kippen.epKippStatus = eKippen_Position_0Grad ) )
         OR NOT Kippen.bpStartKippenAb )
       THEN
-        Kippen.bpStartKippenAb := FALSE;
-        Kippen.bpStartKippenAb := FALSE;
+        Kippen.bpStartKippenAb  := FALSE;
+        Kippen.bpStartKippenAuf := FALSE;
 
         steplEintransport := STEP_100_E;
       END_IF
@@ -113,8 +113,8 @@ THEN
       IF ( ( Kippen.bpDone AND ( Kippen.epKippStatus = eKippen_Position_90Grad ) )
         OR NOT Kippen.bpStartKippenAuf  )
       THEN
-        Kippen.bpStartKippenAb := FALSE;
-        Kippen.bpStartKippenAb := FALSE;
+        Kippen.bpStartKippenAb  := FALSE;
+        Kippen.bpStartKippenAuf := FALSE;
 
         steplEintransport := STEP_100_E;
       END_IF

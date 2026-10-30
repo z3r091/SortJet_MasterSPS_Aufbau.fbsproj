@@ -56,11 +56,11 @@ abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].
 
 // Drehen
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bDrehenFehler                 :=  Drehen.bpFehler;
-abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bDrehenMinEndschalter         :=  Glastransport.Antrieb.bpMinSchalterBelegt;
-abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bDrehenMaxEndschalter         :=  Glastransport.Antrieb.bpMaxSchalterBelegt;
+abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bDrehenMinEndschalter         :=  Drehen.Antrieb.bpMinSchalterBelegt;
+abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bDrehenMaxEndschalter         :=  Drehen.Antrieb.bpMaxSchalterBelegt;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].epDrehIstPosition             :=  Drehen.epDrehPositionsStatus;
-abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bDrehenAntriebReferenziert    :=  Glastransport.Antrieb.bpIstReferenziert;
-abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].rDrehenIstPos                 :=  Glastransport.Antrieb.rpIstPosition;
+abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bDrehenAntriebReferenziert    :=  Drehen.Antrieb.bpIstReferenziert;
+abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].rDrehenIstPos                 :=  Drehen.Antrieb.rpIstPosition;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bDrehenArretierungEingefahren :=  Drehen.Arretierung.in_bStatusZylinderEingefahren;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bDrehenArretierungAusgefahren :=  Drehen.Arretierung.in_bStatusZylinderAusgefahren;
 

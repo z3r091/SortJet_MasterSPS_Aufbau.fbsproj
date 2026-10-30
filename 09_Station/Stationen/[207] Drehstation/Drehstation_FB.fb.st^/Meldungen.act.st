@@ -50,8 +50,8 @@ END_IF
 
 // WatchIO's
 WatchIo( NOT Glastransport.Antrieb.bpLS_150F02_230V,                                                                                                      wlWatchIONachrichtenNummer + 0 );
-WatchIo( NOT Glastransport.Antrieb.bpLS_150F02_230V,                                                                                                      wlWatchIONachrichtenNummer + 1 );
-WatchIo( NOT Glastransport.Antrieb.bpLS_150F02_230V AND BasisStationsParameter.stMKs.stStationsAufbau.bGlastransportSlaveVorhanden,                       wlWatchIONachrichtenNummer + 2 );
+WatchIo( NOT Drehen.Antrieb.bpLS_150F02_230V,                                                                                                             wlWatchIONachrichtenNummer + 1 );
+WatchIo( NOT Glastransport.Antrieb_Slave.bpLS_150F02_230V AND BasisStationsParameter.stMKs.stStationsAufbau.bGlastransportSlaveVorhanden,                       wlWatchIONachrichtenNummer + 2 );
 WatchIo( NOT in_bMotorstarter_Geblaese_OK,                                                                                                                wlWatchIONachrichtenNummer + 3 );
 
 //Querfahrt

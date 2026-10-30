@@ -27,11 +27,11 @@ IF ( blBetriebsartHand ) THEN
      - Referenzieren
   *)
   Kippen.bpReferenz := ((  dwlHandfunktionen.4
-                        OR bgVISUKippenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+                        OR bgVISUKippenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                         AND NOT (   dwlHandfunktionen.2
                                  OR dwlHandfunktionen.3
                                  OR bgVISUKippenUebergabePosition[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-                                 OR bgVISUKippenGrundstellung[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )));
+                                 OR bgVISUKippenGrundstellung[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
 
   blStartePositionWaagerecht := (( dwlHandfunktionen.2
                                  OR bgVISUKippenGrundstellung[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]

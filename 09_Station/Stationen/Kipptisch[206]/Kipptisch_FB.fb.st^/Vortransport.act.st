@@ -17,7 +17,7 @@ THEN
   IF ( Glastransport.bpFehler ) THEN
     Glastransport.bpVortransport := FALSE;
     BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
-    steplEintransport := STEP_900_E;
+    steplVortransport := STEP_900_E;
   END_IF
 
   IF ( Kippen.bpFehler ) THEN

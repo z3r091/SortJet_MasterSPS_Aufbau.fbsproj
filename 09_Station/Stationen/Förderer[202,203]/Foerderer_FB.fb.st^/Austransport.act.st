@@ -24,7 +24,7 @@ THEN
   IF ( Kippen.bpFehler ) THEN
     Kippen.bpPositionieren := FALSE;
     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
-    steplEintransport := STEP_900_E;
+    steplAustransport := STEP_900_E;
   END_IF
   
   IF ( Geblaese.bpFehler )THEN
