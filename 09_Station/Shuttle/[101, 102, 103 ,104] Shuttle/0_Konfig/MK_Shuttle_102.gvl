@@ -16,7 +16,7 @@ VAR_GLOBAL
   apgMKShuttle102 : Parameter_Station :=
     (
       stStationsNummern                 := ( NummerIntern := 102,
-                                             NummerExtern := 2102,
+                                             NummerExtern := 1102,
                                              NummerSPS    := 102 ),
       bDeaktivieren                     := TRUE,
       wMeldungsNummer                   := 650,

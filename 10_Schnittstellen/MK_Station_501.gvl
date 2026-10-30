@@ -18,7 +18,7 @@ VAR_GLOBAL
                                                  NummerExtern    :=  1501,
                                                  NummerSPS       :=   501 ),
       bDeaktivieren                         := FALSE,
-      wMeldungsNummer                       := 1300,
+      wMeldungsNummer                       := 1310,
       eStationsTyp                          := eFremdanlage,
       eaAutomatikkreis                      := [eAutomatikkreis_Undefiniert],
       eaSicherheitskreis                    := [eSicherheitskreis_Undefiniert], //Alle Sk's eintragen in dem die Station eingebunden ist

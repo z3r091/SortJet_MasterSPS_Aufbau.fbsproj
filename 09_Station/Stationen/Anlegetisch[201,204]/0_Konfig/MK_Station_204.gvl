@@ -19,7 +19,7 @@ VAR_GLOBAL
                                                  NummerExtern :=  1204,
                                                  NummerSPS    :=   204 ),
       bDeaktivieren                         := TRUE,
-      wMeldungsNummer                       := 1820,
+      wMeldungsNummer                       := 1760,
       eStationsTyp                          := eStation,
       eaAutomatikkreis                      := [eAutomatikkreis_1],
       eaSicherheitskreis                    := [eSicherheitskreis_2,eSicherheitskreis_4],

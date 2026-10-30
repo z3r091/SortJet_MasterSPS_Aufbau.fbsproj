@@ -16,7 +16,7 @@ VAR_GLOBAL
   apgMKStation202 : Parameter_Station:=
     (
       stStationsNummern                     := ( NummerIntern :=   202,
-                                                 NummerExtern :=  2202,
+                                                 NummerExtern :=  1202,
                                                  NummerSPS    :=   202 ),
       bDeaktivieren                         := FALSE,
       wMeldungsNummer                       := 1720,
