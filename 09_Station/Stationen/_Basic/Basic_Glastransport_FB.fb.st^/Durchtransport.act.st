@@ -108,7 +108,7 @@ IF (  bpDurchtransport ) THEN
       *)
       IF ( tonlMaximaleZeitSensorAnfahren.Q ) THEN
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
-        steplAustransport := STEP_900_E;
+        steplDurchtransport := STEP_900_E;
       END_IF
 
 (* DURCHTRANSPORT ========================================*)

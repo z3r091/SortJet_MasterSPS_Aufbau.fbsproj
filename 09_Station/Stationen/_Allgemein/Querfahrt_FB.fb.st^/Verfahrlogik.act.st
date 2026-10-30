@@ -9,7 +9,7 @@ ACTION Verfahrlogik
 (***************************************************************************************************)
 (*  VERFAHRLOGIK *)
 (***************************************************************************************************)
-IF (    bpVerfahrfreigabe
+IF (    blVerfahrfreigabe
     AND blAbbruchPositionierung
     AND bpQuittungAuftragsstatusZurueckgesetzt )
 THEN

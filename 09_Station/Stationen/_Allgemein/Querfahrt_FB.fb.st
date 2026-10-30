@@ -21,7 +21,7 @@ VAR_INPUT
   bpSensorEinlauf                        : BOOL;
   bpSensorAuslauf                        : BOOL;
   bpSensorAuslaufVorgaenger              : BOOL;
-  bpVerfahrfreigabe                      : BOOL; (* Status ob die Station verfahren darf *)
+  bpVerfahrfreigabe                      : BOOL := TRUE; // Externe Freigabe zum Verfahren (ohne Beschaltung TRUE)
   bpQuittungAuftragsstatusZurueckgesetzt : BOOL; // Auftrag wurde zurueckgesetzt
   bpReglungAktivSchalten                 : BOOL; // Da der Querfahrtantrieb keine Bremse hat, muss um die Position zu halten der Regler in Regelung stehen, sonst verschiebt sich die Station *)
 
@@ -62,6 +62,7 @@ VAR
 
   // BOOL
   blErsterZyklus                         : BOOL := TRUE;
+  blVerfahrfreigabe                      : BOOL;
   blAbbruchPositionierung                : BOOL := FALSE;
 
   // STEPS
@@ -133,6 +134,12 @@ END_IF
 (***************************************************************************************************)
 (* AKTIONEN *)
 (***************************************************************************************************)
+// Verfahrfreigabe (lokal, der Eingang wird nicht ueberschrieben)
+blVerfahrfreigabe :=     bpVerfahrfreigabe
+                     AND NOT bpSensorEinlauf
+                     AND NOT bpSensorAuslauf
+                     AND NOT bpSensorAuslaufVorgaenger;
+
 Verfahrlogik();
 Positionieren();
 Handfunktionen();
@@ -143,7 +150,7 @@ Meldungen();
 (***************************************************************************************************)
 (* Freigabe zum Verfahren *)
 (***************************************************************************************************)
-IF NOT bpVerfahrfreigabe AND Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.RESET AND Antrieb.wpBetriebsart <> KEINE_FUNKTION THEN
+IF NOT blVerfahrfreigabe AND Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.RESET AND Antrieb.wpBetriebsart <> KEINE_FUNKTION THEN
   Antrieb.wpBetriebsart := KEINE_FUNKTION;
 END_IF
 
@@ -172,11 +179,6 @@ bpMinEndschalterBelegt     := Antrieb.bpMinSchalterBelegt;
 bpMaxEndschalterBelegt     := Antrieb.bpMaxSchalterBelegt;
 bpPositionierungGestartet  := steplPositionieren > STEP_0_E;
 bpPositionierungAbgeschlossen := bpDone AND NOT bpPositionieren;
-
-bpVerfahrfreigabe :=  bpVerfahrfreigabe
-                      AND NOT bpSensorEinlauf
-                      AND NOT bpSensorAuslauf
-                      AND     bpSensorAuslaufVorgaenger;
 
 (* Positionsabfrage:
     - Wurde die Zielposition aus dem Auftrag erreicht, bzw. stimmt die aktuelle Shuttleposition mit der

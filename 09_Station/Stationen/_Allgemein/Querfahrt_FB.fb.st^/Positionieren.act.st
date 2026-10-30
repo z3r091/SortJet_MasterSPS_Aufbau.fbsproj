@@ -39,7 +39,7 @@ IF (  bpPositionieren ) THEN
               => Vorhanden: Starten des Verfahr-Auftrags
               => Fehlt    : Abbruch des Verfahr-Auftrags
         *)
-        IF ( bpVerfahrfreigabe ) THEN
+        IF ( blVerfahrfreigabe ) THEN
           steplPositionieren := STEP_10_E;
         // ELSE
         //   steplPositionieren := STEP_120_E;
@@ -164,7 +164,7 @@ IF (  bpPositionieren ) THEN
          - die Verfahrfreigabe wird waehrend des verfahrens genommen
             => Sensor belegt etc.
       *)
-      IF ( NOT bpVerfahrfreigabe ) THEN
+      IF ( NOT blVerfahrfreigabe ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
         blAbbruchPositionierung := TRUE;

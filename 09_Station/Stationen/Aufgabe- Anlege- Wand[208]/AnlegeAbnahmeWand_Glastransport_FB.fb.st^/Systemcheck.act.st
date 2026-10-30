@@ -349,7 +349,7 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_900_E;
       END_IF
 
-      IF ( ABS(rlPositionAntriebBeiStart - ABS(Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation)) THEN
+      IF ( ABS( rlPositionAntriebBeiStart - ABS(Antrieb.rpIstPosition) ) > ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_NICHT_FREI;
         steplCheck := STEP_900_E;
@@ -462,7 +462,7 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_900_E;
       END_IF
 
-      IF ( ABS(rlPositionAntriebBeiStart - ABS(Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation)) THEN
+      IF ( ABS( rlPositionAntriebBeiStart - ABS(Antrieb.rpIstPosition) ) > ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_NICHT_FREI;
         steplCheck := STEP_900_E;
@@ -477,7 +477,7 @@ IF ( bpCheck ) THEN
       // - n/c
       // ---------------------------------------------------------------------------------------*)
 
-      Antrieb.wpMaster := 1;
+      Antrieb.wpMaster := InGlasTransportNachfolger.wAchsID;
       Antrieb.wpBetriebsart := SYNC_AUF_MASTER;
 
       IF ( Antrieb.bpDone ) THEN

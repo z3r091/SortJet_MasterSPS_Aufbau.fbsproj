@@ -147,7 +147,7 @@ IF( bpVermessen_OberUndUnterkante_2_Sensoren ) THEN
 		  // Sensor wurde nicht belegt. Messung nicht abgeschlossen -> wiederholen
         Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
 		  epGlashoehenTypMode2 := eGlasMessungWiederholen;
-        steplOberUndUnterkante_2_Sensoren := STEP_999_E;
+        steplOberUndUnterkante_2_Sensoren := STEP_1000_E;
 			
 		END_IF
 		
@@ -174,7 +174,7 @@ IF( bpVermessen_OberUndUnterkante_2_Sensoren ) THEN
 		  // Sensor wurde nicht frei. Messung nicht abgeschlossen -> wiederholen
         Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
 		  epGlashoehenTypMode2 := eGlasMessungWiederholen;
-        steplOberUndUnterkante_2_Sensoren := STEP_998_E;
+        steplOberUndUnterkante_2_Sensoren := STEP_1000_E; // Messung wiederholen (epGlashoehenTypMode2)
 			
 		END_IF
 
@@ -186,12 +186,12 @@ IF( bpVermessen_OberUndUnterkante_2_Sensoren ) THEN
 		// Messpunkte nicht plausibel
 		IF ( rlScheibenoberkante <= rlScheibenunterkante ) THEN
 		  epGlashoehenTypMode2 := eGlasMessungWiederholen;
-		    steplOberUndUnterkante_2_Sensoren := STEP_995_E;
+		    steplOberUndUnterkante_2_Sensoren := STEP_1000_E; // Messung wiederholen (epGlashoehenTypMode2)
 		  
 		// Prüfen ob das Messergebnis plausibel ist
 		ELSIF ( ( rlMessErgebnis <= 0 ) OR ( rlMessErgebnis > ( Antrieb.rpMaxPosition ) ) ) THEN
 		  epGlashoehenTypMode2 := eGlasMessungWiederholen;
-		    steplOberUndUnterkante_2_Sensoren := STEP_994_E;
+		    steplOberUndUnterkante_2_Sensoren := STEP_1000_E; // Messung wiederholen (epGlashoehenTypMode2)
 		  
       ELSE	
 		  // Messergebnis plausibel 
