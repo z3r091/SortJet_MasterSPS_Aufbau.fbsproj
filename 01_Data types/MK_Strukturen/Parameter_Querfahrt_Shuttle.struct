@@ -1,0 +1,14 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "71a77da5-14d4-476f-baf8-140cdb16b917"
+	}
+}
+*)
+TYPE Parameter_Querfahrt_Shuttle :
+STRUCT
+  eParkposition                  : ParkpositionTyp_EN; (* => Angabe ob das Shuttle eine Min- \ Max- \ Min-Max- Parkposition besitzt *)
+  rParkpositionMinimum           : REAL; (* => Parkposition (Handminus - Richtung) minimum  *)
+  rParkpositionMaximum           : REAL; (* => Parkposition (Handplus - Richtung) maximum  *)
+END_STRUCT
+END_TYPE

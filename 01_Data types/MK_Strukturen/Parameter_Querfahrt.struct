@@ -8,8 +8,5 @@
 TYPE Parameter_Querfahrt :
 STRUCT
   tZeitAntriebsfreigabeErhalten  : TIME;
-  eParkposition                  : ParkpositionTyp_EN; (* => Angabe ob die Station eine Min- \ Max- \ Min-Max- Parkposition besitzt *)
-  rParkpositionMinimum           : REAL; (* => Parkposition (Handminus - Richtung) minimum  *)
-  rParkpositionMaximum           : REAL; (* => Parkposition (Handplus - Richtung) maximum  *)
 END_STRUCT
 END_TYPE
