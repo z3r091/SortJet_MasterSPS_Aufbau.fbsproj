@@ -51,7 +51,6 @@ CASE( tSpsMessage.wAuftrag )OF
   SB0_MMI_SortierungCheckInputQueue:
     tMmi2SpsInfo.wCheckArea      := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
     tMmi2SpsInfo.wCheckRelease   := HMI_GetWORD(ADR(tSpsMessage.awDaten[1]));
-    tMmi2SpsInfo.wAutomatikStart := HMI_GetWORD(ADR(tMmi2SpsInfo.wAutomatikStart))+ 1;
     M_SB0_MMI_SortierungCheckInputQueue := TRUE;
     
     
@@ -399,8 +398,15 @@ CASE( tSpsMessage.wAuftrag )OF
      ELSE
         M_SB0_MMI_SHEET_ORDER_SHUTTLE := TRUE;
      END_IF
-	  
-	  
+
+
+  // MSG 102
+  // Override fuer alle Antriebe [0..100 %], Auswertung in Antriebe.prg
+  SB0_MMI_DRIVEOVERRIDE:
+    tMmi2SpsInfo.wMmi2SpsOverrideValue := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
+    M_SB0_MMI_DRIVEOVERRIDE := TRUE;
+
+
   // MSG 110
   // Funktion zum zurueckfahren der Glaeser und neu Positionieren im Speicher
   SB0_MMI_TS_REPOSITIONING_LITES:
