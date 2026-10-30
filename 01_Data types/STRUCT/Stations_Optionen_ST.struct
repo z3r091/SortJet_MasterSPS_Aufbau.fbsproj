@@ -21,6 +21,7 @@ TYPE Stations_Optionen_ST :
     bStationLeerfahrenBeiSkAnforderung                            : BOOL;
 
     bGlasAbgenommenAutomatischQuittieren                          : BOOL;
+    bScheibeAbnehmenNachEintransport                              : BOOL; // Scheibe nach dem Eintransport wieder abnehmen
 
   END_STRUCT
 END_TYPE

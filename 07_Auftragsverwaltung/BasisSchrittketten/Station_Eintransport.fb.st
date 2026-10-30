@@ -319,7 +319,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 (* EINTRANSPORT ================================================== *)
     STEP_1000_E:
       bpDone := TRUE;
-	  IF starrStationBasisParameter[wStation].stMKs.stStationsOptionen.stAnlegetisch.bScheibeAbnehmenNachEintransport THEN
+	  IF starrStationBasisParameter[wStation].stMKs.stStationsOptionen.bScheibeAbnehmenNachEintransport THEN
         Auftragsdaten.wAuftrag := eStation_Abnehmen;
 	  ELSIF Auftragsdaten.bLetzteScheibe THEN
         Auftragsdaten.wAuftrag := eStation_Warte_Auf_Austransport;

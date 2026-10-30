@@ -8,7 +8,6 @@
 TYPE Stations_Optionen_Anlegetisch_ST :
   STRUCT
     bAnlegetischMitEintransportVorgaenger                         : BOOL;
-    bScheibeAbnehmenNachEintransport                              : BOOL;
     bAnschlagAutomatischAusfahren                                 : BOOL;
     
   END_STRUCT
