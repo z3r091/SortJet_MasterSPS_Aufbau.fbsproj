@@ -11,13 +11,10 @@ ACTION Auswertung
 (***************************************************************************************************)
 
 (* Hinweis:
-   - Anzeige der Byte- Reihenfolge 
+   - Anzeige der Byte- Reihenfolge der Lade-ID auf dem Bus
      => Visualisierung
 *)
-SysMemCpy(ADR(aOutByteAuftragsdatenScheibenID_1_0), ADR(out_stSenderAuftragsdaten.adwScheibenID_1[0]), 4 );
-SysMemCpy(ADR(aOutByteAuftragsdatenScheibenID_1_1), ADR(out_stSenderAuftragsdaten.adwScheibenID_1[1]), 4 );
-SysMemCpy(ADR(aOutByteAuftragsdatenScheibenID_1_2), ADR(out_stSenderAuftragsdaten.adwScheibenID_1[2]), 4 );
-SysMemCpy(ADR(aOutByteAuftragsdatenScheibenID_1_3), ADR(out_stSenderAuftragsdaten.adwScheibenID_1[3]), 4 );
+SysMemCpy( ADR( aOutByteLadeID ), ADR( out_awSenderLadeID ), SIZEOF( aOutByteLadeID ) );
 
 (* Hinweis:
    - Anzeige der ID ins ASCII- Format
@@ -26,22 +23,10 @@ SysMemCpy(ADR(aOutByteAuftragsdatenScheibenID_1_3), ADR(out_stSenderAuftragsdate
 IF ( bpDatenformatASCII ) THEN
 
   strScheibenID := ' ID: ';
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_0[0]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_0[1]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_0[2]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_0[3]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_1[0]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_1[1]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_1[2]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_1[3]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_2[0]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_2[1]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_2[2]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_2[3]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_3[0]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_3[1]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_3[2]] );
-  strScheibenID:=CONCAT(STR1:=strScheibenID  , STR2:=  ascii[aOutByteAuftragsdatenScheibenID_1_3[3]] );
+
+  FOR ilIndex := 0 TO 15 DO
+    strScheibenID := CONCAT( STR1 := strScheibenID, STR2 := ascii[aOutByteLadeID[ilIndex]] );
+  END_FOR
 
 END_IF
 END_ACTION

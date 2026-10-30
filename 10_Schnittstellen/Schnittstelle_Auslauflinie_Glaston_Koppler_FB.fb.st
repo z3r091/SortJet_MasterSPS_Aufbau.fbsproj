@@ -28,13 +28,10 @@ VAR
   blAuftragdatenPlausibel                 : BOOL;
   blFehlermeldungGenerierenKommunikation  : BOOL;
   blFehlermeldungGenerierenAuftragsdaten  : BOOL;
-  bpFehlerMeldungDeaktiviert              : BOOL := TRUE;
+  bpFehlerMeldungDeaktiviert              : BOOL := FALSE;
   
   // BYTE
-  aOutByteAuftragsdatenScheibenID_1_0 : ARRAY [0..3] OF BYTE;
-  aOutByteAuftragsdatenScheibenID_1_1 : ARRAY [0..3] OF BYTE;
-  aOutByteAuftragsdatenScheibenID_1_2 : ARRAY [0..3] OF BYTE;
-  aOutByteAuftragsdatenScheibenID_1_3 : ARRAY [0..3] OF BYTE;
+  aOutByteLadeID             : ARRAY [0..15] OF BYTE; // Visualisierung: Lade-ID byteweise
 
   // WORD 
   wlVerbindungsVersuche      : WORD;
@@ -46,7 +43,8 @@ VAR
   wlInSignale                : WORD;
 
   (* DWORD *)
-  dwlGeschwindigkeit         : DWORD;
+  dwlGeschwindigkeit         : DWORD;                   // Geschwindigkeit des Empfaengers [mm/s], ggf. geswappt
+  adwlLadeID                 : ARRAY [0..3] OF DWORD;   // Lade-ID (= Scheiben-ID 1), ggf. geswappt
 
   (* INT *)
   ilIndex                    : INT;
@@ -68,6 +66,9 @@ VAR
   (*  STRING *)
   strScheibenID  : STRING;
 
+  (* REFERENZ *)
+  stlVorgaenger  : REFERENCE TO StationBasisParameter_ST; // SortJet- Station vor der Schnittstelle (SF/SB)
+
   
 END_VAR
 
@@ -81,29 +82,35 @@ VAR
   rtlGlasAbruf                                           : R_TRIG;
   ftlGlasAbruf                                           : F_TRIG;
 
-  // HARDWARE EINGAENGE KOPPLER
-  in_stEmpfaengerAuftragsdatenGespiegelt        AT %I*   : Schnittstelle_ScheibenIDs; // Buskoppler Signale 
-  wlMerkerAuftragsdatenGespiegeltIn                      : Schnittstelle_ScheibenIDs;
-  in_wEmpfaengerLiveCounter                     AT %I*   : WORD; // Buskoppler Signale
-  in_wEmpfaengerSignale                         AT %I*   : WORD; // Buskoppler Signale
-  in_rEmpfaengerGeschwindigkeit                 AT %I*   : REAL; // Buskoppler Signale
+  // HARDWARE EINGAENGE KOPPLER (Hegla Schnittstellenbeschreibung V4.0, Empfaenger -> Sender)
+  in_wEmpfaengerLiveCounter                     AT %I*   : WORD;                  // Wort 0     LC: gespiegelter LiveCounter
+  in_awEmpfaengerLadeIDGespiegelt               AT %I*   : ARRAY [1..8] OF WORD;  // Wort 1..8  ID: gespiegelte Lade-ID
+  in_wEmpfaengerSignale                         AT %I*   : WORD;                  // Wort 49    Signale
+  in_dwEmpfaengerGeschwindigkeit                AT %I*   : DWORD;                 // Wort 50    GE: Geschwindigkeit [mm/s]
+  in_wEmpfaengerRampe                           AT %I*   : WORD;                  // Wort 52    RA [Option]: Rampe [mm/s²], nur Anzeige
 
-  in_bEmpfaengerInAutomatik                              : BOOL; // Buskoppler Signale 
-  in_bEmpfaengerBereitZumEintransport                    : BOOL; // Buskoppler Signale
-  in_bEmpfaengerAuftragsdatenErhalten                    : BOOL; // Buskoppler Signale
-  in_bEmpfaengerStationFrei                              : BOOL; // Buskoppler Signale 
-  in_bEmpfaengerStationBeladen                           : BOOL; // Buskoppler Signale
+  in_bEmpfaengerAuftragsdatenErhalten                    : BOOL; // 49.0 AG
+  in_bEmpfaengerBereitZumEintransport                    : BOOL; // 49.1 GA
+  in_bEmpfaengerNothalt                                  : BOOL; // 49.3 NA  [Option] nur Anzeige
+  in_bEmpfaengerAnforderungDurchgangOeffnen              : BOOL; // 49.4 ADO [Option] nur Anzeige
+  in_bEmpfaengerQuittungDurchgangOeffnen                 : BOOL; // 49.5 ADQ [Option] nur Anzeige
+  in_bEmpfaengerStationFrei                              : BOOL; // 49.6 SF  [Option]
+  in_bEmpfaengerStationBeladen                           : BOOL; // 49.7 SB  [Option]
+  in_bEmpfaengerUebernahmeposition                       : BOOL; // 49.8 UP  [Option] nur Anzeige
 
-  // HARDWARE AUSGAENGE KOPPLER
-  out_stSenderAuftragsdaten                  AT %Q*      : Schnittstelle_ScheibenIDs; // Buskoppler Signale  
-  out_wSenderLiveCounter                     AT %Q*      : WORD; // Buskoppler Signale
-  out_wSenderAnzahlScheiben                  AT %Q*      : WORD; // Buskoppler Signale
-  out_wSenderSignale                         AT %Q*      : WORD; // Buskoppler Signale
+  // HARDWARE AUSGAENGE KOPPLER (Hegla Schnittstellenbeschreibung V4.0, Sender -> Empfaenger)
+  out_wSenderLiveCounter                     AT %Q*      : WORD;                  // Wort 0     LC: LiveCounter
+  out_awSenderLadeID                         AT %Q*      : ARRAY [1..8] OF WORD;  // Wort 1..8  ID: Lade-ID (16 ASCII- Zeichen)
+  out_wSenderSignale                         AT %Q*      : WORD;                  // Wort 50    Signale
 
-  out_bSenderAuftragdatenVorhanden                       : BOOL; // Buskoppler Signale
-  out_bSenderAuftragdatenPlausibel                       : BOOL; // Buskoppler Signale
-  out_bSensorAuslauf                                     : BOOL; // Buskoppler Signale
-  
+  out_bSenderAuftragdatenVorhanden                       : BOOL; // 50.0 AV
+  out_bSenderAuftragdatenPlausibel                       : BOOL; // 50.1 AP
+  out_bSenderManuelleBeladung                            : BOOL; // 50.2 HB [Option] SortJet sendet immer mit Lade-ID
+  out_bSensorAuslauf                                     : BOOL; // 50.6 SA [Option]
+  out_bSenderStationFrei                                 : BOOL; // 50.7 SF [Option] Vorgaengerstation frei
+  out_bSenderStationBeladen                              : BOOL; // 50.8 SB [Option] Vorgaengerstation belegt
+  out_bSenderForm                                        : BOOL; // 50.9 FG [Option] Scheibe ist ein Modell
+
 END_VAR
 VAR CONSTANT
 

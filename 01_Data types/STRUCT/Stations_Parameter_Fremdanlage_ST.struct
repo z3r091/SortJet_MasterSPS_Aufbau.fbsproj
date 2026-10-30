@@ -7,7 +7,7 @@
 *)
 TYPE Stations_Parameter_Fremdanlage_ST :
   STRUCT
-    bWerteSwappen                          : BOOL;  // Nur die bytes der Auftragsdaten swappen
+    bWerteSwappen                          : BOOL;  // Bytes der Auftragsdaten (Lade-ID) und der Empfaenger- Geschwindigkeit swappen
     bCounterSwappen                        : BOOL;  // Nur die bytes von Life Counter swappen
     bSignaleSwappen                        : BOOL;  // Nur die bytes der Signale swappen
     bAnzahlScheibenSwappen                 : BOOL;  // Nur die byts der Anzahl Scheiben swappen

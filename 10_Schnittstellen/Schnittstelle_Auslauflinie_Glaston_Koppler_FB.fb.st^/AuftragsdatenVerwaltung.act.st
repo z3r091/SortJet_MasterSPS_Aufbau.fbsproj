@@ -40,34 +40,19 @@ END_IF
 IF ( bpAuftragsdatenVorhanden ) THEN
 
   (* Hinweis:
-     - Auftragsdaten auf den Bus schreiben
-     - AuftragsTyp
-        => 0 = Scheibe vom Sortjet 
-        => 1 = Scheibe soll Manuell angelegt werden
+     - Lade-ID auf den Bus schreiben (Hegla V4.0: eine Lade-ID = Scheiben-ID 1, 16 ASCII- Zeichen)
   *)
+  IF ( BasisStationsParameter.stMKs.stFremdanlage.bWerteSwappen ) THEN
 
-  CASE BasisStationsParameter.stMKs.stStationsNummern.NummerSPS OF
+    FOR ilIndex := 0 TO 3 DO
+      adwlLadeID[ilIndex] := SWAP_DWORD_SIEMENS( dwpWert := Auftragsdaten.stScheibenID.adwScheibenID_1[ilIndex] );
+    END_FOR
 
+  ELSE
+    adwlLadeID := Auftragsdaten.stScheibenID.adwScheibenID_1;
+  END_IF
 
-  cFREMDANLAGE_AUSLAUF_1:
-
-    IF ( BasisStationsParameter.stMKs.stFremdanlage.bWerteSwappen ) THEN
-
-      FOR ilIndex := 0 TO 3 DO
-        out_stSenderAuftragsdaten.adwScheibenID_1[ilIndex] := SWAP_DWORD_SIEMENS(dwpWert := Auftragsdaten.stScheibenID.adwScheibenID_1[ilIndex] );
-        out_stSenderAuftragsdaten.adwScheibenID_2[ilIndex] := SWAP_DWORD_SIEMENS(dwpWert := Auftragsdaten.stScheibenID.adwScheibenID_2[ilIndex] );
-        out_stSenderAuftragsdaten.adwScheibenID_3[ilIndex] := SWAP_DWORD_SIEMENS(dwpWert := Auftragsdaten.stScheibenID.adwScheibenID_3[ilIndex] );
-        out_stSenderAuftragsdaten.adwScheibenID_4[ilIndex] := SWAP_DWORD_SIEMENS(dwpWert := Auftragsdaten.stScheibenID.adwScheibenID_4[ilIndex] );
-      END_FOR
-
-      out_wSenderAnzahlScheiben := Auftragsdaten.wScheibenAnzahl;
-
-    ELSE
-      out_stSenderAuftragsdaten := Auftragsdaten.stScheibenID;
-      out_wSenderAnzahlScheiben := Auftragsdaten.wScheibenAnzahl;
-    END_IF
-
-  END_CASE
+  SysMemCpy( ADR( out_awSenderLadeID ), ADR( adwlLadeID ), SIZEOF( out_awSenderLadeID ) );
 
 
   tonlAuftragdatenVorhanden( IN := TRUE, PT := t#500ms);
@@ -79,7 +64,7 @@ IF ( bpAuftragsdatenVorhanden ) THEN
   *)
   IF ( in_bEmpfaengerAuftragsdatenErhalten ) THEN
 
-      IF( SysMemCmp( ADR( out_stSenderAuftragsdaten ), ADR( in_stEmpfaengerAuftragsdatenGespiegelt ), SIZEOF( out_stSenderAuftragsdaten ) ) = 0 )THEN
+      IF( SysMemCmp( ADR( out_awSenderLadeID ), ADR( in_awEmpfaengerLadeIDGespiegelt ), SIZEOF( out_awSenderLadeID ) ) = 0 )THEN
         out_bSenderAuftragdatenPlausibel := TRUE ;
       
       ELSE
