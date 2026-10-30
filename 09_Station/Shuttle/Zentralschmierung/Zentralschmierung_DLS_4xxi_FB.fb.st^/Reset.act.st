@@ -89,6 +89,11 @@ IF bpReset THEN
       bpInternerFehler := FALSE;
       out_bSteuerSignal := FALSE;
 
+      (* Hinweis:
+          - Meldung Fett leer quittieren. Ist die Kartusche weiter leer, meldet die Pumpe es beim naechsten Hub erneut
+      *)
+      blFettLeer := FALSE;
+
       steplReset := STEP_0_E;
 
       bpReset := FALSE;
