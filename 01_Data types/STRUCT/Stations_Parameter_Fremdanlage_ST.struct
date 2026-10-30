@@ -11,6 +11,7 @@ TYPE Stations_Parameter_Fremdanlage_ST :
     bCounterSwappen                        : BOOL;  // Nur die bytes von Life Counter swappen
     bSignaleSwappen                        : BOOL;  // Nur die bytes der Signale swappen
     bAnzahlScheibenSwappen                 : BOOL;  // Nur die byts der Anzahl Scheiben swappen
+    bRemoveETX                             : BOOL := TRUE; // ETX aus den Scheiben-IDs des MMI entfernen (Auftragsdaten Fremdanlage)
     tZeitHornAktiv                         : TIME;  // Signal bei ISO-Line Event 
     rAnalogWertVerhaeltniss                : REAL;  // Umrechnungsfaktor für den Analogwert
     wMindestAnalogWert                     : WORD;  // Mindestwert welche der Analohgwert haben muss um gültig zu sein

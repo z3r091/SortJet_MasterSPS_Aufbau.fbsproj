@@ -88,6 +88,23 @@ VAR_GLOBAL
                                             wMaximaleAnzahlAktiverAuftraege         := 1
                                           ),
 
+      stFremdanlage                     := ( bWerteSwappen                        := FALSE,
+                                             bCounterSwappen                      := FALSE,
+                                             bSignaleSwappen                      := FALSE,
+                                             bAnzahlScheibenSwappen               := FALSE,
+                                             bRemoveETX                           := TRUE,
+                                             tZeitHornAktiv                       := T#0S,
+                                             rAnalogWertVerhaeltniss              := 0,
+                                             wMindestAnalogWert                   := 0,
+                                             bAnzeigeISOLinieEventAktiv           := FALSE,
+                                             bAnalogwertAktiv                     := FALSE,
+                                             bStationStatusZuGlasAbruf            := FALSE,
+                                             rGeschwindigkeit                     := 0,
+                                             rMindestGeschwindigkeitsAenderung    := 5.0,
+                                             tMindestZeitZwischenGeschwAenderung  := T#500MS,
+                                             rMaxAnalogGeschwindigkeit            := 1000.0,
+                                             bSignaleLoggen                       := FALSE,
+                                             eTypSchnittstelle                    := eDefault ),
       stGlasdaten                       := [
                                             (
                                               rlMinGlasLaenge := 350,

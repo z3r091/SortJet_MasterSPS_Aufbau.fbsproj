@@ -22,7 +22,7 @@ VAR_GLOBAL
       eStationsTyp                          := eFremdanlage,
       eaAutomatikkreis                      := [eAutomatikkreis_Undefiniert],
       eaSicherheitskreis                    := [eSicherheitskreis_Undefiniert], //Alle Sk's eintragen in dem die Station eingebunden ist
-      stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_211,
+      stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DEFAULT,
                                                  wNachfolgerStation := cSTATION_DEFAULT,
                                                  bVorgaengerShuttle := FALSE,
                                                  bNachfolgerShuttle := FALSE
@@ -30,12 +30,17 @@ VAR_GLOBAL
       stFremdanlage                         := ( bWerteSwappen                          := FALSE,
                                                  bCounterSwappen                        := FALSE,
                                                  bSignaleSwappen                        := FALSE,
+                                                 bAnzahlScheibenSwappen                 := FALSE,
+                                                 bRemoveETX                             := TRUE,
                                                  tZeitHornAktiv                         := T#5S,     
                                                  rAnalogWertVerhaeltniss                := 32.768,   
                                                  wMindestAnalogWert                     := 100,      
                                                  bAnzeigeISOLinieEventAktiv             := FALSE,     
                                                  bAnalogwertAktiv                       := FALSE,    
                                                  rGeschwindigkeit                       := 667,      
+                                                 rMindestGeschwindigkeitsAenderung      := 5.0,
+                                                 tMindestZeitZwischenGeschwAenderung    := T#500MS,
+                                                 rMaxAnalogGeschwindigkeit              := 1000.0,
                                                  eTypSchnittstelle                      := eDefault,
                                                  bStationStatusZuGlasAbruf              := FALSE,    
 												 bSignaleLoggen                         := TRUE
