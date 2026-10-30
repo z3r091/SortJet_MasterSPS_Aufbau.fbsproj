@@ -21,8 +21,6 @@ VAR_GLOBAL
       wMeldungsNummer                       := 1300,
       eStationsTyp                          := eFremdanlage,
       eaAutomatikkreis                      := [eAutomatikkreis_Undefiniert],
-      // stGlasdaten
-      eaSicherheitskreis                    := [eSicherheitskreis_Undefiniert], //Alle Sk's eintragen in dem die Station eingebunden ist
       // stStationsOptionen
       // stStationsAufbau
       // stStationsParameter
@@ -46,9 +44,11 @@ VAR_GLOBAL
                                                  rMaxAnalogGeschwindigkeit              := 1000.0,
                                                  eTypSchnittstelle                      := eDefault,
                                                  bStationStatusZuGlasAbruf              := FALSE,    
-                         bSignaleLoggen                         := TRUE
+                                                 bSignaleLoggen                         := TRUE
                                                ),
-      eSystemcheckZyklus                    := eSystemcheckZyklus_Undefiniert
+      // stGlasdaten
+      eaSicherheitskreis                    := [eSicherheitskreis_Undefiniert], //Alle Sk's eintragen in dem die Station eingebunden ist
+      eSystemcheckZyklus                    := eSystemcheckZyklus_Undefiniert,
       // astShuttleAnhaltenQuellen
    );
  
