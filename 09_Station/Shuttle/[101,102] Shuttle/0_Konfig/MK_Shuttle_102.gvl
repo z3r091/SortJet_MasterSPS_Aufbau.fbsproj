@@ -47,8 +47,7 @@ VAR_GLOBAL
                                               bScheibenVermessen                     := FALSE,
                                               bMessrichtungNegativ                   := FALSE,
                                               bScheibenmessungEintransport           := FALSE,
-                                              bScheibenmessungSensorVorabAuslauf     := FALSE,
-                                              bMessrichtungNegativ                   := FALSE
+                                              bScheibenmessungSensorVorabAuslauf     := FALSE
                                             ),
 
                                             // stAnlegetisch

@@ -47,8 +47,7 @@ VAR_GLOBAL
                                                                        bScheibenVermessen                        := TRUE,
                                                                        bMessrichtungNegativ                      := FALSE,
                                                                        bScheibenmessungEintransport              := FALSE,
-                                                                       bScheibenmessungSensorVorabAuslauf        := FALSE,
-                                                                       bMessrichtungNegativ                      := FALSE
+                                                                       bScheibenmessungSensorVorabAuslauf        := FALSE
                                                                       ),   
                                                  // stEckuebergabe
                                                  bVorAbKomponentenAnsteuerung              := FALSE,
