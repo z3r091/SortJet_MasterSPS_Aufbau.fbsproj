@@ -20,7 +20,7 @@ VAR_GLOBAL
   Anlegetisch204                  : Anlegetisch_FB;    
   Eckuebergabe205                 : Eckuebergabe_FB;
   Kipptisch206                    : Kipptisch_FB; 
-  Combiwand208                    : InspektionsWand_FB;   
+  Combiwand208                    : AnlegeAbnahmeWand_FB;   
   Drehstation207                  : Drehstation_FB;
 
   //  Shuttle

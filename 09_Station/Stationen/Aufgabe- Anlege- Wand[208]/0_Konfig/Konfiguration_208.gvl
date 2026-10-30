@@ -63,12 +63,6 @@ VAR_CONFIG
   Globale_Bausteine.Combiwand208.Kippen.out_bBremseLoesen                                 AT %MX2.0     : BOOL; (* OPTION *)
   Globale_Bausteine.Combiwand208.Kippen.out_bReset                                        AT %MX2.0     : BOOL; (* OPTION *)
   
-  //Inspektion
-  Globale_Bausteine.Combiwand208.in_b24VNetzteilLEDs_OK                                   AT %IX1.6 : BOOL; (* IO-L *)
-  Globale_Bausteine.Combiwand208.in_b24VSammelsicherungLEDs_OK                            AT %IX1.7 : BOOL; (* IO-L *)
-  Globale_Bausteine.Combiwand208.out_bLeuchtsignalBIT_0                                   AT %QX5.5 : BOOL; (* IO-L *)
-  Globale_Bausteine.Combiwand208.out_bLeuchtsignalBIT_1                                   AT %QX5.4 : BOOL; (* IO-L *)
-  Globale_Bausteine.Combiwand208.out_bLeuchtsignalBIT_2                                   AT %QX5.6 : BOOL; (* IO-L *)
  
 
 

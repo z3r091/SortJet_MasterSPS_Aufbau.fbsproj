@@ -33,7 +33,6 @@ TYPE Stations_Aufbau_ST:
     bMessachseAmEndeVomTisch                : BOOL;
     bDLSSchmiersystem                       : BOOL;
     bGlastransportSlaveVorhanden            : BOOL;
-    bInspektionsStation                     : BOOL;
 
   END_STRUCT
 END_TYPE

@@ -70,8 +70,7 @@ VAR_GLOBAL
                                                  bSensorAuslauf                := TRUE,
                                                  bSensorEinlauf                := TRUE,
                                                  bDurchlaufSperreZumNachfolger := FALSE,
-                                                 bQuerfahrt                    := FALSE,
-                                                 bInspektionsStation           := TRUE
+                                                 bQuerfahrt                    := FALSE
                                                ),
       stStationsParameter                   := ( rLaengeUebergroesseScheibe    := 6000
                                                ),

@@ -84,12 +84,6 @@ VAR
   out_bSignalScheibeGlasbruch              AT %Q* : BOOL; (* gelber Leuchdrucktaster *)
   out_bGeblaeseEin                         AT %Q* : BOOL; (* Geblaese starten (Schuetz) *)
   out_bLichtschrankeAusgeloest             AT %Q* : BOOL; (* Signal im OP das die Lichtschranke ausgelöst hat und nicht quittiert ist *)
-  out_bLeuchtsignalBIT_0                   AT %Q* : BOOL;
-  out_bLeuchtsignalBIT_1                   AT %Q* : BOOL;
-  out_bLeuchtsignalBIT_2                   AT %Q* : BOOL;
-  
-  
-  steplInspektion                          : Steps_TE;
   
     
 END_VAR
@@ -126,6 +120,7 @@ Reset();
 SystemCheck();
 Eintransport();
 Anlegen();
+Abnehmen();
 Glashoehenmessung();
 Glaslaengenmessung();
 Austransport();
