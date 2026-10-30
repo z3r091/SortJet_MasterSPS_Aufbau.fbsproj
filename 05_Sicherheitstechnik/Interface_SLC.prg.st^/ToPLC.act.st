@@ -11,8 +11,9 @@ ACTION ToPLC
 (***************************************************************************************************)
 // Türen quittiert von SLC OK
 FOR wIndex := cERSTE_TUER TO cLETZTE_TUER DO
-    aTuer[wIndex].bpTuerRelaisQuittiert := GetBitFromWord(EV_ToPLC_Tueren_Verriegelt, (wIndex-1));
-    aTuer[wIndex].bpTuerGeschlossen     := GetBitFromWord(EV_ToPLC_Tueren_Verriegelt, (wIndex+8-1));
+    aTuer[wIndex].bpTuerRelaisQuittiert           := GetBitFromWord(EV_ToPLC_Tueren_Verriegelt, (wIndex-1));
+    aTuer[wIndex].bpTuerGeschlossen               := GetBitFromWord(EV_ToPLC_Tueren_Verriegelt, (wIndex+8-1));
+    aTuer[wIndex].in_bTasterNothaltNichtBetaetigt := ( GetBitFromWord(EV_ToPLC_Tueren_Nothalt_aktiv, (wIndex-1)) ) OR bpOperatorAcknowledgeRequested;
 END_FOR
 
 // Sicherheitskreis geschlossen von SLC OK
