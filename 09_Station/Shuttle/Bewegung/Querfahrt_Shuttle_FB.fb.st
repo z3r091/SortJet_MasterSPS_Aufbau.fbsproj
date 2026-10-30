@@ -211,6 +211,7 @@ Antrieb.rpMaxSwEsEingrenzung         := rpMaxPosSwEsEingrenzung;
 
 (* übergabe der aktuellen Position *)
 rpAktPosition   := Antrieb.rpIstPosition;
+rpAktSpeed      := Antrieb.rpIstGeschwindigkeit; (* mm/s, mit Vorzeichen *)
 bpInReference   := Antrieb.bpIstReferenziert;
 bpAntriebLaeuft := Antrieb.bpAntrieblaeuft;
 

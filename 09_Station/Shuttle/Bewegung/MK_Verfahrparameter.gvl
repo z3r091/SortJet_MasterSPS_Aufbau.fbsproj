@@ -19,12 +19,10 @@ VAR_GLOBAL
          - Messen des Abstandes von Wand 1 zu Wand 1 ~ 0,5 m - 1 m Abstand der Shuttlepuffer
            [Wenn sich zwei Shuttle auf einer Bahn befinden]
  *)
- rgMkMinSecureDistanceInputShuttles                    : REAL := 4000;    (* Absoluter Abstand zwischen den Inputshuttlen *)
- rgMkMinSecureDistanceOutputShuttles                   : REAL := 4000;    (* Absoluter Abstand zwischen den Outputshuttlen *)
+ rgMkMinSecureDistanceShuttles                         : REAL := 4000;    (* Absoluter Abstand zwischen den Shuttlen (Input- und Outputshuttle) *)
  rgMkMinSecureDistanceTransfer                         : REAL := 429;     (* Absoluter Abstand zwischen den Transfershuttlen *)
 
- rgMkMinSecureDistanceInputShuttlesAtParkPos           : REAL := 2500;    (* Absoluter Abstand zwischen den Inputshuttlen wenn eines der Shuttle in Parkposition ist *)
- rgMkMinSecureDistanceOutputShuttlesAtParkPos          : REAL := 2500;    (* Absoluter Abstand zwischen den Outputshuttlen wenn eines der Shuttle in Parkposition ist *)
+ rgMkMinSecureDistanceShuttlesAtParkPos                : REAL := 2500;    (* Absoluter Abstand zwischen den Shuttlen wenn eines der Shuttle in Parkposition ist *)
  rgMkMinSecureDistanceTransferAtParkPos                : REAL := 240;     (* Absoluter Abstand zwischen den Transfershuttlen wenn eines der Shuttle in Parkposition ist *)
 
  
