@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "b6ce0e10-1e09-4711-a6fa-fa87783967b6"
-	}
+  "v3Meta": {
+    "objectGuid": "b6ce0e10-1e09-4711-a6fa-fa87783967b6"
+  }
 }
 *)
 {attribute 'allow_unqualified_access'}
@@ -21,9 +21,14 @@ VAR_GLOBAL
       wMeldungsNummer                       := 1300,
       eStationsTyp                          := eFremdanlage,
       eaAutomatikkreis                      := [eAutomatikkreis_Undefiniert],
+      // stGlasdaten
       eaSicherheitskreis                    := [eSicherheitskreis_Undefiniert], //Alle Sk's eintragen in dem die Station eingebunden ist
+      // stStationsOptionen
+      // stStationsAufbau
+      // stStationsParameter
       stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DEFAULT,
-                                                 wNachfolgerStation := cSTATION_DEFAULT
+                                                 wNachfolgerStation := cSTATION_DEFAULT,
+                                                 bStationIstShuttle := FALSE
                                                ),
       stFremdanlage                         := ( bWerteSwappen                          := FALSE,
                                                  bCounterSwappen                        := FALSE,
@@ -41,8 +46,10 @@ VAR_GLOBAL
                                                  rMaxAnalogGeschwindigkeit              := 1000.0,
                                                  eTypSchnittstelle                      := eDefault,
                                                  bStationStatusZuGlasAbruf              := FALSE,    
-												 bSignaleLoggen                         := TRUE
-                                               )
+                         bSignaleLoggen                         := TRUE
+                                               ),
+      eSystemcheckZyklus                    := eSystemcheckZyklus_Undefiniert
+      // astShuttleAnhaltenQuellen
    );
  
 END_VAR

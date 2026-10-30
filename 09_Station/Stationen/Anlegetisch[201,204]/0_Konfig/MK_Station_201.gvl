@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "3c311fcf-86c3-480c-8d89-6d8c270ee569"
-	}
+  "v3Meta": {
+    "objectGuid": "3c311fcf-86c3-480c-8d89-6d8c270ee569"
+  }
 }
 *)
 {attribute 'allow_unqualified_access'}
@@ -25,16 +25,20 @@ VAR_GLOBAL
       eaSicherheitskreis                    := [eSicherheitskreis_3],
       eSystemcheckZyklus                    := eSystemcheckZyklus_1,
       stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DEFAULT,
-                                                 wNachfolgerStation := cSTATION_202
+                                                 wNachfolgerStation := cSTATION_202,
+                                                 bStationIstShuttle := FALSE
                                                ),
       stStationsOptionen                    := ( stSystemcheck   :=  ( bScheibenVermessenSystemCheck               := TRUE,
                                                                        bScheibeNachSystemcheckAufAuslauf           := FALSE,
                                                                        bSystemCheckMitVorgaengerBatchTransport     := FALSE,
-                                                                       bSystemCheckMitNachfolgerBatchTransport     := FALSE
+                                                                       bSystemCheckMitNachfolgerBatchTransport     := FALSE,
+                                                                       bOptionSystemCheckScheibeMittigLegen        := FALSE
                                                                      ),  
                                                  stAnlegetisch   :=  ( 
-                                                                       bAnschlagAutomatischAusfahren             := TRUE
+                                                                       bAnschlagAutomatischAusfahren             := TRUE,
+                                                                       bAnlegetischMitEintransportVorgaenger     := FALSE
                                                                      ),
+                                                 // stTransfershuttle
                                                  stGlastransport :=  ( bVortransport                             := FALSE,
                                                                        bTransportMasterSlaveEintransport         := FALSE, 
                                                                        bTransportMasterSlaveAustransport         := TRUE,
@@ -46,11 +50,14 @@ VAR_GLOBAL
                                                                        bScheibenmessungSensorVorabAuslauf        := FALSE,
                                                                        bMessrichtungNegativ                      := FALSE
                                                                       ),   
+                                                 // stEckuebergabe
                                                  bVorAbKomponentenAnsteuerung              := FALSE,
                                                  bVerstellungEinAusGefahrenLogikDrehen     := FALSE,
                                                  bLangsamfahrtNockenQuerfahrtAktivieren    := FALSE,
                                                  bSKBlockierenDurchVorabSensoren           := FALSE,
-                                                 bStationLeerfahrenBeiSkAnforderung        := FALSE
+                                                 bStationLeerfahrenBeiSkAnforderung        := FALSE,
+                                                 bGlasAbgenommenAutomatischQuittieren      := FALSE,
+                                                 bScheibeAbnehmenNachEintransport          := FALSE
                                                ),
       stStationsAufbau                      := ( bGeblase                      := [ cANZAHL_WAENDE(TRUE) ],
                                                  bGlastransport                := [ cANZAHL_WAENDE(TRUE) ],
@@ -68,38 +75,36 @@ VAR_GLOBAL
                                                  bQuerfahrt                    := FALSE,
                                                  bKipparme                     := FALSE,
                                                  bSlaveAntrieb                 := FALSE,
-                                                 bMessachseAmEndeVomTisch      := FALSE
+                                                 bMessachseAmEndeVomTisch      := FALSE,
+                                                 bWandverstellung              := [ FALSE ],
+                                                 bWandverstellungMotorisch     := FALSE,
+                                                 bRoellchenleiste              := [ FALSE ],
+                                                 bDurchgang                    := FALSE,
+                                                 bRolltor                      := FALSE,
+                                                 bRFID                         := FALSE,
+                                                 bAGV                          := FALSE,
+                                                 bDLSSchmiersystem             := FALSE,
+                                                 bGlastransportSlaveVorhanden  := FALSE
                                                ),
       stStationsParameter                   := ( rLaengeUebergroesseScheibe              := 4240,
-			                                           rMinGlasHoeheAutomatischenEintransport  := 500,
-			                                           rMinGlasLaengeAutomatischenEintransport := 500,
-			                                           wMaximaleAnzahlAktiverAuftraege         := 1
-		                                          ),
-      stFremdanlage                         := ( bWerteSwappen                        := FALSE,
-                                                 bCounterSwappen                      := FALSE,
-                                                 bSignaleSwappen                      := FALSE,
-                                                 bAnzahlScheibenSwappen               := FALSE,
-                                                 bRemoveETX                           := TRUE,
-                                                 tZeitHornAktiv                       := T#0S,
-                                                 rAnalogWertVerhaeltniss              := 0,
-                                                 wMindestAnalogWert                   := 0,
-                                                 bAnzeigeISOLinieEventAktiv           := FALSE,
-                                                 bAnalogwertAktiv                     := FALSE,
-                                                 bStationStatusZuGlasAbruf            := FALSE,
-                                                 rGeschwindigkeit                     := 0,
-                                                 rMindestGeschwindigkeitsAenderung    := 5.0,
-                                                 tMindestZeitZwischenGeschwAenderung  := T#500MS,
-                                                 rMaxAnalogGeschwindigkeit            := 1000.0,
-                                                 bSignaleLoggen                       := FALSE,
-                                                 eTypSchnittstelle                    := eDefault ),
+                                                 rMinGlasHoeheAutomatischenEintransport  := 500,
+                                                 rMinGlasLaengeAutomatischenEintransport := 500,
+                                                 wMaximaleAnzahlAktiverAuftraege         := 1,
+                                                 rMinPosSwEsEingrenzung                  := 0.0,
+                                                 rMaxPosSwEsEingrenzung                  := 0.0,
+                                                 rPosFreigabePufferAusfahren             := 0.0
+                                              ),
+      // stFremdanlage
       stGlasdaten                           := [(
                                                  rlMinGlasLaenge                  := 350,  (* minimal zulässige GlasLänge *)
                                                  rlMaxGlasLaenge                  := 4500, (* maximal zulässige GlasLänge *)
                                                  rlMinGlasHoehe                   := 250,  (* minimal zulässige GlasHöhe *)
                                                  rlMaxGlasHoehe                   := 2810, (* maximal zulässige GlasHöhe *)
                                                  rlMinGlasDicke                   := 0.5,  (* minimal zulässige GlasDicke *)
-                                                 rlMaxGlasDicke                   := 24//13    (* maximal zulässige GlasDicke *) 
+                                                 rlMaxGlasDicke                   := 24,//13    (* maximal zulässige GlasDicke *) 
+                                                 rlLaengeMaxGlas                  := 0.0
                                                )]
+      // astShuttleAnhaltenQuellen
     );
 
   apgMKStation201Glastransport : Parameter_Glastransport :=
@@ -129,7 +134,9 @@ VAR_GLOBAL
       rVerfahrbereichsOffset                :=      0, // Weg zur Bereichsgrenze. Reduzieren der Geschwindigkeit wenn man sich den Bereichgrenzen naehrt
       rOffsetMessung                        :=      0, //
       rToleranz                             :=     10, // Messtoleranz
-      rAbstandSensorenOberUndUnterkante     :=    153  // Abstand zwischwen den Sensoren der Messachse 
+      rAbstandSensorenOberUndUnterkante     :=    153,  // Abstand zwischwen den Sensoren der Messachse 
+      rKorrekturOffsetVSGEintransport       := 0.0,
+      rOffsetNullLinie                      := 0.0
     );
 
 END_VAR
