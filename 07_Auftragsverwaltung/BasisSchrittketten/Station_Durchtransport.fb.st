@@ -187,7 +187,7 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
 
       END_CASE
 	  
-	  IF blKopplungGefundenEintransport AND blKopplungGefundenEintransport THEN
+	  IF blKopplungGefundenEintransport AND blKopplungGefundenAustransport THEN
         steplSchritt := STEP_30_E;
 	  END_IF
 

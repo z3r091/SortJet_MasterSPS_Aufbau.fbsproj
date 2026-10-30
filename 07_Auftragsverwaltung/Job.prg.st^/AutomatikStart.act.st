@@ -12,7 +12,10 @@ ACTION AutomatikStart
 IF ( M_SB0_MMI_SORTIERUNGAUTOMATIKSTART ) THEN
   M_SB0_MMI_SORTIERUNGAUTOMATIKSTART:=FALSE;
 
-  M_Automatik_Aktiv[tMmi2SpsInfo.wAutomatikStartTransportLineNr]            := TRUE;
+  // Nur gueltige Automatikkreise aus dem MMI-Telegramm uebernehmen
+  IF IsBetweenWORD( tMmi2SpsInfo.wAutomatikStartTransportLineNr, cERSTER_AUTOMATIKKREIS, cLETZTER_AUTOMATIKKREIS ) THEN
+    M_Automatik_Aktiv[tMmi2SpsInfo.wAutomatikStartTransportLineNr] := TRUE;
+  END_IF
 
 END_IF
 END_ACTION

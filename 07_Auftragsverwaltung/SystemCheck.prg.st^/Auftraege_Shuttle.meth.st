@@ -55,11 +55,13 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
        
        ELSE
            starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport := eGlastransport_AufEinlaufVorab;
+           starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Default;
            Auftraege_Shuttle := TRUE;
        
        END_CASE 
      ELSE
        starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport := eGlastransport_AufEinlaufVorab;
+       starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Default;
        Auftraege_Shuttle := TRUE;
    
      END_IF  
