@@ -86,6 +86,17 @@ END_FOR
 Reset();
 Auftraege();
 
-Fremdanlage(cFREMDANLAGE_AUSLAUF_1, cSTATION_211, cAUTOMATIKKREIS_5, FALSE, FALSE);
-Fremdanlage(cFREMDANLAGE_AUSLAUF_2, cSTATION_216, cAUTOMATIKKREIS_5, FALSE, FALSE);
+// Hinweis:
+// - Auslauf- Fremdanlagen: Vorgaenger und Automatikkreis aus den MKs der Schnittstelle
+FOR wlIndex := cERSTE_FREMDANLAGE_AUSLAUF TO cLETZTE_FREMDANLAGE_AUSLAUF DO
+
+  IF __ISVALIDREF( starrFremdanlageAuslaufStationBasisParameter[wlIndex].stMKs ) THEN
+    Fremdanlage( wFremdanlage                  := wlIndex,
+                 wVorgaenger                   := starrFremdanlageAuslaufStationBasisParameter[wlIndex].stMKs.stSchnittstellendaten.wVorgaengerStation,
+                 wAutomatikkreis               := TO_WORD( AutomatikkreisBestimmen( wlIndex ) ),
+                 bVorgaengerShuttle            := starrFremdanlageAuslaufStationBasisParameter[wlIndex].stMKs.stSchnittstellendaten.bVorgaengerShuttle,
+                 bDurchtransportierendeStation := FALSE );
+  END_IF
+
+END_FOR
 END_PROGRAM

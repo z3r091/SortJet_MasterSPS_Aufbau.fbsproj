@@ -9,7 +9,7 @@ ACTION Auftraege
 
 (***************************************************************************************************)
 (* AUFTRAG: M_SB0_MMI_ISOQUITTUNG   *)
-(**************************************************************************************************
+(***************************************************************************************************)
 (* Hinweis:
    - Unabhaengige Quittung der Sondergläser durch Tasterdruck anfordern 
 *)
@@ -62,10 +62,10 @@ IF ( M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE ) THEN
          - Es folgt hier keine weitere Nachricht 
       *)
       IF ( tMmi2SpsInfo.wNachrichtenAnzahl = 1 ) THEN
-        stAuftragScheibenIDs.adwScheibenID_1 := RemoveETX(tMmi2SpsInfo.adwScheibenID_1);
-        stAuftragScheibenIDs.adwScheibenID_2 := RemoveETX(tMmi2SpsInfo.adwScheibenID_2);
-        stAuftragScheibenIDs.adwScheibenID_3 := RemoveETX(tMmi2SpsInfo.adwScheibenID_3);
-        stAuftragScheibenIDs.adwScheibenID_4 := RemoveETX(tMmi2SpsInfo.adwScheibenID_4);
+        stAuftragScheibenIDs.adwScheibenID_1 := ScheibenID(tMmi2SpsInfo.wFremdanlageNr, tMmi2SpsInfo.adwScheibenID_1);
+        stAuftragScheibenIDs.adwScheibenID_2 := ScheibenID(tMmi2SpsInfo.wFremdanlageNr, tMmi2SpsInfo.adwScheibenID_2);
+        stAuftragScheibenIDs.adwScheibenID_3 := ScheibenID(tMmi2SpsInfo.wFremdanlageNr, tMmi2SpsInfo.adwScheibenID_3);
+        stAuftragScheibenIDs.adwScheibenID_4 := ScheibenID(tMmi2SpsInfo.wFremdanlageNr, tMmi2SpsInfo.adwScheibenID_4);
 
         aSchnittstelleAuslauf[tMmi2SpsInfo.wFremdanlageNr].AuftragsSpeicher.ppEingabeWert.wScheibenAnzahl := tMmi2SpsInfo.wScheibenanzahl;
         aSchnittstelleAuslauf[tMmi2SpsInfo.wFremdanlageNr].AuftragsSpeicher.ppEingabeWert.stScheibenID    := stAuftragScheibenIDs;
@@ -87,6 +87,14 @@ IF ( M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE ) THEN
         stAuftragScheibenIDs.adwScheibenID_4[1]  := 0;
         stAuftragScheibenIDs.adwScheibenID_4[2]  := 0;
         stAuftragScheibenIDs.adwScheibenID_4[3]  := 0;
+        stAuftragScheibenIDs.adwScheibenID_5[0]  := 0;
+        stAuftragScheibenIDs.adwScheibenID_5[1]  := 0;
+        stAuftragScheibenIDs.adwScheibenID_5[2]  := 0;
+        stAuftragScheibenIDs.adwScheibenID_5[3]  := 0;
+        stAuftragScheibenIDs.adwScheibenID_6[0]  := 0;
+        stAuftragScheibenIDs.adwScheibenID_6[1]  := 0;
+        stAuftragScheibenIDs.adwScheibenID_6[2]  := 0;
+        stAuftragScheibenIDs.adwScheibenID_6[3]  := 0;
 
       (* Hinweis:
          - Es muss nicht noch auf eine Nachricht gewartet werden
@@ -100,7 +108,17 @@ IF ( M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE ) THEN
           cNACHRICHTEN_INDEX_1:
             ablNachrichtEmpfangen[1] := TRUE;
 
-            stAuftragScheibenIDs.adwScheibenID_1 := tMmi2SpsInfo.adwScheibenID_1;
+            stAuftragScheibenIDs.adwScheibenID_1 := ScheibenID(tMmi2SpsInfo.wFremdanlageNr, tMmi2SpsInfo.adwScheibenID_1);
+            stAuftragScheibenIDs.adwScheibenID_2 := ScheibenID(tMmi2SpsInfo.wFremdanlageNr, tMmi2SpsInfo.adwScheibenID_2);
+            stAuftragScheibenIDs.adwScheibenID_3 := ScheibenID(tMmi2SpsInfo.wFremdanlageNr, tMmi2SpsInfo.adwScheibenID_3);
+            stAuftragScheibenIDs.adwScheibenID_4 := ScheibenID(tMmi2SpsInfo.wFremdanlageNr, tMmi2SpsInfo.adwScheibenID_4);
+
+          cNACHRICHTEN_INDEX_2:
+            ablNachrichtEmpfangen[2] := TRUE;
+
+            // Zweite Nachricht: Scheiben-ID 1 und 2 enthalten die Scheiben 5 und 6
+            stAuftragScheibenIDs.adwScheibenID_5 := ScheibenID(tMmi2SpsInfo.wFremdanlageNr, tMmi2SpsInfo.adwScheibenID_1);
+            stAuftragScheibenIDs.adwScheibenID_6 := ScheibenID(tMmi2SpsInfo.wFremdanlageNr, tMmi2SpsInfo.adwScheibenID_2);
 
           ELSE
             wpgFehlerdaten[0] := tMmi2SpsInfo.wNachrichtenIndex;
@@ -139,6 +157,14 @@ IF ( M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE ) THEN
           stAuftragScheibenIDs.adwScheibenID_4[1]  := 0;
           stAuftragScheibenIDs.adwScheibenID_4[2]  := 0;
           stAuftragScheibenIDs.adwScheibenID_4[3]  := 0;
+          stAuftragScheibenIDs.adwScheibenID_5[0]  := 0;
+          stAuftragScheibenIDs.adwScheibenID_5[1]  := 0;
+          stAuftragScheibenIDs.adwScheibenID_5[2]  := 0;
+          stAuftragScheibenIDs.adwScheibenID_5[3]  := 0;
+          stAuftragScheibenIDs.adwScheibenID_6[0]  := 0;
+          stAuftragScheibenIDs.adwScheibenID_6[1]  := 0;
+          stAuftragScheibenIDs.adwScheibenID_6[2]  := 0;
+          stAuftragScheibenIDs.adwScheibenID_6[3]  := 0;
 
           ablNachrichtEmpfangen[1]     := FALSE;
           ablNachrichtEmpfangen[2]     := FALSE;
@@ -154,5 +180,4 @@ IF ( M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE ) THEN
   END_CASE
 
 END_IF
-*)
 END_ACTION
