@@ -123,6 +123,7 @@ VAR
   blEinlaufSensor                              : BOOL; (* entprellter Eingangssensor *)
   blAuslaufSensor                              : BOOL; (* entprellter Ausgangssensor *)
   blLetzteScheibeEintransport                  : BOOL := FALSE; (* HINWEIS: Wenn der Vortransport im Speicher aktiviert ist das TS oben behalten nach einen Eintransport da ein Vortransport- Auftrag folgen kann *)
+  blScheibenMerker                             : BOOL := FALSE; (* Scheibe lag nach dem Positionieren noch auf dem Einlaufsensor => Quittung beim Freifahren *)
   blFehlerAusloesen                            : BOOL; (* Hinweis: Es muss ggf ein Fehler ausgeloest werden wenn ein Sensor angefahren und programmgesteuert wieder Freigefahren wurde *)
   blMeldungAuslaufAbfrageBelegt                : BOOL := FALSE; (* Hinweis: Sensorik beim Pruefen belegt *)
   blMeldungEinlaufAbfrageBelegt                : BOOL := FALSE; (* Hinweis: Sensorik beim Pruefen belegt *)

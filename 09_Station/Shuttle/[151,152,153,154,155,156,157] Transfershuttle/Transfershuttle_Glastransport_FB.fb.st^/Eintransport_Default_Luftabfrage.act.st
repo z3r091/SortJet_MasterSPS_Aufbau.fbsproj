@@ -50,6 +50,8 @@ THEN
       bpScheibeFaehrtUeberAuslauf := FALSE;
       bpScheibeFaehrtUeberEinlauf := FALSE;
       bpAnforderungBetriebsstopp  := FALSE;
+      bprtScheibe                 := FALSE;
+      blScheibenMerker            := FALSE;
       blFehlerAusloesen           := FALSE;
       blLetzteScheibeEintransport := FALSE;
 
@@ -286,6 +288,8 @@ THEN
       (* Antrieb verfahren
          - Ueberwachen des Einlaufsensors
       *)
+      bprtScheibe := FALSE;
+
       IF ( blEinlaufsensor ) THEN
         rlPositionScheibenAnfangErkannt := rlAntriebIstPosition2 := ABS(Antrieb.rpIstPosition);
         steplEintransportDefaultLuftabfrage := STEP_150_E;
@@ -314,7 +318,7 @@ THEN
       (* Fehlerbehandlung:
          - Weg- Ueberwachung
       *)
-      IF (ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rlLaengeStation) THEN
+      IF (ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rlLaengeStation * 2 ) THEN
         bpOutBereitZumEintransport := FALSE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
@@ -323,6 +327,8 @@ THEN
 
 (*EINTRANSPORT ==============================*)
     STEP_150_E:
+      bprtScheibe := FALSE;
+
       (* Hinweis:
          - Reduzieren der Geschwindigkeit wenn die Scheibenbeladung getrennt werden muss
       *)
@@ -348,13 +354,21 @@ THEN
 
       END_IF
 
+      // Scheibenquittung: Einlaufsensor frei => Scheibe ist auf dem TS
+      IF ( toflEinlaufsensor.Q ) THEN // Frei-Signal
+        bprtScheibe       := TRUE;
+        ilScheibenZaehler := ilScheibenZaehler - 1;
+        steplEintransportDefaultLuftabfrage := STEP_160_E;
+      END_IF
+
       (* Hinweis:
          - Antrieb verfahren
       *)
       IF ( Antrieb.bpDone ) THEN
         rlAntriebIstPosition3  := ABS(Antrieb.rpIstPosition);
         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
-        steplEintransportDefaultLuftabfrage := STEP_160_E;
+        blScheibenMerker       := NOT toflEinlaufsensor.Q;
+        steplEintransportDefaultLuftabfrage := STEP_190_E;
       END_IF
 
       (* Ausnahmesituation:
@@ -366,12 +380,65 @@ THEN
 
         rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        blScheibenMerker := NOT toflEinlaufsensor.Q;
 
         steplEintransportDefaultLuftabfrage := STEP_300_E;
       END_IF
 
 (*EINTRANSPORT ==============================*)
     STEP_160_E:
+      // Hinweis:
+      // - Scheibe quittiert, auf die naechste Scheibe am Einlauf oder das Ende der Positionierung warten
+      bprtScheibe := FALSE;
+
+      // Geschwindigkeit reduzieren, wenn die Scheibenbeladung getrennt werden muss
+      IF ( bpScheibentrennung ) THEN
+
+        IF ( ilScheibenZaehler <= 1 ) THEN
+          IF ( ABS( rlPositionScheibenAnfangErkannt - ABS(Antrieb.rpIstPosition) ) >= rlStreckeBisZurVerzoegerung ) THEN
+            IF blReduzierteGeschwindigkeit THEN
+              Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
+            ELSE
+              Antrieb.rpGeschwindigkeit := rgGeschwindigkeit15;
+            END_IF
+          END_IF
+
+        ELSE
+          IF blReduzierteGeschwindigkeit THEN
+            Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
+          ELSE
+            Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+          END_IF
+
+        END_IF
+
+      END_IF
+
+      IF ( blEinlaufSensor ) THEN
+        steplEintransportDefaultLuftabfrage := STEP_150_E;
+      END_IF
+
+      IF ( Antrieb.bpDone ) THEN
+        rlAntriebIstPosition3  := ABS(Antrieb.rpIstPosition);
+        Antrieb.wpBetriebsart  := KEINE_FUNKTION;
+        blScheibenMerker       := NOT toflEinlaufsensor.Q;
+        steplEintransportDefaultLuftabfrage := STEP_190_E;
+      END_IF
+
+      // Ausnahmesituation: Auslaufsensor angefahren
+      IF ( blAuslaufSensor ) THEN
+        bpScheibeFaehrtUeberAuslauf := TRUE;
+        bpOutBereitZumEintransport  := FALSE;
+        rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        blScheibenMerker := NOT toflEinlaufsensor.Q;
+        steplEintransportDefaultLuftabfrage := STEP_300_E;
+      END_IF
+
+(*EINTRANSPORT ==============================*)
+    STEP_190_E:
+      bprtScheibe := FALSE;
+
        (* Hinweis:
           - Antrieb steht
             => Ueberpruefen des Einlaufsensors
@@ -410,10 +477,19 @@ THEN
        //  Hinweis:
        //  - Einlaufsensor belegt und diesen frei fahren
        // ---------------------------------------------------------------------------------------*)
+
+       bprtScheibe := FALSE;
        IF (  NOT Antrieb.bpAntrieblaeuft
          AND NOT blEinlaufSensor )
        THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
+
+         // Scheibenquittung: Scheibe lag nach dem Positionieren noch auf dem Einlaufsensor
+         IF ( blScheibenMerker ) THEN
+           bprtScheibe       := TRUE;
+           ilScheibenZaehler := ilScheibenZaehler - 1;
+           blScheibenMerker  := FALSE;
+         END_IF
 
          (* Hinweis:
             - Sensorik war beim pruefen belegt ( Vorabanheben )
@@ -527,6 +603,8 @@ THEN
        //    => Hardware- und Software- Freigabe 
        // ---------------------------------------------------------------------------------------*)
 
+       bprtScheibe := FALSE;
+
        Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
        IF (  Antrieb.bpAntriebFreigegeben AND NOT Antrieb.bpAntrieblaeuft ) THEN
@@ -556,6 +634,13 @@ THEN
          AND NOT blAuslaufSensor )
        THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
+
+         // Scheibenquittung: Scheibe lag beim Ueberfahren noch auf dem Einlaufsensor
+         IF ( NOT blFehlerAusloesen AND blScheibenMerker ) THEN
+           bprtScheibe       := TRUE;
+           ilScheibenZaehler := ilScheibenZaehler - 1;
+           blScheibenMerker  := FALSE;
+         END_IF
 
          IF ( NOT blFehlerAusloesen ) THEN
            SpsWarnung( eFehler_Station, 
@@ -742,6 +827,8 @@ THEN
 
 (*EINTRANSPORT ==============================*)
     STEP_440_E:
+      bprtScheibe := FALSE;
+
       (* Hinweis:
          - Reduzieren der Geschwindigkeit wenn die Scheibenbeladung getrennt werden muss
       *)
@@ -767,12 +854,20 @@ THEN
 
       END_IF
 
+      // Scheibenquittung: Auslaufsensor (Einlauf in Rueckwaertsrichtung) frei => Scheibe ist auf dem TS
+      IF ( toflAuslaufsensor.Q ) THEN // Frei-Signal
+        bprtScheibe       := TRUE;
+        ilScheibenZaehler := ilScheibenZaehler - 1;
+        steplEintransportDefaultLuftabfrage := STEP_445_E;
+      END_IF
+
       (* Hinweis:
          - Antrieb verfahren
       *)
       IF ( Antrieb.bpDone ) THEN
         rlAntriebIstPosition3  := ABS(Antrieb.rpIstPosition);
         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
+        blScheibenMerker       := NOT toflAuslaufsensor.Q;
         steplEintransportDefaultLuftabfrage := STEP_450_E;
       END_IF
 
@@ -784,11 +879,64 @@ THEN
         bpScheibeFaehrtUeberEinlauf := TRUE;
         rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        blScheibenMerker := NOT toflAuslaufsensor.Q;
+        steplEintransportDefaultLuftabfrage := STEP_600_E;
+      END_IF
+
+(*EINTRANSPORT ==============================*)
+    STEP_445_E:
+      // Hinweis:
+      // - Scheibe quittiert, auf die naechste Scheibe am Auslauf oder das Ende der Positionierung warten
+      bprtScheibe := FALSE;
+
+      // Geschwindigkeit reduzieren, wenn die Scheibenbeladung getrennt werden muss
+      IF ( bpScheibentrennung ) THEN
+
+        IF ( ilScheibenZaehler = 1 ) THEN
+          IF ( ABS( rlPositionScheibenAnfangErkannt - ABS(Antrieb.rpIstPosition) ) >= rlStreckeBisZurVerzoegerung ) THEN
+            IF blReduzierteGeschwindigkeit THEN
+              Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
+            ELSE
+              Antrieb.rpGeschwindigkeit := rgGeschwindigkeit15;
+            END_IF
+          END_IF
+
+        ELSE
+          IF blReduzierteGeschwindigkeit THEN
+            Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
+          ELSE
+            Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+          END_IF
+
+        END_IF
+
+      END_IF
+
+      IF ( blAuslaufSensor ) THEN
+        steplEintransportDefaultLuftabfrage := STEP_440_E;
+      END_IF
+
+      IF ( Antrieb.bpDone ) THEN
+        rlAntriebIstPosition3  := ABS(Antrieb.rpIstPosition);
+        Antrieb.wpBetriebsart  := KEINE_FUNKTION;
+        blScheibenMerker       := NOT toflAuslaufsensor.Q;
+        steplEintransportDefaultLuftabfrage := STEP_450_E;
+      END_IF
+
+      // Ausnahmesituation: Einlaufsensor angefahren
+      IF ( blEinlaufSensor ) THEN
+        bpOutBereitZumEintransport  := FALSE;
+        bpScheibeFaehrtUeberEinlauf := TRUE;
+        rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        blScheibenMerker := NOT toflAuslaufsensor.Q;
         steplEintransportDefaultLuftabfrage := STEP_600_E;
       END_IF
 
 (*EINTRANSPORT ==============================*)
      STEP_450_E:
+      bprtScheibe := FALSE;
+
        (* Hinweis:
           - Antrieb steht
             => Ueberpruefen des Auslaufsensors der nun als Einlauf fungiert
@@ -828,10 +976,20 @@ THEN
        //  Hinweis:
        //  - Auslaufsensor belegt und diesen frei fahren
        // ---------------------------------------------------------------------------------------*)
+
+       bprtScheibe := FALSE;
        IF (  NOT Antrieb.bpAntrieblaeuft
          AND NOT blAuslaufSensor )
        THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
+
+         // Scheibenquittung: Scheibe lag nach dem Positionieren noch auf dem Auslaufsensor
+         IF ( blScheibenMerker ) THEN
+           bprtScheibe       := TRUE;
+           ilScheibenZaehler := ilScheibenZaehler - 1;
+           blScheibenMerker  := FALSE;
+         END_IF
+
          steplEintransportDefaultLuftabfrage := STEP_800_E;
        END_IF
 
@@ -914,6 +1072,8 @@ THEN
        //    => Hardware- und Software- Freigabe 
        // ---------------------------------------------------------------------------------------*)
 
+       bprtScheibe := FALSE;
+
        Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
        IF (  Antrieb.bpAntriebFreigegeben
@@ -945,6 +1105,13 @@ THEN
          AND NOT blEinlaufSensor )
        THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
+
+         // Scheibenquittung: Scheibe lag beim Ueberfahren noch auf dem Auslaufsensor
+         IF ( NOT blFehlerAusloesen AND blScheibenMerker ) THEN
+           bprtScheibe       := TRUE;
+           ilScheibenZaehler := ilScheibenZaehler - 1;
+           blScheibenMerker  := FALSE;
+         END_IF
 
          IF ( NOT blFehlerAusloesen ) THEN
            SpsWarnung( eFehler_Station, 
@@ -1036,6 +1203,8 @@ THEN
       //  - Ausgaenge zurueck setzen ( Abfragen etc. senken)
       // ---------------------------------------------------------------------------------------*)
 
+       bprtScheibe := FALSE;
+
       (* Hinweis:
          - Loesen der Transportkopplung unter den Transfershuttle, wenn diese aktiv ist
       *)
@@ -1104,6 +1273,7 @@ ELSE
 
   IF steplEintransportDefaultLuftabfrage > STEP_0_E THEN
     blAbgeschlossenEintransport := FALSE;
+    bprtScheibe                 := FALSE;
     bpOutBereitZumEintransport  := FALSE;
 
     Scheibenzaehler.bpAktiv  := FALSE;

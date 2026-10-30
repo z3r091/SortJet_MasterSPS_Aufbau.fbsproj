@@ -24,11 +24,6 @@ THEN
       blSchnittstelle_bAnforderungTransportVerbund := FALSE;
       tonlWartenAufAnheben( IN := FALSE );
 
-      steplScheibenNeuAusrichten := STEP_10_E;
-
-(*EINTRANSPORT ==============================*)
-    STEP_10_E:
-      blEintransportDefaultLuftabfrage := TRUE;
       steplScheibenNeuAusrichten := STEP_20_E;
 
 (*EINTRANSPORT ==============================*)

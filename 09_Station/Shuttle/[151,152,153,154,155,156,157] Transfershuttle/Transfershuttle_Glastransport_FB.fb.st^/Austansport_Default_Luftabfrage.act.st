@@ -530,7 +530,7 @@ THEN
 
 (* AUSTRANSPORT [HANDPLUS - DEFAULT LUFTABFRAGE] =========================================== *)
     STEP_160_E:
-      IF ( NOT toflAuslaufsensor.Q ) THEN
+      IF ( toflAuslaufsensor.Q ) THEN
         bpScheibeFaehrtUeberAuslauf := FALSE;
         Antrieb.rpGeschwindigkeit := REAL#0;
         Antrieb.wpBetriebsart     := KEINE_FUNKTION;
@@ -614,7 +614,7 @@ THEN
           Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
         END_IF
 
-        Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberEinlaufAustransport;
+        Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberEinlaufAustransport;
         Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor1;
         Antrieb.wpBetriebsart     := RESTWEG;
 
@@ -764,7 +764,7 @@ THEN
       *)
       Antrieb.rpGeschwindigkeit  := InGlasTransportVorgaenger.rGeschwindigkeit;
 
-      IF ( NOT bpSensorScheibenKontrolleEinlaufSeiteFrei ) THEN
+      IF ( NOT toflEinlaufsensor.Q ) THEN
         steplAustransportDefaultLuftabfrage := STEP_480_E;
       END_IF
 
@@ -787,7 +787,7 @@ THEN
       Antrieb.rpGeschwindigkeit :=  InGlasTransportVorgaenger.rGeschwindigkeit;
 	    bprtScheibe := FALSE;
 
-      IF ( bpSensorScheibenKontrolleEinlaufSeiteFrei ) THEN	  
+      IF ( toflEinlaufsensor.Q ) THEN	  
         bprtScheibe := TRUE;
         ilScheibenZaehler := ilScheibenZaehler - 1 ;
         steplAustransportDefaultLuftabfrage := STEP_490_E;
