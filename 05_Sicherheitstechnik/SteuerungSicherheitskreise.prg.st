@@ -20,6 +20,7 @@ VAR
   // BOOLEAN 
   ablSicherheitskreisFreigabeStation : ARRAY [cERSTE_STATION..cLETZTE_STATION] OF BOOL;
   ablSicherheitskreisFreigabeShuttle : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF BOOL;
+  ablSicherheitskreisFreigabeTransferShuttle : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
   ablSicherheitskreisAnfordernExtern : ARRAY [cERSTER_SICHERHEITSKREIS..cLETZTER_SICHERHEITSKREIS] OF BOOL;
   
   bpPuffer101ObenAusfahren           : BOOL;  

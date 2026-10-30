@@ -16,6 +16,15 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
 END_FOR
 
 (***************************************************************************************************)
+(* BAUSTEIN: FREIGABEN TRANSFERSHUTTLE [SICHERHEITSKREIS] *)
+(***************************************************************************************************)
+// Freigaben Transfershuttle
+FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
+  ablSicherheitskreisFreigabeTransferShuttle[wlIndex] := NOT starrTransfershuttleBasisParameter[wlIndex].bAuftragAktiv
+                                                          OR starrTransfershuttleBasisParameter[wlIndex].bFehler;
+END_FOR
+
+(***************************************************************************************************)
 (* BAUSTEIN: FREIGABEN STATIONEN [SICHERHEITSKREIS] *)
 (***************************************************************************************************)
 // Freigabe für den Sicherheitskreis setzen
@@ -110,6 +119,15 @@ FOR wlIndexSK := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO
         Sicherheitskreis[wlIndexSK].bpFreigabeStationen := FALSE;
 	  END_IF
 	END_IF
+  END_FOR
+
+  // Check Transfershuttle
+  FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
+    IF checkSafetyCircuits(starrTransfershuttleBasisParameter[wlIndex], wlIndexSK ) THEN // Pruefen ob der Transfershuttle zu dem Sicherheitskreis gehoert
+      IF NOT ablSicherheitskreisFreigabeTransferShuttle[wlIndex] THEN
+        Sicherheitskreis[wlIndexSK].bpFreigabeStationen := FALSE;
+      END_IF
+    END_IF
   END_FOR
   
 END_FOR
