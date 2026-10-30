@@ -9,8 +9,6 @@ TYPE Schnittstellendaten_ST :
   STRUCT
     wVorgaengerStation           : WORD;
     wNachfolgerStation           : WORD;
-    bVorgaengerShuttle           : BOOL;
-    bNachfolgerShuttle           : BOOL;
     bStationIstShuttle           : BOOL;
     aEintransporte               : Transport;
     aAustransporte               : Transport;

@@ -26,8 +26,6 @@ VAR_GLOBAL
       eSystemcheckZyklus    := eSystemcheckZyklus_1,
       stSchnittstellendaten := ( wVorgaengerStation := cSTATION_DYNAMISCH, // Eintransport von 203 (X) und 204 (Y)
                                  wNachfolgerStation := cSTATION_206,
-                                 bVorgaengerShuttle := FALSE,
-                                 bNachfolgerShuttle := FALSE,
                                  bStationIstShuttle := FALSE ),
       stStationsOptionen    := ( stSystemcheck     := ( bScheibenVermessenSystemCheck           := FALSE,
                                                         bScheibeNachSystemcheckAufAuslauf       := FALSE,

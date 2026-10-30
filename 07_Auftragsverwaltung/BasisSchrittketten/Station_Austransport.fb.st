@@ -30,6 +30,7 @@ VAR
     
   (* BOOLEAN *)
   blStationQuittiertScheiben      : BOOL;
+  blGegenstelleIstShuttle         : BOOL;
   
   (* INT *)
   ilScheibenZuQuittieren          : INT;
@@ -37,6 +38,9 @@ VAR
   (* WORD *)
   wlAustransportstation           : WORD;
   wlAustransportstationVorgaenger : WORD;
+
+  (* REFERENZ *)
+  Gegenstelle                     : REFERENCE TO StationBasisParameter_ST;
 
   (* STEPS *)
   steplSchritt           : STEPS_TE;
@@ -111,9 +115,15 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
 
 	      // Stationen
         cERSTE_STATION..cLETZTE_STATION:
-		  
+
+          (* Hinweis:
+             - Ist diese Station ein Shuttle, muss sie den Auftrag an die Gegenstelle geben, sofern diese kein Shuttle ist
+          *)
+          Gegenstelle REF= getBasis( Auftragsdaten.wTransferstationsNr1 );
+          blGegenstelleIstShuttle := __ISVALIDREF( Gegenstelle ) AND_THEN __ISVALIDREF( Gegenstelle.stMKs ) AND_THEN Gegenstelle.stMKs.stSchnittstellendaten.bStationIstShuttle;
+
 		    // Station ist ein Shuttle
-		    IF starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.bStationIstShuttle THEN
+		    IF starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.bStationIstShuttle AND NOT blGegenstelleIstShuttle THEN
 		      IF ( ( Job_Stationen.AuftragsdatenWand[Auftragsdaten.wTransferstationsNr1, Auftragsdaten.wTransferwand].wAuftrag = eStation_Belegt )
               OR ( Job_Stationen.AuftragsdatenWand[Auftragsdaten.wTransferstationsNr1, Auftragsdaten.wTransferwand].wAuftrag = eStation_Kein_Auftrag ) )
             THEN

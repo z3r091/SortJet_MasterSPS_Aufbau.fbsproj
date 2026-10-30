@@ -23,9 +23,7 @@ VAR_GLOBAL
       eaAutomatikkreis                      := [eAutomatikkreis_Undefiniert],
       eaSicherheitskreis                    := [eSicherheitskreis_Undefiniert], //Alle Sk's eintragen in dem die Station eingebunden ist
       stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DEFAULT,
-                                                 wNachfolgerStation := cSTATION_201,
-                                                 bVorgaengerShuttle := FALSE,
-                                                 bNachfolgerShuttle := FALSE
+                                                 wNachfolgerStation := cSTATION_201
                                                ),
       stFremdanlage                         := ( bWerteSwappen                          := FALSE,
                                                  bCounterSwappen                        := FALSE,

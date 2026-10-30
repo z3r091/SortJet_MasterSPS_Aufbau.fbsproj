@@ -10,13 +10,19 @@ VAR_INPUT
   wFremdanlage                  : WORD;
   wVorgaenger                   : WORD;
   wAutomatikkreis               : WORD;
-  bVorgaengerShuttle            : BOOL;
   bDurchtransportierendeStation : BOOL;
 END_VAR
 VAR
+  bVorgaengerShuttle                   : BOOL;
   ptAuftragsdatenSender                : REFERENCE TO Auftragsdaten_ST;
   ptAuftragsdatenDurchtransportStation : REFERENCE TO Auftragsdaten_ST;
+  ptVorgaenger                         : REFERENCE TO StationBasisParameter_ST;
 END_VAR
+
+// Hinweis:
+// - Ob der Vorgaenger ein Shuttle ist, steht in seiner MK (bStationIstShuttle)
+ptVorgaenger REF= getBasis( wVorgaenger );
+bVorgaengerShuttle := __ISVALIDREF( ptVorgaenger ) AND_THEN __ISVALIDREF( ptVorgaenger.stMKs ) AND_THEN ptVorgaenger.stMKs.stSchnittstellendaten.bStationIstShuttle;
 
 (***************************************************************************************************)
 (* STEUERUNG EINTRANSPORT *)

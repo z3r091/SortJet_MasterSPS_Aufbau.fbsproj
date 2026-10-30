@@ -27,9 +27,7 @@ VAR_GLOBAL
       eSystemcheckZyklus                    := eSystemcheckZyklus_1,
       stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DEFAULT,
                                                  wNachfolgerStation := cSTATION_213,
-                                                 bStationIstShuttle := FALSE,
-                                                 bVorgaengerShuttle := FALSE,
-                                                 bNachfolgerShuttle := FALSE
+                                                 bStationIstShuttle := FALSE
                                                ),
       stStationsOptionen                    := ( stSystemcheck :=  ( bScheibenVermessenSystemCheck               := FALSE,  
                                                                      bScheibeNachSystemcheckAufAuslauf           := TRUE,

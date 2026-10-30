@@ -30,12 +30,16 @@ VAR
     
   (* BOOLEAN *)
   blStationQuittiertScheiben : BOOL;
+  blGegenstelleIstShuttle    : BOOL;
   
   (* WORD *)
   wlEintransportstation  : WORD;
 
   (* INT *)
   ilScheibenZuQuittieren : INT;
+
+  (* REFERENZ *)
+  Gegenstelle            : REFERENCE TO StationBasisParameter_ST;
 
   (* STEPS *)
   steplSchritt           : STEPS_TE;
@@ -116,13 +120,19 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 	      // Stationen
         cERSTE_STATION..cLETZTE_STATION:
 
+          (* Hinweis:
+             - Ist die Gegenstelle selbst ein Shuttle, bekommt sie keinen Auftrag von uns, wir bekommen ihn von ihr
+          *)
+          Gegenstelle REF= getBasis( wlEintransportstation );
+          blGegenstelleIstShuttle := __ISVALIDREF( Gegenstelle ) AND_THEN __ISVALIDREF( Gegenstelle.stMKs ) AND_THEN Gegenstelle.stMKs.stSchnittstellendaten.bStationIstShuttle;
+
           IF ( ( Job_Stationen.AuftragsdatenWand[Auftragsdaten.wTransferstationsNr1, Auftragsdaten.wTransferwand].wAuftrag = eStation_Belegt )
             OR ( Job_Stationen.AuftragsdatenWand[Auftragsdaten.wTransferstationsNr1, Auftragsdaten.wTransferwand].wAuftrag = eStation_Warte_Auf_Austransport ) )
-			      OR starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.bVorgaengerShuttle
+			      OR blGegenstelleIstShuttle
           THEN
 
              // Ist der Vorgänger ein Shuttle, dann keinen Auftrag schreiben... Wir kriegen dann den Auftrag von ihm          
-		        IF NOT starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.bVorgaengerShuttle THEN
+		        IF NOT blGegenstelleIstShuttle THEN
               Job_Stationen.AuftragsdatenWand[Auftragsdaten.wTransferstationsNr1, Auftragsdaten.wTransferwand]          := AuftragsdatenUmkopieren(FALSE, FALSE, Auftragsdaten);
               Job_Stationen.AuftragsdatenWand[Auftragsdaten.wTransferstationsNr1, Auftragsdaten.wTransferwand].wAuftrag := eStation_Austransport;
             END_IF

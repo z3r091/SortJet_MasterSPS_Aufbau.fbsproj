@@ -94,7 +94,6 @@ FOR wlIndex := cERSTE_FREMDANLAGE_AUSLAUF TO cLETZTE_FREMDANLAGE_AUSLAUF DO
     Fremdanlage( wFremdanlage                  := wlIndex,
                  wVorgaenger                   := starrFremdanlageAuslaufStationBasisParameter[wlIndex].stMKs.stSchnittstellendaten.wVorgaengerStation,
                  wAutomatikkreis               := TO_WORD( AutomatikkreisBestimmen( wlIndex ) ),
-                 bVorgaengerShuttle            := starrFremdanlageAuslaufStationBasisParameter[wlIndex].stMKs.stSchnittstellendaten.bVorgaengerShuttle,
                  bDurchtransportierendeStation := FALSE );
   END_IF
 

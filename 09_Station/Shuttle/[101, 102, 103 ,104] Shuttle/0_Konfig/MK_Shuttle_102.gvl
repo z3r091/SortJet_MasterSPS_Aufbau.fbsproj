@@ -27,9 +27,7 @@ VAR_GLOBAL
       stSchnittstellendaten             := (
                                             wVorgaengerStation := cSTATION_DEFAULT,
                                             wNachfolgerStation := cSTATION_DEFAULT,
-                                            bStationIstShuttle := TRUE,
-                                            bVorgaengerShuttle := FALSE,
-                                            bNachfolgerShuttle := FALSE
+                                            bStationIstShuttle := TRUE
                                           ),
       stStationsOptionen                := (
                                             stSystemcheck := (
