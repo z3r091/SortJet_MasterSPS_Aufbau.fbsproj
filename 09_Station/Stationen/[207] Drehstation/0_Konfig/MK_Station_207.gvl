@@ -24,7 +24,7 @@ VAR_GLOBAL
       eaAutomatikkreis                      := [eAutomatikkreis_1],
       eaSicherheitskreis                    := [eSicherheitskreis_1],
       eSystemcheckZyklus                    := eSystemcheckZyklus_1,
-      stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_203,
+      stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DYNAMISCH, // 206 und 208
                                                  wNachfolgerStation := cSHUTTLE_101,
 												                         bStationIstShuttle := FALSE,
                                                  bVorgaengerShuttle := FALSE,

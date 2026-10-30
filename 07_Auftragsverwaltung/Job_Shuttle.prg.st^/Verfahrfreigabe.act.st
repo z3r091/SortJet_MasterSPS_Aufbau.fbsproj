@@ -26,19 +26,24 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
 
       Basis REF= getBasis(starrShuttleBasisParameter[wlIndex].stMKs.astShuttleAnhaltenQuellen[wlIndexQuelle].wQuellenNummer);
 
-      CASE starrShuttleBasisParameter[wlIndex].stMKs.astShuttleAnhaltenQuellen[wlIndexQuelle].eSensorTyp OF
+      // Hinweis: Quelle ist in dieser Konfiguration nicht vorhanden => ueberspringen
+      IF __ISVALIDREF( Basis ) THEN
 
-        eAuslaufsensor:
-          IF Basis.OutGlasTransport[starrShuttleBasisParameter[wlIndex].stMKs.astShuttleAnhaltenQuellen[wlIndexQuelle].wWand].bScheibeFaehrtUeberAuslauf THEN
-            aShuttle[wlIndex].bpShuttleAnhalten := TRUE;
-          END_IF
+        CASE starrShuttleBasisParameter[wlIndex].stMKs.astShuttleAnhaltenQuellen[wlIndexQuelle].eSensorTyp OF
 
-        eEinlaufsensor:
-          IF Basis.OutGlasTransport[starrShuttleBasisParameter[wlIndex].stMKs.astShuttleAnhaltenQuellen[wlIndexQuelle].wWand].bScheibeFaehrtUeberEinlauf THEN
-            aShuttle[wlIndex].bpShuttleAnhalten := TRUE;
-          END_IF
+          eAuslaufsensor:
+            IF Basis.OutGlasTransport[starrShuttleBasisParameter[wlIndex].stMKs.astShuttleAnhaltenQuellen[wlIndexQuelle].wWand].bScheibeFaehrtUeberAuslauf THEN
+              aShuttle[wlIndex].bpShuttleAnhalten := TRUE;
+            END_IF
 
-      END_CASE
+          eEinlaufsensor:
+            IF Basis.OutGlasTransport[starrShuttleBasisParameter[wlIndex].stMKs.astShuttleAnhaltenQuellen[wlIndexQuelle].wWand].bScheibeFaehrtUeberEinlauf THEN
+              aShuttle[wlIndex].bpShuttleAnhalten := TRUE;
+            END_IF
+
+        END_CASE
+
+      END_IF
 
     END_IF
 

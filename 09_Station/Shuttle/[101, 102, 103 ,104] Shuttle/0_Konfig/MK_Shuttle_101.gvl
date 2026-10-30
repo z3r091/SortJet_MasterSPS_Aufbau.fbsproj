@@ -116,14 +116,14 @@ VAR_GLOBAL
                                             )],
       // Generische Verfahrfreigabe-Ueberwachung für Shuttle 101:
       astShuttleAnhaltenQuellen             := [
-                                                 // [1] Station 150 -> Auslaufsensor: Scheibe faehrt ueber Auslauf
-                                                 ( bAktiv := TRUE,  wQuellenNummer := cSHUTTLE_150,   wWand := cWAND_1, eSensorTyp := eAuslaufsensor ),
-                                                 // [2] Station 151 -> Auslaufsensor
+                                                 // [1] Transfershuttle 151 -> Einlaufsensor
                                                  ( bAktiv := TRUE,  wQuellenNummer := cSHUTTLE_151,   wWand := cWAND_1, eSensorTyp := eEinlaufsensor ),
-                                                 // [3] Transfershuttle 152 -> Einlaufsensor
+                                                 // [2] Transfershuttle 152 -> Einlaufsensor
                                                  ( bAktiv := TRUE,  wQuellenNummer := cSHUTTLE_152,   wWand := cWAND_1, eSensorTyp := eEinlaufsensor ),
-                                                 // [4] Transfershuttle 200 -> Einlaufsensor
+                                                 // [3] Station 202 -> Auslaufsensor
                                                  ( bAktiv := TRUE,  wQuellenNummer := cSTATION_202,   wWand := cWAND_1, eSensorTyp := eAuslaufsensor ),
+                                                 // [4] nicht belegt
+                                                 ( bAktiv := FALSE ),
                                                  // [5] nicht belegt
                                                  ( bAktiv := FALSE ),
                                                  // [6] nicht belegt

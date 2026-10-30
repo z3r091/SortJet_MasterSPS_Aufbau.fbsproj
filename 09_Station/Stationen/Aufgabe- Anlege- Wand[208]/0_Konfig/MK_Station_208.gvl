@@ -26,10 +26,10 @@ VAR_GLOBAL
       eaSicherheitskreis                    := [eSicherheitskreis_1, eSicherheitskreis_3], // Alle Sk's eintragen in dem die Station eingebunden ist
       eSystemcheckZyklus                    := eSystemcheckZyklus_1,
       stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DEFAULT,
-                                                 wNachfolgerStation := cSHUTTLE_150,
+                                                 wNachfolgerStation := cSTATION_207,
                                                  bStationIstShuttle := FALSE,
                                                  bVorgaengerShuttle := FALSE,
-                                                 bNachfolgerShuttle := TRUE
+                                                 bNachfolgerShuttle := FALSE
                                                ),
       stStationsOptionen                    := ( stSystemcheck :=  ( bScheibenVermessenSystemCheck               := FALSE,  
                                                                      bScheibeNachSystemcheckAufAuslauf           := TRUE,

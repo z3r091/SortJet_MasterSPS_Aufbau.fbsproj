@@ -28,6 +28,8 @@ starrStationBasisParameter[cSTATION_207].stParameterStationskomponenten.stQuerfa
 *)
 
 // Eintransport
+starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.Station[cSTATION_208]                  := Vorwaertig;
+starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_208] := TRUE;
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.Station[cSTATION_207]                  := Vorwaertig;
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_207] := TRUE;
 
