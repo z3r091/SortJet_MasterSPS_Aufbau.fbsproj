@@ -286,7 +286,6 @@ Taster();
 A_Aufrufe();
 A_Geblaese();
 A_Timer();
-Betriebsart();
 SystemCheck();
 
 // Automatik

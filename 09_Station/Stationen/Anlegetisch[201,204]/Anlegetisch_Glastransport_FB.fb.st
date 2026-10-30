@@ -43,5 +43,4 @@ SUPER^();
 (***************************************************************************************************)
 // Die fehlenden Aktionen werden im Master aufgerufen
 Laengenmessung();
-Eintransport();
 END_FUNCTION_BLOCK
