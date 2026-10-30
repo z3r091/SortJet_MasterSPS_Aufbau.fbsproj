@@ -12,7 +12,6 @@ VAR_INPUT
   abpCheck                 : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
   abpReset                 : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL; (* Fehler aus dem Resetbaustein heraus zurücksetzen *)
   abpStationsDatenErhalten : ARRAY [cERSTES_SHUTTLE..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
-  abpDatenErhalten         : ARRAY [cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
 
 
 END_VAR
@@ -69,7 +68,6 @@ IF ( blErsterZyklus ) THEN
 
   FOR wlIndex := cERSTES_SHUTTLE TO cLETZTE_STATION DO
     abpStationsDatenErhalten[wlIndex,1] := FALSE;
-    abpDatenErhalten[wlIndex] := FALSE;
   END_FOR
 
 END_IF
