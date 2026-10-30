@@ -7,50 +7,26 @@
 *)
 FUNCTION AutomatikkreisBestimmen : Automatikkreis_EN
 VAR_INPUT
-  wpMmiNummer: WORD;
+  wpMmiNummer : WORD;
 END_VAR
 VAR
-  wlIndex     : WORD;
-  wEmptyArray : Automatikkreis_EN := 0;
+  Basis : REFERENCE TO StationBasisParameter_ST;
 END_VAR
 
-CASE wpMmiNummer OF
+// Hinweis:
+// - Erster Automatikkreis der Station (Shuttle, TS, Station, Faecherwagen, Fremdanlage) ueber getBasis
+// - Unbekannte Nummer oder nicht zugewiesene MK => 0
+AutomatikkreisBestimmen := 0;
 
-  cERSTE_STATION..cLETZTE_STATION:
-  
-    FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
-	   IF ( wpMmiNummer = wlIndex ) THEN
-      AutomatikkreisBestimmen :=  starrStationBasisParameter[wlIndex].stMKs.eaAutomatikkreis[cERSTER_AUTOMATIKKREIS];
-	   END_IF
-    END_FOR
+Basis REF= getBasis( wpMmiNummer );
 
-  cERSTES_SHUTTLE..cLETZTEs_SHUTTLE:
-  
-    FOR wlIndex := cERSTES_SHUTTLE TO cLETZTEs_SHUTTLE DO
-	   IF ( wpMmiNummer = wlIndex ) THEN
-      AutomatikkreisBestimmen :=  starrShuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[cERSTER_AUTOMATIKKREIS];
-	   END_IF
-    END_FOR
-	
-  cERSTES_TRANSFERSHUTTLE..cLETZTEs_TRANSFERSHUTTLE:
-  
-    FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTEs_TRANSFERSHUTTLE DO
-	   IF ( wpMmiNummer = wlIndex ) THEN
-      AutomatikkreisBestimmen :=  starrTransferShuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[cERSTER_AUTOMATIKKREIS];
-	   END_IF
-    END_FOR
+IF NOT __ISVALIDREF( Basis ) THEN
+  RETURN;
+END_IF
 
-  cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR:
-  
-    FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTEs_TRANSFERSHUTTLE DO
-	   IF ( wpMmiNummer = wlIndex ) THEN
-      AutomatikkreisBestimmen :=  starrFaecherwagenBasisParameter[wlIndex].stMKs.eaAutomatikkreis[cERSTER_AUTOMATIKKREIS];
-	   END_IF
-    END_FOR
+IF NOT __ISVALIDREF( Basis.stMKs ) THEN
+  RETURN;
+END_IF
 
-ELSE
-
-  AutomatikkreisBestimmen := wEmptyArray;
-
-END_CASE
+AutomatikkreisBestimmen := Basis.stMKs.eaAutomatikkreis[cERSTER_AUTOMATIKKREIS];
 END_FUNCTION
