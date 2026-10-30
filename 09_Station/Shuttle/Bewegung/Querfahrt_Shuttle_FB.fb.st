@@ -64,7 +64,7 @@ END_VAR
 VAR
 
   (* BOOLEAN *)
-  Antrieb : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_01;
+  Antrieb : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
 
   (* BOOLEAN *)
   blErsterZyklus                : BOOL := TRUE;

@@ -225,7 +225,7 @@ VAR
   Scheibenzaehler : ScheibenZaehler_FB;
 
   // Antrieb
-  Antrieb : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_01;
+  Antrieb : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
 
 END_VAR
 VAR

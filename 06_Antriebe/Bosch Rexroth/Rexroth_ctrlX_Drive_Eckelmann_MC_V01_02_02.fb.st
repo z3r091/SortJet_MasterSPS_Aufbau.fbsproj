@@ -5,7 +5,7 @@
 	}
 }
 *)
-FUNCTION_BLOCK Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_01
+FUNCTION_BLOCK Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02
 
 VAR_INPUT
   // BOOL

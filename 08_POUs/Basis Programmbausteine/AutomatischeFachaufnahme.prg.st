@@ -16,7 +16,7 @@ VAR_INPUT
  wpMMINummer  : WORD;
 
  (* POINTER *)
- ptQuerfahrtShuttle : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_01;
+ ptQuerfahrtShuttle : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
 
  // REF
  Shuttle : REFERENCE TO Shuttle_FB;

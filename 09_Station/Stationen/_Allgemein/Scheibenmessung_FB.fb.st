@@ -20,7 +20,7 @@ VAR_INPUT
   rpFaktorBremswegverlaengern : REAL := 1.5;
 
   // POINTER
-  ppAntrieb               : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_01;
+  ppAntrieb               : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
   pbpEinlaufSensor        : REFERENCE TO BOOL;
   pbpVorstopSensor        : REFERENCE TO BOOL;
   ppAntriebsInformationen : REFERENCE TO AntriebsInformationen;

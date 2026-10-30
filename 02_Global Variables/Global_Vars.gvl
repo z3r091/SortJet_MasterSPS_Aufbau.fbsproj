@@ -19,7 +19,7 @@ VAR_GLOBAL
   bgDruckluftFaecherwagenstationenOK : BOOL;
 
   // Pointer auf alle Antriebe
-  pgAntriebe   : ARRAY[0..65] OF Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_01;
+  pgAntriebe   : ARRAY[0..65] OF Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
   bgEtherCatOK : BOOL;
 
   // Aktivieren \ Deaktivieren des SystemChecks  
