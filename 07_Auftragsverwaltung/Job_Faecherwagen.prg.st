@@ -22,7 +22,6 @@ VAR
 
   // BOOL
   blErsterZyklus          : BOOL := TRUE;
-  blMerkerAuftragsabbruch : BOOL;
   awMerkerStatusFaecherwagenstationen : ARRAY[0..29] OF WORD;
 
   // WORD

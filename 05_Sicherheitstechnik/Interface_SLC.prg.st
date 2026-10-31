@@ -30,7 +30,6 @@ VAR
   bpVisuResetNothalt              : BOOL;  
   bResetDurchSK                   : BOOL;
   ablSKAbgefallen                 : ARRAY[1..16] OF BOOL; 
-  blMerkerLichtschrankeQuittieren : BOOL;
   
   // WORD
   wIndex                         : WORD := 0;

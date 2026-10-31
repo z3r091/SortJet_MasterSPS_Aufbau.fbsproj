@@ -27,7 +27,6 @@ VAR
 
   // BOOL
   blHornAktiv : BOOL;
-  blPause     : BOOL;
 
   // TRIEGGER 
   ftlHornAus  : F_TRIG;
@@ -83,7 +82,6 @@ ELSE
 
    IF ( ftlHornAus.Q ) THEN
       out_bHorn := FALSE;
-      blPause    := FALSE;
     END_IF
 
 

@@ -34,9 +34,7 @@ END_VAR
 VAR
 	// BOOLEAN 
 	blErsterZyklus            : BOOL := TRUE;
-	blStarteSchmiervorgang    : BOOL; // Trigger zum Starten der Schmierung 
 	blStarteSchmierung        : BOOL; // Schrittketten-starter zur Schmierung 
-	blFettMin                 : BOOL; // NEU Merker wenn 0.5Hz Signal an Status anliegt 
 	blFettLeer                : BOOL; // Merker wenn 1Hz Signal an Status anliegt 
 	blSchmierhubOk            : BOOL;
 	blSchmierhubOkBaldLeer    : BOOL;

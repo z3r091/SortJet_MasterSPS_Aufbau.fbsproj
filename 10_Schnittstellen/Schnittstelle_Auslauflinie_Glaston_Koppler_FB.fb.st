@@ -25,7 +25,6 @@ VAR
   // BOOL
   bpDatenformatASCII                      : BOOL := TRUE;
   blLiveCounterGueltig                    : BOOL;
-  blAuftragdatenPlausibel                 : BOOL;
   blFehlermeldungGenerierenKommunikation  : BOOL;
   blFehlermeldungGenerierenAuftragsdaten  : BOOL;
   bpFehlerMeldungDeaktiviert              : BOOL := FALSE;

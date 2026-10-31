@@ -18,7 +18,6 @@ END_IF
 
 IF rtlStarteSchmierung.Q THEN
 
-  blStarteSchmiervorgang := FALSE;
 
   blStarteSchmierung := TRUE;  
 

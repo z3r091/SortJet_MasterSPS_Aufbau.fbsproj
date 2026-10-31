@@ -46,7 +46,6 @@ VAR
   blVorAbAuftragAktiv                    : ARRAY [cWAND_1..cANZAHL_WAENDE] OF BOOL; (* STATUS: Merker ob die Komponenten Ansteuerung aktiv ist [Angesteuert mit dem Starten der Querfahrt](Autark gesteuert) *)
   blUpdateTimer                          : BOOL;
   blNachSystemcheckMerker                : BOOL; (* Merkt sich, wenn der Systemcheck erfolgreich durchgeführt wurde, damit die Gebläse nicht nach dem Systemcheck ausgehen *)
-  blVortransportAbbruchErzwingen         : BOOL := FALSE;
   ablVortransportAktiv                   : ARRAY [cWAND_1..cANZAHL_WAENDE] OF BOOL; (* STATUS: Merker ob der Vortransport (Autark gesteuert) aktiv ist -> Wichtig für den Austransport zum sicherstellen das erst dann Transportiert werden kann *)
   blDatenlichtschrankeUnterbrochenMelden : BOOL;
   blFehlerAusAutomatikBetrieb            : BOOL;
