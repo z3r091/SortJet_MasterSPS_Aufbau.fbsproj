@@ -447,6 +447,7 @@ IF bpReset THEN
   bpReset := FALSE;
   starrShuttleBasisParameter[wStation].bEintransport[wWand] := FALSE;
   starrShuttleBasisParameter[wStation].bRueckwaertsTransportieren[wWand] := FALSE;
+  starrShuttleBasisParameter[wStation].bTransferstationTransfershuttle[wWand] := FALSE;
   steplSchritt := STEP_0_E;
 END_IF
 END_FUNCTION_BLOCK

@@ -103,7 +103,7 @@ IF bpReset THEN
   bpFehler := FALSE;
   bpReset := FALSE;
   bpDone := FALSE;
-  //starrStationBasisParameter[wStation].bTransportkopplung[wWand] := FALSE;
+  starrStationBasisParameter[wStation].bTransportkopplung[wWand] := FALSE;
   steplSchritt := STEP_0_E;    
 END_IF
 END_FUNCTION_BLOCK

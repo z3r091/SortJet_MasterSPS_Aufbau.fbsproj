@@ -307,6 +307,9 @@ IF bpReset THEN
   bpFehler := FALSE;
   bpReset := FALSE;
   bpDone := FALSE;
+  blKopplungGefundenEintransport := FALSE;
+  blKopplungGefundenAustransport := FALSE;
+  blStationQuittiertScheiben := FALSE;
   steplSchritt := STEP_0_E;
   starrStationBasisParameter[wStation].bRueckwaertsTransportieren[wWand] := FALSE;
   starrStationBasisParameter[wStation].bDurchtransport[wWand] := FALSE;
