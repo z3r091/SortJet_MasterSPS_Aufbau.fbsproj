@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "5e136676-7d5d-430e-b251-8802f4b156e4"
-	}
+  "v3Meta": {
+    "objectGuid": "5e136676-7d5d-430e-b251-8802f4b156e4"
+  }
 }
 *)
 METHOD Reset : BOOL

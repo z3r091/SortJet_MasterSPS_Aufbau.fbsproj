@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "4b81b4a3-bc49-4a0d-8ff1-d84de9c8f53e"
-	}
+  "v3Meta": {
+    "objectGuid": "4b81b4a3-bc49-4a0d-8ff1-d84de9c8f53e"
+  }
 }
 *)
 FUNCTION_BLOCK Station_Glashoehenmessung

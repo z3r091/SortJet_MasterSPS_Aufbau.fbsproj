@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "1fb5df76-8c01-466b-909a-7e8384e95a98"
-	}
+  "v3Meta": {
+    "objectGuid": "1fb5df76-8c01-466b-909a-7e8384e95a98"
+  }
 }
 *)
 FUNCTION_BLOCK Kipptisch_Kippen_FB

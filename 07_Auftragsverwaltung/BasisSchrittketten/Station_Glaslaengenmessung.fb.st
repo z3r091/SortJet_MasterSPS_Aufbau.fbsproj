@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "379bb71f-09e3-4346-a24a-24b89454f93a"
-	}
+  "v3Meta": {
+    "objectGuid": "379bb71f-09e3-4346-a24a-24b89454f93a"
+  }
 }
 *)
 FUNCTION_BLOCK Station_Glaslaengenmessung

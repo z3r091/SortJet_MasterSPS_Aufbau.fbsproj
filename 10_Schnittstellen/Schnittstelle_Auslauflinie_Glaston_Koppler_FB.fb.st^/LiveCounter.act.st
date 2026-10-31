@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "3cd2f2d8-64d5-45ea-9c2e-511669c13ead"
-	}
+  "v3Meta": {
+    "objectGuid": "3cd2f2d8-64d5-45ea-9c2e-511669c13ead"
+  }
 }
 *)
 ACTION LiveCounter

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "3499e106-2e80-4a0d-b507-279f4e7a646f"
-	}
+  "v3Meta": {
+    "objectGuid": "3499e106-2e80-4a0d-b507-279f4e7a646f"
+  }
 }
 *)
 ACTION TimerTrigger

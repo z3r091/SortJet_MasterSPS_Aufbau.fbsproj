@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "1d348a5b-bf9a-4cf1-b2ad-49365df41a76"
-	}
+  "v3Meta": {
+    "objectGuid": "1d348a5b-bf9a-4cf1-b2ad-49365df41a76"
+  }
 }
 *)
 TYPE ModusHoehenvermessung_EN :

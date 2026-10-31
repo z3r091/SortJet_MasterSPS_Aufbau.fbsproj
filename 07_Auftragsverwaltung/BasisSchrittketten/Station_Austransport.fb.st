@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "ceff7ec0-8422-4f2f-902e-5124ad2e42bc"
-	}
+  "v3Meta": {
+    "objectGuid": "ceff7ec0-8422-4f2f-902e-5124ad2e42bc"
+  }
 }
 *)
 FUNCTION_BLOCK Station_Austransport

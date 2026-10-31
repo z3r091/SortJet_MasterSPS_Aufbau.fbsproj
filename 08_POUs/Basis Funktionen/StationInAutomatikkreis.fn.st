@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "a9180b59-ead2-48cb-98e6-a6809a238554"
-	}
+  "v3Meta": {
+    "objectGuid": "a9180b59-ead2-48cb-98e6-a6809a238554"
+  }
 }
 *)
 FUNCTION StationInAutomatikkreis : BOOL

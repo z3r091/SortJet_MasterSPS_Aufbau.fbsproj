@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "37e343bd-edbf-4abd-b520-6f0ca7757e0b"
-	}
+  "v3Meta": {
+    "objectGuid": "37e343bd-edbf-4abd-b520-6f0ca7757e0b"
+  }
 }
 *)
 TYPE Auftrags_Optionen_ST :

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "2106329f-ce22-4754-a4e1-a7a15d593805"
-	}
+  "v3Meta": {
+    "objectGuid": "2106329f-ce22-4754-a4e1-a7a15d593805"
+  }
 }
 *)
 METHOD PRIVATE Steuerung_VerbundCheck : BOOL

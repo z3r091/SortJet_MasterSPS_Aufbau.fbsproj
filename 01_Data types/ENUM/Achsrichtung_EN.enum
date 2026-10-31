@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "01de5667-199f-46ae-ace2-ed3334f23f1e"
-	}
+  "v3Meta": {
+    "objectGuid": "01de5667-199f-46ae-ace2-ed3334f23f1e"
+  }
 }
 *)
 TYPE Achsrichtung_EN :

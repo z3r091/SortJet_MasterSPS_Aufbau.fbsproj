@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "565d8e9e-6f44-455e-86f5-d16ff6a06f95"
-	}
+  "v3Meta": {
+    "objectGuid": "565d8e9e-6f44-455e-86f5-d16ff6a06f95"
+  }
 }
 *)
 FUNCTION_BLOCK Auftragswarteschlange_Fremdanlage_FB

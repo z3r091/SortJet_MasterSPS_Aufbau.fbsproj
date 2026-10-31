@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "0a60150a-316d-42cd-8145-e14c8d6bc118"
-	}
+  "v3Meta": {
+    "objectGuid": "0a60150a-316d-42cd-8145-e14c8d6bc118"
+  }
 }
 *)
 ACTION Handbetrieb

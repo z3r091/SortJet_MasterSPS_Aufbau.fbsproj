@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "249950ae-6eed-4666-b124-f690ffc1aced"
-	}
+  "v3Meta": {
+    "objectGuid": "249950ae-6eed-4666-b124-f690ffc1aced"
+  }
 }
 *)
 ACTION Taster

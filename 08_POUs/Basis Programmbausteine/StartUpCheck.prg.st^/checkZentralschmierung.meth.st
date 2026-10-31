@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "5eb94ffc-f2d1-4fcc-9867-11fb69ff17a0"
-	}
+  "v3Meta": {
+    "objectGuid": "5eb94ffc-f2d1-4fcc-9867-11fb69ff17a0"
+  }
 }
 *)
 METHOD checkZentralschmierung

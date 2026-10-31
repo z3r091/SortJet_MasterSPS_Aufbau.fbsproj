@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "9d767b72-d5d2-41dd-bf85-6fed179b78ea"
-	}
+  "v3Meta": {
+    "objectGuid": "9d767b72-d5d2-41dd-bf85-6fed179b78ea"
+  }
 }
 *)
 FUNCTION_BLOCK Drehstation_FB EXTENDS Basic_Station_FB

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "d04d52b7-1e3a-4993-9efc-188db57c982e"
-	}
+  "v3Meta": {
+    "objectGuid": "d04d52b7-1e3a-4993-9efc-188db57c982e"
+  }
 }
 *)
 ACTION AnzeigeIOs

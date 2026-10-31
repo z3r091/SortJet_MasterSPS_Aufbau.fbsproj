@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "3382b282-4d75-484e-8f31-3dfec2faf444"
-	}
+  "v3Meta": {
+    "objectGuid": "3382b282-4d75-484e-8f31-3dfec2faf444"
+  }
 }
 *)
 FUNCTION SpsLogString : BOOL

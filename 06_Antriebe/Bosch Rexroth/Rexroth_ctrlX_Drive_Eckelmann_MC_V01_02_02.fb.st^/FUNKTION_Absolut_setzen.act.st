@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "5621efb7-cd40-4c15-9d03-482a92cbc1a2"
-	}
+  "v3Meta": {
+    "objectGuid": "5621efb7-cd40-4c15-9d03-482a92cbc1a2"
+  }
 }
 *)
 ACTION FUNKTION_Absolut_setzen

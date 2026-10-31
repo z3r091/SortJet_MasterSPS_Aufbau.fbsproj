@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "c021b666-375b-4371-b8f1-bd92ec150213"
-	}
+  "v3Meta": {
+    "objectGuid": "c021b666-375b-4371-b8f1-bd92ec150213"
+  }
 }
 *)
 TYPE Mmi2SpsInfo :
@@ -380,7 +380,7 @@ TYPE Mmi2SpsInfo :
 
     // MSG 99 - SB0_MMI_WATCHDOGTEST  
     wWatchDogTestCount                         : WORD;
-	  wModusAuswahl                              : WORD;
+    wModusAuswahl                              : WORD;
 
   END_STRUCT
 END_TYPE

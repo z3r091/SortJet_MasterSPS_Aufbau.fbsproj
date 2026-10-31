@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "d60e2503-c0a6-4612-86b5-fee558744e41"
-	}
+  "v3Meta": {
+    "objectGuid": "d60e2503-c0a6-4612-86b5-fee558744e41"
+  }
 }
 *)
 ACTION FWAuftraege

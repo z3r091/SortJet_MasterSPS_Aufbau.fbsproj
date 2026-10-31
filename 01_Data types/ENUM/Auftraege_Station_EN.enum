@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "b811f970-5bb4-47d6-b3a4-7789b6b9af70"
-	}
+  "v3Meta": {
+    "objectGuid": "b811f970-5bb4-47d6-b3a4-7789b6b9af70"
+  }
 }
 *)
 TYPE Auftraege_Station_EN :

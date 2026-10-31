@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "302a3845-d7bd-4de5-be7f-afeb7baaa6cc"
-	}
+  "v3Meta": {
+    "objectGuid": "302a3845-d7bd-4de5-be7f-afeb7baaa6cc"
+  }
 }
 *)
 FUNCTION_BLOCK TS_Querfahrt

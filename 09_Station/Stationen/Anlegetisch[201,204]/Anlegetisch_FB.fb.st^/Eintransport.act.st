@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "487c06bf-c3e1-409d-bb2c-ab52f09a8275"
-	}
+  "v3Meta": {
+    "objectGuid": "487c06bf-c3e1-409d-bb2c-ab52f09a8275"
+  }
 }
 *)
 ACTION Eintransport

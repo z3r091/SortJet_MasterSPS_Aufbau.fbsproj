@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "2a926ca9-66ff-460d-90cd-a4c06345d8ed"
-	}
+  "v3Meta": {
+    "objectGuid": "2a926ca9-66ff-460d-90cd-a4c06345d8ed"
+  }
 }
 *)
 ACTION Vorsteuerung

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "54d45b69-8d91-483b-a87f-7b1de952ab2e"
-	}
+  "v3Meta": {
+    "objectGuid": "54d45b69-8d91-483b-a87f-7b1de952ab2e"
+  }
 }
 *)
 FUNCTION_BLOCK Station_Querfahrt

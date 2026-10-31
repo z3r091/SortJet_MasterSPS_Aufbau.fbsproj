@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "7eb8ada6-5c0d-4871-bc45-bbcb792cf782"
-	}
+  "v3Meta": {
+    "objectGuid": "7eb8ada6-5c0d-4871-bc45-bbcb792cf782"
+  }
 }
 *)
 ACTION _Wichtige_Hinweise

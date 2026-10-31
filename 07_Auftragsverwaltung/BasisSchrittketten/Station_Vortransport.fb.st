@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "9f1ab894-d35e-4a4e-8f77-3236b7a1099b"
-	}
+  "v3Meta": {
+    "objectGuid": "9f1ab894-d35e-4a4e-8f77-3236b7a1099b"
+  }
 }
 *)
 FUNCTION_BLOCK Station_Vortransport

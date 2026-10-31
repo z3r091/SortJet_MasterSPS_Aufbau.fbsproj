@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "1c89a038-43c8-45ac-ae17-8c8fe5411e58"
-	}
+  "v3Meta": {
+    "objectGuid": "1c89a038-43c8-45ac-ae17-8c8fe5411e58"
+  }
 }
 *)
 ACTION BETRIEBSART_Restweg_X_Flankenerkennung

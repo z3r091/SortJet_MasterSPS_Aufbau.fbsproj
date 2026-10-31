@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "3ffb14b9-d8bd-42b1-8667-4fb728d40c20"
-	}
+  "v3Meta": {
+    "objectGuid": "3ffb14b9-d8bd-42b1-8667-4fb728d40c20"
+  }
 }
 *)
 ACTION SensorenFreifahren

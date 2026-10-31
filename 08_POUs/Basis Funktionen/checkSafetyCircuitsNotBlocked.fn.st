@@ -1,11 +1,11 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "93537a12-23ea-4a31-94f7-53154eb0b75f",
-		"properties": {
-			"_3S.CoDeSys.CFCObject.CFCProperty": "<?xml version=\"1.0\" encoding=\"utf-8\"?><Single xml:space=\"preserve\" Type=\"{97c1f2ea-5995-48b9-abd5-a3ab983c5def}\" Method=\"IArchivable\"><Single Name=\"UseExplicitExecutionOrder\" Type=\"bool\">False</Single></Single>"
-		}
-	}
+  "v3Meta": {
+    "objectGuid": "93537a12-23ea-4a31-94f7-53154eb0b75f",
+    "properties": {
+      "_3S.CoDeSys.CFCObject.CFCProperty": "<?xml version=\"1.0\" encoding=\"utf-8\"?><Single xml:space=\"preserve\" Type=\"{97c1f2ea-5995-48b9-abd5-a3ab983c5def}\" Method=\"IArchivable\"><Single Name=\"UseExplicitExecutionOrder\" Type=\"bool\">False</Single></Single>"
+    }
+  }
 }
 *)
 FUNCTION checkSafetyCircuitsNotBlocked : BOOL

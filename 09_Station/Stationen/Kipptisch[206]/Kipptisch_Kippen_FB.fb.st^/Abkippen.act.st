@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "1763d8dc-f609-4d63-a8e6-f364ff6f2859"
-	}
+  "v3Meta": {
+    "objectGuid": "1763d8dc-f609-4d63-a8e6-f364ff6f2859"
+  }
 }
 *)
 ACTION Abkippen

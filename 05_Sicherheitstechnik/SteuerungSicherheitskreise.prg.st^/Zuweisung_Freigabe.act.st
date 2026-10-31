@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "b5d583d3-89c4-4d74-8416-e72ac3d75b2b"
-	}
+  "v3Meta": {
+    "objectGuid": "b5d583d3-89c4-4d74-8416-e72ac3d75b2b"
+  }
 }
 *)
 ACTION Zuweisung_Freigabe

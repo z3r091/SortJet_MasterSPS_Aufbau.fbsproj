@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "9404f6fa-2a6f-44db-8f42-3f6f32f76ed1"
-	}
+  "v3Meta": {
+    "objectGuid": "9404f6fa-2a6f-44db-8f42-3f6f32f76ed1"
+  }
 }
 *)
 FUNCTION_BLOCK Shuttle_Ansteuerung_Ressourcen_FB EXTENDS Basic_Shuttle_Aktion_FB

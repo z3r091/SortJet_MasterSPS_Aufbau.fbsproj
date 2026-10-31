@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "6b86eeab-fdc2-4247-b783-cb86ac5f0d72"
-	}
+  "v3Meta": {
+    "objectGuid": "6b86eeab-fdc2-4247-b783-cb86ac5f0d72"
+  }
 }
 *)
 FUNCTION_BLOCK Transfershuttle_FB

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "9a4c379e-af86-4c9e-b628-bbb819ee7aed"
-	}
+  "v3Meta": {
+    "objectGuid": "9a4c379e-af86-4c9e-b628-bbb819ee7aed"
+  }
 }
 *)
 FUNCTION AutomatikFehlerTransfershuttleSetzen : BOOL

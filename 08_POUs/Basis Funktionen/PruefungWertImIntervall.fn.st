@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "b7be4780-1c3e-4371-bb2a-cc9122a11be5"
-	}
+  "v3Meta": {
+    "objectGuid": "b7be4780-1c3e-4371-bb2a-cc9122a11be5"
+  }
 }
 *)
 FUNCTION PruefungWertImIntervall : BOOL

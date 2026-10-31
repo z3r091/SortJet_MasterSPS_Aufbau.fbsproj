@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "054ec8d1-7d35-45dd-8fed-1d9f4cdd4ae8"
-	}
+  "v3Meta": {
+    "objectGuid": "054ec8d1-7d35-45dd-8fed-1d9f4cdd4ae8"
+  }
 }
 *)
 FUNCTION_BLOCK Sicherheitskreis_FB

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "773750ca-eb9f-400c-96e8-2e45a60e5e21"
-	}
+  "v3Meta": {
+    "objectGuid": "773750ca-eb9f-400c-96e8-2e45a60e5e21"
+  }
 }
 *)
 ACTION AutomatikStart

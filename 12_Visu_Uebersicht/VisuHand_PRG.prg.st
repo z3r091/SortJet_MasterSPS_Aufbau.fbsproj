@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "a4fab899-80a6-4d8b-aad2-f00973a33795"
-	}
+  "v3Meta": {
+    "objectGuid": "a4fab899-80a6-4d8b-aad2-f00973a33795"
+  }
 }
 *)
 PROGRAM VisuHand_PRG

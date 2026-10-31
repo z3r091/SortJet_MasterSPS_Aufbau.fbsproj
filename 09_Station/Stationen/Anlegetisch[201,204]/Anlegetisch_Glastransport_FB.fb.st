@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "293c075f-e4eb-4596-80bf-f2217638693b"
-	}
+  "v3Meta": {
+    "objectGuid": "293c075f-e4eb-4596-80bf-f2217638693b"
+  }
 }
 *)
 FUNCTION_BLOCK Anlegetisch_Glastransport_FB EXTENDS Basic_Glastransport_FB

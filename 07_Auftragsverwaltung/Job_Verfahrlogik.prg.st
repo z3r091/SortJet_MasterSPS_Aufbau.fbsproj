@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "e2245dfb-7a4f-4b2e-8ea2-abea4deaa4b5"
-	}
+  "v3Meta": {
+    "objectGuid": "e2245dfb-7a4f-4b2e-8ea2-abea4deaa4b5"
+  }
 }
 *)
 PROGRAM Job_Verfahrlogik

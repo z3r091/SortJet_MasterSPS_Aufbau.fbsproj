@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "5637b03b-3d0c-472c-8bff-b06eb30e5596"
-	}
+  "v3Meta": {
+    "objectGuid": "5637b03b-3d0c-472c-8bff-b06eb30e5596"
+  }
 }
 *)
 TYPE Glastransport_EN :

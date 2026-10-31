@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "3779c208-854f-4c13-8b26-aa1147fe8cdb"
-	}
+  "v3Meta": {
+    "objectGuid": "3779c208-854f-4c13-8b26-aa1147fe8cdb"
+  }
 }
 *)
 FUNCTION_BLOCK Faecherwagenstation_V4_1_FB

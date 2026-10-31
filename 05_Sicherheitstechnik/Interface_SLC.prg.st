@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "ccad9978-fd7c-48d9-8d85-dc1a7581631d"
-	}
+  "v3Meta": {
+    "objectGuid": "ccad9978-fd7c-48d9-8d85-dc1a7581631d"
+  }
 }
 *)
 PROGRAM Interface_SLC

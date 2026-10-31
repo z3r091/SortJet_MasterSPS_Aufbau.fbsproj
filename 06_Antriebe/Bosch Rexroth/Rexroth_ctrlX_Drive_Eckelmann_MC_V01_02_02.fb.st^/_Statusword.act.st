@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "408b9d1a-1641-4edf-bb35-4e7a7361d31c"
-	}
+  "v3Meta": {
+    "objectGuid": "408b9d1a-1641-4edf-bb35-4e7a7361d31c"
+  }
 }
 *)
 ACTION _Statusword

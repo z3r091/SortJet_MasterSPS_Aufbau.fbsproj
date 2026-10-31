@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "530c17d7-3762-455b-8431-d2a354444d9d"
-	}
+  "v3Meta": {
+    "objectGuid": "530c17d7-3762-455b-8431-d2a354444d9d"
+  }
 }
 *)
 FUNCTION_BLOCK ZylinderPneumatik_3Wege_FB

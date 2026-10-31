@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "481cd5e1-14f2-42df-8279-da4cfd4d1111"
-	}
+  "v3Meta": {
+    "objectGuid": "481cd5e1-14f2-42df-8279-da4cfd4d1111"
+  }
 }
 *)
 ACTION SlaveBetrieb

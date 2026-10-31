@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "22b8b65b-6376-41dd-ab5a-bf0c9c2eeadd"
-	}
+  "v3Meta": {
+    "objectGuid": "22b8b65b-6376-41dd-ab5a-bf0c9c2eeadd"
+  }
 }
 *)
 METHOD checkDurchgaenge

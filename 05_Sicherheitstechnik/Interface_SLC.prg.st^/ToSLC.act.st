@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "f525c379-17a0-48cc-ae6b-0b2e3cffb77f"
-	}
+  "v3Meta": {
+    "objectGuid": "f525c379-17a0-48cc-ae6b-0b2e3cffb77f"
+  }
 }
 *)
 ACTION ToSLC

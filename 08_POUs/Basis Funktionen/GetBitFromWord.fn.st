@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "4ac38ee7-2639-4587-9c58-5882c3701cd8"
-	}
+  "v3Meta": {
+    "objectGuid": "4ac38ee7-2639-4587-9c58-5882c3701cd8"
+  }
 }
 *)
 FUNCTION GetBitFromWord : Bool

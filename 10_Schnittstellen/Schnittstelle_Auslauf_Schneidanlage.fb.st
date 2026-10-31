@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "5c116975-7ea8-4794-b20d-23cbba1de39f"
-	}
+  "v3Meta": {
+    "objectGuid": "5c116975-7ea8-4794-b20d-23cbba1de39f"
+  }
 }
 *)
 FUNCTION_BLOCK Schnittstelle_Auslauf_Schneidanlage EXTENDS Basic_Schnittstelle_FB

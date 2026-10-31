@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "74e1c822-889a-4284-8138-290dd0f34685"
-	}
+  "v3Meta": {
+    "objectGuid": "74e1c822-889a-4284-8138-290dd0f34685"
+  }
 }
 *)
 TYPE Parameter_Zentralschmierung_DLS_4xxi :

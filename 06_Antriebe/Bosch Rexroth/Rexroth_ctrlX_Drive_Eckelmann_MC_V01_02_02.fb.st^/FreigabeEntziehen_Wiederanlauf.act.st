@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "91260ed7-d0f3-4853-b1f2-4ccb222d9ae8"
-	}
+  "v3Meta": {
+    "objectGuid": "91260ed7-d0f3-4853-b1f2-4ccb222d9ae8"
+  }
 }
 *)
 ACTION FreigabeEntziehen_Wiederanlauf

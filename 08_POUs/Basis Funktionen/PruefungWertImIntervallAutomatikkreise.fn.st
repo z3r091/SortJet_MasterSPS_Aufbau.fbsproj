@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "4fd29558-d6eb-46af-8028-798423b786a8"
-	}
+  "v3Meta": {
+    "objectGuid": "4fd29558-d6eb-46af-8028-798423b786a8"
+  }
 }
 *)
 FUNCTION PruefungWertImIntervallAutomatikkreise : BOOL

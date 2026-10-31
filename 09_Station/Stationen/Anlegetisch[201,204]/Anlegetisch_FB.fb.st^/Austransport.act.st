@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "97af2700-c40f-4fdd-8191-020abad55f4e"
-	}
+  "v3Meta": {
+    "objectGuid": "97af2700-c40f-4fdd-8191-020abad55f4e"
+  }
 }
 *)
 ACTION Austransport

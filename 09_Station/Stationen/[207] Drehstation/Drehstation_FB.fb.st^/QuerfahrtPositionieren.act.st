@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "71753eb2-e168-4665-b3c5-2a0499218d20"
-	}
+  "v3Meta": {
+    "objectGuid": "71753eb2-e168-4665-b3c5-2a0499218d20"
+  }
 }
 *)
 ACTION QuerfahrtPositionieren

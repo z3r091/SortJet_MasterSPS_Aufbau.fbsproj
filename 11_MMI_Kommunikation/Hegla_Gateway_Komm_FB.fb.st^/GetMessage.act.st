@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "c15a1bbd-8694-42ea-9195-cf52aa2de87e"
-	}
+  "v3Meta": {
+    "objectGuid": "c15a1bbd-8694-42ea-9195-cf52aa2de87e"
+  }
 }
 *)
 ACTION GetMessage

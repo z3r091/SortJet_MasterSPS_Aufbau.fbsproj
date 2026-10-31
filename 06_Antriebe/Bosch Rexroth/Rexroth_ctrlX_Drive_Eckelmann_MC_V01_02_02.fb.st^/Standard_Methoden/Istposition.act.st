@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "5dddbe07-35c7-4b08-936f-494c3e7dbe41"
-	}
+  "v3Meta": {
+    "objectGuid": "5dddbe07-35c7-4b08-936f-494c3e7dbe41"
+  }
 }
 *)
 ACTION Istposition

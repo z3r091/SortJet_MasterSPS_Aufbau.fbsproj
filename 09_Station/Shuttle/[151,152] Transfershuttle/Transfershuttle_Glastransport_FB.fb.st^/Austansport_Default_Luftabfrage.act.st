@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "034bf102-e631-49b1-befd-54869e87df20"
-	}
+  "v3Meta": {
+    "objectGuid": "034bf102-e631-49b1-befd-54869e87df20"
+  }
 }
 *)
 ACTION Austansport_Default_Luftabfrage

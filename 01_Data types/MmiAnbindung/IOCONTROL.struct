@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "f969f23c-6918-4196-a53d-e9a021a86fab"
-	}
+  "v3Meta": {
+    "objectGuid": "f969f23c-6918-4196-a53d-e9a021a86fab"
+  }
 }
 *)
 TYPE IOCONTROL :

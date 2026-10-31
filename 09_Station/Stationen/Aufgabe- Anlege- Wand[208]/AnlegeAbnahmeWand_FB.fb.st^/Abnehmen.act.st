@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "8022e3a3-f996-4335-9e0b-7503e096fe34"
-	}
+  "v3Meta": {
+    "objectGuid": "8022e3a3-f996-4335-9e0b-7503e096fe34"
+  }
 }
 *)
 ACTION Abnehmen

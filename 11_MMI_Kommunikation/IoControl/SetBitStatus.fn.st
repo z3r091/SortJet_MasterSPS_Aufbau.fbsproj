@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "e3d893c7-2aa8-4b16-bd4f-cc2db28304fb"
-	}
+  "v3Meta": {
+    "objectGuid": "e3d893c7-2aa8-4b16-bd4f-cc2db28304fb"
+  }
 }
 *)
 FUNCTION SetBitStatus : BYTE

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "bbc15bee-7f2f-43fc-826d-24e7f6394171"
-	}
+  "v3Meta": {
+    "objectGuid": "bbc15bee-7f2f-43fc-826d-24e7f6394171"
+  }
 }
 *)
 FUNCTION_BLOCK Zentralschmierung_DLS_4xxi_FB

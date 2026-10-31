@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "d4215ee0-47ee-45d9-8520-4f4f5fb6c469"
-	}
+  "v3Meta": {
+    "objectGuid": "d4215ee0-47ee-45d9-8520-4f4f5fb6c469"
+  }
 }
 *)
 FUNCTION_BLOCK Station_Anlegen

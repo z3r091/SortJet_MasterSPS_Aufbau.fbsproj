@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "98bc2d31-e6c9-4c6f-a95b-80ba3f2124c6"
-	}
+  "v3Meta": {
+    "objectGuid": "98bc2d31-e6c9-4c6f-a95b-80ba3f2124c6"
+  }
 }
 *)
 PROGRAM Job_Speicherfachvalidierung

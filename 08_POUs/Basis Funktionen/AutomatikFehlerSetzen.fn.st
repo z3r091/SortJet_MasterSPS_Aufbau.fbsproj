@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "10c1b2d6-77ce-44d1-9dc1-390f3ff85d9b"
-	}
+  "v3Meta": {
+    "objectGuid": "10c1b2d6-77ce-44d1-9dc1-390f3ff85d9b"
+  }
 }
 *)
 FUNCTION AutomatikFehlerSetzen : BOOL

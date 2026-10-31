@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "11f8d1c7-e430-45e8-b008-435e58887318"
-	}
+  "v3Meta": {
+    "objectGuid": "11f8d1c7-e430-45e8-b008-435e58887318"
+  }
 }
 *)
 FUNCTION Test_Bit : Bool

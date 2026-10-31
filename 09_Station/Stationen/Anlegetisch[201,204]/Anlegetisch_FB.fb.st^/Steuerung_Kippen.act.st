@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "c2ec1e80-268a-4855-9092-13890ee0dc70"
-	}
+  "v3Meta": {
+    "objectGuid": "c2ec1e80-268a-4855-9092-13890ee0dc70"
+  }
 }
 *)
 ACTION Steuerung_Kippen

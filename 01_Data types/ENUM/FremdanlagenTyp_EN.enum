@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "d92df366-49a4-4434-b9e7-7221116054d3"
-	}
+  "v3Meta": {
+    "objectGuid": "d92df366-49a4-4434-b9e7-7221116054d3"
+  }
 }
 *)
 TYPE FremdanlagenTyp_EN :

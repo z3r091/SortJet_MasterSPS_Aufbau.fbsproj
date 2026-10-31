@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "f49d25bd-79b2-4bb6-b9a3-75e0b6dfd3c2"
-	}
+  "v3Meta": {
+    "objectGuid": "f49d25bd-79b2-4bb6-b9a3-75e0b6dfd3c2"
+  }
 }
 *)
 TYPE AntriebsInformationen :

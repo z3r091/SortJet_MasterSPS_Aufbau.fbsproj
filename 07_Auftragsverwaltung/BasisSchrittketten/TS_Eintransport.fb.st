@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "2467a7d0-b543-4c0f-8e2f-d0f3bb8e773e"
-	}
+  "v3Meta": {
+    "objectGuid": "2467a7d0-b543-4c0f-8e2f-d0f3bb8e773e"
+  }
 }
 *)
 FUNCTION_BLOCK TS_Eintransport

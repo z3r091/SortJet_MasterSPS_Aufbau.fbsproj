@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "a6c9830e-3a54-4ecc-9aab-6fa636712e84"
-	}
+  "v3Meta": {
+    "objectGuid": "a6c9830e-3a54-4ecc-9aab-6fa636712e84"
+  }
 }
 *)
 PROGRAM Auftraege

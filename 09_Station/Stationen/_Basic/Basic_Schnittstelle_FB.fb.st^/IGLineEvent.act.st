@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "eb410a9f-4f2d-4b91-9b42-1e80fc6ee1dd"
-	}
+  "v3Meta": {
+    "objectGuid": "eb410a9f-4f2d-4b91-9b42-1e80fc6ee1dd"
+  }
 }
 *)
 ACTION IGLineEvent

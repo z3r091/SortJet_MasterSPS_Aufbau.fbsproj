@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "ebf9c543-46d9-41c2-b2bf-085f8790dbcc"
-	}
+  "v3Meta": {
+    "objectGuid": "ebf9c543-46d9-41c2-b2bf-085f8790dbcc"
+  }
 }
 *)
 TYPE Parameter_Durchgang :

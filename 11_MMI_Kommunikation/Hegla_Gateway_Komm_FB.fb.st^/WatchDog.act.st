@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "4a5dc8cc-233c-4d19-b434-5bbaf5270e22"
-	}
+  "v3Meta": {
+    "objectGuid": "4a5dc8cc-233c-4d19-b434-5bbaf5270e22"
+  }
 }
 *)
 ACTION WatchDog

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "afd60ed2-fb3c-4a14-bad8-2d5352fcbeab"
-	}
+  "v3Meta": {
+    "objectGuid": "afd60ed2-fb3c-4a14-bad8-2d5352fcbeab"
+  }
 }
 *)
 ACTION Messung

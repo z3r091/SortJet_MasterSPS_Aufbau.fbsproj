@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "256917a2-e0b1-4142-bfa2-dbde064a02d5"
-	}
+  "v3Meta": {
+    "objectGuid": "256917a2-e0b1-4142-bfa2-dbde064a02d5"
+  }
 }
 *)
 ACTION Reset

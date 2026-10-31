@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "73efd810-dec5-4d32-85b4-2242d401284d"
-	}
+  "v3Meta": {
+    "objectGuid": "73efd810-dec5-4d32-85b4-2242d401284d"
+  }
 }
 *)
 FUNCTION DiagnoseAuswertung : Rexroth_Fehler

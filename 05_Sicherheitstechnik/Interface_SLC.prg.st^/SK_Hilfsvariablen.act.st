@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "b67c01ae-ca41-446f-9a32-c307cde119a9"
-	}
+  "v3Meta": {
+    "objectGuid": "b67c01ae-ca41-446f-9a32-c307cde119a9"
+  }
 }
 *)
 ACTION SK_Hilfsvariablen

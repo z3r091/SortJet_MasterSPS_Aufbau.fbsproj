@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "6379462e-f79d-4a4b-b43e-55ec8176e5b5"
-	}
+  "v3Meta": {
+    "objectGuid": "6379462e-f79d-4a4b-b43e-55ec8176e5b5"
+  }
 }
 *)
 TYPE SystemcheckZyklen_EN : // !!!!! WERDEN HIER WEITERE ZYKLEN HINZUGEFÜGT, MUSS AUCH DAS ARRAY ANGEPASST WERDEN !!!!!

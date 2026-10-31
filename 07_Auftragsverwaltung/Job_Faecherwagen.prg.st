@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "77979386-6e9b-45aa-8f8e-3d53a4bcfd74"
-	}
+  "v3Meta": {
+    "objectGuid": "77979386-6e9b-45aa-8f8e-3d53a4bcfd74"
+  }
 }
 *)
 PROGRAM Job_Faecherwagen

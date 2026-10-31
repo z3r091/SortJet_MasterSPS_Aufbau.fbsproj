@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "32ae7418-4bd1-4583-a2cb-6d193e6fcca4"
-	}
+  "v3Meta": {
+    "objectGuid": "32ae7418-4bd1-4583-a2cb-6d193e6fcca4"
+  }
 }
 *)
 FUNCTION_BLOCK Arretierung_FB_1

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "f5bf0334-c8db-496d-a0a5-3bfc853a0111"
-	}
+  "v3Meta": {
+    "objectGuid": "f5bf0334-c8db-496d-a0a5-3bfc853a0111"
+  }
 }
 *)
 FUNCTION SWAP_WORD : WORD

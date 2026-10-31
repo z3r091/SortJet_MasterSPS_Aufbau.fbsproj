@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "2888d22d-60f2-42c5-998f-ee490528315c"
-	}
+  "v3Meta": {
+    "objectGuid": "2888d22d-60f2-42c5-998f-ee490528315c"
+  }
 }
 *)
 ACTION Vortransport

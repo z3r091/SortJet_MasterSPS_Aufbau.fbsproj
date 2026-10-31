@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "3f16307b-cece-4c90-b369-f99b34f7eaac"
-	}
+  "v3Meta": {
+    "objectGuid": "3f16307b-cece-4c90-b369-f99b34f7eaac"
+  }
 }
 *)
 TYPE PositionierAuftrag_ST :
@@ -15,6 +15,6 @@ TYPE PositionierAuftrag_ST :
     rNennstromBeschleunigungsphase     : REAL; (* Hinweis: Nennstrom (A) in der Beschleunigungsphase *)
     rNennstromKonstantfahrt            : REAL; (* Hinweis: Nennstrom (A) in derKonstantfahrt *)
     rZeitintervalBeschleunigungsphase  : REAL; (* Hinweis: Zeit / Dauer der Beschleunigungsphase *)
-  	wAuftragstyp                       : WORD; (* Hinweis: Vorabauftragstyp 0- Kein Auftrag 1- Auftrag [Ein- / Aus- Transport] *)
+    wAuftragstyp                       : WORD; (* Hinweis: Vorabauftragstyp 0- Kein Auftrag 1- Auftrag [Ein- / Aus- Transport] *)
   END_STRUCT
 END_TYPE

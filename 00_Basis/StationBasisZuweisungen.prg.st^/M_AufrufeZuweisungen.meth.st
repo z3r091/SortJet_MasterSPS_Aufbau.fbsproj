@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "6343c508-4884-483e-a331-d4339a485652"
-	}
+  "v3Meta": {
+    "objectGuid": "6343c508-4884-483e-a331-d4339a485652"
+  }
 }
 *)
 METHOD M_AufrufeZuweisungen

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "8525d255-55de-4882-b974-c7e29f794d79"
-	}
+  "v3Meta": {
+    "objectGuid": "8525d255-55de-4882-b974-c7e29f794d79"
+  }
 }
 *)
 FUNCTION LowHighByteSwitchInDWORD_CompleteSwap : DWORD

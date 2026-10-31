@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "2c76242e-df1a-45ee-a644-3bee45d641cc"
-	}
+  "v3Meta": {
+    "objectGuid": "2c76242e-df1a-45ee-a644-3bee45d641cc"
+  }
 }
 *)
 PROGRAM StationBasisZuweisungen

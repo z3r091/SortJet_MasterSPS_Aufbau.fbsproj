@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "00538213-1902-415d-a877-2063365d0692"
-	}
+  "v3Meta": {
+    "objectGuid": "00538213-1902-415d-a877-2063365d0692"
+  }
 }
 *)
 ACTION Gegenhalter

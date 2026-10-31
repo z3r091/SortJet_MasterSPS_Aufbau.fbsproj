@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "cda4a395-9b7d-4fad-8723-3f1586f2af42"
-	}
+  "v3Meta": {
+    "objectGuid": "cda4a395-9b7d-4fad-8723-3f1586f2af42"
+  }
 }
 *)
 ACTION A_Geblaese

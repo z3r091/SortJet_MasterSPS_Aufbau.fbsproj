@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "7d6d986c-3860-4a6a-9626-b52f70d8fccd"
-	}
+  "v3Meta": {
+    "objectGuid": "7d6d986c-3860-4a6a-9626-b52f70d8fccd"
+  }
 }
 *)
 ACTION BETRIEBSART_Relativ

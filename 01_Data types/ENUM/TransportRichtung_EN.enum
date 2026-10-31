@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "f0a72b9b-bee0-4596-bc37-30beae129cc0"
-	}
+  "v3Meta": {
+    "objectGuid": "f0a72b9b-bee0-4596-bc37-30beae129cc0"
+  }
 }
 *)
 TYPE TransportRichtung_EN :

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "1989a628-2624-4464-9eb3-e10383eaf362"
-	}
+  "v3Meta": {
+    "objectGuid": "1989a628-2624-4464-9eb3-e10383eaf362"
+  }
 }
 *)
 ACTION Glashoehenmessung

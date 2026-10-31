@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "38b1ebdf-93dc-4d21-adff-5cd8952a9cb8"
-	}
+  "v3Meta": {
+    "objectGuid": "38b1ebdf-93dc-4d21-adff-5cd8952a9cb8"
+  }
 }
 *)
 PROGRAM Main

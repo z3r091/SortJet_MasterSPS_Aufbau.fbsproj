@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "a1af3890-11c2-4614-9009-3e8be02b81c8"
-	}
+  "v3Meta": {
+    "objectGuid": "a1af3890-11c2-4614-9009-3e8be02b81c8"
+  }
 }
 *)
 TYPE Dialogtyp_EN :

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "a1d28af7-f737-4fc0-bc24-39c70d4b17b1"
-	}
+  "v3Meta": {
+    "objectGuid": "a1d28af7-f737-4fc0-bc24-39c70d4b17b1"
+  }
 }
 *)
 TYPE Auftragsdaten_ST :

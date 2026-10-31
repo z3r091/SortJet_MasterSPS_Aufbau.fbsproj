@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "a4b12c85-33d1-4e58-8fdf-3218a4b905e2"
-	}
+  "v3Meta": {
+    "objectGuid": "a4b12c85-33d1-4e58-8fdf-3218a4b905e2"
+  }
 }
 *)
 FUNCTION_BLOCK PositionierAuftragsdatenPruefen

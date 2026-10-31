@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "0cffa44a-96d6-4cd8-9f3c-3120d05aae22"
-	}
+  "v3Meta": {
+    "objectGuid": "0cffa44a-96d6-4cd8-9f3c-3120d05aae22"
+  }
 }
 *)
 FUNCTION SocketIsReadable : UDINT

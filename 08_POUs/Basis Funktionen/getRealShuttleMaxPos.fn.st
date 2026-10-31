@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "fdbd0502-3da4-4780-aa1a-b043617e0f01"
-	}
+  "v3Meta": {
+    "objectGuid": "fdbd0502-3da4-4780-aa1a-b043617e0f01"
+  }
 }
 *)
 FUNCTION getRealShuttleMaxPos : REAL

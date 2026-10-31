@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "4fa4033e-e747-4aeb-929e-769f6a25d112"
-	}
+  "v3Meta": {
+    "objectGuid": "4fa4033e-e747-4aeb-929e-769f6a25d112"
+  }
 }
 *)
 ACTION ResetStepsUndMcAktionen

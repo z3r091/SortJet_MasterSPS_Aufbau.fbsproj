@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "31e76faa-0b1f-40d5-b229-f1bb4109dead"
-	}
+  "v3Meta": {
+    "objectGuid": "31e76faa-0b1f-40d5-b229-f1bb4109dead"
+  }
 }
 *)
 TYPE Data_Faecherwagen_ST :

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "6ee3252f-feb6-4406-8c9a-7362fc521e88"
-	}
+  "v3Meta": {
+    "objectGuid": "6ee3252f-feb6-4406-8c9a-7362fc521e88"
+  }
 }
 *)
 ACTION RFID_Schreiben

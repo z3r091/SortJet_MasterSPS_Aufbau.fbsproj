@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "cc1aed73-8848-476c-92aa-37d2b4b58ed1"
-	}
+  "v3Meta": {
+    "objectGuid": "cc1aed73-8848-476c-92aa-37d2b4b58ed1"
+  }
 }
 *)
 ACTION Aufkippen

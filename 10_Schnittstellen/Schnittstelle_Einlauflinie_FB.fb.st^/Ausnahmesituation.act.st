@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "0bde9ffc-2d27-4715-909e-df579dd535e6"
-	}
+  "v3Meta": {
+    "objectGuid": "0bde9ffc-2d27-4715-909e-df579dd535e6"
+  }
 }
 *)
 ACTION Ausnahmesituation

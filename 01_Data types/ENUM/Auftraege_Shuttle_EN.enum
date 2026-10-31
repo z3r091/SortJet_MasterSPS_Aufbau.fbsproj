@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "a0485178-29c6-483a-90d4-404dd5ea8fc9"
-	}
+  "v3Meta": {
+    "objectGuid": "a0485178-29c6-483a-90d4-404dd5ea8fc9"
+  }
 }
 *)
 TYPE Auftraege_Shuttle_EN :

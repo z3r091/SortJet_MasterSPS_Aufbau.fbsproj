@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "7de78188-4102-4179-a46c-2283be76f7f9"
-	}
+  "v3Meta": {
+    "objectGuid": "7de78188-4102-4179-a46c-2283be76f7f9"
+  }
 }
 *)
 ACTION Ausgaenge

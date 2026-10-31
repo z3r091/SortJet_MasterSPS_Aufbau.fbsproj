@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "db6c6d03-f822-435f-8f93-f5a504a5ce8d"
-	}
+  "v3Meta": {
+    "objectGuid": "db6c6d03-f822-435f-8f93-f5a504a5ce8d"
+  }
 }
 *)
 FUNCTION_BLOCK Station_Eintransport

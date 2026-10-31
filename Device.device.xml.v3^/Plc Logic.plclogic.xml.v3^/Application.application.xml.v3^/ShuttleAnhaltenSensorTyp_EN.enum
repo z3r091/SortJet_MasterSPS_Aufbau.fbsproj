@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "8baf85bd-7323-4094-96bf-198388533f7f"
-	}
+  "v3Meta": {
+    "objectGuid": "8baf85bd-7323-4094-96bf-198388533f7f"
+  }
 }
 *)
 // Legt fest, welcher Sensor der Quelle geprueft wird.

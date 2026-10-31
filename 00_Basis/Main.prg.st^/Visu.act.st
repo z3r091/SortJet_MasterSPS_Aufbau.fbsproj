@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "1fc5ffc2-022f-40cb-89a8-869cde770942"
-	}
+  "v3Meta": {
+    "objectGuid": "1fc5ffc2-022f-40cb-89a8-869cde770942"
+  }
 }
 *)
 ACTION Visu

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "b7aa09e8-5cde-43cf-b09b-dc0ab15a15f2"
-	}
+  "v3Meta": {
+    "objectGuid": "b7aa09e8-5cde-43cf-b09b-dc0ab15a15f2"
+  }
 }
 *)
 FUNCTION VisuUeb_Lampe : BOOL

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "4948c423-2ad3-469d-bcc1-6cb5d4807f3f"
-	}
+  "v3Meta": {
+    "objectGuid": "4948c423-2ad3-469d-bcc1-6cb5d4807f3f"
+  }
 }
 *)
 FUNCTION_BLOCK Tuerschalter_FB

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "0f3a9f54-24b3-4180-b764-650377bf6b92"
-	}
+  "v3Meta": {
+    "objectGuid": "0f3a9f54-24b3-4180-b764-650377bf6b92"
+  }
 }
 *)
 FUNCTION_BLOCK TS_Austransport

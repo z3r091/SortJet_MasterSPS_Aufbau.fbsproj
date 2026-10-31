@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "2c7452d1-eabd-4c4a-95fd-5aca04df1ee1"
-	}
+  "v3Meta": {
+    "objectGuid": "2c7452d1-eabd-4c4a-95fd-5aca04df1ee1"
+  }
 }
 *)
 FUNCTION_BLOCK Dickenverstellung_Schuetz_FB

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "6ac5d840-4a0e-4401-831b-759903fc413b"
-	}
+  "v3Meta": {
+    "objectGuid": "6ac5d840-4a0e-4401-831b-759903fc413b"
+  }
 }
 *)
 ACTION StartCheck

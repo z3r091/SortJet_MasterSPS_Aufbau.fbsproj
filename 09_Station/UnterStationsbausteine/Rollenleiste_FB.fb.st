@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "03480e68-cdc5-4531-b68c-8ecf9892ea12"
-	}
+  "v3Meta": {
+    "objectGuid": "03480e68-cdc5-4531-b68c-8ecf9892ea12"
+  }
 }
 *)
 FUNCTION_BLOCK Rollenleiste_FB

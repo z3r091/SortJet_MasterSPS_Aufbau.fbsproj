@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "455c6579-2815-4822-93f0-4ccae62364dc"
-	}
+  "v3Meta": {
+    "objectGuid": "455c6579-2815-4822-93f0-4ccae62364dc"
+  }
 }
 *)
 ACTION WandverstellungSchliessen

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "9d643140-51da-449c-a994-94ac65cf087d"
-	}
+  "v3Meta": {
+    "objectGuid": "9d643140-51da-449c-a994-94ac65cf087d"
+  }
 }
 *)
 TYPE Schnittstelle_SortJet_ST :

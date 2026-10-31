@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "2a3c2d77-d365-41ce-ac76-4f873da75c43"
-	}
+  "v3Meta": {
+    "objectGuid": "2a3c2d77-d365-41ce-ac76-4f873da75c43"
+  }
 }
 *)
 ACTION Glaslaengenmessung

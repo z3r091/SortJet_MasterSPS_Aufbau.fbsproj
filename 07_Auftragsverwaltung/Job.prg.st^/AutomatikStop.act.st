@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "f9dc6825-df8b-4543-95cc-7a9d310d851d"
-	}
+  "v3Meta": {
+    "objectGuid": "f9dc6825-df8b-4543-95cc-7a9d310d851d"
+  }
 }
 *)
 ACTION AutomatikStop

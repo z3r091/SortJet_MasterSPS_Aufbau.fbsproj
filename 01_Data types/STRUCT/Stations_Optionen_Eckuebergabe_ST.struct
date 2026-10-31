@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "7e17ab0e-f74b-4fa0-8e5d-f5edd6af6875"
-	}
+  "v3Meta": {
+    "objectGuid": "7e17ab0e-f74b-4fa0-8e5d-f5edd6af6875"
+  }
 }
 *)
 TYPE Stations_Optionen_Eckuebergabe_ST :

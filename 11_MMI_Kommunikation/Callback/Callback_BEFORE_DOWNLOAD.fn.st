@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "aff58b34-1c39-4329-9848-976d484037fa"
-	}
+  "v3Meta": {
+    "objectGuid": "aff58b34-1c39-4329-9848-976d484037fa"
+  }
 }
 *)
 FUNCTION Callback_BEFORE_DOWNLOAD : BOOL

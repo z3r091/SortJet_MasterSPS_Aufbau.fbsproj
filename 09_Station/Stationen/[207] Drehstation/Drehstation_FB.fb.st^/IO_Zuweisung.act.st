@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "c4b742aa-bbcd-4c0d-8dcb-d30d0f57abc8"
-	}
+  "v3Meta": {
+    "objectGuid": "c4b742aa-bbcd-4c0d-8dcb-d30d0f57abc8"
+  }
 }
 *)
 ACTION IO_Zuweisung

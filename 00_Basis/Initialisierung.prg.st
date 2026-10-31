@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "cf26b0b7-1f73-4db7-a5c7-b5425b79f88d"
-	}
+  "v3Meta": {
+    "objectGuid": "cf26b0b7-1f73-4db7-a5c7-b5425b79f88d"
+  }
 }
 *)
 PROGRAM Initialisierung

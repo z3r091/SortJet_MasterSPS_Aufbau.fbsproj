@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "09973465-9aad-4b9d-978a-bbaff2c5ee48"
-	}
+  "v3Meta": {
+    "objectGuid": "09973465-9aad-4b9d-978a-bbaff2c5ee48"
+  }
 }
 *)
 ACTION SystemCheck

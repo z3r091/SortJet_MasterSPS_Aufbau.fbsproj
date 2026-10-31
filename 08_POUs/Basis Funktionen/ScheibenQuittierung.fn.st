@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "e5781056-5434-4b12-a4a2-e1c1e4aeb816"
-	}
+  "v3Meta": {
+    "objectGuid": "e5781056-5434-4b12-a4a2-e1c1e4aeb816"
+  }
 }
 *)
 FUNCTION ScheibenQuittierung : BOOL

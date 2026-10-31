@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "f907b0a0-679d-4111-9289-1c980d1c55c2"
-	}
+  "v3Meta": {
+    "objectGuid": "f907b0a0-679d-4111-9289-1c980d1c55c2"
+  }
 }
 *)
 {attribute 'global_init_slot' := '300'}
@@ -25,7 +25,7 @@ TYPE Interface_GlasTransport :
     bQuittScheibe              : REFERENCE TO BOOL REF= bgFALSE;
     bScheibeFaehrtUeberAuslauf : REFERENCE TO BOOL REF= bgFALSE;
     bScheibeFaehrtUeberEinlauf : REFERENCE TO BOOL REF= bgFALSE;
-	 bTransportRueckwaertig      : REFERENCE TO BOOL REF= bgFALSE;
-	 bAutomatikBetriebAktiv      : REFERENCE TO BOOL REF= bgFALSE;  
+   bTransportRueckwaertig      : REFERENCE TO BOOL REF= bgFALSE;
+   bAutomatikBetriebAktiv      : REFERENCE TO BOOL REF= bgFALSE;  
   END_STRUCT
 END_TYPE

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "4bd964be-8117-422d-b97f-60e1c4b0ab77"
-	}
+  "v3Meta": {
+    "objectGuid": "4bd964be-8117-422d-b97f-60e1c4b0ab77"
+  }
 }
 *)
 FUNCTION_BLOCK ZylinderPneumatik_Riemen_FB

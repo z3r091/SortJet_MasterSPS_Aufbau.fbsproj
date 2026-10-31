@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "4f81610e-119d-462b-b6ef-1c5c06c97f10"
-	}
+  "v3Meta": {
+    "objectGuid": "4f81610e-119d-462b-b6ef-1c5c06c97f10"
+  }
 }
 *)
 METHOD checkAutomatikkreiseMK

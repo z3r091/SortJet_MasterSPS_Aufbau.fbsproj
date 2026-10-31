@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "d20ae107-ce5b-4166-b2bd-9e4de3a442ef"
-	}
+  "v3Meta": {
+    "objectGuid": "d20ae107-ce5b-4166-b2bd-9e4de3a442ef"
+  }
 }
 *)
 FUNCTION_BLOCK Shuttle_Durchtransport

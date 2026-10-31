@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "5fb299a3-7eb3-4628-8413-c7458efde9d6"
-	}
+  "v3Meta": {
+    "objectGuid": "5fb299a3-7eb3-4628-8413-c7458efde9d6"
+  }
 }
 *)
 FUNCTION SpsHinweis : BOOL

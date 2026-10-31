@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "c808f452-cbe2-4057-9370-f651842319d4"
-	}
+  "v3Meta": {
+    "objectGuid": "c808f452-cbe2-4057-9370-f651842319d4"
+  }
 }
 *)
 ACTION A_Aufrufe

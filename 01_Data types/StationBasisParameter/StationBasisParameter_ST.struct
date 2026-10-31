@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "946685ee-cda2-4cef-b4c7-31ff94fcc640"
-	}
+  "v3Meta": {
+    "objectGuid": "946685ee-cda2-4cef-b4c7-31ff94fcc640"
+  }
 }
 *)
 TYPE StationBasisParameter_ST :
@@ -23,7 +23,7 @@ TYPE StationBasisParameter_ST :
     pVorAbAuftragsdaten                       : ARRAY[cWAND_1..cANZAHL_WAENDE] OF VorAbAuftragsdaten_ST;
     pAuftragVorabPositionierung               : Auftragsdaten_ST;
     eStatusAuftrag                            : Auftragsstatus_EN;
-	
+
     bAuftragAktiv                             : BOOL; // Status der Station ob ein Prozess \ Auftrag aktiv ist 
     bSKFreigabeBeiAktivemAuftrag              : BOOL; // Der Sicherheitskreis soll bei aktivem Auftrag freigegeben werden
     bSKOeffnenBlockierenDurchgang             : BOOL; // Der Sicherheitskreis soll nicht geöffnet werden. z.B. Sensor belegt
@@ -76,7 +76,7 @@ TYPE StationBasisParameter_ST :
     // Abbruch Positionierauftrag
     bPositionierAuftragZuruecksetzen          : BOOL; // Wichtig für Stationen mit Querfahrt. Der abgebrochene Verfahrauftrag wird an das MMI gemeldet
     bQuittungPositionierungZurueckgesetzt     : BOOL; // Bestätigung, dass die Meldung ans MMI geschickt wurde
-	                                          
+
     wGlasTyp                                  : ARRAY [cWAND_1..cANZAHL_WAENDE] OF GlasTyp_EN;
                                               
     // Statistik                                    
@@ -88,11 +88,11 @@ TYPE StationBasisParameter_ST :
     eDrehPositionsStatus                      : Drehen_EN;
                                               
     // Stations MK's                          
-    stMKs                                     : REFERENCE TO Parameter_Station;	
-   	                                          
+    stMKs                                     : REFERENCE TO Parameter_Station;
+
     // Antriebsparameter                      
     stAntriebsparameter                       : Stations_Antriebsparameter_ST;
-	
+
     // Parameter der Stationskomponenten 
     stParameterStationskomponenten            : ParameterStationskomponenten_ST;                                         
    

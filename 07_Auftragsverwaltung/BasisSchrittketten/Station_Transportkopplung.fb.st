@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "7029972e-eb09-4666-92ad-77d763ae2960"
-	}
+  "v3Meta": {
+    "objectGuid": "7029972e-eb09-4666-92ad-77d763ae2960"
+  }
 }
 *)
 FUNCTION_BLOCK Station_Transportkopplung

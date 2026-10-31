@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "b9a8e540-c1e2-4ab9-ae26-0ecea7304ebf"
-	}
+  "v3Meta": {
+    "objectGuid": "b9a8e540-c1e2-4ab9-ae26-0ecea7304ebf"
+  }
 }
 *)
 PROGRAM UpdateIoAnzeige

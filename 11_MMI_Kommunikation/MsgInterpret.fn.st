@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "c5198d31-be99-460b-8031-114f442e3133"
-	}
+  "v3Meta": {
+    "objectGuid": "c5198d31-be99-460b-8031-114f442e3133"
+  }
 }
 *)
 FUNCTION MsgInterpret : BOOL

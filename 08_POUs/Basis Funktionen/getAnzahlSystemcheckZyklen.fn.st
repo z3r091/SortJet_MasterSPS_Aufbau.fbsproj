@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "64956d77-da35-4a2e-90f0-c969659e6e9b"
-	}
+  "v3Meta": {
+    "objectGuid": "64956d77-da35-4a2e-90f0-c969659e6e9b"
+  }
 }
 *)
 FUNCTION getAnzahlSystemcheckZyklen : WORD

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "a0078d74-585e-4597-b11a-8ebbe835e0f2"
-	}
+  "v3Meta": {
+    "objectGuid": "a0078d74-585e-4597-b11a-8ebbe835e0f2"
+  }
 }
 *)
 TYPE VerlaufBetriebsarten_ST :

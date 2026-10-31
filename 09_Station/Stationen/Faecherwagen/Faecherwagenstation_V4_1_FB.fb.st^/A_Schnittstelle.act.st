@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "4b006156-55f0-4052-a03b-8c052b439175"
-	}
+  "v3Meta": {
+    "objectGuid": "4b006156-55f0-4052-a03b-8c052b439175"
+  }
 }
 *)
 ACTION A_Schnittstelle

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "d07c7c56-39de-4417-8a33-fd2d4c4995eb"
-	}
+  "v3Meta": {
+    "objectGuid": "d07c7c56-39de-4417-8a33-fd2d4c4995eb"
+  }
 }
 *)
 TYPE Automatikkreise_Transfershuttle :

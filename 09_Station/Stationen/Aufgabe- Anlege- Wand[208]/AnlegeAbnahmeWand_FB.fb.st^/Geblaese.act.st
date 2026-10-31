@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "7822e00b-4a52-4924-81fc-ee7f3816fa4f"
-	}
+  "v3Meta": {
+    "objectGuid": "7822e00b-4a52-4924-81fc-ee7f3816fa4f"
+  }
 }
 *)
 ACTION Geblaese

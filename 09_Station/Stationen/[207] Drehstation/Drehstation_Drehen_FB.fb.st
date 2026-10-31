@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "d33597a7-c9cf-45cc-8dde-219d34a826f5"
-	}
+  "v3Meta": {
+    "objectGuid": "d33597a7-c9cf-45cc-8dde-219d34a826f5"
+  }
 }
 *)
 FUNCTION_BLOCK Drehstation_Drehen_FB

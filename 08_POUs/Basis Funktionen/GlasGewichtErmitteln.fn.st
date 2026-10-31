@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "bd924e48-93d5-4f05-bff1-59051efc4e7c"
-	}
+  "v3Meta": {
+    "objectGuid": "bd924e48-93d5-4f05-bff1-59051efc4e7c"
+  }
 }
 *)
 FUNCTION GlasGewichtErmitteln : REAL

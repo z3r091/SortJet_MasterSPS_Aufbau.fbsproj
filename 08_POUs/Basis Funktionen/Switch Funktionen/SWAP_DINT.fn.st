@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "60b6ea4b-319e-4cbc-b276-a980379624c0"
-	}
+  "v3Meta": {
+    "objectGuid": "60b6ea4b-319e-4cbc-b276-a980379624c0"
+  }
 }
 *)
 FUNCTION SWAP_DINT : DINT

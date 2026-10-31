@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "aa0bc2f8-efb2-48a1-91f1-3637f8b86daf"
-	}
+  "v3Meta": {
+    "objectGuid": "aa0bc2f8-efb2-48a1-91f1-3637f8b86daf"
+  }
 }
 *)
 FUNCTION BitToggleWord : WORD

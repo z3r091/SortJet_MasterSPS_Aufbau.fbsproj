@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "bced77b5-e61c-4af0-a672-a0da8c7118bb"
-	}
+  "v3Meta": {
+    "objectGuid": "bced77b5-e61c-4af0-a672-a0da8c7118bb"
+  }
 }
 *)
 FUNCTION_BLOCK Shuttle_Glastransport_FB

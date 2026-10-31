@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "62b3e7d5-59d7-4fa9-a26b-9f6c0e862cd9"
-	}
+  "v3Meta": {
+    "objectGuid": "62b3e7d5-59d7-4fa9-a26b-9f6c0e862cd9"
+  }
 }
 *)
 FUNCTION_BLOCK Querfahrt_FB

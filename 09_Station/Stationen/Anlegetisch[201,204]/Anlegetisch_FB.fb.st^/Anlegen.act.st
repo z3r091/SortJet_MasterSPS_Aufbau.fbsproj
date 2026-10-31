@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "c2a98566-bcfc-4553-95c7-15cc04b86743"
-	}
+  "v3Meta": {
+    "objectGuid": "c2a98566-bcfc-4553-95c7-15cc04b86743"
+  }
 }
 *)
 ACTION Anlegen

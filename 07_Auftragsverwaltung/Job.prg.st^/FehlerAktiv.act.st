@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "ddefdab4-8b7d-4340-ad07-01874b542daa"
-	}
+  "v3Meta": {
+    "objectGuid": "ddefdab4-8b7d-4340-ad07-01874b542daa"
+  }
 }
 *)
 ACTION FehlerAktiv

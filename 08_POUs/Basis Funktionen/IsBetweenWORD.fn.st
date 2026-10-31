@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "640e1550-054d-48b5-a8dc-d9ce3f68325e"
-	}
+  "v3Meta": {
+    "objectGuid": "640e1550-054d-48b5-a8dc-d9ce3f68325e"
+  }
 }
 *)
 FUNCTION IsBetweenWORD : BOOL

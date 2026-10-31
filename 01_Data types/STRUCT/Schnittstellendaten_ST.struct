@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "320bb153-a3b3-44a9-ae66-8b21ff4d449c"
-	}
+  "v3Meta": {
+    "objectGuid": "320bb153-a3b3-44a9-ae66-8b21ff4d449c"
+  }
 }
 *)
 TYPE Schnittstellendaten_ST :

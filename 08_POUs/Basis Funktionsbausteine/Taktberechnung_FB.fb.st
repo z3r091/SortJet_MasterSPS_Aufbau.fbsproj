@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "d72a9e43-2104-4490-bd51-13d6e7b9c79c"
-	}
+  "v3Meta": {
+    "objectGuid": "d72a9e43-2104-4490-bd51-13d6e7b9c79c"
+  }
 }
 *)
 FUNCTION_BLOCK Taktberechnung_FB

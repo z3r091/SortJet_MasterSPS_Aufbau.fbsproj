@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "ed8f1b73-31c7-4f7a-ada4-9c4fd3f36895"
-	}
+  "v3Meta": {
+    "objectGuid": "ed8f1b73-31c7-4f7a-ada4-9c4fd3f36895"
+  }
 }
 *)
 ACTION HeglaBrechanlage_Schnittstelle

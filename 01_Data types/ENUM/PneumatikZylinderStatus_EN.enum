@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "42554879-429a-4276-a623-7bb9652504cd"
-	}
+  "v3Meta": {
+    "objectGuid": "42554879-429a-4276-a623-7bb9652504cd"
+  }
 }
 *)
 TYPE PneumatikZylinderStatus_EN :

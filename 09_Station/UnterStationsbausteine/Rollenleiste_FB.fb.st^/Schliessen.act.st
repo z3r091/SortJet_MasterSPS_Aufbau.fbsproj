@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "644194fb-de79-4a5a-b76c-01cbc9d34ede"
-	}
+  "v3Meta": {
+    "objectGuid": "644194fb-de79-4a5a-b76c-01cbc9d34ede"
+  }
 }
 *)
 ACTION Schliessen

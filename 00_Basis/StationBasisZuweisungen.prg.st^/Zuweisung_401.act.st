@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "4728ef0b-ed05-4ab8-920f-4f7ee6482110"
-	}
+  "v3Meta": {
+    "objectGuid": "4728ef0b-ed05-4ab8-920f-4f7ee6482110"
+  }
 }
 *)
 ACTION Zuweisung_401

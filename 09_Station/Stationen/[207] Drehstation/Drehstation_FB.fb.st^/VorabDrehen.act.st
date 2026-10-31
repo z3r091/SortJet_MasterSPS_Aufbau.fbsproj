@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "4c6bfe8f-2c46-4487-a0af-6173b7bdb3e5"
-	}
+  "v3Meta": {
+    "objectGuid": "4c6bfe8f-2c46-4487-a0af-6173b7bdb3e5"
+  }
 }
 *)
 ACTION VorabDrehen

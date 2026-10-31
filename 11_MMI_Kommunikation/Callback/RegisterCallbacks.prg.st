@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "d364c674-6de1-44be-9866-add197db1182"
-	}
+  "v3Meta": {
+    "objectGuid": "d364c674-6de1-44be-9866-add197db1182"
+  }
 }
 *)
 PROGRAM RegisterCallbacks

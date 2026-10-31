@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "50f5b9ec-4a6a-4588-8fec-f81d0bf591ef"
-	}
+  "v3Meta": {
+    "objectGuid": "50f5b9ec-4a6a-4588-8fec-f81d0bf591ef"
+  }
 }
 *)
 TYPE STW_1_ctrlX :

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "c33fea17-eb20-4bc7-9a81-45f784503e7d"
-	}
+  "v3Meta": {
+    "objectGuid": "c33fea17-eb20-4bc7-9a81-45f784503e7d"
+  }
 }
 *)
 FUNCTION_BLOCK Station_Abnehmen

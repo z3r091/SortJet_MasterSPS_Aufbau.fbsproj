@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "4f7395c5-5dec-4bc8-81c3-d446118647e2"
-	}
+  "v3Meta": {
+    "objectGuid": "4f7395c5-5dec-4bc8-81c3-d446118647e2"
+  }
 }
 *)
 ACTION Messkopplung

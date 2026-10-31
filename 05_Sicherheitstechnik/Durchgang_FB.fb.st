@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "fc23c363-cc05-42cf-86d7-bbdeb020e062"
-	}
+  "v3Meta": {
+    "objectGuid": "fc23c363-cc05-42cf-86d7-bbdeb020e062"
+  }
 }
 *)
 FUNCTION_BLOCK Durchgang_FB

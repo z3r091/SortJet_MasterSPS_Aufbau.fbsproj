@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "6a4b769b-603d-4996-8e76-e26c1b994362"
-	}
+  "v3Meta": {
+    "objectGuid": "6a4b769b-603d-4996-8e76-e26c1b994362"
+  }
 }
 *)
 FUNCTION checkSafetyCircuitsClosedFromAutomaticCircuit : BOOL

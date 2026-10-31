@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "748a293d-7cb7-4722-9684-4a3f052fb050"
-	}
+  "v3Meta": {
+    "objectGuid": "748a293d-7cb7-4722-9684-4a3f052fb050"
+  }
 }
 *)
 ACTION BETRIEBSART_Messung

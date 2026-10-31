@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "8f122493-5427-4f74-8e27-0cfcccf91770"
-	}
+  "v3Meta": {
+    "objectGuid": "8f122493-5427-4f74-8e27-0cfcccf91770"
+  }
 }
 *)
 ACTION FUNKTION_Bremse_loesen

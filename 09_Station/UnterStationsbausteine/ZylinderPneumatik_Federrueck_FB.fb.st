@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "b2af587c-0d32-447c-a5c9-96380651afc9"
-	}
+  "v3Meta": {
+    "objectGuid": "b2af587c-0d32-447c-a5c9-96380651afc9"
+  }
 }
 *)
 FUNCTION_BLOCK ZylinderPneumatik_Federrueck_FB

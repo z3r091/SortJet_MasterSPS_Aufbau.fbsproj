@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "4d561c86-934a-48d7-9dd9-cfb08ecb814b"
-	}
+  "v3Meta": {
+    "objectGuid": "4d561c86-934a-48d7-9dd9-cfb08ecb814b"
+  }
 }
 *)
 TYPE BeladungsStatus_EN :

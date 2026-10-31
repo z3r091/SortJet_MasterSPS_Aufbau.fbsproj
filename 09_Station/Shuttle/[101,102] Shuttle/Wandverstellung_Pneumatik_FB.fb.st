@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "3c575514-d133-4a53-b99b-31124f37ab50"
-	}
+  "v3Meta": {
+    "objectGuid": "3c575514-d133-4a53-b99b-31124f37ab50"
+  }
 }
 *)
 FUNCTION_BLOCK Wandverstellung_Pneumatik_FB

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "ef1bf0bb-24f6-4fd4-98fc-a337500dec76"
-	}
+  "v3Meta": {
+    "objectGuid": "ef1bf0bb-24f6-4fd4-98fc-a337500dec76"
+  }
 }
 *)
 ACTION Entriegelung

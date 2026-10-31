@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "1bde443c-d9b4-412c-bd78-e12c4a95b05e"
-	}
+  "v3Meta": {
+    "objectGuid": "1bde443c-d9b4-412c-bd78-e12c4a95b05e"
+  }
 }
 *)
 Function_Block CoeReadObject

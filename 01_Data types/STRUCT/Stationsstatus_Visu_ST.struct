@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "244e22c5-e1be-4d8c-be1d-008c15b8f204"
-	}
+  "v3Meta": {
+    "objectGuid": "244e22c5-e1be-4d8c-be1d-008c15b8f204"
+  }
 }
 *)
 TYPE Stationsstatus_Visu_ST :

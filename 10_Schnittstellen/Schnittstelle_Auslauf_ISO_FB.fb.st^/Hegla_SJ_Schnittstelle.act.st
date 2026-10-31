@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "e33a3794-f653-4ea0-a385-1b274df6831c"
-	}
+  "v3Meta": {
+    "objectGuid": "e33a3794-f653-4ea0-a385-1b274df6831c"
+  }
 }
 *)
 ACTION Hegla_SJ_Schnittstelle

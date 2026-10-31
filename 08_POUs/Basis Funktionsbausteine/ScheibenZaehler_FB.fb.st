@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "c1b0cb81-ca36-4c89-b223-c59fbfe1da3d"
-	}
+  "v3Meta": {
+    "objectGuid": "c1b0cb81-ca36-4c89-b223-c59fbfe1da3d"
+  }
 }
 *)
 FUNCTION_BLOCK ScheibenZaehler_FB

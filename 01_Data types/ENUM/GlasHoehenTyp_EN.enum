@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "49a6fa58-0040-40ac-8f3f-3a380f7eceb5"
-	}
+  "v3Meta": {
+    "objectGuid": "49a6fa58-0040-40ac-8f3f-3a380f7eceb5"
+  }
 }
 *)
 TYPE GlasHoehenTyp_EN :

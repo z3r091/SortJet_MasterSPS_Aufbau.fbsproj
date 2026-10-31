@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "5e15348e-038e-4033-88a0-e51727ed38ba"
-	}
+  "v3Meta": {
+    "objectGuid": "5e15348e-038e-4033-88a0-e51727ed38ba"
+  }
 }
 *)
 TYPE stSensorik :

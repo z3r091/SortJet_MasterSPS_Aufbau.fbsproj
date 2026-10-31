@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "4cdacd77-985d-4986-9472-a0339eee8879"
-	}
+  "v3Meta": {
+    "objectGuid": "4cdacd77-985d-4986-9472-a0339eee8879"
+  }
 }
 *)
 ACTION Vortransport_Inputshuttle

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "11193127-30f6-42cb-ab25-4fe444daee5f"
-	}
+  "v3Meta": {
+    "objectGuid": "11193127-30f6-42cb-ab25-4fe444daee5f"
+  }
 }
 *)
 PROGRAM StartUpCheck

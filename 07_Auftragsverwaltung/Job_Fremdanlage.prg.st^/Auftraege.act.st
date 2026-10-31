@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "c249d517-2d16-45f2-b7bc-658c62d8cf35"
-	}
+  "v3Meta": {
+    "objectGuid": "c249d517-2d16-45f2-b7bc-658c62d8cf35"
+  }
 }
 *)
 ACTION Auftraege

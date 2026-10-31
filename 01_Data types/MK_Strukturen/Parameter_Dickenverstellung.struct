@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "96da902e-0088-4530-b742-8920e7dc7aa2"
-	}
+  "v3Meta": {
+    "objectGuid": "96da902e-0088-4530-b742-8920e7dc7aa2"
+  }
 }
 *)
 TYPE Parameter_Dickenverstellung :

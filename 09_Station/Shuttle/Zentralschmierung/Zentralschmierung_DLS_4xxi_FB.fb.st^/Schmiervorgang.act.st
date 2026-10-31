@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "f6d6f829-3991-4365-9dae-cc900dba6270"
-	}
+  "v3Meta": {
+    "objectGuid": "f6d6f829-3991-4365-9dae-cc900dba6270"
+  }
 }
 *)
 ACTION Schmiervorgang

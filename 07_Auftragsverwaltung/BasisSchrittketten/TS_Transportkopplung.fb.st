@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "b272f643-831b-42e0-8c4f-868bd25374f4"
-	}
+  "v3Meta": {
+    "objectGuid": "b272f643-831b-42e0-8c4f-868bd25374f4"
+  }
 }
 *)
 FUNCTION_BLOCK TS_Transportkopplung

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "e8c31880-687e-415f-8f59-833ae6fe9ace"
-	}
+  "v3Meta": {
+    "objectGuid": "e8c31880-687e-415f-8f59-833ae6fe9ace"
+  }
 }
 *)
 ACTION Check_MMI_Verbindung

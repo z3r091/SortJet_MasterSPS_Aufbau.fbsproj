@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "07a4896b-4b10-421b-8c15-d73c62ab9e42"
-	}
+  "v3Meta": {
+    "objectGuid": "07a4896b-4b10-421b-8c15-d73c62ab9e42"
+  }
 }
 *)
 FUNCTION_BLOCK Shuttle_Eintransport

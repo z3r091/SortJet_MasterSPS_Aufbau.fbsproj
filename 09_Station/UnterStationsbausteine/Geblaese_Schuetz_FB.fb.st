@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "c9895c16-daf8-42f8-8f64-ac96a02bd793"
-	}
+  "v3Meta": {
+    "objectGuid": "c9895c16-daf8-42f8-8f64-ac96a02bd793"
+  }
 }
 *)
 FUNCTION_BLOCK Geblaese_Schuetz_FB

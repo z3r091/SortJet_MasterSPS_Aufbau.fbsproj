@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "40cf2dec-00ba-4cc6-b36e-5f3ba86fab8b"
-	}
+  "v3Meta": {
+    "objectGuid": "40cf2dec-00ba-4cc6-b36e-5f3ba86fab8b"
+  }
 }
 *)
 TYPE RampenTyp_EN :

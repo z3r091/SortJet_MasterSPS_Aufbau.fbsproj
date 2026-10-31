@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "e0f07ebf-dbdd-40bf-b153-485917c57576"
-	}
+  "v3Meta": {
+    "objectGuid": "e0f07ebf-dbdd-40bf-b153-485917c57576"
+  }
 }
 *)
 ACTION WegErkennung

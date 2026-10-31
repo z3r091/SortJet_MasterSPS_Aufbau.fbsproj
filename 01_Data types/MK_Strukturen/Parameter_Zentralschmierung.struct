@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "fd1a8d06-65d1-4460-a8a0-65224b60bcc8"
-	}
+  "v3Meta": {
+    "objectGuid": "fd1a8d06-65d1-4460-a8a0-65224b60bcc8"
+  }
 }
 *)
 TYPE Parameter_Zentralschmierung :

@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "d4e6e20e-ec1c-45cb-88d5-76340f232224"
-	}
+  "v3Meta": {
+    "objectGuid": "d4e6e20e-ec1c-45cb-88d5-76340f232224"
+  }
 }
 *)
 FUNCTION_BLOCK Anlegetisch_FB EXTENDS Basic_Station_FB

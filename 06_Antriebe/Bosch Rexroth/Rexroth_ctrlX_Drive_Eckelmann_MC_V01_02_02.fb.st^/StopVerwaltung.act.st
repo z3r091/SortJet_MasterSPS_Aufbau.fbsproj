@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "f0428ac3-de7d-45c5-b9f6-87f92d4b12a8"
-	}
+  "v3Meta": {
+    "objectGuid": "f0428ac3-de7d-45c5-b9f6-87f92d4b12a8"
+  }
 }
 *)
 ACTION StopVerwaltung

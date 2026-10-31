@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "159241df-4e26-44a3-b242-7f4886765264"
-	}
+  "v3Meta": {
+    "objectGuid": "159241df-4e26-44a3-b242-7f4886765264"
+  }
 }
 *)
 FUNCTION_BLOCK Schnittstelle_Auslauf_ISO_FB EXTENDS Basic_Schnittstelle_FB

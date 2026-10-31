@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "8e79010e-8dea-435f-8304-0b4307ea198e"
-	}
+  "v3Meta": {
+    "objectGuid": "8e79010e-8dea-435f-8304-0b4307ea198e"
+  }
 }
 *)
 FUNCTION_BLOCK VisuHand_Reset_FB

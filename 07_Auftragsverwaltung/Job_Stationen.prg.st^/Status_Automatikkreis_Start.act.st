@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "48c1475d-7d1e-4064-b68a-f94b7224aadc"
-	}
+  "v3Meta": {
+    "objectGuid": "48c1475d-7d1e-4064-b68a-f94b7224aadc"
+  }
 }
 *)
 ACTION Status_Automatikkreis_Start

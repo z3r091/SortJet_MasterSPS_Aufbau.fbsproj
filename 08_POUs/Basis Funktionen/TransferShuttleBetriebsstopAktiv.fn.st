@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "00eb9e03-2e2c-414f-a437-451e0f99c47c"
-	}
+  "v3Meta": {
+    "objectGuid": "00eb9e03-2e2c-414f-a437-451e0f99c47c"
+  }
 }
 *)
 FUNCTION TransferShuttleBetriebsstopAktiv : BOOL

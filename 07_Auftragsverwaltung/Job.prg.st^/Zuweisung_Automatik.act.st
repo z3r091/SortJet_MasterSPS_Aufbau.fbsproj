@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "599a2527-67c0-435b-86b2-c85e4327919a"
-	}
+  "v3Meta": {
+    "objectGuid": "599a2527-67c0-435b-86b2-c85e4327919a"
+  }
 }
 *)
 ACTION Zuweisung_Automatik

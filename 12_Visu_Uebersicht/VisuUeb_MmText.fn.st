@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "478effab-2bb6-4cba-a63b-7b7e6c506f75"
-	}
+  "v3Meta": {
+    "objectGuid": "478effab-2bb6-4cba-a63b-7b7e6c506f75"
+  }
 }
 *)
 FUNCTION VisuUeb_MmText : STRING(40)

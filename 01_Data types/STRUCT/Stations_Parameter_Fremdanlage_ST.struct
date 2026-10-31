@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "9163b753-2f53-45a5-ad65-dca0ef5cf594"
-	}
+  "v3Meta": {
+    "objectGuid": "9163b753-2f53-45a5-ad65-dca0ef5cf594"
+  }
 }
 *)
 TYPE Stations_Parameter_Fremdanlage_ST :
@@ -22,7 +22,7 @@ TYPE Stations_Parameter_Fremdanlage_ST :
     rMindestGeschwindigkeitsAenderung      : REAL := 5.0;     // Glaettung: Mindestaenderung [mm/s] bevor eine neue Geschwindigkeit uebernommen wird
     tMindestZeitZwischenGeschwAenderung    : TIME := T#500MS; // Glaettung: Mindestzeit zwischen zwei Geschwindigkeitsaenderungen
     rMaxAnalogGeschwindigkeit              : REAL := 1000.0;  // Analogwert: Begrenzung der Geschwindigkeit [mm/s]
-	 bSignaleLoggen                         : BOOL;
+   bSignaleLoggen                          : BOOL;
     eTypSchnittstelle                      : FremdanlagenTyp_EN;  
   END_STRUCT
 END_TYPE

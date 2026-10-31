@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "cb0abf05-d74d-4b59-9143-e94abaf551fa"
-	}
+  "v3Meta": {
+    "objectGuid": "cb0abf05-d74d-4b59-9143-e94abaf551fa"
+  }
 }
 *)
 FUNCTION getBasis : REFERENCE TO  StationBasisParameter_ST

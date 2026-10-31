@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "188879d4-0bd4-40ef-906f-fea4dde7d858"
-	}
+  "v3Meta": {
+    "objectGuid": "188879d4-0bd4-40ef-906f-fea4dde7d858"
+  }
 }
 *)
 FUNCTION_BLOCK Shuttle_Kippen

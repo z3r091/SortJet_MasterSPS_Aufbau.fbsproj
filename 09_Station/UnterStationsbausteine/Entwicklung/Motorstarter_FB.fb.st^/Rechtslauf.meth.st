@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "9a97d710-cc7f-4070-b236-0ffc8d0344e1"
-	}
+  "v3Meta": {
+    "objectGuid": "9a97d710-cc7f-4070-b236-0ffc8d0344e1"
+  }
 }
 *)
 METHOD Rechtslauf : BOOL

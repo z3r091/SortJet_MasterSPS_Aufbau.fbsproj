@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "d76b4e7c-09a5-4c4a-bd14-4ca4deaa304a"
-	}
+  "v3Meta": {
+    "objectGuid": "d76b4e7c-09a5-4c4a-bd14-4ca4deaa304a"
+  }
 }
 *)
 ACTION HubAb

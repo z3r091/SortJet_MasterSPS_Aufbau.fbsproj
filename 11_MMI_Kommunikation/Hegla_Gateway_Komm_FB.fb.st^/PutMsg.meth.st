@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "e8a694c3-4b92-4b4d-9e51-92b9da22543a"
-	}
+  "v3Meta": {
+    "objectGuid": "e8a694c3-4b92-4b4d-9e51-92b9da22543a"
+  }
 }
 *)
 METHOD PutMsg : BOOL

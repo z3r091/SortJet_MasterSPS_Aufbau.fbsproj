@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "2a70e2fa-dcda-4b8f-820f-05f7864c9862"
-	}
+  "v3Meta": {
+    "objectGuid": "2a70e2fa-dcda-4b8f-820f-05f7864c9862"
+  }
 }
 *)
 ACTION Quittierung_Scheiben

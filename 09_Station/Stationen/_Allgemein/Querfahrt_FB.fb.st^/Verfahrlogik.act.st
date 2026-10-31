@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "51231008-b5e0-439f-bcdb-1707bd2a2c2a"
-	}
+  "v3Meta": {
+    "objectGuid": "51231008-b5e0-439f-bcdb-1707bd2a2c2a"
+  }
 }
 *)
 ACTION Verfahrlogik

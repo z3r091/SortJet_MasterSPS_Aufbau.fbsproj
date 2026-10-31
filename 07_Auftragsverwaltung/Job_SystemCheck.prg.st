@@ -1,8 +1,8 @@
 (* METADATA
 {
-	"v3Meta": {
-		"objectGuid": "5553795f-6afb-4bc3-99ad-34d496c885e5"
-	}
+  "v3Meta": {
+    "objectGuid": "5553795f-6afb-4bc3-99ad-34d496c885e5"
+  }
 }
 *)
 PROGRAM Job_SystemCheck
