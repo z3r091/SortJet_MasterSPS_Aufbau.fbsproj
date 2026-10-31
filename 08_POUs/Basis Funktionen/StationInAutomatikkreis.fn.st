@@ -17,9 +17,9 @@ END_VAR
 StationInAutomatikkreis := FALSE;
 
 FOR INDEX := cERSTER_AUTOMATIKKREIS TO cANZAHL_AUTOMATIKKREISE DO
-	
+
   IF awpArray[INDEX] = wpValueToFind THEN
-	  StationInAutomatikkreis := TRUE;
+    StationInAutomatikkreis := TRUE;
     RETURN;
   END_IF
 

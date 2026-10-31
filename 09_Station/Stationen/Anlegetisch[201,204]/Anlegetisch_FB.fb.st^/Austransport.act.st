@@ -55,15 +55,15 @@ THEN
       (* Hinweis:
          - Hubrahmen absenken wenn die Sensorik frei geworden ist
       *)
-	  IF Glastransport.bpSensorAuslauf THEN
+    IF Glastransport.bpSensorAuslauf THEN
         steplAustransport := STEP_40_E;
-	  END_IF
-	  
+    END_IF
+
       IF ( Glastransport.bpDone ) THEN
         Hubrahmen.bpStartEinfahren   := TRUE;
         Glastransport.bpAustransport := FALSE;
         steplAustransport := STEP_1000_E;
-      END_IF	  
+      END_IF
 
 (*AUSTRANSPORT ==============================*)
     STEP_40_E:

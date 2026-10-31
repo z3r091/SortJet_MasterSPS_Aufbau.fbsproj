@@ -26,7 +26,7 @@ IF ( blBetriebsartReferenz ) THEN
     BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
     steplReferenz := STEP_900_E;
   END_IF
-	  
+
   
   CASE steplReferenz OF
 (*REFERENZ ============================*)

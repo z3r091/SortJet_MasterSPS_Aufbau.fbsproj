@@ -70,14 +70,14 @@ IF (  bpDurchtransport ) THEN
       IF ( blAntriebsKopplungAktiv ) THEN
         steplDurchtransport := STEP_20_E;
       END_IF
-	  
+
 (* DURCHTRANSPORT ========================================*)
     STEP_20_E:
       (* Anmerkung:
          - Warten bis die Nachfolgestation bereit ist zum Eintransport
       *)
       bpOutBereitZumAustransport := TRUE;
-	  
+
       IF (  InGlasTransportNachfolger.bBereitZumEintransport ) THEN
         steplDurchtransport := STEP_30_E;
       END_IF
@@ -88,7 +88,7 @@ IF (  bpDurchtransport ) THEN
          - Warten bis die Nachfolgestation bereit ist zum Eintransport
       *)
       bpOutBereitZumEintransport := TRUE;
-	  
+
       IF (  InGlasTransportVorgaenger.bBereitZumAustransport ) THEN
         steplDurchtransport := STEP_100_E;
       END_IF
@@ -112,11 +112,11 @@ IF (  bpDurchtransport ) THEN
          - Kopplung wird solange aktiv gehalten bis der Nachfolger seinen Transport beendet hat
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
-	  
-	  IF bpSensorEinlauf THEN
+
+    IF bpSensorEinlauf THEN
         steplDurchtransport := STEP_120_E;
-	  END_IF
-	  
+    END_IF
+
       IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) THEN
         steplDurchtransport := STEP_1000_E;
       END_IF
@@ -127,26 +127,26 @@ IF (  bpDurchtransport ) THEN
          - Kopplung wird solange aktiv gehalten bis der Nachfolger seinen Transport beendet hat
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
-	  
-	  IF NOT bpSensorEinlauf THEN
-		bprtScheibe := TRUE;
+
+    IF NOT bpSensorEinlauf THEN
+    bprtScheibe := TRUE;
         steplDurchtransport := STEP_130_E;
-	  END_IF
-	  
+    END_IF
+
       IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) THEN
         steplDurchtransport := STEP_1000_E;
       END_IF
 
 (* DURCHTRANSPORT ========================================*)
     STEP_130_E:
-	
-  	  bprtScheibe := FALSE;
+
+      bprtScheibe := FALSE;
 
       (* WICHTIG:
          - Kopplung wird solange aktiv gehalten bis der Nachfolger seinen Transport beendet hat
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
-	  
+
       IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) THEN
         steplDurchtransport := STEP_1000_E;
       END_IF

@@ -106,7 +106,7 @@ THEN
         Wandverstellung.bpStartePositionierung := FALSE;
         steplAktion := STEP_40_E;   
       END_IF
-		
+
 (*DURCHTRANSPORT ==============================*)
     STEP_40_E:
       (* ---------------------------------------------------------------------------------------
@@ -151,30 +151,30 @@ THEN
 
 (*DURCHTRANSPORT ==============================*)
     STEP_200_E:
-	  (* Hinweis:
+    (* Hinweis:
         - Kippen ansteuern
       *)
       bprtScheibe := Glastransport.bprtScheibe;
 
       Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachAustransport;
-	    Kippen.bpPositionieren := TRUE;
-	  
+      Kippen.bpPositionieren := TRUE;
+
       steplAktion := STEP_210_E;
-		
+
 (*DURCHTRANSPORT ==============================*)
     STEP_210_E:
       (* Hinweis:
          - Quittierung der Scheibe
       *)
       bprtScheibe := Glastransport.bprtScheibe;
-	  
-	  (* Hinweis:
+
+    (* Hinweis:
         - Kippen abschließen
       *)
-	  IF Kippen.bpDone THEN
-	    Kippen.bpPositionieren := FALSE;
+    IF Kippen.bpDone THEN
+      Kippen.bpPositionieren := FALSE;
         steplAktion := STEP_1000_E;
-	  END_IF
+    END_IF
 
 (*DURCHTRANSPORT ==============================*)
     STEP_900_E:
@@ -195,8 +195,8 @@ ELSE
     bprtScheibe := FALSE;
 
     Glastransport.bpDurchtransport := FALSE;
-	
-	  Kippen.bpPositionieren := FALSE;
+
+    Kippen.bpPositionieren := FALSE;
     Wandverstellung.bpStartePositionierung := FALSE;
 
     steplAktion := STEP_0_E;

@@ -17,9 +17,9 @@ END_VAR
 StationInSicherheitskreis := FALSE;
 
 FOR INDEX := 0 TO cANZAHL_SICHERHEITSKREISE DO
-	
+
   IF awpArray[INDEX] = wpValueToFind THEN
-	  StationInSicherheitskreis := TRUE;
+    StationInSicherheitskreis := TRUE;
     RETURN;
   END_IF
 

@@ -177,7 +177,7 @@ IF ( blBetriebsartHand and not BasisStationsParameter.bVorabpositionieren ) THEN
                                            OR bgVISUQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
                                            OR dwlHandfunktionen.16
                                            OR bgVISUQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
-										   
+
 (*
   (* Hinweis:
      - Querachse

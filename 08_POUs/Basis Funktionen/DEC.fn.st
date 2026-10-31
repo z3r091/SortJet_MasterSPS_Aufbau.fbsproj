@@ -8,7 +8,7 @@
 {attribute 'excludefrombuild'}
 FUNCTION DEC : INT
 VAR_INPUT
-	iWert    : INT;
+  iWert    : INT;
   iMinuend : INT;
 END_VAR
 

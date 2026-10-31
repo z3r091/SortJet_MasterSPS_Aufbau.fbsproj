@@ -6,9 +6,9 @@
 }
 *)
 FUNCTION SetWatchIO : Bool
-VAR_INPUT	
+VAR_INPUT
     in_Word   : WORD;
-	 in_Number : WORD;
+   in_Number : WORD;
 END_VAR
 VAR   
     wIndex    : WORD;

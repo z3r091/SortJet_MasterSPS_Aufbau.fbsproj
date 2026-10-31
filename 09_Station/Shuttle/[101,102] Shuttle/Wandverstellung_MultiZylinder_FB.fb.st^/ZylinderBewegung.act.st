@@ -57,7 +57,7 @@ IF ( bpStartZylinderBewegung ) THEN
 (* ZYLINDER STELLUNG =======================================================*)
     STEP_20_E:
         tonlWartezeitZylinderStellung( IN := TRUE, PT := T#5S );
-		
+
         IF ( epStatusZylinderStellung = eZylinderStellung16mm ) THEN
 
           out_bZylinder_1_Einfahren := FALSE;
@@ -67,7 +67,7 @@ IF ( bpStartZylinderBewegung ) THEN
           out_bZylinder_2_Ausfahren := FALSE;
 
           tonlWartezeitZylinderStellung( IN := FALSE );
-		  
+
           steplZylinderStellung := STEP_100_E;
 
         END_IF
@@ -91,7 +91,7 @@ IF ( bpStartZylinderBewegung ) THEN
       tonlWartezeitZylinderStellung( IN := FALSE );
 
       steplZylinderStellung := STEP_110_E;
-	  
+
       CASE epSollZylinderStellung OF
 
         eZylinderStellung16mm: 

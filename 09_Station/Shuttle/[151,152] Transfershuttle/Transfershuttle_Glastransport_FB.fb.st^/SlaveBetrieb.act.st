@@ -57,10 +57,10 @@ THEN
 
 (*SLAVE BETRIEB ==============================*)
     STEP_6_E:
-	  IF ( Antrieb.bpDone ) THEN
+    IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplSlave := STEP_10_E;
-	  END_IF
+    END_IF
 
 (* SLAVE BETRIEB ================================== *)
     STEP_10_E:
@@ -92,7 +92,7 @@ THEN
 
       IF (  tonlGlastransportOben.Q
         AND tonlKontrolleEinlaufOben.Q
-	      AND tonlKontrolleAuslaufOben.Q  )
+        AND tonlKontrolleAuslaufOben.Q  )
      THEN
 
         IF ( Antrieb.bpDone ) THEN
@@ -197,8 +197,8 @@ THEN
          (* Luftsensoren unten *)
          ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteUnten ) THEN
            wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_UNTEN;
-		 ELSE
-		     wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
+     ELSE
+         wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
          END_IF
 
          steplSlave := STEP_900_E;

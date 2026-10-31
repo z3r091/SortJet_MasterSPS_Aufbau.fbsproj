@@ -104,12 +104,12 @@ FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
 END_FOR
 
 blFreigabeZumReferenzieren := ( (     NotHalt.bpNotHaltOK
-	                               AND blAlleSKGeschlossen )
+                                 AND blAlleSKGeschlossen )
                                   OR bgSicherheitstechnikBruecken )
                                AND ( bgMMIOK OR bgMMIBruecken )
                                AND blDruckluftOK
-										           AND blShuttleErreichbar
-										           AND blFreigabeAutokreis
+                               AND blShuttleErreichbar
+                               AND blFreigabeAutokreis
                               AND bgEtherCatOK
                               AND NOT blInitDurchFehlerGeblockt;
 

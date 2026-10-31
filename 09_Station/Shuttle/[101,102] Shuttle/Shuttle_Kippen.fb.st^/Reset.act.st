@@ -18,7 +18,7 @@ IF ( bpReset ) THEN
 
       bpPositionieren := FALSE;
 
-      IF ( bpKippenSchuetz ) THEN		  
+      IF ( bpKippenSchuetz ) THEN
         bpFehler              := FALSE;  
         out_bKippenAbSetzen   := FALSE;
         out_bKippenAufSetzen  := FALSE;
@@ -27,14 +27,14 @@ IF ( bpReset ) THEN
          
         steplReset := STEP_1000_E;
        
-	  ELSE
+    ELSE
         Antrieb.wpBetriebsart:= KEINE_FUNKTION;
 
-	    IF NOT Antrieb.bpAntrieblaeuft THEN
+      IF NOT Antrieb.bpAntrieblaeuft THEN
           steplReset := STEP_10_E;
-	    END_IF
-	  
-	  END_IF
+      END_IF
+
+    END_IF
 
 (*RESET ===============================*)
     STEP_10_E:
@@ -58,7 +58,7 @@ IF ( bpReset ) THEN
         steplReset := STEP_900_E;
       END_IF
 
-	  
+
 (*RESET ===============================*)
     STEP_900_E:
       // Fehlerbehandlung

@@ -16,7 +16,7 @@ FOR wlIndexQuitt := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
   IF ( abpCheck[wlIndexQuitt] ) THEN
 
     IF ( starrStationBasisParameter[cSTATION_207].OutGlasTransport[cWAND_1].bQuittScheibe ) AND StationInAutomatikkreis(starrStationBasisParameter[cSTATION_207].stMKs.eaAutomatikkreis, wlIndexQuitt) THEN
-	  
+
       wSps2MmiZielStation     := cSTATION_207;
       wSps2MmiQuellStation    := cSTATION_206;
       wSps2MmiZielWand        := cWAND_1;
@@ -27,10 +27,10 @@ FOR wlIndexQuitt := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
   
       MsgToMmi(auftragsnr_w := SB0_SPS_QUIT_SHEET_ORDER );
           
-	  END_IF
+    END_IF
     
     IF ( starrStationBasisParameter[cSTATION_206].OutGlasTransport[cWAND_1].bQuittScheibe ) AND StationInAutomatikkreis(starrStationBasisParameter[cSTATION_207].stMKs.eaAutomatikkreis, wlIndexQuitt) THEN
-	  
+
       wSps2MmiZielStation     := cSTATION_206;
       wSps2MmiQuellStation    := cSTATION_205;
       wSps2MmiZielWand        := cWAND_1;
@@ -41,10 +41,10 @@ FOR wlIndexQuitt := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
   
       MsgToMmi(auftragsnr_w := SB0_SPS_QUIT_SHEET_ORDER );
           
-	  END_IF
+    END_IF
 
     IF ( starrStationBasisParameter[cSTATION_205].OutGlasTransport[cWAND_1].bQuittScheibe ) AND StationInAutomatikkreis(starrStationBasisParameter[cSTATION_205].stMKs.eaAutomatikkreis, wlIndexQuitt) THEN
-	  
+
       wSps2MmiZielStation     := cSTATION_205;
       wSps2MmiQuellStation    := cSTATION_204;
       wSps2MmiZielWand        := cWAND_1;
@@ -55,10 +55,10 @@ FOR wlIndexQuitt := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
   
       MsgToMmi(auftragsnr_w := SB0_SPS_QUIT_SHEET_ORDER );
           
-	  END_IF
+    END_IF
 
     IF ( starrStationBasisParameter[cSTATION_202].OutGlasTransport[cWAND_1].bQuittScheibe ) AND StationInAutomatikkreis(starrStationBasisParameter[cSTATION_202].stMKs.eaAutomatikkreis, wlIndexQuitt) THEN
-	  
+
       wSps2MmiZielStation     := cSTATION_202;
       wSps2MmiQuellStation    := cSTATION_201;
       wSps2MmiZielWand        := cWAND_1;
@@ -69,7 +69,7 @@ FOR wlIndexQuitt := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
   
       MsgToMmi(auftragsnr_w := SB0_SPS_QUIT_SHEET_ORDER );
           
-	  END_IF
+    END_IF
 
 
   END_IF

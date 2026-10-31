@@ -37,7 +37,7 @@ IF ppParameterBaustein.bKippenMitSchuetz THEN
   END_IF
   
 ELSE
-	
+
  IF ( ABS(Antrieb.rpIstPosition - ppParameterBaustein.rPosition0Grad) < ppParameterBaustein.rToleranz ) THEN
   epKippStatus := eKippen_Position_0Grad;
  ELSIF ( ABS(Antrieb.rpIstPosition - ppParameterBaustein.rPosition84Grad) < ppParameterBaustein.rToleranz ) THEN

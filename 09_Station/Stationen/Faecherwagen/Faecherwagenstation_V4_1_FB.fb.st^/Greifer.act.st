@@ -11,9 +11,9 @@ ACTION Greifer
 (***************************************************************************************************)
 
 IF ( blGreiferOeffnen 
-//	AND blUntergestellErkannt //safety eingang
+//  AND blUntergestellErkannt //safety eingang
  AND NOT blLinearEinheitSH // Der Greifer darf nicht geöffnet werden, wenn die Lineareinheit auf der Übergabeposition zum Shuttle steht. 
- 									// Andernfalls können wir den Wagen nicht mehr greifen, da wir die Lineareinheit nur ganz nach vorn/hinten fahren können 
+                   // Andernfalls können wir den Wagen nicht mehr greifen, da wir die Lineareinheit nur ganz nach vorn/hinten fahren können 
   (*AND BasisStationsParameter.bFreigabe*) )
 THEN
   CASE steplGreiferOeffnen OF
@@ -29,11 +29,11 @@ THEN
       THEN
         steplGreiferOeffnen := STEP_1000_E;
       ELSE
-		IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+    IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
           out_bGreiferEinfahren := TRUE;
           out_bGreiferAusfahren  := FALSE;
           steplGreiferOeffnen := STEP_10_E;
-		END_IF
+    END_IF
       END_IF
 
 (* Greifer ÖFFNEN  ============================*)
@@ -57,7 +57,7 @@ THEN
                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
                    BasisStationsParameter.awFehlerInformationen );
-						 
+
          steplGreiferOeffnen := STEP_900_E;
       END_IF
 
@@ -71,7 +71,7 @@ THEN
 (* Greifer ÖFFNEN  ============================*)
     STEP_1000_E:
       blGreiferOeffnenDone:=TRUE;
-		
+
    END_CASE
 END_IF
 
@@ -99,7 +99,7 @@ END_IF
 
 IF blGreiferSchliessen 
    (*AND BasisStationsParameter.bFreigabe*)
-//	AND blUntergestellErkannt //safety eingang
+//  AND blUntergestellErkannt //safety eingang
 // AND NOT in_bFaecherwagenNichtInPos // Gestell ist auf dem Wagen
 THEN
   CASE steplGreiferSchliessen OF
@@ -115,11 +115,11 @@ THEN
       THEN
         steplGreiferSchliessen := STEP_1000_E;
       ELSE
-		IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+    IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
           out_bGreiferAusfahren := TRUE;
           out_bGreiferEinfahren  := FALSE;
           steplGreiferSchliessen := STEP_10_E;
-		END_IF
+    END_IF
       END_IF
 
 (* Greifer SCHLIESSEN  ============================*)
@@ -143,7 +143,7 @@ THEN
                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
                    BasisStationsParameter.awFehlerInformationen );
-						 
+
          steplGreiferSchliessen := STEP_900_E;
       END_IF
 

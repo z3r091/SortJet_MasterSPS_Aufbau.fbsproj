@@ -20,7 +20,7 @@ THEN
     BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
     steplEintransport := STEP_900_E;
   END_IF
-	  
+
   IF ( Kippen.bpFehler ) THEN
     Kippen.bpPositionieren := FALSE;
     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
@@ -170,13 +170,13 @@ THEN
       *)
       Kippen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachEintransport;
       Kippen.bpPositionieren := TRUE;
-		
+
       steplEintransport := STEP_210_E;
 
 (*EINTRANSPORT =====================*)
     STEP_210_E:
       IF Kippen.bpDone OR NOT Kippen.bpPositionieren THEN
-		  
+
         Kippen.bpPositionieren  := FALSE;
 
         steplEintransport := STEP_1000_E;

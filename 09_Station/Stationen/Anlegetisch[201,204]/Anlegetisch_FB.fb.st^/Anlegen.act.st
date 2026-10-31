@@ -13,11 +13,11 @@ ACTION Anlegen
 blVSG_Automatik_Eintransport := BasisStationsParameter.stMKs.stStationsOptionen.stAnlegetisch.bAnlegetischMitEintransportVorgaenger 
                             AND NOT blAnlegenErzwingen 
                             AND BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1].bAutomatikBetriebAktiv                             // Automatik Betrieb aktiv
-	                         AND NOT ( BasisStationsParameter.eStatusAuftrag = eAuftragWiederholen )                                           // Messung Fehlerhaft. Scheibe muss angelegt werden
-	                         AND NOT ( BasisStationsParameter.eStatusAuftrag = eAuftragAktivWiederholen )                                      // Messung Fehlerhaft. Scheibe muss angelegt werden
-	                         AND NOT Glastransport.bpSensorEinlauf                                                                             // Einlaufsensor belegt
-	                         AND NOT Glastransport.bpSensorAuslauf                                                                             // Auslaufsensor belegt
-	                         AND ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe >= BasisStationsParameter.stMKs.stStationsParameter.rMinGlasHoeheAutomatischenEintransport )    // Scheibe zu niedrig
+                           AND NOT ( BasisStationsParameter.eStatusAuftrag = eAuftragWiederholen )                                           // Messung Fehlerhaft. Scheibe muss angelegt werden
+                           AND NOT ( BasisStationsParameter.eStatusAuftrag = eAuftragAktivWiederholen )                                      // Messung Fehlerhaft. Scheibe muss angelegt werden
+                           AND NOT Glastransport.bpSensorEinlauf                                                                             // Einlaufsensor belegt
+                           AND NOT Glastransport.bpSensorAuslauf                                                                             // Auslaufsensor belegt
+                           AND ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe >= BasisStationsParameter.stMKs.stStationsParameter.rMinGlasHoeheAutomatischenEintransport )    // Scheibe zu niedrig
                             AND ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsLaenge >= BasisStationsParameter.stMKs.stStationsParameter.rMinGlasLaengeAutomatischenEintransport ); // Scheibe zu kurz
 
 
@@ -53,8 +53,8 @@ THEN
 
       // Auftrag nach Status neu setzen. Sollte vorher ein VSG Eintransport aktiv gewesen sein, will die Scheibe neu eintransportiert werden 
       IF ( BasisStationsParameter.eStatusAuftrag = eAuftragWiederholen ) THEN
-        BasisStationsParameter.eStatusAuftrag := eAuftragAktivWiederholen;			
-      ELSE			
+        BasisStationsParameter.eStatusAuftrag := eAuftragAktivWiederholen;
+      ELSE
         BasisStationsParameter.eStatusAuftrag := eAuftragAktiv;
       END_IF 
 
@@ -66,12 +66,12 @@ THEN
         Anschlag.bpStartEinfahren           := FALSE;
         Anschlag.bpStartAusfahren           := FALSE;
 
-		  IF blVSG_Automatik_Eintransport THEN // Es müssen bestimmte Bedingungen aktiv sein
+      IF blVSG_Automatik_Eintransport THEN // Es müssen bestimmte Bedingungen aktiv sein
           steplAnlegen := STEP_200_E;
-		  ELSE
-	       blAnlegenErzwingen:= FALSE;
+      ELSE
+         blAnlegenErzwingen:= FALSE;
           steplAnlegen := STEP_10_E;
-		END_IF
+    END_IF
 
       END_IF
 
@@ -138,11 +138,11 @@ THEN
         out_bAmpelSignalGruenScheibeAnlegen  := FALSE;
         steplAnlegen := STEP_1000_E;
       END_IF
-		
+
       // Automatikbetrieb wurde von der VSG gestartet
-		  IF blVSG_Automatik_Eintransport THEN // Es müssen bestimmte Bedingungen aktiv sein
+      IF blVSG_Automatik_Eintransport THEN // Es müssen bestimmte Bedingungen aktiv sein
         steplAnlegen := STEP_200_E;
-		  END_IF
+      END_IF
 
       IF rtlFussleisteStart.Q THEN
         Anschlag.bpStartAusfahren := TRUE;
@@ -230,9 +230,9 @@ THEN
       END_IF
 
       // Automatikbetrieb wurde von der VSG gestartet
-		  IF blVSG_Automatik_Eintransport THEN // Es müssen bestimmte Bedingungen aktiv sein
+      IF blVSG_Automatik_Eintransport THEN // Es müssen bestimmte Bedingungen aktiv sein
         steplAnlegen := STEP_200_E;
-		  END_IF
+      END_IF
       // Scheibe wurde angelegt
       IF ( rtlFussleisteStart.Q 
         AND ( ( Glastransport.bpSensorEinlauf 
@@ -249,14 +249,14 @@ THEN
         blMerkerDrosselklappeAuf := FALSE;
 
         BasisStationsParameter.eStatusAuftrag := eAuftragErfolgreich;
-		  
+
         // Wenn Modellscheibe -> Anschläge einfahren
         IF ( BasisStationsParameter.wGlastyp[cWAND_1] = cMODELLSCHEIBE ) THEN
           Anschlag.bpStartEinfahren  := TRUE;
             Anschlag.bpStartAusfahren  := FALSE;
-            steplAnlegen := STEP_300_E;		
-          ELSE	
-            steplAnlegen := STEP_1000_E;		
+            steplAnlegen := STEP_300_E;
+          ELSE
+            steplAnlegen := STEP_1000_E;
         END_IF
 
       END_IF
@@ -300,7 +300,7 @@ THEN
         Hubrahmen.bpStartEinfahren := TRUE;
         Hubrahmen.bpStartAusfahren := FALSE;
 
-	  ELSE
+    ELSE
         Hubrahmen.bpStartEinfahren := FALSE;
       END_IF
       Glastransport.bpAnforderungHandfunktion := TRUE;
@@ -338,7 +338,7 @@ THEN
           - Drosselklappe öffnen, damit auch sehr schweres Glas transportiert werden kann, indem die Luft das Glas leicht anhebt
       *)
       blMerkerDrosselklappeAuf := TRUE;
-		
+
       IF BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bScheibenVermessen THEN
         IF ( Messachse.Antrieb.rpMaxPosition  < BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe ) THEN
           Messachse.rpZielPosition := Messachse.Antrieb.rpMaxPosition;
@@ -366,7 +366,7 @@ THEN
         Anschlag.bpStartEinfahren  := FALSE;
         Hubrahmen.bpStartAusfahren := FALSE;
         Messachse.bpPositionierung := FALSE;
-		  
+
         steplAnlegen := STEP_220_E;
       END_IF
 
@@ -417,12 +417,12 @@ THEN
         BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
         steplAnlegen := STEP_900_E;
       END_IF
-		
+
 (* ANLEGEN ==================================*)
     STEP_300_E:      
       (* Anmerkung:
          - Anschlaege gesenkt
-      *)   	  
+      *)
       IF (  Anschlag.bpDone )  THEN
         Anschlag.bpStartEinfahren  := FALSE;
 
@@ -445,12 +445,12 @@ THEN
 
 (*ANLEGEN ==================================*)
     STEP_1010_E:
-	   // Scheibe wurde von der VSG Eintransportiert und muss vermessen werden
+     // Scheibe wurde von der VSG Eintransportiert und muss vermessen werden
       epTypeHoehenmessung := Modus_Vermessen_OberUndUnterkante_2_Sensoren;
 
       BasisStationsParameter.bAnlegenAbgeschlossen := TRUE;
       Glastransport.bpAnforderungHandfunktion := FALSE;
-		
+
 (*ANLEGEN ==================================*)
   END_CASE
 ELSE
@@ -461,7 +461,7 @@ ELSE
     out_bAmpelSignalGruenScheibeAnlegen := FALSE;
     out_bAmpelSignalRot                 := FALSE;
     blFreigabeGeblaeseStartenSensor     := FALSE;
-	
+
     Glastransport.bpAnforderungHandfunktion := FALSE;
 
     Hubrahmen.bpStartEinfahren       := FALSE;

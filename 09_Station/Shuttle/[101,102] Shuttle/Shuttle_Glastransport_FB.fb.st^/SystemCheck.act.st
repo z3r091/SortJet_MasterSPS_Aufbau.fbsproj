@@ -43,12 +43,12 @@ IF ( bpCheck ) THEN
         AND blAntriebsKopplungAktiv )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-		IF bpSlaveAntriebVorhanden THEN
+    IF bpSlaveAntriebVorhanden THEN
           steplCheck := STEP_15_E;
-		ELSE
+    ELSE
           steplCheck := STEP_5_E;
-			
-		END_IF
+
+    END_IF
       END_IF
 
 (*SYSTEM CHECK========================= GEHT NICHT WEGEN MASTER SLAVE KOPPLUNG  *)
@@ -243,11 +243,11 @@ IF ( bpCheck ) THEN
       ELSIF( bpCheckMitNachfolger
         AND NOT bpCheckMitVorgaenger )
       THEN
-	    IF bpRueckwaertsSystemcheck THEN
+      IF bpRueckwaertsSystemcheck THEN
           steplCheck := STEP_700_E;
-		ELSE
+    ELSE
           steplCheck := STEP_600_E;
-		END_IF
+    END_IF
       ELSE
 
         (* Fehlerbehandlung
@@ -366,7 +366,7 @@ IF ( bpCheck ) THEN
 
       IF ( NOT InGlasTransportNachfolger.bBereitZumAustransport ) THEN
         Antrieb.rpGeschwindigkeit := 0.0;
-		bpOutBereitZumAustransport := FALSE;
+    bpOutBereitZumAustransport := FALSE;
         steplCheck := STEP_650_E;
       END_IF
 
@@ -378,13 +378,13 @@ IF ( bpCheck ) THEN
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
 
       IF ( NOT InGlasTransportNachfolger.bAuslaufsensor ) THEN
-		bprtScheibe := TRUE;
+    bprtScheibe := TRUE;
         steplCheck := STEP_620_E;
       END_IF
 
       IF ( NOT InGlasTransportNachfolger.bBereitZumAustransport ) THEN
         Antrieb.rpGeschwindigkeit := 0.0;
-		bpOutBereitZumAustransport := FALSE;
+    bpOutBereitZumAustransport := FALSE;
         steplCheck := STEP_650_E;
       END_IF
 
@@ -394,10 +394,10 @@ IF ( bpCheck ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplCheck := STEP_660_E;
       END_IF
-	
+
 (*SYSTEM CHECK=========================*)
     STEP_660_E:
-	
+
       (* Hinweis:
          - Pruefen ob das Glas zuweit gefahren wurde und den Auslaufsensor nun belegt ist ggf. das 
            Glas wider zurueck fahren
@@ -454,8 +454,8 @@ IF ( bpCheck ) THEN
       // - Das komplette Batch wird zurück auf das Shuttle geholt
       // ---------------------------------------------------------------------------------------*)
 
-	  bpOutBereitZumEintransport := TRUE;
-	  
+    bpOutBereitZumEintransport := TRUE;
+
       IF ( InGlasTransportNachfolger.bBereitZumAustransport  ) THEN
         steplCheck := STEP_710_E;
       END_IF
@@ -465,7 +465,7 @@ IF ( bpCheck ) THEN
       (* Hinweis:
          - Scheiben zurück bis auf Einlauf fahren um sicherzustellen das alles wieder auf dem Shuttle ist
       *)
-	  IF NOT bpSensorEinlauf THEN
+    IF NOT bpSensorEinlauf THEN
         rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
@@ -475,23 +475,23 @@ IF ( bpCheck ) THEN
         Antrieb.rpZielposition    := - ppParameterBaustein.rWegUeberEinlauf;
         Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
         Antrieb.wpBetriebsart     := RESTWEG;
-		
+
         steplCheck := STEP_720_E;
-		
-	  ELSE
+
+    ELSE
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_BELEGT;
         steplCheck := STEP_900_E;
-	  END_IF
+    END_IF
 
 (*SYSTEM CHECK=========================*)
     STEP_720_E:
-	
+
       IF ( bpSensorEinlaufVorab ) THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
       ELSE
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
       END_IF
-	  
+
        (* Anmerkung:
          - Shuttle hat Scheiben zurückgefahren und ist fertig
       *)
@@ -518,21 +518,21 @@ IF ( bpCheck ) THEN
       (* Anmerkung:
          - Scheiben zurückgefahren ; Sensorik prüfen
       *)
-	  IF NOT bpSensorAuslauf AND NOT bpSensorEinlauf AND NOT Antrieb.bpAntrieblaeuft THEN
-	     bpOutBereitZumEintransport := FALSE;
+    IF NOT bpSensorAuslauf AND NOT bpSensorEinlauf AND NOT Antrieb.bpAntrieblaeuft THEN
+       bpOutBereitZumEintransport := FALSE;
          Antrieb.wpBetriebsart := RESTWEG;
          steplCheck := STEP_100_E;
-	  END_IF
+    END_IF
 
-	  IF  bpSensorEinlauf THEN
+    IF  bpSensorEinlauf THEN
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_BELEGT;
         steplCheck := STEP_900_E;
-	  END_IF
+    END_IF
 
-	  IF bpSensorAuslauf THEN
+    IF bpSensorAuslauf THEN
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_BELEGT;
         steplCheck := STEP_900_E;
-	  END_IF
+    END_IF
 
 (*SYSTEM CHECK=========================*)
     STEP_800_E:
@@ -562,7 +562,7 @@ IF ( bpCheck ) THEN
           rlScheibenMessungErgebnis := 1;
 
           IF ( bpStationBelegt ) THEN
-			      pAuftrag.stAuftragsOptionen.eGlastransport := eGlastransport_AufEinlauf;
+            pAuftrag.stAuftragsOptionen.eGlastransport := eGlastransport_AufEinlauf;
             steplCheck := STEP_850_E;
           ELSE
             steplCheck := STEP_890_E;
@@ -715,16 +715,16 @@ IF ( bpCheck ) THEN
 
           IF NOT bpSensorEinlauf THEN
             Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
-			      IF pAuftrag.bLetzteScheibe THEN
+            IF pAuftrag.bLetzteScheibe THEN
                     Antrieb.rpZielPosition      := ppParameterBaustein.rWegUeberSensorLetzteScheibe;
-			      ELSE
+            ELSE
                     Antrieb.rpZielPosition      := ppParameterBaustein.rWegUeberEinlauf;
-			      END_IF
+            END_IF
           ELSE
             Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor1;
-	          IF pAuftrag.bLetzteScheibe THEN
+            IF pAuftrag.bLetzteScheibe THEN
                Antrieb.rpZielPosition      := ppParameterBaustein.rWegUeberSensorLetzteScheibe;
-			      ELSE
+            ELSE
               Antrieb.rpZielPosition      := ppParameterBaustein.rWegUeberEinlauf;
             END_IF
           END_IF
@@ -747,8 +747,8 @@ IF ( bpCheck ) THEN
 
           steplCheck := STEP_870_E;
 
-		  ELSE
-			 // Falscher Auftrag
+      ELSE
+       // Falscher Auftrag
           wpFehlerNr := cMELDUNG_SYSTEMCHECK_AUFTRAGSDATEN_UNGUELTIG;
           steplCheck := STEP_900_E;
       END_CASE

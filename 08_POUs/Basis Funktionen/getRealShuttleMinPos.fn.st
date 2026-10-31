@@ -7,7 +7,7 @@
 *)
 FUNCTION getRealShuttleMinPos : REAL
 VAR_INPUT
-	wShuttleNummer : WORD;
+  wShuttleNummer : WORD;
 END_VAR
 
 

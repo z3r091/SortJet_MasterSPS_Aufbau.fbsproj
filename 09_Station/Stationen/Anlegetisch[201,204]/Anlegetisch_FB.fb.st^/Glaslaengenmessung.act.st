@@ -55,19 +55,19 @@ THEN
       (* Anmerkung:
          - Anschlaege gesenkt
          - Hubrahmen 1 gehoben
-		 - Glastransport Referenz
+     - Glastransport Referenz
       *)   
       Hubrahmen.bpStartAusfahren := TRUE;
       Anschlag.bpStartEinfahren  := TRUE;
-	  Glastransport.bpReferenz   := TRUE;
-	  
+    Glastransport.bpReferenz   := TRUE;
+
       IF (  Anschlag.bpDone
         AND Hubrahmen.bpDone
         AND Glastransport.bpDone )
       THEN
         Hubrahmen.bpStartAusfahren := FALSE;
         Anschlag.bpStartEinfahren  := FALSE;
-	    Glastransport.bpReferenz   := FALSE;
+      Glastransport.bpReferenz   := FALSE;
 
         steplGlaslaengenmessung := STEP_20_E;
       END_IF
@@ -77,14 +77,14 @@ THEN
       (* Anmerkung
          - Starten der Glaslaengenmessung mittels Riemen
       *)
-	  IF NOT Glastransport.bpDone THEN
+    IF NOT Glastransport.bpDone THEN
         Glastransport.eGlastyp := BasisStationsParameter.wGlastyp[cWAND_1];
         Glastransport.pAuftrag := BasisStationsParameter.pAuftrag[cWAND_1];
 
         Glastransport.bpGlaslaengenmessung := TRUE;
 
         steplGlaslaengenmessung := STEP_30_E;
-	  END_IF
+    END_IF
 
 (* GLASLAENGENMESSUNG ==================================*)
     STEP_30_E:
@@ -127,7 +127,7 @@ THEN
                     BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
                     BasisStationsParameter.awFehlerInformationen );
-						  
+
         steplGlaslaengenmessung := STEP_200_E;
 
       END_IF

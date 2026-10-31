@@ -27,7 +27,7 @@ THEN
 (* VERFAHREN ================================= *)
     STEP_0_E:
       bpDone := FALSE;
-	  wSps2ShuttleStopped[stStationsNummern.NummerSPS] := 0;
+    wSps2ShuttleStopped[stStationsNummern.NummerSPS] := 0;
 
       (* Hinweis:
 
@@ -38,7 +38,7 @@ THEN
          AND bpFreigabe ) 
        THEN
 
-		     blFreigabeGesetzt := TRUE;
+         blFreigabeGesetzt := TRUE;
          Antrieb.bpFreigabe := TRUE;
 
          IF Antrieb.bpReglerBereit THEN
@@ -54,10 +54,10 @@ THEN
            END_IF
 
          ELSE
-			 
-		   tonlAntriebNichtBetriebsbereit( IN := NOT Antrieb.bpReglerBereit , PT := T#10S);
 
-		   IF tonlAntriebNichtBetriebsbereit.Q THEN
+       tonlAntriebNichtBetriebsbereit( IN := NOT Antrieb.bpReglerBereit , PT := T#10S);
+
+       IF tonlAntriebNichtBetriebsbereit.Q THEN
              Antrieb.wpBetriebsart := KEINE_FUNKTION;
              wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
              STEP_Mov_Shuttle_W := STEP_900_E;
@@ -205,14 +205,14 @@ THEN
         Antrieb.rpRuckzeit         := ppAntriebsInformationen.rpMaxRuckzeit;
 
       END_IF
-	  
-	  IF ( ( Antrieb.rpGeschwindigkeit < 400 ) OR ( ABS(rpDestinationPosition - Antrieb.rpIstPosition) < 400.0 ) ) THEN
+
+    IF ( ( Antrieb.rpGeschwindigkeit < 400 ) OR ( ABS(rpDestinationPosition - Antrieb.rpIstPosition) < 400.0 ) ) THEN
         Antrieb.rpRuckzeit := ppAntriebsInformationen.rpMaxRuckzeit * 10;
-	  END_IF
+    END_IF
 
       Antrieb.rpZielPosition := rpDestinationPosition;
       Antrieb.wpBetriebsart := ABSOLUT;
-	  
+
       STEP_Mov_Shuttle_W := STEP_120_E;
 
 (* VERFAHREN ================================= *)
@@ -242,9 +242,9 @@ THEN
         wgSps2MmiShuttleNr                                  := stStationsNummern.NummerIntern;
         rSps2MmiShuttlePosition[0]                          := Antrieb.rpIstPosition;
         wSps2ShuttleStopped[stStationsNummern.NummerIntern] := 0;
-        MsgToMmi(SB0_SPS_SHUTTLEVORABPOSITIONIERUNGABBRUCH);		
+        MsgToMmi(SB0_SPS_SHUTTLEVORABPOSITIONIERUNGABBRUCH);
 
-	    // Medlung ausgeben das ein Verfahrabbruch stattgefunden hat
+      // Medlung ausgeben das ein Verfahrabbruch stattgefunden hat
         wpgFehlerdaten[0] := stStationsNummern.NummerExtern;
         SpsHinweis( eFehler_Station, 
                     cMELDUNG_QUERFAHRT_VERFAHRABBRUCH, 
@@ -288,12 +288,12 @@ THEN
 (* VERFAHREN ================================= *)
     STEP_900_E:
       bpFehler:=TRUE;
-	  blFreigabeGesetzt := FALSE;
+    blFreigabeGesetzt := FALSE;
 
 (* VERFAHREN ================================= *)
     STEP_1000_E:
       bpDone := TRUE;
-	   blFreigabeGesetzt := FALSE;
+     blFreigabeGesetzt := FALSE;
 
 (* VERFAHREN ================================= *)
   END_CASE
@@ -303,11 +303,11 @@ IF ( NOT bpVerfahreShuttle AND NOT bgVisuVerfahreShuttle[stStationsNummern.Numme
 
   IF( STEP_Mov_Shuttle_W > STEP_0_E )THEN
     bpDone := FALSE;
-	 blFreigabeGesetzt := FALSE;
+   blFreigabeGesetzt := FALSE;
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     Antrieb.rpVerzoegerung   := ppAntriebsInformationen.rpMaxVerzoegerung;
     STEP_Mov_Shuttle_W := STEP_0_E;
-	 tonlAntriebNichtBetriebsbereit(IN:=FALSE);
+   tonlAntriebNichtBetriebsbereit(IN:=FALSE);
   END_IF
 
 END_IF

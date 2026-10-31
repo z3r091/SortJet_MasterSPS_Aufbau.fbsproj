@@ -23,14 +23,14 @@ FOR wlIndexAutomatikkreis := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS D
     FOR wlIndexStationsnummer := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
       IF StationInAutomatikkreis(starrShuttleBasisParameter[wlIndexStationsnummer].stMKs.eaAutomatikkreis, wlIndexAutomatikkreis) THEN
         abpStationsDatenErhalten[wlIndexStationsnummer, cWAND_1] := FALSE;
-		  ablShuttleCheckAktiv[wlIndexStationsnummer] := FALSE;
+      ablShuttleCheckAktiv[wlIndexStationsnummer] := FALSE;
       END_IF
     END_FOR
 
     FOR wlIndexStationsnummer := cERSTE_STATION TO cLETZTE_STATION DO
       IF StationInAutomatikkreis(starrStationBasisParameter[wlIndexStationsnummer].stMKs.eaAutomatikkreis, wlIndexAutomatikkreis) THEN
         abpStationsDatenErhalten[wlIndexStationsnummer, cWAND_1] := FALSE;
-		  ablStationCheckAktiv[wlIndexStationsnummer] := FALSE;
+      ablStationCheckAktiv[wlIndexStationsnummer] := FALSE;
       END_IF
     END_FOR
 

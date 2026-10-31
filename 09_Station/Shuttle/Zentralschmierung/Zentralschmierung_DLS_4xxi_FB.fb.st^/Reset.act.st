@@ -25,7 +25,7 @@ IF bpReset THEN
         wlIndex := 0;
 
         FOR wlIndex := cSCHMIERKREIS_1 TO cSCHMIERKREIS_2 DO
-          ailAktiverHub[wlIndex]  := 0;		
+          ailAktiverHub[wlIndex]  := 0;
           ablStarteKreis[wlIndex] := FALSE; 
           ablHubAktiv[wlIndex]    := FALSE;
           atoflPause[wlIndex]( IN := FALSE );

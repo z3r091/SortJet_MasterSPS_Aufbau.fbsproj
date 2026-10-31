@@ -57,7 +57,7 @@ THEN
       IF ( blAntriebsKopplungAktiv ) THEN
         steplAustransportRueckwaertig := STEP_10_E;
       END_IF
-	  
+
 (* AUSTRANSPORT ==================================== *)
     STEP_10_E:
       IF ( Antrieb.bpReglerBereit ) THEN
@@ -195,12 +195,12 @@ THEN
       IF bpOptionMasterSlaveTransport THEN
         
         Antrieb.wpMaster := InGlasTransportVorgaenger.wAchsID;
-		  
-		  // Wenn der Vorgänger "Rückwärtig" fährt, darf das Shuttle nicht "invertiert" gekoppelt werdem, da es sonst in der falsche Richtung fährt
-		  IF InGlasTransportVorgaenger.bTransportRueckwaertig THEN
-			 Antrieb.wpBetriebsart := SYNC_AUF_MASTER;		
+
+      // Wenn der Vorgänger "Rückwärtig" fährt, darf das Shuttle nicht "invertiert" gekoppelt werdem, da es sonst in der falsche Richtung fährt
+      IF InGlasTransportVorgaenger.bTransportRueckwaertig THEN
+       Antrieb.wpBetriebsart := SYNC_AUF_MASTER;
         ELSE
-          Antrieb.wpBetriebsart := INVERTIERTER_SYNC_AUF_MASTER;			  
+          Antrieb.wpBetriebsart := INVERTIERTER_SYNC_AUF_MASTER;
         END_IF
         
        IF ( Antrieb.bpDone ) THEN

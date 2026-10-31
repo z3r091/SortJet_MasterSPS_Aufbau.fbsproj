@@ -11,7 +11,7 @@ VAR_INPUT
     b   : WORD;    // Die zu prüfende Bitposition
 END_VAR
 VAR
-	W   : WORD := 1;
+  W   : WORD := 1;
 END_VAR
 
 ;

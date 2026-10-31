@@ -33,6 +33,6 @@ BasisStationsParameter.OutGlasTransport[cWAND_1].bFreigabe                  REF=
 BasisStationsParameter.OutGlasTransport[cWAND_1].bTransportAbgeschlossen    REF= bgFALSE;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bTransportRueckwaertig     REF= BasisStationsParameter.bRueckwaertsTransportieren[cWAND_1];
 
-// Handfunktionen	  
+// Handfunktionen
 dwlHandfunktionen := BasisStationsParameter.dwHandfunktionen;
 END_ACTION

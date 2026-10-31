@@ -15,34 +15,34 @@ TYPE Stationsstatus_Visu_ST :
     bSensorAuslauf                  : ARRAY [1..3] OF BOOL;
     bSensorAuslaufStopp             : ARRAY [1..3] OF BOOL;
   
-	  // Gebläse
-	  bGeblaeseLaeuft                 : ARRAY [1..3] OF BOOL;
-	  bDrosselklappeOffen             : ARRAY [1..3] OF BOOL;
-	
-	  // Wandverstellung
+    // Gebläse
+    bGeblaeseLaeuft                 : ARRAY [1..3] OF BOOL;
+    bDrosselklappeOffen             : ARRAY [1..3] OF BOOL;
+
+    // Wandverstellung
     epWandverstellungStatus         : ARRAY [1..3] OF PneumatikZylinderStatus_EN;
-	
-	  // Ampel 
-	  bAmpelRot                       : BOOL;
-	  bAmpelGruen                     : BOOL;
-	
+
+    // Ampel 
+    bAmpelRot                       : BOOL;
+    bAmpelGruen                     : BOOL;
+
     // Messachse
     bMessachseFehler                : BOOL;
     bMessachseSensorOben            : BOOL;
-	  bMessachseSensorUnten           : BOOL;
-	  bMessachseMinEndschalter        : BOOL;
-	  rMessachseIstPos                : REAL;
-	
+    bMessachseSensorUnten           : BOOL;
+    bMessachseMinEndschalter        : BOOL;
+    rMessachseIstPos                : REAL;
+
     // Anschläge
-	  bAnschlagFehler                 : BOOL;
+    bAnschlagFehler                 : BOOL;
     bAnschlagSensorAusgefahren      : BOOL;
-	  bAnschlagSensorEingefahren      : BOOL;	
-	
-	  // Hubpalette
-	  bHubpaletteFehler               : BOOL;
+    bAnschlagSensorEingefahren      : BOOL;
+
+    // Hubpalette
+    bHubpaletteFehler               : BOOL;
     bHubpaletteSensorAusgefahren    : BOOL;
-	  bHubpaletteSensorEingefahren    : BOOL;	
-	
+    bHubpaletteSensorEingefahren    : BOOL;
+
     // Kippen
     bKippenFehler                   : BOOL;
     bKippenAntriebReferenziert      : BOOL;
@@ -67,24 +67,24 @@ TYPE Stationsstatus_Visu_ST :
     rQuerfahrtIstPos                : REAL;
     bQuerfahrtMinEndschalter        : BOOL;
     bQuerfahrtMaxEndschalter        : BOOL;
-	 
-	  // Eingänge
-	  bInTasterGlasAngelegt           : BOOL;
-	  bInTasterGeblaese               : BOOL;
-	  bInTasterFehlmessung            : BOOL;
-	  bInTasterGlasbruch              : BOOL;
-	  bInRiemenZurueck                : BOOL;
-	  
-	  // Ausgänge           
-	  bOutAmpelRot                    : BOOL;
-	  bOutAmpelGruen                  : BOOL;
-	  bOutTasterFehlmessung           : BOOL;
+
+    // Eingänge
+    bInTasterGlasAngelegt           : BOOL;
+    bInTasterGeblaese               : BOOL;
+    bInTasterFehlmessung            : BOOL;
+    bInTasterGlasbruch              : BOOL;
+    bInRiemenZurueck                : BOOL;
+
+    // Ausgänge           
+    bOutAmpelRot                    : BOOL;
+    bOutAmpelGruen                  : BOOL;
+    bOutTasterFehlmessung           : BOOL;
     
     // Antriebseinheit 
     bAntriebseinheitOben            : BOOL;
     bAntriebseinheitUnten           : BOOL;
     bAntriebseinheitVerriegelt      : BOOL;
     bAntriebseinheitEntriegelt      : BOOL;
-	
+
   END_STRUCT
 END_TYPE

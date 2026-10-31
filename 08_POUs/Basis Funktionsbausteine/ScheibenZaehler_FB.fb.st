@@ -11,8 +11,8 @@ FUNCTION_BLOCK ScheibenZaehler_FB
 VAR_INPUT
 
   (* BOOLEAN *)
-	bpReset    : BOOL; (* Hinweis: Ruecksetzen des Bausteins *)
-	bpAktiv    : BOOL; (* Hinweis: AKtivieren des Bausteins *)
+  bpReset    : BOOL; (* Hinweis: Ruecksetzen des Bausteins *)
+  bpAktiv    : BOOL; (* Hinweis: AKtivieren des Bausteins *)
   bpStart    : BOOL; (* Hinweis: AKtivieren des Bausteins *)
   bpSensor   : BOOL; (* Hinweis: Sensor mittels dem die Scheiben gezaehlt werden sollen *)
 
@@ -92,19 +92,19 @@ ELSE
       rtlScheibenAnfangErkannt( CLK := tonlSensor.Q
                                        AND NOT blScheibenAnfangErkannt);
 
-	    IF ( rtlScheibenAnfangErkannt.Q ) THEN
-	      blScheibenAnfangErkannt := TRUE;
+      IF ( rtlScheibenAnfangErkannt.Q ) THEN
+        blScheibenAnfangErkannt := TRUE;
       END_IF
 
       (* Hinweis:
          - Es wurde eine Scheibenanfang erkannt es muss nun ein Scheibenende kommen 
       *)
-	    rtlScheibenEndeErkannt( CLK := ( NOT toflSensor.Q
-		                                   AND blScheibenAnfangErkannt) );
+      rtlScheibenEndeErkannt( CLK := ( NOT toflSensor.Q
+                                       AND blScheibenAnfangErkannt) );
 
-	    IF ( rtlScheibenEndeErkannt.Q ) THEN
-	      blScheibenAnfangErkannt := FALSE;
-	      ipScheibenAnzahl := ipScheibenAnzahl -1;
+      IF ( rtlScheibenEndeErkannt.Q ) THEN
+        blScheibenAnfangErkannt := FALSE;
+        ipScheibenAnzahl := ipScheibenAnzahl -1;
 
         bpScheibeQuittieren := TRUE;
 

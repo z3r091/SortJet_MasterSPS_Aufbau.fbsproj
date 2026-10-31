@@ -8,10 +8,10 @@
 {attribute 'excludefrombuild'}
 FUNCTION_BLOCK Motorstarter_FB
 VAR_INPUT
-	bpReset                    : BOOL;
-	bpMotorstarterOK           : BOOL;  
-	bpSensorNotNockeLinkslauf  : BOOL;
-	bpSensorNotNockeRechtslauf : BOOL;
+  bpReset                    : BOOL;
+  bpMotorstarterOK           : BOOL;  
+  bpSensorNotNockeLinkslauf  : BOOL;
+  bpSensorNotNockeRechtslauf : BOOL;
 END_VAR
 VAR_OUTPUT
   bpFehler   : BOOL;
@@ -32,7 +32,7 @@ VAR
   
   // TIMER
   tonlFehlermeldungUnterdrueckenAntriebOK : TON;
-	
+
 END_VAR
 
 (* Hinweis:
@@ -45,8 +45,8 @@ tonlFehlermeldungUnterdrueckenAntriebOK( IN := NOT blErsterZyklus,
 IF bpReset THEN
   bpdone := Reset();
 ELSIF bpFehler THEN
-  out_bLinkslauf  := FALSE;	
-  out_bRechtslauf := FALSE;	  
+  out_bLinkslauf  := FALSE;
+  out_bRechtslauf := FALSE;
 ELSE
   bpdone := FALSE;
 END_IF

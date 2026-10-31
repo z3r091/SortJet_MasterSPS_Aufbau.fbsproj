@@ -10,8 +10,8 @@ VAR_INPUT
 END_VAR
 VAR
   wIndex : WORD;
-	bByte  : BYTE;
-	ptNull : REFERENCE TO BYTE := 0;
+  bByte  : BYTE;
+  ptNull : REFERENCE TO BYTE := 0;
 END_VAR
 
 getAnzahlSystemcheckZyklen := 0;

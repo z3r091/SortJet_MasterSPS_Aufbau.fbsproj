@@ -8,12 +8,12 @@
 FUNCTION MsgToMmi : BOOL
 (* ------ Senden von Nachrichten zum MMI ------ *)
 VAR_INPUT
-	auftragsnr_w: WORD;
+  auftragsnr_w: WORD;
 END_VAR
 VAR
-	msg_st  : SpsMessage;
+  msg_st  : SpsMessage;
   
-	wlIndex : WORD;
+  wlIndex : WORD;
 
   wlAnzahl, wlWert, wlBenoetigt : WORD;
 END_VAR
@@ -107,10 +107,10 @@ CASE( auftragsnr_w ) OF
   *)
   SB0_SPS_SETSHEETSONSTATION:
     // Die Wandnummer wird Bitcodiert übergeben. In der SPS wird sie aber Dezimal benötigt
-	  // Wand 3
+    // Wand 3
     IF ( wSps2MmiMessungSlotNummer = 3) THEN
-	    wSps2MmiMessungSlotNummer  := 4;
-	  END_IF
+      wSps2MmiMessungSlotNummer  := 4;
+    END_IF
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 3;
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[0] ), wVal := wSps2MmiMessungStationNummer );
@@ -323,7 +323,7 @@ CASE( auftragsnr_w ) OF
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ),  wVal  := wSps2MmiStationsNummer );
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[1] ),  wVal  := wSPS2MMIStationsStatusWord1 );
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[2] ),  wVal  := wSPS2MMIStationsStatusWord2 );
-	
+
 
   SB0_SPS_SHEETREMOVEDAPPROVALWALL:
     msg_st.wAuftrag := auftragsnr_w;

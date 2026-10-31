@@ -17,8 +17,8 @@ IF blBetriebsartReset THEN
   CASE steplStationReset OF
 (*RESET ===================================== *)
     STEP_0_E:
-	  BasisStationsParameter.bEintransport[1] := FALSE;
-	  BasisStationsParameter.bAustransport[1] := FALSE;
+    BasisStationsParameter.bEintransport[1] := FALSE;
+    BasisStationsParameter.bAustransport[1] := FALSE;
     bpDone := FALSE;
     tonlZeitRunterfahren(IN := FALSE);
     tonlZeitHochfahren(IN := FALSE);
@@ -41,7 +41,7 @@ IF blBetriebsartReset THEN
 
 (*RESET ===================================== *)
     STEP_100_E:
-      blRFID_DataWasValid	               := FALSE;
+      blRFID_DataWasValid                  := FALSE;
       blLineareinheitVor                 := FALSE;
       blLineareinheitZurueck             := FALSE;
       blLineareinheitShuttle             := FALSE;
@@ -54,7 +54,7 @@ IF blBetriebsartReset THEN
       blRolltorAuf                       := FALSE;
       blRolltorAb                        := FALSE;
       BasisStationsParameter.bFehler     := FALSE;
-		
+
       Ampel_AK[1,1].bpHinweisFWEingriffErforderlich := FALSE;
     
       wpFehlerNr := 0;

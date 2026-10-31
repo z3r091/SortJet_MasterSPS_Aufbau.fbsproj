@@ -14,7 +14,7 @@ VAR_IN_OUT
 END_VAR
 
 VAR_INPUT
-	
+
   // BOOL
   bpEmpfaengerSensorEinlauf  : BOOL;
   bpResetISOLinieEvent       : BOOL;  
@@ -29,7 +29,7 @@ VAR_INPUT
 END_VAR
 
 VAR_OUTPUT
-	
+
   // BOOL
   bpISOLineEventAktiv       : BOOL; // Offenes ISO Linie Event nach aussen weitergeben
   
@@ -43,7 +43,7 @@ VAR_OUTPUT
 END_VAR
 
 VAR
-	
+
   // BOOL
   blErsterZyklus             : BOOL := TRUE;
   bEmpfaengerSensorEinlauf   : BOOL; // Eingang Einlaufsensor von Umrichter Box

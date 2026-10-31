@@ -13,7 +13,7 @@ ACTION Schmiervorgang
 //Komplette überarbeitung
 rtlStarteSchmierung( CLK := ablStarteKreis[cSCHMIERKREIS_1] OR ablStarteKreis[cSCHMIERKREIS_2] OR bpStartSchmierungHand );
 IF rtlStarteHandschmierung.Q THEN
-	ablStarteKreis[cSCHMIERKREIS_1] := ablStarteKreis[cSCHMIERKREIS_2] := TRUE;
+  ablStarteKreis[cSCHMIERKREIS_1] := ablStarteKreis[cSCHMIERKREIS_2] := TRUE;
 END_IF
 
 IF rtlStarteSchmierung.Q THEN
@@ -79,20 +79,20 @@ IF bpFreigabe THEN
             *)
         FOR wlIndex := cSCHMIERKREIS_1 TO cSCHMIERKREIS_2 DO
           IF ablStarteKreis[wlIndex] AND NOT atoflPause[wlIndex].Q  THEN
-        	  tAnsteuern:=tAnsteuernKreise[wlIndex];
-        	  ablHubAktiv[wlIndex] := TRUE;
-        	  steplSchmierung := STEP_100_E;
-          ELSE	
-        	ablHubAktiv[wlIndex] := FALSE;
+            tAnsteuern:=tAnsteuernKreise[wlIndex];
+            ablHubAktiv[wlIndex] := TRUE;
+            steplSchmierung := STEP_100_E;
+          ELSE
+          ablHubAktiv[wlIndex] := FALSE;
           END_IF
 
         END_FOR
 
         // Beide Schmierkreise später implementieren wenn Schmierkreis 1 und 2  einzeln laufen
 
-        IF ablHubAktiv[cSCHMIERKREIS_1] AND ablHubAktiv[cSCHMIERKREIS_2]  THEN			
+        IF ablHubAktiv[cSCHMIERKREIS_1] AND ablHubAktiv[cSCHMIERKREIS_2]  THEN
             tAnsteuern:=tAnsteuernKreise[cSCHMIERKREIS_1_2];
-            steplSchmierung := STEP_100_E;	
+            steplSchmierung := STEP_100_E;
         END_IF
 
 (* ZENTRALSCHMIERUNG ============================================================================ *)
@@ -141,7 +141,7 @@ IF bpFreigabe THEN
                       stStationsNummern.NummerIntern, 
                       AutomatikkreisBestimmen(stStationsNummern.NummerIntern), 
                       wpgFehlerdaten );
-							 
+
           steplSchmierung := STEP_300_E;
         END_IF
 
@@ -208,7 +208,7 @@ IF bpFreigabe THEN
         Es wird überprüft ob Schmierkreis 1 oder 2 die geforderten Hübe ausgeführt hat,
         sodass ein der Schmierkreis bei dem nächsten Zyklus abgeschaltet wird.
        *)
-       FOR wlIndex := cSCHMIERKREIS_1 TO cSCHMIERKREIS_2 DO	
+       FOR wlIndex := cSCHMIERKREIS_1 TO cSCHMIERKREIS_2 DO
          IF ailAktiverHub[wlIndex] = ppParameterBaustein.aiAnzahlHuebe[wlIndex] THEN
            ablHubAktiv[wlIndex]    := FALSE;
            ablStarteKreis[wlIndex] := FALSE;

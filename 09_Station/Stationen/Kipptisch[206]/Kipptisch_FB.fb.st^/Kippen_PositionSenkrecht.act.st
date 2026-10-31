@@ -10,14 +10,14 @@ ACTION Kippen_PositionSenkrecht
 (* AKTION KIPPEN SENKRECHT [84-90 GRAD] *)
 (***************************************************************************************************)
 IF ( blStartePositionSenkrecht ) THEN
-	
+
   // Ausnahmesituation
   IF ( Kippen.bpFehler ) THEN
     Kippen.bpStartKippenAuf := FALSE;
     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
     steplKippenSenkrecht := STEP_900_E;
   END_IF
-	  
+
   CASE steplKippenSenkrecht OF
 
 (* KIPPEN SENKRECHT =========================== *)

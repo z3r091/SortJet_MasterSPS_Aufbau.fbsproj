@@ -16,9 +16,9 @@ blFreigabeTischKippen := ( NOT BasisStationsParameter.bAuftragAktiv
                           AND NOT Glastransport.bpSensorAuslauf
  //                         AND NOT Glastransport.Antrieb.bpReglerBereit    // Antrieb hat keine Freigabe mehr
  ;//                         AND NOT Messachse.Antrieb.bpReglerBereit; // Antrieb hat keine Freigabe mehr
-	
-// Ampel und Horn Warnsignal ausgeben	
-out_bKipptischHornWarnsignal := out_bKipptischAmpelWarnsignal := ( in_bTasterAnforderungKippen OR in_bTasterAnforderungKippen_OP );			
+
+// Ampel und Horn Warnsignal ausgeben
+out_bKipptischHornWarnsignal := out_bKipptischAmpelWarnsignal := ( in_bTasterAnforderungKippen OR in_bTasterAnforderungKippen_OP );
 
 IF ( ( in_bTasterAnforderungKippen OR in_bTasterAnforderungKippen_OP )
   AND blFreigabeTischKippen

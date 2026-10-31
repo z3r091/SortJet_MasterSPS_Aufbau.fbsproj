@@ -46,11 +46,11 @@ THEN
   CASE steplSlave OF
 (*SLAVE BETRIEB ====================*)
     STEP_0_E:
-	
+
       blAntriebsKopplungAktiv := FALSE;
-		
+
       IF ( Antrieb.bpReglerBereit AND Antrieb_Slave.bpReglerBereit ) THEN
-			
+
         IF ( ( ABS(Antrieb.rpIstPosition) > rgSchwellwertReferenzieren ) 
           OR NOT Antrieb.bpIstReferenziert 
           OR ( ABS(Antrieb_Slave.rpIstPosition) > rgSchwellwertReferenzieren )
@@ -60,9 +60,9 @@ THEN
           Antrieb_Slave.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
           steplSlave := STEP_20_E;
         ELSE
-          steplSlave := STEP_30_E;			
+          steplSlave := STEP_30_E;
         END_IF
-		END_IF
+    END_IF
 
 (*SLAVE BETRIEB ====================*)
     STEP_20_E:

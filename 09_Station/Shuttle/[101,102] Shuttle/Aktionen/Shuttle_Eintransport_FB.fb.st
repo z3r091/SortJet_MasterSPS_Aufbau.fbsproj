@@ -54,7 +54,7 @@ THEN
       (* Hinweis:
          - Pruefen ob die Geblase aktiv sind
          - Wandverstellung starten
-			- Kippen starten
+      - Kippen starten
       *)
       IF ( bpGeblaeseAktiv ) THEN
 
@@ -62,7 +62,7 @@ THEN
 
           Wandverstellung.epSollStellung         := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDickenverstellung;
           Wandverstellung.bpStartePositionierung := TRUE;
-			 
+
           Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition;
           Kippen.bpPositionieren := TRUE;
 
@@ -103,7 +103,7 @@ THEN
         Wandverstellung.bpStartePositionierung := FALSE;
         steplAktion := STEP_40_E;   
       END_IF
-		
+
 (*EINTRANSPORT ==============================*)
     STEP_40_E:
       (* Hinweis:
@@ -152,7 +152,7 @@ THEN
         steplAktion := STEP_1000_E;
       END_IF
 
-	  (* Hinweis:
+    (* Hinweis:
         - Eintransport vorzeitig quittieren damit die Querfahrt starten kann 
       *)
       IF (  BasisStationsParameter.pAuftrag[wWand].bLetzteScheibe
@@ -179,7 +179,7 @@ ELSE
     BasisStationsParameter.bEintransportAbgeschlossen[wWand] := FALSE;
     bprtScheibe := FALSE;
 
-	  Kippen.bpPositionieren := FALSE;
+    Kippen.bpPositionieren := FALSE;
     Wandverstellung.bpStartePositionierung := FALSE;
 
     steplAktion := STEP_0_E;

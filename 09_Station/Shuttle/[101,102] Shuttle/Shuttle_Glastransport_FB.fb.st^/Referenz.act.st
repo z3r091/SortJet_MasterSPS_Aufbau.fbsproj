@@ -10,7 +10,7 @@ ACTION Referenz
 (* AKTION REFERENZ *)
 (***************************************************************************************************)
 IF( bpFahreReferenz )THEN
-	
+
   // Fehlerbehandlung
   IF ( Antrieb.bpFehler ) THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -23,15 +23,15 @@ IF( bpFahreReferenz )THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
     steplReferenz := STEP_900_E;
   END_IF
-	  
+
   CASE steplReferenz OF
 (*REFERENZ =============================*)
     STEP_0_E:
       bpDone := FALSE;
       tonlSlaveKopplungDeaktiviert( IN := FALSE );
-	  
+
       steplReferenz := STEP_10_E;
-	
+
 (*REFERENZ =============================*)
     STEP_10_E:
       (* Hinweis:
@@ -45,7 +45,7 @@ IF( bpFahreReferenz )THEN
 
         steplReferenz := STEP_20_E;
       END_IF
-	
+
 (*REFERENZ =============================*)
     STEP_20_E:
       (* Hinweis:
@@ -66,17 +66,17 @@ IF( bpFahreReferenz )THEN
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
         Antrieb.wpBetriebsart     := AntriebsBetriebsart_EN.REFERENZ;
-	    
-		IF bpSlaveAntriebVorhanden THEN
+
+    IF bpSlaveAntriebVorhanden THEN
           Antrieb_Slave.rpZielposition    := 0;
           Antrieb_Slave.rpGeschwindigkeit := ppAntriebsInformationen.rpReferenzGeschwindigkeit;
           Antrieb_Slave.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
           Antrieb_Slave.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
           Antrieb_Slave.wpBetriebsart     := AntriebsBetriebsart_EN.REFERENZ;
-		END_IF
-		
+    END_IF
+
         steplReferenz := STEP_30_E;
-		
+
       END_IF
 
 (*REFERENZ =============================*)

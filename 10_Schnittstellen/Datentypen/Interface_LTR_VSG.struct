@@ -16,6 +16,6 @@ TYPE Interface_LTR_VSG :
     bBereitZumEintransport   : BOOL := FALSE;
     bBereitZumAustransport   : BOOL := FALSE;
     bAutomatikBetriebAktiv   : BOOL := FALSE;
-	 bSensorEinlauf           : BOOL := FALSE;
+   bSensorEinlauf           : BOOL := FALSE;
   END_STRUCT
 END_TYPE

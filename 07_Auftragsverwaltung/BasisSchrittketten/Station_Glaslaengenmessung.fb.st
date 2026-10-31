@@ -61,7 +61,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Messfahrt ) THEN
       // Glastyp festlegen
       IF ( Auftragsdaten.rAuftragsLaenge > ( starrStationBasisParameter[wStation].stParameterStationskomponenten.stGlastransport[1].rMessstrecke - rgMKWegAnlegetischUebergroesseScheibeBerechnen ) ) THEN
         starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] := eScheibe_Maximal;
-	  ELSE
+    ELSE
         starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] := eScheibe_Default;    
       END_IF
 
@@ -85,9 +85,9 @@ IF ( Auftragsdaten.wAuftrag = eStation_Messfahrt ) THEN
 
             steplSchritt := STEP_30_E;
           END_IF
-		  
-		ELSE
-		  steplSchritt := STEP_30_E;
+
+    ELSE
+      steplSchritt := STEP_30_E;
 
         END_CASE
 
@@ -167,7 +167,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Messfahrt ) THEN
        CASE starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] OF
 
          cMAXSCHEIBE:
-		     Job_Stationen.abpResetTransportkopplung[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wNachfolgerStation, cWAND_1] := TRUE; 
+         Job_Stationen.abpResetTransportkopplung[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wNachfolgerStation, cWAND_1] := TRUE; 
            Job_Stationen.AuftragsdatenWand[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wNachfolgerStation, cWAND_1].wAuftrag := eStation_Kein_Auftrag;
 
        END_CASE

@@ -53,7 +53,7 @@ VAR
   ftlFremdanlageDatenVerarbeitet          : F_TRIG;
   rtlFehlermeldungGenerierenAuftragsdaten : R_TRIG;
   rtlFehlermeldungGenerierenKommunikation : R_TRIG;
-	
+
 
   (* TIMER *)
   tonlZeitLiveCounterNichtAequivalent     : TON; 
@@ -114,15 +114,15 @@ END_VAR
 VAR CONSTANT
 
   (* WORD *)
-  cVERBINDUNGSVERSUCHE_BIS_FEHLER  : WORD := 5; 	    (* WICHTIG: Aenderung an diesem Wert veraendert das Verhalten ab wieviel Kommunikations-Versuchen wann ein Fehler ausgegeben wird  *)
+  cVERBINDUNGSVERSUCHE_BIS_FEHLER  : WORD := 5;         (* WICHTIG: Aenderung an diesem Wert veraendert das Verhalten ab wieviel Kommunikations-Versuchen wann ein Fehler ausgegeben wird  *)
   
   (* INT *)
-  cWERTEBREICH_INT                 : INT  := 32767;	(* WICHTIG: Aenderung an diesem Wert aendert den Wertebereich eines INTs [positiver Wertebereich] *)
-  cWERTEBREICH_WORD                : WORD := 32767;	(* WICHTIG: Aenderung an diesem Wert aendert den Wertebereich eines INTs [positiver Wertebereich] *)
+  cWERTEBREICH_INT                 : INT  := 32767; (* WICHTIG: Aenderung an diesem Wert aendert den Wertebereich eines INTs [positiver Wertebereich] *)
+  cWERTEBREICH_WORD                : WORD := 32767; (* WICHTIG: Aenderung an diesem Wert aendert den Wertebereich eines INTs [positiver Wertebereich] *)
 
   (* TIME *)
-  cZEIT_AUFTRAGSDATEN_GUELTIG                : TIME :=T#5s; 	    (* WICHTIG: Aenderung an diesem Wert aendert die Zeit ab wann ein Fehlergeneriert wird [s] *)
-  cZEIT_GESPIEGELTE_AUFTRAGSDATEN_UNGUELTIG  : TIME :=T#5s; 	    (* WICHTIG: Aenderung an diesem Wert aendert die Zeit ab wann ein Fehlergeneriert wird [s] *)
+  cZEIT_AUFTRAGSDATEN_GUELTIG                : TIME :=T#5s;         (* WICHTIG: Aenderung an diesem Wert aendert die Zeit ab wann ein Fehlergeneriert wird [s] *)
+  cZEIT_GESPIEGELTE_AUFTRAGSDATEN_UNGUELTIG  : TIME :=T#5s;         (* WICHTIG: Aenderung an diesem Wert aendert die Zeit ab wann ein Fehlergeneriert wird [s] *)
   cZEIT_MANUELLER_MODUS_SIGNAL               : TIME :=T#10s;
   cZEIT_LIVECOUNTER_INKREMENTIEREN           : TIME :=T#250ms;
   cZEIT_LIVECOUNTER_NICHT_GUELTIG            : TIME :=T#1500ms;

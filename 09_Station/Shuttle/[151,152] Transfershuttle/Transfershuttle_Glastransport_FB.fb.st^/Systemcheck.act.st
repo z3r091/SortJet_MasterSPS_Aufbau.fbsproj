@@ -39,11 +39,11 @@ IF ( bpCheck ) THEN
       (* Hinweis:
           - prüfen mit den schmalen Luftschranken oder mit den optionalen Luftschranken (dicken)
       *)
-	  steplCheck := STEP_20_E;
+    steplCheck := STEP_20_E;
 
 (*SYSTEM CHECK=========================*)
     STEP_20_E:
-	     (* Timer um zu prüfen der Luftdruck-Sensoren zuruecksetzen
+       (* Timer um zu prüfen der Luftdruck-Sensoren zuruecksetzen
         - Einlauf- Seite 
         - Auslauf- Seite
      *)
@@ -119,8 +119,8 @@ IF ( bpCheck ) THEN
         (* Druckluft Ok *)
         ELSIF ( NOT blDruckluftAuslaufSeiteOK ) THEN
           wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_AUSLAUF_NICHT_OK;
-  		ELSE
-		    wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
+      ELSE
+        wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
         END_IF
 
         steplCheck := STEP_900_E;
@@ -132,8 +132,8 @@ IF ( bpCheck ) THEN
       (* Anmerkung:
          - Prüfen ob Glas über den Einlauf oder Ausluaf steht, 
            falls ja Systemcheck als nicht erfolgreich beenden        
-      *)	  
-	   IF ( blAuslaufSensor ) THEN
+      *)
+     IF ( blAuslaufSensor ) THEN
 
        IF ( blEinlaufSensor ) THEN
          wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT;
@@ -161,7 +161,7 @@ IF ( bpCheck ) THEN
     STEP_60_E:
       (* Anmerkung:
          - Glas steht über Auslauf steht, 
-      *)	  
+      *)
       IF ( NOT blAuslaufSensor ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
@@ -203,7 +203,7 @@ IF ( bpCheck ) THEN
     STEP_70_E:
       (* Anmerkung:
          - Glas steht über Einlauf
-      *)	  
+      *)
       IF ( NOT blEinlaufSensor ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          IF ( pSystemCheckDaten.wAnzahlScheiben = 0 ) THEN
@@ -245,7 +245,7 @@ IF ( bpCheck ) THEN
     STEP_800_E:
       (* Anmerkung:
          - alles beenden und Shuttle absenken
-     *)	 
+     *)
        out_bShuttleAnheben := FALSE;
        out_bScheibenKontrolleAuslaufseiteAuf := FALSE;
        out_bScheibenKontrolleEinlaufseiteAuf := FALSE;

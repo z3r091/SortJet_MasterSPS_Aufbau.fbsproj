@@ -126,7 +126,7 @@ VAR
   in_bSensorAuslaufVorab                              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; (* Shuttle Sensoren von links nach rechts Sensor 3*)
   in_bSensorAuslaufStopp                              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; (* Shuttle Sensoren von links nach rechts Sensor 5*)
   in_bDatenlichtschrankeShuttlebahnOK          AT %I* : BOOL; (* Bauteil an der Shuttlebahn => Sender / Empfaenger *)
-  in_bDatenlichtschrankeShuttleOK 	           AT %I* : BOOL; (* Bauteil auf dem Shuttle => Sender / Empfaenger *)
+  in_bDatenlichtschrankeShuttleOK              AT %I* : BOOL; (* Bauteil auf dem Shuttle => Sender / Empfaenger *)
   in_bNetzteil_24V_OK                          AT %I* : BOOL;
   in_bKlimageraet_OK                                  : BOOL;
   in_bSicherungen24V_OK                               : BOOL;
@@ -279,37 +279,37 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                         );
   Austransport[wlIndex]( BasisStationsParameter := BasisStationsParameter, 
                          wWand := wlIndex,
-	                       bpGeblaeseAktiv := Geblaese[wlIndex].bpDone,
-	                       bpAutomatikAktiv := BasisStationsParameter.bAutomatik,
-	                       bpVorAbAuftragAktiv := blVorAbAuftragAktiv[wlIndex],
-	                       bpZielPositionErreicht := blZielPositionErreicht,
-	                       Glastransport := Glastransport[wlIndex],
-	                       Kippen := Kippen,
-	                       Wandverstellung := Wandverstellung[wlIndex],
-	                       Geblaese := Geblaese[wlIndex]
+                         bpGeblaeseAktiv := Geblaese[wlIndex].bpDone,
+                         bpAutomatikAktiv := BasisStationsParameter.bAutomatik,
+                         bpVorAbAuftragAktiv := blVorAbAuftragAktiv[wlIndex],
+                         bpZielPositionErreicht := blZielPositionErreicht,
+                         Glastransport := Glastransport[wlIndex],
+                         Kippen := Kippen,
+                         Wandverstellung := Wandverstellung[wlIndex],
+                         Geblaese := Geblaese[wlIndex]
                         );
                          
   Durchtransport[wlIndex]( BasisStationsParameter := BasisStationsParameter, 
                            wWand := wlIndex,
-	                         bpGeblaeseAktiv := Geblaese[wlIndex].bpDone,
-	                         bpAutomatikAktiv := BasisStationsParameter.bAutomatik,
-	                         bpVorAbAuftragAktiv := blVorAbAuftragAktiv[wlIndex],
-	                         bpZielPositionErreicht := blZielPositionErreicht,
-	                         Glastransport := Glastransport[wlIndex],
-	                         Kippen := Kippen,
-	                         Wandverstellung := Wandverstellung[wlIndex],
-	                         Geblaese := Geblaese[wlIndex]
+                           bpGeblaeseAktiv := Geblaese[wlIndex].bpDone,
+                           bpAutomatikAktiv := BasisStationsParameter.bAutomatik,
+                           bpVorAbAuftragAktiv := blVorAbAuftragAktiv[wlIndex],
+                           bpZielPositionErreicht := blZielPositionErreicht,
+                           Glastransport := Glastransport[wlIndex],
+                           Kippen := Kippen,
+                           Wandverstellung := Wandverstellung[wlIndex],
+                           Geblaese := Geblaese[wlIndex]
                           );
   AnsteuerungRessourcen[wlIndex]( BasisStationsParameter := BasisStationsParameter,
                                   wWand := wlIndex,
-								          bpGeblaeseAktiv := Geblaese[wlIndex].bpDone,
-								          bpAutomatikAktiv := BasisStationsParameter.bAutomatik,
-								          bpVorAbAuftragAktiv := blVorAbAuftragAktiv[wlIndex],
-								          bpZielPositionErreicht := blZielPositionErreicht,
-								          Glastransport := Glastransport[wlIndex],
-								          Kippen := Kippen,
-								          Wandverstellung := Wandverstellung[wlIndex],
-								          Geblaese := Geblaese[wlIndex]
+                          bpGeblaeseAktiv := Geblaese[wlIndex].bpDone,
+                          bpAutomatikAktiv := BasisStationsParameter.bAutomatik,
+                          bpVorAbAuftragAktiv := blVorAbAuftragAktiv[wlIndex],
+                          bpZielPositionErreicht := blZielPositionErreicht,
+                          Glastransport := Glastransport[wlIndex],
+                          Kippen := Kippen,
+                          Wandverstellung := Wandverstellung[wlIndex],
+                          Geblaese := Geblaese[wlIndex]
                          );
 END_FOR
 

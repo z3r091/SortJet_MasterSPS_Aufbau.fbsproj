@@ -21,7 +21,7 @@ IF( blBetriebsartReset )THEN
 
       Drehen.bpStarteAbsolutPositionierung := FALSE;
       Drehen.bpStarteDrehBewegung := FALSE;
-	  	  
+
       BasisStationsParameter.eStatusAuftrag := eKeinStatus;   
    
       BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberEinlauf  := FALSE;
@@ -50,7 +50,7 @@ IF( blBetriebsartReset )THEN
       Dickenverstellung.bpReset := TRUE;
       Kippen.bpReset            := TRUE;
       Geblaese.bpReset          := TRUE;
-	    Querfahrt.bpReset         := TRUE;
+      Querfahrt.bpReset         := TRUE;
 
       steplReset := STEP_20_E;
 
@@ -65,7 +65,7 @@ IF( blBetriebsartReset )THEN
       THEN
         Glastransport.bpReset := FALSE;
         Drehen.bpReset        := FALSE;
-	      Querfahrt.bpReset     := FALSE;
+        Querfahrt.bpReset     := FALSE;
 
         steplReset := STEP_1000_E;
       END_IF
@@ -118,7 +118,7 @@ IF( blBetriebsartReset )THEN
   END_CASE
   
 ELSE
-	
+
   IF ( steplReset > STEP_0_E )THEN
     Glastransport.bpReset     := FALSE;
     Drehen.bpReset            := FALSE;

@@ -8,7 +8,7 @@
 FUNCTION_BLOCK Kipptisch_FB EXTENDS Basic_Station_FB
 
 VAR
-	
+
   // BOOL  
   blStartePositionWaagerecht           : BOOL;
   blStartePositionSenkrecht            : BOOL; 

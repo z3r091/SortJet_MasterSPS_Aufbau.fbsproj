@@ -20,7 +20,7 @@ THEN
       tonlWartenAufAnheben(IN:=FALSE);
       tonlEinlaufsensorTesten(IN:= FALSE);
       tonlAuslaufsensorTesten(IN:= FALSE);
-	    bpDone := FALSE;
+      bpDone := FALSE;
 
 
       IF ( Antrieb.bpReglerBereit )THEN
@@ -70,7 +70,7 @@ THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
         steplHebeVorgang := STEP_900_E;
-      END_IF		 
+      END_IF
 
 (* HEBE VORGANG ==============================*)
     STEP_100_E:
@@ -81,7 +81,7 @@ THEN
          - Einlauf- Auslauf- Sensoren heben
          Die Variable  << blGlastransportUndAbfragenGehoben >> wird gebildet durch:
          - tonlGlastransportOben.Q  | tonlKontrolleEinlaufOben.Q  | blDruckluftAuslaufSeiteOK
-	         tonlKontrolleAuslaufOben.Q | blDruckluftEinlaufSeiteOK 
+           tonlKontrolleAuslaufOben.Q | blDruckluftEinlaufSeiteOK 
       *)
       out_bShuttleAnheben := TRUE;
       out_bScheibenKontrolleAuslaufseiteAuf := bpOptionSensorAuslauf;
@@ -91,7 +91,7 @@ THEN
 
       IF (  tonlGlastransportOben.Q
         AND ( tonlKontrolleEinlaufOben.Q OR NOT bpOptionSensorEinlauf )
-	      AND ( tonlKontrolleAuslaufOben.Q OR NOT bpOptionSensorAuslauf ) )
+        AND ( tonlKontrolleAuslaufOben.Q OR NOT bpOptionSensorAuslauf ) )
       THEN
            steplHebeVorgang := STEP_1000_E;
       END_IF
@@ -118,7 +118,7 @@ THEN
 
         steplHebeVorgang := STEP_900_E;
       END_IF
-	   
+
 (* HEBE VORGANG ==============================*)
      STEP_900_E:
        bpFehler := TRUE;

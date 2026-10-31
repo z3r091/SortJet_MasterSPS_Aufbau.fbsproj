@@ -19,7 +19,7 @@ END_FOR
 EV_ToSLC_bReset_EDM := NotHalt.in_bTasterNothaltQuittieren
                     OR bpVisuResetEDM
                     OR bResetDurchSK;
-			 
+
 // Nothalt quittieren 
 EV_ToSLC_bReset_Nothalt := ( NotHalt.in_bTasterNothaltQuittieren AND NOT NotHalt.bpNotHaltOK )
                            OR bpVisuResetNothalt;

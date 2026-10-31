@@ -83,9 +83,9 @@ ELSE
   IF( steplReset > STEP_0_E )THEN
     bpResetAbgeschlossen := FALSE;
     bpDone := FALSE;
-	
+
     steplReset := STEP_0_E;
-	
+
     Antrieb.wpBetriebsart       := KEINE_FUNKTION;
     Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
   END_IF

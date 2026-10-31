@@ -16,8 +16,8 @@ TYPE Parameter_Station :
     stStationsAufbau      : Stations_Aufbau_ST;
     stStationsParameter   : Stations_Parameter_ST;
     stSchnittstellendaten : Schnittstellendaten_ST;
-    stFremdanlage         : Stations_Parameter_Fremdanlage_ST;	
-    stGlasdaten           : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Glas;	
+    stFremdanlage         : Stations_Parameter_Fremdanlage_ST;
+    stGlasdaten           : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Glas;
     eaSicherheitskreis    : ARRAY[0..cANZAHL_SICHERHEITSKREISE] OF Sicherheitskreis_EN;
     eSystemcheckZyklus    : SystemcheckZyklen_EN;
     // Nicht benoetigte Eintraege: bAktiv := FALSE lassen.

@@ -7,7 +7,7 @@
 *)
 FUNCTION_BLOCK ZylinderPneumatik_Anschlag_FB
 VAR_INPUT
-	
+
   // EINGAENGE 
   in_bStatusZylinderAusgefahren : BOOL; 
   in_bStatusZylinderEingefahren : BOOL; 

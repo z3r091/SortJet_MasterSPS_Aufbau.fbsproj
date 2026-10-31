@@ -7,7 +7,7 @@
 *)
 FUNCTION_BLOCK Kipptisch_Kippen_FB
 VAR_INPUT
-	
+
   // BOOLEAN 
   bpAktivieren           : BOOL; // Aktivierung: stStationsAufbau.bKippen
   bpSensorEinlauf        : BOOL;

@@ -48,23 +48,23 @@ IF ( bpReset ) THEN
       blAustransportDefaultLuftabfrage := FALSE;
       blEintransportDefaultLuftabfrage := FALSE;
 
-	    (* Hinweis:
-	       - Betriebsarten zuruecksetzen
+      (* Hinweis:
+         - Betriebsarten zuruecksetzen
       *) 
-	  bpStarteHebeVorgang := FALSE;
-	  bpEintransport      := FALSE;
+    bpStarteHebeVorgang := FALSE;
+    bpEintransport      := FALSE;
       bpAustransport      := FALSE;
       bpVortransport      := FALSE;
 
-	    steplReset          := STEP_20_E;
+      steplReset          := STEP_20_E;
 
 (*RESET ==============================*)
     STEP_20_E:
       Antrieb.wpBetriebsart := KEINE_FUNKTION;
-	  
-	  IF NOT Antrieb.bpAntrieblaeuft THEN
+
+    IF NOT Antrieb.bpAntrieblaeuft THEN
         steplReset := STEP_30_E;
-	  END_IF
+    END_IF
 
 (*RESET ==============================*)
     STEP_30_E:

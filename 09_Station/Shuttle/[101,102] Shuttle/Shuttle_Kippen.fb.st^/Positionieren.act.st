@@ -24,15 +24,15 @@ IF ( bpPositionieren )THEN
     STEP_0_E:
       bpDone := FALSE;
 
-	  IF epZielPosition = epKippStatus THEN
+    IF epZielPosition = epKippStatus THEN
          steplPositionieren := STEP_1000_E;
-	  ELSE
+    ELSE
       IF Antrieb.bpReglerBereit
         AND bpFreigabe
       THEN
          steplPositionieren := STEP_10_E;
       END_IF
-	  END_IF  
+    END_IF  
 
 (* AUFKIPPEN ================*)
     STEP_10_E:
@@ -53,22 +53,22 @@ IF ( bpPositionieren )THEN
          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
          Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
       END_IF
-	  
-	  CASE epZielPosition OF
-		  
+
+    CASE epZielPosition OF
+
         eKippen_Position_0Grad:
           Antrieb.rpZielPosition  := ppParameterBaustein.rPosition0Grad;
-		
+
         eKippen_Position_84Grad:
           Antrieb.rpZielPosition  := ppParameterBaustein.rPosition84Grad;
-		
+
         eKippen_Position_88_5Grad:
           Antrieb.rpZielPosition  := ppParameterBaustein.rPosition88_5Grad;
-		
+
         eKippen_Position_90Grad:
           Antrieb.rpZielPosition  := ppParameterBaustein.rPosition90Grad;
-	
-		
+
+
       END_CASE
 
       Antrieb.wpBetriebsart   := ABSOLUT;

@@ -187,7 +187,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
 (* VORTRANSPORT ============================================== *)
     STEP_1000_E:
       bpDone := TRUE;
-	  
+
       Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
 
       (* Hinweis:

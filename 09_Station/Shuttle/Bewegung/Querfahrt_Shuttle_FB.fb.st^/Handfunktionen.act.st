@@ -28,7 +28,7 @@ THEN
       Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
       Antrieb.rpRuckzeit         := 500.0;
     END_IF
-	 
+
     IF ( Antrieb.bpIstReferenziert ) THEN
       Antrieb.rpZielposition := Antrieb.rpMaxPosition;
       Antrieb.wpBetriebsart  := ABSOLUT;
@@ -46,7 +46,7 @@ THEN
       Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
       Antrieb.rpRuckzeit         := 500.0;
     END_IF
-	 
+
     IF ( Antrieb.bpIstReferenziert ) THEN
       Antrieb.rpZielposition := Antrieb.rpMaxPosition;
       Antrieb.wpBetriebsart  := ABSOLUT;
@@ -55,7 +55,7 @@ THEN
     END_IF
 
   ELSIF ( NOT bpHandminus AND NOT bpHandplus ) THEN
-	 blFreigabeGesetzt := FALSE;
+   blFreigabeGesetzt := FALSE;
     Antrieb.bpFreigabe := tofAntriebFreigabe.Q; (* Zeitverzögert abschalten *)
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
 

@@ -134,7 +134,7 @@ THEN
          - Einlauf- Auslauf- Sensoren heben
          Die Variable  << blGlastransportUndAbfragenGehoben >> wird gebildet durch:
          - tonlGlastransportOben.Q  | tonlKontrolleEinlaufOben.Q  | blDruckluftAuslaufSeiteOK
-	         tonlKontrolleAuslaufOben.Q | blDruckluftEinlaufSeiteOK 
+           tonlKontrolleAuslaufOben.Q | blDruckluftEinlaufSeiteOK 
       *)
       out_bShuttleAnheben := TRUE;
       out_bScheibenKontrolleAuslaufseiteAuf := TRUE;
@@ -201,7 +201,7 @@ THEN
       (* Hinweis:
          - Warten bis der Glas-Sender bereit meldet
       *)
-		  IF IsBetweenWORD(pAuftrag.wTransferstationsNr2, cERSTE_FAECHERWAGENSTATIONS_NR, cLETZTE_FAECHERWAGENSTATIONS_NR) THEN
+      IF IsBetweenWORD(pAuftrag.wTransferstationsNr2, cERSTE_FAECHERWAGENSTATIONS_NR, cLETZTE_FAECHERWAGENSTATIONS_NR) THEN
           IF ( InGlasTransportVorgaenger.bBereitZumAustransport AND InGlasTransportNachfolger.bBereitZumAustransport ) THEN
             (* Hinweis:
                - Scheibenzaehler (Dekrementieren des Zaehlers)
@@ -212,7 +212,7 @@ THEN
             END_IF
             steplEintransportDefaultLuftabfrage := STEP_110_E;
           END_IF
-		  ELSE
+      ELSE
           IF ( InGlasTransportVorgaenger.bBereitZumAustransport ) THEN
             (* Hinweis:
                - Scheibenzaehler (Dekrementieren des Zaehlers)
@@ -223,7 +223,7 @@ THEN
             END_IF
             steplEintransportDefaultLuftabfrage := STEP_110_E;
           END_IF
-		  END_IF
+      END_IF
 
 
 (*EINTRANSPORT ==============================*)
@@ -267,16 +267,16 @@ THEN
 
        rlZielPosition := (( pAuftrag.rAuftragsLaenge + ppParameterBaustein.rWegUeberEinlaufEintransport ) - pAuftrag.rModellVersatzVorne);
        // Kleine Scheiben tiefer in den Speicher reinfahren, da diese Gefahr laufen, beim Fächerwagen schieben rauszufallen
-	     IF bpOptionTransfershuttleMitFaecherwagen AND bpOptionTransfershuttleFaecherwagenKurzeScheibenTieferEintransportieren AND ( pAuftrag.rAuftragsLaenge < ( starrTransfershuttleBasisParameter[stStationsNummern.NummerSPS].stMKs.stGlasdaten[cWAND_1].rlMaxGlasLaenge / 2 ) ) THEN
-		    rlZielPosition := rlZielPosition + 150.0;
-	     END_IF
+       IF bpOptionTransfershuttleMitFaecherwagen AND bpOptionTransfershuttleFaecherwagenKurzeScheibenTieferEintransportieren AND ( pAuftrag.rAuftragsLaenge < ( starrTransfershuttleBasisParameter[stStationsNummern.NummerSPS].stMKs.stGlasdaten[cWAND_1].rlMaxGlasLaenge / 2 ) ) THEN
+        rlZielPosition := rlZielPosition + 150.0;
+       END_IF
        Antrieb.rpZielPosition    := rlZielPosition;
 
-	     IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+       IF bpOptionTransfershuttleMitUltraschallSensoren THEN
          Antrieb.wpRestwegMode := Positiv_Steigend_Sensor1;
-	     ELSE
+       ELSE
          Antrieb.wpRestwegMode := Positiv_Fallend_Sensor1;
-	     END_IF
+       END_IF
 
        Antrieb.wpBetriebsart := RESTWEG;
 
@@ -334,13 +334,13 @@ THEN
       IF ( bpScheibentrennung  ) THEN
 
         IF ( ilScheibenZaehler <= 1 ) THEN
-      	  IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
+          IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
             IF blReduzierteGeschwindigkeit THEN
               Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
             ELSE
               Antrieb.rpGeschwindigkeit := rgGeschwindigkeit15;
             END_IF
-      	  END_IF
+          END_IF
 
         ELSE
           IF blReduzierteGeschwindigkeit THEN
@@ -523,14 +523,14 @@ THEN
 
          rlZielPosition := ( ppParameterBaustein.rWegUeberEinlaufEintransport - pAuftrag.rModellVersatzVorne);
          Antrieb.rpZielPosition    := rlZielPosition;
-	     IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+       IF bpOptionTransfershuttleMitUltraschallSensoren THEN
            Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor1;
-	     ELSE
+       ELSE
            Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
-	     END_IF
+       END_IF
 
          Antrieb.wpBetriebsart := RESTWEG;
-		 
+
          steplEintransportDefaultLuftabfrage := STEP_210_E;
 
        ELSE
@@ -573,7 +573,7 @@ THEN
         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
         steplEintransportDefaultLuftabfrage := STEP_200_E;
       END_IF
-	  
+
        IF ( blAuslaufSensor ) THEN
          bpScheibeFaehrtUeberAuslauf := TRUE;
          bpAnforderungBetriebsstopp  := TRUE;
@@ -714,11 +714,11 @@ THEN
       (* Hinweis:
          - Warten bis der Glas-Empfaenger bereit meldet
       *)
-		IF IsBetweenWORD(pAuftrag.wTransferstationsNr2, cERSTE_FAECHERWAGENSTATIONS_NR, cLETZTE_FAECHERWAGENSTATIONS_NR) THEN
-			wpFehlerNr := cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_STATION;
-			bpFehler := TRUE;
-		  steplEintransportDefaultLuftabfrage := STEP_900_E;
-		ELSE
+    IF IsBetweenWORD(pAuftrag.wTransferstationsNr2, cERSTE_FAECHERWAGENSTATIONS_NR, cLETZTE_FAECHERWAGENSTATIONS_NR) THEN
+      wpFehlerNr := cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_STATION;
+      bpFehler := TRUE;
+      steplEintransportDefaultLuftabfrage := STEP_900_E;
+    ELSE
         IF ( InGlasTransportNachfolger.bBereitZumAustransport ) THEN
           (* Hinweis:
              - Scheibenzaehler (Dekrementieren des Zaehlers)
@@ -775,11 +775,11 @@ THEN
 
        rlZielPosition            := - (( pAuftrag.rAuftragsLaenge + ppParameterBaustein.rWegUeberAuslaufEintransport ) - pAuftrag.rModellVersatzVorne);
        Antrieb.rpZielPosition    := rlZielPosition;
-	   IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+     IF bpOptionTransfershuttleMitUltraschallSensoren THEN
          Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor2;
-	   ELSE
+     ELSE
          Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor2;
-	   END_IF
+     END_IF
 
        steplEintransportDefaultLuftabfrage := STEP_420_E;
 
@@ -834,13 +834,13 @@ THEN
       IF ( bpScheibentrennung  ) THEN
 
         IF ( ilScheibenZaehler = 1 ) THEN
-      	  IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
+          IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
             IF blReduzierteGeschwindigkeit THEN
               Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
             ELSE
               Antrieb.rpGeschwindigkeit := rgGeschwindigkeit15;
             END_IF
-      	  END_IF
+          END_IF
 
         ELSE
           IF blReduzierteGeschwindigkeit THEN
@@ -1242,8 +1242,8 @@ THEN
          (* Luftsensoren unten *)
          ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteUnten ) THEN
            wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_UNTEN;
-		 ELSE
-		     wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
+     ELSE
+         wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
          END_IF
 
          steplEintransportDefaultLuftabfrage := STEP_900_E;
@@ -1259,7 +1259,7 @@ THEN
     Antrieb.wpBetriebsart     := KEINE_FUNKTION;
 
     bpFehler := TRUE;
-	
+
 (*EINTRANSPORT ==============================*)
   STEP_1000_E:
 

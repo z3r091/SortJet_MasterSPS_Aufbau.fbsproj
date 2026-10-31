@@ -7,13 +7,13 @@
 *)
 TYPE Auftragsstatus_EN :
   (
-	 eKeinStatus              := 0,
+   eKeinStatus              := 0,
     eAuftragAktiv            := 1,
     eAuftragErfolgreich      := 2,
     eAuftragAbgebrochen      := 3,
     eAuftragFehler           := 4,
     eAuftragQuittiert        := 5,
-    eAuftragWiederholen      := 6,	 
+    eAuftragWiederholen      := 6,
     eAuftragAktivWiederholen := 7
   ) WORD;
 END_TYPE

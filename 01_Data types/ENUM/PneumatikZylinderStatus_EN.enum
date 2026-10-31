@@ -12,8 +12,8 @@ TYPE PneumatikZylinderStatus_EN :
     eZylinderStellung23mm  := 2,
     eZylinderStellung29mm  := 3,
     eZylinderGeschlossen   := 4,
-	eZylinderGeoeffnet     := 5,
-	eZylinderAusgefahren   := 6,
-	eZylinderEingefahren   := 7
+  eZylinderGeoeffnet     := 5,
+  eZylinderAusgefahren   := 6,
+  eZylinderEingefahren   := 7
   ) WORD;
 END_TYPE

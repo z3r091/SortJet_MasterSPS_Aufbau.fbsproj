@@ -18,7 +18,7 @@ WatchIo(bpInitialisierung AND NOT NotHalt.bpNotHaltOK, ioccInitBlockNotAus);
 blDruckluftOK := TRUE;
 FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
   IF NOT StatusAnlage.abpDruckluftOK[wlIndex] THEN
-    blDruckluftOK := FALSE;	  
+    blDruckluftOK := FALSE;
   END_IF
 END_FOR
 WatchIo(bpInitialisierung AND NOT blDruckluftOK, ioccInitBlockDruckluft);
@@ -80,7 +80,7 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
      AND NOT starrShuttleBasisParameter[wlIndex].stMKs.bDeaktivieren 
   THEN 
     blShuttleErreichbar := FALSE;
-  END_IF	
+  END_IF
   WatchIo((bpInitialisierung AND starrShuttleBasisParameter[wlIndex].bReferenz AND NOT starrShuttleBasisParameter[wlIndex].bIstReferenziert),wlMeldungsnummer);
   wlMeldungsnummer := wlMeldungsnummer + 1;
 END_FOR

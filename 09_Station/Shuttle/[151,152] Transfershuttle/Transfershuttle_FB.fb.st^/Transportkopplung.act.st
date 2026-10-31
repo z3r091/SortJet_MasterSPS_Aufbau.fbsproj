@@ -84,7 +84,7 @@ THEN
       (* Hinweis:
          - Warteschritt
       *)
-	  ;
+    ;
 
 (*TRANSPORTKOPPLUNG ==============================*)
  END_CASE

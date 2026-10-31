@@ -7,9 +7,9 @@
 *)
 TYPE eAchsStatus_EN :
 (
-	AXIS_ERROR_OR_DISABLED :=  0,
-	AXIS_STOPPING          :=  1,
-	AXIS_VALID             :=  2,
-	AXIS_UNKNOWN           := 99
+  AXIS_ERROR_OR_DISABLED :=  0,
+  AXIS_STOPPING          :=  1,
+  AXIS_VALID             :=  2,
+  AXIS_UNKNOWN           := 99
 ) WORD;
 END_TYPE

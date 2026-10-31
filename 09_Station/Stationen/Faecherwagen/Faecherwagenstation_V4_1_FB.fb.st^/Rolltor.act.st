@@ -57,7 +57,7 @@ IF blRolltorAuf THEN
                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
                    BasisStationsParameter.awFehlerInformationen );
-						 
+
          steplRolltorAuf := STEP_900_E;
       END_IF
 
@@ -145,7 +145,7 @@ THEN
                   BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
                   BasisStationsParameter.awFehlerInformationen );
-						
+
         steplRolltorAb := STEP_900_E;
       END_IF
 

@@ -50,12 +50,12 @@ THEN
 
       blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
 
-	  // Sicherstellen das die Slavekopplung aktiv ist
+    // Sicherstellen das die Slavekopplung aktiv ist
       IF ( blAntriebsKopplungAktiv ) THEN
         // Zeit für Statistik
         tlWarteZeitAufnahme := TIME();
         steplAustransport := STEP_10_E;
-	  END_IF
+    END_IF
 
 (*AUSTRANSPORT ====================*)
     STEP_10_E:
@@ -185,13 +185,13 @@ THEN
        
       Antrieb.wpMaster := InGlasTransportNachfolger.wAchsID;
 
-		// Wenn der Vorgänger "Rückwärtig" fährt, muss der Antrieb "invertiert" gekoppelt werdem, da es sonst in der falsche Richtung fährt
-		IF InGlasTransportVorgaenger.bTransportRueckwaertig THEN
-		 Antrieb.wpBetriebsart := INVERTIERTER_SYNC_AUF_MASTER;		
+    // Wenn der Vorgänger "Rückwärtig" fährt, muss der Antrieb "invertiert" gekoppelt werdem, da es sonst in der falsche Richtung fährt
+    IF InGlasTransportVorgaenger.bTransportRueckwaertig THEN
+     Antrieb.wpBetriebsart := INVERTIERTER_SYNC_AUF_MASTER;
       ELSE
-        Antrieb.wpBetriebsart := SYNC_AUF_MASTER;			  
+        Antrieb.wpBetriebsart := SYNC_AUF_MASTER;
       END_IF
-				
+
       IF ( Antrieb.bpDone ) THEN
         bpSlaveAktiv := TRUE;
         bpOutBereitZumAustransport := TRUE;
@@ -206,8 +206,8 @@ THEN
       IF ( toflAuslaufsensor.Q ) THEN
         steplAustransport := STEP_120_E;
       END_IF
-	  
-	 (* Fehlerbehandlung:
+
+   (* Fehlerbehandlung:
          - Auslaufsensor schaltet nicht
       *)
       IF ( tonlMaximaleZeitSensorAnfahren.Q ) THEN
@@ -311,10 +311,10 @@ THEN
       *)
       bpFehler    := TRUE;
       bprtScheibe := FALSE;
-	  
+
       Antrieb.wpBetriebsart       := KEINE_FUNKTION;
       Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
-	  
+
       bpOutBereitZumEintransport := FALSE;
       bpOutBereitZumAustransport := FALSE;
 

@@ -55,9 +55,9 @@ IF ( bpReset ) THEN
       (* Hinweis:
          - Antrieb Fehler zurücksetzen 
       *)
-	  blFreigabeGesetzt := FALSE;
-	  Antrieb.bpFreigabe := FALSE;
-	  
+    blFreigabeGesetzt := FALSE;
+    Antrieb.bpFreigabe := FALSE;
+
       tonlWarteAufReset(IN := FALSE);
       Antrieb.wpBetriebsart :=  AntriebsBetriebsart_EN.RESET;
 

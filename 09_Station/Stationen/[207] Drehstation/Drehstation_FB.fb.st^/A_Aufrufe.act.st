@@ -38,7 +38,7 @@ Kippen( stStationsNummern                      := BasisStationsParameter.stMKs.s
         bpSensorAuslauf                        := Glastransport.bpSensorAuslauf );
 
 // Querfahrt
-Querfahrt( stStationsNummern                   := BasisStationsParameter.stMKs.stStationsNummern,	
+Querfahrt( stStationsNummern                   := BasisStationsParameter.stMKs.stStationsNummern,
            bpAutomatikAktiv                    := BasisStationsParameter.bAutomatik,
            bpFreigabe                          := BasisStationsParameter.bFreigabe,
            bpReglungAktivSchalten              := Drehen.bpDrehvorgangAktiv );    
@@ -46,7 +46,7 @@ Querfahrt( stStationsNummern                   := BasisStationsParameter.stMKs.s
 // Geblaese
 Geblaese( stStationsNummern                    := BasisStationsParameter.stMKs.stStationsNummern,
           bpFreigabe                           := BasisStationsParameter.bFreigabe,
-		      bpMotorschutzschalter_OK             := in_bMotorstarter_Geblaese_OK,
+          bpMotorschutzschalter_OK             := in_bMotorstarter_Geblaese_OK,
           bpIOsBoschDrive                      := TRUE );
 
 // Querachse

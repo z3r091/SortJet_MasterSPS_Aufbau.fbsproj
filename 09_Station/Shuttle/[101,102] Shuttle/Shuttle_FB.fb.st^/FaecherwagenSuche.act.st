@@ -31,19 +31,19 @@ IF bpStarteFaecherwagensuche THEN
       Querfahrt.bpShuttleFaecherwagenSuche := TRUE;
 
       steplFaecherwagensuche := STEP_5_E;
-	  
+
 (*FÄCHERWAGENSUCHE ==============================*)
     STEP_5_E:
       // Shuttle auf 90 Grad stellen
       IF( Kippen.epKippStatus = eKippen_Position_90Grad ) THEN
-	      steplFaecherwagensuche := STEP_10_E;
-		    Kippen.bpPositionieren := FALSE;
-	    ELSE
-	      Kippen.epZielPosition := eKippen_Position_90Grad;
-		    Kippen.bpPositionieren := TRUE;
-	    END_IF
-	  
-	  
+        steplFaecherwagensuche := STEP_10_E;
+        Kippen.bpPositionieren := FALSE;
+      ELSE
+        Kippen.epZielPosition := eKippen_Position_90Grad;
+        Kippen.bpPositionieren := TRUE;
+      END_IF
+
+
 (*FÄCHERWAGENSUCHE ==============================*)
     STEP_10_E:
       // FW mit FaecherwagenSuchSensor suchen 
@@ -56,8 +56,8 @@ IF bpStarteFaecherwagensuche THEN
         //steplFaecherwagensuche := STEP_20_E;
       END_IF
 
-		  // Wenn die Ist Position sich um 1mm aendert -> MSG an MMI (nur fuer LOG)
-		  IF ( NOT IsInRange(Querfahrt.rpAktPosition, rlLetztePosition, 1) ) THEN
+      // Wenn die Ist Position sich um 1mm aendert -> MSG an MMI (nur fuer LOG)
+      IF ( NOT IsInRange(Querfahrt.rpAktPosition, rlLetztePosition, 1) ) THEN
 
         rlLetztePosition := Querfahrt.rpAktPosition;
 

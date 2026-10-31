@@ -121,7 +121,7 @@ THEN
       IF rtlFussleisteStart.Q OR ftlVSGAutomatikBetriebBeendet.Q THEN
         out_bAmpelSignalGruenScheibeAnlegen := FALSE;
         BasisStationsParameter.bAnlegen := TRUE;
-		  BasisStationsParameter.bEintransport[cWAND_1] := FALSE;
+      BasisStationsParameter.bEintransport[cWAND_1] := FALSE;
       END_IF
 
       (* Anmerkung:

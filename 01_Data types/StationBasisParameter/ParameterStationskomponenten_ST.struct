@@ -8,7 +8,7 @@
 {attribute 'strict'}
 TYPE ParameterStationskomponenten_ST :
   STRUCT
-	
+
     stGlastransport                 : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Glastransport;
     stGlastransportY                : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Glastransport;
     stGlastransportShuttle          : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_ShuttleGlastransport;

@@ -80,14 +80,14 @@ IF ( blBetriebartCheck ) THEN
          Glastransport[wlIndex].bpCheck := FALSE;
         END_FOR
        
-		    IF ( NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippenSchuetz ) THEN
+        IF ( NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippenSchuetz ) THEN
           wSPS2MMIShuttleNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
-		      IF ( Kippen.epKippStatus = eKippen_Position_90Grad ) OR ( Kippen.epKippStatus = eKippen_Position_84Grad ) OR ( Kippen.epKippStatus = eKippen_Position_96Grad ) THEN
+          IF ( Kippen.epKippStatus = eKippen_Position_90Grad ) OR ( Kippen.epKippStatus = eKippen_Position_84Grad ) OR ( Kippen.epKippStatus = eKippen_Position_96Grad ) THEN
             wSPS2MMIShuttleKippenStatus := 3;
-		      ELSE
+          ELSE
             wSPS2MMIShuttleKippenStatus := 0;
-		      END_IF
-		    END_IF
+          END_IF
+        END_IF
         steplCheck:=STEP_100_E;
       END_IF
 
@@ -98,27 +98,27 @@ IF ( blBetriebartCheck ) THEN
       *)
       IF ( BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition <> eKippen_Default ) THEN
         Kippen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition;
-	      Kippen.bpPositionieren := TRUE;
-		
+        Kippen.bpPositionieren := TRUE;
+
         steplCheck := STEP_110_E;
-	   ELSE
+     ELSE
         steplCheck := STEP_1000_E;
-			
-		END_IF
-		
+
+    END_IF
+
 (*SYSTEM CHECK=========================*)
     STEP_110_E:
       (* Hinweis:
          - Kippen abschließen
       *)
       IF ( Kippen.bpDone ) THEN
-		  
+
         Kippen.bpPositionieren := FALSE;
 
         steplCheck:=STEP_1000_E;
       END_IF
 
-	
+
 (*SYSTEM CHECK=========================*)
     STEP_900_E:
       FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
@@ -126,7 +126,7 @@ IF ( blBetriebartCheck ) THEN
       END_FOR
 
       Kippen.bpPositionieren := FALSE;
-	
+
       blNachSystemcheckMerker := FALSE;
 
       BasisStationsParameter.bFehler := TRUE;

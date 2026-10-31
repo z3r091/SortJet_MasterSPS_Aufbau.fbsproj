@@ -29,7 +29,7 @@ IF BasisStationsParameter.bEintransport[1] AND
 THEN
 
   IF BasisStationsParameter.bFehler THEN
- 	  steplEinschleusen := STEP_900_E;
+     steplEinschleusen := STEP_900_E;
   END_IF
 
   CASE steplEinschleusen OF
@@ -50,7 +50,7 @@ THEN
       blGreiferSchliessen         := FALSE;
       blRolltorAuf                := FALSE;
       blRolltorAb                 := FALSE;
-		  blRFID_Auslesen             := FALSE;
+      blRFID_Auslesen             := FALSE;
       blRFID_DataWasValid         := FALSE;
 
       eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Starten_0;
@@ -94,8 +94,8 @@ THEN
       //         
       // Hinweis:
       // - Nach start des Bedieners  wird der Vorgang gestartet
-		// - LS muss quittiert sein und noch immer ein Wagen in der Box stehen
-		// - es wird direkt der Gegenhalter unter dem Wagen ausgefahren um sicherzustellen, das der Wagen nicht verrutscht
+    // - LS muss quittiert sein und noch immer ein Wagen in der Box stehen
+    // - es wird direkt der Gegenhalter unter dem Wagen ausgefahren um sicherzustellen, das der Wagen nicht verrutscht
       // ---------------------------------------------------------------------------------------*)
 
       eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Warten_Auf_Lichtschranke_Und_Quittierung_105;
@@ -103,7 +103,7 @@ THEN
       IF  ( rtlQuittierungEinschleusen.Q
         OR  blMerkerEinschleusenQuittiert )
         AND tonlFWInBox.Q
-		    AND bpLichtschranke_OK
+        AND bpLichtschranke_OK
       THEN
 
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Gegenhalter_Schliessen_110;
@@ -121,7 +121,7 @@ THEN
       //         
       // Hinweis:
       // - sobald der Gegenhalter Ausgefahren wird wird das auslesen des RFID-Chips gestartet
-		  // 
+      // 
       // ---------------------------------------------------------------------------------------*)
 
       IF ( blGegenhalterSchliessenDone )
@@ -129,10 +129,10 @@ THEN
       
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_RFID_Auslesen_Gegenhalter_Schliessen_115;
 
-		    blRFID_Auslesen := TRUE;
+        blRFID_Auslesen := TRUE;
         blGegenhalterSchliessen := FALSE;
         steplEinschleusen := STEP_115_E;
-		  ELSE
+      ELSE
         blGegenhalterSchliessen := TRUE;
       END_IF
 
@@ -144,18 +144,18 @@ THEN
       //         
       // Hinweis:
       // - sobald der RFID-Chip ausgelesen wurde, wird das Rolltor geöffnet und die Verriegelung geöffnet
-		  // 
+      // 
       // ---------------------------------------------------------------------------------------*)
 
       tonlTimeoutReadRFID(IN := TRUE, PT := T#5S); (* Timer falls der Chip nicht ausgelesen werden kann*)
-		
+
       blRFID_Auslesen := TRUE;
         
       IF ( blRFID_DataValid ) THEN
    
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Rolltor_Oeffnen_120;
 
-        wlRFID_NummerMerker   := wlRFID_Nummer;//Merken der Ausgelesenen RFID-Nummer um sie später ans MMI zu schicken 	
+        wlRFID_NummerMerker   := wlRFID_Nummer;//Merken der Ausgelesenen RFID-Nummer um sie später ans MMI zu schicken
         blRFID_DataWasValid   := TRUE;//Merker setzten das der RFID-Sensor ordnungsgemäß ausgelesen wurde
         blRFID_Auslesen       := FALSE;
         blRolltorAuf          := TRUE;
@@ -165,7 +165,7 @@ THEN
 
         blRFID_Auslesen := FALSE;
         tonlTimeoutReadRFID(IN := FALSE); (* Timer falls der Chip nicht ausgelesen werden kann*)
-		
+
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_RFID_CHIP_NICHT_LESBAR;
         SpsError( eFehler_Station, 
                   wpFehlernr, 
@@ -184,17 +184,17 @@ THEN
       //         
       // Hinweis:
       // - wenn das Rolltor und die Verriegelung geöffnet sind müssen die Greiferbacken geöffnet werden
-		  // 
+      // 
       // ---------------------------------------------------------------------------------------*)
 
       IF ( blRolltorAufDone )
       THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Greifer_Oeffnen_125;
 
-		    blGreiferOeffnen      := TRUE;
+        blGreiferOeffnen      := TRUE;
         blRolltorAuf          := FALSE;
         steplEinschleusen     := STEP_125_E;
-		  ELSE
+      ELSE
         blRolltorAuf          := TRUE;
       END_IF
 
@@ -205,16 +205,16 @@ THEN
       //         
       // Hinweis:
       // - Wenn der Greifer offen ist wird die Lineareinheit auf die Greifposition gefahren
-		  // 
+      // 
       // ---------------------------------------------------------------------------------------*)
-		
+
       IF ( blGreiferOeffnenDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Lineareinheit_Vor_130;
 
         blGreiferOeffnen   := FALSE;
         blLineareinheitVor := TRUE;
         steplEinschleusen  := STEP_130_E;
-		  ELSE
+      ELSE
         blGreiferOeffnen   := TRUE;
       END_IF
 
@@ -225,16 +225,16 @@ THEN
       //         
       // Hinweis:
       // - Wenn die LinearEinheit vorne ist wird der Wagen das erste mal gegriffen
-		  // 
+      // 
       // ---------------------------------------------------------------------------------------*)
-		
+
       IF ( blLineareinheitVorDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Greifer_Schliessen_135;
 
         blLineareinheitVor      := FALSE;
-		    blGreiferSchliessen     := TRUE;
+        blGreiferSchliessen     := TRUE;
         steplEinschleusen       := STEP_135_E;
-		  ELSE
+      ELSE
         blLineareinheitVor      := TRUE;
       END_IF
 
@@ -245,16 +245,16 @@ THEN
       //         
       // Hinweis:
       // - WSobald der Wagen gegriffen wurde kann die Verriegelung geöffnet werden
-	  	// 
+      // 
       // ---------------------------------------------------------------------------------------*)
 
       IF ( blGreiferSchliessenDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Entrieglung_Oeffnen_140;
 
         blGreiferSchliessen   := FALSE;
-		    blEntriegelungOeffnen := TRUE;
+        blEntriegelungOeffnen := TRUE;
         steplEinschleusen     := STEP_140_E;
-		  ELSE
+      ELSE
         blGreiferSchliessen   := TRUE;
       END_IF
 
@@ -265,16 +265,16 @@ THEN
       //         
       // Hinweis:
       // - Wenn der Wagen entriegelt wurde wird der Wagen soweit wie möglich auf die Station gezogen, damit umgegriffen werden kann
-	  	// 
+      // 
       // ---------------------------------------------------------------------------------------*)
 
       IF ( blEntriegelungOeffnenDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Lineareinheit_zurueck_145;
 
         blEntriegelungOeffnen  := FALSE;
-	    	blLineareinheitZurueck := TRUE;
+        blLineareinheitZurueck := TRUE;
         steplEinschleusen      := STEP_145_E;
-		  ELSE
+      ELSE
         blEntriegelungOeffnen  := TRUE;
       END_IF
 
@@ -285,16 +285,16 @@ THEN
       //         
       // Hinweis:
       // - Sobald die Lineareinheit hinten angekommen ist wird der Greifer geöffnet, damit wir erneut nach vorne fahren können
-	  	// 
+      // 
       // ---------------------------------------------------------------------------------------*)
       
       IF ( blLineareinheitZurueckDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Greifer_Oeffnen_150;
 
         blLineareinheitZurueck := FALSE;
-		    blGreiferOeffnen       := TRUE;
+        blGreiferOeffnen       := TRUE;
         steplEinschleusen      := STEP_150_E;
-		  ELSE
+      ELSE
         blLineareinheitZurueck := TRUE;
       END_IF
 
@@ -305,16 +305,16 @@ THEN
       //         
       // Hinweis:
       // - Sobald der GReifer geöffnet wurde kann erneut nach vorne gefahren werden, um den Wagen erneut zu greifen
-		  // 
+      // 
       // ---------------------------------------------------------------------------------------*)
 
       IF ( blGreiferOeffnenDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Lineareinheit_Vor_155;
 
         blGreiferOeffnen     := FALSE;
-		    blLineareinheitVor   := TRUE;
+        blLineareinheitVor   := TRUE;
         steplEinschleusen    := STEP_155_E;
-		  ELSE
+      ELSE
         blGreiferOeffnen := TRUE;
       END_IF
 
@@ -325,19 +325,19 @@ THEN
       //         
       // Hinweis:
       // - Lineareinheit ist erneut vorne und der Greifer kann in die hinteren Löcher greifen 
-		  // 
+      // 
       // ---------------------------------------------------------------------------------------*)
 
       IF ( blLineareinheitVorDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Greifer_Schliessen_160;
 
         blLineareinheitVor  := FALSE;
-		    blGreiferSchliessen := TRUE;
+        blGreiferSchliessen := TRUE;
         steplEinschleusen   := STEP_160_E;
-		  ELSE
+      ELSE
         blLineareinheitVor  := TRUE;
       END_IF
-		
+
 (* EINSCHLEUSEN ========================== *)
     STEP_160_E:
       (* ---------------------------------------------------------------------------------------
@@ -345,19 +345,19 @@ THEN
       //         
       // Hinweis:
       // - Greifer sind geschlossen und die Lineareinheit kann zum Shuttle fahren
-		  // 
+      // 
       // ---------------------------------------------------------------------------------------*)
 
       IF ( blGreiferSchliessenDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Lineareinheit_Shuttle_165;
 
         blLineareinheitShuttle := TRUE;
-		    blGreiferSchliessen    := FALSE;
+        blGreiferSchliessen    := FALSE;
         steplEinschleusen      := STEP_165_E;
-		  ELSE
-		    blGreiferSchliessen    := TRUE;
+      ELSE
+        blGreiferSchliessen    := TRUE;
       END_IF
-		
+
 (* EINSCHLEUSEN ========================== *)
     STEP_165_E:
       (* ---------------------------------------------------------------------------------------
@@ -365,19 +365,19 @@ THEN
       //         
       // Hinweis:
       // - Lineareinheit ist am Shuttle angekommen und das Rolltor kann geschlossen werden
-		  // 
+      // 
       // ---------------------------------------------------------------------------------------*)
 
       IF ( blLineareinheitShuttleDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Rolltor_Ab_170;
 
         blLineareinheitShuttle := FALSE;
-		    blRolltorAb            := TRUE;
+        blRolltorAb            := TRUE;
         steplEinschleusen      := STEP_170_E;
-		  ELSE
+      ELSE
         blLineareinheitShuttle := TRUE;
       END_IF
-		
+
 (* EINSCHLEUSEN ========================== *)
     STEP_170_E:
       (* ---------------------------------------------------------------------------------------
@@ -386,16 +386,16 @@ THEN
       // Hinweis:
       // - Rolltor wurde geschlossen und der Einschleusevorgang ist abgeschlossen
       // - Nachfolgend Meldung an das MMI
-		  // 
+      // 
       // ---------------------------------------------------------------------------------------*)
 
       IF ( blRolltorAbDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Auswertung_180;
 
-		    blRolltorAb            := FALSE;
+        blRolltorAb            := FALSE;
         steplEinschleusen      := STEP_180_E;
-		  ELSE
-		    blRolltorAb            := TRUE;
+      ELSE
+        blRolltorAb            := TRUE;
       END_IF
 
 (* EINSCHLEUSEN ========================== *)
@@ -439,7 +439,7 @@ THEN
                   BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
                   BasisStationsParameter.awFehlerInformationen );
-						
+
         steplEinschleusen := STEP_900_E;
 
       END_IF
@@ -447,7 +447,7 @@ THEN
 (* EINSCHLEUSEN ========================== *)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
-	    BasisStationsParameter.bEintransport[1] := FALSE;
+      BasisStationsParameter.bEintransport[1] := FALSE;
 
 (* EINSCHLEUSEN ========================== *)
     STEP_950_E:
@@ -471,7 +471,7 @@ THEN
       wlRFID_NummerMerker   := 0;
       blRFID_DataWasValid   := FALSE;
       bpEinschleusenAbgeschlossen := TRUE;
-	    BasisStationsParameter.bEintransport[1] := FALSE;
+      BasisStationsParameter.bEintransport[1] := FALSE;
 
 (* EINSCHLEUSEN ========================== *)
   END_CASE
@@ -492,7 +492,7 @@ ELSE
       blRolltorAb                   := FALSE;
       blMerkerEinschleusenQuittiert := FALSE;
       bpEinschleusenAbgeschlossen   := FALSE;
-		  blRFID_Auslesen               := FALSE;
+      blRFID_Auslesen               := FALSE;
 
       WatchIo( FALSE , wlioccFWStationAusrichtPositionNichtOK );
       tonlTimeoutReadRFID(IN := FALSE);

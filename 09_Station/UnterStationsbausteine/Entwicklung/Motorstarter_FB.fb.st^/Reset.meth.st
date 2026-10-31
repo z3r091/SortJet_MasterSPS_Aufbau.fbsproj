@@ -7,13 +7,13 @@
 *)
 METHOD Reset : BOOL
 VAR_INPUT
-	
+
 
 END_VAR
 
 VAR
   tonlReset : TON;
-	
+
 END_VAR
 
 tonlReset( IN := TRUE , PT :=  T#1500MS );

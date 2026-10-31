@@ -44,10 +44,10 @@ THEN
          - Variablen zuruecksetzen
       *)
       BasisStationsParameter.bAustransportAbgeschlossen[cWAND_1] := FALSE;
-	  
+
       Kippen.bpStartKippenAb  := FALSE;
       Kippen.bpStartKippenAuf := FALSE;
-		
+
       // Pruefen ob die Querfahrt die Zielposition erreicht hat
       IF ( blZielPositionErreicht ) THEN
         steplAustransport := STEP_10_E;   
@@ -63,9 +63,9 @@ THEN
       
       Glastransport.pAuftrag       := BasisStationsParameter.pAuftrag[cWAND_1];
       Glastransport.bpVortransport := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bVortransport;
-	  
+
       // Austransport- Position festlegen
-	   CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition OF
+     CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition OF
 
         eKippen_Position_0Grad: 
           IF ( NOT ( Kippen.epKippStatus = eKippen_Position_0Grad )) THEN
@@ -145,8 +145,8 @@ THEN
       IF (  Glastransport.bpFreigabeFremdprozess
         AND BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBIT_SRCSTATION_EMPTY )
       THEN
-		 //  Position nach Austransport
-	    CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachAustransport OF
+     //  Position nach Austransport
+      CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachAustransport OF
         
           eKippen_Position_0Grad: 
             Kippen.bpStartKippenAb := TRUE;           
@@ -168,8 +168,8 @@ THEN
          - Station in die Grundstellung kippen
       *)
       IF ( BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBIT_SRCSTATION_EMPTY ) THEN
-		 //  Position nach Austransport
-	    CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachAustransport OF
+     //  Position nach Austransport
+      CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachAustransport OF
         
           eKippen_Position_0Grad: 
             Kippen.bpStartKippenAb := TRUE;           
@@ -178,9 +178,9 @@ THEN
             Kippen.bpStartKippenAuf := TRUE;           
         
         END_CASE
-		
+
         Glastransport.bpReferenz := TRUE;
-		
+
         steplAustransport := STEP_130_E;
 
       ELSE
@@ -197,7 +197,7 @@ THEN
        THEN
           Kippen.bpStartKippenAuf  := FALSE;
           Kippen.bpStartKippenAb   := FALSE;
-		  
+
           Glastransport.bpReferenz := FALSE;
 
           steplAustransport := STEP_1000_E; 
@@ -211,7 +211,7 @@ THEN
           Kippen.bpStartKippenAuf  := FALSE;
           Kippen.bpStartKippenAb   := FALSE;
 
-		  
+
           Glastransport.bpReferenz := FALSE;
 
           steplAustransport := STEP_1000_E; 
@@ -264,7 +264,7 @@ ELSE
     Glastransport.bpAustransport        := FALSE;
     Glastransport.bpVortransport        := FALSE;
     Glastransport.bpReferenz            := FALSE;
-	                                      
+
     BasisStationsParameter.bAustransportAbgeschlossen[cWAND_1] := FALSE;
 
     steplAustransport := STEP_0_E;

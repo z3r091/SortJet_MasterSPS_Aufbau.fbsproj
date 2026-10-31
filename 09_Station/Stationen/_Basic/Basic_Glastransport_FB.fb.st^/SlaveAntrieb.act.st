@@ -20,7 +20,7 @@ blStarteSlaveKopplung := ( (    bpEintransport
                              OR bpDurchtransport
                              OR bpHandfahrenPlus
                              OR bpHandfahrenMinus
-									  OR bpGlaslaengenmessung
+                    OR bpGlaslaengenmessung
                              OR bpCheck )
                          AND NOT bpFehler );
 
@@ -59,7 +59,7 @@ THEN
           Antrieb_Slave.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
           steplSlave := STEP_60_E;
         ELSE
-          steplSlave := STEP_100_E;			
+          steplSlave := STEP_100_E;
         END_IF
       
       END_IF
@@ -76,7 +76,7 @@ THEN
         Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
         steplSlave := STEP_100_E;
       END_IF
-	  
+
 (*SLAVE ANTRIEB ====================*)
     STEP_100_E:
       tonlUberwachungSlaveAktiv( IN := FALSE);
@@ -121,7 +121,7 @@ ELSE
     tonlUberwachungSlaveAktiv( IN := FALSE );
     Antrieb.wpBetriebsart       := KEINE_FUNKTION;
     Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
-	
+
     steplSlave := STEP_0_E;
   END_IF
 

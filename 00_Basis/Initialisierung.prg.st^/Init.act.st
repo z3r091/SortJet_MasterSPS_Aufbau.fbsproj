@@ -21,11 +21,11 @@ THEN
       // Horn aktivieren
       FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
 
-		  FOR wlSubIndex := 1 TO cANZAHL_HUPEN DO
+      FOR wlSubIndex := 1 TO cANZAHL_HUPEN DO
           Horn_AK[wlIndex,wlSubIndex].wpStatusArt      := 4;
           Horn_AK[wlIndex,wlSubIndex].tpHornZeit       := T#3S;
           Horn_AK[wlIndex,wlSubIndex].bpHornAktivieren := TRUE;
-		  END_FOR
+      END_FOR
 
       END_FOR
 
@@ -59,7 +59,7 @@ THEN
     // SHUTTLE
     FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
       IF NOT starrShuttleBasisParameter[wlIndex].bIstReferenziert AND NOT starrShuttleBasisParameter[wlIndex].stMKs.bDeaktivieren THEN
-		  IF ( starrShuttleBasisParameter[wlIndex].stMKs.eStationsTyp = eInputshuttle ) OR ( starrShuttleBasisParameter[wlIndex].stMKs.eStationsTyp = eOutputshuttle ) THEN
+      IF ( starrShuttleBasisParameter[wlIndex].stMKs.eStationsTyp = eInputshuttle ) OR ( starrShuttleBasisParameter[wlIndex].stMKs.eStationsTyp = eOutputshuttle ) THEN
             starrShuttleBasisParameter[wlIndex].bReferenz := TRUE;
             ilAnzahlShuttleReferenzAktiv := ilAnzahlShuttleReferenzAktiv + 1;
         END_IF
@@ -69,7 +69,7 @@ THEN
     // TRANSFERSHUTTLE
     FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
       IF ( NOT starrTransfershuttleBasisParameter[wlIndex].bIstReferenziert AND NOT starrTransfershuttleBasisParameter[wlIndex].stMKs.bDeaktivieren ) THEN
-	    IF ( starrTransfershuttleBasisParameter[wlIndex].stMKs.eStationsTyp = eTransfershuttle ) THEN
+      IF ( starrTransfershuttleBasisParameter[wlIndex].stMKs.eStationsTyp = eTransfershuttle ) THEN
           starrTransfershuttleBasisParameter[wlIndex].bReferenz := TRUE;
           ilAnzahlTransfershuttleReferenzAktiv := ilAnzahlTransfershuttleReferenzAktiv + 1;
         END_IF
@@ -79,7 +79,7 @@ THEN
     // STATIONEN
     FOR wlIndex := cERSTE_STATION  TO cLETZTE_STATION DO
       IF ( NOT starrStationBasisParameter[wlIndex].bIstReferenziert AND NOT starrStationBasisParameter[wlIndex].stMKs.bDeaktivieren ) THEN
-		IF ( starrStationBasisParameter[wlIndex].stMKs.eStationsTyp = eStation ) THEN
+    IF ( starrStationBasisParameter[wlIndex].stMKs.eStationsTyp = eStation ) THEN
           starrStationBasisParameter[wlIndex].bReferenz := TRUE;
           ilAnzahlStationenReferenzAktiv := ilAnzahlStationenReferenzAktiv + 1;
         END_IF

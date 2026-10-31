@@ -344,11 +344,11 @@ IF ( M_SB0_MMI_STATIONSTATUS ) THEN
   CASE tMmi2SpsInfo.wStationsNummer OF
 
     cERSTES_SHUTTLE..cLETZTES_SHUTTLE:
-	   starrShuttleBasisParameter[tMmi2SpsInfo.wStationsNummer].stMKs.bDeaktivieren := tMmi2SpsInfo.wStationsStatusWord2.0;
+     starrShuttleBasisParameter[tMmi2SpsInfo.wStationsNummer].stMKs.bDeaktivieren := tMmi2SpsInfo.wStationsStatusWord2.0;
       M_SB0_MMI_STATIONSTATUS := FALSE;
 
     cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE:
-	   starrTransfershuttleBasisParameter[tMmi2SpsInfo.wStationsNummer].stMKs.bDeaktivieren := tMmi2SpsInfo.wStationsStatusWord2.0;
+     starrTransfershuttleBasisParameter[tMmi2SpsInfo.wStationsNummer].stMKs.bDeaktivieren := tMmi2SpsInfo.wStationsStatusWord2.0;
       M_SB0_MMI_STATIONSTATUS := FALSE;
 
   END_CASE

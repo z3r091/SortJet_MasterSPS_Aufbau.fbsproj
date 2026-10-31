@@ -51,7 +51,7 @@ blZielPositionErreicht := (     ( ABS( BasisStationsParameter.rAktuellePositionQ
 
 (* Hinweis:
    - Gibt an wann wann sich der Antrieb melden muss
-		 => rlUpdateZeit: Wird von der Oberflaeche gesendet und entspricht der Zeit wann der Antrieb sich zurueck melden soll [Status]
+     => rlUpdateZeit: Wird von der Oberflaeche gesendet und entspricht der Zeit wann der Antrieb sich zurueck melden soll [Status]
 *)
 tonlUpdateTimer(IN := blUpdateTimer, PT := REAL_TO_TIME(BasisStationsParameter.pAuftragVorabPositionierung.rVorabUpdateZeit) );
 

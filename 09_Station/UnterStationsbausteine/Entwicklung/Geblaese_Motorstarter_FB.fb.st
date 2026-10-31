@@ -8,7 +8,7 @@
 {attribute 'excludefrombuild'}
 FUNCTION_BLOCK Geblaese_Motorstarter_FB EXTENDS Geblaese_Schuetz_FB
 VAR_INPUT
-	
+
 END_VAR
 VAR_OUTPUT
 END_VAR

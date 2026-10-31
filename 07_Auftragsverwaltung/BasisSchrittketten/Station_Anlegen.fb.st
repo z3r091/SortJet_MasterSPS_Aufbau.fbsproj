@@ -79,14 +79,14 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
        (* Hinweis:
           - Starten des Anlegevorgangs
        *)
-	   
-	   // Glastyp bestimmen
-	    IF Auftragsdaten.bModell THEN
+
+     // Glastyp bestimmen
+      IF Auftragsdaten.bModell THEN
           starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] := cMODELLSCHEIBE;
-	    ELSE
-          starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] := cDEFAULTSCHEIBE;		  
-	    END_IF
-		
+      ELSE
+          starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] := cDEFAULTSCHEIBE;
+      END_IF
+
        starrStationBasisParameter[wStation].pAuftrag[cWAND_1] := Auftragsdaten;
        starrStationBasisParameter[wStation].bAnlegen := TRUE;
        
@@ -121,7 +121,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
             wSps2MmiInputtableNummer := starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
             dwSps2MmiWartezeit       := starrStationBasisParameter[wStation].dwWartezeit[cWAND_1];
             MsgToMmi(auftragsnr_w := SB0_SPS_SortierungQuittInputInQueue);
-		  END_IF
+      END_IF
 
         END_IF
 
@@ -152,12 +152,12 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
        bpDone := TRUE;
        
       IF ( starrStationBasisParameter[wStation].eStatusAuftrag = eAuftragErfolgreich ) THEN
-		  
+
         IF Auftragsdaten.bModell  OR NOT (starrStationBasisParameter[wStation].stMKs.stStationsOptionen.stGlastransport.bScheibenVermessen) THEN
           Auftragsdaten.wAuftrag := eStation_Warte_Auf_Austransport;
-		    ELSE
+        ELSE
               Auftragsdaten.wAuftrag := eStation_Hoehenmessung;
-		    END_IF
+        END_IF
 
       ELSIF ( starrStationBasisParameter[wStation].eStatusAuftrag = eAuftragWiederholen ) THEN
         steplSchritt := STEP_0_E;

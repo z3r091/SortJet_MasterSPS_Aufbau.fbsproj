@@ -93,11 +93,11 @@ THEN
 ELSE
   IF (steplVortransport > STEP_0_E) THEN
     BasisStationsParameter.bVortransportAbgeschlossen[cWAND_1] := FALSE;
-	
+
     Glastransport.bpVortransport := FALSE;
-	
+
     Kippen.bpStartKippenAuf := FALSE;
-	
+
     steplVortransport := STEP_0_E;
   END_IF
 END_IF

@@ -10,7 +10,7 @@ TYPE Stations_Optionen_Transfershuttle_ST :
     bMasterStation                                                : BOOL; // Ob es sich um ein Master (Master-Slave) - Station handelt. Aktuell gebraucht bei Transfershuttle- Verbund 
     bTransferShuttleFuerFaecherwagen                              : BOOL;
     bTransferShuttleMitUltraschallSensoren                        : BOOL;
-	  bTransfershuttleIstVerfahrbarerSpeicher                       : BOOL;
+    bTransfershuttleIstVerfahrbarerSpeicher                       : BOOL;
 
   END_STRUCT
 END_TYPE

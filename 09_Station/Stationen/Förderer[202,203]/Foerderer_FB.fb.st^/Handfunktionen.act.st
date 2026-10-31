@@ -33,14 +33,14 @@ IF ( blBetriebsartHand ) THEN
   Glastransport.bpHandfahrenMinus := (         ( dwlHandfunktionen.2 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] )
                                 AND NOT ( dwlHandfunktionen.1 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] ) );  (* Bit 2 = Glastransport / Glastransport zurück *)
 
-								
-  // Kippen							
+
+  // Kippen
   IF ( dwlHandfunktionen.7 OR bgVISUKippen_90_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
     AND NOT ( dwlHandfunktionen.8 OR bgVISUKippen_84_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
   THEN
     Kippen.epZielPosition := eKippen_Position_90Grad;
     Kippen.bpPositionieren := TRUE;
-	
+
   ELSIF ( dwlHandfunktionen.8 OR bgVISUKippen_84_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
     AND NOT ( dwlHandfunktionen.7 OR bgVISUKippen_90_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
   THEN

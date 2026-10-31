@@ -95,13 +95,13 @@ THEN
         Drehen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eDrehen_Sollposition;
         Drehen.bpStarteAbsolutPositionierung := TRUE;
       END_IF
-	  
-	  IF Drehen.epZielPosition <> eDrehPosition90Grad THEN
-		BasisStationsParameter.wFehlerNummer := cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_DREHPOSITION;
+
+    IF Drehen.epZielPosition <> eDrehPosition90Grad THEN
+    BasisStationsParameter.wFehlerNummer := cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_DREHPOSITION;
         steplAustransport := STEP_900_E;
-	  ELSE
+    ELSE
         steplAustransport := STEP_50_E;
-	  END_IF
+    END_IF
 
 
 (*AUSTRANSPORT =========================*)
@@ -198,7 +198,7 @@ THEN
       (* Hinweis:
          - Ansteuerung Kippen
       *)
-	  IF BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBIT_SRCSTATION_EMPTY THEN
+    IF BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBIT_SRCSTATION_EMPTY THEN
         Kippen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachAustransport;
         Kippen.bpPositionieren  := TRUE;
       END_IF
@@ -237,7 +237,7 @@ ELSE
 
     Glastransport.bpAustransport             := FALSE;
     Glastransport.bpAustransportRueckwaertig := FALSE;
-	
+
     Dickenverstellung.bpStartPneumatik   := FALSE;
     Querachse.bpStartPneumatik           := FALSE;
     Kippen.bpPositionieren               := FALSE;

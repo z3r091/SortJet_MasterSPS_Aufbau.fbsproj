@@ -12,7 +12,7 @@ ACTION SystemCheck
 (* Anmerkung:
    - Kein SystemCheck  => Fehler muessen manuell vom Bediener geloest werden
 *)
-IF( blBetriebartCheck )THEN	
+IF( blBetriebartCheck )THEN
 
   // Ausnahmesituation     
   IF ( Glastransport.bpFehler ) THEN
@@ -47,7 +47,7 @@ IF( blBetriebartCheck )THEN
       IF ( BasisStationsParameter.bFreigabe ) THEN
         Glastransport.bpReferenz := TRUE;
         steplCheck := STEP_20_E;
-	  ELSE
+    ELSE
         steplCheck := STEP_30_E;
       END_IF
 
@@ -82,7 +82,7 @@ IF( blBetriebartCheck )THEN
                        BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                        BasisStationsParameter.awFehlerInformationen );
-							  
+
            Hubrahmen.bpStartEinfahren:= TRUE;
 
            steplCheck := STEP_40_E;
@@ -180,7 +180,7 @@ IF( blBetriebartCheck )THEN
          - Station belegt melden nur wenn auch Glas laut MMI drauf liegen soll 
       *)
       BasisStationsParameter.bStationBelegt[cWAND_1] := Glastransport.bpStationBelegt;
-	  
+
       IF ( Glastransport.bpDone ) THEN
         Glastransport.bpCheck := FALSE;
 
@@ -258,15 +258,15 @@ IF( blBetriebartCheck )THEN
 
 (*SYSTEM CHECK=========================*)
     STEP_1000_E:
-	  // Auftrag für erneuten Automatikbetrieb setzen
+    // Auftrag für erneuten Automatikbetrieb setzen
       IF ( BasisStationsParameter.bStationBelegt[cWAND_1] AND ( BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben = 1 ) ) THEN
         BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Belegt;
-	  ELSIF Glastransport.bpUebergrosseScheibeUebergang THEN
+    ELSIF Glastransport.bpUebergrosseScheibeUebergang THEN
         BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Warte_Auf_Austransport_Nachfolger;
       ELSE
-	    BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Kein_Auftrag;
+      BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Kein_Auftrag;
       END_IF
-	  
+
       BasisStationsParameter.bCheckAbgeschlossen := TRUE;
 
 (*SYSTEM CHECK=========================*)

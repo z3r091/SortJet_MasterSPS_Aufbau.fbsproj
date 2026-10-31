@@ -67,12 +67,12 @@ THEN
 (*VORTRANSPORT =====================*)
   END_CASE
 ELSE
-  IF (steplVortransport > STEP_0_E) THEN	
+  IF (steplVortransport > STEP_0_E) THEN
     Glastransport.bpVortransport             := FALSE;
     Glastransport.bpVortransportRueckwaertig := FALSE;
 
     BasisStationsParameter.bVortransportAbgeschlossen[cWAND_1] := FALSE;
-	
+
     steplVortransport           := STEP_0_E;
   END_IF
 END_IF

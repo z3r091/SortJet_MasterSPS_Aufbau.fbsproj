@@ -25,7 +25,7 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
            starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport := eGlastransport_AufAuslauf;
            starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Position_84Grad;
            Auftraege_Shuttle := TRUE; 
-		   
+
          cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE,
          cSPEICHER_1..cSPEICHER_2:
            starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport := eGlastransport_AufAuslauf;
@@ -41,7 +41,7 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
         
      ELSIF starrShuttleBasisParameter[wlIndex].stMKs.eStationsTyp = eOutputshuttle THEN//103,104
        CASE starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].wTransferstationsNr1 OF
-		   
+
          cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE,
          cSPEICHER_1:
            starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport := eGlastransport_AufEinlaufVorab;

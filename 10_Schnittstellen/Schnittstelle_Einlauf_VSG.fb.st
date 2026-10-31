@@ -10,14 +10,14 @@ VAR_INPUT
    
 END_VAR
 VAR_OUTPUT
-	
+
   // STRUCT 
   OutGlasTransport   : Interface_LTR_VSG; // Signale zum LTR
   
 END_VAR
 
 VAR_INPUT
-	
+
   // HARDWARE EINGAENGE
   in_bGlasBereit                          AT %I* : BOOL;
   in_bAutomatikBetrieb                    AT %I* : BOOL; // Scheiben werden automatisch eintransportiert

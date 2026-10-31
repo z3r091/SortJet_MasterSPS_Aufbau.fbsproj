@@ -7,7 +7,7 @@
 *)
 PROGRAM Main
 VAR
-	
+
   // BOOL
   blErsterZyklus : BOOL := TRUE;
   blZweiterZyklus : BOOL := FALSE;
@@ -35,7 +35,7 @@ VAR
 END_VAR
 
 VAR_OUTPUT
-	
+
   // TRIGGER 
   rtlEtherCatOK              : R_TRIG;
 END_VAR

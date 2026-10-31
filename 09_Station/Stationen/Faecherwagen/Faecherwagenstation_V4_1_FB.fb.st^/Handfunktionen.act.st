@@ -19,7 +19,7 @@ THEN
     blGegenhalterSchliessen     := ( dwpHandfunktionen.1 OR bgVISUFWGegenhalterAusfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blGegenhalterOeffnen;
     blLineareinheitVor          := ( dwpHandfunktionen.7 OR bgVISUFWLinearEinheitVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )  AND NOT blLineareinheitZurueck AND NOT blLineareinheitShuttle;
     blLineareinheitZurueck      := ( dwpHandfunktionen.8 OR bgVISUFWLinearEinheitZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )  AND NOT blLineareinheitVor AND NOT blLineareinheitShuttle;
-	  blLineareinheitShuttle      := ( dwpHandfunktionen.9 OR bgVISUFWLinearEinheitShuttle [BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] AND NOT blLineareinheitZurueck AND NOT blLineareinheitVor);
+    blLineareinheitShuttle      := ( dwpHandfunktionen.9 OR bgVISUFWLinearEinheitShuttle [BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] AND NOT blLineareinheitZurueck AND NOT blLineareinheitVor);
     blRolltorAuf                := ( dwpHandfunktionen.5  OR bgVISUFWRolltorHoch[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blRolltorAb;
     blRolltorAb                 := ( dwpHandfunktionen.6 OR bgVISUFWRolltorRunter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blRolltorAuf;
     
@@ -27,7 +27,7 @@ THEN
       eLetzterStatus := eLetzter_FW_Status.eKeine_Info;
     END_IF
   
- END_IF   		
+ END_IF
 
 (* Hinweis:
    - Zurücksetzten bei Flanke Auto oder Flanke Hand

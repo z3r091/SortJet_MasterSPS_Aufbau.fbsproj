@@ -41,14 +41,14 @@ END_VAR
      weil das dazugehörige Transfershuttle noch besetzt ist durch einen anderen Auftrag
 *)
 IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung) THEN
-	
+
   CASE steplSchritt OF
 (* POSITIONIERUNG ===========================================*)
     STEP_0_E:
       IF checkSafetyCircuitsNotBlocked(starrTransferShuttleBasisParameter[wStation])
         AND NOT starrTransfershuttleBasisParameter[wStation].bReset
       THEN
-	  
+
         IF ( ABS( starrTransfershuttleBasisParameter[wStation].rAktuellePositionQuerfahrt - Auftragsdaten.rVorabPosition ) <= rgMKZielPositionToleranz ) THEN
           steplSchritt := STEP_500_E;
         ELSIF starrTransfershuttleBasisParameter[wStation].stMKs.bDeaktivieren THEN
@@ -56,7 +56,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung) THEN
         ELSE
           steplSchritt := STEP_10_E;
         END_IF
-		
+
       END_IF
 
 (* POSITIONIERUNG ===========================================*)
@@ -97,7 +97,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung) THEN
                  starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
                  AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
                  starrTransfershuttleBasisParameter[wStation].awFehlerInformationen );
-					  
+
        steplSchritt := STEP_900_E;
      END_IF
 
@@ -182,7 +182,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung) THEN
 
 (* POSITIONIERUNG ===========================================*)
     STEP_1000_E:
-  	  bpDone := TRUE;
+      bpDone := TRUE;
       Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
 
 (* POSITIONIERUNG ===========================================*)

@@ -151,7 +151,7 @@ THEN
          - Station nach dem Eintransport abkippen
       *)
       Kippen.epZielPosition := eKippen_Position_84Grad;
-	  Kippen.bpPositionieren := TRUE;
+    Kippen.bpPositionieren := TRUE;
 
       steplEintransport := STEP_110_E;
 

@@ -7,10 +7,10 @@
 *)
 PROGRAM StatusAnlage
 VAR
-	
+
 
   // WORD
-  wlIndex          : WORD;	
+  wlIndex          : WORD;
 
 END_VAR
 VAR_OUTPUT

@@ -46,7 +46,7 @@ THEN
       tonlAntriebNichtFreigegeben(IN:=FALSE);
       tonlWarteSchritt(IN:=FALSE);
 
-	  
+
       steplAustransport := STEP_5_E;
 
 (*AUSTRANSPORT ==============================*)
@@ -246,17 +246,17 @@ THEN
       // - n/c
       // ---------------------------------------------------------------------------------------*)
       ilScheibenZaehler := WORD_TO_INT(pAuftrag.wAnzahlScheiben);
-		      
+
       // Master-Slave Austransport
-      IF bpOptionMasterSlaveTransport THEN	
+      IF bpOptionMasterSlaveTransport THEN
 
         Antrieb.wpMaster := InGlasTransportNachfolger.wAchsID;
-		  
-   	  // Wenn der Vorgänger "Rückwärtig" fährt, darf das Shuttle nicht "invertiert" gekoppelt werdem, da es sonst in der falsche Richtung fährt
-		  IF InGlasTransportNachfolger.bTransportRueckwaertig THEN
-			 Antrieb.wpBetriebsart :=INVERTIERTER_SYNC_AUF_MASTER;		
+
+       // Wenn der Vorgänger "Rückwärtig" fährt, darf das Shuttle nicht "invertiert" gekoppelt werdem, da es sonst in der falsche Richtung fährt
+      IF InGlasTransportNachfolger.bTransportRueckwaertig THEN
+       Antrieb.wpBetriebsart :=INVERTIERTER_SYNC_AUF_MASTER;
         ELSE
-          Antrieb.wpBetriebsart := SYNC_AUF_MASTER;			  
+          Antrieb.wpBetriebsart := SYNC_AUF_MASTER;
         END_IF
         
        IF ( Antrieb.bpDone ) THEN
@@ -264,7 +264,7 @@ THEN
         bpOutBereitZumAustransport := TRUE;
         steplAustransport := STEP_215_E;
       END_IF
-		 
+
       // Austransport Hand-Minus
       ELSE
         
@@ -292,7 +292,7 @@ THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplAustransport :=  STEP_140_E;
       END_IF
-		
+
 (* AUSTRANSPORT ==================================== *)
     STEP_215_E:      
       bprtScheibe := FALSE;
@@ -333,7 +333,7 @@ THEN
         Antrieb.rpGeschwindigkeit := REAL#0;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-		  
+
         steplAustransport := STEP_140_E;
       END_IF
 
@@ -341,14 +341,14 @@ THEN
     STEP_140_E:
 
       bprtScheibe := FALSE;
-	    dwpWartezeit := 0;
+      dwpWartezeit := 0;
 
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
 
         bpOutBereitZumAustransport := FALSE;
-		  
+
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-		
+
         rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
           
           // TODO Option zum auslauf freifahren / ansonsten nur auslaufstopp

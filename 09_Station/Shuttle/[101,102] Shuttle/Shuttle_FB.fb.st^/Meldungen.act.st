@@ -134,7 +134,7 @@ THEN
             BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
             AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
             BasisStationsParameter.awFehlerInformationen );
-				
+
   blDatenlichtschrankeUnterbrochenMelden := TRUE;
 END_IF
 

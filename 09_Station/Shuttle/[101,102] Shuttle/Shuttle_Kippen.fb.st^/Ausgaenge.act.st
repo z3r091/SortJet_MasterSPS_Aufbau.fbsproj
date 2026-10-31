@@ -8,7 +8,7 @@
 ACTION Ausgaenge
 (***************************************************************************************************)
 (* AUSGAENGE *)
-(***************************************************************************************************)			
+(***************************************************************************************************)
 // Kippen mit Schütz
 IF ( bpKippenSchuetz ) THEN
 
@@ -18,7 +18,7 @@ IF ( bpKippenSchuetz ) THEN
   
   ELSIF ( NOT in_bSensorNicht90Grad AND in_bSensorNicht84Grad ) THEN
     epKippStatus := eKippen_Position_90Grad;
-	
+
   ELSE
     epKippStatus := eKippen_Fehler;
   
@@ -27,7 +27,7 @@ IF ( bpKippenSchuetz ) THEN
   // Referenz ok
   bpInReferenz := TRUE;
 
-// Kippen mit Motor	
+// Kippen mit Motor
 ELSE
   // Position als ENUM
   IF ( ABS(Antrieb.rpIstPosition - ppParameterBaustein.rPosition0Grad) <= ppParameterBaustein.rToleranz) THEN

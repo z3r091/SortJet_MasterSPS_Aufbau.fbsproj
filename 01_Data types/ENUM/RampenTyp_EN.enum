@@ -7,8 +7,8 @@
 *)
 TYPE RampenTyp_EN :
 (
-	eRampeMaximal := 0,
-	eRampeReduziert := 1,
-	eRampeHand := 2
+  eRampeMaximal := 0,
+  eRampeReduziert := 1,
+  eRampeHand := 2
 ) WORD;
 END_TYPE

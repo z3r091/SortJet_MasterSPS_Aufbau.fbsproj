@@ -29,11 +29,11 @@ THEN
       bpDone := FALSE;
 
       IF Antrieb.bpReglerBereit  THEN
-		  IF ( Antrieb.rpIstPosition = ppParameterBaustein.rPosition0Grad ) THEN
+      IF ( Antrieb.rpIstPosition = ppParameterBaustein.rPosition0Grad ) THEN
             steplKippenAb := STEP_1000_E;
-		  ELSE		
+      ELSE
             steplKippenAb := STEP_10_E;
-		  END_IF
+      END_IF
       END_IF
 
 (* KIPPEN AB ================*)

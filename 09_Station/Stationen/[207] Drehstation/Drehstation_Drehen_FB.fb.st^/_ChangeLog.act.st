@@ -16,8 +16,8 @@ ACTION _ChangeLog
 
 2019-
   08-13 - KV - Kleinere Anpassungen am Baustein
-							 - Variablen umbenannt
-							 - etc.
+               - Variablen umbenannt
+               - etc.
 
 
 *)

@@ -47,13 +47,13 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
          - Ueberpruefung des Sicherheitskreises
       *)
       IF checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation]) THEN
-		  
+
         IF ( ABS( starrStationBasisParameter[wStation].rAktuellePositionQuerfahrt - Auftragsdaten.rVorabPosition ) <= rgMKZielPositionToleranz ) THEN
           steplSchritt := STEP_500_E;
         ELSE
           steplSchritt := STEP_10_E;
         END_IF
-		
+
       END_IF
 
 (* POSITIONIERUNG ===========================================*)

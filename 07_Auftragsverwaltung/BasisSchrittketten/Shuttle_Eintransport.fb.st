@@ -54,7 +54,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
-      *)	
+      *)
       IF checkSafetyCircuitsNotBlocked(starrShuttleBasisParameter[wStation]) AND NOT bgShuttleEintransportSperren[wStation] THEN
         steplSchritt := STEP_10_E;
       END_IF
@@ -102,36 +102,36 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       ELSIF ( starrShuttleBasisParameter[wStation].pAuftrag[wWand].rAuftragsDicke <= wgMKScheibenDicke24mm ) THEN
         starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eDickenverstellung    := eZylinderStellung29mm;
       END_IF
-	  
-	    // Kippen
+
+      // Kippen
       starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition                  := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Kippen[Auftragsdaten.wTransferstationsNr1];
       starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachEintransport := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.KippenNachEintransport[Auftragsdaten.wTransferstationsNr1];
       starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachAustransport := 0;  
 
       // Glastransport
-	    starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eGlastransport := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[Auftragsdaten.wTransferstationsNr1];
-	  
-	    // Scheibentyp prüfen
-  	  starrShuttleBasisParameter[wStation].wGlasTyp[wWand] := eScheibe_Default;
+      starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eGlastransport := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[Auftragsdaten.wTransferstationsNr1];
+
+      // Scheibentyp prüfen
+      starrShuttleBasisParameter[wStation].wGlasTyp[wWand] := eScheibe_Default;
       IF ( Auftragsdaten.rAuftragsLaenge >= starrShuttleBasisParameter[wStation].stMKs.stStationsParameter.rLaengeUebergroesseScheibe ) THEN
         starrShuttleBasisParameter[wStation].wGlasTyp[wWand] := eScheibe_Maximal;
       END_IF
-	  
+
       (* Anmerkung
          - Zielstation abfragen ob diese bereit sind zum Austransport    
            => Status der Glas-Sender Station pruefen   
       *)
       CASE wlEintransportstation OF
 
-	     // Shuttles
+       // Shuttles
         cERSTES_SHUTTLE..cLETZTES_SHUTTLE: // ... macht wenig Sinn
-		      ;
-		  
-	    // Transfershuttles
+          ;
+
+      // Transfershuttles
         cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE:
           steplSchritt := STEP_200_E;
-		
-	     // Stationen
+
+       // Stationen
         cERSTE_STATION..cLETZTE_STATION:
           IF ( ( Job_Stationen.AuftragsdatenWand[wlEintransportstation, Auftragsdaten.wTransferwand].wAuftrag = eStation_Warte_Auf_Austransport )
             OR ( Job_Stationen.AuftragsdatenWand[wlEintransportstation, Auftragsdaten.wTransferwand].wAuftrag = eStation_Belegt ) )
@@ -140,10 +140,10 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
           END_IF
 
         cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF:
-		      ;
-		  
+          ;
+
         cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF:
-		      ;
+          ;
 
         ELSE
           wpgFehlerdaten[0] := starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerExtern;
@@ -174,7 +174,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       CASE wlEintransportstation OF
 
         cERSTE_STATION..cLETZTE_STATION:
-		
+
           IF AutomatikAktiv(wlEintransportstation) THEN
 
             (* Hinweis:
@@ -188,7 +188,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
             *)
             starrShuttleBasisParameter[wStation].InGlasTransportVorgaenger[wWand] := starrStationBasisParameter[wlEintransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
             starrShuttleBasisParameter[wStation].InGlasTransportNachfolger[wWand] := starrStationBasisParameter[wlEintransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
-			
+
             (* Hinweis:
                - Starten des Eintransports 
             *)
@@ -199,13 +199,13 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
             steplSchritt := STEP_400_E;
 
           END_IF
-		  
+
         cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF:
-		      ;
-		 
+          ;
+
         cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF:
-		      ;
-		  
+          ;
+
       END_CASE
 
 (*EINTRANSPORT ==============================================*)
@@ -251,22 +251,22 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       IF ( starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Station[wlEintransportstation] = Rueckwaertig ) THEN
         starrTransfershuttleBasisParameter[wlEintransportstation].InGlasTransportVorgaenger[wWand] := starrShuttleBasisParameter[wStation].OutGlasTransport[wWand];
         starrShuttleBasisParameter[wStation].InGlasTransportNachfolger[wWand] := starrTransfershuttleBasisParameter[wlEintransportstation].OutGlasTransport[wWand];
-		
-		  ELSE
+
+      ELSE
         starrTransfershuttleBasisParameter[wlEintransportstation].InGlasTransportNachfolger[wWand] := starrShuttleBasisParameter[wStation].OutGlasTransport[wWand];
         starrShuttleBasisParameter[wStation].InGlasTransportVorgaenger[wWand] := starrTransfershuttleBasisParameter[wlEintransportstation].OutGlasTransport[wWand];
-		
-		  END_IF
+
+      END_IF
 
       (* Hinweis:
          - TS auf FW koppeln
       *)
-	    IF   starrTransfershuttleBasisParameter[wlEintransportstation].stMKs.stStationsOptionen.stTransfershuttle.bTransferShuttleFuerFaecherwagen
+      IF   starrTransfershuttleBasisParameter[wlEintransportstation].stMKs.stStationsOptionen.stTransfershuttle.bTransferShuttleFuerFaecherwagen
        AND IsBetweenWORD(Auftragsdaten.wTransferstationsNr2, cERSTE_FAECHERWAGENSTATIONS_NR, cLETZTE_FAECHERWAGENSTATIONS_NR)
       THEN
         IF ( starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Station[wlEintransportstation] = Rueckwaertig ) THEN
           starrTransfershuttleBasisParameter[wlEintransportstation].InGlasTransportNachfolger[wWand] := starrFaecherwagenBasisParameter[Auftragsdaten.wTransferstationsNr2].OutGlasTransport[cWAND_1];
-	      ELSE
+        ELSE
           starrTransfershuttleBasisParameter[wlEintransportstation].InGlasTransportVorgaenger[wWand] := starrFaecherwagenBasisParameter[Auftragsdaten.wTransferstationsNr2].OutGlasTransport[cWAND_1];
         END_IF
       END_IF
@@ -277,11 +277,11 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       Job_Shuttle.AuftragsdatenTransfershuttle[wlEintransportstation]          := AuftragsdatenUmkopieren(FALSE, FALSE, Auftragsdaten);
       Job_Shuttle.AuftragsdatenTransfershuttle[wlEintransportstation].wAuftrag := eStation_Austransport;
 
-	    starrShuttleBasisParameter[wStation].bScheibentrennen[wWand]                := FALSE; 
-	    starrShuttleBasisParameter[wStation].bRueckwaertsTransportieren[wWand]      := ( starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Station[wlEintransportstation] = Rueckwaertig );
-	    starrShuttleBasisParameter[wStation].bEintransport[wWand]                   := TRUE;
-	    starrShuttleBasisParameter[wStation].bTransferstationTransfershuttle[wWand] := TRUE;
-	  
+      starrShuttleBasisParameter[wStation].bScheibentrennen[wWand]                := FALSE; 
+      starrShuttleBasisParameter[wStation].bRueckwaertsTransportieren[wWand]      := ( starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Station[wlEintransportstation] = Rueckwaertig );
+      starrShuttleBasisParameter[wStation].bEintransport[wWand]                   := TRUE;
+      starrShuttleBasisParameter[wStation].bTransferstationTransfershuttle[wWand] := TRUE;
+
      steplSchritt := STEP_400_E;
 
 (*EINTRANSPORT ==============================================*)
@@ -321,12 +321,12 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       Job_Shuttle.AuftragsdatenTransfershuttle[Auftragsdaten.wTransferstationsNr2]          := AuftragsdatenUmkopieren(TRUE, FALSE, Auftragsdaten);
       Job_Shuttle.AuftragsdatenTransfershuttle[Auftragsdaten.wTransferstationsNr2].wAuftrag := eStation_Transportkopplung;
-	  
-	    starrShuttleBasisParameter[wStation].bScheibentrennen[wWand]                := FALSE; 
-	    starrShuttleBasisParameter[wStation].bRueckwaertsTransportieren[wWand]      := ( starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Station[wlEintransportstation] = Rueckwaertig );
-	    starrShuttleBasisParameter[wStation].bEintransport[wWand]                   := TRUE;
-	    starrShuttleBasisParameter[wStation].bTransferstationTransfershuttle[wWand] := TRUE;
-	  
+
+      starrShuttleBasisParameter[wStation].bScheibentrennen[wWand]                := FALSE; 
+      starrShuttleBasisParameter[wStation].bRueckwaertsTransportieren[wWand]      := ( starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Station[wlEintransportstation] = Rueckwaertig );
+      starrShuttleBasisParameter[wStation].bEintransport[wWand]                   := TRUE;
+      starrShuttleBasisParameter[wStation].bTransferstationTransfershuttle[wWand] := TRUE;
+
       steplSchritt := STEP_400_E;
 
 (*EINTRANSPORT ==============================================*)

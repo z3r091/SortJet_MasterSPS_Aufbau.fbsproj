@@ -17,8 +17,8 @@ END_VAR
    - Funktion zum erhoehen der Eingangsvariablen X um 1. Sobald X den Wert N erreicht hat startet der Wert wieder bei 0.
 *)
 IF ( X >= N - 1 ) THEN
-	INCI := 0;
+  INCI := 0;
 ELSE
-	INCI := X + 1;
+  INCI := X + 1;
 END_IF;
 END_FUNCTION

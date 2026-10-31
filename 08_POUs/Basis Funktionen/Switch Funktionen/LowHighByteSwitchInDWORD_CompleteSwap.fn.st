@@ -8,14 +8,14 @@
 FUNCTION LowHighByteSwitchInDWORD_CompleteSwap : DWORD
 VAR_INPUT
 
-	dwInputWord : DWORD;
+  dwInputWord : DWORD;
 
 END_VAR
 VAR
 
-	dwByte1 : DWORD;
+  dwByte1 : DWORD;
   dwByte2 : DWORD;
-	dwByte3 : DWORD;
+  dwByte3 : DWORD;
   dwByte4 : DWORD;
 
 END_VAR

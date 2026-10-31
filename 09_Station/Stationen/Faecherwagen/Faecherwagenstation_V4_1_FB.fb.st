@@ -275,7 +275,7 @@ VAR
 
   //tmp
   ablRFID                        : ARRAY[1..32,0..7] OF BOOL;
-  ablRFID_out						       	 : ARRAY[1..32,0..7] OF BOOL;
+  ablRFID_out                                : ARRAY[1..32,0..7] OF BOOL;
   
   abylBytesRFID                  : ARRAY [1..32] OF BYTE; //16=R,17=a,18=c,19=k,20= ,21=0,22=0,23=9
   abylBytesRFID_out              : ARRAY [1..32] OF BYTE; //16=R,17=a,18=c,19=k,20= ,21=0,22=0,23=
@@ -323,8 +323,8 @@ IF ( blErsterZyklus ) THEN
   
   IF ANZAHL_ZIFFERN_RFID < 5 THEN // Maxwert des Datentypes muss beachtet werden. Sonst gibt es einen Überlauf; Maxwert := 65535
     FOR wlIndexZiffer := 1 TO ANZAHL_ZIFFERN_RFID  DO//zusammenfügen aller Ziffern des Maxwertes in einen String
-      slMaxRFID_Nummer := CONCAT(slMaxRFID_Nummer, '9' );	
-    END_FOR   	
+      slMaxRFID_Nummer := CONCAT(slMaxRFID_Nummer, '9' );
+    END_FOR
     wlMaxRFIDNummer    := STRING_TO_WORD(slMaxRFID_Nummer);
   ELSE
     wlMaxRFIDNummer := 65535;//Max Wert eines Wortes 
@@ -344,10 +344,10 @@ rtlSafetyError( CLK := usilErrorSafety <> 0 );
 IF rtlSafetyError.Q THEN
 
   SpsError( eFehler_Safety_Schmersal,
-	 	    usilErrorSafety,
-		    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-		    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
-		    BasisStationsParameter.awFehlerInformationen );
+         usilErrorSafety,
+        BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+        BasisStationsParameter.awFehlerInformationen );
 
 END_IF
 
@@ -488,7 +488,7 @@ Ausgaenge();
     - Auftrag aktiv
 *)
 IF BasisStationsParameter.bEintransport[1] THEN
-	
+
   IF steplEinschleusen = STEP_105_E THEN
     blTasterLeuchteAnforderung := gbFlashbit05sec; // Eintransport wartet auf Quittierung oder Lichtschranke
   ELSE
@@ -544,11 +544,11 @@ tonlFWInBox(IN := blTagPresent, PT := T#2S);
 tofTagPresent(IN := blTagPresent, PT := T#2S);
 
 rtlLogIn( CLK := in_bStartSchleusen
-					   AND bpBoxInHomePosition
-					   AND bpUntergestellErkannt
+             AND bpBoxInHomePosition
+             AND bpUntergestellErkannt
              AND tonlFWInBox.Q
-					   AND NOT bpStatusStationInBeladePosition
-					   AND NOT bpAuftragAktiv );
+             AND NOT bpStatusStationInBeladePosition
+             AND NOT bpAuftragAktiv );
 
 IF ( rtlLogIn.Q ) THEN
  wSps2FaecherwagenStationNr              := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
@@ -565,8 +565,8 @@ END_IF
 (***************************************************************************************************)
 rtlRFID_Schreiben(CLK :=wlRFID_Nummer_Schreiben > 0);
 IF rtlRFID_Schreiben.Q THEN
-	blRFID_Schreiben    := TRUE;
-	blRFID_Auslesen     := FALSE;
+  blRFID_Schreiben    := TRUE;
+  blRFID_Auslesen     := FALSE;
 END_IF
 
 

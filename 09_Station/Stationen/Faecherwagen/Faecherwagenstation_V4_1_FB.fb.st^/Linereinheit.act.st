@@ -24,9 +24,9 @@ THEN
       IF blLinearEinheitVorne THEN
         steplLineareinheitVor := STEP_1000_E;
       ELSE
-		IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+    IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
           steplLineareinheitVor := STEP_10_E;
-		END_IF
+    END_IF
       END_IF
 
 (* VERFAHREN VORWÄRTS =============================  *)
@@ -50,7 +50,7 @@ THEN
                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
                    BasisStationsParameter.awFehlerInformationen );
-						 
+
          steplLineareinheitVor := STEP_900_E;
       END_IF
 (* VERFAHREN VORWÄRTS =============================  *)
@@ -80,7 +80,7 @@ THEN
                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
                    BasisStationsParameter.awFehlerInformationen );
-						 
+
          steplLineareinheitVor := STEP_900_E;
       END_IF
 
@@ -130,7 +130,7 @@ THEN
         steplLineareinheitZur := STEP_10_E;
       END_IF
 
-	
+
 (* VERFAHREN RÜCKWÄRTS =============================  *)
     STEP_10_E:
      
@@ -152,7 +152,7 @@ THEN
                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
                    BasisStationsParameter.awFehlerInformationen );
-						 
+
          steplLineareinheitZur := STEP_900_E;
       END_IF
       
@@ -162,7 +162,7 @@ THEN
       out_bLinearEinheitVor     := FALSE;
       tonlLineareinheitVorZurueck( IN := FALSE );
       steplLineareinheitZur := STEP_30_E;
-			
+
 (* VERFAHREN RÜCKWÄRTS =============================  *)
     STEP_30_E:
       tonlLineareinheitVorZurueck( IN := blLinearEinheitHinten, PT := T#2S );
@@ -184,7 +184,7 @@ THEN
                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
                    BasisStationsParameter.awFehlerInformationen );
-						 
+
          steplLineareinheitZur := STEP_900_E;
       END_IF
 
@@ -230,12 +230,12 @@ THEN
       IF blLinearEinheitSH THEN
         steplLineareinheitShuttle := STEP_1000_E;
       ELSE
-		IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+    IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
           steplLineareinheitShuttle := STEP_10_E;
-		END_IF
+    END_IF
       END_IF
 
-			
+
 (* VERFAHREN SHUTTLE =============================  *)
     STEP_10_E:
      
@@ -257,7 +257,7 @@ THEN
                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
                    BasisStationsParameter.awFehlerInformationen );
-						 
+
          steplLineareinheitShuttle := STEP_900_E;
       END_IF
 
@@ -267,7 +267,7 @@ THEN
       out_bLinearEinheitVor     := FALSE;
       tonlLineareinheitVorZurueck( IN := FALSE );
       steplLineareinheitShuttle := STEP_30_E;
-			
+
 (* VERFAHREN SHUTTLE =============================  *)
     STEP_30_E:
       tonlLineareinheitVorZurueck( IN := blLinearEinheitSH, PT := T#2S );
@@ -289,7 +289,7 @@ THEN
                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
                    BasisStationsParameter.awFehlerInformationen );
-						 
+
          steplLineareinheitShuttle := STEP_900_E;
       END_IF
 

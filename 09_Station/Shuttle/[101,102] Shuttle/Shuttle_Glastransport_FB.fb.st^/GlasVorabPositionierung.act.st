@@ -38,7 +38,7 @@ THEN
       THEN
         steplVorabpositionieren := STEP_10_E;
       END_IF
-	  
+
 (* GLAS VORPOSITIONIEREN ====================*)
     STEP_10_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POSITIONIEREN UEBER DEN AUSLAUFSENSOR [AUSLAUFSEITE] >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

@@ -206,8 +206,8 @@ THEN
 
 (* GLASLAENGENMESSUNG =============================*)
     STEP_900_E:
-      bpOutBereitZumAustransport := FALSE;	  
-	  
+      bpOutBereitZumAustransport := FALSE;
+
       bpFehler := TRUE;
 
 (* GLASLAENGENMESSUNG =============================*)
@@ -223,11 +223,11 @@ ELSE
     bpScheibeFreigegeben       := FALSE;
     bpAnforderungMessergebnis  := FALSE;
     bpOutBereitZumAustransport := FALSE;
-	
+
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
-	
+
     Scheibenmessung.bpGlasvermessung := FALSE;
-	
+
     steplGlaslaengenMessung := STEP_0_E;
   END_IF
 END_IF

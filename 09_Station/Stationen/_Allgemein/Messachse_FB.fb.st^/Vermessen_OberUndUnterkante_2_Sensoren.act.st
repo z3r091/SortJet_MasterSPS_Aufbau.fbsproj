@@ -29,11 +29,11 @@ IF( bpVermessen_OberUndUnterkante_2_Sensoren ) THEN
       tonlEndschalterFreifahren(IN := FALSE);
       tonlWarteSchrittEndschalterFreifahren(IN := FALSE);
       toflHardwareEndschalterFrei(IN:=FALSE);
-	   tonlTimeoutUnterkante(IN := FALSE);	 
-		
+     tonlTimeoutUnterkante(IN := FALSE);
+
       bpVermessenAbgeschlossen := FALSE;
 
-		epGlashoehenTypMode2 := eGlasHoheKeinStatus;
+    epGlashoehenTypMode2 := eGlasHoheKeinStatus;
       Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
       IF ( Antrieb.bpMinSchalterBelegt OR Antrieb.bpMaxSchalterBelegt ) THEN
@@ -96,25 +96,25 @@ IF( bpVermessen_OberUndUnterkante_2_Sensoren ) THEN
       Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
       Antrieb.rpZielposition    := Antrieb.rpMinPosition ;
       Antrieb.wpBetriebsart     := ABSOLUT;
-		
+
       steplOberUndUnterkante_2_Sensoren := STEP_60_E;
-		
+
 // VERMESSEN OBER UNTERKANTE 2 SENSOREN ====================
     STEP_60_E:
 
       IF ( Antrieb.bpDone AND NOT Antrieb.bpAntrieblaeuft ) THEN
         Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-		  
-		  IF in_bSensorUnterkante THEN          
-		    // Sensor vor der Messung schon belegt -> wiederholen -> Hand anlegen
+
+      IF in_bSensorUnterkante THEN          
+        // Sensor vor der Messung schon belegt -> wiederholen -> Hand anlegen
           Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-		    epGlashoehenTypMode2 := eGlasMessungWiederholen;
+        epGlashoehenTypMode2 := eGlasMessungWiederholen;
           steplOberUndUnterkante_2_Sensoren := STEP_1000_E;
-			  
-		  ELSE
+
+      ELSE
           steplOberUndUnterkante_2_Sensoren := STEP_100_E;
-			  
-		  END_IF
+
+      END_IF
       END_IF
 
 (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< STARTEN DER SUCHE NACH DER UNTERKANTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  *)
@@ -126,31 +126,31 @@ IF( bpVermessen_OberUndUnterkante_2_Sensoren ) THEN
       Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
       Antrieb.rpZielposition    := Antrieb.rpMaxPosition ;
       Antrieb.wpBetriebsart     := ABSOLUT;
-		
+
       steplOberUndUnterkante_2_Sensoren := STEP_110_E;
-		
+
 // VERMESSEN OBER UNTERKANTE 2 SENSOREN ====================
     STEP_110_E:
-	   // Timeout Unterkante
-	   tonlTimeoutUnterkante(IN := TRUE, PT := T#10S);	 
-	 
+     // Timeout Unterkante
+     tonlTimeoutUnterkante(IN := TRUE, PT := T#10S);
+
       // Untere Glaskante gefunden
       IF in_bSensorUnterkante THEN
         rlScheibenunterkante := Antrieb.rpIstPosition;
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit40;
-		  
+
         steplOberUndUnterkante_2_Sensoren := STEP_120_E;
-		  
-		ELSIF Antrieb.bpDone 
+
+    ELSIF Antrieb.bpDone 
         OR tonlTimeoutUnterkante.Q
       THEN
-		  // Sensor wurde nicht belegt. Messung nicht abgeschlossen -> wiederholen
+      // Sensor wurde nicht belegt. Messung nicht abgeschlossen -> wiederholen
         Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-		  epGlashoehenTypMode2 := eGlasMessungWiederholen;
+      epGlashoehenTypMode2 := eGlasMessungWiederholen;
         steplOberUndUnterkante_2_Sensoren := STEP_1000_E;
-			
-		END_IF
-		
+
+    END_IF
+
 (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< SUCHE NACH DER OBERKANTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  *)
 // VERMESSEN OBER UNTERKANTE 2 SENSOREN ====================
     STEP_120_E:
@@ -169,33 +169,33 @@ IF( bpVermessen_OberUndUnterkante_2_Sensoren ) THEN
         rlScheibenoberkante := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
         steplOberUndUnterkante_2_Sensoren := STEP_130_E;
-		  
-		ELSIF Antrieb.bpDone THEN
-		  // Sensor wurde nicht frei. Messung nicht abgeschlossen -> wiederholen
+
+    ELSIF Antrieb.bpDone THEN
+      // Sensor wurde nicht frei. Messung nicht abgeschlossen -> wiederholen
         Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-		  epGlashoehenTypMode2 := eGlasMessungWiederholen;
+      epGlashoehenTypMode2 := eGlasMessungWiederholen;
         steplOberUndUnterkante_2_Sensoren := STEP_1000_E; // Messung wiederholen (epGlashoehenTypMode2)
-			
-		END_IF
+
+    END_IF
 
 // VERMESSEN OBER UNTERKANTE 2 SENSOREN ====================
     STEP_130_E:
-	   // Messergebnis berechnen
-	   rlMessErgebnis := (rlScheibenoberkante - rlScheibenunterkante + ppParameterBaustein.rAbstandSensorenOberUndUnterkante);
-		
-		// Messpunkte nicht plausibel
-		IF ( rlScheibenoberkante <= rlScheibenunterkante ) THEN
-		  epGlashoehenTypMode2 := eGlasMessungWiederholen;
-		    steplOberUndUnterkante_2_Sensoren := STEP_1000_E; // Messung wiederholen (epGlashoehenTypMode2)
-		  
-		// Prüfen ob das Messergebnis plausibel ist
-		ELSIF ( ( rlMessErgebnis <= 0 ) OR ( rlMessErgebnis > ( Antrieb.rpMaxPosition ) ) ) THEN
-		  epGlashoehenTypMode2 := eGlasMessungWiederholen;
-		    steplOberUndUnterkante_2_Sensoren := STEP_1000_E; // Messung wiederholen (epGlashoehenTypMode2)
-		  
-      ELSE	
-		  // Messergebnis plausibel 
-		  IF ( ABS( rlMessErgebnis - rpErwarteteScheibenHoehe ) <= ppParameterBaustein.rToleranz )  THEN
+     // Messergebnis berechnen
+     rlMessErgebnis := (rlScheibenoberkante - rlScheibenunterkante + ppParameterBaustein.rAbstandSensorenOberUndUnterkante);
+
+    // Messpunkte nicht plausibel
+    IF ( rlScheibenoberkante <= rlScheibenunterkante ) THEN
+      epGlashoehenTypMode2 := eGlasMessungWiederholen;
+        steplOberUndUnterkante_2_Sensoren := STEP_1000_E; // Messung wiederholen (epGlashoehenTypMode2)
+
+    // Prüfen ob das Messergebnis plausibel ist
+    ELSIF ( ( rlMessErgebnis <= 0 ) OR ( rlMessErgebnis > ( Antrieb.rpMaxPosition ) ) ) THEN
+      epGlashoehenTypMode2 := eGlasMessungWiederholen;
+        steplOberUndUnterkante_2_Sensoren := STEP_1000_E; // Messung wiederholen (epGlashoehenTypMode2)
+
+      ELSE
+      // Messergebnis plausibel 
+      IF ( ABS( rlMessErgebnis - rpErwarteteScheibenHoehe ) <= ppParameterBaustein.rToleranz )  THEN
             epGlashoehenTypMode2 := eGlasHoeheOK;
         ELSE
           IF ( ( rlMessErgebnis - rpErwarteteScheibenHoehe ) > ppParameterBaustein.rToleranz ) THEN
@@ -203,13 +203,13 @@ IF( bpVermessen_OberUndUnterkante_2_Sensoren ) THEN
         
           ELSE
             epGlashoehenTypMode2 := eGlasZuNiedrig;
-		  	 
+
           END_IF
         
         END_IF
-		    steplOberUndUnterkante_2_Sensoren := STEP_1000_E;
-		END_IF
-		
+        steplOberUndUnterkante_2_Sensoren := STEP_1000_E;
+    END_IF
+
 
 // VERMESSEN OBER UNTERKANTE 2 SENSOREN ====================
     STEP_900_E:

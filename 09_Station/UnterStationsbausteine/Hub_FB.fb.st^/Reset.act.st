@@ -21,22 +21,22 @@ IF ( bpReset ) THEN
       out_bHubAbSetzen  := FALSE;
       out_bHubAufSetzen := FALSE; 
       out_bReset        := TRUE;
-	  
-	  IF ( NOT in_bMotorstarter_OK ) THEN
+
+    IF ( NOT in_bMotorstarter_OK ) THEN
         steplReset := STEP_5_E;
-	  ELSE
-        steplReset := STEP_10_E;		  
-	  END_IF
+    ELSE
+        steplReset := STEP_10_E;
+    END_IF
 
 (*RESET =====================*)
     STEP_5_E:
       // Reset- Phoenix Modul
       tonlReset( IN := TRUE , PT :=  T#1500MS );
-	  
-	  IF tonlReset.Q THEN
+
+    IF tonlReset.Q THEN
         out_bReset := FALSE;
         steplReset := STEP_10_E;
-	  END_IF
+    END_IF
 
 (*RESET =====================*)
     STEP_10_E:
@@ -47,7 +47,7 @@ IF ( bpReset ) THEN
         bpFehler := TRUE;
         steplReset := STEP_900_E;
      END_IF
-	 
+
 (*RESET =====================*)
     STEP_15_E:
       IF ( in_bMotorstarter_OK ) THEN
@@ -57,7 +57,7 @@ IF ( bpReset ) THEN
         bpFehler := TRUE;
         steplReset := STEP_900_E;
      END_IF
-	 
+
 (*RESET =====================*)
     STEP_20_E:
       IF ( in_bLSBremse_OK ) THEN
@@ -67,7 +67,7 @@ IF ( bpReset ) THEN
         bpFehler := TRUE;
         steplReset := STEP_900_E;
      END_IF
-	 
+
 (*RESET =====================*)
     STEP_900_E:
       out_bReset := FALSE;

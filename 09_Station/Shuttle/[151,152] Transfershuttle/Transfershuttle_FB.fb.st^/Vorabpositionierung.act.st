@@ -130,9 +130,9 @@ THEN
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FOLGEAUFTRAG IST EIN- AUS- TRANSPORT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
          HINWEIS:
-		     - Nach dem Positionieren kann das Transfershuttle heben wenn der Folgeauftrag ein Ein- bzw. Aus- Transportauftrag ist		  
-      *)	  
-	    IF ( pAuftragsdatenPositionieren.wAuftragstyp  = cFOLGEAUFTRAG_AKTIV ) THEN
+         - Nach dem Positionieren kann das Transfershuttle heben wenn der Folgeauftrag ein Ein- bzw. Aus- Transportauftrag ist
+      *)
+      IF ( pAuftragsdatenPositionieren.wAuftragstyp  = cFOLGEAUFTRAG_AKTIV ) THEN
 
         IF ( BasisStationsParameter.pVorAbAuftragsdaten[cWAND_1].wShuttleNummer = BasisStationsParameter.stMKs.stStationsNummern.NummerSPS )
         THEN
@@ -151,34 +151,34 @@ THEN
           *)
 
           Glastransport.pAuftrag.stAuftragsInformationen := BasisStationsParameter.pVorAbAuftragsdaten[cWAND_1].stAuftragsInformationen;
-	      Glastransport.bpStarteHebeVorgang              := TRUE;
+        Glastransport.bpStarteHebeVorgang              := TRUE;
 
-	   	    steplVorabpositionierung := STEP_110_E;
+           steplVorabpositionierung := STEP_110_E;
 
         ELSE
-	   	    steplVorabpositionierung := STEP_1000_E;
+           steplVorabpositionierung := STEP_1000_E;
 
         END_IF
 
       ELSE
-	      steplVorabpositionierung := STEP_1000_E;
+        steplVorabpositionierung := STEP_1000_E;
 
-	  END_IF
+    END_IF
 
 (*VORABPOSITIONIERUNG ==============================*)
     STEP_110_E:
       (* Hinweis:
          - Hebe-Vorgang abgeschlossen
       *)
-	    IF ( Glastransport.bpDone ) THEN
-	      Glastransport.bpStarteHebeVorgang := FALSE;
+      IF ( Glastransport.bpDone ) THEN
+        Glastransport.bpStarteHebeVorgang := FALSE;
         steplVorabpositionierung := STEP_1000_E;
       END_IF
 
       (* Fehlerbehandlung:
       *)
-	    IF ( Glastransport.bpFehler ) THEN
- 	      Glastransport.bpStarteHebeVorgang := FALSE;
+      IF ( Glastransport.bpFehler ) THEN
+         Glastransport.bpStarteHebeVorgang := FALSE;
         BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
         steplVorabpositionierung := STEP_900_E;
       END_IF

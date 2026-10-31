@@ -55,7 +55,7 @@ IF ( NOT in_bBremseOK ) THEN
   bpVerstellungSchliessen    := FALSE;
   out_bVerstellungSchliessen := FALSE;
   out_bVerstellungOeffnen    := FALSE;
-	
+
 END_IF
 
 IF ( NOT in_bMotorstarter_OK OR NOT in_bSicherungMotorOK ) THEN

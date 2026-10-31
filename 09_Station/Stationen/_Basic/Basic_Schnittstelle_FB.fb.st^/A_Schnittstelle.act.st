@@ -32,7 +32,7 @@ BasisStationsParameter.OutGlasTransport[cWAND_1].bAutomatikBetriebAktiv     REF=
 out_bSenderBereit := blSenderBereit :=         BasisStationsParameter.bAutomatik
                                        AND NOT BasisStationsParameter.bFehler
                                        AND NOT BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1].bFehler;
-																								
+
 out_bSenderGlasBereit := blSenderGlasBereit (*OR bgVisu_Schnittstelle_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]*);
 
 // Eingangssignale können über den Drive oder IO's kommen

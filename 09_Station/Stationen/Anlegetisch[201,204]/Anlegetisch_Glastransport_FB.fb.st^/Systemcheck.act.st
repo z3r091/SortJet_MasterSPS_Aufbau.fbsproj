@@ -23,7 +23,7 @@ CASE ( steplCheck ) OF
       ELSE
         steplCheck := STEP_300_E;
       END_IF
-	  
+
     STEP_4000_E:
       (*   Hinweis:
          - Pruefen ob die Station belegt ist

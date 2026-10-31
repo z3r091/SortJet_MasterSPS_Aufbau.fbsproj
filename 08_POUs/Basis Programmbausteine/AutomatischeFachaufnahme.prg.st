@@ -90,7 +90,7 @@ IF ( bpAktiv ) THEN
 
         (* ----------------------------------------------------------------------- *)
         STEP_10_E:
-			    IF (  ( ptQuerfahrtShuttle.rpIstPosition <> rlLetztePosition )
+          IF (  ( ptQuerfahrtShuttle.rpIstPosition <> rlLetztePosition )
             AND ( ptQuerfahrtShuttle.rpIstPosition <> 0 ) )
           THEN
 

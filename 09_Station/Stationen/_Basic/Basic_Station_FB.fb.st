@@ -14,16 +14,16 @@ VAR_IN_OUT
 END_VAR
 
 VAR_INPUT
-	 
+
   
 END_VAR
 
 VAR_OUTPUT
-	
+
 END_VAR
 
 VAR
-	
+
   // BOOLEAN             
   blErsterZyklus             : BOOL := TRUE; // Initialisierung
   blBetriebsartHand          : BOOL; 
@@ -64,7 +64,7 @@ VAR
   // TIMER
   tonlMaxWarteAufResetErfolgreich       : TON; 
    
-	
+
 END_VAR
 
 (***************************************************************************************************)

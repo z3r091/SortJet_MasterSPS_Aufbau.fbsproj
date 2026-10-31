@@ -25,7 +25,7 @@ IF( blBetriebsartReset )THEN
 
       Kippen.bpPositionieren        := FALSE;
       Messachse.bpPositionierung    := FALSE;
-		
+
       Glastransport.bpEintransport             := FALSE;
       Glastransport.bpEintransportRueckwaertig := FALSE;    
       Glastransport.bpAustransport             := FALSE;

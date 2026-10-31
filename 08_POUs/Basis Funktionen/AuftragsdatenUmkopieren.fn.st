@@ -46,7 +46,7 @@ IF ( NOT bpAuswahlTransferstation_2 AND NOT bpAnwahlDurchtransport ) THEN
   stMerkerAuftrag.wTransferwand          := stpAuftrag.wStationsWand;
 
 ELSIF ( bpAnwahlDurchtransport ) THEN
-	
+
   stMerkerAuftrag.wStationsNr            := stpAuftrag.wTransferstationsNr2;
   stMerkerAuftrag.wStationsWand          := stpAuftrag.wTransferwand;
   stMerkerAuftrag.rStationsZielposition  := stpAuftrag.rTransferposition2;

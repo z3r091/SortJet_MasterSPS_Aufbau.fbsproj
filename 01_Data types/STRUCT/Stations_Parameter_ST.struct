@@ -7,9 +7,9 @@
 *)
 TYPE Stations_Parameter_ST :
   STRUCT
-	  rLaengeUebergroesseScheibe              : REAL;
-	  rMinGlasHoeheAutomatischenEintransport  : REAL;
-	  rMinGlasLaengeAutomatischenEintransport : REAL;   
+    rLaengeUebergroesseScheibe              : REAL;
+    rMinGlasHoeheAutomatischenEintransport  : REAL;
+    rMinGlasLaengeAutomatischenEintransport : REAL;   
     wMaximaleAnzahlAktiverAuftraege         : WORD;
     rMinPosSwEsEingrenzung                  : REAL; // Externer zusaetzlicher Software-Endschalter MIN; 0 = inaktiv; darf den MK-MIN nur weiter eingrenzen 
     rMaxPosSwEsEingrenzung                  : REAL; // Externer zusaetzlicher Software-Endschalter MAX; 0 = inaktiv; darf den MK-MAX nur weiter eingrenzen 

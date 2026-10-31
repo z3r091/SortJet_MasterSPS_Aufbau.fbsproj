@@ -14,7 +14,7 @@ WatchIo( bpOperatorAcknowledgeRequested , ioccSLC_Safety_Operator_Acknowledge_Re
 
 // Einer der FSoE Master meldet einen Fehler
 WatchIo( (EV_ToPLC_Error_FSoE_Master_1 <> 0) OR (EV_ToPLC_Error_FSoE_Master_2 <> 0), ioccSLC_Error_FSoE_Master );  
-		
+
 
 IF bpEDMFehlerAktiv THEN
   // EDM Error
@@ -30,7 +30,7 @@ bpEDMFehlerAktiv :=    ( EV_ToPLC_EDM_1 <> 0 )
                     OR ( EV_ToPLC_EDM_3 <> 0 ) 
                     OR ( EV_ToPLC_EDM_4 <> 0 );
                     
-WatchIo(bpEDMFehlerAktiv, ioccSLC_EDM_FehlerAktiv);		 
+WatchIo(bpEDMFehlerAktiv, ioccSLC_EDM_FehlerAktiv);
 
 // SLC Error Equivalent 
 SetWatchIO(EV_ToPLC_Error_Equivalent, ioccSLC_Error_Equivalent_1 );

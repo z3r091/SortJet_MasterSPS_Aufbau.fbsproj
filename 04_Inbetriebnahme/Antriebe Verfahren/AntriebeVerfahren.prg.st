@@ -93,7 +93,7 @@ END_IF
 IF NOT bgVisuAntriebeVerfahrenAktiv THEN
   RETURN; 
 ELSE
-	IF  pgAntriebe[wgAuswahlAchsID].wpBetriebsart = ABSOLUT  OR  
+  IF  pgAntriebe[wgAuswahlAchsID].wpBetriebsart = ABSOLUT  OR  
         pgAntriebe[wgAuswahlAchsID].wpBetriebsart = RELATIV OR  
         pgAntriebe[wgAuswahlAchsID].wpBetriebsart = HANDPLUS OR  
         pgAntriebe[wgAuswahlAchsID].wpBetriebsart = HANDMINUS OR 
@@ -104,7 +104,7 @@ ELSE
       pgAntriebe[wgAuswahlAchsID].rpVerzoegerung    := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxVerzoegerung;
       pgAntriebe[wgAuswahlAchsID].rpRuckzeit        := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxRuckzeit;
       pgAntriebe[wgAuswahlAchsID].rpGeschwindigkeit := rgGeschwindigkeit;
-	END_IF
+  END_IF
 END_IF
 
 // Freigabe

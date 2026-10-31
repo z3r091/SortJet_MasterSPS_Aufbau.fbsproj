@@ -30,8 +30,8 @@ TYPE Auftragsdaten_ST :
     rTransferposition1                   : REAL;
     rTransferposition2                   : REAL;
     wTransferwand                        : WORD;
-	  wTransferVersatzVorne                : REAL;
-	  wTransferVersatzHinten               : REAL;
+    wTransferVersatzVorne                : REAL;
+    wTransferVersatzHinten               : REAL;
 
     stAuftragsOptionen                   : Auftrags_Optionen_ST;
 

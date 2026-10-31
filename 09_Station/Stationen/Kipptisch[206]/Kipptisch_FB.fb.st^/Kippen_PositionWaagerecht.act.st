@@ -10,7 +10,7 @@ ACTION Kippen_PositionWaagerecht
 (* AKTION KIPPEN WAAGERECHT *)
 (***************************************************************************************************)
 IF ( blStartePositionWaagerecht ) THEN
-	
+
   // Ausnahmesituation
   IF ( Kippen.bpFehler ) THEN
     Kippen.bpStartKippenAb := FALSE;

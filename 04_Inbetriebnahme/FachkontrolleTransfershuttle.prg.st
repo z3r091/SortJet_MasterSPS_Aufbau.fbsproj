@@ -97,21 +97,21 @@ ELSE
           IF ( NOT ( M_Automatik_Aktiv[cAUTOMATIKKREIS_1] ) )
           THEN
             tonlUeberwachung( IN := FALSE );
-			      tonlWartezeit( IN := FALSE );
-			      rpErmitteltePosition := 0;
+            tonlWartezeit( IN := FALSE );
+            rpErmitteltePosition := 0;
             steplKontrolle := STEP_5_E;
           END_IF
-		  
-		(*----------------------------------------------------------*)
+
+    (*----------------------------------------------------------*)
         STEP_5_E:
-		      tonlWartezeit(IN := NOT aTransfershuttles[wpStationNumber].Querfahrt.Antrieb.bpReglerBereit 
+          tonlWartezeit(IN := NOT aTransfershuttles[wpStationNumber].Querfahrt.Antrieb.bpReglerBereit 
                               AND NOT aTransfershuttles[wpStationNumber].Querfahrt.Antrieb.bpFreigabe, 
                         PT := T#2S);
           IF tonlWartezeit.Q THEN
-			tonlWartezeit(IN := FALSE);
+      tonlWartezeit(IN := FALSE);
             steplKontrolle := STEP_10_E;
-	      END_IF
-		
+        END_IF
+
         (*----------------------------------------------------------*)
         STEP_10_E:
           tonlUeberwachung( IN := TRUE,
@@ -122,7 +122,7 @@ ELSE
 
           tonlWartezeit(IN := aTransfershuttles[wpStationNumber].in_bSensorShuttleOben, PT := T#1S);
           IF tonlWartezeit.Q THEN
-			tonlWartezeit(IN := FALSE);
+      tonlWartezeit(IN := FALSE);
             steplKontrolle := STEP_20_E;
           END_IF
 
@@ -214,28 +214,28 @@ ELSE
              - Nachricht ans HMI absetzen
           *)
           wgSps2MmiShuttleNr           := wpStationNumber;
-		  IF bpPositionKorrigieren THEN
-			ipGerundetePosition := REAL_TO_INT(rpErmitteltePosition); (* Runden damit keine Nachkommastellen zum MMI geschickt werden *)
+      IF bpPositionKorrigieren THEN
+      ipGerundetePosition := REAL_TO_INT(rpErmitteltePosition); (* Runden damit keine Nachkommastellen zum MMI geschickt werden *)
             wSps2MmiValidierungsPosition := INT_TO_REAL(ipGerundetePosition); (* Die aktuelle Antriebsposition hochmelden, damit diese im MMI korrigiert wird *)
-		  ELSE
+      ELSE
             wSps2MmiValidierungsPosition := rpPosition; (* Die geschickte Position vom MMI zurückmelden, damit nichts geändert wird *)
-	      END_IF
-		  wSps2MmiValidierungsSpeicher := wpSpeicherNr;
-		  wSps2MmiValidierungsFach := wpFachNr;
+        END_IF
+      wSps2MmiValidierungsSpeicher := wpSpeicherNr;
+      wSps2MmiValidierungsFach := wpFachNr;
           MsgToMmi(auftragsnr_w := SB0_SPS_TRANSFERSHUTTLEBUFFERSLOTPOS );
 
           IF rpPosition <> rpErmitteltePosition THEN
-			wpgFehlerdaten[0] := REAL_TO_WORD(rpPosition); 
-			wpgFehlerdaten[1] := REAL_TO_WORD(rpErmitteltePosition);
-			wpgFehlerdaten[2] := REAL_TO_WORD(wpSpeicherNr);
-			wpgFehlerdaten[3] := REAL_TO_WORD(wpFachNr);
-			IF ABS(rpPosition - rpErmitteltePosition) > 2 THEN
+      wpgFehlerdaten[0] := REAL_TO_WORD(rpPosition); 
+      wpgFehlerdaten[1] := REAL_TO_WORD(rpErmitteltePosition);
+      wpgFehlerdaten[2] := REAL_TO_WORD(wpSpeicherNr);
+      wpgFehlerdaten[3] := REAL_TO_WORD(wpFachNr);
+      IF ABS(rpPosition - rpErmitteltePosition) > 2 THEN
            SpsHinweis( eFehler_Station, 
                        999,
                        wpStationNumber, 
                        AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wpStationNumber].stMKs.stStationsNummern.NummerIntern), 
                        wpgFehlerdaten );
-			END_IF
+      END_IF
     END_IF  
           bpStarteFachkontrolle := FALSE;
        END_CASE

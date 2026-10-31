@@ -52,12 +52,12 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
     STEP_10_E:  
       (* Hinweis:
          - Vortransport starten
-      *)	    
+      *)
       (* Hinweis:
          Auftragsdaten zuweisen
       *)
       starrStationBasisParameter[wStation].pAuftrag[wWand] := Auftragsdaten;
-	  
+
       starrStationBasisParameter[wStation].bVortransport[wWand]    := TRUE;
 
       steplSchritt := STEP_20_E;
@@ -94,7 +94,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
     STEP_1000_E:
       bpDone := TRUE;
       Auftragsdaten.wAuftrag := eStation_Warte_Auf_Austransport;
-		
+
 (* EINTRANSPORT ================================================== *)
  END_CASE
 END_IF

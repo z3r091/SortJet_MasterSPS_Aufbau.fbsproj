@@ -22,7 +22,7 @@ CASE( tSpsMessage.wAuftrag )OF
   SB0_MMI_GETBETRIEBSART:
     M_Send_MaschineStatus := TRUE;
 
-	 
+
   // MSG 2
   // Auftrag für den Anlegetisch (Start_Station) 
   SB0_MMI_SortierungInputInQueue:
@@ -45,7 +45,7 @@ CASE( tSpsMessage.wAuftrag )OF
 
     M_SB0_MMI_SortierungInputInQueue := TRUE;
 
-	 
+
   // MSG 5
   // Starten des SystemCheck
   SB0_MMI_SortierungCheckInputQueue:
@@ -66,21 +66,21 @@ CASE( tSpsMessage.wAuftrag )OF
   // Abbruch des offenen ISO Line Events
   SB0_MMI_SORTIERUNGCANCELISOLINEEVENT:
     M_SB0_MMI_SORTIERUNGCANCELISOLINEEVENT := TRUE;
-	 
+
     
   // MSG 9
   // Auftrag des entsprechenden Shuttles löschen 
   SB0_MMI_SortierungCancelShuttleData:
     tMmi2SpsInfo.wCancelShuttleDataShuttleNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
     M_SB0_MMI_SortierungCancelShuttleData := TRUE;
-	 
+
     
   // MSG 11 
   // Start Automatik Foerder Transport der Glastransportstationen
   SB0_MMI_SORTIERUNGAUTOMATIKSTART:
     tMmi2SpsInfo.wAutomatikStartTransportLineNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
     M_SB0_MMI_SORTIERUNGAUTOMATIKSTART := TRUE;
-	 
+
 
   // MSG 12
   (* Hinweis:
@@ -89,12 +89,12 @@ CASE( tSpsMessage.wAuftrag )OF
        => Index[1] Angabe welche Automatikkreise schon gestoppt sind 
      - Falls schon einer der beiden Kreise gestoppt wurde, steht im 2. Datenwort eine 3.
        Wenn eine 3 vorkommt, dann diese übernehmen um beide Autokreise, inkl. den Transfershuttlen stoppen
-		   *)
+       *)
   SB0_MMI_SortierungAutomatik_Stop:
     tMmi2SpsInfo.wAutomatikStopArea     := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
     tMmi2SpsInfo.wAutomatikStoppedAreas := HMI_GetWORD(ADR(tSpsMessage.awDaten[1]));
     M_SB0_MMI_SortierungAutomatik_Stop := TRUE;
-	 
+
 
   // MSG 14
   // Vorpositionier der Scheiben im Speicher (Transfershuttle)
@@ -107,7 +107,7 @@ CASE( tSpsMessage.wAuftrag )OF
     tMmi2SpsInfo.wSlotThickness                := HMI_GetWORD(ADR(tSpsMessage.awDaten[8])); // 0-thin;1-thick
 
     M_SB0_MMI_SortierungInsertExtractionShuttleData := TRUE;
-		
+
 
   // MSG 15  
   // Fächerwagenwechsel auch von verschiedenen Stationen möglich 
@@ -115,8 +115,8 @@ CASE( tSpsMessage.wAuftrag )OF
     tMmi2SpsInfo.wFaecherwagenwechsel       := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));   (* DestStation / Zielstation *)
     tMmi2SpsInfo.wSps2FaecherwagenStationNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[1]));   (* SourceStation / Startstation *)
     M_SB0_MMI_SortierungFaecherwagenwechsel:=TRUE;
-	 
-	 
+
+
   // MSG 22
   // HANDFUNKTIONEN: Stationen
   SB0_MMI_SetHandfunktion:
@@ -129,8 +129,8 @@ CASE( tSpsMessage.wAuftrag )OF
       END_IF      
       
     END_FOR
-	 
-	 
+
+
   // MSG 23
   // HANDFUNKTIONEN: Shuttle
   SB0_MMI_SetShuttleHandFunktion:
@@ -147,8 +147,8 @@ CASE( tSpsMessage.wAuftrag )OF
         adwgHandfunktionenShuttle[HMI_GetWORD(ADR(tSpsMessage.awDaten[wlIndex/2]))] := HMI_GetDWORD(ADR(tSpsMessage.awDaten[( (wlIndex)/2 )+1]));
       END_FOR
     END_IF
-	 
-	 
+
+
   // MSG 30
   // Scheibenmessung OK -> Freigabe für die Eckübergabe des Sortjets  0 = nicht OK / 1 = OK
   SB0_MMI_MEASSURERESULT:
@@ -156,15 +156,15 @@ CASE( tSpsMessage.wAuftrag )OF
     tMmi2SpsInfo.wFreigabe               := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));(* Freigabe *)
     tMmi2SpsInfo.wMmiNummerAnlegeStation := HMI_GetWORD(ADR(tSpsMessage.awDaten[1]));
 
-	 
+
   // MSG 31
   // Unabhaengige Quittung der Sondergläser durch Tasterdruck anfordern 
   SB0_MMI_ISOQUITTUNG:
     M_SB0_MMI_ISOQUITTUNG:=TRUE;
     tMmi2SpsInfo.wISOStation    := HMI_GetWORD(ADR(tSpsMessage.awDaten[0])); (* Tischnummer des Anlegetisches *)(* Liniennummer *)
     tMmi2SpsInfo.wISOAuftragsID := HMI_GetWORD(ADR(tSpsMessage.awDaten[1]));(* Auftrags ID *)
-	 
-	 
+
+
   // MSG 39
   // Bestaetigung der Faecherwagenanmeldung vom MMI
   SB0_MMI_RELEASERACKLOGIN:
@@ -185,7 +185,7 @@ CASE( tSpsMessage.wAuftrag )OF
    M_SB0_MMI_DOCKRACK := TRUE;
     tMmi2SpsInfo.wSps2FaecherwagenStationNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[0])); 
 
-	 
+
   // MSG 43
   (* Hinweis [FAECHERWAGEN]:
      - MMI Anfrage, welche Fächerwagenstationen belegt sind 
@@ -199,13 +199,13 @@ CASE( tSpsMessage.wAuftrag )OF
     END_FOR
     M_SB0_MMI_REQUESTSTATUSLOADINGSTATIONS := bgEtherCatOK;
   
-	 
+
   // MSG 51 
   SB0_MMI_REQUESTTILTSTATION:
     tMmi2SpsInfo.wSortierungsInputSwingStationNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[0])); (*Stationsnummer *)
     M_SB0_MMI_REQUESTTILTSTATION := TRUE;
         
-	 
+
   // MSG 53
   // Positionierung ueber die Oberflaeche [Verfahrlogik]
   SB0_MMI_SHUTTLEVORABPOSITIONIERUNG:
@@ -222,8 +222,8 @@ CASE( tSpsMessage.wAuftrag )OF
     wlTemp := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));  
     AutomatischeFachaufnahme.bpStarteFachaufnahme := wlTemp.0;
     AutomatischeFachaufnahme.wpMMINummer          := HMI_GetWORD(ADR(tSpsMessage.awDaten[2]));
-	 
-	
+
+
   // MSG 56 
   // Shuttle Fächerwagen ausmessen
   SB0_MMI_POSITIONMEASUREONOFF:
@@ -231,7 +231,7 @@ CASE( tSpsMessage.wAuftrag )OF
     tMmi2SpsInfo.wShuttleFWSucheAN_AUS := HMI_GetWORD(ADR(tSpsMessage.awDaten[1]));
 
     M_SB0_MMI_POSITIONMEASUREONOFF := TRUE;
-	 
+
 
   // MSG 67
   // STATUS: Stationen (SystemCheck) 
@@ -246,8 +246,8 @@ CASE( tSpsMessage.wAuftrag )OF
     tMmi2SpsInfo.wStationsStatusWord7 := HMI_GetWORD(ADR(tSpsMessage.awDaten[7])); (* 0 = inaktiv | 1 = aktiv *)
 
     M_SB0_MMI_STATIONSTATUS := TRUE;
-	 
-	 
+
+
   // MSG 68
   // DATEN FÜR DEN SYSTEMCHECK
    SB0_MMI_SYSTEMCHECKSTATION:
@@ -268,29 +268,29 @@ CASE( tSpsMessage.wAuftrag )OF
      tMmi2SpsInfo.rSystemcheckGlasGewicht               := HMI_GetREAL(ADR(tSpsMessage.awDaten[18])); (* Glasgewicht, errechnet vom MMI *)
  
      // Die Wandnummer wird Bitcodiert übergeben. In der SPS wird sie aber Dezimal benötigt
-	  // Wand 3
+    // Wand 3
      IF tMmi2SpsInfo.wSystemCheckStationSlot = 4 THEN
-		   tMmi2SpsInfo.wSystemCheckStationSlot := 3;
-	   END_IF
-	   // Wand 4
+       tMmi2SpsInfo.wSystemCheckStationSlot := 3;
+     END_IF
+     // Wand 4
      IF tMmi2SpsInfo.wSystemCheckStationSlot = 8 THEN
-		   tMmi2SpsInfo.wSystemCheckStationSlot := 4;
-	   END_IF
-		
-		
+       tMmi2SpsInfo.wSystemCheckStationSlot := 4;
+     END_IF
+
+
   // MSG 69
   // Anfrage der Oberflaeche um die aktuelle Shuttleposition zu bekommen
   SB0_MMI_GETSORTIERUNGSHUTTLEPOS:
     M_SB0_MMI_GETSORTIERUNGSHUTTLEPOS := TRUE;
 
-	 
+
   // MSG 70 
   // Anzeige der IO´s im MMI Service  WORT 0: 1 = sichtbar / 0 = unsichtbar  
   SB0_MMI_IOANZEIGE_AKTIVIEREN_DEAKTIVIEREN:
     M_SB0_MMI_IOANZEIGE_AKTIVIEREN_DEAKTIVIEREN := TRUE;
     tMmi2SpsInfo.wlIOsAnzeigeAktivierenDeaktivieren := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
- 	  
-	  
+
+
   // MSG 71
   // Uebergabe der Auftragsdaten von der HMI fuer die Fremdanlage      
   SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE:
@@ -312,7 +312,7 @@ CASE( tSpsMessage.wAuftrag )OF
     tMmi2SpsInfo.adwScheibenID_3[3]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[26]));
 
     M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE := TRUE;
-	  
+
 
    // MSG 72
    // Auftragsinformationen waehrend der Querfahrt uebertragen
@@ -327,8 +327,8 @@ CASE( tSpsMessage.wAuftrag )OF
     // tMmi2SpsInfo.rAuftrag_Dicke           := HMI_GetReal(ADR(tSpsMessage.awDaten[8]));
 
     M_SB0_MMI_SHUTTLE_INFORMATION := TRUE;
-	 
-	  
+
+
    // MSG 76
   (* Hinweis:
      - Speicherfachvalidierung mittels Transfershuttle wenn ein Sensor von diesem nicht frei gefahren werden konnte
@@ -344,7 +344,7 @@ CASE( tSpsMessage.wAuftrag )OF
     tMmi2SpsInfo.rTransfershuttle_SollPosition2 := HMI_GetReal(ADR(tSpsMessage.awDaten[5])); (* HINWEIS: Soll-Position des Transfershuttles *)
    
      M_SB0_MMI_TRANSFERSHUTTLECHECK := TRUE;
-	  
+
   // MSG 77/100
   // Testen der Transfershuttlepositionen
   SB0_MMI_TRANSFERSHUTTLEBUFFERSLOTCHECK,
@@ -352,23 +352,23 @@ CASE( tSpsMessage.wAuftrag )OF
     IF ( NOT FachkontrolleTransfershuttle.bpStarteFachkontrolle ) THEN
       FachkontrolleTransfershuttle.bpStarteFachkontrolle := TRUE;
       FachkontrolleTransfershuttle.wpStationNumber       := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));;
-	    FachkontrolleTransferShuttle.wpSpeicherNr          := HMI_GetWORD(ADR(tSpsMessage.awDaten[1]));
-	    FachkontrolleTransferShuttle.wpFachNr              := HMI_GetWORD(ADR(tSpsMessage.awDaten[2]));
+      FachkontrolleTransferShuttle.wpSpeicherNr          := HMI_GetWORD(ADR(tSpsMessage.awDaten[1]));
+      FachkontrolleTransferShuttle.wpFachNr              := HMI_GetWORD(ADR(tSpsMessage.awDaten[2]));
       FachkontrolleTransfershuttle.rpPosition            := HMI_GetReal(ADR(tSpsMessage.awDaten[3]));
     END_IF
-	  
-	 
+
+
   // MSG 81 
   SB0_MMI_RESET_ETHERCAT:
     M_SB0_MMI_RESET_ETHERCAT := TRUE;
-	 
-	 
+
+
   // MSG 99
   SB0_MMI_WATCHDOGTEST:
     tMmi2SpsInfo.wWatchDogTestCount  := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
     M_SB0_MMI_WATCHDOGTEST := TRUE;
-	 
-	 
+
+
   // MSG 101
   // Neue Nachricht für Aufträge aller Stationen und Shuttle
   SB0_MMI_SHEET_ORDER:

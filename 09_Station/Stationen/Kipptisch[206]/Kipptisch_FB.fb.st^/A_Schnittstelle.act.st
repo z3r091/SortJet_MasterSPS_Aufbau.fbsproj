@@ -45,10 +45,10 @@ BasisStationsParameter.bAuftragAktiv    := (   BasisStationsParameter.bAnlegen
                                             OR BasisStationsParameter.bReset
                                             OR BasisStationsParameter.bReferenz
                                             OR BasisStationsParameter.bCheck );
-											
+
 // Statistik
-BasisStationsParameter.dwWartezeit[cWAND_1] := Glastransport.dwpWartezeit;												   
-												   
+BasisStationsParameter.dwWartezeit[cWAND_1] := Glastransport.dwpWartezeit;
+
 // Status für die Visu
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bSensorEinlauf[1]      := Glastransport.bpSensorEinlauf;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bSensorEinlaufVorab[1] := Glastransport.bpSensorEinlaufVorab;

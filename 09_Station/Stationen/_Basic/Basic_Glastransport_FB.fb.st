@@ -163,7 +163,7 @@ VAR
 END_VAR
 
 VAR_INPUT
-	
+
   // BAUSTEINE
   Scheibenmessung  : Scheibenmessung_FB;
 
@@ -297,11 +297,11 @@ Reset();
 
 IF ( NOT bpOptionMasterSlaveTransport ) THEN
   IF bpOptionAustransportISOLinie THEN
-    Austransport_ISO();	  
+    Austransport_ISO();
   ELSE
     Austransport();
-    Austransport_Rueckwaertig();	
-  END_IF	
+    Austransport_Rueckwaertig();
+  END_IF
 ELSE
   Austransport_MasterSlave();
   Austransport_Rueckwaertig_MasterSlave();
@@ -309,10 +309,10 @@ END_IF
 
 // 2. Riemen/Rollen vorhanden -> Kipptisch
 IF bpOptionSlaveAntrieb THEN
-  SlaveAntrieb();	
+  SlaveAntrieb();
   blAntriebsKopplungAktiv := Antrieb_Slave.bpAchseSychron;
 ELSE
-  blAntriebsKopplungAktiv := TRUE;	
+  blAntriebsKopplungAktiv := TRUE;
 END_IF
 
 

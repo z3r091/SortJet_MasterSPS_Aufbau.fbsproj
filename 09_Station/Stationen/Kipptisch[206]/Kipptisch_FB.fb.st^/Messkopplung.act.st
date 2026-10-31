@@ -76,10 +76,10 @@ ELSE
 
   IF ( steplMesskopplung > STEP_0_E ) THEN
     Glastransport.bpMesskopplung := FALSE;
-	
+
     Kippen.bpStartKippenAuf := FALSE;
     Kippen.bpStartKippenAb  := FALSE;
-		
+
     BasisStationsParameter.bMesskopplungAbgeschlossen[cWAND_1] := FALSE;
     steplMesskopplung := STEP_0_E;
   END_IF

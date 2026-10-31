@@ -10,7 +10,7 @@ ACTION Systemcheck
 (* AKTION SYTEMCHECK *)
 (***************************************************************************************************)
 IF( blBetriebartCheck )THEN
-	
+
   // Ausnahmesituation
   IF ( Glastransport.bpFehler ) THEN
     Glastransport.bpReferenz := FALSE;
@@ -44,7 +44,7 @@ IF( blBetriebartCheck )THEN
       IF ( BasisStationsParameter.bFreigabe ) THEN
         steplCheck := STEP_10_E;
       END_IF
-	  
+
 (*SYSTEM CHECK =========================*)
     STEP_10_E:
       (* Hinweis:
@@ -218,7 +218,7 @@ IF( blBetriebartCheck )THEN
       // ---------------------------------------------------------------------------------------*)
 
       steplCheck := STEP_1000_E;
-	  
+
       IF ( BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben = 0 ) AND BasisStationsParameter.bStationBelegt[cWAND_1] THEN
         wpgFehlerdaten[0] := BasisStationsParameter.stMKs.stStationsNummern.NummerExtern;
         SpsHinweis( eFehler_Station,
@@ -243,13 +243,13 @@ IF( blBetriebartCheck )THEN
 
 (*SYSTEM CHECK =========================*)
     STEP_1000_E:
-	  // Auftrag für erneuten Automatikbetrieb setzen
+    // Auftrag für erneuten Automatikbetrieb setzen
       IF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
         BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Belegt;
       ELSE
-	    BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Kein_Auftrag;
+      BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Kein_Auftrag;
       END_IF
-	  
+
       BasisStationsParameter.bCheckAbgeschlossen := TRUE;
 
 (*SYSTEM CHECK =========================*)

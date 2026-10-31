@@ -28,7 +28,7 @@ IF ( bpCheck ) THEN
         wpFehlerNr := cMELDUNG_ANTRIEB_Glastransport;
         steplCheck := STEP_900_E;
       END_IF
-	  
+
 (*SYSTEM CHECK=========================*)
     STEP_10_E:
       (* ---------------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ IF ( bpCheck ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplCheck := STEP_30_E;
        END_IF
-	   
+
 (*SYSTEM CHECK=========================*)
     STEP_30_E:
       (* Anmerkung:

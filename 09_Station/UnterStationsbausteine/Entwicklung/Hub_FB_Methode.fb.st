@@ -118,16 +118,16 @@ IF ( bpAktivieren ) THEN
     wpFehlerNr := cMELDUNG_NULL;
     bpFehler   := FALSE;
     Motorstarter.Reset();
-	
+
   ELSIF bpFehler THEN
-	  ;
+    ;
   
   ELSIF bpStartHubAuf THEN
     bpDone := Motorstarter.Linkslauf();
-	
+
   ELSIF  bpStartHubAb THEN
     bpDone := Motorstarter.Rechtslauf();
-	
+
   END_IF
 
   Ausgaenge();

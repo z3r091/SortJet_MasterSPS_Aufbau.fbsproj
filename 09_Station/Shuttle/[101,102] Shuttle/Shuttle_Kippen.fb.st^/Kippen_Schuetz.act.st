@@ -31,18 +31,18 @@ IF ( bpPositionieren ) THEN
     out_bKippenAufSetzen := FALSE;
     steplKippenSchuetz := STEP_900_E;
   END_IF
-	  
+
   CASE steplKippenSchuetz OF
 (*KIPPEN SCHÜTZ AUFKIPPEN =================================*)
     STEP_0_E:
-	  // Keine Sollposition vorgegeben
-	  IF ( epZielPosition = eKippen_Default ) THEN
+    // Keine Sollposition vorgegeben
+    IF ( epZielPosition = eKippen_Default ) THEN
           out_bKippenAufSetzen := FALSE;
           out_bKippenAbSetzen := FALSE;
           steplKippenSchuetz := STEP_1000_E;
-		  
-	  // Kippen auf 90Grad
-	  ELSIF ( epZielPosition = eKippen_Position_90Grad ) THEN
+
+    // Kippen auf 90Grad
+    ELSIF ( epZielPosition = eKippen_Position_90Grad ) THEN
         IF ( in_bSensorNicht90Grad ) THEN
           out_bKippenAufSetzen := TRUE;
           steplKippenSchuetz := STEP_10_E;
@@ -50,11 +50,11 @@ IF ( bpPositionieren ) THEN
           out_bKippenAufSetzen := FALSE;
           steplKippenSchuetz := STEP_1000_E;
         END_IF
-		
-	  // Kippen auf 84Grad
-	  ELSE
-        steplKippenSchuetz := STEP_100_E;		  
-	  END_IF
+
+    // Kippen auf 84Grad
+    ELSE
+        steplKippenSchuetz := STEP_100_E;
+    END_IF
 
 (*KIPPEN SCHÜTZ AUFKIPPEN =================================*)
     STEP_10_E:
@@ -65,7 +65,7 @@ IF ( bpPositionieren ) THEN
 
 (*KIPPEN SCHÜTZ ABKIPPEN ==========================*)
     STEP_100_E:
-	  IF ( epZielPosition = eKippen_Position_84Grad ) THEN
+    IF ( epZielPosition = eKippen_Position_84Grad ) THEN
         IF ( in_bSensorNicht84Grad ) THEN
           out_bKippenAbSetzen := TRUE;
           steplKippenSchuetz := STEP_110_E;
@@ -73,11 +73,11 @@ IF ( bpPositionieren ) THEN
           out_bKippenAbSetzen := FALSE;
           steplKippenSchuetz := STEP_1000_E;
         END_IF
-	  ELSE		  
+    ELSE
         wpFehlerNr := cMELDUNG_KIPPEN_ZIEL_POSITION_UNGUELTIG;
         steplKippenSchuetz := STEP_900_E;
-	  END_IF
-	  
+    END_IF
+
 (*KIPPEN SCHÜTZ ABKIPPEN ==========================*)
     STEP_110_E:
       IF ( NOT in_bSensorNicht84Grad ) THEN

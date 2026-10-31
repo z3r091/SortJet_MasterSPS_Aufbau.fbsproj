@@ -88,7 +88,7 @@ THEN
       IF tonlFreigabeErhalten.Q THEN
         Kippen.epZielPosition := eKippen_Position_90Grad;
         Kippen.bpPositionieren := TRUE;
-		
+
         Messachse.bpPositionierung := TRUE;
       ELSE
         Kippen.bpPositionieren     := FALSE;
@@ -135,7 +135,7 @@ THEN
       *)
       IF ( tonlFreigabeErhalten.Q ) THEN
        Kippen.epZielPosition := eKippen_Position_84Grad;
-	   Kippen.bpPositionieren := TRUE;
+     Kippen.bpPositionieren := TRUE;
       ELSE
        Kippen.bpPositionieren := FALSE;
       END_IF

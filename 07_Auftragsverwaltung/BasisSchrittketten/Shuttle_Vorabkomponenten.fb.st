@@ -48,7 +48,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
   (* Hinweis:
    - Setzen der Freigabe fuer die Resourcen-Ansteuerung wenn zum Zeitpunkt des "STARTENS"
      kein Auftrag aktiv ist. Ist die Ansteuerung "Aktiv" kann diese Variable wieder abfallen.
-  *)	
+  *)
   blFreigabeVorabAuftrag := ( Job_Shuttle.AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Kein_Auftrag );
 
   CASE steplSchritt OF
@@ -57,7 +57,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
-      *)	
+      *)
       IF checkSafetyCircuitsNotBlocked(starrShuttleBasisParameter[wStation]) 
          AND blFreigabeVorabAuftrag 
       THEN
@@ -70,12 +70,12 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
 
 (*VORABKOMPONENETEN ===============================================*)
     STEP_10_E:
-	    // Transferstation bestimmen
-	    wlNextTransferstation := Auftragsdaten.wTransferStation;
-	  
+      // Transferstation bestimmen
+      wlNextTransferstation := Auftragsdaten.wTransferStation;
+
       // Auftragsdaten uebergeben
-	    starrShuttleBasisParameter[wStation].pVorAbAuftragsdaten[wWand]:= Auftragsdaten;
-	  
+      starrShuttleBasisParameter[wStation].pVorAbAuftragsdaten[wWand]:= Auftragsdaten;
+
       // Vorinitialisieren der Werte
       starrShuttleBasisParameter[wStation].pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eGlastransport       := eGlastransport_Default;
       starrShuttleBasisParameter[wStation].pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eDickenverstellung   := eZylinderUndefiniert;
@@ -86,7 +86,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
       IF ( Auftragsdaten.rLaenge >= starrShuttleBasisParameter[wStation].stMKs.stStationsParameter.rLaengeUebergroesseScheibe ) THEN
         starrShuttleBasisParameter[wStation].wGlasTyp[wWand] := eScheibe_Maximal;
       END_IF
-	  
+
       (* Hinweis:
          - Austransport 
       *)
@@ -94,9 +94,9 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
         // Folgestation beruecksichtigen damit in verschiedene Richtungen vorpositioniert werden kann. 
         starrShuttleBasisParameter[wStation].pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eGlastransport := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.Glastransport[wlNextTransferstation];
         starrShuttleBasisParameter[wStation].pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eKippen_SollPosition := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.Kippen[wlNextTransferstation];
-	    ELSE
+      ELSE
         starrShuttleBasisParameter[wStation].pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eKippen_SollPosition := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Kippen[wlNextTransferstation];
-	  	END_IF
+      END_IF
 
       (* Hinweis:
          - Scheibenführung / Wandverstellung anstellen 
@@ -109,9 +109,9 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
       ELSIF ( starrShuttleBasisParameter[wStation].pAuftrag[cWAND_1].rAuftragsDicke <= wgMKScheibenDicke24mm ) THEN
         starrShuttleBasisParameter[wStation].pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eDickenverstellung := eZylinderStellung29mm;
       END_IF
-	  
-	    // Auftrag übergeben
-	    starrShuttleBasisParameter[wStation].bVorabKomponentenAnsteuerung[wWand] := TRUE; 
+
+      // Auftrag übergeben
+      starrShuttleBasisParameter[wStation].bVorabKomponentenAnsteuerung[wWand] := TRUE; 
 
       steplSchritt := STEP_400_E;
 
@@ -121,7 +121,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
          - Abschliessen des Austransports
       *)
       IF ( starrShuttleBasisParameter[wStation].bVorabKomponentenAnsteuerungAbgeschlossen[wWand] ) THEN
-	      starrShuttleBasisParameter[wStation].bVorabKomponentenAnsteuerung[wWand] := FALSE; 
+        starrShuttleBasisParameter[wStation].bVorabKomponentenAnsteuerung[wWand] := FALSE; 
         steplSchritt := STEP_1000_E;
       END_IF
 

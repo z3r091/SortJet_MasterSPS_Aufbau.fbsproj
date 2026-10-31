@@ -54,7 +54,7 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
-      *)	
+      *)
       IF checkSafetyCircuitsNotBlocked(starrShuttleBasisParameter[wStation]) AND NOT bgShuttleEintransportSperren[wStation] AND NOT bgShuttleAustransportSperren[wStation]  THEN
         steplSchritt := STEP_10_E;
       END_IF
@@ -84,13 +84,13 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
       *)
       wlEintransportstation := Auftragsdaten.wTransferstationsNr1;
       wlAustransportstation := Auftragsdaten.wTransferstationsNr2;
-	  
+
        (* Hinweis:
           - Zuweisung Transportkopplung
        *)
       CASE wlEintransportstation OF
 
-	    // Stationen
+      // Stationen
         cERSTE_STATION..cLETZTE_STATION:
           (* Hinweis:
              - Transportkopplung 
@@ -99,8 +99,8 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
             starrShuttleBasisParameter[wStation].InGlasTransportVorgaenger[wWand] := starrStationBasisParameter[wlEintransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
           ELSE
             starrShuttleBasisParameter[wStation].InGlasTransportNachfolger[wWand] := starrStationBasisParameter[wlEintransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
-	        END_IF
-		      blKopplungGefundenEintransport := TRUE;
+          END_IF
+          blKopplungGefundenEintransport := TRUE;
 
         ELSE
           wpgFehlerdaten[0] := starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerExtern;
@@ -120,7 +120,7 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
        *)
       CASE wlAustransportstation OF
 
-	    // Stationen
+      // Stationen
         cERSTE_STATION..cLETZTE_STATION:
           (* Hinweis:
              - Transportkopplung 
@@ -129,8 +129,8 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
             starrShuttleBasisParameter[wStation].InGlasTransportNachfolger[wWand] := starrStationBasisParameter[wlAustransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
           ELSE
             starrShuttleBasisParameter[wStation].InGlasTransportVorgaenger[wWand] := starrStationBasisParameter[wlAustransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
-	      END_IF
-		  blKopplungGefundenAustransport := TRUE;
+        END_IF
+      blKopplungGefundenAustransport := TRUE;
 
         cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF:
           (* Hinweis:
@@ -140,9 +140,9 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
             starrShuttleBasisParameter[wStation].InGlasTransportNachfolger[wWand] := starrFremdanlageAuslaufStationBasisParameter[wlAustransportstation].OutGlasTransport[cWAND_1];
           ELSE
             starrShuttleBasisParameter[wStation].InGlasTransportVorgaenger[wWand] := starrFremdanlageAuslaufStationBasisParameter[wlAustransportstation].OutGlasTransport[cWAND_1];
-	      END_IF
-		  blKopplungGefundenAustransport := TRUE;
-		  
+        END_IF
+      blKopplungGefundenAustransport := TRUE;
+
         ELSE
           wpgFehlerdaten[0] := starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerExtern;
           wpgFehlerdaten[1] := wlAustransportstation;
@@ -155,10 +155,10 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
           steplSchritt := STEP_900_E;
 
       END_CASE
-	  
-	  IF blKopplungGefundenEintransport AND blKopplungGefundenAustransport THEN
+
+    IF blKopplungGefundenEintransport AND blKopplungGefundenAustransport THEN
         steplSchritt := STEP_30_E;
-	  END_IF
+    END_IF
 
 (* DURCHTRANSPORT ================================= *)
      STEP_30_E:
@@ -167,7 +167,7 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
          - Scheibenquittierung 
       *)
       ilScheibenZuQuittieren := WORD_TO_INT(Auftragsdaten.wAnzahlScheiben);
-	  
+
       (* Hinweis:
          - Auftrags- Optionen bestimmen und zuweisen
       *)
@@ -247,7 +247,7 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
                   starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern, 
                   AutomatikkreisBestimmen(starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
                   starrShuttleBasisParameter[wStation].awFehlerInformationen );
-						
+
         starrShuttleBasisParameter[wStation].bDurchtransport[wWand] := FALSE;
         starrShuttleBasisParameter[wStation].bRueckwaertsTransportieren[wWand] := FALSE;
         steplSchritt := STEP_900_E;

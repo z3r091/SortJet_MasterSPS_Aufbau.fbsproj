@@ -65,7 +65,7 @@ VAR
   aInDWordAuftragsdatenScheibenID : ARRAY [0..3] OF DWORD;
 
   (* STRING *)
-	strScheibenID : STRING;
+  strScheibenID : STRING;
 
   (* TRIGGER *)
   rtlAutomatikActiv                       : R_TRIG; 

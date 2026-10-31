@@ -20,9 +20,9 @@ IF( bpReset )THEN
       bpVermessenAbgeschlossen := FALSE;
       Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
 
-	  IF NOT Antrieb.bpAntrieblaeuft THEN
+    IF NOT Antrieb.bpAntrieblaeuft THEN
         steplReset := STEP_10_E;
-	  END_IF
+    END_IF
 
 (*RESET ===========================*)
     STEP_10_E:

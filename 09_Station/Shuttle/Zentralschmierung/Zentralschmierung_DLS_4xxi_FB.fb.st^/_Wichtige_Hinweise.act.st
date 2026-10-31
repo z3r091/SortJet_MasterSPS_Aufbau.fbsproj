@@ -42,8 +42,8 @@ Die neue Pumpe kann mit verschieden langen Steuersignalen zwischen 2 Schmierkrei
 - 2s Steuersignal = Schmierkreis 1 Zahnstange
 - 5s Steuersignal = Schmierkreis 2 Führungsbahn
 - 8s Steuersignal = Schmierkreis 1 und Schmierkreis 2
-- 10s Steuersignal=	Reset
-- 12s Steuersignal=	Fill
+- 10s Steuersignal= Reset
+- 12s Steuersignal= Fill
 
 Bisher ist im Programm implementiert, dass beim Schmierkreis 1 und 2 auch 20 Hübe ausgeführt werden sollen. Dass kann optimiert werden, da beim Shuttle Schmierkreis 1 nur 5 Hübe benötigt.
 Außerdem ist das Unterprogramm erst nur für die Zentralschmierung des Shuttles angepasst für das Unterfuhrshuttle ist die Zentralschmierung noch nicht erweitert.

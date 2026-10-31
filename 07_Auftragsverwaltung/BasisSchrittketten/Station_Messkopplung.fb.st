@@ -53,7 +53,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Messkopplung ) THEN
          - Starten der Glasmessung
       *)
       starrStationBasisParameter[wStation].pAuftrag[wWand] := Auftragsdaten;
-	  
+
       starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition := starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Kippen[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wVorgaengerStation];
 
       IF ( Auftragsdaten.rAuftragsDicke < wgMKScheibenDicke13mm ) THEN

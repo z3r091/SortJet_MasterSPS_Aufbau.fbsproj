@@ -36,7 +36,7 @@ IF ( blStartISOLinie ) THEN
          - Wort 4: 0 = Senkrechtförderer frei  / 1 = Senkrechtförderer belegt
      *)
      wSps2MmiStationsNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
-	  wSPS2MMIStationsStatusWord1.0 := in_bEmpfaengerStationFrei;
+    wSPS2MMIStationsStatusWord1.0 := in_bEmpfaengerStationFrei;
      MsgToMmi( auftragsnr_w := SB0_SPS_STATIONSTATUS );
 
      steplStartIsolinie:=STEP_50_E;

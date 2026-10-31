@@ -83,7 +83,7 @@ THEN
          - Einlauf- Auslauf- Sensoren heben
          Die Variable  << blGlastransportUndAbfragenGehoben >> wird gebildet durch:
          - tonlGlastransportOben.Q  | tonlKontrolleEinlaufOben.Q  | blDruckluftAuslaufSeiteOK
-	         tonlKontrolleAuslaufOben.Q | blDruckluftEinlaufSeiteOK 
+           tonlKontrolleAuslaufOben.Q | blDruckluftEinlaufSeiteOK 
       *)
       out_bShuttleAnheben := TRUE;
       out_bScheibenKontrolleAuslaufseiteAuf := TRUE;
@@ -326,11 +326,11 @@ THEN
                 AutomatikkreisBestimmen(stStationsNummern.NummerIntern), 
                 wpgFehlerdaten );
 
-	   FOR wlSubIndex := 1 TO cANZAHL_HUPEN DO
+     FOR wlSubIndex := 1 TO cANZAHL_HUPEN DO
         Horn_AK[starrTransfershuttleBasisParameter[stStationsNummern.NummerSPS].stMKs.eaAutomatikkreis[1],wlSubIndex].wpStatusArt      := 0;
         Horn_AK[starrTransfershuttleBasisParameter[stStationsNummern.NummerSPS].stMKs.eaAutomatikkreis[1],wlSubIndex].tpHornZeit       := T#5S;
         Horn_AK[starrTransfershuttleBasisParameter[stStationsNummern.NummerSPS].stMKs.eaAutomatikkreis[1],wlSubIndex].bpHornAktivieren := TRUE;
-	   END_FOR
+     END_FOR
 
       bpOutBereitZumEintransport := FALSE;
 

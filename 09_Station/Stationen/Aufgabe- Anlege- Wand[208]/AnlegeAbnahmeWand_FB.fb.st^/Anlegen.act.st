@@ -148,7 +148,7 @@ THEN
       THEN
         Glastransport.bpScheibeZurueckFahren := in_bKnebelGlastransportZurueck;
         Glastransport.bpScheibeVorFahren     := FALSE;
-	  ELSIF ( in_bKnebelGlastransportVor
+    ELSIF ( in_bKnebelGlastransportVor
         AND tonlFreigabeErhalten.Q )
       THEN
         Glastransport.bpScheibeVorFahren := in_bKnebelGlastransportVor;

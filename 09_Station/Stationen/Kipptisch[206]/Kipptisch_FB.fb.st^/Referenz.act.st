@@ -9,7 +9,7 @@ ACTION Referenz
 (***************************************************************************************************)
 (* AKTION REFERENZ *)
 (***************************************************************************************************)
-IF ( blBetriebsartReferenz ) THEN	
+IF ( blBetriebsartReferenz ) THEN
 
   // Ausnahmesituation
   IF ( Kippen.bpFehler ) THEN
@@ -23,7 +23,7 @@ IF ( blBetriebsartReferenz ) THEN
     BasisStationsParameter.wFehlerNummer := Querfahrt.wpFehlerNr;
     steplReferenz := STEP_900_E;
   END_IF
-	  
+
   CASE steplReferenz OF
 (* REFERENZ ===========================*)
     STEP_0_E:

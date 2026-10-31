@@ -161,7 +161,7 @@ THEN
                     stStationsNummern.NummerIntern, 
                     AutomatikkreisBestimmen(stStationsNummern.NummerIntern), 
                     wpgFehlerdaten );
-						  
+
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
         steplScheibenNeuAusrichten := STEP_800_E;

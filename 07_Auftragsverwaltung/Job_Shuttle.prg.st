@@ -80,7 +80,7 @@ VAR
   TS_Austransport                 : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF TS_Austransport;
   TS_Transportkopplung            : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF TS_Transportkopplung;
   TS_Vortransport                 : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF TS_Vortransport;
-	
+
   wlAutomatikkreis2               : WORD := 2; // Variable mit dem Index zum Zugriff auf den 2. Automatikkreis Index. Benötigt zum Austricksen des Compilers
 
   Basis                           : REFERENCE TO StationBasisParameter_ST;

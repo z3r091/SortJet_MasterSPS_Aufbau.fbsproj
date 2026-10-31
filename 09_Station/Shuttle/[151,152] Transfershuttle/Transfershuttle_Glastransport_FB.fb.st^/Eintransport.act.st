@@ -24,9 +24,9 @@ THEN
       tonlWartenAufSenken(IN:=FALSE);
       blEintransportDefaultLuftabfrage := FALSE;
 
-	  IF Antrieb.bpReglerBereit THEN
+    IF Antrieb.bpReglerBereit THEN
         steplEintransport := STEP_5_E;
-	  END_IF
+    END_IF
 
 (*EINTRANSPORT ==============================*)
     STEP_5_E:
@@ -35,10 +35,10 @@ THEN
 
 (*EINTRANSPORT ==============================*)
     STEP_6_E:
-	  IF Antrieb.bpDone THEN
+    IF Antrieb.bpDone THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplEintransport := STEP_10_E;
-	  END_IF
+    END_IF
 
 (*EINTRANSPORT ==============================*)
     STEP_10_E:

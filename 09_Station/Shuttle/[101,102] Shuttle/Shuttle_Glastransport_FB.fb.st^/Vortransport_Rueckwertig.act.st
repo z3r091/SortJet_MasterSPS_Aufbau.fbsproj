@@ -29,10 +29,10 @@ THEN
          - Vortransport nur wenn es keinen Modelversatz gibt
       *)
      bpDone := FALSE;
-	   IF ( blAntriebsKopplungAktiv ) THEN
+     IF ( blAntriebsKopplungAktiv ) THEN
        steplVortransportRueckwertig := STEP_10_E;
      END_IF
-	 
+
 (*VORTRANSPORT ==============================*)
     STEP_10_E:
       IF (  NOT bpSensorEinlaufVorab

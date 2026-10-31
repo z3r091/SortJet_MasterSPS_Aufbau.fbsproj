@@ -7,7 +7,7 @@
 *)
 FUNCTION_BLOCK Shuttle_Kippen
 VAR_INPUT
-	
+
   // BOOL
   bpSensorEinlauf                  : BOOL;
   bpSensorAuslauf                  : BOOL;
@@ -196,7 +196,7 @@ IF ( bpKippenSchuetz ) THEN
   out_bReset := toflReset.Q;
   
   Kippen_Schuetz();
-	
+
 ELSE
   Positionieren();
   Referenz();

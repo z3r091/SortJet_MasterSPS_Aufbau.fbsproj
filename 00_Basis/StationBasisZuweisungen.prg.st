@@ -20,13 +20,13 @@ END_VAR
 (* INITIALISIERUNG  *)
 (***************************************************************************************************)
 IF ( blErsterZyklus ) THEN
-	
+
   M_AufrufeZuweisungen();
   
   // Fehlerinformationen zuweisen
   FOR wlIndex := cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR DO
     IF __ISVALIDREF(starrFaecherwagenBasisParameter[wlIndex].stMKs) THEN
-  	  starrFaecherwagenBasisParameter[wlIndex].awFehlerInformationen[0] := starrFaecherwagenBasisParameter[wlIndex].stMKs.stStationsNummern.NummerExtern;
+      starrFaecherwagenBasisParameter[wlIndex].awFehlerInformationen[0] := starrFaecherwagenBasisParameter[wlIndex].stMKs.stStationsNummern.NummerExtern;
     END_IF
   END_FOR
 

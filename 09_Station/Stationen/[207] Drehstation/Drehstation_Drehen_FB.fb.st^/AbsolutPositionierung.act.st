@@ -191,7 +191,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
       IF ( Antrieb.bpReglerBereit ) THEN
         steplAbsolutPositionieren := STEP_40_E;
       END_IF
-	  
+
 (* ABSOLUT POSITIONIEREN =========================*)
     STEP_40_E:
       (* ---------------------------------------------------------------------------------------
@@ -376,12 +376,12 @@ IF (  bpStarteAbsolutPositionierung ) THEN
             Arretierung.bpStartAusfahren := TRUE;
             steplAbsolutPositionieren := STEP_210_E;
 
-		 ELSE
+     ELSE
            wgSps2MmiDrehStation       := stStationsNummern.NummerIntern;
            wgSps2MmiPosDrehStation    := epDrehPositionsStatus;
            wgSps2MmiOldPosDrehStation := epDrehPositionsAlt;
            MsgToMmi( auftragsnr_w := SB0_SPS_TURNSTATIONPOSITION );
-		   
+
            steplAbsolutPositionieren := STEP_1000_E;
          END_CASE
 

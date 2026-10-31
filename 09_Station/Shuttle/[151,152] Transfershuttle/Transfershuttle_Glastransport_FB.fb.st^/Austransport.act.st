@@ -24,9 +24,9 @@ THEN
       tonlWartenAufSenken(IN:=FALSE);
       blAustransportDefaultLuftabfrage := FALSE;
 
-	  IF Antrieb.bpReglerBereit THEN
+    IF Antrieb.bpReglerBereit THEN
         steplAustransport := STEP_5_E;
-	  END_IF
+    END_IF
 
 (*AUSTRANSPORT ==============================*)
     STEP_5_E:
@@ -35,10 +35,10 @@ THEN
 
 (*AUSTRANSPORT ==============================*)
     STEP_6_E:
-	  IF Antrieb.bpDone THEN
+    IF Antrieb.bpDone THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplAustransport := STEP_10_E;
-	  END_IF
+    END_IF
 
 (*AUSTRANSPORT ==============================*)
     STEP_10_E:

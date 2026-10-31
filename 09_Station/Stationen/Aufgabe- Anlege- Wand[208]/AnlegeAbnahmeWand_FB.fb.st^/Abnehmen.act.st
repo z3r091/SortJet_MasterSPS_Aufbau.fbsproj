@@ -56,10 +56,10 @@ THEN
     STEP_20_E:
       IF ( NOT Kippen.bpFehler ) THEN
         out_bDrosselklappeOeffnen := TRUE;
-		
+
         Kippen.epZielPosition := eKippen_Position_84Grad;
-	     Kippen.bpPositionieren := TRUE;
-		
+       Kippen.bpPositionieren := TRUE;
+
         steplAbnehmen := STEP_30_E;
       ELSE
         Kippen.bpPositionieren := FALSE;
@@ -151,7 +151,7 @@ ELSE
 
     Messachse.bpPositionierung  := FALSE;
     Kippen.bpPositionieren      := FALSE;
-	
+
     BasisStationsParameter.bAbnehmenAbgeschlossen := FALSE;
 
     steplAbnehmen := STEP_0_E;

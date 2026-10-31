@@ -8,7 +8,7 @@
 {attribute 'allow_unqualified_access'}
 NAMESPACE Visu_Schnittstellen
 VAR_GLOBAL
-	 
+
 // Signale zum Forcen
 bgVisu_Schnittstelle_Einlauf_Force_GlasBereit    : ARRAY[cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
 bgVisu_Schnittstelle_Force_AutomatikBetrieb      : ARRAY[cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;

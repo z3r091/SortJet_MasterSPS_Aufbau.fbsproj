@@ -43,7 +43,7 @@ THEN
          - Variablen zuruecksetzen
       *)
       BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] := FALSE;
-	  
+
       Kippen.bpStartKippenAb  := FALSE;
       Kippen.bpStartKippenAuf := FALSE;
 
@@ -56,7 +56,7 @@ THEN
     STEP_10_E:
       (* Hinweis:
          - Rollenleiste
-		 - Kippen
+     - Kippen
       *)
       IF ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= wgMKScheibenDicke13mm )THEN
         Rollenleiste.bpStarteOeffnen    := FALSE;
@@ -67,7 +67,7 @@ THEN
       END_IF
 
       // Eintransport- Position festlegen
-	  CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition OF
+    CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition OF
 
         eKippen_Position_0Grad: 
           IF ( NOT ( Kippen.epKippStatus = eKippen_Position_0Grad )) THEN
@@ -134,12 +134,12 @@ THEN
         Rollenleiste.bpStarteOeffnen    := FALSE;
         Rollenleiste.bpStarteSchliessen := FALSE;
 
-		IF BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe THEN
-          steplEintransport := STEP_300_E;			 
-		ELSE
-          steplEintransport := STEP_200_E;			
-		END_IF
-		
+    IF BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe THEN
+          steplEintransport := STEP_300_E;
+    ELSE
+          steplEintransport := STEP_200_E;
+    END_IF
+
       END_IF
 
 (* EINTRANSPORT =========================*)
@@ -155,8 +155,8 @@ THEN
          - Eintransport "Letzte Scheibe"
       *)
       IF (  Glastransport.bpFreigabeFremdprozess ) AND BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe THEN
-		//  Position nach Eintransport
-	    CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachEintransport OF
+    //  Position nach Eintransport
+      CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachEintransport OF
         
           eKippen_Position_0Grad: 
             Kippen.bpStartKippenAb := TRUE;           
@@ -166,7 +166,7 @@ THEN
             Kippen.bpLangsamKippen  := FALSE;
             IF BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke < 3 AND BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe > 1200 THEN
              Kippen.bpLangsamKippen := TRUE;
-			END_IF
+      END_IF
         
         END_CASE   
 
@@ -209,7 +209,7 @@ ELSE
 
     Kippen.bpStartKippenAuf := FALSE;
     Kippen.bpStartKippenAb  := FALSE;
-	Kippen.bpLangsamKippen  := FALSE;
+  Kippen.bpLangsamKippen  := FALSE;
 
     Glastransport.bpVortransport             := FALSE;
     Glastransport.bpEintransport             := FALSE;

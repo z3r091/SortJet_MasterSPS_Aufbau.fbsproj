@@ -344,7 +344,7 @@ Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
 Antrieb_Slave.bpFreigabe        := toflAutoAbschaltung.Q AND bpFreigabe;
 Antrieb_Slave.stStationsNummern := stStationsNummern;
 Antrieb_Slave.rpRuckzeit        := ppAntriebsInformationenSlave.rpMaxRuckzeit;
-							
+
   
 // Aufruf Scheibenmessung
 Scheibenmessung( stStationsNummern                   := stStationsNummern,

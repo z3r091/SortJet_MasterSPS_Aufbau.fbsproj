@@ -7,8 +7,8 @@
 *)
 PROGRAM SteuerungSicherheitskreise
 VAR_INPUT
-	in_bTasterSKFaecherwagenQuittieren        AT %I* : BOOL; // Taster an OP fuer FW SK quittieren
-	out_bLeuchtmelderSKFaecherwagenQuittieren AT %Q* : BOOL; 
+  in_bTasterSKFaecherwagenQuittieren        AT %I* : BOOL; // Taster an OP fuer FW SK quittieren
+  out_bLeuchtmelderSKFaecherwagenQuittieren AT %Q* : BOOL; 
   
   bpFreigabePuffer101Ausfahren                     : BOOL;
   
@@ -24,13 +24,13 @@ VAR
   ablSicherheitskreisAnfordernExtern : ARRAY [cERSTER_SICHERHEITSKREIS..cLETZTER_SICHERHEITSKREIS] OF BOOL;
   
   bpPuffer101ObenAusfahren           : BOOL;  
-  bpPuffer103ObenAusfahren           : BOOL;	 
-  bpPuffer102UntenAusfahren          : BOOL;	 
-	bpPuffer104UntenAusfahren          : BOOL;
+  bpPuffer103ObenAusfahren           : BOOL;
+  bpPuffer102UntenAusfahren          : BOOL;
+  bpPuffer104UntenAusfahren          : BOOL;
   bpPuffer101ObenEinfahren           : BOOL;  
-  bpPuffer103ObenEinfahren           : BOOL;	 
-  bpPuffer102UntenEinfahren          : BOOL;	 
-	bpPuffer104UntenEinfahren          : BOOL;
+  bpPuffer103ObenEinfahren           : BOOL;
+  bpPuffer102UntenEinfahren          : BOOL;
+  bpPuffer104UntenEinfahren          : BOOL;
   
   
   // STEPS

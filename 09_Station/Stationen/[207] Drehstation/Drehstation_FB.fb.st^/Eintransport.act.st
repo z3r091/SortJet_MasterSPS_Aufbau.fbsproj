@@ -105,12 +105,12 @@ THEN
         Drehen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eDrehen_Sollposition;
         Drehen.bpStarteAbsolutPositionierung := TRUE;
       END_IF
-	  IF Drehen.epZielPosition <> eDrehPosition0Grad THEN
-		BasisStationsParameter.wFehlerNummer := cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_DREHPOSITION;
+    IF Drehen.epZielPosition <> eDrehPosition0Grad THEN
+    BasisStationsParameter.wFehlerNummer := cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_DREHPOSITION;
         steplEintransport := STEP_900_E;
-	  ELSE
+    ELSE
         steplEintransport := STEP_110_E;
-	  END_IF
+    END_IF
 
 
 (*EINTRANSPORT ==================================================================*)
@@ -130,7 +130,7 @@ THEN
 
         steplEintransport := STEP_120_E;
       END_IF
-	  
+
 (*EINTRANSPORT ==================================================================*)
     STEP_120_E:
       (* Hinweis:
@@ -147,7 +147,7 @@ THEN
         steplEintransport := STEP_900_E;
 
       END_IF
-	  
+
 
 (*EINTRANSPORT ==================================================================*)
     STEP_200_E:

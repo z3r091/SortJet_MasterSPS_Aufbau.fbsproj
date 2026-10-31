@@ -9,10 +9,10 @@ FUNCTION BitToggleWord : WORD
 VAR_INPUT
 
   (* WORD *)
-	IN : WORD;
+  IN : WORD;
 
   (* INT *)
-	POS : INT;
+  POS : INT;
 
 END_VAR
 (***************************************************************************************************)

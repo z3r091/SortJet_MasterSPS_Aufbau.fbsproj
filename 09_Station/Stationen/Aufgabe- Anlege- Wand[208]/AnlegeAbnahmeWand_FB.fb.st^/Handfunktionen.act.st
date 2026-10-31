@@ -65,8 +65,8 @@ IF ( blBetriebsartHand ) THEN
                                         OR BasisStationsParameter.dwHandfunktionen.4
                                         OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] 
                                         OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
-													 
-													 
+
+
   
   
   

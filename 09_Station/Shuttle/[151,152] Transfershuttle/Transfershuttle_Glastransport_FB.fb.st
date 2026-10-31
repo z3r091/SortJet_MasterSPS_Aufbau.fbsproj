@@ -361,9 +361,9 @@ blAuslaufsensor := NOT toflAuslaufsensor.Q AND ( blDruckluftAuslaufSeiteOK OR bp
    - Abfrage ob die Station bereit fuer den Glastransport ist 
 *)
 blBereitZumGlastransport := (    tonlGlastransportOben.Q
-        	                   AND tonlKontrolleEinlaufOben.Q
-	                           AND ( blDruckluftAuslaufSeiteOK OR bpOptionTransfershuttleMitUltraschallSensoren )
-	                           AND tonlKontrolleAuslaufOben.Q
+                             AND tonlKontrolleEinlaufOben.Q
+                             AND ( blDruckluftAuslaufSeiteOK OR bpOptionTransfershuttleMitUltraschallSensoren )
+                             AND tonlKontrolleAuslaufOben.Q
                              AND ( blDruckluftEinlaufSeiteOK OR bpOptionTransfershuttleMitUltraschallSensoren ) );
 
 
@@ -441,7 +441,7 @@ END_IF
 toflAutoAbschaltung( IN := (  bpAutomatikAktiv
                            AND ( bpEintransport
                            OR bpAustransport
-					       OR bpStarteHebeVorgang
+                 OR bpStarteHebeVorgang
                            OR bpVortransport))
                            OR bpCheck
                            OR bpSlaveKopplung
@@ -469,11 +469,11 @@ Scheibenzaehler( ipScheibenAnzahl := ilScheibenZaehler,
  - Bit ob das Transfershuttle verfahren darf
 *)
 bpBereitZumVerfahren := (     blSensorGlastransportUnten
-						AND NOT blSensorGlastransportOben
-						AND tonlKontrolleEinlaufUnten.Q
-						AND NOT bpSensorScheibenKontrolleEinlaufseiteOben
-						AND tonlKontrolleAuslaufUnten.Q
-						AND NOT bpSensorScheibenKontrolleAuslaufseiteOben );
+            AND NOT blSensorGlastransportOben
+            AND tonlKontrolleEinlaufUnten.Q
+            AND NOT bpSensorScheibenKontrolleEinlaufseiteOben
+            AND tonlKontrolleAuslaufUnten.Q
+            AND NOT bpSensorScheibenKontrolleAuslaufseiteOben );
 
 (* Ausgaeng:
    - Aktuelle Geschwindigkeit des Antriebs

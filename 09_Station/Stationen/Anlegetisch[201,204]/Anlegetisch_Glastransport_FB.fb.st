@@ -7,7 +7,7 @@
 *)
 FUNCTION_BLOCK Anlegetisch_Glastransport_FB EXTENDS Basic_Glastransport_FB
 VAR_INPUT
-	
+
   // BOOLEAN
   bpAnforderungHandfunktion      : BOOL;  
   bpScheibeQuittiert             : BOOL;

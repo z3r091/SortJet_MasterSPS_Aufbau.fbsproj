@@ -7,9 +7,9 @@
 *)
 TYPE Parameter_Zentralschmierung_DLS_4xxi :
   STRUCT
-	
-	aiAnzahlHuebe                  : ARRAY[cSCHMIERKREIS_1..cSCHMIERKREIS_2] OF INT;  // Anzahl der Hübe die die Schmierung machen soll
-	adiZuFahrenderWegBisSchmierung : ARRAY[cSCHMIERKREIS_1..cSCHMIERKREIS_2] OF DINT; // Zu fahrende Strecke nach der geschmiert werden muss in mm 
+
+  aiAnzahlHuebe                  : ARRAY[cSCHMIERKREIS_1..cSCHMIERKREIS_2] OF INT;  // Anzahl der Hübe die die Schmierung machen soll
+  adiZuFahrenderWegBisSchmierung : ARRAY[cSCHMIERKREIS_1..cSCHMIERKREIS_2] OF DINT; // Zu fahrende Strecke nach der geschmiert werden muss in mm 
 
   END_STRUCT
 END_TYPE

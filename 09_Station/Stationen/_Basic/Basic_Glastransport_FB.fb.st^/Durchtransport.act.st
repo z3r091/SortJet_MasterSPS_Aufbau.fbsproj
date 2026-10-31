@@ -55,7 +55,7 @@ IF (  bpDurchtransport ) THEN
          - Warten bis die Nachfolgestation bereit ist zum Eintransport
       *)
       bpOutBereitZumAustransport := TRUE;
-	  
+
       IF (  InGlasTransportNachfolger.bBereitZumEintransport ) THEN
         steplDurchtransport := STEP_20_E;
       END_IF
@@ -66,7 +66,7 @@ IF (  bpDurchtransport ) THEN
          - Warten bis die Nachfolgestation bereit ist zum Eintransport
       *)
       bpOutBereitZumEintransport := TRUE;
-	  
+
       IF (  InGlasTransportVorgaenger.bBereitZumAustransport ) THEN
         steplDurchtransport := STEP_100_E;
       END_IF
@@ -76,8 +76,8 @@ IF (  bpDurchtransport ) THEN
       (* Hinweis:
         - Antrieb in den Master- Slave- Modus setzen
       *)
-	  bpDurchtransportWarAktiv := TRUE;
-	  
+    bpDurchtransportWarAktiv := TRUE;
+
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
       Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -92,18 +92,18 @@ IF (  bpDurchtransport ) THEN
          - Kopplung wird solange aktiv gehalten bis der Nachfolger seinen Transport beendet hat
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
-	  
-	  IF bpSensorEinlauf THEN
+
+    IF bpSensorEinlauf THEN
         steplDurchtransport := STEP_120_E;
-	  END_IF
-	  
+    END_IF
+
       IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) THEN
         steplDurchtransport := STEP_1000_E;
       END_IF
-	  
+
       tonlMaximaleZeitSensorAnfahren( IN:= TRUE, PT :=T#60S );
-	  
-	 (* Fehlerbehandlung:
+
+   (* Fehlerbehandlung:
          - Auslaufsensor schaltet nicht
       *)
       IF ( tonlMaximaleZeitSensorAnfahren.Q ) THEN
@@ -117,26 +117,26 @@ IF (  bpDurchtransport ) THEN
          - Kopplung wird solange aktiv gehalten bis der Nachfolger seinen Transport beendet hat
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
-	  
-	  IF NOT bpSensorEinlauf THEN
-		bprtScheibe := TRUE;
+
+    IF NOT bpSensorEinlauf THEN
+    bprtScheibe := TRUE;
         steplDurchtransport := STEP_130_E;
-	  END_IF
-	  
+    END_IF
+
       IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) THEN
         steplDurchtransport := STEP_1000_E;
       END_IF
 
 (* DURCHTRANSPORT ========================================*)
     STEP_130_E:
-	
-  	  bprtScheibe := FALSE;
+
+      bprtScheibe := FALSE;
 
       (* WICHTIG:
          - Kopplung wird solange aktiv gehalten bis der Nachfolger seinen Transport beendet hat
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
-	  
+
       IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) THEN
         steplDurchtransport := STEP_1000_E;
       END_IF
@@ -148,7 +148,7 @@ IF (  bpDurchtransport ) THEN
       bpOutBereitZumEintransport := FALSE;
       bpOutBereitZumAustransport := FALSE;
       bpSlaveAktiv               := FALSE;
-	  
+
       Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
       bpFehler := TRUE;
@@ -160,8 +160,8 @@ IF (  bpDurchtransport ) THEN
 
       bprtScheibe := FALSE;
 
-	  bpDurchtransportWarAktiv := FALSE;
-	  
+    bpDurchtransportWarAktiv := FALSE;
+
       bpDone := TRUE;
 
 (* DURCHTRANSPORT ========================================*)

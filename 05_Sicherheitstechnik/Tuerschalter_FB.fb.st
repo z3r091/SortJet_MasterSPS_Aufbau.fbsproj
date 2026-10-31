@@ -46,8 +46,8 @@ VAR
 
   // HARDWARE AUSGAENGE 
   out_bLeuchteFreigabeTuerOeffnen              : BOOL;
-  out_bLeuchteTuerNichtGeschlossen	           : BOOL;
-  out_bLeuchteTuerNothaltAktiv   	           : BOOL;
+  out_bLeuchteTuerNichtGeschlossen             : BOOL;
+  out_bLeuchteTuerNothaltAktiv                 : BOOL;
   
 END_VAR
 (* Hinweis:

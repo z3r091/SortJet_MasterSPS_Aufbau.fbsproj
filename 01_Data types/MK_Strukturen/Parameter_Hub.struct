@@ -11,6 +11,6 @@ TYPE Parameter_Hub :
     rToleranz                     : REAL; (* Toleranz beim entscheiden der Aktuellen Positionen => Rueckgabewert beim pruefen des Positionsenums *)
 
     (* Aubau *)
-	bHubMitSchuetz                : BOOL; (* Hub mit Schütz oder Antrieb gelöst*)
+  bHubMitSchuetz                : BOOL; (* Hub mit Schütz oder Antrieb gelöst*)
   END_STRUCT
 END_TYPE

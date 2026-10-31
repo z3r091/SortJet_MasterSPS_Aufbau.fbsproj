@@ -17,9 +17,9 @@ END_VAR
 findInWORDArray := FALSE;
 
 FOR INDEX := 1 TO 10 DO
-	
+
   IF awpArray[INDEX] = wpValueToFind THEN
-	  findInWORDArray := TRUE;
+    findInWORDArray := TRUE;
       EXIT;
   END_IF
 

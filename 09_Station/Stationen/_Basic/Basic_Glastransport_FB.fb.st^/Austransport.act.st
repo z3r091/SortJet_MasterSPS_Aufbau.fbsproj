@@ -50,12 +50,12 @@ THEN
 
       blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
 
-	  // Sicherstellen das die Slavekopplung aktiv ist
+    // Sicherstellen das die Slavekopplung aktiv ist
       IF ( blAntriebsKopplungAktiv ) THEN
         // Zeit für Statistik
         tlWarteZeitAufnahme := TIME();
         steplAustransport := STEP_10_E;
-	  END_IF
+    END_IF
 
 (*AUSTRANSPORT ==============================*)
     STEP_10_E:
@@ -69,11 +69,11 @@ THEN
       Antrieb.rpGeschwindigkeit  := REAL#0 ;
 
       bpOutBereitZumEintransport := bpUebergrosseScheibeUebergang;
-	  
+
       IF ( InGlasTransportNachfolger.bBereitZumEintransport ) 
         AND ( NOT bpUebergrosseScheibeUebergang OR InGlasTransportVorgaenger.bBereitZumAustransport )
       THEN
-		
+
         dwpWartezeit := TIME_TO_DWORD(TIME()- tlWarteZeitAufnahme);
 
         IF ( NOT pAuftrag.bErsteScheibe ) THEN
@@ -209,8 +209,8 @@ THEN
       IF ( toflAuslaufsensor.Q ) THEN
         steplAustransport := STEP_120_E;
       END_IF
-	  
-	 (* Fehlerbehandlung:
+
+   (* Fehlerbehandlung:
          - Auslaufsensor schaltet nicht
       *)
       IF ( tonlMaximaleZeitSensorAnfahren.Q ) THEN
@@ -253,13 +253,13 @@ THEN
 
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
         rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
-		IF NOT toflAuslaufsensor.Q THEN
+    IF NOT toflAuslaufsensor.Q THEN
           bpOutBereitZumAustransport := FALSE;
           bpOutBereitZumEintransport := FALSE;
           steplAustransport := STEP_1000_E;
-		ELSE
+    ELSE
           steplAustransport := STEP_140_E;
-		END_IF
+    END_IF
       END_IF
 
 (*AUSTRANSPORT ====================*)
@@ -316,10 +316,10 @@ THEN
       *)
       bpFehler    := TRUE;
       bprtScheibe := FALSE;
-	  
+
       Antrieb.wpBetriebsart       := KEINE_FUNKTION;
       Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
-	  
+
       bpOutBereitZumAustransport := FALSE;
       bpOutBereitZumEintransport := FALSE;
 
@@ -340,7 +340,7 @@ ELSE
 
     bpOutBereitZumEintransport := FALSE;
     bpOutBereitZumAustransport := FALSE;
-	
+
     Antrieb.wpBetriebsart       := KEINE_FUNKTION;
     Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
 

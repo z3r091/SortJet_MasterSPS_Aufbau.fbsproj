@@ -126,7 +126,7 @@ IF ( blBetriebartCheck ) THEN
 
         eKippen_Default:
            Kippen.epZielPosition := eKippen_Position_84Grad;
-	       Kippen.bpPositionieren := TRUE;
+         Kippen.bpPositionieren := TRUE;
          steplCheck := STEP_30_E;
 
        END_CASE
@@ -283,18 +283,18 @@ IF ( blBetriebartCheck ) THEN
 
 (*SYSTEM CHECK=========================*)
     STEP_1000_E:
-		  // Auftrag für erneuten Automatikbetrieb setzen      
+      // Auftrag für erneuten Automatikbetrieb setzen      
       IF //starrStationBasisParameter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].stMKs.stStationsOptionen.bScheibeAbnehmenNachEintransport 
-		  BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBit_11 // Bit 11 = 1 -> Abnahme
+      BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBit_11 // Bit 11 = 1 -> Abnahme
         AND ( BasisStationsParameter.bStationBelegt[cWAND_1] OR BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben > 0) 
       THEN
         BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Abnehmen;
       ELSIF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
         BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Belegt;
       ELSE
-	    BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Kein_Auftrag;
+      BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Kein_Auftrag;
       END_IF
-	  
+
       BasisStationsParameter.bCheckAbgeschlossen := TRUE;
 
 (*SYSTEM CHECK=========================*)
@@ -304,7 +304,7 @@ ELSE
     steplCheck := STEP_0_E;
     BasisStationsParameter.bCheckAbgeschlossen := FALSE;
     out_bDrosselklappeOeffnen := FALSE;
-	out_bGeblaeseEin := FALSE;
+  out_bGeblaeseEin := FALSE;
     Kippen.bpPositionieren := FALSE;
     Glastransport.bpCheck := FALSE;
   END_IF

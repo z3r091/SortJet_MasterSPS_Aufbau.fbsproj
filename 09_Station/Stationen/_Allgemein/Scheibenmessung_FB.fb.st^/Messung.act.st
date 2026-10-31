@@ -43,13 +43,13 @@ IF ( bpGlasvermessung ) THEN
          - Pruefen ob der Sensor belegt ist
       *)
       IF pbpEinlaufSensor THEN 
-        steplGlasvermessung := STEP_20_E;		
+        steplGlasvermessung := STEP_20_E;
       ELSE
         wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_BELEGT_RESTWEGPOSITIONIERUNG;
-        bpFehler := TRUE;	
-        steplGlasvermessung := STEP_900_E;		
+        bpFehler := TRUE;
+        steplGlasvermessung := STEP_900_E;
       END_IF
-	 	 
+
 (* GLASVERMESSUNG ================================ *)
     STEP_20_E:
       (* Anmerkung:
@@ -62,7 +62,7 @@ IF ( bpGlasvermessung ) THEN
       ppAntrieb.rpBeschleunigung                    := ppAntriebsInformationen.rpMaxBeschleunigung;
       ppAntrieb.rpVerzoegerung                      := ppAntriebsInformationen.rpMaxVerzoegerung;
       ppAntrieb.rpRuckzeit                          := ppAntriebsInformationen.rpMaxRuckzeit;
-		  ppAntrieb.eSensorAuswahl_Messung_1            := eSensoren.Sensor_1;
+      ppAntrieb.eSensorAuswahl_Messung_1            := eSensoren.Sensor_1;
       ppAntrieb.eSensorAuswahl_Messung_2            := eSensoren.Sensor_2;
       ppAntrieb.bpDrehrichtungsumkehrMessung        := bpDrehrichtungsumkehrMessung ;
       ppAntrieb.bpAuswahlSensorVorabScheibenmessung := bpAuswahlSensorVorabScheibenmessung;
@@ -94,9 +94,9 @@ IF ( bpGlasvermessung ) THEN
          - Sobald wechsel auf cKeine_Funktion wird Messergebniss abgelöscht, daher schon vorher abfragen
       *)
       rtlMessung_OK(CLK := ppAntrieb.bpMessungOk);
-	    IF (rtlMessung_OK.Q)THEN
-		    rlMessergebnisMerker := ppAntrieb.rpMessErgebnis;
-		  END_IF
+      IF (rtlMessung_OK.Q)THEN
+        rlMessergebnisMerker := ppAntrieb.rpMessErgebnis;
+      END_IF
       
       (* Anmerkung:
          - Scheibenmessung wurde abgeschlossen
@@ -122,7 +122,7 @@ IF ( bpGlasvermessung ) THEN
           wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
           steplGlasvermessung := STEP_900_E;
         END_IF
-		    
+
         // Einlaufsensor wird nicht frei 
         CASE epGlastyp OF 
         
@@ -137,7 +137,7 @@ IF ( bpGlasvermessung ) THEN
             END_IF           
              
           // Max Scheibe -> Max Glas Länge + 50mm abgefahren und Einlaufsensor hat immer noch geschaltet
-		      eScheibe_Maximal:       
+          eScheibe_Maximal:       
             IF ( rlGefahrenerWeg > ( starrStationBasisParameter[stStationsNummern.NummerSPS].stMKs.stGlasdaten[cWAND_1].rlMaxGlasLaenge + 50 ) ) 
               AND  ppAntrieb.blSensoren[ppAntrieb.eSensorAuswahl_Messung_1]
             THEN 
@@ -148,20 +148,20 @@ IF ( bpGlasvermessung ) THEN
           
         END_CASE
        
-     END_IF	
+     END_IF
 
 (* GLASVERMESSUNG ================================ *)
     STEP_50_E:
       (* Hinweis:
           - Messrgbnis prüfen
       *)
-      IF  (rlMessergebnisMerker <> 0 ) THEN		  
+      IF  (rlMessergebnisMerker <> 0 ) THEN
         rpGemesseneGlaslaenge := ABS( rpMessstrecke + rlMessergebnisMerker );
         steplGlasvermessung := STEP_1000_E;
       ELSE
         wpFehlerNr := cMELDUNG_MESSUNG_FEHLMESSUNG;
         steplGlasvermessung := STEP_900_E;
-	    END_IF
+      END_IF
 
 (* GLASVERMESSUNG ================================ *)
     STEP_900_E:

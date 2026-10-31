@@ -10,8 +10,8 @@ VAR_INPUT
 END_VAR
 
 VAR
-	tonlMaxWarteZeit : TON;
-	
+  tonlMaxWarteZeit : TON;
+
 END_VAR
 Linkslauf := FALSE;
 

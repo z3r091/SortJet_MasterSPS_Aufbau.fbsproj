@@ -34,16 +34,16 @@ IF( blBetriebartCheck )THEN
 
         IF ( NOT (  BasisStationsParameter.bCheckMitNachfolger[cWAND_1] OR BasisStationsParameter.bCheckMitVorgaenger[cWAND_1]) ) THEN
 
-	      IF ( Glastransport.bpSensorEinlauf
+        IF ( Glastransport.bpSensorEinlauf
             OR Glastransport.bpSensorEinlaufVorAb
             OR Glastransport.bpSensorEinlaufVorAb
             OR Glastransport.bpSensorauslauf )
           THEN
-		    BasisStationsParameter.bStationBelegt[cWAND_1] := TRUE;
-	        steplCheck := STEP_800_E;
-		  ELSE
-		    steplCheck := STEP_800_E;
-		  END_IF
+        BasisStationsParameter.bStationBelegt[cWAND_1] := TRUE;
+          steplCheck := STEP_800_E;
+      ELSE
+        steplCheck := STEP_800_E;
+      END_IF
 
         ELSE
           BasisStationsParameter.wFehlerNummer := cMELDUNG_SYSTEMCHECK_KANN_NICHT_DURCHGEFUEHRT_WERDEN;
@@ -135,7 +135,7 @@ IF( blBetriebartCheck )THEN
           eDrehPosition0Grad:
             Kippen.epZielPosition := eKippen_Position_84Grad;
             Kippen.bpPositionieren  := TRUE;
-		  
+
           eDrehPosition90Grad:
             Kippen.epZielPosition := eKippen_Position_90Grad;
             Kippen.bpPositionieren  := TRUE;
@@ -166,7 +166,7 @@ IF( blBetriebartCheck )THEN
           Kippen.epZielPosition := eKippen_Position_90Grad;
           Kippen.bpPositionieren  := TRUE;
           steplCheck := STEP_130_E;
-		  
+
           (* Hinweis:
              - Das drehen wird immer angestossen - Pruefung ob gedreht werden muss findet im Dreh- Baustein statt 
           *)
@@ -264,13 +264,13 @@ IF( blBetriebartCheck )THEN
 
 (*SYSTEM CHECK=========================*)
     STEP_1000_E:
-	  // Auftrag für erneuten Automatikbetrieb setzen
+    // Auftrag für erneuten Automatikbetrieb setzen
       IF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
         BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Belegt;
       ELSE
-	    BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Kein_Auftrag;
+      BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Kein_Auftrag;
       END_IF
-	  
+
       BasisStationsParameter.bCheckAbgeschlossen := TRUE;
       blNachSystemcheckMerker := TRUE;
 

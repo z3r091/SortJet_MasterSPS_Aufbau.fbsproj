@@ -31,7 +31,7 @@ IF( blBetriebsartReset )THEN
       toflGeblaeseEnergiesparModus(PT := T#0S);
 
       BasisStationsParameter.bCheck := FALSE;
-		
+
       Querfahrt.bpShuttleFaecherwagenSuche := FALSE;
 
       steplResetAntrieb := STEP_10_E;

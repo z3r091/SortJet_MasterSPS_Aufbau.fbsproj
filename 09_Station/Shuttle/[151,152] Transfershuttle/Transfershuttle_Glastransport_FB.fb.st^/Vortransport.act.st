@@ -45,10 +45,10 @@ THEN
 
 (*EINTRANSPORT ==============================*)
     STEP_6_E:
-	  IF Antrieb.bpDone THEN
+    IF Antrieb.bpDone THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplVortransport := STEP_10_E;
-	  END_IF
+    END_IF
 
 (*VORTRANSPORT ==============================*)
     STEP_10_E:
@@ -123,7 +123,7 @@ THEN
          - Einlauf- Auslauf- Sensoren heben
          Die Variable  << blGlastransportUndAbfragenGehoben >> wird gebildet durch:
          - tonlGlastransportOben.Q  | tonlKontrolleEinlaufOben.Q  | blDruckluftAuslaufSeiteOK
-	         tonlKontrolleAuslaufOben.Q | blDruckluftEinlaufSeiteOK 
+           tonlKontrolleAuslaufOben.Q | blDruckluftEinlaufSeiteOK 
       *)
       out_bShuttleAnheben := TRUE;
       out_bScheibenKontrolleAuslaufseiteAuf := TRUE;

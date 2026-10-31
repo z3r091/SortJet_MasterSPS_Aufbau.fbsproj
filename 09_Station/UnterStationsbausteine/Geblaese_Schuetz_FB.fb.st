@@ -14,7 +14,7 @@ VAR_INPUT
   bpReset                   : BOOL;
   bpFreigabe                : BOOL;
   bpTeilnehmerErreichbar    : BOOL := TRUE;
-  bpIOsBoschDrive		        : BOOL;
+  bpIOsBoschDrive               : BOOL;
 
   // EINGÄNGE
   bpMotorschutzschalter_OK  : BOOL; 
@@ -87,10 +87,10 @@ IF ( blErsterZyklus ) THEN
 END_IF
 // IO Zuweisung
 IF ( bpIOsBoschDrive ) THEN
-  blMotorschutzschalter_OK	:= bpMotorschutzschalter_OK;
+  blMotorschutzschalter_OK  := bpMotorschutzschalter_OK;
   bpStarteGeblaese          := out_bStarteGeblaese;
 ELSE
-  blMotorschutzschalter_OK	:= in_bMotorschutzschalter_OK;
+  blMotorschutzschalter_OK  := in_bMotorschutzschalter_OK;
 END_IF
 
 

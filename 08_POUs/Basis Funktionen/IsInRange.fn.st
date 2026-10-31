@@ -7,9 +7,9 @@
 *)
 FUNCTION IsInRange : BOOL
 VAR_INPUT
-	rlValue : REAL;
-	rlTargetValue : REAL;
-	rlThresshold : REAL;
+  rlValue : REAL;
+  rlTargetValue : REAL;
+  rlThresshold : REAL;
 END_VAR
 VAR
 END_VAR

@@ -24,18 +24,18 @@ IF ( bpReset ) THEN
       bpOutBereitZumEintransport       := FALSE;
       blStarteSlaveKopplung            := FALSE;
       bpEintransport                   := FALSE;
-	    bpDurchtransport                 := FALSE;
-		
-		  bpSlaveAktiv := FALSE;
+      bpDurchtransport                 := FALSE;
+
+      bpSlaveAktiv := FALSE;
       blAntriebsKopplungAktiv := false;
       rlGefahreneStreckeEintransport := 0.0;
       Antrieb.wpBetriebsart := KEINE_FUNKTION;
       Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
       Scheibenmessung.bpReset := TRUE;
-	  
-	  IF NOT Antrieb.bpAntrieblaeuft AND NOT Antrieb_Slave.bpAntrieblaeuft THEN
+
+    IF NOT Antrieb.bpAntrieblaeuft AND NOT Antrieb_Slave.bpAntrieblaeuft THEN
         steplReset := STEP_10_E;
-	  END_IF
+    END_IF
 
 (*RESET ===============================*)
     STEP_10_E:
@@ -58,7 +58,7 @@ IF ( bpReset ) THEN
          - Antrieb
       *)
       IF ( ( NOT Antrieb.bpDone
-		     OR NOT Antrieb_Slave.bpDone )
+         OR NOT Antrieb_Slave.bpDone )
            AND tonlMaxWarteAufResetErfolgreich.Q ) 
       THEN
         Antrieb.wpBetriebsart       := KEINE_FUNKTION;

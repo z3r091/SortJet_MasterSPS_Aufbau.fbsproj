@@ -93,9 +93,9 @@ THEN
         (* Hinweis:
            - Shuttle in die passende Position kippen       
         *)
-		    Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition;
-		    Kippen.bpPositionieren := TRUE;
-		
+        Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition;
+        Kippen.bpPositionieren := TRUE;
+
         steplAktion := STEP_30_E;
 
       END_IF

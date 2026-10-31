@@ -40,7 +40,7 @@ THEN
       blMeldungAuslaufAbfrageBelegt := FALSE;
       blAbgeschlossenAustransport   := FALSE;
       bprtScheibe                   := FALSE;
-	  
+
       bpOutBereitZumAustransport := FALSE;
 
       tonlAntriebNichtFreigegeben(IN:=FALSE);
@@ -95,7 +95,7 @@ THEN
         AND NOT tonlEinlaufsensorTesten.Q
         AND bpSensorScheibenKontrolleEinlaufSeiteFrei )
       THEN
-		    IF NOT pAuftrag.bErsteScheibe THEN
+        IF NOT pAuftrag.bErsteScheibe THEN
           blMeldungAuslaufAbfrageBelegt := TRUE;
         END_IF
         steplAustransportDefaultLuftabfrage := STEP_30_E;
@@ -176,7 +176,7 @@ THEN
          - Einlauf- Auslauf- Sensoren heben
          Die Variable  << blGlastransportUndAbfragenGehoben >> wird gebildet durch:
          - tonlGlastransportOben.Q  | tonlKontrolleEinlaufOben.Q  | blDruckluftAuslaufSeiteOK
-	         tonlKontrolleAuslaufOben.Q | blDruckluftEinlaufSeiteOK 
+           tonlKontrolleAuslaufOben.Q | blDruckluftEinlaufSeiteOK 
       *)
       out_bShuttleAnheben := TRUE;
       out_bScheibenKontrolleAuslaufseiteAuf := TRUE;
@@ -312,10 +312,10 @@ THEN
       *)
       blMeldungAuslaufAbfrageBelegt := FALSE;
 
-	    IF bpSensorScheibenKontrolleAuslaufseiteFrei THEN
+      IF bpSensorScheibenKontrolleAuslaufseiteFrei THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
       END_IF 
-	  
+
       IF (  bpSensorScheibenKontrolleAuslaufseiteFrei AND NOT Antrieb.bpAntrieblaeuft ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplAustransportDefaultLuftabfrage := STEP_50_E;
@@ -427,7 +427,7 @@ THEN
          - Sicherstellen das der Auslaufsensor belegt, wenn mit der Quittierung der Scheiben
            gestartet wird.
       *)
-	    bprtScheibe := FALSE;
+      bprtScheibe := FALSE;
       Antrieb.rpGeschwindigkeit  := InGlasTransportNachfolger.rGeschwindigkeit;
 
       IF ( NOT toflAuslaufsensor.Q ) THEN
@@ -450,10 +450,10 @@ THEN
             => Scheibenzaehler dekrementieren
       *)
       Antrieb.rpGeschwindigkeit :=  InGlasTransportNachfolger.rGeschwindigkeit;
-	    bprtScheibe := FALSE;
+      bprtScheibe := FALSE;
 
       IF ( toflAuslaufsensor.Q ) THEN
-		    bprtScheibe := TRUE;
+        bprtScheibe := TRUE;
         ilScheibenZaehler := ilScheibenZaehler - 1;
         steplAustransportDefaultLuftabfrage := STEP_130_E;
       END_IF
@@ -468,11 +468,11 @@ THEN
     STEP_130_E:
       (* Hinweis [ WECHSEL- SCHRITT ]:
          - Scheibenzaehler pruefen 
-					 => 0   -> Austransport beenden
+           => 0   -> Austransport beenden
            => > 1 -> Weitere Scheiben auf die Folgestation fahren
       *)
       Antrieb.rpGeschwindigkeit :=  InGlasTransportNachfolger.rGeschwindigkeit;
-	    bprtScheibe := FALSE;
+      bprtScheibe := FALSE;
 
       IF ( ilScheibenZaehler <= 0 ) THEN
         bpOutBereitZumAustransport := FALSE;
@@ -535,12 +535,12 @@ THEN
         Antrieb.rpGeschwindigkeit := REAL#0;
         Antrieb.wpBetriebsart     := KEINE_FUNKTION;
 
-	      IF ( blAuslaufSensor ) THEN
+        IF ( blAuslaufSensor ) THEN
           wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_NICHT_FREI;
           steplAustransportDefaultLuftabfrage := STEP_900_E;
         ELSE
           steplAustransportDefaultLuftabfrage := STEP_800_E;
-	      END_IF
+        END_IF
 
       END_IF
 
@@ -572,9 +572,9 @@ THEN
 
       Antrieb.wpBetriebsart := KEINE_FUNKTION;
       bpOutBereitZumAustransport := FALSE;
-	    bprtScheibe := FALSE;
+      bprtScheibe := FALSE;
 
-		  IF IsBetweenWORD(pAuftrag.wTransferstationsNr2, cERSTE_FAECHERWAGENSTATIONS_NR, cLETZTE_FAECHERWAGENSTATIONS_NR) THEN
+      IF IsBetweenWORD(pAuftrag.wTransferstationsNr2, cERSTE_FAECHERWAGENSTATIONS_NR, cLETZTE_FAECHERWAGENSTATIONS_NR) THEN
         IF ( InGlasTransportVorgaenger.bBereitZumEintransport AND InGlasTransportNachfolger.bBereitZumEintransport ) THEN
           IF ( NOT pAuftrag.bErsteScheibe ) THEN
             steplAustransportDefaultLuftabfrage := STEP_410_E;
@@ -582,7 +582,7 @@ THEN
             steplAustransportDefaultLuftabfrage := STEP_460_E;
           END_IF
         END_IF
-		  ELSE
+      ELSE
         IF ( InGlasTransportVorgaenger.bBereitZumEintransport ) THEN
           IF ( NOT pAuftrag.bErsteScheibe ) THEN
             steplAustransportDefaultLuftabfrage := STEP_410_E;
@@ -590,7 +590,7 @@ THEN
             steplAustransportDefaultLuftabfrage := STEP_460_E;
           END_IF
         END_IF
-		  END_IF
+      END_IF
 
 
 (* AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ========================================== *)
@@ -790,9 +790,9 @@ THEN
             => Scheibenzaehler dekrementieren
       *)
       Antrieb.rpGeschwindigkeit :=  InGlasTransportVorgaenger.rGeschwindigkeit;
-	    bprtScheibe := FALSE;
+      bprtScheibe := FALSE;
 
-      IF ( toflEinlaufsensor.Q ) THEN	  
+      IF ( toflEinlaufsensor.Q ) THEN
         bprtScheibe := TRUE;
         ilScheibenZaehler := ilScheibenZaehler - 1 ;
         steplAustransportDefaultLuftabfrage := STEP_490_E;
@@ -802,11 +802,11 @@ THEN
     STEP_490_E:
       (* Hinweis [ WECHSEL- SCHRITT ]:
          - Scheibenzaehler pruefen 
-					 => 0   -> Austransport beenden
+           => 0   -> Austransport beenden
            => > 1 -> Weitere Scheiben auf die Folgestation fahren
       *)
       Antrieb.rpGeschwindigkeit :=  InGlasTransportVorgaenger.rGeschwindigkeit;
-	    bprtScheibe := FALSE;
+      bprtScheibe := FALSE;
 
       IF ( ilScheibenZaehler <= 0 ) THEN
         bpOutBereitZumAustransport := FALSE;
@@ -873,12 +873,12 @@ THEN
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
-	      IF ( blEinlaufSensor ) THEN
+        IF ( blEinlaufSensor ) THEN
           wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_NICHT_FREI;
           steplAustransportDefaultLuftabfrage := STEP_900_E;
         ELSE
           steplAustransportDefaultLuftabfrage := STEP_800_E;
-	      END_IF
+        END_IF
 
       END_IF
 
@@ -891,13 +891,13 @@ THEN
         steplAustransportDefaultLuftabfrage := STEP_900_E;
       END_IF
 
- 	  IF ( blAuslaufSensor ) THEN
-	     bpAnforderungBetriebsstopp := TRUE;
+     IF ( blAuslaufSensor ) THEN
+       bpAnforderungBetriebsstopp := TRUE;
        Antrieb.rpGeschwindigkeit := REAL#0;
        Antrieb.wpBetriebsart     := KEINE_FUNKTION;
        wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_BELEGT;
        steplAustransportDefaultLuftabfrage := STEP_900_E;
-	   END_IF
+     END_IF
 
 (* AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ========================================== *)
     STEP_530_E:
@@ -933,7 +933,7 @@ THEN
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplAustransportDefaultLuftabfrage := STEP_1000_E;
-	    END_IF
+      END_IF
 
       (* Keine Scheibe gefunden im Fach
          - Wegueberwachung
@@ -944,13 +944,13 @@ THEN
       END_IF
 
 
- 	   IF ( blAuslaufSensor ) THEN
-	      bpAnforderungBetriebsstopp := TRUE;
+      IF ( blAuslaufSensor ) THEN
+        bpAnforderungBetriebsstopp := TRUE;
         Antrieb.rpGeschwindigkeit := REAL#0;
         Antrieb.wpBetriebsart     := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_BELEGT;
         steplAustransportDefaultLuftabfrage := STEP_900_E;
-	    END_IF
+      END_IF
 
 (* AUSTRANSPORT ============================================================================ *)
      STEP_800_E:
@@ -1045,7 +1045,7 @@ THEN
 
 (* AUSTRANSPORT ============================================================================ *)
      STEP_1000_E:
-	     bprtScheibe := FALSE;
+       bprtScheibe := FALSE;
        blAbgeschlossenAustransport :=TRUE;
 
 (* AUSTRANSPORT ============================================================================ *)

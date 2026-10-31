@@ -924,7 +924,7 @@ VAR_GLOBAL CONSTANT
      - 
   *)
   ioccHydraulikkreis_1_Motorschuetz                     : WORD := 2000;
-	
+
   ioccMeldungFremdanlageNichtBereit                     : WORD := 2010;
 
   ioccStromschieneNeustartAktiv                         : WORD := 2020;

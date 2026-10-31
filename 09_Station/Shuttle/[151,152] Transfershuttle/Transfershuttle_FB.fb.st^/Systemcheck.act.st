@@ -45,7 +45,7 @@ IF ( BasisStationsParameter.bCheck AND NOT BasisStationsParameter.bReset ) THEN
       (* Anmerkung:
          - Starten des SystemChecks [Glastransport]
       *)
-	  Glastransport.pAuftrag                := BasisStationsParameter.pAuftrag[cWAND_1];
+    Glastransport.pAuftrag                := BasisStationsParameter.pAuftrag[cWAND_1];
       Glastransport.wpSystemCheckMitStation := 0; (* wpSystemCheckMitStation;*)
       Glastransport.wpSystemCheckMitWand    := 0; (* wpSystemCheckMitWand;*)
 
@@ -95,7 +95,7 @@ ELSE
   IF ( steplCheck > STEP_0_E ) THEN
     BasisStationsParameter.bCheckAbgeschlossen := FALSE;
     Glastransport.bpCheck := FALSE;
-	Glastransport.bpCheckMitVorgaenger    := FALSE;
+  Glastransport.bpCheckMitVorgaenger    := FALSE;
     Glastransport.bpCheckMitNachfolger    := FALSE;
     steplCheck := STEP_0_E;
   END_IF

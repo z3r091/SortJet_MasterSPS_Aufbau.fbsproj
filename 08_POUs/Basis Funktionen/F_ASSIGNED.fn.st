@@ -8,7 +8,7 @@
 //Returns true if the adress is not zero
 FUNCTION F_ASSIGNED : BOOL
 VAR_INPUT
-	i_udi_Adr : __UXINT;
+  i_udi_Adr : __UXINT;
 END_VAR
 F_ASSIGNED := i_udi_Adr <> 0;
 END_FUNCTION

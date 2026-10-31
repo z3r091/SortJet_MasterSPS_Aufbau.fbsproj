@@ -20,7 +20,7 @@ THEN
     BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
     steplAustransport := STEP_900_E;
   END_IF
-	  
+
   IF ( Kippen.bpFehler ) THEN
     Kippen.bpPositionieren := FALSE;
     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
@@ -54,7 +54,7 @@ THEN
 (*AUSTRANSPORT =====================*)
     STEP_20_E:
       IF ( Kippen.bpDone OR NOT Kippen.bpPositionieren ) THEN
-		  
+
         Kippen.bpPositionieren := FALSE;
 
         steplAustransport := STEP_100_E;
@@ -64,7 +64,7 @@ THEN
     STEP_100_E:
       (* Hinweis:
         - Austransport starten
-	   *)
+     *)
       Glastransport.pAuftrag := BasisStationsParameter.pAuftrag[cWAND_1];
 
       Glastransport.bpAustransport             := BasisStationsParameter.bAustransport[cWAND_1] AND NOT BasisStationsParameter.bRueckwaertsTransportieren[cWAND_1];
@@ -107,17 +107,17 @@ THEN
       (* Hinweis:
          - Bei letzter Scheibe und Station leer -> Kippen
       *) 
-	  IF BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe  
+    IF BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe  
         AND BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBIT_SRC_WALL_1_EMPTY
       THEN
-	    Kippen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachAustransport;
-		Kippen.bpPositionieren := TRUE;
+      Kippen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachAustransport;
+    Kippen.bpPositionieren := TRUE;
 
-      	steplAustransport := STEP_210_E;
-	  ELSE
-	    steplAustransport := STEP_1000_E; 
-	  END_IF
-	
+        steplAustransport := STEP_210_E;
+    ELSE
+      steplAustransport := STEP_1000_E; 
+    END_IF
+
 
 (*EINTRANSPORT =====================*)
     STEP_210_E:

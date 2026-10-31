@@ -38,7 +38,7 @@ IF bgStepLogging THEN
     stlLogString := CONCAT(stlLogString, WORD_TO_STRING(steplCheckMerker));
     stlLogString := CONCAT(stlLogString, ' ; SysCheck Neu: ');
     stlLogString := CONCAT(stlLogString, WORD_TO_STRING(steplCheck));
-	
+
     steplCheckMerker := steplCheck;
   
   END_IF

@@ -37,7 +37,7 @@ VAR_INPUT
 
   // STRUKTUR
   stStationsNummern     : Station_ST;
-	
+
 END_VAR
 VAR_OUTPUT
 

@@ -50,12 +50,12 @@ THEN
 
       blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
 
-	  // Sicherstellen das die Slavekopplung aktiv ist
+    // Sicherstellen das die Slavekopplung aktiv ist
       IF ( blAntriebsKopplungAktiv ) THEN
         // Zeit für Statistik
         tlWarteZeitAufnahme := TIME();
         steplAustransportRueckwaertig := STEP_10_E;
-	  END_IF
+    END_IF
 
 (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
     STEP_10_E:
@@ -68,8 +68,8 @@ THEN
 
       Antrieb.rpGeschwindigkeit  := REAL#0 ;
 
-	  bpOutBereitZumEintransport := bpUebergrosseScheibeUebergang;
-	  
+    bpOutBereitZumEintransport := bpUebergrosseScheibeUebergang;
+
       IF ( InGlasTransportVorgaenger.bBereitZumEintransport ) 
         AND ( NOT bpUebergrosseScheibeUebergang OR InGlasTransportNachfolger.bBereitZumAustransport )
       THEN
@@ -206,8 +206,8 @@ THEN
       IF ( toflEInlaufsensor.Q ) THEN
         steplAustransportRueckwaertig := STEP_120_E;
       END_IF
-	  
-	 (* Fehlerbehandlung:
+
+   (* Fehlerbehandlung:
          - Auslaufsensor schaltet nicht
       *)
       IF ( tonlMaximaleZeitSensorAnfahren.Q ) THEN
@@ -307,17 +307,17 @@ THEN
       *)
       bpFehler    := TRUE;
       bprtScheibe := FALSE;
-	  
+
       Antrieb.wpBetriebsart       := KEINE_FUNKTION;
       Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
-	  
+
       bpOutBereitZumAustransport := FALSE;
       bpOutBereitZumEintransport := FALSE;
 
 (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
     STEP_1000_E:
       bprtScheibe := FALSE;
-	  bpUebergrosseScheibeUebergang := FALSE;
+    bpUebergrosseScheibeUebergang := FALSE;
       bpDone := TRUE;
 
 (*AUSTRANSPORT RÜCKWÄRTIG ====================*)

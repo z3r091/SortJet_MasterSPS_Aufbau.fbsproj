@@ -30,7 +30,7 @@ IF (  bpSpeicherfachValidierung ) THEN
 (* SPEICHERFACH VALIDIERUNG ==================================================*)
     STEP_0_E:
 
-	    (* Initialisierung:
+      (* Initialisierung:
          - Variablen
       *)
 
@@ -78,7 +78,7 @@ IF (  bpSpeicherfachValidierung ) THEN
       tonlWartenAufAnheben(IN := FALSE);
       tonlUeberwachungSensorFreifahren(IN := FALSE);
 
-	  steplSpeicherfachValidierung := STEP_100_E;
+    steplSpeicherfachValidierung := STEP_100_E;
 
 (* SPEICHERFACH VALIDIERUNG ==================================================*)
     STEP_100_E:
@@ -147,8 +147,8 @@ IF (  bpSpeicherfachValidierung ) THEN
         (* Druckluft Ok *)
         ELSIF ( NOT blDruckluftAuslaufSeiteOK ) THEN
           wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_AUSLAUF_NICHT_OK;
-  		  ELSE
-		      wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
+        ELSE
+          wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
         END_IF
 
         steplSpeicherfachValidierung := STEP_900_E;
@@ -159,8 +159,8 @@ IF (  bpSpeicherfachValidierung ) THEN
     STEP_120_E:
       (* Anmerkung:
          - Prüfen ob Glas ueber den Einlauf- bzw. Auslauf- Sensor steht       
-      *)	  
-	    IF (      blAuslaufSensor
+      *)
+      IF (      blAuslaufSensor
         AND NOT blEinlaufSensor )
       THEN
 
@@ -207,7 +207,7 @@ IF (  bpSpeicherfachValidierung ) THEN
 
       (* Anmerkung:
          - Auslaufsensor frei gefahren
-      *)	  
+      *)
       IF (  NOT blAuslaufSensor
         AND NOT Antrieb.bpAntrieblaeuft  )
       THEN
@@ -217,7 +217,7 @@ IF (  bpSpeicherfachValidierung ) THEN
 
       (* Anmerkung:
          - Auslaufsensor ist belegt
-      *)	  
+      *)
       IF ( blAuslaufSensor ) THEN
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung ;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung ;
@@ -300,7 +300,7 @@ IF (  bpSpeicherfachValidierung ) THEN
     STEP_800_E:
       (* Anmerkung:
          - alles beenden und Shuttle absenken
-     *)	 
+     *)
        out_bShuttleAnheben := FALSE;
 
        out_bScheibenKontrolleAuslaufseiteAuf       := FALSE;

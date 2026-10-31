@@ -39,7 +39,7 @@ THEN
       (* Hinweis:
          - Variablen initialisieren
       *)
-	   tlWarteZeiteAufnahme := TIME();
+     tlWarteZeiteAufnahme := TIME();
       tonlAntriebNichtFreigegeben( IN := FALSE );
 
       bpFreigabeQuerfahrt := FALSE;
@@ -55,7 +55,7 @@ THEN
       IF ( blAntriebsKopplungAktiv ) THEN
         steplEintransport := STEP_10_E;
       END_IF
-	  
+
 (*EINTRANSPORT ==============================*)
     STEP_10_E:
       (* Hinweis:
@@ -179,14 +179,14 @@ THEN
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
 
         IF ( pAuftrag.bLetzteScheibe ) THEN
-			  // Die Scheibe soll am Anfang vom Shuttle stehen bleiben
+        // Die Scheibe soll am Anfang vom Shuttle stehen bleiben
           IF ( pAuftrag.stAuftragsOptionen.eGlastransport = eGlastransport_AufEinlauf ) THEN 
             Antrieb.rpZielposition    := (( pAuftrag.rAuftragsLaenge + ppParameterBaustein.rWegUeberSensorLetzteScheibe ) - pAuftrag.rModellVersatzVorne);
             Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
-			 ELSE
+       ELSE
             Antrieb.rpZielPosition    := (( ppParameterBaustein.rWegUeberAuslauf ) - pAuftrag.rModellVersatzVorne);
             Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor2;
-			 END_IF
+       END_IF
         ELSE
           Antrieb.rpZielposition    := (( pAuftrag.rAuftragsLaenge + ppParameterBaustein.rWegUeberEinlauf ) - pAuftrag.rModellVersatzVorne);
           Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
@@ -245,23 +245,23 @@ THEN
          - Einlaufsensor schaltet nicht (Unterscheidung ob es die erste Scheibe ist oder eine weitere )
          - Auslaufsensor wird belegt
       *)
-	   IF ( pAuftrag.bErsteScheibe ) THEN
+     IF ( pAuftrag.bErsteScheibe ) THEN
 
-	     IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition)>  ppParameterBaustein.rLaengeStation * 2 ) THEN
+       IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition)>  ppParameterBaustein.rLaengeStation * 2 ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
          steplEintransport := STEP_900_E;
        END_IF
 
-	   ELSE
+     ELSE
 
-	     IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition)>  ppParameterBaustein.rUeberwachungEinlaufsensor ) THEN
+       IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition)>  ppParameterBaustein.rUeberwachungEinlaufsensor ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
          steplEintransport := STEP_900_E;
        END_IF
 
-	   END_IF
+     END_IF
 
      IF ( bpSensorAuslaufStopp ) THEN
        Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -277,9 +277,9 @@ THEN
       IF ( bpScheibentrennung  ) THEN
 
         IF ( ilScheibenZaehler = 1 ) THEN
-      	  IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
+          IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
             Antrieb.rpGeschwindigkeit := rgGeschwindigkeit30;
-      	  END_IF
+          END_IF
 
         END_IF
 
@@ -298,7 +298,7 @@ THEN
          bpFreigabeQuerfahrt := TRUE;
         END_IF
 
-	      steplEintransport := STEP_130_E;
+        steplEintransport := STEP_130_E;
       END_IF
 
       IF ( Antrieb.bpDone
@@ -308,7 +308,7 @@ THEN
 
         IF ( bpSensorEinlauf ) THEN
           blScheibenMerker := TRUE;
-	    	  rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
+          rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
           steplEintransport := STEP_200_E;
 
         ELSE
@@ -353,9 +353,9 @@ THEN
       IF ( bpScheibentrennung  ) THEN
 
         IF ( ilScheibenZaehler = 1 ) THEN
-      	  IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
+          IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
             Antrieb.rpGeschwindigkeit := rgGeschwindigkeit30;
-      	  END_IF
+          END_IF
 
         END_IF
 
@@ -364,8 +364,8 @@ THEN
       (* Hinweis:
          - Zeitwert zuruecksetzen
       *)
-	    IF bprtScheibe THEN
-		    dwpWartezeit := 0;
+      IF bprtScheibe THEN
+        dwpWartezeit := 0;
       END_IF
 
       bprtScheibe := FALSE;
@@ -425,13 +425,13 @@ THEN
 
 
       bprtScheibe := FALSE;
-	    dwpWartezeit := 0;
+      dwpWartezeit := 0;
 
       IF ( NOT toflEinlaufsensor.Q ) THEN
 
         IF ( blScheibenMerker ) THEN
           blScheibenMerker := FALSE;
-		      bprtScheibe := TRUE;
+          bprtScheibe := TRUE;
         END_IF
 
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -575,22 +575,22 @@ THEN
          - Einlaufsensor schaltet nicht (Unterscheidung ob es die erste Scheibe ist oder eine weitere )
          - Auslaufsensor wird belegt
       *)
-	   IF ( pAuftrag.bErsteScheibe ) THEN
+     IF ( pAuftrag.bErsteScheibe ) THEN
 
-	     IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition)>  ppParameterBaustein.rLaengeStation * 2 ) THEN
+       IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition)>  ppParameterBaustein.rLaengeStation * 2 ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
          steplEintransport := STEP_900_E;
        END_IF
 
-	   ELSE
-	     IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition)>  ppParameterBaustein.rUeberwachungEinlaufsensor ) THEN
+     ELSE
+       IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition)>  ppParameterBaustein.rUeberwachungEinlaufsensor ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
          steplEintransport := STEP_900_E;
        END_IF
 
-	   END_IF
+     END_IF
 
      IF ( bpSensorAuslaufStopp ) THEN
        Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -606,9 +606,9 @@ THEN
       IF ( bpScheibentrennung  ) THEN
 
         IF ( ilScheibenZaehler = 1 ) THEN
-      	  IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
+          IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
             Antrieb.rpGeschwindigkeit := rgGeschwindigkeit25;
-      	  END_IF
+          END_IF
 
         END_IF
 
@@ -645,7 +645,7 @@ THEN
 
        END_IF
 
-	     steplEintransport := STEP_430_E;
+       steplEintransport := STEP_430_E;
       END_IF
 
       IF ( Antrieb.bpDone AND NOT Antrieb.bpAntrieblaeuft ) THEN
@@ -653,7 +653,7 @@ THEN
 
         IF ( bpSensorEinlauf ) THEN
           blScheibenMerker := TRUE;
-	    	  rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
+          rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
           steplEintransport := STEP_440_E;
         ELSE
           rlGefahreneStreckeEintransport := ABS(rlGefahreneStreckeEintransport - Antrieb.rpIstPosition);
@@ -681,9 +681,9 @@ THEN
       IF ( bpScheibentrennung  ) THEN
 
         IF ( ilScheibenZaehler = 1 ) THEN
-      	  IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
+          IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
             Antrieb.rpGeschwindigkeit := rgGeschwindigkeit25;
-      	  END_IF
+          END_IF
 
         END_IF
 
@@ -708,8 +708,8 @@ THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
       END_IF
 
-	    IF bprtScheibe THEN
-		    dwpWartezeit := 0;
+      IF bprtScheibe THEN
+        dwpWartezeit := 0;
       END_IF
 
       bprtScheibe := FALSE;
@@ -745,13 +745,13 @@ THEN
 (*EINTRANSPORT ==============================*)
     STEP_440_E:
       bprtScheibe := FALSE;
-	    dwpWartezeit := 0;
+      dwpWartezeit := 0;
 
       IF ( NOT toflEinlaufsensor.Q ) THEN
 
         IF ( blScheibenMerker ) THEN
           blScheibenMerker := FALSE;
-		      bprtScheibe := TRUE;
+          bprtScheibe := TRUE;
         END_IF
 
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -794,10 +794,10 @@ THEN
       bpOutBereitZumEintransport := FALSE;
       bpFehler := TRUE;
 
-	    (* Hinweis:
-	     - Eintransport setzt sich Autark zurueck
+      (* Hinweis:
+       - Eintransport setzt sich Autark zurueck
       *)
-	    bpEintransport := FALSE;
+      bpEintransport := FALSE;
 
 (*EINTRANSPORT ==============================*)
     STEP_1000_E:
@@ -805,10 +805,10 @@ THEN
       bprtScheibe := FALSE;
       bpDone := TRUE;
 
-	    (* Hinweis:
-	     - Eintransport setzt sich Autark zurueck
+      (* Hinweis:
+       - Eintransport setzt sich Autark zurueck
       *)
-	  bpEintransport := FALSE;
+    bpEintransport := FALSE;
 
 (*EINTRANSPORT ==============================*)
   END_CASE

@@ -62,7 +62,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       (* Anmerkung
          - Zielstation abfragen ob diese bereit ist zum Austransport         
       *)
-	  wlEintransportstation := Auftragsdaten.wTransferstationsNr1;
+    wlEintransportstation := Auftragsdaten.wTransferstationsNr1;
      ilScheibenZuQuittieren := WORD_TO_INT( Auftragsdaten.wAnzahlScheiben);
 
       CASE wlEintransportstation OF
@@ -127,8 +127,8 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
         starrTransfershuttleBasisParameter[wStation].bScheibentrennen[cWAND_1] := NOT Auftragsdaten.stAuftragsInformationen.cBIT_SRC_WALL_1_EMPTY;
       ELSE
         starrTransfershuttleBasisParameter[wStation].bScheibentrennen[cWAND_1] := NOT Auftragsdaten.stAuftragsInformationen.cBIT_SRC_WALL_2_EMPTY;
-	  END_IF
-	  
+    END_IF
+
       starrTransfershuttleBasisParameter[wStation].pAuftrag[cWAND_1] := Auftragsdaten;
       starrTransfershuttleBasisParameter[wStation].bEintransport[cWAND_1] := TRUE;
       starrTransfershuttleBasisParameter[wStation].bRueckwaertsTransportieren[cWAND_1] := ( starrTransferShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Station[wlEintransportstation] = Rueckwaertig );
@@ -253,7 +253,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 (*EINTRANSPORT  ===========================================*)
     STEP_1000_E:
       bpDone := TRUE;
-	  
+
       (* Hinweis:
          - Beenden des EIntransports [Bereit fuer den naechsten Auftrag]
       *)

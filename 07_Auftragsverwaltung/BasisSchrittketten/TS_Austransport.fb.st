@@ -61,7 +61,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Austransport ) THEN
       (* Anmerkung
          - Zielstation abfragen ob diese bereit ist zum Austransport         
       *)
-	    wlAustransportstation := Auftragsdaten.wTransferstationsNr1;
+      wlAustransportstation := Auftragsdaten.wTransferstationsNr1;
       ilScheibenZuQuittieren := WORD_TO_INT(Auftragsdaten.wAnzahlScheiben);
 
       starrTransfershuttleBasisParameter[wStation].bRueckwaertsTransportieren[cWAND_1] := FALSE;
@@ -72,16 +72,16 @@ IF ( Auftragsdaten.wAuftrag = eStation_Austransport ) THEN
            - Verfahrbahrer Speicher
         *)
         cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF:
-		      starrTransfershuttleBasisParameter[wStation].InGlasTransportNachfolger[cWAND_1] := starrFremdanlageAuslaufStationBasisParameter[wlAustransportstation].OutGlasTransport[cWAND_1];
+          starrTransfershuttleBasisParameter[wStation].InGlasTransportNachfolger[cWAND_1] := starrFremdanlageAuslaufStationBasisParameter[wlAustransportstation].OutGlasTransport[cWAND_1];
           starrFremdanlageAuslaufStationBasisParameter[wlAustransportstation].InGlasTransportVorgaenger[cWAND_1] := starrTransfershuttleBasisParameter[wStation].OutGlasTransport[cWAND_1];
           steplSchritt := STEP_20_E;
 
         cERSTE_STATION..cLETZTE_STATION:
           IF ( Job_Stationen.AuftragsdatenWand[wlAustransportstation, Auftragsdaten.wTransferwand].wAuftrag  = eStation_Eintransport ) THEN
-		        starrTransfershuttleBasisParameter[wStation].InGlasTransportNachfolger[cWAND_1] := starrStationBasisParameter[wlAustransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
+            starrTransfershuttleBasisParameter[wStation].InGlasTransportNachfolger[cWAND_1] := starrStationBasisParameter[wlAustransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
             steplSchritt := STEP_20_E;
           END_IF
-		  
+
           (* Ausnahmesituation:
              - Shuttle hat den falschen Auftragsstatus 
           *)
@@ -98,7 +98,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Austransport ) THEN
                      );
             steplSchritt := STEP_900_E;
           END_IF
-		
+
         (* Hinweis:
            - Ruecktransport durch den Speicher beruecksichtigen
         *)
@@ -149,7 +149,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Austransport ) THEN
       starrTransfershuttleBasisParameter[wStation].bAustransport[cWAND_1] := TRUE;
       starrTransfershuttleBasisParameter[wStation].bRueckwaertsTransportieren[cWAND_1] := ( starrTransferShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.Station[wlAustransportstation] = Rueckwaertig );
       ilScheibenZuQuittieren := WORD_TO_INT( Auftragsdaten.wAnzahlScheiben);
-	  
+
       steplSchritt := STEP_400_E;
 
 (*AUSTRANSPORT ===============================================*)
@@ -269,7 +269,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Austransport ) THEN
 (*AUSTRANSPORT  ===========================================*)
     STEP_1000_E:
       bpDone := TRUE;
-	  
+
       Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
 
       (* Hinweis:

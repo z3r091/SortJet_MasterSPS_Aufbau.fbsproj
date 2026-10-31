@@ -7,17 +7,17 @@
 *)
 PROGRAM SlowTask
 VAR
-	
+
   // EtherCAT Reset
   bpSlave                    : POINTER TO ETCSlave;
-	
+
   // BOOL
   blECatOK                   : BOOL;
   blRestartEtherCatMMI       : BOOL;
     
   // STEPS
   steplEtherCat_Restart      : Steps_TE;
-	
+
   // TIMER
   tonlWaitInit               : TON;
   tonl_Step                  : TON;

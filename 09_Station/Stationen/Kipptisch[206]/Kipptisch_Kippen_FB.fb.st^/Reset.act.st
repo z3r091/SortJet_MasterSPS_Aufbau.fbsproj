@@ -15,7 +15,7 @@ IF ( bpReset ) THEN
 (*RESET ===============================*)
     STEP_0_E:
       bpDone := FALSE;
-	  
+
       wpFehlerNr := cMELDUNG_NULL;
 
       bpStartKippenAuf := FALSE;
@@ -23,9 +23,9 @@ IF ( bpReset ) THEN
 
       Antrieb.wpBetriebsart:= KEINE_FUNKTION;
 
-	  IF NOT Antrieb.bpAntrieblaeuft THEN
+    IF NOT Antrieb.bpAntrieblaeuft THEN
         steplReset := STEP_10_E;
-	  END_IF
+    END_IF
 
 (*RESET ===============================*)
     STEP_10_E:

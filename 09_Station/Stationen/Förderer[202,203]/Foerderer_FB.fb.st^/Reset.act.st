@@ -25,7 +25,7 @@ IF( blBetriebsartReset )THEN
       BasisStationsParameter.bCheckAbgeschlossen                                   := FALSE;
      
       blNachSystemcheckMerker := FALSE;
-	  
+
       steplReset := STEP_10_E;
 
 (*RESET ============================*)

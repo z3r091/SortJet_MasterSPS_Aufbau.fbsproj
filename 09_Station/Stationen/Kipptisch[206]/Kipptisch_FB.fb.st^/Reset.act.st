@@ -21,7 +21,7 @@ IF( blBetriebsartReset )THEN
       blStartePositionSenkrecht  := FALSE;
       Kippen.bpStartKippenAuf    := FALSE;
       Kippen.bpStartKippenAb     := FALSE;
-	  
+
       BasisStationsParameter.eStatusAuftrag := eKeinStatus;   
    
       BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberEinlauf  := FALSE;

@@ -108,7 +108,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Hoehenmessung ) THEN
                   starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern, 
                   AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern), 
                   starrStationBasisParameter[wStation].awFehlerInformationen );
-						
+
         starrStationBasisParameter[wStation].bGlashoehenmessung := FALSE;
         steplSchritt := STEP_900_E;
       END_IF

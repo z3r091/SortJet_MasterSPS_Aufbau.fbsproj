@@ -82,7 +82,7 @@ VAR
 END_VAR
 
 VAR_INPUT
-	
+
   // BAUSTEINE
   Anschlag            : ZylinderPneumatik_Anschlag_FB;
   Messachse           : Messachse_FB;

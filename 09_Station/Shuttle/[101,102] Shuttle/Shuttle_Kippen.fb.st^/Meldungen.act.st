@@ -36,7 +36,7 @@ IF ( bpKippenSchuetz ) THEN
     bpStartAufkippen := FALSE;
     bpStartAbkippen  := FALSE;
   END_IF
-	
+
   toflMotorSicherungOK( IN := in_bMotorschutzschalter_OK , PT := T#5S );
   IF ( NOT toflMotorSicherungOK.Q ) AND tonlTeilnehmerErreichbar.Q THEN
     wpFehlerNr := cMELDUNG_KIPPEN_SICHERUNG_NICHT_OK;

@@ -22,10 +22,10 @@ THEN
   END_IF
 
   CASE steplVortransport OF
-	  
+
 (*VORTRANSPORT ==============================*)
     STEP_0_E:
-	  
+
       (* Hinweis:
          - Sicherstellen das die Slavekopplung aktiv ist
       *)
@@ -33,7 +33,7 @@ THEN
       THEN
         steplVortransport := STEP_5_E;
       END_IF
-	  
+
 (*VORTRANSPORT ==============================*)
     STEP_5_E:
 

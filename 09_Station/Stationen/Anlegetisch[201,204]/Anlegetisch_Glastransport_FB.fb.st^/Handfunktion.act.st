@@ -26,12 +26,12 @@ THEN
     Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
     Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
     Antrieb.wpBetriebsart     := HANDMINUS;
-	
-	// Am Ende langsam fahren
-	IF bpSensorEinlaufVorAb THEN
-      Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10 ;	
-	END_IF
-	
+
+  // Am Ende langsam fahren
+  IF bpSensorEinlaufVorAb THEN
+      Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10 ;
+  END_IF
+
   ELSE
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
   END_IF
@@ -47,12 +47,12 @@ THEN
     Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
     Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
     Antrieb.wpBetriebsart     := HANDPLUS;
-	
-	// Am Ende langsam fahren
-	IF bpSensorAuslaufVorAb THEN
-      Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;	
-	END_IF
-	
+
+  // Am Ende langsam fahren
+  IF bpSensorAuslaufVorAb THEN
+      Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
+  END_IF
+
   ELSE
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
   END_IF  

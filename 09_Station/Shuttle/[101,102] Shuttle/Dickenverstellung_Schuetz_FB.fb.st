@@ -105,8 +105,8 @@ ELSE
 
     VerstellungSchliessen();
     VerstellungOeffnen();
-	
-	out_bBremseOeffnen := out_bVerstellungOeffnen OR out_bVerstellungSchliessen;
+
+  out_bBremseOeffnen := out_bVerstellungOeffnen OR out_bVerstellungSchliessen;
 
     Meldungen();
     Timer();

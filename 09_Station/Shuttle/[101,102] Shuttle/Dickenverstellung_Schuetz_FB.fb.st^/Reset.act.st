@@ -18,18 +18,18 @@ IF ( bpReset ) THEN
       wpFehlerNr := cMELDUNG_NULL;
       bpFehler   := FALSE;
       out_bVerstellungSchliessen := FALSE;
-	  out_bMotorstarterReset := TRUE;
+    out_bMotorstarterReset := TRUE;
       out_bVerstellungOeffnen := FALSE;
       steplReset := STEP_10_E;
 
 (*RESET =====================*)
     STEP_10_E:
       IF ( in_bMotorstarter_OK AND in_bSicherungMotorOK ) THEN
-	    out_bMotorstarterReset := FALSE;
+      out_bMotorstarterReset := FALSE;
         steplReset := STEP_1000_E;
       ELSE
         wpFehlerNr := cMELDUNG_HUB_SICHERUNG_NICHT_OK;
-	    out_bMotorstarterReset := FALSE;
+      out_bMotorstarterReset := FALSE;
         bpFehler := TRUE;
         steplReset := STEP_900_E;
      END_IF
@@ -50,7 +50,7 @@ IF ( NOT bpReset ) THEN
   IF ( steplReset > STEP_0_E ) THEN
     steplReset := STEP_0_E;
     bpDone := FALSE;
-	out_bMotorstarterReset := FALSE;
+  out_bMotorstarterReset := FALSE;
     tonlMaximaleWartezeitAufReset( IN := FALSE );
   END_IF
 

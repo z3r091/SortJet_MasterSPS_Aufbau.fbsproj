@@ -8,7 +8,7 @@
 {attribute 'allow_unqualified_access'}
 NAMESPACE Konfiguration_101
 VAR_CONFIG
-	(* werden Variablen die gemappt werden hier ignoriert? *)
+  (* werden Variablen die gemappt werden hier ignoriert? *)
   (*------------------------------------------------- HARDWARE EINGAENGE ------------------------------------------------- *)
   // Datenlichtschranke
   Globale_Bausteine.aShuttle[101].in_bDatenlichtschrankeShuttlebahnOK                                AT %IX7.3  : BOOL; (* OPTION*) (* Bauteil an der Shuttlebahn => Sender / Empfaenger *)

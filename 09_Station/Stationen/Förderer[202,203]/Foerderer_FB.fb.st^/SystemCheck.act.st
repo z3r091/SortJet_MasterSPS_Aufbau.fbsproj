@@ -46,16 +46,16 @@ IF ( blBetriebartCheck ) THEN
             OR Glastransport.bpSensorauslauf )
           THEN
             BasisStationsParameter.bStationBelegt[cWAND_1] := TRUE;
-		      END_IF
+          END_IF
           
-	        rSps2MmiMessungScheibenlaenge   := -1;
+          rSps2MmiMessungScheibenlaenge   := -1;
           wSps2MmiMessungStationNummer    := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
           wSps2MmiMessungSlotNummer       := 1;
           iSps2MmiMessungScheibenanzahl   := BOOL_TO_INT(BasisStationsParameter.bStationBelegt[cWAND_1]);
          
           MsgToMmi( auftragsnr_w := SB0_SPS_SETSHEETSONSTATION );         
          
-	        steplCheck := STEP_800_E;
+          steplCheck := STEP_800_E;
 
         ELSE
           BasisStationsParameter.wFehlerNummer := cMELDUNG_SYSTEMCHECK_KANN_NICHT_DURCHGEFUEHRT_WERDEN;
@@ -145,13 +145,13 @@ IF ( blBetriebartCheck ) THEN
 
 (*SYSTEM CHECK=========================*)
     STEP_1000_E:
-	  // Auftrag für erneuten Automatikbetrieb setzen
+    // Auftrag für erneuten Automatikbetrieb setzen
       IF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
         BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Belegt;
       ELSE
-	    BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Kein_Auftrag;
+      BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Kein_Auftrag;
       END_IF
-	  
+
       BasisStationsParameter.bCheckAbgeschlossen  := TRUE;
       blNachSystemcheckMerker := TRUE;
 

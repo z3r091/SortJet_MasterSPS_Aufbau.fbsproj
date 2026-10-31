@@ -78,14 +78,14 @@ bpNotHaltOK := (   NOT NotHaltAusgeloest.Q1
                 
 (* Hinweis:
    - Merker das der Notaus ausgeloest wurde
-	   => Bistabiele Funktion in der das  "set" dominant ist
+     => Bistabiele Funktion in der das  "set" dominant ist
 *)
 NotHaltAusgeloest( SET1 := tonlNotHaltAusgeloest.Q,
                   RESET:= blResetNotHalt );
 
 (* Hinweis:
    - Merker das der Taster "Quittierung Notaus" betaetigt wurde
-	   => Bistabiele Funktion in der das  "reset" dominant ist
+     => Bistabiele Funktion in der das  "reset" dominant ist
 *)
 NotHaltQuittieren( SET   := ( in_bTasterNothaltQuittieren OR Interface_SLC.bpVisuResetNothalt ) ,
                    RESET1:= NOT NotHaltAusgeloest.Q1); 

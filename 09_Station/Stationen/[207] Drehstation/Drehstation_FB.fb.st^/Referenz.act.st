@@ -29,7 +29,7 @@ IF ( blBetriebsartReferenz ) THEN
     steplReferenz := STEP_900_E;
   END_IF
   CASE steplReferenz OF
-	    
+
   
 (* REFERENZ ===========================*)
     STEP_0_E:

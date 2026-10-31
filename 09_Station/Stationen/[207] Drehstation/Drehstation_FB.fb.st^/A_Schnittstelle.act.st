@@ -44,7 +44,7 @@ BasisStationsParameter.eDrehPositionsStatus       := Drehen.epDrehPositionsStatu
 
 BasisStationsParameter.bIstReferenziert           := ( Drehen.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bDrehen ) 
                                                  AND ( Kippen.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1] )
-															    AND ( Querfahrt.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt );
+                                  AND ( Querfahrt.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt );
 
 bpVorabDrehenAktiv := BasisStationsParameter.bVorabpositionieren OR ( steplVorabDrehen <> STEP_0_E );
 

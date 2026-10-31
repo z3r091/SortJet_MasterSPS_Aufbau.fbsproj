@@ -43,7 +43,7 @@ IF rtlMeldungFehlerPumpe.Q THEN
             stStationsNummern.NummerIntern, 
             AutomatikkreisBestimmen(0), 
             wpgFehlerdaten );
-				
+
   bpFehler := TRUE;
 END_IF
 
@@ -54,7 +54,7 @@ IF blKeineOderLeereKartusche THEN
             stStationsNummern.NummerIntern, 
             AutomatikkreisBestimmen(0), 
             wpgFehlerdaten );
-				
+
   bpFehler   := TRUE;
   blFettLeer := TRUE;
 END_IF

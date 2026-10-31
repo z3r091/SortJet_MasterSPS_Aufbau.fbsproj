@@ -31,7 +31,7 @@ THEN
       (* Hinweis:
          - 
       *)
-	   bpAbbruchVortransport := FALSE;
+     bpAbbruchVortransport := FALSE;
      bpDone := FALSE;
 
      rlGlasgewicht := ( GlasGewichtErmitteln( rpGlaslaenge  := pAuftrag.rAuftragsLaenge,
@@ -153,14 +153,14 @@ THEN
 
 (*VORTRANSPORT RÜCKWÄRTIG ==============================*)
     STEP_1000_E:
-	    bpAbbruchVortransport := FALSE;
+      bpAbbruchVortransport := FALSE;
       bpDone := TRUE;
 
 (*VORTRANSPORT RÜCKWÄRTIG ==============================*)
   END_CASE
 ELSE
   IF (steplVortransportRueckwaertig > 0) THEN
-	  bpAbbruchVortransport := FALSE;
+    bpAbbruchVortransport := FALSE;
     bpDone := FALSE;
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;

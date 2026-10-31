@@ -9,9 +9,9 @@ TYPE VerlaufBetriebsarten_ST :
 
   STRUCT
     tTime                 : TIME;
-	bFreigabeVorhanden    : BOOL;
-	bMotionAktiv          : BOOL;
-	bFehlerAktiv          : BOOL;
+  bFreigabeVorhanden    : BOOL;
+  bMotionAktiv          : BOOL;
+  bFehlerAktiv          : BOOL;
     stBetriebsart         : AntriebsBetriebsart_EN;
   END_STRUCT
 

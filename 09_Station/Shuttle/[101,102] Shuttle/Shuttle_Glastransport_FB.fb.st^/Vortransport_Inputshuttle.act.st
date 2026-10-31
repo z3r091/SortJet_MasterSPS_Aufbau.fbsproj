@@ -17,11 +17,11 @@ THEN
   CASE steplVortransport OF
 (*VORTRANSPORT ==============================*)
     STEP_0_E:
-	  
-	 IF ( blAntriebsKopplungAktiv ) THEN
+
+   IF ( blAntriebsKopplungAktiv ) THEN
         steplVortransport := STEP_5_E;
-	 END_IF
-	 
+   END_IF
+
 (*VORTRANSPORT ==============================*)
     STEP_5_E:
       IF ( bpSensorAuslauf ) THEN
