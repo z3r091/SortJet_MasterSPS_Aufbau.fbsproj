@@ -35,9 +35,8 @@ Kippen( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern,
 Querfahrt( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern,
            bpFreigabe        := BasisStationsParameter.bFreigabe,
            bpSensorEinlauf   := Glastransport.bpSensorEinlauf,
-           bpSensorAuslauf   := Glastransport.bpSensorAuslauf,  
-           bpAktivieren      := BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt );
+           bpSensorAuslauf   := Glastransport.bpSensorAuslauf );
 
 // Rollenleiste
-Rollenleiste( bpAktivieren  := BasisStationsParameter.stMKs.stStationsAufbau.bRoellchenleiste[cWAND_1]);
+Rollenleiste();
 END_ACTION

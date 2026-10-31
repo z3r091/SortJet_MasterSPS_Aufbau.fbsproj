@@ -82,6 +82,5 @@ Querfahrt(        stStationsNummern   := BasisStationsParameter.stMKs.stStations
 Zentralschmierung( stStationsNummern           := BasisStationsParameter.stMKs.stStationsNummern,
                    bpFreigabe                  := BasisStationsParameter.bFreigabe,
                    dipAktuelleAntriebsPosition := REAL_TO_DINT( Querfahrt.rpAktPosition ), // Übergbabe der Aktuellen Position
-                   bpTeilnehmerErreichbar      := TRUE,
-                   bpAktiv                     := BasisStationsParameter.stMKs.stStationsAufbau.bDLSSchmiersystem  );
+                   bpTeilnehmerErreichbar      := TRUE );
 END_ACTION

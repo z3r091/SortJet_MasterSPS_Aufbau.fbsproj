@@ -68,6 +68,7 @@ VAR_GLOBAL
                                             bTransportVerstellung         := [cANZAHL_WAENDE(TRUE)],
                                             bWandverstellungMotorisch     := FALSE,
                                             bHub                          := FALSE,
+                                            bHubrahmen                    := FALSE,
                                             bDrehen                       := FALSE,
                                             bMessachse                    := FALSE,
                                             bDruckluft                    := FALSE,

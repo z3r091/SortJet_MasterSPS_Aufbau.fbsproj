@@ -23,12 +23,11 @@ Glastransport( stStationsNummern              := BasisStationsParameter.stMKs.st
 Messachse( bpFreigabe                   := BasisStationsParameter.bFreigabe AND NOT ( in_bTasterAnforderungKippen OR in_bTasterAnforderungKippen_OP ),
            stStationsNummern            := BasisStationsParameter.stMKs.stStationsNummern,
            bpBetriebsartHand            := blBetriebsartHand,
-           bpFusstaster                 := rtlFussleisteStart.Q,
-           bpAktivieren                 := BasisStationsParameter.stMKs.stStationsAufbau.bMessachse );
+           bpFusstaster                 := rtlFussleisteStart.Q );
 
 // Hubrahmen
-Hubrahmen( );
+Hubrahmen();
 
 // Anschlag
-Anschlag( bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bAnschlag );
+Anschlag();
 END_ACTION

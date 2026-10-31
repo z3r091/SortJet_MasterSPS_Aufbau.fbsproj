@@ -54,8 +54,7 @@ Querfahrt.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bQuerfah
    - Geblaese
 *)
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
-  Geblaese[wlIndex]( bpAktivieren      := BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[wlIndex],
-                     stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
+  Geblaese[wlIndex].bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[wlIndex];
 END_FOR
 
 (* Hinweis:
@@ -69,11 +68,24 @@ END_FOR
    - Glasfuehrung
 *)
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
-  Wandverstellung[1].bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[wlIndex];
+  Wandverstellung[wlIndex].bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[wlIndex];
 END_FOR
 
 (* Hinweis:
    - Kippen
 *)
 Kippen.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1];
+
+// Aktivierungen
+Zentralschmierung.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bDLSSchmiersystem;
+
+(* Hinweis:
+   - Einige Bausteine einmalig aufrufen damit die Referenz auf Antriebe geschrieben wird
+*)
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  Glastransport[wlIndex]( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
+  Wandverstellung[wlIndex]( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
+END_FOR
+Kippen( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
+Querfahrt( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
 END_ACTION

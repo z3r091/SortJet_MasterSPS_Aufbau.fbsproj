@@ -12,6 +12,7 @@ VAR_INPUT
   in_bStatusZylinderEingefahren : BOOL; (* STATUS: Sensor meldt eingefahren *)
   
   (* BOOLEAN *)
+  bpAktivieren     : BOOL; (* AKTIVIERUNG: stStationsAufbau.bHubrahmen *)
   bpStartAusfahren : BOOL; (* BETRIEBTYP: Zylinder wird ausgefahren *)
   bpStartEinfahren : BOOL; (* BETRIEBTYP: Zylinder wird eingefahren *)
   bpReset          : BOOL; (* BETRIEBTYP: Zylinderbaustein wird zurueckgesetzt *)
@@ -47,6 +48,30 @@ END_VAR
    - Es handelt sich bei diesem Baustein um eine Ansteuerung fuer ein Federrueckstell- Ventiel
 *)
 
+
+(***************************************************************************************************)
+(* DEAKTIVIEREN *)
+(***************************************************************************************************)
+IF ( NOT bpAktivieren ) THEN
+
+  out_bZylinderAusfahren := FALSE;
+
+  bpDone     := TRUE;
+  bpFehler   := FALSE;
+  wpFehlerNr := 0;
+
+  (* Hinweis:
+     - Angeforderten Status zurueckmelden, damit wartende Schrittketten weiterlaufen
+  *)
+  IF ( bpStartAusfahren ) THEN
+    epStatusZylinder := eZylinderAusgefahren;
+  ELSIF ( bpStartEinfahren ) THEN
+    epStatusZylinder := eZylinderEingefahren;
+  END_IF
+
+  RETURN;
+
+END_IF
 
 (***************************************************************************************************)
 (* Betriebstypen [Ausfahren, Einfahren] *)

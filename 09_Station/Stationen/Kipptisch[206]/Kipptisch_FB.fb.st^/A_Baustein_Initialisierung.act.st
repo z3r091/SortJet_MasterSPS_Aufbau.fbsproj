@@ -23,10 +23,16 @@ Querfahrt.ppParameterBaustein              REF= BasisStationsParameter.stParamet
 // Aktuelle Position initialisieren
 argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] := Querfahrt.rpAktuellePosition;
 
+// Aktivierungen
+Glastransport.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bGlastransport[cWAND_1];
+Kippen.bpAktivieren        := BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1];
+Querfahrt.bpAktivieren     := BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt;
+Rollenleiste.bpAktivieren  := BasisStationsParameter.stMKs.stStationsAufbau.bRoellchenleiste[cWAND_1];
+
 (* Hinweis:
    - Einige Bausteine einmalig aufrufen damit die Referenz auf Antriebe geschrieben wird
 *)
-Glastransport();
-Kippen();
-Querfahrt();
+Glastransport( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
+Kippen( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
+Querfahrt( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
 END_ACTION

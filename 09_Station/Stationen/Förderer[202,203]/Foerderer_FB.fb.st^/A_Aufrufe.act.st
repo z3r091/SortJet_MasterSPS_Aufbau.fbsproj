@@ -25,36 +25,30 @@ Glastransport( stStationsNummern                       := BasisStationsParameter
 
 // Geblaese
 Geblaese( stStationsNummern                        := BasisStationsParameter.stMKs.stStationsNummern, 
-          bpAktivieren                             := BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[cWAND_1],
           bpFreigabe                               := BasisStationsParameter.bFreigabe, );
 
 // Kippen
 Kippen( stStationsNummern                          := BasisStationsParameter.stMKs.stStationsNummern,
-        bpAktivieren                               := BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1],
         bpSensorEinlauf                            := Glastransport.bpSensorEinlauf,
         bpSensorAuslauf                            := Glastransport.bpSensorAuslauf,
         bpTeilnehmerErreichbar                     := TRUE );
 
 // Hub
 Hub( stStationsNummern                             := BasisStationsParameter.stMKs.stStationsNummern,
-     bpAktivieren                                  := BasisStationsParameter.stMKs.stStationsAufbau.bHub,
      bpSensorEinlauf                               := Glastransport.bpSensorEinlauf,
      bpSensorAuslauf                               := Glastransport.bpSensorAuslauf );
 
 // Roellchenleiste
-Roellchenleiste( bpAktivieren                    := BasisStationsParameter.stMKs.stStationsAufbau.bRoellchenleiste[cWAND_1],
-                 bpZylinderAbfragenVorhanden     := TRUE,
+Roellchenleiste( bpZylinderAbfragenVorhanden     := TRUE,
                  bpEinAusFahrenLogikDrehen       := BasisStationsParameter.stMKs.stStationsOptionen.bVerstellungEinAusGefahrenLogikDrehen );
 
 // Wandverstellung
-Wandverstellung( bpAktivieren                    := BasisStationsParameter.stMKs.stStationsAufbau.bWandverstellung[cWAND_1],
-                 bpZylinderAbfragenVorhanden     := TRUE,
+Wandverstellung( bpZylinderAbfragenVorhanden     := TRUE,
                  bpEinAusFahrenLogikDrehen       := BasisStationsParameter.stMKs.stStationsOptionen.bVerstellungEinAusGefahrenLogikDrehen );
                  
 // Querfahrt
 Querfahrt( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern,
            bpFreigabe        := BasisStationsParameter.bFreigabe,
            bpSensorEinlauf   := Glastransport.bpSensorEinlauf,
-           bpSensorAuslauf   := Glastransport.bpSensorAuslauf,  
-           bpAktivieren      := BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt );
+           bpSensorAuslauf   := Glastransport.bpSensorAuslauf );
 END_ACTION

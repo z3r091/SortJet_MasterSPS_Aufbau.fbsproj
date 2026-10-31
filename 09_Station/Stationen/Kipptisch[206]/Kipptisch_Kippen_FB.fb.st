@@ -9,6 +9,7 @@ FUNCTION_BLOCK Kipptisch_Kippen_FB
 VAR_INPUT
 	
   // BOOLEAN 
+  bpAktivieren           : BOOL; // Aktivierung: stStationsAufbau.bKippen
   bpSensorEinlauf        : BOOL;
   bpSensorAuslauf        : BOOL;
   bpStartKippenAuf       : BOOL;
@@ -100,6 +101,21 @@ IF ( blErsterZyklus ) THEN
   ELSE
     RETURN;
   END_IF
+
+END_IF
+
+(***************************************************************************************************)
+(* DEAKTIVIEREN *)
+(***************************************************************************************************)
+IF ( NOT bpAktivieren ) THEN
+
+  bpDone            := TRUE;
+  bpVerfahrFreigabe := TRUE;
+
+  bpFehler   := FALSE;
+  wpFehlerNr := 0;
+
+  RETURN;
 
 END_IF
 

@@ -121,12 +121,6 @@ IF ( blErsterZyklus ) THEN
 
   A_Baustein_Initialisierung();
 
-  (* Hinweis:
-     - Einige Bausteine einmalig aufrufen damit die Referenz auf Antriebe geschrieben wird
-  *)
-  Glastransport( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
-  Querfahrt( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
-
 END_IF
 
 BasisStationsParameter.stMKs.bDeaktivieren := BasisStationsParameter.stMKs.bDeaktivieren;

@@ -64,6 +64,7 @@ VAR_GLOBAL
                                                  bKippenSchuetz                := FALSE,
                                                  bTransportVerstellung         := [ cANZAHL_WAENDE(FALSE) ],
                                                  bHub                          := FALSE,
+                                                 bHubrahmen                    := TRUE,
                                                  bDrehen                       := FALSE,
                                                  bMessachse                    := TRUE,
                                                  bDruckluft                    := TRUE,

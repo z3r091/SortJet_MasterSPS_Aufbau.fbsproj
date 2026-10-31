@@ -27,7 +27,7 @@ Glastransport_Y.ppParameterBaustein REF= BasisStationsParameter.stParameterStati
 // ---------------------------------------------------------------------------------------
 Glastransport_X.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bGlastransport[cWAND_1];
 Glastransport_Y.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bGlastransport[cWAND_1];
-Hubrahmen.bpAktivieren       := TRUE;
+Hubrahmen.bpAktivieren       := BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen;
 
 // ---------------------------------------------------------------------------------------
 //  ACHSEN FESTLEGEN

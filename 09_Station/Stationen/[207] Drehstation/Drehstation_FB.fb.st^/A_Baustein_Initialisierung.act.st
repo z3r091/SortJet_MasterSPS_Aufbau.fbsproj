@@ -25,11 +25,20 @@ Drehen.ppParameterBaustein                 REF= BasisStationsParameter.stParamet
 // Aktuelle Position initialisieren
 argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] := Querfahrt.rpAktuellePosition;
 
+// Aktivierungen
+Glastransport.bpAktivieren     := BasisStationsParameter.stMKs.stStationsAufbau.bGlastransport[cWAND_1];
+Drehen.bpAktivieren            := BasisStationsParameter.stMKs.stStationsAufbau.bDrehen;
+Kippen.bpAktivieren            := BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1];
+Querfahrt.bpAktivieren         := BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt;
+Geblaese.bpAktivieren          := BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[cWAND_1];
+Querachse.bpAktivieren         := FALSE;
+Dickenverstellung.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[cWAND_1];
+
 (* Hinweis:
    - Einige Bausteine einmalig aufrufen damit die Referenz auf Antriebe geschrieben wird
 *)
-Glastransport();
-Kippen();
-Querfahrt();
-Drehen();
+Glastransport( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
+Kippen( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
+Querfahrt( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
+Drehen( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
 END_ACTION

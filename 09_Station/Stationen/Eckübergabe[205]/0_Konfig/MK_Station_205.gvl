@@ -58,6 +58,7 @@ VAR_GLOBAL
                                  bWandverstellung              := [ cANZAHL_WAENDE(FALSE) ],
                                  bRoellchenleiste              := [ cANZAHL_WAENDE(FALSE) ],
                                  bHub                          := FALSE,
+                                 bHubrahmen                    := TRUE,
                                  bDrehen                       := FALSE,
                                  bMessachse                    := FALSE,
                                  bDruckluft                    := FALSE,

@@ -166,15 +166,6 @@ IF ( blErsterZyklus ) THEN
   *)
   A_Baustein_Initialisierung();
 
-  (* Hinweis:
-     - Einige Bausteine einmalig aufrufen damit die Referenz auf Antriebe geschrieben wird
-  *)
-  FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
-    Glastransport[wlIndex]( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
-  END_FOR
-  Kippen( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
-  Querfahrt( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
-   
 END_IF
 
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO

@@ -15,6 +15,7 @@ TYPE Stations_Aufbau_ST:
     bWandverstellungMotorisch               : BOOL; // Shuttle: Transport-/Wandverstellung mit Antrieb statt pneumatisch
     bRoellchenleiste                        : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Stationen
     bHub                                    : BOOL;
+    bHubrahmen                              : BOOL;
     bDrehen                                 : BOOL;
     bMessachse                              : BOOL; (* seperate Messachse je Wand z.b: Anlegewand / LTR / etc...*)
     bDruckluft                              : BOOL;

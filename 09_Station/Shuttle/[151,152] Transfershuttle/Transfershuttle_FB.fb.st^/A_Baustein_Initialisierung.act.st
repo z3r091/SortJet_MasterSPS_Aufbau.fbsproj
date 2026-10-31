@@ -20,4 +20,15 @@ Zentralschmierung.ppParameterBaustein    REF= BasisStationsParameter.stParameter
 // Aktivierungen
 Glastransport.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bGlastransport[cWAND_1];
 Querfahrt.bpAktivieren     := BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt;
+
+// Aktivierungen
+Zentralschmierung.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bDLSSchmiersystem;
+
+
+(* Hinweis:
+   - Einige Bausteine einmalig aufrufen damit die Referenz auf Antriebe geschrieben wird
+*)
+Glastransport( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
+Querfahrt( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
+
 END_ACTION

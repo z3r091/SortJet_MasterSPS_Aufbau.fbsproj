@@ -38,5 +38,5 @@ Glastransport_Y( stStationsNummern                       := BasisStationsParamet
                  bpOptionSlaveAntrieb                    := FALSE );
 
 // Hubrahmen
-Hubrahmen( bpAktivieren := TRUE );
+Hubrahmen();
 END_ACTION

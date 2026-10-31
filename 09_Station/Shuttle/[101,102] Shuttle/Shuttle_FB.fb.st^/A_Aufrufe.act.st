@@ -40,7 +40,6 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   *)
   Wandverstellung[wlIndex]( bpFreigabe                                     := BasisStationsParameter.bFreigabe,
                             stStationsNummern                              := BasisStationsParameter.stMKs.stStationsNummern,
-                            bpAktivieren                                   := BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[wlIndex],
                             bpOptionMotorischAktivieren                    := BasisStationsParameter.stMKs.stStationsAufbau.bWandverstellungMotorisch );
 
   (* Aufruf:
@@ -68,8 +67,7 @@ Querfahrt( stStationsNummern              := BasisStationsParameter.stMKs.stStat
 (* Aufruf:
    - Kippen
 *)
-Kippen( bpAktivieren           := BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1],
-        bpKippenSchuetz        := BasisStationsParameter.stMKs.stStationsAufbau.bKippenSchuetz,
+Kippen( bpKippenSchuetz        := BasisStationsParameter.stMKs.stStationsAufbau.bKippenSchuetz,
         bpTeilnehmerErreichbar := blShuttleErreichbar,
         stStationsNummern      := BasisStationsParameter.stMKs.stStationsNummern,
         bpBetriebsartHand      := blBetriebsartHand,
@@ -84,6 +82,5 @@ Kippen( bpAktivieren           := BasisStationsParameter.stMKs.stStationsAufbau.
 Zentralschmierung( stStationsNummern           := BasisStationsParameter.stMKs.stStationsNummern,
                    bpFreigabe                  := BasisStationsParameter.bFreigabe,
                    dipAktuelleAntriebsPosition := REAL_TO_DINT( Querfahrt.rpAktPosition ), // Übergbabe der Aktuellen Position
-                   bpTeilnehmerErreichbar      := blShuttleErreichbar,
-                   bpAktiv                     := BasisStationsParameter.stMKs.stStationsAufbau.bDLSSchmiersystem  );
+                   bpTeilnehmerErreichbar      := blShuttleErreichbar );
 END_ACTION

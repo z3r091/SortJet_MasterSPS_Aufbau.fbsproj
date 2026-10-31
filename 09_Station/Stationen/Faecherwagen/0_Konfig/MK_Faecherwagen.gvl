@@ -36,6 +36,7 @@ VAR_GLOBAL
                                      bWandverstellungMotorisch     := FALSE,
                                      bRoellchenleiste              := [ FALSE ],
                                      bHub                          := FALSE,
+                                     bHubrahmen                    := FALSE,
                                      bDrehen                       := FALSE,
                                      bMessachse                    := FALSE,
                                      bDruckluft                    := FALSE,

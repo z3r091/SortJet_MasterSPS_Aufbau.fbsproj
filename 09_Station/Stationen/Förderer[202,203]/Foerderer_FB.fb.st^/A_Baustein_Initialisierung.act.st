@@ -42,6 +42,12 @@ Glastransport.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bGla
 *)
 Kippen.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1];
 
+// Aktivierungen
+Geblaese.bpAktivieren        := BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[cWAND_1];
+Hub.bpAktivieren             := BasisStationsParameter.stMKs.stStationsAufbau.bHub;
+Roellchenleiste.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bRoellchenleiste[cWAND_1];
+Wandverstellung.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bWandverstellung[cWAND_1];
+
 (* Hinweis:
    - Einige Bausteine einmalig aufrufen damit die Referenz auf Antriebe geschrieben wird
 *)

@@ -33,14 +33,12 @@ Drehen( stStationsNummern                      := BasisStationsParameter.stMKs.s
 
 // Kippen
 Kippen( stStationsNummern                      := BasisStationsParameter.stMKs.stStationsNummern,
-        bpAktivieren                           := BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1],
         bpFreigabe                             := BasisStationsParameter.bFreigabe,
         bpSensorEinlauf                        := Glastransport.bpSensorEinlauf,
         bpSensorAuslauf                        := Glastransport.bpSensorAuslauf );
 
 // Querfahrt
 Querfahrt( stStationsNummern                   := BasisStationsParameter.stMKs.stStationsNummern,	
-           bpAktivieren                        := BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt,
            bpAutomatikAktiv                    := BasisStationsParameter.bAutomatik,
            bpFreigabe                          := BasisStationsParameter.bFreigabe,
            bpReglungAktivSchalten              := Drehen.bpDrehvorgangAktiv );    
@@ -48,17 +46,14 @@ Querfahrt( stStationsNummern                   := BasisStationsParameter.stMKs.s
 // Geblaese
 Geblaese( stStationsNummern                    := BasisStationsParameter.stMKs.stStationsNummern,
           bpFreigabe                           := BasisStationsParameter.bFreigabe,
-          bpAktivieren                         := BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[cWAND_1],
 		      bpMotorschutzschalter_OK             := in_bMotorstarter_Geblaese_OK,
           bpIOsBoschDrive                      := TRUE );
 
 // Querachse
-Querachse( bpAktivieren                        := FALSE,
-           bpZylinderAbfragenVorhanden         := TRUE,
+Querachse( bpZylinderAbfragenVorhanden         := TRUE,
            bpEinAusFahrenLogikDrehen           := BasisStationsParameter.stMKs.stStationsOptionen.bVerstellungEinAusGefahrenLogikDrehen );
 
 // Dickenverstellung
-Dickenverstellung( bpAktivieren                := TRUE,
-                   bpZylinderAbfragenVorhanden := TRUE , 
+Dickenverstellung( bpZylinderAbfragenVorhanden := TRUE , 
                    bpEinAusFahrenLogikDrehen   := BasisStationsParameter.stMKs.stStationsOptionen.bVerstellungEinAusGefahrenLogikDrehen );
 END_ACTION

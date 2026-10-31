@@ -19,11 +19,15 @@ Messachse.ppAntriebsInformationen          REF= BasisStationsParameter.stAntrieb
 Glastransport.ppParameterBaustein       REF= BasisStationsParameter.stParameterStationskomponenten.stGlastransport[1];
 Messachse.ppParameterBaustein           REF= BasisStationsParameter.stParameterStationskomponenten.stMessachse;
 
+// Aktivierungen
+Glastransport.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bGlastransport[cWAND_1];
+Messachse.bpAktivieren     := BasisStationsParameter.stMKs.stStationsAufbau.bMessachse;
+Hubrahmen.bpAktivieren     := BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen;
+Anschlag.bpAktivieren      := BasisStationsParameter.stMKs.stStationsAufbau.bAnschlag;
+
 (* Hinweis:
    - Einige Bausteine einmalig aufrufen damit die Referenz auf Antriebe geschrieben wird
 *)
-Glastransport();
-Glastransport.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bGlastransport[cWAND_1];
-
-Messachse();
+Glastransport( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
+Messachse( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
 END_ACTION

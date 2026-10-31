@@ -13,7 +13,7 @@ VAR_INPUT
 	bpReset                : BOOL;
 	bpFreigabe             : BOOL;
 	bpTeilnehmerErreichbar : BOOL;
-	bpAktiv                : BOOL;
+	bpAktivieren           : BOOL;
 	
 	// DINT
 	dipAktuelleAntriebsPosition : DINT; // Istposition des Shuttles 
@@ -122,7 +122,7 @@ END_IF
 (***************************************************************************************************)
 (* BAUSTEIN: AKTIVIERUNG *)
 (***************************************************************************************************)
-IF NOT bpAktiv THEN
+IF NOT bpAktivieren THEN
   RETURN;
 END_IF
 

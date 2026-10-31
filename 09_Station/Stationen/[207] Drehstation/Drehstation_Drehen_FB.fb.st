@@ -8,6 +8,7 @@
 FUNCTION_BLOCK Drehstation_Drehen_FB
 VAR_INPUT
   (* BOOLEAN *)
+  bpAktivieren                  : BOOL; (* AKTIVIERUNG: stStationsAufbau.bDrehen *)
   bpStarteDrehBewegung          : BOOL; (* BETRIEBSART: Station Drehen Links [Uhrzeigersinn] *)
   bpStarteAbsolutPositionierung : BOOL; (* BETRIEBSART: Station kann Absolut auf eine gewuenschte Position verfahren werden *)
   bpReset                       : BOOL; (* BETRIEBSART: Reset *)
@@ -131,6 +132,23 @@ IF ( blErsterZyklus ) THEN
   ELSE
     RETURN;
   END_IF
+
+END_IF
+
+(***************************************************************************************************)
+(* DEAKTIVIEREN *)
+(***************************************************************************************************)
+IF ( NOT bpAktivieren ) THEN
+
+  bpDone                               := TRUE;
+  bpInReferenz                         := TRUE;
+  bpVerfahrFreigabe                    := TRUE;
+  bpAbsolutPositionierungAbgeschlossen := TRUE;
+
+  bpFehler   := FALSE;
+  wpFehlerNr := 0;
+
+  RETURN;
 
 END_IF
 
