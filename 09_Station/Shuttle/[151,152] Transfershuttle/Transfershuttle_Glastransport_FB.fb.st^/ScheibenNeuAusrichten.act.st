@@ -63,7 +63,7 @@ THEN
 
       tonlWartenAufAnheben(IN := NOT blBereitZumGlastransport, PT := t#10s);
 
-      IF ( blBereitZumGlastransport OR blBereitZumBreitenGlastransport ) THEN
+      IF ( blBereitZumGlastransport ) THEN
         steplScheibenNeuAusrichten := STEP_100_E;
       END_IF
 

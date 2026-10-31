@@ -98,8 +98,6 @@ VAR
   blSensorFreifahren                          : BOOL;
   blScheibenMerker                            : BOOL; (* Merken da eien Scheibe den Auslaufsensor / Einlaufsensor beim Eintransport weiter *)
   blReduzierteGeschwindigkeit                 : BOOL;
-  blZeitGeschwindigkeitsReduzierungAktiv      : BOOL; (* Hinweis: Zeitliche Komponente zum reduzieren der Geschwindigkeit *)
-  blOptionReduzierungGeschwindigkeitUeberZeit : BOOL := FALSE;
   blAntriebsKopplungAktiv                     : BOOL;
   blStarteSlaveKopplung                       : BOOL;
 
@@ -141,13 +139,11 @@ VAR
   tonlMaxWarteAufResetErfolgreich    : TON; (* EINSCHALTVERZOEGERUNG: *)
   tonlWarteSchritt                   : TON; (* EINSCHALTVERZOEGERUNG: *)
   tonlAntriebNichtFreigegeben        : TON; (* EINSCHALTVERZOEGERUNG: *)
-  tonlGeschwindigkeitReduzieren      : TON; (* EINSCHALTVERZOEGERUNG: Zeitliche Komponente zum reduzieren der Geschwindigkeit *)  
   tonlUberwachungSlaveAktiv          : TON; (* EINSCHALTVERZOEGERUNG: *)  
   tonlSlaveKopplungDeaktiviert       : TON;
   
   (* TIME *)
   tlWarteZeiteAufnahme               : TIME; (* STATISTIK: Zeit Ermittlung von evtl. Wartezeiten *)
-  tlReduzierungGeschwindigkeit       : TIME := T#1s;
 
   (* STRING *)
   stlLogString    : STRING;
@@ -263,13 +259,6 @@ toflAuslaufsensorFrei(IN := bpSensorAuslauf, PT := t#300ms);
 toflEinlaufsensorFrei(IN := bpSensorEinlauf, PT := t#100ms);
 
 
-(* Hinweis:
-   - Reduzierung der Geschwindigkeit. Verwendet fuer Stationen vom Type = Inputshuttle die das Glas
-     ueberden Auslaufsensor Positionieren beim Eintransport.
-   - Nur Aktiv wenn im Auftrag die Bits fuer erste u. letzte Scheibe gesetzt sind.
-*)
-tonlGeschwindigkeitReduzieren( IN := blZeitGeschwindigkeitsReduzierungAktiv,
-                               PT := tlReduzierungGeschwindigkeit );
 
 
 

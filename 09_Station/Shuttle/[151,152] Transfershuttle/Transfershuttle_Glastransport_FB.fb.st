@@ -119,7 +119,6 @@ VAR
   (* BOOLEAN *)
   blErsterZyklus                               : BOOL := TRUE;
   blBereitZumGlastransport                     : BOOL := FALSE;
-  blBereitZumBreitenGlastransport              : BOOL := FALSE;
   blEinlaufSensor                              : BOOL; (* entprellter Eingangssensor *)
   blAuslaufSensor                              : BOOL; (* entprellter Ausgangssensor *)
   blLetzteScheibeEintransport                  : BOOL := FALSE; (* HINWEIS: Wenn der Vortransport im Speicher aktiviert ist das TS oben behalten nach einen Eintransport da ein Vortransport- Auftrag folgen kann *)
@@ -136,7 +135,6 @@ VAR
   blSchnittstelle_bAnforderungTransportVerbund : BOOL := FALSE;
   blScheibenKontrolleEinlaufseiteEin           : BOOL;
   blScheibenKontrolleAuslaufseiteEin           : BOOL;
-  blNeueLogikLuftschrankenAktiv                : BOOL := FALSE;
   blReduzierteGeschwindigkeit                  : BOOL;
 
 
@@ -181,10 +179,6 @@ VAR
   ftriglKeinAuftragAktiv              : F_TRIG; (* fallende Flanke nachdem längere Zeit kein Auftrag aktiv ist *)
   ftriglAuslaufsensorBelegt           : F_TRIG; (* fallende Flanke: Auslaufsensor wurde angefahren *)
   ftriglEinlaufsensorBelegt           : F_TRIG; (* fallende Flanke: Einlaufsensor wurde angefahren *)
-  rtlLuftschrankeEinlaufEin           : R_TRIG;
-  rtlLuftschrankeEinlaufAus           : R_TRIG;
-  rtlLuftschrankeAuslaufEin           : R_TRIG;
-  rtlLuftschrankeAuslaufAus           : R_TRIG;
 
   (* TIMER *)
   tonlGlastransportOben                             : TON; 
@@ -212,14 +206,6 @@ VAR
   toflAutoAbschaltung                               : TOF; 
   toflShuttleAbsenkenKeinAuftragAktiv               : TOF; 
   toflAntriebLaeuft                                 : TOF;
-  tofLuftschrankeEinlaufEin                         : TOF;
-  tofLuftschrankeEinlaufAus                         : TOF;
-  tofLuftschrankeAuslaufEin                         : TOF;
-  tofLuftschrankeAuslaufAus                         : TOF;
-  tonLuftschrankeEinlaufEin                         : TON;
-  tonLuftschrankeEinlaufAus                         : TON;
-  tonLuftschrankeAuslaufEin                         : TON;
-  tonLuftschrankeAuslaufAus                         : TON;
 
   (* BAUSTEINE *)
   Scheibenzaehler : ScheibenZaehler_FB;

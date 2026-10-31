@@ -42,13 +42,6 @@ THEN
 	   tlWarteZeiteAufnahme := TIME();
       tonlAntriebNichtFreigegeben( IN := FALSE );
 
-      (* Hinweis:
-         - Zusaetzliche Option die die Geschwindigkeit zu reduzieren
-           => Gilt nur 
-      *)
-      tonlGeschwindigkeitReduzieren( IN := FALSE );
-      blZeitGeschwindigkeitsReduzierungAktiv := FALSE;
-
       bpFreigabeQuerfahrt := FALSE;
 
 
@@ -202,23 +195,6 @@ THEN
         Antrieb.wpBetriebsart := RESTWEG;
 
 
-        (* Hinweis:
-           - Zeitlicher Wert zur Reduzierung der Geschwindigkeit des Eintransports 
-             => Zusaetzliche Option damit die Geschwindigkeit wirklich reduziert wird | Da nicht geklaert ist warum es sporadisch
-                dazu kommt das Glas zuweit positionieren wenn auf den AUslaufsensor positioniert werden soll.
-                => Die Position scheint fehlerhaft uebernommen worden zu sein 
-        *)
-        IF ( blOptionReduzierungGeschwindigkeitUeberZeit ) THEN
-
-          blZeitGeschwindigkeitsReduzierungAktiv := pAuftrag.bLetzteScheibe ;
-
-          tlReduzierungGeschwindigkeit := WegZeitBestimmen ( rpWegStrecke      := ppParameterBaustein.rWegstreckeBisZurVerzoegerung,
-                                                             rpGeschwindigkeit := rlGeschwindigkeitEintransport,
-                                                             rpRampe           := ppAntriebsInformationen.rpMaxBeschleunigung );
-
-        END_IF
-
-       
         steplEintransport := STEP_110_E;
 
       ELSE
@@ -252,8 +228,7 @@ THEN
       (* Vorabstop- Sensor:
          - Geschwindigkeit verringern
       *)
-      IF(  ( ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) >= ppParameterBaustein.rWegstreckeBisZurVerzoegerung )
-        OR tonlGeschwindigkeitReduzieren.Q )
+      IF ( ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) >= ppParameterBaustein.rWegstreckeBisZurVerzoegerung )
       THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit30;
       END_IF
@@ -347,8 +322,7 @@ THEN
       (* Hinweis
          - Geschwindigkeit verringern
       *)
-      IF ( ( ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) >= ppParameterBaustein.rWegstreckeBisZurVerzoegerung )
-        OR tonlGeschwindigkeitReduzieren.Q ) 
+      IF ( ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) >= ppParameterBaustein.rWegstreckeBisZurVerzoegerung )
       THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit30;
       END_IF
@@ -417,8 +391,7 @@ THEN
       (* Hinweis
          - Geschwindigkeit verringern
       *)
-      IF ( ( ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) >= ppParameterBaustein.rWegstreckeBisZurVerzoegerung )
-        OR tonlGeschwindigkeitReduzieren.Q ) 
+      IF ( ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) >= ppParameterBaustein.rWegstreckeBisZurVerzoegerung )
       THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit30;
       END_IF
@@ -845,7 +818,6 @@ ELSE
     bprtScheibe                            := FALSE;
     blScheibenMerker                       := FALSE;
     bpOutBereitZumEintransport             := FALSE;
-    blZeitGeschwindigkeitsReduzierungAktiv := FALSE;
 
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     steplEintransport := STEP_0_E;

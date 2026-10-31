@@ -28,9 +28,6 @@ IF ( bpReset ) THEN
 		
 		  bpSlaveAktiv := FALSE;
       blAntriebsKopplungAktiv := false;
-
-
-      tonlGeschwindigkeitReduzieren( IN := FALSE );
       rlGefahreneStreckeEintransport := 0.0;
       Antrieb.wpBetriebsart := KEINE_FUNKTION;
       Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;

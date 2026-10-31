@@ -43,7 +43,6 @@ VAR
   blFehlermeldungGenerierenKommunikation  : BOOL;
   blFremdanlageBereitZumTransport         : BOOL := FALSE;
   blAuftragsdatenNachrichtGenerieren      : BOOL;
-  blSimulationBereitZumAustransport       : BOOL := FALSE;
 
   (* BYTE *)
   aInByteAuftragsdatenScheibenID_1_0     : ARRAY [0..3] OF BYTE;
@@ -176,7 +175,7 @@ END_IF
    - Signal das der Sender bereit fuer den Transport ist 
 *)
 blFremdanlageBereitZumTransport := (     in_bSenderBereit
-                                     AND in_bSenderGlasBereit ) OR blSimulationBereitZumAustransport ;
+                                     AND in_bSenderGlasBereit );
 
 
 (* Hinweis:
