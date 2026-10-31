@@ -887,14 +887,11 @@ IF ( bpCheck ) THEN
 
 (*SYSTEM CHECK=========================*)
   END_CASE
-END_IF
-
-(* Hinweis:
-   - SystemCheck zurücksetzen wenn abgebrochen, oder ein Betriebsart
-     wechsel stattgefunden hat. 
-*)
-IF ( NOT bpCheck ) THEN
-
+ELSE
+  (* Hinweis:
+     - SystemCheck zurücksetzen wenn abgebrochen, oder ein Betriebsart
+       wechsel stattgefunden hat.
+  *)
   IF (steplCheck > STEP_0_E ) THEN
     bpDone := FALSE;
     bprtScheibe := FALSE;
@@ -908,6 +905,5 @@ IF ( NOT bpCheck ) THEN
 
     steplCheck:=STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION

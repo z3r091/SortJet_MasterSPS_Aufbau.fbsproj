@@ -574,6 +574,8 @@ ELSE
     bprtScheibe := FALSE;
     bpFreigabeFremdprozess := FALSE;
     bpOutBereitZumEintransport := FALSE;
+    Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
     steplEintransport := STEP_0_E;
   END_IF
 

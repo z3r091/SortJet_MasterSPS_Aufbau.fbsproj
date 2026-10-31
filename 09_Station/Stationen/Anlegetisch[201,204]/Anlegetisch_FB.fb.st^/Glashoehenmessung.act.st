@@ -481,6 +481,8 @@ ELSE
 
     BasisStationsParameter.bGlashoehenmessungAbgeschlossen := FALSE;
 	  
+    Messachse.bpVermessen_Oberkante_1_Sensor := FALSE;
+    Messachse.bpVermessen_OberUndUnterkante_2_Sensoren := FALSE;
     steplGlashoehenmessung := STEP_0_E;
   END_IF
 

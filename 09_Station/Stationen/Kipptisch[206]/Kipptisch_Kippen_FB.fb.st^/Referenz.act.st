@@ -132,6 +132,8 @@ ELSE
   IF( steplReferenz > STEP_0_E )THEN
     bpDone := FALSE;
     Antrieb.wpBetriebsart:= KEINE_FUNKTION;
+    tonlEndschalterFreifahren( IN := FALSE );
+    tonlWarteSchrittEndschalterFreifahren( IN := FALSE );
     steplReferenz := STEP_0_E;
   END_IF
 

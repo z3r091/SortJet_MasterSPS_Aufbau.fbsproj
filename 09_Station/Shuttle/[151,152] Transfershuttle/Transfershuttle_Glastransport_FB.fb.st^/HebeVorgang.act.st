@@ -132,6 +132,7 @@ THEN
 ELSE
   IF ( steplHebeVorgang > STEP_0_E ) THEN
     bpDone := FALSE;
+    Antrieb.wpBetriebsart := KEINE_FUNKTION;
     steplHebeVorgang := STEP_0_E;
   END_IF
 END_IF

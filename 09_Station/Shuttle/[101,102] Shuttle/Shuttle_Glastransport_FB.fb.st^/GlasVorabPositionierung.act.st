@@ -182,10 +182,7 @@ THEN
 (* GLAS VORPOSITIONIEREN ====================*)
 
   END_CASE
-END_IF
-
-IF ( NOT bpStarteVorabPositionierung ) THEN
-
+ELSE
   IF ( steplVorabpositionieren > STEP_0_E ) THEN
 
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -194,6 +191,5 @@ IF ( NOT bpStarteVorabPositionierung ) THEN
 
     steplVorabpositionieren := STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION

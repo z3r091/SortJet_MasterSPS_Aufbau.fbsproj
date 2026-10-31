@@ -139,10 +139,7 @@ IF ( blBetriebartCheck ) THEN
 
 (*SYSTEM CHECK=========================*)
   END_CASE
-END_IF
-
-IF ( NOT blBetriebartCheck ) THEN
-
+ELSE
   IF (steplCheck > STEP_0_E) THEN
 
     FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
@@ -153,8 +150,8 @@ IF ( NOT blBetriebartCheck ) THEN
 
     BasisStationsParameter.bCheckAbgeschlossen := FALSE;
 
+    blNachSystemcheckMerker := FALSE;
     steplCheck := STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION

@@ -81,14 +81,11 @@ IF bpStarteFaecherwagensuche THEN
 
 (*FÄCHERWAGENSUCHE ==============================*)
   END_CASE
-END_IF
-IF ( NOT bpStarteFaecherwagensuche ) THEN
-
+ELSE
   IF (steplFaecherwagensuche > STEP_0_E) THEN
     bpFaecherwagenGefunden               := FALSE;
     Querfahrt.bpShuttleFaecherwagenSuche := FALSE;
     steplFaecherwagensuche := STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION

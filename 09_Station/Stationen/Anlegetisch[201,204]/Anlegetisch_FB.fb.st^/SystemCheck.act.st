@@ -271,10 +271,7 @@ IF( blBetriebartCheck )THEN
 
 (*SYSTEM CHECK=========================*)
   END_CASE
-END_IF
-
-IF ( NOT blBetriebartCheck ) THEN
-
+ELSE
   IF (steplCheck > 0 ) THEN
     BasisStationsParameter.bCheckAbgeschlossen := FALSE;
 
@@ -288,6 +285,5 @@ IF ( NOT blBetriebartCheck ) THEN
 
     steplCheck := STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION

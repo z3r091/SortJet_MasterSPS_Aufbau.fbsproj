@@ -158,12 +158,9 @@ IF( blBetriebsartReset )THEN
 
 (*RESET ===============================*)
  END_CASE
-END_IF
-
-(*Reset wegen Abbruch der Schrittkette
-*)
-IF( NOT blBetriebsartReset )THEN
-
+ELSE
+  (*Reset wegen Abbruch der Schrittkette
+  *)
   IF( steplResetAntrieb > STEP_0_E ) THEN
 
     FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
@@ -175,8 +172,9 @@ IF( NOT blBetriebsartReset )THEN
     Querfahrt.bpReset         := FALSE;
     Kippen.bpReset                   := FALSE;
 
+    Zentralschmierung.bpReset := FALSE;
+    tonlMaxWarteAufResetErfolgreich( IN := FALSE );
     steplResetAntrieb := STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION

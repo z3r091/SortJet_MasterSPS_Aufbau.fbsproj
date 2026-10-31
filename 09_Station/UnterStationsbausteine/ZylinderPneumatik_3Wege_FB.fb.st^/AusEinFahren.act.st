@@ -258,6 +258,7 @@ ELSE
     tonlZylinder1Eingefahren( IN := FALSE );
     tonlZylinder2Ausgefahren( IN := FALSE );
     tonlZylinder2Eingefahren( IN := FALSE );
+    tonlWarteZeitAufVentile( IN := FALSE );
     steplAusfahren := STEP_0_E;
   END_IF
 END_IF

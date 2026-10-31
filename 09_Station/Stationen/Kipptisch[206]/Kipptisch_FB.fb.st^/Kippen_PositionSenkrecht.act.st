@@ -43,15 +43,11 @@ IF ( blStartePositionSenkrecht ) THEN
 
 (* KIPPEN SENKRECHT =========================== *)
   END_CASE
-END_IF
-
-IF ( NOT blStartePositionSenkrecht ) THEN
-
+ELSE
   IF ( steplKippenSenkrecht > STEP_0_E ) THEN
     Kippen.bpStartKippenAuf := FALSE;
     blBewegungAbgeschlossen := FALSE;
     steplKippenSenkrecht := STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION

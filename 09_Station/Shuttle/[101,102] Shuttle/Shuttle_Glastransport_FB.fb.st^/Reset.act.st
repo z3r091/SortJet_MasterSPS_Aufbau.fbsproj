@@ -86,6 +86,7 @@ ELSE
     bpDone := FALSE;
     Antrieb.wpBetriebsart       := KEINE_FUNKTION;
     Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
+    tonlMaxWarteAufResetErfolgreich( IN := FALSE );
     steplReset := STEP_0_E;
   END_IF
 END_IF

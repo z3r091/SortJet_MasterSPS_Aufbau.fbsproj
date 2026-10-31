@@ -227,6 +227,7 @@ ELSE
     bpDone := FALSE;
     bpVermessenAbgeschlossen := FALSE;
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    tonlTimeoutUnterkante( IN := FALSE );
     steplOberUndUnterkante_2_Sensoren := STEP_0_E;
   END_IF
 END_IF

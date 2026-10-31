@@ -173,10 +173,7 @@ THEN
 
 (*EINTRANSPORT ==================================*)
   END_CASE
-END_IF
-
-IF ( NOT BasisStationsParameter.bEintransport[cWAND_1] ) THEN
-
+ELSE
   IF ( steplEintransport > STEP_0_E ) THEN
     out_bDrosselklappeOeffnen := FALSE;
 
@@ -189,6 +186,5 @@ IF ( NOT BasisStationsParameter.bEintransport[cWAND_1] ) THEN
     BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] := FALSE;
     steplEintransport := STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION

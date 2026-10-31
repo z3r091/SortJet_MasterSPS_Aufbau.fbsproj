@@ -337,10 +337,7 @@ IF (  bpSpeicherfachValidierung ) THEN
 
   END_CASE
 
-END_IF
-
-IF ( NOT bpSpeicherfachValidierung ) THEN
-
+ELSE
   IF ( steplSpeicherfachValidierung > STEP_0_E ) THEN
     bpSpeicherfachValidierungAbgeschlossen := FALSE;
 
@@ -356,10 +353,9 @@ IF ( NOT bpSpeicherfachValidierung ) THEN
 
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
+    tonlUeberwachungSensorFreifahren( IN := FALSE );
     steplSpeicherfachValidierung := STEP_0_E;
   END_IF
-
-
 END_IF
 
 (***************************************************************************************************)

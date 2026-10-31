@@ -169,6 +169,7 @@ ELSE
     Glastransport.bpCheck := FALSE;
 
 
+    blNachSystemcheckMerker := FALSE;
     steplCheck := STEP_0_E;
   END_IF
 

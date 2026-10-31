@@ -172,6 +172,8 @@ ELSE
     Glastransport_Y.bpCheck  := FALSE;
     blHubrahmenPositionieren := FALSE;
 
+    GlastransportAus.bpCheck := FALSE;
+    blNachSystemcheckMerker := FALSE;
     steplCheck := STEP_0_E;
   END_IF
 

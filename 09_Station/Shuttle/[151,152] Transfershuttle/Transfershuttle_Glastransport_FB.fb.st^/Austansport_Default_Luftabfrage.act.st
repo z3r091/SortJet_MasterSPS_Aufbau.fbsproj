@@ -1064,6 +1064,8 @@ ELSE
     blScheibenKontrolleEinlaufseiteEin    := FALSE;
 
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    tonlSensorScheibenKontrolleAuslaufSeiteFrei( IN := FALSE );
+    tonlSensorScheibenKontrolleEinlaufSeiteFrei( IN := FALSE );
     steplAustransportDefaultLuftabfrage := STEP_0_E;
   END_IF
 

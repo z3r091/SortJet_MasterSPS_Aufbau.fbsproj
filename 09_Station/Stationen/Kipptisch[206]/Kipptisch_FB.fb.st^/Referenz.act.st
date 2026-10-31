@@ -56,6 +56,7 @@ ELSE
   IF ( steplReferenz > STEP_0_E ) THEN
     Kippen.bpReferenz    := FALSE;
     Querfahrt.bpReferenz := FALSE;
+    BasisStationsParameter.bReferenzAbgeschlossen := FALSE;
     steplReferenz := STEP_0_E;
   END_IF
 END_IF

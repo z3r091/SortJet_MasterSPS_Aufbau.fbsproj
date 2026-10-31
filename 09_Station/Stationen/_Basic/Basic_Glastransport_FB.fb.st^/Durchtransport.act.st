@@ -166,10 +166,7 @@ IF (  bpDurchtransport ) THEN
 
 (* DURCHTRANSPORT ========================================*)
   END_CASE
-END_IF
-
-IF ( NOT bpDurchtransport ) THEN
-
+ELSE
   IF (steplDurchtransport > STEP_0_E ) THEN
     bpDone := FALSE;
 
@@ -182,6 +179,5 @@ IF ( NOT bpDurchtransport ) THEN
 
     steplDurchtransport := STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION

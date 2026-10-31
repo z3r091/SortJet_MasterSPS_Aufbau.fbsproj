@@ -299,10 +299,8 @@ IF ( blBetriebartCheck ) THEN
 
 (*SYSTEM CHECK=========================*)
   END_CASE
-END_IF
-
-IF (NOT blBetriebartCheck ) THEN
-  IF (steplCheck > 0) THEN
+ELSE
+    IF (steplCheck > 0) THEN
     steplCheck := STEP_0_E;
     BasisStationsParameter.bCheckAbgeschlossen := FALSE;
     out_bDrosselklappeOeffnen := FALSE;

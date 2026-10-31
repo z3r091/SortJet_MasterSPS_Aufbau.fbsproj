@@ -212,6 +212,7 @@ ELSE
     Messachse.bpPositionierung := FALSE;
     Glastransport.bpScheibeZurueckFahren   := FALSE;
 
+    BasisStationsParameter.bGlashoehenmessungAbgeschlossen := FALSE;
     steplGlashoehenmessung := STEP_0_E;
   END_IF
 

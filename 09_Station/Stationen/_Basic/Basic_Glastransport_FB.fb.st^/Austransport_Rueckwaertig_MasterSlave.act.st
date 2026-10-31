@@ -333,6 +333,7 @@ ELSE
     bpOutBereitZumAustransport := FALSE;
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
+    Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
     steplAustransportRueckwaertig := STEP_0_E;
   END_IF
 

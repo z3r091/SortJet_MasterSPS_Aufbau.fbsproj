@@ -60,14 +60,11 @@ IF ( BasisStationsParameter.bVorabDrehen ) THEN
 
 (* Vorab Drehen =========================*)
   END_CASE
-
-ELSIF (steplVorabDrehen > STEP_0_E) THEN
-	
+ELSE
+  IF ( steplVorabDrehen > STEP_0_E ) THEN
     BasisStationsParameter.bVorabDrehenAbgeschlossen := FALSE;
-
     Drehen.bpStarteAbsolutPositionierung := FALSE;
-
     steplVorabDrehen := STEP_0_E;
-
+  END_IF
 END_IF
 END_ACTION

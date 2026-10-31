@@ -125,6 +125,7 @@ ELSE
     tonlUberwachungSlaveAktiv( IN := FALSE );
     blAntriebsKopplungAktiv := FALSE;
     Antrieb_Slave.wpBetriebsart:= KEINE_FUNKTION;
+    Antrieb.wpBetriebsart := KEINE_FUNKTION;
     steplSlave := STEP_0_E;
   END_IF
 

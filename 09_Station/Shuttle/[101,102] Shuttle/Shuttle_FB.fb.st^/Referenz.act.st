@@ -66,9 +66,7 @@ IF ( blBetriebsartReferenz ) THEN
 
 (*REFERENZ ===============================*)
   END_CASE
-END_IF
-IF ( NOT blBetriebsartReferenz ) THEN
-
+ELSE
   IF ( steplReferenz > STEP_0_E ) THEN
     FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
       Wandverstellung[wlIndex].bpReferenz := FALSE;
@@ -76,6 +74,5 @@ IF ( NOT blBetriebsartReferenz ) THEN
     BasisStationsParameter.bReferenzAbgeschlossen := FALSE;
     steplReferenz := STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION

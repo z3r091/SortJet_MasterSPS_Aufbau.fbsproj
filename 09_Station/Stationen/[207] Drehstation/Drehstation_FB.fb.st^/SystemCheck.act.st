@@ -276,11 +276,8 @@ IF( blBetriebartCheck )THEN
 
 (*SYSTEM CHECK=========================*)
  END_CASE;
-END_IF
-
-IF ( NOT blBetriebartCheck ) THEN
-
- IF (steplCheck > STEP_0_E ) THEN
+ELSE
+   IF (steplCheck > STEP_0_E ) THEN
     BasisStationsParameter.bCheckAbgeschlossen := FALSE;
 
     BasisStationsParameter.bCheckMitVorgaenger[cWAND_1] := FALSE;
@@ -295,8 +292,8 @@ IF ( NOT blBetriebartCheck ) THEN
 
     Glastransport.bpCheck := FALSE;
 
+    blNachSystemcheckMerker := FALSE;
     steplCheck := STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION

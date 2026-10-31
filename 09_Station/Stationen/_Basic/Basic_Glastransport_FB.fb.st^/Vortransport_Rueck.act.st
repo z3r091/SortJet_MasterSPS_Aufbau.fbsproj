@@ -163,6 +163,7 @@ ELSE
 	  bpAbbruchVortransport := FALSE;
     bpDone := FALSE;
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
     steplVortransportRueckwaertig := STEP_0_E;
   END_IF
 END_IF

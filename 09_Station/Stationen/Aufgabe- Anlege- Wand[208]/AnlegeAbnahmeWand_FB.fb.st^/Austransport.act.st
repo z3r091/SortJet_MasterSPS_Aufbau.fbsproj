@@ -155,10 +155,7 @@ THEN
 
 (*AUSTRANSPORT ==========================*)
   END_CASE
-END_IF
-
-IF ( NOT BasisStationsParameter.bAustransport[cWAND_1] ) THEN
-
+ELSE
   IF (steplAustransport > STEP_0_E) THEN
     BasisStationsParameter.bAustransportAbgeschlossen[cWAND_1] := FALSE;
 
@@ -168,6 +165,5 @@ IF ( NOT BasisStationsParameter.bAustransport[cWAND_1] ) THEN
 
     steplAustransport := STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION

@@ -109,6 +109,7 @@ ELSE
     Antrieb.wpBetriebsart       := KEINE_FUNKTION;
     Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
 	
+    tonlSlaveKopplungDeaktiviert( IN := FALSE );
     steplReferenz := STEP_0_E;
   END_IF
 

@@ -44,15 +44,11 @@ IF ( blStartePositionWaagerecht ) THEN
 
 (* KIPPEN WAAGERECHT =========================== *)
   END_CASE
-END_IF
-
-IF ( NOT blStartePositionWaagerecht ) THEN
-
+ELSE
   IF ( steplKippenWaagerecht > STEP_0_E ) THEN
     Kippen.bpStartKippenAb  := FALSE;
     blBewegungAbgeschlossen := FALSE;
     steplKippenWaagerecht := STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION

@@ -85,6 +85,7 @@ IF ( bpReset ) THEN
 ELSE
 
   IF ( steplReset > STEP_0_E ) THEN
+    tonlReset( IN := FALSE );
     steplReset := STEP_0_E;
     bpDone     := FALSE;
     out_bReset := FALSE;

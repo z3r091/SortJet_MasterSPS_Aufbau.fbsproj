@@ -208,6 +208,7 @@ ELSE
     blScheibenKontrolleAuslaufseiteEin := FALSE;
     blScheibenKontrolleEinlaufseiteEin := FALSE;
 
+    Antrieb.wpBetriebsart := KEINE_FUNKTION;
     steplScheibenNeuAusrichten := STEP_0_E;
 
   END_IF

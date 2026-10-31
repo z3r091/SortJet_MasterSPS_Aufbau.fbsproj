@@ -147,6 +147,7 @@ ELSE
 
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
+    tonlWarteSchrittEndschalterFreifahren( IN := FALSE );
     steplReferenz := STEP_0_E;
   END_IF
 

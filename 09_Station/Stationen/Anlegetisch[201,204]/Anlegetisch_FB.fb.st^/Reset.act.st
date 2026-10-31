@@ -116,10 +116,7 @@ IF( blBetriebsartReset )THEN
 
 (*RESET ==========================*)
   END_CASE
-END_IF
-
-IF ( NOT blBetriebsartReset ) THEN
-
+ELSE
   IF ( steplReset > STEP_0_E ) THEN
 
     Glastransport.bpReset := FALSE;
@@ -129,6 +126,5 @@ IF ( NOT blBetriebsartReset ) THEN
 
     steplReset := STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION

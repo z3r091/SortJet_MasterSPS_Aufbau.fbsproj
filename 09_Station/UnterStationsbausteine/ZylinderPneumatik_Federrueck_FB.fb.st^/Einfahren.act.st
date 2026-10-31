@@ -67,6 +67,7 @@ ELSE
   IF (steplEinfahren > STEP_0_E) THEN
     bpDone := FALSE;
     out_bZylinderAusfahren := FALSE;
+    tonlZylinderEingefahren( IN := FALSE );
     steplEinfahren := STEP_0_E;
   END_IF
 END_IF

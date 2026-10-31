@@ -1169,6 +1169,7 @@ ELSE
     Antrieb.wpBetriebsart       := KEINE_FUNKTION;
     Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
 
+    tonlMaxWartezeitFremdanlage( IN := FALSE );
     steplCheck:=STEP_0_E;
   END_IF
 

@@ -83,8 +83,7 @@ IF ( blBetriebsartReferenz ) THEN
 
 (* REFERENZ ===========================*)
   END_CASE
-else
-
+ELSE
   IF ( steplReferenz > STEP_0_E ) THEN
     BasisStationsParameter.bReferenzAbgeschlossen := FALSE;
     Glastransport.bpReferenz := FALSE;

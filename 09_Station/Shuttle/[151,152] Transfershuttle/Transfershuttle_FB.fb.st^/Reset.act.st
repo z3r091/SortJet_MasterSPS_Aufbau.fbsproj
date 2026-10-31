@@ -105,18 +105,17 @@ IF ( BasisStationsParameter.bReset ) THEN
 
 (*RESET ==============================*)
  END_CASE
-END_IF
-(* Reset wegen Abbruch der Schrittkette
-*)
-IF( NOT BasisStationsParameter.bReset )THEN
-
+ELSE
+  (* Reset wegen Abbruch der Schrittkette
+  *)
   IF( steplReset > STEP_0_E )THEN
 
     Glastransport.bpReset     := FALSE;
     Querfahrt.bpReset  := FALSE;
 
+    Zentralschmierung.bpReset := FALSE;
+    tonlMaxWarteAufResetErfolgreich( IN := FALSE );
     steplReset := STEP_0_E;
   END_IF
-
 END_IF
 END_ACTION
