@@ -12,16 +12,16 @@ IF bpAbsolutSetzen THEN
 
     STEP_0_E:  
       bpAbsolutSetzenDone := FALSE;
-      SignalSteuerWort.0 := TRUE; // Referenz ablöschen
+      blReferenzLoeschen := TRUE; // Referenz ablöschen
       IF NOT bpIstReferenziert THEN
-        SignalSteuerWort.0 := FALSE; // Referenz ablöschen
+        blReferenzLoeschen := FALSE; // Referenz ablöschen
         asteplSchritt[ABSOLUT_SETZEN] := STEP_10_E;        
       END_IF  
 
     STEP_10_E:
-      SignalSteuerWort.14 := TRUE; //Referenz setzen
+      blReferenzSetzen := TRUE; //Referenz setzen
       IF bpIstReferenziert THEN
-        SignalSteuerWort.14 := FALSE; 
+        blReferenzSetzen := FALSE; 
         asteplSchritt[ABSOLUT_SETZEN] := STEP_1000_E;        
       END_IF
 
@@ -36,8 +36,8 @@ IF bpAbsolutSetzen THEN
 
 ELSE
   bpAbsolutSetzenDone := FALSE;
-  SignalSteuerWort.0  := FALSE;
-  SignalSteuerWort.14 := FALSE;
+  blReferenzLoeschen := FALSE;
+  blReferenzSetzen   := FALSE;
   asteplSchritt[ABSOLUT_SETZEN] := STEP_0_E;
 
 END_IF

@@ -32,7 +32,8 @@ IstGeschwindigkeit();
 // Hardware Endschalter auslesen
 /////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
-IF ppAntriebsInformationen.bpHardwareLimits THEN
+// Rueckmeldung auch bei Quelle SPS aus dem Signal-Statuswort (im Umrichter parametriert)
+IF ppAntriebsInformationen.stOptionen.eEndschalterQuelle <> Endschalterquelle_EN.KEINE THEN
   bpMaxSchalterBelegt := i_ui_Signal_StatusWord.1;
   bpMinSchalterBelegt := i_ui_Signal_StatusWord.0;
 ELSE
@@ -125,13 +126,11 @@ IF rpMaxSwEsEingrenzung <> 0 THEN
   END_IF
 END_IF
 
-// Widerspruch der externen Grenzen (Min > Max):
+// Widerspruch im Ergebnis (Min > Max):
 // externe Eingrenzung komplett verwerfen und MK-Grenzen beibehalten
-IF ( rpMinSwEsEingrenzung <> 0 ) AND ( rpMaxSwEsEingrenzung <> 0 ) THEN
-  IF rpMinSwEsEingrenzung > rpMaxSwEsEingrenzung THEN
-    rpMinPosition := rlSoftwareLimitMin;
-    rpMaxPosition := rlSoftwareLimitMax;
-  END_IF
+IF rpMinPosition > rpMaxPosition THEN
+  rpMinPosition := rlSoftwareLimitMin;
+  rpMaxPosition := rlSoftwareLimitMax;
 END_IF
 
 blSoftwareLimitAktiv := ( rpMinPosition <> 0 ) OR ( rpMaxPosition <> 0 );
@@ -144,21 +143,15 @@ rpPositionMesstaster1Negativ := TO_REAL(TO_LREAL(diTouchProbe1Neg) / l_ts_MKAxis
 rpPositionMesstaster2Positiv := TO_REAL(TO_LREAL(diTouchProbe2Pos) / l_ts_MKAxisConfig.lrIncrementsPerDistance * l_ts_MKAxisConfig.lrDistance);
 rpPositionMesstaster2Negativ := TO_REAL(TO_LREAL(diTouchProbe2Neg) / l_ts_MKAxisConfig.lrIncrementsPerDistance * l_ts_MKAxisConfig.lrDistance);
 
-bpHaupschalter400VEin := PowerSupplyStatus.4;
+bpHaupschalter400VEin := ppAntriebsInformationen.stOptionen.bVersorgungUeberXVR OR PowerSupplyStatus.4;
 
 /////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
 // Eingaenge vom Umrichter auslesen
 /////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
-bpLS_150F02_230V := udipEingaengeUmrichter.cXG31_3_I_3; // Eingang Leitungsschutzschalter 230V OK
+bpLS_150F02_230V := ppAntriebsInformationen.stOptionen.bVersorgungUeberXVR OR udipEingaengeUmrichter.cXG31_3_I_3; // Eingang Leitungsschutzschalter 230V OK
 
-SignalSteuerWort.1 := wpAusgaengeUmrichter.3;
-SignalSteuerWort.2 := wpAusgaengeUmrichter.4;
-SignalSteuerWort.3 := wpAusgaengeUmrichter.5;
-SignalSteuerWort.4 := wpAusgaengeUmrichter.6;
-SignalSteuerWort.5 := wpAusgaengeUmrichter.7;
-SignalSteuerWort.6 := wpAusgaengeUmrichter.8;
-SignalSteuerWort.7 := wpAusgaengeUmrichter.9;
-SignalSteuerWort.8 := wpAusgaengeUmrichter.10;
+// Ausgangssignale in diesem Normalzyklus uebernehmen, ins Steuerwort schreibt _Steuerwort
+wlAusgaengeUmrichter := wpAusgaengeUmrichter;
 END_ACTION

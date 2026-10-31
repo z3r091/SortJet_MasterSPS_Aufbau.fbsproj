@@ -75,12 +75,21 @@ CASE asteplSchritt[RESET] OF
         Execute := FALSE
       );
       IF i_ui_Cia402_StatusWord.3 THEN
-        asteplSchritt[RESET] := STEP_275_E;
+        tonlWarteAufReset( IN := FALSE );
+        asteplSchritt[RESET] := STEP_260_E;
       ELSE
         blInternerFehler := FALSE;
         Antriebsfehler.wlBausteinFehlerNr := 0;
         asteplSchritt[RESET] := STEP_1000_E;
       END_IF
+    END_IF
+
+  STEP_260_E:
+    // Dem Antrieb Zeit geben, den Fehler nach MC_Reset selbst zu loeschen
+    tonlWarteAufReset( IN := TRUE, PT := T#1S );
+    IF tonlWarteAufReset.Q THEN
+      tonlWarteAufReset( IN := FALSE );
+      asteplSchritt[RESET] := STEP_275_E;
     END_IF
 
     //

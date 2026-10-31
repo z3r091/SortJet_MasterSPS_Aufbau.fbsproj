@@ -101,37 +101,44 @@ END_VAR
 (***************************************************************************************************)
 (* INITIALISIERUNG *)
 (***************************************************************************************************)
-IF ( blErsterZyklus AND bpAktivieren ) THEN
-  IF __ISVALIDREF(ppAntriebsInformationen) THEN
+IF ( blErsterZyklus ) THEN
+
+  IF ( __ISVALIDREF(ppAntriebsInformationen) ) THEN
+
+    blErsterZyklus := FALSE;
+
     Antrieb REF= pgAntriebe[ppAntriebsInformationen.wAchsID];
+
+    (* Hinweis:
+       - Initialisierung Antriebsinformationen
+    *)
+    Antrieb.ppAntriebsInformationen REF= ppAntriebsInformationen;
+
+    (* Hinweis:
+       - Für die Zielpunktkontrolle muss im ersten Zyklus die Zielposition initialisiert werden
+    *)
+    Antrieb.rpZielPosition := Antrieb.rpIstPosition;
+
+    (* Hinweis:
+       - Antriebswerte vorinitialisieren
+    *)
+    Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+    Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+    Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+    Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
+
+    tonlTeilnehmerErreichbar(IN := FALSE);
+    tonlMaxWarteZeit(IN := FALSE);
+
   ELSE
     RETURN;
   END_IF
 
-  blErsterZyklus          := FALSE;
-
-  (* Hinweis:
-     - Für die Zielpunktkontrolle muss im ersten Zyklus die Zielposition initialisiert werden 
-  *)
-  Antrieb.rpZielPosition := Antrieb.rpIstPosition;
-
-  (* Hinweis:
- 	 - Initialisierung Antriebsinformationen
-  *)
-  Antrieb.ppAntriebsInformationen REF= ppAntriebsInformationen;
-
-  (* Hinweis:
- 	 - Antriebswerte vorinitialisieren
-  *)
-  Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
-  Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-  Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-  Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
-
-  tonlTeilnehmerErreichbar(IN := FALSE);
-  tonlMaxWarteZeit(IN := FALSE);
-  
 END_IF
+
+// Endschalter zyklisch an den Antrieb geben: 84 Grad = Min, 90 Grad = Max (Oeffner, wirkt nur bei Endschalterquelle SPS)
+Antrieb.bpEndschalterMaxExtern := in_bSensorNicht90Grad;
+Antrieb.bpEndschalterMinExtern := in_bSensorNicht84Grad;
 
 (***************************************************************************************************)
 (* DEAKTIVIEREN *)

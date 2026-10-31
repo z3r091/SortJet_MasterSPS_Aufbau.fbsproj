@@ -95,6 +95,7 @@ VAR_INPUT
   in_bSensorUnten                        : BOOL;
   in_bSensorOben                         : BOOL;
   in_bSensorUnterkante                   : BOOL;
+  in_bEndschalterMin                     : BOOL; // Oeffner (TRUE = frei), gemappt; zum Umrichter ueber Signal-Steuerwort Bit 10, wirkt nur bei Endschalterquelle SPS
 
 END_VAR
 VAR CONSTANT
@@ -163,6 +164,7 @@ END_IF
 in_bSensorOben       := Antrieb.udipEingaengeUmrichter.cXG31_2_I_2;
 in_bSensorUnten      := Antrieb.udipEingaengeUmrichter.cXG31_1_I_1;
 in_bSensorUnterkante := Antrieb.udipEingaengeUmrichter.cXG37_4_I_6;
+Antrieb.bpEndschalterMinExtern := in_bEndschalterMin;
 
 (***************************************************************************************************)
 (* BAUSTEIN: AKTIONEN *)

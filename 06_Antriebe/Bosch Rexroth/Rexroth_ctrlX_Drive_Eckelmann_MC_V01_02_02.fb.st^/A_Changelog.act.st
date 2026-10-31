@@ -149,5 +149,22 @@ ACTION A_Changelog
   - Simulation: Langsamfahrnocken (bpAktiviereLangsamfahrtNocke) sind jetzt Low-aktiv (FALSE = belegt) wie im Echtbetrieb, an den Wegenden positioniert; bpLangsamfahrenAktiv begrenzt die Geschwindigkeit auf 10 % der MK-Maximalgeschwindigkeit.
   - Simulation: Abbildung Sensor -> Umrichter-Eingang wie im Echtbetrieb (Sensor_3 = XG31_6, Sensor_4 = XG31_7, Sensor_5 = XG37_4; vorher um eine Stelle verschoben). Sensor_6..9 kommen wie im Echtbetrieb vom Slave-Antrieb (wpSlaveNr).
 
+- 2026-10-31 - V01_02_02: Tobias Brekerbohm, Claude
+  Hinweis: Die Nummer V01_01_05 wurde doppelt vergeben: Dreisbusch/Regency 2026-10-14 TB (FreigabeEntziehen_Wiederanlauf) und Isophon 2026-10-06 Daniel Vogelsang (eigener Zweig).
+  Dieser Stand baut auf V01_02_01 auf und uebernimmt die Punkte aus dem Isophon-Zweig. Ruck-Profil, StopVerwaltung und Simulation bleiben wie in V01_02_01.
+  - Steuerwort-Bits zentral in _Steuerwort zusammengefasst; Referenz- und Bremsenbefehle ueber interne BOOL-Merker. _Steuerwort laeuft auch vor den RETURN-Pfaden (ausser Achse 65).
+  - Neue Struktur stOptionen (Antrieb_Optionen_ST) in AntriebsInformationen; ersetzt bpHardwareLimits und bpBremseLoesenFreigabe.
+  - Endschalterquelle (eEndschalterQuelle): KEINE, UMRICHTER (Signal-Statuswort Bit 0 = Min, Bit 1 = Max) oder SPS.
+  - Quelle SPS: Neue Eingaenge bpEndschalterMinExtern/bpEndschalterMaxExtern auf Signal-Steuerwort Bit 10 (Min) und Bit 9 (Max). Oeffner, TRUE = frei, Default TRUE fuer eine nicht vorhandene Seite.
+    Bei anderer Quelle bleiben Bit 9/10 auf TRUE. bpMinSchalterBelegt/bpMaxSchalterBelegt kommen auch bei Quelle SPS aus dem Signal-Statuswort.
+    Korrektur zum Isophon-Zweig: Dort stehen Min/Max in Deklaration und Changelog vertauscht, gesendet wird Bit 9 = Max, Bit 10 = Min.
+  - XVR-Modus (bVersorgungUeberXVR): brueckt bpHaupschalter400VEin und bpLS_150F02_230V, ersetzt die festen OR TRUE aus dem Isophon-Zweig.
+  - BETRIEBSART_MasterSlave Schritt 1000: bpDone wurde per Vergleich gebildet und war dadurch TRUE, obwohl die Achse nicht synchron war bzw. ein Fehler anstand. Jetzt bpDone := l_mc_GearIn.InGear, in den Fehlerzweigen bpDone := FALSE.
+  - Defaults setzt bpDone := FALSE. Vorher blieb ein altes bpDone waehrend Busausfall stehen und ein Reset-Auftrag galt sofort als fertig.
+  - tonlMaxZeitStatusUngueltig wird jeden Zyklus vor der State Machine aufgerufen und in Defaults zurueckgesetzt. Vorher wurde er nie zurueckgesetzt und eine spaetere kurze Statusstoerung loeste sofort einen Stop aus.
+  - BETRIEBSART_Reset Schritt 250: l_mc_Reset.Error wird bewusst nicht ausgewertet. Der Isophon-Changelog nennt diesen Punkt, der Code ist dort aber zu Recht auskommentiert.
+  - BETRIEBSART_Reset: Neuer Schritt 260, wartet nach MC_Reset 1 s, bevor bei weiter anstehendem Fehler der Reset per CoE laeuft (aus dem Isophon-Zweig).
+  - _Statusword und Simulation: Widerspruchspruefung der Software-Endschalter auf das Ergebnis (rpMinPosition > rpMaxPosition) umgestellt. Vorher nur, wenn beide externen Grenzen gesetzt waren.
+
 *)
 END_ACTION

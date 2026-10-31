@@ -1,0 +1,14 @@
+(* METADATA
+{
+  "v3Meta": {
+    "objectGuid": "bd102b56-7bf2-4c3e-9f9f-20c2f6214e54"
+  }
+}
+*)
+TYPE Antrieb_Optionen_ST :
+  STRUCT
+    eEndschalterQuelle    : Endschalterquelle_EN := Endschalterquelle_EN.UMRICHTER; // Min und Max kommen immer aus derselben Quelle
+    bVersorgungUeberXVR   : BOOL := FALSE; // XVR-Modus: brueckt die Ueberwachung Hauptschalter 400 V und LS 230 V
+    bBremseLoesenFreigabe : BOOL := FALSE; // Der Antrieb darf ueber eine Betriebsart die Bremse loesen
+  END_STRUCT
+END_TYPE

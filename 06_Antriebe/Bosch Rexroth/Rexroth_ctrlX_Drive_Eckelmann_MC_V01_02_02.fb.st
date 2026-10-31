@@ -17,6 +17,8 @@ VAR_INPUT
   bpAuswahlSensorVorabScheibenmessung : BOOL;
   bpBremseLoesen                      : BOOL;
   bpAbsolutSetzen                     : BOOL;
+  bpEndschalterMinExtern              : BOOL := TRUE; // Oeffner (TRUE = frei) -> Signal-Steuerwort Bit 10, wirkt nur bei Endschalterquelle SPS
+  bpEndschalterMaxExtern              : BOOL := TRUE; // Oeffner (TRUE = frei) -> Signal-Steuerwort Bit 9, wirkt nur bei Endschalterquelle SPS
 
   // UINT / UDINT
   i_ui_Signal_StatusWord              : UINT;
@@ -97,6 +99,10 @@ END_VAR
 
 VAR
   // BOOL
+  blReferenzLoeschen                     : BOOL; // Referenz abloeschen (Steuerwort Bit 0)
+  blReferenzSetzen                       : BOOL; // Referenz setzen (Steuerwort Bit 14)
+  blBremseLoesen                         : BOOL; // Bremse loesen (Steuerwort Bit 15)
+  blEndschalterAusSPS                    : BOOL; // Endschalterquelle SPS aktiv (Steuerwort Bit 9/10)
   blErsterZyklus                         : BOOL := TRUE;
   blZweiterZyklus                        : BOOL;
   blNockeInFahrtrichtung                 : BOOL;
@@ -205,6 +211,7 @@ VAR
   wlAktiveBetriebsart                 : AntriebsBetriebsart_EN;
   wlAngeforderteBetriebsart           : AntriebsBetriebsart_EN;
   udiErrorFromECat                    : UDINT;
+  wlAusgaengeUmrichter                : WORD; // Ausgangssignale fuer _Steuerwort, im Normalzyklus aus wpAusgaengeUmrichter
   uilSchreibeUeberCoe                 : UINT;
   uilSchreibeUeberCoeTouchProbe       : UINT;
   awlFehlerinformationen              : ARRAY [0..25] OF WORD;
@@ -223,6 +230,7 @@ VAR
   tonlAchseInOP                       : TON;
   tonlTouchprobeNeustart              : TON;
   tonlSimRestwegFlankeTimeout         : TON;
+  tonlWarteAufReset                   : TON;
 
   // R_TRIG
   rtl_Fehlermeldung                   : R_TRIG;
@@ -300,6 +308,7 @@ END_VAR
 
 IF NOT __ISVALIDREF(ppAntriebsInformationen) OR stStationsNummern.NummerSPS = 0 THEN
   Defaults();
+  _Steuerwort();
   RETURN;
 END_IF
 IF ppAntriebsInformationen.wAchsID = 65 THEN
@@ -324,6 +333,7 @@ IF blErsterZyklus OR blZweiterZyklus THEN
     blZweiterZyklus := FALSE;
     MK_GetAxisConfiguration(ppAntriebsInformationen.wAchsID, ADR(l_ts_MKAxisConfig));
   END_IF
+  _Steuerwort();
   RETURN;
 END_IF
 IF slAchsname = '' THEN
@@ -338,6 +348,7 @@ rtlECatStatusOK(CLK := tonlAchseInOP.Q);
 // Achse ist nicht in OP - Antriebsbaustein darf nicht ausgeführt werden
 IF NOT tonlAchseInOP.Q THEN
   Defaults();
+  _Steuerwort();
   RETURN;
 END_IF
 
@@ -433,6 +444,9 @@ ELSE
   eAchsStatus := AXIS_UNKNOWN;
 END_IF
 
+// Ungueltigen Status jeden Zyklus ueberwachen, damit der Timer bei gueltigem Status zuruecksetzt
+tonlMaxZeitStatusUngueltig( IN := NOT l_mc_ReadStatus.Valid, PT := T#1S );
+
 // CASE FÜR STATE MACHINE
 CASE eAchsStatus OF
 
@@ -469,7 +483,6 @@ CASE eAchsStatus OF
     // Achse ist in einem unbekannten Zustand von der MC
     // Wenn dieser Zustand für min. 1 Sekunde ansteht, Achse stoppen!
   AXIS_UNKNOWN:
-    tonlMaxZeitStatusUngueltig( IN := NOT l_mc_ReadStatus.Valid , PT := T#1S );
     IF tonlMaxZeitStatusUngueltig.Q THEN
       ResetStepsUndMcAktionen();
       blAchseStoppen := TRUE;
@@ -585,4 +598,7 @@ rtlStop(CLK := blAchseStoppenAktiv AND NOT blStopOhneReset);
 IF rtlStop.Q THEN
   ResetStepsUndMcAktionen();
 END_IF;
+
+// Erst nach Betriebsarten und Stop-Verwaltung die aktuellen Bits ins Steuerwort schreiben
+_Steuerwort();
 END_FUNCTION_BLOCK

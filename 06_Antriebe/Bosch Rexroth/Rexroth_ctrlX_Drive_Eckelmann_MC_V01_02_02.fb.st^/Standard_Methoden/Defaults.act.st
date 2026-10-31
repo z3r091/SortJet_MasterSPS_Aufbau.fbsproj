@@ -10,6 +10,7 @@ blRuckProfilInitialisiert := FALSE;
 blRuckBremsphase := FALSE;
 blRuckKurzfahrt := FALSE;
 bpFehler := FALSE;
+bpDone := FALSE; // Kein altes Done waehrend Busausfall melden
 blFehlerAktiv := FALSE;
 blInternerFehler := FALSE;
 bpMotionAktiv := FALSE;
@@ -28,7 +29,11 @@ bpRestwegMaterialGefunden := FALSE;
 blAchseStoppen := FALSE;
 blAchseStoppenAktiv := FALSE;
 blFreigabeEntziehenPowerAus := FALSE;
-SignalSteuerWort := 0;
+blReferenzLoeschen := FALSE;
+blReferenzSetzen := FALSE;
+blBremseLoesen := FALSE;
+wlAusgaengeUmrichter := WORD#0;
+tonlMaxZeitStatusUngueltig( IN := FALSE ); // Statusueberwachung nach Busrueckkehr neu starten
 eBewegungsrichtung := TE_Move_Direction.MD_STANDSTILL_E;
 
 IF __ISVALIDREF(ppAntriebsInformationen) AND_THEN ( ppAntriebsInformationen.wAchsID <> 65 ) THEN

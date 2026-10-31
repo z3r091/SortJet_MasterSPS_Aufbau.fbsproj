@@ -18,9 +18,9 @@ CASE asteplSchritt[REFERENZ] OF
 
     tonlSoftwareFreigabe( IN := NOT l_mc_Power.Status, PT := cTIME_HARDWARE_FREIGABE );
     IF l_mc_Power.Status THEN // Nur weitermachen wenn die Software-Freigabe gesetzt ist
-      SignalSteuerWort.0 := TRUE; // Referenz ablöschen
+      blReferenzLoeschen := TRUE; // Referenz ablöschen
       IF NOT bpIstReferenziert THEN
-        SignalSteuerWort.0 := FALSE;
+        blReferenzLoeschen := FALSE;
         asteplSchritt[REFERENZ] := STEP_200_E;
       END_IF
     ELSIF tonlSoftwareFreigabe.Q THEN

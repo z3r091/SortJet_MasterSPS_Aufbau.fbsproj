@@ -70,26 +70,32 @@ VAR
   Antrieb : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
 
 END_VAR
+VAR_INPUT
+
+  (* HARDWARE EINGAENGE *)
+  in_bEndschalterMax : BOOL; // Oeffner (TRUE = frei), gemappt; zum Umrichter ueber Signal-Steuerwort Bit 9, wirkt nur bei Endschalterquelle SPS
+
+END_VAR
 (***************************************************************************************************)
 (* INITIALISIERUNG *)
 (***************************************************************************************************)
 IF ( blErsterZyklus ) THEN
 
-  blErsterZyklus            := FALSE;
-  
-  Antrieb REF= pgAntriebe[ppAntriebsInformationen.wAchsID];
-
-  (* Hinweis:
-     - Für die Zielpunktkontrolle muss im ersten Zyklus die Zielposition initialisiert werden 
-  *)
-  Antrieb.rpZielPosition := Antrieb.rpIstPosition;
-
   IF ( __ISVALIDREF(ppAntriebsInformationen) ) THEN
+
+    blErsterZyklus := FALSE;
+
+    Antrieb REF= pgAntriebe[ppAntriebsInformationen.wAchsID];
 
     (* Hinweis:
        - Initialisierung Antriebsinformationen
     *)
     Antrieb.ppAntriebsInformationen REF= ppAntriebsInformationen;
+
+    (* Hinweis:
+       - Für die Zielpunktkontrolle muss im ersten Zyklus die Zielposition initialisiert werden
+    *)
+    Antrieb.rpZielPosition := Antrieb.rpIstPosition;
 
     (* Hinweis:
        - Antriebswerte vorinitialisieren
@@ -99,9 +105,14 @@ IF ( blErsterZyklus ) THEN
     Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
     Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
 
+  ELSE
+    RETURN;
   END_IF
 
 END_IF
+
+// Endschalter zyklisch an den Antrieb geben, auch bei deaktivierter Bewegung
+Antrieb.bpEndschalterMaxExtern := in_bEndschalterMax;
 
 (***************************************************************************************************)
 (* BAUSTEIN: AUSFUEHRUNG *)

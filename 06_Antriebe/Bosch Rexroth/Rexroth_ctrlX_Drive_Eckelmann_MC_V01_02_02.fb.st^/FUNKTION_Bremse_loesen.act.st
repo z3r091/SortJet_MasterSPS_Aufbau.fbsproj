@@ -13,8 +13,8 @@ IF bpBremseLoesen THEN
     STEP_0_E:
 
 
-      IF ppAntriebsInformationen.bpBremseLoesenFreigabe THEN
-        SignalSteuerWort.15 := TRUE; // Bremse lösen
+      IF ppAntriebsInformationen.stOptionen.bBremseLoesenFreigabe THEN
+        blBremseLoesen := TRUE; // Bremse lösen
         IF bpBremseGeloest THEN
           asteplSchritt[BREMSE_LOESEN] := STEP_1000_E;        
         END_IF
@@ -35,7 +35,7 @@ IF bpBremseLoesen THEN
 
 ELSE
 
-  SignalSteuerWort.15 := FALSE;
+  blBremseLoesen := FALSE;
   asteplSchritt[BREMSE_LOESEN] := STEP_0_E;
 
 END_IF

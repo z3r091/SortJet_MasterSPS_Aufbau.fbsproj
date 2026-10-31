@@ -39,6 +39,6 @@ blStopOhneReset := FALSE;
 blMesstaster1Gefunden := FALSE;
 blMesstaster2Gefunden := FALSE;
 bpDone := FALSE;
-SignalSteuerWort.0 := FALSE;
-SignalSteuerWort.15 := FALSE;
+blReferenzLoeschen := FALSE;
+blBremseLoesen := FALSE;
 END_ACTION

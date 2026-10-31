@@ -96,11 +96,9 @@ IF rpMaxSwEsEingrenzung <> REAL#0.0 THEN
   END_IF
 END_IF
 
-IF ( rpMinSwEsEingrenzung <> REAL#0.0 ) AND ( rpMaxSwEsEingrenzung <> REAL#0.0 ) THEN
-  IF rpMinSwEsEingrenzung > rpMaxSwEsEingrenzung THEN
-    rpMinPosition := rlSoftwareLimitMin;
-    rpMaxPosition := rlSoftwareLimitMax;
-  END_IF
+IF rpMinPosition > rpMaxPosition THEN
+  rpMinPosition := rlSoftwareLimitMin;
+  rpMaxPosition := rlSoftwareLimitMax;
 END_IF
 
 blSoftwareLimitAktiv := ( rpMaxPosition > rpMinPosition );
@@ -564,15 +562,15 @@ END_IF
 
 // Bremse loesen wie FUNKTION_Bremse_loesen: nur mit Freigabe, Rueckmeldung bpBremseGeloest (Statuswort Bit 15) verzoegert
 IF bpBremseLoesen THEN
-  IF ppAntriebsInformationen.bpBremseLoesenFreigabe THEN
-    SignalSteuerWort.15 := TRUE;
+  IF ppAntriebsInformationen.stOptionen.bBremseLoesenFreigabe THEN
+    blBremseLoesen := TRUE;
   ELSE
     blFehlerAktiv := TRUE; // Echtbetrieb: cKeineFreigabeZumBremseLoesen
   END_IF
 ELSE
-  SignalSteuerWort.15 := FALSE;
+  blBremseLoesen := FALSE;
 END_IF
-tonlSimBremse( IN := SignalSteuerWort.15, PT := T#300MS );
+tonlSimBremse( IN := blBremseLoesen, PT := T#300MS );
 bpBremseGeloest := tonlSimBremse.Q;
 
 // Absolut setzen wie FUNKTION_Absolut_setzen: Referenz abloeschen, dann an der aktuellen Position neu setzen
@@ -631,12 +629,8 @@ END_IF
 
 // Umrichter-Eingaenge werden oben bei der Sensorik gesetzt (kein Spiegeln mehr noetig)
 
-SignalSteuerWort.1 := wpAusgaengeUmrichter.3;
-SignalSteuerWort.2 := wpAusgaengeUmrichter.4;
-SignalSteuerWort.3 := wpAusgaengeUmrichter.5;
-SignalSteuerWort.4 := wpAusgaengeUmrichter.6;
-SignalSteuerWort.5 := wpAusgaengeUmrichter.7;
-SignalSteuerWort.6 := wpAusgaengeUmrichter.8;
+wlAusgaengeUmrichter := wpAusgaengeUmrichter;
+_Steuerwort();
 
 wlAktiveBetriebsart := wpBetriebsart;
 wlAngeforderteBetriebsart := wpBetriebsart;

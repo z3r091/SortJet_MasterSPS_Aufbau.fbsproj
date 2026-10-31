@@ -1,0 +1,15 @@
+(* METADATA
+{
+  "v3Meta": {
+    "objectGuid": "bbdc755c-3b83-48ea-8dcd-15f9b9b0b8a2"
+  }
+}
+*)
+{attribute 'qualified_only'}
+TYPE Endschalterquelle_EN :
+(
+  KEINE     := 0, // Keine Hardware-Endschalter
+  UMRICHTER := 1, // Endschalter am Umrichter-DI: Signal-Statuswort Bit 0 = Min, Bit 1 = Max
+  SPS       := 2  // Endschalter an der SPS: Signal-Steuerwort Bit 9 = Max, Bit 10 = Min
+) WORD;
+END_TYPE

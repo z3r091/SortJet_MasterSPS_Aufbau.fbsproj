@@ -86,11 +86,12 @@ CASE asteplSchritt[wlSchrittkette] OF
       Slave := ppAntriebsInformationen.wAchsID,
       Master := wpMaster,
     );
-    bpDone := bpAchseSychron = l_mc_GearIn.InGear;
+    // Done direkt aus dem aktuellen InGear bilden (bpAchseSychron ist der Wert aus dem Vorzyklus)
+    bpDone := l_mc_GearIn.InGear;
 
     // Fehler auswertung
     IF NOT l_mc_Power.Status OR NOT bpReglerBereit THEN
-      bpDone := bpAchseSychron = FALSE;
+      bpDone := FALSE;
       asteplSchritt[wlSchrittkette] := STEP_900_E;
       blInternerFehler := TRUE;
       IF NOT l_mc_Power.Status THEN // Nur weitermachen wenn die Software-Freigabe gesetzt ist
@@ -100,7 +101,7 @@ CASE asteplSchritt[wlSchrittkette] OF
       END_IF
     END_IF
     IF l_mc_GearIn.Error THEN
-      bpDone := bpAchseSychron = FALSE;
+      bpDone := FALSE;
       wlFehlerVonMotionFunktion := l_mc_GearIn.ErrorID;
       l_mc_GearIn( Slave := ppAntriebsInformationen.wAchsID, Master := wpMaster, Execute := FALSE );
       asteplSchritt[wlSchrittkette] := STEP_900_E;

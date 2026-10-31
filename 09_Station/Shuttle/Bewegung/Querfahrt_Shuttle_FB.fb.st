@@ -59,6 +59,8 @@ VAR_OUTPUT
 
   (* HARDWARE EINGAENGE *)
   in_bLeistungsschutzFremdluefter : BOOL;
+  in_bEndschalterMax              : BOOL; // Oeffner (TRUE = frei), gemappt; zum Umrichter ueber Signal-Steuerwort Bit 9, wirkt nur bei Endschalterquelle SPS
+  in_bEndschalterMin              : BOOL; // Oeffner (TRUE = frei), gemappt; zum Umrichter ueber Signal-Steuerwort Bit 10, wirkt nur bei Endschalterquelle SPS
 
 END_VAR
 VAR
@@ -100,32 +102,45 @@ END_VAR
 (* S T A R T - Initialisierung *)
 (***************************************************************************************************)
 IF ( blErsterZyklus ) THEN
-  IF __ISVALIDREF(ppAntriebsInformationen) THEN
+
+  IF ( __ISVALIDREF(ppAntriebsInformationen) ) THEN
+
+    blErsterZyklus := FALSE;
+
     Antrieb REF= pgAntriebe[ppAntriebsInformationen.wAchsID];
+
+    (* Hinweis:
+       - Initialisierung Antriebsinformationen
+    *)
+    Antrieb.ppAntriebsInformationen REF= ppAntriebsInformationen;
+    Antrieb.stStationsNummern := stStationsNummern;
+
+    (* Hinweis:
+       - Für die Zielpunktkontrolle muss im ersten Zyklus (und nach jeder Referenzierung) die Zielposition initialisiert werden
+    *)
+    Antrieb.rpZielPosition := Antrieb.rpIstPosition;
+
+    (* Hinweis:
+       - Antriebswerte vorinitialisieren
+    *)
+    Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;
+    Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+    Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+    Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
+
   ELSE
     RETURN;
   END_IF
-
-  blErsterZyklus := FALSE;
-
-  (* Hinweis:
-     - Für die Zielpunktkontrolle muss im ersten Zyklus (und nach jeder Referenzierung) die Zielposition initialisiert werden
-  *)
-  Antrieb.ppAntriebsInformationen REF= ppAntriebsInformationen;
-  Antrieb.rpZielPosition := Antrieb.rpIstPosition;
-  Antrieb.stStationsNummern := stStationsNummern;
-
-  (* Erste Initialisierung *)
-  Antrieb.rpGeschwindigkeit  := ppAntriebsInformationen.rpHandGeschwindigkeit;
-  Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
-  Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
-  Antrieb.rpRuckzeit         := ppAntriebsInformationen.rpMaxRuckzeit;
 
 END_IF
 
 (***************************************************************************************************)
 (* E N D E - Initialisierung *)
 (***************************************************************************************************)
+
+// Endschalter zyklisch an den Antrieb geben, auch bei deaktivierter Bewegung
+Antrieb.bpEndschalterMinExtern := in_bEndschalterMin;
+Antrieb.bpEndschalterMaxExtern := in_bEndschalterMax;
 
 (***************************************************************************************************)
 (* DEAKTIVIEREN *)

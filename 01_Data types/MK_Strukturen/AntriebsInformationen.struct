@@ -26,7 +26,6 @@ TYPE AntriebsInformationen :
     rpGeschwindigkeitMessen                 : REAL;
     rpGeschwindigkeitSystemcheck            : REAL := 500.0; (* [mm/s] Geschwindigkeit die im Systemcheck gefahren werden soll ; Nur für Glastransport relevant *)
     rpGeschwindigkeitSystemcheckReduzierung : REAL := 167.0; (* [mm/s] Geschwindigkeit die im Systemcheck gefahren werden soll, wenn ein Vorstop-Sensor belegt wurde ; Nur für Glastransport relevant *)
-    bpHardwareLimits                        : BOOL := TRUE;
-    bpBremseLoesenFreigabe                  : BOOL := FALSE; // Der Antrieb darf über eine Betriebsart die Bremse lösen  
+    stOptionen                              : Antrieb_Optionen_ST;
   END_STRUCT
 END_TYPE

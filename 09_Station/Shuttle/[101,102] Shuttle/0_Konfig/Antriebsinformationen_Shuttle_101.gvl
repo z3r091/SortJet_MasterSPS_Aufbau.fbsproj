@@ -30,12 +30,13 @@ VAR_GLOBAL
       rpReduzierteBeschleunigung              :=      3500,  // [mm/s^2] Reduzierte Beschleunigung
       rpReduzierteVerzoegerung                :=      4000,  // [mm/s^2] Reduzierte Verzoegerung
       rpGeschwindigkeitMessen                 :=         5,  // [mm/s^2] Geschwindigkeit beim Scheiben messen
-      bpHardwareLimits                        :=      TRUE,  // Endschalter vorhanden
       rpReduzierteGeschwindigkeit             :=       0.0,  // [mm/s]   Reduzierte Geschwindigkeit
       rpBeschleunigungFremdanlage             :=       0.0,  // [mm/s^2] Beschleunigung zu einer Fremdanlage
       rpGeschwindigkeitSystemcheck            :=     500.0,  // [mm/s]   Geschwindigkeit im Systemcheck (nur Glastransport)
       rpGeschwindigkeitSystemcheckReduzierung :=     167.0,  // [mm/s]   Geschwindigkeit im Systemcheck bei belegtem Vorstop-Sensor (nur Glastransport)
-      bpBremseLoesenFreigabe                  :=     FALSE   // Der Antrieb darf über eine Betriebsart die Bremse lösen
+      stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.UMRICHTER, // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
+                                                   bVersorgungUeberXVR   := FALSE,                          // XVR-Modus: brueckt Hauptschalter 400 V und LS 230 V
+                                                   bBremseLoesenFreigabe := FALSE )                         // Der Antrieb darf über eine Betriebsart die Bremse lösen
     );
 
   apgInfoShuttle101Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
@@ -57,10 +58,11 @@ VAR_GLOBAL
       rpReduzierteVerzoegerung                :=      1000,  // [mm/s^2] Reduzierte Verzoegerung
       rpBeschleunigungFremdanlage             :=      1000,  // [mm/s^2] Beschleunigung zu einer Fremdanlage
       rpGeschwindigkeitMessen                 :=       667,  // [mm/s^2] Geschwindigkeit beim Scheiben messen
-      bpHardwareLimits                        :=     FALSE,  // Endschalter vorhanden
       rpGeschwindigkeitSystemcheck            :=     500.0,  // [mm/s]   Geschwindigkeit im Systemcheck (nur Glastransport)
       rpGeschwindigkeitSystemcheckReduzierung :=     167.0,  // [mm/s]   Geschwindigkeit im Systemcheck bei belegtem Vorstop-Sensor (nur Glastransport)
-      bpBremseLoesenFreigabe                  :=     FALSE   // Der Antrieb darf über eine Betriebsart die Bremse lösen
+      stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.KEINE,     // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
+                                                   bVersorgungUeberXVR   := FALSE,                          // XVR-Modus: brueckt Hauptschalter 400 V und LS 230 V
+                                                   bBremseLoesenFreigabe := FALSE )                         // Der Antrieb darf über eine Betriebsart die Bremse lösen
     )];
 
   apgInfoShuttle101GlastransportSlave : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
@@ -82,10 +84,11 @@ VAR_GLOBAL
       rpReduzierteVerzoegerung                :=         0,  // [mm/s^2] Reduzierte Verzoegerung
       rpBeschleunigungFremdanlage             :=         0,  // [mm/s^2] Beschleunigung zu einer Fremdanlage
       rpGeschwindigkeitMessen                 :=         0,  // [mm/s^2] Geschwindigkeit beim Scheiben messen
-      bpHardwareLimits                        :=     FALSE,  // Endschalter vorhanden
       rpGeschwindigkeitSystemcheck            :=     500.0,  // [mm/s]   Geschwindigkeit im Systemcheck (nur Glastransport)
       rpGeschwindigkeitSystemcheckReduzierung :=     167.0,  // [mm/s]   Geschwindigkeit im Systemcheck bei belegtem Vorstop-Sensor (nur Glastransport)
-      bpBremseLoesenFreigabe                  :=     FALSE   // Der Antrieb darf über eine Betriebsart die Bremse lösen
+      stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.KEINE,     // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
+                                                   bVersorgungUeberXVR   := FALSE,                          // XVR-Modus: brueckt Hauptschalter 400 V und LS 230 V
+                                                   bBremseLoesenFreigabe := FALSE )                         // Der Antrieb darf über eine Betriebsart die Bremse lösen
     )];
 
   apgInfoShuttle101Kippen : AntriebsInformationen :=
@@ -105,12 +108,13 @@ VAR_GLOBAL
       rpReduzierteBeschleunigung              :=        70,  // [Grad/s^2] Reduzierte Beschleunigung
       rpReduzierteVerzoegerung                :=        70,  // [Grad/s^2] Reduzierte Verzoegerung
       rpGeschwindigkeitMessen                 :=         0,  // [Grad/s^2] Geschwindigkeit beim Scheiben messen
-      bpHardwareLimits                        :=      TRUE,  // Endschalter vorhanden
       rpReferenzGeschwindigkeit               :=       0.0,  // [Grad/s]   Geschwindigkeit für die Referenzfahrt
       rpBeschleunigungFremdanlage             :=       0.0,  // [Grad/s^2] Beschleunigung zu einer Fremdanlage
       rpGeschwindigkeitSystemcheck            :=     500.0,  // [mm/s]   Geschwindigkeit im Systemcheck (nur Glastransport)
       rpGeschwindigkeitSystemcheckReduzierung :=     167.0,  // [mm/s]   Geschwindigkeit im Systemcheck bei belegtem Vorstop-Sensor (nur Glastransport)
-      bpBremseLoesenFreigabe                  :=     FALSE   // Der Antrieb darf über eine Betriebsart die Bremse lösen
+      stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.UMRICHTER, // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
+                                                   bVersorgungUeberXVR   := FALSE,                          // XVR-Modus: brueckt Hauptschalter 400 V und LS 230 V
+                                                   bBremseLoesenFreigabe := FALSE )                         // Der Antrieb darf über eine Betriebsart die Bremse lösen
     );
 
   apgInfoShuttle101Dickenverstellung : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
@@ -129,13 +133,14 @@ VAR_GLOBAL
       rpMaxRuckzeit                           :=       250,  // [ms]     Ruckzeit des Antriebs
       rpReduzierteBeschleunigung              :=       250,  // [mm/s^2] Reduzierte Beschleunigung
       rpReduzierteVerzoegerung                :=       250,  // [mm/s^2] Reduzierte Verzoegerung
-      bpHardwareLimits                        :=      TRUE,  // Endschalter vorhanden
       rpReduzierteGeschwindigkeit             :=       0.0,  // [mm/s]   Reduzierte Geschwindigkeit
       rpBeschleunigungFremdanlage             :=       0.0,  // [mm/s^2] Beschleunigung zu einer Fremdanlage
       rpGeschwindigkeitMessen                 :=       0.0,  // [mm/s^2] Geschwindigkeit beim Scheiben messen
       rpGeschwindigkeitSystemcheck            :=     500.0,  // [mm/s]   Geschwindigkeit im Systemcheck (nur Glastransport)
       rpGeschwindigkeitSystemcheckReduzierung :=     167.0,  // [mm/s]   Geschwindigkeit im Systemcheck bei belegtem Vorstop-Sensor (nur Glastransport)
-      bpBremseLoesenFreigabe                  :=     FALSE   // Der Antrieb darf über eine Betriebsart die Bremse lösen
+      stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.UMRICHTER, // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
+                                                   bVersorgungUeberXVR   := FALSE,                          // XVR-Modus: brueckt Hauptschalter 400 V und LS 230 V
+                                                   bBremseLoesenFreigabe := FALSE )                         // Der Antrieb darf über eine Betriebsart die Bremse lösen
     )];
 
 END_VAR
