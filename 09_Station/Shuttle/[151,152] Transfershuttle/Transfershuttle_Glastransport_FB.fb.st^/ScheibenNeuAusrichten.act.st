@@ -111,7 +111,7 @@ THEN
       // - Transport in "Positive" Richtung
       // ---------------------------------------------------------------------------------------*)
 
-      rlAntriebsPositionBeiStart := ABS(Antrieb.rpIstPosition);
+      rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
 
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
       Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -154,7 +154,7 @@ THEN
       (* Hinweis:
          - Keine Scheibe im Fach
       *)
-      IF ( ABS(rlAntriebsPositionBeiStart - ABS (Antrieb.rpIstPosition)) > ppParameterBaustein.rlLaengeStation * 1.5 ) THEN
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation * 1.5 ) THEN
         wpgFehlerdaten[0] := stStationsNummern.NummerExtern;
         SpsHinweis( eFehler_Station, 
                     cMELDUNG_STATION_KEINE_SCHEIBE_GEFUNDEN, 

@@ -173,7 +173,8 @@ THEN
       //  Hinweis:
       // - n/c
       // ---------------------------------------------------------------------------------------*)
-       rlAntriebsPositionBeiStart := ABS(Antrieb.rpIstPosition);
+       rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
+       rlAntriebsPositionStartVortransport := Antrieb.rpIstPosition;
 
        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitVorpositionieren;
        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -193,7 +194,7 @@ THEN
        END_IF
 
        IF ( blAuslaufsensor ) THEN
-         rlAntriebspositionBeiAuslaufSensorBelegung :=ABS(Antrieb.rpIstPosition);
+         rlAntriebspositionBeiAuslaufSensorBelegung :=Antrieb.rpIstPosition;
          bpScheibeFaehrtUeberAuslauf := TRUE;
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          steplVortransport := STEP_200_E;
@@ -204,13 +205,13 @@ THEN
        IF ( Antrieb.bpDone
          AND NOT Antrieb.bpAntrieblaeuft )
        THEN
-         rpVorpositionierterWeg := ABS(Antrieb.rpIstPosition);
+         rpVorpositionierterWeg := ABS(Antrieb.rpIstPosition - rlAntriebsPositionStartVortransport);
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          steplVortransport := STEP_300_E;
        END_IF
 
        IF ( blAuslaufsensor ) THEN
-         rlAntriebspositionBeiAuslaufSensorBelegung :=ABS(Antrieb.rpIstPosition);
+         rlAntriebspositionBeiAuslaufSensorBelegung :=Antrieb.rpIstPosition;
          bpScheibeFaehrtUeberAuslauf := TRUE;
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          steplVortransport := STEP_200_E;
@@ -227,7 +228,7 @@ THEN
        Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
       IF ( NOT toflAntriebLaeuft.Q ) THEN
-        rlWegDifferenzNachStopSensorBelegung := ABS(rlAntriebspositionBeiAuslaufSensorBelegung - ABS(Antrieb.rpIstPosition));
+        rlWegDifferenzNachStopSensorBelegung := ABS(rlAntriebspositionBeiAuslaufSensorBelegung - Antrieb.rpIstPosition);
         steplVortransport := STEP_210_E;
       END_IF
 
@@ -238,7 +239,7 @@ THEN
       *)
       IF ( Antrieb.bpReglerBereit ) THEN
 
-        rlAntriebsPositionBeiStart  := ABS(Antrieb.rpIstPosition);
+        rlAntriebsPositionBeiStart  := Antrieb.rpIstPosition;
 
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
         Antrieb.rpBeschleunigung  := (ppAntriebsInformationen.rpMaxBeschleunigung);
@@ -261,17 +262,17 @@ THEN
         steplVortransport := STEP_300_E;
       END_IF
 
-      IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition)) >
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) >
          (ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren + rlWegDifferenzNachStopSensorBelegung) )
         THEN
-         rpVorpositionierterWeg := ABS(Antrieb.rpIstPosition);
+         rpVorpositionierterWeg := ABS(Antrieb.rpIstPosition - rlAntriebsPositionStartVortransport);
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI;
          steplVortransport := STEP_900_E;
       END_IF
 
       IF ( blEinlaufsensor ) THEN
-        rpVorpositionierterWeg := ABS(Antrieb.rpIstPosition);
+        rpVorpositionierterWeg := ABS(Antrieb.rpIstPosition - rlAntriebsPositionStartVortransport);
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_BELEGT;
         steplVortransport := STEP_900_E;

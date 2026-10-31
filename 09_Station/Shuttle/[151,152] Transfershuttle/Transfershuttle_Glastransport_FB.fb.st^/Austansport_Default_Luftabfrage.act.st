@@ -156,14 +156,14 @@ THEN
          bpScheibeFaehrtUeberAuslauf := TRUE;
          bpAnforderungBetriebsstopp  := TRUE;
 
-         rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+         rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
          wpFehlerNr := SEL( blEinlaufSensor, cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_BELEGT, cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT );
          steplAustransportDefaultLuftabfrage := STEP_900_E;
        END_IF
 
-       IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition))> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
+       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;
          steplAustransportDefaultLuftabfrage := STEP_900_E;
@@ -257,11 +257,11 @@ THEN
       (* Hinweis:
          - Scheibepositionieren
       *)
-      rlAntriebsPositionBeiStart  := ABS(Antrieb.rpIstPosition);
+      rlAntriebsPositionBeiStart  := Antrieb.rpIstPosition;
 
       IF ( bpSensorScheibenKontrolleAuslaufseiteFrei ) THEN
 
-        rlAntriebsPositionBeiStart := ABS(Antrieb.rpIstPosition);
+        rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
 
         IF ( blReduzierteGeschwindigkeit ) THEN
           Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
@@ -334,7 +334,7 @@ THEN
       (* Fehlerbehandlung:
          - Wegueberwachung
       *)
-      IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren ) THEN
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI;
         steplAustransportDefaultLuftabfrage := STEP_900_E;
@@ -357,7 +357,7 @@ THEN
       ftriglAuslaufsensorBelegt(CLK:= bpSensorScheibenKontrolleAuslaufseiteFrei );
 
       IF ( ftriglAuslaufsensorBelegt.Q ) THEN
-        rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+        rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
       END_IF
 
       (* Hinweis:
@@ -372,7 +372,7 @@ THEN
       (* Fehlerbehandlung:
          - Wegueberwachung
       *)
-      IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rlLaengeStation ) THEN
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
         steplAustransportDefaultLuftabfrage := STEP_900_E;
@@ -385,7 +385,7 @@ THEN
           - Scheibenzaehler initialisieren
           - Bit zum Austransport setzen
       *)
-      rlAntriebsPositionBeiStart := ABS(Antrieb.rpIstPosition);
+      rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
 
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
 
@@ -437,7 +437,7 @@ THEN
       (* Fehlerbehandlung:
           - Wegueberwachung
       *)
-      IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rlLaengeStation ) THEN
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
         steplAustransportDefaultLuftabfrage := STEP_900_E;
@@ -498,7 +498,7 @@ THEN
 
         IF ( NOT bpSensorScheibenKontrolleAuslaufseiteFrei ) THEN
           bpScheibeFaehrtUeberAuslauf := TRUE;
-          rlAntriebsPositionBeiStart:= ABS(Antrieb.rpIstPosition);
+          rlAntriebsPositionBeiStart:= Antrieb.rpIstPosition;
           tonlSensorScheibenKontrolleAuslaufSeiteFrei(IN := FALSE);
           steplAustransportDefaultLuftabfrage := STEP_150_E;
 
@@ -547,7 +547,7 @@ THEN
       (* Prozess:
          - Ausnahmefehler
       *)
-      IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rStopFreiFahren ) THEN
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rStopFreiFahren ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_NICHT_FREI;
         steplAustransportDefaultLuftabfrage := STEP_900_E;
@@ -598,11 +598,11 @@ THEN
       (* Hinweis:
          - Scheibenvorpositionieren
       *)
-      rlAntriebsPositionBeiStart  := ABS(Antrieb.rpIstPosition);
+      rlAntriebsPositionBeiStart  := Antrieb.rpIstPosition;
 
       IF ( bpSensorScheibenKontrolleEinlaufSeiteFrei ) THEN
 
-        rlAntriebsPositionBeiStart := ABS(Antrieb.rpIstPosition);
+        rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
 
         IF ( blReduzierteGeschwindigkeit ) THEN
           Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
@@ -698,7 +698,7 @@ THEN
       ftriglEinlaufsensorBelegt(CLK:= bpSensorScheibenKontrolleEinlaufSeiteFrei );
 
       IF ( ftriglEinlaufsensorBelegt.Q ) THEN
-        rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+        rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
       END_IF
 
       (* Hinweis:
@@ -712,7 +712,7 @@ THEN
       (* Fehlerbehandlung:
          - Wegueberwachung
       *)
-      IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rlLaengeStation ) THEN
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
         steplAustransportDefaultLuftabfrage := STEP_900_E;
@@ -725,7 +725,7 @@ THEN
           - Scheibenzaehler initialisieren
           - Bit zum Austransport setzen
       *)
-      rlAntriebsPositionBeiStart := ABS(Antrieb.rpIstPosition);
+      rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
 
       Antrieb.rpGeschwindigkeit := InGlasTransportVorgaenger.rGeschwindigkeit;
 
@@ -777,7 +777,7 @@ THEN
          - Wegueberwachung
       *)
 
-      IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rlLaengeStation ) THEN
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
         steplAustransportDefaultLuftabfrage := STEP_900_E;

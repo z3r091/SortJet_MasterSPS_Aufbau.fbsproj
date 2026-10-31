@@ -41,7 +41,7 @@ IF (  bpSpeicherfachValidierung ) THEN
          - Antrieb ist bereit zum verfahren
       *)
       IF ( Antrieb.bpReglerBereit )THEN
-        rlAntriebsPositionBeiStart := ABS(Antrieb.rpIstPosition);
+        rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
 
         Antrieb.rpVerzoegerung   := ppAntriebsInformationen.rpMaxVerzoegerung;
         Antrieb.rpBeschleunigung := ppAntriebsInformationen.rpMaxBeschleunigung;

@@ -130,7 +130,7 @@ THEN
 
       IF NOT blEinlaufsensor THEN
 
-        rlAntriebsPositionBeiStart  := ABS(Antrieb.rpIstPosition);
+        rlAntriebsPositionBeiStart  := Antrieb.rpIstPosition;
 
         Antrieb.rpGeschwindigkeit := rgAutoGeschwindigkeitTSVortransport;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -175,7 +175,7 @@ THEN
        (* Fehlerbehandlung
           - Antrieb
        *)
-       IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition)) > 5300 ) THEN
+       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > 5300 ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_SCHALTET_NICHT;
          steplGlastransporttest := STEP_900_E;
@@ -184,7 +184,7 @@ THEN
 (*GlastransportTest ==============================*)
      STEP_70_E:
 
-        rlAntriebsPositionBeiStart  := ABS(Antrieb.rpIstPosition);
+        rlAntriebsPositionBeiStart  := Antrieb.rpIstPosition;
 
         Antrieb.rpGeschwindigkeit := rgAutoGeschwindigkeitTSVortransport;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -222,7 +222,7 @@ THEN
        (* Fehlerbehandlung
           - Antrieb
        *)
-       IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition)) > 5300 ) THEN
+       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > 5300 ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_SCHALTET_NICHT;
          steplGlastransporttest := STEP_900_E;
@@ -267,7 +267,7 @@ THEN
        (* Fehlerbehandlung
           - Antrieb
        *)
-       IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition)) > 5300 ) THEN
+       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > 5300 ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_SCHALTET_NICHT;
          steplGlastransporttest := STEP_900_E;

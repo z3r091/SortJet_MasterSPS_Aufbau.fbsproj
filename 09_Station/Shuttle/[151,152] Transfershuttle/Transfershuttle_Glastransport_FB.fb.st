@@ -145,6 +145,7 @@ VAR
 
   (* REAL *)
   rlAntriebsPositionBeiStart                 : REAL;
+  rlAntriebsPositionStartVortransport        : REAL; (* Ist-Position beim Start Vortransport fuer rpVorpositionierterWeg *)
   rlAntriebspositionBeiAuslaufSensorBelegung : REAL;
   rlAntriebspositionBeiEinlaufSensorBelegung : REAL;
   rlWegDifferenzNachStopSensorBelegung       : REAL;

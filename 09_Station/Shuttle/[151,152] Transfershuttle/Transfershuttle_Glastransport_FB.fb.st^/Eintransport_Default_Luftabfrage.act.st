@@ -252,8 +252,8 @@ THEN
        (* Antrieb verfahren
           - Restweg Positionierung
        *)
-       rlAntriebsPositionBeiStart := ABS( Antrieb.rpIstPosition );
-       rlAntriebIstPosition1      := ABS( Antrieb.rpIstPosition );
+       rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
+       rlAntriebIstPosition1      := Antrieb.rpIstPosition;
 
        IF ( blReduzierteGeschwindigkeit ) THEN
          Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
@@ -290,7 +290,7 @@ THEN
       bprtScheibe := FALSE;
 
       IF ( blEinlaufsensor ) THEN
-        rlPositionScheibenAnfangErkannt := rlAntriebIstPosition2 := ABS(Antrieb.rpIstPosition);
+        rlPositionScheibenAnfangErkannt := rlAntriebIstPosition2 := Antrieb.rpIstPosition;
         steplEintransportDefaultLuftabfrage := STEP_150_E;
       END_IF
 
@@ -303,7 +303,7 @@ THEN
         bpScheibeFaehrtUeberAuslauf := TRUE;
         bpOutBereitZumEintransport  := FALSE;
 
-        rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+        rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
 
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
@@ -317,7 +317,7 @@ THEN
       (* Fehlerbehandlung:
          - Weg- Ueberwachung
       *)
-      IF (ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rlLaengeStation * 2 ) THEN
+      IF (ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation * 2 ) THEN
         bpOutBereitZumEintransport := FALSE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
@@ -334,7 +334,7 @@ THEN
       IF ( bpScheibentrennung  ) THEN
 
         IF ( ilScheibenZaehler <= 1 ) THEN
-      	  IF ( ABS( rlPositionScheibenAnfangErkannt - ABS(Antrieb.rpIstPosition)) >= rlStreckeBisZurVerzoegerung ) THEN
+      	  IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
             IF blReduzierteGeschwindigkeit THEN
               Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
             ELSE
@@ -364,7 +364,7 @@ THEN
          - Antrieb verfahren
       *)
       IF ( Antrieb.bpDone ) THEN
-        rlAntriebIstPosition3  := ABS(Antrieb.rpIstPosition);
+        rlAntriebIstPosition3  := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
         blScheibenMerker       := NOT toflEinlaufsensor.Q;
         steplEintransportDefaultLuftabfrage := STEP_190_E;
@@ -377,7 +377,7 @@ THEN
         bpScheibeFaehrtUeberAuslauf := TRUE;
         bpOutBereitZumEintransport  := FALSE;
 
-        rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+        rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         blScheibenMerker := NOT toflEinlaufsensor.Q;
 
@@ -394,7 +394,7 @@ THEN
       IF ( bpScheibentrennung ) THEN
 
         IF ( ilScheibenZaehler <= 1 ) THEN
-          IF ( ABS( rlPositionScheibenAnfangErkannt - ABS(Antrieb.rpIstPosition) ) >= rlStreckeBisZurVerzoegerung ) THEN
+          IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition ) >= rlStreckeBisZurVerzoegerung ) THEN
             IF blReduzierteGeschwindigkeit THEN
               Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
             ELSE
@@ -418,7 +418,7 @@ THEN
       END_IF
 
       IF ( Antrieb.bpDone ) THEN
-        rlAntriebIstPosition3  := ABS(Antrieb.rpIstPosition);
+        rlAntriebIstPosition3  := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
         blScheibenMerker       := NOT toflEinlaufsensor.Q;
         steplEintransportDefaultLuftabfrage := STEP_190_E;
@@ -428,7 +428,7 @@ THEN
       IF ( blAuslaufSensor ) THEN
         bpScheibeFaehrtUeberAuslauf := TRUE;
         bpOutBereitZumEintransport  := FALSE;
-        rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+        rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         blScheibenMerker := NOT toflEinlaufsensor.Q;
         steplEintransportDefaultLuftabfrage := STEP_300_E;
@@ -446,7 +446,7 @@ THEN
 
           IF ( blEinlaufsensor ) THEN
             Antrieb.wpBetriebsart := KEINE_FUNKTION;
-            rlAntriebsPositionBeiStart := ABS(Antrieb.rpIstPosition);
+            rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
 
             steplEintransportDefaultLuftabfrage := STEP_200_E;
 
@@ -463,7 +463,7 @@ THEN
        *)
        IF ( blAuslaufSensor ) THEN
          bpScheibeFaehrtUeberAuslauf := TRUE;
-         rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+         rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          steplEintransportDefaultLuftabfrage := STEP_300_E;
        END_IF
@@ -546,14 +546,14 @@ THEN
          bpScheibeFaehrtUeberAuslauf := TRUE;
          bpAnforderungBetriebsstopp  := TRUE;
 
-         rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+         rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
          wpFehlerNr := SEL( blEinlaufSensor, cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT, cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT );
          steplEintransportDefaultLuftabfrage := STEP_900_E;
        END_IF
 
-       IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition))> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
+       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;
          steplEintransportDefaultLuftabfrage := STEP_900_E;
@@ -569,7 +569,7 @@ THEN
          - Antrieb verfahren
       *)
       IF ( Antrieb.bpDone ) THEN
-        rlAntriebIstPosition3  := ABS(Antrieb.rpIstPosition);
+        rlAntriebIstPosition3  := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
         steplEintransportDefaultLuftabfrage := STEP_200_E;
       END_IF
@@ -578,14 +578,14 @@ THEN
          bpScheibeFaehrtUeberAuslauf := TRUE;
          bpAnforderungBetriebsstopp  := TRUE;
 
-         rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+         rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
          wpFehlerNr := SEL( blEinlaufSensor, cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT, cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT );
          steplEintransportDefaultLuftabfrage := STEP_900_E;
        END_IF
 
-       IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition))> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
+       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;
          steplEintransportDefaultLuftabfrage := STEP_900_E;
@@ -607,7 +607,7 @@ THEN
        Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
        IF (  Antrieb.bpAntriebFreigegeben AND NOT Antrieb.bpAntrieblaeuft ) THEN
-         rlAntriebsPositionBeiStart := ABS(Antrieb.rpIstPosition);
+         rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
          steplEintransportDefaultLuftabfrage := STEP_310_E;
        END_IF
 
@@ -689,7 +689,7 @@ THEN
          steplEintransportDefaultLuftabfrage := STEP_900_E;
        END_IF
 
-       IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition))> ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren ) THEN
+       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          bpAnforderungBetriebsstopp := TRUE;
          wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI;
@@ -752,8 +752,8 @@ THEN
        (* Antrieb verfahren
           - Restweg Positionierung
        *)
-       rlAntriebsPositionBeiStart := ABS(Antrieb.rpIstPosition);
-       rlAntriebIstPosition1      := ABS(Antrieb.rpIstPosition);
+       rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
+       rlAntriebIstPosition1      := Antrieb.rpIstPosition;
 
        IF ( blReduzierteGeschwindigkeit ) THEN
          Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
@@ -796,7 +796,7 @@ THEN
 (*EINTRANSPORT ==============================*)
     STEP_430_E:
       IF ( blAuslaufsensor ) THEN
-       rlPositionScheibenAnfangErkannt := rlAntriebIstPosition2  := ABS(Antrieb.rpIstPosition);
+       rlPositionScheibenAnfangErkannt := rlAntriebIstPosition2  := Antrieb.rpIstPosition;
        steplEintransportDefaultLuftabfrage := STEP_440_E;
       END_IF
 
@@ -807,7 +807,7 @@ THEN
         bpScheibeFaehrtUeberEinlauf := TRUE;
         bpOutBereitZumEintransport  := FALSE;
 
-        rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+        rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
 
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
@@ -817,7 +817,7 @@ THEN
       (* Fehlerbehandlung:
          - Weg- Ueberwachung
       *)
-      IF (ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rlLaengeStation) THEN
+      IF (ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation) THEN
         bpOutBereitZumEintransport := FALSE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
@@ -834,7 +834,7 @@ THEN
       IF ( bpScheibentrennung  ) THEN
 
         IF ( ilScheibenZaehler = 1 ) THEN
-      	  IF ( ABS( rlPositionScheibenAnfangErkannt - ABS(Antrieb.rpIstPosition)) >= rlStreckeBisZurVerzoegerung ) THEN
+      	  IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
             IF blReduzierteGeschwindigkeit THEN
               Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
             ELSE
@@ -864,7 +864,7 @@ THEN
          - Antrieb verfahren
       *)
       IF ( Antrieb.bpDone ) THEN
-        rlAntriebIstPosition3  := ABS(Antrieb.rpIstPosition);
+        rlAntriebIstPosition3  := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
         blScheibenMerker       := NOT toflAuslaufsensor.Q;
         steplEintransportDefaultLuftabfrage := STEP_450_E;
@@ -876,7 +876,7 @@ THEN
       IF ( blEinlaufSensor ) THEN
         bpOutBereitZumEintransport  := FALSE;
         bpScheibeFaehrtUeberEinlauf := TRUE;
-        rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+        rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         blScheibenMerker := NOT toflAuslaufsensor.Q;
         steplEintransportDefaultLuftabfrage := STEP_600_E;
@@ -892,7 +892,7 @@ THEN
       IF ( bpScheibentrennung ) THEN
 
         IF ( ilScheibenZaehler = 1 ) THEN
-          IF ( ABS( rlPositionScheibenAnfangErkannt - ABS(Antrieb.rpIstPosition) ) >= rlStreckeBisZurVerzoegerung ) THEN
+          IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition ) >= rlStreckeBisZurVerzoegerung ) THEN
             IF blReduzierteGeschwindigkeit THEN
               Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
             ELSE
@@ -916,7 +916,7 @@ THEN
       END_IF
 
       IF ( Antrieb.bpDone ) THEN
-        rlAntriebIstPosition3  := ABS(Antrieb.rpIstPosition);
+        rlAntriebIstPosition3  := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
         blScheibenMerker       := NOT toflAuslaufsensor.Q;
         steplEintransportDefaultLuftabfrage := STEP_450_E;
@@ -926,7 +926,7 @@ THEN
       IF ( blEinlaufSensor ) THEN
         bpOutBereitZumEintransport  := FALSE;
         bpScheibeFaehrtUeberEinlauf := TRUE;
-        rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+        rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         blScheibenMerker := NOT toflAuslaufsensor.Q;
         steplEintransportDefaultLuftabfrage := STEP_600_E;
@@ -944,7 +944,7 @@ THEN
 
           IF ( blAuslaufsensor ) THEN
             Antrieb.wpBetriebsart :=KEINE_FUNKTION;
-            rlAntriebsPositionBeiStart := ABS(Antrieb.rpIstPosition);
+            rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
 
             steplEintransportDefaultLuftabfrage := STEP_500_E;
 
@@ -961,7 +961,7 @@ THEN
        *)
        IF ( blEinlaufSensor ) THEN
          bpScheibeFaehrtUeberEinlauf := TRUE;
-         rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+         rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          steplEintransportDefaultLuftabfrage := STEP_600_E;
        END_IF
@@ -1019,14 +1019,14 @@ THEN
          bpScheibeFaehrtUeberAuslauf := TRUE;
          bpAnforderungBetriebsstopp  := TRUE;
 
-         rlAntriebspositionBeiAuslaufSensorBelegung := ABS(Antrieb.rpIstPosition);
+         rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
          wpFehlerNr := SEL( blAuslaufSensor, cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_BELEGT, cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT );
          steplEintransportDefaultLuftabfrage := STEP_900_E;
        END_IF
 
-       IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition))> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
+       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI;
          steplEintransportDefaultLuftabfrage := STEP_900_E;
@@ -1044,7 +1044,7 @@ THEN
           - Maximaler Verfahrweg
           - Antrieb
        *)
-       IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition))> ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren ) THEN
+       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren ) THEN
          Antrieb.wpBetriebsart :=KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI;
          steplEintransportDefaultLuftabfrage := STEP_900_E;
@@ -1078,7 +1078,7 @@ THEN
        IF (  Antrieb.bpAntriebFreigegeben
          AND NOT Antrieb.bpAntrieblaeuft )
        THEN
-         rlAntriebsPositionBeiStart := ABS(Antrieb.rpIstPosition);
+         rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
          steplEintransportDefaultLuftabfrage := STEP_610_E;
        END_IF
 
@@ -1160,7 +1160,7 @@ THEN
          steplEintransportDefaultLuftabfrage := STEP_900_E;
        END_IF
 
-       IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition))> ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren ) THEN
+       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          bpAnforderungBetriebsstopp := TRUE;
          wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;

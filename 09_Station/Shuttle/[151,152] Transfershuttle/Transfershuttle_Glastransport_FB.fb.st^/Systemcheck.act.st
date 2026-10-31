@@ -30,7 +30,7 @@ IF ( bpCheck ) THEN
       bpDone := FALSE;
 
       IF ( Antrieb.bpReglerBereit )THEN
-       rlAntriebsPositionBeiStart := ABS(Antrieb.rpIstPosition);
+       rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
        steplCheck := STEP_10_E;
       END_IF
 
@@ -186,7 +186,7 @@ IF ( bpCheck ) THEN
           - Wegüberwachung
           - Einlaufsensor angefahren
        *)
-       IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition))> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
+       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_BELEGT;
          steplCheck := STEP_900_E;
@@ -229,7 +229,7 @@ IF ( bpCheck ) THEN
           - Wegüberwachung
           - Auslaufsensor angefahren
        *)
-       IF ( ABS(rlAntriebsPositionBeiStart - ABS(Antrieb.rpIstPosition))> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
+       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
          Antrieb.wpBetriebsart := KEINE_FUNKTION;
          wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_BELEGT;
          steplCheck := STEP_900_E;
