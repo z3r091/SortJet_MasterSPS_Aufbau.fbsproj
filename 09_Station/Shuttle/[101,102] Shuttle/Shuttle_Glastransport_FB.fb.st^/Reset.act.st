@@ -23,7 +23,6 @@ IF ( bpReset ) THEN
       bpOutBereitZumAustransport       := FALSE;
       bpOutBereitZumEintransport       := FALSE;
       blStarteSlaveKopplung            := FALSE;
-      blBausteinFreigabeAntrieb        := TRUE;
       bpEintransport                   := FALSE;
 	    bpDurchtransport                 := FALSE;
 		

@@ -17,7 +17,6 @@ THEN
   CASE steplVortransport OF
 (*VORTRANSPORT ==============================*)
     STEP_0_E:
-      blBausteinFreigabeAntrieb := TRUE;
 	  
 	 IF ( blAntriebsKopplungAktiv ) THEN
         steplVortransport := STEP_5_E;

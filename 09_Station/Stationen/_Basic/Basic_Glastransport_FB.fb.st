@@ -236,6 +236,8 @@ IF ( blErsterZyklus ) THEN
     Scheibenmessung.pbpVorstopSensor        REF= bgFALSE;
     Scheibenmessung.pbpEinlaufSensor        REF= bgFALSE;
 
+  ELSE
+    RETURN;
   END_IF
 
 END_IF

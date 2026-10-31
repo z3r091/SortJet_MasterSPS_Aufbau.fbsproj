@@ -46,7 +46,6 @@ THEN
       tonlAntriebNichtFreigegeben(IN:=FALSE);
       tonlWarteSchritt(IN:=FALSE);
 
-      blBausteinFreigabeAntrieb := TRUE;
 	  
       steplAustransport := STEP_5_E;
 
@@ -307,7 +306,6 @@ THEN
       (* Hinweis:
          - Scheibenzaehler 
       *)
-      blBausteinFreigabeAntrieb := TRUE;
       bprtScheibe := FALSE;
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
 
@@ -428,7 +426,6 @@ ELSE
   IF ( steplAustransport > STEP_0_E ) THEN
     bpDone := FALSE;
     bpOutBereitZumAustransport := FALSE;
-    blBausteinFreigabeAntrieb := TRUE;
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     steplAustransport := STEP_0_E;
   END_IF

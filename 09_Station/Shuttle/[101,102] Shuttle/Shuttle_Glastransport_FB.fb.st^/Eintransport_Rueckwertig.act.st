@@ -41,7 +41,6 @@ THEN
 
       bpFreigabeQuerfahrt := FALSE;
 
-      blBausteinFreigabeAntrieb := TRUE;
 
       rlGeschwindigkeitEintransport := REAL#0;
 

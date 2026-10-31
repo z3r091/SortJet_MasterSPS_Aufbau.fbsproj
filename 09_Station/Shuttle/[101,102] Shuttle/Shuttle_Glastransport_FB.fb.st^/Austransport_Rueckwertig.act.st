@@ -43,7 +43,6 @@ THEN
       bprtScheibe        := FALSE;
       blSensorFreiFahren := FALSE;
 
-      blBausteinFreigabeAntrieb := TRUE;
 
       tonlWarteSchritt(IN := FALSE);
       tonlAntriebNichtFreigegeben(IN := FALSE);
@@ -410,7 +409,6 @@ THEN
 ELSE
   IF ( steplAustransportRueckwaertig > STEP_0_E ) THEN
     bpDone := FALSE;
-    blBausteinFreigabeAntrieb := TRUE;
     bpOutBereitZumAustransport := FALSE;
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     steplAustransportRueckwaertig := STEP_0_E;

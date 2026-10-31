@@ -32,7 +32,6 @@ THEN
       (* Hinweis:
          - Pruefen ob der Antrieb verfahren werden kann        
       *)
-      blBausteinFreigabeAntrieb := TRUE;
 
 
       IF ( Antrieb.bpReglerBereit 

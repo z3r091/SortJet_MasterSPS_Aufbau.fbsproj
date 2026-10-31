@@ -97,7 +97,6 @@ VAR
   blErsterZyklus                              : BOOL := TRUE;
   blSensorFreifahren                          : BOOL;
   blScheibenMerker                            : BOOL; (* Merken da eien Scheibe den Auslaufsensor / Einlaufsensor beim Eintransport weiter *)
-  blBausteinFreigabeAntrieb                   : BOOL; (* lokale Freigabe für den Glastransportantrieb *)
   blReduzierteGeschwindigkeit                 : BOOL;
   blZeitGeschwindigkeitsReduzierungAktiv      : BOOL; (* Hinweis: Zeitliche Komponente zum reduzieren der Geschwindigkeit *)
   blOptionReduzierungGeschwindigkeitUeberZeit : BOOL := FALSE;
@@ -174,21 +173,24 @@ END_VAR
 (***************************************************************************************************)
 IF ( blErsterZyklus ) THEN
 
-  blErsterZyklus            := FALSE;
-  blBausteinFreigabeAntrieb := TRUE;
-  
-  Antrieb REF= pgAntriebe[ppAntriebsInformationen.wAchsID];
-  Antrieb_Slave REF= pgAntriebe[ppAntriebsInformationenSlave.wAchsID];
-
   IF ( __ISVALIDREF(ppAntriebsInformationen) ) THEN
+
+    blErsterZyklus            := FALSE;
+
+    Antrieb REF= pgAntriebe[ppAntriebsInformationen.wAchsID];
+    IF ( __ISVALIDREF(ppAntriebsInformationenSlave) ) THEN
+      Antrieb_Slave REF= pgAntriebe[ppAntriebsInformationenSlave.wAchsID];
+    END_IF
 
     (* Hinweis:
        - Initialisierung Antriebsinformationen
     *)
     Antrieb.ppAntriebsInformationen REF= ppAntriebsInformationen;
     Antrieb.stStationsNummern := stStationsNummern;
-    Antrieb_Slave.ppAntriebsInformationen REF= ppAntriebsInformationenSlave;
-    Antrieb_Slave.stStationsNummern := stStationsNummern;
+    IF ( __ISVALIDREF(Antrieb_Slave) AND __ISVALIDREF(ppAntriebsInformationenSlave) ) THEN
+      Antrieb_Slave.ppAntriebsInformationen REF= ppAntriebsInformationenSlave;
+      Antrieb_Slave.stStationsNummern := stStationsNummern;
+    END_IF
 
     (* Hinweis:
        - Antriebswerte vorinitialisieren
@@ -199,12 +201,14 @@ IF ( blErsterZyklus ) THEN
     Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
 
     (* Hinweis:
-       - Antriebswerte vorinitialisieren 
+       - Antriebswerte vorinitialisieren
     *)
-    Antrieb_Slave.rpGeschwindigkeit := REAL#0;
-    Antrieb_Slave.rpBeschleunigung  := ppAntriebsInformationenSlave.rpMaxBeschleunigung;
-    Antrieb_Slave.rpVerzoegerung    := ppAntriebsInformationenSlave.rpMaxVerzoegerung;
-    Antrieb_Slave.rpRuckzeit        := ppAntriebsInformationenSlave.rpMaxRuckzeit;
+    IF ( __ISVALIDREF(Antrieb_Slave) AND __ISVALIDREF(ppAntriebsInformationenSlave) ) THEN
+      Antrieb_Slave.rpGeschwindigkeit := REAL#0;
+      Antrieb_Slave.rpBeschleunigung  := ppAntriebsInformationenSlave.rpMaxBeschleunigung;
+      Antrieb_Slave.rpVerzoegerung    := ppAntriebsInformationenSlave.rpMaxVerzoegerung;
+      Antrieb_Slave.rpRuckzeit        := ppAntriebsInformationenSlave.rpMaxRuckzeit;
+    END_IF
 
     (* Pointer
        - Initialisierung zur vermeidung von null Pointerexceptions
@@ -215,6 +219,8 @@ IF ( blErsterZyklus ) THEN
     Scheibenmessung.pbpVorstopSensor        REF= bgFALSE;
     Scheibenmessung.pbpEinlaufSensor        REF= bgFALSE;
 
+  ELSE
+    RETURN;
   END_IF
 
 END_IF
@@ -342,11 +348,11 @@ toflAutoAbschaltung( IN := (  bpAutomatikAktiv
                      PT:= tgZeitAutoabschaltungEnergiesparModus );
 
 // Aufruf Antrieb
-Antrieb.bpFreigabe        := toflAutoAbschaltung.Q AND bpFreigabe AND blBausteinFreigabeAntrieb; 
+Antrieb.bpFreigabe        := toflAutoAbschaltung.Q AND bpFreigabe; 
 Antrieb.stStationsNummern := stStationsNummern;
 Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
 
-Antrieb_Slave.bpFreigabe        := toflAutoAbschaltung.Q AND bpFreigabe AND blBausteinFreigabeAntrieb;
+Antrieb_Slave.bpFreigabe        := toflAutoAbschaltung.Q AND bpFreigabe;
 Antrieb_Slave.stStationsNummern := stStationsNummern;
 Antrieb_Slave.rpRuckzeit        := ppAntriebsInformationenSlave.rpMaxRuckzeit;
 							

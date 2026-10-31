@@ -25,7 +25,6 @@ THEN
 	  
 (*VORTRANSPORT ==============================*)
     STEP_0_E:
-      blBausteinFreigabeAntrieb := TRUE;
 	  
       (* Hinweis:
          - Sicherstellen das die Slavekopplung aktiv ist
@@ -37,7 +36,6 @@ THEN
 	  
 (*VORTRANSPORT ==============================*)
     STEP_5_E:
-      blBausteinFreigabeAntrieb := TRUE;
 
       IF (  NOT bpSensorAuslaufVorab
         AND pAuftrag.rModellVersatzVorne = 0.0 )

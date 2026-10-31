@@ -32,7 +32,6 @@ THEN
          - Pruefen ob der Antrieb bereit zum verfahren ist
       *)
       bpDone := FALSE;
-      blBausteinFreigabeAntrieb        := TRUE;
 
       IF ( Antrieb.bpReglerBereit 
            AND blAntriebsKopplungAktiv )

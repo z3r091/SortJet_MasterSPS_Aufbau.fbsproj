@@ -99,21 +99,21 @@ VAR
 (***************************************************************************************************)
 IF ( blErsterZyklus ) THEN
 
-  blErsterZyklus            := FALSE;
-  
-  Antrieb REF= pgAntriebe[ppAntriebsInformationen.wAchsID];
-
-  (* Hinweis:
-     - Für die Zielpunktkontrolle muss im ersten Zyklus die Zielposition initialisiert werden 
-  *)
-  Antrieb.rpZielPosition := Antrieb.rpIstPosition;
-
   IF ( __ISVALIDREF(ppAntriebsInformationen) ) THEN
+
+    blErsterZyklus := FALSE;
+
+    Antrieb REF= pgAntriebe[ppAntriebsInformationen.wAchsID];
 
     (* Hinweis:
        - Initialisierung Antriebsinformationen
     *)
     Antrieb.ppAntriebsInformationen REF= ppAntriebsInformationen;
+
+    (* Hinweis:
+       - Für die Zielpunktkontrolle muss im ersten Zyklus die Zielposition initialisiert werden
+    *)
+    Antrieb.rpZielPosition := Antrieb.rpIstPosition;
 
     (* Hinweis:
        - Antriebswerte vorinitialisieren
@@ -123,12 +123,14 @@ IF ( blErsterZyklus ) THEN
     Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
     Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
 
-  END_IF
+    (* Hinweis:
+       - Aktivierung Unterbausteine
+    *)
+    Arretierung.bpAktivieren := ppParameterBaustein.bArretierung;
 
-  (* Hinweis:
-     - Aktivierung Unterbausteine
-  *)
-  Arretierung.bpAktivieren       := ppParameterBaustein.bArretierung;
+  ELSE
+    RETURN;
+  END_IF
 
 END_IF
 

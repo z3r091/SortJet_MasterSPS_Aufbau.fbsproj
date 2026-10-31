@@ -22,7 +22,6 @@ THEN
       - Beschleunigung  
       - Verzoegerung    
   *)
-  blBausteinFreigabeAntrieb := TRUE;
 
   Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
   Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;

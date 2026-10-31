@@ -51,7 +51,6 @@ THEN
 
       bpFreigabeQuerfahrt := FALSE;
 
-      blBausteinFreigabeAntrieb := TRUE;
 
       steplEintransport := STEP_5_E;
 

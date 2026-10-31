@@ -28,7 +28,6 @@ IF( bpFahreReferenz )THEN
 (*REFERENZ =============================*)
     STEP_0_E:
       bpDone := FALSE;
-      blBausteinFreigabeAntrieb := TRUE;
       tonlSlaveKopplungDeaktiviert( IN := FALSE );
 	  
       steplReferenz := STEP_10_E;

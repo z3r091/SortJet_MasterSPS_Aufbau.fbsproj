@@ -36,7 +36,6 @@ IF ( bpCheck ) THEN
       bpDone := FALSE;
       bpStationBelegt := FALSE;
 
-      blBausteinFreigabeAntrieb := TRUE;
 
       rlGefahreneStreckeEintransport := 0.0;
 
