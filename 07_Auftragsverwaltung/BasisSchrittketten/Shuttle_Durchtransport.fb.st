@@ -73,6 +73,12 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
 
 (* DURCHTRANSPORT ================================= *)
      STEP_20_E:
+      (* Hinweis:
+         - Kopplung fuer diesen Auftrag neu bestimmen. Sonst ueberschreibt ein Merker aus dem letzten Auftrag den Fehlerschritt.
+      *)
+      blKopplungGefundenEintransport := FALSE;
+      blKopplungGefundenAustransport := FALSE;
+
       (* Hinweis
          - Uebergabe der Quellstation [Sender] fuer den Austransport [Zum ueberpruefen des Zustandes der Station]       
       *)

@@ -55,6 +55,8 @@ rtlFehlerAusgeloestImAutomatikbetrieb( CLK :=     blBetriebsartAutomatik
 
 IF ( rtlFehlerAusgeloestImAutomatikbetrieb.Q ) THEN
   blFehlerAusAutomatikBetrieb := TRUE;
+ELSIF ( NOT BasisStationsParameter.bFehler ) THEN
+  blFehlerAusAutomatikBetrieb := FALSE;
 END_IF
 
 rtlFehlerMeldungGenerierenHandbetrieb( CLK :=       BasisStationsParameter.bFehler
