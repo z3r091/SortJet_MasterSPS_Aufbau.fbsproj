@@ -22,7 +22,6 @@ IF ( bpReset ) THEN
       bpScheibeFaehrtUeberAuslauf  := FALSE;
       bpScheibeFaehrtUeberEinlauf  := FALSE;
       blFehlerAusloesen            := FALSE;
-      blLetzteScheibeEintransport  := FALSE;
 
       bpOutBereitZumEintransport := FALSE;
       bpOutBereitZumAustransport := FALSE;

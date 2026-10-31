@@ -121,7 +121,6 @@ VAR
   blBereitZumGlastransport                     : BOOL := FALSE;
   blEinlaufSensor                              : BOOL; (* entprellter Eingangssensor *)
   blAuslaufSensor                              : BOOL; (* entprellter Ausgangssensor *)
-  blLetzteScheibeEintransport                  : BOOL := FALSE; (* HINWEIS: Wenn der Vortransport im Speicher aktiviert ist das TS oben behalten nach einen Eintransport da ein Vortransport- Auftrag folgen kann *)
   blScheibenMerker                             : BOOL := FALSE; (* Scheibe lag nach dem Positionieren noch auf dem Einlaufsensor => Quittung beim Freifahren *)
   blFehlerAusloesen                            : BOOL; (* Hinweis: Es muss ggf ein Fehler ausgeloest werden wenn ein Sensor angefahren und programmgesteuert wieder Freigefahren wurde *)
   blMeldungAuslaufAbfrageBelegt                : BOOL := FALSE; (* Hinweis: Sensorik beim Pruefen belegt *)
@@ -140,7 +139,6 @@ VAR
 
   (* WORD *)
   wlSubIndex : WORD;
-  wlTimerShuttleObenBehaltenNachEintransport : WORD := 4000 ;
 
   (* INT *)
   ilScheibenZaehler                          : INT; (* Scheibenzaehlen *)
@@ -176,7 +174,6 @@ VAR
 
   (* FLANKEN *)
   rtriglFehlerAktiv                   : R_TRIG; (* Fehler-Bit Triggern *)
-  ftriglKeinAuftragAktiv              : F_TRIG; (* fallende Flanke nachdem längere Zeit kein Auftrag aktiv ist *)
   ftriglAuslaufsensorBelegt           : F_TRIG; (* fallende Flanke: Auslaufsensor wurde angefahren *)
   ftriglEinlaufsensorBelegt           : F_TRIG; (* fallende Flanke: Einlaufsensor wurde angefahren *)
 
@@ -204,7 +201,6 @@ VAR
   toflAuslaufsensor                                 : TOF; 
   toflEinlaufsensorFreiFahren                       : TOF; 
   toflAutoAbschaltung                               : TOF; 
-  toflShuttleAbsenkenKeinAuftragAktiv               : TOF; 
   toflAntriebLaeuft                                 : TOF;
 
   (* BAUSTEINE *)
@@ -424,35 +420,7 @@ SteuerungLuftschranken();
 (***************************************************************************************************)
 (* BAUSTEIN: VORTRANSPORT [SPEICHER]  *)
 (***************************************************************************************************)
-(* Hinweis:
-   - Unterscheidung wann das Transfershuttle abgesenkt werden kann
-     => Eintransport: Shuttle ggf. absenken wenn das Bit "Letzte Scheibe" gesetzt war,
-        aber kein Vortransport Auftrag kommt 
-*)
-
-IF ( blLetzteScheibeEintransport ) THEN
-
-
-  toflShuttleAbsenkenKeinAuftragAktiv( IN:= (     bpAutomatikAktiv
-                                              AND out_bShuttleAnheben
-                                              AND bpEintransport
-                                              AND NOT bpAustransport
-                                              AND NOT bpVortransport ),
-                                       PT:=( WORD_TO_TIME(wlTimerShuttleObenBehaltenNachEintransport)));
-
-  ftriglKeinAuftragAktiv(CLK:= toflShuttleAbsenkenKeinAuftragAktiv.Q);
-
-ELSE
-  ftriglKeinAuftragAktiv(CLK:= FALSE);
-  toflShuttleAbsenkenKeinAuftragAktiv( IN := FALSE );
-
-END_IF
-
-IF (   bpShuttleAbsenken
-    OR (    ftriglKeinAuftragAktiv.Q
-        AND out_bShuttleAnheben
-        AND NOT bpAktiv))
-THEN
+IF ( bpShuttleAbsenken ) THEN
    out_bShuttleAnheben := FALSE;
    out_bScheibenKontrolleAuslaufSeiteAuf := FALSE;
    blScheibenKontrolleAuslaufseiteEin    := FALSE;

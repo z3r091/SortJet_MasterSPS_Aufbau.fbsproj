@@ -35,8 +35,6 @@ VAR
   dwlHandfunktionenZuletztGesendet : DWORD;
 
  // BOOLEAN
-  blGeblaeseAusNachAutomatik      : BOOL; // Gebläse wird vom wechsel nach Hand ausgeschaltet
-
   blFreigabeGeblaeseStartenSensor : BOOL := FALSE;  // Durch den Einlaufsensor wird das Gebläase gestartet
   blGlasBruchMeldungSperren       : BOOL := FALSE;
   blMerkerDrosselklappeAuf        : BOOL;

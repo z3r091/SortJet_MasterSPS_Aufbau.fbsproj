@@ -17,8 +17,6 @@ END_VAR
 VAR
 
   // BOOLEAN
-  blGeblaeseAusNachAutomatik : BOOL; // Falls das Geblaese im Automatikbetrieb laeuft und es wird in den Handbetrieb gewechselt, dies ausschalten 
-
   (* REAL *)
   rlScheibenHoehe            : REAL;
   rlAbstandZurNulllinie      : REAL;

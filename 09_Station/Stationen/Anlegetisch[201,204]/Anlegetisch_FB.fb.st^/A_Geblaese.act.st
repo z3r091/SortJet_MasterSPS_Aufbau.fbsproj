@@ -49,7 +49,6 @@ IF ( blBetriebsartAutomatik ) THEN
     OR NOT in_bSensorKipptischUnten )
   THEN
     out_bGeblaese1Ein          := FALSE;
-    blGeblaeseAusNachAutomatik := FALSE;
     out_bGeblaese2Ein          := FALSE;
     blMerkerDrosselklappeAuf   := FALSE;
     rtlGeblaese(CLK:= FALSE);
@@ -87,8 +86,7 @@ ELSE
 
   IF ( rtlGeblaese.Q
     OR ftlGeblaese.Q
-    OR rtlTasterGeblaese.Q
-    OR blGeblaeseAusNachAutomatik )
+    OR rtlTasterGeblaese.Q )
     AND
     ( ( in_bSensorKippsicherungGeschlossen
     AND in_bSensorKipptischUnten )
@@ -103,8 +101,6 @@ ELSE
       out_bGeblaese1Ein := FALSE;
       out_bGeblaese2Ein := FALSE;
     END_IF
-
-    blGeblaeseAusNachAutomatik := FALSE;
 
   END_IF
 

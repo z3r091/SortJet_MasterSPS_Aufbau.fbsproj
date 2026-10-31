@@ -21,7 +21,6 @@ IF( blBetriebsartReset )THEN
       out_bGeblaese2Ein                      := FALSE;
       out_bDrosselklappeOeffnen              := FALSE;
 
-      blGeblaeseAusNachAutomatik  := FALSE;
       blMerkerDrosselklappeAuf    := FALSE;
 
       Glastransport.bpAnforderungHandfunktion := FALSE;

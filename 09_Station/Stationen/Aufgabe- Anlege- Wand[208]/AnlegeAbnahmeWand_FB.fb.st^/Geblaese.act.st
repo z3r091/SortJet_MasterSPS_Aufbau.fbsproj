@@ -72,7 +72,6 @@ IF ( blBetriebsartAutomatik ) THEN
   THEN
     out_bGeblaeseEin := FALSE;
     out_bDrosselklappeOeffnen:= FALSE;
-    blGeblaeseAusNachAutomatik := FALSE;
     rtlGeblaese(CLK:= FALSE);
     rtlTasterGeblaese(CLK:=FALSE);
 
@@ -81,7 +80,6 @@ IF ( blBetriebsartAutomatik ) THEN
     OR rtlGeblaese.Q )
     AND NOT tofGeblaeseWirdAusGeschaltet.Q
   THEN
-   // blGeblaeseAusNachAutomatik := TRUE;
     out_bGeblaeseEin := TRUE;
 
   END_IF
@@ -101,8 +99,7 @@ ELSE
 
   IF ( rtlGeblaese.Q
     OR ftlGeblaese.Q
-    OR rtlTasterGeblaese.Q
-    OR blGeblaeseAusNachAutomatik )
+    OR rtlTasterGeblaese.Q )
   THEN
 
     IF ( NOT out_bGeblaeseEin ) THEN
@@ -110,8 +107,6 @@ ELSE
     ELSE
       out_bGeblaeseEin:=FALSE;
     END_IF
-
-    blGeblaeseAusNachAutomatik := FALSE;
 
   END_IF
 

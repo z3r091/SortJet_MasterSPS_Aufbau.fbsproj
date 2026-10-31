@@ -20,7 +20,6 @@ IF( blBetriebsartReset )THEN
       out_bSignalScheibeAufgegeben  := FALSE;
       out_bSignalScheibeFehlmessung := FALSE;
 
-      blGeblaeseAusNachAutomatik    := FALSE;
       blMerkerFehlerAutomatik       := FALSE;
       blNachSystemcheckMerker       := FALSE;
 

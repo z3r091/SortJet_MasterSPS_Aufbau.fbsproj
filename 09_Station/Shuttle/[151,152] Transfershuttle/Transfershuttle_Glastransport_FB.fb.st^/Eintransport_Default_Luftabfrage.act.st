@@ -53,7 +53,6 @@ THEN
       bprtScheibe                 := FALSE;
       blScheibenMerker            := FALSE;
       blFehlerAusloesen           := FALSE;
-      blLetzteScheibeEintransport := FALSE;
 
       blMeldungEinlaufAbfrageBelegt       := FALSE;
       blSensorPruefungEinlaufsensorBelegt := FALSE;
