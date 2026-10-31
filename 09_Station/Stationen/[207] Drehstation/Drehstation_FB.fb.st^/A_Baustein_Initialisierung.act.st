@@ -31,7 +31,7 @@ Drehen.bpAktivieren            := BasisStationsParameter.stMKs.stStationsAufbau.
 Kippen.bpAktivieren            := BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1];
 Querfahrt.bpAktivieren         := BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt;
 Geblaese.bpAktivieren          := BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[cWAND_1];
-Querachse.bpAktivieren         := FALSE;
+Querachse.bpAktivieren         := BasisStationsParameter.stMKs.stStationsAufbau.bQuerachse;
 Dickenverstellung.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[cWAND_1];
 
 (* Hinweis:

@@ -17,6 +17,7 @@ TYPE Stations_Aufbau_ST:
     bHub                                    : BOOL;
     bHubrahmen                              : BOOL;
     bDrehen                                 : BOOL;
+    bQuerachse                              : BOOL;
     bMessachse                              : BOOL; (* seperate Messachse je Wand z.b: Anlegewand / LTR / etc...*)
     bDruckluft                              : BOOL;
     bAnschlag                               : BOOL;

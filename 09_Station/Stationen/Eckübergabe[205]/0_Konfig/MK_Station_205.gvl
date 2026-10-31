@@ -60,6 +60,7 @@ VAR_GLOBAL
                                  bHub                          := FALSE,
                                  bHubrahmen                    := TRUE,
                                  bDrehen                       := FALSE,
+                                 bQuerachse                    := FALSE,
                                  bMessachse                    := FALSE,
                                  bDruckluft                    := FALSE,
                                  bAnschlag                     := FALSE,

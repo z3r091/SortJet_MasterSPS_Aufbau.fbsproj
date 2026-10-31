@@ -29,4 +29,8 @@ Messachse( stStationsNummern           := BasisStationsParameter.stMKs.stStation
 Kippen( stStationsNummern                    := BasisStationsParameter.stMKs.stStationsNummern,
         bpSensorEinlauf                      := Glastransport.bpSensorEinlauf,
         bpSensorAuslauf                      := Glastransport.bpSensorAuslauf );
+
+// Dickenverstellung
+Dickenverstellung( bpZylinderAbfragenVorhanden := TRUE,
+                   bpEinAusFahrenLogikDrehen   := BasisStationsParameter.stMKs.stStationsOptionen.bVerstellungEinAusGefahrenLogikDrehen );
 END_ACTION
