@@ -81,7 +81,7 @@ THEN
       IF ( NOT bpSensorEinlauf ) THEN
 
         // Antriebsposition merken
-        rlPositionAntriebBeiStart := ABS(Antrieb.rpIstPosition);
+        rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
 
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit40;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -121,7 +121,7 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-      IF ( ABS(rlPositionAntriebBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rLaengeStation * 3 ) THEN (* so viel da die ProLam sehr lang ist *)
+      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation * 3 ) THEN (* so viel da die ProLam sehr lang ist *)
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
         steplEintransport := STEP_900_E;
@@ -153,10 +153,10 @@ THEN
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
 
         IF ( bpSensorAuslauf ) THEN
-          rlPositionAntriebBeiStart := ABS(Antrieb.rpIstPosition);
+          rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
           steplEintransport := STEP_300_E;
         ELSIF ( NOT bpSensorEinlauf ) THEN
-          rlPositionAntriebBeiStart := ABS(Antrieb.rpIstPosition);
+          rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
           steplEintransport := STEP_200_E;
         ELSE
           steplEintransport := STEP_150_E;
@@ -209,7 +209,7 @@ THEN
       (* Fehlerbehandlung:
          - Weg- Ueberwachung
       *)
-      IF ( ABS(rlPositionAntriebBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rLaengeStation ) THEN
+      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
         steplEintransport := STEP_900_E;
@@ -247,7 +247,7 @@ THEN
       (* Fehlerbehandlung:
          - Weg- Ueberwachung
       *)
-      IF ( ABS(rlPositionAntriebBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rLaengeStation ) THEN
+      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT;
         steplEintransport := STEP_900_E;

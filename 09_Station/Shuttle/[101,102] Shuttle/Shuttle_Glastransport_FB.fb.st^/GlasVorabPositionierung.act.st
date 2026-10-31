@@ -50,7 +50,7 @@ THEN
       *)
       IF ( NOT bpSensorAuslauf ) THEN
 
-        rlAntriebIstPositionBeiStart := ABS( Antrieb.rpIstPosition );
+        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
         IF ( bpSensorAuslaufVorab ) THEN
           Antrieb.rpGeschwindigkeit := rgGeschwindigkeit15;
@@ -68,7 +68,7 @@ THEN
 
       ELSE
 
-        rlAntriebIstPositionBeiStart := ABS( Antrieb.rpIstPosition );
+        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
         steplVorabpositionieren := STEP_100_E;
 
@@ -94,7 +94,7 @@ THEN
          - Auslaufsensor schaltet nicht [Wegueberwachung]
          - Antrieb
       *)
-      IF ( ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) >  ppParameterBaustein.rLaengeStation ) THEN
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) >  ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_SCHALTET_NICHT;
         steplVorabpositionieren := STEP_900_E;
@@ -153,7 +153,7 @@ THEN
         steplVorabpositionieren := STEP_900_E;
       END_IF
 
-      IF ( ABS(rlAntriebIstPositionBeiStart - ABS (Antrieb.rpIstPosition)) > ppParameterBaustein.rLaengeStation ) THEN
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
         bpOutBereitZumAustransport := FALSE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_NICHT_FREI;

@@ -130,7 +130,7 @@ THEN
         steplGlaslaengenMessung := STEP_900_E;
       END_IF
 
-      IF ( ABS(rlPositionAntriebBeiStart - ABS(Antrieb.rpIstPosition)) > ( ppParameterBaustein.rLaengeStation )) THEN
+      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ( ppParameterBaustein.rLaengeStation )) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_NICHT_FREI;
         steplGlaslaengenMessung := STEP_900_E;

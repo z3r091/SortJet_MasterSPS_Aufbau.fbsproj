@@ -133,7 +133,7 @@ IF ( bpCheck ) THEN
          - Restwegpositionierung -> 50 mm ueber den Einlaufsensor
       *)
       IF ( NOT toflEinlaufsensor.Q ) THEN
-        rlAntriebIstPositionBeiStart := ABS( Antrieb.rpIstPosition );
+        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
         IF ( bpSensorEinlaufVorab ) THEN
           Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
@@ -153,7 +153,7 @@ IF ( bpCheck ) THEN
       ELSE
         bpStationBelegt := TRUE;
 
-        rlAntriebIstPositionBeiStart := ABS( Antrieb.rpIstPosition );
+        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
         IF ( bpSensorEinlaufVorab ) THEN
           Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
@@ -191,7 +191,7 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_100_E;
       END_IF
 
-      IF ( ABS(rlAntriebIstPositionBeiStart - ABS (Antrieb.rpIstPosition))
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition)
             > ppParameterBaustein.rLaengeStation )
         THEN
          bpStationBelegt := FALSE;
@@ -278,7 +278,7 @@ IF ( bpCheck ) THEN
       (* Anmerkung:
          - Glas wird auf das Shuttle gezogen und es wird eine Glasposition gesendet
       *)
-      rlAntriebIstPositionBeiStart := ABS(Antrieb.rpIstPosition);
+      rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
       Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -316,7 +316,7 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_900_E;
       END_IF
 
-      IF ( ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition) ) >= ppParameterBaustein.rLaengeStation ) THEN
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition ) >= ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_NICHT_FREI;
         steplCheck := STEP_900_E;
@@ -360,7 +360,7 @@ IF ( bpCheck ) THEN
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
 
       IF ( InGlasTransportNachfolger.bAuslaufsensor ) THEN
-        rlAntriebIstPositionBeiStart := ABS(Antrieb.rpIstPosition);
+        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
         steplCheck := STEP_625_E;
       END_IF
 
@@ -439,7 +439,7 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_900_E;
       END_IF
 
-      IF ( ABS( rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition) ) > ppParameterBaustein.rLaengeStation ) THEN
+      IF ( ABS( rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition ) > ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_NICHT_FREI;
         steplCheck := STEP_900_E;
@@ -466,7 +466,7 @@ IF ( bpCheck ) THEN
          - Scheiben zurück bis auf Einlauf fahren um sicherzustellen das alles wieder auf dem Shuttle ist
       *)
 	  IF NOT bpSensorEinlauf THEN
-        rlAntriebIstPositionBeiStart := ABS(Antrieb.rpIstPosition);
+        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -505,7 +505,7 @@ IF ( bpCheck ) THEN
        (* Anmerkung:
          - Es sind keine Scheiben auf dem Shuttle
       *)
-      IF ( ABS(rlAntriebIstPositionBeiStart - ABS (Antrieb.rpIstPosition))
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition)
             > ppParameterBaustein.rLaengeStation * 2 )
       THEN
          bpStationBelegt := FALSE;
@@ -578,7 +578,7 @@ IF ( bpCheck ) THEN
          - Sicherstellen das der Einlaufsensor belegt ist
       *)
       IF ( NOT bpSensorEinlauf ) THEN
-        rlAntriebIstPositionBeiStart := ABS( Antrieb.rpIstPosition );
+        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
         Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberSensorSystemCheck;
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
@@ -607,7 +607,7 @@ IF ( bpCheck ) THEN
      (* Fehlerbehandlung
         - Sensoren
       *)
-      IF ( ABS(rlAntriebIstPositionBeiStart - ABS (Antrieb.rpIstPosition)) > ppParameterBaustein.rLaengeStation ) THEN
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_SCHALTET_NICHT;
         steplCheck := STEP_900_E;
@@ -662,7 +662,7 @@ IF ( bpCheck ) THEN
       (* Hinweis:
          - Glas zurueck auf den Auslaufsensor Positionieren [ Restwegpositionierung negativ auf den Einlaufsensor ]
       *) 
-      rlAntriebIstPositionBeiStart := ABS( Antrieb.rpIstPosition );
+      rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
       Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -685,7 +685,7 @@ IF ( bpCheck ) THEN
          - Wegueberwachung
          - Sensorik
       *)
-      IF (ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rLaengeStation ) THEN
+      IF (ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_NICHT_FREI;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplCheck := STEP_900_E;
@@ -702,7 +702,7 @@ IF ( bpCheck ) THEN
       (* Hinweis:
          - Glas positionieren
       *) 
-      rlAntriebIstPositionBeiStart := ABS( Antrieb.rpIstPosition );
+      rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
       Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -776,7 +776,7 @@ IF ( bpCheck ) THEN
          - Wegueberwachung
          - Sensorik
       *)
-      IF (ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rLaengeStation ) THEN
+      IF (ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_SCHALTET_NICHT;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplCheck := STEP_900_E;
@@ -812,7 +812,7 @@ IF ( bpCheck ) THEN
          - Wegueberwachung
          - Sensorik
       *)
-      IF (ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rLaengeStation ) THEN
+      IF (ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_SCHALTET_NICHT;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplCheck := STEP_900_E;

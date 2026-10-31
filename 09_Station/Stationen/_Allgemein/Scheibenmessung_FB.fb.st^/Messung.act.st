@@ -55,7 +55,7 @@ IF ( bpGlasvermessung ) THEN
       (* Anmerkung:
          - Starten der Glaslaengenvermessung 
       *)
-      rlPositionAntriebBeiStart := ABS(ppAntrieb.rpIstPosition);
+      rlPositionAntriebBeiStart := ppAntrieb.rpIstPosition;
 
       ppAntrieb.rpGeschwindigkeit := SEL( ( ppAntriebsInformationen.rpGeschwindigkeitMessen > 1 ),   ppAntriebsInformationen.rpHandGeschwindigkeit, ppAntriebsInformationen.rpGeschwindigkeitMessen);
 
@@ -79,7 +79,7 @@ IF ( bpGlasvermessung ) THEN
       *)
       rlBremsWeg := ( ( ppAntrieb.rpIstGeschwindigkeit * ppAntrieb.rpIstGeschwindigkeit ) / 2 / ppAntrieb.rpVerzoegerung );
 
-      IF ( ABS(ABS(ppAntrieb.rpIstPosition) - rlPositionAntriebBeiStart) >=
+      IF ( ABS(ppAntrieb.rpIstPosition - rlPositionAntriebBeiStart) >=
          ABS(rpMessstrecke - ( rpFaktorBremswegverlaengern * rlBremsWeg ) - rpErwarteteScheibenLaenge))
       THEN
         ppAntrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
@@ -112,7 +112,7 @@ IF ( bpGlasvermessung ) THEN
       ELSE
         
         // Ausnahmesituation
-        rlGefahrenerWeg := ABS(ABS(ppAntrieb.rpIstPosition) - rlPositionAntriebBeiStart);
+        rlGefahrenerWeg := ABS(ppAntrieb.rpIstPosition - rlPositionAntriebBeiStart);
         
         // Auslaufsensor schaltet nicht -> Messstrecke + 50mm abgefahren und Auslaufsensor hat nicht geschaltet
         IF ( rlGefahrenerWeg > ( rpMessstrecke + 50 ) ) 

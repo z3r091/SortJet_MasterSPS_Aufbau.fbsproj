@@ -40,7 +40,7 @@ THEN
       IF (  NOT bpSensorAuslaufVorab
         AND pAuftrag.rModellVersatzVorne = 0.0 )
       THEN
-        rlAntriebIstPositionBeiStart  := ABS(Antrieb.rpIstPosition);
+        rlAntriebIstPositionBeiStart  := Antrieb.rpIstPosition;
 
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit30;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -72,7 +72,7 @@ THEN
          - Wegueberwachung
          - Auslaufsensor
       *)
-      IF ( ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rLaengeStation ) THEN
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUFVORAB_SCHALTET_NICHT;
         steplVortransport := STEP_900_E;

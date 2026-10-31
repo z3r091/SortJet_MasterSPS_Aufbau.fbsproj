@@ -212,7 +212,7 @@ IF ( bpCheck ) THEN
       Antrieb.rpGeschwindigkeit := 0.0;
 
       IF ( InGlasTransportVorgaenger.bBereitZumAustransport ) THEN
-        rlPositionAntriebBeiStart := ABS(Antrieb.rpIstPosition);
+        rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
         steplCheck := STEP_410_E;
       END_IF
 
@@ -251,7 +251,7 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_900_E;
       END_IF
 
-      IF ( ABS(rlPositionAntriebBeiStart - ABS(Antrieb.rpIstPosition) ) >= ppParameterBaustein.rLaengeStation ) THEN
+      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition ) >= ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_NICHT_FREI;
         steplCheck := STEP_900_E;
@@ -312,7 +312,7 @@ IF ( bpCheck ) THEN
           bpOutBereitZumAustransport := FALSE;
 
           IF ( bpSensorEinlauf ) THEN
-            rlPositionAntriebBeiStart  := ABS(Antrieb.rpIstPosition);
+            rlPositionAntriebBeiStart  := Antrieb.rpIstPosition;
             steplCheck := STEP_530_E;
           ELSE
             bpCheckMitVorgaenger := FALSE;
@@ -349,7 +349,7 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_900_E;
       END_IF
 
-      IF ( ABS( rlPositionAntriebBeiStart - ABS(Antrieb.rpIstPosition) ) > ppParameterBaustein.rLaengeStation ) THEN
+      IF ( ABS( rlPositionAntriebBeiStart - Antrieb.rpIstPosition ) > ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_NICHT_FREI;
         steplCheck := STEP_900_E;
@@ -425,7 +425,7 @@ IF ( bpCheck ) THEN
           bpOutBereitZumAustransport := FALSE;
 
           IF ( bpSensorAuslauf ) THEN
-            rlPositionAntriebBeiStart  := ABS(Antrieb.rpIstPosition);
+            rlPositionAntriebBeiStart  := Antrieb.rpIstPosition;
             steplCheck := STEP_640_E;
           ELSE
             bpCheckMitNachfolger := FALSE;
@@ -462,7 +462,7 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_900_E;
       END_IF
 
-      IF ( ABS( rlPositionAntriebBeiStart - ABS(Antrieb.rpIstPosition) ) > ppParameterBaustein.rLaengeStation ) THEN
+      IF ( ABS( rlPositionAntriebBeiStart - Antrieb.rpIstPosition ) > ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_NICHT_FREI;
         steplCheck := STEP_900_E;

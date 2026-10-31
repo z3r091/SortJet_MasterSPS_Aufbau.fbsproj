@@ -184,8 +184,8 @@ bpPositionierungAbgeschlossen := bpDone AND NOT bpPositionieren;
     - Wurde die Zielposition aus dem Auftrag erreicht, bzw. stimmt die aktuelle Shuttleposition mit der
       Position aus dem Auftrag ueberein.
 *)
-bpZielPositionErreicht := ( ( ABS( ABS(Antrieb.rpIstPosition) - ABS(argZuletztQuittiertePositionShuttle[stStationsNummern.NummerSPS]) ) <= rgMKZielPositionToleranz )
+bpZielPositionErreicht := ( ( ABS( Antrieb.rpIstPosition - argZuletztQuittiertePositionShuttle[stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )
                             OR
-                            ( ABS( ABS(rpZielposition) - ABS(argZuletztQuittiertePositionShuttle[stStationsNummern.NummerSPS]) ) <= rgMKZielPositionToleranz )
-                            OR  ( ABS(ABS(rpZielposition) - ABS(Antrieb.rpIstPosition) ) <= rgMKZielPositionToleranz ) );
+                            ( ABS( rpZielposition - argZuletztQuittiertePositionShuttle[stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )
+                            OR  ( ABS( rpZielposition - Antrieb.rpIstPosition ) <= rgMKZielPositionToleranz ) );
 END_FUNCTION_BLOCK

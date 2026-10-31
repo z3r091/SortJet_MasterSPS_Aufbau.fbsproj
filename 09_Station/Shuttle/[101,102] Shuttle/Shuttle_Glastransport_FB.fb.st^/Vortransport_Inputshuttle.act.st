@@ -37,7 +37,7 @@ THEN
       *)
       IF ( NOT bpSensorAuslauf ) THEN
 
-        rlAntriebIstPositionBeiStart := ABS( Antrieb.rpIstPosition );
+        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
         IF ( bpSensorAuslaufVorab ) THEN
           Antrieb.rpGeschwindigkeit := rgGeschwindigkeit20;
@@ -89,7 +89,7 @@ THEN
          - Glas moeglicherweise verkeilt \ gebrochen da der Auslaufsensor nicht schaltet
            bzw. nicht angefahren wird (Stationslaemge abfahren)
       *)
-      IF ( ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rLaengeStation ) THEN
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
         steplVortransport := STEP_900_E;

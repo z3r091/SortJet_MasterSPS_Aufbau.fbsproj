@@ -38,7 +38,7 @@ THEN
       IF (  NOT bpSensorEinlaufVorab
         AND pAuftrag.rModellVersatzVorne = 0 )
       THEN
-        rlAntriebIstPositionBeiStart := ABS(Antrieb.rpIstPosition);
+        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeitVorpositionieren;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -76,7 +76,7 @@ THEN
          - Wegueberwachung
          - Sensorik
       *)
-      IF ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rLaengeStation THEN
+      IF ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_UND_EINLAUFVORAB_SCHALTEN_NICHT;
         steplVortransportRueckwertig := STEP_900_E;

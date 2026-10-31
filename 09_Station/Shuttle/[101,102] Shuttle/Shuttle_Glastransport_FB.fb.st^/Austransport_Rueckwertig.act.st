@@ -104,7 +104,7 @@ THEN
          - Sensorik pruefen [Restweg Positioniert]
       *)
       IF ( NOT bpSensorEinlauf ) THEN
-        rlAntriebIstPositionBeiStart  := ABS( Antrieb.rpIstPosition );
+        rlAntriebIstPositionBeiStart  := Antrieb.rpIstPosition;
 
         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -137,7 +137,7 @@ THEN
          Antriebsdrosseln.
       *)
       IF ( bpSensorEinlaufVorab ) THEN
-        rlAntriebIstPositionBeiStart  := ABS(Antrieb.rpIstPosition);
+        rlAntriebIstPositionBeiStart  := Antrieb.rpIstPosition;
         Antrieb.rpGeschwindigkeit     := rgGeschwindigkeit10;
         steplAustransportRueckwaertig := STEP_120_E;
       END_IF
@@ -146,7 +146,7 @@ THEN
          - kein Glas auf der Station ( Stationslaemge abfahren)
          - Antrieb
       *)
-      IF ( ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rLaengeStation ) THEN
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_UND_AUSLAUFVORAB_SCHALTEN_NICHT;
         steplAustransportRueckwaertig := STEP_900_E;
@@ -167,7 +167,7 @@ THEN
 
       (* Ausnahmesituation
       *)
-      IF ( ABS(rlAntriebIstPositionBeiStart - ABS(Antrieb.rpIstPosition)) > ppParameterBaustein.rUeberwachungAuslaufsensor ) THEN
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rUeberwachungAuslaufsensor ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
         steplAustransportRueckwaertig := STEP_900_E;
@@ -301,7 +301,7 @@ THEN
 
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
         bpOutBereitZumAustransport := FALSE;
-        rlAntriebIstPositionBeiStart := ABS(Antrieb.rpIstPosition);
+        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
         IF ( NOT bpSensorEinlauf ) THEN
@@ -356,7 +356,7 @@ THEN
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
-      IF ( ABS(rlAntriebIstPositionBeiStart - ABS (Antrieb.rpIstPosition)) > ppParameterBaustein.rLaengeStation ) THEN
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
         bpOutBereitZumAustransport := FALSE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;

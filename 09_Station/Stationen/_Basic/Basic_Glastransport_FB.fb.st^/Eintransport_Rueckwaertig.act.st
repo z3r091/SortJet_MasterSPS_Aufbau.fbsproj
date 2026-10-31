@@ -142,7 +142,7 @@ THEN
       END_IF                     
 
        // Antriebsposition merken
-       rlPositionAntriebBeiStart := ABS(Antrieb.rpIstPosition);
+       rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
 
       IF ( NOT bpSensorAuslauf ) THEN
 		  
@@ -186,7 +186,7 @@ THEN
       // Sicherstellen das der Einlaufsensor auch überfahren wurde
       IF ( bpSensorAuslauf ) THEN
         bprtScheibe := FALSE;
-        rlPositionScheibenAnfangErkannt := rlPositionAntriebBeiStart := ABS(Antrieb.rpIstPosition);
+        rlPositionScheibenAnfangErkannt := rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
         steplEintransportRueckwaertig := STEP_120_E;
       END_IF
 
@@ -196,7 +196,7 @@ THEN
       *)
       IF ( pAuftrag.bErsteScheibe ) THEN
 
-        IF ( ABS(rlPositionAntriebBeiStart - ABS(Antrieb.rpIstPosition))
+        IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition)
              >  ( ppParameterBaustein.rLaengeStation * 4 ) )
         THEN
           Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -206,7 +206,7 @@ THEN
 
       ELSE
 
-        IF ( ABS(rlPositionAntriebBeiStart - ABS(Antrieb.rpIstPosition))
+        IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition)
             >  (ppParameterBaustein.rUeberwachungEinlaufsensor) )
         THEN
           wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
@@ -239,7 +239,7 @@ THEN
 
         IF (  ilScheibenZaehler = 1 ) THEN
 
-      	  IF ( ( ABS(rlPositionScheibenAnfangErkannt - ABS(Antrieb.rpIstPosition)) >= rlStreckeBisZurVerzoegerung ) )  THEN
+      	  IF ( ( ABS(rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) )  THEN
             IF blReduzierteGeschwindigkeit THEN
               Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
             ELSE
@@ -304,7 +304,7 @@ THEN
 
         IF (  ilScheibenZaehler = 1 ) THEN
 
-      	  IF ( ( ABS(rlPositionScheibenAnfangErkannt - ABS(Antrieb.rpIstPosition)) >= rlStreckeBisZurVerzoegerung )) THEN
+      	  IF ( ( ABS(rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung )) THEN
             IF blReduzierteGeschwindigkeit THEN
               Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
             ELSE
