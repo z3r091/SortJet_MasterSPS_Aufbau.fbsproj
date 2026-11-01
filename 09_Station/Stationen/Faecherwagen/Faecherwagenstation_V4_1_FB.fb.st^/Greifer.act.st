@@ -11,14 +11,14 @@ ACTION Greifer
 (***************************************************************************************************)
 
 IF ( blGreiferOeffnen 
-//  AND blUntergestellErkannt //safety eingang
- AND NOT blLinearEinheitSH // Der Greifer darf nicht geöffnet werden, wenn die Lineareinheit auf der Übergabeposition zum Shuttle steht. 
-                   // Andernfalls können wir den Wagen nicht mehr greifen, da wir die Lineareinheit nur ganz nach vorn/hinten fahren können 
-  (*AND BasisStationsParameter.bFreigabe*) )
+     //  AND blUntergestellErkannt //safety eingang
+     AND NOT blLinearEinheitSH // Der Greifer darf nicht geöffnet werden, wenn die Lineareinheit auf der Übergabeposition zum Shuttle steht. 
+   // Andernfalls können wir den Wagen nicht mehr greifen, da wir die Lineareinheit nur ganz nach vorn/hinten fahren können 
+   (*AND BasisStationsParameter.bFreigabe*) )
 THEN
   CASE steplGreiferOeffnen OF
 
-(* Greifer ÖFFNEN  ============================*)
+    (* Greifer ÖFFNEN  ============================*)
     STEP_0_E:
       blGreiferOeffnenDone := FALSE;
 
@@ -29,14 +29,14 @@ THEN
       THEN
         steplGreiferOeffnen := STEP_1000_E;
       ELSE
-    IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+        IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
           out_bGreiferEinfahren := TRUE;
           out_bGreiferAusfahren  := FALSE;
           steplGreiferOeffnen := STEP_10_E;
-    END_IF
+        END_IF
       END_IF
 
-(* Greifer ÖFFNEN  ============================*)
+    (* Greifer ÖFFNEN  ============================*)
     STEP_10_E:
       tonlGreiferAufZu( IN := blGreiferOffen, PT := T#0.5S );
       tonlTimeoutGreiferAufZu(IN := NOT blGreiferOffen, PT := TIMEOUT_SENSOR);
@@ -51,28 +51,28 @@ THEN
       *)
 
       IF tonlTimeoutGreiferAufZu.Q THEN
-         wpFehlerNr := cMELDUNG_FAECHERWAGEN_GREIFER_NICHT_OFFEN;
-         SpsError( eFehler_Station,
-                   wpFehlerNr, 
-                   BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
-                   BasisStationsParameter.awFehlerInformationen );
+        wpFehlerNr := cMELDUNG_FAECHERWAGEN_GREIFER_NICHT_OFFEN;
+        SpsError( eFehler_Station,
+                  wpFehlerNr, 
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  BasisStationsParameter.awFehlerInformationen );
 
-         steplGreiferOeffnen := STEP_900_E;
+        steplGreiferOeffnen := STEP_900_E;
       END_IF
 
 
-(* Greifer ÖFFNEN  ============================*)
+    (* Greifer ÖFFNEN  ============================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       out_bGreiferEinfahren := FALSE;
 
 
-(* Greifer ÖFFNEN  ============================*)
+    (* Greifer ÖFFNEN  ============================*)
     STEP_1000_E:
       blGreiferOeffnenDone:=TRUE;
 
-   END_CASE
+  END_CASE
 END_IF
 
 IF NOT blGreiferOeffnen THEN
@@ -98,13 +98,13 @@ END_IF
 (***************************************************************************************************)
 
 IF blGreiferSchliessen 
-   (*AND BasisStationsParameter.bFreigabe*)
+(*AND BasisStationsParameter.bFreigabe*)
 //  AND blUntergestellErkannt //safety eingang
 // AND NOT in_bFaecherwagenNichtInPos // Gestell ist auf dem Wagen
 THEN
   CASE steplGreiferSchliessen OF
 
-(* Greifer SCHLIESSEN ============================*)
+    (* Greifer SCHLIESSEN ============================*)
     STEP_0_E:
       blGreiferSchliessenDone := FALSE;
 
@@ -115,14 +115,14 @@ THEN
       THEN
         steplGreiferSchliessen := STEP_1000_E;
       ELSE
-    IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+        IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
           out_bGreiferAusfahren := TRUE;
           out_bGreiferEinfahren  := FALSE;
           steplGreiferSchliessen := STEP_10_E;
-    END_IF
+        END_IF
       END_IF
 
-(* Greifer SCHLIESSEN  ============================*)
+    (* Greifer SCHLIESSEN  ============================*)
     STEP_10_E:
       tonlGreiferAufZu( IN := blGreiferZu, PT := T#0.5S );
       tonlTimeoutGreiferAufZu(IN := NOT blGreiferZu, PT := TIMEOUT_SENSOR);
@@ -137,29 +137,29 @@ THEN
       *)
 
       IF tonlTimeoutGreiferAufZu.Q THEN
-         wpFehlerNr := cMELDUNG_FAECHERWAGEN_GREIFER_NICHT_GESCHLOSSEN;
-         SpsError( eFehler_Station,
-                   wpFehlerNr, 
-                   BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
-                   BasisStationsParameter.awFehlerInformationen );
+        wpFehlerNr := cMELDUNG_FAECHERWAGEN_GREIFER_NICHT_GESCHLOSSEN;
+        SpsError( eFehler_Station,
+                  wpFehlerNr, 
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  BasisStationsParameter.awFehlerInformationen );
 
-         steplGreiferSchliessen := STEP_900_E;
+        steplGreiferSchliessen := STEP_900_E;
       END_IF
 
 
-(* Greifer SCHLIESSEN  ============================*)
+    (* Greifer SCHLIESSEN  ============================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       out_bGreiferAusfahren := FALSE;
 
 
-(* Greifer SCHLIESSEN ============================*)
+    (* Greifer SCHLIESSEN ============================*)
     STEP_1000_E:
       blGreiferSchliessenDone:=TRUE;
 
-(* Greifer AUF ============================*)
-   END_CASE
+  (* Greifer AUF ============================*)
+  END_CASE
 END_IF
 
 IF NOT blGreiferSchliessen THEN

@@ -12,7 +12,7 @@ ACTION Reset
 IF ( bpReset ) THEN
 
   CASE steplReset OF
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_0_E:
       bpDone := FALSE;
 
@@ -23,17 +23,17 @@ IF ( bpReset ) THEN
 
       Antrieb.wpBetriebsart:= KEINE_FUNKTION;
 
-    IF NOT Antrieb.bpAntrieblaeuft THEN
+      IF NOT Antrieb.bpAntrieblaeuft THEN
         steplReset := STEP_10_E;
-    END_IF
+      END_IF
 
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_10_E:
       Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.RESET;
 
       steplReset := STEP_20_E;
 
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_20_E:
       IF( Antrieb.bpDone )THEN
         Antrieb.wpBetriebsart:= KEINE_FUNKTION;
@@ -49,17 +49,17 @@ IF ( bpReset ) THEN
         steplReset := STEP_900_E;
       END_IF
 
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_1000_E:
       wpFehlerNr := cMELDUNG_NULL;
       bpFehler := FALSE;
       bpDone := TRUE;
 
-(*RESET ===============================*)
+  (*RESET ===============================*)
   END_CASE
 
 END_IF

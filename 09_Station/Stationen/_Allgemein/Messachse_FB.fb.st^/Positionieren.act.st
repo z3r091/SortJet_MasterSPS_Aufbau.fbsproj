@@ -21,7 +21,7 @@ IF( bpPositionierung ) THEN
   
   
   CASE steplPositionieren OF
-(* POSITIONIEREN ====================*)
+    (* POSITIONIEREN ====================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen
@@ -45,18 +45,18 @@ IF( bpPositionierung ) THEN
           END_IF
 
         ELSE
-         steplPositionieren := STEP_1000_E;
+          steplPositionieren := STEP_1000_E;
         END_IF
 
-     END_IF
+      END_IF
 
-(* POSITIONIEREN ====================*)
+    (* POSITIONIEREN ====================*)
     STEP_10_E:
       tonlEndschalterFreifahren(IN := TRUE, PT:= T#10s);
 
       toflHardwareEndschalterFrei( IN := (  Antrieb.bpMinSchalterBelegt
-                                         OR Antrieb.bpMaxSchalterBelegt ),
-                                  PT := t#1s);
+                                           OR Antrieb.bpMaxSchalterBelegt ),
+                                   PT := t#1s);
 
       Antrieb.rpGeschwindigkeit  := ppAntriebsInformationen.rpReferenzGeschwindigkeit;
       Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -84,20 +84,20 @@ IF( bpPositionierung ) THEN
          - Antrieb
        *)
       IF ( tonlEndschalterFreifahren.Q
-        AND  Antrieb.bpMinSchalterBelegt )
-     THEN
-       Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-       wpFehlerNr := cMELDUNG_MESSACHSE_MINIMUM_ENDSCHALTER_BELEGT;
-       steplPositionieren := STEP_900_E;
-     END_IF
+           AND  Antrieb.bpMinSchalterBelegt )
+      THEN
+        Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_MESSACHSE_MINIMUM_ENDSCHALTER_BELEGT;
+        steplPositionieren := STEP_900_E;
+      END_IF
 
-     IF ( Antrieb.bpFehler ) THEN
-       Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-       wpFehlerNr := cMELDUNG_ANTRIEB_MESSACHSE;
-       steplPositionieren := STEP_900_E;
-     END_IF
+      IF ( Antrieb.bpFehler ) THEN
+        Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_ANTRIEB_MESSACHSE;
+        steplPositionieren := STEP_900_E;
+      END_IF
 
-(* POSITIONIEREN ====================*)
+    (* POSITIONIEREN ====================*)
     STEP_20_E:
       (* Hinweis:
          - Erzwungene Pause, damit der Lenze Antrieb wieder ordnungsgemäß schaltet
@@ -117,7 +117,7 @@ IF( bpPositionierung ) THEN
         steplPositionieren := STEP_900_E;
       END_IF
 
-(* POSITIONIEREN ====================*)
+    (* POSITIONIEREN ====================*)
     STEP_100_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< STARTEN DER POSITIONIERUNG >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -133,22 +133,22 @@ IF( bpPositionierung ) THEN
 
       steplPositionieren := STEP_110_E;
 
-(* POSITIONIEREN ====================*)
+    (* POSITIONIEREN ====================*)
     STEP_110_E:
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
         steplPositionieren := STEP_1000_E;
       END_IF
 
-(* POSITIONIEREN ====================*)
+    (* POSITIONIEREN ====================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* POSITIONIEREN ====================*)
+    (* POSITIONIEREN ====================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(* POSITIONIEREN ====================*)
+  (* POSITIONIEREN ====================*)
   END_CASE
 ELSE
   IF( steplPositionieren > STEP_0_E )THEN

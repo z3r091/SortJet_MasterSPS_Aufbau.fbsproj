@@ -20,7 +20,7 @@ END_VAR
 (* LOGIK  *)
 (***************************************************************************************************)
 IF (  wpWert >= wpIntervallMin
-  AND wpWert <= wpIntervallMax )
+     AND wpWert <= wpIntervallMax )
 THEN
   PruefungWertImIntervall := TRUE;
 ELSE

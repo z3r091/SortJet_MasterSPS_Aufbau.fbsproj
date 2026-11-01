@@ -40,7 +40,7 @@ END_VAR
 (***************************************************************************************************)
 IF ( Auftragsdaten.wAuftrag = eStation_Abnehmen ) THEN
   CASE steplSchritt OF
-(* ABNEHMEN ================================= *)
+    (* ABNEHMEN ================================= *)
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -49,26 +49,26 @@ IF ( Auftragsdaten.wAuftrag = eStation_Abnehmen ) THEN
         steplSchritt := STEP_10_E;
       END_IF
 
-(* ABNEHMEN ================================= *)
+    (* ABNEHMEN ================================= *)
     STEP_10_E:
       starrStationBasisParameter[wStation].pAuftrag[cWAND_1] := Auftragsdaten;
       starrStationBasisParameter[wStation].bAbnehmen := TRUE;
 
       steplSchritt := STEP_20_E;
 
-(* ABNEHMEN ================================= *)
+    (* ABNEHMEN ================================= *)
     STEP_20_E:
       IF (  starrStationBasisParameter[wStation].OutGlasTransport[cWAND_1].bQuittScheibe
-        AND ilScheibenZuQuittieren > 0 )
+           AND ilScheibenZuQuittieren > 0 )
       THEN
         ilScheibenZuQuittieren := ilScheibenZuQuittieren - 1;
       END_IF
 
       IF (ilScheibenZuQuittieren <= 0 ) THEN
-         steplSchritt := STEP_30_E;
+        steplSchritt := STEP_30_E;
       END_IF
 
-(* ABNEHMEN ================================= *)
+    (* ABNEHMEN ================================= *)
     STEP_30_E:
       (* Hinweis:
          - Glas wurde abgenommen
@@ -89,10 +89,10 @@ IF ( Auftragsdaten.wAuftrag = eStation_Abnehmen ) THEN
         steplSchritt := STEP_1000_E;
       END_IF
 
-       (* Fehlerbehandlung:
-          - Anlegewand
-       *)
-       IF ( starrStationBasisParameter[wStation].bFehler ) THEN
+      (* Fehlerbehandlung:
+         - Anlegewand
+      *)
+      IF ( starrStationBasisParameter[wStation].bFehler ) THEN
         SpsError( eFehler_Station,
                   starrStationBasisParameter[wStation].wFehlerNummer,
                   starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
@@ -103,16 +103,16 @@ IF ( Auftragsdaten.wAuftrag = eStation_Abnehmen ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-(* ABNEHMEN ================================= *)
+    (* ABNEHMEN ================================= *)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* ABNEHMEN ================================= *)
+    (* ABNEHMEN ================================= *)
     STEP_1000_E:
       bpDone := TRUE;
       Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
 
-(* ABNEHMEN ================================= *)
+  (* ABNEHMEN ================================= *)
   END_CASE
 END_IF
 

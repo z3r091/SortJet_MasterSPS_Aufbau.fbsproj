@@ -10,7 +10,7 @@ ACTION Messkopplung
 (* AKTION MESSKOPPLUNG *)
 (***************************************************************************************************)
 IF (  BasisStationsParameter.bMesskopplung[cWAND_1]
-  AND blBetriebsartAutomatik )
+     AND blBetriebsartAutomatik )
 THEN
 
   // Ausnahmesituation
@@ -29,7 +29,7 @@ THEN
   
    
   CASE steplMesskopplung OF
-(* MESSKOPPLUNG ===================================*)
+    (* MESSKOPPLUNG ===================================*)
     STEP_0_E:
       (* Anmerkung:
          - Kipptisch in Grundstellung schwenken 
@@ -38,16 +38,16 @@ THEN
 
       steplMesskopplung := STEP_10_E;
 
-(* MESSKOPPLUNG ===================================*)
+    (* MESSKOPPLUNG ===================================*)
     STEP_10_E:
       Kippen.bpStartKippenAb := TRUE;
 
       steplMesskopplung := STEP_20_E;
 
-(* MESSKOPPLUNG ===================================*)
+    (* MESSKOPPLUNG ===================================*)
     STEP_20_E:
       IF (  ( Kippen.bpDone )
-        AND ( Kippen.epKippStatus = eKippen_Position_0Grad ) )
+           AND ( Kippen.epKippStatus = eKippen_Position_0Grad ) )
       THEN
         Querfahrt.bpPositionieren := FALSE;
         Kippen.bpStartKippenAb    := FALSE;
@@ -55,22 +55,22 @@ THEN
         steplMesskopplung := STEP_30_E;
       END_IF
 
-(* MESSKOPPLUNG ===================================*)
+    (* MESSKOPPLUNG ===================================*)
     STEP_30_E:
       (* Anmerkung:
          - Starten des Prozesses
       *)
       Glastransport.bpMesskopplung := TRUE;
 
-(* MESSKOPPLUNG ===================================*)
-   STEP_900_E:
-     BasisStationsParameter.bFehler := TRUE;
+    (* MESSKOPPLUNG ===================================*)
+    STEP_900_E:
+      BasisStationsParameter.bFehler := TRUE;
 
-(* MESSKOPPLUNG ===================================*)
-   STEP_1000_E:
-     BasisStationsParameter.bMesskopplungAbgeschlossen[cWAND_1] := TRUE;
+    (* MESSKOPPLUNG ===================================*)
+    STEP_1000_E:
+      BasisStationsParameter.bMesskopplungAbgeschlossen[cWAND_1] := TRUE;
 
-(* MESSKOPPLUNG ===================================*)
+  (* MESSKOPPLUNG ===================================*)
   END_CASE
 ELSE
 

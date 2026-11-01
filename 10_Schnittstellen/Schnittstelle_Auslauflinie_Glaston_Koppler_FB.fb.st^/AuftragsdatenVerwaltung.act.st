@@ -23,8 +23,8 @@ END_IF
       => Schreiben auf die IO- Schnittstelle bzw. DP\DP - Schnittstelle
 *)
 IF (  NOT AuftragsSpeicher.bpWarteschlangeLeer
-  AND NOT BasisStationsParameter.bAuftragAktiv
-  AND NOT bpAuftragsdatenVorhanden )
+     AND NOT BasisStationsParameter.bAuftragAktiv
+     AND NOT bpAuftragsdatenVorhanden )
 THEN
   BasisStationsParameter.bAuftragAktiv := TRUE;
   bpAuftragsdatenVorhanden := TRUE;
@@ -64,13 +64,13 @@ IF ( bpAuftragsdatenVorhanden ) THEN
   *)
   IF ( in_bEmpfaengerAuftragsdatenErhalten ) THEN
 
-      IF( SysMemCmp( ADR( out_awSenderLadeID ), ADR( in_awEmpfaengerLadeIDGespiegelt ), SIZEOF( out_awSenderLadeID ) ) = 0 )THEN
-        out_bSenderAuftragdatenPlausibel := TRUE ;
+    IF( SysMemCmp( ADR( out_awSenderLadeID ), ADR( in_awEmpfaengerLadeIDGespiegelt ), SIZEOF( out_awSenderLadeID ) ) = 0 )THEN
+      out_bSenderAuftragdatenPlausibel := TRUE ;
       
-      ELSE
-        out_bSenderAuftragdatenPlausibel := FALSE ;
+    ELSE
+      out_bSenderAuftragdatenPlausibel := FALSE ;
       
-      END_IF
+    END_IF
 
   END_IF
 
@@ -86,7 +86,7 @@ IF ( bpAuftragsdatenVorhanden ) THEN
     bpAuftragsdatenVorhanden := FALSE;
 
     IF NOT out_bSenderAuftragdatenPlausibel THEN
-        blFehlermeldungGenerierenAuftragsdaten := TRUE;
+      blFehlermeldungGenerierenAuftragsdaten := TRUE;
     END_IF
 
   END_IF

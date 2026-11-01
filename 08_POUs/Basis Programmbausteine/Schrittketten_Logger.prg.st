@@ -19,40 +19,40 @@ VAR
 
 
 END_VAR
-  sBezeichnung[0]   := ' - ';
-  wiSchrittkette[0] := 0;     
+sBezeichnung[0]   := ' - ';
+wiSchrittkette[0] := 0;     
 
-  sBezeichnung[1]   := ' - ';
-  wiSchrittkette[1] := 0;    
+sBezeichnung[1]   := ' - ';
+wiSchrittkette[1] := 0;    
 
-  sBezeichnung[2]   :=  ' - ';
-  wiSchrittkette[2] :=  0;       
+sBezeichnung[2]   :=  ' - ';
+wiSchrittkette[2] :=  0;       
 
-  sBezeichnung[3]   :=  ' - ';
-  wiSchrittkette[3] :=  0;    
+sBezeichnung[3]   :=  ' - ';
+wiSchrittkette[3] :=  0;    
 
-  sBezeichnung[4]   := ' - ';
-  wiSchrittkette[4] := 0;
+sBezeichnung[4]   := ' - ';
+wiSchrittkette[4] := 0;
 
-  sBezeichnung[5]   := ' - ';
-  wiSchrittkette[5] := 0;    
+sBezeichnung[5]   := ' - ';
+wiSchrittkette[5] := 0;    
 
-  sBezeichnung[6]   := ' - ';
-  wiSchrittkette[6] := 0;
+sBezeichnung[6]   := ' - ';
+wiSchrittkette[6] := 0;
 
-  sBezeichnung[7]   := ' - ';
-  wiSchrittkette[7] := 0;
+sBezeichnung[7]   := ' - ';
+wiSchrittkette[7] := 0;
 
-  FOR i := 0 TO 7 DO
+FOR i := 0 TO 7 DO
 
-    IF(wiSchrittkette[i] <> wlSchrittkette[i,31])THEN;
+  IF(wiSchrittkette[i] <> wlSchrittkette[i,31])THEN;
 
-      FOR j := 0 TO 30 DO
-        wlSchrittkette[i,j] := wlSchrittkette[i,j+1];
-      END_FOR
+    FOR j := 0 TO 30 DO
+      wlSchrittkette[i,j] := wlSchrittkette[i,j+1];
+    END_FOR
 
-      wlSchrittkette[i,31] := wiSchrittkette[i];
-    END_IF
+    wlSchrittkette[i,31] := wiSchrittkette[i];
+  END_IF
 
-  END_FOR
+END_FOR
 END_PROGRAM

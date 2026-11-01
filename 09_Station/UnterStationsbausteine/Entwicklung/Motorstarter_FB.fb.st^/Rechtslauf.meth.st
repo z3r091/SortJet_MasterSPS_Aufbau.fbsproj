@@ -17,9 +17,9 @@ Rechtslauf := FALSE;
 
 tonlMaxWarteZeit( IN := TRUE, PT:= T#4000MS );
 IF ( tonlMaxWarteZeit.Q )THEN
-   bpFehler := TRUE;
-   wpFehlerNr := cMELDUNG_MOTORSTARTER_FEHLER_RECHTSLAUF_OK;
-   out_bRechtslauf := FALSE;
+  bpFehler := TRUE;
+  wpFehlerNr := cMELDUNG_MOTORSTARTER_FEHLER_RECHTSLAUF_OK;
+  out_bRechtslauf := FALSE;
 END_IF
 
 out_bRechtslauf := bpSensorNotNockeRechtslauf;

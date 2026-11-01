@@ -11,7 +11,7 @@ ACTION Systemcheck
 (***************************************************************************************************)
 IF ( BasisStationsParameter.bCheck AND NOT BasisStationsParameter.bReset ) THEN
   CASE steplCheck OF
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_0_E:
 
       BasisStationsParameter.bCheckAbgeschlossen := FALSE;
@@ -23,7 +23,7 @@ IF ( BasisStationsParameter.bCheck AND NOT BasisStationsParameter.bReset ) THEN
         steplCheck := STEP_900_E;
       END_IF
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_5_E:
       (* Hinweis:
          - Prüfen ob der Antrieb bereit für den Systemcheck ist      
@@ -40,12 +40,12 @@ IF ( BasisStationsParameter.bCheck AND NOT BasisStationsParameter.bReset ) THEN
 
       END_IF
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_10_E:
       (* Anmerkung:
          - Starten des SystemChecks [Glastransport]
       *)
-    Glastransport.pAuftrag                := BasisStationsParameter.pAuftrag[cWAND_1];
+      Glastransport.pAuftrag                := BasisStationsParameter.pAuftrag[cWAND_1];
       Glastransport.wpSystemCheckMitStation := 0; (* wpSystemCheckMitStation;*)
       Glastransport.wpSystemCheckMitWand    := 0; (* wpSystemCheckMitWand;*)
 
@@ -58,7 +58,7 @@ IF ( BasisStationsParameter.bCheck AND NOT BasisStationsParameter.bReset ) THEN
 
       steplCheck := STEP_20_E;
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_20_E:
       (* Hinweis:
          - SystemCheck erfolgreich
@@ -79,23 +79,23 @@ IF ( BasisStationsParameter.bCheck AND NOT BasisStationsParameter.bReset ) THEN
       END_IF
 
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_900_E:
       (* Fehlerschritt
       *)
       BasisStationsParameter.bFehler := TRUE;
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_1000_E:
       BasisStationsParameter.bCheckAbgeschlossen := TRUE;
 
-(*SYSTEM CHECK=========================*)
+  (*SYSTEM CHECK=========================*)
   END_CASE
 ELSE
   IF ( steplCheck > STEP_0_E ) THEN
     BasisStationsParameter.bCheckAbgeschlossen := FALSE;
     Glastransport.bpCheck := FALSE;
-  Glastransport.bpCheckMitVorgaenger    := FALSE;
+    Glastransport.bpCheckMitVorgaenger    := FALSE;
     Glastransport.bpCheckMitNachfolger    := FALSE;
     steplCheck := STEP_0_E;
   END_IF

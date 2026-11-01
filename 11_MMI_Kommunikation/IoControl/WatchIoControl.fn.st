@@ -7,13 +7,13 @@
 *)
 FUNCTION WatchIoControl : BOOL
 VAR_INPUT
- tpTimeOut      : TIME;
- wpControlIndex : WORD;
- bpStatus       : BOOL;
+  tpTimeOut      : TIME;
+  wpControlIndex : WORD;
+  bpStatus       : BOOL;
 END_VAR
 VAR
- blResult    : BOOL;
- tlLaufzeit  : TIME;
+  blResult    : BOOL;
+  tlLaufzeit  : TIME;
 END_VAR
 
 blResult := FALSE;

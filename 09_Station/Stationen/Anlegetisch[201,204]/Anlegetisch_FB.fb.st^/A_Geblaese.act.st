@@ -22,7 +22,7 @@ rtlTasterGeblaese( CLK := (    in_bTasterGeblaese1Ein
 rtlAnlegen( CLK := BasisStationsParameter.bAnlegen OR BasisStationsParameter.bEintransport[cWAND_1] );
 
 ftlGeblaese( CLK:=(   dwlHandfunktionen.0
-                   OR bgVISUGeblaese[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] ) );
+                    OR bgVISUGeblaese[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] ) );
 
 
 tofGeblaeseFreigabeAusschalten ( IN := out_bGeblaese1Ein OR out_bGeblaese2Ein,
@@ -44,9 +44,9 @@ ftTonGeblaesePowerSaving(CLK :=     toflGeblaeseEnergiesparModus.Q AND ( out_bGe
 IF ( blBetriebsartAutomatik ) THEN
 
   IF (  ftTonGeblaesePowerSaving.Q
-    OR  BasisStationsParameter.bReset
-    OR NOT in_bSensorKippsicherungGeschlossen
-    OR NOT in_bSensorKipptischUnten )
+       OR  BasisStationsParameter.bReset
+       OR NOT in_bSensorKippsicherungGeschlossen
+       OR NOT in_bSensorKipptischUnten )
   THEN
     out_bGeblaese1Ein          := FALSE;
     out_bGeblaese2Ein          := FALSE;
@@ -55,7 +55,7 @@ IF ( blBetriebsartAutomatik ) THEN
     rtlTasterGeblaese(CLK:=FALSE);
 
   ELSIF ( rtlTasterGeblaese.Q
-    OR    rtlGeblaese.Q )
+          OR    rtlGeblaese.Q )
   THEN
 
     (* Hinweis:
@@ -71,8 +71,8 @@ IF ( blBetriebsartAutomatik ) THEN
        eine bestimmte Zeit aktiv war
   *)
   IF (  rtlTasterGeblaese.Q
-    AND tofGeblaeseFreigabeAusschalten.Q
-    AND in_bDrehzahlErreicht )
+       AND tofGeblaeseFreigabeAusschalten.Q
+       AND in_bDrehzahlErreicht )
   THEN
     out_bGeblaese1Ein        := FALSE;
     out_bGeblaese2Ein        := FALSE;
@@ -85,12 +85,12 @@ ELSE
   blMerkerDrosselklappeAuf := in_bDrehzahlErreicht;
 
   IF ( rtlGeblaese.Q
-    OR ftlGeblaese.Q
-    OR rtlTasterGeblaese.Q )
-    AND
-    ( ( in_bSensorKippsicherungGeschlossen
-    AND in_bSensorKipptischUnten )
-    OR NOT ( BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1] ) )
+       OR ftlGeblaese.Q
+       OR rtlTasterGeblaese.Q )
+     AND
+     ( ( in_bSensorKippsicherungGeschlossen
+         AND in_bSensorKipptischUnten )
+       OR NOT ( BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1] ) )
 
   THEN
 

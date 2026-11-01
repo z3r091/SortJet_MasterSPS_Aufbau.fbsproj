@@ -11,10 +11,10 @@ ACTION Handfunktionen
 (***************************************************************************************************)
 
 IF (  NOT bpAutomatikAktiv
-  AND NOT bpReferenz
-  AND NOT bpPositionieren
-  AND NOT bpReset
-  AND NOT bgVisuAntriebeVerfahrenAktiv  )
+     AND NOT bpReferenz
+     AND NOT bpPositionieren
+     AND NOT bpReset
+     AND NOT bgVisuAntriebeVerfahrenAktiv  )
 THEN
 
   IF ( bpHandfahrenPlus AND NOT bpHandfahrenMinus ) THEN

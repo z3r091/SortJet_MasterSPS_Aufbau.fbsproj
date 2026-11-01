@@ -34,7 +34,7 @@ VAR
   // Rueckmeldung der Handfunktionen zum MMI
   dwlHandfunktionenZuletztGesendet : DWORD;
 
- // BOOLEAN
+  // BOOLEAN
   blFreigabeGeblaeseStartenSensor : BOOL := FALSE;  // Durch den Einlaufsensor wird das Gebläase gestartet
   blGlasBruchMeldungSperren       : BOOL := FALSE;
   blMerkerDrosselklappeAuf        : BOOL;

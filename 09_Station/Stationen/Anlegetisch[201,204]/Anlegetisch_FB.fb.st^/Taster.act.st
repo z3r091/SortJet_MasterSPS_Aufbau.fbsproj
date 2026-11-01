@@ -20,7 +20,7 @@ rtlTasterGlasbruch(CLK := tonlTasterGlasbruch.Q );
    - Nachrichten ans MMI absetzen .
 *)
 IF (  rtlTasterGlasbruch.Q
-  AND BasisStationsParameter.bAnlegen )
+     AND BasisStationsParameter.bAnlegen )
 THEN
   blGlasBruchMeldungSperren := TRUE;
 
@@ -89,13 +89,13 @@ IF  NOT (steplAnlegen < STEP_30_E) OR NOT BasisStationsParameter.bAnlegen THEN
   ELSIF (Anschlag.bpDone AND blMerkerAnschlagTasterFahren)THEN 
     Anschlag.bpStartEinfahren    := FALSE;
     Anschlag.bpStartAusfahren    := FALSE;
-   blMerkerAnschlagTasterFahren := FALSE;
+    blMerkerAnschlagTasterFahren := FALSE;
     steplAnlegen :=STEP_0_E; 
   ELSIF (blMerkerAnschlagTasterFahren AND Anschlag.bpFehler AND blBetriebsartHand) THEN
     Anschlag.bpStartEinfahren    := FALSE;
     Anschlag.bpStartAusfahren    := FALSE;
-   blMerkerAnschlagTasterFahren := FALSE;
-   Anschlag.bpReset             :=TRUE;
+    blMerkerAnschlagTasterFahren := FALSE;
+    Anschlag.bpReset             :=TRUE;
  
   END_IF
 END_IF

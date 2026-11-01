@@ -62,10 +62,10 @@ ELSIF blReadAxisErrorAktiv THEN
 END_IF
 
 blFehlerAktiv   := (  i_ui_Cia402_StatusWord.3 // Achsfehler
-  OR ( l_mc_ReadStatus.ErrorStop // MC Fehler
-  AND l_mc_ReadAxisError.Valid
-  AND NOT blFreigabeEntziehenAktiv ) // Aktiver Fehler aus MC_ReadAxisError
-  OR blInternerFehler ); // Fehler im Antriebsbaustein
+                     OR ( l_mc_ReadStatus.ErrorStop // MC Fehler
+                          AND l_mc_ReadAxisError.Valid
+                          AND NOT blFreigabeEntziehenAktiv ) // Aktiver Fehler aus MC_ReadAxisError
+                     OR blInternerFehler ); // Fehler im Antriebsbaustein
 
 bpIstReferenziert  := i_ui_Signal_StatusWord.3;
 bpAchseSychron     := l_mc_GearIn.InGear (* AND l_mc_ReadStatus.SynchronizedMotion *);
@@ -101,7 +101,7 @@ bpBeschleunigungAktiv      := l_mc_ReadStatus.Accelerating;
 bpVerzoegerungAktiv        := l_mc_ReadStatus.Decelerating;
 
 bpReglerBereit      := ( PowerSupplyStatus.15 AND PowerSupplyStatus.14 AND PowerSupplyStatus.6 AND PowerSupplyStatus.4 )
-OR ( i_ui_Cia402_StatusWord.0 AND i_ui_Cia402_StatusWord.1 AND i_ui_Cia402_StatusWord.2 );
+                       OR ( i_ui_Cia402_StatusWord.0 AND i_ui_Cia402_StatusWord.1 AND i_ui_Cia402_StatusWord.2 );
 
 // Min- und Max-Position bestimmen
 rlSoftwareLimitMin := TO_REAL(l_ts_MKAxisConfig.lrSoftwareLimitNegative);
@@ -136,7 +136,7 @@ END_IF
 blSoftwareLimitAktiv := ( rpMinPosition <> 0 ) OR ( rpMaxPosition <> 0 );
 
 bpAntriebFreigegeben := (     l_mc_Power.Enable
-  AND l_mc_Power.Status );
+                          AND l_mc_Power.Status );
 
 rpPositionMesstaster1Positiv := TO_REAL(TO_LREAL(diTouchProbe1Pos) / l_ts_MKAxisConfig.lrIncrementsPerDistance * l_ts_MKAxisConfig.lrDistance);
 rpPositionMesstaster1Negativ := TO_REAL(TO_LREAL(diTouchProbe1Neg) / l_ts_MKAxisConfig.lrIncrementsPerDistance * l_ts_MKAxisConfig.lrDistance);

@@ -10,10 +10,10 @@ ACTION Austransport
 (* AKTION: AUSTRANSPORT *)
 (***************************************************************************************************)
 IF (  BasisStationsParameter.bAustransport[cWAND_1]
-  AND BasisStationsParameter.bAutomatik )
+     AND BasisStationsParameter.bAutomatik )
 THEN
   CASE steplAustransport OF
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_0_E:
       (* Hinweis:
          - Status setzen (Resource reservieren)
@@ -30,7 +30,7 @@ THEN
 
       steplAustransport := STEP_20_E;
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_20_E:
       IF ( blZielPositionErreicht ) THEN
         steplAustransport := STEP_30_E;
@@ -42,7 +42,7 @@ THEN
         steplAustransport := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_30_E:
       (* ---------------------------------------------------------------------------------------
       //  OPTIONALE - ABFRAGE DES SICHERHEITSKREISES 
@@ -55,7 +55,7 @@ THEN
       // ---------------------------------------------------------------------------------------*)
 
       IF  ( Sicherheitskreis[BasisStationsParameter.stMKs.eaSicherheitskreis[0]].bpSicherheitskreisGeschlossen
-        AND NOT Sicherheitskreis[BasisStationsParameter.stMKs.eaSicherheitskreis[0]].bpAnforderungSKGestellt )
+            AND NOT Sicherheitskreis[BasisStationsParameter.stMKs.eaSicherheitskreis[0]].bpAnforderungSKGestellt )
       THEN
         blHinweisGenerierenSKAusgeloest := FALSE;
         steplAustransport := STEP_40_E;
@@ -65,7 +65,7 @@ THEN
 
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_40_E:
       (* Anmerkung:
          - Shuttle steht an der gewuenschten Position und es kann mit dem Eintransport begonnen werden
@@ -78,7 +78,7 @@ THEN
 
       steplAustransport := STEP_50_E;
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_50_E:
       (* Hinweis:
          - Resource freigeben wenn es zu keinem Fehler gekommen ist
@@ -90,24 +90,24 @@ THEN
         steplAustransport := STEP_1000_E;
       END_IF
 
-     (* Fehlerbehandlung:
-        - Glastransport
-     *)
+      (* Fehlerbehandlung:
+         - Glastransport
+      *)
       IF ( Glastransport.bpFehler ) THEN
         Glastransport.bpAustransport := FALSE;
         BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
         steplAustransport := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_1000_E:
       BasisStationsParameter.bAustransportAbgeschlossen[cWAND_1] := TRUE;
 
-(*AUSTRANSPORT ==============================*)
+  (*AUSTRANSPORT ==============================*)
   END_CASE
 ELSE
   IF ( steplAustransport > STEP_0_E ) THEN

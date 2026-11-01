@@ -7,9 +7,9 @@
 *)
 FUNCTION IsBetweenWORD : BOOL
 VAR_INPUT
- lwValue   : WORD;
- lwBorder1 : WORD;
- lwBorder2 : WORD;
+  lwValue   : WORD;
+  lwBorder1 : WORD;
+  lwBorder2 : WORD;
 END_VAR
 VAR
 END_VAR
@@ -18,9 +18,9 @@ IsBetweenWORD := FALSE;
 
 IF lwBorder1 < lwBorder2 THEN
   IsBetweenWORD := lwBorder1 <= lwValue
-                AND lwValue <= lwBorder2;
+                   AND lwValue <= lwBorder2;
 ELSE
   IsBetweenWORD := lwBorder2 <= lwValue
-                AND lwValue <= lwBorder1;
+                   AND lwValue <= lwBorder1;
 END_IF
 END_FUNCTION

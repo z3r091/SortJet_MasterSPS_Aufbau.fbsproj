@@ -25,7 +25,7 @@ IF ( blBetriebsartAutomatik OR blBetriebartCheck OR blNachSystemcheckMerker ) TH
                                 PT := tgZeitAutoabschaltungEnergiesparModus );
 
   IF (  toflGeblaeseEnergiesparModus.Q
-    AND BasisStationsParameter.bFreigabe )
+       AND BasisStationsParameter.bFreigabe )
   THEN
     Geblaese.bpStart := TRUE;
 

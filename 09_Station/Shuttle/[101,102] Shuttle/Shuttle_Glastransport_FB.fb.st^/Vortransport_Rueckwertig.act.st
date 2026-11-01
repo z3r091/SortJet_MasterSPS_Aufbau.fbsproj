@@ -10,9 +10,9 @@ ACTION Vortransport_Rueckwertig
 (* AKTION: VORTRANSPORT [HANDMINUS] *)
 (***************************************************************************************************)
 IF ( bpVortransportRueck
-  AND NOT bpEintransport
-  AND NOT bpRueckwaertsEintransportieren
-  AND bpAutomatikAktiv )
+     AND NOT bpEintransport
+     AND NOT bpRueckwaertsEintransportieren
+     AND bpAutomatikAktiv )
 THEN
 
   IF ( Antrieb.bpFehler ) THEN
@@ -23,20 +23,20 @@ THEN
 
 
   CASE steplVortransportRueckwertig OF
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_0_E:
       (* Hinweis:
          - Vortransport nur wenn es keinen Modelversatz gibt
       *)
-     bpDone := FALSE;
-     IF ( blAntriebsKopplungAktiv ) THEN
-       steplVortransportRueckwertig := STEP_10_E;
-     END_IF
+      bpDone := FALSE;
+      IF ( blAntriebsKopplungAktiv ) THEN
+        steplVortransportRueckwertig := STEP_10_E;
+      END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_10_E:
       IF (  NOT bpSensorEinlaufVorab
-        AND pAuftrag.rModellVersatzVorne = 0 )
+           AND pAuftrag.rModellVersatzVorne = 0 )
       THEN
         rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
@@ -62,7 +62,7 @@ THEN
         steplVortransportRueckwertig := STEP_900_E;
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_20_E:
       (* Hinweis:
          - Glas auf den VorStop- Sensor vorpositionieren
@@ -88,7 +88,7 @@ THEN
         steplVortransportRueckwertig := STEP_900_E;
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_30_E:
       (* Hinweis:
          - Pruefen ob das Glas zuweit gefahren wurde und den Auslaufsensor nun belegt ist.
@@ -104,7 +104,7 @@ THEN
 
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_40_E:
       (* Anmerkung:
          - Versuch den Auslaufsensor frei zufahren
@@ -128,17 +128,17 @@ THEN
         steplVortransportRueckwertig := STEP_900_E;
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
       bpFehler := TRUE;
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(*VORTRANSPORT ==============================*)
+  (*VORTRANSPORT ==============================*)
   END_CASE
 ELSE
 

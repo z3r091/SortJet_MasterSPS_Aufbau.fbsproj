@@ -13,7 +13,7 @@ _________________________________________________________________________
 _________________________________________________________________________
 *)
 IF ( bpGlastransportTest
-  AND NOT bpAutomatikAktiv )
+     AND NOT bpAutomatikAktiv )
 THEN
 
   (* Fehlerbehandlung
@@ -26,7 +26,7 @@ THEN
   END_IF
 
   CASE steplGlastransporttest OF
-(*GlastransportTest ==============================*)
+    (*GlastransportTest ==============================*)
     STEP_0_E:
       (* Anmerkung:
          - Timer zum prüfen der Einlauf- Auslauf- Sensoren [Luftdruck] zuruecksetzen
@@ -45,7 +45,7 @@ THEN
         steplGlastransporttest := STEP_30_E;
       END_IF
 
-(*GlastransportTest ==============================*)
+    (*GlastransportTest ==============================*)
     STEP_30_E:
       (* Ueberpruefung ob die Luftsensoren frei sind und richtig durchschalten
          - Einlauf- Auslauf- Sensoren
@@ -57,7 +57,7 @@ THEN
       tonlAuslaufsensorTesten(IN := NOT bpSensorScheibenKontrolleAuslaufseiteFrei, PT := t#5s);
 
       IF  ( bpSensorScheibenKontrolleEinlaufseiteFrei
-        AND bpSensorScheibenKontrolleAuslaufseiteFrei )
+            AND bpSensorScheibenKontrolleAuslaufseiteFrei )
       THEN
         steplGlastransporttest := STEP_40_E;
       END_IF
@@ -76,7 +76,7 @@ THEN
         steplGlastransporttest := STEP_900_E;
       END_IF
 
-(*GlastransportTest ==============================*)
+    (*GlastransportTest ==============================*)
     STEP_40_E:
       (* Anmerkung:
          - Transfershuttle heben
@@ -92,40 +92,40 @@ THEN
       tonlWartenAufAnheben(IN := NOT blBereitZumGlastransport, PT := t#10s);
 
       IF ( blBereitZumGlastransport ) THEN
-         steplGlastransporttest := STEP_45_E;
+        steplGlastransporttest := STEP_45_E;
       END_IF
 
-       (* Fehlerbehandlung:
-          - Druckluft
-          - Glastransport oben
-          - Ein- Aus- Laufsensoren
-       *)
-       IF ( tonlWartenAufAnheben.Q ) THEN
-         (* Glastransport oben *)
-         IF ( NOT blSensorGlastransportOben ) THEN
-           wpFehlerNr := cMELDUNG_TS_MELDET_NICHT_OBEN;
-         (* Luftsensoren oben *)
-         ELSIF ( NOT bpSensorScheibenKontrolleEinlaufSeiteOben ) THEN
-           wpFehlerNr := cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_OBEN;
-         (* Luftsensoren oben *)
-         ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteOben ) THEN
-           wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_OBEN;
-         (* Druckluft Ok *)
-         ELSIF NOT blDruckluftEinlaufSeiteOK THEN
-           wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_EINLAUF_NICHT_OK;
-         (* Druckluft Ok *)
-         ELSIF ( NOT blDruckluftAuslaufSeiteOK ) THEN
-           wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_AUSLAUF_NICHT_OK;
-         ELSE
-           wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
-         END_IF
+      (* Fehlerbehandlung:
+         - Druckluft
+         - Glastransport oben
+         - Ein- Aus- Laufsensoren
+      *)
+      IF ( tonlWartenAufAnheben.Q ) THEN
+        (* Glastransport oben *)
+        IF ( NOT blSensorGlastransportOben ) THEN
+          wpFehlerNr := cMELDUNG_TS_MELDET_NICHT_OBEN;
+        (* Luftsensoren oben *)
+        ELSIF ( NOT bpSensorScheibenKontrolleEinlaufSeiteOben ) THEN
+          wpFehlerNr := cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_OBEN;
+        (* Luftsensoren oben *)
+        ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteOben ) THEN
+          wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_OBEN;
+        (* Druckluft Ok *)
+        ELSIF NOT blDruckluftEinlaufSeiteOK THEN
+          wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_EINLAUF_NICHT_OK;
+        (* Druckluft Ok *)
+        ELSIF ( NOT blDruckluftAuslaufSeiteOK ) THEN
+          wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_AUSLAUF_NICHT_OK;
+        ELSE
+          wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
+        END_IF
 
-         steplGlastransporttest := STEP_900_E;
-         bpOutBereitZumEintransport := FALSE;
+        steplGlastransporttest := STEP_900_E;
+        bpOutBereitZumEintransport := FALSE;
 
-       END_IF
+      END_IF
 
-(*GlastransportTest ==============================*)
+    (*GlastransportTest ==============================*)
     STEP_45_E:
 
       IF NOT blEinlaufsensor THEN
@@ -152,171 +152,171 @@ THEN
 
       END_IF
 
-(*GlastransportTest ==============================*)
-     STEP_50_E:
-       (* Hinweis:
-          - Setzen des Verfahrbefehls
-       *)
+    (*GlastransportTest ==============================*)
+    STEP_50_E:
+      (* Hinweis:
+         - Setzen des Verfahrbefehls
+      *)
       IF bpFreigabe THEN
         Antrieb.wpBetriebsart := RESTWEG;
         steplGlastransporttest := STEP_60_E;
       END_IF
 
-(*GlastransportTest ==============================*)
-     STEP_60_E:
-       (* Hinweis:
-          - Antrieb verfahren
-       *)
-        IF ( Antrieb.bpDone AND NOT Antrieb.bpAntrieblaeuft ) THEN
-         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
-         steplGlastransporttest := STEP_70_E;
-        END_IF
+    (*GlastransportTest ==============================*)
+    STEP_60_E:
+      (* Hinweis:
+         - Antrieb verfahren
+      *)
+      IF ( Antrieb.bpDone AND NOT Antrieb.bpAntrieblaeuft ) THEN
+        Antrieb.wpBetriebsart  := KEINE_FUNKTION;
+        steplGlastransporttest := STEP_70_E;
+      END_IF
 
-       (* Fehlerbehandlung
-          - Antrieb
-       *)
-       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > 5300 ) THEN
-         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-         wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_SCHALTET_NICHT;
-         steplGlastransporttest := STEP_900_E;
-       END_IF
+      (* Fehlerbehandlung
+         - Antrieb
+      *)
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > 5300 ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_SCHALTET_NICHT;
+        steplGlastransporttest := STEP_900_E;
+      END_IF
 
-(*GlastransportTest ==============================*)
-     STEP_70_E:
+    (*GlastransportTest ==============================*)
+    STEP_70_E:
 
-        rlAntriebsPositionBeiStart  := Antrieb.rpIstPosition;
+      rlAntriebsPositionBeiStart  := Antrieb.rpIstPosition;
 
-        Antrieb.rpGeschwindigkeit := rgAutoGeschwindigkeitTSVortransport;
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung * 2;
+      Antrieb.rpGeschwindigkeit := rgAutoGeschwindigkeitTSVortransport;
+      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung * 2;
 
-        Antrieb.rpZielPosition    := 50;
-        IF bpOptionTransfershuttleMitUltraschallSensoren THEN
-          Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor2;
-        ELSE
-          Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor2;
-        END_IF
+      Antrieb.rpZielPosition    := 50;
+      IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+        Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor2;
+      ELSE
+        Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor2;
+      END_IF
 
-        steplGlastransporttest := STEP_80_E;
+      steplGlastransporttest := STEP_80_E;
 
-(*GlastransportTest ==============================*)
-     STEP_80_E:
-       (* Hinweis:
-          - Setzen des Verfahrbefehls
-       *)
+    (*GlastransportTest ==============================*)
+    STEP_80_E:
+      (* Hinweis:
+         - Setzen des Verfahrbefehls
+      *)
       IF bpFreigabe THEN
         Antrieb.wpBetriebsart := RESTWEG;
         steplGlastransporttest := STEP_90_E;
       END_IF
 
-(*GlastransportTest ==============================*)
-     STEP_90_E:
-       (* Hinweis:
-          - Antrieb verfahren
-       *)
-        IF ( Antrieb.bpDone AND NOT Antrieb.bpAntrieblaeuft ) THEN
-         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
-         steplGlastransporttest := STEP_100_E;
-        END_IF
+    (*GlastransportTest ==============================*)
+    STEP_90_E:
+      (* Hinweis:
+         - Antrieb verfahren
+      *)
+      IF ( Antrieb.bpDone AND NOT Antrieb.bpAntrieblaeuft ) THEN
+        Antrieb.wpBetriebsart  := KEINE_FUNKTION;
+        steplGlastransporttest := STEP_100_E;
+      END_IF
 
-       (* Fehlerbehandlung
-          - Antrieb
-       *)
-       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > 5300 ) THEN
-         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-         wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_SCHALTET_NICHT;
-         steplGlastransporttest := STEP_900_E;
-       END_IF
+      (* Fehlerbehandlung
+         - Antrieb
+      *)
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > 5300 ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_SCHALTET_NICHT;
+        steplGlastransporttest := STEP_900_E;
+      END_IF
 
-(*GlastransportTest ==============================*)
-     STEP_100_E:
+    (*GlastransportTest ==============================*)
+    STEP_100_E:
 
-        Antrieb.rpGeschwindigkeit := rgAutoGeschwindigkeitTSVortransport;
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung * 2;
+      Antrieb.rpGeschwindigkeit := rgAutoGeschwindigkeitTSVortransport;
+      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung * 2;
 
-        Antrieb.rpZielPosition    := 100;
-        IF bpOptionTransfershuttleMitUltraschallSensoren THEN
-          Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
-        ELSE
-          Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor1;
-        END_IF
+      Antrieb.rpZielPosition    := 100;
+      IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+        Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
+      ELSE
+        Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor1;
+      END_IF
 
-        steplGlastransporttest := STEP_110_E;
+      steplGlastransporttest := STEP_110_E;
 
-(*GlastransportTest ==============================*)
-     STEP_110_E:
-       (* Hinweis:
-          - Setzen des Verfahrbefehls
-       *)
+    (*GlastransportTest ==============================*)
+    STEP_110_E:
+      (* Hinweis:
+         - Setzen des Verfahrbefehls
+      *)
       IF bpFreigabe THEN
         Antrieb.wpBetriebsart := RESTWEG;
         steplGlastransporttest := STEP_120_E;
       END_IF
 
-(*GlastransportTest ==============================*)
-     STEP_120_E:
-       (* Hinweis:
-          - Antrieb verfahren
-       *)
-        IF ( Antrieb.bpDone AND NOT Antrieb.bpAntrieblaeuft ) THEN
-         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
-         steplGlastransporttest := STEP_500_E;
+    (*GlastransportTest ==============================*)
+    STEP_120_E:
+      (* Hinweis:
+         - Antrieb verfahren
+      *)
+      IF ( Antrieb.bpDone AND NOT Antrieb.bpAntrieblaeuft ) THEN
+        Antrieb.wpBetriebsart  := KEINE_FUNKTION;
+        steplGlastransporttest := STEP_500_E;
+      END_IF
+
+      (* Fehlerbehandlung
+         - Antrieb
+      *)
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > 5300 ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_SCHALTET_NICHT;
+        steplGlastransporttest := STEP_900_E;
+      END_IF
+
+    (*GlastransportTest ==============================*)
+    STEP_500_E:
+      (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Glastransport UND ABFRAGEN SENKEN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+      *)
+      (*       IF ( NOT bpLetzteScheibe ) THEN
+      *)
+      out_bShuttleAnheben := FALSE;
+
+      out_bScheibenKontrolleAuslaufSeiteAuf := FALSE;
+      blScheibenKontrolleAuslaufseiteEin    := FALSE;
+      out_bScheibenKontrolleEinlaufSeiteAuf := FALSE;
+      blScheibenKontrolleEinlaufseiteEin    := FALSE;
+
+      tonlWartenAufSenken( IN:= NOT bpBereitZumVerfahren , PT:=t#10s);
+
+      IF ( bpBereitZumVerfahren ) THEN
+        steplGlastransporttest := STEP_1000_E;
+      END_IF
+
+      (* Fehlerbehandlung:
+        - Glastransport unten
+        - Ein- Aus- Laufsensoren
+      *)
+      IF ( tonlWartenAufSenken.Q ) THEN
+        (* Glastransport unten *)
+        IF ( NOT blSensorGlastransportUnten ) THEN
+          wpFehlerNr := cMELDUNG_TS_MELDET_NICHT_UNTEN;
+        (* Luftsensoren unten *)
+        ELSIF ( NOT bpSensorScheibenKontrolleEinlaufSeiteUnten ) THEN
+          wpFehlerNr := cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_UNTEN;
+        (* Luftsensoren unten *)
+        ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteUnten ) THEN
+          wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_UNTEN;
+        ELSE
+          wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
         END_IF
 
-       (* Fehlerbehandlung
-          - Antrieb
-       *)
-       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > 5300 ) THEN
-         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-         wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_SCHALTET_NICHT;
-         steplGlastransporttest := STEP_900_E;
-       END_IF
+        steplGlastransporttest := STEP_900_E;
+        bpOutBereitZumEintransport := FALSE;
 
-(*GlastransportTest ==============================*)
-     STEP_500_E:
-       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Glastransport UND ABFRAGEN SENKEN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      END_IF
 
-       *)
-(*       IF ( NOT bpLetzteScheibe ) THEN
-*)
-        out_bShuttleAnheben := FALSE;
-
-        out_bScheibenKontrolleAuslaufSeiteAuf := FALSE;
-        blScheibenKontrolleAuslaufseiteEin    := FALSE;
-        out_bScheibenKontrolleEinlaufSeiteAuf := FALSE;
-        blScheibenKontrolleEinlaufseiteEin    := FALSE;
-
-        tonlWartenAufSenken( IN:= NOT bpBereitZumVerfahren , PT:=t#10s);
-
-        IF ( bpBereitZumVerfahren ) THEN
-         steplGlastransporttest := STEP_1000_E;
-        END_IF
-
-        (* Fehlerbehandlung:
-          - Glastransport unten
-          - Ein- Aus- Laufsensoren
-        *)
-        IF ( tonlWartenAufSenken.Q ) THEN
-         (* Glastransport unten *)
-         IF ( NOT blSensorGlastransportUnten ) THEN
-           wpFehlerNr := cMELDUNG_TS_MELDET_NICHT_UNTEN;
-         (* Luftsensoren unten *)
-         ELSIF ( NOT bpSensorScheibenKontrolleEinlaufSeiteUnten ) THEN
-           wpFehlerNr := cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_UNTEN;
-         (* Luftsensoren unten *)
-         ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteUnten ) THEN
-           wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_UNTEN;
-         ELSE
-           wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
-         END_IF
-
-         steplGlastransporttest := STEP_900_E;
-         bpOutBereitZumEintransport := FALSE;
-
-        END_IF
-
-(*GlastransportTest ==============================*)
+    (*GlastransportTest ==============================*)
     STEP_900_E:
       bpFehler := TRUE;
       wpgFehlerdaten[0] := stStationsNummern.NummerExtern;
@@ -326,26 +326,26 @@ THEN
                 AutomatikkreisBestimmen(stStationsNummern.NummerIntern), 
                 wpgFehlerdaten );
 
-     FOR wlSubIndex := 1 TO cANZAHL_HUPEN DO
+      FOR wlSubIndex := 1 TO cANZAHL_HUPEN DO
         Horn_AK[starrTransfershuttleBasisParameter[stStationsNummern.NummerSPS].stMKs.eaAutomatikkreis[1],wlSubIndex].wpStatusArt      := 0;
         Horn_AK[starrTransfershuttleBasisParameter[stStationsNummern.NummerSPS].stMKs.eaAutomatikkreis[1],wlSubIndex].tpHornZeit       := T#5S;
         Horn_AK[starrTransfershuttleBasisParameter[stStationsNummern.NummerSPS].stMKs.eaAutomatikkreis[1],wlSubIndex].bpHornAktivieren := TRUE;
-     END_FOR
+      END_FOR
 
       bpOutBereitZumEintransport := FALSE;
 
       steplGlastransporttest := STEP_910_E;
 
-(*GlastransportTest ==============================*)
+    (*GlastransportTest ==============================*)
     STEP_910_E:
       ;
 
-(*GlastransportTest ==============================*)
+    (*GlastransportTest ==============================*)
     STEP_1000_E:
       bpDone:=TRUE;
       bpOutBereitZumEintransport := FALSE;
 
-(*GlastransportTest ==============================*)
+  (*GlastransportTest ==============================*)
   END_CASE
 
 ELSE

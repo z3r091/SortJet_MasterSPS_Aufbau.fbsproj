@@ -8,9 +8,9 @@
 ACTION BETRIEBSART_Restweg_Mit_Messung
 // Gemeinsame Auswahl; vorhandener Parameter-Re-Entry uebernimmt den Jerk.
 rlRuckzeit := RuckFuerBewegung(bStart := (asteplSchritt[RESTWEG] = STEP_400_E)
-    OR (asteplSchritt[RESTWEG] = STEP_525_E),
-  bMitZiel := asteplSchritt[RESTWEG] >= STEP_500_E,
-  lrZiel := TO_LREAL(rlZielPosition));
+                                OR (asteplSchritt[RESTWEG] = STEP_525_E),
+                                bMitZiel := asteplSchritt[RESTWEG] >= STEP_500_E,
+                                lrZiel := TO_LREAL(rlZielPosition));
 
 CASE asteplSchritt[RESTWEG] OF
 
@@ -68,15 +68,15 @@ CASE asteplSchritt[RESTWEG] OF
       asteplSchritt[RESTWEG] := STEP_900_E;
     ELSE
       l_mc_MoveVelocity
-      (
-        Axis := ppAntriebsInformationen.wAchsID,
-        Velocity := rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT,
-        Acceleration := rlBeschleunigung * cFAKTOR_RAMPEN,
-        Deceleration := rlVerzoegerung * cFAKTOR_RAMPEN,
-        Jerk := rlRuckzeit,
-        BufferMode := MC_BufferMode.BM_ABORTING_E,
-        Execute := TRUE
-      );
+        (
+          Axis := ppAntriebsInformationen.wAchsID,
+          Velocity := rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT,
+          Acceleration := rlBeschleunigung * cFAKTOR_RAMPEN,
+          Deceleration := rlVerzoegerung * cFAKTOR_RAMPEN,
+          Jerk := rlRuckzeit,
+          BufferMode := MC_BufferMode.BM_ABORTING_E,
+          Execute := TRUE
+        );
       asteplSchritt[RESTWEG] := STEP_450_E;
     END_IF
 
@@ -86,9 +86,9 @@ CASE asteplSchritt[RESTWEG] OF
   STEP_450_E:
     // Fahrparameter geändert
     IF ( ( ( rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT ) <> l_mc_MoveVelocity.Velocity )
-        OR ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Acceleration )
-        OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Deceleration )
-        OR (   rlRuckzeit <> l_mc_MoveVelocity.Jerk ) )
+         OR ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Acceleration )
+         OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Deceleration )
+         OR (   rlRuckzeit <> l_mc_MoveVelocity.Jerk ) )
     THEN
       l_mc_MoveVelocity( Axis := ppAntriebsInformationen.wAchsID, Execute := FALSE );
       asteplSchritt[RESTWEG] := STEP_400_E;
@@ -99,14 +99,14 @@ CASE asteplSchritt[RESTWEG] OF
     END_IF
 
     l_mc_MoveVelocity
-    (
-      Axis := ppAntriebsInformationen.wAchsID,
-    );
+      (
+        Axis := ppAntriebsInformationen.wAchsID,
+      );
 
     IF ( rlVerzoegerung > 0 ) THEN
       IF    wpRestwegMode.0
-        AND blSoftwareLimitAktiv
-        AND ( rpStillstandsPosition >= rpMaxPosition )
+            AND blSoftwareLimitAktiv
+            AND ( rpStillstandsPosition >= rpMaxPosition )
       THEN
         blInternerFehler := TRUE;
         Antriebsfehler.wlBausteinFehlerNr := cMotionMaximumSoftwareEndschalterAusgeloest;
@@ -115,8 +115,8 @@ CASE asteplSchritt[RESTWEG] OF
         blAchseStoppen := bpReglerBereit AND NOT l_mc_ReadStatus.Errorstop AND ( bpAntrieblaeuft OR bpAchseSychron );
         asteplSchritt[RESTWEG] := STEP_900_E;
       ELSIF ( NOT wpRestwegMode.0 )
-        AND blSoftwareLimitAktiv
-        AND ( rpStillstandsPosition <= rpMinPosition )
+            AND blSoftwareLimitAktiv
+            AND ( rpStillstandsPosition <= rpMinPosition )
       THEN
         blInternerFehler := TRUE;
         Antriebsfehler.wlBausteinFehlerNr := cMotionMinimumSoftwareEndschalterAusgeloest;
@@ -155,17 +155,17 @@ CASE asteplSchritt[RESTWEG] OF
 
   STEP_525_E:
     l_mc_MoveAbsolute
-    (
-      Axis := ppAntriebsInformationen.wAchsID,
-      Position := rlZielPosition,
-      Velocity := rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT,
-      Acceleration := rlBeschleunigung * cFAKTOR_RAMPEN,
-      Deceleration := rlVerzoegerung * cFAKTOR_RAMPEN,
-      Jerk := rlRuckzeit,
-      Direction := MC_Direction.MD_SHORTEST_WAY_E,
-      BufferMode := MC_BufferMode.BM_ABORTING_E,
-      Execute := TRUE
-    );
+      (
+        Axis := ppAntriebsInformationen.wAchsID,
+        Position := rlZielPosition,
+        Velocity := rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT,
+        Acceleration := rlBeschleunigung * cFAKTOR_RAMPEN,
+        Deceleration := rlVerzoegerung * cFAKTOR_RAMPEN,
+        Jerk := rlRuckzeit,
+        Direction := MC_Direction.MD_SHORTEST_WAY_E,
+        BufferMode := MC_BufferMode.BM_ABORTING_E,
+        Execute := TRUE
+      );
 
     // Sensorik weiterhin für die Messung auswerten
     BETRIEBSART_Restweg_X_Flankenerkennung();
@@ -174,9 +174,9 @@ CASE asteplSchritt[RESTWEG] OF
 
   STEP_550_E:
     IF ( ( ( rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT ) <> l_mc_MoveAbsolute.Velocity )
-        OR ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) <> l_mc_MoveAbsolute.Acceleration )
-        OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) <> l_mc_MoveAbsolute.Deceleration )
-        OR (   rlRuckzeit <> l_mc_MoveAbsolute.Jerk ) )
+         OR ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) <> l_mc_MoveAbsolute.Acceleration )
+         OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) <> l_mc_MoveAbsolute.Deceleration )
+         OR (   rlRuckzeit <> l_mc_MoveAbsolute.Jerk ) )
     THEN
       l_mc_MoveAbsolute( Axis := ppAntriebsInformationen.wAchsID, Execute := FALSE );
       asteplSchritt[RESTWEG] := STEP_500_E;
@@ -190,9 +190,9 @@ CASE asteplSchritt[RESTWEG] OF
     END_IF
 
     l_mc_MoveAbsolute
-    (
-      Axis := ppAntriebsInformationen.wAchsID
-    );
+      (
+        Axis := ppAntriebsInformationen.wAchsID
+      );
 
     // Während der gesamten Absolutfahrt die zweite Flanke erfassen
     BETRIEBSART_Restweg_X_Flankenerkennung();

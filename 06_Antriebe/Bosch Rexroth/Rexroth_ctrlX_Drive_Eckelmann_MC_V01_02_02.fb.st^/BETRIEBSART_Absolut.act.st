@@ -8,7 +8,7 @@
 ACTION BETRIEBSART_Absolut
 // Gemeinsame Auswahl; vorhandener Parameter-Re-Entry uebernimmt den Jerk.
 rlRuckzeit := RuckFuerBewegung(bStart := asteplSchritt[ABSOLUT] = STEP_450_E,
-  bMitZiel := TRUE, lrZiel := TO_LREAL(rlZielPosition));
+                                bMitZiel := TRUE, lrZiel := TO_LREAL(rlZielPosition));
 
 CASE asteplSchritt[ABSOLUT] OF
 
@@ -63,25 +63,25 @@ CASE asteplSchritt[ABSOLUT] OF
 
   STEP_450_E:
     l_mc_MoveAbsolute
-    (
-      Axis := ppAntriebsInformationen.wAchsID,
-      Position := rlZielPosition,
-      Velocity := rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT,
-      Acceleration := rlBeschleunigung * cFAKTOR_RAMPEN,
-      Deceleration := rlVerzoegerung * cFAKTOR_RAMPEN,
-      Jerk := rlRuckzeit,
-      Direction := MC_Direction.MD_SHORTEST_WAY_E,
-      BufferMode := MC_BufferMode.BM_ABORTING_E,
-      Execute := TRUE
-    );
+      (
+        Axis := ppAntriebsInformationen.wAchsID,
+        Position := rlZielPosition,
+        Velocity := rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT,
+        Acceleration := rlBeschleunigung * cFAKTOR_RAMPEN,
+        Deceleration := rlVerzoegerung * cFAKTOR_RAMPEN,
+        Jerk := rlRuckzeit,
+        Direction := MC_Direction.MD_SHORTEST_WAY_E,
+        BufferMode := MC_BufferMode.BM_ABORTING_E,
+        Execute := TRUE
+      );
 
     asteplSchritt[ABSOLUT] := STEP_500_E;
 
   STEP_500_E:
     IF ( ( ( rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT ) <> l_mc_MoveAbsolute.Velocity )
-        OR ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) <> l_mc_MoveAbsolute.Acceleration )
-        OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) <> l_mc_MoveAbsolute.Deceleration )
-        OR (   rlRuckzeit <> l_mc_MoveAbsolute.Jerk ) )
+         OR ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) <> l_mc_MoveAbsolute.Acceleration )
+         OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) <> l_mc_MoveAbsolute.Deceleration )
+         OR (   rlRuckzeit <> l_mc_MoveAbsolute.Jerk ) )
     THEN
       l_mc_MoveAbsolute( Axis := ppAntriebsInformationen.wAchsID, Execute := FALSE );
       asteplSchritt[ABSOLUT] := STEP_400_E;
@@ -95,9 +95,9 @@ CASE asteplSchritt[ABSOLUT] OF
     END_IF
 
     l_mc_MoveAbsolute
-    (
-      Axis := ppAntriebsInformationen.wAchsID
-    );
+      (
+        Axis := ppAntriebsInformationen.wAchsID
+      );
 
     // Fehler auswertung
     IF NOT l_mc_Power.Status OR NOT bpReglerBereit THEN

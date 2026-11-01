@@ -150,15 +150,15 @@ IF ( M_SB0_MMI_SHUTTLE_INFORMATION ) THEN
   CASE tMmi2SpsInfo.wAuftrag_ShuttleNummer OF
 
     cERSTE_STATION..cLETZTE_STATION:
-     ;
+      ;
     cERSTES_SHUTTLE..cLETZTES_SHUTTLE:
       IF tMmi2SpsInfo.wAuftrag_ShuttleWand = 0 THEN // TODO
         tMmi2SpsInfo.wAuftrag_ShuttleWand := 1;
       END_IF
       CASE tMmi2SpsInfo.wAuftrag_ShuttleWand OF
 
-        cWAND_1,
-        cWAND_2:
+          cWAND_1,
+            cWAND_2:
           IF ( VorAbAuftragsDaten[tMmi2SpsInfo.wAuftrag_ShuttleNummer, tMmi2SpsInfo.wAuftrag_ShuttleWand].wAuftrag = eStation_Kein_Auftrag ) THEN
             VorAbAuftragsDaten[tMmi2SpsInfo.wAuftrag_ShuttleNummer, tMmi2SpsInfo.wAuftrag_ShuttleWand].rLaenge                := tMmi2SpsInfo.rAuftrag_Laenge;
             VorAbAuftragsDaten[tMmi2SpsInfo.wAuftrag_ShuttleNummer, tMmi2SpsInfo.wAuftrag_ShuttleWand].rDicke                 := tMmi2SpsInfo.rAuftrag_Dicke;
@@ -249,9 +249,9 @@ END_IF
 (* AUFTRAG: M_SB0_MMI_TS_REPOSITIONING_LITES *)
 (***************************************************************************************************)
 
-  (* Hinweis:
-     - Funktion zum zurueckfahren der Glaeser und neu Positionieren im Speicher
-  *)
+(* Hinweis:
+   - Funktion zum zurueckfahren der Glaeser und neu Positionieren im Speicher
+*)
 IF ( M_SB0_MMI_TS_REPOSITIONING_LITES ) THEN
   M_SB0_MMI_TS_REPOSITIONING_LITES := FALSE;
 
@@ -344,11 +344,11 @@ IF ( M_SB0_MMI_STATIONSTATUS ) THEN
   CASE tMmi2SpsInfo.wStationsNummer OF
 
     cERSTES_SHUTTLE..cLETZTES_SHUTTLE:
-     starrShuttleBasisParameter[tMmi2SpsInfo.wStationsNummer].stMKs.bDeaktivieren := tMmi2SpsInfo.wStationsStatusWord2.0;
+      starrShuttleBasisParameter[tMmi2SpsInfo.wStationsNummer].stMKs.bDeaktivieren := tMmi2SpsInfo.wStationsStatusWord2.0;
       M_SB0_MMI_STATIONSTATUS := FALSE;
 
     cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE:
-     starrTransfershuttleBasisParameter[tMmi2SpsInfo.wStationsNummer].stMKs.bDeaktivieren := tMmi2SpsInfo.wStationsStatusWord2.0;
+      starrTransfershuttleBasisParameter[tMmi2SpsInfo.wStationsNummer].stMKs.bDeaktivieren := tMmi2SpsInfo.wStationsStatusWord2.0;
       M_SB0_MMI_STATIONSTATUS := FALSE;
 
   END_CASE

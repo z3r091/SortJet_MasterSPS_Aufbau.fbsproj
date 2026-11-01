@@ -10,13 +10,13 @@ ACTION Handfunktion
 (* AKTION: HANDBETRIEB *)
 (***************************************************************************************************)
 IF (      bpBetriebsartHand
-  AND NOT bpPositionierung
-  AND NOT bpReferenz
-  AND NOT bpReset
-  AND NOT bpHandReferenz
-  AND NOT bpVermessen_Oberkante_1_Sensor
-  AND NOT bpVermessen_OberUndUnterkante_2_Sensoren
-  AND NOT bgVisuAntriebeVerfahrenAktiv )
+     AND NOT bpPositionierung
+     AND NOT bpReferenz
+     AND NOT bpReset
+     AND NOT bpHandReferenz
+     AND NOT bpVermessen_Oberkante_1_Sensor
+     AND NOT bpVermessen_OberUndUnterkante_2_Sensoren
+     AND NOT bgVisuAntriebeVerfahrenAktiv )
 THEN
 
   Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;

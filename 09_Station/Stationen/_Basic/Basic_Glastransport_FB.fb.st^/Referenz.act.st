@@ -24,7 +24,7 @@ IF ( bpReferenz )THEN
   
 
   CASE steplReferenz OF
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_0_E:
 
       bpDone := FALSE;
@@ -32,7 +32,7 @@ IF ( bpReferenz )THEN
       tonlSlaveKopplungDeaktiviert( IN := FALSE );
 
       IF (  Antrieb.bpReglerBereit
-        AND ( Antrieb_Slave.bpReglerBereit OR NOT bpOptionSlaveAntrieb ) )
+           AND ( Antrieb_Slave.bpReglerBereit OR NOT bpOptionSlaveAntrieb ) )
       THEN
         Antrieb.wpBetriebsart       := KEINE_FUNKTION;
         Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
@@ -40,7 +40,7 @@ IF ( bpReferenz )THEN
         steplReferenz := STEP_10_E;
       END_IF
 
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_10_E:
       (* Hinweis:
          - Starten der Referenzierung
@@ -52,9 +52,9 @@ IF ( bpReferenz )THEN
                                     PT := T#150MS );
 
       IF (  NOT Antrieb.bpAntrieblaeuft
-        AND NOT Antrieb_Slave.bpAntrieblaeuft 
-        AND ( tonlSlaveKopplungDeaktiviert.Q OR NOT bpOptionSlaveAntrieb ) )
-     THEN
+           AND NOT Antrieb_Slave.bpAntrieblaeuft 
+           AND ( tonlSlaveKopplungDeaktiviert.Q OR NOT bpOptionSlaveAntrieb ) )
+      THEN
 
         Antrieb.rpZielPosition    := 0;
         Antrieb.rpGeschwindigkeit := 0;
@@ -62,7 +62,7 @@ IF ( bpReferenz )THEN
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
         Antrieb.wpBetriebsart     := AntriebsBetriebsart_EN.REFERENZ;
      
-    IF bpOptionSlaveAntrieb THEN
+        IF bpOptionSlaveAntrieb THEN
           Antrieb_Slave.rpZielPosition    := 0;
           Antrieb_Slave.rpGeschwindigkeit := 0;
           Antrieb_Slave.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -74,32 +74,32 @@ IF ( bpReferenz )THEN
 
       END_IF
 
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_20_E:
       (* Hinweis:
          - Referenzierung abgeschlossen
       *)
       IF ( Antrieb.bpDone
-        AND ( Antrieb_Slave.bpDone OR NOT bpOptionSlaveAntrieb ) )
+           AND ( Antrieb_Slave.bpDone OR NOT bpOptionSlaveAntrieb ) )
       THEN
         Antrieb.wpBetriebsart       := KEINE_FUNKTION;
         Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
         steplReferenz := STEP_1000_E;
       END_IF
 
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
-       Antrieb.wpBetriebsart       := KEINE_FUNKTION;
-       Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
+      Antrieb.wpBetriebsart       := KEINE_FUNKTION;
+      Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
       bpFehler :=TRUE;
 
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(*REFERENZ =========================*)
+  (*REFERENZ =========================*)
   END_CASE
 
 ELSE

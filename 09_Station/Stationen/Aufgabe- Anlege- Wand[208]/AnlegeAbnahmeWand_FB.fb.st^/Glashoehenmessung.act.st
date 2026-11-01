@@ -28,7 +28,7 @@ THEN
   END_IF
 
   CASE steplGlashoehenmessung OF
-(*HÖHENMESSUNG ==================================*)
+    (*HÖHENMESSUNG ==================================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen initalisieren
@@ -40,20 +40,20 @@ THEN
 
 
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_20_E:
       (* Hinweis:
          - Für die Steuerschrittkette müssen wir einmal kurz in eAuftragAktiv wechseln bevor
            in Schritt 800 dann eAuftrakErfolgreich gesetzt werden kann
       *)
       IF BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bScheibenVermessen THEN
-         steplGlashoehenmessung := STEP_200_E;
+        steplGlashoehenmessung := STEP_200_E;
       ELSE
         steplGlashoehenmessung := STEP_800_E;
       END_IF
 
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_200_E:
       (* Hinweis:
          - Messachse nochmal auf Position fahren
@@ -63,7 +63,7 @@ THEN
 
       steplGlashoehenmessung := STEP_210_E;
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_210_E:
       (* Hinweis:
          - Messachse nochmal auf Position fahren
@@ -73,14 +73,14 @@ THEN
         
         IF BasisStationsParameter.stMKs.stStationsAufbau.bMessachse THEN
           steplGlashoehenmessung := STEP_300_E;
-       ELSE
-         steplGlashoehenmessung := STEP_800_E;
-    END_IF
+        ELSE
+          steplGlashoehenmessung := STEP_800_E;
+        END_IF
 
       END_IF
 
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_300_E:
 
       (* Hinweis:
@@ -115,17 +115,17 @@ THEN
 
       END_CASE
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_320_E:
-     (*
-         Anmerkung:
-         - Ampel
-         - Moeglichkeit Fehlmessung quittieren --> Scheibe freigegeben zum Austransport
-         - Knebelschalter Glas zurueck auf die Station fahren 
-         - Quittiern
-           => Nachricht an die Oberflaeche
-             wSPS2MMITRANSPORTSTATE := 1 ==  Scheibe OK und eingefahren 
-      *)
+      (*
+          Anmerkung:
+          - Ampel
+          - Moeglichkeit Fehlmessung quittieren --> Scheibe freigegeben zum Austransport
+          - Knebelschalter Glas zurueck auf die Station fahren 
+          - Quittiern
+            => Nachricht an die Oberflaeche
+              wSPS2MMITRANSPORTSTATE := 1 ==  Scheibe OK und eingefahren 
+       *)
       out_bSignalScheibeAufgegeben := gbFlashbit05sec;
       out_bAmpelSignalGruen    := gbFlashbit05sec;
 
@@ -143,7 +143,7 @@ THEN
         steplGlashoehenmessung := STEP_330_E;
       END_IF
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_330_E:
       out_bAmpelSignalGruen := FALSE;
 
@@ -167,12 +167,12 @@ THEN
          - Knebelschlater [Glastransport zurueck / Hubpalette heben]
       *)
       IF ( in_bKnebelGlastransportZurueck
-        AND tonlFreigabeErhalten.Q )
+           AND tonlFreigabeErhalten.Q )
       THEN
         Glastransport.bpScheibeZurueckFahren := in_bKnebelGlastransportZurueck;
         Glastransport.bpScheibeVorFahren     := FALSE;
-    ELSIF ( in_bKnebelGlastransportVor
-        AND tonlFreigabeErhalten.Q )
+      ELSIF ( in_bKnebelGlastransportVor
+              AND tonlFreigabeErhalten.Q )
       THEN
         Glastransport.bpScheibeVorFahren := in_bKnebelGlastransportVor;
         Glastransport.bpScheibeZurueckFahren := FALSE;
@@ -182,7 +182,7 @@ THEN
       END_IF
 
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_800_E:
 
       (* Hinweis:
@@ -192,18 +192,18 @@ THEN
 
       steplGlashoehenmessung := STEP_1000_E;
 
-(*HÖHENMESSUNG ==================================*)
+    (*HÖHENMESSUNG ==================================*)
     STEP_900_E:
       Glastransport.bpScheibeZurueckFahren    := FALSE;
       BasisStationsParameter.eStatusAuftrag := eAuftragFehler;
 
       BasisStationsParameter.bFehler := TRUE;
 
-(*HÖHENMESSUNG ==================================*)
+    (*HÖHENMESSUNG ==================================*)
     STEP_1000_E:
       BasisStationsParameter.bGlashoehenmessungAbgeschlossen := TRUE;
 
-(*HÖHENMESSUNG ==================================*)
+  (*HÖHENMESSUNG ==================================*)
   END_CASE
 ELSE
 

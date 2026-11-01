@@ -45,11 +45,11 @@ blBetriebsstop := (  ( NOT bgMMIOK AND NOT bgMMIBruecken ) );
 wMeldungsNrInkrementieren := 0;
 
 FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
-   abpBetriebsstop[wlIndex] :=    Job_Stationen.abpFehler[wlIndex]
-                               OR Job_Shuttle.abpFehler[wlIndex]
-                               OR NOT StatusAnlage.abpDruckluftOK[wlIndex]
-                               OR NOT StatusAnlage.bpAnlageOK
-                               OR blBetriebsstop;
+  abpBetriebsstop[wlIndex] :=    Job_Stationen.abpFehler[wlIndex]
+                                 OR Job_Shuttle.abpFehler[wlIndex]
+                                 OR NOT StatusAnlage.abpDruckluftOK[wlIndex]
+                                 OR NOT StatusAnlage.bpAnlageOK
+                                 OR blBetriebsstop;
   WatchIo( abpBetriebsstop[wlIndex] , ( ioccBetriebsstop1 + wMeldungsNrInkrementieren ) );
   wMeldungsNrInkrementieren := wMeldungsNrInkrementieren + 1;
 END_FOR

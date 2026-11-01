@@ -50,7 +50,7 @@ IF ( bpReset ) THEN
 ELSIF ( bpAktivieren ) THEN
 
   IF (  NOT bpWarteschlangeLeer
-    AND bpWertAuslesen )
+       AND bpWertAuslesen )
   THEN
     ppAusgabeWert := awlWarteSchlange[ilAktuellePosition];
     ilAktuellePosition  := INCI(ilAktuellePosition,cINDEX);
@@ -60,7 +60,7 @@ ELSIF ( bpAktivieren ) THEN
   END_IF;
 
   IF (  NOT bpWarteschlangeVoll
-    AND bpWerteSchreiben )
+       AND bpWerteSchreiben )
   THEN
     awlWarteSchlange[ilLetztePosition] := ppEingabeWert;
     ilLetztePosition    := INCI(ilLetztePosition,cINDEX);

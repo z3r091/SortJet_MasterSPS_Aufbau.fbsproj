@@ -36,7 +36,7 @@ IF NOT TCP_Global.g_bCallbackRegistered THEN
   sCallbackStart.eSource  := CB.EVENT_SOURCE.ALL_SOURCES;
   sCallbackStart.eClass   := CB.EVENT_CLASS.ONLINE_EVENTS;
   IF CB.RegisterCallback(sCallbackStart, ADR(peCallbackStartError)) = 0 THEN
-   Callback.0 := TRUE;  
+    Callback.0 := TRUE;  
   END_IF
   
   
@@ -46,7 +46,7 @@ IF NOT TCP_Global.g_bCallbackRegistered THEN
   sCallbackStop.eSource  := CB.EVENT_SOURCE.ALL_SOURCES;
   sCallbackStop.eClass   := CB.EVENT_CLASS.ONLINE_EVENTS;
   IF CB.RegisterCallback(sCallbackStop, ADR(peCallbackStopError)) = 0 THEN
-   Callback.1 := TRUE;  
+    Callback.1 := TRUE;  
   END_IF
   
   (* BEFORE RESET *)
@@ -55,7 +55,7 @@ IF NOT TCP_Global.g_bCallbackRegistered THEN
   sCallbackBeforeReset.eSource  := CB.EVENT_SOURCE.ALL_SOURCES;
   sCallbackBeforeReset.eClass   := CB.EVENT_CLASS.ONLINE_EVENTS;
   IF CB.RegisterCallback(sCallbackBeforeReset, ADR(peCallbackBeforeResetError)) = 0 THEN
-   Callback.2 := TRUE;  
+    Callback.2 := TRUE;  
   END_IF
   
   (* AFTER RESET *)
@@ -64,7 +64,7 @@ IF NOT TCP_Global.g_bCallbackRegistered THEN
   sCallbackAfterReset.eSource  := CB.EVENT_SOURCE.ALL_SOURCES;
   sCallbackAfterReset.eClass   := CB.EVENT_CLASS.ONLINE_EVENTS;
   IF CB.RegisterCallback(sCallbackAfterReset, ADR(peCallbackAfterResetError)) = 0 THEN
-   Callback.3 := TRUE;  
+    Callback.3 := TRUE;  
   END_IF
   
   (* BEFORE DOWNLOAD *)
@@ -73,7 +73,7 @@ IF NOT TCP_Global.g_bCallbackRegistered THEN
   sCallbackBeforeDownload.eSource  := CB.EVENT_SOURCE.ALL_SOURCES;
   sCallbackBeforeDownload.eClass   := CB.EVENT_CLASS.ONLINE_EVENTS;
   IF CB.RegisterCallback(sCallbackBeforeDownload, ADR(peCallbackBeforeDownloadError)) = 0 THEN
-   Callback.5 := TRUE;  
+    Callback.5 := TRUE;  
   END_IF
 
   TCP_Global.g_bCallbackRegistered := TRUE;

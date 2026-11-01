@@ -7,8 +7,8 @@
 *)
 FUNCTION Test_Bit : Bool
 VAR_INPUT
-    in  : WORD; // Die Eingangsvariable (z. B. BYTE, WORD, DWORD)
-    b   : WORD;    // Die zu prüfende Bitposition
+  in  : WORD; // Die Eingangsvariable (z. B. BYTE, WORD, DWORD)
+  b   : WORD;    // Die zu prüfende Bitposition
 END_VAR
 VAR
   W   : WORD := 1;

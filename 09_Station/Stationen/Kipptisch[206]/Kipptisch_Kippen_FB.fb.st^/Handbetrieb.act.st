@@ -11,11 +11,11 @@ ACTION Handbetrieb
 (***************************************************************************************************)
 
 IF (      bpBetriebsartHand
-  AND bpFreigabe
-  AND NOT bpStartKippenAuf
-  AND NOT bpStartKippenAb
-  AND NOT bpReferenz
-  AND NOT bgVisuAntriebeVerfahrenAktiv  )
+     AND bpFreigabe
+     AND NOT bpStartKippenAuf
+     AND NOT bpStartKippenAb
+     AND NOT bpReferenz
+     AND NOT bgVisuAntriebeVerfahrenAktiv  )
 THEN
 
   Antrieb.rpBeschleunigung  := (ppAntriebsInformationen.rpMaxBeschleunigung);

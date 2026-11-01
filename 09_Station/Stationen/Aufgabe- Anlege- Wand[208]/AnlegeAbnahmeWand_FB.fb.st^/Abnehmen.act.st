@@ -10,7 +10,7 @@ ACTION Abnehmen
 (* ABNEHMEN *)
 (***************************************************************************************************)
 IF ( BasisStationsParameter.bAbnehmen
-  AND blBetriebsartAutomatik )
+     AND blBetriebsartAutomatik )
 THEN
   (* Fehlerbehandlung
      - Kippen
@@ -22,7 +22,7 @@ THEN
   END_IF
   
   CASE steplAbnehmen OF
-(* ABNEHMEN =====================*)
+    (* ABNEHMEN =====================*)
     STEP_0_E:
       (* Hinweis:
          - Freigabe durch Quittierten Si-Kreis da ?
@@ -35,7 +35,7 @@ THEN
         steplAbnehmen := STEP_10_E;
       END_IF
 
-(* ABNEHMEN =====================*)
+    (* ABNEHMEN =====================*)
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob das Geblase aktiv ist
@@ -52,13 +52,13 @@ THEN
 
       END_IF
 
-(* ABNEHMEN =====================*)
+    (* ABNEHMEN =====================*)
     STEP_20_E:
       IF ( NOT Kippen.bpFehler ) THEN
         out_bDrosselklappeOeffnen := TRUE;
 
         Kippen.epZielPosition := eKippen_Position_84Grad;
-       Kippen.bpPositionieren := TRUE;
+        Kippen.bpPositionieren := TRUE;
 
         steplAbnehmen := STEP_30_E;
       ELSE
@@ -67,7 +67,7 @@ THEN
         steplAbnehmen := STEP_900_E;
       END_IF
 
-(* ABNEHMEN =====================*)
+    (* ABNEHMEN =====================*)
     STEP_30_E:
       (* Zentrierleiste verfahren
          - Nach einem Notaus bzw. Stop fehlen die Auftragsdaten somit wuerde die Leiste nur die Abstandverfahren.
@@ -83,7 +83,7 @@ THEN
         steplAbnehmen := STEP_50_E;
       END_IF
 
-(* ABNEHMEN =====================*)
+    (* ABNEHMEN =====================*)
     STEP_50_E:
       out_bAmpelSignalGruen                  := gbFlashbit05sec;
       out_bSignalScheibeAbnehmen             := gbFlashbit05sec;
@@ -95,52 +95,52 @@ THEN
         steplAbnehmen := STEP_60_E;
       END_IF
 
-(* ABNEHMEN =====================*)
+    (* ABNEHMEN =====================*)
     STEP_60_E:
       out_bAmpelSignalGruen                  := gbFlashbit05sec;
       out_bSignalScheibeAbnehmen             := gbFlashbit05sec;
 
       IF ( ( in_bTasterQuittierungGlasAbgenommen OR in_bFussTaster )
-  (* todo     AND NOT Glastransport.bpSensorEinlaufVorAb  
-        AND NOT Glastransport.bpSensorEinlauf 
-        AND NOT Glastransport.bpSensorAuslaufVorAb*) )
+      (* todo     AND NOT Glastransport.bpSensorEinlaufVorAb  
+            AND NOT Glastransport.bpSensorEinlauf 
+            AND NOT Glastransport.bpSensorAuslaufVorAb*) )
       THEN 
-          ilScheibenZaehler := ( ilScheibenZaehler - 1 );
+        ilScheibenZaehler := ( ilScheibenZaehler - 1 );
 
-          IF ( ilScheibenZaehler > 0 ) THEN
-            steplAbnehmen := STEP_70_E;
+        IF ( ilScheibenZaehler > 0 ) THEN
+          steplAbnehmen := STEP_70_E;
 
-          ELSE
-            out_bSignalScheibeGlasbruch     := FALSE;
-            out_bAmpelSignalGruen           := FALSE;
-            out_bSignalScheibeAbnehmen      := FALSE;
+        ELSE
+          out_bSignalScheibeGlasbruch     := FALSE;
+          out_bAmpelSignalGruen           := FALSE;
+          out_bSignalScheibeAbnehmen      := FALSE;
 
-            steplAbnehmen := STEP_1000_E;
-          END_IF
+          steplAbnehmen := STEP_1000_E;
+        END_IF
       END_IF
 
-(* ABNEHMEN =====================*)
+    (* ABNEHMEN =====================*)
     STEP_70_E:
     
       out_bSignalScheibeGlasbruch := FALSE;
 
       IF ( NOT in_bTasterQuittierungGlasAbgenommen 
-        AND NOT in_bFussTaster )
+           AND NOT in_bFussTaster )
       THEN
         steplAbnehmen := STEP_60_E;
       END_IF
 
-(* ABNEHMEN =====================*)
+    (* ABNEHMEN =====================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       Messachse.bpPositionierung     := FALSE;
       Kippen.bpPositionieren         := FALSE; 
 
-(* ABNEHMEN =====================*)
+    (* ABNEHMEN =====================*)
     STEP_1000_E:
       BasisStationsParameter.bAbnehmenAbgeschlossen := TRUE;
 
-(* ABNEHMEN =====================*)
+  (* ABNEHMEN =====================*)
   END_CASE
 ELSE
   IF (steplAbnehmen > STEP_0_E) THEN

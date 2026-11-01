@@ -30,7 +30,7 @@ END_IF
      die gespiegelten Daten validierung  
 *)
 IF ( in_bSenderAuftragdatenVorhanden
-  AND NOT in_bsenderAuftragdatenPlausibel )
+     AND NOT in_bsenderAuftragdatenPlausibel )
 THEN
   out_stEmpfaengerAuftragsdatenGespiegelt := in_stSenderAuftragsdaten;
   out_bEmpfaengerAuftragsdatenErhalten    := TRUE;

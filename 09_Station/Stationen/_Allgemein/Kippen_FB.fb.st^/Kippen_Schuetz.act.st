@@ -14,19 +14,19 @@ IF ( bpPositionieren ) THEN
 
   // Ausnahmesituation
   IF ( bpSensorAuslauf
-    AND NOT bpSensorEinlauf )
+       AND NOT bpSensorEinlauf )
   THEN
     wpFehlerNr := cMELDUNG_KIPPEN_AUSLAUFSENSOR_BELEGT;
     steplPositionieren := STEP_900_E;
 
   ELSIF ( bpSensorEinlauf
-    AND NOT bpSensorAuslauf )
+          AND NOT bpSensorAuslauf )
   THEN
     wpFehlerNr := cMELDUNG_KIPPEN_EINLAUFSENSOR_BELEGT;
     steplPositionieren := STEP_900_E;
 
   ELSIF ( bpSensorEinlauf
-    AND   bpSensorAuslauf )
+          AND   bpSensorAuslauf )
   THEN
     wpFehlerNr := cMELDUNG_KIPPEN_EINLAUF_AUSLAUF_SENSOR_BELEGT;
     steplPositionieren := STEP_900_E;
@@ -35,7 +35,7 @@ IF ( bpPositionieren ) THEN
 
 
   CASE steplPositionieren OF
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_0_E:
       (* Hinweis:
          - Variablen zurueck setzen
@@ -47,7 +47,7 @@ IF ( bpPositionieren ) THEN
       steplPositionieren := STEP_10_E;
 
 
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_10_E:
       (* Hinweis:
          - Es darf weder der Einlauf noch der Auslauf- Sensor während der Dreh-Bewegung belegt sein
@@ -86,7 +86,7 @@ IF ( bpPositionieren ) THEN
 
       END_IF
 
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_40_E:
       (* ---------------------------------------------------------------------------------------
       //  STARTEN DER ABSOLUT- POSITIONIERUNG
@@ -97,10 +97,10 @@ IF ( bpPositionieren ) THEN
       CASE epZielPosition OF
 
         eKippen_Position_84Grad:
-           out_bKippen84Grad  := TRUE;
+          out_bKippen84Grad  := TRUE;
 
         eKippen_Position_90Grad:
-           out_bKippen90Grad  := TRUE;
+          out_bKippen90Grad  := TRUE;
 
         ELSE
           wpFehlerNr := cMELDUNG_KIPPEN_ZIEL_POSITION_UNGUELTIG;
@@ -111,12 +111,12 @@ IF ( bpPositionieren ) THEN
       steplPositionieren := STEP_120_E;
 
 
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_120_E:
       (* Hinweis:
          - Bewegung abgeschlossen
       *)
-     CASE epZielPosition OF
+      CASE epZielPosition OF
 
         
         eKippen_Position_84Grad:
@@ -126,9 +126,9 @@ IF ( bpPositionieren ) THEN
             steplPositionieren := STEP_1000_E;
           END_IF
 
-         (* Ausnahmefehler:
-             - Sensoren
-          *)    
+          (* Ausnahmefehler:
+              - Sensoren
+           *)    
           IF ( tonlMaxWarteZeit.Q )THEN
             wpFehlerNr := cMELDUNG_KIPPEN_KIPPT_NICHT_AB;
             out_bKippen84Grad := FALSE;
@@ -143,9 +143,9 @@ IF ( bpPositionieren ) THEN
             steplPositionieren := STEP_1000_E;
           END_IF
 
-         (* Ausnahmefehler:
-             - Sensoren
-          *)    
+          (* Ausnahmefehler:
+              - Sensoren
+           *)    
           IF ( tonlMaxWarteZeit.Q )THEN
             wpFehlerNr := cMELDUNG_KIPPEN_KIPPT_NICHT_AUF;
             out_bKippen90Grad := FALSE;
@@ -154,18 +154,18 @@ IF ( bpPositionieren ) THEN
 
       END_CASE
  
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_900_E:
       bpFehler := TRUE;
 
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_1000_E:
-    out_bKippen84Grad := FALSE;
-    out_bKippen90Grad := FALSE;
+      out_bKippen84Grad := FALSE;
+      out_bKippen90Grad := FALSE;
       bpDone := TRUE;
       bpPositionierenAbgeschlossen := TRUE;
 
-(*POSITIONIEREN =================================== *)
+  (*POSITIONIEREN =================================== *)
   END_CASE
 
 END_IF

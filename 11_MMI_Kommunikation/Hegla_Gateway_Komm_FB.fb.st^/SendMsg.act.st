@@ -10,32 +10,32 @@ ACTION SendMsg
 IF ( bgTcpConnected AND (Client.hSocket <> RTS_INVALID_HANDLE)) THEN
 
   IF ( MemComp( ADR( SpsToTcp.wWatchdog ), ADR( SpsToMmiMem.wWatchdog ), SIZEOF( SpsToMmiMem.wWatchdog ) ) <> 0 ) THEN
-      MemCopy( ADR( SpsToTcp.wWatchdog ), ADR( SpsToMmiMem.wWatchdog ), SIZEOF( SpsToMmiMem.wWatchdog ) );
-      bSendWatchDog := TRUE;
+    MemCopy( ADR( SpsToTcp.wWatchdog ), ADR( SpsToMmiMem.wWatchdog ), SIZEOF( SpsToMmiMem.wWatchdog ) );
+    bSendWatchDog := TRUE;
   END_IF
 
   IF ( MemComp( ADR( SpsToTcp.smbMessageBlock ), ADR( SpsToMmiMem.smbMessageBlock ), SIZEOF( SpsToMmiMem.smbMessageBlock ) ) <> 0 ) THEN
-      MemCopy( ADR( SpsToTcp.smbMessageBlock ), ADR( SpsToMmiMem.smbMessageBlock ), SIZEOF( SpsToMmiMem.smbMessageBlock ) );
-      bSendMsgBlock := TRUE;
+    MemCopy( ADR( SpsToTcp.smbMessageBlock ), ADR( SpsToMmiMem.smbMessageBlock ), SIZEOF( SpsToMmiMem.smbMessageBlock ) );
+    bSendMsgBlock := TRUE;
   END_IF
 
   tnSendIoSystem(IN := TRUE,PT := tSendIoSystem);
   IF ( MemComp( ADR( SpsToTcp.ioSystem ), ADR( SpsToMmiMem.ioSystem ), SIZEOF( SpsToMmiMem.ioSystem ) ) <> 0 )
-  AND(tnSendIoSystem.Q)
+     AND(tnSendIoSystem.Q)
   THEN
-      MemCopy( ADR( SpsToTcp.ioSystem ), ADR( SpsToMmiMem.ioSystem ), SIZEOF( SpsToMmiMem.ioSystem ) );
-      bSendIoSystem := TRUE;
-      tnSendIoSystem(IN := FALSE);
+    MemCopy( ADR( SpsToTcp.ioSystem ), ADR( SpsToMmiMem.ioSystem ), SIZEOF( SpsToMmiMem.ioSystem ) );
+    bSendIoSystem := TRUE;
+    tnSendIoSystem(IN := FALSE);
   END_IF
 
   IF ( MemComp( ADR( SpsToTcp.aucControlSystem ), ADR( SpsToMmiMem.aucControlSystem ), SIZEOF( SpsToMmiMem.aucControlSystem ) ) <> 0 ) THEN
-      MemCopy( ADR( SpsToTcp.aucControlSystem ), ADR( SpsToMmiMem.aucControlSystem), SIZEOF( SpsToMmiMem.aucControlSystem ) );
-      bSendControlSystem := TRUE;
+    MemCopy( ADR( SpsToTcp.aucControlSystem ), ADR( SpsToMmiMem.aucControlSystem), SIZEOF( SpsToMmiMem.aucControlSystem ) );
+    bSendControlSystem := TRUE;
   END_IF
 
   IF ( MemComp( ADR( SpsToTcp.aAntrieb ), ADR( SpsToMmiMem.aAntrieb ), SIZEOF( SpsToMmiMem.aAntrieb ) ) <> 0 ) THEN
-      MemCopy( ADR( SpsToTcp.aAntrieb ), ADR( SpsToMmiMem.aAntrieb), SIZEOF( SpsToMmiMem.aAntrieb ) );
-      bSendDrives := TRUE;
+    MemCopy( ADR( SpsToTcp.aAntrieb ), ADR( SpsToMmiMem.aAntrieb), SIZEOF( SpsToMmiMem.aAntrieb ) );
+    bSendDrives := TRUE;
   END_IF
 END_IF
 
@@ -110,11 +110,11 @@ IF ( bSendMsgBlock AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
       bSendMsgBlock := FALSE;
     ELSIF diSent <> 0 THEN
       IF tcpTrace = 0 THEN tcpTrace := 4; END_IF
-            CloseSocket( ADR( Client.hSocket ) );
+      CloseSocket( ADR( Client.hSocket ) );
     END_IF
   ELSIF diSent <> 0 THEN
     IF tcpTrace = 0 THEN tcpTrace := 3; END_IF
-        CloseSocket( ADR( Client.hSocket ) );
+    CloseSocket( ADR( Client.hSocket ) );
   END_IF
 END_IF
 
@@ -136,11 +136,11 @@ IF ( bSendControlSystem AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
       bSendControlSystem := FALSE;
     ELSIF diSent <> 0 THEN
       IF tcpTrace = 0 THEN tcpTrace := 6; END_IF
-            CloseSocket( ADR( Client.hSocket ) );
+      CloseSocket( ADR( Client.hSocket ) );
     END_IF
   ELSIF diSent <> 0 THEN
     IF tcpTrace = 0 THEN tcpTrace := 5; END_IF
-        CloseSocket( ADR( Client.hSocket ) );
+    CloseSocket( ADR( Client.hSocket ) );
   END_IF
 END_IF
 
@@ -163,11 +163,11 @@ IF ( bSendIoSystem AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
       bSendIoSystem := FALSE;
     ELSIF diSent <> 0 THEN
       IF tcpTrace = 0 THEN tcpTrace := 66; END_IF
-            CloseSocket( ADR( Client.hSocket ) );
+      CloseSocket( ADR( Client.hSocket ) );
     END_IF
   ELSIF diSent <> 0 THEN
     IF tcpTrace = 0 THEN tcpTrace := 55; END_IF
-        CloseSocket(ADR(Client.hSocket));
+    CloseSocket(ADR(Client.hSocket));
   END_IF
 END_IF
 

@@ -16,19 +16,19 @@ END_VAR
 (***************************************************************************************************)
 
 IF ( AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Eintransport ) THEN
-   (* Hinweis: Aufruf der Schrittkette *)
-   Eintransport[wStation, wWand]( Auftragsdaten := AuftragsdatenWand[wStation, wWand], wStation := wStation, wWand := wWand);
-   (* Hinweis: Abschluss der Schrittkette *)
-   IF Eintransport[wStation, wWand].bpDone THEN
-     ablEintransportGewesen[wStation, wWand] := TRUE;
-     AuftragsdatenWand[wStation, wWand] := Eintransport[wStation, wWand].Auftragsdaten;
-     Eintransport[wStation, wWand](bpReset := TRUE);
-   END_IF
-   (* Hinweis: Fehler-Auswertung *)
-   blFehler[wStation, wWand] := Eintransport[wStation, wWand].bpFehler;
-   IF rtlFehler[wStation, wWand].Q THEN
-     AutomatikFehlerSetzen(starrShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler);
-   END_IF
+  (* Hinweis: Aufruf der Schrittkette *)
+  Eintransport[wStation, wWand]( Auftragsdaten := AuftragsdatenWand[wStation, wWand], wStation := wStation, wWand := wWand);
+  (* Hinweis: Abschluss der Schrittkette *)
+  IF Eintransport[wStation, wWand].bpDone THEN
+    ablEintransportGewesen[wStation, wWand] := TRUE;
+    AuftragsdatenWand[wStation, wWand] := Eintransport[wStation, wWand].Auftragsdaten;
+    Eintransport[wStation, wWand](bpReset := TRUE);
+  END_IF
+  (* Hinweis: Fehler-Auswertung *)
+  blFehler[wStation, wWand] := Eintransport[wStation, wWand].bpFehler;
+  IF rtlFehler[wStation, wWand].Q THEN
+    AutomatikFehlerSetzen(starrShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler);
+  END_IF
 ELSE
   (* Hinweis: Reset der Schrittkette *)
   IF ( Eintransport[wStation, wWand].steplSchritt > STEP_0_E ) THEN
@@ -41,18 +41,18 @@ END_IF
 (***************************************************************************************************)
 
 IF ( AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Austransport ) THEN
-   (* Hinweis: Aufruf der Schrittkette *)
-   Austransport[wStation, wWand]( Auftragsdaten := AuftragsdatenWand[wStation, wWand], wStation := wStation, wWand := wWand);
-   (* Hinweis: Abschluss der Schrittkette *)
-   IF Austransport[wStation, wWand].bpDone THEN
-     AuftragsdatenWand[wStation, wWand] := Austransport[wStation, wWand].Auftragsdaten;
-     Austransport[wStation, wWand](bpReset := TRUE);
-   END_IF
-   (* Hinweis: Fehler-Auswertung *)
-   blFehler[wStation, wWand] := Austransport[wStation, wWand].bpFehler;
-   IF rtlFehler[wStation, wWand].Q THEN
-     AutomatikFehlerSetzen(starrShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler);
-   END_IF
+  (* Hinweis: Aufruf der Schrittkette *)
+  Austransport[wStation, wWand]( Auftragsdaten := AuftragsdatenWand[wStation, wWand], wStation := wStation, wWand := wWand);
+  (* Hinweis: Abschluss der Schrittkette *)
+  IF Austransport[wStation, wWand].bpDone THEN
+    AuftragsdatenWand[wStation, wWand] := Austransport[wStation, wWand].Auftragsdaten;
+    Austransport[wStation, wWand](bpReset := TRUE);
+  END_IF
+  (* Hinweis: Fehler-Auswertung *)
+  blFehler[wStation, wWand] := Austransport[wStation, wWand].bpFehler;
+  IF rtlFehler[wStation, wWand].Q THEN
+    AutomatikFehlerSetzen(starrShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler);
+  END_IF
 ELSE
   (* Hinweis: Reset der Schrittkette *)
   IF ( Austransport[wStation, wWand].steplSchritt > STEP_0_E ) THEN
@@ -65,18 +65,18 @@ END_IF
 (***************************************************************************************************)
 
 IF ( AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Durchtransport ) THEN
-   (* Hinweis: Aufruf der Schrittkette *)
-   Durchtransport[wStation, wWand]( Auftragsdaten := AuftragsdatenWand[wStation, wWand], wStation := wStation, wWand := wWand);
-   (* Hinweis: Abschluss der Schrittkette *)
-   IF Durchtransport[wStation, wWand].bpDone THEN
-     AuftragsdatenWand[wStation, wWand] := Durchtransport[wStation, wWand].Auftragsdaten;
-     Durchtransport[wStation, wWand](bpReset := TRUE);
-   END_IF
-   (* Hinweis: Fehler-Auswertung *)
-   blFehler[wStation, wWand] := Durchtransport[wStation, wWand].bpFehler;
-   IF rtlFehler[wStation, wWand].Q THEN
-     AutomatikFehlerSetzen(starrShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler);
-   END_IF
+  (* Hinweis: Aufruf der Schrittkette *)
+  Durchtransport[wStation, wWand]( Auftragsdaten := AuftragsdatenWand[wStation, wWand], wStation := wStation, wWand := wWand);
+  (* Hinweis: Abschluss der Schrittkette *)
+  IF Durchtransport[wStation, wWand].bpDone THEN
+    AuftragsdatenWand[wStation, wWand] := Durchtransport[wStation, wWand].Auftragsdaten;
+    Durchtransport[wStation, wWand](bpReset := TRUE);
+  END_IF
+  (* Hinweis: Fehler-Auswertung *)
+  blFehler[wStation, wWand] := Durchtransport[wStation, wWand].bpFehler;
+  IF rtlFehler[wStation, wWand].Q THEN
+    AutomatikFehlerSetzen(starrShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler);
+  END_IF
 ELSE
   (* Hinweis: Reset der Schrittkette *)
   IF ( Durchtransport[wStation, wWand].steplSchritt > STEP_0_E ) THEN
@@ -88,18 +88,18 @@ END_IF
 (* STEUERUNG: VORABKOMPONENTEN *)
 (***************************************************************************************************)
 IF ( VorAbAuftragsDaten[wStation, wWand].wAuftrag = eStation_VorabAuftrag ) THEN
-   (* Hinweis: Aufruf der Schrittkette *)
-   VorabkomponentenAnsteuerung[wStation, wWand]( Auftragsdaten := VorAbAuftragsDaten[wStation, wWand],  wStation := wStation, wWand := wWand);
-   (* Hinweis: Abschluss der Schrittkette *)
-   IF VorabkomponentenAnsteuerung[wStation, wWand].bpDone THEN
-     VorAbAuftragsDaten[wStation, wWand] := VorabkomponentenAnsteuerung[wStation, wWand].Auftragsdaten;
-     VorabkomponentenAnsteuerung[wStation, wWand](bpReset := TRUE);
-   END_IF
-   (* Hinweis: Fehler-Auswertung *)
-   blFehler[wStation, wWand] := VorabkomponentenAnsteuerung[wStation, wWand].bpFehler;
-   IF rtlFehler[wStation, wWand].Q THEN
-     AutomatikFehlerSetzen(starrShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler);
-   END_IF
+  (* Hinweis: Aufruf der Schrittkette *)
+  VorabkomponentenAnsteuerung[wStation, wWand]( Auftragsdaten := VorAbAuftragsDaten[wStation, wWand],  wStation := wStation, wWand := wWand);
+  (* Hinweis: Abschluss der Schrittkette *)
+  IF VorabkomponentenAnsteuerung[wStation, wWand].bpDone THEN
+    VorAbAuftragsDaten[wStation, wWand] := VorabkomponentenAnsteuerung[wStation, wWand].Auftragsdaten;
+    VorabkomponentenAnsteuerung[wStation, wWand](bpReset := TRUE);
+  END_IF
+  (* Hinweis: Fehler-Auswertung *)
+  blFehler[wStation, wWand] := VorabkomponentenAnsteuerung[wStation, wWand].bpFehler;
+  IF rtlFehler[wStation, wWand].Q THEN
+    AutomatikFehlerSetzen(starrShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler);
+  END_IF
 ELSE
   (* Hinweis: Reset der Schrittkette *)
   IF ( VorabkomponentenAnsteuerung[wStation, wWand].steplSchritt > STEP_0_E ) THEN

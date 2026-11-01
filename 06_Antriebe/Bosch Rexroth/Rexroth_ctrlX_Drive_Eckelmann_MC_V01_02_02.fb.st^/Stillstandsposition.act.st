@@ -17,15 +17,15 @@ ELSE
   IF rpRuckzeit > 0 THEN
     IF ABS(rpIstGeschwindigkeit) >= rlVerzoegerung * (rpRuckzeit / 1000.0) THEN
       rpStillstandsPosition :=
-      (ABS(rpIstGeschwindigkeit) * ABS(rpIstGeschwindigkeit)) / (2.0 * rlVerzoegerung)
-      + (ABS(rpIstGeschwindigkeit) * (rpRuckzeit / 1000.0)) / 2.0;
+                              (ABS(rpIstGeschwindigkeit) * ABS(rpIstGeschwindigkeit)) / (2.0 * rlVerzoegerung)
+                              + (ABS(rpIstGeschwindigkeit) * (rpRuckzeit / 1000.0)) / 2.0;
     ELSE
       rpStillstandsPosition :=
-      SQRT(
-        ABS(rpIstGeschwindigkeit) * ABS(rpIstGeschwindigkeit) * ABS(rpIstGeschwindigkeit)
-        * (rpRuckzeit / 1000.0)
-        / rlVerzoegerung
-      );
+                              SQRT(
+                                    ABS(rpIstGeschwindigkeit) * ABS(rpIstGeschwindigkeit) * ABS(rpIstGeschwindigkeit)
+                                    * (rpRuckzeit / 1000.0)
+                                    / rlVerzoegerung
+                                  );
     END_IF;
   ELSE
     rpStillstandsPosition := (ABS(rpIstGeschwindigkeit) * ABS(rpIstGeschwindigkeit)) / (2.0 * rlVerzoegerung);

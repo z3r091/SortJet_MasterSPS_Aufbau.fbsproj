@@ -30,7 +30,7 @@ VAR_OUTPUT
 END_VAR 
 
 VAR
-  // BOOL
+// BOOL
   
 END_VAR
 (* Hinweis:

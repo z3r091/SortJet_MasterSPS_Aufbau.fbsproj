@@ -12,7 +12,7 @@ ACTION Reset
 
 IF( blBetriebsartReset )THEN
   CASE steplReset OF
-(*RESET ==========================*)
+    (*RESET ==========================*)
     STEP_0_E:
       out_bAmpelSignalGruenScheibeAnlegen    := FALSE;
       out_bAmpelSignalRot                    := FALSE;
@@ -36,7 +36,7 @@ IF( blBetriebsartReset )THEN
 
       steplReset := STEP_10_E;
 
-(*RESET ==========================*)
+    (*RESET ==========================*)
     STEP_10_E:
       (* Hinweis:
          - Zurecksetzen der Bausteine
@@ -54,14 +54,14 @@ IF( blBetriebsartReset )THEN
 
       steplReset := STEP_20_E;
 
-(*RESET ==========================*)
+    (*RESET ==========================*)
     STEP_20_E:
       (* Hinweis:
          - Pruefen ob alle Antriebe zurueckgesetzt worden sind
       *)
       IF (  Glastransport.bpDone
-        AND Messachse.bpDone
-        AND Hubrahmen.bpDone )
+           AND Messachse.bpDone
+           AND Hubrahmen.bpDone )
       THEN
         Glastransport.bpReset := FALSE;
         Hubrahmen.bpReset     := FALSE;
@@ -100,21 +100,21 @@ IF( blBetriebsartReset )THEN
         steplReset := STEP_900_E;
       END_IF
 
-(*RESET ==========================*)
+    (*RESET ==========================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
       BasisStationsParameter.bFehler := TRUE;
       BasisStationsParameter.bReset := FALSE;
 
-(*RESET ==========================*)
+    (*RESET ==========================*)
     STEP_1000_E:
       BasisStationsParameter.bFehler := FALSE;
       BasisStationsParameter.wFehlerNummer := cMELDUNG_NULL;
 
       BasisStationsParameter.bReset := FALSE;
 
-(*RESET ==========================*)
+  (*RESET ==========================*)
   END_CASE
 ELSE
   IF ( steplReset > STEP_0_E ) THEN

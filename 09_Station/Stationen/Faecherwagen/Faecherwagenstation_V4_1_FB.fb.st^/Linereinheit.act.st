@@ -15,7 +15,7 @@ IF blLineareinheitVor
    AND BasisStationsParameter.bFreigabe
 THEN
   CASE steplLineareinheitVor OF
-(* VERFAHREN VORWÄRTS =============================  *)
+    (* VERFAHREN VORWÄRTS =============================  *)
     STEP_0_E:
       blLineareinheitVorDone := FALSE;
       tonlLineareinheitVorZurueck(IN := FALSE);
@@ -24,19 +24,19 @@ THEN
       IF blLinearEinheitVorne THEN
         steplLineareinheitVor := STEP_1000_E;
       ELSE
-    IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+        IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
           steplLineareinheitVor := STEP_10_E;
-    END_IF
+        END_IF
       END_IF
 
-(* VERFAHREN VORWÄRTS =============================  *)
+    (* VERFAHREN VORWÄRTS =============================  *)
     STEP_10_E:
      
       tonlTimeoutSensorShutle(IN := NOT in_bKlemmZylinderEingefahren, PT := TIMEOUT_SENSOR); //2min  WatchIO nach 10sec
 
       IF in_bKlemmZylinderEingefahren OR NOT blGreiferZu THEN
-         tonlTimeoutSensorShutle(IN := FALSE);
-         steplLineareinheitVor := STEP_20_E;
+        tonlTimeoutSensorShutle(IN := FALSE);
+        steplLineareinheitVor := STEP_20_E;
       END_IF
 
       (* FEHLER:
@@ -44,29 +44,29 @@ THEN
       *)
 
       IF tonlTimeoutSensorShutle.Q THEN
-         wpFehlerNr := cMELDUNG_FAECHERWAGEN_KLEMMZYLINDER_NICHT_EINGEFAHREN;
-         SpsError( eFehler_Station, 
-                   wpFehlerNr, 
-                   BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
-                   BasisStationsParameter.awFehlerInformationen );
+        wpFehlerNr := cMELDUNG_FAECHERWAGEN_KLEMMZYLINDER_NICHT_EINGEFAHREN;
+        SpsError( eFehler_Station, 
+                  wpFehlerNr, 
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  BasisStationsParameter.awFehlerInformationen );
 
-         steplLineareinheitVor := STEP_900_E;
+        steplLineareinheitVor := STEP_900_E;
       END_IF
-(* VERFAHREN VORWÄRTS =============================  *)
+    (* VERFAHREN VORWÄRTS =============================  *)
     STEP_20_E:
       out_bLinearEinheitVor := TRUE;
       out_bLinearEinheitZurueck := FALSE;
       steplLineareinheitVor := STEP_30_E;
 
-(* VERFAHREN VORWÄRTS =============================  *)
+    (* VERFAHREN VORWÄRTS =============================  *)
     STEP_30_E:
       tonlLineareinheitVorZurueck( IN := blLinearEinheitVorne, PT := T#2S );
       tonlTimeoutSensorVorne(IN := NOT blLinearEinheitVorne, PT := TIMEOUT_SENSOR);
 
       IF tonlLineareinheitVorZurueck.Q THEN
-         out_bLinearEinheitVor := FALSE;
-         steplLineareinheitVor := STEP_1000_E;
+        out_bLinearEinheitVor := FALSE;
+        steplLineareinheitVor := STEP_1000_E;
       END_IF
 
       (* FEHLER:
@@ -74,22 +74,22 @@ THEN
       *)
 
       IF tonlTimeoutSensorVorne.Q THEN
-         wpFehlerNr := cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_VORNE;
-         SpsError( eFehler_Station,
-                   wpFehlerNr, 
-                   BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
-                   BasisStationsParameter.awFehlerInformationen );
+        wpFehlerNr := cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_VORNE;
+        SpsError( eFehler_Station,
+                  wpFehlerNr, 
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  BasisStationsParameter.awFehlerInformationen );
 
-         steplLineareinheitVor := STEP_900_E;
+        steplLineareinheitVor := STEP_900_E;
       END_IF
 
-(* VERFAHREN VORWÄRTS =============================  *)
+    (* VERFAHREN VORWÄRTS =============================  *)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       out_bLinearEinheitVor := FALSE;
 
-(* VERFAHREN VORWÄRTS =============================  *)
+    (* VERFAHREN VORWÄRTS =============================  *)
     STEP_1000_E:
       blLineareinheitVorDone:=TRUE;
 
@@ -99,11 +99,11 @@ END_IF
 IF NOT blLineareinheitVor THEN
 
   IF ( steplLineareinheitVor > STEP_0_E ) THEN
-     out_bLinearEinheitVor  := FALSE;
-     blLineareinheitVorDone := FALSE;
-     tonlLineareinheitVorZurueck(IN := FALSE);
-     tonlTimeoutSensorVorne(IN := FALSE);
-     steplLineareinheitVor  := STEP_0_E;
+    out_bLinearEinheitVor  := FALSE;
+    blLineareinheitVorDone := FALSE;
+    tonlLineareinheitVorZurueck(IN := FALSE);
+    tonlTimeoutSensorVorne(IN := FALSE);
+    steplLineareinheitVor  := STEP_0_E;
   END_IF
 
 END_IF
@@ -118,7 +118,7 @@ IF blLineareinheitZurueck AND // Richtung Shuttle
    AND bpUntergestellErkannt
 THEN
   CASE steplLineareinheitZur OF
-(* VERFAHREN RÜCKWÄRTS =============================  *)
+    (* VERFAHREN RÜCKWÄRTS =============================  *)
     STEP_0_E:
       blLineareinheitZurueckDone := FALSE;
       tonlLineareinheitVorZurueck(IN := FALSE);
@@ -131,14 +131,14 @@ THEN
       END_IF
 
 
-(* VERFAHREN RÜCKWÄRTS =============================  *)
+    (* VERFAHREN RÜCKWÄRTS =============================  *)
     STEP_10_E:
      
       tonlTimeoutSensorShutle(IN := NOT in_bKlemmZylinderEingefahren, PT := TIMEOUT_SENSOR); //2min  WatchIO nach 10sec
 
       IF in_bKlemmZylinderEingefahren OR NOT blGreiferZu THEN
-         tonlTimeoutSensorShutle(IN := FALSE);
-         steplLineareinheitZur := STEP_20_E;
+        tonlTimeoutSensorShutle(IN := FALSE);
+        steplLineareinheitZur := STEP_20_E;
       END_IF
 
       (* FEHLER:
@@ -146,31 +146,31 @@ THEN
       *)
 
       IF tonlTimeoutSensorShutle.Q THEN
-         wpFehlerNr := cMELDUNG_FAECHERWAGEN_KLEMMZYLINDER_NICHT_EINGEFAHREN;
-         SpsError( eFehler_Station, 
-                   wpFehlerNr, 
-                   BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
-                   BasisStationsParameter.awFehlerInformationen );
+        wpFehlerNr := cMELDUNG_FAECHERWAGEN_KLEMMZYLINDER_NICHT_EINGEFAHREN;
+        SpsError( eFehler_Station, 
+                  wpFehlerNr, 
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  BasisStationsParameter.awFehlerInformationen );
 
-         steplLineareinheitZur := STEP_900_E;
+        steplLineareinheitZur := STEP_900_E;
       END_IF
       
-(* VERFAHREN RÜCKWÄRTS =============================  *)
+    (* VERFAHREN RÜCKWÄRTS =============================  *)
     STEP_20_E:
       out_bLinearEinheitZurueck := TRUE;
       out_bLinearEinheitVor     := FALSE;
       tonlLineareinheitVorZurueck( IN := FALSE );
       steplLineareinheitZur := STEP_30_E;
 
-(* VERFAHREN RÜCKWÄRTS =============================  *)
+    (* VERFAHREN RÜCKWÄRTS =============================  *)
     STEP_30_E:
       tonlLineareinheitVorZurueck( IN := blLinearEinheitHinten, PT := T#2S );
       tonlTimeoutSensorHinten(IN := NOT blLinearEinheitHinten, PT := TIMEOUT_SENSOR);
 
       IF tonlLineareinheitVorZurueck.Q THEN
-         out_bLinearEinheitZurueck := FALSE;
-         steplLineareinheitZur := STEP_1000_E;
+        out_bLinearEinheitZurueck := FALSE;
+        steplLineareinheitZur := STEP_1000_E;
       END_IF
 
       (* FEHLER:
@@ -178,22 +178,22 @@ THEN
       *)
 
       IF tonlTimeoutSensorHinten.Q THEN
-         wpFehlerNr := cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_HINTEN;
-         SpsError( eFehler_Station, 
-                   wpFehlerNr, 
-                   BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
-                   BasisStationsParameter.awFehlerInformationen );
+        wpFehlerNr := cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_HINTEN;
+        SpsError( eFehler_Station, 
+                  wpFehlerNr, 
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  BasisStationsParameter.awFehlerInformationen );
 
-         steplLineareinheitZur := STEP_900_E;
+        steplLineareinheitZur := STEP_900_E;
       END_IF
 
-(* VERFAHREN RÜCKWÄRTS =============================  *)
+    (* VERFAHREN RÜCKWÄRTS =============================  *)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       out_bLinearEinheitZurueck := FALSE;
 
-(* ZURUECMOVEMENT =============================  *)
+    (* ZURUECMOVEMENT =============================  *)
     STEP_1000_E:
       blLineareinheitZurueckDone:=TRUE;
 
@@ -203,11 +203,11 @@ END_IF
 IF NOT blLineareinheitZurueck THEN
 
   IF( steplLineareinheitZur > STEP_0_E )THEN
-   steplLineareinheitZur := STEP_0_E;
-   out_bLinearEinheitZurueck := FALSE;
-   tonlLineareinheitVorZurueck(IN := FALSE);
-   tonlTimeoutSensorHinten(IN := FALSE);
-   blLineareinheitZurueckDone := FALSE;
+    steplLineareinheitZur := STEP_0_E;
+    out_bLinearEinheitZurueck := FALSE;
+    tonlLineareinheitVorZurueck(IN := FALSE);
+    tonlTimeoutSensorHinten(IN := FALSE);
+    blLineareinheitZurueckDone := FALSE;
   END_IF
 
 END_IF
@@ -221,7 +221,7 @@ IF blLineareinheitShuttle  // Richtung Shuttle
    AND bpUntergestellErkannt
 THEN
   CASE steplLineareinheitShuttle OF
-(* VERFAHREN SHUTTLE =============================  *)
+    (* VERFAHREN SHUTTLE =============================  *)
     STEP_0_E:
       blLineareinheitShuttleDone := FALSE;
       tonlLineareinheitVorZurueck(IN := FALSE);
@@ -230,20 +230,20 @@ THEN
       IF blLinearEinheitSH THEN
         steplLineareinheitShuttle := STEP_1000_E;
       ELSE
-    IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+        IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
           steplLineareinheitShuttle := STEP_10_E;
-    END_IF
+        END_IF
       END_IF
 
 
-(* VERFAHREN SHUTTLE =============================  *)
+    (* VERFAHREN SHUTTLE =============================  *)
     STEP_10_E:
      
       tonlTimeoutSensorShutle(IN := NOT in_bKlemmZylinderEingefahren, PT := TIMEOUT_SENSOR); //2min  WatchIO nach 10sec
 
       IF in_bKlemmZylinderEingefahren OR NOT blGreiferZu THEN
-         tonlTimeoutSensorShutle(IN := FALSE);
-         steplLineareinheitShuttle := STEP_20_E;
+        tonlTimeoutSensorShutle(IN := FALSE);
+        steplLineareinheitShuttle := STEP_20_E;
       END_IF
 
       (* FEHLER:
@@ -251,31 +251,31 @@ THEN
       *)
 
       IF tonlTimeoutSensorShutle.Q THEN
-         wpFehlerNr := cMELDUNG_FAECHERWAGEN_KLEMMZYLINDER_NICHT_EINGEFAHREN;
-         SpsError( eFehler_Station, 
-                   wpFehlerNr, 
-                   BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
-                   BasisStationsParameter.awFehlerInformationen );
+        wpFehlerNr := cMELDUNG_FAECHERWAGEN_KLEMMZYLINDER_NICHT_EINGEFAHREN;
+        SpsError( eFehler_Station, 
+                  wpFehlerNr, 
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  BasisStationsParameter.awFehlerInformationen );
 
-         steplLineareinheitShuttle := STEP_900_E;
+        steplLineareinheitShuttle := STEP_900_E;
       END_IF
 
-(* VERFAHREN SHUTTLE =============================  *)
+    (* VERFAHREN SHUTTLE =============================  *)
     STEP_20_E:
       out_bLinearEinheitZurueck := TRUE;
       out_bLinearEinheitVor     := FALSE;
       tonlLineareinheitVorZurueck( IN := FALSE );
       steplLineareinheitShuttle := STEP_30_E;
 
-(* VERFAHREN SHUTTLE =============================  *)
+    (* VERFAHREN SHUTTLE =============================  *)
     STEP_30_E:
       tonlLineareinheitVorZurueck( IN := blLinearEinheitSH, PT := T#2S );
       tonlTimeoutSensorShutle(IN := NOT blLinearEinheitSH, PT := TIMEOUT_SENSOR);
 
       IF tonlLineareinheitVorZurueck.Q THEN
-         out_bLinearEinheitZurueck := FALSE;
-         steplLineareinheitShuttle := STEP_1000_E;
+        out_bLinearEinheitZurueck := FALSE;
+        steplLineareinheitShuttle := STEP_1000_E;
       END_IF
 
       (* FEHLER:
@@ -283,22 +283,22 @@ THEN
       *)
 
       IF tonlTimeoutSensorShutle.Q THEN
-         wpFehlerNr := cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_SHUTTLE_UEBERGABE;
-         SpsError( eFehler_Station, 
-                   wpFehlerNr, 
-                   BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
-                   BasisStationsParameter.awFehlerInformationen );
+        wpFehlerNr := cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_SHUTTLE_UEBERGABE;
+        SpsError( eFehler_Station, 
+                  wpFehlerNr, 
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  BasisStationsParameter.awFehlerInformationen );
 
-         steplLineareinheitShuttle := STEP_900_E;
+        steplLineareinheitShuttle := STEP_900_E;
       END_IF
 
-(* VERFAHREN SHUTTLE =============================  *)
+    (* VERFAHREN SHUTTLE =============================  *)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       out_bLinearEinheitZurueck := FALSE;
 
-(* MOVEMENT SHUTTLE =============================  *)
+    (* MOVEMENT SHUTTLE =============================  *)
     STEP_1000_E:
       blLineareinheitShuttleDone:=TRUE;
 
@@ -308,11 +308,11 @@ END_IF
 IF NOT blLineareinheitShuttle THEN
 
   IF( steplLineareinheitShuttle > STEP_0_E )THEN
-   steplLineareinheitShuttle := STEP_0_E;
-   out_bLinearEinheitZurueck := FALSE;
-   tonlLineareinheitVorZurueck(IN := FALSE);
-   tonlTimeoutSensorShutle(IN := FALSE);
-   blLineareinheitShuttleDone := FALSE;
+    steplLineareinheitShuttle := STEP_0_E;
+    out_bLinearEinheitZurueck := FALSE;
+    tonlLineareinheitVorZurueck(IN := FALSE);
+    tonlTimeoutSensorShutle(IN := FALSE);
+    blLineareinheitShuttleDone := FALSE;
   END_IF
 
 END_IF

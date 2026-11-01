@@ -15,7 +15,7 @@ SUPER^.Handfunktionen();
 ftlScheibeZurueckFahren ( CLK := bpScheibeZurueckFahren );
 
 IF ( (  bpScheibeZurueckFahren )
-  AND bpAnforderungHandfunktion )
+     AND bpAnforderungHandfunktion )
 THEN
   (* Anmerkung:
    - Knebel Glastransport zurueck 

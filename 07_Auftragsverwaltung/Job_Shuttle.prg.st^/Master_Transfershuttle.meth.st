@@ -39,7 +39,7 @@ IF ( AuftragsdatenTransfershuttle[wStation].wAuftrag = eStation_Eintransport ) T
     END_IF
   END_IF
 ELSE
-   (* Hinweis: Reset der Schrittkette *)
+  (* Hinweis: Reset der Schrittkette *)
   IF ( TS_Eintransport[wStation].steplSchritt <> STEP_0_E ) THEN 
     TS_Eintransport[wStation](bpReset := TRUE);
   END_IF
@@ -50,30 +50,30 @@ END_IF
 (***************************************************************************************************)
 
 IF ( AuftragsdatenTransfershuttle[wStation].wAuftrag = eStation_Austransport ) THEN
-   (* Hinweis: Aufruf der Schrittkette *)
-   TS_Austransport[wStation]( Auftragsdaten := AuftragsdatenTransfershuttle[wStation], wStation := wStation );
-   (* Hinweis: Abschluss der Schrittkette *)
-   IF TS_Austransport[wStation].bpDone THEN
-     AuftragsdatenTransfershuttle[wStation] := TS_Austransport[wStation].Auftragsdaten;
-     TS_Austransport[wStation](bpReset := TRUE);
-   END_IF
-   (* Hinweis: Fehler-Auswertung *)
-   blFehlerTS[wStation] := TS_Austransport[wStation].bpFehler;
-   IF rtlFehlerTS[wStation].Q THEN
-     IF ( starrTransfershuttleBasisParameter[wStation].bRueckwaertsTransportieren[cWAND_1] ) THEN
-       AutomatikFehlerTransfershuttleSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler, cSPEICHER_EINLAUFSEITE);
-       IF aTransfershuttles[wStation].bpAnforderungBetriebsstopp THEN
-         AutomatikFehlerTransfershuttleSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler, cSPEICHER_AUSLAUFSEITE);
-       END_IF
-     ELSE
-       AutomatikFehlerTransfershuttleSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler, cSPEICHER_AUSLAUFSEITE);
-       IF aTransfershuttles[wStation].bpAnforderungBetriebsstopp THEN
-         AutomatikFehlerTransfershuttleSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler, cSPEICHER_EINLAUFSEITE);
-       END_IF
-     END_IF
-   END_IF
+  (* Hinweis: Aufruf der Schrittkette *)
+  TS_Austransport[wStation]( Auftragsdaten := AuftragsdatenTransfershuttle[wStation], wStation := wStation );
+  (* Hinweis: Abschluss der Schrittkette *)
+  IF TS_Austransport[wStation].bpDone THEN
+    AuftragsdatenTransfershuttle[wStation] := TS_Austransport[wStation].Auftragsdaten;
+    TS_Austransport[wStation](bpReset := TRUE);
+  END_IF
+  (* Hinweis: Fehler-Auswertung *)
+  blFehlerTS[wStation] := TS_Austransport[wStation].bpFehler;
+  IF rtlFehlerTS[wStation].Q THEN
+    IF ( starrTransfershuttleBasisParameter[wStation].bRueckwaertsTransportieren[cWAND_1] ) THEN
+      AutomatikFehlerTransfershuttleSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler, cSPEICHER_EINLAUFSEITE);
+      IF aTransfershuttles[wStation].bpAnforderungBetriebsstopp THEN
+        AutomatikFehlerTransfershuttleSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler, cSPEICHER_AUSLAUFSEITE);
+      END_IF
+    ELSE
+      AutomatikFehlerTransfershuttleSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler, cSPEICHER_AUSLAUFSEITE);
+      IF aTransfershuttles[wStation].bpAnforderungBetriebsstopp THEN
+        AutomatikFehlerTransfershuttleSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler, cSPEICHER_EINLAUFSEITE);
+      END_IF
+    END_IF
+  END_IF
 ELSE
-   (* Hinweis: Reset der Schrittkette *)
+  (* Hinweis: Reset der Schrittkette *)
   IF ( TS_Austransport[wStation].steplSchritt <> STEP_0_E ) THEN 
     TS_Austransport[wStation](bpReset := TRUE);
   END_IF
@@ -132,19 +132,19 @@ END_IF
 (***************************************************************************************************)
 IF (  abpSpeicherfachValidierung[wStation] ) THEN
   CASE asteplSpeicherfachValidierung[wStation] OF
-(* SPEICHERFACHVALIDIERUNG =============================*)
+    (* SPEICHERFACHVALIDIERUNG =============================*)
     STEP_0_E:
       (* Hinweis:
          - Option: Sicherstellen das der Output-Sicherheitskreis geschlossen ist
       *) 
       IF checkSafetyCircuitsNotBlocked(starrTransferShuttleBasisParameter[wStation])
-        AND NOT starrTransfershuttleBasisParameter[wStation].bReset
+         AND NOT starrTransfershuttleBasisParameter[wStation].bReset
       THEN
         awlStatusSpeichervalidierung[wStation]   := cAUFTRAG_KEIN_STATUS;
         asteplSpeicherfachValidierung[wStation] := STEP_10_E;
       END_IF
 
-(* SPEICHERFACHVALIDIERUNG =============================*)
+    (* SPEICHERFACHVALIDIERUNG =============================*)
     STEP_10_E:
       (* ---------------------------------------------------------------------------------------
       //  PRUEFEN TRANSFERSHUTTLE VERBUND
@@ -171,9 +171,9 @@ IF (  abpSpeicherfachValidierung[wStation] ) THEN
 
         asteplSpeicherfachValidierung[wStation] := STEP_100_E;
 
-     END_IF
+      END_IF
 
-(* SPEICHERFACHVALIDIERUNG =============================*)
+    (* SPEICHERFACHVALIDIERUNG =============================*)
     STEP_20_E:
 
       (* Hinweis:
@@ -198,7 +198,7 @@ IF (  abpSpeicherfachValidierung[wStation] ) THEN
 
       asteplSpeicherfachValidierung[wStation] := STEP_100_E;
 
-(* SPEICHERFACHVALIDIERUNG =============================*)
+    (* SPEICHERFACHVALIDIERUNG =============================*)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  AUSWERTUNG TRANSFERSHUTTLE - SPEICHERFACH VALIDIERUNG
@@ -242,23 +242,23 @@ IF (  abpSpeicherfachValidierung[wStation] ) THEN
                   AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
                   starrTransfershuttleBasisParameter[wStation].awFehlerInformationen );
 
-    END_IF
+      END_IF
 
-(* SPEICHERFACHVALIDIERUNG =============================*)
+    (* SPEICHERFACHVALIDIERUNG =============================*)
     STEP_120_E:
       wgSps2MmiShuttleNr         := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
       wSps2MmiValidierungsStatus := awlStatusSpeichervalidierung[wStation];
       MsgToMmi(auftragsnr_w := SB0_SPS_TRANSFERSHUTTLECHECK_ABGESCHLOSSEN );(* Fehlermeldung ans MMI für den folgenden Systemcheck *)
 
       asteplSpeicherfachValidierung[wStation] := SEL( awlStatusSpeichervalidierung[wStation] = cAUFTRAG_FEHLER,
-                                                          STEP_1000_E,
-                                                          STEP_900_E );
+                                                      STEP_1000_E,
+                                                      STEP_900_E );
 
-(* SPEICHERFACHVALIDIERUNG =============================*)
+    (* SPEICHERFACHVALIDIERUNG =============================*)
     STEP_900_E:
       AutomatikFehlerSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler);
 
-(* SPEICHERFACHVALIDIERUNG =============================*)
+    (* SPEICHERFACHVALIDIERUNG =============================*)
     STEP_1000_E:
       abpSpeicherfachValidierung[wStation] := FALSE;
 
@@ -273,7 +273,7 @@ IF (  abpSpeicherfachValidierung[wStation] ) THEN
 
       END_IF
 
-(* SPEICHERFACHVALIDIERUNG =============================*)
+  (* SPEICHERFACHVALIDIERUNG =============================*)
   END_CASE
 
 END_IF

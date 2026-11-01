@@ -7,7 +7,7 @@
 *)
 ACTION Meldungen
 IF( NOT bpFehler
-  AND Antrieb.bpFehler )
+    AND Antrieb.bpFehler )
 THEN
   wpFehlerNr := cMELDUNG_ANTRIEB_DREHEN;
   bpFehler := TRUE;

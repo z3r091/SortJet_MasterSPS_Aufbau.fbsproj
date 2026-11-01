@@ -89,11 +89,11 @@ END_IF
 
 // Ansteuerung der Taster-Leuchte
 out_bLeuchteFreigabeTuerOeffnen := (( bpAnforderungZumTuerOffnenGestellt AND gbFlashbit05sec )
-                                    OR out_bTuerZuhaltungDeaktivieren );
+                                     OR out_bTuerZuhaltungDeaktivieren );
 
 // Tür oeffnen
 IF ( bpFreigabeZumOeffnenDerTuer
-  AND bpAnforderungZumTuerOffnenGestellt ) OR tonlNotEinlass.Q
+     AND bpAnforderungZumTuerOffnenGestellt ) OR tonlNotEinlass.Q
 THEN
   out_bTuerZuhaltungDeaktivieren := TRUE;
 END_IF

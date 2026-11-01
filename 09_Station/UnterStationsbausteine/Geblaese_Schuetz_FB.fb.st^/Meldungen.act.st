@@ -10,9 +10,9 @@ ACTION Meldungen
 (* AKTION: MELDUNGEN, AUSNAHMESITUATIONEN *)
 (***************************************************************************************************)
 IF (      bpFreigabe
-  AND NOT toflMotorschutz.Q
-  AND NOT blMeldungAbgesetzt
-  AND bpTeilnehmerErreichbar )
+     AND NOT toflMotorschutz.Q
+     AND NOT blMeldungAbgesetzt
+     AND bpTeilnehmerErreichbar )
 THEN
 
   blMeldungAbgesetzt := TRUE;

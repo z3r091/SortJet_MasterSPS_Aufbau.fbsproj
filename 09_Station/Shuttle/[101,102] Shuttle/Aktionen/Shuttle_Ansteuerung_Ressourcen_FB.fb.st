@@ -19,7 +19,7 @@ END_VAR
      => Aktion laeuft parallel zum Verfahrauftrag der Oberflaeche   
 *)
 IF (  BasisStationsParameter.bVorabKomponentenAnsteuerung[wWand]
-  AND bpAutomatikAktiv )
+     AND bpAutomatikAktiv )
 THEN
 
   // Ausnahmesituation
@@ -53,7 +53,7 @@ THEN
      - Starten der Schrittkette
   *)
   CASE steplAktion OF
-(* VORAB KOMPONENTEN ANSTEUERUNG ======================== *)
+    (* VORAB KOMPONENTEN ANSTEUERUNG ======================== *)
     STEP_0_E:
       BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wWand] := FALSE;
       tonlTimeout( IN := FALSE );
@@ -65,7 +65,7 @@ THEN
       END_IF
 
 
-(* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
+    (* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
     STEP_10_E:
       (* Hinweis:
        - Wandverstellung ansteuern
@@ -75,13 +75,13 @@ THEN
       Wandverstellung.bpStartePositionierung := TRUE;
 
       IF BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eKippen_SollPosition <> eKippen_Default THEN
-         Kippen.epZielPosition := BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eKippen_SollPosition;
-         Kippen.bpPositionieren := TRUE;
+        Kippen.epZielPosition := BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eKippen_SollPosition;
+        Kippen.bpPositionieren := TRUE;
       END_IF
 
       steplAktion := STEP_20_E;
 
-(* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
+    (* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
     STEP_20_E:  
       (* Hinweis:
         - Glastransport ansteuern
@@ -89,20 +89,20 @@ THEN
       tonlTimeout(IN := TRUE, PT := T#30S);
 
       IF NOT Glastransport.bpEintransport
-        AND NOT Glastransport.bpRueckwaertsEintransportieren 
+         AND NOT Glastransport.bpRueckwaertsEintransportieren 
       THEN
 
         CASE BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eGlastransport OF
         
-          eGlastransport_Default,
-          eGlastransport_AufEinlauf:
-          ;
+            eGlastransport_Default,
+              eGlastransport_AufEinlauf:
+            ;
 
           eGlastransport_AufEinlaufVorab:
-              Glastransport.bpVortransportRueck := TRUE;
+            Glastransport.bpVortransportRueck := TRUE;
         
-          eGlastransport_AufAuslauf,
-          eGlastransport_AufAuslaufVorab:
+            eGlastransport_AufAuslauf,
+              eGlastransport_AufAuslaufVorab:
             Glastransport.bpStarteVorabPositionierung := NOT Glastransport.bpAuftragAktiv;
         
         END_CASE
@@ -110,60 +110,60 @@ THEN
         tonlTimeout( IN := FALSE );
         steplAktion := STEP_100_E;
 
-     ELSIF tonlTimeout.Q THEN
+      ELSIF tonlTimeout.Q THEN
 
         tonlTimeout( IN := FALSE );
         steplAktion := STEP_100_E;
 
-     END_IF
+      END_IF
 
-(* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
+    (* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
     STEP_100_E:
-     (* Hinweis:
-       - Einsammeln aller ausgelösten Ereignisse auf bpDone 
-     *)
-    // Nach 60s Fehler melden, dass die Komponenten nicht fertig werden
-    tonlTimeout(IN := TRUE, PT := T#60S);
+      (* Hinweis:
+        - Einsammeln aller ausgelösten Ereignisse auf bpDone 
+      *)
+      // Nach 60s Fehler melden, dass die Komponenten nicht fertig werden
+      tonlTimeout(IN := TRUE, PT := T#60S);
 
-     IF (   ( Kippen.bpDone OR NOT Kippen.bpPositionieren )
-       AND (( Glastransport.bpVortransport AND Glastransport.bpDone) OR NOT Glastransport.bpVortransport)
-       AND (( Glastransport.bpVortransportRueck AND Glastransport.bpDone) OR NOT Glastransport.bpVortransportRueck)
-       AND (( Glastransport.bpStarteVorabPositionierung AND Glastransport.bpDone) OR NOT Glastransport.bpStarteVorabPositionierung)
-       AND (( Wandverstellung.bpStartePositionierung AND Wandverstellung.bpDone) OR NOT Wandverstellung.bpStartePositionierung) )
-     THEN
+      IF (   ( Kippen.bpDone OR NOT Kippen.bpPositionieren )
+           AND (( Glastransport.bpVortransport AND Glastransport.bpDone) OR NOT Glastransport.bpVortransport)
+           AND (( Glastransport.bpVortransportRueck AND Glastransport.bpDone) OR NOT Glastransport.bpVortransportRueck)
+           AND (( Glastransport.bpStarteVorabPositionierung AND Glastransport.bpDone) OR NOT Glastransport.bpStarteVorabPositionierung)
+           AND (( Wandverstellung.bpStartePositionierung AND Wandverstellung.bpDone) OR NOT Wandverstellung.bpStartePositionierung) )
+      THEN
 
-       Glastransport.bpVortransport                    := FALSE;
-       Glastransport.bpVortransportRueck               := FALSE;
-       Glastransport.bpStarteVorabPositionierung       := FALSE;
+        Glastransport.bpVortransport                    := FALSE;
+        Glastransport.bpVortransportRueck               := FALSE;
+        Glastransport.bpStarteVorabPositionierung       := FALSE;
 
-       Wandverstellung.bpStartePositionierung          := FALSE;
-       Kippen.bpPositionieren                          := FALSE;
+        Wandverstellung.bpStartePositionierung          := FALSE;
+        Kippen.bpPositionieren                          := FALSE;
        
-       steplAktion := STEP_1000_E;
-     END_IF
+        steplAktion := STEP_1000_E;
+      END_IF
 
-    IF tonlTimeout.Q THEN
-       BasisStationsParameter.wFehlerNummer := cMELDUNG_STATION_VORABKOMPONENTENANSTEUERUN_NOT_DONE;
-       steplAktion := STEP_900_E;
-    END_IF
+      IF tonlTimeout.Q THEN
+        BasisStationsParameter.wFehlerNummer := cMELDUNG_STATION_VORABKOMPONENTENANSTEUERUN_NOT_DONE;
+        steplAktion := STEP_900_E;
+      END_IF
 
-(* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
+    (* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
-     STEP_1000_E:
+    (* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
+    STEP_1000_E:
 
-       Glastransport.bpVortransport                    := FALSE;
-       Glastransport.bpVortransportRueck               := FALSE;
-       Glastransport.bpStarteVorabPositionierung       := FALSE;
+      Glastransport.bpVortransport                    := FALSE;
+      Glastransport.bpVortransportRueck               := FALSE;
+      Glastransport.bpStarteVorabPositionierung       := FALSE;
 
-       Wandverstellung.bpStartePositionierung          := FALSE;
-       Kippen.bpPositionieren                          := FALSE;
+      Wandverstellung.bpStartePositionierung          := FALSE;
+      Kippen.bpPositionieren                          := FALSE;
        
-       BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wWand] := TRUE;
+      BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wWand] := TRUE;
 
-(* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
+  (* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
   END_CASE
 
 END_IF

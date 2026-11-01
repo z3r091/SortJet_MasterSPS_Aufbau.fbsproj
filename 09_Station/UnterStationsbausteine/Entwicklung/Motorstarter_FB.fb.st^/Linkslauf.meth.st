@@ -17,9 +17,9 @@ Linkslauf := FALSE;
 
 tonlMaxWarteZeit( IN := TRUE, PT:= T#4000MS );
 IF ( tonlMaxWarteZeit.Q ) THEN
-   bpFehler := TRUE;
-   wpFehlerNr := cMELDUNG_MOTORSTARTER_FEHLER_LINKSLAUF_OK;
-   out_bLinkslauf := FALSE;
+  bpFehler := TRUE;
+  wpFehlerNr := cMELDUNG_MOTORSTARTER_FEHLER_LINKSLAUF_OK;
+  out_bLinkslauf := FALSE;
 END_IF
 
 out_bLinkslauf := bpSensorNotNockeLinkslauf;

@@ -10,10 +10,10 @@ ACTION Meldungen
 (* AKTION MELDUNGEN*)
 (***************************************************************************************************)
 IF( Antrieb.bpFehler
-  AND NOT (
-       STEP_Mov_Shuttle_W           = STEP_900_E
-    OR schrittlReset                = STEP_900_E
-    OR steplReferenz                = STEP_900_E ) )
+    AND NOT (
+              STEP_Mov_Shuttle_W           = STEP_900_E
+              OR schrittlReset                = STEP_900_E
+              OR steplReferenz                = STEP_900_E ) )
 THEN
   wpFehlerNr := cMELDUNG_ANTRIEB_QUERFAHRT;
   bpFehler := TRUE;

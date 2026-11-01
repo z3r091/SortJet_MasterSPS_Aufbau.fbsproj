@@ -16,16 +16,16 @@ wlWatchIONachrichtenNummer := BasisStationsParameter.stMKs.wMeldungsNummer;
   
 // Vermeiden von doppelten Fehlermeldungen beim wechsel von <Automatik> in <Hand>
 IF (  blBetriebsartAutomatik
-  AND BasisStationsParameter.bFehler )
+     AND BasisStationsParameter.bFehler )
 THEN
   blMerkerFehlerAutomatik := TRUE;
 END_IF
 
 // Im Handbetrieb einen Fehlermelden
 rtlFehlerMeldungGenerierenHandbetrieb( CLK :=    blBetriebsartHand
-                                              AND NOT blMerkerFehlerAutomatik
-                                              AND BasisStationsParameter.bFehler
-                                              AND ( BasisStationsParameter.wFehlerNummer <> 0) );
+                                       AND NOT blMerkerFehlerAutomatik
+                                       AND BasisStationsParameter.bFehler
+                                       AND ( BasisStationsParameter.wFehlerNummer <> 0) );
 
 IF ( rtlFehlerMeldungGenerierenHandbetrieb.Q ) THEN
   SpsHinweis( eFehler_Station, 

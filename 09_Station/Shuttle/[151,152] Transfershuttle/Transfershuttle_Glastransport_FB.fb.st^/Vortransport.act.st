@@ -10,7 +10,7 @@ ACTION Vortransport
 (* AKTION: VORTRANSPORT *)
 (***************************************************************************************************)
 IF ( bpVortransport
-  AND bpAutomatikAktiv )
+     AND bpAutomatikAktiv )
 THEN
 
   (* Ausnahmefehler:
@@ -27,7 +27,7 @@ THEN
      - Starten der Schrittkette 
   *)
   CASE steplVortransport OF
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_0_E:
       IF ( Antrieb.bpReglerBereit )THEN
         Antrieb.rpGeschwindigkeit := REAL#0;
@@ -38,19 +38,19 @@ THEN
         steplVortransport := STEP_5_E;
       END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_5_E:
       Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
       steplVortransport := STEP_6_E;
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_6_E:
-    IF Antrieb.bpDone THEN
+      IF Antrieb.bpDone THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplVortransport := STEP_10_E;
-    END_IF
+      END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_10_E:
       (* ---------------------------------------------------------------------------------------
       //  VORTRANSPORT IM TRANSFERSHUTTLE VERBUND
@@ -61,7 +61,7 @@ THEN
 
       IF ( bpTransfershuttleVerbundAktiv ) THEN
 
-       blSchnittstelle_bAnforderungTransportVerbund := TRUE;
+        blSchnittstelle_bAnforderungTransportVerbund := TRUE;
 
         IF ( stpInTransportVerbund.bBereitZumTransportVerbund ) THEN
           steplVortransport := STEP_20_E;
@@ -72,7 +72,7 @@ THEN
 
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_20_E:
       (* Anmerkung:
          - Timer zum prüfen der Einlauf- Auslauf- Sensoren [Luftdruck] zuruecksetzen
@@ -85,7 +85,7 @@ THEN
 
       steplVortransport := STEP_100_E;
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_100_E:
       (* Ueberpruefung ob die Luftsensoren frei sind und richtig durchschalten
          - Einlauf- Auslauf- Sensoren
@@ -97,7 +97,7 @@ THEN
       tonlAuslaufsensorTesten(IN := NOT bpSensorScheibenKontrolleAuslaufseiteFrei, PT := t#5s);
 
       IF  ( bpSensorScheibenKontrolleEinlaufseiteFrei
-        AND bpSensorScheibenKontrolleAuslaufseiteFrei )
+            AND bpSensorScheibenKontrolleAuslaufseiteFrei )
       THEN
         steplVortransport := STEP_110_E;
       END_IF
@@ -116,7 +116,7 @@ THEN
         steplVortransport := STEP_900_E;
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_110_E:
       (* Anmerkung:
          - Transfershuttle heben
@@ -134,90 +134,90 @@ THEN
       tonlWartenAufAnheben(IN := NOT blBereitZumGlastransport, PT := t#10s);
 
       IF ( blBereitZumGlastransport ) THEN
-         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-         steplVortransport := STEP_120_E;
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplVortransport := STEP_120_E;
       END_IF
 
-       (* Fehlerbehandlung:
-          - Druckluft
-          - Glastransport oben
-          - Ein- Aus- Laufsensoren
-       *)
-       IF ( tonlWartenAufAnheben.Q ) THEN
-         (* Glastransport oben *)
-         IF ( NOT blSensorGlastransportOben ) THEN
-           wpFehlerNr := cMELDUNG_TS_MELDET_NICHT_OBEN;
-         (* Luftsensoren oben *)
-         ELSIF ( NOT bpSensorScheibenKontrolleEinlaufSeiteOben ) THEN
-           wpFehlerNr := cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_OBEN;
-         (* Luftsensoren oben *)
-         ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteOben ) THEN
-           wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_OBEN;
-         (* Druckluft Ok *)
-         ELSIF NOT blDruckluftEinlaufSeiteOK THEN
-           wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_EINLAUF_NICHT_OK;
-         (* Druckluft Ok *)
-         ELSIF ( NOT blDruckluftAuslaufSeiteOK ) THEN
-           wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_AUSLAUF_NICHT_OK;
-         END_IF
+      (* Fehlerbehandlung:
+         - Druckluft
+         - Glastransport oben
+         - Ein- Aus- Laufsensoren
+      *)
+      IF ( tonlWartenAufAnheben.Q ) THEN
+        (* Glastransport oben *)
+        IF ( NOT blSensorGlastransportOben ) THEN
+          wpFehlerNr := cMELDUNG_TS_MELDET_NICHT_OBEN;
+        (* Luftsensoren oben *)
+        ELSIF ( NOT bpSensorScheibenKontrolleEinlaufSeiteOben ) THEN
+          wpFehlerNr := cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_OBEN;
+        (* Luftsensoren oben *)
+        ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteOben ) THEN
+          wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_OBEN;
+        (* Druckluft Ok *)
+        ELSIF NOT blDruckluftEinlaufSeiteOK THEN
+          wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_EINLAUF_NICHT_OK;
+        (* Druckluft Ok *)
+        ELSIF ( NOT blDruckluftAuslaufSeiteOK ) THEN
+          wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_AUSLAUF_NICHT_OK;
+        END_IF
 
-         steplVortransport := STEP_900_E;
-         bpOutBereitZumEintransport := FALSE;
-       END_IF
+        steplVortransport := STEP_900_E;
+        bpOutBereitZumEintransport := FALSE;
+      END_IF
 
-(*VORTRANSPORT ==============================*)
-     STEP_120_E:
+    (*VORTRANSPORT ==============================*)
+    STEP_120_E:
       (* ---------------------------------------------------------------------------------------
       //  STARTEN DES VORTRANSPORTS
       //         
       //  Hinweis:
       // - n/c
       // ---------------------------------------------------------------------------------------*)
-       rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
-       rlAntriebsPositionStartVortransport := Antrieb.rpIstPosition;
+      rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
+      rlAntriebsPositionStartVortransport := Antrieb.rpIstPosition;
 
-       Antrieb.rpGeschwindigkeit := rgGeschwindigkeitVorpositionieren;
-       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-       Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      Antrieb.rpGeschwindigkeit := rgGeschwindigkeitVorpositionieren;
+      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
 
-       Antrieb.rpZielPosition    := rpVorpositionierweg;
-       Antrieb.wpBetriebsart     := RESTWEG;
+      Antrieb.rpZielPosition    := rpVorpositionierweg;
+      Antrieb.wpBetriebsart     := RESTWEG;
 
-       steplVortransport := STEP_130_E;
+      steplVortransport := STEP_130_E;
 
-(*VORTRANSPORT ==============================*)
-     STEP_130_E:
-       IF ( NOT Antrieb.bpDone
-         AND Antrieb.bpAntrieblaeuft )
-       THEN
-         steplVortransport := STEP_140_E;
-       END_IF
+    (*VORTRANSPORT ==============================*)
+    STEP_130_E:
+      IF ( NOT Antrieb.bpDone
+           AND Antrieb.bpAntrieblaeuft )
+      THEN
+        steplVortransport := STEP_140_E;
+      END_IF
 
-       IF ( blAuslaufsensor ) THEN
-         rlAntriebspositionBeiAuslaufSensorBelegung :=Antrieb.rpIstPosition;
-         bpScheibeFaehrtUeberAuslauf := TRUE;
-         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-         steplVortransport := STEP_200_E;
-       END_IF
+      IF ( blAuslaufsensor ) THEN
+        rlAntriebspositionBeiAuslaufSensorBelegung :=Antrieb.rpIstPosition;
+        bpScheibeFaehrtUeberAuslauf := TRUE;
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplVortransport := STEP_200_E;
+      END_IF
 
-(*VORTRANSPORT ==============================*)
-     STEP_140_E:
-       IF ( Antrieb.bpDone
-         AND NOT Antrieb.bpAntrieblaeuft )
-       THEN
-         rpVorpositionierterWeg := ABS(Antrieb.rpIstPosition - rlAntriebsPositionStartVortransport);
-         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-         steplVortransport := STEP_300_E;
-       END_IF
+    (*VORTRANSPORT ==============================*)
+    STEP_140_E:
+      IF ( Antrieb.bpDone
+           AND NOT Antrieb.bpAntrieblaeuft )
+      THEN
+        rpVorpositionierterWeg := ABS(Antrieb.rpIstPosition - rlAntriebsPositionStartVortransport);
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplVortransport := STEP_300_E;
+      END_IF
 
-       IF ( blAuslaufsensor ) THEN
-         rlAntriebspositionBeiAuslaufSensorBelegung :=Antrieb.rpIstPosition;
-         bpScheibeFaehrtUeberAuslauf := TRUE;
-         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-         steplVortransport := STEP_200_E;
-       END_IF
+      IF ( blAuslaufsensor ) THEN
+        rlAntriebspositionBeiAuslaufSensorBelegung :=Antrieb.rpIstPosition;
+        bpScheibeFaehrtUeberAuslauf := TRUE;
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplVortransport := STEP_200_E;
+      END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_200_E:
       (* ---------------------------------------------------------------------------------------
       //  VERSUCH AUSLAUFSENSOR FREI FAHREN
@@ -225,14 +225,14 @@ THEN
       //  Hinweis:
       // - Wenn der Antrieb nicht mehr dreht Versuchen dem Sensor frei zu fahren
       // ---------------------------------------------------------------------------------------*)
-       Antrieb.wpBetriebsart := KEINE_FUNKTION;
+      Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
       IF ( NOT toflAntriebLaeuft.Q ) THEN
         rlWegDifferenzNachStopSensorBelegung := ABS(rlAntriebspositionBeiAuslaufSensorBelegung - Antrieb.rpIstPosition);
         steplVortransport := STEP_210_E;
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_210_E:
       (* Hinweis:
          - Antrieb verfahren (Handfahren)
@@ -247,9 +247,9 @@ THEN
         Antrieb.wpBetriebsart     := HANDMINUS;
 
         steplVortransport := STEP_220_E;
-     END_IF
+      END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_220_E:
       (* Anmerkung:
          - Auslaufsensor frei 
@@ -263,12 +263,12 @@ THEN
       END_IF
 
       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) >
-         (ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren + rlWegDifferenzNachStopSensorBelegung) )
-        THEN
-         rpVorpositionierterWeg := ABS(Antrieb.rpIstPosition - rlAntriebsPositionStartVortransport);
-         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-         wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI;
-         steplVortransport := STEP_900_E;
+           (ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren + rlWegDifferenzNachStopSensorBelegung) )
+      THEN
+        rpVorpositionierterWeg := ABS(Antrieb.rpIstPosition - rlAntriebsPositionStartVortransport);
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI;
+        steplVortransport := STEP_900_E;
       END_IF
 
       IF ( blEinlaufsensor ) THEN
@@ -278,7 +278,7 @@ THEN
         steplVortransport := STEP_900_E;
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_300_E:
       (* ---------------------------------------------------------------------------------------
       //  RIEMEN UND ABFRAGEN SENKEN
@@ -322,16 +322,16 @@ THEN
         bpOutBereitZumEintransport := FALSE;
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(*VORTRANSPORT ==============================*)
- END_CASE
+  (*VORTRANSPORT ==============================*)
+  END_CASE
 ELSE
   IF ( steplVortransport > STEP_0_E ) THEN
     bpDone := FALSE;

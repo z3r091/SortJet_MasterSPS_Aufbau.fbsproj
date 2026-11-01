@@ -10,7 +10,7 @@ ACTION Laengenmessung
 (* AKTION LÄNGENVERMESSUNG  *)
 (***************************************************************************************************)
 IF ( bpGlaslaengenmessung
-  AND bpAutomatikAktiv)
+     AND bpAutomatikAktiv)
 THEN
 
   // Ausnahmesituation
@@ -22,7 +22,7 @@ THEN
 
   
   CASE steplGlaslaengenMessung OF
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen setzen 
@@ -42,7 +42,7 @@ THEN
       rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
       
       IF ( ( eGlastyp = cMAXSCHEIBE )
-        OR ( eGlastyp = cMODELLSCHEIBE ) )
+           OR ( eGlastyp = cMODELLSCHEIBE ) )
       THEN
         steplGlaslaengenMessung := STEP_10_E;
       ELSE
@@ -50,7 +50,7 @@ THEN
       END_IF
 
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_10_E:
       (* Hinweis:
          - Vorgehen bei einer maximalen Scheibe
@@ -59,17 +59,17 @@ THEN
       Antrieb.rpGeschwindigkeit := 0.0;
 
       IF ( ( eGlastyp = cMODELLSCHEIBE )
-        AND InGlasTransportNachfolger.bBereitZumEintransport )
+           AND InGlasTransportNachfolger.bBereitZumEintransport )
       THEN
         steplGlaslaengenMessung := STEP_200_E;
 
       ELSIF ( InGlasTransportNachfolger.bBereitZumEintransport
-        AND NOT ( eGlastyp = cMODELLSCHEIBE ) )
+              AND NOT ( eGlastyp = cMODELLSCHEIBE ) )
       THEN
         steplGlaslaengenMessung := STEP_100_E;
       END_IF
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_100_E:
       (* Anmerkung:
          - Starten der Glaslaengenvermessung 
@@ -99,7 +99,7 @@ THEN
         steplGlaslaengenMessung := STEP_900_E;
       END_IF
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_110_E:
       (* Hinweis:
          - Auslaufsensor muss nach der Messung belegt sein
@@ -118,7 +118,7 @@ THEN
 
       END_IF
 
-(* GLASLAENGENMESSUNG !!! Modellbetrieb !!! =============================*)
+    (* GLASLAENGENMESSUNG !!! Modellbetrieb !!! =============================*)
     STEP_200_E:
       (* Hinweis:
          - Scheibe mittels Restwegpositionierung auf den Doppelkipptisch fahren
@@ -130,14 +130,14 @@ THEN
 
       (* Sicherstellen, dass das Glas komplett auf den Doppelkipptisch gefahren wird *)
       Antrieb.rpZielPosition     := ( ppParameterBaustein.rWegUeberAuslauf + pAuftrag.rAuftragsLaenge )
-                                     - pAuftrag.rModellVersatzVorne
-                                     (* + pAuftrag.rModellVersatzHinten *) ;
+                                    - pAuftrag.rModellVersatzVorne
+                                    (* + pAuftrag.rModellVersatzHinten *) ;
       Antrieb.wpRestwegMode      := Positiv_Steigend_Sensor2;
       Antrieb.wpBetriebsart      := RESTWEG;
 
       steplGlaslaengenMessung := STEP_210_E;
 
-(* GLASLAENGENMESSUNG !!! Modellbetrieb !!! =============================*)
+    (* GLASLAENGENMESSUNG !!! Modellbetrieb !!! =============================*)
     STEP_210_E:
       (* Hinweis:
          - Scheibe mittels Restwegpositionierung auf den Doppelkipptisch fahren
@@ -150,7 +150,7 @@ THEN
 
       END_IF
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_400_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< WARTEN AUF DAS MESSERGEBNIS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         
@@ -160,7 +160,7 @@ THEN
            => Kenebel                     --> Glas zurueck fahren
       *)
       IF ( bpScheibeQuittiert
-        OR bpScheibeFreigegeben )
+           OR bpScheibeFreigegeben )
       THEN
         bpAnforderungMessergebnis := FALSE;
         steplGlaslaengenMessung := STEP_1000_E;
@@ -171,7 +171,7 @@ THEN
         steplGlaslaengenMessung := STEP_600_E;
       END_IF
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_600_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< KNEBEL SCHEIBE ZURUECK FAHREN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -191,31 +191,31 @@ THEN
       END_IF
 
       IF ( bpScheibeQuittiert
-        AND NOT bpSensorAuslauf )
+           AND NOT bpSensorAuslauf )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplGlaslaengenMessung := STEP_800_E;
       END_IF
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_800_E:
-       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
-         Antrieb.wpBetriebsart   := KEINE_FUNKTION;
-         steplGlaslaengenMessung := STEP_1000_E;
-       END_IF
+      IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
+        Antrieb.wpBetriebsart   := KEINE_FUNKTION;
+        steplGlaslaengenMessung := STEP_1000_E;
+      END_IF
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_900_E:
       bpOutBereitZumAustransport := FALSE;
 
       bpFehler := TRUE;
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_1000_E:
       bpOutBereitZumAustransport := FALSE;
       bpDone := TRUE;
 
-(* GLASLAENGENMESSUNG =============================*)
+  (* GLASLAENGENMESSUNG =============================*)
   END_CASE
 ELSE
   IF (steplGlaslaengenMessung > STEP_0_E) THEN

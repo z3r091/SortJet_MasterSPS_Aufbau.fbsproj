@@ -7,7 +7,7 @@
 *)
 PROGRAM TCPMain
 VAR_INPUT
- bpIOAnzeigeAktivieren : BOOL;
+  bpIOAnzeigeAktivieren : BOOL;
   l_fb_SortjetHMI : Hegla_Gateway_Komm_FB;
 END_VAR
 VAR

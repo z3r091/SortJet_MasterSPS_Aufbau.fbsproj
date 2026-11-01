@@ -22,10 +22,10 @@ IF NOT bgDeaktiviereWatchIOs THEN
     (* Meldungsbit zurücksetzen *)
     ucValue := TCPMain.l_fb_SortjetHMI.SpsToMmi.aucControlSystem[ wlByteIndex ];
     IF bpStatus THEN
-    ucValue := SetBitStatus( ucValue, wlBitIndex, TRUE );
+      ucValue := SetBitStatus( ucValue, wlBitIndex, TRUE );
     ELSE
-    aicgIoControl[ wpControlIndex ].tWatchStart := T#0MS;
-    ucValue := SetBitStatus( ucValue, wlBitIndex, FALSE );
+      aicgIoControl[ wpControlIndex ].tWatchStart := T#0MS;
+      ucValue := SetBitStatus( ucValue, wlBitIndex, FALSE );
     END_IF
     TCPMain.l_fb_SortjetHMI.SpsToMmi.aucControlSystem[ wlByteIndex ] := ucValue;
   END_IF

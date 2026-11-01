@@ -18,10 +18,10 @@ SUPER^.Meldungen();
      Fehler nicht abgefangen wurde.
 *)
 IF ( NOT ((steplEintransport  = STEP_900_E)
-  OR (steplAustransport = STEP_900_E)
-  OR (steplCheck        = STEP_900_E)
-  OR (steplReset        = STEP_900_E)
-  OR  steplReferenz     = STEP_900_E))
+           OR (steplAustransport = STEP_900_E)
+           OR (steplCheck        = STEP_900_E)
+           OR (steplReset        = STEP_900_E)
+           OR  steplReferenz     = STEP_900_E))
 THEN
 
   IF( Glastransport.bpFehler ) THEN

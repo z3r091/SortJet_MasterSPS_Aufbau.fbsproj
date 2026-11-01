@@ -101,12 +101,12 @@ ELSE
        - Status des Zylinders
     *)  
     IF (      inStatusZylinderAusgefahren
-      AND NOT inStatusZylinderEingefahren )
+         AND NOT inStatusZylinderEingefahren )
     THEN
       epStatusZylinder := eZylinderAusgefahren;
 
     ELSIF(    inStatusZylinderEingefahren
-      AND NOT inStatusZylinderAusgefahren )
+           AND NOT inStatusZylinderAusgefahren )
     THEN
       epStatusZylinder := eZylinderEingefahren;
 

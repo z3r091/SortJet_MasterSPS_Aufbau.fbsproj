@@ -13,28 +13,28 @@ ACTION Referenz
 
 IF( bpFahreReferenz )THEN
   CASE steplReferenz OF
-(*REFERENZ =============================*)
+    (*REFERENZ =============================*)
     STEP_0_E:
 
       steplReferenz := STEP_10_E;
 
-(*REFERENZ =============================*)
+    (*REFERENZ =============================*)
     STEP_10_E:
       Antrieb.rpZielPosition := 0;
 
       IF ( Antrieb.bpReglerBereit ) THEN
-       Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
-       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-       Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-       Antrieb.wpBetriebsart     := AntriebsBetriebsart_EN.REFERENZ;
-       steplReferenz := STEP_20_E;
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.wpBetriebsart     := AntriebsBetriebsart_EN.REFERENZ;
+        steplReferenz := STEP_20_E;
       END_IF
 
-(*REFERENZ ===========================*)
+    (*REFERENZ ===========================*)
     STEP_20_E:
       IF ( Antrieb.bpDone ) THEN
-          Antrieb.wpBetriebsart := KEINE_FUNKTION;
-          steplReferenz := STEP_1000_E;
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplReferenz := STEP_1000_E;
       END_IF
 
       (* Fehlerbehandlung
@@ -45,18 +45,18 @@ IF( bpFahreReferenz )THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-(*REFERENZ =============================*)
+    (*REFERENZ =============================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
       bpFehler :=TRUE;
 
-(*REFERENZ =============================*)
+    (*REFERENZ =============================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(*REFERENZ =============================*)
- END_CASE
+  (*REFERENZ =============================*)
+  END_CASE
 
 ELSE
   IF( steplReferenz > STEP_0_E )THEN

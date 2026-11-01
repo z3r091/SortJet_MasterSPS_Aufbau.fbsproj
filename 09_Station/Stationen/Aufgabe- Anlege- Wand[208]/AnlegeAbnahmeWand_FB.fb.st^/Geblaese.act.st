@@ -18,34 +18,34 @@ ACTION Geblaese
    Um das zu vermeiden, hier 7 Sekunden lang den Taster gedrückt halten, um ein geforced Frei/Belegt zu
    schicken!
   *)
-  tonlQuittierungGlasAbgenommen( IN := in_bTasterQuittierungGlasAbgenommen OR in_bFussTaster, PT := T#7S );
-  IF tonlQuittierungGlasAbgenommen.Q THEN
-    BasisStationsParameter.bStationBelegt[cWAND_1] := (Glastransport.bpSensorEinlauf OR Glastransport.bpSensorAuslaufVorAb OR Glastransport.bpSensorAuslauf OR Glastransport.bpSensorEinlaufVorAb );
-    wSPS2MMIStationsNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
-    IF BasisStationsParameter.bStationBelegt[cWAND_1] THEN
-      wSPS2MMIStationsStatusWord1 := cSTATUS_STATION_BELEGT;
-    ELSE
-      wSPS2MMIStationsStatusWord1 := cSTATUS_STATION_FREI;
-    END_IF
-    MsgToMmi( auftragsnr_w := SB0_SPS_STATIONSTATUS);
+tonlQuittierungGlasAbgenommen( IN := in_bTasterQuittierungGlasAbgenommen OR in_bFussTaster, PT := T#7S );
+IF tonlQuittierungGlasAbgenommen.Q THEN
+  BasisStationsParameter.bStationBelegt[cWAND_1] := (Glastransport.bpSensorEinlauf OR Glastransport.bpSensorAuslaufVorAb OR Glastransport.bpSensorAuslauf OR Glastransport.bpSensorEinlaufVorAb );
+  wSPS2MMIStationsNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+  IF BasisStationsParameter.bStationBelegt[cWAND_1] THEN
+    wSPS2MMIStationsStatusWord1 := cSTATUS_STATION_BELEGT;
+  ELSE
+    wSPS2MMIStationsStatusWord1 := cSTATUS_STATION_FREI;
   END_IF
+  MsgToMmi( auftragsnr_w := SB0_SPS_STATIONSTATUS);
+END_IF
 
-  (* Hinweis:
-     - Energiesparmodus: Geblaese bei laengerer Inaktivitaet ausschalten 
-  *)
+(* Hinweis:
+   - Energiesparmodus: Geblaese bei laengerer Inaktivitaet ausschalten 
+*)
 rtlGeblaese( CLK:=     BasisStationsParameter.bAnlegen
-                    OR BasisStationsParameter.bEintransport[cWAND_1]
-                    OR BasisStationsParameter.bAustransport[cWAND_1]
-                    OR BasisStationsParameter.bGlaslaengenmessung
-                    OR BasisStationsParameter.bGlashoehenmessung
-                    OR BasisStationsParameter.bGlaslaengenmessung
-                    OR BasisStationsParameter.bCheck
-                    OR ( BasisStationsParameter.bGlaslaengenmessung AND (steplGlaslaengenmessung = STEP_240_E) OR  (steplGlaslaengenmessung = STEP_10_E) OR (steplGlaslaengenmessung = STEP_110_E) )
-                    OR ( BasisStationsParameter.bAnlegen AND (steplAnlegen = STEP_20_E OR steplAnlegen = STEP_50_E )));
+             OR BasisStationsParameter.bEintransport[cWAND_1]
+             OR BasisStationsParameter.bAustransport[cWAND_1]
+             OR BasisStationsParameter.bGlaslaengenmessung
+             OR BasisStationsParameter.bGlashoehenmessung
+             OR BasisStationsParameter.bGlaslaengenmessung
+             OR BasisStationsParameter.bCheck
+             OR ( BasisStationsParameter.bGlaslaengenmessung AND (steplGlaslaengenmessung = STEP_240_E) OR  (steplGlaslaengenmessung = STEP_10_E) OR (steplGlaslaengenmessung = STEP_110_E) )
+             OR ( BasisStationsParameter.bAnlegen AND (steplAnlegen = STEP_20_E OR steplAnlegen = STEP_50_E )));
 
 rtlTasterGeblaese(CLK:=    in_bTasterGeblaeseEin
-                        OR BasisStationsParameter.dwHandfunktionen.0
-                        OR bgVISUGeblaese[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]);
+                   OR BasisStationsParameter.dwHandfunktionen.0
+                   OR bgVISUGeblaese[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]);
 
 ftlGeblaese(CLK:=(BasisStationsParameter.dwHandfunktionen.0 OR bgVISUGeblaese[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]));
 
@@ -53,7 +53,7 @@ ftlGeblaese(CLK:=(BasisStationsParameter.dwHandfunktionen.0 OR bgVISUGeblaese[Ba
 rtlDrosselklappeOeffnen(CLK:= tonlGeblaseLauft.Q );
 
 toflGeblaeseEnergiesparModus(IN := (rtlGeblaese.Q),
-                             PT := tgZeitAutoabschaltungEnergiesparModus );
+                              PT := tgZeitAutoabschaltungEnergiesparModus );
 
 ftEnergiesparmodusGeblaese(CLK:= toflGeblaeseEnergiesparModus.Q);
 
@@ -68,7 +68,7 @@ IF ( blBetriebsartAutomatik ) THEN
   END_IF
 
   IF (  ftEnergiesparmodusGeblaese.Q
-    OR  BasisStationsParameter.bReset )
+       OR  BasisStationsParameter.bReset )
   THEN
     out_bGeblaeseEin := FALSE;
     out_bDrosselklappeOeffnen:= FALSE;
@@ -77,15 +77,15 @@ IF ( blBetriebsartAutomatik ) THEN
 
 
   ELSIF (rtlTasterGeblaese.Q
-    OR rtlGeblaese.Q )
-    AND NOT tofGeblaeseWirdAusGeschaltet.Q
+          OR rtlGeblaese.Q )
+        AND NOT tofGeblaeseWirdAusGeschaltet.Q
   THEN
     out_bGeblaeseEin := TRUE;
 
   END_IF
 
   IF ( rtlTasterGeblaese.Q
-    AND tofGeblaeseWirdAusGeschaltet.Q )
+       AND tofGeblaeseWirdAusGeschaltet.Q )
   THEN
     out_bGeblaeseEin := FALSE;
     out_bDrosselklappeOeffnen:= FALSE;
@@ -98,8 +98,8 @@ ELSE
   out_bDrosselklappeOeffnen := tonlGeblaseLauft.Q;
 
   IF ( rtlGeblaese.Q
-    OR ftlGeblaese.Q
-    OR rtlTasterGeblaese.Q )
+       OR ftlGeblaese.Q
+       OR rtlTasterGeblaese.Q )
   THEN
 
     IF ( NOT out_bGeblaeseEin ) THEN

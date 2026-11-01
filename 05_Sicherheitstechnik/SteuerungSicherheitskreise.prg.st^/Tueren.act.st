@@ -13,7 +13,7 @@ ACTION Tueren
 // Anfordern Sicherheitskreis auslösen
 FOR wlIndexSK := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO
 
-Sicherheitskreis[wlIndexSK].bpAnforderungSicherheitkreisAusloesen := FALSE;
+  Sicherheitskreis[wlIndexSK].bpAnforderungSicherheitkreisAusloesen := FALSE;
 
   // Externe Anforderung unabhängig von Türen
   IF ablSicherheitskreisAnfordernExtern[wlIndexSK] THEN
@@ -35,14 +35,14 @@ Sicherheitskreis[wlIndexSK].bpAnforderungSicherheitkreisAusloesen := FALSE;
   FOR wlIndex := cERSTER_DURCHGANG TO cLETZTER_DURCHGANG DO
     FOR wlIndexDurchgang := cERSTER_DURCHGANG TO cLETZTER_DURCHGANG DO
       IF ( apgMKSicherheiskreis[wlIndexSK].eaDurchgang[wlIndex] = wlIndexDurchgang ) THEN
-      // Übergabe an Durchgang -> SK geschlossen
-      aDurchgang[wlIndexDurchgang].bpSKGeschlossen := Sicherheitskreis[wlIndexSK].bpSicherheitskreisGeschlossen;
+        // Übergabe an Durchgang -> SK geschlossen
+        aDurchgang[wlIndexDurchgang].bpSKGeschlossen := Sicherheitskreis[wlIndexSK].bpSicherheitskreisGeschlossen;
 
-      IF aDurchgang[wlIndexDurchgang].bpAnforderungZumDurchgangOffnenGestellt THEN
-         Sicherheitskreis[wlIndexSK].bpAnforderungSicherheitkreisAusloesen := TRUE;
+        IF aDurchgang[wlIndexDurchgang].bpAnforderungZumDurchgangOffnenGestellt THEN
+          Sicherheitskreis[wlIndexSK].bpAnforderungSicherheitkreisAusloesen := TRUE;
+        END_IF
       END_IF
-     END_IF
-   END_FOR
+    END_FOR
   END_FOR
   
 END_FOR
@@ -102,8 +102,8 @@ FOR wlIndexTuer := cERSTE_TUER TO cLETZTE_TUER DO
   // Tür
   FOR wlIndex := cERSTE_TUER TO cLETZTE_TUER DO
     IF ( aTuer[wlIndexTuer].wSicherheitskreis = aTuer[wlIndex].wSicherheitskreis ) 
-      AND NOT ( wlIndexTuer = wlIndex )
-      AND aTuer[wlIndex].bpStatusTuerNichtGeschlossen
+       AND NOT ( wlIndexTuer = wlIndex )
+       AND aTuer[wlIndex].bpStatusTuerNichtGeschlossen
     THEN
       aTuer[wlIndexTuer].bpWeitereTuerenGeoeffnet := TRUE;
     END_IF  

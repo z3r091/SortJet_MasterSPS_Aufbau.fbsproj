@@ -34,7 +34,7 @@ IF ( M_SB0_MMI_TRANSFERSHUTTLECHECK ) THEN
   // Wenn die Station plausibel ist weiter, ansonsten Fehlermeldung ausgeben                                 
   IF ( blTransfershuttleNummerPlausibel ) THEN
     
-  // Prüfen ob der Speichervalidierung noch aktiv ist, wenn ja -> Fehlermeldung
+    // Prüfen ob der Speichervalidierung noch aktiv ist, wenn ja -> Fehlermeldung
     IF ( Job_Shuttle.abpSpeicherfachValidierung[tMmi2SpsInfo.wTransfershuttle_Nummer1] ) THEN 
       wpgFehlerdaten[0] := tMmi2SpsInfo.wTransfershuttle_Nummer1;      
       wpgFehlerdaten[1] := tMmi2SpsInfo.wTransfershuttle_Nummer1;
@@ -43,7 +43,7 @@ IF ( M_SB0_MMI_TRANSFERSHUTTLECHECK ) THEN
                   tMmi2SpsInfo.wTransfershuttle_Nummer1, 
                   AutomatikkreisBestimmen(tMmi2SpsInfo.wTransfershuttle_Nummer1),
                   wpgFehlerdaten );
-  ELSE
+    ELSE
       (* ---------------------------------------------------------------------------------------
       //  PRUEFEN TRANSFERSHUTTLE VERBUND
       //         

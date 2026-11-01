@@ -7,7 +7,7 @@
 *)
 PROGRAM StationsAufrufe
 VAR
-    wlIndex : WORD;
+  wlIndex : WORD;
 END_VAR
 
 (***************************************************************************************************)

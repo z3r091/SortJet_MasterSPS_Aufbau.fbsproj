@@ -12,7 +12,7 @@ ACTION HebeVorgang
 IF (  bpStarteHebeVorgang )
 THEN
   CASE steplHebeVorgang OF
-(* HEBE VORGANG ==============================*)
+    (* HEBE VORGANG ==============================*)
     STEP_0_E:
       (* Hinweis:
          - Timer zuruecksetzen
@@ -40,7 +40,7 @@ THEN
         steplHebeVorgang := STEP_900_E;
       END_IF
 
-(* HEBE VORGANG ==============================*)
+    (* HEBE VORGANG ==============================*)
     STEP_10_E:
       (* Hinweis:
          - Referenzieren [ Geber- Abnullen]
@@ -53,7 +53,7 @@ THEN
 
       steplHebeVorgang := STEP_20_E;
 
-(* HEBE VORGANG ==============================*)
+    (* HEBE VORGANG ==============================*)
     STEP_20_E:
       (* Hinweis:
          - Geberposition wurde zurueck gesetzt
@@ -72,7 +72,7 @@ THEN
         steplHebeVorgang := STEP_900_E;
       END_IF
 
-(* HEBE VORGANG ==============================*)
+    (* HEBE VORGANG ==============================*)
     STEP_100_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ABLAUF:  LUFTABFRAGEN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -90,10 +90,10 @@ THEN
       tonlWartenAufAnheben(IN:= NOT blBereitZumGlastransport ,PT:=t#10s);
 
       IF (  tonlGlastransportOben.Q
-        AND ( tonlKontrolleEinlaufOben.Q OR NOT bpOptionSensorEinlauf )
-        AND ( tonlKontrolleAuslaufOben.Q OR NOT bpOptionSensorAuslauf ) )
+           AND ( tonlKontrolleEinlaufOben.Q OR NOT bpOptionSensorEinlauf )
+           AND ( tonlKontrolleAuslaufOben.Q OR NOT bpOptionSensorAuslauf ) )
       THEN
-           steplHebeVorgang := STEP_1000_E;
+        steplHebeVorgang := STEP_1000_E;
       END_IF
 
       (* Fehlerbehandlung:
@@ -113,22 +113,22 @@ THEN
         ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteOben AND bpOptionSensorAuslauf ) THEN
           wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_OBEN;
         ELSE
-           wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
+          wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
         END_IF
 
         steplHebeVorgang := STEP_900_E;
       END_IF
 
-(* HEBE VORGANG ==============================*)
-     STEP_900_E:
-       bpFehler := TRUE;
+    (* HEBE VORGANG ==============================*)
+    STEP_900_E:
+      bpFehler := TRUE;
 
-(* HEBE VORGANG ==============================*)
-     STEP_1000_E:
-       bpDone := TRUE;
+    (* HEBE VORGANG ==============================*)
+    STEP_1000_E:
+      bpDone := TRUE;
 
-(* HEBE VORGANG ==============================*)
- END_CASE
+  (* HEBE VORGANG ==============================*)
+  END_CASE
 ELSE
   IF ( steplHebeVorgang > STEP_0_E ) THEN
     bpDone := FALSE;

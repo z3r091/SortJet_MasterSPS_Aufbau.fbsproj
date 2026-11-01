@@ -12,20 +12,20 @@ ACTION BETRIEBSART_Restweg_X_Flankenerkennung
 /////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
 IF (  asteplSchritt[RESTWEG] < STEP_500_E
-    AND asteplSchritt[RESTWEG] > STEP_399_E )
+     AND asteplSchritt[RESTWEG] > STEP_399_E )
 THEN
 
   IF wpRestwegMode.4 THEN // Steigende Flanke !!!
 
     IF ( wpRestwegMode.2 AND bRising[eSensoren.Sensor_1] )
-      OR ( wpRestwegMode.3 AND bRising[eSensoren.Sensor_2] )
-      OR ( wpRestwegMode.5 AND bRising[eSensoren.Sensor_3] )
-      OR ( wpRestwegMode.6 AND bRising[eSensoren.Sensor_4] )
-      OR ( wpRestwegMode.7 AND bRising[eSensoren.Sensor_5] )
-      OR ( wpRestwegMode.8 AND bRising[eSensoren.Sensor_6] )
-      OR ( wpRestwegMode.9 AND bRising[eSensoren.Sensor_7] )
-      OR ( wpRestwegMode.10 AND bRising[eSensoren.Sensor_8] )
-      OR ( wpRestwegMode.11 AND bRising[eSensoren.Sensor_9] )
+       OR ( wpRestwegMode.3 AND bRising[eSensoren.Sensor_2] )
+       OR ( wpRestwegMode.5 AND bRising[eSensoren.Sensor_3] )
+       OR ( wpRestwegMode.6 AND bRising[eSensoren.Sensor_4] )
+       OR ( wpRestwegMode.7 AND bRising[eSensoren.Sensor_5] )
+       OR ( wpRestwegMode.8 AND bRising[eSensoren.Sensor_6] )
+       OR ( wpRestwegMode.9 AND bRising[eSensoren.Sensor_7] )
+       OR ( wpRestwegMode.10 AND bRising[eSensoren.Sensor_8] )
+       OR ( wpRestwegMode.11 AND bRising[eSensoren.Sensor_9] )
     THEN
       lrlRestwegMessungMesstasterGefunden := lrlRestwegMesstasterGefunden := l_mc_ReadActualPosition.Position;
       blHelfer_RestwegMesung_Objekt_Gefunden := TRUE;
@@ -36,14 +36,14 @@ THEN
   ELSE // Fallende Flanke
 
     IF ( wpRestwegMode.2 AND bFalling[eSensoren.Sensor_1] )
-      OR ( wpRestwegMode.3 AND bFalling[eSensoren.Sensor_2] )
-      OR ( wpRestwegMode.5 AND bFalling[eSensoren.Sensor_3] )
-      OR ( wpRestwegMode.6 AND bFalling[eSensoren.Sensor_4] )
-      OR ( wpRestwegMode.7 AND bFalling[eSensoren.Sensor_5] )
-      OR ( wpRestwegMode.8 AND bFalling[eSensoren.Sensor_6] )
-      OR ( wpRestwegMode.9 AND bFalling[eSensoren.Sensor_7] )
-      OR ( wpRestwegMode.10 AND bFalling[eSensoren.Sensor_8] )
-      OR ( wpRestwegMode.11 AND bFalling[eSensoren.Sensor_9] )
+       OR ( wpRestwegMode.3 AND bFalling[eSensoren.Sensor_2] )
+       OR ( wpRestwegMode.5 AND bFalling[eSensoren.Sensor_3] )
+       OR ( wpRestwegMode.6 AND bFalling[eSensoren.Sensor_4] )
+       OR ( wpRestwegMode.7 AND bFalling[eSensoren.Sensor_5] )
+       OR ( wpRestwegMode.8 AND bFalling[eSensoren.Sensor_6] )
+       OR ( wpRestwegMode.9 AND bFalling[eSensoren.Sensor_7] )
+       OR ( wpRestwegMode.10 AND bFalling[eSensoren.Sensor_8] )
+       OR ( wpRestwegMode.11 AND bFalling[eSensoren.Sensor_9] )
     THEN
       lrlRestwegMessungMesstasterGefunden := lrlRestwegMesstasterGefunden := l_mc_ReadActualPosition.Position;
       blHelfer_RestwegMesung_Objekt_Gefunden := TRUE;
@@ -70,14 +70,14 @@ IF ( asteplSchritt[RESTWEG] >= STEP_500_E ) THEN
     IF wpRestwegMode.4 THEN // Steigende Flanke !!!
 
       IF ( wpRestwegMode.2 AND bFalling[eSensoren.Sensor_1] )
-        OR ( wpRestwegMode.3 AND bFalling[eSensoren.Sensor_2] )
-        OR ( wpRestwegMode.5 AND bFalling[eSensoren.Sensor_3] )
-        OR ( wpRestwegMode.6 AND bFalling[eSensoren.Sensor_4] )
-        OR ( wpRestwegMode.7 AND bFalling[eSensoren.Sensor_5] )
-        OR ( wpRestwegMode.8 AND bFalling[eSensoren.Sensor_6] )
-        OR ( wpRestwegMode.9 AND bFalling[eSensoren.Sensor_7] )
-        OR ( wpRestwegMode.10 AND bFalling[eSensoren.Sensor_8] )
-        OR ( wpRestwegMode.11 AND bFalling[eSensoren.Sensor_9] )
+         OR ( wpRestwegMode.3 AND bFalling[eSensoren.Sensor_2] )
+         OR ( wpRestwegMode.5 AND bFalling[eSensoren.Sensor_3] )
+         OR ( wpRestwegMode.6 AND bFalling[eSensoren.Sensor_4] )
+         OR ( wpRestwegMode.7 AND bFalling[eSensoren.Sensor_5] )
+         OR ( wpRestwegMode.8 AND bFalling[eSensoren.Sensor_6] )
+         OR ( wpRestwegMode.9 AND bFalling[eSensoren.Sensor_7] )
+         OR ( wpRestwegMode.10 AND bFalling[eSensoren.Sensor_8] )
+         OR ( wpRestwegMode.11 AND bFalling[eSensoren.Sensor_9] )
       THEN
         lrlMessErgebnis := ABS(l_mc_ReadActualPosition.Position - lrlRestwegMessungMesstasterGefunden);
         rpMessErgebnis := TO_REAL(lrlMessErgebnis);
@@ -85,18 +85,18 @@ IF ( asteplSchritt[RESTWEG] >= STEP_500_E ) THEN
         blHelfer_RestwegMesung_Objekt_Gefunden := FALSE;
       END_IF
 
-      // Restweg ursprünglich auf fallende Flanke - jetzt auf steigende Flanke warten
+    // Restweg ursprünglich auf fallende Flanke - jetzt auf steigende Flanke warten
     ELSE // Fallende Flanke
 
       IF ( wpRestwegMode.2 AND bRising[eSensoren.Sensor_1] )
-        OR ( wpRestwegMode.3 AND bRising[eSensoren.Sensor_2] )
-        OR ( wpRestwegMode.5 AND bRising[eSensoren.Sensor_3] )
-        OR ( wpRestwegMode.6 AND bRising[eSensoren.Sensor_4] )
-        OR ( wpRestwegMode.7 AND bRising[eSensoren.Sensor_5] )
-        OR ( wpRestwegMode.8 AND bRising[eSensoren.Sensor_6] )
-        OR ( wpRestwegMode.9 AND bRising[eSensoren.Sensor_7] )
-        OR ( wpRestwegMode.10 AND bRising[eSensoren.Sensor_8] )
-        OR ( wpRestwegMode.11 AND bRising[eSensoren.Sensor_9] )
+         OR ( wpRestwegMode.3 AND bRising[eSensoren.Sensor_2] )
+         OR ( wpRestwegMode.5 AND bRising[eSensoren.Sensor_3] )
+         OR ( wpRestwegMode.6 AND bRising[eSensoren.Sensor_4] )
+         OR ( wpRestwegMode.7 AND bRising[eSensoren.Sensor_5] )
+         OR ( wpRestwegMode.8 AND bRising[eSensoren.Sensor_6] )
+         OR ( wpRestwegMode.9 AND bRising[eSensoren.Sensor_7] )
+         OR ( wpRestwegMode.10 AND bRising[eSensoren.Sensor_8] )
+         OR ( wpRestwegMode.11 AND bRising[eSensoren.Sensor_9] )
       THEN
         lrlMessErgebnis := ABS(l_mc_ReadActualPosition.Position - lrlRestwegMessungMesstasterGefunden);
         rpMessErgebnis := TO_REAL(lrlMessErgebnis);
@@ -106,20 +106,20 @@ IF ( asteplSchritt[RESTWEG] >= STEP_500_E ) THEN
 
     END_IF
 
-    // Objekt noch nicht gefunden
+  // Objekt noch nicht gefunden
   ELSE
 
     IF wpRestwegMode.4 THEN // Steigende Flanke !!!
 
       IF ( wpRestwegMode.2 AND bRising[eSensoren.Sensor_1] )
-        OR ( wpRestwegMode.3 AND bRising[eSensoren.Sensor_2] )
-        OR ( wpRestwegMode.5 AND bRising[eSensoren.Sensor_3] )
-        OR ( wpRestwegMode.6 AND bRising[eSensoren.Sensor_4] )
-        OR ( wpRestwegMode.7 AND bRising[eSensoren.Sensor_5] )
-        OR ( wpRestwegMode.8 AND bRising[eSensoren.Sensor_6] )
-        OR ( wpRestwegMode.9 AND bRising[eSensoren.Sensor_7] )
-        OR ( wpRestwegMode.10 AND bRising[eSensoren.Sensor_8] )
-        OR ( wpRestwegMode.11 AND bRising[eSensoren.Sensor_9] )
+         OR ( wpRestwegMode.3 AND bRising[eSensoren.Sensor_2] )
+         OR ( wpRestwegMode.5 AND bRising[eSensoren.Sensor_3] )
+         OR ( wpRestwegMode.6 AND bRising[eSensoren.Sensor_4] )
+         OR ( wpRestwegMode.7 AND bRising[eSensoren.Sensor_5] )
+         OR ( wpRestwegMode.8 AND bRising[eSensoren.Sensor_6] )
+         OR ( wpRestwegMode.9 AND bRising[eSensoren.Sensor_7] )
+         OR ( wpRestwegMode.10 AND bRising[eSensoren.Sensor_8] )
+         OR ( wpRestwegMode.11 AND bRising[eSensoren.Sensor_9] )
       THEN
         lrlMessErgebnis := rpMessErgebnis := 0;
         bpMessungOk := FALSE;
@@ -130,14 +130,14 @@ IF ( asteplSchritt[RESTWEG] >= STEP_500_E ) THEN
     ELSE // Fallende Flanke
 
       IF ( wpRestwegMode.2 AND bFalling[eSensoren.Sensor_1] )
-        OR ( wpRestwegMode.3 AND bFalling[eSensoren.Sensor_2] )
-        OR ( wpRestwegMode.5 AND bFalling[eSensoren.Sensor_3] )
-        OR ( wpRestwegMode.6 AND bFalling[eSensoren.Sensor_4] )
-        OR ( wpRestwegMode.7 AND bFalling[eSensoren.Sensor_5] )
-        OR ( wpRestwegMode.8 AND bFalling[eSensoren.Sensor_6] )
-        OR ( wpRestwegMode.9 AND bFalling[eSensoren.Sensor_7] )
-        OR ( wpRestwegMode.10 AND bFalling[eSensoren.Sensor_8] )
-        OR ( wpRestwegMode.11 AND bFalling[eSensoren.Sensor_9] )
+         OR ( wpRestwegMode.3 AND bFalling[eSensoren.Sensor_2] )
+         OR ( wpRestwegMode.5 AND bFalling[eSensoren.Sensor_3] )
+         OR ( wpRestwegMode.6 AND bFalling[eSensoren.Sensor_4] )
+         OR ( wpRestwegMode.7 AND bFalling[eSensoren.Sensor_5] )
+         OR ( wpRestwegMode.8 AND bFalling[eSensoren.Sensor_6] )
+         OR ( wpRestwegMode.9 AND bFalling[eSensoren.Sensor_7] )
+         OR ( wpRestwegMode.10 AND bFalling[eSensoren.Sensor_8] )
+         OR ( wpRestwegMode.11 AND bFalling[eSensoren.Sensor_9] )
       THEN
         lrlMessErgebnis := rpMessErgebnis := 0;
         bpMessungOk := FALSE;

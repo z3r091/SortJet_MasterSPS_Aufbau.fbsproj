@@ -26,7 +26,7 @@ IF ( blBetriebartCheck ) THEN
 
 
   CASE steplCheck OF
-//=== SYSTEM CHECK ====================================================================================
+    //=== SYSTEM CHECK ====================================================================================
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen
@@ -64,7 +64,7 @@ IF ( blBetriebartCheck ) THEN
         END_IF
       END_IF
 
-//=== SYSTEM CHECK ====================================================================================
+    //=== SYSTEM CHECK ====================================================================================
     STEP_10_E:
       (* Hinweis:
          - Hubrahmen auf die Austransport-Achse stellen, dort liegt eine Scheibe in Grundstellung
@@ -74,7 +74,7 @@ IF ( blBetriebartCheck ) THEN
 
       steplCheck := STEP_20_E;
 
-//=== SYSTEM CHECK ====================================================================================
+    //=== SYSTEM CHECK ====================================================================================
     STEP_20_E:
       IF ( blHubrahmenInPosition ) THEN
         blHubrahmenPositionieren := FALSE;
@@ -82,7 +82,7 @@ IF ( blBetriebartCheck ) THEN
         steplCheck := STEP_100_E;
       END_IF
 
-//=== SYSTEM CHECK ====================================================================================
+    //=== SYSTEM CHECK ====================================================================================
     STEP_100_E:
       // ---------------------------------------------------------------------------------------
       //  STARTEN DES SYSTEM CHECKS
@@ -97,7 +97,7 @@ IF ( blBetriebartCheck ) THEN
 
       steplCheck := STEP_110_E;
 
-//=== SYSTEM CHECK ====================================================================================
+    //=== SYSTEM CHECK ====================================================================================
     STEP_110_E:
       (* Hinweis:
          - Pruefen ob die Station belegt ist
@@ -110,7 +110,7 @@ IF ( blBetriebartCheck ) THEN
         steplCheck := STEP_800_E;
       END_IF
 
-//=== SYSTEM CHECK ====================================================================================
+    //=== SYSTEM CHECK ====================================================================================
     STEP_800_E:
       // ---------------------------------------------------------------------------------------
       //  AUSWERTEN DES BELADUNGSSTATUS MIT DEN MMI DATEN
@@ -119,35 +119,35 @@ IF ( blBetriebartCheck ) THEN
       //  - Nachricht an den Bediener senden wenn die Daten nicht passen
       // ---------------------------------------------------------------------------------------
       IF (    ( BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben = 0 )
-          AND BasisStationsParameter.bStationBelegt[cWAND_1] )
+           AND BasisStationsParameter.bStationBelegt[cWAND_1] )
       THEN
-          wpgFehlerdaten[0] := BasisStationsParameter.stMKs.stStationsNummern.NummerExtern;
-          SpsHinweis( eFehler_Station,
-                      cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN,
-                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
-                      wpgFehlerdaten );
+        wpgFehlerdaten[0] := BasisStationsParameter.stMKs.stStationsNummern.NummerExtern;
+        SpsHinweis( eFehler_Station,
+                    cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+                    wpgFehlerdaten );
       END_IF
 
       IF (    ( BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben <> 0 )
-          AND NOT BasisStationsParameter.bStationBelegt[cWAND_1] )
+           AND NOT BasisStationsParameter.bStationBelegt[cWAND_1] )
       THEN
-          wpgFehlerdaten[0] := BasisStationsParameter.stMKs.stStationsNummern.NummerExtern;
-          SpsHinweis( eFehler_Station,
-                      cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN,
-                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
-                      wpgFehlerdaten );
+        wpgFehlerdaten[0] := BasisStationsParameter.stMKs.stStationsNummern.NummerExtern;
+        SpsHinweis( eFehler_Station,
+                    cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+                    wpgFehlerdaten );
       END_IF
 
       steplCheck := STEP_1000_E;
 
-//=== SYSTEM CHECK ====================================================================================
+    //=== SYSTEM CHECK ====================================================================================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       blNachSystemcheckMerker := FALSE;
 
-//=== SYSTEM CHECK ====================================================================================
+    //=== SYSTEM CHECK ====================================================================================
     STEP_1000_E:
       // Auftrag fuer erneuten Automatikbetrieb setzen
       IF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
@@ -159,7 +159,7 @@ IF ( blBetriebartCheck ) THEN
       BasisStationsParameter.bCheckAbgeschlossen := TRUE;
       blNachSystemcheckMerker := TRUE;
 
-//=== SYSTEM CHECK ====================================================================================
+  //=== SYSTEM CHECK ====================================================================================
   END_CASE
 ELSE
 

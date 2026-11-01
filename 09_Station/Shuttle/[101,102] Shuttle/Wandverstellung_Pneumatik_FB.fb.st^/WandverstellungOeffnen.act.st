@@ -11,18 +11,18 @@ ACTION WandverstellungOeffnen
 (***************************************************************************************************)
 
 IF ( bpWandverstellungOeffnen
- AND NOT bpWandverstellungSchliessen )
+     AND NOT bpWandverstellungSchliessen )
 THEN
 
   CASE steplWandverstellungOeffnen OF
-(* Wandverstellung öffnen =====================*)
+    (* Wandverstellung öffnen =====================*)
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
          - Pruefen der Pneumatik- Zylinderstellung
       *)
       IF ( NOT in_bWandEinlaufseiteGeoeffnet
-        OR NOT in_bWandAuslaufseiteGeoeffnet )
+           OR NOT in_bWandAuslaufseiteGeoeffnet )
       THEN
         tonlEingefahrenWandEinlaufseite(IN := FALSE);
         tonlEingefahrenWandAuslaufseite(IN := FALSE);
@@ -36,7 +36,7 @@ THEN
 
       END_IF
 
-(* Wandverstellung öffnen =====================*)
+    (* Wandverstellung öffnen =====================*)
     STEP_10_E:
       (* Hinweis:
          - Initialisieren der Timer
@@ -47,7 +47,7 @@ THEN
 
 
       IF (  in_bWandEinlaufseiteGeoeffnet
-        AND in_bWandAuslaufseiteGeoeffnet )
+           AND in_bWandAuslaufseiteGeoeffnet )
       THEN
         out_bWandverstellungOeffnen := FALSE;
         steplWandverstellungOeffnen := STEP_1000_E;
@@ -69,15 +69,15 @@ THEN
         steplWandverstellungOeffnen := STEP_900_E;
       END_IF
 
-(* Wandverstellung öffnen =====================*)
+    (* Wandverstellung öffnen =====================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* Wandverstellung öffnen =====================*)
+    (* Wandverstellung öffnen =====================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(* Wandverstellung öffnen =====================*)
+  (* Wandverstellung öffnen =====================*)
   END_CASE
 END_IF
 

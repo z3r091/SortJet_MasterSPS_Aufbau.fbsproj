@@ -75,7 +75,7 @@ IF bpReset THEN
 
 ELSE
 
- IF ( bpAktivieren ) THEN
+  IF ( bpAktivieren ) THEN
     (***************************************************************************************************)
     (* AKTIONEN *)
     (***************************************************************************************************)
@@ -95,45 +95,45 @@ ELSE
     
     
     IF NOT bpZylinderAbfragenVorhanden THEN
-     (* dies mit auch als DEMO Mode benutzen, wenn keine Abfargen verbaut sind, dann den Öffnungsstatus zurück spiegeln ..*)
-     wpStatusZylinder := epOeffnungsStellung;
+      (* dies mit auch als DEMO Mode benutzen, wenn keine Abfargen verbaut sind, dann den Öffnungsstatus zurück spiegeln ..*)
+      wpStatusZylinder := epOeffnungsStellung;
     
     ELSIF NOT bpEinAusFahrenLogikDrehen THEN  (* mit Zylinderabfragen *)
     
-     IF ( in_bStatusZylinder1Ausgefahren ) THEN
-      IF (in_bStatusZylinder2Ausgefahren) THEN
-       wpStatusZylinder := eZylinderStellung29mm;
-      ELSE
-       wpStatusZylinder := eZylinderStellung23mm;
-      END_IF
+      IF ( in_bStatusZylinder1Ausgefahren ) THEN
+        IF (in_bStatusZylinder2Ausgefahren) THEN
+          wpStatusZylinder := eZylinderStellung29mm;
+        ELSE
+          wpStatusZylinder := eZylinderStellung23mm;
+        END_IF
     
-     ELSE
-      IF (in_bStatusZylinder2Ausgefahren) THEN
-       wpStatusZylinder := eZylinderStellung23mm;
       ELSE
-       wpStatusZylinder := eZylinderStellung16mm;
+        IF (in_bStatusZylinder2Ausgefahren) THEN
+          wpStatusZylinder := eZylinderStellung23mm;
+        ELSE
+          wpStatusZylinder := eZylinderStellung16mm;
+        END_IF
       END_IF
-     END_IF
     
     ELSE
     
-     IF in_bStatusZylinder1Eingefahren THEN
+      IF in_bStatusZylinder1Eingefahren THEN
     
-      IF (in_bStatusZylinder2Eingefahren) THEN
-       wpStatusZylinder := eZylinderStellung29mm;
+        IF (in_bStatusZylinder2Eingefahren) THEN
+          wpStatusZylinder := eZylinderStellung29mm;
+        ELSE
+          wpStatusZylinder := eZylinderStellung23mm;
+        END_IF
+    
       ELSE
-       wpStatusZylinder := eZylinderStellung23mm;
+    
+        IF (in_bStatusZylinder2Eingefahren) THEN
+          wpStatusZylinder := eZylinderStellung23mm;
+        ELSE
+          wpStatusZylinder := eZylinderStellung16mm;
+        END_IF
+    
       END_IF
-    
-     ELSE
-    
-      IF (in_bStatusZylinder2Eingefahren) THEN
-       wpStatusZylinder := eZylinderStellung23mm;
-      ELSE
-       wpStatusZylinder := eZylinderStellung16mm;
-      END_IF
-    
-     END_IF
     
     END_IF
   

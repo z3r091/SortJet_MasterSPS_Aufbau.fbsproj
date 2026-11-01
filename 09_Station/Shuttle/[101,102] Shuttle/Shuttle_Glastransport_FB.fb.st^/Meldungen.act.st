@@ -10,18 +10,18 @@ ACTION Meldungen
 (* AKTION MELDUNGEN*)
 (***************************************************************************************************)
 IF( Antrieb.bpFehler
-  AND NOT (
-       steplEintransport            = STEP_900_E
-    OR steplEintransportRueckwaertig = STEP_900_E
-    OR steplAustransport            = STEP_900_E
-    OR steplAustransportRueckwaertig = STEP_900_E
-    OR steplVorabpositionieren      = STEP_900_E
-    OR steplSensorFreiFahren        = STEP_900_E
-    OR steplVortransport            = STEP_900_E
-    OR steplVortransportRueckwertig = STEP_900_E
-    OR steplCheck                   = STEP_900_E
-    OR steplReset                   = STEP_900_E
-    OR steplReferenz                = STEP_900_E ))
+    AND NOT (
+              steplEintransport            = STEP_900_E
+              OR steplEintransportRueckwaertig = STEP_900_E
+              OR steplAustransport            = STEP_900_E
+              OR steplAustransportRueckwaertig = STEP_900_E
+              OR steplVorabpositionieren      = STEP_900_E
+              OR steplSensorFreiFahren        = STEP_900_E
+              OR steplVortransport            = STEP_900_E
+              OR steplVortransportRueckwertig = STEP_900_E
+              OR steplCheck                   = STEP_900_E
+              OR steplReset                   = STEP_900_E
+              OR steplReferenz                = STEP_900_E ))
 THEN
   wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
   bpFehler := TRUE;

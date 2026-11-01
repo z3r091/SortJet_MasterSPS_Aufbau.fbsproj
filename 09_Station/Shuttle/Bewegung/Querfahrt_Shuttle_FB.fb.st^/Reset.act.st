@@ -12,7 +12,7 @@ ACTION Reset
 
 IF ( bpReset ) THEN
   CASE schrittlReset OF
-(* RESET ======================= *)
+    (* RESET ======================= *)
     STEP_0_E:
       bpDone := FALSE;
       tonlWarteAufStop(IN := FALSE);
@@ -26,14 +26,14 @@ IF ( bpReset ) THEN
 
       schrittlReset := STEP_10_E;
 
-(* RESET ======================= *)
+    (* RESET ======================= *)
     STEP_10_E: (* Shuttle sicher anhalten *)
       bpVerfahreShuttle:= FALSE;
       STEP_Mov_Shuttle_W := STEP_0_E;
 
       schrittlReset := STEP_20_E;
 
-(* RESET ======================= *)
+    (* RESET ======================= *)
     STEP_20_E:
       (* Hinweis:
          - Shuttle sicher anhalten 
@@ -50,20 +50,20 @@ IF ( bpReset ) THEN
         schrittlReset := STEP_900_E;
       END_IF
 
-(* RESET ======================= *)
+    (* RESET ======================= *)
     STEP_30_E:
       (* Hinweis:
          - Antrieb Fehler zurücksetzen 
       *)
-    blFreigabeGesetzt := FALSE;
-    Antrieb.bpFreigabe := FALSE;
+      blFreigabeGesetzt := FALSE;
+      Antrieb.bpFreigabe := FALSE;
 
       tonlWarteAufReset(IN := FALSE);
       Antrieb.wpBetriebsart :=  AntriebsBetriebsart_EN.RESET;
 
       schrittlReset := STEP_40_E;
 
-(* RESET ======================= *)
+    (* RESET ======================= *)
     STEP_40_E:
       (* Hinweis:
          - Antrieb Fehler zurücksetzen 
@@ -84,17 +84,17 @@ IF ( bpReset ) THEN
         schrittlReset := STEP_900_E;
       END_IF
 
-(* RESET ======================= *)
+    (* RESET ======================= *)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* RESET ======================= *)
+    (* RESET ======================= *)
     STEP_1000_E:
       Antrieb.rpZielPosition := Antrieb.rpIstPosition;
       bpDone := TRUE;
       bpFehler := FALSE;
 
-(* RESET ======================= *)
+  (* RESET ======================= *)
   END_CASE
 END_IF
 

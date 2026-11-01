@@ -94,16 +94,16 @@ IF NOT bgVisuAntriebeVerfahrenAktiv THEN
   RETURN; 
 ELSE
   IF  pgAntriebe[wgAuswahlAchsID].wpBetriebsart = ABSOLUT  OR  
-        pgAntriebe[wgAuswahlAchsID].wpBetriebsart = RELATIV OR  
-        pgAntriebe[wgAuswahlAchsID].wpBetriebsart = HANDPLUS OR  
-        pgAntriebe[wgAuswahlAchsID].wpBetriebsart = HANDMINUS OR 
-        pgAntriebe[wgAuswahlAchsID].wpBetriebsart = RESTWEG OR 
-        pgAntriebe[wgAuswahlAchsID].wpBetriebsart = SCHEIBENMESSUNG
-    THEN
-      pgAntriebe[wgAuswahlAchsID].rpBeschleunigung  := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxBeschleunigung;
-      pgAntriebe[wgAuswahlAchsID].rpVerzoegerung    := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxVerzoegerung;
-      pgAntriebe[wgAuswahlAchsID].rpRuckzeit        := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxRuckzeit;
-      pgAntriebe[wgAuswahlAchsID].rpGeschwindigkeit := rgGeschwindigkeit;
+      pgAntriebe[wgAuswahlAchsID].wpBetriebsart = RELATIV OR  
+      pgAntriebe[wgAuswahlAchsID].wpBetriebsart = HANDPLUS OR  
+      pgAntriebe[wgAuswahlAchsID].wpBetriebsart = HANDMINUS OR 
+      pgAntriebe[wgAuswahlAchsID].wpBetriebsart = RESTWEG OR 
+      pgAntriebe[wgAuswahlAchsID].wpBetriebsart = SCHEIBENMESSUNG
+  THEN
+    pgAntriebe[wgAuswahlAchsID].rpBeschleunigung  := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxBeschleunigung;
+    pgAntriebe[wgAuswahlAchsID].rpVerzoegerung    := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxVerzoegerung;
+    pgAntriebe[wgAuswahlAchsID].rpRuckzeit        := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxRuckzeit;
+    pgAntriebe[wgAuswahlAchsID].rpGeschwindigkeit := rgGeschwindigkeit;
   END_IF
 END_IF
 
@@ -119,9 +119,9 @@ END_IF
 
 // Referenz
 IF rtlStartReferenz.Q 
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
-  AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
+   AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
 THEN
   pgAntriebe[wgAuswahlAchsID].rpBeschleunigung  := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxBeschleunigung;
   pgAntriebe[wgAuswahlAchsID].rpVerzoegerung    := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -133,9 +133,9 @@ END_IF
 
 // Absolut verfahren
 IF rtlStartAbsolut.Q 
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
-  AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
+   AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
 THEN
   pgAntriebe[wgAuswahlAchsID].rpBeschleunigung  := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxBeschleunigung;
   pgAntriebe[wgAuswahlAchsID].rpVerzoegerung    := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -147,9 +147,9 @@ END_IF
 
 // Relativ verfahren
 IF rtlStartRelativ.Q 
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
-  AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
+   AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
 THEN
   pgAntriebe[wgAuswahlAchsID].rpBeschleunigung  := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxBeschleunigung;
   pgAntriebe[wgAuswahlAchsID].rpVerzoegerung    := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -161,9 +161,9 @@ END_IF
 
 // Restweg relativ
 IF rtlStartRestweg.Q 
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
-  AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
+   AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
 THEN
   pgAntriebe[wgAuswahlAchsID].rpBeschleunigung  := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxBeschleunigung;
   pgAntriebe[wgAuswahlAchsID].rpVerzoegerung    := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -185,9 +185,9 @@ END_IF
 
 // Messung fahren
 IF rtlStartMessung.Q 
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
-  AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
+   AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
 THEN
   pgAntriebe[wgAuswahlAchsID].rpBeschleunigung  := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxBeschleunigung;
   pgAntriebe[wgAuswahlAchsID].rpVerzoegerung    := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -200,9 +200,9 @@ END_IF
 
 // Master Slave Koppeln
 IF rtlStartMasterSlave.Q 
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
-  AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
+   AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
 THEN
   pgAntriebe[wgAuswahlAchsID].wpMaster          := wgMasterNummer;
   pgAntriebe[wgAuswahlAchsID].wpBetriebsart     := AntriebsBetriebsart_EN.SYNC_AUF_MASTER;
@@ -210,9 +210,9 @@ END_IF
 
 // Master Slave Invertiert Koppeln
 IF rtlStartMasterSlaveInvertiert.Q 
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
-  AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
+   AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
 THEN
   pgAntriebe[wgAuswahlAchsID].wpMaster          := wgMasterNummer;
   pgAntriebe[wgAuswahlAchsID].wpBetriebsart     := AntriebsBetriebsart_EN.INVERTIERTER_SYNC_AUF_MASTER;
@@ -220,9 +220,9 @@ END_IF
 
 // Hand plus
 IF bpHandPlus
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
-  AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
+   AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
 THEN
   pgAntriebe[wgAuswahlAchsID].rpBeschleunigung  := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxBeschleunigung;
   pgAntriebe[wgAuswahlAchsID].rpVerzoegerung    := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -233,9 +233,9 @@ END_IF
 
 // Hand plus
 IF bpHandMinus
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
-  AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
-  AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpMotionAktiv
+   AND pgAntriebe[wgAuswahlAchsID].bpReglerBereit
+   AND NOT pgAntriebe[wgAuswahlAchsID].bpAntrieblaeuft
 THEN
   pgAntriebe[wgAuswahlAchsID].rpBeschleunigung  := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxBeschleunigung;
   pgAntriebe[wgAuswahlAchsID].rpVerzoegerung    := pgAntriebe[wgAuswahlAchsID].ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -246,8 +246,8 @@ END_IF
 
 // Stopp oder fertig
 IF  rtlStopp.Q 
- OR ( rtlAntriebDone.Q AND NOT ( pgAntriebe[wgAuswahlAchsID].wpBetriebsart = SYNC_AUF_MASTER OR pgAntriebe[wgAuswahlAchsID].wpBetriebsart = SCHEIBENMESSUNG OR pgAntriebe[wgAuswahlAchsID].wpBetriebsart = INVERTIERTER_SYNC_AUF_MASTER ) )
- OR ftlHandPlusMinus.Q 
+    OR ( rtlAntriebDone.Q AND NOT ( pgAntriebe[wgAuswahlAchsID].wpBetriebsart = SYNC_AUF_MASTER OR pgAntriebe[wgAuswahlAchsID].wpBetriebsart = SCHEIBENMESSUNG OR pgAntriebe[wgAuswahlAchsID].wpBetriebsart = INVERTIERTER_SYNC_AUF_MASTER ) )
+    OR ftlHandPlusMinus.Q 
 THEN
   pgAntriebe[wgAuswahlAchsID].wpBetriebsart := KEINE_FUNKTION;
 END_IF

@@ -10,10 +10,10 @@ ACTION VerstellungOeffnen
 (* AKTION: SENKEN [HUB AB] *)
 (******************************************************************************)
 IF (  bpVerstellungOeffnen
-  AND NOT bpVerstellungSchliessen )
+     AND NOT bpVerstellungSchliessen )
 THEN
   CASE steplVerstellungOeffnen OF
-(*ABHub ==========================*)
+    (*ABHub ==========================*)
     STEP_0_E:
       IF ( in_bVerstellungGeoeffnet ) THEN
         out_bVerstellungOeffnen := TRUE;
@@ -23,7 +23,7 @@ THEN
         steplVerstellungOeffnen := STEP_1000_E;
       END_IF
 
-(*ABHub ==========================*)
+    (*ABHub ==========================*)
     STEP_10_E:
       IF ( NOT in_bVerstellungGeoeffnet ) THEN
         out_bVerstellungOeffnen := FALSE;
@@ -39,15 +39,15 @@ THEN
         steplVerstellungOeffnen := STEP_900_E;
       END_IF
 
-(*ABHub ==========================*)
+    (*ABHub ==========================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(*ABHub ==========================*)
+    (*ABHub ==========================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(*ABHub ==========================*)
+  (*ABHub ==========================*)
   END_CASE
 END_IF
 IF ( NOT bpVerstellungOeffnen ) THEN

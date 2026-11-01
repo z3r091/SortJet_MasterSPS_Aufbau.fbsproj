@@ -13,15 +13,15 @@ tonlMaxWarteAufResetErfolgreich(IN:=bpReset,pt:=tgMaxWartezeitReset-T#1S);
 
 IF( bpReset )THEN
   CASE steplReset OF
-(*RESET ============================*)
+    (*RESET ============================*)
     STEP_0_E:
       bpDone := FALSE;
       Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
-       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
-         steplReset := STEP_10_E;
-       END_IF
-(*RESET ============================*)
+      IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
+        steplReset := STEP_10_E;
+      END_IF
+    (*RESET ============================*)
     STEP_10_E:
       (* Hinweis:
          - Betriebsarten zuruecksetzen
@@ -32,13 +32,13 @@ IF( bpReset )THEN
 
       steplReset := STEP_20_E;
 
-(*RESET ============================*)
+    (*RESET ============================*)
     STEP_20_E:
       Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.RESET;
 
       steplReset := STEP_30_E;
 
-(*RESET ============================*)
+    (*RESET ============================*)
     STEP_30_E:
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -50,24 +50,24 @@ IF( bpReset )THEN
          - Antrieb 
       *)
       IF ( Antrieb.bpFehler
-        AND tonlMaxWarteAufResetErfolgreich.Q )
+           AND tonlMaxWarteAufResetErfolgreich.Q )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_ZURUECKGESETZT;
         steplReset := STEP_900_E;
       END_IF
 
-(*RESET ============================*)
+    (*RESET ============================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(*RESET ============================*)
+    (*RESET ============================*)
     STEP_1000_E:
       bpFehler := FALSE;
       wpFehlerNr := cMELDUNG_NULL;
       bpDone := TRUE;
 
-(*RESET ============================*)
+  (*RESET ============================*)
   END_CASE
   
 ELSE

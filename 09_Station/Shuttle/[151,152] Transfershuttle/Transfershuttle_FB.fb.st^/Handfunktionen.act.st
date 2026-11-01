@@ -10,10 +10,10 @@ ACTION Handfunktionen
 (* HANDFUNKTIONEN *)
 (***************************************************************************************************)
 IF ( NOT  BasisStationsParameter.bAutomatik
-  AND NOT BasisStationsParameter.bReset
-  AND NOT BasisStationsParameter.bCheck
-  AND NOT BasisStationsParameter.bReferenz
-  AND NOT bpScheibenNeuAusrichten )
+     AND NOT BasisStationsParameter.bReset
+     AND NOT BasisStationsParameter.bCheck
+     AND NOT BasisStationsParameter.bReferenz
+     AND NOT bpScheibenNeuAusrichten )
 THEN
 
   dwlHandfunktionen := dwlHandfunktionen;
@@ -27,10 +27,10 @@ THEN
      - Glastransport vor / zurück
   *)
   Glastransport.bpHandfahrenPositiv  := ((dwlHandfunktionen.1 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]) AND NOT
-                                  (dwlHandfunktionen.2 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]));  (* Bit 1 = Glastransport vor *)
+                                          (dwlHandfunktionen.2 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]));  (* Bit 1 = Glastransport vor *)
 
   Glastransport.bpHandfahrenNegativ  := ((dwlHandfunktionen.2 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]) AND NOT
-                                  (dwlHandfunktionen.1 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]));  (* Bit 2 = Glastransport zurück *)
+                                          (dwlHandfunktionen.1 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]));  (* Bit 2 = Glastransport zurück *)
 
   (* Anmerkung:
      - Luftssensoren [Scheibenkontrolle] heben / senken
@@ -50,22 +50,22 @@ THEN
        => Erst aktivieren wenn nötig
   *)
   Querfahrt.bpStartReferenz := (( dwlHandfunktionen.16 OR bgVisuTFSQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
-                                       AND NOT (   dwlHandfunktionen.14
-                                                OR dwlHandfunktionen.15
-                                                OR bgVisuTFSQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-                                                OR bgVisuTFSQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
+                                 AND NOT (   dwlHandfunktionen.14
+                                           OR dwlHandfunktionen.15
+                                           OR bgVisuTFSQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+                                           OR bgVisuTFSQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
 
   Querfahrt.bpHandplus      := ((  dwlHandfunktionen.14 OR bgVisuTFSQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-                                       AND NOT (   dwlHandfunktionen.15
-                                                OR dwlHandfunktionen.16
-                                                OR bgVisuTFSQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-                                                OR bgVisuTFSQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
+                                 AND NOT (   dwlHandfunktionen.15
+                                           OR dwlHandfunktionen.16
+                                           OR bgVisuTFSQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+                                           OR bgVisuTFSQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
 
   Querfahrt.bpHandminus     := (( dwlHandfunktionen.15 OR bgVisuTFSQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-                                       AND NOT (   dwlHandfunktionen.14
-                                                OR dwlHandfunktionen.16
-                                                OR bgVisuTFSQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-                                                OR bgVisuTFSQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
+                                 AND NOT (   dwlHandfunktionen.14
+                                           OR dwlHandfunktionen.16
+                                           OR bgVisuTFSQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+                                           OR bgVisuTFSQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
 
   (* Starten der Zentralschmierung *)
   Zentralschmierung.bpStartSchmierungHand := ( dwlHandfunktionen.20 OR bgVisuTFSZentralschmierungStarten[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] );

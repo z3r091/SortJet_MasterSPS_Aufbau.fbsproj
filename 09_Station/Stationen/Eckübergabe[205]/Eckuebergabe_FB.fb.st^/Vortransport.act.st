@@ -10,7 +10,7 @@ ACTION Vortransport
 // AKTION VORTRANSPORT
 //==================================================================================================
 IF ( BasisStationsParameter.bVortransport[cWAND_1]
-  AND blBetriebsartAutomatik )
+     AND blBetriebsartAutomatik )
 THEN
 
   // Ausnahmesituation
@@ -34,7 +34,7 @@ THEN
 
 
   CASE steplVortransport OF
-//=== VORTRANSPORT ===================================================================================
+    //=== VORTRANSPORT ===================================================================================
     STEP_0_E:
       BasisStationsParameter.bVortransportAbgeschlossen[cWAND_1] := FALSE;
 
@@ -46,7 +46,7 @@ THEN
 
       steplVortransport := STEP_10_E;
 
-//=== VORTRANSPORT ===================================================================================
+    //=== VORTRANSPORT ===================================================================================
     STEP_10_E:
       IF ( blHubrahmenInPosition ) THEN
         blHubrahmenPositionieren := FALSE;
@@ -54,7 +54,7 @@ THEN
         steplVortransport := STEP_100_E;
       END_IF
 
-//=== VORTRANSPORT ===================================================================================
+    //=== VORTRANSPORT ===================================================================================
     STEP_100_E:
       (* Hinweis:
          - Starten des Vortransports auf der Austransport-Achse
@@ -63,7 +63,7 @@ THEN
 
       steplVortransport := STEP_110_E;
 
-//=== VORTRANSPORT ===================================================================================
+    //=== VORTRANSPORT ===================================================================================
     STEP_110_E:
       (* Hinweis:
          - Vortransport abgeschlossen
@@ -74,15 +74,15 @@ THEN
         steplVortransport := STEP_1000_E;
       END_IF
 
-//=== VORTRANSPORT ===================================================================================
+    //=== VORTRANSPORT ===================================================================================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-//=== VORTRANSPORT ===================================================================================
+    //=== VORTRANSPORT ===================================================================================
     STEP_1000_E:
       BasisStationsParameter.bVortransportAbgeschlossen[cWAND_1] := TRUE;
 
-//=== VORTRANSPORT ===================================================================================
+  //=== VORTRANSPORT ===================================================================================
   END_CASE
 ELSE
 

@@ -85,7 +85,7 @@ THEN
   wpStatus := eTransportsperreOben;
 
 ELSIF(   in_bUnten
-     AND NOT in_bOben )
+       AND NOT in_bOben )
 THEN
   wpStatus := eTransportsperreUnten;
 

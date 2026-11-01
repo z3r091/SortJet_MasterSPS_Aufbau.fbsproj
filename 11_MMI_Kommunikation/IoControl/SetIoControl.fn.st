@@ -7,12 +7,12 @@
 *)
 FUNCTION SetIoControl : BOOL
 VAR_INPUT
- wpControlIndex : WORD;
+  wpControlIndex : WORD;
 END_VAR
 VAR
- wlByteIndex : WORD;
- wlBitIndex  : WORD;
- ucValue     : BYTE;
+  wlByteIndex : WORD;
+  wlBitIndex  : WORD;
+  ucValue     : BYTE;
 END_VAR
 
 wlByteIndex := wpControlIndex / 8;

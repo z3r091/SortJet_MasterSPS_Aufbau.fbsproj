@@ -10,19 +10,19 @@ ACTION Vortransport_Inputshuttle
 (* AKTION: VORTRANSPORT *)
 (***************************************************************************************************)
 IF ( bpVortransport
-  AND NOT bpEintransport
-  AND NOT bpRueckwaertsEintransportieren
-  AND bpAutomatikAktiv )
+     AND NOT bpEintransport
+     AND NOT bpRueckwaertsEintransportieren
+     AND bpAutomatikAktiv )
 THEN
   CASE steplVortransport OF
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_0_E:
 
-   IF ( blAntriebsKopplungAktiv ) THEN
+      IF ( blAntriebsKopplungAktiv ) THEN
         steplVortransport := STEP_5_E;
-   END_IF
+      END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_5_E:
       IF ( bpSensorAuslauf ) THEN
         steplVortransport := STEP_1000_E;
@@ -30,7 +30,7 @@ THEN
         steplVortransport := STEP_10_E;
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_10_E:
       (* Hinweis:
           - Glas vorfahren
@@ -73,13 +73,13 @@ THEN
         steplVortransport := STEP_900_E;
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_20_E:
       (* Hinweis:
          - Restweg- Positionierung abgeschlossen auf den Auslauf-Sensor
       *)
       IF ( Antrieb.bpDone
-       AND bpSensorAuslauf )
+           AND bpSensorAuslauf )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplVortransport := STEP_30_E;
@@ -96,31 +96,31 @@ THEN
       END_IF
 
       IF (  Antrieb.bpDone
-        AND NOT bpSensorAuslauf )
+           AND NOT bpSensorAuslauf )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
         steplVortransport := STEP_900_E;
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_30_E:
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplVortransport := STEP_1000_E;
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
       bpFehler := TRUE;
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(*VORTRANSPORT ==============================*)
+  (*VORTRANSPORT ==============================*)
   END_CASE
 ELSE
   IF (steplVortransport > STEP_0_E) THEN

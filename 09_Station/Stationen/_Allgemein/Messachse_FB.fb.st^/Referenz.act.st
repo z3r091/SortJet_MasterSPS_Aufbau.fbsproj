@@ -11,7 +11,7 @@ ACTION Referenz
 (***************************************************************************************************)
 
 IF ( bpReferenz 
-  OR bpHandReferenz ) 
+     OR bpHandReferenz ) 
 THEN
 
   (* Hinweis:
@@ -27,7 +27,7 @@ THEN
      - Starten der Schrittkette
   *)
   CASE steplReferenz OF
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen
@@ -42,7 +42,7 @@ THEN
         steplReferenz := STEP_10_E;
       END_IF
 
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob der Antrieb keinen fehler hat nach dem Reset
@@ -52,7 +52,7 @@ THEN
         Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
 
         IF ( Antrieb.bpMinSchalterBelegt 
-          OR Antrieb.bpMaxSchalterBelegt )
+             OR Antrieb.bpMaxSchalterBelegt )
         THEN
           steplReferenz := STEP_20_E;
 
@@ -63,7 +63,7 @@ THEN
 
       END_IF
 
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_20_E:
       (* Hinweis:
          - Endschalter freifahren
@@ -71,8 +71,8 @@ THEN
       tonlEndschalterFreifahren(IN := TRUE, PT:= T#10s);
 
       toflHardwareEndschalterFrei( IN := (  Antrieb.bpMinSchalterBelegt
-                                         OR Antrieb.bpMaxSchalterBelegt ),
-                                  PT := t#1s);
+                                           OR Antrieb.bpMaxSchalterBelegt ),
+                                   PT := t#1s);
 
       Antrieb.rpGeschwindigkeit  := ppAntriebsInformationen.rpReferenzGeschwindigkeit;
       Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -99,14 +99,14 @@ THEN
          - Antrieb
        *)
       IF ( tonlEndschalterFreifahren.Q
-        AND Antrieb.bpMinSchalterBelegt )
-     THEN
-       Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-       wpFehlerNr := cMELDUNG_MESSACHSE_MINIMUM_ENDSCHALTER_BELEGT;
-       steplReferenz := STEP_900_E;
-     END_IF
+           AND Antrieb.bpMinSchalterBelegt )
+      THEN
+        Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_MESSACHSE_MINIMUM_ENDSCHALTER_BELEGT;
+        steplReferenz := STEP_900_E;
+      END_IF
 
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_30_E:
       (* Hinweis:
          - Erzwungene Pause, damit der Lenze Antrieb wieder ordnungsgemäß schaltet
@@ -117,7 +117,7 @@ THEN
         steplReferenz := STEP_100_E;
       END_IF
 
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_100_E:
       (*Hinweis:
         - Antrieb Referenzieren 
@@ -130,7 +130,7 @@ THEN
 
       steplReferenz := STEP_110_E;
 
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_110_E:
       (* Hinweis:
          - Referenzieren abgeschlossen
@@ -141,15 +141,15 @@ THEN
         steplReferenz := STEP_1000_E;
       END_IF
 
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(*REFERENZ =========================*)
+  (*REFERENZ =========================*)
   END_CASE
 ELSE
 

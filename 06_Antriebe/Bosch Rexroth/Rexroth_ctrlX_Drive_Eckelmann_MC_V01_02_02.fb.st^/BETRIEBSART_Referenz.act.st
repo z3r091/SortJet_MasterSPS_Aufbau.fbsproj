@@ -42,17 +42,17 @@ CASE asteplSchritt[REFERENZ] OF
   STEP_300_E:
     // Referenzfahrt ausführen
     l_mc_Home
-    (
-      Axis := ppAntriebsInformationen.wAchsID,
-      Position := 0, //Extra Offset adde to the value of VON_NC.MK,
-      Execute := TRUE
-    );
-    IF l_mc_Home.Done AND bpIstReferenziert AND NOT bpAntrieblaeuft THEN
-      l_mc_Home
       (
         Axis := ppAntriebsInformationen.wAchsID,
-        Execute := FALSE
+        Position := 0, //Extra Offset adde to the value of VON_NC.MK,
+        Execute := TRUE
       );
+    IF l_mc_Home.Done AND bpIstReferenziert AND NOT bpAntrieblaeuft THEN
+      l_mc_Home
+        (
+          Axis := ppAntriebsInformationen.wAchsID,
+          Execute := FALSE
+        );
       asteplSchritt[REFERENZ] := STEP_1000_E;
     END_IF
     IF l_mc_Home.Error THEN

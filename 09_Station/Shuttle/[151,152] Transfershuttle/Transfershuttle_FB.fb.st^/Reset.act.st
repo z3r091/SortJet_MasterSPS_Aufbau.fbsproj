@@ -13,7 +13,7 @@ tonlMaxWarteAufResetErfolgreich(IN:=(BasisStationsParameter.bReset AND (steplRes
 
 IF ( BasisStationsParameter.bReset ) THEN
   CASE steplReset OF
-(*RESET ==============================*)
+    (*RESET ==============================*)
     STEP_0_E:
       Glastransport.bpAustransport := FALSE;
       Glastransport.bpEintransport := FALSE;
@@ -27,7 +27,7 @@ IF ( BasisStationsParameter.bReset ) THEN
 
       steplReset := STEP_10_E;
 
-(*RESET ==============================*)
+    (*RESET ==============================*)
     STEP_10_E:
       (* Hinweis:
          - Baustein- Betriebsarten zuruecksetzen
@@ -38,7 +38,7 @@ IF ( BasisStationsParameter.bReset ) THEN
 
       steplReset := STEP_20_E;
 
-(*RESET ==============================*)
+    (*RESET ==============================*)
     STEP_20_E:
       (* Hinwies:
          - Bausteine zuruecksetzen
@@ -49,13 +49,13 @@ IF ( BasisStationsParameter.bReset ) THEN
 
       steplReset := STEP_30_E;
 
-(*RESET ==============================*)
+    (*RESET ==============================*)
     STEP_30_E:
       (* Hinweis:
          - Bausteinreset abgeschlossen
       *)
       IF (  Glastransport.bpDone
-        AND Querfahrt.bpDone )
+           AND Querfahrt.bpDone )
       THEN
         Glastransport.bpReset := FALSE;
         Querfahrt.bpReset  := FALSE;
@@ -90,21 +90,21 @@ IF ( BasisStationsParameter.bReset ) THEN
 
       END_IF
 
-(*RESET ==============================*)
+    (*RESET ==============================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
       BasisStationsParameter.bFehler := TRUE;
       BasisStationsParameter.bReset := FALSE;
 
-(*RESET ==============================*)
+    (*RESET ==============================*)
     STEP_1000_E:
       BasisStationsParameter.wFehlerNummer := cMELDUNG_NULL;
       BasisStationsParameter.bFehler := FALSE;
       BasisStationsParameter.bReset := FALSE;
 
-(*RESET ==============================*)
- END_CASE
+  (*RESET ==============================*)
+  END_CASE
 ELSE
   (* Reset wegen Abbruch der Schrittkette
   *)

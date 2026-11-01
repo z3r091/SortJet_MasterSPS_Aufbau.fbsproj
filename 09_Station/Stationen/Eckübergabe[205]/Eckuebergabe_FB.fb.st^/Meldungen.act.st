@@ -17,10 +17,10 @@ SUPER^.Meldungen();
 // - Diese Fehlerbehandlung sollte nur dann aufgerufen werden wenn in den Schrittketten der
 //   Fehler nicht abgefangen wurde.
 IF ( NOT (   ( steplEintransport  = STEP_900_E )
-          OR ( steplAustransport  = STEP_900_E )
-          OR ( steplVortransport  = STEP_900_E )
-          OR ( steplCheck         = STEP_900_E )
-          OR ( steplReset         = STEP_900_E ) ) )
+           OR ( steplAustransport  = STEP_900_E )
+           OR ( steplVortransport  = STEP_900_E )
+           OR ( steplCheck         = STEP_900_E )
+           OR ( steplReset         = STEP_900_E ) ) )
 THEN
   IF ( Glastransport_X.bpFehler ) THEN
     BasisStationsParameter.bFehler       := TRUE;

@@ -10,37 +10,37 @@ ACTION Eintransport
 (* AKTION: STEUERUNG EINTRANSPORT *)
 (***************************************************************************************************)
 IF (  bpEintransport
-  AND bpAutomatikAktiv )
+     AND bpAutomatikAktiv )
 THEN
 
   (* Hinweis:
      - Starten der Schrittkette 
   *)
   CASE steplEintransport OF
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_0_E:
       bpDone:= FALSE;
       blSchnittstelle_bAnforderungTransportVerbund := FALSE;
       tonlWartenAufSenken(IN:=FALSE);
       blEintransportDefaultLuftabfrage := FALSE;
 
-    IF Antrieb.bpReglerBereit THEN
+      IF Antrieb.bpReglerBereit THEN
         steplEintransport := STEP_5_E;
-    END_IF
+      END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_5_E:
       Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
       steplEintransport := STEP_6_E;
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_6_E:
-    IF Antrieb.bpDone THEN
+      IF Antrieb.bpDone THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplEintransport := STEP_10_E;
-    END_IF
+      END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_10_E:
       (* ---------------------------------------------------------------------------------------
       //  EINTRANSPORT IM TRANSFERSHUTTLE VERBUND
@@ -51,7 +51,7 @@ THEN
 
       IF ( bpTransfershuttleVerbundAktiv ) THEN
 
-       blSchnittstelle_bAnforderungTransportVerbund := TRUE;
+        blSchnittstelle_bAnforderungTransportVerbund := TRUE;
 
         IF ( stpInTransportVerbund.bBereitZumTransportVerbund ) THEN
           steplEintransport := STEP_20_E;
@@ -62,12 +62,12 @@ THEN
 
       END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_20_E:
       blEintransportDefaultLuftabfrage := TRUE;
       steplEintransport := STEP_100_E;
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_100_E:
       IF ( blAbgeschlossenEintransport ) THEN
         blEintransportDefaultLuftabfrage := FALSE;
@@ -85,18 +85,18 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-(*EINTRANSPORT ==============================*)
-     STEP_900_E:
-       blSchnittstelle_bAnforderungTransportVerbund := FALSE;
-       bpFehler := TRUE;
+    (*EINTRANSPORT ==============================*)
+    STEP_900_E:
+      blSchnittstelle_bAnforderungTransportVerbund := FALSE;
+      bpFehler := TRUE;
 
-(*EINTRANSPORT ==============================*)
-     STEP_1000_E:
+    (*EINTRANSPORT ==============================*)
+    STEP_1000_E:
 
-       bpDone:=TRUE;
+      bpDone:=TRUE;
 
-(*EINTRANSPORT ==============================*)
- END_CASE
+  (*EINTRANSPORT ==============================*)
+  END_CASE
 ELSE
 
   IF ( steplEintransport > STEP_0_E ) THEN

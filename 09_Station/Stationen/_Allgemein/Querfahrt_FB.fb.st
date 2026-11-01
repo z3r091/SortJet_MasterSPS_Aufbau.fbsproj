@@ -136,9 +136,9 @@ END_IF
 (***************************************************************************************************)
 // Verfahrfreigabe (lokal, der Eingang wird nicht ueberschrieben)
 blVerfahrfreigabe :=     bpVerfahrfreigabe
-                     AND NOT bpSensorEinlauf
-                     AND NOT bpSensorAuslauf
-                     AND NOT bpSensorAuslaufVorgaenger;
+                         AND NOT bpSensorEinlauf
+                         AND NOT bpSensorAuslauf
+                         AND NOT bpSensorAuslaufVorgaenger;
 
 Verfahrlogik();
 Positionieren();

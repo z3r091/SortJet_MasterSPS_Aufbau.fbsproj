@@ -91,7 +91,7 @@ VISU_UEBERSICHT.st501.sInfo3 := '';
 
 // [201] Anlegetisch
 IF VisuUeb_Station(stBP := StationBasisParameter.starrStationBasisParameter[201], stKarte := VISU_UEBERSICHT.st201, sTitel := '201  Anlegetisch', bBlink := bBlink, bReferenzRelevant := TRUE,
-                   bGlasZusatz := abgStationsstatusVisu[201].bSensorEinlauf[1] OR abgStationsstatusVisu[201].bSensorAuslauf[1]) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
+                    bGlasZusatz := abgStationsstatusVisu[201].bSensorEinlauf[1] OR abgStationsstatusVisu[201].bSensorAuslauf[1]) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
 VISU_UEBERSICHT.st201.dwSensorEinlauf      := VisuUeb_Sensor(abgStationsstatusVisu[201].bSensorEinlauf[1]);
 VISU_UEBERSICHT.st201.dwSensorEinlaufVorab := VisuUeb_Sensor(abgStationsstatusVisu[201].bSensorEinlaufVorab[1]);
 VISU_UEBERSICHT.st201.dwSensorAuslaufVorab := VisuUeb_Sensor(abgStationsstatusVisu[201].bSensorAuslaufVorab[1]);
@@ -99,15 +99,15 @@ VISU_UEBERSICHT.st201.dwSensorAuslauf      := VisuUeb_Sensor(abgStationsstatusVi
 VISU_UEBERSICHT.st201.sInfo1 := VisuUeb_MmText(sPrefix := 'Messachse ', rWert := abgStationsstatusVisu[201].rMessachseIstPos);
 VISU_UEBERSICHT.st201.dwInfo1Farbe := SEL(abgStationsstatusVisu[201].bMessachseFehler, VISU_UEBERSICHT.cFARBE_TEXT, VISU_UEBERSICHT.cFARBE_ROT);
 VISU_UEBERSICHT.st201.sInfo2 := CONCAT(CONCAT('Anschlag ', SEL(abgStationsstatusVisu[201].bAnschlagSensorAusgefahren, SEL(abgStationsstatusVisu[201].bAnschlagSensorEingefahren, '?', 'unten'), 'oben')),
-                                       CONCAT('  |  Hubrahmen ', SEL(abgStationsstatusVisu[201].bHubpaletteSensorAusgefahren, SEL(abgStationsstatusVisu[201].bHubpaletteSensorEingefahren, '?', 'unten'), 'oben')));
+                                        CONCAT('  |  Hubrahmen ', SEL(abgStationsstatusVisu[201].bHubpaletteSensorAusgefahren, SEL(abgStationsstatusVisu[201].bHubpaletteSensorEingefahren, '?', 'unten'), 'oben')));
 VISU_UEBERSICHT.st201.dwInfo2Farbe := SEL(abgStationsstatusVisu[201].bAnschlagFehler OR abgStationsstatusVisu[201].bHubpaletteFehler, VISU_UEBERSICHT.cFARBE_TEXT, VISU_UEBERSICHT.cFARBE_ROT);
 VISU_UEBERSICHT.st201.sInfo3 := CONCAT(SEL(abgStationsstatusVisu[201].bGeblaeseLaeuft[1], 'Gebläse aus', 'Gebläse EIN'),
-                                       SEL(abgStationsstatusVisu[201].bDrosselklappeOffen[1], '  |  Klappe zu', '  |  Klappe auf'));
+                                        SEL(abgStationsstatusVisu[201].bDrosselklappeOffen[1], '  |  Klappe zu', '  |  Klappe auf'));
 VISU_UEBERSICHT.st201.dwInfo3Farbe := SEL(abgStationsstatusVisu[201].bGeblaeseLaeuft[1], VISU_UEBERSICHT.cFARBE_TEXT, VISU_UEBERSICHT.cFARBE_BLAU);
 
 // [202] Kipptisch
 IF VisuUeb_Station(stBP := StationBasisParameter.starrStationBasisParameter[202], stKarte := VISU_UEBERSICHT.st202, sTitel := '202  Kipptisch', bBlink := bBlink, bReferenzRelevant := TRUE,
-                   bGlasZusatz := abgStationsstatusVisu[202].bSensorEinlauf[1] OR abgStationsstatusVisu[202].bSensorAuslauf[1]) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
+                    bGlasZusatz := abgStationsstatusVisu[202].bSensorEinlauf[1] OR abgStationsstatusVisu[202].bSensorAuslauf[1]) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
 VISU_UEBERSICHT.st202.dwSensorEinlauf      := VisuUeb_Sensor(abgStationsstatusVisu[202].bSensorEinlauf[1]);
 VISU_UEBERSICHT.st202.dwSensorEinlaufVorab := VisuUeb_Sensor(abgStationsstatusVisu[202].bSensorEinlaufVorab[1]);
 VISU_UEBERSICHT.st202.dwSensorAuslaufVorab := VisuUeb_Sensor(abgStationsstatusVisu[202].bSensorAuslaufVorab[1]);
@@ -119,14 +119,14 @@ CASE abgStationsstatusVisu[202].epKippStatus OF
   Kippen_EN.eKippen_Position_90Grad:   sKipp := '90°';
   Kippen_EN.eKippen_Position_96Grad:   sKipp := '96°';
   Kippen_EN.eKippen_Fehler:            sKipp := 'FEHLER';
-ELSE                                   sKipp := 'Zwischenpos.';
+  ELSE                                   sKipp := 'Zwischenpos.';
 END_CASE
 VISU_UEBERSICHT.st202.sInfo1 := CONCAT(CONCAT('Kippen ', sKipp), VisuUeb_MmText(sPrefix := '  (', rWert := abgStationsstatusVisu[202].rKippenIstPos, sEinheit := ')'));
 VISU_UEBERSICHT.st202.dwInfo1Farbe := SEL(abgStationsstatusVisu[202].bKippenFehler OR NOT abgStationsstatusVisu[202].bKippenAntriebReferenziert, VISU_UEBERSICHT.cFARBE_TEXT, VISU_UEBERSICHT.cFARBE_ROT);
 VISU_UEBERSICHT.st202.sInfo2 := VisuUeb_MmText(sPrefix := 'Querfahrt ', rWert := abgStationsstatusVisu[202].rQuerfahrtIstPos);
 VISU_UEBERSICHT.st202.dwInfo2Farbe := SEL(abgStationsstatusVisu[202].bQuerfahrtFehler OR NOT abgStationsstatusVisu[202].bQuerfahrtAntriebReferenziert, VISU_UEBERSICHT.cFARBE_TEXT, VISU_UEBERSICHT.cFARBE_ROT);
 VISU_UEBERSICHT.st202.sInfo3 := SEL(abgStationsstatusVisu[202].bKippenMinEndschalter OR abgStationsstatusVisu[202].bKippenMaxEndschalter OR abgStationsstatusVisu[202].bQuerfahrtMinEndschalter OR abgStationsstatusVisu[202].bQuerfahrtMaxEndschalter,
-                                    'Endschalter frei', 'ENDSCHALTER BELEGT');
+                                     'Endschalter frei', 'ENDSCHALTER BELEGT');
 VISU_UEBERSICHT.st202.dwInfo3Farbe := SEL(VISU_UEBERSICHT.st202.sInfo3 = 'Endschalter frei', VISU_UEBERSICHT.cFARBE_ROT, VISU_UEBERSICHT.cFARBE_TEXT);
 // Kipptisch ohne Querfahrt (MK-Stationsaufbau): Querfahrt-Infos ausblenden
 IF __ISVALIDREF(StationBasisParameter.starrStationBasisParameter[202].stMKs) THEN
@@ -138,7 +138,7 @@ END_IF
 
 // [101] Shuttle
 IF VisuUeb_Station(stBP := StationBasisParameter.starrShuttleBasisParameter[101], stKarte := VISU_UEBERSICHT.st101, sTitel := '101  Shuttle', bBlink := bBlink, bReferenzRelevant := TRUE,
-                   bGlasZusatz := abgStationsstatusVisu[101].bSensorEinlauf[1] OR abgStationsstatusVisu[101].bSensorAuslauf[1] OR abgStationsstatusVisu[101].bSensorAuslaufStopp[1]) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
+                    bGlasZusatz := abgStationsstatusVisu[101].bSensorEinlauf[1] OR abgStationsstatusVisu[101].bSensorAuslauf[1] OR abgStationsstatusVisu[101].bSensorAuslaufStopp[1]) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
 VISU_UEBERSICHT.st101.dwSensorEinlauf      := VisuUeb_Sensor(abgStationsstatusVisu[101].bSensorEinlauf[1]);
 VISU_UEBERSICHT.st101.dwSensorEinlaufVorab := VisuUeb_Sensor(abgStationsstatusVisu[101].bSensorEinlaufVorab[1]);
 VISU_UEBERSICHT.st101.dwSensorAuslaufVorab := VisuUeb_Sensor(abgStationsstatusVisu[101].bSensorAuslaufVorab[1]);
@@ -150,7 +150,7 @@ CASE abgStationsstatusVisu[101].epKippStatus OF
   Kippen_EN.eKippen_Position_90Grad:   sKipp := 'Kippen 90°';
   Kippen_EN.eKippen_Position_96Grad:   sKipp := 'Kippen 96°';
   Kippen_EN.eKippen_Fehler:            sKipp := 'Kippen FEHLER';
-ELSE                                   sKipp := 'Kippen Zwischenpos.';
+  ELSE                                   sKipp := 'Kippen Zwischenpos.';
 END_CASE
 VISU_UEBERSICHT.st101.sInfo1 := CONCAT(sKipp, SEL(abgStationsstatusVisu[101].bGeblaeseLaeuft[1], '  |  Gebläse aus', '  |  Gebläse EIN'));
 VISU_UEBERSICHT.st101.dwInfo1Farbe := SEL(abgStationsstatusVisu[101].bKippenFehler, VISU_UEBERSICHT.cFARBE_TEXT, VISU_UEBERSICHT.cFARBE_ROT);
@@ -162,16 +162,16 @@ IF __ISVALIDREF(Globale_Bausteine.aShuttle[101].Querfahrt.Antrieb) THEN
   VISU_UEBERSICHT.bSkalierung101Init := TRUE;
 END_IF
 VisuUeb_Achse(stAchse := VISU_UEBERSICHT.stAchse101, bInit := VISU_UEBERSICHT.bSkalierung101Init, rMin := VISU_UEBERSICHT.rMin101, rMax := VISU_UEBERSICHT.rMax101,
-              rIst            := abgStationsstatusVisu[101].rQuerfahrtIstPos,
-              rZiel           := Globale_Bausteine.aShuttle[101].Querfahrt.rpDestinationPosition,
-              rSpeed          := Globale_Bausteine.aShuttle[101].Querfahrt.rpAktSpeed,
-              bPositionierung := Globale_Bausteine.aShuttle[101].Querfahrt.bpPositionierungAktiv,
-              bReferenziert   := abgStationsstatusVisu[101].bQuerfahrtAntriebReferenziert,
-              bFehler         := abgStationsstatusVisu[101].bQuerfahrtFehler,
-              bMinEnd         := abgStationsstatusVisu[101].bQuerfahrtMinEndschalter,
-              bMaxEnd         := abgStationsstatusVisu[101].bQuerfahrtMaxEndschalter,
-              bNeuLernen      := bLernen,
-              bBlink          := bBlink);
+               rIst            := abgStationsstatusVisu[101].rQuerfahrtIstPos,
+               rZiel           := Globale_Bausteine.aShuttle[101].Querfahrt.rpDestinationPosition,
+               rSpeed          := Globale_Bausteine.aShuttle[101].Querfahrt.rpAktSpeed,
+               bPositionierung := Globale_Bausteine.aShuttle[101].Querfahrt.bpPositionierungAktiv,
+               bReferenziert   := abgStationsstatusVisu[101].bQuerfahrtAntriebReferenziert,
+               bFehler         := abgStationsstatusVisu[101].bQuerfahrtFehler,
+               bMinEnd         := abgStationsstatusVisu[101].bQuerfahrtMinEndschalter,
+               bMaxEnd         := abgStationsstatusVisu[101].bQuerfahrtMaxEndschalter,
+               bNeuLernen      := bLernen,
+               bBlink          := bBlink);
 VISU_UEBERSICHT.st101.sInfo2 := VISU_UEBERSICHT.stAchse101.sIstPos;
 VISU_UEBERSICHT.st101.sInfo3 := VISU_UEBERSICHT.stAchse101.sZielPos;
 VISU_UEBERSICHT.sLblMin101 := VisuUeb_MmText(sPrefix := '', rWert := VISU_UEBERSICHT.rMin101);
@@ -179,7 +179,7 @@ VISU_UEBERSICHT.sLblMax101 := VisuUeb_MmText(sPrefix := '', rWert := VISU_UEBERS
 
 // [151] Transfershuttle
 IF VisuUeb_Station(stBP := StationBasisParameter.starrTransfershuttleBasisParameter[151], stKarte := VISU_UEBERSICHT.st151, sTitel := '151  Transfershuttle', bBlink := bBlink, bReferenzRelevant := TRUE,
-                   bGlasZusatz := abgStationsstatusVisu[151].bSensorEinlauf[1] OR abgStationsstatusVisu[151].bSensorAuslauf[1]) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
+                    bGlasZusatz := abgStationsstatusVisu[151].bSensorEinlauf[1] OR abgStationsstatusVisu[151].bSensorAuslauf[1]) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
 VISU_UEBERSICHT.st151.dwSensorEinlauf      := VisuUeb_Sensor(abgStationsstatusVisu[151].bSensorEinlauf[1]);
 VISU_UEBERSICHT.st151.dwSensorEinlaufVorab := VisuUeb_Sensor(FALSE, FALSE);
 VISU_UEBERSICHT.st151.dwSensorAuslaufVorab := VisuUeb_Sensor(FALSE, FALSE);
@@ -194,16 +194,16 @@ IF __ISVALIDREF(Globale_Bausteine.aTransfershuttles[151].Querfahrt.Antrieb) THEN
   VISU_UEBERSICHT.bSkalierung151Init := TRUE;
 END_IF
 VisuUeb_Achse(stAchse := VISU_UEBERSICHT.stAchse151, bInit := VISU_UEBERSICHT.bSkalierung151Init, rMin := VISU_UEBERSICHT.rMin151, rMax := VISU_UEBERSICHT.rMax151,
-              rIst            := abgStationsstatusVisu[151].rQuerfahrtIstPos,
-              rZiel           := Globale_Bausteine.aTransfershuttles[151].Querfahrt.rpDestinationPosition,
-              rSpeed          := Globale_Bausteine.aTransfershuttles[151].Querfahrt.rpAktSpeed,
-              bPositionierung := Globale_Bausteine.aTransfershuttles[151].Querfahrt.bpPositionierungAktiv,
-              bReferenziert   := abgStationsstatusVisu[151].bQuerfahrtAntriebReferenziert,
-              bFehler         := abgStationsstatusVisu[151].bQuerfahrtFehler,
-              bMinEnd         := abgStationsstatusVisu[151].bQuerfahrtMinEndschalter,
-              bMaxEnd         := abgStationsstatusVisu[151].bQuerfahrtMaxEndschalter,
-              bNeuLernen      := bLernen,
-              bBlink          := bBlink);
+               rIst            := abgStationsstatusVisu[151].rQuerfahrtIstPos,
+               rZiel           := Globale_Bausteine.aTransfershuttles[151].Querfahrt.rpDestinationPosition,
+               rSpeed          := Globale_Bausteine.aTransfershuttles[151].Querfahrt.rpAktSpeed,
+               bPositionierung := Globale_Bausteine.aTransfershuttles[151].Querfahrt.bpPositionierungAktiv,
+               bReferenziert   := abgStationsstatusVisu[151].bQuerfahrtAntriebReferenziert,
+               bFehler         := abgStationsstatusVisu[151].bQuerfahrtFehler,
+               bMinEnd         := abgStationsstatusVisu[151].bQuerfahrtMinEndschalter,
+               bMaxEnd         := abgStationsstatusVisu[151].bQuerfahrtMaxEndschalter,
+               bNeuLernen      := bLernen,
+               bBlink          := bBlink);
 VISU_UEBERSICHT.st151.sInfo2 := VISU_UEBERSICHT.stAchse151.sIstPos;
 VISU_UEBERSICHT.st151.sInfo3 := VISU_UEBERSICHT.stAchse151.sZielPos;
 VISU_UEBERSICHT.sLblMin151 := VisuUeb_MmText(sPrefix := '', rWert := VISU_UEBERSICHT.rMin151);
@@ -211,7 +211,7 @@ VISU_UEBERSICHT.sLblMax151 := VisuUeb_MmText(sPrefix := '', rWert := VISU_UEBERS
 
 // [301] / [302] Faecherwagen
 IF VisuUeb_Station(stBP := StationBasisParameter.starrFaecherwagenBasisParameter[301], stKarte := VISU_UEBERSICHT.st301, sTitel := '301  Fächerwagen', bBlink := bBlink, bReferenzRelevant := FALSE,
-                   bGlasZusatz := Globale_Bausteine.aFaecherwagenstation[301].bpStatusStationInBeladePosition) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
+                    bGlasZusatz := Globale_Bausteine.aFaecherwagenstation[301].bpStatusStationInBeladePosition) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
 VISU_UEBERSICHT.st301.sInfo1 := SEL(Globale_Bausteine.aFaecherwagenstation[301].bpStatusStationInBeladePosition, 'Wagen nicht in Beladeposition', 'Wagen in Beladeposition');
 VISU_UEBERSICHT.st301.dwInfo1Farbe := SEL(Globale_Bausteine.aFaecherwagenstation[301].bpStatusStationInBeladePosition, VISU_UEBERSICHT.cFARBE_TEXT, VISU_UEBERSICHT.cFARBE_GRUEN);
 VISU_UEBERSICHT.st301.sInfo2 := SEL(Globale_Bausteine.aFaecherwagenstation[301].bpBoxInHomePosition, 'Box nicht in Home', 'Box in Home');
@@ -219,7 +219,7 @@ VISU_UEBERSICHT.st301.sInfo3 := SEL(Globale_Bausteine.aFaecherwagenstation[301].
 VISU_UEBERSICHT.st301.dwInfo3Farbe := VISU_UEBERSICHT.cFARBE_BLAU;
 
 IF VisuUeb_Station(stBP := StationBasisParameter.starrFaecherwagenBasisParameter[302], stKarte := VISU_UEBERSICHT.st302, sTitel := '302  Fächerwagen', bBlink := bBlink, bReferenzRelevant := FALSE,
-                   bGlasZusatz := Globale_Bausteine.aFaecherwagenstation[302].bpStatusStationInBeladePosition) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
+                    bGlasZusatz := Globale_Bausteine.aFaecherwagenstation[302].bpStatusStationInBeladePosition) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
 VISU_UEBERSICHT.st302.sInfo1 := SEL(Globale_Bausteine.aFaecherwagenstation[302].bpStatusStationInBeladePosition, 'Wagen nicht in Beladeposition', 'Wagen in Beladeposition');
 VISU_UEBERSICHT.st302.dwInfo1Farbe := SEL(Globale_Bausteine.aFaecherwagenstation[302].bpStatusStationInBeladePosition, VISU_UEBERSICHT.cFARBE_TEXT, VISU_UEBERSICHT.cFARBE_GRUEN);
 VISU_UEBERSICHT.st302.sInfo2 := SEL(Globale_Bausteine.aFaecherwagenstation[302].bpBoxInHomePosition, 'Box nicht in Home', 'Box in Home');

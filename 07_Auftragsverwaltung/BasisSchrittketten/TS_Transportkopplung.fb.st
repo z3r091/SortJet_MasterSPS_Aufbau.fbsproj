@@ -36,18 +36,18 @@ END_VAR
 (***************************************************************************************************)
 IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
   CASE steplSchritt OF
-(*TRANSPORTKOPPLUNG ===========================================*)
+    (*TRANSPORTKOPPLUNG ===========================================*)
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefen des Sicherheitskreises
       *)
       IF checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation])
-        AND NOT starrTransfershuttleBasisParameter[wStation].bReset
+         AND NOT starrTransfershuttleBasisParameter[wStation].bReset
       THEN
         steplSchritt := STEP_100_E;
       END_IF
 
-(*TRANSPORTKOPPLUNG ===========================================*)
+    (*TRANSPORTKOPPLUNG ===========================================*)
     STEP_100_E:
 
       starrTransfershuttleBasisParameter[wStation].pAuftrag[cWAND_1] := Auftragsdaten;
@@ -55,7 +55,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
 
       steplSchritt := STEP_110_E;
 
-(*TRANSPORTKOPPLUNG ===========================================*)
+    (*TRANSPORTKOPPLUNG ===========================================*)
     STEP_110_E:
       (* Fehlerbehandlung
          - Transfershuttle
@@ -74,15 +74,15 @@ IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
 
       END_IF
 
-(*TRANSPORTKOPPLUNG ===========================================*)
+    (*TRANSPORTKOPPLUNG ===========================================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(*TRANSPORTKOPPLUNG ===========================================*)
+    (*TRANSPORTKOPPLUNG ===========================================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(*TRANSPORTKOPPLUNG ===========================================*)
+  (*TRANSPORTKOPPLUNG ===========================================*)
   END_CASE
 END_IF
 

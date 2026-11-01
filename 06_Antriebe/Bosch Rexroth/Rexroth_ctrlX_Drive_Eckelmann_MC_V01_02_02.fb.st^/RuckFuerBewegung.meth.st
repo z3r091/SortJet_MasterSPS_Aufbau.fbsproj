@@ -53,7 +53,7 @@ IF bStart AND NOT blRuckProfilInitialisiert THEN
       // Wird die volle Beschleunigung nicht erreicht, gibt es nur die beiden Ruckflanken.
       IF lrlGeschwindigkeit >= lrlBeschleunigung * lrlBeschleunigung / lrlRuckBeschleunigung THEN
         lrlBeschleunigungszeit := lrlGeschwindigkeit / lrlBeschleunigung
-                                 + lrlBeschleunigung / lrlRuckBeschleunigung;
+                                  + lrlBeschleunigung / lrlRuckBeschleunigung;
       ELSE
         lrlBeschleunigungszeit := 2.0 * SQRT(lrlGeschwindigkeit / lrlRuckBeschleunigung);
       END_IF
@@ -61,7 +61,7 @@ IF bStart AND NOT blRuckProfilInitialisiert THEN
       // Entsprechend die Zeit fuer das Abbremsen bis zum Stillstand berechnen.
       IF lrlGeschwindigkeit >= lrlVerzoegerung * lrlVerzoegerung / lrlRuckVerzoegerung THEN
         lrlBremszeit := lrlGeschwindigkeit / lrlVerzoegerung
-                       + lrlVerzoegerung / lrlRuckVerzoegerung;
+                        + lrlVerzoegerung / lrlRuckVerzoegerung;
       ELSE
         lrlBremszeit := 2.0 * SQRT(lrlGeschwindigkeit / lrlRuckVerzoegerung);
       END_IF
@@ -70,7 +70,7 @@ IF bStart AND NOT blRuckProfilInitialisiert THEN
       // An der Grenze bleibt keine Konstantfahrt: deshalb noch Kurzfahrt.
       // Ohne Override rechnen; ein kleinerer Override macht die Grenze konservativer.
       blRuckKurzfahrt := ABS(lrZiel - TO_LREAL(rpIstPosition))
-        <= 0.5 * lrlGeschwindigkeit * (lrlBeschleunigungszeit + lrlBremszeit);
+                         <= 0.5 * lrlGeschwindigkeit * (lrlBeschleunigungszeit + lrlBremszeit);
     END_IF
   END_IF
 

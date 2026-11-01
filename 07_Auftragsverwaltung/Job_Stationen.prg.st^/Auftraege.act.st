@@ -191,17 +191,17 @@ IF ( M_SB0_MMI_SHEET_ORDER_STATION ) THEN
  
       M_SB0_MMI_SHEET_ORDER_STATION := FALSE;
 
-  ELSE
+    ELSE
 
-    M_SB0_MMI_SHEET_ORDER_STATION := FALSE;
+      M_SB0_MMI_SHEET_ORDER_STATION := FALSE;
     
-    wpgFehlerdaten[0] := tMmi2SpsInfo.wStationsNr;
-    wpgFehlerdaten[1] := tMmi2SpsInfo.wAuftragsWand;
-    SpsError( eFehler_Station,
-              cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_STATION,
-              tMmi2SpsInfo.wStationsNr,
-              AutomatikkreisBestimmen(tMmi2SpsInfo.wStationsNr),
-              wpgFehlerdaten );
+      wpgFehlerdaten[0] := tMmi2SpsInfo.wStationsNr;
+      wpgFehlerdaten[1] := tMmi2SpsInfo.wAuftragsWand;
+      SpsError( eFehler_Station,
+                cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_STATION,
+                tMmi2SpsInfo.wStationsNr,
+                AutomatikkreisBestimmen(tMmi2SpsInfo.wStationsNr),
+                wpgFehlerdaten );
 
   END_CASE
 
@@ -222,19 +222,19 @@ IF ( M_SB0_MMI_MEASSURERESULT ) THEN
 
     cERSTE_STATION..cLETZTE_STATION:
       ;
-      (*
-      Anlegewand202.bpFreigabeScheibe      := (tMmi2SpsInfo.wFreigabe = 1);
-      Anlegewand202.bpKeineFreigabeScheibe := (tMmi2SpsInfo.wFreigabe = 0);
-      *)
+    (*
+    Anlegewand202.bpFreigabeScheibe      := (tMmi2SpsInfo.wFreigabe = 1);
+    Anlegewand202.bpKeineFreigabeScheibe := (tMmi2SpsInfo.wFreigabe = 0);
+    *)
 
-  ELSE
-     wpgFehlerdaten[0]:= tMmi2SpsInfo.wMmiNummerAnlegeStation;
-     wpgFehlerdaten[1]:= tMmi2SpsInfo.wFreigabeStation;
-     SpsError( eFehler_Station, 
-               cMELDUNG_SCANNER_NACHRICHT_FALSCHE_STATION, 
-               tMmi2SpsInfo.wMmiNummerAnlegeStation, 
-               AutomatikkreisBestimmen(tMmi2SpsInfo.wMmiNummerAnlegeStation), 
-               wpgFehlerdaten );
+    ELSE
+      wpgFehlerdaten[0]:= tMmi2SpsInfo.wMmiNummerAnlegeStation;
+      wpgFehlerdaten[1]:= tMmi2SpsInfo.wFreigabeStation;
+      SpsError( eFehler_Station, 
+                cMELDUNG_SCANNER_NACHRICHT_FALSCHE_STATION, 
+                tMmi2SpsInfo.wMmiNummerAnlegeStation, 
+                AutomatikkreisBestimmen(tMmi2SpsInfo.wMmiNummerAnlegeStation), 
+                wpgFehlerdaten );
  
   END_CASE
 
@@ -313,13 +313,13 @@ IF ( M_SB0_MMI_REQUESTTILTSTATION ) THEN
       AuftragsSpeicherWand[tMmi2SpsInfo.wSortierungsInputSwingStationNr, cWAND_1].NeuerAuftrag.wStationsWand := cWAND_1; 
       AuftragsSpeicherWand[tMmi2SpsInfo.wSortierungsInputSwingStationNr, cWAND_1]( bpNeuerAuftrag := TRUE );
 
-  ELSE
-     wpgFehlerdaten[0] := tMmi2SpsInfo.wSortierungsInputSwingStationNr;
-     SpsHinweis( eFehler_Mmi, 
-                 cMELDUNG_MMI_AUFTRAGSDATEN_UNGUELTIGE_STATIONSNUMMER, 
-                 0, 
-                 AutomatikkreisBestimmen(0), 
-                 wpgFehlerdaten );
+    ELSE
+      wpgFehlerdaten[0] := tMmi2SpsInfo.wSortierungsInputSwingStationNr;
+      SpsHinweis( eFehler_Mmi, 
+                  cMELDUNG_MMI_AUFTRAGSDATEN_UNGUELTIGE_STATIONSNUMMER, 
+                  0, 
+                  AutomatikkreisBestimmen(0), 
+                  wpgFehlerdaten );
 
   END_CASE
 

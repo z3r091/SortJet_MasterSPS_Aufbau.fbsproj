@@ -26,8 +26,8 @@ IF ( M_SB0_MMI_SYSTEMCHECKSTATION ) THEN
     
     cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE: ;
 
-    cERSTES_SHUTTLE..cLETZTES_SHUTTLE,
-    cERSTE_STATION..cLETZTE_STATION:
+      cERSTES_SHUTTLE..cLETZTES_SHUTTLE,
+        cERSTE_STATION..cLETZTE_STATION:
 
       IF NOT ( PruefungWertImIntervall( wpWert:= tMmi2SpsInfo.wSystemCheckStationSlot, wpIntervallMin := cWAND_1, wpIntervallMax := cANZAHL_WAENDE )  ) THEN
         wpgFehlerdaten[0] := tMmi2SpsInfo.wSystemCheckStationMmiNummer;

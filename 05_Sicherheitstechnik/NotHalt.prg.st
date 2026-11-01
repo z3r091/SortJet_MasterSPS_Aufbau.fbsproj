@@ -69,19 +69,19 @@ Meldungen();
 (***************************************************************************************************)
 // Kurze Verzoegerung das alle Signale durchgeschaltet haben 
 tonlNotHaltAusgeloest( IN := ( NOT bpEingangNotHaltOK OR bgSicherheitstechnikBruecken ),
-                      PT := cZEIT_NOTAUS_VERZOEGERUNG );
+                       PT := cZEIT_NOTAUS_VERZOEGERUNG );
                       
 // NotHalt OK bilden
 bpNotHaltOK := (   NOT NotHaltAusgeloest.Q1
-                OR Visu_Notaus_OK 
-                OR bgSicherheitstechnikBruecken );
+                 OR Visu_Notaus_OK 
+                 OR bgSicherheitstechnikBruecken );
                 
 (* Hinweis:
    - Merker das der Notaus ausgeloest wurde
      => Bistabiele Funktion in der das  "set" dominant ist
 *)
 NotHaltAusgeloest( SET1 := tonlNotHaltAusgeloest.Q,
-                  RESET:= blResetNotHalt );
+                   RESET:= blResetNotHalt );
 
 (* Hinweis:
    - Merker das der Taster "Quittierung Notaus" betaetigt wurde
@@ -92,7 +92,7 @@ NotHaltQuittieren( SET   := ( in_bTasterNothaltQuittieren OR Interface_SLC.bpVis
 
 
 IF ( NotHaltQuittieren.Q1 
-  AND NOT tonlNotHaltAusgeloest.Q ) 
+     AND NOT tonlNotHaltAusgeloest.Q ) 
 THEN
   blResetNotHalt := TRUE;
 ELSE

@@ -14,52 +14,52 @@ ACTION Referenz
 *)
 IF ( bpStartReferenz ) THEN
 
-   (* Ausnahmefehler:
-      - ANTRIEB
-   *)
-   IF ( Antrieb.bpFehler ) THEN
-     Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-     wpFehlerNr := cMELDUNG_ANTRIEB;
-     steplReferenz := STEP_900_E;
+  (* Ausnahmefehler:
+     - ANTRIEB
+  *)
+  IF ( Antrieb.bpFehler ) THEN
+    Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
+    wpFehlerNr := cMELDUNG_ANTRIEB;
+    steplReferenz := STEP_900_E;
   END_IF
 
   (* Hinweis:
      - Starten der Schrittkette
   *)
   CASE steplReferenz OF
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_0_E:
       tonlEndschalterFreifahren(IN := FALSE);
       tonlWarteSchrittEndschalterFreifahren(IN := FALSE);
       toflHardwareEndschalterFrei(IN := FALSE);
 
       IF (  bpFreigabe
-        AND bpVerfahrfreigabe )
+           AND bpVerfahrfreigabe )
       THEN
         Antrieb.bpFreigabe := blFreigabeGesetzt := TRUE;
         steplReferenz := STEP_10_E;
       END_IF
 
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_10_E:
       (* Hinweis:
         - Endschalter kontrollieren, ob der Antrieb auf einem steht,
            wenn ja diesen erst freifahren
       *)
       IF (  NOT Antrieb.bpMinSchalterBelegt
-        AND NOT Antrieb.bpMaxSchalterBelegt )
+           AND NOT Antrieb.bpMaxSchalterBelegt )
       THEN
         steplReferenz := STEP_200_E;
       ELSE
         steplReferenz := STEP_100_E;
       END_IF
 
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_100_E:
       tonlEndschalterFreifahren(IN := TRUE, PT := T#10s);
       toflHardwareEndschalterFrei( IN := (  Antrieb.bpMinSchalterBelegt
-                                        OR Antrieb.bpMaxSchalterBelegt),
-                                  PT := t#1s);
+                                           OR Antrieb.bpMaxSchalterBelegt),
+                                   PT := t#1s);
       Antrieb.rpGeschwindigkeit  := ppAntriebsInformationen.rpReferenzGeschwindigkeit;
       Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
       Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -84,14 +84,14 @@ IF ( bpStartReferenz ) THEN
          - Endschalter
       *)
       IF ( tonlEndschalterFreifahren.Q
-        AND ( Antrieb.bpMinSchalterBelegt OR Antrieb.bpMaxSchalterBelegt ) )
+           AND ( Antrieb.bpMinSchalterBelegt OR Antrieb.bpMaxSchalterBelegt ) )
       THEN
         Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_QUERFAHRT_ENDSCHALTER_NICHT_FREI;
         steplReferenz := STEP_900_E;
       END_IF
 
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_110_E:
       (*
         erzwungene Pause, damit der Lenze Antrieb wieder ordnungsgemÃ¤ÃŸ schaltet
@@ -101,7 +101,7 @@ IF ( bpStartReferenz ) THEN
         steplReferenz := STEP_200_E;
       END_IF
 
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_200_E:
       (*
         Antrieb Referenzieren
@@ -115,7 +115,7 @@ IF ( bpStartReferenz ) THEN
 
       steplReferenz := STEP_210_E;
 
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_210_E:
       (* Hinweis:
          - Fuer die Zielpunktkontrolle muss im ersten Zyklus (und nach jeder Referenzierung)
@@ -127,17 +127,17 @@ IF ( bpStartReferenz ) THEN
         steplReferenz := STEP_1000_E;
       END_IF
 
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_900_E:
       bpFehler := TRUE;
       blFreigabeGesetzt  := FALSE;
 
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_1000_E:
       bpDone := TRUE;
       blFreigabeGesetzt  := FALSE;
 
-(*REFERENZ ==================================*)
+  (*REFERENZ ==================================*)
   END_CASE
 ELSE
 

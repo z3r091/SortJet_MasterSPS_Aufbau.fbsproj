@@ -29,11 +29,11 @@ IF BasisStationsParameter.bEintransport[1] AND
 THEN
 
   IF BasisStationsParameter.bFehler THEN
-     steplEinschleusen := STEP_900_E;
+    steplEinschleusen := STEP_900_E;
   END_IF
 
   CASE steplEinschleusen OF
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_0_E:
       (* Hinweis:
          - Initialisierung der Variablen
@@ -65,7 +65,7 @@ THEN
       END_IF
 
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -87,7 +87,7 @@ THEN
       END_IF
 
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_105_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -101,9 +101,9 @@ THEN
       eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Warten_Auf_Lichtschranke_Und_Quittierung_105;
 
       IF  ( rtlQuittierungEinschleusen.Q
-        OR  blMerkerEinschleusenQuittiert )
-        AND tonlFWInBox.Q
-        AND bpLichtschranke_OK
+            OR  blMerkerEinschleusenQuittiert )
+          AND tonlFWInBox.Q
+          AND bpLichtschranke_OK
       THEN
 
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Gegenhalter_Schliessen_110;
@@ -114,7 +114,7 @@ THEN
         steplEinschleusen := STEP_110_E;
       END_IF
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_110_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -137,7 +137,7 @@ THEN
       END_IF
 
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_115_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -177,7 +177,7 @@ THEN
 
       END_IF
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_120_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -198,7 +198,7 @@ THEN
         blRolltorAuf          := TRUE;
       END_IF
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_125_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -218,7 +218,7 @@ THEN
         blGreiferOeffnen   := TRUE;
       END_IF
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_130_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -238,7 +238,7 @@ THEN
         blLineareinheitVor      := TRUE;
       END_IF
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_135_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -258,7 +258,7 @@ THEN
         blGreiferSchliessen   := TRUE;
       END_IF
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_140_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -278,7 +278,7 @@ THEN
         blEntriegelungOeffnen  := TRUE;
       END_IF
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_145_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -298,7 +298,7 @@ THEN
         blLineareinheitZurueck := TRUE;
       END_IF
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_150_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -318,7 +318,7 @@ THEN
         blGreiferOeffnen := TRUE;
       END_IF
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_155_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -338,7 +338,7 @@ THEN
         blLineareinheitVor  := TRUE;
       END_IF
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_160_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -358,7 +358,7 @@ THEN
         blGreiferSchliessen    := TRUE;
       END_IF
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_165_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -378,7 +378,7 @@ THEN
         blLineareinheitShuttle := TRUE;
       END_IF
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_170_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - DEFAULT FAECHERWAGENSTATION 
@@ -398,7 +398,7 @@ THEN
         blRolltorAb            := TRUE;
       END_IF
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_180_E:
       IF ( bpStatusStationInBeladePosition ) THEN
 
@@ -418,14 +418,14 @@ THEN
           END_IF
 
         ELSE (* Ohne RFID CHip *)
-            wSps2MmiRackPositionNummer:= BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
-            wSps2MmiRackPosition := 0;
-            wSps2MmiRackNumber   := 0;
-            MsgToMmi(auftragsnr_w := SB0_SPS_RACKONLOADINGSTATION );
+          wSps2MmiRackPositionNummer:= BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+          wSps2MmiRackPosition := 0;
+          wSps2MmiRackNumber   := 0;
+          MsgToMmi(auftragsnr_w := SB0_SPS_RACKONLOADINGSTATION );
     
-            eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Abgeschlossen_InBeladeposition;
+          eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Abgeschlossen_InBeladeposition;
 
-            steplEinschleusen := STEP_1000_E;
+          steplEinschleusen := STEP_1000_E;
 
         END_IF
         
@@ -444,12 +444,12 @@ THEN
 
       END_IF
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       BasisStationsParameter.bEintransport[1] := FALSE;
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_950_E:
       (* ---------------------------------------------------------------------------------------
       // GEGENHALTER WIEDER ÖFFNEN
@@ -465,7 +465,7 @@ THEN
       END_IF
 
 
-(* EINSCHLEUSEN ========================== *)
+    (* EINSCHLEUSEN ========================== *)
     STEP_1000_E:
       BasisStationsParameter.bFehler := FALSE;
       wlRFID_NummerMerker   := 0;
@@ -473,30 +473,30 @@ THEN
       bpEinschleusenAbgeschlossen := TRUE;
       BasisStationsParameter.bEintransport[1] := FALSE;
 
-(* EINSCHLEUSEN ========================== *)
+  (* EINSCHLEUSEN ========================== *)
   END_CASE
 ELSE
 
   IF ( steplEinschleusen > STEP_0_E ) THEN
-      bpEinschleusenAbgeschlossen   := FALSE;
-      blLineareinheitVor            := FALSE;
-      blLineareinheitZurueck        := FALSE;
-      blLineareinheitShuttle        := FALSE;
-      blEntriegelungOeffnen         := FALSE;
-      blEntriegelungSchliessen      := FALSE;
-      blGegenhalterOeffnen          := FALSE;
-      blGegenhalterSchliessen       := FALSE;
-      blGreiferOeffnen              := FALSE;
-      blGreiferSchliessen           := FALSE;
-      blRolltorAuf                  := FALSE;
-      blRolltorAb                   := FALSE;
-      blMerkerEinschleusenQuittiert := FALSE;
-      bpEinschleusenAbgeschlossen   := FALSE;
-      blRFID_Auslesen               := FALSE;
+    bpEinschleusenAbgeschlossen   := FALSE;
+    blLineareinheitVor            := FALSE;
+    blLineareinheitZurueck        := FALSE;
+    blLineareinheitShuttle        := FALSE;
+    blEntriegelungOeffnen         := FALSE;
+    blEntriegelungSchliessen      := FALSE;
+    blGegenhalterOeffnen          := FALSE;
+    blGegenhalterSchliessen       := FALSE;
+    blGreiferOeffnen              := FALSE;
+    blGreiferSchliessen           := FALSE;
+    blRolltorAuf                  := FALSE;
+    blRolltorAb                   := FALSE;
+    blMerkerEinschleusenQuittiert := FALSE;
+    bpEinschleusenAbgeschlossen   := FALSE;
+    blRFID_Auslesen               := FALSE;
 
-      WatchIo( FALSE , wlioccFWStationAusrichtPositionNichtOK );
-      tonlTimeoutReadRFID(IN := FALSE);
-      steplEinschleusen := STEP_0_E;
+    WatchIo( FALSE , wlioccFWStationAusrichtPositionNichtOK );
+    tonlTimeoutReadRFID(IN := FALSE);
+    steplEinschleusen := STEP_0_E;
   END_IF
 
 END_IF

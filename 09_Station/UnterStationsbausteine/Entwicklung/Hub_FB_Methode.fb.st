@@ -22,8 +22,8 @@ VAR_INPUT
   // STRUCT
   stStationsNummern          : Station_ST;
 
-  // POINTER *)
-  //ppParameterBaustein        : REFERENCE TO Parameter_Hub; // Zeiger auf Parameterfeld
+// POINTER *)
+//ppParameterBaustein        : REFERENCE TO Parameter_Hub; // Zeiger auf Parameterfeld
 
 END_VAR
 VAR_OUTPUT

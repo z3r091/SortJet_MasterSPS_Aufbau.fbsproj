@@ -10,19 +10,19 @@ ACTION Steuerung_Kippen
 (* AKTION: STEUERUNG KIPPEN [DURCHGANG] *)
 (***************************************************************************************************)
 blFreigabeTischKippen := ( NOT BasisStationsParameter.bAuftragAktiv
-                          OR ( BasisStationsParameter.bAnlegen AND ( steplAnlegen <= STEP_100_E ) ) )
-                          AND NOT Messachse.bpPositionierung
-                          AND NOT Glastransport.bpSensorEinlauf
-                          AND NOT Glastransport.bpSensorAuslauf
- //                         AND NOT Glastransport.Antrieb.bpReglerBereit    // Antrieb hat keine Freigabe mehr
- ;//                         AND NOT Messachse.Antrieb.bpReglerBereit; // Antrieb hat keine Freigabe mehr
+                           OR ( BasisStationsParameter.bAnlegen AND ( steplAnlegen <= STEP_100_E ) ) )
+                         AND NOT Messachse.bpPositionierung
+                         AND NOT Glastransport.bpSensorEinlauf
+                         AND NOT Glastransport.bpSensorAuslauf
+                         //                         AND NOT Glastransport.Antrieb.bpReglerBereit    // Antrieb hat keine Freigabe mehr
+                         ;//                         AND NOT Messachse.Antrieb.bpReglerBereit; // Antrieb hat keine Freigabe mehr
 
 // Ampel und Horn Warnsignal ausgeben
 out_bKipptischHornWarnsignal := out_bKipptischAmpelWarnsignal := ( in_bTasterAnforderungKippen OR in_bTasterAnforderungKippen_OP );
 
 IF ( ( in_bTasterAnforderungKippen OR in_bTasterAnforderungKippen_OP )
-  AND blFreigabeTischKippen
-  AND NOT out_bSchaltleisteAusgeloest )
+     AND blFreigabeTischKippen
+     AND NOT out_bSchaltleisteAusgeloest )
 THEN
 
   tonlStatusKippstatusUnten( IN := ( in_bSensorKipptischUnten AND NOT in_bSensorKipptischOben ),
@@ -35,9 +35,9 @@ THEN
   out_bHydraulikpumpeEin := TRUE;
 
   IF ( ( in_bTasterKippenAuf
-    OR in_bTasterKippenAb ) AND in_bTasterAnforderungKippen
-    OR ( in_bTasterKippenAuf_OP
-    OR in_bTasterKippenAb_OP  ) AND in_bTasterAnforderungKippen_OP)
+         OR in_bTasterKippenAb ) AND in_bTasterAnforderungKippen
+       OR ( in_bTasterKippenAuf_OP
+            OR in_bTasterKippenAb_OP  ) AND in_bTasterAnforderungKippen_OP)
   THEN
     out_bKippsicherungoeffnen := TRUE;
   ELSE
@@ -45,7 +45,7 @@ THEN
   END_IF
 
   IF  (  in_bSensorKippsicherungOffen
-    AND NOT in_bSensorKippsicherungGeschlossen )
+        AND NOT in_bSensorKippsicherungGeschlossen )
   THEN
     out_bKipptischAuf := NOT tonlStatusKippenOben.Q AND ( ( in_bTasterKippenAuf AND in_bTasterAnforderungKippen ) OR ( in_bTasterKippenAuf_OP AND in_bTasterAnforderungKippen_OP ) );
     out_bKipptischAb  := NOT tonlStatusKippstatusUnten.Q AND ( ( in_bTasterKippenAb AND in_bTasterAnforderungKippen ) OR ( in_bTasterKippenAb_OP AND in_bTasterAnforderungKippen_OP ) );

@@ -44,7 +44,7 @@ IF bpFreigabe THEN
 
     CASE steplSchmierung OF
 
-(* ZENTRALSCHMIERUNG ============================================================================ *)
+      (* ZENTRALSCHMIERUNG ============================================================================ *)
       STEP_0_E:
         (* Hinweis:
             - Wurde die Schrittkette neu gestartet oder lief sie schon?
@@ -72,18 +72,18 @@ IF bpFreigabe THEN
           steplSchmierung := STEP_900_E;
         END_IF
 
-(* ZENTRALSCHMIERUNG ============================================================================ *)
+      (* ZENTRALSCHMIERUNG ============================================================================ *)
       STEP_50_E:
-            (*Hinweis:
-                - STEP_50_E ist für die Auswahl der Schmierkreise ((1 OR 2) OR (1 AND 2))
-            *)
+        (*Hinweis:
+            - STEP_50_E ist für die Auswahl der Schmierkreise ((1 OR 2) OR (1 AND 2))
+        *)
         FOR wlIndex := cSCHMIERKREIS_1 TO cSCHMIERKREIS_2 DO
           IF ablStarteKreis[wlIndex] AND NOT atoflPause[wlIndex].Q  THEN
             tAnsteuern:=tAnsteuernKreise[wlIndex];
             ablHubAktiv[wlIndex] := TRUE;
             steplSchmierung := STEP_100_E;
           ELSE
-          ablHubAktiv[wlIndex] := FALSE;
+            ablHubAktiv[wlIndex] := FALSE;
           END_IF
 
         END_FOR
@@ -91,11 +91,11 @@ IF bpFreigabe THEN
         // Beide Schmierkreise später implementieren wenn Schmierkreis 1 und 2  einzeln laufen
 
         IF ablHubAktiv[cSCHMIERKREIS_1] AND ablHubAktiv[cSCHMIERKREIS_2]  THEN
-            tAnsteuern:=tAnsteuernKreise[cSCHMIERKREIS_1_2];
-            steplSchmierung := STEP_100_E;
+          tAnsteuern:=tAnsteuernKreise[cSCHMIERKREIS_1_2];
+          steplSchmierung := STEP_100_E;
         END_IF
 
-(* ZENTRALSCHMIERUNG ============================================================================ *)
+      (* ZENTRALSCHMIERUNG ============================================================================ *)
       STEP_100_E:
         (* Hinweis:
             - Das Steuersignal so lange setzen wie notwendig, 
@@ -118,7 +118,7 @@ IF bpFreigabe THEN
 
         END_IF
 
-(* ZENTRALSCHMIERUNG ============================================================================ *)
+      (* ZENTRALSCHMIERUNG ============================================================================ *)
       STEP_200_E:
         (* Hinweis:
             - Wenn der Schmiermotor gestartet ist, dann fällt das
@@ -168,7 +168,7 @@ IF bpFreigabe THEN
           steplSchmierung := STEP_900_E;
         END_IF
 
-(* ZENTRALSCHMIERUNG ============================================================================ *)
+      (* ZENTRALSCHMIERUNG ============================================================================ *)
       STEP_300_E:
         (* Hinweis:
             - Mach Dauer eines Hubs (lt. Bedienungsanleitung > 22 Sekunden( 10 Sekunden bei der neuen Pumpe) können wir fortfahren
@@ -180,7 +180,7 @@ IF bpFreigabe THEN
           steplSchmierung := STEP_400_E;
         END_IF
 
-(* ZENTRALSCHMIERUNG ============================================================================ *)
+      (* ZENTRALSCHMIERUNG ============================================================================ *)
       STEP_400_E:
         (* Hinweis:
             - Der Schmiervorgang ist beendet, das Status Signal sollte wieder als High-Pegel anliegen
@@ -202,25 +202,25 @@ IF bpFreigabe THEN
           steplSchmierung := STEP_900_E;
         END_IF
 
- (* ZENTRALSCHMIERUNG ============================================================================ *)
+      (* ZENTRALSCHMIERUNG ============================================================================ *)
       STEP_450_E:
-      (*
-        Es wird überprüft ob Schmierkreis 1 oder 2 die geforderten Hübe ausgeführt hat,
-        sodass ein der Schmierkreis bei dem nächsten Zyklus abgeschaltet wird.
-       *)
-       FOR wlIndex := cSCHMIERKREIS_1 TO cSCHMIERKREIS_2 DO
-         IF ailAktiverHub[wlIndex] = ppParameterBaustein.aiAnzahlHuebe[wlIndex] THEN
-           ablHubAktiv[wlIndex]    := FALSE;
-           ablStarteKreis[wlIndex] := FALSE;
-           ailAktiverHub[wlIndex]  :=0;
-         END_IF
-       END_FOR
+        (*
+          Es wird überprüft ob Schmierkreis 1 oder 2 die geforderten Hübe ausgeführt hat,
+          sodass ein der Schmierkreis bei dem nächsten Zyklus abgeschaltet wird.
+         *)
+        FOR wlIndex := cSCHMIERKREIS_1 TO cSCHMIERKREIS_2 DO
+          IF ailAktiverHub[wlIndex] = ppParameterBaustein.aiAnzahlHuebe[wlIndex] THEN
+            ablHubAktiv[wlIndex]    := FALSE;
+            ablStarteKreis[wlIndex] := FALSE;
+            ailAktiverHub[wlIndex]  :=0;
+          END_IF
+        END_FOR
 
-       steplSchmierung := STEP_500_E;
+        steplSchmierung := STEP_500_E;
 
 
-(* ZENTRALSCHMIERUNG ============================================================================ *)
-     STEP_500_E:
+      (* ZENTRALSCHMIERUNG ============================================================================ *)
+      STEP_500_E:
         (* Hinweis:
             - Folgende Situationen gibt es nun:
               - STEP_500_E Anzahl der Hübe ist ODER ist nicht erreicht und die Zahl der max. Hübe bis zur Pause IST erreicht
@@ -228,24 +228,24 @@ IF bpFreigabe THEN
               - STEP_560_E Anzahl der Hübe ist NICHT erreicht und die Zahl der max. Hübe bis zur Pause ist NICHT erreicht
         *)
 
-       FOR wlIndex := cSCHMIERKREIS_1 TO cSCHMIERKREIS_2 DO
-         IF ( ( ailAktiverHub[wlIndex] MOD iAnzahlHuebeBisGrossePause ) = 0 ) AND ablHubAktiv[wlIndex] THEN
-          (* Hinweis:
-              - die Anzahl der Hübe bis zur langen Pause sind erreicht weshalb diese Pause zwingend durchgeführt werden muss, 
-                bevor die Schmierung nochmal gestartet werden kann
-          *)
-          ablHubAktiv[wlIndex]     := FALSE;
-          ablPauseStarten[wlIndex] := TRUE;
+        FOR wlIndex := cSCHMIERKREIS_1 TO cSCHMIERKREIS_2 DO
+          IF ( ( ailAktiverHub[wlIndex] MOD iAnzahlHuebeBisGrossePause ) = 0 ) AND ablHubAktiv[wlIndex] THEN
+            (* Hinweis:
+                - die Anzahl der Hübe bis zur langen Pause sind erreicht weshalb diese Pause zwingend durchgeführt werden muss, 
+                  bevor die Schmierung nochmal gestartet werden kann
+            *)
+            ablHubAktiv[wlIndex]     := FALSE;
+            ablPauseStarten[wlIndex] := TRUE;
           END_IF
         END_FOR
 
         steplSchmierung := STEP_530_E;
 
 
-(* ZENTRALSCHMIERUNG ============================================================================ *)
-    STEP_530_E:
-       ablPauseStarten[cSCHMIERKREIS_1] := FALSE ;
-       ablPauseStarten[cSCHMIERKREIS_2] := FALSE ;
+      (* ZENTRALSCHMIERUNG ============================================================================ *)
+      STEP_530_E:
+        ablPauseStarten[cSCHMIERKREIS_1] := FALSE ;
+        ablPauseStarten[cSCHMIERKREIS_2] := FALSE ;
         IF ( NOT ablHubAktiv[cSCHMIERKREIS_1] ) AND ( NOT ablHubAktiv[cSCHMIERKREIS_2] ) AND NOT atoflPause[cSCHMIERKREIS_1].Q AND NOT atoflPause[cSCHMIERKREIS_2].Q THEN
 
           (* Hinweis:
@@ -253,11 +253,11 @@ IF bpFreigabe THEN
           *)
           steplSchmierung := STEP_1000_E;
         ELSE
-         steplSchmierung := STEP_560_E;
+          steplSchmierung := STEP_560_E;
         END_IF
 
-(* ZENTRALSCHMIERUNG ============================================================================ *)
-    Step_560_E:
+      (* ZENTRALSCHMIERUNG ============================================================================ *)
+      Step_560_E:
         IF ( ( ailAktiverHub[cSCHMIERKREIS_1] MOD iAnzahlHuebeBisGrossePause ) <> 0 ) OR ( ( ailAktiverHub[cSCHMIERKREIS_2] MOD iAnzahlHuebeBisGrossePause ) <> 0 ) OR 
            atoflPause[cSCHMIERKREIS_1].Q OR atoflPause[cSCHMIERKREIS_2].Q THEN
 
@@ -284,13 +284,13 @@ IF bpFreigabe THEN
         END_IF
 
 
-(* ZENTRALSCHMIERUNG ============================================================================ *)
+      (* ZENTRALSCHMIERUNG ============================================================================ *)
       STEP_900_E:
         tonlWartezeitFuerSchmierHub( IN := FALSE );
 
         bpInternerFehler := TRUE;
 
-(* ZENTRALSCHMIERUNG ============================================================================ *)
+      (* ZENTRALSCHMIERUNG ============================================================================ *)
       STEP_1000_E:
         tonlWartezeitFuerSchmierHub( IN := FALSE );
         tonSchmierkreisAnsteuerung(IN:= FALSE);
@@ -310,7 +310,7 @@ IF bpFreigabe THEN
         ablHubAktiv[cSCHMIERKREIS_2] := FALSE;
         blStarteSchmierung           := FALSE;
 
-(* ZENTRALSCHMIERUNG ============================================================================ *)
+    (* ZENTRALSCHMIERUNG ============================================================================ *)
     END_CASE
 
   ELSE

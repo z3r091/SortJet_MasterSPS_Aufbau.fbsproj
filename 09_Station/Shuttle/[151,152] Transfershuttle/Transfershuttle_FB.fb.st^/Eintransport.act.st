@@ -10,10 +10,10 @@ ACTION Eintransport
 (* AKTION EINTRANSPORT *)
 (***************************************************************************************************)
 IF ( BasisStationsParameter.bEintransport[cWAND_1]
-   AND BasisStationsParameter.bAutomatik )
+     AND BasisStationsParameter.bAutomatik )
 THEN
   CASE steplEintransport OF
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_0_E:
       (* Hinweis:
          - Status setzen (Resource reservieren)
@@ -24,7 +24,7 @@ THEN
 
       steplEintransport := STEP_20_E;
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_20_E:
       IF ( blZielPositionErreicht ) THEN
         steplEintransport := STEP_30_E;
@@ -36,7 +36,7 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_30_E:
       (* ---------------------------------------------------------------------------------------
       //  OPTIONALE - ABFRAGE DES SICHERHEITSKREISES 
@@ -46,7 +46,7 @@ THEN
       // ---------------------------------------------------------------------------------------*)
 
       IF Sicherheitskreis[BasisStationsParameter.stMKs.eaSicherheitskreis[0]].bpSicherheitskreisGeschlossen
-        AND NOT Sicherheitskreis[BasisStationsParameter.stMKs.eaSicherheitskreis[0]].bpAnforderungSKGestellt
+         AND NOT Sicherheitskreis[BasisStationsParameter.stMKs.eaSicherheitskreis[0]].bpAnforderungSKGestellt
       THEN
         blHinweisGenerierenSKAusgeloest := FALSE;
         steplEintransport := STEP_40_E;
@@ -56,7 +56,7 @@ THEN
 
       END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_40_E:
       (* Anmerkung:
          - Shuttle steht an der gewuenschten Position und es kann mit dem Eintransport 
@@ -68,7 +68,7 @@ THEN
 
       steplEintransport := STEP_50_E;
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_50_E:
       IF ( Glastransport.bpDone ) THEN
         ReservierungsStatus := TS_KEINE_RESERVIERUNG;
@@ -85,15 +85,15 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_1000_E:
       BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] := TRUE;
 
-(*EINTRANSPORT ==============================*)
+  (*EINTRANSPORT ==============================*)
   END_CASE
 ELSE
   IF ( steplEintransport > STEP_0_E ) THEN

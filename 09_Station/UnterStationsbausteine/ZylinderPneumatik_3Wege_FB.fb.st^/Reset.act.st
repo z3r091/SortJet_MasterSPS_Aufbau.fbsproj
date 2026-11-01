@@ -12,7 +12,7 @@ ACTION Reset
 
 IF ( bpReset ) THEN
   CASE steplReset OF
-(*RESET =====================*)
+    (*RESET =====================*)
     STEP_0_E:
       bpDone := FALSE;
       tonlZylinder1Ausgefahren( IN := FALSE );
@@ -26,13 +26,13 @@ IF ( bpReset ) THEN
       bpStartPneumatik := FALSE;
       steplReset := STEP_1000_E;
 
-(*RESET =====================*)
+    (*RESET =====================*)
     STEP_1000_E:
       wpFehlerNr := cMELDUNG_NULL;
       bpFehler := FALSE;
       bpDone := TRUE;
 
-(*RESET =====================*)
+  (*RESET =====================*)
   END_CASE
 ELSE
   IF ( steplReset > STEP_0_E ) THEN

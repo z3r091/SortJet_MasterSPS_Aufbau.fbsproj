@@ -11,17 +11,17 @@ ACTION A_Schnittstelle
 (***************************************************************************************************)
 
 BasisStationsParameter.bAuftragAktiv           := (   BasisStationsParameter.bAnlegen
-                                                   OR BasisStationsParameter.bAbnehmen
-                                                   OR BasisStationsParameter.bEintransport[cWAND_1]
-                                                   OR BasisStationsParameter.bAustransport[cWAND_1]
-                                                   OR BasisStationsParameter.bDurchtransport[cWAND_1]
-                                                   OR BasisStationsParameter.bGlashoehenmessung
-                                                   OR BasisStationsParameter.bGlaslaengenmessung
-                                                      OR BasisStationsParameter.bVorabpositionieren
-                                                   OR BasisStationsParameter.bVortransport[cWAND_1]
-                                                   OR BasisStationsParameter.bReset
-                                                   OR BasisStationsParameter.bReferenz
-                                                   OR BasisStationsParameter.bCheck );
+                                                    OR BasisStationsParameter.bAbnehmen
+                                                    OR BasisStationsParameter.bEintransport[cWAND_1]
+                                                    OR BasisStationsParameter.bAustransport[cWAND_1]
+                                                    OR BasisStationsParameter.bDurchtransport[cWAND_1]
+                                                    OR BasisStationsParameter.bGlashoehenmessung
+                                                    OR BasisStationsParameter.bGlaslaengenmessung
+                                                    OR BasisStationsParameter.bVorabpositionieren
+                                                    OR BasisStationsParameter.bVortransport[cWAND_1]
+                                                    OR BasisStationsParameter.bReset
+                                                    OR BasisStationsParameter.bReferenz
+                                                    OR BasisStationsParameter.bCheck );
 
 (* Hinweis:
    - Abhandlung des Ein-Aus- Transports [Setzen der Variablen das man bereit ist zum Glastransport]

@@ -41,7 +41,7 @@ IF ( bpStarteDrehBewegung ) THEN
      - Starten der Schrittkette
   *)
   CASE steplDrehBewegung OF
-(* DREHBEWEGUNG =========================*)
+    (* DREHBEWEGUNG =========================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen zurueck setzen
@@ -69,7 +69,7 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_900_E;
       END_IF
 
-(* DREHBEWEGUNG =========================*)
+    (* DREHBEWEGUNG =========================*)
     STEP_10_E:
       (* Anmerkung:
          - Loesen der Arretierung
@@ -78,7 +78,7 @@ IF ( bpStarteDrehBewegung ) THEN
 
       steplDrehBewegung := STEP_20_E;
 
-(* DREHBEWEGUNG =========================*)
+    (* DREHBEWEGUNG =========================*)
     STEP_20_E:
       (* Hinweis:
          - Arretierung ist eingefahren
@@ -97,21 +97,21 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_900_E;
       END_IF
 
-(* DREHBEWEGUNG =========================*)
-   STEP_30_E:
-     (* Hinweis:
-        - Vor dem Verfahren pruefen ob der Antrieb in einem Endschalter steht
-          => Nach einer Stop- Situation 
-     *)
-     IF (  NOT Antrieb.bpMinSchalterBelegt
-       AND NOT Antrieb.bpMaxSchalterBelegt )
-     THEN
+    (* DREHBEWEGUNG =========================*)
+    STEP_30_E:
+      (* Hinweis:
+         - Vor dem Verfahren pruefen ob der Antrieb in einem Endschalter steht
+           => Nach einer Stop- Situation 
+      *)
+      IF (  NOT Antrieb.bpMinSchalterBelegt
+           AND NOT Antrieb.bpMaxSchalterBelegt )
+      THEN
         steplDrehBewegung := STEP_100_E;
-     ELSE
+      ELSE
         steplDrehBewegung := STEP_40_E;
-     END_IF
+      END_IF
 
-(* DREHBEWEGUNG =========================*)
+    (* DREHBEWEGUNG =========================*)
     STEP_40_E:
       (* Hinweis:
          - Versuchen den Endschalter frei zufahren 
@@ -149,21 +149,21 @@ IF ( bpStarteDrehBewegung ) THEN
          - Antrieb
       *)
       IF ( tonlEndschalterFreifahren.Q
-        AND (  Antrieb.bpMinSchalterBelegt
-          OR   Antrieb.bpMaxSchalterBelegt ))
-     THEN
-       Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-       wpFehlerNr := cMELDUNG_DREHEN_ENDSCHALTER_NICHT_FREI;
-       steplDrehBewegung := STEP_900_E;
-     END_IF
+           AND (  Antrieb.bpMinSchalterBelegt
+                 OR   Antrieb.bpMaxSchalterBelegt ))
+      THEN
+        Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_DREHEN_ENDSCHALTER_NICHT_FREI;
+        steplDrehBewegung := STEP_900_E;
+      END_IF
 
-     IF ( Antrieb.bpFehler ) THEN
-       Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-       wpFehlerNr := cMELDUNG_ANTRIEB_DREHEN;
-       steplDrehBewegung := STEP_900_E;
-     END_IF
+      IF ( Antrieb.bpFehler ) THEN
+        Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_ANTRIEB_DREHEN;
+        steplDrehBewegung := STEP_900_E;
+      END_IF
 
-(* DREHBEWEGUNG =========================*)
+    (* DREHBEWEGUNG =========================*)
     STEP_50_E:
       (* Hinweis:
          - Erzwungene Pause, damit der Antrieb wieder ordnungsgemaeß schaltet
@@ -175,7 +175,7 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_100_E;
       END_IF
 
-(* DREHBEWEGUNG =========================*)
+    (* DREHBEWEGUNG =========================*)
     STEP_100_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ERMITTELN DER DREH- POSITION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   
@@ -199,7 +199,7 @@ IF ( bpStarteDrehBewegung ) THEN
 
       END_CASE
 
-(* DREHBEWEGUNG =========================*)
+    (* DREHBEWEGUNG =========================*)
     STEP_110_E:
       (* Hinweis:
          - Undefinierte Position korregieren
@@ -210,19 +210,19 @@ IF ( bpStarteDrehBewegung ) THEN
         rpZielPositionition := ppParameterBaustein.rDrehposition_0_Grad;
 
       ELSIF (  ( ABS(Antrieb.rpIstPosition) > ppParameterBaustein.rDrehposition_0_Grad )
-        AND ( ABS(Antrieb.rpIstPosition) < ppParameterBaustein.rDrehposition_180_Grad ))
+              AND ( ABS(Antrieb.rpIstPosition) < ppParameterBaustein.rDrehposition_180_Grad ))
       THEN
         rpZielPositionition := ppParameterBaustein.rDrehposition_0_Grad;
 
       ELSIF  (  ( ABS(Antrieb.rpIstPosition) > ppParameterBaustein.rDrehposition_180_Grad )) THEN
         rpZielPositionition := ppParameterBaustein.rDrehposition_180_Grad;
 
-     ELSE
+      ELSE
         rpZielPositionition := ppParameterBaustein.rDrehposition_0_Grad;
 
-     END_IF
+      END_IF
 
-(* DREHBEWEGUNG =========================*)
+    (* DREHBEWEGUNG =========================*)
     STEP_200_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< STARTEN DER DREHBEWEGUNG >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -238,7 +238,7 @@ IF ( bpStarteDrehBewegung ) THEN
 
       steplDrehBewegung := STEP_210_E;
 
-(* DREHBEWEGUNG =========================*)
+    (* DREHBEWEGUNG =========================*)
     STEP_210_E:
       (* Hinweis:
          - Starten der Drehbewegung
@@ -248,7 +248,7 @@ IF ( bpStarteDrehBewegung ) THEN
 
       steplDrehBewegung := STEP_220_E;
 
-(* DREHBEWEGUNG =========================*)
+    (* DREHBEWEGUNG =========================*)
     STEP_220_E:
       (* Hinweis:
          - Drehbewegung abgeschlossen
@@ -268,7 +268,7 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_900_E;
       END_IF
 
-(* DREHBEWEGUNG =========================*)
+    (* DREHBEWEGUNG =========================*)
     STEP_230_E:
       (* Anmerkung:
          - Setzen der Arretierung
@@ -290,7 +290,7 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_900_E;
       END_IF
 
-(* DREHBEWEGUNG =========================*)
+    (* DREHBEWEGUNG =========================*)
     STEP_240_E:
       (* Hinweis:
          - Arretierung ist ausgefahren
@@ -319,17 +319,17 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_900_E;
       END_IF
 
-(* DREHBEWEGUNG =========================*)
+    (* DREHBEWEGUNG =========================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
       bpFehler := TRUE;
 
-(* DREHBEWEGUNG =========================*)
+    (* DREHBEWEGUNG =========================*)
     STEP_1000_E: ;
       bpDone := TRUE;
 
-(* DREHBEWEGUNG =========================*)
+  (* DREHBEWEGUNG =========================*)
   END_CASE
 
 END_IF

@@ -15,31 +15,31 @@ END_IF
 IF blBetriebsartReset THEN
 
   CASE steplStationReset OF
-(*RESET ===================================== *)
+    (*RESET ===================================== *)
     STEP_0_E:
-    BasisStationsParameter.bEintransport[1] := FALSE;
-    BasisStationsParameter.bAustransport[1] := FALSE;
-    bpDone := FALSE;
-    tonlZeitRunterfahren(IN := FALSE);
-    tonlZeitHochfahren(IN := FALSE);
-    tonlUeberwachungRolltor( IN := FALSE );
-    tonlRolltorOeffnenSchliesen( IN := FALSE );
-    tonlEntriegelungAufZu( IN := FALSE );
-    tonlTimeoutEntriegelungAufZu( IN := FALSE );
-    tonlGegenhalterAufZu( IN := FALSE );
-    tonlTimeoutGegenhalterAufZu( IN := FALSE );
-    tonlGreiferAufZu( IN := FALSE );
-    tonlTimeoutGreiferAufZu( IN := FALSE );
-    tonlLineareinheitVorZurueck(IN := FALSE);
-    tonlTimeoutSensorShutle(IN := FALSE);
-    tonlLineareinheitVorZurueck(IN := FALSE);
-    tonlTimeoutSensorHinten(IN := FALSE);
-    tonlLineareinheitVorZurueck(IN := FALSE);
-    tonlTimeoutSensorVorne(IN := FALSE);
+      BasisStationsParameter.bEintransport[1] := FALSE;
+      BasisStationsParameter.bAustransport[1] := FALSE;
+      bpDone := FALSE;
+      tonlZeitRunterfahren(IN := FALSE);
+      tonlZeitHochfahren(IN := FALSE);
+      tonlUeberwachungRolltor( IN := FALSE );
+      tonlRolltorOeffnenSchliesen( IN := FALSE );
+      tonlEntriegelungAufZu( IN := FALSE );
+      tonlTimeoutEntriegelungAufZu( IN := FALSE );
+      tonlGegenhalterAufZu( IN := FALSE );
+      tonlTimeoutGegenhalterAufZu( IN := FALSE );
+      tonlGreiferAufZu( IN := FALSE );
+      tonlTimeoutGreiferAufZu( IN := FALSE );
+      tonlLineareinheitVorZurueck(IN := FALSE);
+      tonlTimeoutSensorShutle(IN := FALSE);
+      tonlLineareinheitVorZurueck(IN := FALSE);
+      tonlTimeoutSensorHinten(IN := FALSE);
+      tonlLineareinheitVorZurueck(IN := FALSE);
+      tonlTimeoutSensorVorne(IN := FALSE);
 
-    steplStationReset := STEP_100_E;
+      steplStationReset := STEP_100_E;
 
-(*RESET ===================================== *)
+    (*RESET ===================================== *)
     STEP_100_E:
       blRFID_DataWasValid                  := FALSE;
       blLineareinheitVor                 := FALSE;
@@ -60,20 +60,20 @@ IF blBetriebsartReset THEN
       wpFehlerNr := 0;
       steplStationReset := STEP_1000_E;
 
-(*RESET ===================================== *)
+    (*RESET ===================================== *)
     STEP_1000_E:
       bpDone := TRUE;
       BasisStationsParameter.bReset := FALSE;
 
-(*RESET ===================================== *)
+  (*RESET ===================================== *)
   END_CASE
 ELSE
 
- IF( steplStationReset > STEP_0_E )THEN
-   bpDone := FALSE;
-   BasisStationsParameter.bReset := FALSE;
-   steplStationReset := STEP_0_E;
- END_IF
+  IF( steplStationReset > STEP_0_E )THEN
+    bpDone := FALSE;
+    BasisStationsParameter.bReset := FALSE;
+    steplStationReset := STEP_0_E;
+  END_IF
 
 END_IF
 END_ACTION

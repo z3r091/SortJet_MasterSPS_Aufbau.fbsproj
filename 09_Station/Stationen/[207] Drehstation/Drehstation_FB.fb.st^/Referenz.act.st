@@ -31,12 +31,12 @@ IF ( blBetriebsartReferenz ) THEN
   CASE steplReferenz OF
 
   
-(* REFERENZ ===========================*)
+    (* REFERENZ ===========================*)
     STEP_0_E:
       BasisStationsParameter.bReferenzAbgeschlossen := FALSE;
       steplReferenz := STEP_10_E;
 
-(* REFERENZ ===========================*)
+    (* REFERENZ ===========================*)
     STEP_10_E:
       (* Hinweis:
          -  Starten der Referenzfahrt
@@ -46,7 +46,7 @@ IF ( blBetriebsartReferenz ) THEN
       Glastransport.bpReferenz := TRUE;
       steplReferenz := STEP_20_E;
 
-(* REFERENZ ===========================*)
+    (* REFERENZ ===========================*)
     STEP_20_E:
       (* Hinweis:
          - Referenzfahrt abgeschlossen
@@ -56,14 +56,14 @@ IF ( blBetriebsartReferenz ) THEN
         steplReferenz := STEP_100_E;
       END_IF
 
-(*REFERENZ ============================*)
+    (*REFERENZ ============================*)
     STEP_100_E:
       IF ( Glastransport.bpDone ) THEN
         Glastransport.bpReferenz := FALSE;
         steplReferenz := STEP_200_E;
       END_IF
 
-(* REFERENZ ===========================*)
+    (* REFERENZ ===========================*)
     STEP_200_E:
       (* Hinweis:
          - Referenzfahrt abgeschlossen
@@ -73,15 +73,15 @@ IF ( blBetriebsartReferenz ) THEN
         steplReferenz := STEP_1000_E;
       END_IF
 
-(* REFERENZ ===========================*)
+    (* REFERENZ ===========================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(* REFERENZ ===========================*)
+    (* REFERENZ ===========================*)
     STEP_1000_E:
       BasisStationsParameter.bReferenzAbgeschlossen := TRUE;
 
-(* REFERENZ ===========================*)
+  (* REFERENZ ===========================*)
   END_CASE
 ELSE
   IF ( steplReferenz > STEP_0_E ) THEN

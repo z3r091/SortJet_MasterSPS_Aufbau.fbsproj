@@ -7,10 +7,10 @@
 *)
 ACTION IstGeschwindigkeit
 l_mc_ReadActualVelocity
-(
-  Axis := ppAntriebsInformationen.wAchsID,
-  Enable := NOT l_mc_ReadActualVelocity.Error
-);
+  (
+    Axis := ppAntriebsInformationen.wAchsID,
+    Enable := NOT l_mc_ReadActualVelocity.Error
+  );
 IF l_mc_ReadActualVelocity.Valid THEN
   IF l_ts_MKAxisConfig.dwAxisFlags.0 THEN // Rotative Achsen anders berechnen
     rpIstGeschwindigkeit := TO_REAL(l_mc_ReadActualVelocity.Velocity) * 360 / 60;

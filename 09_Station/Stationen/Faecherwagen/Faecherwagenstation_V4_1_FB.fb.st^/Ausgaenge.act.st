@@ -22,8 +22,8 @@ ACTION Ausgaenge
    - Auftrag aktiv
 *)
 bpAuftragAktiv := (  blBetriebsartCheck 
-                  OR BasisStationsParameter.bEintransport[1] 
-                  OR BasisStationsParameter.bAustransport[1] );
+                    OR BasisStationsParameter.bEintransport[1] 
+                    OR BasisStationsParameter.bAustransport[1] );
 
 IF bpLichtschrankeWartetAufQuittierungAmOP THEN
   out_bSafetyLichtschrankeAusgeloest := gbFlashbit05sec;
@@ -51,8 +51,8 @@ ResetSchmersal();
  - FW in einer undefinierten Position
 *)
 blStationsposUndefiniert :=      NOT bpBoxInHomePosition
-                             AND NOT bpStatusStationInBeladePosition
-                             AND NOT bpAuftragAktiv;
+                                 AND NOT bpStatusStationInBeladePosition
+                                 AND NOT bpAuftragAktiv;
 
 (* Hinweis:
    - Homeposition 

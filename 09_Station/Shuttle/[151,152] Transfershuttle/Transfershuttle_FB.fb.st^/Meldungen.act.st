@@ -13,14 +13,14 @@ ACTION Meldungen
    - Glastransport
 *)
 IF( Querfahrt.bpFehler
-  AND NOT BasisStationsParameter.bFehler )
+    AND NOT BasisStationsParameter.bFehler )
 THEN
   BasisStationsParameter.wFehlerNummer := Querfahrt.wpFehlerNr;
   BasisStationsParameter.bFehler := TRUE;
 END_IF
 
 IF( Glastransport.bpFehler
-  AND NOT BasisStationsParameter.bFehler )
+    AND NOT BasisStationsParameter.bFehler )
 THEN
   BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
   BasisStationsParameter.bFehler := TRUE;

@@ -14,7 +14,7 @@ ACTION Timer
 *)
 tonlMaxWarteZeit(IN:=( (bpStartHubAb AND out_bHubAbSetzen)
                        OR (bpStartHubAuf AND out_bHubAufSetzen)),
-                 PT:=MAXIMALE_WARTEZEIT_HUB );
+                  PT:=MAXIMALE_WARTEZEIT_HUB );
 
 
 (* Hinweis:

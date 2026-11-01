@@ -14,7 +14,7 @@ ACTION Timer
 *)
 tonlMaxWarteZeit(IN:=( (   bpVerstellungSchliessen AND out_bVerstellungSchliessen)
                        OR (bpVerstellungOeffnen AND out_bVerstellungOeffnen)),
-                 PT:= T#10S);
+                  PT:= T#10S);
 
 
 (* Hinweis:

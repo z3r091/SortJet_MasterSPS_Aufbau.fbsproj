@@ -13,6 +13,6 @@ IF( Memcomp( ADR( SpsToMmiMem ), ADR( SpsToMmi ), SIZEOF( SpsToMmi ) ) <> 0 )THE
   Memcopy( ADR( SpsToMmiMem ), ADR( SpsToMmi ), SIZEOF( SpsToMmi ) );
 END_IF
 IF TCPMain.bpIOAnzeigeAktivieren THEN
- UpdateIoAnzeige();
+  UpdateIoAnzeige();
 END_IF
 END_ACTION

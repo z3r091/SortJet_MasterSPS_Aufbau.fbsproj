@@ -18,11 +18,11 @@ ACTION Vorabpositionierung
   - !!! Der Positionier-Auftrag soll jetzt auch fuer das MANUELLE POSITIONIEREN genutzt werden !!!     
 *)
 IF ( BasisStationsParameter.bVorabpositionieren
-  AND NOT BasisStationsParameter.bEintransport[cWAND_1]
-  AND NOT BasisStationsParameter.bAustransport[cWAND_1] )
+     AND NOT BasisStationsParameter.bEintransport[cWAND_1]
+     AND NOT BasisStationsParameter.bAustransport[cWAND_1] )
 THEN
   CASE steplVorabpositionierung OF
-(*VORABPOSITIONIERUNG ==============================*)
+    (*VORABPOSITIONIERUNG ==============================*)
     STEP_0_E:
       BasisStationsParameter.bUpdateVorabPositionieren := FALSE;
       blUpdateTimer := FALSE;
@@ -38,16 +38,16 @@ THEN
         steplVorabpositionierung := STEP_1000_E;
       ELSE
 
-       Glastransport.bpShuttleAbsenken := TRUE;
-       steplVorabpositionierung := STEP_10_E;
+        Glastransport.bpShuttleAbsenken := TRUE;
+        steplVorabpositionierung := STEP_10_E;
 
       END_IF
-(*VORABPOSITIONIERUNG ==============================*)
+    (*VORABPOSITIONIERUNG ==============================*)
     STEP_10_E:
-       (* Hinweis:
-          - Warten auf evtl. noch einzufahrenden Luftschranken oder Zylinder
-       *)
-       tonlWarteShuttleSicherVerfahren(IN:=TRUE,PT:=t#4s);
+      (* Hinweis:
+         - Warten auf evtl. noch einzufahrenden Luftschranken oder Zylinder
+      *)
+      tonlWarteShuttleSicherVerfahren(IN:=TRUE,PT:=t#4s);
 
 
       (* Shuttle auf Position fahren
@@ -58,11 +58,11 @@ THEN
       END_IF
 
       IF tonlWarteShuttleSicherVerfahren.Q THEN
-       BasisStationsParameter.wFehlerNummer := cMELDUNG_QUERFAHRT_NICHT_VERFAHR_BEREIT;
-       steplVorabpositionierung := STEP_900_E;
+        BasisStationsParameter.wFehlerNummer := cMELDUNG_QUERFAHRT_NICHT_VERFAHR_BEREIT;
+        steplVorabpositionierung := STEP_900_E;
       END_IF
 
-(*VORABPOSITIONIERUNG ==============================*)
+    (*VORABPOSITIONIERUNG ==============================*)
     STEP_20_E:
       Querfahrt.bpVerfahreShuttle := TRUE;
 
@@ -80,7 +80,7 @@ THEN
         steplVorabpositionierung := STEP_900_E;
       END_IF
 
-(*VORABPOSITIONIERUNG ==============================*)
+    (*VORABPOSITIONIERUNG ==============================*)
     STEP_30_E:
       (* Anmerkung:
          - Sollte das Verfahren frueher abgeschlossen werden als der Zeitwert des Timers "tonlUpdateTimer"
@@ -125,7 +125,7 @@ THEN
         steplVorabpositionierung := STEP_900_E;
       END_IF
 
-(*VORABPOSITIONIERUNG ==============================*)
+    (*VORABPOSITIONIERUNG ==============================*)
     STEP_100_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FOLGEAUFTRAG IST EIN- AUS- TRANSPORT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -151,21 +151,21 @@ THEN
           *)
 
           Glastransport.pAuftrag.stAuftragsInformationen := BasisStationsParameter.pVorAbAuftragsdaten[cWAND_1].stAuftragsInformationen;
-        Glastransport.bpStarteHebeVorgang              := TRUE;
+          Glastransport.bpStarteHebeVorgang              := TRUE;
 
-           steplVorabpositionierung := STEP_110_E;
+          steplVorabpositionierung := STEP_110_E;
 
         ELSE
-           steplVorabpositionierung := STEP_1000_E;
+          steplVorabpositionierung := STEP_1000_E;
 
         END_IF
 
       ELSE
         steplVorabpositionierung := STEP_1000_E;
 
-    END_IF
+      END_IF
 
-(*VORABPOSITIONIERUNG ==============================*)
+    (*VORABPOSITIONIERUNG ==============================*)
     STEP_110_E:
       (* Hinweis:
          - Hebe-Vorgang abgeschlossen
@@ -178,20 +178,20 @@ THEN
       (* Fehlerbehandlung:
       *)
       IF ( Glastransport.bpFehler ) THEN
-         Glastransport.bpStarteHebeVorgang := FALSE;
+        Glastransport.bpStarteHebeVorgang := FALSE;
         BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
         steplVorabpositionierung := STEP_900_E;
       END_IF
 
-(*VORABPOSITIONIERUNG ==============================*)
+    (*VORABPOSITIONIERUNG ==============================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*VORABPOSITIONIERUNG ==============================*)
+    (*VORABPOSITIONIERUNG ==============================*)
     STEP_1000_E:
       BasisStationsParameter.bVorabpositionierenAbgeschlossen := TRUE;
 
-(*VORABPOSITIONIERUNG ==============================*)
+  (*VORABPOSITIONIERUNG ==============================*)
   END_CASE
 END_IF
 

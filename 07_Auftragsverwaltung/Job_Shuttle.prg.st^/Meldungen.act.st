@@ -16,10 +16,10 @@ ACTION Meldungen
      -> Transfershuttle
 *)
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
-    WatchIo( NOT abgVerfahrfreigabeShuttle[wlIndex], ioccShuttle1VerfahrfreigabeFehlt + (wlIndex - 101) );
+  WatchIo( NOT abgVerfahrfreigabeShuttle[wlIndex], ioccShuttle1VerfahrfreigabeFehlt + (wlIndex - 101) );
 END_FOR;
 
 FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
-    WatchIo( NOT abgVerfahrfreigabeShuttle[wlIndex], ioccTransfershuttle1VerfahrfreigabeFehlt + (wlIndex - 151) );
+  WatchIo( NOT abgVerfahrfreigabeShuttle[wlIndex], ioccTransfershuttle1VerfahrfreigabeFehlt + (wlIndex - 151) );
 END_FOR;
 END_ACTION

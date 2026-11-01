@@ -12,26 +12,26 @@ END_VAR
 
 // stStationsNummern prüfen - keine 0 keine doppelt vergeben
 IF Basis.stMKs.stStationsNummern.NummerIntern = 0 THEN
-    CmpLog.LogAdd2(cLOG_HANDLE, 16#00010000, 16#00000001, 16#00000010, 0, 'StationsNummer Intern darf nicht 0 sein');
-    SysExceptGenerateException(RtsExceptions.RTSEXCPT_NONCONTINUABLE);
-    NullRef := TRUE;
+  CmpLog.LogAdd2(cLOG_HANDLE, 16#00010000, 16#00000001, 16#00000010, 0, 'StationsNummer Intern darf nicht 0 sein');
+  SysExceptGenerateException(RtsExceptions.RTSEXCPT_NONCONTINUABLE);
+  NullRef := TRUE;
 END_IF
 IF aUsedStationNrIntern[Basis.stMKs.stStationsNummern.NummerIntern] THEN
-    CmpLog.LogAdd2(cLOG_HANDLE, 16#00010000, 16#00000001, 16#00000010, 0, 'StationsNummer Intern doppelt vergeben');
-    SysExceptGenerateException(RtsExceptions.RTSEXCPT_NONCONTINUABLE);
-    NullRef := TRUE;
+  CmpLog.LogAdd2(cLOG_HANDLE, 16#00010000, 16#00000001, 16#00000010, 0, 'StationsNummer Intern doppelt vergeben');
+  SysExceptGenerateException(RtsExceptions.RTSEXCPT_NONCONTINUABLE);
+  NullRef := TRUE;
 END_IF
 aUsedStationNrIntern[Basis.stMKs.stStationsNummern.NummerIntern] := TRUE;
 
 IF Basis.stMKs.stStationsNummern.NummerSPS = 0 THEN
-    CmpLog.LogAdd2(cLOG_HANDLE, 16#00010000, 16#00000001, 16#00000010, 0, 'StationsNummer SPS darf nicht 0 sein');
-    SysExceptGenerateException(RtsExceptions.RTSEXCPT_NONCONTINUABLE);
-    NullRef := TRUE;
+  CmpLog.LogAdd2(cLOG_HANDLE, 16#00010000, 16#00000001, 16#00000010, 0, 'StationsNummer SPS darf nicht 0 sein');
+  SysExceptGenerateException(RtsExceptions.RTSEXCPT_NONCONTINUABLE);
+  NullRef := TRUE;
 END_IF
 IF aUsedStationNrSPS[Basis.stMKs.stStationsNummern.NummerSPS] THEN
-    CmpLog.LogAdd2(cLOG_HANDLE, 16#00010000, 16#00000001, 16#00000010, 0, 'StationsNummer SPS doppelt vergeben');
-    SysExceptGenerateException(RtsExceptions.RTSEXCPT_NONCONTINUABLE);
-    NullRef := TRUE;
+  CmpLog.LogAdd2(cLOG_HANDLE, 16#00010000, 16#00000001, 16#00000010, 0, 'StationsNummer SPS doppelt vergeben');
+  SysExceptGenerateException(RtsExceptions.RTSEXCPT_NONCONTINUABLE);
+  NullRef := TRUE;
 END_IF
 aUsedStationNrSPS[Basis.stMKs.stStationsNummern.NummerSPS] := TRUE;
 

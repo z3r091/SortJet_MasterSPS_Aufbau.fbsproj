@@ -17,8 +17,8 @@ blECatOK := TRUE;
 WHILE(bpSlave <> 0)
 DO
   blECatOK := blECatOK 
-            AND (    bpSlave^.wState = 8
-                  OR bpSlave^.IsConfigAsOptional  );
+              AND (    bpSlave^.wState = 8
+                    OR bpSlave^.IsConfigAsOptional  );
   bpSlave := bpSlave^.NextInstance;
   
 END_WHILE
@@ -33,9 +33,9 @@ tonlWaitInit(IN :=bgEtherCatOK OR bgInbetriebnahmeBit, PT:=T#5S);
 
 
 IF  EtherCAT_Master.xConfigFinished
-AND ( EtherCAT_Master.xNeedsRestart
-  OR blRestartEtherCatMMI )
-AND steplEtherCat_Restart = STEP_0_E
+    AND ( EtherCAT_Master.xNeedsRestart
+          OR blRestartEtherCatMMI )
+    AND steplEtherCat_Restart = STEP_0_E
 THEN
   blRestartEtherCatMMI := FALSE;
   steplEtherCat_Restart := STEP_10_E;
@@ -51,13 +51,13 @@ CASE steplEtherCat_Restart OF
   STEP_50_E:
     tonl_Step(IN:=TRUE,PT:=T#5S);
     IF tonl_Step.Q THEN
-         EtherCAT_Master.xStopBus := FALSE;
+      EtherCAT_Master.xStopBus := FALSE;
       steplEtherCat_Restart := STEP_100_E;
     END_IF
 
   STEP_100_E:
     IF NOT EtherCAT_Master.xStopBus THEN
-        EtherCAT_Master.xRestart := TRUE;
+      EtherCAT_Master.xRestart := TRUE;
       tonl_Step(IN:=FALSE);
       tonlEtherCat_Start_TimeOut(IN:=FALSE);
       steplEtherCat_Restart := STEP_150_E;
@@ -79,7 +79,7 @@ CASE steplEtherCat_Restart OF
     END_IF
 
   STEP_550_E:
-     tonlEtherCat_Start_TimeOut( IN:=FALSE );
+    tonlEtherCat_Start_TimeOut( IN:=FALSE );
     steplEtherCat_Restart := STEP_0_E;
 
 END_CASE

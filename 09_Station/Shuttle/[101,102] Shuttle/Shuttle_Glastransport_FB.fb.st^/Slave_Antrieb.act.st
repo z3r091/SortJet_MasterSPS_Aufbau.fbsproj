@@ -24,11 +24,11 @@ blStarteSlaveKopplung := ( (    bpEintransport
                              OR bpHandfahrenPlus
                              OR bpHandfahrenMinus
                              OR bpCheck )
-                         AND NOT bpFehler );
+                           AND NOT bpFehler );
 
 IF (  blStarteSlaveKopplung
-  AND NOT bpReset
-  AND NOT bpFahreReferenz )
+     AND NOT bpReset
+     AND NOT bpFahreReferenz )
 THEN
 
   (* Fehlerauswertung:
@@ -44,7 +44,7 @@ THEN
 
 
   CASE steplSlave OF
-(*SLAVE BETRIEB ====================*)
+    (*SLAVE BETRIEB ====================*)
     STEP_0_E:
 
       blAntriebsKopplungAktiv := FALSE;
@@ -52,9 +52,9 @@ THEN
       IF ( Antrieb.bpReglerBereit AND Antrieb_Slave.bpReglerBereit ) THEN
 
         IF ( ( ABS(Antrieb.rpIstPosition) > rgSchwellwertReferenzieren ) 
-          OR NOT Antrieb.bpIstReferenziert 
-          OR ( ABS(Antrieb_Slave.rpIstPosition) > rgSchwellwertReferenzieren )
-          OR NOT Antrieb_Slave.bpIstReferenziert )
+             OR NOT Antrieb.bpIstReferenziert 
+             OR ( ABS(Antrieb_Slave.rpIstPosition) > rgSchwellwertReferenzieren )
+             OR NOT Antrieb_Slave.bpIstReferenziert )
         THEN
           Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
           Antrieb_Slave.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
@@ -62,22 +62,22 @@ THEN
         ELSE
           steplSlave := STEP_30_E;
         END_IF
-    END_IF
+      END_IF
 
-(*SLAVE BETRIEB ====================*)
+    (*SLAVE BETRIEB ====================*)
     STEP_20_E:
       (* Hinweis:
          - Referenzieren des Antriebs abgeschlossen [Ist-Position = 0  bzw. 1]
       *)
       IF ( Antrieb.bpDone
-        AND Antrieb_Slave.bpDone ) 
+           AND Antrieb_Slave.bpDone ) 
       THEN
         Antrieb.wpBetriebsart       := KEINE_FUNKTION;
         Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
         steplSlave := STEP_30_E;
       END_IF
 
-(*SLAVE BETRIEB ====================*)
+    (*SLAVE BETRIEB ====================*)
     STEP_30_E:
       tonlUberwachungSlaveAktiv( IN := FALSE);
 
@@ -89,7 +89,7 @@ THEN
         steplSlave := STEP_40_E;
       END_IF
 
-(*SLAVE BETRIEB ====================*)
+    (*SLAVE BETRIEB ====================*)
     STEP_40_E:
       (* Anmerkung:
          - Überwachung ob die Achsen synchron laufen
@@ -98,14 +98,14 @@ THEN
                                  PT := cUEBERWACHUNG_SLAVE_AKTIV );
 
 
-     IF ( tonlUberwachungSlaveAktiv.Q ) THEN
+      IF ( tonlUberwachungSlaveAktiv.Q ) THEN
         blAntriebsKopplungAktiv := FALSE;
         Antrieb_Slave.wpBetriebsart:= KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_ANTRIEB_SLAVE_NICHT_AKTIV;
         steplSlave := STEP_900_E;
-     END_IF
+      END_IF
 
-(*SLAVE BETRIEB ====================*)
+    (*SLAVE BETRIEB ====================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
@@ -113,11 +113,11 @@ THEN
       blAntriebsKopplungAktiv := FALSE;
       bpFehler := TRUE;
 
-(*SLAVE BETRIEB ====================*)
+    (*SLAVE BETRIEB ====================*)
     STEP_1000_E:
       blAntriebsKopplungAktiv := FALSE;
 
-(*SLAVE BETRIEB ====================*)
+  (*SLAVE BETRIEB ====================*)
   END_CASE
 ELSE
 

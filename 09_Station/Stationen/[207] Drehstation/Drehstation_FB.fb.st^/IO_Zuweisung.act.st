@@ -14,7 +14,7 @@ CASE BasisStationsParameter.stMKs.stStationsNummern.NummerSPS OF
  
   cSTATION_207:
   
-  // Gebläse
+    // Gebläse
     in_bMotorstarter_Geblaese_OK := Glastransport.Antrieb.udipEingaengeUmrichter.cXG37_6_I_8;
 
     Glastransport.Antrieb.wpAusgaengeUmrichter.cXG37_O_5 := %MX218.1; // Start Gebläse 1

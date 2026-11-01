@@ -10,7 +10,7 @@ ACTION Glaslaengenmessung
 (* AKTION: MESSUNG *)
 (***************************************************************************************************)
 IF( BasisStationsParameter.bGlaslaengenmessung
-  AND blBetriebsartAutomatik )
+    AND blBetriebsartAutomatik )
 THEN
   (* Fehlerbehandlung
      - Glastransport
@@ -22,7 +22,7 @@ THEN
   END_IF
 
   CASE steplGlaslaengenmessung OF
-(* GLASLAENGENMESSUNG ==================================*)
+    (* GLASLAENGENMESSUNG ==================================*)
     STEP_0_E:
       (* Anmerkung:
          - Starten des Anlegeauftrags
@@ -45,7 +45,7 @@ THEN
       END_IF
 
       
-(* GLASLAENGENMESSUNG ==================================*)
+    (* GLASLAENGENMESSUNG ==================================*)
     STEP_10_E:
       (* Anmerkung
          - Starten der Glaslaengenmessung mittels Riemen
@@ -55,7 +55,7 @@ THEN
 
       steplGlaslaengenmessung := STEP_20_E;
 
-(* GLASLAENGENMESSUNG ==================================*)
+    (* GLASLAENGENMESSUNG ==================================*)
     STEP_20_E:
       (* Anmerkung:
          - Sollte das Fusspedal betaetigt worden sein ohne das Glas aufgelegt worden ist. Wird dieses durch den Glastransport abgefangen und ein Hinweis ausgegeben.
@@ -65,7 +65,7 @@ THEN
         steplGlaslaengenmessung := STEP_30_E;
       END_IF
 
-(* GLASLAENGENMESSUNG ==================================*)
+    (* GLASLAENGENMESSUNG ==================================*)
     STEP_30_E:
       (* Hinweis:
          - Auswertung des Messergebnisses
@@ -94,7 +94,7 @@ THEN
 
       END_IF
 
-(* GLASLAENGENMESSUNG ==================================*)
+    (* GLASLAENGENMESSUNG ==================================*)
     STEP_100_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PLAUSIBELES MESSERGEBNIS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
          
@@ -119,7 +119,7 @@ THEN
         steplGlaslaengenmessung := STEP_900_E;
       END_IF
 
-(* GLASLAENGENMESSUNG ==================================*)
+    (* GLASLAENGENMESSUNG ==================================*)
     STEP_200_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FEHLERHAFTES MESSERGEBNIS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
          
@@ -157,7 +157,7 @@ THEN
         steplGlaslaengenmessung := STEP_210_E;
       END_IF
 
-(* GLASLAENGENMESSUNG ==================================*)
+    (* GLASLAENGENMESSUNG ==================================*)
     STEP_210_E:
       (* Anmerkung [FEHLERHAFTES SCANNERGEBNIS]:
          - Knebelschalter betaetigt -->WICHTIG: wird jetzt der Quittierungstaster betaetigt ist das die Bestaetigung das die Scheibe 
@@ -172,7 +172,7 @@ THEN
       END_IF
 
       IF (  rtlTasterQuittierung.Q
-        AND NOT Glastransport.bpSensorAuslauf )
+           AND NOT Glastransport.bpSensorAuslauf )
       THEN
         out_bAmpelSignalGruen := FALSE;
         out_bSignalScheibeFehlmessung := FALSE;
@@ -192,12 +192,12 @@ THEN
          - Knebelschlater [Glastransport zurueck]
       *)
       IF ( in_bKnebelGlastransportZurueck
-        AND tonlFreigabeErhalten.Q )
+           AND tonlFreigabeErhalten.Q )
       THEN
         Glastransport.bpScheibeZurueckFahren := in_bKnebelGlastransportZurueck;
         Glastransport.bpScheibeVorFahren     := FALSE;
-    ELSIF ( in_bKnebelGlastransportVor
-        AND tonlFreigabeErhalten.Q )
+      ELSIF ( in_bKnebelGlastransportVor
+              AND tonlFreigabeErhalten.Q )
       THEN
         Glastransport.bpScheibeVorFahren := in_bKnebelGlastransportVor;
         Glastransport.bpScheibeZurueckFahren := FALSE;
@@ -206,16 +206,16 @@ THEN
         Glastransport.bpScheibeVorFahren     := FALSE;
       END_IF
 
-(* GLASLAENGENMESSUNG ==================================*)
+    (* GLASLAENGENMESSUNG ==================================*)
     STEP_900_E:
       Glastransport.bpScheibeZurueckFahren     := FALSE;
       BasisStationsParameter.bFehler := TRUE;
 
-(* GLASLAENGENMESSUNG ==================================*)
+    (* GLASLAENGENMESSUNG ==================================*)
     STEP_1000_E:
       BasisStationsParameter.bGlaslaengenmessungAbgeschlossen := TRUE;
 
-(* GLASLAENGENMESSUNG ==================================*)
+  (* GLASLAENGENMESSUNG ==================================*)
   END_CASE
 ELSE
 

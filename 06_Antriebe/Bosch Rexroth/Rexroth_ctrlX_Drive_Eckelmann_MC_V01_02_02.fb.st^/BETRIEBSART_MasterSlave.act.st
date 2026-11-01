@@ -8,7 +8,7 @@
 ACTION BETRIEBSART_MasterSlave
 // Gemeinsame Auswahl; vorhandener Parameter-Re-Entry uebernimmt den Jerk.
 rlRuckzeit := RuckFuerBewegung(bStart := asteplSchritt[wlSchrittkette] = STEP_400_E,
-  bMitZiel := FALSE, lrZiel := 0);
+                                bMitZiel := FALSE, lrZiel := 0);
 
 CASE asteplSchritt[wlSchrittkette] OF
 
@@ -53,17 +53,17 @@ CASE asteplSchritt[wlSchrittkette] OF
       asteplSchritt[wlSchrittkette] := STEP_900_E;
     ELSE
       l_mc_GearIn
-      (
-        Slave := ppAntriebsInformationen.wAchsID,
-        Master := wpMaster,
-        Acceleration := rlBeschleunigung * cFAKTOR_RAMPEN,
-        Deceleration := rlVerzoegerung * cFAKTOR_RAMPEN,
-        Jerk := rlRuckzeit,
-        RatioNumerator := 1,
-        RatioDenominator := SEL( ( wlAktiveBetriebsart = INVERTIERTER_SYNC_AUF_MASTER ), 1, -1), // SEL: WENN  ( wlAktiveBetriebsart = INVERTIERTER_SYNC_AUF_MASTER ) = FALSE dann 1 ansonsten -1
-        BufferMode := MC_BufferMode.BM_ABORTING_E,
-        Execute := TRUE
-      );
+        (
+          Slave := ppAntriebsInformationen.wAchsID,
+          Master := wpMaster,
+          Acceleration := rlBeschleunigung * cFAKTOR_RAMPEN,
+          Deceleration := rlVerzoegerung * cFAKTOR_RAMPEN,
+          Jerk := rlRuckzeit,
+          RatioNumerator := 1,
+          RatioDenominator := SEL( ( wlAktiveBetriebsart = INVERTIERTER_SYNC_AUF_MASTER ), 1, -1), // SEL: WENN  ( wlAktiveBetriebsart = INVERTIERTER_SYNC_AUF_MASTER ) = FALSE dann 1 ansonsten -1
+          BufferMode := MC_BufferMode.BM_ABORTING_E,
+          Execute := TRUE
+        );
 
       asteplSchritt[wlSchrittkette] := STEP_1000_E;
     END_IF
@@ -74,18 +74,18 @@ CASE asteplSchritt[wlSchrittkette] OF
 
   STEP_1000_E:
     IF ( ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) <> l_mc_GearIn.Acceleration )
-        OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) <> l_mc_GearIn.Deceleration )
-        OR (   rlRuckzeit <> l_mc_GearIn.Jerk ) )
+         OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) <> l_mc_GearIn.Deceleration )
+         OR (   rlRuckzeit <> l_mc_GearIn.Jerk ) )
     THEN
       l_mc_GearIn( Slave := ppAntriebsInformationen.wAchsID, Master := wpMaster, Execute := FALSE );
       asteplSchritt[wlSchrittkette] := STEP_400_E;
     END_IF
 
     l_mc_GearIn
-    (
-      Slave := ppAntriebsInformationen.wAchsID,
-      Master := wpMaster,
-    );
+      (
+        Slave := ppAntriebsInformationen.wAchsID,
+        Master := wpMaster,
+      );
     // Done direkt aus dem aktuellen InGear bilden (bpAchseSychron ist der Wert aus dem Vorzyklus)
     bpDone := l_mc_GearIn.InGear;
 

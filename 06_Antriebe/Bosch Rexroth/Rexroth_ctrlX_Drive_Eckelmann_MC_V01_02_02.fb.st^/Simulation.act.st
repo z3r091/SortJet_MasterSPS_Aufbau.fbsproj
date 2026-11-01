@@ -127,13 +127,13 @@ END_IF
 
 rlBeschleunigung := rpBeschleunigung;
 IF ( l_ts_MKAxisConfig.rAcceleration > REAL#0.0 )
-  AND ( ( rlBeschleunigung <= REAL#0.0 ) OR ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) > l_ts_MKAxisConfig.rAcceleration ) ) THEN
+   AND ( ( rlBeschleunigung <= REAL#0.0 ) OR ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) > l_ts_MKAxisConfig.rAcceleration ) ) THEN
   rlBeschleunigung := l_ts_MKAxisConfig.rAcceleration / cFAKTOR_RAMPEN;
 END_IF
 
 rlVerzoegerung := rpVerzoegerung;
 IF ( l_ts_MKAxisConfig.rDeceleration > REAL#0.0 )
-  AND ( ( rlVerzoegerung <= REAL#0.0 ) OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) > l_ts_MKAxisConfig.rDeceleration ) ) THEN
+   AND ( ( rlVerzoegerung <= REAL#0.0 ) OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) > l_ts_MKAxisConfig.rDeceleration ) ) THEN
   rlVerzoegerung := l_ts_MKAxisConfig.rDeceleration / cFAKTOR_RAMPEN;
 END_IF
 
@@ -172,14 +172,14 @@ rlSimSollGeschwindigkeitAbs := rlSimSollGeschwindigkeitAbs * rlSimOverride;
 
 // Langsamfahrnocken wie in Pruefe_Inputs_Langsamfahrt (Nocken sind Low-aktiv: FALSE = Nocke belegt)
 blNockeInFahrtrichtung := ( NOT udipEingaengeUmrichter.cXG31_2_I_2 AND ( eBewegungsrichtung = TE_Move_Direction.MD_NEGATIV_E ) )
-  OR ( NOT udipEingaengeUmrichter.cXG31_1_I_1 AND ( eBewegungsrichtung = TE_Move_Direction.MD_POSITIV_E ) );
+                          OR ( NOT udipEingaengeUmrichter.cXG31_1_I_1 AND ( eBewegungsrichtung = TE_Move_Direction.MD_POSITIV_E ) );
 blEineLangsamfahrtnockeBelegt := NOT udipEingaengeUmrichter.cXG31_1_I_1 OR NOT udipEingaengeUmrichter.cXG31_2_I_2;
 
 IF NOT bpAktiviereLangsamfahrtNocke OR ( rlGeschwindigkeit <= ( rlSimVelMax * REAL#0.1 ) ) THEN
   bpLangsamfahrenAktiv := FALSE;
 ELSIF bpLangsamfahrenAktiv THEN
   bpLangsamfahrenAktiv := blNockeInFahrtrichtung
-    OR ( ( eBewegungsrichtung = TE_Move_Direction.MD_STANDSTILL_E ) AND blEineLangsamfahrtnockeBelegt );
+                          OR ( ( eBewegungsrichtung = TE_Move_Direction.MD_STANDSTILL_E ) AND blEineLangsamfahrtnockeBelegt );
 ELSE
   // Waehrend einer laufenden Verzoegerung keine neue Langsamfahrt starten
   bpLangsamfahrenAktiv := blNockeInFahrtrichtung AND NOT blSimVerzoegert;
@@ -299,7 +299,7 @@ CASE wpBetriebsart OF
     END_IF
 
     SYNC_AUF_MASTER,
-  INVERTIERTER_SYNC_AUF_MASTER:
+      INVERTIERTER_SYNC_AUF_MASTER:
     blSimSyncAktiv := TRUE;
     IF IsBetweenWORD(wpMaster, 0, 64) AND ( wpMaster <> ppAntriebsInformationen.wAchsID ) THEN
       rlSimZielPosition := pgAntriebe[TO_INT(wpMaster)].rpIstPosition;
@@ -396,8 +396,8 @@ END_IF
 IF blSimIstPositionsmodus THEN
   rlSimDistanzZumZiel := rlSimZielPosition - rpIstPosition;
   IF ( ABS(rlSimDistanzZumZiel) <= REAL#1.0 )
-    OR ( ( rlSimZielPosition >= rlLetzteIstPosition ) AND ( rlSimZielPosition <= rpIstPosition ) )
-    OR ( ( rlSimZielPosition <= rlLetzteIstPosition ) AND ( rlSimZielPosition >= rpIstPosition ) ) THEN
+     OR ( ( rlSimZielPosition >= rlLetzteIstPosition ) AND ( rlSimZielPosition <= rpIstPosition ) )
+     OR ( ( rlSimZielPosition <= rlLetzteIstPosition ) AND ( rlSimZielPosition >= rpIstPosition ) ) THEN
     rpIstPosition := rlSimZielPosition;
     rpIstGeschwindigkeit := REAL#0.0;
     bpDone := TRUE;
@@ -480,24 +480,24 @@ IF ( wpBetriebsart = RESTWEG ) AND blSimRestwegSucheFlanke THEN
 
   IF blSimRestwegFlankeSteigend THEN
     blSimRestwegFlankeGefunden := ( wpRestwegMode.2  AND bRising[eSensoren.Sensor_1] )
-    OR ( wpRestwegMode.3  AND bRising[eSensoren.Sensor_2] )
-    OR ( wpRestwegMode.5  AND bRising[eSensoren.Sensor_3] )
-    OR ( wpRestwegMode.6  AND bRising[eSensoren.Sensor_4] )
-    OR ( wpRestwegMode.7  AND bRising[eSensoren.Sensor_5] )
-    OR ( wpRestwegMode.8  AND bRising[eSensoren.Sensor_6] )
-    OR ( wpRestwegMode.9  AND bRising[eSensoren.Sensor_7] )
-    OR ( wpRestwegMode.10 AND bRising[eSensoren.Sensor_8] )
-    OR ( wpRestwegMode.11 AND bRising[eSensoren.Sensor_9] );
+                                  OR ( wpRestwegMode.3  AND bRising[eSensoren.Sensor_2] )
+                                  OR ( wpRestwegMode.5  AND bRising[eSensoren.Sensor_3] )
+                                  OR ( wpRestwegMode.6  AND bRising[eSensoren.Sensor_4] )
+                                  OR ( wpRestwegMode.7  AND bRising[eSensoren.Sensor_5] )
+                                  OR ( wpRestwegMode.8  AND bRising[eSensoren.Sensor_6] )
+                                  OR ( wpRestwegMode.9  AND bRising[eSensoren.Sensor_7] )
+                                  OR ( wpRestwegMode.10 AND bRising[eSensoren.Sensor_8] )
+                                  OR ( wpRestwegMode.11 AND bRising[eSensoren.Sensor_9] );
   ELSE
     blSimRestwegFlankeGefunden := ( wpRestwegMode.2  AND bFalling[eSensoren.Sensor_1] )
-    OR ( wpRestwegMode.3  AND bFalling[eSensoren.Sensor_2] )
-    OR ( wpRestwegMode.5  AND bFalling[eSensoren.Sensor_3] )
-    OR ( wpRestwegMode.6  AND bFalling[eSensoren.Sensor_4] )
-    OR ( wpRestwegMode.7  AND bFalling[eSensoren.Sensor_5] )
-    OR ( wpRestwegMode.8  AND bFalling[eSensoren.Sensor_6] )
-    OR ( wpRestwegMode.9  AND bFalling[eSensoren.Sensor_7] )
-    OR ( wpRestwegMode.10 AND bFalling[eSensoren.Sensor_8] )
-    OR ( wpRestwegMode.11 AND bFalling[eSensoren.Sensor_9] );
+                                  OR ( wpRestwegMode.3  AND bFalling[eSensoren.Sensor_2] )
+                                  OR ( wpRestwegMode.5  AND bFalling[eSensoren.Sensor_3] )
+                                  OR ( wpRestwegMode.6  AND bFalling[eSensoren.Sensor_4] )
+                                  OR ( wpRestwegMode.7  AND bFalling[eSensoren.Sensor_5] )
+                                  OR ( wpRestwegMode.8  AND bFalling[eSensoren.Sensor_6] )
+                                  OR ( wpRestwegMode.9  AND bFalling[eSensoren.Sensor_7] )
+                                  OR ( wpRestwegMode.10 AND bFalling[eSensoren.Sensor_8] )
+                                  OR ( wpRestwegMode.11 AND bFalling[eSensoren.Sensor_9] );
   END_IF
 
   IF blSimRestwegFlankeGefunden THEN
@@ -622,7 +622,7 @@ bpLS_150F02_230V := TRUE;
 
 IF blSimSyncAktiv AND IsBetweenWORD(wpMaster, 0, 64) THEN
   bpAchseSychron := ( ABS( pgAntriebe[TO_INT(wpMaster)].rpIstPosition - rpIstPosition ) <= REAL#2.0 )
-  AND ( ABS( pgAntriebe[TO_INT(wpMaster)].rpIstGeschwindigkeit - rpIstGeschwindigkeit ) <= REAL#10.0 );
+                    AND ( ABS( pgAntriebe[TO_INT(wpMaster)].rpIstGeschwindigkeit - rpIstGeschwindigkeit ) <= REAL#10.0 );
 ELSE
   bpAchseSychron := FALSE;
 END_IF

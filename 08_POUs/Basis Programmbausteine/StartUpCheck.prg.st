@@ -21,9 +21,9 @@ END_VAR
 FOR i := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
   // wAchsID in den Antriebsinformationen prüfen - niccht doppelt vergeben
   FOR k := cWAND_1 TO cANZAHL_WAENDE DO
-      CheckAchsID(starrShuttleBasisParameter[i].stAntriebsparameter.stGlastransport[k].wAchsID);
-      CheckAchsID(starrShuttleBasisParameter[i].stAntriebsparameter.stGlastransportSlave[k].wAchsID);
-      CheckAchsID(starrShuttleBasisParameter[i].stAntriebsparameter.stWandverstellung[k].wAchsID);
+    CheckAchsID(starrShuttleBasisParameter[i].stAntriebsparameter.stGlastransport[k].wAchsID);
+    CheckAchsID(starrShuttleBasisParameter[i].stAntriebsparameter.stGlastransportSlave[k].wAchsID);
+    CheckAchsID(starrShuttleBasisParameter[i].stAntriebsparameter.stWandverstellung[k].wAchsID);
   END_FOR
   CheckAchsID(starrShuttleBasisParameter[i].stAntriebsparameter.stDrehen.wAchsID);
   CheckAchsID(starrShuttleBasisParameter[i].stAntriebsparameter.stKippen.wAchsID);
@@ -41,9 +41,9 @@ END_FOR
 
 FOR i := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
   FOR k := cWAND_1 TO cANZAHL_WAENDE DO
-      CheckAchsID(starrTransfershuttleBasisParameter[i].stAntriebsparameter.stGlastransport[k].wAchsID);
-      CheckAchsID(starrTransfershuttleBasisParameter[i].stAntriebsparameter.stGlastransportSlave[k].wAchsID);
-      CheckAchsID(starrTransfershuttleBasisParameter[i].stAntriebsparameter.stWandverstellung[k].wAchsID);
+    CheckAchsID(starrTransfershuttleBasisParameter[i].stAntriebsparameter.stGlastransport[k].wAchsID);
+    CheckAchsID(starrTransfershuttleBasisParameter[i].stAntriebsparameter.stGlastransportSlave[k].wAchsID);
+    CheckAchsID(starrTransfershuttleBasisParameter[i].stAntriebsparameter.stWandverstellung[k].wAchsID);
   END_FOR
   CheckAchsID(starrTransfershuttleBasisParameter[i].stAntriebsparameter.stDrehen.wAchsID);
   CheckAchsID(starrTransfershuttleBasisParameter[i].stAntriebsparameter.stKippen.wAchsID);
@@ -61,15 +61,15 @@ END_FOR
 
 FOR i := cERSTE_STATION TO cLETZTE_STATION DO
   FOR k := cWAND_1 TO cANZAHL_WAENDE DO
-      CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stGlastransport[k].wAchsID);
-      CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportSlave[k].wAchsID);
-      IF __ISVALIDREF(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportY) THEN
-        CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportY[k].wAchsID);
-      END_IF
-      IF __ISVALIDREF(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportYSlave) THEN
-        CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportYSlave[k].wAchsID);
-      END_IF
-      CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stWandverstellung[k].wAchsID);
+    CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stGlastransport[k].wAchsID);
+    CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportSlave[k].wAchsID);
+    IF __ISVALIDREF(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportY) THEN
+      CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportY[k].wAchsID);
+    END_IF
+    IF __ISVALIDREF(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportYSlave) THEN
+      CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stGlastransportYSlave[k].wAchsID);
+    END_IF
+    CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stWandverstellung[k].wAchsID);
   END_FOR
   CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stDrehen.wAchsID);
   CheckAchsID(starrStationBasisParameter[i].stAntriebsparameter.stKippen.wAchsID);

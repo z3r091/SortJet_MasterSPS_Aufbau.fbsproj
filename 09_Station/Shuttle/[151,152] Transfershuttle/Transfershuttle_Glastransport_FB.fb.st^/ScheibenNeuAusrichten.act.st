@@ -18,7 +18,7 @@ THEN
      - Starten der Schrittkette 
   *)
   CASE steplScheibenNeuAusrichten OF
-(*SCHEIBEN NEU AUSRICHTEN ==============================*)
+    (*SCHEIBEN NEU AUSRICHTEN ==============================*)
     STEP_0_E:
       bpDone:= FALSE;
       blSchnittstelle_bAnforderungTransportVerbund := FALSE;
@@ -26,7 +26,7 @@ THEN
 
       steplScheibenNeuAusrichten := STEP_20_E;
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_20_E:
       (* ---------------------------------------------------------------------------------------
       //  EINTRANSPORT IM TRANSFERSHUTTLE VERBUND
@@ -37,7 +37,7 @@ THEN
 
       IF ( bpTransfershuttleVerbundAktiv ) THEN
 
-       blSchnittstelle_bAnforderungTransportVerbund := TRUE;
+        blSchnittstelle_bAnforderungTransportVerbund := TRUE;
 
         IF ( stpInTransportVerbund.bBereitZumTransportVerbund ) THEN
           steplScheibenNeuAusrichten := STEP_30_E;
@@ -48,7 +48,7 @@ THEN
 
       END_IF
 
-(*SCHEIBEN NEU AUSRICHTEN ==============================*)
+    (*SCHEIBEN NEU AUSRICHTEN ==============================*)
     STEP_30_E:
       (* Anmerkung:
          - Pneumatik ansteuern
@@ -102,7 +102,7 @@ THEN
  
       END_IF
 
-(*SCHEIBEN NEU AUSRICHTEN ==============================*)
+    (*SCHEIBEN NEU AUSRICHTEN ==============================*)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  STARTEN DER NEU AUSRICHTUNG [POSITIONIERUNG] 
@@ -141,7 +141,7 @@ THEN
 
       steplScheibenNeuAusrichten := STEP_110_E;
 
-(*SCHEIBEN NEU AUSRICHTEN ==============================*)
+    (*SCHEIBEN NEU AUSRICHTEN ==============================*)
     STEP_110_E:
       (* Hinweis:
          - Antrieb verfahren
@@ -167,7 +167,7 @@ THEN
         steplScheibenNeuAusrichten := STEP_800_E;
       END_IF
 
-(*SCHEIBEN NEU AUSRICHTEN ==============================*)
+    (*SCHEIBEN NEU AUSRICHTEN ==============================*)
     STEP_800_E:
       (* Hinweis:
          - Ausgaenge zuruecksetzeb
@@ -182,17 +182,17 @@ THEN
 
       steplScheibenNeuAusrichten := STEP_1000_E;
 
-(*SCHEIBEN NEU AUSRICHTEN ==============================*)
-     STEP_900_E:
-       blSchnittstelle_bAnforderungTransportVerbund := FALSE;
-       bpFehler := TRUE;
+    (*SCHEIBEN NEU AUSRICHTEN ==============================*)
+    STEP_900_E:
+      blSchnittstelle_bAnforderungTransportVerbund := FALSE;
+      bpFehler := TRUE;
 
-(*SCHEIBEN NEU AUSRICHTEN ==============================*)
-     STEP_1000_E:
-       bpDone := TRUE;
+    (*SCHEIBEN NEU AUSRICHTEN ==============================*)
+    STEP_1000_E:
+      bpDone := TRUE;
 
-(*SCHEIBEN NEU AUSRICHTEN ==============================*)
- END_CASE
+  (*SCHEIBEN NEU AUSRICHTEN ==============================*)
+  END_CASE
 ELSE
 
   IF ( steplScheibenNeuAusrichten > STEP_0_E ) THEN

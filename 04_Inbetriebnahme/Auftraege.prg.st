@@ -282,8 +282,8 @@ IF ( bgInbetriebnahmeAblaeufe ) THEN
     tMmi2SpsInfo.rTransferposition1    := rlInbetriebnahmeShuttle_TransferStationPosition_1;
     tMmi2SpsInfo.rTransferposition2    := rlInbetriebnahmeShuttle_TransferStationPosition_2;
     tMmi2SpsInfo.wTransferwand         := wlInbetriebnahmeShuttle_TransferWand;
-  tMmi2SpsInfo.wAuftragsTyp.9        := bgStartAufgekippt;
-  tMmi2SpsInfo.wAuftragsTyp.11       := bgEndeAufgekippt;
+    tMmi2SpsInfo.wAuftragsTyp.9        := bgStartAufgekippt;
+    tMmi2SpsInfo.wAuftragsTyp.11       := bgEndeAufgekippt;
 
     (* Hinweis:
        - Auftragsinformation Ein / Austransport

@@ -8,8 +8,8 @@
 {attribute 'excludefrombuild'}
 FUNCTION VisuText : STRING
 VAR_INPUT
- wpMmiNummer : WORD;
- wAuftragsnr : WORD;
+  wpMmiNummer : WORD;
+  wAuftragsnr : WORD;
 END_VAR
 VAR
   str : STRING;
@@ -27,25 +27,25 @@ IF wpMmiNummer < 200 THEN
   CASE wAuftragsnr OF
 
     eStation_Eintransport:
-     VisuText := 'Eintransport';
+      VisuText := 'Eintransport';
 
     eStation_Austransport:
-     VisuText := 'Austransport';
+      VisuText := 'Austransport';
 
     eStation_Vortransport:
-     VisuText := 'Vortransport';
+      VisuText := 'Vortransport';
 
     eStation_Durchtransport:
-     VisuText := 'Durchtransport';
+      VisuText := 'Durchtransport';
 
     eStation_Positionierung:
-     VisuText := 'Positionierung';
+      VisuText := 'Positionierung';
 
     eStation_Grundstellung:
-     VisuText := 'Grundstellung';
+      VisuText := 'Grundstellung';
 
     eStation_Vorabpositionierung:
-     VisuText := 'Vorab-Positionierung';
+      VisuText := 'Vorab-Positionierung';
 
   END_CASE
 
@@ -62,10 +62,10 @@ ELSE
     eStation_Messkopplung:
       VisuText := 'Messkopplung';
 
-     eStation_Warte_Auf_Austransport:
+    eStation_Warte_Auf_Austransport:
       VisuText := 'Warte auf Austransport';
 
-     eStation_Warte_Auf_Eintransport:
+    eStation_Warte_Auf_Eintransport:
       VisuText := 'Warte auf Eintransport';
 
     eStation_Belegt:
@@ -113,10 +113,10 @@ ELSE
     eStation_Intern_Glaseintransport_DefaultGlas:
       VisuText := 'Int. Eintransport MinGlas';
 
-     eStation_Intern_Glaseintransport_GrossesGlas:
+    eStation_Intern_Glaseintransport_GrossesGlas:
       VisuText := 'Int. Eintransport MaxGlas';
 
-     eStation_Warte_Auf_Transportkopplung:
+    eStation_Warte_Auf_Transportkopplung:
       VisuText := 'Warte auf Transportkopplung';
 
     eStation_Intern_Kopplung_Nach_SystemCheck:

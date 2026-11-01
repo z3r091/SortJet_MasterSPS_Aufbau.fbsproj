@@ -122,7 +122,7 @@ CASE( tSpsMessage.wAuftrag )OF
   SB0_MMI_SetHandfunktion:
     FOR wlIndex := 0 TO (tSpsMessage.wLaenge-1) BY 6 DO
       
-    IF ( HMI_GetWORD(ADR(tSpsMessage.awDaten[0])) >= cERSTE_FAECHERWAGENSTATIONS_NR ) THEN
+      IF ( HMI_GetWORD(ADR(tSpsMessage.awDaten[0])) >= cERSTE_FAECHERWAGENSTATIONS_NR ) THEN
         adwgHandfunktionenFaecherwagenStationen[HMI_GetWORD(ADR(tSpsMessage.awDaten[wlIndex/2]))] := HMI_GetDWORD(ADR(tSpsMessage.awDaten[( (wlIndex)/2 )+1]));
       ELSE
         adwgHandfunktionenStationen[HMI_GetWORD(ADR(tSpsMessage.awDaten[wlIndex/2]))] := HMI_GetDWORD(ADR(tSpsMessage.awDaten[( (wlIndex)/2 )+1]));
@@ -176,13 +176,13 @@ CASE( tSpsMessage.wAuftrag )OF
   // MSG 40
   // Anfrage vom MMI nach dem Status einer EINZELNEN Fächerwagenstation => belegt, Muting OK, RFID-Nr. 
   SB0_MMI_GETSTATUSRACKSTATION:
-   M_SB0_MMI_GETSTATUSRACKSTATION := TRUE;
+    M_SB0_MMI_GETSTATUSRACKSTATION := TRUE;
     tMmi2SpsInfo.wSps2FaecherwagenStationNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[0])); (* Stationsnummer wo angefragt wird *)
   (* - Freigabe eines mittles AGV eingeschleusten Wagen das Tor zu öffnen *)
 
   // MSG 41
   SB0_MMI_DOCKRACK:
-   M_SB0_MMI_DOCKRACK := TRUE;
+    M_SB0_MMI_DOCKRACK := TRUE;
     tMmi2SpsInfo.wSps2FaecherwagenStationNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[0])); 
 
 
@@ -250,32 +250,32 @@ CASE( tSpsMessage.wAuftrag )OF
 
   // MSG 68
   // DATEN FÜR DEN SYSTEMCHECK
-   SB0_MMI_SYSTEMCHECKSTATION:
-     M_SB0_MMI_SYSTEMCHECKSTATION := TRUE;
-     tMmi2SpsInfo.wSystemCheckStationMmiNummer          := HMI_GetWORD(ADR(tSpsMessage.awDaten[0])); (* Stationsnummer *)
-     tMmi2SpsInfo.wSystemCheckStationScheibenanzahl     := HMI_GetWORD(ADR(tSpsMessage.awDaten[1])); (* Scheibenanzahl [Gibt an wieviele Scheiben auf der Station sind] *)
-     tMmi2SpsInfo.wSystemCheckStationZielstation        := HMI_GetWORD(ADR(tSpsMessage.awDaten[2])); (* Zielstation (lt. MMI) *)
-     tMmi2SpsInfo.wSystemCheckStationLetzteScheibe      := HMI_GetWORD(ADR(tSpsMessage.awDaten[3])); (* Die Station ist bei gesetztem Bit- voll beladen *)
-     tMmi2SpsInfo.wSystemCheckStationBeschichtungsSeite := HMI_GetWORD(ADR(tSpsMessage.awDaten[4])); (* Beschichtungsseite  *)
-     tMmi2SpsInfo.wSystemCheckStationTyp                := HMI_GetWORD(ADR(tSpsMessage.awDaten[5])); (* Hinweis: Kann benutzt werden fuer spezielle Bedingungen -> TeutoGlas Ausrichttypen fuer die Station 211 [Ausrichtfoerderer] *)
-     tMmi2SpsInfo.wSystemCheckStationSlot               := HMI_GetWORD(ADR(tSpsMessage.awDaten[6])); (* Wandnr *)    
-     tMmi2SpsInfo.rSystemCheckStationSollPosition       := HMI_GetREAL(ADR(tSpsMessage.awDaten[7])); (* Hinweis: Gibt Auskunft ueber die Position an der z.B. ein Antrieb gestanden hat / stehen soll  *)
-     tMmi2SpsInfo.rSystemCheckStationScheibenlaenge     := HMI_GetREAL(ADR(tSpsMessage.awDaten[9])); (*** NEU Startposition als ABS. Position **)
-     tMmi2SpsInfo.wSytstemCheckStationModellaktiv       := HMI_GetWORD(ADR(tSpsMessage.awDaten[11])); (* Hinweis: die evtl. auf der Station/Shuttle befindliche Scheibe ist ein Modell *)
-     tMmi2SpsInfo.rSystemCheckModellVersatzVorne        := HMI_GetREAL(ADR(tSpsMessage.awDaten[12])); (* Modellversatz *)
-     tMmi2SpsInfo.rSystemCheckModellVersatzHinten       := HMI_GetREAL(ADR(tSpsMessage.awDaten[14])); (* Modellversatz *)
-     tMmi2SpsInfo.wSystemCheckScheibenDicke             := HMI_GetWORD(ADR(tSpsMessage.awDaten[16])); (* Glasdicke ist binär, da für mehrere Wände die Dicke mit gegeben werden muss. Glas bis 13mm = 0 / Glasdicke > 13mm = 1 *)
-     tMmi2SpsInfo.rSystemcheckGlasGewicht               := HMI_GetREAL(ADR(tSpsMessage.awDaten[18])); (* Glasgewicht, errechnet vom MMI *)
+  SB0_MMI_SYSTEMCHECKSTATION:
+    M_SB0_MMI_SYSTEMCHECKSTATION := TRUE;
+    tMmi2SpsInfo.wSystemCheckStationMmiNummer          := HMI_GetWORD(ADR(tSpsMessage.awDaten[0])); (* Stationsnummer *)
+    tMmi2SpsInfo.wSystemCheckStationScheibenanzahl     := HMI_GetWORD(ADR(tSpsMessage.awDaten[1])); (* Scheibenanzahl [Gibt an wieviele Scheiben auf der Station sind] *)
+    tMmi2SpsInfo.wSystemCheckStationZielstation        := HMI_GetWORD(ADR(tSpsMessage.awDaten[2])); (* Zielstation (lt. MMI) *)
+    tMmi2SpsInfo.wSystemCheckStationLetzteScheibe      := HMI_GetWORD(ADR(tSpsMessage.awDaten[3])); (* Die Station ist bei gesetztem Bit- voll beladen *)
+    tMmi2SpsInfo.wSystemCheckStationBeschichtungsSeite := HMI_GetWORD(ADR(tSpsMessage.awDaten[4])); (* Beschichtungsseite  *)
+    tMmi2SpsInfo.wSystemCheckStationTyp                := HMI_GetWORD(ADR(tSpsMessage.awDaten[5])); (* Hinweis: Kann benutzt werden fuer spezielle Bedingungen -> TeutoGlas Ausrichttypen fuer die Station 211 [Ausrichtfoerderer] *)
+    tMmi2SpsInfo.wSystemCheckStationSlot               := HMI_GetWORD(ADR(tSpsMessage.awDaten[6])); (* Wandnr *)    
+    tMmi2SpsInfo.rSystemCheckStationSollPosition       := HMI_GetREAL(ADR(tSpsMessage.awDaten[7])); (* Hinweis: Gibt Auskunft ueber die Position an der z.B. ein Antrieb gestanden hat / stehen soll  *)
+    tMmi2SpsInfo.rSystemCheckStationScheibenlaenge     := HMI_GetREAL(ADR(tSpsMessage.awDaten[9])); (*** NEU Startposition als ABS. Position **)
+    tMmi2SpsInfo.wSytstemCheckStationModellaktiv       := HMI_GetWORD(ADR(tSpsMessage.awDaten[11])); (* Hinweis: die evtl. auf der Station/Shuttle befindliche Scheibe ist ein Modell *)
+    tMmi2SpsInfo.rSystemCheckModellVersatzVorne        := HMI_GetREAL(ADR(tSpsMessage.awDaten[12])); (* Modellversatz *)
+    tMmi2SpsInfo.rSystemCheckModellVersatzHinten       := HMI_GetREAL(ADR(tSpsMessage.awDaten[14])); (* Modellversatz *)
+    tMmi2SpsInfo.wSystemCheckScheibenDicke             := HMI_GetWORD(ADR(tSpsMessage.awDaten[16])); (* Glasdicke ist binär, da für mehrere Wände die Dicke mit gegeben werden muss. Glas bis 13mm = 0 / Glasdicke > 13mm = 1 *)
+    tMmi2SpsInfo.rSystemcheckGlasGewicht               := HMI_GetREAL(ADR(tSpsMessage.awDaten[18])); (* Glasgewicht, errechnet vom MMI *)
  
-     // Die Wandnummer wird Bitcodiert übergeben. In der SPS wird sie aber Dezimal benötigt
+    // Die Wandnummer wird Bitcodiert übergeben. In der SPS wird sie aber Dezimal benötigt
     // Wand 3
-     IF tMmi2SpsInfo.wSystemCheckStationSlot = 4 THEN
-       tMmi2SpsInfo.wSystemCheckStationSlot := 3;
-     END_IF
-     // Wand 4
-     IF tMmi2SpsInfo.wSystemCheckStationSlot = 8 THEN
-       tMmi2SpsInfo.wSystemCheckStationSlot := 4;
-     END_IF
+    IF tMmi2SpsInfo.wSystemCheckStationSlot = 4 THEN
+      tMmi2SpsInfo.wSystemCheckStationSlot := 3;
+    END_IF
+    // Wand 4
+    IF tMmi2SpsInfo.wSystemCheckStationSlot = 8 THEN
+      tMmi2SpsInfo.wSystemCheckStationSlot := 4;
+    END_IF
 
 
   // MSG 69
@@ -314,22 +314,22 @@ CASE( tSpsMessage.wAuftrag )OF
     M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE := TRUE;
 
 
-   // MSG 72
-   // Auftragsinformationen waehrend der Querfahrt uebertragen
-   SB0_MMI_SHUTTLE_INFORMATION:
-     tMmi2SpsInfo.wAuftrag_ShuttleNummer   := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
-     tMmi2SpsInfo.rAuftrag_Laenge          := HMI_GetReal(ADR(tSpsMessage.awDaten[1]));
-     tMmi2SpsInfo.wAuftrag_TranferStation  := HMI_GetWORD(ADR(tSpsMessage.awDaten[3]));
-     tMmi2SpsInfo.wAuftrag_Modus           := HMI_GetWORD(ADR(tSpsMessage.awDaten[4]));
-     tMmi2SpsInfo.wAuftrag_ShuttleWand     := HMI_GetWORD(ADR(tSpsMessage.awDaten[5]));
-     tMmi2SpsInfo.rAuftrag_Dicke           := WORD_TO_REAL(HMI_GetWORD(ADR(tSpsMessage.awDaten[6])));
-     tMmi2SpsInfo.wAuftrag_TransferWand    := HMI_GetWORD(ADR(tSpsMessage.awDaten[7]));
+  // MSG 72
+  // Auftragsinformationen waehrend der Querfahrt uebertragen
+  SB0_MMI_SHUTTLE_INFORMATION:
+    tMmi2SpsInfo.wAuftrag_ShuttleNummer   := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
+    tMmi2SpsInfo.rAuftrag_Laenge          := HMI_GetReal(ADR(tSpsMessage.awDaten[1]));
+    tMmi2SpsInfo.wAuftrag_TranferStation  := HMI_GetWORD(ADR(tSpsMessage.awDaten[3]));
+    tMmi2SpsInfo.wAuftrag_Modus           := HMI_GetWORD(ADR(tSpsMessage.awDaten[4]));
+    tMmi2SpsInfo.wAuftrag_ShuttleWand     := HMI_GetWORD(ADR(tSpsMessage.awDaten[5]));
+    tMmi2SpsInfo.rAuftrag_Dicke           := WORD_TO_REAL(HMI_GetWORD(ADR(tSpsMessage.awDaten[6])));
+    tMmi2SpsInfo.wAuftrag_TransferWand    := HMI_GetWORD(ADR(tSpsMessage.awDaten[7]));
     // tMmi2SpsInfo.rAuftrag_Dicke           := HMI_GetReal(ADR(tSpsMessage.awDaten[8]));
 
     M_SB0_MMI_SHUTTLE_INFORMATION := TRUE;
 
 
-   // MSG 76
+  // MSG 76
   (* Hinweis:
      - Speicherfachvalidierung mittels Transfershuttle wenn ein Sensor von diesem nicht frei gefahren werden konnte
        bzw. der Einlauf- oder Aulauf- Sensor belegt wurde. Aktin ist dem SystemCheck vorgelagert (Anlage muss ich im Hand-Modus
@@ -343,12 +343,12 @@ CASE( tSpsMessage.wAuftrag )OF
     tMmi2SpsInfo.rTransfershuttle_SollPosition1 := HMI_GetReal(ADR(tSpsMessage.awDaten[3])); (* HINWEIS: Soll-Position des Transfershuttles *)
     tMmi2SpsInfo.rTransfershuttle_SollPosition2 := HMI_GetReal(ADR(tSpsMessage.awDaten[5])); (* HINWEIS: Soll-Position des Transfershuttles *)
    
-     M_SB0_MMI_TRANSFERSHUTTLECHECK := TRUE;
+    M_SB0_MMI_TRANSFERSHUTTLECHECK := TRUE;
 
-  // MSG 77/100
-  // Testen der Transfershuttlepositionen
-  SB0_MMI_TRANSFERSHUTTLEBUFFERSLOTCHECK,
-  SB0_MMI_LIFTTRANSFERSHUTTLE:
+    // MSG 77/100
+    // Testen der Transfershuttlepositionen
+    SB0_MMI_TRANSFERSHUTTLEBUFFERSLOTCHECK,
+      SB0_MMI_LIFTTRANSFERSHUTTLE:
     IF ( NOT FachkontrolleTransfershuttle.bpStarteFachkontrolle ) THEN
       FachkontrolleTransfershuttle.bpStarteFachkontrolle := TRUE;
       FachkontrolleTransfershuttle.wpStationNumber       := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));;
@@ -392,12 +392,12 @@ CASE( tSpsMessage.wAuftrag )OF
     tMmi2SpsInfo.wNachrichtenAnzahl := HMI_GetWORD(ADR(tSpsMessage.awDaten[15]));
     tMmi2SpsInfo.wNachrichtenIndex  := HMI_GetWORD(ADR(tSpsMessage.awDaten[28]));
  
-     IF    ( tMmi2SpsInfo.wStationsNr >= cERSTE_STATION )
-     THEN
-        M_SB0_MMI_SHEET_ORDER_STATION := TRUE;
-     ELSE
-        M_SB0_MMI_SHEET_ORDER_SHUTTLE := TRUE;
-     END_IF
+    IF    ( tMmi2SpsInfo.wStationsNr >= cERSTE_STATION )
+    THEN
+      M_SB0_MMI_SHEET_ORDER_STATION := TRUE;
+    ELSE
+      M_SB0_MMI_SHEET_ORDER_SHUTTLE := TRUE;
+    END_IF
 
 
   // MSG 102
@@ -429,10 +429,10 @@ CASE( tSpsMessage.wAuftrag )OF
     tMmi2SpsInfo.wModusAuswahl := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
     M_SB0_MMI_ANFORDERUNG_PUFFER_EINFAHREN := TRUE;
     
-ELSE
+  ELSE
 
- MsgInterpret := FALSE;
- RETURN;
+    MsgInterpret := FALSE;
+    RETURN;
 
 END_CASE
 

@@ -84,54 +84,54 @@ ELSE (* Handbetrieb aktiv *)
 END_IF
 
 CASE wlModus OF
-(*======================================================*)
+  (*======================================================*)
   0 : (* Faliure active *)
-     out_bAmpelLeuchteRot    := blFlashbit;
-     out_bAmpelLeuchteGelb   := NOT out_bAmpelLeuchteRot;
-     out_bAmpelLeuchteGruen  := FALSE;
+    out_bAmpelLeuchteRot    := blFlashbit;
+    out_bAmpelLeuchteGelb   := NOT out_bAmpelLeuchteRot;
+    out_bAmpelLeuchteGruen  := FALSE;
 
-(*======================================================*)
+  (*======================================================*)
   1:  (* Service Mode *)
     out_bAmpelLeuchteRot    := FALSE;
     out_bAmpelLeuchteGelb   := TRUE;
     out_bAmpelLeuchteGruen  := FALSE;
 
-(*======================================================*)
+  (*======================================================*)
   2:  (* Automatic Running *)
     out_bAmpelLeuchteRot    := FALSE;
     out_bAmpelLeuchteGelb   := FALSE;
     out_bAmpelLeuchteGruen  := TRUE;
 
-(*======================================================*)
+  (*======================================================*)
   3:  (* Emergency Stop Active *)
     out_bAmpelLeuchteRot    := TRUE;
     out_bAmpelLeuchteGelb   := FALSE;
     out_bAmpelLeuchteGruen  := FALSE;
 
-(*======================================================*)
+  (*======================================================*)
   4:   (* Manual Mode *)
     out_bAmpelLeuchteRot    := FALSE;
     out_bAmpelLeuchteGelb   := TRUE;
     out_bAmpelLeuchteGruen  := FALSE;
 
-(*======================================================*)
+  (*======================================================*)
   5: (* Initialisation Mode *)
     out_bAmpelLeuchteRot    := ((wlInitAmpel AND Maske_Bit_2)<>0);
     out_bAmpelLeuchteGelb   :=((wlInitAmpel AND Maske_Bit_1)<>0);
     out_bAmpelLeuchteGruen  :=((wlInitAmpel AND Maske_Bit_0)<>0);
 
-(*======================================================*)
+  (*======================================================*)
   6:   (* Check Routine wurde gestartet *)
     out_bAmpelLeuchteRot    := FALSE;
     out_bAmpelLeuchteGelb   := FALSE;
     out_bAmpelLeuchteGruen  := blFlashbit;
 
-(*======================================================*)
+  (*======================================================*)
   7:   (* VisuAuto aktiv *)
     out_bAmpelLeuchteRot    := FALSE;
     out_bAmpelLeuchteGelb   := NOT blFlashbit;
     out_bAmpelLeuchteGruen  := TRUE;
-(*======================================================*)
+  (*======================================================*)
   8:   (* Betriebsstoptaster betätigt *)
     out_bAmpelLeuchteRot    := FALSE;
     out_bAmpelLeuchteGelb   := blFlashbit;
@@ -154,7 +154,7 @@ IF ( wlModus = 5) THEN
   END_IF;
 
 ELSE
- wlInitAmpel := 0;
+  wlInitAmpel := 0;
 
 END_IF
 END_FUNCTION_BLOCK

@@ -10,10 +10,10 @@ ACTION Handfunktionen
 (* AKTION: HANDFUNKTIONEN *)
 (***************************************************************************************************)
 IF (  NOT bpAutomatikAktiv
-  AND NOT bpCheck
-  AND NOT bpReset
-  AND NOT bpReferenz
-  AND NOT bgVisuAntriebeVerfahrenAktiv )
+     AND NOT bpCheck
+     AND NOT bpReset
+     AND NOT bpReferenz
+     AND NOT bgVisuAntriebeVerfahrenAktiv )
 THEN
 
   (* Handplus oder Handminus den Glastransport verfahren
@@ -25,19 +25,19 @@ THEN
   Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;
 
   IF   bpHandfahrenPlus
-   AND NOT bpHandfahrenMinus
-   AND blAntriebsKopplungAktiv
+       AND NOT bpHandfahrenMinus
+       AND blAntriebsKopplungAktiv
   THEN
     Antrieb.wpBetriebsart := HANDPLUS;
 
   ELSIF bpHandfahrenMinus
-   AND NOT bpHandfahrenPlus
-   AND blAntriebsKopplungAktiv
+        AND NOT bpHandfahrenPlus
+        AND blAntriebsKopplungAktiv
   THEN
     Antrieb.wpBetriebsart := HANDMINUS;
 
   ELSIF ( NOT bpHandfahrenMinus AND NOT bpHandfahrenPlus ) THEN
-   Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
   END_IF
 

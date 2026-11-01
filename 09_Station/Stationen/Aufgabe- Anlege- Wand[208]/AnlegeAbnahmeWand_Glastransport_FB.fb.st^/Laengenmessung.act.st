@@ -10,7 +10,7 @@ ACTION Laengenmessung
 (* AKTION LÄNGENVERMESSUNG  *)
 (***************************************************************************************************)
 IF ( bpGlaslaengenmessung
-  AND bpAutomatikAktiv)
+     AND bpAutomatikAktiv)
 THEN
 
   // Ausnahmesituation
@@ -21,7 +21,7 @@ THEN
   END_IF
 
   CASE steplGlaslaengenMessung OF
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen initialisieren
@@ -41,19 +41,19 @@ THEN
 
       steplGlaslaengenMessung := STEP_10_E;
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_10_E:
       (* Hinweis:
          - Referenz
       *)
       Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
       IF ( Antrieb.bpDone ) THEN
-         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-         steplGlaslaengenMessung := STEP_30_E;
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplGlaslaengenMessung := STEP_30_E;
       END_IF
 
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_30_E:
       (* Hinweis:
          - Scheibenmessung starten
@@ -77,7 +77,7 @@ THEN
         steplGlaslaengenMessung := STEP_900_E;
       END_IF
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_40_E:
       (* Hinweis:
          - Sobald der Antrieb nicht mehr laeuft Vorstop- Sensor pruefen
@@ -99,13 +99,13 @@ THEN
 
       END_IF
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_100_E:
       (* Hinweis:
          - Auslaufsensor freifahren
       *)
       IF (  NOT Antrieb.bpAntrieblaeuft
-        AND NOT toflAuslaufsensor.Q )
+           AND NOT toflAuslaufsensor.Q )
       THEN
         bpScheibeFaehrtUeberAuslauf := FALSE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -136,13 +136,13 @@ THEN
         steplGlaslaengenMessung := STEP_900_E;
       END_IF
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_200_E:
       (* Hinweis:
          - Auf Messergebis warten
       *)
       IF ( bpScheibeQuittiert
-        OR bpScheibeFreigegeben )
+           OR bpScheibeFreigegeben )
       THEN
         bpAnforderungMessergebnis := FALSE;
         steplGlaslaengenMessung := STEP_800_E;
@@ -153,7 +153,7 @@ THEN
         steplGlaslaengenMessung := STEP_210_E;
       END_IF
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_210_E:
       (* ---------------------------------------------------------------------------------------
       //  KNEBEL SCHEIBE ZURUECK FAHREN
@@ -175,28 +175,28 @@ THEN
       END_IF
 
       IF ( bpScheibeQuittiert
-        AND NOT bpSensorAuslaufVorab )
+           AND NOT bpSensorAuslaufVorab )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplGlaslaengenMessung := STEP_800_E;
       END_IF
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_800_E:
-       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
-         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-         steplGlaslaengenMessung := STEP_1000_E;
-       END_IF
+      IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplGlaslaengenMessung := STEP_1000_E;
+      END_IF
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* GLASLAENGENMESSUNG =============================*)
+    (* GLASLAENGENMESSUNG =============================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(* GLASLAENGENMESSUNG =============================*)
+  (* GLASLAENGENMESSUNG =============================*)
   END_CASE
 ELSE
 

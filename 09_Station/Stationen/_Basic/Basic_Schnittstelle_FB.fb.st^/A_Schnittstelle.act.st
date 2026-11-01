@@ -30,8 +30,8 @@ BasisStationsParameter.OutGlasTransport[cWAND_1].bAutomatikBetriebAktiv     REF=
 //     => Automatik ativ
 //     => Kein Fehler aktiv
 out_bSenderBereit := blSenderBereit :=         BasisStationsParameter.bAutomatik
-                                       AND NOT BasisStationsParameter.bFehler
-                                       AND NOT BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1].bFehler;
+                     AND NOT BasisStationsParameter.bFehler
+                     AND NOT BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1].bFehler;
 
 out_bSenderGlasBereit := blSenderGlasBereit (*OR bgVisu_Schnittstelle_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]*);
 

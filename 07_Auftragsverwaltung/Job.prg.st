@@ -39,11 +39,11 @@ VAR
   ftlNotHaltAusgeloest      : F_TRIG;
   rtlFehlerAutomatikkreis   : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF R_TRIG;
 
- // Check Betriebsart
- i        : WORD;
- mask     : WORD;
- newValue : BOOL;
- oldValue : BOOL;
+  // Check Betriebsart
+  i        : WORD;
+  mask     : WORD;
+  newValue : BOOL;
+  oldValue : BOOL;
 
 END_VAR
 (***************************************************************************************************)
@@ -53,7 +53,7 @@ END_VAR
    - Automatikkreise stoppen sollte Notaus
 *)
 IF ( NOT NotHalt.bpNotHaltOK AND NOT bgSicherheitstechnikBruecken )
-  OR ( NOT bgMMIOK AND NOT bgMMIBruecken )
+   OR ( NOT bgMMIOK AND NOT bgMMIBruecken )
 THEN
   FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
     M_Automatik_Aktiv[wlIndex]   := FALSE;

@@ -17,10 +17,10 @@ Glastransport( stStationsNummern                              := BasisStationsPa
                InGlasTransportNachfolger                      := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1],
                stpInTransportVerbund                          := stpInTransportVerbund,
                bpHand                                         :=  (  NOT BasisStationsParameter.bAutomatik
-                                                                 AND NOT BasisStationsParameter.bReset
-                                                                 AND NOT BasisStationsParameter.bCheck
-                                                                 AND NOT BasisStationsParameter.bReferenz
-                                                                 AND NOT bpStarteSpeicherfachValidierung ),
+                                                                    AND NOT BasisStationsParameter.bReset
+                                                                    AND NOT BasisStationsParameter.bCheck
+                                                                    AND NOT BasisStationsParameter.bReferenz
+                                                                    AND NOT bpStarteSpeicherfachValidierung ),
                bpShuttleDeaktivieren                            := BasisStationsParameter.stMKs.bDeaktivieren,
                blSensorGlastransportOben                        := in_bSensorShuttleOben,
                blSensorGlastransportUnten                       := in_bSensorShuttleUnten,
@@ -69,14 +69,14 @@ END_IF
 
 // Querfahrt
 Querfahrt(        stStationsNummern   := BasisStationsParameter.stMKs.stStationsNummern,
-                  bpAutomatikAktiv    := BasisStationsParameter.bAutomatik,
-                  bpFreigabe          :=   ( BasisStationsParameter.bFreigabe
-                                         AND abgVerfahrfreigabeShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-                                         AND blShuttleKannSicherVerfahrenWerden ),
-                  bpVerfahrFreigabe   :=  blShuttleKannSicherVerfahrenWerden
-                                         AND Glastransport.bpBereitZumVerfahren 
-                                         AND ( NOT BasisStationsParameter.stMKs.stStationsOptionen.stTransfershuttle.bTransfershuttleIstVerfahrbarerSpeicher
-                                         OR  ( NOT Glastransport.InGlasTransportNachfolger.bEinlaufsensor AND NOT Glastransport.InGlasTransportVorgaenger.bAuslaufsensor)));
+           bpAutomatikAktiv    := BasisStationsParameter.bAutomatik,
+           bpFreigabe          :=   ( BasisStationsParameter.bFreigabe
+                                      AND abgVerfahrfreigabeShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+                                      AND blShuttleKannSicherVerfahrenWerden ),
+           bpVerfahrFreigabe   :=  blShuttleKannSicherVerfahrenWerden
+           AND Glastransport.bpBereitZumVerfahren 
+           AND ( NOT BasisStationsParameter.stMKs.stStationsOptionen.stTransfershuttle.bTransfershuttleIstVerfahrbarerSpeicher
+                 OR  ( NOT Glastransport.InGlasTransportNachfolger.bEinlaufsensor AND NOT Glastransport.InGlasTransportVorgaenger.bAuslaufsensor)));
 
 //Zentralschmierung
 Zentralschmierung( stStationsNummern           := BasisStationsParameter.stMKs.stStationsNummern,

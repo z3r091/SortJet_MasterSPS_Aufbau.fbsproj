@@ -42,7 +42,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
   
 
   CASE steplGlashoehenmessung OF
-(*HÖHENMESSUNG ==================================*)
+    (*HÖHENMESSUNG ==================================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen initalisieren
@@ -60,7 +60,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         steplGlashoehenmessung := STEP_20_E;
       END_IF
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_10_E:
       (* Hinweis:
       *)
@@ -69,7 +69,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         steplGlashoehenmessung := STEP_20_E;
       END_IF
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_20_E:
       (* Hinweis:
          - Für die Steuerschrittkette müssen wir einmal kurz in eAuftragAktiv wechseln bevor
@@ -81,26 +81,26 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         steplGlashoehenmessung := STEP_800_E;
       END_IF
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_100_E:
 
       (* Hinweis:
          - Je nach gesetzten Modi aus dem Anlegen/Eintransport wird nun entsprechend die Höhe gemessen
       *)
-     CASE epTypeHoehenmessung OF
+      CASE epTypeHoehenmessung OF
 
-       Modus_Positionieren_Auf_Oberkante_2_Sensoren:
-         steplGlashoehenmessung := STEP_200_E;
+        Modus_Positionieren_Auf_Oberkante_2_Sensoren:
+          steplGlashoehenmessung := STEP_200_E;
 
-       Modus_Vermessen_Oberkante_1_Sensor:
-         steplGlashoehenmessung := STEP_400_E;
+        Modus_Vermessen_Oberkante_1_Sensor:
+          steplGlashoehenmessung := STEP_400_E;
 
-       Modus_Vermessen_OberUndUnterkante_2_Sensoren:
-         steplGlashoehenmessung := STEP_600_E;
+        Modus_Vermessen_OberUndUnterkante_2_Sensoren:
+          steplGlashoehenmessung := STEP_600_E;
 
-     END_CASE
+      END_CASE
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_200_E:
       (* Hinweis:
          - Messachse nochmal auf Position fahren
@@ -114,7 +114,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
 
       steplGlashoehenmessung := STEP_210_E;
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_210_E:
       (* Hinweis:
          - Messachse nochmal auf Position fahren
@@ -129,95 +129,95 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
       END_IF
 
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_300_E:
 
       (* Hinweis:
          - Auswertung der Sensorik
       *)
       IF Messachse.Antrieb.rpMaxPosition >= ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe + Messachse.ppParameterBaustein.rKorrekturOffset ) THEN
-      CASE Messachse.epGlashoehenTyp OF
+        CASE Messachse.epGlashoehenTyp OF
 
-        eGlasHoeheOK:
-          steplGlashoehenmessung := STEP_800_E;
+          eGlasHoeheOK:
+            steplGlashoehenmessung := STEP_800_E;
 
-        eGlasZuHoch:
-          BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
-          SpsWarnung( eFehler_Station,
-                      cMELDUNG_MESSUNG_SCHEIBE_ZU_HOCH,
-                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                      BasisStationsParameter.awFehlerInformationen );
+          eGlasZuHoch:
+            BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
+            SpsWarnung( eFehler_Station,
+                        cMELDUNG_MESSUNG_SCHEIBE_ZU_HOCH,
+                        BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                        BasisStationsParameter.awFehlerInformationen );
 
-          BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
-          steplGlashoehenmessung := STEP_1000_E;
+            BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
+            steplGlashoehenmessung := STEP_1000_E;
 
-        eGlasZuNiedrig:
-          BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
-          SpsWarnung( eFehler_Station,
-                      cMELDUNG_MESSUNG_SCHEIBE_ZU_NIEDRIG,
-                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                      BasisStationsParameter.awFehlerInformationen );
+          eGlasZuNiedrig:
+            BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
+            SpsWarnung( eFehler_Station,
+                        cMELDUNG_MESSUNG_SCHEIBE_ZU_NIEDRIG,
+                        BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                        BasisStationsParameter.awFehlerInformationen );
 
-          BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
-          steplGlashoehenmessung := STEP_1000_E;
+            BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
+            steplGlashoehenmessung := STEP_1000_E;
 
-      END_CASE
-    ELSE
+        END_CASE
+      ELSE
         steplGlashoehenmessung := STEP_800_E;
-    END_IF
+      END_IF
 
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_310_E:
 
       (* Hinweis:
          - Auswertung der Sensorik
       *)
       IF Messachse.Antrieb.rpMaxPosition >= ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe + Messachse.ppParameterBaustein.rKorrekturOffset ) THEN
-      CASE Messachse.epGlashoehenTyp OF
+        CASE Messachse.epGlashoehenTyp OF
 
-        eGlasHoeheOK:
-          steplGlashoehenmessung := STEP_800_E;
+          eGlasHoeheOK:
+            steplGlashoehenmessung := STEP_800_E;
 
-        eGlasZuHoch:
-          BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
-          SpsWarnung( eFehler_Station,
-                      cMELDUNG_MESSUNG_SCHEIBE_ZU_HOCH,
-                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                      BasisStationsParameter.awFehlerInformationen );
+          eGlasZuHoch:
+            BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
+            SpsWarnung( eFehler_Station,
+                        cMELDUNG_MESSUNG_SCHEIBE_ZU_HOCH,
+                        BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                        BasisStationsParameter.awFehlerInformationen );
 
-          steplGlashoehenmessung := STEP_320_E;
+            steplGlashoehenmessung := STEP_320_E;
 
-        eGlasZuNiedrig:
-          BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
-          SpsWarnung( eFehler_Station,
-                      cMELDUNG_MESSUNG_SCHEIBE_ZU_NIEDRIG,
-                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                      BasisStationsParameter.awFehlerInformationen );
+          eGlasZuNiedrig:
+            BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
+            SpsWarnung( eFehler_Station,
+                        cMELDUNG_MESSUNG_SCHEIBE_ZU_NIEDRIG,
+                        BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                        BasisStationsParameter.awFehlerInformationen );
 
-          steplGlashoehenmessung := STEP_320_E;
+            steplGlashoehenmessung := STEP_320_E;
 
-      END_CASE
-    ELSE
+        END_CASE
+      ELSE
         steplGlashoehenmessung := STEP_800_E;
-    END_IF
+      END_IF
 
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_320_E:
-     (*
-         Anmerkung:
-         - Ampel
-         - Moeglichkeit Fehlmessung quittieren --> Scheibe freigegeben zum Austransport
-         - Knebelschalter Glas zurueck auf die Station fahren 
-         - Quittiern
-           => Nachricht an die Oberflaeche
-             wSPS2MMITRANSPORTSTATE := 1 ==  Scheibe OK und eingefahren 
-      *)
+      (*
+          Anmerkung:
+          - Ampel
+          - Moeglichkeit Fehlmessung quittieren --> Scheibe freigegeben zum Austransport
+          - Knebelschalter Glas zurueck auf die Station fahren 
+          - Quittiern
+            => Nachricht an die Oberflaeche
+              wSPS2MMITRANSPORTSTATE := 1 ==  Scheibe OK und eingefahren 
+       *)
       out_bSignalTasterScheibeQuittieren := gbFlashbit05sec;
       out_bAmpelSignalGruenScheibeAnlegen    := gbFlashbit05sec;
 
@@ -235,7 +235,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         steplGlashoehenmessung := STEP_330_E;
       END_IF
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_330_E:
       out_bAmpelSignalGruenScheibeAnlegen := FALSE;
 
@@ -249,7 +249,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         out_bAmpelSignalGruenScheibeAnlegen := FALSE;
         out_bSignalTasterScheibeQuittieren := FALSE;
 
-      blAnlegenErzwingen:= TRUE;
+        blAnlegenErzwingen:= TRUE;
 
         BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
 
@@ -290,7 +290,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
       END_IF
 
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_400_E:
       (* Hinweis:
          - Messachse auf Position fahren
@@ -300,7 +300,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
 
       steplGlashoehenmessung := STEP_410_E;
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_410_E:
       (* Hinweis:
          - Messachse nochmal auf Position fahren
@@ -310,7 +310,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         steplGlashoehenmessung := STEP_420_E;
       END_IF
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_420_E:
       (* Hinweis:
          - Messung starten
@@ -320,7 +320,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
 
       steplGlashoehenmessung := STEP_430_E;
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_430_E:
       (* Hinweis:
          - Messende abwarten
@@ -330,56 +330,56 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         steplGlashoehenmessung := STEP_500_E;
       END_IF
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_500_E:
 
       (* Hinweis:
          - Auswertung der Messung
       *)
       IF Messachse.Antrieb.rpMaxPosition >= ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe + Messachse.ppParameterBaustein.rKorrekturOffset ) THEN
-      CASE Messachse.epGlashoehenTypMode2 OF
+        CASE Messachse.epGlashoehenTypMode2 OF
 
-        eGlasHoeheOK:
-          steplGlashoehenmessung := STEP_800_E;
+          eGlasHoeheOK:
+            steplGlashoehenmessung := STEP_800_E;
 
-        eGlasZuHoch:
-          BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
-          SpsWarnung( eFehler_Station,
-                      cMELDUNG_MESSUNG_SCHEIBE_ZU_HOCH,
-                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                      BasisStationsParameter.awFehlerInformationen );
+          eGlasZuHoch:
+            BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
+            SpsWarnung( eFehler_Station,
+                        cMELDUNG_MESSUNG_SCHEIBE_ZU_HOCH,
+                        BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                        BasisStationsParameter.awFehlerInformationen );
 
-          BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
-          steplGlashoehenmessung := STEP_1000_E;
+            BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
+            steplGlashoehenmessung := STEP_1000_E;
 
-        eGlasZuNiedrig:
-          BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
-          SpsWarnung( eFehler_Station,
-                      cMELDUNG_MESSUNG_SCHEIBE_ZU_NIEDRIG,
-                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                      BasisStationsParameter.awFehlerInformationen );
+          eGlasZuNiedrig:
+            BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
+            SpsWarnung( eFehler_Station,
+                        cMELDUNG_MESSUNG_SCHEIBE_ZU_NIEDRIG,
+                        BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                        BasisStationsParameter.awFehlerInformationen );
 
-          BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
-          steplGlashoehenmessung := STEP_1000_E;
+            BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
+            steplGlashoehenmessung := STEP_1000_E;
 
-      END_CASE
-    ELSE
+        END_CASE
+      ELSE
         steplGlashoehenmessung := STEP_800_E;
-    END_IF
+      END_IF
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_600_E:
       (* Hinweis:
          - Messachse verfahren lassen um Scheibenkanten zu suchen
       *)
-    Messachse.rpErwarteteScheibenHoehe := BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe;
+      Messachse.rpErwarteteScheibenHoehe := BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe;
       Messachse.bpVermessen_OberUndUnterkante_2_Sensoren := TRUE;
 
       steplGlashoehenmessung := STEP_610_E;
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_610_E:
       (* Hinweis:
          - Scheibenkantensuche abgeschlossen 
@@ -392,61 +392,61 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
 
         steplGlashoehenmessung := STEP_700_E;
 
-         //steplGlashoehenmessung := STEP_800_E;
+      //steplGlashoehenmessung := STEP_800_E;
       END_IF
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_700_E:
       (* Hinweis:
          - Auswertung der Scheibenkantensuche
       *)
       IF Messachse.Antrieb.rpMaxPosition >= ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe + Messachse.ppParameterBaustein.rKorrekturOffset ) THEN
-      CASE Messachse.epGlashoehenTypMode2 OF
+        CASE Messachse.epGlashoehenTypMode2 OF
 
-        eGlasHoeheOK:
-          steplGlashoehenmessung := STEP_800_E;
+          eGlasHoeheOK:
+            steplGlashoehenmessung := STEP_800_E;
 
-        eGlasZuHoch:
-          BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
-          SpsWarnung( eFehler_Station,
-                      cMELDUNG_MESSUNG_SCHEIBE_ZU_HOCH,
-                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                      BasisStationsParameter.awFehlerInformationen );
+          eGlasZuHoch:
+            BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
+            SpsWarnung( eFehler_Station,
+                        cMELDUNG_MESSUNG_SCHEIBE_ZU_HOCH,
+                        BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                        BasisStationsParameter.awFehlerInformationen );
 
-          BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
-          steplGlashoehenmessung := STEP_1000_E;
+            BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
+            steplGlashoehenmessung := STEP_1000_E;
 
-        eGlasZuNiedrig:
-          BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
-          SpsWarnung( eFehler_Station,
-                      cMELDUNG_MESSUNG_SCHEIBE_ZU_NIEDRIG,
-                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                      BasisStationsParameter.awFehlerInformationen );
+          eGlasZuNiedrig:
+            BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
+            SpsWarnung( eFehler_Station,
+                        cMELDUNG_MESSUNG_SCHEIBE_ZU_NIEDRIG,
+                        BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                        BasisStationsParameter.awFehlerInformationen );
 
-          BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
-          steplGlashoehenmessung := STEP_1000_E;
+            BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
+            steplGlashoehenmessung := STEP_1000_E;
 
-      // Die Glasvermessung war fehlerhaft. Scheibe neu anlgen.
-      eGlasMessungWiederholen:
-          BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
-          SpsWarnung( eFehler_Station,
-                      cMELDUNG_MESSUNG_FEHLMESSUNG,
-                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                      BasisStationsParameter.awFehlerInformationen );
+          // Die Glasvermessung war fehlerhaft. Scheibe neu anlgen.
+          eGlasMessungWiederholen:
+            BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe);
+            SpsWarnung( eFehler_Station,
+                        cMELDUNG_MESSUNG_FEHLMESSUNG,
+                        BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                        BasisStationsParameter.awFehlerInformationen );
 
-          BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
-          steplGlashoehenmessung := STEP_1000_E;
+            BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
+            steplGlashoehenmessung := STEP_1000_E;
 
-      END_CASE
+        END_CASE
 
-    ELSE
+      ELSE
         steplGlashoehenmessung := STEP_800_E;
-    END_IF
+      END_IF
 
-(* HÖHENMESSUNG ==================================*)
+    (* HÖHENMESSUNG ==================================*)
     STEP_800_E:
 
       (* Hinweis:
@@ -456,7 +456,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
 
       steplGlashoehenmessung := STEP_1000_E;
 
-(*HÖHENMESSUNG ==================================*)
+    (*HÖHENMESSUNG ==================================*)
     STEP_900_E:
       Glastransport.bpScheibeZurueckFahren    := FALSE;
       Glastransport.bpAnforderungHandfunktion := FALSE;
@@ -464,11 +464,11 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
 
       BasisStationsParameter.bFehler := TRUE;
 
-(*HÖHENMESSUNG ==================================*)
+    (*HÖHENMESSUNG ==================================*)
     STEP_1000_E:
       BasisStationsParameter.bGlashoehenmessungAbgeschlossen := TRUE;
 
-(*HÖHENMESSUNG ==================================*)
+  (*HÖHENMESSUNG ==================================*)
   END_CASE
 ELSE
 

@@ -18,14 +18,14 @@ IF (  bpScheibenNeuAusrichten ) THEN
 
   CASE steplScheibenNeuAusrichten OF
 
-(* SCHEIBEN AUSRICHTEN ==============================*)
+    (* SCHEIBEN AUSRICHTEN ==============================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen setzen
       *)
       steplScheibenNeuAusrichten := STEP_10_E;
 
-(* SCHEIBEN AUSRICHTEN ==============================*)
+    (* SCHEIBEN AUSRICHTEN ==============================*)
     STEP_10_E:
       IF ( blZielPositionErreicht ) THEN
         steplScheibenNeuAusrichten := STEP_20_E;
@@ -37,7 +37,7 @@ IF (  bpScheibenNeuAusrichten ) THEN
         steplScheibenNeuAusrichten := STEP_900_E;
       END_IF
 
-(* SCHEIBEN AUSRICHTEN ==============================*)
+    (* SCHEIBEN AUSRICHTEN ==============================*)
     STEP_20_E:
       (* ---------------------------------------------------------------------------------------
       //  OPTIONALE - ABFRAGE DES SICHERHEITSKREISES 
@@ -47,9 +47,9 @@ IF (  bpScheibenNeuAusrichten ) THEN
       // ---------------------------------------------------------------------------------------*)
 
       IF  ( Sicherheitskreis[1].bpSicherheitskreisGeschlossen
-       // AND Sicherheitskreis[2].bpSicherheitskreisGeschlossen
-        AND NOT Sicherheitskreis[1].bpAnforderungSKGestellt
-       // AND NOT Sicherheitskreis[2].bpAnforderungSKGestellt 
+            // AND Sicherheitskreis[2].bpSicherheitskreisGeschlossen
+            AND NOT Sicherheitskreis[1].bpAnforderungSKGestellt
+          // AND NOT Sicherheitskreis[2].bpAnforderungSKGestellt 
           )
       THEN
         blHinweisGenerierenSKAusgeloest := FALSE;
@@ -60,7 +60,7 @@ IF (  bpScheibenNeuAusrichten ) THEN
 
       END_IF
     
-(* SCHEIBEN AUSRICHTEN ==============================*)
+    (* SCHEIBEN AUSRICHTEN ==============================*)
     STEP_100_E:
       (* Anmerkung:
          - Starten des Aktion
@@ -70,7 +70,7 @@ IF (  bpScheibenNeuAusrichten ) THEN
 
       steplScheibenNeuAusrichten := STEP_110_E;
 
-(* SCHEIBEN AUSRICHTEN ==============================*)
+    (* SCHEIBEN AUSRICHTEN ==============================*)
     STEP_110_E:
       (* Hinweis:
          - Resource freigeben wenn es zu keinem Fehler gekommen ist
@@ -80,24 +80,24 @@ IF (  bpScheibenNeuAusrichten ) THEN
         steplScheibenNeuAusrichten := STEP_1000_E;
       END_IF
 
-     (* Fehlerbehandlung:
-        - Glastransport
-     *)
+      (* Fehlerbehandlung:
+         - Glastransport
+      *)
       IF ( Glastransport.bpFehler ) THEN
         Glastransport.bpScheibenNeuAusrichten := FALSE;
         BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
         steplScheibenNeuAusrichten := STEP_900_E;
       END_IF
 
-(* SCHEIBEN AUSRICHTEN ==============================*)
+    (* SCHEIBEN AUSRICHTEN ==============================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(* SCHEIBEN AUSRICHTEN ==============================*)
+    (* SCHEIBEN AUSRICHTEN ==============================*)
     STEP_1000_E:
       bpScheibenNeuAusrichtenAbgeschlossen := TRUE;
 
-(* SCHEIBEN AUSRICHTEN ==============================*)
+  (* SCHEIBEN AUSRICHTEN ==============================*)
   END_CASE
 
 ELSE

@@ -13,7 +13,7 @@ ACTION Signal_Logger
 
 // Eingangsignale
 IF   ( in_bAutomatikBetrieb <> blTempAutomatikBetrieb ) 
-  OR ( blTempSenderGlasBereit <> in_bGlasBereit)
+     OR ( blTempSenderGlasBereit <> in_bGlasBereit)
 THEN
   blTempAutomatikBetrieb := in_bAutomatikBetrieb;
   blTempSenderGlasBereit := in_bGlasBereit;
@@ -36,7 +36,7 @@ END_IF
 
 // Ausganssignale
 IF   ( out_bEinlaufsensor <> blTempEinlaufSensor ) 
-  OR ( out_bBereitZumEintrasport <> blTempGlasAbruf ) 
+     OR ( out_bBereitZumEintrasport <> blTempGlasAbruf ) 
 THEN
   blTempEinlaufSensor := out_bEinlaufsensor;
   blTempGlasAbruf     := out_bBereitZumEintrasport;

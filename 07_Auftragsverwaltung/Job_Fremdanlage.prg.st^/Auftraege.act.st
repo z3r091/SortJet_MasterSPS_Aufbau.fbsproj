@@ -135,7 +135,7 @@ IF ( M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE ) THEN
            - Werte zuruecksetzen wenn alle Nachrichten Empfangen worden sind 
         *)
         IF (  ablNachrichtEmpfangen[1]
-          AND ablNachrichtEmpfangen[2] )
+             AND ablNachrichtEmpfangen[2] )
         THEN
           aSchnittstelleAuslauf[tMmi2SpsInfo.wFremdanlageNr].AuftragsSpeicher.ppEingabeWert.stScheibenID    := stAuftragScheibenIDs;
           aSchnittstelleAuslauf[tMmi2SpsInfo.wFremdanlageNr].AuftragsSpeicher.ppEingabeWert.wScheibenAnzahl := tMmi2SpsInfo.wScheibenanzahl;

@@ -21,11 +21,11 @@ FOR wlIndexAutoStart := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
       
         FOR wlIndexWand := cWAND_1 TO cANZAHL_WAENDE DO
           Job_Stationen.AuftragsdatenWand[wlIndex, wlIndexWand].wAuftrag := starrStationBasisParameter[wlIndex].pAuftragNachSystemcheck[wlIndexWand];
-    END_FOR
+        END_FOR
     
       END_IF
     
-  END_FOR
+    END_FOR
   
   END_IF
 

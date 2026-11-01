@@ -9,7 +9,7 @@ PROGRAM ErsteUndLetzteScheibeBits
 VAR_INPUT
 
   (* WORD *)
-   wpErsteUndLetzteScheibe : WORD;
+  wpErsteUndLetzteScheibe : WORD;
 
 END_VAR
 VAR_OUTPUT

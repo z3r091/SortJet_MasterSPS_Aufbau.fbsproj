@@ -12,11 +12,11 @@ _________________________________________________________________________
 _________________________________________________________________________
 *)
 IF (  bpStartRunter
-  AND NOT tofHoch.Q
-  AND bpFreigabe )
+     AND NOT tofHoch.Q
+     AND bpFreigabe )
 THEN
   CASE steplRunter OF
-(*RUNTER =====================*)
+    (*RUNTER =====================*)
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
@@ -31,7 +31,7 @@ THEN
         steplRunter := STEP_1000_E;
       END_IF
 
-(*RUNTER =====================*)
+    (*RUNTER =====================*)
     STEP_10_E:
       tonlUnten( IN := NOT in_bUnten, PT:= T#15s );
 
@@ -47,15 +47,15 @@ THEN
         steplRunter := STEP_900_E;
       END_IF
 
-(*RUNTER =====================*)
+    (*RUNTER =====================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(*RUNTER =====================*)
+    (*RUNTER =====================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(*RUNTER =====================*)
+  (*RUNTER =====================*)
   END_CASE
 ELSE
   IF ( steplRunter > STEP_0_E ) THEN

@@ -14,15 +14,15 @@ END_IF
 
 // FB aufrufen
 l_fb_CoeS277Lesen
-(
-  i_b_Execute   := blCoeS277ReadExecute,
-  i_by_EcID     := 1000 + l_ts_MKAxisConfig.uiDeviceAddress,
-  i_w_ObjectNum := 16#24A2,
-  i_by_SubIndex := 1,
-  i_w_DataTyp   := 7,
-  i_p_Var       := ADR(udiEncoderProperties),
-  i_w_BufSize   := SIZEOF(udiEncoderProperties)
-);
+  (
+    i_b_Execute   := blCoeS277ReadExecute,
+    i_by_EcID     := 1000 + l_ts_MKAxisConfig.uiDeviceAddress,
+    i_w_ObjectNum := 16#24A2,
+    i_by_SubIndex := 1,
+    i_w_DataTyp   := 7,
+    i_p_Var       := ADR(udiEncoderProperties),
+    i_w_BufSize   := SIZEOF(udiEncoderProperties)
+  );
 
 // Execute nur einen Zyklus TRUE
 blCoeS277ReadExecute := FALSE;

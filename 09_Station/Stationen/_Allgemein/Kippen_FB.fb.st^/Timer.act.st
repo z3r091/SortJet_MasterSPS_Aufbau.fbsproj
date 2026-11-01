@@ -13,7 +13,7 @@ ACTION Timer
    - Ueberwachung 
 *)
 tonlMaxWarteZeit(IN:= bpPositionieren,
-                 PT:=(ppParameterBaustein.tZeitlicheUeberwachungKippen));
+                  PT:=(ppParameterBaustein.tZeitlicheUeberwachungKippen));
 
 
 (* Hinweis:

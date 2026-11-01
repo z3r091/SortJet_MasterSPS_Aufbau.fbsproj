@@ -33,7 +33,7 @@ BasisStationsParameter.bIstReferenziert        := Messachse.bpInReferenz OR NOT 
 
 // SK Freigeben obwohl Auftrag aktiv
 BasisStationsParameter.bSKFreigabeBeiAktivemAuftrag := ( BasisStationsParameter.bAnlegen
-                                                      OR BasisStationsParameter.bAbnehmen );
+                                                         OR BasisStationsParameter.bAbnehmen );
 
 // Status für die Visu
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bSensorEinlauf[1]            := Glastransport.bpSensorEinlauf;
@@ -76,9 +76,9 @@ out_bLeuchteKipptischOffen := out_bLeuchteKipptischOffen_OP := NOT in_bSensorKip
 out_bAmpelSignalRot  := gbFlashbit03sec AND Stop_Baustein.blBetriebsstop;
 out_bSignalTasterScheibeAnlegen := out_bAmpelSignalGruenScheibeAnlegen;
 out_bAmpelSignalGlastransportAktiv := ( Glastransport.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.KEINE_FUNKTION 
-                                    AND Glastransport.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.REFERENZ 
-                                    AND Glastransport.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.RESET ) 
-                                   OR ( Messachse.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.KEINE_FUNKTION
-                                    AND Messachse.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.REFERENZ 
-                                    AND Messachse.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.RESET );
+                                        AND Glastransport.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.REFERENZ 
+                                        AND Glastransport.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.RESET ) 
+                                      OR ( Messachse.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.KEINE_FUNKTION
+                                           AND Messachse.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.REFERENZ 
+                                           AND Messachse.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.RESET );
 END_ACTION

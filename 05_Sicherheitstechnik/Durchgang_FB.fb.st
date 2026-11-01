@@ -101,13 +101,13 @@ END_IF
 
 // Ansteuerung der Taster-Leuchte
 out_bLeuchteTasterAnforderungDurchgang1 := out_bLeuchteTasterAnforderungDurchgang2 := (( bpAnforderungZumDurchgangOffnenGestellt AND gbFlashbit05sec )
-                                                                                         OR NOT out_bDurchgangSperren );
+                                                                                        OR NOT out_bDurchgangSperren );
 
 // Bewegliche Abschrankung schließen
 IF ( bpFreigabeZumOeffnenDurchgang
-  AND bpAnforderungZumDurchgangOffnenGestellt 
-  AND ppParameterBaustein.bBeweglicheAbschrankung
-  AND NOT( BeweglicheAbschrankung.epStatusZylinder = eZylinderEingefahren) )
+     AND bpAnforderungZumDurchgangOffnenGestellt 
+     AND ppParameterBaustein.bBeweglicheAbschrankung
+     AND NOT( BeweglicheAbschrankung.epStatusZylinder = eZylinderEingefahren) )
 THEN
   BeweglicheAbschrankung.bpStartEinfahren := TRUE; //Einfahren = schließen
   BeweglicheAbschrankung.bpStartAusfahren := FALSE;//Ausfahren = öffnen
@@ -121,8 +121,8 @@ END_IF
 
 // Tür oeffnen
 IF ( bpFreigabeZumOeffnenDurchgang
-  AND bpAnforderungZumDurchgangOffnenGestellt
-  AND( bpAbschrankung_Geschlossen OR NOT (ppParameterBaustein.bBeweglicheAbschrankung) ) ) OR tonlNotEinlass.Q
+     AND bpAnforderungZumDurchgangOffnenGestellt
+     AND( bpAbschrankung_Geschlossen OR NOT (ppParameterBaustein.bBeweglicheAbschrankung) ) ) OR tonlNotEinlass.Q
 THEN
   out_bDurchgangSperren := FALSE;
 ELSE

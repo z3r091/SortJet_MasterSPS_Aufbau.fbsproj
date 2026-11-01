@@ -37,7 +37,7 @@ END_VAR
 SUPER^(BasisStationsParameter := BasisStationsParameter);
 
 //IF BasisStationsParameter.stMKs.stFremdanlage.bSignaleLoggen THEN
-  Signal_Logger();
+Signal_Logger();
 //END_IF
 
 (***************************************************************************************************)

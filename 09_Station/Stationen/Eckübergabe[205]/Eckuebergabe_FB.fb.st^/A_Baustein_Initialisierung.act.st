@@ -47,7 +47,7 @@ elAchseAustransport := eAchsrichtung_X;
 
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTE_FREMDANLAGE_EINLAUF DO
   IF (  BasisStationsParameter.stMKs.stSchnittstellendaten.aAustransporte.Station[wlIndex] <> TransportRichtung_EN.Default
-    AND BasisStationsParameter.stMKs.stSchnittstellendaten.aAustransporte.Achsrichtung[wlIndex] <> eAchsrichtung_Default )
+       AND BasisStationsParameter.stMKs.stSchnittstellendaten.aAustransporte.Achsrichtung[wlIndex] <> eAchsrichtung_Default )
   THEN
     elAchseAustransport := BasisStationsParameter.stMKs.stSchnittstellendaten.aAustransporte.Achsrichtung[wlIndex];
   END_IF

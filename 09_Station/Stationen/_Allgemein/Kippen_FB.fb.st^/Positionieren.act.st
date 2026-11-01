@@ -14,21 +14,21 @@ IF ( bpPositionieren ) THEN
 
   // Ausnahmesituation
   IF ( bpSensorAuslauf
-    AND NOT bpSensorEinlauf )
+       AND NOT bpSensorEinlauf )
   THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     wpFehlerNr := cMELDUNG_KIPPEN_AUSLAUFSENSOR_BELEGT;
     steplPositionieren := STEP_900_E;
 
   ELSIF ( bpSensorEinlauf
-    AND NOT bpSensorAuslauf )
+          AND NOT bpSensorAuslauf )
   THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     wpFehlerNr := cMELDUNG_KIPPEN_EINLAUFSENSOR_BELEGT;
     steplPositionieren := STEP_900_E;
 
   ELSIF ( bpSensorEinlauf
-    AND   bpSensorAuslauf )
+          AND   bpSensorAuslauf )
   THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     wpFehlerNr := cMELDUNG_KIPPEN_EINLAUF_AUSLAUF_SENSOR_BELEGT;
@@ -44,7 +44,7 @@ IF ( bpPositionieren ) THEN
 
   
   CASE steplPositionieren OF
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_0_E:
       (* Hinweis:
          - Variablen zurueck setzen
@@ -63,7 +63,7 @@ IF ( bpPositionieren ) THEN
         steplPositionieren := STEP_10_E;
       END_IF
 
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_10_E:
       (* Hinweis:
          - Es darf weder der Einlauf noch der Auslauf- Sensor während der Dreh-Bewegung belegt sein
@@ -102,7 +102,7 @@ IF ( bpPositionieren ) THEN
 
       END_IF
 
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_40_E:
       (* ---------------------------------------------------------------------------------------
       //  ENDSCHALTER PRUEFEN
@@ -112,14 +112,14 @@ IF ( bpPositionieren ) THEN
       // ---------------------------------------------------------------------------------------*)
 
       IF (  NOT Antrieb.bpMinSchalterBelegt
-        AND NOT Antrieb.bpMaxSchalterBelegt )
+           AND NOT Antrieb.bpMaxSchalterBelegt )
       THEN
         steplPositionieren := STEP_100_E;
       ELSE
         steplPositionieren := STEP_50_E;
       END_IF
 
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_50_E:
       (* Hinweis:
          - Versuchen den Endschalter frei zufahren 
@@ -129,8 +129,8 @@ IF ( bpPositionieren ) THEN
       tonlEndschalterFreifahren( IN := TRUE, PT:= T#10s);
 
       toflHardwareEndschalterFrei( IN := ( NOT Antrieb.bpMaxSchalterBelegt
-                                        AND NOT Antrieb.bpMinSchalterBelegt),
-                                  PT := t#1s);
+                                           AND NOT Antrieb.bpMinSchalterBelegt),
+                                   PT := t#1s);
 
       Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpEinrichtGeschwindigkeit;
       Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -157,15 +157,15 @@ IF ( bpPositionieren ) THEN
          - Antrieb
       *)
       IF ( tonlEndschalterFreifahren.Q
-        AND (  Antrieb.bpMinSchalterBelegt
-          OR   Antrieb.bpMaxSchalterBelegt ))
-     THEN
-       Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-       wpFehlerNr := cMELDUNG_KIPPEN_ENDSCHALTER_NICHT_FREI;
-       steplPositionieren := STEP_900_E;
-     END_IF
+           AND (  Antrieb.bpMinSchalterBelegt
+                 OR   Antrieb.bpMaxSchalterBelegt ))
+      THEN
+        Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_KIPPEN_ENDSCHALTER_NICHT_FREI;
+        steplPositionieren := STEP_900_E;
+      END_IF
 
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_60_E:
       (* Hinweis:
          - Erzwungene Pause, damit der Antrieb wieder ordnungsgemaeß schaltet
@@ -177,7 +177,7 @@ IF ( bpPositionieren ) THEN
         steplPositionieren := STEP_100_E;
       END_IF
 
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  STARTEN DER ABSOLUT- POSITIONIERUNG
@@ -208,7 +208,7 @@ IF ( bpPositionieren ) THEN
 
       END_CASE
 
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_110_E:
       Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -219,7 +219,7 @@ IF ( bpPositionieren ) THEN
 
       steplPositionieren := STEP_120_E;
 
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_120_E:
       (* Hinweis:
          - Bewegung abgeschlossen
@@ -229,16 +229,16 @@ IF ( bpPositionieren ) THEN
         steplPositionieren := STEP_1000_E;
       END_IF
 
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_900_E:
       bpFehler := TRUE;
 
-(*POSITIONIEREN =================================== *)
+    (*POSITIONIEREN =================================== *)
     STEP_1000_E:
       bpDone := TRUE;
       bpPositionierenAbgeschlossen := TRUE;
 
-(*POSITIONIEREN =================================== *)
+  (*POSITIONIEREN =================================== *)
   END_CASE
 
 END_IF

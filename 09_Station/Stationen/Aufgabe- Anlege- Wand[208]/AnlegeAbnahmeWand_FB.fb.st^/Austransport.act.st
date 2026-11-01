@@ -10,7 +10,7 @@ ACTION Austransport
 (* AUSTRANSPORT *)
 (***************************************************************************************************)
 IF (  BasisStationsParameter.bAustransport[cWAND_1]
-  AND blBetriebsartAutomatik )
+     AND blBetriebsartAutomatik )
 THEN
   (* Fehlerbehandlung
     - Glastransport
@@ -37,16 +37,16 @@ THEN
   END_IF
 
   CASE steplAustransport OF
-(*AUSTRANSPORT ==========================*)
+    (*AUSTRANSPORT ==========================*)
     STEP_0_E:
       (* Hinweis:
          - Freigabe durch Quittierten Si-Kreis da ?
       *)
-       IF ( tonlFreigabeErhalten.Q ) THEN
+      IF ( tonlFreigabeErhalten.Q ) THEN
         steplAustransport := STEP_5_E;
-       END_IF
+      END_IF
 
-(*AUSTRANSPORT ==========================*)
+    (*AUSTRANSPORT ==========================*)
     STEP_5_E:
       (* Hinweis:
          - Pruefen ob das Geblase aktiv ist
@@ -65,13 +65,13 @@ THEN
 
       END_IF
 
-(*AUSTRANSPORT ==========================*)
+    (*AUSTRANSPORT ==========================*)
     STEP_10_E:
       (* Anmerkung:
          - Position Hoehenkontrolle übergeben
       *)
       IF ( ((BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe + Messachse.ppParameterBaustein.rKorrekturOffset )
-         >= Messachse.Antrieb.rpMaxPosition ) )
+             >= Messachse.Antrieb.rpMaxPosition ) )
       THEN
         Messachse.rpZielPosition := Messachse.Antrieb.rpMaxPosition ;
       ELSE
@@ -80,7 +80,7 @@ THEN
 
       steplAustransport := STEP_20_E;
 
-(*AUSTRANSPORT ==========================*)
+    (*AUSTRANSPORT ==========================*)
     STEP_20_E:
       (* Hinweis:
          - Kippen und Höhenkontrollle nur wenn Si-Kreis geschlossen ist 
@@ -99,14 +99,14 @@ THEN
          - Hoehenkontrolle und Kippantrieb sind verfahren
       *)
       IF (  Messachse.bpDone
-        AND Kippen.bpDone )
+           AND Kippen.bpDone )
       THEN
         Kippen.bpPositionieren     := FALSE;
         Messachse.bpPositionierung := FALSE;
         steplAustransport := STEP_30_E;
       END_IF
 
-(*AUSTRANSPORT ==========================*)
+    (*AUSTRANSPORT ==========================*)
     STEP_30_E:
       (* Anmerkung:
          - Starten des Austransports auf die Folgestation
@@ -117,7 +117,7 @@ THEN
 
       steplAustransport := STEP_40_E;
 
-(*AUSTRANSPORT ==========================*)
+    (*AUSTRANSPORT ==========================*)
     STEP_40_E:
       (* Hinweis:
          - Austransport abgeschlossen
@@ -127,17 +127,17 @@ THEN
         steplAustransport := STEP_100_E;
       END_IF
 
-(*AUSTRANSPORT ==========================*)
+    (*AUSTRANSPORT ==========================*)
     STEP_100_E:
       (* Hinweis:
          - Hoehenkontrolle ist auf Position gefahren
          - 90 Grad gekippt
       *)
       IF ( tonlFreigabeErhalten.Q ) THEN
-       Kippen.epZielPosition := eKippen_Position_84Grad;
-     Kippen.bpPositionieren := TRUE;
+        Kippen.epZielPosition := eKippen_Position_84Grad;
+        Kippen.bpPositionieren := TRUE;
       ELSE
-       Kippen.bpPositionieren := FALSE;
+        Kippen.bpPositionieren := FALSE;
       END_IF
 
       IF (Kippen.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1]) THEN
@@ -145,15 +145,15 @@ THEN
         steplAustransport := STEP_1000_E;
       END_IF
 
-(*AUSTRANSPORT ==========================*)
+    (*AUSTRANSPORT ==========================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*AUSTRANSPORT ==========================*)
+    (*AUSTRANSPORT ==========================*)
     STEP_1000_E:
       BasisStationsParameter.bAustransportAbgeschlossen[cWAND_1] := TRUE;
 
-(*AUSTRANSPORT ==========================*)
+  (*AUSTRANSPORT ==========================*)
   END_CASE
 ELSE
   IF (steplAustransport > STEP_0_E) THEN

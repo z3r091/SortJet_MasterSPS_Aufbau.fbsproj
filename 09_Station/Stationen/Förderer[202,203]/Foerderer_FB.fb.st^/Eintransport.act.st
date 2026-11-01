@@ -10,13 +10,13 @@ ACTION Eintransport
 (* EINTRANSPORT  *)
 (***************************************************************************************************)
 IF ( BasisStationsParameter.bEintransport[cWAND_1]
-  AND blBetriebsartAutomatik )
+     AND blBetriebsartAutomatik )
 THEN
 
   // Ausnahmesituation
   IF ( Glastransport.bpFehler ) THEN
-      Glastransport.bpEintransport             := FALSE;
-      Glastransport.bpEintransportRueckwaertig := FALSE;
+    Glastransport.bpEintransport             := FALSE;
+    Glastransport.bpEintransportRueckwaertig := FALSE;
     BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
     steplEintransport := STEP_900_E;
   END_IF
@@ -53,7 +53,7 @@ THEN
 
 
   CASE steplEintransport OF
-(* EINTRANSPORT ===============================*)
+    (* EINTRANSPORT ===============================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen 
@@ -62,7 +62,7 @@ THEN
 
       steplEintransport := STEP_10_E;
 
-(* EINTRANSPORT ===============================*)
+    (* EINTRANSPORT ===============================*)
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob die Geblase aktiv sind
@@ -84,11 +84,11 @@ THEN
 
       END_IF
 
-(* EINTRANSPORT ===============================*)
+    (* EINTRANSPORT ===============================*)
     STEP_20_E:
       IF ( ( Kippen.bpDone ) 
-       AND ( Roellchenleiste.bpDone )
-       AND ( Wandverstellung.bpDone ) ) 
+           AND ( Roellchenleiste.bpDone )
+           AND ( Wandverstellung.bpDone ) ) 
       THEN
         Roellchenleiste.bpStartPneumatik := FALSE;
         Wandverstellung.bpStartPneumatik := FALSE;
@@ -108,12 +108,12 @@ THEN
 
         IF ( NOT ( Kippen.epKippStatus = eKippen_Position_90Grad )) THEN
           ;
-          (* TO DO: ggf nochmal kippen oder eine Meldung generieren das hier was nicht stimmt *)
+        (* TO DO: ggf nochmal kippen oder eine Meldung generieren das hier was nicht stimmt *)
         END_IF
 
       END_IF
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  STARTEN DES EINTRANSPORTS
@@ -129,10 +129,10 @@ THEN
 
       steplEintransport := STEP_110_E;
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_110_E:
       IF  ( Glastransport.bpFreigabeFremdprozess
-        AND BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe )
+            AND BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe )
       THEN
 
         (* Hinweis:
@@ -156,7 +156,7 @@ THEN
 
       END_IF
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_200_E:
       (* ---------------------------------------------------------------------------------------
       //  OPTIONAL - KOMPONENTEN STEUERUNG 
@@ -173,7 +173,7 @@ THEN
 
       steplEintransport := STEP_210_E;
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_210_E:
       IF Kippen.bpDone OR NOT Kippen.bpPositionieren THEN
 
@@ -182,15 +182,15 @@ THEN
         steplEintransport := STEP_1000_E;
       END_IF
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_1000_E:
       BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] := TRUE;
 
-(*EINTRANSPORT =====================*)
+  (*EINTRANSPORT =====================*)
   END_CASE
 ELSE
 

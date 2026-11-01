@@ -51,7 +51,7 @@ END_IF
 // Optionale Signale: Scheibe des laufenden Eintransports in die Fremdanlage ist ein Modell
 IF IsBetweenWORD( BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cERSTE_FREMDANLAGE_AUSLAUF, cLETZTE_FREMDANLAGE_AUSLAUF ) THEN
   out_bSenderForm := ( Job_Fremdanlage.AuftragsdatenFremdanlage[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].wAuftrag = eStation_Eintransport )
-                 AND Job_Fremdanlage.AuftragsdatenFremdanlage[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bModell;
+                     AND Job_Fremdanlage.AuftragsdatenFremdanlage[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bModell;
 ELSE
   out_bSenderForm := FALSE;
 END_IF

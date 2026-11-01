@@ -22,8 +22,8 @@ checkSafetyCircuits := FALSE;
   
 FOR wIndexMK := 0 TO cANZAHL_SICHERHEITSKREISE DO
   IF ( SaftyCircuit = StationData.stMKs.eaSicherheitskreis[wIndexMK] ) THEN
-      checkSafetyCircuits := TRUE;
-      EXIT;
+    checkSafetyCircuits := TRUE;
+    EXIT;
   END_IF
 END_FOR
 END_FUNCTION

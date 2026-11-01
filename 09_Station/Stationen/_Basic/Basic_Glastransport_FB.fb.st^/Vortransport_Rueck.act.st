@@ -10,7 +10,7 @@ ACTION Vortransport_Rueck
 (* AKTION: VORTRANSPORT RÜCKWÄRTIG *)
 (***************************************************************************************************)
 IF ( bpVortransportRueckwaertig
-  AND bpAutomatikAktiv )
+     AND bpAutomatikAktiv )
 THEN
 
   // Ausnahmesituation
@@ -26,27 +26,27 @@ THEN
 
 
   CASE steplVortransportRueckwaertig OF
-(*VORTRANSPORT RÜCKWÄRTIG ==============================*)
+    (*VORTRANSPORT RÜCKWÄRTIG ==============================*)
     STEP_0_E:
       (* Hinweis:
          - 
       *)
-     bpAbbruchVortransport := FALSE;
-     bpDone := FALSE;
+      bpAbbruchVortransport := FALSE;
+      bpDone := FALSE;
 
-     rlGlasgewicht := ( GlasGewichtErmitteln( rpGlaslaenge  := pAuftrag.rAuftragsLaenge,
-                                              rpGlasbreite  := pAuftrag.rAuftragsHoehe,
-                                              rpGlasstaerke := pAuftrag.rAuftragsDicke ) );
+      rlGlasgewicht := ( GlasGewichtErmitteln( rpGlaslaenge  := pAuftrag.rAuftragsLaenge,
+                                               rpGlasbreite  := pAuftrag.rAuftragsHoehe,
+                                               rpGlasstaerke := pAuftrag.rAuftragsDicke ) );
 
-     blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
+      blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
 
-     steplVortransportRueckwaertig := STEP_5_E;
+      steplVortransportRueckwaertig := STEP_5_E;
 
-(*VORTRANSPORT RÜCKWÄRTIG ==============================*)
+    (*VORTRANSPORT RÜCKWÄRTIG ==============================*)
     STEP_5_E:
 
       IF (  NOT bpSensorEinlaufVorAb
-        AND pAuftrag.rModellVersatzHinten = 0.0 )
+           AND pAuftrag.rModellVersatzHinten = 0.0 )
       THEN
 
         IF blReduzierteGeschwindigkeit THEN
@@ -77,7 +77,7 @@ THEN
         steplVortransportRueckwaertig := STEP_900_E;
       END_IF
 
-(*VORTRANSPORT RÜCKWÄRTIG ==============================*)
+    (*VORTRANSPORT RÜCKWÄRTIG ==============================*)
     STEP_10_E:
       (* Hinweis:
          - Glas auf den VorStop- Sensor vorpositionieren
@@ -96,7 +96,7 @@ THEN
         steplVortransportRueckwaertig := STEP_900_E;
       END_IF
 
-(*VORTRANSPORT RÜCKWÄRTIG ==============================*)
+    (*VORTRANSPORT RÜCKWÄRTIG ==============================*)
     STEP_20_E:
       (* Hinweis:
          - Pruefen ob das Glas zuweit gefahren wurde und den Auslaufsensor nun belegt ist.
@@ -112,7 +112,7 @@ THEN
 
       END_IF
 
-(*VORTRANSPORT RÜCKWÄRTIG ==============================*)
+    (*VORTRANSPORT RÜCKWÄRTIG ==============================*)
     STEP_30_E:
       (* Anmerkung:
          - Versuch den Auslaufsensor frei zufahren
@@ -143,7 +143,7 @@ THEN
         steplVortransportRueckwaertig := STEP_900_E;
       END_IF
 
-(*VORTRANSPORT RÜCKWÄRTIG ==============================*)
+    (*VORTRANSPORT RÜCKWÄRTIG ==============================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
@@ -151,12 +151,12 @@ THEN
       Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
       bpFehler := TRUE;
 
-(*VORTRANSPORT RÜCKWÄRTIG ==============================*)
+    (*VORTRANSPORT RÜCKWÄRTIG ==============================*)
     STEP_1000_E:
       bpAbbruchVortransport := FALSE;
       bpDone := TRUE;
 
-(*VORTRANSPORT RÜCKWÄRTIG ==============================*)
+  (*VORTRANSPORT RÜCKWÄRTIG ==============================*)
   END_CASE
 ELSE
   IF (steplVortransportRueckwaertig > 0) THEN

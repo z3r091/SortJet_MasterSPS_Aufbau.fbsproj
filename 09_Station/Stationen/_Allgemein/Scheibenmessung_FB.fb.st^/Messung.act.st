@@ -20,7 +20,7 @@ IF ( bpGlasvermessung ) THEN
   END_IF
 
   CASE steplGlasvermessung OF
-(* GLASVERMESSUNG ================================ *)
+    (* GLASVERMESSUNG ================================ *)
     STEP_0_E:
       (* Hinweis:
          - Pruefen des Antriebs vor der Scheibenmessung
@@ -37,7 +37,7 @@ IF ( bpGlasvermessung ) THEN
         steplGlasvermessung := STEP_10_E;
       END_IF
 
-(* GLASVERMESSUNG ================================ *)
+    (* GLASVERMESSUNG ================================ *)
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob der Sensor belegt ist
@@ -50,7 +50,7 @@ IF ( bpGlasvermessung ) THEN
         steplGlasvermessung := STEP_900_E;
       END_IF
 
-(* GLASVERMESSUNG ================================ *)
+    (* GLASVERMESSUNG ================================ *)
     STEP_20_E:
       (* Anmerkung:
          - Starten der Glaslaengenvermessung 
@@ -71,7 +71,7 @@ IF ( bpGlasvermessung ) THEN
 
       steplGlasvermessung := STEP_30_E;
 
-(* GLASVERMESSUNG ================================ *)
+    (* GLASVERMESSUNG ================================ *)
     STEP_30_E:
       (* Hinweis:
           - Damit der Auslaufsensoren mit dem Glas nicht zu weit überfahren werden, vorher schon die Geschwindigkeit verringern.
@@ -80,13 +80,13 @@ IF ( bpGlasvermessung ) THEN
       rlBremsWeg := ( ( ppAntrieb.rpIstGeschwindigkeit * ppAntrieb.rpIstGeschwindigkeit ) / 2 / ppAntrieb.rpVerzoegerung );
 
       IF ( ABS(ppAntrieb.rpIstPosition - rlPositionAntriebBeiStart) >=
-         ABS(rpMessstrecke - ( rpFaktorBremswegverlaengern * rlBremsWeg ) - rpErwarteteScheibenLaenge))
+           ABS(rpMessstrecke - ( rpFaktorBremswegverlaengern * rlBremsWeg ) - rpErwarteteScheibenLaenge))
       THEN
         ppAntrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
       END_IF
 
       IF ( pbpVorstopSensor )  THEN
-          ppAntrieb.rpGeschwindigkeit := rgGeschwindigkeit05;
+        ppAntrieb.rpGeschwindigkeit := rgGeschwindigkeit05;
       END_IF
 
       (* Anmerkung:
@@ -116,7 +116,7 @@ IF ( bpGlasvermessung ) THEN
         
         // Auslaufsensor schaltet nicht -> Messstrecke + 50mm abgefahren und Auslaufsensor hat nicht geschaltet
         IF ( rlGefahrenerWeg > ( rpMessstrecke + 50 ) ) 
-          AND NOT ppAntrieb.blSensoren[ppAntrieb.eSensorAuswahl_Messung_2]
+           AND NOT ppAntrieb.blSensoren[ppAntrieb.eSensorAuswahl_Messung_2]
         THEN 
           ppAntrieb.wpBetriebsart := KEINE_FUNKTION;
           wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
@@ -129,7 +129,7 @@ IF ( bpGlasvermessung ) THEN
           // Default Scheibe -> Messstrecke + 50mm abgefahren und Einlaufsensor hat immernoch geschaltet
           eScheibe_Default:         
             IF ( rlGefahrenerWeg > ( rpMessstrecke + 50 ) ) 
-              AND  ppAntrieb.blSensoren[ppAntrieb.eSensorAuswahl_Messung_1]
+               AND  ppAntrieb.blSensoren[ppAntrieb.eSensorAuswahl_Messung_1]
             THEN 
               ppAntrieb.wpBetriebsart := KEINE_FUNKTION;
               wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;
@@ -139,7 +139,7 @@ IF ( bpGlasvermessung ) THEN
           // Max Scheibe -> Max Glas Länge + 50mm abgefahren und Einlaufsensor hat immer noch geschaltet
           eScheibe_Maximal:       
             IF ( rlGefahrenerWeg > ( starrStationBasisParameter[stStationsNummern.NummerSPS].stMKs.stGlasdaten[cWAND_1].rlMaxGlasLaenge + 50 ) ) 
-              AND  ppAntrieb.blSensoren[ppAntrieb.eSensorAuswahl_Messung_1]
+               AND  ppAntrieb.blSensoren[ppAntrieb.eSensorAuswahl_Messung_1]
             THEN 
               ppAntrieb.wpBetriebsart := KEINE_FUNKTION;
               wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;
@@ -148,9 +148,9 @@ IF ( bpGlasvermessung ) THEN
           
         END_CASE
        
-     END_IF
+      END_IF
 
-(* GLASVERMESSUNG ================================ *)
+    (* GLASVERMESSUNG ================================ *)
     STEP_50_E:
       (* Hinweis:
           - Messrgbnis prüfen
@@ -163,15 +163,15 @@ IF ( bpGlasvermessung ) THEN
         steplGlasvermessung := STEP_900_E;
       END_IF
 
-(* GLASVERMESSUNG ================================ *)
+    (* GLASVERMESSUNG ================================ *)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* GLASVERMESSUNG ================================ *)
+    (* GLASVERMESSUNG ================================ *)
     STEP_1000_E:
       bpGlasmessungAbgeschlossen := TRUE;
 
-(* GLASVERMESSUNG ================================ *)
+  (* GLASVERMESSUNG ================================ *)
   END_CASE
 
 ELSE

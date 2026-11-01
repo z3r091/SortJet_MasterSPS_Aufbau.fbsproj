@@ -20,7 +20,7 @@ IF ( bpReferenz ) THEN
 
   
   CASE steplReferenz OF
-(*REFERENZ =============================*)
+    (*REFERENZ =============================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen
@@ -39,12 +39,12 @@ IF ( bpReferenz ) THEN
         steplReferenz := STEP_10_E;
       END_IF
 
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_10_E:
       tonlEndschalterFreifahren(IN := TRUE, PT:= T#10s);
 
       tofHardwareEndschalterFrei( IN := (  Antrieb.bpMaxSchalterBelegt
-                                        OR Antrieb.bpMinSchalterBelegt),
+                                          OR Antrieb.bpMinSchalterBelegt),
                                   PT := t#1s);
 
       Antrieb.rpGeschwindigkeit  := ppAntriebsInformationen.rpReferenzGeschwindigkeit;
@@ -71,15 +71,15 @@ IF ( bpReferenz ) THEN
          - Antrieb
        *)
       IF ( tonlEndschalterFreifahren.Q
-        AND ( Antrieb.bpMaxSchalterBelegt
-        OR Antrieb.bpMinSchalterBelegt ))
-     THEN
-       Antrieb.wpBetriebsart:=  KEINE_FUNKTION;
-       wpFehlerNr := cMELDUNG_MESSACHSE_ENDSCHALTER_NICHT_FREI;
-       steplReferenz := STEP_900_E;
-     END_IF
+           AND ( Antrieb.bpMaxSchalterBelegt
+                 OR Antrieb.bpMinSchalterBelegt ))
+      THEN
+        Antrieb.wpBetriebsart:=  KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_MESSACHSE_ENDSCHALTER_NICHT_FREI;
+        steplReferenz := STEP_900_E;
+      END_IF
 
-(*REFERENZ =========================*)
+    (*REFERENZ =========================*)
     STEP_20_E:
       (* Hinweis:
          - Erzwungene Pause, damit der Lenze Antrieb wieder ordnungsgemäß schaltet
@@ -91,11 +91,11 @@ IF ( bpReferenz ) THEN
       END_IF
 
 
-(*REFERENZ =============================*)
+    (*REFERENZ =============================*)
     STEP_30_E:
 
       IF (  NOT bpSensorEinlauf
-        AND NOT bpSensorAuslauf )
+           AND NOT bpSensorAuslauf )
       THEN
         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReferenzGeschwindigkeit;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -108,7 +108,7 @@ IF ( bpReferenz ) THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-(*REFERENZ =============================*)
+    (*REFERENZ =============================*)
     STEP_40_E:
       (* Hinweis:
          - Prozess abgeschlossen
@@ -118,16 +118,16 @@ IF ( bpReferenz ) THEN
         steplReferenz := STEP_1000_E;
       END_IF
 
-(*REFERENZ =============================*)
+    (*REFERENZ =============================*)
     STEP_900_E:
       bpFehler :=TRUE;
 
-(*REFERENZ =============================*)
+    (*REFERENZ =============================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(*REFERENZ =============================*)
- END_CASE
+  (*REFERENZ =============================*)
+  END_CASE
 ELSE
   IF( steplReferenz > STEP_0_E )THEN
     bpDone := FALSE;

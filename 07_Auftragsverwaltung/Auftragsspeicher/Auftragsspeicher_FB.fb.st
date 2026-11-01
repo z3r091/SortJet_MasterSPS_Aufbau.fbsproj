@@ -46,35 +46,35 @@ END_VAR
 (***************************************************************************************************)
 IF ( bpReset ) THEN
 
-   ilReadPosition      := 0;
-   ilWritePosition     := 0;
-   blWarteschlangeVoll := FALSE;
-   blWarteschlangeLeer := TRUE;
+  ilReadPosition      := 0;
+  ilWritePosition     := 0;
+  blWarteschlangeVoll := FALSE;
+  blWarteschlangeLeer := TRUE;
 
-   bpReset := FALSE;
+  bpReset := FALSE;
 
 ELSIF ( bpAktivieren ) THEN
 
 
-   IF (  NOT blWarteschlangeLeer
-     AND bpWertAuslesen )
-   THEN
-      stAusgabeWert := warrlWarteSchlange[ilReadPosition];
-      ilReadPosition:= INCI(ilReadPosition, cINDEX );
-      blWarteschlangeLeer := ( ilReadPosition = ilWritePosition );
-      blWarteschlangeVoll := FALSE;
-      bpWertAuslesen      := FALSE;
-   END_IF;
+  IF (  NOT blWarteschlangeLeer
+       AND bpWertAuslesen )
+  THEN
+    stAusgabeWert := warrlWarteSchlange[ilReadPosition];
+    ilReadPosition:= INCI(ilReadPosition, cINDEX );
+    blWarteschlangeLeer := ( ilReadPosition = ilWritePosition );
+    blWarteschlangeVoll := FALSE;
+    bpWertAuslesen      := FALSE;
+  END_IF;
 
-   IF (  NOT blWarteschlangeVoll
-     AND bpWerteSchreiben )
-   THEN
-       warrlWarteSchlange[ilWritePosition] := stEingabeWert;
-       ilWritePosition := INCI( ilWritePosition, cINDEX );
-       blWarteschlangeVoll := ( ilWritePosition = ilReadPosition );
-       blWarteschlangeLeer := FALSE;
-       bpWerteSchreiben    := FALSE;
-   END_IF;
+  IF (  NOT blWarteschlangeVoll
+       AND bpWerteSchreiben )
+  THEN
+    warrlWarteSchlange[ilWritePosition] := stEingabeWert;
+    ilWritePosition := INCI( ilWritePosition, cINDEX );
+    blWarteschlangeVoll := ( ilWritePosition = ilReadPosition );
+    blWarteschlangeLeer := FALSE;
+    bpWerteSchreiben    := FALSE;
+  END_IF;
 
 END_IF;
 END_FUNCTION_BLOCK

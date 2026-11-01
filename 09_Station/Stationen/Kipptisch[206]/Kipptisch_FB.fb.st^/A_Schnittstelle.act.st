@@ -35,16 +35,16 @@ BasisStationsParameter.bIstReferenziert := Kippen.Antrieb.bpIstReferenziert
 BasisStationsParameter.rAktuellePositionQuerfahrt := Querfahrt.rpAktuellePosition;
                                        
 BasisStationsParameter.bAuftragAktiv    := (   BasisStationsParameter.bAnlegen
-                                            OR BasisStationsParameter.bAbnehmen
-                                            OR BasisStationsParameter.bEintransport[cWAND_1]
-                                            OR BasisStationsParameter.bAustransport[cWAND_1]
-                                            OR BasisStationsParameter.bDurchtransport[cWAND_1]
-                                            OR BasisStationsParameter.bMesskopplung[cWAND_1]
-                                            OR BasisStationsParameter.bGlashoehenmessung
-                                            OR BasisStationsParameter.bGlaslaengenmessung
-                                            OR BasisStationsParameter.bReset
-                                            OR BasisStationsParameter.bReferenz
-                                            OR BasisStationsParameter.bCheck );
+                                             OR BasisStationsParameter.bAbnehmen
+                                             OR BasisStationsParameter.bEintransport[cWAND_1]
+                                             OR BasisStationsParameter.bAustransport[cWAND_1]
+                                             OR BasisStationsParameter.bDurchtransport[cWAND_1]
+                                             OR BasisStationsParameter.bMesskopplung[cWAND_1]
+                                             OR BasisStationsParameter.bGlashoehenmessung
+                                             OR BasisStationsParameter.bGlaslaengenmessung
+                                             OR BasisStationsParameter.bReset
+                                             OR BasisStationsParameter.bReferenz
+                                             OR BasisStationsParameter.bCheck );
 
 // Statistik
 BasisStationsParameter.dwWartezeit[cWAND_1] := Glastransport.dwpWartezeit;

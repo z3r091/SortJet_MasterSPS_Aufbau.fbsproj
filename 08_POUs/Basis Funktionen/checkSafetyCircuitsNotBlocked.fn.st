@@ -23,9 +23,9 @@ checkSafetyCircuitsNotBlocked := TRUE;
 
 FOR wIndex := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO
   arrCircuits[wIndex] :=         Sicherheitskreis[wIndex].bpSicherheitskreisGeschlossen
-                         AND NOT Sicherheitskreis[wIndex].bpStationenBlocken
-                         AND NOT Sicherheitskreis[wIndex].bpAnforderungSKGestellt
-                         AND NOT Sicherheitskreis[wIndex].bpAnforderungSicherheitkreisAusloesen;
+                                 AND NOT Sicherheitskreis[wIndex].bpStationenBlocken
+                                 AND NOT Sicherheitskreis[wIndex].bpAnforderungSKGestellt
+                                 AND NOT Sicherheitskreis[wIndex].bpAnforderungSicherheitkreisAusloesen;
 END_FOR
 
 FOR wIndex := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO

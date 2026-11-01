@@ -42,17 +42,17 @@ bpFehler := FALSE;
    - Validieren
 *)
 IF (  ( PruefungWertImIntervall(wTransferstation1, cERSTES_TRANSFERSHUTTLE , cLETZTES_TRANSFERSHUTTLE ) )
-  AND ( PruefungWertImIntervall(wTransferstation2, cERSTES_TRANSFERSHUTTLE , cLETZTES_TRANSFERSHUTTLE ) ) )
+     AND ( PruefungWertImIntervall(wTransferstation2, cERSTES_TRANSFERSHUTTLE , cLETZTES_TRANSFERSHUTTLE ) ) )
 THEN
 
   IF (      ( starrTransfershuttleBasisParameter[wTransferstation1].stMKs.stStationsOptionen.stTransfershuttle.bMasterStation = TRUE )
-    AND NOT ( starrTransfershuttleBasisParameter[wTransferstation2].stMKs.stStationsOptionen.stTransfershuttle.bMasterStation = TRUE ) )
+       AND NOT ( starrTransfershuttleBasisParameter[wTransferstation2].stMKs.stStationsOptionen.stTransfershuttle.bMasterStation = TRUE ) )
   THEN
     wTransferstationMaster := wTransferstation1;
     wTransferstationSlave  := wTransferstation2;
 
   ELSIF (   ( starrTransfershuttleBasisParameter[wTransferstation2].stMKs.stStationsOptionen.stTransfershuttle.bMasterStation = TRUE )
-    AND NOT ( starrTransfershuttleBasisParameter[wTransferstation1].stMKs.stStationsOptionen.stTransfershuttle.bMasterStation = TRUE ) )
+          AND NOT ( starrTransfershuttleBasisParameter[wTransferstation1].stMKs.stStationsOptionen.stTransfershuttle.bMasterStation = TRUE ) )
   THEN
     wTransferstationMaster := wTransferstation2;
     wTransferstationSlave  := wTransferstation1;
@@ -71,9 +71,9 @@ THEN
                 AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wTransferstation1].stMKs.stStationsNummern.NummerIntern),
                 wpgFehlerdaten );
 
-    (* Anmerkung:
-       - Hier muesste ein fehler geworfen werden
-    *)
+  (* Anmerkung:
+     - Hier muesste ein fehler geworfen werden
+  *)
 
   END_IF
 
@@ -81,9 +81,9 @@ THEN
 ELSE
   bpFehler := TRUE;
 
-  (* Anmerkung:
-     - Hier muesste ein fehler geworfen werden
-  *)
+(* Anmerkung:
+   - Hier muesste ein fehler geworfen werden
+*)
 
 END_IF
 END_PROGRAM

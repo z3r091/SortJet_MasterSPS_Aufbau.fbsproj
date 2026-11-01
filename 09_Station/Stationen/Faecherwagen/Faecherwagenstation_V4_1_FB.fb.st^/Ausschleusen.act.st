@@ -22,246 +22,246 @@ THEN
 
   CASE steplAusschleusen OF
 
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_0_E:
-    (* Anlage in Grundzustand setzen und alle Aktoren zurücknehmen *)
-    blLineareinheitVor          := FALSE;
-    blLineareinheitZurueck      := FALSE;
-    blLineareinheitShuttle      := FALSE;
-    blEntriegelungOeffnen       := FALSE;
-    blEntriegelungSchliessen    := FALSE;
-    blGegenhalterOeffnen        := FALSE;
-    blGegenhalterSchliessen     := FALSE;
-    blGreiferOeffnen            := FALSE;
-    blGreiferSchliessen         := FALSE;
-    blRolltorAuf                := FALSE;
-    blRolltorAb                 := FALSE;
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_0_E:
+      (* Anlage in Grundzustand setzen und alle Aktoren zurücknehmen *)
+      blLineareinheitVor          := FALSE;
+      blLineareinheitZurueck      := FALSE;
+      blLineareinheitShuttle      := FALSE;
+      blEntriegelungOeffnen       := FALSE;
+      blEntriegelungSchliessen    := FALSE;
+      blGegenhalterOeffnen        := FALSE;
+      blGegenhalterSchliessen     := FALSE;
+      blGreiferOeffnen            := FALSE;
+      blGreiferSchliessen         := FALSE;
+      blRolltorAuf                := FALSE;
+      blRolltorAb                 := FALSE;
 
-    bpAusschleusenAbgeschlossen := FALSE;
+      bpAusschleusenAbgeschlossen := FALSE;
 
-    tonlFreigabeZumAusschleusen( IN := FALSE );
+      tonlFreigabeZumAusschleusen( IN := FALSE );
 
-    eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Starten_0;
+      eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Starten_0;
 
-    steplAusschleusen := STEP_10_E;
+      steplAusschleusen := STEP_10_E;
 
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_10_E:
-    (* Startbedingungen prüfen und Sicherungsfunktionen aktivieren *)
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_10_E:
+      (* Startbedingungen prüfen und Sicherungsfunktionen aktivieren *)
 
-    eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Warten_Auf_Start_10;
+      eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Warten_Auf_Start_10;
 
-    tonlFreigabeZumAusschleusen( IN := in_bStartSchleusen, PT := T#100MS );
+      tonlFreigabeZumAusschleusen( IN := in_bStartSchleusen, PT := T#100MS );
 
-    IF bpUntergestellErkannt AND bpLichtschranke_OK THEN
-      blRolltorAuf            := TRUE;
-      blEntriegelungOeffnen   := TRUE;
-      blGegenhalterSchliessen := TRUE;
-      steplAusschleusen       := STEP_100_E;
-    END_IF
-
-
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_100_E:
-    (* Rolltor öffnen, Verriegelung öffnen und Wagen sichern *)
-
-    eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Rolltor_Auf_Entriegeln_Festhalten_100;
-
-    IF blRolltorAufDone AND blGegenhalterSchliessenDone AND blEntriegelungOeffnenDone THEN
-      blRolltorAuf            := FALSE;
-      blEntriegelungOeffnen   := FALSE;
-      blGegenhalterSchliessen := FALSE;
-      steplAusschleusen       := STEP_105_E;
-    ELSE
-      blRolltorAuf            := TRUE;
-      blEntriegelungOeffnen   := TRUE;
-      blGegenhalterSchliessen := TRUE;
-    END_IF
-
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_105_E:
-    (* Lineareinheit nach vorne fahren *)
-
-    eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Lineareinheit_Vor_105;
-
-    IF blLineareinheitVorDone THEN
-      blLineareinheitVor := FALSE;
-      blGreiferOeffnen   := TRUE;
-      steplAusschleusen  := STEP_110_E;
-    ELSE
-      blLineareinheitVor := TRUE;
-      blGreiferOeffnen   := FALSE;
-    END_IF
-
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_110_E:
-    (* Greifer öffnen *)
-
-    eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Greifer_Oeffnen_110;
-
-    IF blGreiferOeffnenDone THEN
-      blGreiferOeffnen       := FALSE;
-      blLineareinheitZurueck := TRUE;
-      steplAusschleusen      := STEP_115_E;
-    ELSE
-      blGreiferOeffnen := TRUE;
-    END_IF
-
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_115_E:
-    (* Lineareinheit nach hinten fahren *)
-
-    eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Lineareinheit_Zurueck_115;
-
-    IF blLineareinheitZurueckDone THEN
-      blLineareinheitZurueck := FALSE;
-      blGreiferSchliessen    := TRUE;
-      steplAusschleusen      := STEP_120_E;
-    ELSE
-      blLineareinheitZurueck := TRUE;
-    END_IF
-
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_120_E:
-    (* Greifer schließen *)
-
-    eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Greifer_Schliessen_120;
-
-    IF blGreiferSchliessenDone THEN
-      blGreiferSchliessen := FALSE;
-      blLineareinheitVor  := TRUE;
-      steplAusschleusen   := STEP_125_E;
-    ELSE
-      blGreiferSchliessen := TRUE;
-    END_IF
-
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_125_E:
-    (* Lineareinheit nach vorne fahren *)
-
-    eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Lineareinheit_Vor_125;
-
-    IF blLineareinheitVorDone THEN
-      blLineareinheitVor       := FALSE;
-      blEntriegelungSchliessen := TRUE;
-      steplAusschleusen        := STEP_130_E;
-    ELSE
-      blLineareinheitVor       := TRUE;
-    END_IF
-
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_130_E:
-    (* Verriegelung schließen *)
-
-    eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Entrieglung_Schliessen_130;
-
-    IF blEntriegelungSchliessenDone THEN
-      blEntriegelungSchliessen := FALSE;
-      blGreiferOeffnen         := TRUE;
-      steplAusschleusen        := STEP_135_E;
-    ELSE
-      blEntriegelungSchliessen := TRUE;
-    END_IF
-
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_135_E:
-    (* Greifer öffnen *)
-
-    eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Greifer_Oeffnen_135;
-
-    IF blGreiferOeffnenDone THEN
-      blGreiferOeffnen       := FALSE;
-      blLineareinheitZurueck := TRUE;
-      steplAusschleusen      := STEP_140_E;
-    ELSE
-      blGreiferOeffnen := TRUE;
-    END_IF
-
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_140_E:
-    (* Lineareinheit nach hinten fahren *)
-
-    eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Lineareinheit_Zurueck_140;
-    
-    IF blLineareinheitZurueckDone THEN
-      blLineareinheitZurueck := FALSE;
-      IF tofTagPresent.Q THEN
-        blRolltorAb            := TRUE;
-        steplAusschleusen      := STEP_145_E;
-      ELSE
-        steplAusschleusen      := STEP_143_E;
-        
-        SpsWarnung( eFehler_Station, 
-            cMELDUNG_FAECHERWAGEN_OBERWAGEN_INPOS_VERLOREN, 
-            BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-            AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
-            BasisStationsParameter.awFehlerInformationen );
+      IF bpUntergestellErkannt AND bpLichtschranke_OK THEN
+        blRolltorAuf            := TRUE;
+        blEntriegelungOeffnen   := TRUE;
+        blGegenhalterSchliessen := TRUE;
+        steplAusschleusen       := STEP_100_E;
       END_IF
-    ELSE
-      blLineareinheitZurueck := TRUE;
-    END_IF
 
 
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_143_E:
-    (* Sonderfall Oberwagen womöglich nicht in Pos
-       - Bedienereingriff erforderlich
-    *)
-    Ampel_AK[1,1].bpHinweisFWEingriffErforderlich := TRUE;
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_100_E:
+      (* Rolltor öffnen, Verriegelung öffnen und Wagen sichern *)
+
+      eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Rolltor_Auf_Entriegeln_Festhalten_100;
+
+      IF blRolltorAufDone AND blGegenhalterSchliessenDone AND blEntriegelungOeffnenDone THEN
+        blRolltorAuf            := FALSE;
+        blEntriegelungOeffnen   := FALSE;
+        blGegenhalterSchliessen := FALSE;
+        steplAusschleusen       := STEP_105_E;
+      ELSE
+        blRolltorAuf            := TRUE;
+        blEntriegelungOeffnen   := TRUE;
+        blGegenhalterSchliessen := TRUE;
+      END_IF
+
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_105_E:
+      (* Lineareinheit nach vorne fahren *)
+
+      eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Lineareinheit_Vor_105;
+
+      IF blLineareinheitVorDone THEN
+        blLineareinheitVor := FALSE;
+        blGreiferOeffnen   := TRUE;
+        steplAusschleusen  := STEP_110_E;
+      ELSE
+        blLineareinheitVor := TRUE;
+        blGreiferOeffnen   := FALSE;
+      END_IF
+
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_110_E:
+      (* Greifer öffnen *)
+
+      eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Greifer_Oeffnen_110;
+
+      IF blGreiferOeffnenDone THEN
+        blGreiferOeffnen       := FALSE;
+        blLineareinheitZurueck := TRUE;
+        steplAusschleusen      := STEP_115_E;
+      ELSE
+        blGreiferOeffnen := TRUE;
+      END_IF
+
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_115_E:
+      (* Lineareinheit nach hinten fahren *)
+
+      eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Lineareinheit_Zurueck_115;
+
+      IF blLineareinheitZurueckDone THEN
+        blLineareinheitZurueck := FALSE;
+        blGreiferSchliessen    := TRUE;
+        steplAusschleusen      := STEP_120_E;
+      ELSE
+        blLineareinheitZurueck := TRUE;
+      END_IF
+
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_120_E:
+      (* Greifer schließen *)
+
+      eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Greifer_Schliessen_120;
+
+      IF blGreiferSchliessenDone THEN
+        blGreiferSchliessen := FALSE;
+        blLineareinheitVor  := TRUE;
+        steplAusschleusen   := STEP_125_E;
+      ELSE
+        blGreiferSchliessen := TRUE;
+      END_IF
+
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_125_E:
+      (* Lineareinheit nach vorne fahren *)
+
+      eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Lineareinheit_Vor_125;
+
+      IF blLineareinheitVorDone THEN
+        blLineareinheitVor       := FALSE;
+        blEntriegelungSchliessen := TRUE;
+        steplAusschleusen        := STEP_130_E;
+      ELSE
+        blLineareinheitVor       := TRUE;
+      END_IF
+
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_130_E:
+      (* Verriegelung schließen *)
+
+      eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Entrieglung_Schliessen_130;
+
+      IF blEntriegelungSchliessenDone THEN
+        blEntriegelungSchliessen := FALSE;
+        blGreiferOeffnen         := TRUE;
+        steplAusschleusen        := STEP_135_E;
+      ELSE
+        blEntriegelungSchliessen := TRUE;
+      END_IF
+
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_135_E:
+      (* Greifer öffnen *)
+
+      eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Greifer_Oeffnen_135;
+
+      IF blGreiferOeffnenDone THEN
+        blGreiferOeffnen       := FALSE;
+        blLineareinheitZurueck := TRUE;
+        steplAusschleusen      := STEP_140_E;
+      ELSE
+        blGreiferOeffnen := TRUE;
+      END_IF
+
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_140_E:
+      (* Lineareinheit nach hinten fahren *)
+
+      eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Lineareinheit_Zurueck_140;
+    
+      IF blLineareinheitZurueckDone THEN
+        blLineareinheitZurueck := FALSE;
+        IF tofTagPresent.Q THEN
+          blRolltorAb            := TRUE;
+          steplAusschleusen      := STEP_145_E;
+        ELSE
+          steplAusschleusen      := STEP_143_E;
+        
+          SpsWarnung( eFehler_Station, 
+                      cMELDUNG_FAECHERWAGEN_OBERWAGEN_INPOS_VERLOREN, 
+                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
+                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                      BasisStationsParameter.awFehlerInformationen );
+        END_IF
+      ELSE
+        blLineareinheitZurueck := TRUE;
+      END_IF
+
+
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_143_E:
+      (* Sonderfall Oberwagen womöglich nicht in Pos
+         - Bedienereingriff erforderlich
+      *)
+      Ampel_AK[1,1].bpHinweisFWEingriffErforderlich := TRUE;
 
     
-    IF rtlQuittierungEinschleusen.Q  OR tonlFWInBox.Q THEN
-      steplAusschleusen := STEP_145_E;
-    END_IF
+      IF rtlQuittierungEinschleusen.Q  OR tonlFWInBox.Q THEN
+        steplAusschleusen := STEP_145_E;
+      END_IF
 
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_145_E:
-    (* Rolltor schließen *)
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_145_E:
+      (* Rolltor schließen *)
 
-    Ampel_AK[1,1].bpHinweisFWEingriffErforderlich := FALSE;
+      Ampel_AK[1,1].bpHinweisFWEingriffErforderlich := FALSE;
     
-    eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Rolltor_Ab_145;
+      eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Rolltor_Ab_145;
 
-    IF blRolltorAbDone THEN
-      blRolltorAb          := FALSE;
-      blGegenhalterOeffnen := TRUE;
-      steplAusschleusen    := STEP_150_E;
-    ELSE
-      blRolltorAb          := TRUE;
-    END_IF
+      IF blRolltorAbDone THEN
+        blRolltorAb          := FALSE;
+        blGegenhalterOeffnen := TRUE;
+        steplAusschleusen    := STEP_150_E;
+      ELSE
+        blRolltorAb          := TRUE;
+      END_IF
 
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_150_E:
-    (* Gegenhalter öffnen und Abschlussmeldung vorbereiten *)
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_150_E:
+      (* Gegenhalter öffnen und Abschlussmeldung vorbereiten *)
 
-    eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Abgeschlossen_150;
+      eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Abgeschlossen_150;
 
-    IF blGegenhalterOeffnenDone THEN
-      blGegenhalterOeffnen := FALSE;
+      IF blGegenhalterOeffnenDone THEN
+        blGegenhalterOeffnen := FALSE;
 
-      wSps2FaecherwagenStart :=
-        BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+        wSps2FaecherwagenStart :=
+                                 BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
 
-      MsgToMmi( auftragsnr_w := SB0_SPS_SortierungRackinPos );
+        MsgToMmi( auftragsnr_w := SB0_SPS_SortierungRackinPos );
 
-      steplAusschleusen := STEP_1000_E;
-    ELSE
-      blGegenhalterOeffnen := TRUE;
-    END_IF
+        steplAusschleusen := STEP_1000_E;
+      ELSE
+        blGegenhalterOeffnen := TRUE;
+      END_IF
 
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_900_E:
-    (* Fehlerzustand setzen und Ablauf stoppen *)
-    BasisStationsParameter.bFehler := TRUE;
-    BasisStationsParameter.bAustransport[1] := FALSE;
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_900_E:
+      (* Fehlerzustand setzen und Ablauf stoppen *)
+      BasisStationsParameter.bFehler := TRUE;
+      BasisStationsParameter.bAustransport[1] := FALSE;
 
-  (* AUSSCHLEUSEN ============================================================================ *)
-  STEP_1000_E:
-    (* Ablauf abgeschlossen und Anlage in Grundstellung *)
-    eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Abgeschlossen_InGrundstellung;
+    (* AUSSCHLEUSEN ============================================================================ *)
+    STEP_1000_E:
+      (* Ablauf abgeschlossen und Anlage in Grundstellung *)
+      eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Abgeschlossen_InGrundstellung;
 
-    bpAusschleusenAbgeschlossen := TRUE;
-    BasisStationsParameter.bAustransport[1] := FALSE;
+      bpAusschleusenAbgeschlossen := TRUE;
+      BasisStationsParameter.bAustransport[1] := FALSE;
 
   END_CASE
 

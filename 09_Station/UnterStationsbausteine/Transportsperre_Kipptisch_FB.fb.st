@@ -87,7 +87,7 @@ THEN
   wpStatusZylinder := eZylinder1Ausgefahren;
 
 ELSIF(   in_StatusZylinderEingefahren
-     AND NOT in_StatusZylinderAusgefahren )
+       AND NOT in_StatusZylinderAusgefahren )
 THEN
   wpStatusZylinder := eZylinder1Eingefahren;
 

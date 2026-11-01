@@ -14,31 +14,31 @@ ACTION Referenz
 *)
 IF ( blBetriebsartReferenz OR BasisStationsParameter.dwHandfunktionen.5 )THEN
   CASE steplReferenz OF
-(*REFERENZ ============================*)
+    (*REFERENZ ============================*)
     STEP_0_E:
       BasisStationsParameter.bReferenzAbgeschlossen := FALSE;
 
       IF BasisStationsParameter.bFreigabe THEN
-       steplReferenz := STEP_5_E;
+        steplReferenz := STEP_5_E;
       END_IF
 
-(*REFERENZ ============================*)
+    (*REFERENZ ============================*)
     STEP_5_E:
 
       Messachse.bpReferenz     := TRUE;
       Glastransport.bpReferenz := TRUE;
       steplReferenz := STEP_10_E;
 
-(*REFERENZ ============================*)
+    (*REFERENZ ============================*)
     STEP_10_E:
       (* Hinweis:
          - Referenzierung Abgeschlossen
       *)
       IF ( Messachse.bpDone AND BasisStationsParameter.stMKs.stStationsAufbau.bMessachse)
-       OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bMessachse
-       THEN
-         Messachse.bpReferenz := FALSE;
-         steplReferenz := STEP_100_E;
+         OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bMessachse
+      THEN
+        Messachse.bpReferenz := FALSE;
+        steplReferenz := STEP_100_E;
       END_IF
 
       (* Fehlerbehandlung
@@ -51,7 +51,7 @@ IF ( blBetriebsartReferenz OR BasisStationsParameter.dwHandfunktionen.5 )THEN
       END_IF
 
 
-(*REFERENZ ============================*)
+    (*REFERENZ ============================*)
     STEP_100_E:
       IF ( Glastransport.bpDone ) THEN
         Glastransport.bpReferenz := FALSE;
@@ -68,15 +68,15 @@ IF ( blBetriebsartReferenz OR BasisStationsParameter.dwHandfunktionen.5 )THEN
       END_IF
 
 
-(*REFERENZ ============================*)
+    (*REFERENZ ============================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*REFERENZ ============================*)
+    (*REFERENZ ============================*)
     STEP_1000_E:
       BasisStationsParameter.bReferenzAbgeschlossen := TRUE;
 
-(*REFERENZ ============================*)
+  (*REFERENZ ============================*)
   END_CASE
 ELSE
   IF ( steplReferenz > STEP_0_E ) THEN

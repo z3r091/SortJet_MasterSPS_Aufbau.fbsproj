@@ -11,26 +11,26 @@ ACTION Handfunktionen
 (***************************************************************************************************)
 
 IF ( bpBetriebsartHand
-  AND NOT bpReferenz
-  AND NOT bpReset
-  AND NOT bpStarteDrehBewegung
-  AND NOT bpStarteAbsolutPositionierung )
+     AND NOT bpReferenz
+     AND NOT bpReset
+     AND NOT bpStarteDrehBewegung
+     AND NOT bpStarteAbsolutPositionierung )
 THEN
 
   IF bpInReferenz THEN
 
     CASE epDrehPositionsStatus OF
 
-      eDrehPosition0Grad,
-      eDrehPosition90Grad,
-      eDrehPosition180Grad:
+        eDrehPosition0Grad,
+          eDrehPosition90Grad,
+          eDrehPosition180Grad:
         Arretierung.bpStartAusfahren       := bpHandZentrierungAusfahren;
         Arretierung.bpStartEinfahren       := bpHandZentrierungEinfahren;
 
-    ELSE
+      ELSE
 
-      Arretierung.bpStartAusfahren       := bpHandZentrierungAusfahren;
-      Arretierung.bpStartEinfahren       := bpHandZentrierungEinfahren;
+        Arretierung.bpStartAusfahren       := bpHandZentrierungAusfahren;
+        Arretierung.bpStartEinfahren       := bpHandZentrierungEinfahren;
     END_CASE
 
   ELSE

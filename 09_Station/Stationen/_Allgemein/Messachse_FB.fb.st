@@ -226,11 +226,11 @@ Antrieb.stStationsNummern := stStationsNummern;
 (* BAUSTEIN: AUSNAHMESITUATIONEN *)
 (***************************************************************************************************)
 IF ( Antrieb.bpFehler
-  AND NOT ( steplPositionieren = STEP_900_E
-    OR steplOberUndUnterkante_2_Sensoren = STEP_900_E
-    OR steplOberkante_1_Sensor = STEP_900_E
-    OR steplReferenz    = STEP_900_E
-    OR steplReset       = STEP_900_E ) )
+     AND NOT ( steplPositionieren = STEP_900_E
+               OR steplOberUndUnterkante_2_Sensoren = STEP_900_E
+               OR steplOberkante_1_Sensor = STEP_900_E
+               OR steplReferenz    = STEP_900_E
+               OR steplReset       = STEP_900_E ) )
 THEN
   wpFehlerNR := cMELDUNG_ANTRIEB_MESSACHSE;
   bpFehler := TRUE;

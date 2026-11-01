@@ -10,7 +10,7 @@ ACTION Austransport
 (* AKTION AUSTRANSPORT *)
 (***************************************************************************************************)
 IF ( BasisStationsParameter.bAustransport[cWAND_1]
-  AND blBetriebsartAutomatik )
+     AND blBetriebsartAutomatik )
 THEN
 
   // Ausnahmesituation
@@ -34,14 +34,14 @@ THEN
 
   
   CASE steplAustransport OF
-(*AUSTRANSPORT =====================*)
+    (*AUSTRANSPORT =====================*)
     STEP_0_E:
       IF ( blGeblaeseAktiv ) THEN
         Kippen.bpPositionieren := FALSE;
         steplAustransport := STEP_10_E;
       END_IF
 
-(*AUSTRANSPORT =====================*)
+    (*AUSTRANSPORT =====================*)
     STEP_10_E:
       (* Hinweis:
          -  Ansteuerung Kippen 
@@ -51,7 +51,7 @@ THEN
 
       steplAustransport := STEP_20_E;
 
-(*AUSTRANSPORT =====================*)
+    (*AUSTRANSPORT =====================*)
     STEP_20_E:
       IF ( Kippen.bpDone OR NOT Kippen.bpPositionieren ) THEN
 
@@ -60,7 +60,7 @@ THEN
         steplAustransport := STEP_100_E;
       END_IF
 
-(*AUSTRANSPORT =====================*)
+    (*AUSTRANSPORT =====================*)
     STEP_100_E:
       (* Hinweis:
         - Austransport starten
@@ -72,14 +72,14 @@ THEN
 
       steplAustransport := STEP_110_E;
 
-(*AUSTRANSPORT =====================*)
+    (*AUSTRANSPORT =====================*)
     STEP_110_E:
-        (* Hinweis:
-           - Bei letzter Scheibe und Station leer -> Kippen
-        *)
+      (* Hinweis:
+         - Bei letzter Scheibe und Station leer -> Kippen
+      *)
       IF ( Glastransport.bpFreigabeFremdprozess
-        AND BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe  
-        AND BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBIT_SRC_WALL_1_EMPTY )
+           AND BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe  
+           AND BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBIT_SRC_WALL_1_EMPTY )
       THEN
 
         Kippen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachAustransport;
@@ -102,24 +102,24 @@ THEN
 
       END_IF
 
-(*AUSTRANSPORT =====================*)
+    (*AUSTRANSPORT =====================*)
     STEP_200_E: 
       (* Hinweis:
          - Bei letzter Scheibe und Station leer -> Kippen
       *) 
-    IF BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe  
-        AND BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBIT_SRC_WALL_1_EMPTY
+      IF BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe  
+         AND BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBIT_SRC_WALL_1_EMPTY
       THEN
-      Kippen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachAustransport;
-    Kippen.bpPositionieren := TRUE;
+        Kippen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachAustransport;
+        Kippen.bpPositionieren := TRUE;
 
         steplAustransport := STEP_210_E;
-    ELSE
-      steplAustransport := STEP_1000_E; 
-    END_IF
+      ELSE
+        steplAustransport := STEP_1000_E; 
+      END_IF
 
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_210_E:
       IF Kippen.bpDone OR NOT Kippen.bpPositionieren THEN
         Kippen.bpPositionieren  := FALSE;
@@ -127,15 +127,15 @@ THEN
         steplAustransport := STEP_1000_E;
       END_IF
 
-(*AUSTRANSPORT =====================*)
+    (*AUSTRANSPORT =====================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*AUSTRANSPORT =====================*)
+    (*AUSTRANSPORT =====================*)
     STEP_1000_E:
       BasisStationsParameter.bAustransportAbgeschlossen[cWAND_1] := TRUE;
 
-(*AUSTRANSPORT =====================*)
+  (*AUSTRANSPORT =====================*)
   END_CASE
 ELSE
 

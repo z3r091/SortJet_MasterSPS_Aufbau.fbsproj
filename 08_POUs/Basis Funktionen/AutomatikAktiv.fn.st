@@ -20,9 +20,9 @@ CASE wpMmiNummer OF
   cERSTE_STATION..cLETZTE_STATION:
     FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cANZAHL_AUTOMATIKKREISE DO
       IF starrStationBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex] <> 0 THEN
-          IF M_Automatik_Aktiv[starrStationBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex]] THEN
-            AutomatikAktiv := TRUE;
-          END_IF
+        IF M_Automatik_Aktiv[starrStationBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex]] THEN
+          AutomatikAktiv := TRUE;
+        END_IF
       ELSE
         RETURN;
       END_IF
@@ -83,9 +83,9 @@ CASE wpMmiNummer OF
       END_IF
     END_FOR
 
-ELSE
+  ELSE
 
-  AutomatikAktiv := FALSE;
+    AutomatikAktiv := FALSE;
 
 END_CASE
 END_FUNCTION

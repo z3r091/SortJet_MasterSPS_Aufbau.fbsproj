@@ -21,7 +21,7 @@ VAR_INPUT
   // POINTER 
   ppParameterBaustein : REFERENCE TO Parameter_Zentralschmierung_DLS_4xxi; 
 
-    // STRUKTUR 
+  // STRUKTUR 
   stStationsNummern : Station_ST;
 END_VAR
 VAR_OUTPUT
@@ -53,7 +53,7 @@ VAR
   // INT
   ailAktiverHub : ARRAY[cSCHMIERKREIS_1..cSCHMIERKREIS_2] OF INT; // Aktueller Hub der durchgeführt wird wenn Schmierung aktiv 
 
-    // WORD 
+  // WORD 
   wlIndex : WORD;
 
   // TIMER
@@ -85,10 +85,10 @@ VAR
   steplSchmierung : STEPS_TE;
   steplReset      : STEPS_TE;
 
-    //  STRING 
+  //  STRING 
   slInLogString: STRING;
 
-   //Ein/Ausgänge zum Mappen in der Config 
+  //Ein/Ausgänge zum Mappen in der Config 
   in_bStatus        : BOOL; // Signal, dass die Schmierung erfolgreich ist, oder Fehlersignal 
   out_bSteuerSignal : BOOL; // Ausgang der die Zentralschmierung ansteuert 
 END_VAR

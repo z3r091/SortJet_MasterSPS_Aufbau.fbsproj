@@ -53,7 +53,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
 
   CASE steplSchritt OF
 
-(*VORABKOMPONENETEN ===============================================*)
+    (*VORABKOMPONENETEN ===============================================*)
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -68,7 +68,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
         END_IF
       END_IF
 
-(*VORABKOMPONENETEN ===============================================*)
+    (*VORABKOMPONENETEN ===============================================*)
     STEP_10_E:
       // Transferstation bestimmen
       wlNextTransferstation := Auftragsdaten.wTransferStation;
@@ -115,7 +115,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
 
       steplSchritt := STEP_400_E;
 
-(*VORABKOMPONENETEN ===============================================*)
+    (*VORABKOMPONENETEN ===============================================*)
     STEP_400_E:
       (* Hinweis:
          - Abschliessen des Austransports
@@ -138,18 +138,18 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-(*VORABKOMPONENETEN ===============================================*)
+    (*VORABKOMPONENETEN ===============================================*)
     STEP_900_E: 
       blFreigabeVorabAuftrag := FALSE;
       bpFehler := TRUE;
 
-(*VORABKOMPONENETEN ===============================================*)
+    (*VORABKOMPONENETEN ===============================================*)
     STEP_1000_E:
       bpDone := TRUE;
       blFreigabeVorabAuftrag := FALSE;
       Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
 
-(*VORABKOMPONENETEN ===============================================*)
+  (*VORABKOMPONENETEN ===============================================*)
   END_CASE
 
 END_IF

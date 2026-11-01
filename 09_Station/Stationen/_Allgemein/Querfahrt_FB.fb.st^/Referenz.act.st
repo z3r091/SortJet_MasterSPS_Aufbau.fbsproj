@@ -19,7 +19,7 @@ IF ( bpReferenz ) THEN
   END_IF
 
   CASE steplReferenz OF
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_0_E:
       (* Hinweis:
          - Timer zuruecksetzen
@@ -32,17 +32,17 @@ IF ( bpReferenz ) THEN
         steplReferenz := STEP_20_E;
       END_IF
 
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_20_E:
       IF (  NOT Antrieb.bpMaxSchalterBelegt
-        AND NOT Antrieb.bpMinSchalterBelegt )
+           AND NOT Antrieb.bpMinSchalterBelegt )
       THEN
         steplReferenz := STEP_50_E;
       ELSE
         steplReferenz := STEP_30_E;
       END_IF
 
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_30_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ENDSCHALTER FREI FAHREN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   
@@ -51,7 +51,7 @@ IF ( bpReferenz ) THEN
       *) 
       tonlEndschalterFreifahren(IN := TRUE, PT:= T#10s);
       toflHardwareEndschalterFrei( IN := (  Antrieb.bpMaxSchalterBelegt
-                                         OR Antrieb.bpMinSchalterBelegt),
+                                           OR Antrieb.bpMinSchalterBelegt),
                                    PT := t#1s);
 
       Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
@@ -78,16 +78,16 @@ IF ( bpReferenz ) THEN
          - Endschalter wird nicht frei
        *)
       IF ( tonlEndschalterFreifahren.Q
-        AND ( Antrieb.bpMaxSchalterBelegt
-          OR  Antrieb.bpMinSchalterBelegt ))
-     THEN
-       Antrieb.wpBetriebsart := KEINE_FUNKTION;
-       wpFehlerNr := cMELDUNG_QUERFAHRT_ENDSCHALTER_NICHT_FREI;
-       steplReferenz := STEP_900_E;
-     END_IF
+           AND ( Antrieb.bpMaxSchalterBelegt
+                 OR  Antrieb.bpMinSchalterBelegt ))
+      THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_QUERFAHRT_ENDSCHALTER_NICHT_FREI;
+        steplReferenz := STEP_900_E;
+      END_IF
 
 
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_40_E:
       (* Hinweis:
          - Warten bis Antrieb steht
@@ -96,7 +96,7 @@ IF ( bpReferenz ) THEN
         steplReferenz := STEP_50_E;
       END_IF
 
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_50_E:
       (* Antrieb Referenzieren *)
       Antrieb.rpGeschwindigkeit  := ppAntriebsInformationen.rpReferenzGeschwindigkeit;
@@ -108,22 +108,22 @@ IF ( bpReferenz ) THEN
       steplReferenz := STEP_60_E;
 
 
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_60_E:
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplReferenz := STEP_1000_E;
       END_IF
 
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(*REFERENZ ==================================*)
+    (*REFERENZ ==================================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(*REFERENZ ==================================*)
+  (*REFERENZ ==================================*)
   END_CASE
 ELSE
   IF ( steplReferenz > STEP_0_E ) THEN

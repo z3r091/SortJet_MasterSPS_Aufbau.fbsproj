@@ -7,14 +7,14 @@
 *)
 FUNCTION SpsHinweis : BOOL
 VAR_INPUT
- wpFehlerGruppe    : WORD;
- wpErrorNr         : WORD;
- wpStationsnummmer : WORD;
- wpAutomatikkreis  : WORD;
- awpDaten          : ARRAY [0..25] OF WORD;
+  wpFehlerGruppe    : WORD;
+  wpErrorNr         : WORD;
+  wpStationsnummmer : WORD;
+  wpAutomatikkreis  : WORD;
+  awpDaten          : ARRAY [0..25] OF WORD;
 END_VAR
 VAR
- smlMessage : SpsMessage;
+  smlMessage : SpsMessage;
 END_VAR
 
 

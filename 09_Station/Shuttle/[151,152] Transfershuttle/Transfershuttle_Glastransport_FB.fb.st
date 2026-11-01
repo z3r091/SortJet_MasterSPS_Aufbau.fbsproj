@@ -361,10 +361,10 @@ blAuslaufsensor := NOT toflAuslaufsensor.Q AND ( blDruckluftAuslaufSeiteOK OR bp
    - Abfrage ob die Station bereit fuer den Glastransport ist 
 *)
 blBereitZumGlastransport := (    tonlGlastransportOben.Q
-                             AND tonlKontrolleEinlaufOben.Q
-                             AND ( blDruckluftAuslaufSeiteOK OR bpOptionTransfershuttleMitUltraschallSensoren )
-                             AND tonlKontrolleAuslaufOben.Q
-                             AND ( blDruckluftEinlaufSeiteOK OR bpOptionTransfershuttleMitUltraschallSensoren ) );
+                              AND tonlKontrolleEinlaufOben.Q
+                              AND ( blDruckluftAuslaufSeiteOK OR bpOptionTransfershuttleMitUltraschallSensoren )
+                              AND tonlKontrolleAuslaufOben.Q
+                              AND ( blDruckluftEinlaufSeiteOK OR bpOptionTransfershuttleMitUltraschallSensoren ) );
 
 
 (***************************************************************************************************)
@@ -422,13 +422,13 @@ SteuerungLuftschranken();
 (* BAUSTEIN: VORTRANSPORT [SPEICHER]  *)
 (***************************************************************************************************)
 IF ( bpShuttleAbsenken ) THEN
-   out_bShuttleAnheben := FALSE;
-   out_bScheibenKontrolleAuslaufSeiteAuf := FALSE;
-   blScheibenKontrolleAuslaufseiteEin    := FALSE;
-   out_bScheibenKontrolleEinlaufSeiteAuf := FALSE;
-   blScheibenKontrolleEinlaufseiteEin    := FALSE;
+  out_bShuttleAnheben := FALSE;
+  out_bScheibenKontrolleAuslaufSeiteAuf := FALSE;
+  blScheibenKontrolleAuslaufseiteEin    := FALSE;
+  out_bScheibenKontrolleEinlaufSeiteAuf := FALSE;
+  blScheibenKontrolleEinlaufseiteEin    := FALSE;
 
-   bpShuttleAbsenken := FALSE;
+  bpShuttleAbsenken := FALSE;
 END_IF
 
 
@@ -439,17 +439,17 @@ END_IF
 (* Glastransportfreigabe
 *)
 toflAutoAbschaltung( IN := (  bpAutomatikAktiv
-                           AND ( bpEintransport
-                           OR bpAustransport
-                 OR bpStarteHebeVorgang
-                           OR bpVortransport))
-                           OR bpCheck
-                           OR bpSlaveKopplung
-                           OR bpSpeicherfachValidierung
-                           OR bpScheibenNeuAusrichten
-                           OR bpHandfahrenPositiv
-                           OR bpHandfahrenNegativ
-                           OR bpFahreReferenz,
+                             AND ( bpEintransport
+                                   OR bpAustransport
+                                   OR bpStarteHebeVorgang
+                                   OR bpVortransport))
+                     OR bpCheck
+                     OR bpSlaveKopplung
+                     OR bpSpeicherfachValidierung
+                     OR bpScheibenNeuAusrichten
+                     OR bpHandfahrenPositiv
+                     OR bpHandfahrenNegativ
+                     OR bpFahreReferenz,
                      PT:=( WORD_TO_TIME(ppParameterBaustein.wEnergieSparZeit)*1000) );
 
 Antrieb.bpFreigabe            := toflAutoAbschaltung.Q AND bpFreigabe;
@@ -469,11 +469,11 @@ Scheibenzaehler( ipScheibenAnzahl := ilScheibenZaehler,
  - Bit ob das Transfershuttle verfahren darf
 *)
 bpBereitZumVerfahren := (     blSensorGlastransportUnten
-            AND NOT blSensorGlastransportOben
-            AND tonlKontrolleEinlaufUnten.Q
-            AND NOT bpSensorScheibenKontrolleEinlaufseiteOben
-            AND tonlKontrolleAuslaufUnten.Q
-            AND NOT bpSensorScheibenKontrolleAuslaufseiteOben );
+                          AND NOT blSensorGlastransportOben
+                          AND tonlKontrolleEinlaufUnten.Q
+                          AND NOT bpSensorScheibenKontrolleEinlaufseiteOben
+                          AND tonlKontrolleAuslaufUnten.Q
+                          AND NOT bpSensorScheibenKontrolleAuslaufseiteOben );
 
 (* Ausgaeng:
    - Aktuelle Geschwindigkeit des Antriebs
@@ -481,7 +481,7 @@ bpBereitZumVerfahren := (     blSensorGlastransportUnten
      -> Ist- Wertkopplung ( Soll-Geschwindigkeit des Antriebs)
 *)
 IF  ( ( bpEintransport OR bpRueckwaertsEintransportieren ) AND bpOutBereitZumEintransport )
-  OR ( bpCheck AND bpOutBereitZumEintransport )
+    OR ( bpCheck AND bpOutBereitZumEintransport )
 THEN
   rpOutGeschwindigkeit := Antrieb.rpGeschwindigkeit;
 ELSE
@@ -500,13 +500,13 @@ bpSensorAuslauf := blAuslaufSensor;
    - in Progress
 *)
 bpAktiv := (   bpEintransport
-            OR bpAustransport
-            OR bpVortransport
-            OR bpSlaveKopplung
-            OR bpScheibenNeuAusrichten
-            OR bpStarteHebeVorgang
-            OR bpCheck
-            OR bpDone );
+             OR bpAustransport
+             OR bpVortransport
+             OR bpSlaveKopplung
+             OR bpScheibenNeuAusrichten
+             OR bpStarteHebeVorgang
+             OR bpCheck
+             OR bpDone );
 
 (***************************************************************************************************)
 (* BAUSTEIN: FEHLERNUMMER GENERIEREN BEI EINEM TRANSFERSHUTTLE- FEHLER  *)
@@ -520,26 +520,26 @@ IF ( rtriglFehlerAktiv.Q ) THEN
 
   CASE wpFehlerNr OF
 
-    cMELDUNG_SENSOR_EINLAUF_BELEGT,
-    cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_BELEGT,
-    cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_BELEGT,
-    cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_NICHT_FREI,
-    cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_NICHT_FREI:
+      cMELDUNG_SENSOR_EINLAUF_BELEGT,
+        cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_BELEGT,
+        cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_BELEGT,
+        cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_NICHT_FREI,
+        cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_NICHT_FREI:
       wpAusnahmefehlerTyp  := cAUSNAHMESITUATION_EINLAUFSENSOR;
 
 
-    cMELDUNG_SENSOR_AUSLAUF_BELEGT,
-    cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT,
-    cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI,
-    cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_BELEGT,
-    cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI,
-    cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_ODER_AUSLAUF_BELEGT_FREIFAHREN:
+      cMELDUNG_SENSOR_AUSLAUF_BELEGT,
+        cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT,
+        cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI,
+        cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_BELEGT,
+        cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI,
+        cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_ODER_AUSLAUF_BELEGT_FREIFAHREN:
       wpAusnahmefehlerTyp := cAUSNAHMESITUATION_AUSLAUFSENSOR;
 
 
-    cMELDUNG_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT,
-    cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT,
-    cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT:
+      cMELDUNG_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT,
+        cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT,
+        cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT:
       wpAusnahmefehlerTyp := cAUSNAHMESITUATION_EINLAUF_AUSLAUF_SENSOR;
 
 

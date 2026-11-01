@@ -51,8 +51,8 @@ IF ( Auftragsdaten.wAuftrag = eStation_RackSuche ) THEN
     steplSchritt := STEP_900_E;
   END_IF
 
-    CASE steplSchritt OF
-(* RACKSUCHE ===========================================*)
+  CASE steplSchritt OF
+    (* RACKSUCHE ===========================================*)
     STEP_0_E:
       (* Hinweis:
          - Pruefen ob der Sicherheitskreis ausgeloest oder angefragz wurde
@@ -61,7 +61,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_RackSuche ) THEN
         steplSchritt := STEP_10_E;
       END_IF
 
-(* RACKSUCHE ===========================================*)
+    (* RACKSUCHE ===========================================*)
     STEP_10_E:
       (* Hinweis:
          - Starten der Schrittkette -> MMI Fährt mittel Shuttlepositionierung den Weg ab 
@@ -70,7 +70,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_RackSuche ) THEN
 
       steplSchritt := STEP_100_E;
 
-(* RACKSUCHE ===========================================*)
+    (* RACKSUCHE ===========================================*)
     STEP_100_E:
       (* Hinweis:
           Fächerwagensuche: Wort 0 = (int) SPS Nr Shuttle  / Wort 1+2 = (real) Position rechte (?) Kante der Folie[-1 für nicht gefunden]
@@ -84,18 +84,18 @@ IF ( Auftragsdaten.wAuftrag = eStation_RackSuche ) THEN
 
         steplSchritt := STEP_1000_E;
 
-     END_IF
+      END_IF
 
-(* RACKSUCHE ===========================================*)
+    (* RACKSUCHE ===========================================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* RACKSUCHE ===========================================*)
+    (* RACKSUCHE ===========================================*)
     STEP_1000_E:
       bpDone := TRUE;
       Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
 
-(* RACKSUCHE ===========================================*)
+  (* RACKSUCHE ===========================================*)
   END_CASE
 
 END_IF

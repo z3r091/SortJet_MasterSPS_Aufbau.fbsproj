@@ -11,13 +11,13 @@ ACTION Entriegelung
 (***************************************************************************************************)
 
 IF ( blEntriegelungOeffnen 
-  //AND bpUntergestellErkannt //safety eingang
-// AND NOT in_bFaecherwagenNichtInPos // Gestell ist auf dem Wagen
-  (*AND BasisStationsParameter.bFreigabe*) )
+   //AND bpUntergestellErkannt //safety eingang
+   // AND NOT in_bFaecherwagenNichtInPos // Gestell ist auf dem Wagen
+   (*AND BasisStationsParameter.bFreigabe*) )
 THEN
   CASE steplEntriegelungOeffnen OF
 
-(* ENTRIEGELUNG AUF  ============================*)
+    (* ENTRIEGELUNG AUF  ============================*)
     STEP_0_E:
       blEntriegelungOeffnenDone := FALSE;
 
@@ -28,14 +28,14 @@ THEN
       THEN
         steplEntriegelungOeffnen := STEP_1000_E;
       ELSE
-    IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+        IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
           out_bEntriegelungAusfahren := TRUE;
           out_bEntriegelungEinfahren  := FALSE;
           steplEntriegelungOeffnen := STEP_10_E;
-    END_IF
+        END_IF
       END_IF
 
-(* ENTRIEGELUNG AUF  ============================*)
+    (* ENTRIEGELUNG AUF  ============================*)
     STEP_10_E:
       tonlEntriegelungAufZu( IN := in_bEntriegelungOffen, PT := T#0.5S );
       tonlTimeoutEntriegelungAufZu(IN := NOT in_bEntriegelungOffen, PT := TIMEOUT_SENSOR);
@@ -50,28 +50,28 @@ THEN
       *)
 
       IF tonlTimeoutEntriegelungAufZu.Q THEN
-         wpFehlerNr := cMELDUNG_FAECHERWAGEN_ENTRIEGELUNG_NICHT_OFFEN;
-         SpsError( eFehler_Station,
-                   wpFehlerNr, 
-                   BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
-                   BasisStationsParameter.awFehlerInformationen );
+        wpFehlerNr := cMELDUNG_FAECHERWAGEN_ENTRIEGELUNG_NICHT_OFFEN;
+        SpsError( eFehler_Station,
+                  wpFehlerNr, 
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  BasisStationsParameter.awFehlerInformationen );
 
-         steplEntriegelungOeffnen := STEP_900_E;
+        steplEntriegelungOeffnen := STEP_900_E;
       END_IF
 
 
-(* ENTRIEGELUNG AUF  ============================*)
+    (* ENTRIEGELUNG AUF  ============================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       out_bEntriegelungAusfahren := FALSE;
 
 
-(* ENTRIEGELUNG AUF  ============================*)
+    (* ENTRIEGELUNG AUF  ============================*)
     STEP_1000_E:
       blEntriegelungOeffnenDone:=TRUE;
 
-   END_CASE
+  END_CASE
 END_IF
 
 IF NOT blEntriegelungOeffnen THEN
@@ -97,12 +97,12 @@ END_IF
 (***************************************************************************************************)
 
 IF blEntriegelungSchliessen 
-   (*AND BasisStationsParameter.bFreigabe*)
-  //AND bpUntergestellErkannt //safety eingang
+(*AND BasisStationsParameter.bFreigabe*)
+//AND bpUntergestellErkannt //safety eingang
 THEN
   CASE steplEntriegelungSchliessen OF
 
-(* ENTRIEGELUNG AB ============================*)
+    (* ENTRIEGELUNG AB ============================*)
     STEP_0_E:
       blEntriegelungSchliessenDone := FALSE;
 
@@ -113,14 +113,14 @@ THEN
       THEN
         steplEntriegelungSchliessen := STEP_1000_E;
       ELSE
-    IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+        IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
           out_bEntriegelungEinfahren := TRUE;
           out_bEntriegelungAusfahren  := FALSE;
           steplEntriegelungSchliessen := STEP_10_E;
-    END_IF
+        END_IF
       END_IF
 
-(* ENTRIEGELUNG AB  ============================*)
+    (* ENTRIEGELUNG AB  ============================*)
     STEP_10_E:
       tonlEntriegelungAufZu( IN := in_bEntriegelungGeschlossen, PT := T#0.5S );
       tonlTimeoutEntriegelungAufZu(IN := NOT in_bEntriegelungGeschlossen, PT := TIMEOUT_SENSOR);
@@ -136,29 +136,29 @@ THEN
 
       IF tonlTimeoutEntriegelungAufZu.Q THEN
 
-         wpFehlerNr := cMELDUNG_FAECHERWAGEN_ENTRIEGELUNG_NICHT_GESCHLOSSEN;
-         SpsError( eFehler_Station,
-                   wpFehlerNr, 
-                   BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
-                   BasisStationsParameter.awFehlerInformationen );
+        wpFehlerNr := cMELDUNG_FAECHERWAGEN_ENTRIEGELUNG_NICHT_GESCHLOSSEN;
+        SpsError( eFehler_Station,
+                  wpFehlerNr, 
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  BasisStationsParameter.awFehlerInformationen );
 
-         steplEntriegelungSchliessen := STEP_900_E;
+        steplEntriegelungSchliessen := STEP_900_E;
       END_IF
 
 
-(* ENTRIEGELUNG AB  ============================*)
+    (* ENTRIEGELUNG AB  ============================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       out_bEntriegelungEinfahren := FALSE;
 
 
-(* ENTRIEGELUNG AB ============================*)
+    (* ENTRIEGELUNG AB ============================*)
     STEP_1000_E:
       blEntriegelungSchliessenDone:=TRUE;
 
-(* ENTRIEGELUNG AB ============================*)
-   END_CASE
+  (* ENTRIEGELUNG AB ============================*)
+  END_CASE
 END_IF
 
 IF NOT blEntriegelungSchliessen THEN

@@ -10,10 +10,10 @@ ACTION Vortransport
 (* AKTION VORTRANSPORT *)
 (***************************************************************************************************)
 IF ( BasisStationsParameter.bVortransport[cWAND_1]
-  AND BasisStationsParameter.bAutomatik )
+     AND BasisStationsParameter.bAutomatik )
 THEN
   CASE steplVortransport OF
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_0_E:
 
       IF ( ReservierungsStatus <> TS_VORTRANSPORT_RESERVIERUNG ) THEN
@@ -22,7 +22,7 @@ THEN
 
       steplVortransport := STEP_10_E;
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_10_E:
       (* Hinweis:
          - Sicherstellen das sich das Transfershuttle auf der richtigen Position befindet
@@ -38,15 +38,15 @@ THEN
         steplVortransport := STEP_900_E;
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_20_E:
       IF (  Sicherheitskreis[BasisStationsParameter.stMKs.eaSicherheitskreis[0]].bpSicherheitskreisGeschlossen
-        AND NOT Sicherheitskreis[BasisStationsParameter.stMKs.eaSicherheitskreis[0]].bpAnforderungSKGestellt )
+           AND NOT Sicherheitskreis[BasisStationsParameter.stMKs.eaSicherheitskreis[0]].bpAnforderungSKGestellt )
       THEN
         steplVortransport := STEP_30_E;
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_30_E:
       (* Anmerkung:
          - Shuttle steht an der gewuenschten Position und es kann mit dem Vortransport 
@@ -58,7 +58,7 @@ THEN
 
       steplVortransport     := STEP_40_E;
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_40_E:
       IF ( Glastransport.bpDone ) THEN
         ReservierungsStatus := TS_KEINE_RESERVIERUNG;
@@ -75,15 +75,15 @@ THEN
         steplVortransport := STEP_900_E;
       END_IF
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*VORTRANSPORT ==============================*)
+    (*VORTRANSPORT ==============================*)
     STEP_1000_E:
       BasisStationsParameter.bVortransportAbgeschlossen[cWAND_1] := TRUE;
 
-(*VORTRANSPORT ==============================*)
+  (*VORTRANSPORT ==============================*)
   END_CASE
 ELSE
   IF ( steplVortransport > STEP_0_E ) THEN

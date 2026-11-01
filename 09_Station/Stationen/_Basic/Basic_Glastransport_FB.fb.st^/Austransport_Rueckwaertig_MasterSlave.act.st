@@ -11,7 +11,7 @@ ACTION Austransport_Rueckwaertig_MasterSlave
 (***************************************************************************************************)
 
 IF ( bpAustransportRueckwaertig
-  AND bpAutomatikAktiv )
+     AND bpAutomatikAktiv )
 THEN
 
   // Ausnahmesituation
@@ -31,7 +31,7 @@ THEN
   END_IF
 
   CASE steplAustransportRueckwaertig OF
-(*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
     STEP_0_E:
       (*  Anmerkung:
           - Initialisierung Variablen
@@ -50,14 +50,14 @@ THEN
 
       blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
 
-    // Sicherstellen das die Slavekopplung aktiv ist
+      // Sicherstellen das die Slavekopplung aktiv ist
       IF ( blAntriebsKopplungAktiv ) THEN
         // Zeit für Statistik
         tlWarteZeitAufnahme := TIME();
         steplAustransportRueckwaertig := STEP_10_E;
-    END_IF
+      END_IF
 
-(*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
     STEP_10_E:
       (* ---------------------------------------------------------------------------------------
       //  WARTEN AUF FREIGABE ZUM GLASTRANSPORT
@@ -68,10 +68,10 @@ THEN
 
       Antrieb.rpGeschwindigkeit  := REAL#0 ;
 
-    bpOutBereitZumEintransport := bpUebergrosseScheibeUebergang;
+      bpOutBereitZumEintransport := bpUebergrosseScheibeUebergang;
 
       IF ( InGlasTransportVorgaenger.bBereitZumEintransport )
-        AND ( NOT bpUebergrosseScheibeUebergang OR InGlasTransportNachfolger.bBereitZumAustransport )
+         AND ( NOT bpUebergrosseScheibeUebergang OR InGlasTransportNachfolger.bBereitZumAustransport )
       THEN
         dwpWartezeit := TIME_TO_DWORD(TIME()- tlWarteZeitAufnahme);
 
@@ -83,7 +83,7 @@ THEN
 
       END_IF
 
-(*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
     STEP_20_E:
       (* Hinweis:
          - Pruefen ob der Auslaufsensor belegt ist.
@@ -118,7 +118,7 @@ THEN
 
       END_IF
 
-(*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
     STEP_30_E:
       (*  Hinweis:
           - Wird der Vorstop- Sensor ueberfahren die Geschwindigkeit des
@@ -139,7 +139,7 @@ THEN
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
     STEP_40_E:
       (* Hinweis:
          - Reduzieren der Geschwindigkeit sollte der Vorabstop- Sensor belegt worden sein
@@ -153,7 +153,7 @@ THEN
            => Auslaufsensor muss belegt sein
       *)
       IF (  Antrieb.bpDone
-        AND bpSensorEinlauf )
+           AND bpSensorEinlauf )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplAustransportRueckwaertig := STEP_100_E;
@@ -168,7 +168,7 @@ THEN
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  STARTEN DES AUSTRANSPORTS
@@ -197,7 +197,7 @@ THEN
 
       steplAustransportRueckwaertig := STEP_110_E;
 
-(*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
     STEP_110_E:
       bprtScheibe := FALSE;
       tonlMaximaleZeitSensorAnfahren( IN:= TRUE, PT :=T#60S );
@@ -207,15 +207,15 @@ THEN
         steplAustransportRueckwaertig := STEP_120_E;
       END_IF
 
-   (* Fehlerbehandlung:
-         - Auslaufsensor schaltet nicht
-      *)
+      (* Fehlerbehandlung:
+            - Auslaufsensor schaltet nicht
+         *)
       IF ( tonlMaximaleZeitSensorAnfahren.Q ) THEN
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
     STEP_120_E:
       (* Hinweis:
          - Scheibenzaehlen 
@@ -239,7 +239,7 @@ THEN
 
       END_IF
 
-(*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
     STEP_130_E:
       (* Hinweis:
          - Scheibentrigger ( Scheibenzaehler ) zurueck setzen
@@ -253,13 +253,13 @@ THEN
         steplAustransportRueckwaertig := STEP_140_E;
       END_IF
 
-(*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
     STEP_140_E:
       (* Anmerkung:
          - Pruefen ob der Einlaufsensor angefahren wurde
       *) 
       IF (  NOT toflEinlaufsensor.Q
-        AND NOT InGlasTransportVorgaenger.bAuslaufsensor )
+           AND NOT InGlasTransportVorgaenger.bAuslaufsensor )
       THEN
         bpOutBereitZumAustransport := FALSE;
         bpOutBereitZumEintransport := FALSE;
@@ -300,7 +300,7 @@ THEN
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
     STEP_900_E:
       (* Fehlerbehandlung:
          - Fehlerschritt
@@ -314,13 +314,13 @@ THEN
       bpOutBereitZumAustransport := FALSE;
       bpOutBereitZumEintransport := FALSE;
 
-(*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
     STEP_1000_E:
       bprtScheibe := FALSE;
-    bpUebergrosseScheibeUebergang := FALSE;
+      bpUebergrosseScheibeUebergang := FALSE;
       bpDone := TRUE;
 
-(*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+  (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
   END_CASE
 ELSE
 

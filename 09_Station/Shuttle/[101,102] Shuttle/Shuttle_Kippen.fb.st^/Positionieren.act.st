@@ -20,41 +20,41 @@ IF ( bpPositionieren )THEN
   END_IF
 
   CASE steplPositionieren OF
-(* AUFKIPPEN  ================*)
+    (* AUFKIPPEN  ================*)
     STEP_0_E:
       bpDone := FALSE;
 
-    IF epZielPosition = epKippStatus THEN
-         steplPositionieren := STEP_1000_E;
-    ELSE
-      IF Antrieb.bpReglerBereit
-        AND bpFreigabe
-      THEN
-         steplPositionieren := STEP_10_E;
-      END_IF
-    END_IF  
+      IF epZielPosition = epKippStatus THEN
+        steplPositionieren := STEP_1000_E;
+      ELSE
+        IF Antrieb.bpReglerBereit
+           AND bpFreigabe
+        THEN
+          steplPositionieren := STEP_10_E;
+        END_IF
+      END_IF  
 
-(* AUFKIPPEN ================*)
+    (* AUFKIPPEN ================*)
     STEP_10_E:
       (* Anmerkung
          - Einlauf- Auslauf- Sensoren duerfen nicht belegt sein beim Kippen
          - Geschwindigkeit muss in U/min angegeben werden
       *)
       IF bpLangsamKippen THEN
-         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
-         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
-         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
       ELSIF bpBetriebsartHand THEN
-         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
-         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
-         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;
       ELSE
-         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
-         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
       END_IF
 
-    CASE epZielPosition OF
+      CASE epZielPosition OF
 
         eKippen_Position_0Grad:
           Antrieb.rpZielPosition  := ppParameterBaustein.rPosition0Grad;
@@ -93,7 +93,7 @@ IF ( bpPositionieren )THEN
         steplPositionieren := STEP_900_E;
       END_IF
 
-(* AUFKIPPEN ================*)
+    (* AUFKIPPEN ================*)
     STEP_20_E:
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart:= KEINE_FUNKTION;
@@ -118,23 +118,23 @@ IF ( bpPositionieren )THEN
         steplPositionieren := STEP_900_E;
       END_IF
 
-(* AUFKIPPEN ================*)
+    (* AUFKIPPEN ================*)
     STEP_900_E:
       // Fehlerbehandlung
       IF NOT Antrieb.bpAntrieblaeuft THEN
         steplPositionieren := STEP_910_E;
       END_IF
 
-(* AUFKIPPEN ================*)
+    (* AUFKIPPEN ================*)
     STEP_910_E:
       // Fehlerbehandlung
       bpFehler := TRUE;
 
-(* AUFKIPPEN ================*)
+    (* AUFKIPPEN ================*)
     STEP_1000_E:
-    bpDone := TRUE;
+      bpDone := TRUE;
 
-(* AUFKIPPEN ================*)
+  (* AUFKIPPEN ================*)
   END_CASE
 ELSE
   IF ( steplPositionieren > STEP_0_E ) THEN

@@ -10,10 +10,10 @@ ACTION Handfunktionen
 (* AKTION HANDFUNKTION *)
 (***************************************************************************************************)
 IF (  NOT bpAutomatikAktiv
-  AND NOT bpCheck
-  AND NOT bpReset
-  AND NOT bpFahreReferenz
-  AND NOT bgVisuAntriebeVerfahrenAktiv  )
+     AND NOT bpCheck
+     AND NOT bpReset
+     AND NOT bpFahreReferenz
+     AND NOT bgVisuAntriebeVerfahrenAktiv  )
 THEN
 
   (* Handplus oder Handminus den Glastransport verfahren

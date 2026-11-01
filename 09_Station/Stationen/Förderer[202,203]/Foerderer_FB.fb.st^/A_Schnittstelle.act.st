@@ -34,15 +34,15 @@ BasisStationsParameter.rAktuellePositionQuerfahrt := Querfahrt.rpAktuellePositio
 
 // SK Freigeben obwohl Auftrag aktiv
 BasisStationsParameter.bSKFreigabeBeiAktivemAuftrag := ( BasisStationsParameter.bAnlegen
-                                                      OR BasisStationsParameter.bAbnehmen );
+                                                         OR BasisStationsParameter.bAbnehmen );
 
 // SK Blockieren z.B. Sensor belegt
 BasisStationsParameter.bSKOeffnenBlockierenDurchgang    := BasisStationsParameter.stMKs.stStationsAufbau.bDurchgang AND 
-                                                        ( Glastransport.bpSensorEinlauf
-                                                        OR Glastransport.bpSensorAuslauf 
-                                             OR bDurchgangBelegt
-                                                        OR ( ( Glastransport.bpSensorEinlaufVorab 
-                                                            OR Glastransport.bpSensorAuslaufVorab ) AND BasisStationsParameter.stMKs.stStationsOptionen.bSKBlockierenDurchVorabSensoren ) );
+                                                           ( Glastransport.bpSensorEinlauf
+                                                             OR Glastransport.bpSensorAuslauf 
+                                                             OR bDurchgangBelegt
+                                                             OR ( ( Glastransport.bpSensorEinlaufVorab 
+                                                                    OR Glastransport.bpSensorAuslaufVorab ) AND BasisStationsParameter.stMKs.stStationsOptionen.bSKBlockierenDurchVorabSensoren ) );
 
 // Statistik
 BasisStationsParameter.dwWartezeit[cWAND_1] := Glastransport.dwpWartezeit;

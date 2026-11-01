@@ -22,8 +22,8 @@ END_VAR
 
 VAR
 
- (* BOOLEAN *)
- blResult : BOOL := FALSE;
+  (* BOOLEAN *)
+  blResult : BOOL := FALSE;
 
 END_VAR
 (***************************************************************************************************)

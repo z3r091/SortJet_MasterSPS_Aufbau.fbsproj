@@ -71,16 +71,16 @@ ELSE
 
     ftlHornAus(CLK := blHornAktiv);
 
-   IF ( bpHornAktivieren AND NOT blHornAktiv ) THEN
-     blHornAktiv       := TRUE;
-     bpHornAktivieren := FALSE;
-   END_IF
+    IF ( bpHornAktivieren AND NOT blHornAktiv ) THEN
+      blHornAktiv       := TRUE;
+      bpHornAktivieren := FALSE;
+    END_IF
 
-   IF ( tonlHornAus.Q ) THEN
-     blHornAktiv := FALSE;
-   END_IF
+    IF ( tonlHornAus.Q ) THEN
+      blHornAktiv := FALSE;
+    END_IF
 
-   IF ( ftlHornAus.Q ) THEN
+    IF ( ftlHornAus.Q ) THEN
       out_bHorn := FALSE;
     END_IF
 
@@ -116,7 +116,7 @@ ELSE
       END_CASE
 
     ELSE
-     out_bHorn  := FALSE;
+      out_bHorn  := FALSE;
 
     END_IF
 

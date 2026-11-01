@@ -75,16 +75,16 @@ toflDruckluft102_OK( In := in_bDruckluft_102_OK, PT := ZEIT_DRUCKWAECHTERSIGNAL_
 
 // Auswertung und hier pruefen ob Betriebsstopp ausgeloest werden muss
 abpDruckluftOK[cAUTOMATIKKREIS_1] := (   ( toflDruckluftShuttleOK[cSHUTTLE_101].Q OR starrShuttleBasisParameter[cSHUTTLE_101].stMKs.bDeaktivieren OR NOT starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stStationsAufbau.bDruckluft )
-                                     AND ( toflDruckluftTSShuttleOK[cSHUTTLE_151].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs.bDeaktivieren)
-                                     AND ( toflDruckluftTSShuttleOK[cSHUTTLE_152].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_152].stMKs.bDeaktivieren)
-                                     AND toflDruckluft101_OK.Q
+                                       AND ( toflDruckluftTSShuttleOK[cSHUTTLE_151].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs.bDeaktivieren)
+                                       AND ( toflDruckluftTSShuttleOK[cSHUTTLE_152].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_152].stMKs.bDeaktivieren)
+                                       AND toflDruckluft101_OK.Q
                                      ) OR bgInbetriebnahmeBit;
                                      
                                      
 abpDruckluftOK[cAUTOMATIKKREIS_2] := (   ( toflDruckluftShuttleOK[cSHUTTLE_102].Q OR starrShuttleBasisParameter[cSHUTTLE_102].stMKs.bDeaktivieren OR NOT starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stStationsAufbau.bDruckluft )
-                                     AND ( toflDruckluftTSShuttleOK[cSHUTTLE_151].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs.bDeaktivieren)
-                                     AND ( toflDruckluftTSShuttleOK[cSHUTTLE_152].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_152].stMKs.bDeaktivieren)
-                                     AND toflDruckluft102_OK.Q
+                                       AND ( toflDruckluftTSShuttleOK[cSHUTTLE_151].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs.bDeaktivieren)
+                                       AND ( toflDruckluftTSShuttleOK[cSHUTTLE_152].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_152].stMKs.bDeaktivieren)
+                                       AND toflDruckluft102_OK.Q
                                      ) OR bgInbetriebnahmeBit;
                                      
 abpDruckluftOK[cAUTOMATIKKREIS_3] := ( TRUE
@@ -92,11 +92,11 @@ abpDruckluftOK[cAUTOMATIKKREIS_3] := ( TRUE
 
 
 bpAnlageOK := ( ( in_bCAB2_LS_Netzteil_24V_OK
-              AND in_bCAB2_LS_24V_Schaltschrank_OK
-              AND in_bCAB2_LS_24V_Boxen_OK
-              AND in_bCAB2_LS_400V_OK
-              AND in_bCAB2_LS_Netzfilter_400V_OK )
-              OR bgInbetriebnahmeBit) ;
+                  AND in_bCAB2_LS_24V_Schaltschrank_OK
+                  AND in_bCAB2_LS_24V_Boxen_OK
+                  AND in_bCAB2_LS_400V_OK
+                  AND in_bCAB2_LS_Netzfilter_400V_OK )
+                OR bgInbetriebnahmeBit) ;
 
 // Meldungen CAB 2
 WatchIo(NOT bgInbetriebnahmeBit AND NOT in_bCAB2_KlimaGeraet_OK,  ioccCAB2_Klimageraet_Nicht_OK);

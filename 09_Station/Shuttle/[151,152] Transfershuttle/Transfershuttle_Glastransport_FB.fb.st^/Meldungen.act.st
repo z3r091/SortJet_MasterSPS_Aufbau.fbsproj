@@ -13,7 +13,7 @@ ACTION Meldungen
 (*Antrieb
 *)
 IF( NOT bpFehler
-  AND Antrieb.bpFehler )
+    AND Antrieb.bpFehler )
 THEN
   wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
   bpFehler := TRUE;

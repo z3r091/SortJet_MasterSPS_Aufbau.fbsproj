@@ -13,7 +13,7 @@ ACTION Signal_Logger
 
 // Eingangsignale
 IF ( in_bGlasAbruf <> blTempGlasAbruf ) 
-  OR ( in_bAnforderungSK <> blTempAnforderungSK ) 
+   OR ( in_bAnforderungSK <> blTempAnforderungSK ) 
 THEN
   blTempGlasAbruf     := in_bGlasAbruf;
   blTempAnforderungSK := in_bAnforderungSK;
@@ -35,8 +35,8 @@ END_IF
 
 // Ausganssignale
 IF   ( out_bSenderBereit <> blTempSenderBereit ) 
-  OR ( out_bSenderGlasBereit <> blTempSenderGlasBereit ) 
-  OR ( blTempFreigabeSK <> out_bFreigabeSK ) 
+     OR ( out_bSenderGlasBereit <> blTempSenderGlasBereit ) 
+     OR ( blTempFreigabeSK <> out_bFreigabeSK ) 
 THEN
   blTempSenderBereit     := out_bSenderBereit;
   blTempSenderGlasBereit := out_bSenderGlasBereit;

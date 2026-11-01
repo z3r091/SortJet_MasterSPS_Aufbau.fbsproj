@@ -7,11 +7,11 @@
 *)
 FUNCTION SpsLogString : BOOL
 VAR_INPUT
- spLogString : STRING(59);
+  spLogString : STRING(59);
 END_VAR
 VAR
- smlMessage     : SpsMessage;
- i,j            : WORD;
+  smlMessage     : SpsMessage;
+  i,j            : WORD;
 END_VAR
 
 smlMessage.wAuftrag := SB0_SPS_LOGSTRING;

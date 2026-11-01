@@ -37,7 +37,7 @@ END_VAR
 (***************************************************************************************************)
 IF ( Auftragsdaten.wAuftrag = eStation_Messkopplung ) THEN
   CASE steplSchritt OF
-(* MESSFAHRT ================================================== *)
+    (* MESSFAHRT ================================================== *)
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -46,12 +46,12 @@ IF ( Auftragsdaten.wAuftrag = eStation_Messkopplung ) THEN
         steplSchritt := STEP_30_E;
       END_IF
 
-(* MESSFAHRT ================================================== *)
-   STEP_30_E:
-     (* Hinweis:
-         - Auftragsdaten uebergeben
-         - Starten der Glasmessung
-      *)
+    (* MESSFAHRT ================================================== *)
+    STEP_30_E:
+      (* Hinweis:
+          - Auftragsdaten uebergeben
+          - Starten der Glasmessung
+       *)
       starrStationBasisParameter[wStation].pAuftrag[wWand] := Auftragsdaten;
 
       starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition := starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Kippen[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wVorgaengerStation];
@@ -68,34 +68,34 @@ IF ( Auftragsdaten.wAuftrag = eStation_Messkopplung ) THEN
 
       steplSchritt := STEP_100_E;
 
-(* MESSFAHRT ================================================== *)
-   STEP_100_E:
-     (* Fehlerbehandlung:
-        - Messkopplung
-     *)
-     IF ( starrStationBasisParameter[wStation].bFehler ) THEN
+    (* MESSFAHRT ================================================== *)
+    STEP_100_E:
+      (* Fehlerbehandlung:
+         - Messkopplung
+      *)
+      IF ( starrStationBasisParameter[wStation].bFehler ) THEN
         SpsError( eFehler_Station,
                   starrStationBasisParameter[wStation].wFehlerNummer,
                   starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
                   AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
                   starrStationBasisParameter[wStation].awFehlerInformationen );
 
-       starrStationBasisParameter[wStation].bMesskopplung[wWand] := FALSE;
-       steplSchritt := STEP_900_E;
-     END_IF
+        starrStationBasisParameter[wStation].bMesskopplung[wWand] := FALSE;
+        steplSchritt := STEP_900_E;
+      END_IF
 
-(* MESSFAHRT ================================================== *)
+    (* MESSFAHRT ================================================== *)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* MESSFAHRT ================================================== *)
+    (* MESSFAHRT ================================================== *)
     STEP_1000_E:
       (* Wichtig:
          - Auftragsstatus zuweisen
       *)
       bpDone := TRUE;
 
-(* MESSFAHRT ================================================== *)
+  (* MESSFAHRT ================================================== *)
   END_CASE
 END_IF
 

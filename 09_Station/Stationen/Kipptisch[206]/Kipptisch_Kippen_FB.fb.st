@@ -146,17 +146,17 @@ Handbetrieb();
 (***************************************************************************************************)
 // Antriebsfreigabe
 toflReglerFreigabeErhalten( IN := (   bpStartKippenAuf
-                                   OR bpStartKippenAb
-                                   OR bpReferenz
-                                   OR bpHandfahrenPlus
-                                   OR bpHandfahrenMinus ),
+                                    OR bpStartKippenAb
+                                    OR bpReferenz
+                                    OR bpHandfahrenPlus
+                                    OR bpHandfahrenMinus ),
                             PT := ppParameterBaustein.tZeitAntriebsfreigabeErhalten );
 
 
 // AufrufAntrieb
 Antrieb.bpFreigabe        :=    ( bpFreigabe 
-                              AND bpVerfahrFreigabe
-                              AND toflReglerFreigabeErhalten.Q );
+                                  AND bpVerfahrFreigabe
+                                  AND toflReglerFreigabeErhalten.Q );
 Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
 Antrieb.stStationsNummern := stStationsNummern ;
 
@@ -168,7 +168,7 @@ Antrieb.stStationsNummern := stStationsNummern ;
 (***************************************************************************************************)
 // Verfahrfreigabe
 bpVerfahrFreigabe := NOT ( bpSensorEinlauf
-                        OR bpSensorAuslauf );
+                           OR bpSensorAuslauf );
 
 // Ausgabe Iis-Pos als Enum
 IF ( ABS(Antrieb.rpIstPosition - ppParameterBaustein.rPosition0Grad) <= ppParameterBaustein.rToleranz) THEN

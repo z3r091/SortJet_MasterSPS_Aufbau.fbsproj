@@ -320,20 +320,20 @@ Ausgaenge();
    - Freigaben des ANtriebs
 *)
 toflAutoAbschaltung( IN := (  bpAutomatikAktiv
-                           AND ( bpEintransport
-                           OR bpRueckwaertsEintransportieren
-                           OR bpDurchtransport
-                           OR bpVortransport
-                           OR bpVortransportRueck
-                           OR bpAustransport
-                           OR bpRueckwaertsAustransportieren
-                           OR bpStarteSensorFreiFahren 
-                           OR bpStarteVorabPositionierung ) )
-                           OR bpCheck
-                           OR bpHandfahrenMinus
-                           OR bpHandfahrenPlus
-                           OR bpFahreReferenz
-                           OR blStarteSlaveKopplung,
+                             AND ( bpEintransport
+                                   OR bpRueckwaertsEintransportieren
+                                   OR bpDurchtransport
+                                   OR bpVortransport
+                                   OR bpVortransportRueck
+                                   OR bpAustransport
+                                   OR bpRueckwaertsAustransportieren
+                                   OR bpStarteSensorFreiFahren 
+                                   OR bpStarteVorabPositionierung ) )
+                     OR bpCheck
+                     OR bpHandfahrenMinus
+                     OR bpHandfahrenPlus
+                     OR bpFahreReferenz
+                     OR blStarteSlaveKopplung,
                      PT:= tgZeitAutoabschaltungEnergiesparModus );
 
 // Aufruf Antrieb

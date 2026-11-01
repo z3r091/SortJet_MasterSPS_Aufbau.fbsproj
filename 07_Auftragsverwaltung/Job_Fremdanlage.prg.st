@@ -69,9 +69,9 @@ FOR wlIndex := cERSTE_FREMDANLAGE_AUSLAUF TO cLETZTE_FREMDANLAGE_EINLAUF DO
   AuftragsSpeicherFremdanlage[wlIndex]();
 
   IF AuftragsSpeicherFremdanlage[wlIndex].bpAuftragverfuegbar
-    AND ( AuftragsdatenFremdanlage[wlIndex].wAuftrag = eStation_Kein_Auftrag
-       OR AuftragsdatenFremdanlage[wlIndex].wAuftrag = eStation_Belegt
-       OR AuftragsdatenFremdanlage[wlIndex].wAuftrag = eStation_Warte_Auf_Eintransport )
+     AND ( AuftragsdatenFremdanlage[wlIndex].wAuftrag = eStation_Kein_Auftrag
+           OR AuftragsdatenFremdanlage[wlIndex].wAuftrag = eStation_Belegt
+           OR AuftragsdatenFremdanlage[wlIndex].wAuftrag = eStation_Warte_Auf_Eintransport )
   THEN
     AuftragsSpeicherFremdanlage[wlIndex].bpNaechsterAuftrag := TRUE;
     AuftragsSpeicherFremdanlage[wlIndex]();

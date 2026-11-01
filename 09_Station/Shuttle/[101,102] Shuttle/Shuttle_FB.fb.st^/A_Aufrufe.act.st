@@ -62,7 +62,7 @@ Querfahrt( stStationsNummern              := BasisStationsParameter.stMKs.stStat
            rpMaxPosSwEsEingrenzung        := rpMaxPosSwEsEingrenzung,
            bpFreigabe                     := BasisStationsParameter.bFreigabe AND abgVerfahrfreigabeShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS],
            bpVerfahrfreigabe              :=(    blAlleVerfahrfreigaben
-                                                    AND NOT bpShuttleAnhalten ) );
+                                              AND NOT bpShuttleAnhalten ) );
 
 (* Aufruf:
    - Kippen

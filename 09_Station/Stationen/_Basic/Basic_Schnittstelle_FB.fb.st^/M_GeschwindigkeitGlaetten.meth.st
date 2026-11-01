@@ -38,7 +38,7 @@ ELSIF NOT blGeschwindigkeitInitialisiert THEN
   blGeschwindigkeitUpdateSperreAktiv := TRUE;
 
 ELSIF NOT blGeschwindigkeitUpdateSperreAktiv
-  AND ( ABS( rlGeschwindigkeitSoll - rlGeschwindigkeitFreigegeben ) >= rlMindestGeschwindigkeitsAenderung )
+      AND ( ABS( rlGeschwindigkeitSoll - rlGeschwindigkeitFreigegeben ) >= rlMindestGeschwindigkeitsAenderung )
 THEN
   rlGeschwindigkeitFreigegeben       := rlGeschwindigkeitSoll;
   blGeschwindigkeitUpdateSperreAktiv := TRUE;

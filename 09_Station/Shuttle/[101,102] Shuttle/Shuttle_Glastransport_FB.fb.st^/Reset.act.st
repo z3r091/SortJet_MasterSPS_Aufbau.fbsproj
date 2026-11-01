@@ -14,7 +14,7 @@ tonlMaxWarteAufResetErfolgreich(IN:=bpReset,pt:=tgMaxWartezeitReset-t#1s);
 
 IF ( bpReset ) THEN
   CASE steplReset OF
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_0_E:
       bpDone          := FALSE;
       bprtScheibe     := FALSE;
@@ -33,18 +33,18 @@ IF ( bpReset ) THEN
       Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
       Scheibenmessung.bpReset := TRUE;
 
-    IF NOT Antrieb.bpAntrieblaeuft AND NOT Antrieb_Slave.bpAntrieblaeuft THEN
+      IF NOT Antrieb.bpAntrieblaeuft AND NOT Antrieb_Slave.bpAntrieblaeuft THEN
         steplReset := STEP_10_E;
-    END_IF
+      END_IF
 
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_10_E:
       Antrieb.wpBetriebsart       := AntriebsBetriebsart_EN.RESET;
       Antrieb_Slave.wpBetriebsart := AntriebsBetriebsart_EN.RESET;
 
       steplReset := STEP_20_E;
 
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_20_E:
       IF( Antrieb.bpDone 
           AND ( Antrieb_Slave.bpDone OR NOT bpSlaveAntriebVorhanden ))
@@ -58,7 +58,7 @@ IF ( bpReset ) THEN
          - Antrieb
       *)
       IF ( ( NOT Antrieb.bpDone
-         OR NOT Antrieb_Slave.bpDone )
+             OR NOT Antrieb_Slave.bpDone )
            AND tonlMaxWarteAufResetErfolgreich.Q ) 
       THEN
         Antrieb.wpBetriebsart       := KEINE_FUNKTION;
@@ -67,19 +67,19 @@ IF ( bpReset ) THEN
         steplReset := STEP_900_E;
       END_IF
 
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
       bpFehler := TRUE;
 
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_1000_E:
       bpFehler := FALSE;
       wpFehlerNr := cMELDUNG_NULL;
       bpDone := TRUE;
 
-(*RESET ===============================*)
+  (*RESET ===============================*)
   END_CASE
 ELSE
   IF( steplReset > STEP_0_E )THEN

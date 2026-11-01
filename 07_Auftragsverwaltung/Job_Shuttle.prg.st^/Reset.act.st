@@ -63,8 +63,8 @@ FOR wlIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
       // ODER
       // Output-AK ist nicht in den vorhandenen Automatikkreisen der Maschine definiert ; das heißt, Erster AK = 1 und ANZAHL < wlAutomatikkreis2 --- OR_ELSE der 2. konfigurierte Automatikkreis für das TS ist 0; somit ist das TS nur in einem AK definiert
       IF   ( NOT AutomatikAktiv(wlIndex)
-        OR ( ( cANZAHL_AUTOMATIKKREISE = 1 ) OR_ELSE ( starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[wlAutomatikkreis2] = 0 ) ) )
-       AND StationInAutomatikkreis(starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wlIndexReset)
+             OR ( ( cANZAHL_AUTOMATIKKREISE = 1 ) OR_ELSE ( starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[wlAutomatikkreis2] = 0 ) ) )
+           AND StationInAutomatikkreis(starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wlIndexReset)
       THEN
         AuftragsSpeicherTransfershuttle[wlIndex].bpReset := TRUE;
         AuftragsSpeicherTransfershuttle[wlIndex]();
@@ -84,14 +84,14 @@ FOR wlIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
         // UND Doppelte Sicherheit: Nochmal prüfen, dass das TS im zu resetten AK ist
         // UND Automatik des zu resettenden AK darf NICHT mehr TRUE sein
         IF        wlIndexReset = starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[1]
-          AND     StationInAutomatikkreis(starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wlIndexReset)
-          AND NOT M_Automatik_Aktiv[starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[1]]
+                  AND     StationInAutomatikkreis(starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wlIndexReset)
+                  AND NOT M_Automatik_Aktiv[starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[1]]
         THEN
           IF ( ( ( AuftragsdatenTransfershuttle[wlIndex].wAuftrag = eStation_Eintransport )
-              OR ( AuftragsdatenTransfershuttle[wlIndex].wAuftrag = eStation_Scheibenkorrektur )
-              OR ( aTransfershuttles[wlIndex].ReservierungsStatus = TS_EINTRANSPORT_RESERVIERUNG )
-              OR ( aTransfershuttles[wlIndex].ReservierungsStatus = TS_AUSTRANSPORT_RUECKWERTIG_RESERVIERUNG ) )
-            AND NOT aTransfershuttles[wlIndex].bpAnforderungBetriebsstopp )
+                 OR ( AuftragsdatenTransfershuttle[wlIndex].wAuftrag = eStation_Scheibenkorrektur )
+                 OR ( aTransfershuttles[wlIndex].ReservierungsStatus = TS_EINTRANSPORT_RESERVIERUNG )
+                 OR ( aTransfershuttles[wlIndex].ReservierungsStatus = TS_AUSTRANSPORT_RUECKWERTIG_RESERVIERUNG ) )
+               AND NOT aTransfershuttles[wlIndex].bpAnforderungBetriebsstopp )
           THEN
             AuftragsSpeicherTransfershuttle[wlIndex].bpReset := TRUE;
             AuftragsSpeicherTransfershuttle[wlIndex]();
@@ -118,14 +118,14 @@ FOR wlIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
         // UND Doppelte Sicherheit: Nochmal prüfen, dass das TS im zu resetten AK ist
         // UND Automatik des zu resettenden AK darf NICHT mehr TRUE sein
         IF        wlIndexReset = starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[wlAutomatikkreis2] 
-          AND_THEN     StationInAutomatikkreis(starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wlIndexReset) 
-          AND_THEN NOT M_Automatik_Aktiv[starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[wlAutomatikkreis2]] 
+                  AND_THEN     StationInAutomatikkreis(starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wlIndexReset) 
+                  AND_THEN NOT M_Automatik_Aktiv[starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[wlAutomatikkreis2]] 
         THEN
           IF ( ( ( AuftragsdatenTransfershuttle[wlIndex].wAuftrag = eStation_Austransport )
-              OR ( AuftragsdatenTransfershuttle[wlIndex].wAuftrag = eStation_Scheibenkorrektur )
-              OR ( aTransfershuttles[wlIndex].ReservierungsStatus = TS_AUSTRANSPORT_RESERVIERUNG )
-              OR ( aTransfershuttles[wlIndex].ReservierungsStatus = TS_EINTRANSPORT_RUECKWERTIG_RESERVIERUNG ) )
-            AND NOT aTransfershuttles[wlIndex].bpAnforderungBetriebsstopp )
+                 OR ( AuftragsdatenTransfershuttle[wlIndex].wAuftrag = eStation_Scheibenkorrektur )
+                 OR ( aTransfershuttles[wlIndex].ReservierungsStatus = TS_AUSTRANSPORT_RESERVIERUNG )
+                 OR ( aTransfershuttles[wlIndex].ReservierungsStatus = TS_EINTRANSPORT_RUECKWERTIG_RESERVIERUNG ) )
+               AND NOT aTransfershuttles[wlIndex].bpAnforderungBetriebsstopp )
           THEN
             AuftragsSpeicherTransfershuttle[wlIndex].bpReset := TRUE;
             AuftragsSpeicherTransfershuttle[wlIndex]();

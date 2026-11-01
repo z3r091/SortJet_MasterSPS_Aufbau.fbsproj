@@ -11,11 +11,11 @@ ACTION Oeffnen
 (***************************************************************************************************)
 
 IF ( bpStarteOeffnen
- AND NOT bpStarteSchliessen )
+     AND NOT bpStarteSchliessen )
 THEN
 
   CASE steplSchrittketteOeffnen OF
-(* OEFFNEN =================================================*)
+    (* OEFFNEN =================================================*)
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
@@ -32,7 +32,7 @@ THEN
 
       END_IF
 
-(* OEFFNEN =================================================*)
+    (* OEFFNEN =================================================*)
     STEP_10_E:
       (* Hinweis:
          - Initialisieren der Timer
@@ -55,15 +55,15 @@ THEN
         steplSchrittketteOeffnen := STEP_900_E;
       END_IF
 
-(* OEFFNEN =================================================*)
+    (* OEFFNEN =================================================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* OEFFNEN =================================================*)
+    (* OEFFNEN =================================================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(* OEFFNEN =================================================*)
+  (* OEFFNEN =================================================*)
   END_CASE
 END_IF
 

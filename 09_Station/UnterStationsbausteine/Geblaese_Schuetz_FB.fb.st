@@ -111,10 +111,10 @@ END_IF
 (* BAUSTEIN: TIMER *)
 (***************************************************************************************************)
 toflWarteAufWiederAnlauf(IN :=     out_bStarteGeblaese,
-                         PT := WARTEZEIT_BIS_WIEDERANLAUF);
+                          PT := WARTEZEIT_BIS_WIEDERANLAUF);
 
 tonlWarteAufGeblaeseLaeuft(IN :=     out_bStarteGeblaese,
-                           PT := WARTEZEIT_BIS_GEBLAESE_HOCHGELAUFEN );
+                            PT := WARTEZEIT_BIS_GEBLAESE_HOCHGELAUFEN );
 
 toflMotorschutz( IN := blMotorschutzschalter_OK, PT := T#5S );
 
@@ -122,10 +122,10 @@ toflMotorschutz( IN := blMotorschutzschalter_OK, PT := T#5S );
    - Einschaltverzoegerung
 *)
 tonlStartGeblaese(IN :=     bpStart
-                        AND bpFreigabe
-                        AND NOT toflWarteAufWiederAnlauf.Q
-                        AND NOT bpReset,
-                  PT := T#0S);
+                   AND bpFreigabe
+                   AND NOT toflWarteAufWiederAnlauf.Q
+                   AND NOT bpReset,
+                   PT := T#0S);
 
 
 

@@ -29,7 +29,7 @@ FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cANZAHL_AUTOMATIKKREISE DO
   END_IF
 
   IF (  wpWert[wlIndex] >= wpIntervallMin
-    AND wpWert[wlIndex] <= wpIntervallMax )
+       AND wpWert[wlIndex] <= wpIntervallMax )
   THEN
     PruefungWertImIntervallAutomatikkreise := TRUE;
   ELSE

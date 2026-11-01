@@ -103,20 +103,20 @@ ELSE
     ELSE
       // Stellung 29mm
       IF (  in_bStatusZylinder_1_Ausgefahren
-        AND NOT in_bStatusZylinder_2_Ausgefahren  ) 
+           AND NOT in_bStatusZylinder_2_Ausgefahren  ) 
       THEN
         epStatusZylinderStellung := eZylinderStellung29mm;
       
       // Stellung 23mm
       ELSIF ( in_bStatusZylinder_1_Ausgefahren
-          AND NOT in_bStatusZylinder_2_Ausgefahren ) 
+              AND NOT in_bStatusZylinder_2_Ausgefahren ) 
       THEN
         epStatusZylinderStellung := eZylinderStellung23mm;
 
       // Stellung 13mm
       ELSIF ( in_bStatusZylinder_Alle_Eingefahren
-          AND NOT in_bStatusZylinder_1_Ausgefahren
-          AND NOT in_bStatusZylinder_2_Ausgefahren ) 
+              AND NOT in_bStatusZylinder_1_Ausgefahren
+              AND NOT in_bStatusZylinder_2_Ausgefahren ) 
       THEN
         epStatusZylinderStellung := eZylinderStellung16mm;
 

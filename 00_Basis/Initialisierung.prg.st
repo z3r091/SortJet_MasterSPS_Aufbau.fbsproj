@@ -62,7 +62,7 @@ END_VAR
 (* INITIALISIERUNG *)
 (***************************************************************************************************)
 IF ( blErsterZyklus ) THEN
- blErsterZyklus := FALSE;
+  blErsterZyklus := FALSE;
 END_IF
 
 IF bgInitialisierungUeberbruecken THEN
@@ -70,7 +70,7 @@ IF bgInitialisierungUeberbruecken THEN
 END_IF
 
 IF (  NOT M_Init_Ok
-  AND NOT blErsterZyklus )
+     AND NOT blErsterZyklus )
 THEN
   bpInitialisierung := TRUE;
   blReturn          := FALSE;
@@ -100,16 +100,16 @@ END_FOR
 
 blInitDurchFehlerGeblockt := FALSE;
 FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
- blInitDurchFehlerGeblockt := blInitDurchFehlerGeblockt OR Job.ablFehlerAktiv[wlIndex];
+  blInitDurchFehlerGeblockt := blInitDurchFehlerGeblockt OR Job.ablFehlerAktiv[wlIndex];
 END_FOR
 
 blFreigabeZumReferenzieren := ( (     NotHalt.bpNotHaltOK
-                                 AND blAlleSKGeschlossen )
-                                  OR bgSicherheitstechnikBruecken )
-                               AND ( bgMMIOK OR bgMMIBruecken )
-                               AND blDruckluftOK
-                               AND blShuttleErreichbar
-                               AND blFreigabeAutokreis
+                                  AND blAlleSKGeschlossen )
+                                OR bgSicherheitstechnikBruecken )
+                              AND ( bgMMIOK OR bgMMIBruecken )
+                              AND blDruckluftOK
+                              AND blShuttleErreichbar
+                              AND blFreigabeAutokreis
                               AND bgEtherCatOK
                               AND NOT blInitDurchFehlerGeblockt;
 

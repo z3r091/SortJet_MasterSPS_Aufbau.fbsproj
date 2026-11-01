@@ -8,18 +8,18 @@
 PROGRAM AutomatischeFachaufnahme
 VAR_INPUT
 
- (* BOOLEAN *)
- bpStarteFachaufnahme : BOOL := FALSE;
- bpAktiv              : BOOL := TRUE;
+  (* BOOLEAN *)
+  bpStarteFachaufnahme : BOOL := FALSE;
+  bpAktiv              : BOOL := TRUE;
 
- (* WORD *)
- wpMMINummer  : WORD;
+  (* WORD *)
+  wpMMINummer  : WORD;
 
- (* POINTER *)
- ptQuerfahrtShuttle : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
+  (* POINTER *)
+  ptQuerfahrtShuttle : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
 
- // REF
- Shuttle : REFERENCE TO Shuttle_FB;
+  // REF
+  Shuttle : REFERENCE TO Shuttle_FB;
 
 END_VAR
 
@@ -91,7 +91,7 @@ IF ( bpAktiv ) THEN
         (* ----------------------------------------------------------------------- *)
         STEP_10_E:
           IF (  ( ptQuerfahrtShuttle.rpIstPosition <> rlLetztePosition )
-            AND ( ptQuerfahrtShuttle.rpIstPosition <> 0 ) )
+               AND ( ptQuerfahrtShuttle.rpIstPosition <> 0 ) )
           THEN
 
             rlLetztePosition := ptQuerfahrtShuttle.rpIstPosition;
@@ -107,7 +107,7 @@ IF ( bpAktiv ) THEN
       END_CASE
 
     ELSE
-     ;
+      ;
 
     END_IF
 

@@ -17,10 +17,10 @@ END_VAR
 
 IF ( AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Anlegen ) THEN
   (* Hinweis: Aufruf der Schrittkette *)
-   Anlegen[wStation, wWand]( Auftragsdaten := AuftragsdatenWand[wStation, wWand], bpAbbruchAnlegeauftrag := abpAbbruchAnlegeauftrag[wStation], wStation := wStation);
+  Anlegen[wStation, wWand]( Auftragsdaten := AuftragsdatenWand[wStation, wWand], bpAbbruchAnlegeauftrag := abpAbbruchAnlegeauftrag[wStation], wStation := wStation);
   (* Hinweis: Abschluss der Schrittkette *)
   IF Anlegen[wStation, wWand].bpDone THEN
-  abpAbbruchAnlegeauftrag[wStation] := FALSE;
+    abpAbbruchAnlegeauftrag[wStation] := FALSE;
     AuftragsdatenWand[wStation, wWand] := Anlegen[wStation, wWand].Auftragsdaten;
     Anlegen[wStation, wWand](bpReset := TRUE);
   END_IF
@@ -42,10 +42,10 @@ END_IF
 
 IF ( AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Abnehmen ) THEN
   (* Hinweis: Aufruf der Schrittkette *)
-   Abnehmen[wStation, wWand]( Auftragsdaten := AuftragsdatenWand[wStation, wWand], wStation := wStation);
+  Abnehmen[wStation, wWand]( Auftragsdaten := AuftragsdatenWand[wStation, wWand], wStation := wStation);
   (* Hinweis: Abschluss der Schrittkette *)
   IF Abnehmen[wStation, wWand].bpDone THEN
-  abpAbbruchAnlegeauftrag[wStation] := FALSE;
+    abpAbbruchAnlegeauftrag[wStation] := FALSE;
     AuftragsdatenWand[wStation, wWand] := Abnehmen[wStation, wWand].Auftragsdaten;
     Abnehmen[wStation, wWand](bpReset := TRUE);
   END_IF
@@ -70,7 +70,7 @@ IF ( AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Hoehenmessung ) THEN
   Glashoehenmessung[wStation, wWand]( Auftragsdaten := AuftragsdatenWand[wStation, wWand], wStation := wStation, bpAbbruchAnlegeauftrag := abpAbbruchAnlegeauftrag[wStation]);
   (* Hinweis: Abschluss der Schrittkette *)
   IF Glashoehenmessung[wStation, wWand].bpDone THEN
-  abpAbbruchAnlegeauftrag[wStation] := FALSE;
+    abpAbbruchAnlegeauftrag[wStation] := FALSE;
     AuftragsdatenWand[wStation, wWand] := Glashoehenmessung[wStation, wWand].Auftragsdaten;
     Glashoehenmessung[wStation, wWand](bpReset := TRUE);
   END_IF
@@ -95,7 +95,7 @@ IF ( AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Messfahrt ) THEN
   Glaslaengenmessung[wStation, wWand]( Auftragsdaten := AuftragsdatenWand[wStation, wWand], wStation := wStation, bpAbbruchAnlegeauftrag := abpAbbruchAnlegeauftrag[wStation] );
   (* Hinweis: Abschluss der Schrittkette *)
   IF Glaslaengenmessung[wStation, wWand].bpDone THEN
-  abpAbbruchAnlegeauftrag[wStation] := FALSE;
+    abpAbbruchAnlegeauftrag[wStation] := FALSE;
     AuftragsdatenWand[wStation, wWand] := Glaslaengenmessung[wStation, wWand].Auftragsdaten;
     Glaslaengenmessung[wStation, wWand](bpReset := TRUE);
   END_IF

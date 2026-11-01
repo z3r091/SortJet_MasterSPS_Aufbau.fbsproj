@@ -233,7 +233,7 @@ VAR
   in_bGreifer1Zu                  : BOOL;
   in_bKlemmZylinderEingefahren    : BOOL; //zur Fixierung des Oberrahmens beim Ein und Ausschleusen. Eingefahren = Grundstellung 
   
-//  IO-Link-Slave
+  //  IO-Link-Slave
   in_bGreifer2Offen                  : BOOL;
   in_bGreifer2Zu                     : BOOL;
   out_bGreiferEinfahren              : BOOL;
@@ -267,7 +267,7 @@ VAR
   blRFID_DataValid               : BOOL;
   blRFID_DataWasValid            : BOOL;
   
-//RFID Ansteuerung
+  //RFID Ansteuerung
   // Out
   out_bRFID_Sensor_Start_RW      : BOOL;
   out_bDeactivateAntenna         : BOOL;
@@ -344,10 +344,10 @@ rtlSafetyError( CLK := usilErrorSafety <> 0 );
 IF rtlSafetyError.Q THEN
 
   SpsError( eFehler_Safety_Schmersal,
-         usilErrorSafety,
-        BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
-        BasisStationsParameter.awFehlerInformationen );
+            usilErrorSafety,
+            BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+            AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+            BasisStationsParameter.awFehlerInformationen );
 
 END_IF
 
@@ -544,19 +544,19 @@ tonlFWInBox(IN := blTagPresent, PT := T#2S);
 tofTagPresent(IN := blTagPresent, PT := T#2S);
 
 rtlLogIn( CLK := in_bStartSchleusen
-             AND bpBoxInHomePosition
-             AND bpUntergestellErkannt
-             AND tonlFWInBox.Q
-             AND NOT bpStatusStationInBeladePosition
-             AND NOT bpAuftragAktiv );
+          AND bpBoxInHomePosition
+          AND bpUntergestellErkannt
+          AND tonlFWInBox.Q
+          AND NOT bpStatusStationInBeladePosition
+          AND NOT bpAuftragAktiv );
 
 IF ( rtlLogIn.Q ) THEN
- wSps2FaecherwagenStationNr              := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
- tMmi2SpsInfo.wSps2FaecherwagenStationNr := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
- MsgToMmi( auftragsnr_w := SB0_SPS_RACKLOGIN );
+  wSps2FaecherwagenStationNr              := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+  tMmi2SpsInfo.wSps2FaecherwagenStationNr := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+  MsgToMmi( auftragsnr_w := SB0_SPS_RACKLOGIN );
 
- M_SB0_MMI_RELEASERACKLOGIN    := TRUE;
- blMerkerEinschleusenQuittiert := TRUE;
+  M_SB0_MMI_RELEASERACKLOGIN    := TRUE;
+  blMerkerEinschleusenQuittiert := TRUE;
 END_IF
 
 
@@ -581,7 +581,7 @@ END_IF
 tonUntergestellErkannt (IN:= NOT bpUntergestellErkannt, PT:= T#2S);
    
 IF (tonUntergestellErkannt.Q 
-  OR in_bNichtRolltorGeoeffnet ) THEN
+     OR in_bNichtRolltorGeoeffnet ) THEN
   
   blVentilReset := TRUE;
   

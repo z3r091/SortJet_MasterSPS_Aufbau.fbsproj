@@ -43,10 +43,10 @@ END_VAR
 IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung) THEN
 
   CASE steplSchritt OF
-(* POSITIONIERUNG ===========================================*)
+    (* POSITIONIERUNG ===========================================*)
     STEP_0_E:
       IF checkSafetyCircuitsNotBlocked(starrTransferShuttleBasisParameter[wStation])
-        AND NOT starrTransfershuttleBasisParameter[wStation].bReset
+         AND NOT starrTransfershuttleBasisParameter[wStation].bReset
       THEN
 
         IF ( ABS( starrTransfershuttleBasisParameter[wStation].rAktuellePositionQuerfahrt - Auftragsdaten.rVorabPosition ) <= rgMKZielPositionToleranz ) THEN
@@ -59,7 +59,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung) THEN
 
       END_IF
 
-(* POSITIONIERUNG ===========================================*)
+    (* POSITIONIERUNG ===========================================*)
     STEP_10_E: (* Positionere Shuttle  *)
       (* Hinweis:
          - Uebergabe der Auftragsdaten
@@ -70,122 +70,122 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung) THEN
 
       steplSchritt := STEP_20_E;
 
-(* POSITIONIERUNG ===========================================*)
-   STEP_20_E:
-     (* Hinweis:
-        - Nachricht absetzen
-     *)
-     IF ( starrTransfershuttleBasisParameter[wStation].bUpdateVorabPositionieren = TRUE ) THEN
+    (* POSITIONIERUNG ===========================================*)
+    STEP_20_E:
+      (* Hinweis:
+         - Nachricht absetzen
+      *)
+      IF ( starrTransfershuttleBasisParameter[wStation].bUpdateVorabPositionieren = TRUE ) THEN
 
-       wSps2MmiQuittVorabShuttleNr := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
-       rgSPS2MMIExtractionShuttlePosition := starrTransfershuttleBasisParameter[wStation].rAktuellePositionQuerfahrt;
-       MsgToMmi(auftragsnr_w := SB0_SPS_SHUTTLEVORABPOSITIONIERUNGUPDATE );(* Quit 2 MMI Scheibe vorne*)
+        wSps2MmiQuittVorabShuttleNr := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
+        rgSPS2MMIExtractionShuttlePosition := starrTransfershuttleBasisParameter[wStation].rAktuellePositionQuerfahrt;
+        MsgToMmi(auftragsnr_w := SB0_SPS_SHUTTLEVORABPOSITIONIERUNGUPDATE );(* Quit 2 MMI Scheibe vorne*)
 
-       starrTransfershuttleBasisParameter[wStation].bUpdateVorabPositionieren := FALSE;
+        starrTransfershuttleBasisParameter[wStation].bUpdateVorabPositionieren := FALSE;
 
-       steplSchritt := STEP_100_E;
-     END_IF
+        steplSchritt := STEP_100_E;
+      END_IF
 
-     (* Fehlerbehandlung:
-       - Inputshuttle
-     *)
-     IF ( starrTransfershuttleBasisParameter[wStation].bFehler ) THEN
-       starrTransfershuttleBasisParameter[wStation].bVorabpositionieren := FALSE;
+      (* Fehlerbehandlung:
+        - Inputshuttle
+      *)
+      IF ( starrTransfershuttleBasisParameter[wStation].bFehler ) THEN
+        starrTransfershuttleBasisParameter[wStation].bVorabpositionieren := FALSE;
 
-       SpsError( eFehler_Station,
-                 starrTransfershuttleBasisParameter[wStation].wFehlerNummer,
-                 starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                 AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
-                 starrTransfershuttleBasisParameter[wStation].awFehlerInformationen );
+        SpsError( eFehler_Station,
+                  starrTransfershuttleBasisParameter[wStation].wFehlerNummer,
+                  starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                  starrTransfershuttleBasisParameter[wStation].awFehlerInformationen );
 
-       steplSchritt := STEP_900_E;
-     END_IF
+        steplSchritt := STEP_900_E;
+      END_IF
 
-(* POSITIONIERUNG ===========================================*)
+    (* POSITIONIERUNG ===========================================*)
     STEP_100_E:
       (* Hinweis:
          - Positionierung abgeschlossen
            => Nachricht absetzen
       *)
-    IF NOT starrTransfershuttleBasisParameter[wStation].stMKs.bDeaktivieren THEN
+      IF NOT starrTransfershuttleBasisParameter[wStation].stMKs.bDeaktivieren THEN
 
-      IF ( starrTransfershuttleBasisParameter[wStation].bVorabpositionierenAbgeschlossen ) THEN
+        IF ( starrTransfershuttleBasisParameter[wStation].bVorabpositionierenAbgeschlossen ) THEN
+          starrTransfershuttleBasisParameter[wStation].bVorabpositionieren := FALSE;
+
+          wSps2MmiQuittVorabShuttleNr        := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
+          rgSPS2MMIExtractionShuttlePosition := aTransfershuttles[wStation].rpIstPositionNachPositionierung;
+          MsgToMmi(auftragsnr_w := SB0_SPS_QUITTSHUTTLEVORABPOSITIONIERUNG );(* Quit 2 MMI Scheibe vorne*)
+
+          steplSchritt := STEP_1000_E;
+        END_IF
+
+      ELSE
+
+        IF ( starrTransfershuttleBasisParameter[wStation].bVorabpositionierenAbgeschlossen ) THEN
+          starrTransfershuttleBasisParameter[wStation].bVorabpositionieren := FALSE;
+
+          wSps2MmiQuittVorabShuttleNr        := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
+          rgSPS2MMIExtractionShuttlePosition := Auftragsdaten.rVorabPosition;
+          MsgToMmi(auftragsnr_w := SB0_SPS_QUITTSHUTTLEVORABPOSITIONIERUNG );(* Quit 2 MMI Scheibe vorne*)
+
+          steplSchritt := STEP_1000_E;
+        END_IF
+
+      END_IF
+
+      (* Fehlerbehandlung:
+        - Inputshuttle
+      *)
+      IF ( starrTransfershuttleBasisParameter[wStation].bFehler ) THEN
         starrTransfershuttleBasisParameter[wStation].bVorabpositionieren := FALSE;
 
-        wSps2MmiQuittVorabShuttleNr        := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
-        rgSPS2MMIExtractionShuttlePosition := aTransfershuttles[wStation].rpIstPositionNachPositionierung;
-        MsgToMmi(auftragsnr_w := SB0_SPS_QUITTSHUTTLEVORABPOSITIONIERUNG );(* Quit 2 MMI Scheibe vorne*)
+        SpsError( eFehler_Station,
+                  starrTransfershuttleBasisParameter[wStation].wFehlerNummer,
+                  starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                  starrTransfershuttleBasisParameter[wStation].awFehlerInformationen );
 
-        steplSchritt := STEP_1000_E;
-     END_IF
+        steplSchritt := STEP_900_E;
+      END_IF
 
-    ELSE
-
-      IF ( starrTransfershuttleBasisParameter[wStation].bVorabpositionierenAbgeschlossen ) THEN
-        starrTransfershuttleBasisParameter[wStation].bVorabpositionieren := FALSE;
-
-        wSps2MmiQuittVorabShuttleNr        := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
-        rgSPS2MMIExtractionShuttlePosition := Auftragsdaten.rVorabPosition;
-        MsgToMmi(auftragsnr_w := SB0_SPS_QUITTSHUTTLEVORABPOSITIONIERUNG );(* Quit 2 MMI Scheibe vorne*)
-
-        steplSchritt := STEP_1000_E;
-     END_IF
-
-    END_IF
-
-     (* Fehlerbehandlung:
-       - Inputshuttle
-     *)
-     IF ( starrTransfershuttleBasisParameter[wStation].bFehler ) THEN
-       starrTransfershuttleBasisParameter[wStation].bVorabpositionieren := FALSE;
-
-       SpsError( eFehler_Station,
-                 starrTransfershuttleBasisParameter[wStation].wFehlerNummer,
-                 starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                 AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
-                 starrTransfershuttleBasisParameter[wStation].awFehlerInformationen );
-
-       steplSchritt := STEP_900_E;
-     END_IF
-
-(* POSITIONIERUNG ===========================================*)
+    (* POSITIONIERUNG ===========================================*)
     STEP_500_E:
       wSps2MmiQuittVorabShuttleNr := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
       rgSPS2MMIExtractionShuttlePosition := starrTransfershuttleBasisParameter[wStation].rAktuellePositionQuerfahrt;
       MsgToMmi(auftragsnr_w := SB0_SPS_SHUTTLEVORABPOSITIONIERUNGUPDATE );(* Quit 2 MMI Scheibe vorne*)
       steplSchritt := STEP_510_E;
 
-(* POSITIONIERUNG ===========================================*)
+    (* POSITIONIERUNG ===========================================*)
     STEP_510_E:
       wSps2MmiQuittVorabShuttleNr        := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
       rgSPS2MMIExtractionShuttlePosition := starrTransfershuttleBasisParameter[wStation].rAktuellePositionQuerfahrt;
       MsgToMmi(auftragsnr_w := SB0_SPS_QUITTSHUTTLEVORABPOSITIONIERUNG );(* Quit 2 MMI Scheibe vorne*)
       steplSchritt := STEP_1000_E;
 
-(* POSITIONIERUNG ===========================================*)
+    (* POSITIONIERUNG ===========================================*)
     STEP_600_E:
       wSps2MmiQuittVorabShuttleNr := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
       rgSPS2MMIExtractionShuttlePosition := Auftragsdaten.rVorabPosition;
       MsgToMmi(auftragsnr_w := SB0_SPS_SHUTTLEVORABPOSITIONIERUNGUPDATE );(* Quit 2 MMI Scheibe vorne*)
       steplSchritt := STEP_610_E;
 
-(* POSITIONIERUNG ===========================================*)
+    (* POSITIONIERUNG ===========================================*)
     STEP_610_E:
       wSps2MmiQuittVorabShuttleNr        := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
       rgSPS2MMIExtractionShuttlePosition := Auftragsdaten.rVorabPosition;
       MsgToMmi(auftragsnr_w := SB0_SPS_QUITTSHUTTLEVORABPOSITIONIERUNG );(* Quit 2 MMI Scheibe vorne*)
       steplSchritt := STEP_1000_E;
 
-(* POSITIONIERUNG ===========================================*)
+    (* POSITIONIERUNG ===========================================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* POSITIONIERUNG ===========================================*)
+    (* POSITIONIERUNG ===========================================*)
     STEP_1000_E:
       bpDone := TRUE;
       Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
 
-(* POSITIONIERUNG ===========================================*)
+  (* POSITIONIERUNG ===========================================*)
   END_CASE
   
 END_IF

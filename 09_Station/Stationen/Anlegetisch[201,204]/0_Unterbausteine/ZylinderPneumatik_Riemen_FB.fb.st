@@ -96,7 +96,7 @@ THEN
   epStatusZylinder := eZylinderAusgefahren;
 
 ELSIF(       in_bStatusZylinderEingefahren
-     AND NOT in_bStatusZylinderAusgefahren )
+       AND NOT in_bStatusZylinderAusgefahren )
 THEN
   epStatusZylinder := eZylinderEingefahren;
 

@@ -7,15 +7,15 @@
 *)
 FUNCTION SetWatchIO : Bool
 VAR_INPUT
-    in_Word   : WORD;
-   in_Number : WORD;
+  in_Word   : WORD;
+  in_Number : WORD;
 END_VAR
 VAR   
-    wIndex    : WORD;
+  wIndex    : WORD;
 END_VAR
 
 FOR wIndex := 0 TO 15 DO
-    WatchIo(((in_Word AND (SHL(1, wIndex))) <> 0), (in_Number - 1) + (wIndex + 1));
+  WatchIo(((in_Word AND (SHL(1, wIndex))) <> 0), (in_Number - 1) + (wIndex + 1));
 END_FOR;
 
 (*

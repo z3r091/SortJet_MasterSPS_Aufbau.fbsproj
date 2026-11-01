@@ -29,7 +29,7 @@ IF ( bpStarteSpeicherfachValidierung ) THEN
       bpSpeicherfachValidierungAbgeschlossen := FALSE;
 
       IF ( NOT Glastransport.bpFehler ) THEN
-       Glastransport.pSystemCheckDaten := BasisStationsParameter.pAuftrag[cWAND_1];
+        Glastransport.pSystemCheckDaten := BasisStationsParameter.pAuftrag[cWAND_1];
         Glastransport.bpSpeicherfachValidierung := TRUE;
 
         iPhaseSpeichervalidierung := SPEICHERFACHVALIDIERUNG_AKTIV;
@@ -74,11 +74,11 @@ END_IF
 
 IF ( NOT bpStarteSpeicherfachValidierung ) THEN
 
-   IF ( iPhaseSpeichervalidierung <> SPEICHERFACHVALIDIERUNG_IDLE ) THEN
-     bpSpeicherfachValidierungAbgeschlossen := FALSE;
-     iPhaseSpeichervalidierung := SPEICHERFACHVALIDIERUNG_IDLE;
-     Glastransport.bpSpeicherfachValidierung := FALSE;
-   END_IF
+  IF ( iPhaseSpeichervalidierung <> SPEICHERFACHVALIDIERUNG_IDLE ) THEN
+    bpSpeicherfachValidierungAbgeschlossen := FALSE;
+    iPhaseSpeichervalidierung := SPEICHERFACHVALIDIERUNG_IDLE;
+    Glastransport.bpSpeicherfachValidierung := FALSE;
+  END_IF
 
 END_IF
 END_ACTION

@@ -12,14 +12,14 @@ ACTION Vermessen_Oberkante_1_Sensor
 IF ( bpVermessen_Oberkante_1_Sensor ) THEN
 
   // Ausnahmesituation
-    IF ( Antrieb.bpFehler ) THEN
-      Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-      wpFehlerNr := cMELDUNG_ANTRIEB_MESSACHSE;
-      steplOberkante_1_Sensor := STEP_900_E;
-    END_IF
+  IF ( Antrieb.bpFehler ) THEN
+    Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
+    wpFehlerNr := cMELDUNG_ANTRIEB_MESSACHSE;
+    steplOberkante_1_Sensor := STEP_900_E;
+  END_IF
 
   CASE steplOberkante_1_Sensor OF
-(* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+    (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen
@@ -34,7 +34,7 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
         steplOberkante_1_Sensor := STEP_10_E;
       END_IF
 
-(* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+    (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
     STEP_10_E:
       (* Hinweis:
          - Starten der Positionierung. Der Sensor muss belegt sein. Wenn nicht gleich
@@ -62,7 +62,7 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
 
       END_IF
 
-(* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+    (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  RESTWEG [VERMESSEN DER SCHEIBE MITTELS RESTWEGPOSITIONIERUNG]
@@ -85,7 +85,7 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
          - Reduzieren der Geschwindigkeit wenn man sich den Bereichgrenzen naehrt
       *)
       IF (  Antrieb.rpIstPosition > Antrieb.rpMaxPosition - ppParameterBaustein.rVerfahrbereichsOffset
-        AND Antrieb.rpIstPosition <Antrieb.rpMinPosition + ppParameterBaustein.rVerfahrbereichsOffset )
+           AND Antrieb.rpIstPosition <Antrieb.rpMinPosition + ppParameterBaustein.rVerfahrbereichsOffset )
       THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit05;
       END_IF
@@ -103,7 +103,7 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
             => Position ausserhalb der SW-Endschalter = Referenzverlust bei SEW
       *)
       IF (  Antrieb.rpIstPosition >= Antrieb.rpMaxPosition
-        AND Antrieb.rpIstPosition <= Antrieb.rpMinPosition )
+           AND Antrieb.rpIstPosition <= Antrieb.rpMinPosition )
       THEN
         Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
 
@@ -113,7 +113,7 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
 
       END_IF
 
-(* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+    (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
     STEP_110_E:
       (* Hinweis:
          - Sicherstellen das der Antrieb steht
@@ -125,7 +125,7 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
         steplOberkante_1_Sensor := STEP_120_E;
       END_IF
 
-(* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+    (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
     STEP_120_E:
       (* Hinweis:
          - Belegung des Sensors-pruefen
@@ -161,15 +161,15 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
 
       END_IF
 
-(* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+    (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+    (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+  (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
   END_CASE
 
 ELSE

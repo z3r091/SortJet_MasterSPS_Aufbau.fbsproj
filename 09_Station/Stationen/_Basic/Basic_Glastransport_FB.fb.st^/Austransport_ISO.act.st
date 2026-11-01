@@ -13,7 +13,7 @@ ACTION Austransport_ISO
  => Beim Austransport ISO wird erst das Bereit zum Austransport gesetzt 
 *)
 IF ( bpAustransport
-  AND bpAutomatikAktiv )
+     AND bpAutomatikAktiv )
 THEN
 
   // Ausnahmesituation
@@ -34,7 +34,7 @@ THEN
 
 
   CASE steplAustransport OF
-(*AUSTRANSPORT ====================*)
+    (*AUSTRANSPORT ====================*)
     STEP_0_E:
       (*  Anmerkung:
           - Initialisierung Variablen
@@ -53,14 +53,14 @@ THEN
 
       blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
       
-    // Sicherstellen das die Slavekopplung aktiv ist
+      // Sicherstellen das die Slavekopplung aktiv ist
       IF ( blAntriebsKopplungAktiv ) THEN
         // Zeit für Statistik
         tlWarteZeitAufnahme := TIME();
         steplAustransport := STEP_10_E;
-    END_IF
+      END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_10_E:
       (* ---------------------------------------------------------------------------------------
       //  WARTEN AUF FREIGABE ZUM GLASTRANSPORT
@@ -84,7 +84,7 @@ THEN
 
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_20_E:
       (* Hinweis:
          - Pruefen ob der Auslaufsensor belegt ist.
@@ -119,7 +119,7 @@ THEN
 
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_30_E:
       (*  Hinweis:
           - Wird der Vorstop- Sensor ueberfahren die Geschwindigkeit des
@@ -140,7 +140,7 @@ THEN
         steplAustransport := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_40_E:
       (* Hinweis:
          - Reduzieren der Geschwindigkeit sollte der Vorabstop- Sensor belegt worden sein
@@ -154,7 +154,7 @@ THEN
            => Auslaufsensor muss belegt sein
       *)
       IF (  Antrieb.bpDone
-        AND bpSensorAuslauf )
+           AND bpSensorAuslauf )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplAustransport := STEP_100_E;
@@ -169,7 +169,7 @@ THEN
         steplAustransport := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  STARTEN DES AUSTRANSPORTS
@@ -198,7 +198,7 @@ THEN
 
       steplAustransport := STEP_110_E;
 
-(*AUSTRANSPORT ====================*)
+    (*AUSTRANSPORT ====================*)
     STEP_110_E:
       bprtScheibe := FALSE;
       tonlMaximaleZeitSensorAnfahren( IN:= TRUE, PT :=T#60S );
@@ -208,15 +208,15 @@ THEN
         steplAustransport := STEP_120_E;
       END_IF
 
-   (* Fehlerbehandlung:
-         - Auslaufsensor schaltet nicht
-      *)
+      (* Fehlerbehandlung:
+            - Auslaufsensor schaltet nicht
+         *)
       IF ( tonlMaximaleZeitSensorAnfahren.Q ) THEN
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
         steplAustransport := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT ====================*)
+    (*AUSTRANSPORT ====================*)
     STEP_120_E:
       (* Hinweis:
          - Scheibenzaehlen 
@@ -224,7 +224,7 @@ THEN
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
 
       IF ( NOT toflAuslaufsensor.Q 
-        AND NOT InGlasTransportNachfolger.bEinlaufsensor)
+           AND NOT InGlasTransportNachfolger.bEinlaufsensor)
       THEN
         bprtScheibe := TRUE;
         ilScheibenZaehler := ilScheibenZaehler -1;
@@ -242,7 +242,7 @@ THEN
 
       END_IF
 
-(*AUSTRANSPORT ====================*)
+    (*AUSTRANSPORT ====================*)
     STEP_130_E:
       (* Hinweis:
          - Scheibentrigger ( Scheibenzaehler ) zurueck setzen
@@ -256,13 +256,13 @@ THEN
         steplAustransport := STEP_140_E;
       END_IF
 
-(*AUSTRANSPORT ====================*)
+    (*AUSTRANSPORT ====================*)
     STEP_140_E:
       (* Anmerkung:
          - Pruefen ob der Auslaufsensor angefahren wurde
       *) 
       IF (  NOT toflAuslaufsensor.Q
-        AND NOT InGlasTransportNachfolger.bEinlaufsensor )
+           AND NOT InGlasTransportNachfolger.bEinlaufsensor )
       THEN
         bpOutBereitZumAustransport := FALSE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -302,7 +302,7 @@ THEN
         steplAustransport := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT ====================*)
+    (*AUSTRANSPORT ====================*)
     STEP_900_E:
       (* Fehlerbehandlung:
          - Fehlerschritt
@@ -316,12 +316,12 @@ THEN
       bpOutBereitZumEintransport := FALSE;
       bpOutBereitZumAustransport := FALSE;
 
-(*AUSTRANSPORT ====================*)
+    (*AUSTRANSPORT ====================*)
     STEP_1000_E:
       bprtScheibe := FALSE;
       bpDone := TRUE;
 
-(*AUSTRANSPORT ====================*)
+  (*AUSTRANSPORT ====================*)
   END_CASE
 ELSE
 

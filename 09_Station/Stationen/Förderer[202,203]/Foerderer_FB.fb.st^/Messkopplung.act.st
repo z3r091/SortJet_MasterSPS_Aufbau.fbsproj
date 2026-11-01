@@ -10,41 +10,41 @@ ACTION Messkopplung
 (* AKTION MESSKOPPLUNG *)
 (***************************************************************************************************)
 IF (  BasisStationsParameter.bMesskopplung[cWAND_1]
-  AND blBetriebsartAutomatik )
+     AND blBetriebsartAutomatik )
 THEN
 
   // Ausnahmesituation  
-   IF ( Glastransport.bpFehler ) THEN
-     Glastransport.bpMesskopplung := FALSE;
-     BasisStationsParameter.wFehlerNummer :=  Glastransport.wpFehlerNr;
-     steplMesskopplung := STEP_900_E;
-   END_IF
+  IF ( Glastransport.bpFehler ) THEN
+    Glastransport.bpMesskopplung := FALSE;
+    BasisStationsParameter.wFehlerNummer :=  Glastransport.wpFehlerNr;
+    steplMesskopplung := STEP_900_E;
+  END_IF
    
-   IF ( Kippen.bpFehler ) THEN
-     Kippen.bpPositionieren := FALSE;
-     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
-     steplMesskopplung := STEP_900_E;
-   END_IF
+  IF ( Kippen.bpFehler ) THEN
+    Kippen.bpPositionieren := FALSE;
+    BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
+    steplMesskopplung := STEP_900_E;
+  END_IF
    
   IF ( Roellchenleiste.bpFehler ) THEN
-  Roellchenleiste.bpStartPneumatik := FALSE;
+    Roellchenleiste.bpStartPneumatik := FALSE;
     BasisStationsParameter.wFehlerNummer := Roellchenleiste.wpFehlerNr;
     steplMesskopplung := STEP_900_E;
   END_IF
    
   IF ( Wandverstellung.bpFehler ) THEN
-  Wandverstellung.bpStartPneumatik := FALSE;
+    Wandverstellung.bpStartPneumatik := FALSE;
     BasisStationsParameter.wFehlerNummer := Wandverstellung.wpFehlerNr;
     steplMesskopplung := STEP_900_E;
   END_IF
 
 
   CASE steplMesskopplung OF
-(* MESSKOPPLUNG ===================================*)
+    (* MESSKOPPLUNG ===================================*)
     STEP_0_E:
       steplMesskopplung := STEP_10_E;
 
-(* EINTRANSPORT ===============================*)
+    (* EINTRANSPORT ===============================*)
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob die Geblase aktiv sind
@@ -66,12 +66,12 @@ THEN
 
       END_IF
 
-(* EINTRANSPORT ===============================*)
+    (* EINTRANSPORT ===============================*)
     STEP_20_E:
       IF ( ( Kippen.bpDone )
-       AND ( Roellchenleiste.bpDone )
-       AND ( Wandverstellung.bpDone ) ) 
-     THEN
+           AND ( Roellchenleiste.bpDone )
+           AND ( Wandverstellung.bpDone ) ) 
+      THEN
         Roellchenleiste.bpStartPneumatik := FALSE;
         Wandverstellung.bpStartPneumatik := FALSE;
         Kippen.bpPositionieren           := FALSE;
@@ -80,7 +80,7 @@ THEN
 
       END_IF
 
-(* MESSKOPPLUNG ===================================*)
+    (* MESSKOPPLUNG ===================================*)
     STEP_100_E:
       (* Anmerkung:
          - Starten des Prozesses
@@ -88,15 +88,15 @@ THEN
       Glastransport.bpMesskopplung := TRUE;
       steplMesskopplung := STEP_1000_E;
 
-(* MESSKOPPLUNG ===================================*)
-   STEP_900_E:
-     BasisStationsParameter.bFehler := TRUE;
+    (* MESSKOPPLUNG ===================================*)
+    STEP_900_E:
+      BasisStationsParameter.bFehler := TRUE;
 
-(* MESSKOPPLUNG ===================================*)
-   STEP_1000_E:
-     ;
+    (* MESSKOPPLUNG ===================================*)
+    STEP_1000_E:
+      ;
 
-(* MESSKOPPLUNG ===================================*)
+  (* MESSKOPPLUNG ===================================*)
   END_CASE
 ELSE
 
@@ -104,8 +104,8 @@ ELSE
     Glastransport.bpMesskopplung := FALSE;
 
     Kippen.bpPositionieren           := FALSE;
-  Roellchenleiste.bpStartPneumatik := FALSE;
-  Wandverstellung.bpStartPneumatik := FALSE;
+    Roellchenleiste.bpStartPneumatik := FALSE;
+    Wandverstellung.bpStartPneumatik := FALSE;
 
     steplMesskopplung := STEP_0_E;
   END_IF

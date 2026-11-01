@@ -51,8 +51,8 @@ END_VAR
 (* STEUERUNG AUSTRANSPORT *)
 (***************************************************************************************************)
 IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
-   CASE steplSchritt OF
-(* AUSTRANSPORT ================================= *)
+  CASE steplSchritt OF
+    (* AUSTRANSPORT ================================= *)
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -61,7 +61,7 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
         steplSchritt := STEP_10_E;
       END_IF
 
-(* AUSTRANSPORT ================================================== *)
+    (* AUSTRANSPORT ================================================== *)
     STEP_10_E:
       (* ---------------------------------------------------------------------------------------
       //  OPTIONALE - PRUEFUNG DER GLASDATEN
@@ -75,8 +75,8 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-(* AUSTRANSPORT ================================= *)
-     STEP_20_E:
+    (* AUSTRANSPORT ================================= *)
+    STEP_20_E:
       (* Hinweis
          - Uebergabe der Quellstation [Sender] fuer den Austransport [Zum ueberpruefen des Zustandes der Station]       
       *)
@@ -122,10 +122,10 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
           Gegenstelle REF= getBasis( Auftragsdaten.wTransferstationsNr1 );
           blGegenstelleIstShuttle := __ISVALIDREF( Gegenstelle ) AND_THEN __ISVALIDREF( Gegenstelle.stMKs ) AND_THEN Gegenstelle.stMKs.stSchnittstellendaten.bStationIstShuttle;
 
-        // Station ist ein Shuttle
-        IF starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.bStationIstShuttle AND NOT blGegenstelleIstShuttle THEN
-          IF ( ( Job_Stationen.AuftragsdatenWand[Auftragsdaten.wTransferstationsNr1, Auftragsdaten.wTransferwand].wAuftrag = eStation_Belegt )
-              OR ( Job_Stationen.AuftragsdatenWand[Auftragsdaten.wTransferstationsNr1, Auftragsdaten.wTransferwand].wAuftrag = eStation_Kein_Auftrag ) )
+          // Station ist ein Shuttle
+          IF starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.bStationIstShuttle AND NOT blGegenstelleIstShuttle THEN
+            IF ( ( Job_Stationen.AuftragsdatenWand[Auftragsdaten.wTransferstationsNr1, Auftragsdaten.wTransferwand].wAuftrag = eStation_Belegt )
+                 OR ( Job_Stationen.AuftragsdatenWand[Auftragsdaten.wTransferstationsNr1, Auftragsdaten.wTransferwand].wAuftrag = eStation_Kein_Auftrag ) )
             THEN
 
               Job_Stationen.AuftragsdatenWand[Auftragsdaten.wTransferstationsNr1, Auftragsdaten.wTransferwand]          := AuftragsdatenUmkopieren(FALSE, FALSE, Auftragsdaten);
@@ -136,28 +136,28 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
                 starrStationBasisParameter[wStation].InGlasTransportNachfolger[wWand] := starrStationBasisParameter[Auftragsdaten.wTransferstationsNr1].OutGlasTransport[Auftragsdaten.wTransferwand];
               ELSE 
                 starrStationBasisParameter[wStation].InGlasTransportVorgaenger[wWand] := starrStationBasisParameter[Auftragsdaten.wTransferstationsNr1].OutGlasTransport[Auftragsdaten.wTransferwand];
-             END_IF
+              END_IF
               
               steplSchritt := STEP_30_E;
-              END_IF
+            END_IF
 
-           ELSE
+          ELSE
 
             // Transportkopplung
             IF ( starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.Station[Auftragsdaten.wTransferstationsNr1] = Vorwaertig ) THEN
               starrStationBasisParameter[wStation].InGlasTransportNachfolger[wWand] := starrStationBasisParameter[Auftragsdaten.wTransferstationsNr1].OutGlasTransport[Auftragsdaten.wTransferwand];
             ELSE 
               starrStationBasisParameter[wStation].InGlasTransportVorgaenger[wWand] := starrStationBasisParameter[Auftragsdaten.wTransferstationsNr1].OutGlasTransport[Auftragsdaten.wTransferwand];
-           END_IF
+            END_IF
 
             steplSchritt := STEP_30_E;
 
-         END_IF
+          END_IF
 
         cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF:
           IF ( Auftragsdaten.wTransferstationsNr2 <> 0 ) THEN
             IF   ( Job_Fremdanlage.AuftragsdatenFremdanlage[wlAustransportstation].wAuftrag = eStation_Kein_Auftrag )
-             AND ( Job_Stationen.AuftragsdatenWand[Auftragsdaten.wTransferstationsNr2, Auftragsdaten.wTransferwand].wAuftrag = eStation_Kein_Auftrag )
+                 AND ( Job_Stationen.AuftragsdatenWand[Auftragsdaten.wTransferstationsNr2, Auftragsdaten.wTransferwand].wAuftrag = eStation_Kein_Auftrag )
             THEN
               steplSchritt := STEP_30_E;
             END_IF
@@ -194,8 +194,8 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
 
       END_CASE
 
-(* AUSTRANSPORT ================================= *)
-     STEP_30_E:
+    (* AUSTRANSPORT ================================= *)
+    STEP_30_E:
 
       (* Hinweis:
          - Scheibenquittierung 
@@ -210,7 +210,7 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
       (* Hinweis:
          - Auftrags- Optionen bestimmen und zuweisen
       *)
-    // Drehen
+      // Drehen
       starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition                  := starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.Kippen[Auftragsdaten.wTransferstationsNr1];
       starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachEintransport := 0;
       starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachAustransport := starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.KippenNachAustransport[Auftragsdaten.wTransferstationsNr1];
@@ -235,14 +235,14 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
 
       steplSchritt := STEP_35_E;
 
-(* AUSTRANSPORT ================================= *)
-     STEP_35_E:
-    // Im Step 35 wird in dem vererbten FB Anlagenspezifische Auftragsoptionen gesetzt         
+    (* AUSTRANSPORT ================================= *)
+    STEP_35_E:
+      // Im Step 35 wird in dem vererbten FB Anlagenspezifische Auftragsoptionen gesetzt         
       starrStationBasisParameter[wStation].bAustransport[wWand] := TRUE;
       steplSchritt := STEP_40_E;
 
-(* AUSTRANSPORT ================================= *)
-     STEP_40_E:
+    (* AUSTRANSPORT ================================= *)
+    STEP_40_E:
 
       (* Hinweis:
          - Scheibenzaehler dekrementieren
@@ -260,10 +260,10 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
           wSps2MmiQuellWand    := Auftragsdaten.wStationsWand;
           dwSps2MmiWartezeit   := starrStationBasisParameter[wStation].dwWartezeit[wWand];
 
-      IF starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.bStationIstShuttle THEN
+          IF starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.bStationIstShuttle THEN
             wSPS2MMIAuftragstyp  := 1;
-      ELSE
-        wSPS2MMIAuftragstyp  := 0;
+          ELSE
+            wSPS2MMIAuftragstyp  := 0;
           END_IF; 
 
           MsgToMmi(auftragsnr_w := SB0_SPS_QUIT_SHEET_ORDER );
@@ -298,7 +298,7 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT ==============================================*)
+    (*AUSTRANSPORT ==============================================*)
     STEP_100_E:
       (* Anmerkung:
          - Gueltige Anzahl von Scheiben wurden quittiert
@@ -321,9 +321,9 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
 
         steplSchritt := STEP_900_E;
 
-        (* Anmerkung:
-           - Zu viele Scheiben quittiert
-        *)
+      (* Anmerkung:
+         - Zu viele Scheiben quittiert
+      *)
       ELSIF ( ilScheibenZuQuittieren < 0 ) THEN
         wpgFehlerdaten[0] := starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerExtern;
         wpgFehlerdaten[1] := wWand;
@@ -337,19 +337,19 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-(* AUSTRANSPORT ================================= *)
-     STEP_900_E:
-       bpFehler := TRUE;
+    (* AUSTRANSPORT ================================= *)
+    STEP_900_E:
+      bpFehler := TRUE;
 
-(* AUSTRANSPORT ================================= *)
-     STEP_1000_E:
-       bpDone := TRUE;
-     IF Auftragsdaten.stAuftragsInformationen.cBIT_SRCSTATION_EMPTY THEN
-         Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
-     ELSE
-         Auftragsdaten.wAuftrag := eStation_Belegt;
-     END_IF
-   END_CASE
+    (* AUSTRANSPORT ================================= *)
+    STEP_1000_E:
+      bpDone := TRUE;
+      IF Auftragsdaten.stAuftragsInformationen.cBIT_SRCSTATION_EMPTY THEN
+        Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
+      ELSE
+        Auftragsdaten.wAuftrag := eStation_Belegt;
+      END_IF
+  END_CASE
 
 END_IF
 

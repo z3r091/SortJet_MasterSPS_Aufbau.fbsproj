@@ -52,8 +52,8 @@ FOR wlIndexSicherheitskreis := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSK
 
     IF findInWORDArray THEN
       checkSafetyCircuitsClosedFromAutomaticCircuit :=
-        checkSafetyCircuitsClosedFromAutomaticCircuit
-        AND Sicherheitskreis[wlIndexSicherheitskreis].bpSicherheitskreisGeschlossen;
+                                                      checkSafetyCircuitsClosedFromAutomaticCircuit
+                                                      AND Sicherheitskreis[wlIndexSicherheitskreis].bpSicherheitskreisGeschlossen;
     END_IF
 
   END_IF

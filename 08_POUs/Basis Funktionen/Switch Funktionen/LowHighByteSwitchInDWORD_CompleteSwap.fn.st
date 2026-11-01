@@ -19,17 +19,17 @@ VAR
   dwByte4 : DWORD;
 
 END_VAR
-  dwByte1 :=SHR(dwInputWord,24);
+dwByte1 :=SHR(dwInputWord,24);
 
-  dwByte2  :=SHL(dwInputWord,8);
-  dwByte2  :=SHR(dwByte2,24);
-  dwByte2  :=SHL(dwByte2,8);
+dwByte2  :=SHL(dwInputWord,8);
+dwByte2  :=SHR(dwByte2,24);
+dwByte2  :=SHL(dwByte2,8);
 
-  dwByte3  :=SHL(dwInputWord,16);
-  dwByte3  :=SHR(dwByte3,24);
-  dwByte3  :=SHL(dwByte3,16);
+dwByte3  :=SHL(dwInputWord,16);
+dwByte3  :=SHR(dwByte3,24);
+dwByte3  :=SHL(dwByte3,16);
 
-  dwByte4  :=SHL(dwInputWord,24);
+dwByte4  :=SHL(dwInputWord,24);
 
 
 LowHighByteSwitchInDWORD_CompleteSwap := dwByte1 OR dwByte2 OR dwByte3 OR dwByte4;

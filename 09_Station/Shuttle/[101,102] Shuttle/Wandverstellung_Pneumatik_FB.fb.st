@@ -24,7 +24,7 @@ VAR_OUTPUT
   (* WORD *)
   wpFehlerNr  : WORD;
 
-  (* ENUM *)
+(* ENUM *)
 
 END_VAR
 VAR

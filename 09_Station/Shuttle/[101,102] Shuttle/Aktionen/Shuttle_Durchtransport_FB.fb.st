@@ -12,7 +12,7 @@ END_VAR
 (* DURCHTRANSPORT WAND 1 *)
 (***************************************************************************************************)
 IF ( BasisStationsParameter.bDurchtransport[wWand]
-  AND bpAutomatikAktiv )
+     AND bpAutomatikAktiv )
 THEN
 
   // Ausnahmesituation
@@ -40,7 +40,7 @@ THEN
   END_IF
 
   CASE steplAktion OF
-(*DURCHTRANSPORT ==============================*)
+    (*DURCHTRANSPORT ==============================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen         
@@ -49,7 +49,7 @@ THEN
 
       steplAktion := STEP_10_E;
 
-(*DURCHTRANSPORT ==============================*)
+    (*DURCHTRANSPORT ==============================*)
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob die Geblase aktiv sind
@@ -74,7 +74,7 @@ THEN
 
       END_IF
 
-(*DURCHTRANSPORT ==============================*)
+    (*DURCHTRANSPORT ==============================*)
     STEP_20_E:
       (* Verfahrauftrag ans Shuttle uebergeben [Verfahrueberwachung]:
          - Pruefen ob das Shuttel zum verfahren freigegeben ist, wenn ja Zielposition
@@ -91,7 +91,7 @@ THEN
         steplAktion := STEP_900_E;
       END_IF
 
-(*DURCHTRANSPORT ==============================*)
+    (*DURCHTRANSPORT ==============================*)
     STEP_30_E:
       (* Hinweis:
          - Sicherstellen das die Wand auch wirklich ihre Soll-Position erreicht hat
@@ -107,7 +107,7 @@ THEN
         steplAktion := STEP_40_E;   
       END_IF
 
-(*DURCHTRANSPORT ==============================*)
+    (*DURCHTRANSPORT ==============================*)
     STEP_40_E:
       (* ---------------------------------------------------------------------------------------
       //  KIPP- VORGANG ABSCHLIESSEN
@@ -117,13 +117,13 @@ THEN
       // ---------------------------------------------------------------------------------------*)
 
       IF ( Kippen.bpDone OR NOT Kippen.bpPositionieren )
-        AND ( Kippen.epKippStatus = BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition)
+         AND ( Kippen.epKippStatus = BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition)
       THEN
         Kippen.bpPositionieren  := FALSE;
         steplAktion := STEP_100_E;
       END_IF
 
-(*DURCHTRANSPORT ==============================*)
+    (*DURCHTRANSPORT ==============================*)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  STARTEN DES DURCHTRANSPORTS 
@@ -134,7 +134,7 @@ THEN
 
       steplAktion := STEP_110_E;
 
-(*DURCHTRANSPORT ==============================*)
+    (*DURCHTRANSPORT ==============================*)
     STEP_110_E:
       (* Hinweis:
          - Quittierung der Scheibe
@@ -149,11 +149,11 @@ THEN
         steplAktion := STEP_200_E;
       END_IF
 
-(*DURCHTRANSPORT ==============================*)
+    (*DURCHTRANSPORT ==============================*)
     STEP_200_E:
-    (* Hinweis:
-        - Kippen ansteuern
-      *)
+      (* Hinweis:
+          - Kippen ansteuern
+        *)
       bprtScheibe := Glastransport.bprtScheibe;
 
       Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachAustransport;
@@ -161,31 +161,31 @@ THEN
 
       steplAktion := STEP_210_E;
 
-(*DURCHTRANSPORT ==============================*)
+    (*DURCHTRANSPORT ==============================*)
     STEP_210_E:
       (* Hinweis:
          - Quittierung der Scheibe
       *)
       bprtScheibe := Glastransport.bprtScheibe;
 
-    (* Hinweis:
-        - Kippen abschließen
-      *)
-    IF Kippen.bpDone THEN
-      Kippen.bpPositionieren := FALSE;
+      (* Hinweis:
+          - Kippen abschließen
+        *)
+      IF Kippen.bpDone THEN
+        Kippen.bpPositionieren := FALSE;
         steplAktion := STEP_1000_E;
-    END_IF
+      END_IF
 
-(*DURCHTRANSPORT ==============================*)
+    (*DURCHTRANSPORT ==============================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*DURCHTRANSPORT ==============================*)
+    (*DURCHTRANSPORT ==============================*)
     STEP_1000_E:
       bprtScheibe := FALSE;
       BasisStationsParameter.bDurchtransportAbgeschlossen[wWand] := TRUE;
 
-(*DURCHTRANSPORT ==============================*)
+  (*DURCHTRANSPORT ==============================*)
   END_CASE
 ELSE
 

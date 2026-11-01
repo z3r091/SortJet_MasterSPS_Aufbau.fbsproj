@@ -7,8 +7,8 @@
 *)
 ACTION Status
 l_mc_ReadStatus
-(
-  Axis := ppAntriebsInformationen.wAchsID,
-  Enable := NOT l_mc_ReadStatus.Error
-);
+  (
+    Axis := ppAntriebsInformationen.wAchsID,
+    Enable := NOT l_mc_ReadStatus.Error
+  );
 END_ACTION

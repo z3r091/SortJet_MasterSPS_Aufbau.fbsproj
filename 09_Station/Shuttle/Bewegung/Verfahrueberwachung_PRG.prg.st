@@ -81,8 +81,8 @@ END_IF
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
 
   ablKonfiguriert[wlIndex] := ( apgShuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MAX
-                             OR apgShuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MIN
-                             OR apgShuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MIN_MAX );
+                                OR apgShuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MIN
+                                OR apgShuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MIN_MAX );
 
   IF ablKonfiguriert[wlIndex] THEN
 
@@ -114,8 +114,8 @@ END_FOR
 FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
 
   ablKonfiguriert[wlIndex] := ( apgTransfershuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MAX
-                             OR apgTransfershuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MIN
-                             OR apgTransfershuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MIN_MAX );
+                                OR apgTransfershuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MIN
+                                OR apgTransfershuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MIN_MAX );
 
   IF ablKonfiguriert[wlIndex] THEN
 
@@ -207,21 +207,21 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
 
     PARKPOSITION_MIN:
       ablShuttleInParkpos[wlIndex] :=
-        ABS( arlErrechneteStillstandposition[wlIndex] - arrParkpositionen[wlIndex].rParkpositionMinimum ) < cTOLERANZ_PARKPOSITION (* im Bereich der Parkposition *)
-        AND ( ABS( arlPostionsMittelwert[wlIndex] - arlNeuePosition[wlIndex] ) < cTOLERANZ_STEHT ); (* das Shuttle steht *)
+                                     ABS( arlErrechneteStillstandposition[wlIndex] - arrParkpositionen[wlIndex].rParkpositionMinimum ) < cTOLERANZ_PARKPOSITION (* im Bereich der Parkposition *)
+                                     AND ( ABS( arlPostionsMittelwert[wlIndex] - arlNeuePosition[wlIndex] ) < cTOLERANZ_STEHT ); (* das Shuttle steht *)
 
     PARKPOSITION_MAX:
       ablShuttleInParkpos[wlIndex] :=
-        ABS( arlErrechneteStillstandposition[wlIndex] - arrParkpositionen[wlIndex].rParkpositionMaximum ) < cTOLERANZ_PARKPOSITION (* im Bereich der Parkposition *)
-        AND ( ABS( arlPostionsMittelwert[wlIndex] - arlNeuePosition[wlIndex] ) < cTOLERANZ_STEHT ); (* das Shuttle steht *)
+                                     ABS( arlErrechneteStillstandposition[wlIndex] - arrParkpositionen[wlIndex].rParkpositionMaximum ) < cTOLERANZ_PARKPOSITION (* im Bereich der Parkposition *)
+                                     AND ( ABS( arlPostionsMittelwert[wlIndex] - arlNeuePosition[wlIndex] ) < cTOLERANZ_STEHT ); (* das Shuttle steht *)
 
     PARKPOSITION_MIN_MAX:
       ablShuttleInParkpos[wlIndex] :=
-        (
-             ( ABS( arlErrechneteStillstandposition[wlIndex] - arrParkpositionen[wlIndex].rParkpositionMinimum ) < cTOLERANZ_PARKPOSITION )
-          OR ( ABS( arlErrechneteStillstandposition[wlIndex] - arrParkpositionen[wlIndex].rParkpositionMaximum ) < cTOLERANZ_PARKPOSITION )
-        ) (* im Bereich der Parkposition *)
-        AND ( ABS( arlPostionsMittelwert[wlIndex] - arlNeuePosition[wlIndex] ) < cTOLERANZ_STEHT ); (* das Shuttle steht *)
+                                     (
+                                       ( ABS( arlErrechneteStillstandposition[wlIndex] - arrParkpositionen[wlIndex].rParkpositionMinimum ) < cTOLERANZ_PARKPOSITION )
+                                       OR ( ABS( arlErrechneteStillstandposition[wlIndex] - arrParkpositionen[wlIndex].rParkpositionMaximum ) < cTOLERANZ_PARKPOSITION )
+                                     ) (* im Bereich der Parkposition *)
+                                     AND ( ABS( arlPostionsMittelwert[wlIndex] - arlNeuePosition[wlIndex] ) < cTOLERANZ_STEHT ); (* das Shuttle steht *)
 
   END_CASE
 
@@ -248,7 +248,7 @@ abgVerfahrfreigabeShuttle[cSHUTTLE_151] := TRUE;
 abgVerfahrfreigabeShuttle[cSHUTTLE_152] := TRUE;
 
 IF aTransfershuttles[cSHUTTLE_151].Querfahrt.bpInReference
-  AND aTransfershuttles[cSHUTTLE_152].Querfahrt.bpInReference
+   AND aTransfershuttles[cSHUTTLE_152].Querfahrt.bpInReference
 THEN
 
   // 151 darf nicht ueber 152 hinaus (minus Sicherheitsabstand)

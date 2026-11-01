@@ -22,14 +22,14 @@ FOR wlIndex := cERSTE_TUER TO cLETZTE_TUER DO
 END_FOR
 
 // Status der Durchgänge 
- wlMeldungsnummer := ( ioccDurchgang1NichtGeschlossen -1 );
- FOR wlIndex := cERSTER_DURCHGANG TO cLETZTER_DURCHGANG DO
-   WatchIo( aDurchgang[wlIndex].bpStatusDurchgangNichtGeschlossen, ( wlMeldungsnummer + wlIndex ) );  
- END_FOR
+wlMeldungsnummer := ( ioccDurchgang1NichtGeschlossen -1 );
+FOR wlIndex := cERSTER_DURCHGANG TO cLETZTER_DURCHGANG DO
+  WatchIo( aDurchgang[wlIndex].bpStatusDurchgangNichtGeschlossen, ( wlMeldungsnummer + wlIndex ) );  
+END_FOR
 
 // Durchgang blockiert 
- wlMeldungsnummer := ( ioccDurchgang1Blockiert -1 );
- FOR wlIndex := cERSTER_DURCHGANG TO cLETZTER_DURCHGANG DO
-   WatchIoControl(T#3S,  ( wlMeldungsnummer + wlIndex ),( aDurchgang[wlIndex].bpAnforderungZumDurchgangOffnenGestellt AND NOT aDurchgang[wlIndex].bpFreigabeZumOeffnenDurchgang AND NOT aDurchgang[wlIndex].bpAbschrankung_Geschlossen ));
- END_FOR
+wlMeldungsnummer := ( ioccDurchgang1Blockiert -1 );
+FOR wlIndex := cERSTER_DURCHGANG TO cLETZTER_DURCHGANG DO
+  WatchIoControl(T#3S,  ( wlMeldungsnummer + wlIndex ),( aDurchgang[wlIndex].bpAnforderungZumDurchgangOffnenGestellt AND NOT aDurchgang[wlIndex].bpFreigabeZumOeffnenDurchgang AND NOT aDurchgang[wlIndex].bpAbschrankung_Geschlossen ));
+END_FOR
 END_ACTION

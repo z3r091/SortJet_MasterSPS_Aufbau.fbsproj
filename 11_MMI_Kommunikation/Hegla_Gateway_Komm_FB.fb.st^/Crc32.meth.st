@@ -8,7 +8,7 @@
 METHOD Crc32 : DWORD
 VAR_INPUT
   pbpValue : POINTER TO BYTE;
-   dwpSize  : DWORD;
+  dwpSize  : DWORD;
 END_VAR
 VAR
   dwlCrc  : DWORD := 16#FFFFFFFF;

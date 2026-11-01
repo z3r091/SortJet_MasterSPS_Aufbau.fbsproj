@@ -23,7 +23,7 @@ VAR_INPUT
   // WORD
   wpAuftragsTyp              : WORD; // Unterteilung => 0 = Scheibe vom Sortjet , 1 = Scheibe soll Manuell angelegt werden *)
   
- // STRUCT  
+  // STRUCT  
   AuftragsSpeicher           : Auftragswarteschlange_Fremdanlage_FB;
               
 END_VAR
@@ -36,7 +36,7 @@ VAR_OUTPUT
   // REAL                   
   rpGeschwindigkeit          : REAL;    
   
- //DWORD
+  //DWORD
   dwpWartezeit     : DWORD;(* STATISTIK: Beschreibt die Zeit zwischen Anlegeauftrag und betaetigen des Tasters zum Eintransport *)
               
   
@@ -132,7 +132,7 @@ IF ( BasisStationsParameter.bReset ) THEN
 END_IF
 
 IF ( BasisStationsParameter.stMKs.stFremdanlage.bAnzeigeISOLinieEventAktiv ) THEN
- IGLineEvent();
+  IGLineEvent();
 END_IF
 
 A_Schnittstelle();

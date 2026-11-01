@@ -6,10 +6,10 @@
 }
 *)
 ACTION WegErkennung
- (* Hinweis:
-   - Aenderung der aktuellen Shuttleposition 
-   - Bei einer Positionsänderung um mehr als 100mm, wird dieser Wert in die lokalen und globalen Variablen (RETAIN) übernommen 
-     => Der Wert 10000 wurde gewählt um bei einer Referenzpunktfahrt einen großen IstPositionssprung auszugrenzen
+(* Hinweis:
+  - Aenderung der aktuellen Shuttleposition 
+  - Bei einer Positionsänderung um mehr als 100mm, wird dieser Wert in die lokalen und globalen Variablen (RETAIN) übernommen 
+    => Der Wert 10000 wurde gewählt um bei einer Referenzpunktfahrt einen großen IstPositionssprung auszugrenzen
 *)
 IF dipAktuelleAntriebsPosition > diAltePosition THEN
   diPositionsUnterschied := dipAktuelleAntriebsPosition - diAltePosition;

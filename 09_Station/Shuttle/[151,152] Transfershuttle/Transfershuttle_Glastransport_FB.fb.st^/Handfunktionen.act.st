@@ -10,10 +10,10 @@ ACTION Handfunktionen
 (* HANDBETRIEB *)
 (***************************************************************************************************)
 IF (  bpHand
-  AND NOT bpScheibenNeuAusrichten
-  AND NOT bpGlastransportTest
-  AND NOT bpSlaveKopplung
-  AND NOT bpStarteHebeVorgang )
+     AND NOT bpScheibenNeuAusrichten
+     AND NOT bpGlastransportTest
+     AND NOT bpSlaveKopplung
+     AND NOT bpStarteHebeVorgang )
 THEN
 
   bpOutBereitZumEintransport := FALSE;
@@ -50,26 +50,26 @@ THEN
     out_bShuttleAnheben := FALSE;
   END_IF
 
-   (* Handfunktion:
-      - (default Luftabfragen) ScheibenKontrolle anheben
-   *)
-   IF ( bpHandScheibenKontrolleEinlaufseiteAnheben ) THEN
-     out_bScheibenKontrolleEinlaufSeiteAuf := TRUE;
-   ELSE
-     out_bScheibenKontrolleEinlaufSeiteAuf := FALSE;
-   END_IF
+  (* Handfunktion:
+     - (default Luftabfragen) ScheibenKontrolle anheben
+  *)
+  IF ( bpHandScheibenKontrolleEinlaufseiteAnheben ) THEN
+    out_bScheibenKontrolleEinlaufSeiteAuf := TRUE;
+  ELSE
+    out_bScheibenKontrolleEinlaufSeiteAuf := FALSE;
+  END_IF
 
-   IF ( bpHandScheibenKontrolleAuslaufseiteAnheben ) THEN
-     out_bScheibenKontrolleAuslaufSeiteAuf := TRUE;
-   ELSE
-     out_bScheibenKontrolleAuslaufSeiteAuf := FALSE;
-   END_IF
+  IF ( bpHandScheibenKontrolleAuslaufseiteAnheben ) THEN
+    out_bScheibenKontrolleAuslaufSeiteAuf := TRUE;
+  ELSE
+    out_bScheibenKontrolleAuslaufSeiteAuf := FALSE;
+  END_IF
 
-   (* Handfunktion:
-      - ScheibenKontrolle Luftsensoren aktivieren
-   *)
-   blScheibenKontrolleEinlaufseiteEin := bpHandScheibenKontrolleEinlaufseiteEin;
-   blScheibenKontrolleAuslaufseiteEin := bpHandScheibenKontrolleAuslaufseiteEin;
+  (* Handfunktion:
+     - ScheibenKontrolle Luftsensoren aktivieren
+  *)
+  blScheibenKontrolleEinlaufseiteEin := bpHandScheibenKontrolleEinlaufseiteEin;
+  blScheibenKontrolleAuslaufseiteEin := bpHandScheibenKontrolleAuslaufseiteEin;
 
 END_IF
 END_ACTION

@@ -21,7 +21,7 @@ IF bpStarteFaecherwagensuche THEN
 
   CASE steplFaecherwagensuche OF
 
-(*FÄCHERWAGENSUCHE ==============================*)
+    (*FÄCHERWAGENSUCHE ==============================*)
     STEP_0_E:
       // Init
       rpAktuelleFaecherwagenPosition := -100000;
@@ -32,7 +32,7 @@ IF bpStarteFaecherwagensuche THEN
 
       steplFaecherwagensuche := STEP_5_E;
 
-(*FÄCHERWAGENSUCHE ==============================*)
+    (*FÄCHERWAGENSUCHE ==============================*)
     STEP_5_E:
       // Shuttle auf 90 Grad stellen
       IF( Kippen.epKippStatus = eKippen_Position_90Grad ) THEN
@@ -44,7 +44,7 @@ IF bpStarteFaecherwagensuche THEN
       END_IF
 
 
-(*FÄCHERWAGENSUCHE ==============================*)
+    (*FÄCHERWAGENSUCHE ==============================*)
     STEP_10_E:
       // FW mit FaecherwagenSuchSensor suchen 
       rtlRackPositionGefunden( CLK:= in_bFaecherwagenSuchSensor );
@@ -53,7 +53,7 @@ IF bpStarteFaecherwagensuche THEN
         bpFaecherwagenGefunden := TRUE;
         rpAktuelleFaecherwagenPosition := Querfahrt.rpAktPosition;
 
-        //steplFaecherwagensuche := STEP_20_E;
+      //steplFaecherwagensuche := STEP_20_E;
       END_IF
 
       // Wenn die Ist Position sich um 1mm aendert -> MSG an MMI (nur fuer LOG)
@@ -71,15 +71,15 @@ IF bpStarteFaecherwagensuche THEN
 
       END_IF
 
-(*CHERWAGENSUCHE ==============================*)
+    (*CHERWAGENSUCHE ==============================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*FÄCHERWAGENSUCHE ==============================*)
+    (*FÄCHERWAGENSUCHE ==============================*)
     STEP_1000_E:
       ;
 
-(*FÄCHERWAGENSUCHE ==============================*)
+  (*FÄCHERWAGENSUCHE ==============================*)
   END_CASE
 ELSE
   IF (steplFaecherwagensuche > STEP_0_E) THEN

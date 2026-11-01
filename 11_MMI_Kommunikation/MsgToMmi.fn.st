@@ -19,9 +19,9 @@ VAR
 END_VAR
 CASE( auftragsnr_w ) OF
 
-  (* Aktive Handfunktionen: Stationsnummer, niedriges Word, hohes Word. *)
-  SB0_SPS_HANDFUNKTION_STATUS,
-  SB0_SPS_SHUTTLEHANDFUNKTION_STATUS:
+    (* Aktive Handfunktionen: Stationsnummer, niedriges Word, hohes Word. *)
+    SB0_SPS_HANDFUNKTION_STATUS,
+      SB0_SPS_SHUTTLEHANDFUNKTION_STATUS:
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 6;
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ), wVal := wSps2MmiStationsNummer );
@@ -33,7 +33,7 @@ CASE( auftragsnr_w ) OF
   SB0_SPS_SPSVERSION:
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := INT_TO_WORD(LEN(sSpsVersion) + 1);
-    // HMI_PutString( pbyAddr := ADR(msg_st.awDaten[0]), wVal := sSpsVersion);
+  // HMI_PutString( pbyAddr := ADR(msg_st.awDaten[0]), wVal := sSpsVersion);
 
   (* Hinweis:
      - Maschinen Statusmeldung
@@ -230,8 +230,8 @@ CASE( auftragsnr_w ) OF
     HMI_PutREAL( pbyAddr := ADR( msg_st.awDaten[1] ),  rVal := rSps2MmiShuttlePosition[0] );
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[3] ), wVal  := wSps2ShuttleStopped[wgSps2MmiShuttleNr] );
     
-  SB0_SPS_TRANSFERSHUTTLEBUFFERSLOTPOS,
-  SB0_SPS_LIFTEDTRANSFERSHUTTLEPOSITION:
+    SB0_SPS_TRANSFERSHUTTLEBUFFERSLOTPOS,
+      SB0_SPS_LIFTEDTRANSFERSHUTTLEPOSITION:
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 6;
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ), wVal  := wgSps2MmiShuttleNr );
@@ -336,7 +336,7 @@ CASE( auftragsnr_w ) OF
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ),  wVal  := wSps2MmiWatchDogTestCount );
 
     
-(*++++++++++++++++++++++++ Fächerwagenstationen ++++++++++++++++++++++++++++++++++++ *)
+  (*++++++++++++++++++++++++ Fächerwagenstationen ++++++++++++++++++++++++++++++++++++ *)
   (* Hinweis [FAECHERWAGEN]:
      - Faecherwagenwechsel von Station A nach B erfolgreich
    *)
@@ -364,15 +364,15 @@ CASE( auftragsnr_w ) OF
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ),  wVal  := wSps2FaecherwagenStart );(* Wo kommt der Wagen her *)
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[1] ),  wVal  := wSps2FaecherwagenStart );(* Wo geht der Wagen hin *)
 
-   (* Hinweis:
-      - [FAECHERWAGENSTATION] Gibt den Status der Faecherwagenstation zurueck
-        => 0 = wird nicht benutzt                                              
-        => 1 = frei
-        => 2 = belegt
-     Wichtig:
-     => Groesse des Arrays <awSps2MmmiStatusFaecherwagenstation> beachten ggf. den Index vergroessern 
-     => <igIndexFaecherwagenDatenSenden> Aufgrund des Datenwortes das bei "0" startet [Index]  
-   *)
+  (* Hinweis:
+     - [FAECHERWAGENSTATION] Gibt den Status der Faecherwagenstation zurueck
+       => 0 = wird nicht benutzt                                              
+       => 1 = frei
+       => 2 = belegt
+    Wichtig:
+    => Groesse des Arrays <awSps2MmmiStatusFaecherwagenstation> beachten ggf. den Index vergroessern 
+    => <igIndexFaecherwagenDatenSenden> Aufgrund des Datenwortes das bei "0" startet [Index]  
+  *)
    
   (* Hinweis [FAECHERWAGEN]:
      - Anforderung zum einbuchen des Faecherwagens
@@ -443,8 +443,8 @@ CASE( auftragsnr_w ) OF
       CASE stStationUpdate.astWerte[wlWert].eDatenTyp OF
         UpdateDatenTyp_EN.TYP_WORD, UpdateDatenTyp_EN.TYP_BOOL: wlBenoetigt := 2;
         UpdateDatenTyp_EN.TYP_DWORD, UpdateDatenTyp_EN.TYP_REAL: wlBenoetigt := 3;
-      ELSE
-        wlBenoetigt := 0;
+        ELSE
+          wlBenoetigt := 0;
       END_CASE
       IF ( wlBenoetigt = 0 ) OR ( wlIndex + wlBenoetigt > 30 ) THEN
         EXIT;
@@ -463,9 +463,9 @@ CASE( auftragsnr_w ) OF
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[2] ), wVal := wlAnzahl ); (* tatsaechlich gesendete Werte *)
     msg_st.wLaenge := wlIndex * 2;                                        (* Laenge in Byte *)
 
-ELSE
-  MsgToMmi := FALSE;
- RETURN;
+  ELSE
+    MsgToMmi := FALSE;
+    RETURN;
 END_CASE;
 
 TCPMain.l_fb_SortjetHMI.PutMsg( smpSpsMessage := msg_st, bpTrig := FALSE );

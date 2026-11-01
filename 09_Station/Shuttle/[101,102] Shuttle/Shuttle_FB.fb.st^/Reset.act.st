@@ -14,7 +14,7 @@ tonlMaxWarteAufResetErfolgreich( IN:= BasisStationsParameter.bReset,
 
 IF( blBetriebsartReset )THEN
   CASE steplResetAntrieb OF
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_0_E:
       (* Hinweis:
          - Geblaese stoppen
@@ -36,7 +36,7 @@ IF( blBetriebsartReset )THEN
 
       steplResetAntrieb := STEP_10_E;
 
-(*RESET ================================*)
+    (*RESET ================================*)
     STEP_10_E:
       (* WICHTIG
          - Reset wird vom Baustein selbst zurueckgesetzt.
@@ -53,7 +53,7 @@ IF( blBetriebsartReset )THEN
 
       steplResetAntrieb := STEP_20_E;
 
-(*RESET ================================*)
+    (*RESET ================================*)
     STEP_20_E:
       (* Hinweis:
          - Warten bis die Bausteine ihren Reset durchgefuehrt haben
@@ -66,8 +66,8 @@ IF( blBetriebsartReset )THEN
       END_FOR
 
       IF( ( blDone
-        AND Querfahrt.bpDone
-        AND Kippen.bpDone ) )
+            AND Querfahrt.bpDone
+            AND Kippen.bpDone ) )
       THEN
 
         FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
@@ -105,59 +105,59 @@ IF( blBetriebsartReset )THEN
 
         steplResetAntrieb := STEP_900_E;
 
-       (* WICHTIG:
-          - Geblaese nur auf Fehlerabfragen 
-            => Keine "Abgeschlossen" Meldung, da sich der Reset selbst quittiert 
-       *)
-       FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
-         IF ( Geblaese[wlIndex].bpFehler ) THEN
-           Geblaese[wlIndex].bpReset := FALSE;
-           BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_NICHT_ZURUECKGESETZT;
-         END_IF
-         IF ( NOT Glastransport[wlIndex].bpDone OR Glastransport[wlIndex].bpFehler ) THEN
-           Glastransport[wlIndex].bpReset := FALSE;
-           BasisStationsParameter.wFehlerNummer := Glastransport[wlIndex].wpFehlerNr;
-           SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
-         END_IF
-         IF ( NOT Wandverstellung[wlIndex].bpDone OR Wandverstellung[wlIndex].bpFehler ) THEN
-           Wandverstellung[wlIndex].bpReset := FALSE;
-           BasisStationsParameter.wFehlerNummer := Wandverstellung[wlIndex].wpFehlerNr;
-           SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
-         END_IF
-       END_FOR
+        (* WICHTIG:
+           - Geblaese nur auf Fehlerabfragen 
+             => Keine "Abgeschlossen" Meldung, da sich der Reset selbst quittiert 
+        *)
+        FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+          IF ( Geblaese[wlIndex].bpFehler ) THEN
+            Geblaese[wlIndex].bpReset := FALSE;
+            BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_NICHT_ZURUECKGESETZT;
+          END_IF
+          IF ( NOT Glastransport[wlIndex].bpDone OR Glastransport[wlIndex].bpFehler ) THEN
+            Glastransport[wlIndex].bpReset := FALSE;
+            BasisStationsParameter.wFehlerNummer := Glastransport[wlIndex].wpFehlerNr;
+            SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+          END_IF
+          IF ( NOT Wandverstellung[wlIndex].bpDone OR Wandverstellung[wlIndex].bpFehler ) THEN
+            Wandverstellung[wlIndex].bpReset := FALSE;
+            BasisStationsParameter.wFehlerNummer := Wandverstellung[wlIndex].wpFehlerNr;
+            SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+          END_IF
+        END_FOR
 
-       (* Hinweis:
-          - Fehlerauswertung der Bausteine
-       *)
-       IF ( NOT Querfahrt.bpDone OR Querfahrt.bpFehler ) THEN
-         Querfahrt.bpReset := FALSE;
-         BasisStationsParameter.wFehlerNummer := Querfahrt.wpFehlerNr;
-         SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
-       END_IF
+        (* Hinweis:
+           - Fehlerauswertung der Bausteine
+        *)
+        IF ( NOT Querfahrt.bpDone OR Querfahrt.bpFehler ) THEN
+          Querfahrt.bpReset := FALSE;
+          BasisStationsParameter.wFehlerNummer := Querfahrt.wpFehlerNr;
+          SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+        END_IF
 
-       IF ( NOT Kippen.bpDone OR Kippen.bpFehler ) THEN
-         Kippen.bpReset := FALSE;
-         BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
-         SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
-       END_IF
+        IF ( NOT Kippen.bpDone OR Kippen.bpFehler ) THEN
+          Kippen.bpReset := FALSE;
+          BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
+          SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+        END_IF
 
-     END_IF
+      END_IF
 
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
       BasisStationsParameter.bFehler := TRUE;
       BasisStationsParameter.bReset := FALSE;
 
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_1000_E:
       BasisStationsParameter.wFehlerNummer := cMELDUNG_NULL;
       BasisStationsParameter.bFehler := FALSE;
       BasisStationsParameter.bReset := FALSE;
 
-(*RESET ===============================*)
- END_CASE
+  (*RESET ===============================*)
+  END_CASE
 ELSE
   (*Reset wegen Abbruch der Schrittkette
   *)

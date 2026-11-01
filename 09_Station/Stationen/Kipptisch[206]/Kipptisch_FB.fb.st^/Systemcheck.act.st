@@ -19,17 +19,17 @@ IF( blBetriebartCheck )THEN
     steplCheck := STEP_900_E;
   END_IF
 
- IF ( Kippen.bpFehler ) THEN
-   Kippen.bpStartKippenAuf := FALSE;
-   Kippen.bpStartKippenAb  := FALSE;
-   Kippen.bpLangsamKippen  := FALSE;
-   BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
-   steplCheck := STEP_900_E;
- END_IF
+  IF ( Kippen.bpFehler ) THEN
+    Kippen.bpStartKippenAuf := FALSE;
+    Kippen.bpStartKippenAb  := FALSE;
+    Kippen.bpLangsamKippen  := FALSE;
+    BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
+    steplCheck := STEP_900_E;
+  END_IF
  
 
   CASE ( steplCheck ) OF
-(*SYSTEM CHECK =========================*)
+    (*SYSTEM CHECK =========================*)
     STEP_0_E:
       (* Hinweis:
          - Riemen aufkoppeln [Master- Slave Betrieb]
@@ -45,7 +45,7 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_10_E;
       END_IF
 
-(*SYSTEM CHECK =========================*)
+    (*SYSTEM CHECK =========================*)
     STEP_10_E:
       (* Hinweis:
          - Referenzieren der Antriebe ( Position auf 0 (NULL) setzen )
@@ -59,7 +59,7 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_20_E;
       END_IF
 
-(*SYSTEM CHECK =========================*)
+    (*SYSTEM CHECK =========================*)
     STEP_20_E:
       (* Hinweis:
          - Starten des SystemCheck
@@ -94,7 +94,7 @@ IF( blBetriebartCheck )THEN
 
       steplCheck := STEP_30_E;
 
-(*SYSTEM CHECK =========================*)
+    (*SYSTEM CHECK =========================*)
     STEP_30_E:
 
       (* Hinweis:
@@ -115,7 +115,7 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_40_E;
       END_IF
 
-(*SYSTEM CHECK =========================*)
+    (*SYSTEM CHECK =========================*)
     STEP_40_E:
       (* ---------------------------------------------------------------------------------------
       //  BELADUNGSSTATUS PRUEFEN
@@ -135,7 +135,7 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_300_E;
       END_IF
 
-(*SYSTEM CHECK =========================*)
+    (*SYSTEM CHECK =========================*)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  UEBERGABEPOSITION KIPPEN
@@ -156,7 +156,7 @@ IF( blBetriebartCheck )THEN
 
       steplCheck := STEP_110_E;
 
-(*SYSTEM CHECK =========================*)
+    (*SYSTEM CHECK =========================*)
     STEP_110_E:
       IF ( Kippen.bpDone ) THEN
         Kippen.bpStartKippenAuf := FALSE;
@@ -166,7 +166,7 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_800_E;
       END_IF
 
-(*SYSTEM CHECK =========================*)
+    (*SYSTEM CHECK =========================*)
     STEP_300_E:
       (* ---------------------------------------------------------------------------------------
       //  UEBERNAHMEPOSITION KIPPEN
@@ -199,17 +199,17 @@ IF( blBetriebartCheck )THEN
 
       END_IF
 
-(*SYSTEM CHECK =========================*)
-   STEP_310_E:
-     IF ( Kippen.bpDone  ) THEN
-       Kippen.bpStartKippenAuf := FALSE;
-       Kippen.bpStartKippenAb  := FALSE;
-       Kippen.bpLangsamKippen  := FALSE;
-       steplCheck := STEP_800_E;
-     END_IF
+    (*SYSTEM CHECK =========================*)
+    STEP_310_E:
+      IF ( Kippen.bpDone  ) THEN
+        Kippen.bpStartKippenAuf := FALSE;
+        Kippen.bpStartKippenAb  := FALSE;
+        Kippen.bpLangsamKippen  := FALSE;
+        steplCheck := STEP_800_E;
+      END_IF
 
-(*SYSTEM CHECK =========================*)
-   STEP_800_E:
+    (*SYSTEM CHECK =========================*)
+    STEP_800_E:
       (* ---------------------------------------------------------------------------------------
       //  AUSWERTEN DES BELADUNGSSTATUS MIT DEN MMI DATEN
       //         
@@ -237,27 +237,27 @@ IF( blBetriebartCheck )THEN
                     wpgFehlerdaten );
       END_IF
    
-(*SYSTEM CHECK =========================*)
+    (*SYSTEM CHECK =========================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*SYSTEM CHECK =========================*)
+    (*SYSTEM CHECK =========================*)
     STEP_1000_E:
-    // Auftrag für erneuten Automatikbetrieb setzen
+      // Auftrag für erneuten Automatikbetrieb setzen
       IF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
         BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Belegt;
       ELSE
-      BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Kein_Auftrag;
+        BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Kein_Auftrag;
       END_IF
 
       BasisStationsParameter.bCheckAbgeschlossen := TRUE;
 
-(*SYSTEM CHECK =========================*)
+  (*SYSTEM CHECK =========================*)
   END_CASE
 
 ELSE
 
- IF (steplCheck > STEP_0_E ) THEN
+  IF (steplCheck > STEP_0_E ) THEN
 
     Kippen.bpStartKippenAb  := FALSE;
     Kippen.bpStartKippenAuf := FALSE;

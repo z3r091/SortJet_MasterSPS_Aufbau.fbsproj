@@ -24,8 +24,8 @@ IF ( Drehen.epDrehPositionsStatus = eDrehPosition180Grad ) THEN
   BasisStationsParameter.OutGlasTransport[cWAND_1].bEinlaufsensor           REF= Glastransport.bpSensorAuslauf;
   BasisStationsParameter.OutGlasTransport[cWAND_1].bAuslaufsensor           REF= Glastransport.bpSensorEinlauf;
 ELSE
-BasisStationsParameter.OutGlasTransport[cWAND_1].bEinlaufsensor             REF= Glastransport.bpSensorEinlauf;
-BasisStationsParameter.OutGlasTransport[cWAND_1].bAuslaufsensor             REF= Glastransport.bpSensorAuslauf;
+  BasisStationsParameter.OutGlasTransport[cWAND_1].bEinlaufsensor             REF= Glastransport.bpSensorEinlauf;
+  BasisStationsParameter.OutGlasTransport[cWAND_1].bAuslaufsensor             REF= Glastransport.bpSensorAuslauf;
 END_IF
 
 BasisStationsParameter.OutGlasTransport[cWAND_1].bBereitZumAustransport     REF= Glastransport.bpOutBereitZumAustransport;
@@ -43,8 +43,8 @@ BasisStationsParameter.rAktuellePositionDrehen    := Drehen.rpAktuellePosition;
 BasisStationsParameter.eDrehPositionsStatus       := Drehen.epDrehPositionsStatus;
 
 BasisStationsParameter.bIstReferenziert           := ( Drehen.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bDrehen ) 
-                                                 AND ( Kippen.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1] )
-                                  AND ( Querfahrt.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt );
+                                                     AND ( Kippen.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1] )
+                                                     AND ( Querfahrt.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt );
 
 bpVorabDrehenAktiv := BasisStationsParameter.bVorabpositionieren OR ( steplVorabDrehen <> STEP_0_E );
 

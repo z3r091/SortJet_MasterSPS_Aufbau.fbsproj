@@ -93,7 +93,7 @@ VAR
   // Antrieb
   Antrieb : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
 
-  END_VAR
+END_VAR
 
 (***************************************************************************************************)
 (* INITIALISIERUNG *)
@@ -210,16 +210,16 @@ Handfunktionen();
    - Antrieb [Drehen]
 *)
 toflReglerFreigabeErhalten( IN := (   bpStarteDrehBewegung
-                                   OR bpStarteAbsolutPositionierung
-                                   OR bpHandfahrenMinus
-                                   OR bpHandfahrenPlus
-                                   OR bpReferenz ),
+                                    OR bpStarteAbsolutPositionierung
+                                    OR bpHandfahrenMinus
+                                    OR bpHandfahrenPlus
+                                    OR bpReferenz ),
                             PT := tgZeitAutoabschaltungEnergiesparModus );
 
 Antrieb.bpFreigabe         := (     toflReglerFreigabeErhalten.Q
-                                                                     AND Arretierung.in_bStatusZylinderEingefahren
-                                                                     AND bpFreigabe
-                                                                     AND bpVerfahrFreigabe );
+                                AND Arretierung.in_bStatusZylinderEingefahren
+                                AND bpFreigabe
+                                AND bpVerfahrFreigabe );
 Antrieb.rpRuckzeit         := ppAntriebsInformationen.rpMaxRuckzeit;
 Antrieb.stStationsNummern  := stStationsNummern; 
 
@@ -235,7 +235,7 @@ Arretierung();
 (* AUSGAENGE  *)
 (***************************************************************************************************)
 bpDrehvorgangAktiv :=  ( bpStarteAbsolutPositionierung 
-                      OR bpStarteDrehBewegung );
+                         OR bpStarteDrehBewegung );
 (* Hinweis:
    - Aktuelle Position des Antriebs
 *)
@@ -255,7 +255,7 @@ bpInReferenz := Antrieb.bpIstReferenziert;
    - Verfahrfreigabe
 *)
 bpVerfahrFreigabe :=     NOT bpEinlaufSensor
-                     AND NOT bpAuslaufSensor;
+                         AND NOT bpAuslaufSensor;
 
 (* Hinweis:
    - Positions-Status des Antriebs

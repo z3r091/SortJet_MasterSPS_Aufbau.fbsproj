@@ -12,7 +12,7 @@ ACTION Reset
 
 IF( blBetriebsartReset )THEN
   CASE steplReset OF
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_0_E:
 
       blNachSystemcheckMerker  := FALSE;
@@ -35,7 +35,7 @@ IF( blBetriebsartReset )THEN
 
       steplReset := STEP_10_E;
 
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_10_E:
       (* Anmerkung:
          - Bausteine zurueck setzen.
@@ -54,14 +54,14 @@ IF( blBetriebsartReset )THEN
 
       steplReset := STEP_20_E;
 
-(*RESET ================================*)
+    (*RESET ================================*)
     STEP_20_E:
       (* Hinweis:
          - Warten bis die Antriebe ihren Reset durchgefuehrt haben
       *)
       IF (  Glastransport.bpDone
-        AND Drehen.bpDone
-        AND Querachse.bpDone )
+           AND Drehen.bpDone
+           AND Querachse.bpDone )
       THEN
         Glastransport.bpReset := FALSE;
         Drehen.bpReset        := FALSE;
@@ -100,21 +100,21 @@ IF( blBetriebsartReset )THEN
         steplReset := STEP_900_E;
       END_IF
 
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
       BasisStationsParameter.bFehler := TRUE;
       BasisStationsParameter.bReset := FALSE;
 
-(*RESET ===============================*)
+    (*RESET ===============================*)
     STEP_1000_E:
       BasisStationsParameter.wFehlerNummer := cMELDUNG_NULL;
       BasisStationsParameter.bFehler := FALSE;
 
       BasisStationsParameter.bReset := FALSE;
 
-(*RESET ===============================*)
+  (*RESET ===============================*)
   END_CASE
   
 ELSE

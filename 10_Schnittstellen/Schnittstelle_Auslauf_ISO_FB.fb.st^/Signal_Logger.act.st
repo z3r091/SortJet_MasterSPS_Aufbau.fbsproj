@@ -29,7 +29,7 @@ END_IF
 
 // Ausganssignale
 IF   ( out_bSenderBereit <> blTempSenderBereit ) 
-  OR ( out_bSenderGlasBereit <> blTempSenderGlasBereit ) 
+     OR ( out_bSenderGlasBereit <> blTempSenderGlasBereit ) 
 THEN
   blTempSenderBereit := out_bSenderBereit;
   blTempSenderGlasBereit := out_bSenderGlasBereit;

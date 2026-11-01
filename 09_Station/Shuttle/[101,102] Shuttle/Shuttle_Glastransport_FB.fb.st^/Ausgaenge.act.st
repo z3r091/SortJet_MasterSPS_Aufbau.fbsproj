@@ -15,7 +15,7 @@ ACTION Ausgaenge
      -> Ist- Wertkopplung ( Soll-Geschwindigkeit des Antriebs)
 *)
 IF  ((  bpEintransport AND bpOutBereitZumEintransport )
-  OR ( bpCheck         AND bpOutBereitZumEintransport ))
+      OR ( bpCheck         AND bpOutBereitZumEintransport ))
 THEN
   rpOutGeschwindigkeit := ABS(Antrieb.rpGeschwindigkeit);
 ELSE
@@ -26,16 +26,16 @@ END_IF
    - Verfahrfreigabe
 *)
 bpVerfahrFreigabe :=     NOT bpSensorEinlauf
-                     AND NOT bpSensorAuslaufStopp
-                     AND NOT bpAustransport
-                     AND ( NOT bpEintransport OR bpFreigabeQuerfahrt );
+                         AND NOT bpSensorAuslaufStopp
+                         AND NOT bpAustransport
+                         AND ( NOT bpEintransport OR bpFreigabeQuerfahrt );
 
 
 bpAuftragAktiv :=    bpEintransport
-                  OR bpRueckwaertsEintransportieren
-                  OR bpAustransport
-                  OR bpRueckwaertsAustransportieren
-                  OR bpVortransport
-                  OR bpVortransportRueck
-                  OR bpCheck;
+                     OR bpRueckwaertsEintransportieren
+                     OR bpAustransport
+                     OR bpRueckwaertsAustransportieren
+                     OR bpVortransport
+                     OR bpVortransportRueck
+                     OR bpCheck;
 END_ACTION

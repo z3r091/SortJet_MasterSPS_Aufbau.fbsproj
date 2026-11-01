@@ -99,7 +99,7 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
   IF ( bgShuttleAuswahl_101 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
-      OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
+         OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
     THEN
       bgInbetriebnahmeShuttleEintransportAuftrag   := FALSE;
       bgInbetriebnahmeShuttleAustransportAuftrag   := FALSE;
@@ -114,7 +114,7 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
   ELSIF ( bgShuttleAuswahl_102 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
-       OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
+         OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
     THEN
       bgInbetriebnahmeShuttleEintransportAuftrag   := FALSE;
       bgInbetriebnahmeShuttleAustransportAuftrag   := FALSE;
@@ -129,7 +129,7 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
   ELSIF ( bgShuttleAuswahl_103 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
-       OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
+         OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
     THEN
       bgInbetriebnahmeShuttleEintransportAuftrag   := FALSE;
       bgInbetriebnahmeShuttleAustransportAuftrag   := FALSE;
@@ -144,7 +144,7 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
   ELSIF ( bgShuttleAuswahl_104 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
-       OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
+         OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
     THEN
       bgInbetriebnahmeShuttleEintransportAuftrag   := FALSE;
       bgInbetriebnahmeShuttleAustransportAuftrag   := FALSE;
@@ -159,7 +159,7 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
   ELSIF ( bgShuttleAuswahl_105 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
-       OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
+         OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
     THEN
       bgInbetriebnahmeShuttleEintransportAuftrag   := FALSE;
       bgInbetriebnahmeShuttleAustransportAuftrag   := FALSE;
@@ -174,7 +174,7 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
   ELSIF ( bgShuttleAuswahl_106 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
-       OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
+         OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
     THEN
       bgInbetriebnahmeShuttleEintransportAuftrag   := FALSE;
       bgInbetriebnahmeShuttleAustransportAuftrag   := FALSE;
@@ -190,7 +190,7 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
   ELSIF ( bgShuttleAuswahl_151 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
-       OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
+         OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
     THEN
       bgInbetriebnahmeShuttleEintransportAuftrag   := FALSE;
       bgInbetriebnahmeShuttleAustransportAuftrag   := FALSE;
@@ -205,7 +205,7 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
   ELSIF ( bgShuttleAuswahl_152 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
-      OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
+         OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
     THEN
       bgInbetriebnahmeShuttleEintransportAuftrag   := FALSE;
       bgInbetriebnahmeShuttleAustransportAuftrag   := FALSE;
@@ -215,12 +215,12 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
       wlInbetriebnahmeShuttlenummer := cSHUTTLE_152;
       bgInbetriebnahmeShuttelAuftrag := TRUE;
 
-      END_IF
+    END_IF
       
   ELSIF ( bgShuttleAuswahl_153 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
-       OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
+         OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
     THEN
       bgInbetriebnahmeShuttleEintransportAuftrag   := FALSE;
       bgInbetriebnahmeShuttleAustransportAuftrag   := FALSE;
@@ -235,7 +235,7 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
   ELSIF ( bgShuttleAuswahl_154 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
-      OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
+         OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
     THEN
       bgInbetriebnahmeShuttleEintransportAuftrag   := FALSE;
       bgInbetriebnahmeShuttleAustransportAuftrag   := FALSE;
@@ -245,12 +245,12 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
       wlInbetriebnahmeShuttlenummer := cSHUTTLE_154;
       bgInbetriebnahmeShuttelAuftrag := TRUE;
 
-      END_IF
+    END_IF
       
   ELSIF ( bgShuttleAuswahl_155 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
-       OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
+         OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
     THEN
       bgInbetriebnahmeShuttleEintransportAuftrag   := FALSE;
       bgInbetriebnahmeShuttleAustransportAuftrag   := FALSE;
@@ -265,7 +265,7 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
   ELSIF ( bgShuttleAuswahl_156 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
-      OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
+         OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
     THEN
       bgInbetriebnahmeShuttleEintransportAuftrag   := FALSE;
       bgInbetriebnahmeShuttleAustransportAuftrag   := FALSE;
@@ -275,12 +275,12 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
       wlInbetriebnahmeShuttlenummer := cSHUTTLE_156;
       bgInbetriebnahmeShuttelAuftrag := TRUE;
 
-      END_IF
+    END_IF
 
   ELSIF ( bgShuttleAuswahl_157 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
-      OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
+         OR NOT ( bgInbetriebnahmeShuttleEintransportAuftrag OR bgInbetriebnahmeShuttleAustransportAuftrag ))
     THEN
       bgInbetriebnahmeShuttleEintransportAuftrag   := FALSE;
       bgInbetriebnahmeShuttleAustransportAuftrag   := FALSE;
@@ -290,7 +290,7 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
       wlInbetriebnahmeShuttlenummer := cSHUTTLE_157;
       bgInbetriebnahmeShuttelAuftrag := TRUE;
 
-      END_IF
+    END_IF
 
   END_IF
 

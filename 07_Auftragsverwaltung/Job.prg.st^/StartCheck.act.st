@@ -16,14 +16,14 @@ IF ( M_SB0_MMI_SortierungCheckInputQueue ) THEN
   FOR wIndexCheck := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
     
     IF ( tMmi2SpsInfo.wCheckArea = wIndexCheck ) THEN    
-        SendShuttlePosition();
-        IF ( bgSystemCheck[wIndexCheck] ) THEN
-          SystemCheck.abpCheck[wIndexCheck] := TRUE;
-        ELSE
-          wSps2MmiCheckArea :=tMmi2SpsInfo.wCheckArea;
-          wSps2MmiCheckSuccessful := 1;
-          MsgToMmi(auftragsnr_w := SB0_SPS_SYSTEMCHECKFINISHED );
-        END_IF
+      SendShuttlePosition();
+      IF ( bgSystemCheck[wIndexCheck] ) THEN
+        SystemCheck.abpCheck[wIndexCheck] := TRUE;
+      ELSE
+        wSps2MmiCheckArea :=tMmi2SpsInfo.wCheckArea;
+        wSps2MmiCheckSuccessful := 1;
+        MsgToMmi(auftragsnr_w := SB0_SPS_SYSTEMCHECKFINISHED );
+      END_IF
     
     END_IF
   

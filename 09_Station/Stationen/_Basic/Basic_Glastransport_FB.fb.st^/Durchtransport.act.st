@@ -34,7 +34,7 @@ IF (  bpDurchtransport ) THEN
 
   
   CASE steplDurchtransport OF
-(* DURCHTRANSPORT ========================================*)
+    (* DURCHTRANSPORT ========================================*)
     STEP_0_E:
       (* Hinweis:
          - Pruefen ob der Antrieb bereit zum verfahren ist
@@ -49,7 +49,7 @@ IF (  bpDurchtransport ) THEN
 
       steplDurchtransport := STEP_10_E;
 
-(* DURCHTRANSPORT ========================================*)
+    (* DURCHTRANSPORT ========================================*)
     STEP_10_E:
       (* Anmerkung:
          - Warten bis die Nachfolgestation bereit ist zum Eintransport
@@ -60,7 +60,7 @@ IF (  bpDurchtransport ) THEN
         steplDurchtransport := STEP_20_E;
       END_IF
 
-(* DURCHTRANSPORT ========================================*)
+    (* DURCHTRANSPORT ========================================*)
     STEP_20_E:
       (* Anmerkung:
          - Warten bis die Nachfolgestation bereit ist zum Eintransport
@@ -71,12 +71,12 @@ IF (  bpDurchtransport ) THEN
         steplDurchtransport := STEP_100_E;
       END_IF
 
-(* DURCHTRANSPORT ========================================*)
+    (* DURCHTRANSPORT ========================================*)
     STEP_100_E:
       (* Hinweis:
         - Antrieb in den Master- Slave- Modus setzen
       *)
-    bpDurchtransportWarAktiv := TRUE;
+      bpDurchtransportWarAktiv := TRUE;
 
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -86,16 +86,16 @@ IF (  bpDurchtransport ) THEN
 
       steplDurchtransport := STEP_110_E;
 
-(* DURCHTRANSPORT ========================================*)
+    (* DURCHTRANSPORT ========================================*)
     STEP_110_E:
       (* WICHTIG:
          - Kopplung wird solange aktiv gehalten bis der Nachfolger seinen Transport beendet hat
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
 
-    IF bpSensorEinlauf THEN
+      IF bpSensorEinlauf THEN
         steplDurchtransport := STEP_120_E;
-    END_IF
+      END_IF
 
       IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) THEN
         steplDurchtransport := STEP_1000_E;
@@ -103,31 +103,31 @@ IF (  bpDurchtransport ) THEN
 
       tonlMaximaleZeitSensorAnfahren( IN:= TRUE, PT :=T#60S );
 
-   (* Fehlerbehandlung:
-         - Auslaufsensor schaltet nicht
-      *)
+      (* Fehlerbehandlung:
+            - Auslaufsensor schaltet nicht
+         *)
       IF ( tonlMaximaleZeitSensorAnfahren.Q ) THEN
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
         steplDurchtransport := STEP_900_E;
       END_IF
 
-(* DURCHTRANSPORT ========================================*)
+    (* DURCHTRANSPORT ========================================*)
     STEP_120_E:
       (* WICHTIG:
          - Kopplung wird solange aktiv gehalten bis der Nachfolger seinen Transport beendet hat
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
 
-    IF NOT bpSensorEinlauf THEN
-    bprtScheibe := TRUE;
+      IF NOT bpSensorEinlauf THEN
+        bprtScheibe := TRUE;
         steplDurchtransport := STEP_130_E;
-    END_IF
+      END_IF
 
       IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) THEN
         steplDurchtransport := STEP_1000_E;
       END_IF
 
-(* DURCHTRANSPORT ========================================*)
+    (* DURCHTRANSPORT ========================================*)
     STEP_130_E:
 
       bprtScheibe := FALSE;
@@ -141,7 +141,7 @@ IF (  bpDurchtransport ) THEN
         steplDurchtransport := STEP_1000_E;
       END_IF
 
-(* DURCHTRANSPORT ========================================*)
+    (* DURCHTRANSPORT ========================================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
@@ -153,18 +153,18 @@ IF (  bpDurchtransport ) THEN
 
       bpFehler := TRUE;
 
-(* DURCHTRANSPORT ========================================*)
+    (* DURCHTRANSPORT ========================================*)
     STEP_1000_E:
       bpOutBereitZumEintransport := FALSE;
       bpOutBereitZumAustransport := FALSE;
 
       bprtScheibe := FALSE;
 
-    bpDurchtransportWarAktiv := FALSE;
+      bpDurchtransportWarAktiv := FALSE;
 
       bpDone := TRUE;
 
-(* DURCHTRANSPORT ========================================*)
+  (* DURCHTRANSPORT ========================================*)
   END_CASE
 ELSE
   IF (steplDurchtransport > STEP_0_E ) THEN

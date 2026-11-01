@@ -39,10 +39,10 @@ END_VAR
 (***************************************************************************************************)
 IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
   CASE steplSchritt OF
-(* VORTRANSPORT ============================================== *)
+    (* VORTRANSPORT ============================================== *)
     STEP_0_E:
       IF (  checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation])
-        AND NOT starrTransfershuttleBasisParameter[wStation].bReset )
+           AND NOT starrTransfershuttleBasisParameter[wStation].bReset )
       THEN
 
         steplSchritt := STEP_100_E;
@@ -76,7 +76,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
 
       END_IF
 
-(* VORTRANSPORT ============================================== *)
+    (* VORTRANSPORT ============================================== *)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  PRUEFEN TRANSFERSHUTTLE VERBUND
@@ -102,9 +102,9 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
           steplSchritt := STEP_200_E;
         END_IF
 
-     END_IF
+      END_IF
 
-(* VORTRANSPORT ============================================== *)
+    (* VORTRANSPORT ============================================== *)
     STEP_200_E:
       (* ---------------------------------------------------------------------------------------
       //  TRANSFERSHUTTLE VERBUND
@@ -139,7 +139,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
 
       END_IF
 
-(* VORTRANSPORT ============================================== *)
+    (* VORTRANSPORT ============================================== *)
     STEP_400_E:
       (* ---------------------------------------------------------------------------------------
       //  TRANSFERSHUTTLE VORTRANSPORT ABGESCHLOSSEN
@@ -180,11 +180,11 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-(* VORTRANSPORT ============================================== *)
+    (* VORTRANSPORT ============================================== *)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* VORTRANSPORT ============================================== *)
+    (* VORTRANSPORT ============================================== *)
     STEP_1000_E:
       bpDone := TRUE;
 
@@ -201,7 +201,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
 
       END_IF
 
-(* VORTRANSPORT ============================================== *)
+  (* VORTRANSPORT ============================================== *)
   END_CASE
 END_IF
 

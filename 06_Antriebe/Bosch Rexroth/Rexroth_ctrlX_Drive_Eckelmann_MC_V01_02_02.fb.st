@@ -396,19 +396,19 @@ END_IF
 blFreigabeEntziehenAktiv := bpFreigabeEntziehenAnhalten;
 
 l_mc_Power
-(
-  Axis   := ppAntriebsInformationen.wAchsID,
-  Enable := ( bpFreigabe OR bpFreigabeErzwingen OR ( blFreigabeEntziehenAktiv AND NOT blFreigabeEntziehenPowerAus ) )
-);
+  (
+    Axis   := ppAntriebsInformationen.wAchsID,
+    Enable := ( bpFreigabe OR bpFreigabeErzwingen OR ( blFreigabeEntziehenAktiv AND NOT blFreigabeEntziehenPowerAus ) )
+  );
 
 // Stati und Fehler vom Antrieb holen ; globale Trigger und Timer ausführen
 Pruefe_Inputs_Langsamfahrt();
 _Statusword();
 TimerTrigger();
 blStillstandspositionBerechnen := blSoftwareLimitAktiv
-AND ( ( wlAktiveBetriebsart = HANDPLUS )
-  OR ( wlAktiveBetriebsart = HANDMINUS )
-  OR ( wlAktiveBetriebsart = RESTWEG ) );
+                                  AND ( ( wlAktiveBetriebsart = HANDPLUS )
+                                        OR ( wlAktiveBetriebsart = HANDMINUS )
+                                        OR ( wlAktiveBetriebsart = RESTWEG ) );
 
 IF blStillstandspositionBerechnen THEN
   Stillstandsposition();
@@ -454,7 +454,7 @@ CASE eAchsStatus OF
   // Automatisches zurücksetzen von MC_Stop.Execute wenn Antrieb angehalten ist
   AXIS_STOPPING:
     IF NOT bpAntrieblaeuft AND ( ( l_ts_MKAxisConfig.dwAxisFlags.0 AND rpIstGeschwindigkeit < 0.01 ) OR // Rotativ
-        ( NOT l_ts_MKAxisConfig.dwAxisFlags.0 AND rpIstGeschwindigkeit < 1 ) ) // Linear
+                                 ( NOT l_ts_MKAxisConfig.dwAxisFlags.0 AND rpIstGeschwindigkeit < 1 ) ) // Linear
     THEN
       blAchseStoppen := FALSE;
       IF NOT blFreigabeEntziehenAktiv THEN
@@ -462,8 +462,8 @@ CASE eAchsStatus OF
       END_IF
     END_IF
 
-    // Achse ist im ErrorStop (Fehlerzustand) oder ist nicht in Reglung (MC_Power nicht aktiv)
-    // In diesem Zustand ist ausschließlich der Reset erlaubt
+  // Achse ist im ErrorStop (Fehlerzustand) oder ist nicht in Reglung (MC_Power nicht aktiv)
+  // In diesem Zustand ist ausschließlich der Reset erlaubt
   AXIS_ERROR_OR_DISABLED:
     blAchseStoppen := FALSE; // Achse nicht mehr am Stoppen oder am Error-Stoppen - manuelles Stoppen kann beendet werden
     IF NOT bpAntrieblaeuft THEN // Reset nur wenn der Antrieb zum Stillstand gekommen ist
@@ -480,15 +480,15 @@ CASE eAchsStatus OF
     FUNKTION_Bremse_loesen();
     FUNKTION_Absolut_setzen();
 
-    // Achse ist in einem unbekannten Zustand von der MC
-    // Wenn dieser Zustand für min. 1 Sekunde ansteht, Achse stoppen!
+  // Achse ist in einem unbekannten Zustand von der MC
+  // Wenn dieser Zustand für min. 1 Sekunde ansteht, Achse stoppen!
   AXIS_UNKNOWN:
     IF tonlMaxZeitStatusUngueltig.Q THEN
       ResetStepsUndMcAktionen();
       blAchseStoppen := TRUE;
     END_IF
 
-    // Achse ist in einem gültigen Zustand und darf Kommandos abarbeiten
+  // Achse ist in einem gültigen Zustand und darf Kommandos abarbeiten
   AXIS_VALID:
     IF blFreigabeEntziehenAktiv THEN
       bpDone := FALSE;
@@ -544,7 +544,7 @@ CASE eAchsStatus OF
           BETRIEBSART_Messung();
 
           INVERTIERTER_SYNC_AUF_MASTER,
-        SYNC_AUF_MASTER:
+            SYNC_AUF_MASTER:
           wlSchrittkette := wlAktiveBetriebsart;
           BETRIEBSART_MasterSlave();
 
@@ -575,17 +575,17 @@ END_IF
 // Ein kleinerer externer Override bleibt wirksam.
 IF bpLangsamfahrenAktiv AND rlGeschwindigkeit > 0 THEN
   rlMerkerOverride := MIN(rlMerkerOverride,
-    (l_ts_MKAxisConfig.rVelocity / cFAKTOR_GESCHWINDIGKEIT_ECONSET)
-    * 10 / rlGeschwindigkeit);
+                           (l_ts_MKAxisConfig.rVelocity / cFAKTOR_GESCHWINDIGKEIT_ECONSET)
+                           * 10 / rlGeschwindigkeit);
 END_IF
 
 l_mc_Override(
-  Enable := TRUE,
-  VelFactor := rlMerkerOverride / 100,
-  AccFactor := 1,
-  JerkFactor := 1,
-  Axis := ppAntriebsInformationen.wAchsID
-);
+               Enable := TRUE,
+               VelFactor := rlMerkerOverride / 100,
+               AccFactor := 1,
+               JerkFactor := 1,
+               Axis := ppAntriebsInformationen.wAchsID
+             );
 
 // ============================================
 // Stop-Verwaltung

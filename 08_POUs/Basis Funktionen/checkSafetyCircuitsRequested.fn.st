@@ -24,7 +24,7 @@ checkSafetyCircuitsRequested := TRUE;
 
 FOR wIndex := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO
   arrCircuits[wIndex] :=         Sicherheitskreis[wIndex].bpSicherheitskreisGeschlossen
-                          AND NOT Sicherheitskreis[wIndex].bpAnforderungSKGestellt;
+                                 AND NOT Sicherheitskreis[wIndex].bpAnforderungSKGestellt;
 END_FOR
 
 FOR wIndex := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO

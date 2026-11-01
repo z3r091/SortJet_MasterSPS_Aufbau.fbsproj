@@ -38,7 +38,7 @@ END_VAR
 (***************************************************************************************************)
 IF ( Auftragsdaten.wAuftrag = eStation_Messfahrt ) THEN
   CASE steplSchritt OF
-(* MESSFAHRT ================================================== *)
+    (* MESSFAHRT ================================================== *)
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -56,26 +56,26 @@ IF ( Auftragsdaten.wAuftrag = eStation_Messfahrt ) THEN
         Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
       END_IF
 
-(* MESSFAHRT ================================================== *)
-   STEP_10_E:
+    (* MESSFAHRT ================================================== *)
+    STEP_10_E:
       // Glastyp festlegen
       IF ( Auftragsdaten.rAuftragsLaenge > ( starrStationBasisParameter[wStation].stParameterStationskomponenten.stGlastransport[1].rMessstrecke - rgMKWegAnlegetischUebergroesseScheibeBerechnen ) ) THEN
         starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] := eScheibe_Maximal;
-    ELSE
+      ELSE
         starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] := eScheibe_Default;    
       END_IF
 
       steplSchritt := STEP_20_E;
 
-(* MESSFAHRT ================================================== *)
-   STEP_20_E:
-     (* Hinweis:
-        - cMittlereScheibe 
-          cGrosseScheibe:  
-          => 1. Option: Anlegetisch kann die Glasvermessung starten ohne die Nachfolgestation
-        - cMaxScheibe:
-          => 1. Option: Zum vermessen der Scheibe wird die Nachfolgestation benoetigt
-     *)
+    (* MESSFAHRT ================================================== *)
+    STEP_20_E:
+      (* Hinweis:
+         - cMittlereScheibe 
+           cGrosseScheibe:  
+           => 1. Option: Anlegetisch kann die Glasvermessung starten ohne die Nachfolgestation
+         - cMaxScheibe:
+           => 1. Option: Zum vermessen der Scheibe wird die Nachfolgestation benoetigt
+      *)
       CASE starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] OF
 
         cMAXSCHEIBE:
@@ -86,23 +86,23 @@ IF ( Auftragsdaten.wAuftrag = eStation_Messfahrt ) THEN
             steplSchritt := STEP_30_E;
           END_IF
 
-    ELSE
-      steplSchritt := STEP_30_E;
+        ELSE
+          steplSchritt := STEP_30_E;
 
-        END_CASE
+      END_CASE
 
-(* MESSFAHRT ================================================== *)
-   STEP_30_E:
-     (* Hinweis:
-         - Auftragsdaten uebergeben
-         - Starten der Glasmessung
-      *)
+    (* MESSFAHRT ================================================== *)
+    STEP_30_E:
+      (* Hinweis:
+          - Auftragsdaten uebergeben
+          - Starten der Glasmessung
+       *)
       starrStationBasisParameter[wStation].pAuftrag[cWAND_1] := Auftragsdaten;
       starrStationBasisParameter[wStation].bGlaslaengenmessung := TRUE;
 
       steplSchritt := STEP_40_E;
 
-(* MESSFAHRT ================================================== *)
+    (* MESSFAHRT ================================================== *)
     STEP_40_E:
       (* Hinweis:
          - Prüfen dass der Auftragsstatus sich geändert hat
@@ -111,77 +111,77 @@ IF ( Auftragsdaten.wAuftrag = eStation_Messfahrt ) THEN
         steplSchritt := STEP_100_E;
       END_IF
 
-(* MESSFAHRT ================================================== *)
-   STEP_100_E:
-     (* Hinweis:
-        - Glasvermessung abgeschlossen
-          => Scheibenvermessung war erfolgreich [Wechsel in den Austransport]
-     *)
-     IF ( starrStationBasisParameter[wStation].bGlaslaengenmessungAbgeschlossen ) THEN
-       starrStationBasisParameter[wStation].bGlaslaengenmessung := FALSE;
+    (* MESSFAHRT ================================================== *)
+    STEP_100_E:
+      (* Hinweis:
+         - Glasvermessung abgeschlossen
+           => Scheibenvermessung war erfolgreich [Wechsel in den Austransport]
+      *)
+      IF ( starrStationBasisParameter[wStation].bGlaslaengenmessungAbgeschlossen ) THEN
+        starrStationBasisParameter[wStation].bGlaslaengenmessung := FALSE;
 
-       (* Hinweis:
-          - Pruefen ob die Betriebsart wieder zurueckgesetzt werden muss 
-       *)
-       steplSchritt := STEP_800_E;
+        (* Hinweis:
+           - Pruefen ob die Betriebsart wieder zurueckgesetzt werden muss 
+        *)
+        steplSchritt := STEP_800_E;
 
-     END_IF
+      END_IF
 
-     (* Fehlerbehandlung:
-        - Anlegetisch
-     *)
-     IF ( starrStationBasisParameter[wStation].bFehler ) THEN
+      (* Fehlerbehandlung:
+         - Anlegetisch
+      *)
+      IF ( starrStationBasisParameter[wStation].bFehler ) THEN
         SpsError( eFehler_Station,
                   starrStationBasisParameter[wStation].wFehlerNummer,
                   starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
                   AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
                   starrStationBasisParameter[wStation].awFehlerInformationen );
 
-       starrStationBasisParameter[wStation].bGlaslaengenmessung := FALSE;
-       steplSchritt := STEP_900_E;
-     END_IF
+        starrStationBasisParameter[wStation].bGlaslaengenmessung := FALSE;
+        steplSchritt := STEP_900_E;
+      END_IF
 
-(* MESSFAHRT ================================================== *)
-   STEP_800_E:
-     (* Hinweis:
-        - Ergebnis der Messung prüfen                            
-     *)
-     IF ( starrStationBasisParameter[wStation].eStatusAuftrag = eAuftragErfolgreich ) THEN
+    (* MESSFAHRT ================================================== *)
+    STEP_800_E:
+      (* Hinweis:
+         - Ergebnis der Messung prüfen                            
+      *)
+      IF ( starrStationBasisParameter[wStation].eStatusAuftrag = eAuftragErfolgreich ) THEN
 
-       wSps2MmiInputtableNummer := starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
-       dwSps2MmiWartezeit       := starrStationBasisParameter[wStation].dwWartezeit[cWAND_1];
-       MsgToMmi(auftragsnr_w    := SB0_SPS_SortierungQuittInputInQueue);  (* Auftrag für den Anlegetisch *)
+        wSps2MmiInputtableNummer := starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
+        dwSps2MmiWartezeit       := starrStationBasisParameter[wStation].dwWartezeit[cWAND_1];
+        MsgToMmi(auftragsnr_w    := SB0_SPS_SortierungQuittInputInQueue);  (* Auftrag für den Anlegetisch *)
 
-       CASE starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] OF
+        CASE starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] OF
 
-         cMAXSCHEIBE:
-           Job_Stationen.abpResetTransportkopplung[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wNachfolgerStation, cWAND_1]  := TRUE;
-           Job_Stationen.AuftragsdatenWand[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wNachfolgerStation, cWAND_1].wAuftrag := eStation_Kein_Auftrag;
+          cMAXSCHEIBE:
+            Job_Stationen.abpResetTransportkopplung[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wNachfolgerStation, cWAND_1]  := TRUE;
+            Job_Stationen.AuftragsdatenWand[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wNachfolgerStation, cWAND_1].wAuftrag := eStation_Kein_Auftrag;
 
-       END_CASE
+        END_CASE
 
-       steplSchritt := STEP_1000_E;
+        steplSchritt := STEP_1000_E;
 
-     ELSIF ( starrStationBasisParameter[wStation].eStatusAuftrag = eAuftragWiederholen ) THEN
+      ELSIF ( starrStationBasisParameter[wStation].eStatusAuftrag = eAuftragWiederholen ) THEN
 
-       CASE starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] OF
+        CASE starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] OF
 
-         cMAXSCHEIBE:
-         Job_Stationen.abpResetTransportkopplung[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wNachfolgerStation, cWAND_1] := TRUE; 
-           Job_Stationen.AuftragsdatenWand[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wNachfolgerStation, cWAND_1].wAuftrag := eStation_Kein_Auftrag;
+          cMAXSCHEIBE:
+            Job_Stationen.abpResetTransportkopplung[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wNachfolgerStation, cWAND_1] := TRUE; 
+            Job_Stationen.AuftragsdatenWand[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wNachfolgerStation, cWAND_1].wAuftrag := eStation_Kein_Auftrag;
 
-       END_CASE
+        END_CASE
 
-       bpDone := TRUE;
-       Auftragsdaten.wAuftrag := eStation_Anlegen;
+        bpDone := TRUE;
+        Auftragsdaten.wAuftrag := eStation_Anlegen;
 
-     END_IF
+      END_IF
 
-(* MESSFAHRT ================================================== *)
+    (* MESSFAHRT ================================================== *)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* MESSFAHRT ================================================== *)
+    (* MESSFAHRT ================================================== *)
     STEP_1000_E:
       (* Wichtig:
          - Auftragsstatus zuweisen
@@ -190,7 +190,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Messfahrt ) THEN
       
       Auftragsdaten.wAuftrag := eStation_Warte_Auf_Austransport;
 
-(* MESSFAHRT ================================================== *)
+  (* MESSFAHRT ================================================== *)
   END_CASE
 END_IF
 

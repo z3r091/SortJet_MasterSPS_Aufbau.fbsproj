@@ -11,19 +11,19 @@ ACTION Anlegen
 (***************************************************************************************************)
 
 blVSG_Automatik_Eintransport := BasisStationsParameter.stMKs.stStationsOptionen.stAnlegetisch.bAnlegetischMitEintransportVorgaenger 
-                            AND NOT blAnlegenErzwingen 
-                            AND BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1].bAutomatikBetriebAktiv                             // Automatik Betrieb aktiv
-                           AND NOT ( BasisStationsParameter.eStatusAuftrag = eAuftragWiederholen )                                           // Messung Fehlerhaft. Scheibe muss angelegt werden
-                           AND NOT ( BasisStationsParameter.eStatusAuftrag = eAuftragAktivWiederholen )                                      // Messung Fehlerhaft. Scheibe muss angelegt werden
-                           AND NOT Glastransport.bpSensorEinlauf                                                                             // Einlaufsensor belegt
-                           AND NOT Glastransport.bpSensorAuslauf                                                                             // Auslaufsensor belegt
-                           AND ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe >= BasisStationsParameter.stMKs.stStationsParameter.rMinGlasHoeheAutomatischenEintransport )    // Scheibe zu niedrig
-                            AND ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsLaenge >= BasisStationsParameter.stMKs.stStationsParameter.rMinGlasLaengeAutomatischenEintransport ); // Scheibe zu kurz
+                                AND NOT blAnlegenErzwingen 
+                                AND BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1].bAutomatikBetriebAktiv                             // Automatik Betrieb aktiv
+                                AND NOT ( BasisStationsParameter.eStatusAuftrag = eAuftragWiederholen )                                           // Messung Fehlerhaft. Scheibe muss angelegt werden
+                                AND NOT ( BasisStationsParameter.eStatusAuftrag = eAuftragAktivWiederholen )                                      // Messung Fehlerhaft. Scheibe muss angelegt werden
+                                AND NOT Glastransport.bpSensorEinlauf                                                                             // Einlaufsensor belegt
+                                AND NOT Glastransport.bpSensorAuslauf                                                                             // Auslaufsensor belegt
+                                AND ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe >= BasisStationsParameter.stMKs.stStationsParameter.rMinGlasHoeheAutomatischenEintransport )    // Scheibe zu niedrig
+                                AND ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsLaenge >= BasisStationsParameter.stMKs.stStationsParameter.rMinGlasLaengeAutomatischenEintransport ); // Scheibe zu kurz
 
 
 IF( BasisStationsParameter.bAnlegen
-  AND NOT BasisStationsParameter.bEintransport[cWAND_1]
-  AND blBetriebsartAutomatik )
+    AND NOT BasisStationsParameter.bEintransport[cWAND_1]
+    AND blBetriebsartAutomatik )
 THEN
 
   // Ausnahmesituation
@@ -42,7 +42,7 @@ THEN
   END_IF
 
   CASE steplAnlegen OF
-(*ANLEGEN ==================================*)
+    (*ANLEGEN ==================================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen initalisieren
@@ -59,23 +59,23 @@ THEN
       END_IF 
 
       IF (  NOT in_bSensorKipparmeNichtUnten
-        AND NOT in_bSensorKipparmeAnschlaegeOben )
+           AND NOT in_bSensorKipparmeAnschlaegeOben )
 
       THEN
         out_bAmpelSignalGruenScheibeAnlegen := FALSE;
         Anschlag.bpStartEinfahren           := FALSE;
         Anschlag.bpStartAusfahren           := FALSE;
 
-      IF blVSG_Automatik_Eintransport THEN // Es müssen bestimmte Bedingungen aktiv sein
+        IF blVSG_Automatik_Eintransport THEN // Es müssen bestimmte Bedingungen aktiv sein
           steplAnlegen := STEP_200_E;
-      ELSE
-         blAnlegenErzwingen:= FALSE;
+        ELSE
+          blAnlegenErzwingen:= FALSE;
           steplAnlegen := STEP_10_E;
-    END_IF
+        END_IF
 
       END_IF
 
-(*ANLEGEN ==============================*)
+    (*ANLEGEN ==============================*)
     STEP_10_E:
       (* Hinweis:
          - Hubrahmen einfahren sofern er es nicht ist
@@ -98,14 +98,14 @@ THEN
 
       steplAnlegen := STEP_20_E;
 
-(*ANLEGEN ==============================*)
+    (*ANLEGEN ==============================*)
     STEP_20_E:
       (* Anmerkung:
          - Korrekte Stati der Zylinder und Achsen abfragen
       *)
       IF ( ( Hubrahmen.epStatusZylinder = eZylinderEingefahren )
-       AND ( ( Anschlag.epStatusZylinder = eZylinderAusgefahren ) OR NOT blAnschlagAutomatischFahren)
-       AND ( ( Messachse.bpDone ) OR NOT BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bScheibenVermessen ) )
+           AND ( ( Anschlag.epStatusZylinder = eZylinderAusgefahren ) OR NOT blAnschlagAutomatischFahren)
+           AND ( ( Messachse.bpDone ) OR NOT BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bScheibenVermessen ) )
       THEN
 
         Hubrahmen.bpStartEinfahren       := FALSE;
@@ -125,7 +125,7 @@ THEN
 
       END_IF
 
-(*ANLEGEN ==============================*)
+    (*ANLEGEN ==============================*)
     STEP_30_E:
       (* Anmerkung:
          - Anschläge ausfahren
@@ -184,7 +184,7 @@ THEN
       END_IF
 
 
-(*ANLEGEN ==============================*)
+    (*ANLEGEN ==============================*)
     STEP_40_E:
       (* Anmerkung:
          - Anschläge ausfahren
@@ -204,7 +204,7 @@ THEN
 
       END_IF
 
-(*ANLEGEN ==============================*)
+    (*ANLEGEN ==============================*)
     STEP_100_E:
       (* Anmerkung:
          - Warten bis der Bediener die Scheibe angelegt und quittierthat
@@ -213,7 +213,7 @@ THEN
       *)
       IF ( Glastransport.bpSensorEinlauf 
            AND NOT Glastransport.bpSensorAuslauf ) 
-       OR ( BasisStationsParameter.wGlastyp[cWAND_1] = eScheibe_Modell ) 
+         OR ( BasisStationsParameter.wGlastyp[cWAND_1] = eScheibe_Modell ) 
       THEN
         out_bAmpelSignalGruenScheibeAnlegen  := TRUE;
       ELSE
@@ -235,9 +235,9 @@ THEN
       END_IF
       // Scheibe wurde angelegt
       IF ( rtlFussleisteStart.Q 
-        AND ( ( Glastransport.bpSensorEinlauf 
-                AND NOT Glastransport.bpSensorAuslauf ) 
-             OR ( BasisStationsParameter.wGlastyp[cWAND_1] = eScheibe_Modell ) ) ) 
+           AND ( ( Glastransport.bpSensorEinlauf 
+                   AND NOT Glastransport.bpSensorAuslauf ) 
+                 OR ( BasisStationsParameter.wGlastyp[cWAND_1] = eScheibe_Modell ) ) ) 
       THEN
 
         out_bAmpelSignalGruenScheibeAnlegen := FALSE;
@@ -253,10 +253,10 @@ THEN
         // Wenn Modellscheibe -> Anschläge einfahren
         IF ( BasisStationsParameter.wGlastyp[cWAND_1] = cMODELLSCHEIBE ) THEN
           Anschlag.bpStartEinfahren  := TRUE;
-            Anschlag.bpStartAusfahren  := FALSE;
-            steplAnlegen := STEP_300_E;
-          ELSE
-            steplAnlegen := STEP_1000_E;
+          Anschlag.bpStartAusfahren  := FALSE;
+          steplAnlegen := STEP_300_E;
+        ELSE
+          steplAnlegen := STEP_1000_E;
         END_IF
 
       END_IF
@@ -265,7 +265,7 @@ THEN
         - Der Auslauf- Sensor am Anlegetisch muss frei sein, um mit dem Einschleusen des Glases zu beginnen
       *)
       IF (  Glastransport.bpSensorAuslauf
-        AND rtlFussleisteStart.Q ) AND ( BasisStationsParameter.wGlastyp[cWAND_1] <> eScheibe_Modell )
+           AND rtlFussleisteStart.Q ) AND ( BasisStationsParameter.wGlastyp[cWAND_1] <> eScheibe_Modell )
       THEN
         wpgFehlerdaten[0] := BasisStationsParameter.stMKs.stStationsNummern.NummerExtern;
         SpsHinweis( eFehler_Station,
@@ -279,7 +279,7 @@ THEN
         - Der Einlaufsensor am Anlegetisch muss belegt sein
       *)
       IF ( NOT Glastransport.bpSensorEinlauf
-        AND rtlFussleisteStart.Q ) AND ( BasisStationsParameter.wGlastyp[cWAND_1] <> eScheibe_Modell )
+           AND rtlFussleisteStart.Q ) AND ( BasisStationsParameter.wGlastyp[cWAND_1] <> eScheibe_Modell )
       THEN
         wpgFehlerdaten[0] := BasisStationsParameter.stMKs.stStationsNummern.NummerExtern;
         SpsHinweis( eFehler_Station,
@@ -300,7 +300,7 @@ THEN
         Hubrahmen.bpStartEinfahren := TRUE;
         Hubrahmen.bpStartAusfahren := FALSE;
 
-    ELSE
+      ELSE
         Hubrahmen.bpStartEinfahren := FALSE;
       END_IF
       Glastransport.bpAnforderungHandfunktion := TRUE;
@@ -324,7 +324,7 @@ THEN
         steplAnlegen := STEP_900_E;
       END_IF
 
-(* ANLEGEN ==================================*)
+    (* ANLEGEN ==================================*)
     STEP_200_E:
       (* Anmerkung:
           - Glastransport Ausfahren
@@ -352,7 +352,7 @@ THEN
 
       steplAnlegen := STEP_210_E;
 
-(* ANLEGEN ==================================*)
+    (* ANLEGEN ==================================*)
     STEP_210_E:
       (* Anmerkung:
           - Glastransport Ausfahren
@@ -360,8 +360,8 @@ THEN
           - Messachse.positionieren
       *)
       IF Hubrahmen.bpDone 
-       AND Messachse.bpDone 
-       AND Anschlag.bpDone 
+         AND Messachse.bpDone 
+         AND Anschlag.bpDone 
       THEN
         Anschlag.bpStartEinfahren  := FALSE;
         Hubrahmen.bpStartAusfahren := FALSE;
@@ -370,7 +370,7 @@ THEN
         steplAnlegen := STEP_220_E;
       END_IF
 
-(* ANLEGEN ==================================*)
+    (* ANLEGEN ==================================*)
     STEP_220_E:
       // Glastransport Eintransport starten
       Glastransport.eGlastyp := BasisStationsParameter.wGlastyp[cWAND_1];
@@ -388,7 +388,7 @@ THEN
         steplAnlegen := STEP_900_E;
       END_IF
 
-(* ANLEGEN ==================================*)
+    (* ANLEGEN ==================================*)
     STEP_230_E:
 
       out_bAmpelSignalGruenScheibeAnlegen  := TRUE;
@@ -418,7 +418,7 @@ THEN
         steplAnlegen := STEP_900_E;
       END_IF
 
-(* ANLEGEN ==================================*)
+    (* ANLEGEN ==================================*)
     STEP_300_E:      
       (* Anmerkung:
          - Anschlaege gesenkt
@@ -429,29 +429,29 @@ THEN
         steplAnlegen := STEP_1000_E;
       END_IF
 
-(*ANLEGEN ==================================*)
+    (*ANLEGEN ==================================*)
     STEP_900_E:
       BasisStationsParameter.eStatusAuftrag := eAuftragFehler;
 
       BasisStationsParameter.bFehler := TRUE;
       Glastransport.bpAnforderungHandfunktion := FALSE;
 
-(*ANLEGEN ==================================*)
+    (*ANLEGEN ==================================*)
     STEP_1000_E:
       epTypeHoehenmessung := Modus_Positionieren_Auf_Oberkante_2_Sensoren;
 
       BasisStationsParameter.bAnlegenAbgeschlossen := TRUE;
       Glastransport. bpAnforderungHandfunktion := FALSE;
 
-(*ANLEGEN ==================================*)
+    (*ANLEGEN ==================================*)
     STEP_1010_E:
-     // Scheibe wurde von der VSG Eintransportiert und muss vermessen werden
+      // Scheibe wurde von der VSG Eintransportiert und muss vermessen werden
       epTypeHoehenmessung := Modus_Vermessen_OberUndUnterkante_2_Sensoren;
 
       BasisStationsParameter.bAnlegenAbgeschlossen := TRUE;
       Glastransport.bpAnforderungHandfunktion := FALSE;
 
-(*ANLEGEN ==================================*)
+  (*ANLEGEN ==================================*)
   END_CASE
 ELSE
 

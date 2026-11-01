@@ -178,7 +178,7 @@ blSensorAuslauf := tonlSensorAuslauf.Q;
 tonlTeilnehmerErreichbar( IN := bpTeilnehmerErreichbar, PT := T#5S );
 tonlMaxWarteZeit(IN:=(    ( bpStartAbKippen AND out_bKippenAbSetzen )
                        OR ( bpStartAufKippen AND out_bKippenAufSetzen ) ),
-                 PT:= ppParameterBaustein.tZeitlicheUeberwachungKippen );
+                  PT:= ppParameterBaustein.tZeitlicheUeberwachungKippen );
 
 (***************************************************************************************************)
 (* AKTIONEN *)
@@ -204,7 +204,7 @@ ELSE
   IF ( NOT bpKippenSchuetz ) THEN
     // Antriebsfreigabe:
     toflReglerFreigabeErhalten( IN := (   bpPositionieren
-                                       OR bpReferenz ),
+                                        OR bpReferenz ),
                                 PT := ppParameterBaustein.tZeitAntriebsfreigabeErhalten );
     
       

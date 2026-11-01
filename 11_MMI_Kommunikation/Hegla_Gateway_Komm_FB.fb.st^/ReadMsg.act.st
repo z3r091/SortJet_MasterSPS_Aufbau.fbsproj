@@ -12,7 +12,7 @@ IF ( bgTcpConnected AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
 
   //Reset the variables to receive a new MSG
   IF      l_b_ReadMsg_NewMsg
-  AND NOT l_b_ReadMsg_Failure
+          AND NOT l_b_ReadMsg_Failure
   THEN
     pbCunrrent := ADR( bBuffer_Read[0] );
     l_b_ReadMsg_NewMsg := FALSE;
@@ -21,8 +21,8 @@ IF ( bgTcpConnected AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
 
   //Read the Header Out of the Buffer to get the type of MSG and it's designated length.
   IF  NOT l_b_ReadMsg_NewMsg
-  AND NOT l_b_ReadMsg_Body
-  AND NOT l_b_ReadMsg_Failure
+      AND NOT l_b_ReadMsg_Body
+      AND NOT l_b_ReadMsg_Failure
   THEN
     diLenght  := DWORD_TO_DINT(ADR( bBuffer_Read[0] ) + SIZEOF( mhHeader ) - pbCunrrent);
 
@@ -55,7 +55,7 @@ IF ( bgTcpConnected AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
 
   //After we now how big the body is, we can read it.
   IF      l_b_ReadMsg_Body
-  AND NOT l_b_ReadMsg_Failure
+          AND NOT l_b_ReadMsg_Failure
   THEN
     diLenght := DWORD_TO_DINT(ADR( bBuffer_Read[SIZEOF(mhHeader)] ) + mhHeader.wLenght - pbCunrrent);
 

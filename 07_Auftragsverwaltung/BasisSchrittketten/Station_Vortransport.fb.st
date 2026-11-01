@@ -38,7 +38,7 @@ END_VAR
 (***************************************************************************************************)
 IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
   CASE steplSchritt OF
-(* EINTRANSPORT ================================================== *)
+    (* EINTRANSPORT ================================================== *)
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -48,7 +48,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
         steplSchritt := STEP_10_E;
       END_IF
 
-(* EINTRANSPORT ================================================== *)
+    (* EINTRANSPORT ================================================== *)
     STEP_10_E:  
       (* Hinweis:
          - Vortransport starten
@@ -62,7 +62,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
 
       steplSchritt := STEP_20_E;
 
-(* EINTRANSPORT ================================================== *)
+    (* EINTRANSPORT ================================================== *)
     STEP_20_E:
       (* Hinweis:
          - Abschliessen des Eintransports
@@ -86,17 +86,17 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
       END_IF
 
 
-(* EINTRANSPORT ================================================== *)
+    (* EINTRANSPORT ================================================== *)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* EINTRANSPORT ================================================== *)
+    (* EINTRANSPORT ================================================== *)
     STEP_1000_E:
       bpDone := TRUE;
       Auftragsdaten.wAuftrag := eStation_Warte_Auf_Austransport;
 
-(* EINTRANSPORT ================================================== *)
- END_CASE
+  (* EINTRANSPORT ================================================== *)
+  END_CASE
 END_IF
 
 IF bpReset THEN

@@ -14,9 +14,9 @@ FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
   AuftragsSpeicherStation[wlIndex]();
 
   IF AuftragsSpeicherStation[wlIndex].bpAuftragverfuegbar
-    AND ( AuftragsdatenStation[wlIndex].wAuftrag = eStation_Kein_Auftrag
-       OR AuftragsdatenStation[wlIndex].wAuftrag = eStation_Belegt
-       OR AuftragsdatenStation[wlIndex].wAuftrag = eStation_Warte_Auf_Eintransport )
+     AND ( AuftragsdatenStation[wlIndex].wAuftrag = eStation_Kein_Auftrag
+           OR AuftragsdatenStation[wlIndex].wAuftrag = eStation_Belegt
+           OR AuftragsdatenStation[wlIndex].wAuftrag = eStation_Warte_Auf_Eintransport )
   THEN
     AuftragsSpeicherStation[wlIndex].bpNaechsterAuftrag := TRUE;
     AuftragsSpeicherStation[wlIndex]();
@@ -28,10 +28,10 @@ FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
     AuftragsSpeicherWand[wlIndex, wlIndexWand]();
 
     IF AuftragsSpeicherWand[wlIndex, wlIndexWand].bpAuftragverfuegbar
-      AND ( AuftragsdatenWand[wlIndex, wlIndexWand].wAuftrag = eStation_Kein_Auftrag
-         OR AuftragsdatenWand[wlIndex, wlIndexWand].wAuftrag = eStation_Belegt
-         OR AuftragsdatenWand[wlIndex, wlIndexWand].wAuftrag = eStation_Warte_Auf_Eintransport
-         OR AuftragsdatenWand[wlIndex, wlIndexWand].wAuftrag = eStation_Warte_Auf_Austransport  )
+       AND ( AuftragsdatenWand[wlIndex, wlIndexWand].wAuftrag = eStation_Kein_Auftrag
+             OR AuftragsdatenWand[wlIndex, wlIndexWand].wAuftrag = eStation_Belegt
+             OR AuftragsdatenWand[wlIndex, wlIndexWand].wAuftrag = eStation_Warte_Auf_Eintransport
+             OR AuftragsdatenWand[wlIndex, wlIndexWand].wAuftrag = eStation_Warte_Auf_Austransport  )
     THEN
       AuftragsSpeicherWand[wlIndex, wlIndexWand].bpNaechsterAuftrag := TRUE;
       AuftragsSpeicherWand[wlIndex, wlIndexWand]();

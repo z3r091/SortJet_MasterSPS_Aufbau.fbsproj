@@ -23,11 +23,11 @@ IF ( AuftragsdatenTransfershuttle[wStation].wAuftrag = eStation_Transportkopplun
     CASE AuftragsdatenTransfershuttle[wStation - 1].wAuftrag OF
       eStation_Eintransport:
         IF ( ( awlGlasSender[wStation - 1] >= cERSTES_INPUTSHUTTLE )
-           AND ( awlGlasSender[wStation - 1] <= cLETZTES_INPUTSHUTTLE ) )
+             AND ( awlGlasSender[wStation - 1] <= cLETZTES_INPUTSHUTTLE ) )
         THEN
           AutomatikFehlerTransfershuttleSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler, cSPEICHER_EINLAUFSEITE);    
         ELSIF ( ( awlGlasSender[wStation - 1] >= cERSTES_OUTPUTSHUTTLE )
-         AND ( awlGlasSender[wStation - 1] <= cLETZTES_OUTPUTSHUTTLE ) )
+                AND ( awlGlasSender[wStation - 1] <= cLETZTES_OUTPUTSHUTTLE ) )
         THEN
           AutomatikFehlerTransfershuttleSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler, cSPEICHER_AUSLAUFSEITE);
         ELSE
@@ -35,11 +35,11 @@ IF ( AuftragsdatenTransfershuttle[wStation].wAuftrag = eStation_Transportkopplun
         END_IF
       eStation_Austransport:
         IF ( ( awlGlasSender[wStation - 1] >= cERSTES_OUTPUTSHUTTLE )
-         AND ( awlGlasSender[wStation - 1] <= cLETZTES_OUTPUTSHUTTLE ) )
+             AND ( awlGlasSender[wStation - 1] <= cLETZTES_OUTPUTSHUTTLE ) )
         THEN
           AutomatikFehlerTransfershuttleSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler, cSPEICHER_EINLAUFSEITE);
         ELSIF ( ( awlGlasSender[wStation - 1] >= cERSTES_INPUTSHUTTLE )
-            AND ( awlGlasSender[wStation - 1] <= cLETZTES_INPUTSHUTTLE ) )
+                AND ( awlGlasSender[wStation - 1] <= cLETZTES_INPUTSHUTTLE ) )
         THEN
           AutomatikFehlerTransfershuttleSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler, cSPEICHER_AUSLAUFSEITE);
         ELSE
@@ -47,10 +47,10 @@ IF ( AuftragsdatenTransfershuttle[wStation].wAuftrag = eStation_Transportkopplun
         END_IF
       eStation_Vortransport:
         AutomatikFehlerSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler);
-    ELSE
-      IF atonlWarteAufMasterAuftrag[wStation].Q THEN
-        AutomatikFehlerSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler);
-      END_IF
+      ELSE
+        IF atonlWarteAufMasterAuftrag[wStation].Q THEN
+          AutomatikFehlerSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler);
+        END_IF
     END_CASE
   END_IF
 ELSE

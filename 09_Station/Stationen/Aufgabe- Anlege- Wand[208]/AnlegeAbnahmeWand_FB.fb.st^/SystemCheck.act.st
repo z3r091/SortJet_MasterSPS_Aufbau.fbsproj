@@ -28,7 +28,7 @@ IF ( blBetriebartCheck ) THEN
   END_IF
   
   CASE steplCheck OF
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_0_E:
       (* Hinweis :
          - Zuerst Prüfung ob der Sicherheitskreis quittiert wurde. 
@@ -42,9 +42,9 @@ IF ( blBetriebartCheck ) THEN
       ELSE
 
         BasisStationsParameter.bStationBelegt[cWAND_1] := ( Glastransport.bpSensorEinlauf
-                                                         OR Glastransport.bpSensorAuslauf 
-                                                         OR Glastransport.bpSensorEinlaufVorAb 
-                                                         OR Glastransport.bpSensorAuslaufVorAb );
+                                                            OR Glastransport.bpSensorAuslauf 
+                                                            OR Glastransport.bpSensorEinlaufVorAb 
+                                                            OR Glastransport.bpSensorAuslaufVorAb );
 
         wSPS2MMIStationsNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
 
@@ -61,7 +61,7 @@ IF ( blBetriebartCheck ) THEN
                     BasisStationsParameter.stMKs.stStationsNummern.NummerExtern, 
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     BasisStationsParameter.awFehlerInformationen 
-                   );
+                  );
 
         IF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
           rSps2MmiMessungScheibenlaenge       := 0.0;
@@ -83,24 +83,24 @@ IF ( blBetriebartCheck ) THEN
 
       END_IF
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_10_E:
       IF ( tonlFreigabeErhalten.Q ) THEN
 
-       IF ( in_bMotorschutzGeblaese_Ok ) THEN
-   //      out_bGeblaeseEin      := TRUE;
-         out_bDrosselklappeOeffnen := TRUE;
-         steplCheck := STEP_20_E;
-       ELSE
-         out_bDrosselklappeOeffnen := FALSE;
-         out_bGeblaeseEin := FALSE;
-         BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_GEBLAESE;
-         steplCheck := STEP_900_E;
-       END_IF
+        IF ( in_bMotorschutzGeblaese_Ok ) THEN
+          //      out_bGeblaeseEin      := TRUE;
+          out_bDrosselklappeOeffnen := TRUE;
+          steplCheck := STEP_20_E;
+        ELSE
+          out_bDrosselklappeOeffnen := FALSE;
+          out_bGeblaeseEin := FALSE;
+          BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_GEBLAESE;
+          steplCheck := STEP_900_E;
+        END_IF
 
       END_IF
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_20_E:
       (* Anmerkung:
           - Wand gekippt oder senkrecht
@@ -112,24 +112,24 @@ IF ( blBetriebartCheck ) THEN
 
       IF (BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1]) THEN
 
-       CASE Kippen.epKippStatus OF
+        CASE Kippen.epKippStatus OF
 
-         eKippen_Position_84Grad:
-          Glastransport.bpCheck := TRUE;
-          Glastransport.bpCheckMitNachfolger := FALSE;
-          steplCheck := STEP_100_E;
+          eKippen_Position_84Grad:
+            Glastransport.bpCheck := TRUE;
+            Glastransport.bpCheckMitNachfolger := FALSE;
+            steplCheck := STEP_100_E;
 
-         eKippen_Position_90Grad:
-          Glastransport.bpCheck := TRUE;
-          Glastransport.bpCheckMitNachfolger := BasisStationsParameter.bCheckMitNachfolger[cWAND_1];
-          steplCheck := STEP_100_E;
+          eKippen_Position_90Grad:
+            Glastransport.bpCheck := TRUE;
+            Glastransport.bpCheckMitNachfolger := BasisStationsParameter.bCheckMitNachfolger[cWAND_1];
+            steplCheck := STEP_100_E;
 
-        eKippen_Default:
-           Kippen.epZielPosition := eKippen_Position_84Grad;
-         Kippen.bpPositionieren := TRUE;
-         steplCheck := STEP_30_E;
+          eKippen_Default:
+            Kippen.epZielPosition := eKippen_Position_84Grad;
+            Kippen.bpPositionieren := TRUE;
+            steplCheck := STEP_30_E;
 
-       END_CASE
+        END_CASE
 
       ELSE
 
@@ -142,19 +142,19 @@ IF ( blBetriebartCheck ) THEN
 
       END_IF
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_30_E:
       (* Hinweis:
          - Station in eine definierte Position gekippt
       *)
       IF ( Kippen.bpDone
-        OR ( Kippen.epZielPosition = Kippen.epKippStatus ) )
+           OR ( Kippen.epZielPosition = Kippen.epKippStatus ) )
       THEN
         Kippen.bpPositionieren := FALSE;
         steplCheck := STEP_20_E;
       END_IF
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_100_E:
       BasisStationsParameter.bStationBelegt[cWAND_1] := Glastransport.bpStationBelegt;
 
@@ -171,7 +171,7 @@ IF ( blBetriebartCheck ) THEN
         steplCheck := STEP_110_E;
       END_IF
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_110_E:
       (* ---------------------------------------------------------------------------------------
       // OPTION - KOMPONENTEN ANSTEUERN
@@ -185,14 +185,14 @@ IF ( blBetriebartCheck ) THEN
 
       steplCheck := STEP_120_E;
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_120_E:
       IF ( (Kippen.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1]) ) THEN
         Kippen.bpPositionieren := FALSE;
         steplCheck := STEP_200_E;
       END_IF
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_200_E:
       (* ---------------------------------------------------------------------------------------
       //  STATUSNACHRICHT AN DIE HMI SENDEN
@@ -215,7 +215,7 @@ IF ( blBetriebartCheck ) THEN
 
       END_IF
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_800_E:
       (* ---------------------------------------------------------------------------------------
       // BELADUNGSZUSTAND PRUEFEN UND FOLGE-ZUSTAND BESTIMMEN
@@ -232,11 +232,11 @@ IF ( blBetriebartCheck ) THEN
  
         IF ( NOT BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
 
-          (* Hinweis:
-             - Meldung generieren das die Scheibe abgenommen wurde
-          *)
-//          wSps2MmiApprovaltableNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
-  //        MsgToMmi(auftragsnr_w := SB0_SPS_SHEETREMOVEDAPPROVALWALL);
+        (* Hinweis:
+           - Meldung generieren das die Scheibe abgenommen wurde
+        *)
+        //          wSps2MmiApprovaltableNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+        //        MsgToMmi(auftragsnr_w := SB0_SPS_SHEETREMOVEDAPPROVALWALL);
 
         END_IF
      
@@ -271,7 +271,7 @@ IF ( blBetriebartCheck ) THEN
 
       steplCheck := STEP_1000_E;
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
@@ -281,30 +281,30 @@ IF ( blBetriebartCheck ) THEN
 
       MsgToMmi( auftragsnr_w := SB0_SPS_SETSHEETSONSTATION );
 
-(*SYSTEM CHECK=========================*)
+    (*SYSTEM CHECK=========================*)
     STEP_1000_E:
       // Auftrag für erneuten Automatikbetrieb setzen      
       IF //starrStationBasisParameter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].stMKs.stStationsOptionen.bScheibeAbnehmenNachEintransport 
-      BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBit_11 // Bit 11 = 1 -> Abnahme
+        BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBit_11 // Bit 11 = 1 -> Abnahme
         AND ( BasisStationsParameter.bStationBelegt[cWAND_1] OR BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben > 0) 
       THEN
         BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Abnehmen;
       ELSIF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
         BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Belegt;
       ELSE
-      BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Kein_Auftrag;
+        BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Kein_Auftrag;
       END_IF
 
       BasisStationsParameter.bCheckAbgeschlossen := TRUE;
 
-(*SYSTEM CHECK=========================*)
+  (*SYSTEM CHECK=========================*)
   END_CASE
 ELSE
-    IF (steplCheck > 0) THEN
+  IF (steplCheck > 0) THEN
     steplCheck := STEP_0_E;
     BasisStationsParameter.bCheckAbgeschlossen := FALSE;
     out_bDrosselklappeOeffnen := FALSE;
-  out_bGeblaeseEin := FALSE;
+    out_bGeblaeseEin := FALSE;
     Kippen.bpPositionieren := FALSE;
     Glastransport.bpCheck := FALSE;
   END_IF

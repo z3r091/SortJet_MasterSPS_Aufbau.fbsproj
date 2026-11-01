@@ -8,7 +8,7 @@
 ACTION BETRIEBSART_Messung
 // Gemeinsame Auswahl; vorhandener Parameter-Re-Entry uebernimmt den Jerk.
 rlRuckzeit := RuckFuerBewegung(bStart := asteplSchritt[SCHEIBENMESSUNG] = STEP_325_E,
-  bMitZiel := FALSE, lrZiel := 0);
+                                bMitZiel := FALSE, lrZiel := 0);
 
 CASE asteplSchritt[SCHEIBENMESSUNG] OF
 
@@ -63,25 +63,25 @@ CASE asteplSchritt[SCHEIBENMESSUNG] OF
 
   STEP_325_E:
     l_mc_MoveVelocity
-    (
-      Axis := ppAntriebsInformationen.wAchsID,
-      Velocity := rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT,
-      Acceleration := rlBeschleunigung * cFAKTOR_RAMPEN,
-      Deceleration := rlVerzoegerung * cFAKTOR_RAMPEN,
-      Jerk := rlRuckzeit,
-      BufferMode := MC_BufferMode.BM_ABORTING_E,
-      Direction := MC_Direction.MD_POSITIV_E,
-      Execute := TRUE
-    );
+      (
+        Axis := ppAntriebsInformationen.wAchsID,
+        Velocity := rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT,
+        Acceleration := rlBeschleunigung * cFAKTOR_RAMPEN,
+        Deceleration := rlVerzoegerung * cFAKTOR_RAMPEN,
+        Jerk := rlRuckzeit,
+        BufferMode := MC_BufferMode.BM_ABORTING_E,
+        Direction := MC_Direction.MD_POSITIV_E,
+        Execute := TRUE
+      );
     asteplSchritt[SCHEIBENMESSUNG] := STEP_350_E;
 
   STEP_350_E:
 
     // Änderungen und Fehler erkennen
     IF ( ( ( rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT ) <> l_mc_MoveVelocity.Velocity )
-        OR ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Acceleration )
-        OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Deceleration )
-        OR (   rlRuckzeit <> l_mc_MoveVelocity.Jerk ) )
+         OR ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Acceleration )
+         OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Deceleration )
+         OR (   rlRuckzeit <> l_mc_MoveVelocity.Jerk ) )
     THEN
       l_mc_MoveVelocity( Axis := ppAntriebsInformationen.wAchsID, Execute := FALSE );
       asteplSchritt[SCHEIBENMESSUNG] := STEP_325_E;
@@ -94,9 +94,9 @@ CASE asteplSchritt[SCHEIBENMESSUNG] OF
     END_IF
 
     l_mc_MoveVelocity
-    (
-      Axis := ppAntriebsInformationen.wAchsID,
-    );
+      (
+        Axis := ppAntriebsInformationen.wAchsID,
+      );
 
     // Sensorik belegt
     IF bFalling[eSensorAuswahl_Messung_1] THEN

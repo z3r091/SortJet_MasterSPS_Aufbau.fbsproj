@@ -10,9 +10,9 @@ ACTION Meldungen
 (* MELDUNGEN *)
 (***************************************************************************************************)
 IF(  Antrieb.bpFehler
-  AND NOT (  steplPositionieren = STEP_900_E
-    OR steplReferenz = STEP_900_E
-    OR steplReset    = STEP_900_E )
+    AND NOT (  steplPositionieren = STEP_900_E
+              OR steplReferenz = STEP_900_E
+              OR steplReset    = STEP_900_E )
   )
 THEN
   wpFehlerNR := cMELDUNG_ANTRIEB_QUERFAHRT;

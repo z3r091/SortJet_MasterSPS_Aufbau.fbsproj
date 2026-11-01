@@ -14,7 +14,7 @@ tonlMaxWarteAufResetErfolgreich(IN := (bpReset AND (steplReset < STEP_900_E)),pt
 
 IF ( bpReset ) THEN
   CASE steplReset OF
-(*RESET ==============================*)
+    (*RESET ==============================*)
     STEP_0_E:
       bpDone                       := FALSE;
       bprtScheibe                  := FALSE;
@@ -40,7 +40,7 @@ IF ( bpReset ) THEN
 
       steplReset := STEP_10_E;
 
-(*RESET ==============================*)
+    (*RESET ==============================*)
     STEP_10_E:
       (* Hinweis:
          - Aktionen zuruecksetzen
@@ -51,27 +51,27 @@ IF ( bpReset ) THEN
       (* Hinweis:
          - Betriebsarten zuruecksetzen
       *) 
-    bpStarteHebeVorgang := FALSE;
-    bpEintransport      := FALSE;
+      bpStarteHebeVorgang := FALSE;
+      bpEintransport      := FALSE;
       bpAustransport      := FALSE;
       bpVortransport      := FALSE;
 
       steplReset          := STEP_20_E;
 
-(*RESET ==============================*)
+    (*RESET ==============================*)
     STEP_20_E:
       Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
-    IF NOT Antrieb.bpAntrieblaeuft THEN
+      IF NOT Antrieb.bpAntrieblaeuft THEN
         steplReset := STEP_30_E;
-    END_IF
+      END_IF
 
-(*RESET ==============================*)
+    (*RESET ==============================*)
     STEP_30_E:
       Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.RESET;
       steplReset := STEP_40_E;
 
-(*RESET ==============================*)
+    (*RESET ==============================*)
     STEP_40_E:
       IF( Antrieb.bpDone )THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -84,13 +84,13 @@ IF ( bpReset ) THEN
         steplReset := STEP_900_E;
       END_IF
 
-(*RESET ==============================*)
+    (*RESET ==============================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
       bpFehler := TRUE;
 
-(*RESET ==============================*)
+    (*RESET ==============================*)
     STEP_1000_E:
       wpFehlerNr          := cMELDUNG_NULL;
       wpAusnahmefehlerTyp := cMELDUNG_NULL;
@@ -98,7 +98,7 @@ IF ( bpReset ) THEN
       bpFehler :=FALSE;
       bpDone   :=TRUE;
 
-(*RESET ==============================*)
+  (*RESET ==============================*)
   END_CASE
 ELSE
   IF( steplReset > STEP_0_E )THEN

@@ -11,9 +11,9 @@ ACTION Handbetrieb
 (***************************************************************************************************)
 
 IF (  NOT bpAutomatikAktiv
-  AND NOT bpReferenz
-  AND NOT bpPositionieren
-  AND NOT bpReset )
+     AND NOT bpReferenz
+     AND NOT bpPositionieren
+     AND NOT bpReset )
 THEN
 
   Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;

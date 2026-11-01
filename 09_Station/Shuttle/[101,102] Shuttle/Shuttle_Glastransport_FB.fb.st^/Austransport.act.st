@@ -10,8 +10,8 @@ ACTION Austransport
 (* AUSTRANSPORT [POSITIVE- RICHTUNG] *)
 (***************************************************************************************************)
 IF ( bpAustransport
-  AND NOT bpEintransport
-  AND bpAutomatikAktiv )
+     AND NOT bpEintransport
+     AND bpAutomatikAktiv )
 THEN
 
   (* Fehlerverhalten:
@@ -34,7 +34,7 @@ THEN
      - Starten der Schrittkette
   *)
   CASE steplAustransport OF
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen initialisieren
@@ -49,7 +49,7 @@ THEN
 
       steplAustransport := STEP_5_E;
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_5_E:
       (* Hinweis:
          - Sicherstellen das die Slavekopplung aktiv ist
@@ -58,7 +58,7 @@ THEN
         steplAustransport := STEP_10_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_10_E:
       (* Hinweis:
          - Antriebueberpruefen ob bereit zum verfahren. 
@@ -84,7 +84,7 @@ THEN
         steplAustransport := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT ==============================GEHT NICHT WEGEN MASTER SLAVE KOPPLUNG*)
+    (*AUSTRANSPORT ==============================GEHT NICHT WEGEN MASTER SLAVE KOPPLUNG*)
     STEP_20_E:
       (* ---------------------------------------------------------------------------------------
       //  OPTIONAL - REFERENZIEREN DES ANTRIEBS
@@ -101,7 +101,7 @@ THEN
 
       steplAustransport := STEP_30_E;
 
-(*AUSTRANSPORT =========================*)
+    (*AUSTRANSPORT =========================*)
     STEP_30_E:
       (* Hinweis:
          - Referenzieren des Antriebs abgeschlossen [Ist-Position = 0  bzw. 1]
@@ -111,7 +111,7 @@ THEN
         steplAustransport := STEP_40_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_40_E:
       (* ---------------------------------------------------------------------------------------
       //  KOPPLUNG [ SCHNITTSTELLE ZWISCHEN DEN STATIONEN]
@@ -132,7 +132,7 @@ THEN
 
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_50_E:
       (* Pruefen ob der Auslaufsensor belegt ist.
          - Auslaufsesnor nicht belegt, Glas auf den Auslaufsensor positionieren
@@ -178,7 +178,7 @@ THEN
 
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_60_E:
       (* Hinweis:
          - Geschwindigkeit reduzieren      
@@ -200,13 +200,13 @@ THEN
         steplAustransport := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_70_E:
       (* Hinweis:
          - Restweg- Positionierung abgeschlossen auf den Auslauf-Sensor
       *)
       IF ( Antrieb.bpDone
-       AND bpSensorAuslauf )
+           AND bpSensorAuslauf )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplAustransport := STEP_80_E;
@@ -223,21 +223,21 @@ THEN
       END_IF
 
       IF (  Antrieb.bpDone
-        AND NOT bpSensorAuslauf )
+           AND NOT bpSensorAuslauf )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
         steplAustransport := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_80_E:
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplAustransport := STEP_100_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  STARTEN DES AUSTRANSPORTS
@@ -252,18 +252,18 @@ THEN
 
         Antrieb.wpMaster := InGlasTransportNachfolger.wAchsID;
 
-       // Wenn der Vorgänger "Rückwärtig" fährt, darf das Shuttle nicht "invertiert" gekoppelt werdem, da es sonst in der falsche Richtung fährt
-      IF InGlasTransportNachfolger.bTransportRueckwaertig THEN
-       Antrieb.wpBetriebsart :=INVERTIERTER_SYNC_AUF_MASTER;
+        // Wenn der Vorgänger "Rückwärtig" fährt, darf das Shuttle nicht "invertiert" gekoppelt werdem, da es sonst in der falsche Richtung fährt
+        IF InGlasTransportNachfolger.bTransportRueckwaertig THEN
+          Antrieb.wpBetriebsart :=INVERTIERTER_SYNC_AUF_MASTER;
         ELSE
           Antrieb.wpBetriebsart := SYNC_AUF_MASTER;
         END_IF
         
-       IF ( Antrieb.bpDone ) THEN
-        bpSlaveAktiv := TRUE;
-        bpOutBereitZumAustransport := TRUE;
-        steplAustransport := STEP_215_E;
-      END_IF
+        IF ( Antrieb.bpDone ) THEN
+          bpSlaveAktiv := TRUE;
+          bpOutBereitZumAustransport := TRUE;
+          steplAustransport := STEP_215_E;
+        END_IF
 
       // Austransport Hand-Minus
       ELSE
@@ -278,7 +278,7 @@ THEN
         steplAustransport := STEP_110_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_110_E:
 
       bprtScheibe := FALSE;
@@ -293,7 +293,7 @@ THEN
         steplAustransport :=  STEP_140_E;
       END_IF
 
-(* AUSTRANSPORT ==================================== *)
+    (* AUSTRANSPORT ==================================== *)
     STEP_215_E:      
       bprtScheibe := FALSE;
       
@@ -301,7 +301,7 @@ THEN
         steplAustransport := STEP_120_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_120_E:
       (* Hinweis:
          - Scheibenzaehler 
@@ -337,7 +337,7 @@ THEN
         steplAustransport := STEP_140_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_140_E:
 
       bprtScheibe := FALSE;
@@ -351,7 +351,7 @@ THEN
 
         rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
           
-          // TODO Option zum auslauf freifahren / ansonsten nur auslaufstopp
+        // TODO Option zum auslauf freifahren / ansonsten nur auslaufstopp
         IF NOT bpSensorAuslaufStopp THEN
           steplAustransport := STEP_1000_E;
 
@@ -362,7 +362,7 @@ THEN
 
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_200_E:
       (* ---------------------------------------------------------------------------------------
       //  AUSLAUFSENSOR FREIFAHREN
@@ -372,7 +372,7 @@ THEN
       // ---------------------------------------------------------------------------------------*)
 
       IF (  NOT Antrieb.bpAntrieblaeuft
-        AND NOT toflAuslaufsensorFrei.Q )
+           AND NOT toflAuslaufsensorFrei.Q )
       THEN
         bpOutBereitZumAustransport := FALSE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -407,19 +407,19 @@ THEN
         steplAustransport := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
       bpOutBereitZumAustransport := FALSE;
       bpFehler := TRUE;
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_1000_E:
       bprtScheibe := FALSE;
       bpDone := TRUE;
 
-(*AUSTRANSPORT ==============================*)
+  (*AUSTRANSPORT ==============================*)
   END_CASE
 ELSE
 

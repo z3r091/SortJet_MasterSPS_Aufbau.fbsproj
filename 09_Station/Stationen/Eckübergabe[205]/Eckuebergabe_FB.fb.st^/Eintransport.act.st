@@ -10,7 +10,7 @@ ACTION Eintransport
 // AKTION EINTRANSPORT
 //==================================================================================================
 IF ( BasisStationsParameter.bEintransport[cWAND_1]
-  AND blBetriebsartAutomatik )
+     AND blBetriebsartAutomatik )
 THEN
 
   // Ausnahmesituation
@@ -38,7 +38,7 @@ THEN
 
 
   CASE steplEintransport OF
-//=== EINTRANSPORT ==================================================================================
+    //=== EINTRANSPORT ==================================================================================
     STEP_0_E:
       (* Hinweis:
          - Hubrahmen auf die Eintransport-Achse stellen
@@ -48,7 +48,7 @@ THEN
 
       steplEintransport := STEP_10_E;
 
-//=== EINTRANSPORT ==================================================================================
+    //=== EINTRANSPORT ==================================================================================
     STEP_10_E:
       IF ( blHubrahmenInPosition ) THEN
         blHubrahmenPositionieren := FALSE;
@@ -56,7 +56,7 @@ THEN
         steplEintransport := STEP_100_E;
       END_IF
 
-//=== EINTRANSPORT ==================================================================================
+    //=== EINTRANSPORT ==================================================================================
     STEP_100_E:
       // ---------------------------------------------------------------------------------------
       //  STARTEN DES EINTRANSPORTS
@@ -72,7 +72,7 @@ THEN
 
       steplEintransport := STEP_110_E;
 
-//=== EINTRANSPORT ==================================================================================
+    //=== EINTRANSPORT ==================================================================================
     STEP_110_E:
       IF ( GlastransportEin.bpDone ) THEN
         GlastransportEin.bpEintransport             := FALSE;
@@ -85,7 +85,7 @@ THEN
         END_IF
       END_IF
 
-//=== EINTRANSPORT ==================================================================================
+    //=== EINTRANSPORT ==================================================================================
     STEP_200_E:
       // ---------------------------------------------------------------------------------------
       //  UEBERGABE AN DIE AUSTRANSPORT-ACHSE
@@ -98,7 +98,7 @@ THEN
 
       steplEintransport := STEP_210_E;
 
-//=== EINTRANSPORT ==================================================================================
+    //=== EINTRANSPORT ==================================================================================
     STEP_210_E:
       IF ( blHubrahmenInPosition ) THEN
         blHubrahmenPositionieren := FALSE;
@@ -106,7 +106,7 @@ THEN
         steplEintransport := STEP_220_E;
       END_IF
 
-//=== EINTRANSPORT ==================================================================================
+    //=== EINTRANSPORT ==================================================================================
     STEP_220_E:
       (* Hinweis:
          - Austransport-Achse uebernimmt die Scheibe und faehrt sie auf den VorStop- Sensor
@@ -116,7 +116,7 @@ THEN
 
       steplEintransport := STEP_230_E;
 
-//=== EINTRANSPORT ==================================================================================
+    //=== EINTRANSPORT ==================================================================================
     STEP_230_E:
       IF ( GlastransportAus.bpDone ) THEN
         GlastransportAus.bpVortransport := FALSE;
@@ -124,15 +124,15 @@ THEN
         steplEintransport := STEP_1000_E;
       END_IF
 
-//=== EINTRANSPORT ==================================================================================
+    //=== EINTRANSPORT ==================================================================================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-//=== EINTRANSPORT ==================================================================================
+    //=== EINTRANSPORT ==================================================================================
     STEP_1000_E:
       BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] := TRUE;
 
-//=== EINTRANSPORT ==================================================================================
+  //=== EINTRANSPORT ==================================================================================
   END_CASE
 ELSE
 

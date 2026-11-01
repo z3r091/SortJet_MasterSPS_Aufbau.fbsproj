@@ -16,7 +16,7 @@ ftlScheibeZurueckFahren ( CLK := bpScheibeZurueckFahren );
 ftlScheibeVorFahren ( CLK := bpScheibeVorFahren );
 
 IF ( (  bpScheibeZurueckFahren )
-  AND bpAnforderungHandfunktion )
+     AND bpAnforderungHandfunktion )
 THEN
   (* Anmerkung:
    - Knebel Glastransport zurueck 
@@ -27,17 +27,17 @@ THEN
     Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
     Antrieb.wpBetriebsart     := HANDMINUS;
 
-  // Am Ende langsam fahren
-  IF bpSensorEinlaufVorAb THEN
+    // Am Ende langsam fahren
+    IF bpSensorEinlaufVorAb THEN
       Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10 ;
-  END_IF
+    END_IF
 
   ELSE
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
   END_IF
   
 ELSIF ( (  bpScheibeVorFahren )
-  AND bpAnforderungHandfunktion )
+        AND bpAnforderungHandfunktion )
 THEN
   (* Anmerkung:
    - Knebel Glastransport vor 
@@ -48,17 +48,17 @@ THEN
     Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
     Antrieb.wpBetriebsart     := HANDPLUS;
 
-  // Am Ende langsam fahren
-  IF bpSensorAuslaufVorAb THEN
+    // Am Ende langsam fahren
+    IF bpSensorAuslaufVorAb THEN
       Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
-  END_IF
+    END_IF
 
   ELSE
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
   END_IF  
   
 ELSIF ( ftlScheibeZurueckFahren.Q 
-     OR ftlScheibeVorFahren.Q ) 
+        OR ftlScheibeVorFahren.Q ) 
 THEN
   bpScheibeZurueckFahren := FALSE;
   bpScheibeVorFahren     := FALSE;

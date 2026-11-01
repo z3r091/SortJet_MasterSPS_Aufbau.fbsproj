@@ -10,8 +10,8 @@ ACTION Verfahrlogik
 (*  VERFAHRLOGIK *)
 (***************************************************************************************************)
 IF (    blVerfahrfreigabe
-    AND blAbbruchPositionierung
-    AND bpQuittungAuftragsstatusZurueckgesetzt )
+     AND blAbbruchPositionierung
+     AND bpQuittungAuftragsstatusZurueckgesetzt )
 THEN
   blAbbruchPositionierung := FALSE;
   bpAuftragsstatusZuruecksetzen := FALSE;

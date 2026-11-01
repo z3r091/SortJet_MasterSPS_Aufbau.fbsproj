@@ -69,31 +69,31 @@ rlRuckzeit := rlRuckVerzoegerung;
 /////////////////////////////////////////////////////////////////////////////////////////
 // Nocke in der aktuellen Fahrtrichtung erkennen.
 blNockeInFahrtrichtung :=
-(NOT udipEingaengeUmrichter.cXG31_2_I_2
-  AND eBewegungsrichtung = TE_Move_Direction.MD_NEGATIV_E)
-OR (NOT udipEingaengeUmrichter.cXG31_1_I_1
-  AND eBewegungsrichtung = TE_Move_Direction.MD_POSITIV_E);
+                         (NOT udipEingaengeUmrichter.cXG31_2_I_2
+                           AND eBewegungsrichtung = TE_Move_Direction.MD_NEGATIV_E)
+                         OR (NOT udipEingaengeUmrichter.cXG31_1_I_1
+                              AND eBewegungsrichtung = TE_Move_Direction.MD_POSITIV_E);
 
 blEineLangsamfahrtnockeBelegt :=
-NOT udipEingaengeUmrichter.cXG31_1_I_1
-OR NOT udipEingaengeUmrichter.cXG31_2_I_2;
+                                NOT udipEingaengeUmrichter.cXG31_1_I_1
+                                OR NOT udipEingaengeUmrichter.cXG31_2_I_2;
 
 IF NOT bpAktiviereLangsamfahrtNocke
-  OR rlGeschwindigkeit <=
-  (l_ts_MKAxisConfig.rVelocity / cFAKTOR_GESCHWINDIGKEIT_ECONSET) * 0.1
+   OR rlGeschwindigkeit <=
+   (l_ts_MKAxisConfig.rVelocity / cFAKTOR_GESCHWINDIGKEIT_ECONSET) * 0.1
 THEN
   bpLangsamfahrenAktiv := FALSE;
 
 ELSIF bpLangsamfahrenAktiv THEN
   // Bei kurz erkanntem Stillstand aktiv bleiben, solange eine Nocke belegt ist.
   bpLangsamfahrenAktiv :=
-  blNockeInFahrtrichtung
-  OR (eBewegungsrichtung = TE_Move_Direction.MD_STANDSTILL_E
-    AND blEineLangsamfahrtnockeBelegt);
+                         blNockeInFahrtrichtung
+                         OR (eBewegungsrichtung = TE_Move_Direction.MD_STANDSTILL_E
+                              AND blEineLangsamfahrtnockeBelegt);
 
 ELSE
   // Während einer laufenden Verzögerung keine neue Langsamfahrt starten.
   bpLangsamfahrenAktiv :=
-  blNockeInFahrtrichtung AND NOT l_mc_ReadStatus.Decelerating;
+                         blNockeInFahrtrichtung AND NOT l_mc_ReadStatus.Decelerating;
 END_IF
 END_ACTION

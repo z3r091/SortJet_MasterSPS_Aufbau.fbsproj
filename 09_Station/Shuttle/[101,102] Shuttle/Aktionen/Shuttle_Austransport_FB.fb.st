@@ -15,7 +15,7 @@ END_VAR
    - Es handelt sich hier um einen Austransport in einen Faecherwagen
 *)
 IF (  BasisStationsParameter.bAustransport[wWand]
-  AND bpAutomatikAktiv )
+     AND bpAutomatikAktiv )
 THEN
 
   // Ausnahmesituation
@@ -43,7 +43,7 @@ THEN
   END_IF
 
   CASE steplAktion OF
-(* AUSTRANSPORT =====================================*)
+    (* AUSTRANSPORT =====================================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen          
@@ -54,7 +54,7 @@ THEN
 
       steplAktion := STEP_10_E;
 
-(* AUSTRANSPORT =====================================*)
+    (* AUSTRANSPORT =====================================*)
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob die Zielposition erreicht wurde
@@ -71,7 +71,7 @@ THEN
 
       END_IF
 
-(* AUSTRANSPORT =====================================*)
+    (* AUSTRANSPORT =====================================*)
     STEP_20_E:
       (* ---------------------------------------------------------------------------------------
       //  ANSTEUERUNG KOMPONENTEN 
@@ -81,7 +81,7 @@ THEN
       // ---------------------------------------------------------------------------------------*)
 
       IF (  bpGeblaeseAktiv
-        AND NOT bpVorAbAuftragAktiv )
+           AND NOT bpVorAbAuftragAktiv )
       THEN
 
         (* Hinweis:
@@ -108,13 +108,13 @@ THEN
         steplAktion := STEP_900_E;
       END_IF
 
-(* AUSTRANSPORT =====================================*)
+    (* AUSTRANSPORT =====================================*)
     STEP_30_E:
       (* Hinweis:
          - Wandverstellung gefahren ? 
       *)
       IF ( (  Wandverstellung.bpDone OR  NOT Wandverstellung.bpStartePositionierung )
-        AND (  Kippen.bpDone OR NOT Kippen.bpPositionieren ) )
+           AND (  Kippen.bpDone OR NOT Kippen.bpPositionieren ) )
       THEN
         Kippen.bpPositionieren := FALSE;
 
@@ -130,9 +130,9 @@ THEN
         Wandverstellung.bpStartePositionierung := FALSE;
         BasisStationsParameter.wFehlerNummer :=  Wandverstellung.wpFehlerNr;
         steplAktion := STEP_900_E;
-     END_IF
+      END_IF
 
-(* AUSTRANSPORT =====================================*)
+    (* AUSTRANSPORT =====================================*)
     STEP_50_E:
       (* Hinweis:
          - Kippvorgang beendet
@@ -141,8 +141,8 @@ THEN
         - Wenn der Empfaenger eine Station ist kann der Vortransport abgebrochen werden
       *) 
       IF ( Glastransport.bpDone
-        OR BasisStationsParameter.InGlasTransportNachfolger[wWand].bBereitZumEintransport )
-     THEN
+           OR BasisStationsParameter.InGlasTransportNachfolger[wWand].bBereitZumEintransport )
+      THEN
 
         Glastransport.bpVortransport      := FALSE;
         Glastransport.bpVortransportRueck := FALSE;
@@ -150,7 +150,7 @@ THEN
         steplAktion := STEP_100_E;
       END_IF
 
-(* AUSTRANSPORT =====================================*)
+    (* AUSTRANSPORT =====================================*)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  STARTEN DES AUSTRANSPORTS 
@@ -165,12 +165,12 @@ THEN
 
       steplAktion := STEP_110_E;
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_110_E:
-     (* Hinweis:
-         - Scheibenzaehlen waerend der Glastransport arbeitet.
-           Verarbeitung im ShuttleJobs Baustein
-      *)
+      (* Hinweis:
+          - Scheibenzaehlen waerend der Glastransport arbeitet.
+            Verarbeitung im ShuttleJobs Baustein
+       *)
       bprtScheibe := Glastransport.bprtScheibe;
 
       (* Hinweis [Glastransport]:
@@ -182,7 +182,7 @@ THEN
         steplAktion := STEP_1000_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_900_E:
       Glastransport.bpAustransport                 := FALSE;
       Glastransport.bpRueckwaertsAustransportieren := FALSE;
@@ -192,11 +192,11 @@ THEN
 
       BasisStationsParameter.bFehler := TRUE;
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_1000_E:
       BasisStationsParameter.bAustransportAbgeschlossen[wWand] := TRUE;
 
-(*AUSTRANSPORT ==============================*)
+  (*AUSTRANSPORT ==============================*)
   END_CASE
 ELSE
 

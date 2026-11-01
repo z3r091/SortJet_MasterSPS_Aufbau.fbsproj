@@ -18,10 +18,10 @@ IF( Memcomp( ADR( MmiToSps.smbMessageBlock ), ADR( MmiToSpsMem.smbMessageBlock )
   dwlChecksumme1 := HMI_GetDWORD( ADR( MmiToSpsMem.smbMessageBlock.dwCrc32Checksumme));
 
   IF( dwlChecksumme0 = dwlChecksumme1 )THEN
-   (* neuen MessageBlock vom MMI überbenehmen *)
+    (* neuen MessageBlock vom MMI überbenehmen *)
     Memcopy( ADR( MmiToSps.smbMessageBlock ), ADR( MmiToSpsMem.smbMessageBlock ), SIZEOF( MmiToSps.smbMessageBlock ));
   END_IF;
- END_IF;
+END_IF;
 
 Watchdog();
 IF( o_b_WatchdogOk )THEN

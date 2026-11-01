@@ -24,7 +24,7 @@ IF blAchseStoppen THEN
           rlRuckStop := MAX(rlRuckStop, TO_REAL(l_mc_MoveVelocity.Jerk));
         RESTWEG:
           rlRuckStop := MAX(rlRuckStop,
-            TO_REAL(l_mc_MoveVelocity.Jerk), TO_REAL(l_mc_MoveAbsolute.Jerk));
+                             TO_REAL(l_mc_MoveVelocity.Jerk), TO_REAL(l_mc_MoveAbsolute.Jerk));
         SYNC_AUF_MASTER, INVERTIERTER_SYNC_AUF_MASTER:
           rlRuckStop := MAX(rlRuckStop, TO_REAL(l_mc_GearIn.Jerk));
       END_CASE
@@ -39,12 +39,12 @@ IF blAchseStoppen THEN
 
   // 3. Stop mit dem festgehaltenen Jerk ausfuehren.
   l_mc_Stop(
-    Axis            := ppAntriebsInformationen.wAchsID,
-    Deceleration    := TO_LREAL(rlVerzoegerung * cFAKTOR_RAMPEN),
-    Jerk            := rlRuckStop,
-    StopSpecification := MC_StopSpecification.STOP_SPEC_ALL_AXIS_MOTION_E,
-    Execute         := TRUE
-  );
+             Axis            := ppAntriebsInformationen.wAchsID,
+             Deceleration    := TO_LREAL(rlVerzoegerung * cFAKTOR_RAMPEN),
+             Jerk            := rlRuckStop,
+             StopSpecification := MC_StopSpecification.STOP_SPEC_ALL_AXIS_MOTION_E,
+             Execute         := TRUE
+           );
   blAchseStoppenAktiv := TRUE;
 
 ELSE

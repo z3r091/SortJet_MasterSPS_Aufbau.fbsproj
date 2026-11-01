@@ -57,7 +57,7 @@ IF ( bpKippenSchuetz ) THEN
 
 ELSE
   IF( NOT bpFehler
-    AND Antrieb.bpFehler )
+      AND Antrieb.bpFehler )
   THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_KIPPEN;
     bpFehler := TRUE;

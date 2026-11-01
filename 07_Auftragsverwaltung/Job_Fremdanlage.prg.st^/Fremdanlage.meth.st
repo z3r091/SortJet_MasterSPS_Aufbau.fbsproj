@@ -29,14 +29,14 @@ bVorgaengerShuttle := __ISVALIDREF( ptVorgaenger ) AND_THEN __ISVALIDREF( ptVorg
 (***************************************************************************************************)
 IF ( AuftragsdatenFremdanlage[wFremdanlage].wAuftrag = eStation_Eintransport ) THEN
   CASE astplEintransportFremdanlage[wFremdanlage] OF
-(* EINTRANSPORT =========================================== *)
+    (* EINTRANSPORT =========================================== *)
     STEP_0_E:
       (* Hinweis:
          Ueberpruefung des Sicherheitskreises
       *)
       astplEintransportFremdanlage[wFremdanlage] := STEP_10_E;
 
-(* EINTRANSPORT =========================================== *)
+    (* EINTRANSPORT =========================================== *)
     STEP_10_E:
       (* ---------------------------------------------------------------------------------------
       // GLAS-SENDER PRUEFUNG
@@ -55,7 +55,7 @@ IF ( AuftragsdatenFremdanlage[wFremdanlage].wAuftrag = eStation_Eintransport ) T
         astplEintransportFremdanlage[wFremdanlage] := STEP_30_E;
       END_IF
 
-(* EINTRANSPORT =========================================== *)
+    (* EINTRANSPORT =========================================== *)
     STEP_30_E:
       (* ---------------------------------------------------------------------------------------
       // PRUEFUNG AUFTRAGSSTATUS GLAS-SENDER
@@ -70,8 +70,8 @@ IF ( AuftragsdatenFremdanlage[wFremdanlage].wAuftrag = eStation_Eintransport ) T
       END_IF
 
       IF ( ( ptAuftragsdatenSender.wAuftrag = eStation_Belegt )
-        OR ( ptAuftragsdatenSender.wAuftrag = eStation_Warte_Auf_Austransport ) )
-        OR ( ( ptAuftragsdatenSender.wAuftrag = eStation_Kein_Auftrag ) AND bDurchtransportierendeStation )
+           OR ( ptAuftragsdatenSender.wAuftrag = eStation_Warte_Auf_Austransport ) )
+         OR ( ( ptAuftragsdatenSender.wAuftrag = eStation_Kein_Auftrag ) AND bDurchtransportierendeStation )
       THEN
     
         IF bDurchtransportierendeStation THEN
@@ -86,11 +86,11 @@ IF ( AuftragsdatenFremdanlage[wFremdanlage].wAuftrag = eStation_Eintransport ) T
 
       END_IF
 
-(* EINTRANSPORT =========================================== *)
+    (* EINTRANSPORT =========================================== *)
     STEP_40_E:
       IF bDurchtransportierendeStation THEN
         IF ptAuftragsdatenSender.wAuftrag <> eStation_Durchtransport THEN
-            astplEintransportFremdanlage[wFremdanlage] := STEP_1000_E;
+          astplEintransportFremdanlage[wFremdanlage] := STEP_1000_E;
         END_IF
       ELSE
         IF bVorgaengerShuttle THEN 
@@ -105,20 +105,20 @@ IF ( AuftragsdatenFremdanlage[wFremdanlage].wAuftrag = eStation_Eintransport ) T
           END_IF
       
           IF ptAuftragsdatenDurchtransportStation.wAuftrag <> eStation_Austransport THEN
-           astplEintransportFremdanlage[wFremdanlage] := STEP_1000_E;
+            astplEintransportFremdanlage[wFremdanlage] := STEP_1000_E;
           END_IF
         END_IF
       END_IF
 
-(* EINTRANSPORT =========================================== *)
+    (* EINTRANSPORT =========================================== *)
     STEP_900_E:
       abpFehler[wAutomatikkreis] := TRUE;
 
-(* EINTRANSPORT =========================================== *)
+    (* EINTRANSPORT =========================================== *)
     STEP_1000_E:
       AuftragsdatenFremdanlage[wFremdanlage].wAuftrag := eStation_Kein_Auftrag;
 
-(* EINTRANSPORT =========================================== *)
+  (* EINTRANSPORT =========================================== *)
   END_CASE
 END_IF
 

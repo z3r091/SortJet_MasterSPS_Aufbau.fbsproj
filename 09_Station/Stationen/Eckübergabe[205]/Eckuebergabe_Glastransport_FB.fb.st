@@ -7,10 +7,10 @@
 *)
 FUNCTION_BLOCK Eckuebergabe_Glastransport_FB EXTENDS Basic_Glastransport_FB
 
-// Hinweis:
-// - Je Achse der Eckuebergabe eine Instanz (Glastransport_X, Glastransport_Y)
-// - Ein Antrieb je Achse, kein Slave-Antrieb
+  // Hinweis:
+  // - Je Achse der Eckuebergabe eine Instanz (Glastransport_X, Glastransport_Y)
+  // - Ein Antrieb je Achse, kein Slave-Antrieb
 
-// Master aufrufen
-SUPER^();
+  // Master aufrufen
+  SUPER^();
 END_FUNCTION_BLOCK

@@ -31,9 +31,9 @@ WatchIo(bpInitialisierung AND NOT blDruckluftOK, ioccInitBlockDruckluft);
 blAlleSkGeschlossen := TRUE; 
 
 IF NOT M_Init_Ok THEN
-FOR wlIndex := cERSTER_SICHERHEITSKREIS  TO cLETZTER_SICHERHEITSKREIS DO
+  FOR wlIndex := cERSTER_SICHERHEITSKREIS  TO cLETZTER_SICHERHEITSKREIS DO
   
-  IF NOT Sicherheitskreis[wlIndex].bpSicherheitskreisGeschlossen THEN
+    IF NOT Sicherheitskreis[wlIndex].bpSicherheitskreisGeschlossen THEN
   
       // SK ist offen -> nur relevant, falls eine NICHT referenzierte Station diesen SK braucht
       FOR wlSubIndex := cERSTE_STATION TO cLETZTE_STATION DO
@@ -55,7 +55,7 @@ FOR wlIndex := cERSTER_SICHERHEITSKREIS  TO cLETZTER_SICHERHEITSKREIS DO
       FOR wlSubIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
         IF StationInSicherheitskreis(starrTransferShuttleBasisParameter[wlSubIndex].stMKs.eaSicherheitskreis, wlIndex) THEN
           IF NOT starrTransferShuttleBasisParameter[wlSubIndex].bIstReferenziert THEN
-    blAlleSkGeschlossen := FALSE;   
+            blAlleSkGeschlossen := FALSE;   
             EXIT;
           END_IF
         END_IF
@@ -65,9 +65,9 @@ FOR wlIndex := cERSTER_SICHERHEITSKREIS  TO cLETZTER_SICHERHEITSKREIS DO
   
     IF blAlleSkGeschlossen THEN
       EXIT; // SK-Schleife reicht
-  END_IF
+    END_IF
   
-END_FOR
+  END_FOR
 END_IF
 
 WatchIo(bpInitialisierung AND NOT blAlleSkGeschlossen, ioccInitBlockSK);

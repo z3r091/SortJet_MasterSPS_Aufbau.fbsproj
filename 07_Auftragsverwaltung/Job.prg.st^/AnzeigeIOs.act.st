@@ -13,9 +13,9 @@ ACTION AnzeigeIOs
    - Anzeige der IO´s im MMI Service  WORT 0: 1 = sichtbar / 0 = unsichtbar 
 *)
 IF ( M_SB0_MMI_IOANZEIGE_AKTIVIEREN_DEAKTIVIEREN ) THEN
- M_SB0_MMI_IOANZEIGE_AKTIVIEREN_DEAKTIVIEREN := FALSE;
+  M_SB0_MMI_IOANZEIGE_AKTIVIEREN_DEAKTIVIEREN := FALSE;
 
- TCPMain.bpIOAnzeigeAktivieren := tMmi2SpsInfo.wlIOsAnzeigeAktivierenDeaktivieren.0;
+  TCPMain.bpIOAnzeigeAktivieren := tMmi2SpsInfo.wlIOsAnzeigeAktivierenDeaktivieren.0;
 
 END_IF
 END_ACTION

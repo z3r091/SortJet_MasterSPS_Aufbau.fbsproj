@@ -167,8 +167,8 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
   AuftragsSpeicherShuttle[wlIndex]();
 
   IF ( AuftragsSpeicherShuttle[wlIndex].bpAuftragverfuegbar
-   AND ( ( AuftragsdatenStation[wlIndex].wAuftrag = eStation_Kein_Auftrag )
-      OR ( AuftragsdatenStation[wlIndex].wAuftrag = eStation_Belegt ) ) )
+       AND ( ( AuftragsdatenStation[wlIndex].wAuftrag = eStation_Kein_Auftrag )
+             OR ( AuftragsdatenStation[wlIndex].wAuftrag = eStation_Belegt ) ) )
   THEN
     AuftragsSpeicherShuttle[wlIndex].bpNaechsterAuftrag := TRUE;
     AuftragsSpeicherShuttle[wlIndex]();
@@ -185,7 +185,7 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
     AuftragsSpeicherWand[wlIndex, wlIndexWand]();
 
     IF    AuftragsSpeicherWand[wlIndex, wlIndexWand].bpAuftragverfuegbar
-      AND AuftragsdatenWand[wlIndex, wlIndexWand].wAuftrag = eStation_Kein_Auftrag
+          AND AuftragsdatenWand[wlIndex, wlIndexWand].wAuftrag = eStation_Kein_Auftrag
     THEN
       AuftragsSpeicherWand[wlIndex, wlIndexWand].bpNaechsterAuftrag := TRUE;
       AuftragsSpeicherWand[wlIndex, wlIndexWand]();
@@ -202,7 +202,7 @@ FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
   AuftragsSpeicherTransfershuttle[wlIndex]();
 
   IF ( AuftragsSpeicherTransfershuttle[wlIndex].bpAuftragverfuegbar
-   AND AuftragsdatenTransfershuttle[wlIndex].wAuftrag = eStation_Kein_Auftrag )
+       AND AuftragsdatenTransfershuttle[wlIndex].wAuftrag = eStation_Kein_Auftrag )
   THEN
     AuftragsSpeicherTransfershuttle[wlIndex].bpNaechsterAuftrag := TRUE;
     AuftragsSpeicherTransfershuttle[wlIndex]();

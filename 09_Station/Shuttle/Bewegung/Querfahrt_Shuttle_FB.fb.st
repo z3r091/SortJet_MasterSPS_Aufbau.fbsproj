@@ -167,7 +167,7 @@ END_IF
 rtlAutoAktiv(CLK := bpAutomatikAktiv);
 
 IF ( rtlAutoAktiv.Q ) THEN
- Antrieb.rpZielPosition := Antrieb.rpIstPosition;
+  Antrieb.rpZielPosition := Antrieb.rpIstPosition;
 END_IF
 
 (* Hinweis:
@@ -185,8 +185,8 @@ tofAntriebFreigabe( IN := blFreigabeGesetzt AND Antrieb.bpReglerBereit  , PT := 
 (***************************************************************************************************)
 
 IF (   bpVerfahrfreigabe
-   AND bpAbbruchPositionierung
-   AND bpQuittungAuftragsstatusZurueckgesetzt )
+     AND bpAbbruchPositionierung
+     AND bpQuittungAuftragsstatusZurueckgesetzt )
 THEN
   bpAbbruchPositionierung := FALSE;
   bpAuftragsstatusZuruecksetzen := FALSE;
@@ -232,13 +232,13 @@ bpAntriebLaeuft := Antrieb.bpAntrieblaeuft;
 
 // STATUS AN MMI MELDEN
 tonlStatusMelden(
-  IN := NOT tonlStatusMelden.Q,
-  PT := T#500MS
-);
+                  IN := NOT tonlStatusMelden.Q,
+                  PT := T#500MS
+                );
 
 IF tonlStatusMelden.Q
-AND (  ( ABS( Antrieb.rpIstPosition - rlAlterStatus_Position ) > 1.0 )
-    OR ( Antrieb.bpAntrieblaeuft <> blAlterStatus_Bewegung ) OR Job.rtlMmiOk.Q ) THEN
+   AND (  ( ABS( Antrieb.rpIstPosition - rlAlterStatus_Position ) > 1.0 )
+         OR ( Antrieb.bpAntrieblaeuft <> blAlterStatus_Bewegung ) OR Job.rtlMmiOk.Q ) THEN
   stStationUpdate.wStationsNummer       := stStationsNummern.NummerSPS;
   stStationUpdate.eUpdateTyp            := StationUpdateTyp_EN.POSITIONSAENDERUNG;
   stStationUpdate.wAnzahlWerte          := 2;

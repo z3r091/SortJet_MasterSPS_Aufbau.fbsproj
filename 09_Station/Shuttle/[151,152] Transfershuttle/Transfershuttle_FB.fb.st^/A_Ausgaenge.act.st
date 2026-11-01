@@ -52,8 +52,8 @@ blZielPositionErreicht := (     ( ABS( BasisStationsParameter.rAktuellePositionQ
      => Verwendung fuer die Freigabe der Querfahrtsantriebs
 *)
 IF ( BasisStationsParameter.stMKs.stStationsAufbau.bSensorAuslauf ) THEN
- blValidierungLuftabfrageAuslaufUnten       := ( NOT in_bSensorScheibenKontrolleAuslaufSeiteOben
-                                                 AND in_bSensorScheibenKontrolleAuslaufSeiteUnten );
+  blValidierungLuftabfrageAuslaufUnten       := ( NOT in_bSensorScheibenKontrolleAuslaufSeiteOben
+                                                  AND in_bSensorScheibenKontrolleAuslaufSeiteUnten );
 
 ELSE
   blValidierungLuftabfrageAuslaufUnten       := TRUE;
@@ -73,9 +73,9 @@ END_IF
 *)
 
 blShuttleKannSicherVerfahrenWerden := (     NOT in_bSensorShuttleOben
-                    AND in_bSensorShuttleUnten
-                    AND blValidierungLuftabfrageEinlaufUnten
-                    AND blValidierungLuftabfrageAuslaufUnten );
+                                        AND in_bSensorShuttleUnten
+                                        AND blValidierungLuftabfrageEinlaufUnten
+                                        AND blValidierungLuftabfrageAuslaufUnten );
 
 (* Hinweis:
    - Gibt an wann wann sich der Antrieb melden muss

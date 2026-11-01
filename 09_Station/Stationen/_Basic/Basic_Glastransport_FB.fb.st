@@ -323,22 +323,22 @@ END_IF
    - Freigabe
 *)
 toflAutoAbschaltung( IN := (  bpAutomatikAktiv
-                           AND ( bpAustransport
-                           OR bpAustransportRueckwaertig
-                           OR bpEintransport
-                           OR bpEintransportRueckwaertig
-                           OR bpVortransport
-                           OR bpVortransportRueckwaertig
-                           OR bpMesskopplung
-                           OR bpDurchtransport
-                           OR bpGlaslaengenmessung
-                           ) )
-                           OR bpCheck
-                           OR bpHandfahrenMinus
-                           OR bpHandfahrenPlus
-                           OR bpScheibeZurueckFahren
-                           OR bpReferenz,
-                    PT:= tgZeitAutoabschaltungEnergiesparModus );
+                             AND ( bpAustransport
+                                   OR bpAustransportRueckwaertig
+                                   OR bpEintransport
+                                   OR bpEintransportRueckwaertig
+                                   OR bpVortransport
+                                   OR bpVortransportRueckwaertig
+                                   OR bpMesskopplung
+                                   OR bpDurchtransport
+                                   OR bpGlaslaengenmessung
+                                 ) )
+                     OR bpCheck
+                     OR bpHandfahrenMinus
+                     OR bpHandfahrenPlus
+                     OR bpScheibeZurueckFahren
+                     OR bpReferenz,
+                     PT:= tgZeitAutoabschaltungEnergiesparModus );
 
 (* Aufruf:
    - Antriebe
@@ -380,7 +380,7 @@ END_IF
 
 // Freigabe für eine Bewegung
 bpVerfahrFreigabe :=  NOT ( bpSensorEinlauf 
-                         OR bpSensorAuslauf 
-                         OR bpEintransport 
-                         OR bpAustransport );
+                            OR bpSensorAuslauf 
+                            OR bpEintransport 
+                            OR bpAustransport );
 END_FUNCTION_BLOCK

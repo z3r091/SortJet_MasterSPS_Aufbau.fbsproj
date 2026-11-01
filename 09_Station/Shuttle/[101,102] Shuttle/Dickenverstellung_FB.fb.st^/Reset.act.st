@@ -46,12 +46,12 @@ CASE steplReset OF
                                      PT := T#15s);
 
     IF ( NOT Antrieb.bpDone
-     AND tonlMaxWarteAufResetErfolgreich.Q )
+         AND tonlMaxWarteAufResetErfolgreich.Q )
     THEN
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_ZURUECKGESETZT;
-        steplReset := STEP_900_E;
-      END_IF
+      Antrieb.wpBetriebsart := KEINE_FUNKTION;
+      wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_ZURUECKGESETZT;
+      steplReset := STEP_900_E;
+    END_IF
 
   (* ----------------------------------------------- *)
   STEP_900_E:

@@ -135,8 +135,8 @@ ELSE
        - Abschaltung
     *)
     toflAutoAbschaltung( IN :=     bpStartePositionierung
-                               OR bpReferenz,
-                             PT:= tgZeitAutoabschaltungEnergiesparModus );
+                         OR bpReferenz,
+                         PT:= tgZeitAutoabschaltungEnergiesparModus );
 
     Antrieb.bpFreigabe := toflAutoAbschaltung.Q
                           AND bpAktivieren

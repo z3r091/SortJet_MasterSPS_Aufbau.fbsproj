@@ -17,7 +17,7 @@ IF NOT __ISVALIDREF(wAchsID) THEN
 END_IF
 
 IF wAchsID = 65 THEN
-    RETURN; // explizit erlaubt
+  RETURN; // explizit erlaubt
 END_IF;
 
 IF wAchsID > 65 THEN

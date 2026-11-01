@@ -25,7 +25,7 @@ IF ( blBetriebsartReferenz ) THEN
   END_IF
 
   CASE steplReferenz OF
-(* REFERENZ ===========================*)
+    (* REFERENZ ===========================*)
     STEP_0_E:
       BasisStationsParameter.bReferenzAbgeschlossen := FALSE;
 
@@ -34,7 +34,7 @@ IF ( blBetriebsartReferenz ) THEN
 
       steplReferenz := STEP_10_E;
 
-(* REFERENZ ===========================*)
+    (* REFERENZ ===========================*)
     STEP_10_E:
       IF ( Kippen.bpDone AND Querfahrt.bpDone ) THEN
         Kippen.bpReferenz    := FALSE;
@@ -42,15 +42,15 @@ IF ( blBetriebsartReferenz ) THEN
         steplReferenz := STEP_1000_E;
       END_IF
 
-(* REFERENZ ===========================*)
+    (* REFERENZ ===========================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(* REFERENZ ===========================*)
+    (* REFERENZ ===========================*)
     STEP_1000_E:
       BasisStationsParameter.bReferenzAbgeschlossen := TRUE;
 
-(* REFERENZ ===========================*)
+  (* REFERENZ ===========================*)
   END_CASE
 ELSE
   IF ( steplReferenz > STEP_0_E ) THEN

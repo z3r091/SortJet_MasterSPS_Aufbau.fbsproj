@@ -19,7 +19,7 @@ IF (  bpPositionieren ) THEN
   END_IF
 
   CASE steplPositionieren OF
-(*POSITIONIERUNG ====================*)
+    (*POSITIONIERUNG ====================*)
     STEP_0_E:
       (* Hinweis:
          - Timer zuruecksetzen
@@ -47,7 +47,7 @@ IF (  bpPositionieren ) THEN
 
       END_IF
 
-(*POSITIONIERUNG ====================*)
+    (*POSITIONIERUNG ====================*)
     STEP_10_E:
       (* Hinweis:
          - Sicherstellen das der Antrieb referenziert ist
@@ -63,8 +63,8 @@ IF (  bpPositionieren ) THEN
           steplPositionieren := STEP_1000_E;
         END_IF
 
-    ELSE
-      // Keine Referenz
+      ELSE
+        // Keine Referenz
         SpsError( eFehler_Station,
                   cMELDUNG_QUERFAHRT_KEINE_REFERENZ,
                   stStationsNummern.NummerIntern,
@@ -72,21 +72,21 @@ IF (  bpPositionieren ) THEN
                   wpgFehlerdaten );
       END_IF
 
-(*POSITIONIERUNG ====================*)
+    (*POSITIONIERUNG ====================*)
     STEP_20_E:
       (* Hinweis:
          - Vor dem Verfahren pruefen ob der Antrieb in einem Endschalter steht
           => Nach einer Stop- Situation
       *)
       IF (  NOT Antrieb.bpMinSchalterBelegt
-        AND NOT Antrieb.bpMaxSchalterBelegt )
+           AND NOT Antrieb.bpMaxSchalterBelegt )
       THEN
         steplPositionieren := STEP_100_E;
       ELSE
         steplPositionieren := STEP_30_E;
       END_IF
 
-(*POSITIONIERUNG ====================*)
+    (*POSITIONIERUNG ====================*)
     STEP_30_E:
       (* Hinweis:
          - Versuchen den Endschalter frei zufahren
@@ -94,8 +94,8 @@ IF (  bpPositionieren ) THEN
       tonlEndschalterFreifahren( IN := TRUE, PT := T#10s);
 
       toflHardwareEndschalterFrei( IN := ( NOT Antrieb.bpMinSchalterBelegt
-                                        OR NOT Antrieb.bpMaxSchalterBelegt ),
-                                  PT := t#1s);
+                                           OR NOT Antrieb.bpMaxSchalterBelegt ),
+                                   PT := t#1s);
 
       Antrieb.rpGeschwindigkeit := rgGeschwindigkeit05;
       Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -121,15 +121,15 @@ IF (  bpPositionieren ) THEN
           - Endschalter wird nicht frei !
       *)
       IF ( tonlEndschalterFreifahren.Q
-        AND (  Antrieb.bpMinSchalterBelegt
-          OR   Antrieb.bpMaxSchalterBelegt ))
+           AND (  Antrieb.bpMinSchalterBelegt
+                 OR   Antrieb.bpMaxSchalterBelegt ))
       THEN
         Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_QUERFAHRT_ENDSCHALTER_NICHT_FREI;
         steplPositionieren := STEP_900_E;
       END_IF
 
-(*POSITIONIERUNG ====================*)
+    (*POSITIONIERUNG ====================*)
     STEP_40_E:
       (* Hinweis:
          - Warten bis ANtrieb steht
@@ -138,7 +138,7 @@ IF (  bpPositionieren ) THEN
         steplPositionieren := STEP_100_E;
       END_IF
 
-(*POSITIONIERUNG ====================*)
+    (*POSITIONIERUNG ====================*)
     STEP_100_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< STARTEN DER POSITIONIERUNG >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -158,7 +158,7 @@ IF (  bpPositionieren ) THEN
       steplPositionieren := STEP_120_E;
 
 
-(*POSITIONIERUNG ====================*)
+    (*POSITIONIERUNG ====================*)
     STEP_120_E:
       (* Hinweis:
          - die Verfahrfreigabe wird waehrend des verfahrens genommen
@@ -175,17 +175,17 @@ IF (  bpPositionieren ) THEN
         wSps2ShuttleStopped[stStationsNummern.NummerIntern] := 0;
         MsgToMmi(SB0_SPS_SHUTTLEVORABPOSITIONIERUNGABBRUCH);
 
-      // Medlung ausgeben das ein Verfahrabbruch stattgefunden hat
+        // Medlung ausgeben das ein Verfahrabbruch stattgefunden hat
         IF (      bpSensorAuslauf
-          AND NOT bpSensorEinlauf )
+             AND NOT bpSensorEinlauf )
         THEN
           wpFehlerNr := cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_AUSLAUF_BELEGT;
         ELSIF (   bpSensorEinlauf
-          AND NOT bpSensorAuslauf )
+                AND NOT bpSensorAuslauf )
         THEN
           wpFehlerNr := cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_EINLAUF_BELEGT;
         ELSIF ( bpSensorEinlauf
-          AND   bpSensorAuslauf )
+                AND   bpSensorAuslauf )
         THEN
           wpFehlerNr := cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_EINLAUF_AUSLAUF_WAND_BELEGT;
         ELSE
@@ -210,7 +210,7 @@ IF (  bpPositionieren ) THEN
         steplPositionieren := STEP_1000_E;
       END_IF
 
-(*POSITIONIERUNG ====================*)
+    (*POSITIONIERUNG ====================*)
     STEP_130_E:
       (* Hinweis:
          - Verfahrauftrag wurde abgebrochen und wird neu gestartet
@@ -228,7 +228,7 @@ IF (  bpPositionieren ) THEN
         steplPositionieren := STEP_140_E;
       END_IF
 
-(*POSITIONIERUNG ====================*)
+    (*POSITIONIERUNG ====================*)
     STEP_140_E:
       (* Hinweis:
          - Verfahrauftrag wird abgebrochen und von der Oberflaeche neu angestossen
@@ -238,15 +238,15 @@ IF (  bpPositionieren ) THEN
       blAbbruchPositionierung       := TRUE;
       bpAuftragsstatusZuruecksetzen := TRUE;
 
-(*POSITIONIERUNG ====================*)
+    (*POSITIONIERUNG ====================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(*POSITIONIERUNG ====================*)
+    (*POSITIONIERUNG ====================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(*POSITIONIERUNG ====================*)
+  (*POSITIONIERUNG ====================*)
   END_CASE
 ELSE
   IF ( steplPositionieren > STEP_0_E ) THEN

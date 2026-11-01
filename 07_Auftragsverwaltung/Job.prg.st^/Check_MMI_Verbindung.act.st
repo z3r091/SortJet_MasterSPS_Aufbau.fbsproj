@@ -37,7 +37,7 @@ IF ( NOT TCPMain.l_fb_SortjetHMI.o_b_WatchdogOk ) THEN
 END_IF
 
 IF ( TCPMain.l_fb_SortjetHMI.o_b_WatchdogOk
-  AND blMerkerMmiNichtOk )
+     AND blMerkerMmiNichtOk )
 THEN
   blMerkerMmiNichtOk := FALSE;
   blMerkerNachrichtabsetzen := TRUE;

@@ -31,7 +31,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
      - Ausnahmesituationen abfangen
   *)
   IF ( bpAuslaufSensor
-    AND NOT bpEinlaufSensor )
+       AND NOT bpEinlaufSensor )
   THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     wpFehlerNr := cMELDUNG_DREHEN_SENSOR_AUSLAUF_BELEGT;
@@ -42,11 +42,11 @@ IF (  bpStarteAbsolutPositionierung ) THEN
     IF ( bpAusnahmeSituationAbfangen ) THEN
       bpAusnahmeSituationSensorBelegt := TRUE;
     ELSE
-       steplAbsolutPositionieren := STEP_900_E;
+      steplAbsolutPositionieren := STEP_900_E;
     END_IF
 
   ELSIF ( bpEinlaufSensor
-    AND NOT bpAuslaufSensor  )
+          AND NOT bpAuslaufSensor  )
   THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     wpFehlerNr := cMELDUNG_DREHEN_SENSOR_EINLAUF_BELEGT;
@@ -61,7 +61,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
     END_IF
 
   ELSIF ( bpEinlaufSensor
-    AND bpAuslaufSensor )
+          AND bpAuslaufSensor )
   THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     wpFehlerNr := cMELDUNG_DREHEN_SENSOR_EINLAUF_AUSLAUF_BELEGT;
@@ -83,7 +83,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
      - Starten der Schrittkette zum Positionieren
   *)
   CASE steplAbsolutPositionieren OF
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen zurueck setzen
@@ -102,7 +102,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
 
       steplAbsolutPositionieren := STEP_10_E;
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_10_E:
       (* Hinweis:
          - Es darf weder der Einlauf noch der Auslauf- Sensor während der Dreh-Bewegung belegt sein
@@ -115,19 +115,19 @@ IF (  bpStarteAbsolutPositionierung ) THEN
 
         ELSE
 
-            IF ( Arretierung.epStatusZylinder = eZylinderAusgefahren ) THEN
+          IF ( Arretierung.epStatusZylinder = eZylinderAusgefahren ) THEN
             (* Anmerkung:
                - Melden der Drehposition ans MMI zur Datensynchronisation für den 
                  weiteren Automatikabaluf 
             *)
-             wgSps2MmiDrehStation       := stStationsNummern.NummerIntern;
-             wgSps2MmiPosDrehStation    := epDrehPositionsStatus;
-             wgSps2MmiOldPosDrehStation := epDrehPositionsAlt;
-             MsgToMmi( auftragsnr_w := SB0_SPS_TURNSTATIONPOSITION );
-             steplAbsolutPositionieren := STEP_1000_E;
-           ELSE
-             steplAbsolutPositionieren := STEP_200_E;
-           END_IF
+            wgSps2MmiDrehStation       := stStationsNummern.NummerIntern;
+            wgSps2MmiPosDrehStation    := epDrehPositionsStatus;
+            wgSps2MmiOldPosDrehStation := epDrehPositionsAlt;
+            MsgToMmi( auftragsnr_w := SB0_SPS_TURNSTATIONPOSITION );
+            steplAbsolutPositionieren := STEP_1000_E;
+          ELSE
+            steplAbsolutPositionieren := STEP_200_E;
+          END_IF
 
 
 
@@ -151,7 +151,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
 
       END_IF
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_20_E:
       (* ---------------------------------------------------------------------------------------
       //  SICHERUNGSBOLZEN EINFAHREN
@@ -163,7 +163,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
       Arretierung.bpStartEinfahren := TRUE;
       steplAbsolutPositionieren := STEP_30_E;
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_30_E:
       (* Hinweis:
          - Arretierung ist eingefahren
@@ -182,7 +182,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
         steplAbsolutPositionieren := STEP_900_E;
       END_IF
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_35_E:
 
       (* Hinweis:
@@ -192,7 +192,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
         steplAbsolutPositionieren := STEP_40_E;
       END_IF
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_40_E:
       (* ---------------------------------------------------------------------------------------
       //  ENDSCHALTER PRUEFEN
@@ -202,14 +202,14 @@ IF (  bpStarteAbsolutPositionierung ) THEN
       // ---------------------------------------------------------------------------------------*)
 
       IF (  NOT Antrieb.bpMinSchalterBelegt
-        AND NOT Antrieb.bpMaxSchalterBelegt )
+           AND NOT Antrieb.bpMaxSchalterBelegt )
       THEN
         steplAbsolutPositionieren := STEP_100_E;
       ELSE
         steplAbsolutPositionieren := STEP_50_E;
       END_IF
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_50_E:
       (* Hinweis:
          - Versuchen den Endschalter frei zufahren 
@@ -219,7 +219,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
       tonlEndschalterFreifahren( IN := TRUE, PT:= T#10s);
 
       toflHardwareEndschalterFrei( IN := ( NOT Antrieb.bpMaxSchalterBelegt
-                                        AND NOT Antrieb.bpMinSchalterBelegt),
+                                           AND NOT Antrieb.bpMinSchalterBelegt),
                                    PT := t#1s);
 
       Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReferenzGeschwindigkeit;
@@ -247,21 +247,21 @@ IF (  bpStarteAbsolutPositionierung ) THEN
          - Antrieb
       *)
       IF ( tonlEndschalterFreifahren.Q
-        AND ( Antrieb.bpMinSchalterBelegt
-          OR  Antrieb.bpMaxSchalterBelegt ))
-     THEN
-       Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-       wpFehlerNr := cMELDUNG_DREHEN_ENDSCHALTER_NICHT_FREI;
-       steplAbsolutPositionieren := STEP_900_E;
-     END_IF
+           AND ( Antrieb.bpMinSchalterBelegt
+                 OR  Antrieb.bpMaxSchalterBelegt ))
+      THEN
+        Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_DREHEN_ENDSCHALTER_NICHT_FREI;
+        steplAbsolutPositionieren := STEP_900_E;
+      END_IF
 
-     IF ( Antrieb.bpFehler ) THEN
-       Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-       wpFehlerNr := cMELDUNG_ANTRIEB_DREHEN;
-       steplAbsolutPositionieren := STEP_900_E;
-     END_IF
+      IF ( Antrieb.bpFehler ) THEN
+        Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_ANTRIEB_DREHEN;
+        steplAbsolutPositionieren := STEP_900_E;
+      END_IF
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_60_E:
       (* Hinweis:
          - Erzwungene Pause, damit der Antrieb wieder ordnungsgemaeß schaltet
@@ -273,7 +273,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
         steplAbsolutPositionieren := STEP_100_E;
       END_IF
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  PRUEFEN DER ZIEL-POSITION
@@ -292,13 +292,13 @@ IF (  bpStarteAbsolutPositionierung ) THEN
         eDrehPosition90Grad:
           rpZielPositionition := ppParameterBaustein.rDrehposition_90_Grad;
 
-      ELSE
+        ELSE
           wpFehlerNr := cMELDUNG_DREHEN_UNDEFINIERTE_POSITION;
           steplAbsolutPositionieren := STEP_900_E;
 
       END_CASE
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_110_E:
       (* Hinweis:
          - Initialisierung der Daten
@@ -315,7 +315,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
 
       steplAbsolutPositionieren := STEP_120_E;
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_120_E:
       (* ---------------------------------------------------------------------------------------
       //  STARTEN DER BEWEGUNG
@@ -328,7 +328,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
 
       steplAbsolutPositionieren := STEP_130_E;
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_130_E:
       (* Hinweis:
          - Drehbewegung abgeschlossen
@@ -348,7 +348,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
         steplAbsolutPositionieren := STEP_900_E;
       END_IF
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_140_E:
       (* Anmerkung:
          - Setzen der Arretierung
@@ -360,7 +360,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
         steplAbsolutPositionieren := STEP_200_E;
       END_IF
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_200_E:
       (* ---------------------------------------------------------------------------------------
       //  ARRETIERUNG AUSFAHREN
@@ -368,48 +368,48 @@ IF (  bpStarteAbsolutPositionierung ) THEN
       //  Hinweis:
       // - n/c
       // ---------------------------------------------------------------------------------------*)
-         CASE epZielPosition OF
+      CASE epZielPosition OF
 
           eDrehPosition0Grad,
-          eDrehPosition90Grad:
+            eDrehPosition90Grad:
 
-            Arretierung.bpStartAusfahren := TRUE;
-            steplAbsolutPositionieren := STEP_210_E;
+          Arretierung.bpStartAusfahren := TRUE;
+          steplAbsolutPositionieren := STEP_210_E;
 
-     ELSE
-           wgSps2MmiDrehStation       := stStationsNummern.NummerIntern;
-           wgSps2MmiPosDrehStation    := epDrehPositionsStatus;
-           wgSps2MmiOldPosDrehStation := epDrehPositionsAlt;
-           MsgToMmi( auftragsnr_w := SB0_SPS_TURNSTATIONPOSITION );
+        ELSE
+          wgSps2MmiDrehStation       := stStationsNummern.NummerIntern;
+          wgSps2MmiPosDrehStation    := epDrehPositionsStatus;
+          wgSps2MmiOldPosDrehStation := epDrehPositionsAlt;
+          MsgToMmi( auftragsnr_w := SB0_SPS_TURNSTATIONPOSITION );
 
-           steplAbsolutPositionieren := STEP_1000_E;
-         END_CASE
+          steplAbsolutPositionieren := STEP_1000_E;
+      END_CASE
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_210_E:
       (* Hinweis:
          - Arretierung ist ausgefahren
       *)
 
-         CASE epZielPosition OF
+      CASE epZielPosition OF
 
           eDrehPosition0Grad,
-          eDrehPosition90Grad:
+            eDrehPosition90Grad:
 
-            IF ( Arretierung.bpDone ) THEN
-              Arretierung.bpStartAusfahren := FALSE;
-              (* Anmerkung:
-                   - melden der Drehposition ans MMI zur
-                     Datensynchronisation für den weiteren Automatikabaluf 
-              *)
-              wgSps2MmiDrehStation       := stStationsNummern.NummerIntern;
-              wgSps2MmiPosDrehStation    := epDrehPositionsStatus;
-              wgSps2MmiOldPosDrehStation := epDrehPositionsAlt;
-              MsgToMmi( auftragsnr_w := SB0_SPS_TURNSTATIONPOSITION );
-              steplAbsolutPositionieren := STEP_1000_E;
-            END_IF
+          IF ( Arretierung.bpDone ) THEN
+            Arretierung.bpStartAusfahren := FALSE;
+            (* Anmerkung:
+                 - melden der Drehposition ans MMI zur
+                   Datensynchronisation für den weiteren Automatikabaluf 
+            *)
+            wgSps2MmiDrehStation       := stStationsNummern.NummerIntern;
+            wgSps2MmiPosDrehStation    := epDrehPositionsStatus;
+            wgSps2MmiOldPosDrehStation := epDrehPositionsAlt;
+            MsgToMmi( auftragsnr_w := SB0_SPS_TURNSTATIONPOSITION );
+            steplAbsolutPositionieren := STEP_1000_E;
+          END_IF
 
-         END_CASE
+      END_CASE
 
       (* Fehlerbehandlung
          - Arretierung [Pneumatik Zylinder]
@@ -420,16 +420,16 @@ IF (  bpStarteAbsolutPositionierung ) THEN
         steplAbsolutPositionieren := STEP_900_E;
       END_IF
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(* ABSOLUT POSITIONIEREN =========================*)
+    (* ABSOLUT POSITIONIEREN =========================*)
     STEP_1000_E:
       bpDone := TRUE;
       bpAbsolutPositionierungAbgeschlossen := TRUE;
 
-(* ABSOLUT POSITIONIEREN =========================*)
+  (* ABSOLUT POSITIONIEREN =========================*)
   END_CASE
 
 END_IF

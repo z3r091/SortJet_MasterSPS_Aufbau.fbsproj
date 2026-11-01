@@ -24,8 +24,8 @@ ELSIF ( NOT blBetriebsartHand ) THEN
 END_IF
 
 blHubrahmenInPosition := (     Hubrahmen.bpDone
-                          AND ( (     ( elHubrahmenZielAchse = elRiemenAchse )
-                                  AND ( Hubrahmen.epStatusZylinder = eZylinderAusgefahren ) )
-                             OR (     ( elHubrahmenZielAchse <> elRiemenAchse )
-                                  AND ( Hubrahmen.epStatusZylinder = eZylinderEingefahren ) ) ) );
+                           AND ( (     ( elHubrahmenZielAchse = elRiemenAchse )
+                                   AND ( Hubrahmen.epStatusZylinder = eZylinderAusgefahren ) )
+                                 OR (     ( elHubrahmenZielAchse <> elRiemenAchse )
+                                      AND ( Hubrahmen.epStatusZylinder = eZylinderEingefahren ) ) ) );
 END_ACTION

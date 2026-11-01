@@ -90,7 +90,7 @@ ELSE
          - Es wurde eine Scheibenkante erkannt [Scheibenanfang]
       *)
       rtlScheibenAnfangErkannt( CLK := tonlSensor.Q
-                                       AND NOT blScheibenAnfangErkannt);
+                                AND NOT blScheibenAnfangErkannt);
 
       IF ( rtlScheibenAnfangErkannt.Q ) THEN
         blScheibenAnfangErkannt := TRUE;

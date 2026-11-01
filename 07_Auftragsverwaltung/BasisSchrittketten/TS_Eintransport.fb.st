@@ -46,32 +46,32 @@ END_VAR
 (***************************************************************************************************)
 IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
   CASE steplSchritt OF
-(*EINTRANSPORT  =============================== ============*)
+    (*EINTRANSPORT  =============================== ============*)
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefen des Sicherheitskreises
       *)
       IF  (checkSafetyCircuitsNotBlocked(starrTransferShuttleBasisParameter[wStation])
-        AND NOT starrTransfershuttleBasisParameter[wStation].bReset )
+            AND NOT starrTransfershuttleBasisParameter[wStation].bReset )
       THEN
         steplSchritt := STEP_100_E;
       END_IF
 
-(*EINTRANSPORT  ===========================================*)
+    (*EINTRANSPORT  ===========================================*)
     STEP_100_E:
       (* Anmerkung
          - Zielstation abfragen ob diese bereit ist zum Austransport         
       *)
-    wlEintransportstation := Auftragsdaten.wTransferstationsNr1;
-     ilScheibenZuQuittieren := WORD_TO_INT( Auftragsdaten.wAnzahlScheiben);
+      wlEintransportstation := Auftragsdaten.wTransferstationsNr1;
+      ilScheibenZuQuittieren := WORD_TO_INT( Auftragsdaten.wAnzahlScheiben);
 
       CASE wlEintransportstation OF
 
-        (* Hinweis:
-           - Ruecktransport durch den Speicher beruecksichtigen
-        *)
-        cERSTES_INPUTSHUTTLE..cLETZTES_INPUTSHUTTLE,
-        cERSTES_OUTPUTSHUTTLE..cLETZTES_OUTPUTSHUTTLE:
+          (* Hinweis:
+             - Ruecktransport durch den Speicher beruecksichtigen
+          *)
+          cERSTES_INPUTSHUTTLE..cLETZTES_INPUTSHUTTLE,
+            cERSTES_OUTPUTSHUTTLE..cLETZTES_OUTPUTSHUTTLE:
           IF ( Job_Shuttle.AuftragsdatenWand[Auftragsdaten.wTransferstationsNr1, Auftragsdaten.wTransferwand].wAuftrag = eStation_Austransport ) THEN
             steplSchritt := STEP_110_E;
 
@@ -99,7 +99,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
                     AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
                     wpgFehlerdaten );
 
-           steplSchritt := STEP_900_E;
+          steplSchritt := STEP_900_E;
 
       END_CASE
 
@@ -117,7 +117,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-(*EINTRANSPORT  ===========================================*)
+    (*EINTRANSPORT  ===========================================*)
     STEP_110_E:
 
       (* Hinweis:
@@ -127,7 +127,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
         starrTransfershuttleBasisParameter[wStation].bScheibentrennen[cWAND_1] := NOT Auftragsdaten.stAuftragsInformationen.cBIT_SRC_WALL_1_EMPTY;
       ELSE
         starrTransfershuttleBasisParameter[wStation].bScheibentrennen[cWAND_1] := NOT Auftragsdaten.stAuftragsInformationen.cBIT_SRC_WALL_2_EMPTY;
-    END_IF
+      END_IF
 
       starrTransfershuttleBasisParameter[wStation].pAuftrag[cWAND_1] := Auftragsdaten;
       starrTransfershuttleBasisParameter[wStation].bEintransport[cWAND_1] := TRUE;
@@ -135,7 +135,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       steplSchritt := STEP_400_E;
 
-(*EINTRANSPORT  ===========================================*)
+    (*EINTRANSPORT  ===========================================*)
     STEP_400_E:
       (* ---------------------------------------------------------------------------------------
       //  QUITTIERUNGEN UND EINTRANSPORT- ABSCHLUSS
@@ -200,7 +200,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       END_IF
 
-(*AUSTRANSPORT ==============================================*)
+    (*AUSTRANSPORT ==============================================*)
     STEP_410_E:
       (* Anmerkung:
          - Gueltige Anzahl von Scheiben wurden quittiert
@@ -222,12 +222,12 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
                   AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
                   wpgFehlerdaten );
 
-                starrTransfershuttleBasisParameter[wStation].bEintransport[cWAND_1] := FALSE;
-                steplSchritt := STEP_900_E;
+        starrTransfershuttleBasisParameter[wStation].bEintransport[cWAND_1] := FALSE;
+        steplSchritt := STEP_900_E;
 
-        (* Anmerkung:
-           - Zu viele Scheiben quittiert
-        *)
+      (* Anmerkung:
+         - Zu viele Scheiben quittiert
+      *)
       ELSIF ( ilScheibenZuQuittieren < 0 ) THEN
         wpgFehlerdaten[0] := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerExtern;
         wpgFehlerdaten[1] := cWAND_1;
@@ -242,7 +242,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
         steplSchritt := STEP_900_E;
       END_IF
   
-(*EINTRANSPORT  ===========================================*)
+    (*EINTRANSPORT  ===========================================*)
     STEP_900_E:
       (* Hinweis:
          - Berücksichtigung wie Transportiert wurde
@@ -250,7 +250,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       *)
       bpFehler := TRUE;
 
-(*EINTRANSPORT  ===========================================*)
+    (*EINTRANSPORT  ===========================================*)
     STEP_1000_E:
       bpDone := TRUE;
 
@@ -270,7 +270,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       END_IF
 
-(*EINTRANSPORT  ===========================================*)
+  (*EINTRANSPORT  ===========================================*)
   END_CASE
 END_IF
 

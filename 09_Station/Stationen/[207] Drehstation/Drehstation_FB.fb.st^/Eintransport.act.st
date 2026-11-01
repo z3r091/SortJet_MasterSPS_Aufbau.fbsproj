@@ -10,7 +10,7 @@ ACTION Eintransport
 (* EINTRANSPORT *)
 (***************************************************************************************************)
 IF (  BasisStationsParameter.bEintransport[cWAND_1]
-  AND blBetriebsartAutomatik )
+     AND blBetriebsartAutomatik )
 THEN
 
   // Ausnahmesituation
@@ -49,29 +49,29 @@ THEN
 
 
   CASE steplEintransport OF
-(*EINTRANSPORT ==================================================================*)
+    (*EINTRANSPORT ==================================================================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen zurueck setzen
          - Sicherstellen dass das Geblaese aktiv ist
       *)
-       IF ( blGeblaeseAktiv AND NOT bpVorabDrehenAktiv ) THEN
+      IF ( blGeblaeseAktiv AND NOT bpVorabDrehenAktiv ) THEN
 
-         steplEintransport := STEP_100_E;
-       END_IF
+        steplEintransport := STEP_100_E;
+      END_IF
 
-       (* Fehlerbehandlung:
-          - Geblaese
-       *)
-       IF ( Geblaese.bpFehler ) THEN
-         Geblaese.bpStart := FALSE;
+      (* Fehlerbehandlung:
+         - Geblaese
+      *)
+      IF ( Geblaese.bpFehler ) THEN
+        Geblaese.bpStart := FALSE;
 
-         BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_GEBLAESE;
+        BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_GEBLAESE;
 
-         steplEintransport := STEP_900_E;
-       END_IF
+        steplEintransport := STEP_900_E;
+      END_IF
 
-(*EINTRANSPORT ==================================================================*)
+    (*EINTRANSPORT ==================================================================*)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  ANSTEUERUNG DER BAUSTEIN-KOMPONENTEN
@@ -105,23 +105,23 @@ THEN
         Drehen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eDrehen_Sollposition;
         Drehen.bpStarteAbsolutPositionierung := TRUE;
       END_IF
-    IF Drehen.epZielPosition <> eDrehPosition0Grad THEN
-    BasisStationsParameter.wFehlerNummer := cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_DREHPOSITION;
+      IF Drehen.epZielPosition <> eDrehPosition0Grad THEN
+        BasisStationsParameter.wFehlerNummer := cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_DREHPOSITION;
         steplEintransport := STEP_900_E;
-    ELSE
+      ELSE
         steplEintransport := STEP_110_E;
-    END_IF
+      END_IF
 
 
-(*EINTRANSPORT ==================================================================*)
+    (*EINTRANSPORT ==================================================================*)
     STEP_110_E:
       (* Hinweis:
          - Drehung abgeschlossen [Drehen von 0- 180 Grad ; 180 - 0 Grad ]
       *)
       IF ( ( Drehen.bpDone OR NOT Drehen.bpStarteAbsolutPositionierung )
-        AND Kippen.bpDone
-        AND Querachse.bpDone
-        AND Dickenverstellung.bpDone )
+           AND Kippen.bpDone
+           AND Querachse.bpDone
+           AND Dickenverstellung.bpDone )
       THEN
         Dickenverstellung.bpStartPneumatik   := FALSE;
         Querachse.bpStartPneumatik           := FALSE;
@@ -131,13 +131,13 @@ THEN
         steplEintransport := STEP_120_E;
       END_IF
 
-(*EINTRANSPORT ==================================================================*)
+    (*EINTRANSPORT ==================================================================*)
     STEP_120_E:
       (* Hinweis:
          - Sicherstellen das die Zielposition erreicht worden ist
       *)
       IF ( Querfahrt.bpZielPositionErreicht OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt ) THEN
-         steplEintransport := STEP_200_E;
+        steplEintransport := STEP_200_E;
 
       ELSE
         BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(Querfahrt.rpAktuellePosition);
@@ -149,7 +149,7 @@ THEN
       END_IF
 
 
-(*EINTRANSPORT ==================================================================*)
+    (*EINTRANSPORT ==================================================================*)
     STEP_200_E:
       (* ---------------------------------------------------------------------------------------
       //  STARTEN DES GLAS-TRANSPORTS [EINTRANSPORT]
@@ -171,7 +171,7 @@ THEN
         steplEintransport := STEP_300_E;
       END_IF
 
-(*EINTRANSPORT ==================================================================*)
+    (*EINTRANSPORT ==================================================================*)
     STEP_300_E:
       (* ---------------------------------------------------------------------------------------
       //  OPTION - EINTRANSPORT BIT LETZTE SCHEIBE = FALSE [KEINE DREH-BEWEGUNG] 
@@ -189,7 +189,7 @@ THEN
         steplEintransport := STEP_1000_E;
       END_IF
 
-(*EINTRANSPORT ==================================================================*)
+    (*EINTRANSPORT ==================================================================*)
     STEP_400_E:
       (* ---------------------------------------------------------------------------------------
       //  OPTION - EINTRANSPORT BIT LETZTE SCHEIBE = TRUE [DREH-BEWEGUNG] 
@@ -209,24 +209,24 @@ THEN
         Drehen.bpStarteAbsolutPositionierung := TRUE;
 
 
-          CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport OF
-             eDrehPosition0Grad:
+        CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport OF
+          eDrehPosition0Grad:
+            Querachse.epOeffnungsStellung := eZylinderStellung16mm;
+            Querachse.bpStartPneumatik    := TRUE;
+
+          eDrehPosition180Grad:
+            IF ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke13mm ) THEN
               Querachse.epOeffnungsStellung := eZylinderStellung16mm;
               Querachse.bpStartPneumatik    := TRUE;
+            ELSIF (BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke19mm ) THEN
+              Querachse.epOeffnungsStellung := eZylinderStellung23mm;
+              Querachse.bpStartPneumatik    := TRUE;
+            ELSIF (BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke24mm ) THEN
+              Querachse.epOeffnungsStellung := eZylinderStellung29mm;
+              Querachse.bpStartPneumatik    := TRUE;
+            END_IF
 
-             eDrehPosition180Grad:
-               IF ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke13mm ) THEN
-                 Querachse.epOeffnungsStellung := eZylinderStellung16mm;
-                 Querachse.bpStartPneumatik    := TRUE;
-               ELSIF (BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke19mm ) THEN
-                 Querachse.epOeffnungsStellung := eZylinderStellung23mm;
-                 Querachse.bpStartPneumatik    := TRUE;
-               ELSIF (BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke24mm ) THEN
-                 Querachse.epOeffnungsStellung := eZylinderStellung29mm;
-                 Querachse.bpStartPneumatik    := TRUE;
-               END_IF
-
-          END_CASE
+        END_CASE
 
         Kippen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachEintransport;
         Kippen.bpPositionieren := TRUE;
@@ -245,21 +245,21 @@ THEN
         ELSE
 
           CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport OF
-             eDrehPosition0Grad:
+            eDrehPosition0Grad:
               Querachse.epOeffnungsStellung := eZylinderStellung16mm;
               Querachse.bpStartPneumatik    := TRUE;
 
-             eDrehPosition180Grad:
-               IF ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke13mm ) THEN
-                 Querachse.epOeffnungsStellung := eZylinderStellung16mm;
-                 Querachse.bpStartPneumatik    := TRUE;
-               ELSIF (BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke19mm ) THEN
-                 Querachse.epOeffnungsStellung := eZylinderStellung23mm;
-                 Querachse.bpStartPneumatik    := TRUE;
-               ELSIF (BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke24mm ) THEN
-                 Querachse.epOeffnungsStellung := eZylinderStellung29mm;
-                 Querachse.bpStartPneumatik    := TRUE;
-               END_IF
+            eDrehPosition180Grad:
+              IF ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke13mm ) THEN
+                Querachse.epOeffnungsStellung := eZylinderStellung16mm;
+                Querachse.bpStartPneumatik    := TRUE;
+              ELSIF (BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke19mm ) THEN
+                Querachse.epOeffnungsStellung := eZylinderStellung23mm;
+                Querachse.bpStartPneumatik    := TRUE;
+              ELSIF (BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke24mm ) THEN
+                Querachse.epOeffnungsStellung := eZylinderStellung29mm;
+                Querachse.bpStartPneumatik    := TRUE;
+              END_IF
 
           END_CASE
 
@@ -269,7 +269,7 @@ THEN
 
       END_IF
 
-(*EINTRANSPORT ==================================================================*)
+    (*EINTRANSPORT ==================================================================*)
     STEP_410_E:
       (* Hinweis:
          - Ansteuerung Drehen 
@@ -298,35 +298,35 @@ THEN
 
       END_CASE
 
-          CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport OF
-             eDrehPosition0Grad:
-              Querachse.epOeffnungsStellung := eZylinderStellung16mm;
-              Querachse.bpStartPneumatik    := TRUE;
+      CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport OF
+        eDrehPosition0Grad:
+          Querachse.epOeffnungsStellung := eZylinderStellung16mm;
+          Querachse.bpStartPneumatik    := TRUE;
 
-             eDrehPosition180Grad:
-               IF ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke13mm ) THEN
-                 Querachse.epOeffnungsStellung := eZylinderStellung16mm;
-                 Querachse.bpStartPneumatik    := TRUE;
-               ELSIF (BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke19mm ) THEN
-                 Querachse.epOeffnungsStellung := eZylinderStellung23mm;
-                 Querachse.bpStartPneumatik    := TRUE;
-               ELSIF (BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke24mm ) THEN
-                 Querachse.epOeffnungsStellung := eZylinderStellung29mm;
-                 Querachse.bpStartPneumatik    := TRUE;
-               END_IF
+        eDrehPosition180Grad:
+          IF ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke13mm ) THEN
+            Querachse.epOeffnungsStellung := eZylinderStellung16mm;
+            Querachse.bpStartPneumatik    := TRUE;
+          ELSIF (BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke19mm ) THEN
+            Querachse.epOeffnungsStellung := eZylinderStellung23mm;
+            Querachse.bpStartPneumatik    := TRUE;
+          ELSIF (BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= Allgemeine_MKs.wgMKScheibenDicke24mm ) THEN
+            Querachse.epOeffnungsStellung := eZylinderStellung29mm;
+            Querachse.bpStartPneumatik    := TRUE;
+          END_IF
 
-          END_CASE
+      END_CASE
 
       steplEintransport := STEP_420_E;
 
 
-(*EINTRANSPORT ==================================================================*)
+    (*EINTRANSPORT ==================================================================*)
     STEP_420_E:
 
       (* => Betriebsart des Vortransport abloeschen
       *)
       IF ( Glastransport.bpDone
-        AND ( Glastransport.bpVortransport OR Glastransport.bpVortransportRueckwaertig ) ) AND Querachse.bpDone
+           AND ( Glastransport.bpVortransport OR Glastransport.bpVortransportRueckwaertig ) ) AND Querachse.bpDone
       THEN
         Glastransport.bpVortransport             := FALSE;
         Glastransport.bpVortransportRueckwaertig := FALSE;
@@ -336,8 +336,8 @@ THEN
          - Drehung abgeschlossen [Drehen von 0- 180 Grad ; 180 - 0 Grad ]
       *)
       IF (  ( Drehen.bpDone OR NOT Drehen.bpStarteAbsolutPositionierung )
-        AND Kippen.bpDone 
-        AND NOT Glastransport.bpVortransport AND NOT Glastransport.bpVortransportRueckwaertig )
+           AND Kippen.bpDone 
+           AND NOT Glastransport.bpVortransport AND NOT Glastransport.bpVortransportRueckwaertig )
       THEN
         Drehen.bpStarteAbsolutPositionierung := FALSE;
         Kippen.bpPositionieren := FALSE;
@@ -353,15 +353,15 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-(*EINTRANSPORT ==================================================================*)
+    (*EINTRANSPORT ==================================================================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*EINTRANSPORT ==================================================================*)
+    (*EINTRANSPORT ==================================================================*)
     STEP_1000_E:
       BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] := TRUE;
 
-(*EINTRANSPORT ==================================================================*)
+  (*EINTRANSPORT ==================================================================*)
   END_CASE
 
 ELSE

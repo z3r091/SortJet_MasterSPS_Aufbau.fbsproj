@@ -20,7 +20,7 @@ FOR INDEX := 1 TO 10 DO
 
   IF awpArray[INDEX] = wpValueToFind THEN
     findInWORDArray := TRUE;
-      EXIT;
+    EXIT;
   END_IF
 
 END_FOR

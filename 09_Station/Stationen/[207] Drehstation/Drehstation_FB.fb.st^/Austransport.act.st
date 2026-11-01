@@ -10,7 +10,7 @@ ACTION Austransport
 (* AUSTRANSPORT  *)
 (***************************************************************************************************)
 IF (  BasisStationsParameter.bAustransport[cWAND_1]
-  AND blBetriebsartAutomatik )
+     AND blBetriebsartAutomatik )
 THEN
 
   // Ausnahmesituation
@@ -21,15 +21,15 @@ THEN
     steplEintransport := STEP_900_E;
   END_IF
   
-   IF ( Drehen.bpFehler ) THEN
-     Drehen.bpStarteAbsolutPositionierung := FALSE;
-     BasisStationsParameter.wFehlerNummer := Drehen.wpFehlerNr;
-     steplAustransport := STEP_900_E;
-   END_IF
+  IF ( Drehen.bpFehler ) THEN
+    Drehen.bpStarteAbsolutPositionierung := FALSE;
+    BasisStationsParameter.wFehlerNummer := Drehen.wpFehlerNr;
+    steplAustransport := STEP_900_E;
+  END_IF
 
-   IF ( Kippen.bpFehler ) THEN
-     Kippen.bpPositionieren  := FALSE;
-     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
+  IF ( Kippen.bpFehler ) THEN
+    Kippen.bpPositionieren  := FALSE;
+    BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
     steplAustransport := STEP_900_E;
   END_IF
   
@@ -41,13 +41,13 @@ THEN
 
 
   CASE steplAustransport OF
-(*AUSTRANSPORT =========================*)
+    (*AUSTRANSPORT =========================*)
     STEP_0_E:
       (* Hinweis:
          - Sicherstellen dass das Geblaese aktiv ist
       *)
       IF ( blGeblaeseAktiv
-        AND NOT bpVorabDrehenAktiv )
+           AND NOT bpVorabDrehenAktiv )
       THEN
         steplAustransport := STEP_10_E;
       END_IF
@@ -61,7 +61,7 @@ THEN
         steplAustransport := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT =========================*)
+    (*AUSTRANSPORT =========================*)
     STEP_10_E:
       (* ---------------------------------------------------------------------------------------
       //  OPTIONALE - KOMPONENTEN
@@ -96,15 +96,15 @@ THEN
         Drehen.bpStarteAbsolutPositionierung := TRUE;
       END_IF
 
-    IF Drehen.epZielPosition <> eDrehPosition90Grad THEN
-    BasisStationsParameter.wFehlerNummer := cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_DREHPOSITION;
+      IF Drehen.epZielPosition <> eDrehPosition90Grad THEN
+        BasisStationsParameter.wFehlerNummer := cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_DREHPOSITION;
         steplAustransport := STEP_900_E;
-    ELSE
+      ELSE
         steplAustransport := STEP_50_E;
-    END_IF
+      END_IF
 
 
-(*AUSTRANSPORT =========================*)
+    (*AUSTRANSPORT =========================*)
     STEP_50_E:
       (* ---------------------------------------------------------------------------------------
       //  OPTIONALE - KOMPONENTEN PROZESSES ABGESCHLOSSEN
@@ -114,8 +114,8 @@ THEN
       // ---------------------------------------------------------------------------------------*)
 
       IF ( ( Querachse.bpDone OR NOT Querachse.bpStartPneumatik )
-        AND Kippen.bpDone
-        AND ( Drehen.bpDone OR NOT Drehen.bpStarteAbsolutPositionierung ))
+           AND Kippen.bpDone
+           AND ( Drehen.bpDone OR NOT Drehen.bpStarteAbsolutPositionierung ))
       THEN
         Querachse.bpStartPneumatik           := FALSE;
         Kippen.bpPositionieren               := FALSE;
@@ -124,13 +124,13 @@ THEN
         steplAustransport := STEP_100_E;
       END_IF
 
-(*AUSTRANSPORT ==================================================================*)
+    (*AUSTRANSPORT ==================================================================*)
     STEP_100_E:
       (* Hinweis:
          - Sicherstellen das die Zielposition erreicht worden ist
       *)
       IF ( Querfahrt.bpZielPositionErreicht OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt ) THEN
-         steplAustransport := STEP_110_E;
+        steplAustransport := STEP_110_E;
 
       ELSE
         BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(Querfahrt.rpAktuellePosition);
@@ -141,7 +141,7 @@ THEN
 
       END_IF
 
-(*AUSTRANSPORT =========================*)
+    (*AUSTRANSPORT =========================*)
     STEP_110_E:
       (* ---------------------------------------------------------------------------------------
       //  STARTEN DES AUSTRANSPORTS
@@ -156,7 +156,7 @@ THEN
 
       steplAustransport := STEP_120_E;
 
-(*AUSTRANSPORT =========================*)
+    (*AUSTRANSPORT =========================*)
     STEP_120_E:
       (* Hinweis:
          - Austransport abgeschlossen
@@ -178,7 +178,7 @@ THEN
         steplAustransport := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT =========================*)
+    (*AUSTRANSPORT =========================*)
     STEP_200_E:
       (* ---------------------------------------------------------------------------------------
       //  OPTION - KOMPONENTEN ANSTEUERN
@@ -198,7 +198,7 @@ THEN
       (* Hinweis:
          - Ansteuerung Kippen
       *)
-    IF BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBIT_SRCSTATION_EMPTY THEN
+      IF BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBIT_SRCSTATION_EMPTY THEN
         Kippen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachAustransport;
         Kippen.bpPositionieren  := TRUE;
       END_IF
@@ -206,13 +206,13 @@ THEN
       steplAustransport :=  STEP_210_E;
 
 
-(*AUSTRANSPORT =========================*)
+    (*AUSTRANSPORT =========================*)
     STEP_210_E:
       (* Hinweis:
          - Drehung abgeschlossen 
       *)
       IF (  ( Drehen.bpDone OR NOT Drehen.bpStarteAbsolutPositionierung )
-        AND   Kippen.bpDone OR NOT Kippen.bpPositionieren )
+           AND   Kippen.bpDone OR NOT Kippen.bpPositionieren )
       THEN
         Kippen.bpPositionieren := FALSE;
 
@@ -220,15 +220,15 @@ THEN
         steplAustransport :=  STEP_1000_E;
       END_IF
 
-(*AUSTRANSPORT =========================*)
+    (*AUSTRANSPORT =========================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*AUSTRANSPORT =========================*)
+    (*AUSTRANSPORT =========================*)
     STEP_1000_E:
       BasisStationsParameter.bAustransportAbgeschlossen[cWAND_1] := TRUE;
 
-(*AUSTRANSPORT =========================*)
+  (*AUSTRANSPORT =========================*)
   END_CASE
 ELSE
 

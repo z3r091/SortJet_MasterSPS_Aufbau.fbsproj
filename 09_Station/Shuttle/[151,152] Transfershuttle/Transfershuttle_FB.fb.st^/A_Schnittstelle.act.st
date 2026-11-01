@@ -38,17 +38,17 @@ stpOutTransportVerbund := Glastransport.stpOutTransportVerbund;
 (* BAUSTEIN BASISPARAMETER *)
 BasisStationsParameter.bIstReferenziert        := Querfahrt.Antrieb.bpIstReferenziert;
 BasisStationsParameter.bAuftragAktiv           := (   BasisStationsParameter.bAnlegen
-                                                   OR BasisStationsParameter.bAbnehmen
-                                                   OR BasisStationsParameter.bEintransport[cWAND_1]
-                                                   OR BasisStationsParameter.bAustransport[cWAND_1]
-                                                   OR BasisStationsParameter.bDurchtransport[cWAND_1]
-                                                   OR BasisStationsParameter.bVorabpositionieren
-                                                   OR BasisStationsParameter.bGlaslaengenmessung
-                                                   OR BasisStationsParameter.bTransportkopplung[cWAND_1]
-                                                   OR BasisStationsParameter.bVortransport[cWAND_1]
-                                                   OR BasisStationsParameter.bReset
-                                                   OR BasisStationsParameter.bReferenz
-                                                   OR BasisStationsParameter.bCheck );
+                                                    OR BasisStationsParameter.bAbnehmen
+                                                    OR BasisStationsParameter.bEintransport[cWAND_1]
+                                                    OR BasisStationsParameter.bAustransport[cWAND_1]
+                                                    OR BasisStationsParameter.bDurchtransport[cWAND_1]
+                                                    OR BasisStationsParameter.bVorabpositionieren
+                                                    OR BasisStationsParameter.bGlaslaengenmessung
+                                                    OR BasisStationsParameter.bTransportkopplung[cWAND_1]
+                                                    OR BasisStationsParameter.bVortransport[cWAND_1]
+                                                    OR BasisStationsParameter.bReset
+                                                    OR BasisStationsParameter.bReferenz
+                                                    OR BasisStationsParameter.bCheck );
 
 dwlHandfunktionen                               := BasisStationsParameter.dwHandfunktionen;
 

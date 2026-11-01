@@ -26,9 +26,9 @@ END_IF
 
 // Es steht ein EDM Fehler an
 bpEDMFehlerAktiv :=    ( EV_ToPLC_EDM_1 <> 0 ) 
-                    OR ( EV_ToPLC_EDM_2 <> 0 ) 
-                    OR ( EV_ToPLC_EDM_3 <> 0 ) 
-                    OR ( EV_ToPLC_EDM_4 <> 0 );
+                       OR ( EV_ToPLC_EDM_2 <> 0 ) 
+                       OR ( EV_ToPLC_EDM_3 <> 0 ) 
+                       OR ( EV_ToPLC_EDM_4 <> 0 );
                     
 WatchIo(bpEDMFehlerAktiv, ioccSLC_EDM_FehlerAktiv);
 

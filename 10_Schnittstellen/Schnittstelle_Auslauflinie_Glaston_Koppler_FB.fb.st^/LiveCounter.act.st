@@ -25,10 +25,10 @@ END_IF
 
 IF ( wlLiveCounterFremdanlage = wlLiveCounterSortJet ) THEN
 
-   wlVerbindungsVersuche := 0;
-   blLiveCounterGueltig := TRUE;
+  wlVerbindungsVersuche := 0;
+  blLiveCounterGueltig := TRUE;
 
-   blFehlermeldungGenerierenKommunikation := FALSE;
+  blFehlermeldungGenerierenKommunikation := FALSE;
 
 ELSE
   blLiveCounterGueltig := FALSE;

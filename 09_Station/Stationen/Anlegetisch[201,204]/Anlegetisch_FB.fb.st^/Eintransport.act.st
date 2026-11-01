@@ -10,7 +10,7 @@ ACTION Eintransport
 (* AKTION: EINTRANSPORT *)
 (***************************************************************************************************)
 IF( BasisStationsParameter.bEintransport[cWAND_1]
-  AND blBetriebsartAutomatik )
+    AND blBetriebsartAutomatik )
 THEN
 
   // Ausnahmesituation
@@ -34,7 +34,7 @@ THEN
 
   
   CASE steplEintransport OF
-(* EINTRANSPORT ==================================*)
+    (* EINTRANSPORT ==================================*)
     STEP_0_E:
 
       tlZeitBereitAnzulegen := TIME();
@@ -51,7 +51,7 @@ THEN
 
       END_IF
 
-(* EINTRANSPORT ==================================*)
+    (* EINTRANSPORT ==================================*)
     STEP_10_E:
 
       (* Anmerkung:
@@ -71,7 +71,7 @@ THEN
 
       steplEintransport := STEP_20_E;
 
-(* EINTRANSPORT ==================================*)
+    (* EINTRANSPORT ==================================*)
     STEP_20_E:
 
       (* Anmerkung:
@@ -86,7 +86,7 @@ THEN
         steplEintransport := STEP_30_E;
       END_IF
 
-(* EINTRANSPORT ==================================*)
+    (* EINTRANSPORT ==================================*)
     STEP_30_E:
 
       (* Anmerkung:
@@ -112,7 +112,7 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-(* EINTRANSPORT ==================================*)
+    (* EINTRANSPORT ==================================*)
     STEP_40_E:
 
       out_bAmpelSignalGruenScheibeAnlegen  := TRUE;
@@ -121,7 +121,7 @@ THEN
       IF rtlFussleisteStart.Q OR ftlVSGAutomatikBetriebBeendet.Q THEN
         out_bAmpelSignalGruenScheibeAnlegen := FALSE;
         BasisStationsParameter.bAnlegen := TRUE;
-      BasisStationsParameter.bEintransport[cWAND_1] := FALSE;
+        BasisStationsParameter.bEintransport[cWAND_1] := FALSE;
       END_IF
 
       (* Anmerkung:
@@ -151,18 +151,18 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-(* EINTRANSPORT ==================================*)
+    (* EINTRANSPORT ==================================*)
     STEP_900_E:
       BasisStationsParameter.eStatusAuftrag   := eAuftragFehler;
       BasisStationsParameter.bFehler := TRUE;
 
-(* EINTRANSPORT ==================================*)
+    (* EINTRANSPORT ==================================*)
     STEP_1000_E:
       BasisStationsParameter.dwWartezeit[cWAND_1] := 0;
       epTypeHoehenmessung := Modus_Vermessen_OberUndUnterkante_2_Sensoren;
       BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] := TRUE;
 
-(* EINTRANSPORT ==================================*)
+  (* EINTRANSPORT ==================================*)
   END_CASE
 ELSE
 

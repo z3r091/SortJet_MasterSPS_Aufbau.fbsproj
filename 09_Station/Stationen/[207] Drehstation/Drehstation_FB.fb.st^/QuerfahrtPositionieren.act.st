@@ -27,16 +27,16 @@ tonlUpdateTimer(IN := blUpdateTimer, PT := REAL_TO_TIME(BasisStationsParameter.p
 
 
 IF (  BasisStationsParameter.bVorabpositionieren
-  AND NOT BasisStationsParameter.bEintransport[cWAND_1]
-  AND NOT BasisStationsParameter.bAustransport[cWAND_1] )
+     AND NOT BasisStationsParameter.bEintransport[cWAND_1]
+     AND NOT BasisStationsParameter.bAustransport[cWAND_1] )
 THEN
 
   CASE steplPositionierungQuerfahrt OF
-(*POSITIONIEREN ==============================*)
+    (*POSITIONIEREN ==============================*)
     STEP_0_E:
       steplPositionierungQuerfahrt := STEP_10_E;
  
-(*POSITIONIEREN ==============================*)
+    (*POSITIONIEREN ==============================*)
     STEP_10_E:
       (* Hinweis:
          - Station auf eine definierte Position verfahren
@@ -46,10 +46,10 @@ THEN
 
       steplPositionierungQuerfahrt := STEP_20_E;
 
-(*POSITIONIEREN ==============================*)
+    (*POSITIONIEREN ==============================*)
     STEP_20_E:
       IF ( Querfahrt.Antrieb.bpAntrieblaeuft
-        OR Querfahrt.bpDone )
+           OR Querfahrt.bpDone )
       THEN
         blUpdateTimer := TRUE;
         steplPositionierungQuerfahrt := STEP_30_E;
@@ -64,7 +64,7 @@ THEN
         steplPositionierungQuerfahrt := STEP_900_E;
       END_IF
 
-(*POSITIONIEREN ==============================*)
+    (*POSITIONIEREN ==============================*)
     STEP_30_E:
       (* Anmerkung:
          - Sollte das Verfahren frueher abgeschlossen werden als der Zeitwert des Timers "tonlUpdateTimer"
@@ -73,7 +73,7 @@ THEN
            => Senden der Positionsnachricht [Steuerung]
       *)
       IF (  Querfahrt.bpDone 
-        (* AND blZielPositionErreicht *) ) 
+         (* AND blZielPositionErreicht *) ) 
       THEN
 
         IF ( NOT tonlUpdateTimer.Q  )THEN
@@ -105,15 +105,15 @@ THEN
         steplPositionierungQuerfahrt := STEP_900_E;
       END_IF
 
-(*POSITIONIEREN ==============================*)
+    (*POSITIONIEREN ==============================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*POSITIONIEREN ==============================*)
+    (*POSITIONIEREN ==============================*)
     STEP_1000_E:
       BasisStationsParameter.bVorabpositionierenAbgeschlossen := TRUE;
 
-(*POSITIONIEREN ==============================*)
+  (*POSITIONIEREN ==============================*)
   END_CASE
 END_IF
 

@@ -7,6 +7,6 @@
 *)
 FUNCTION_BLOCK Foerderer_Glastransport_FB EXTENDS Basic_Glastransport_FB
 
-// Master aufrufen
-SUPER^();
+  // Master aufrufen
+  SUPER^();
 END_FUNCTION_BLOCK

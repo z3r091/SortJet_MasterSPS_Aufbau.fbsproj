@@ -21,7 +21,7 @@ FOR wIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
   // Null-Pointer wenn kein Zyklus in den MKs zugewiesen wurde
   IF starrShuttleBasisParameter[wIndex].stMKs.eSystemcheckZyklus = eSystemcheckZyklus_Undefiniert THEN
     SysExceptGenerateException( RtsExceptions.RTSEXCPT_ARRAYBOUNDS );
-    //bByte := ptNull; (*cause access violation *)
+  //bByte := ptNull; (*cause access violation *)
   ELSE // Ansonsten den definierten Zyklus in das Array übernehmen
     // Neuer höherer Wert? Dann wegspeichern
     IF getAnzahlSystemcheckZyklen < starrShuttleBasisParameter[wIndex].stMKs.eSystemcheckZyklus THEN
@@ -37,7 +37,7 @@ FOR wIndex := cERSTE_STATION TO cLETZTE_STATION DO
     CONTINUE;
   ELSIF starrStationBasisParameter[wIndex].stMKs.eSystemcheckZyklus = eSystemcheckZyklus_Undefiniert AND NOT starrStationBasisParameter[wIndex].stMKs.bDeaktivieren THEN
     SysExceptGenerateException( RtsExceptions.RTSEXCPT_ARRAYBOUNDS );
-    //bByte := ptNull; (*cause access violation *)
+  //bByte := ptNull; (*cause access violation *)
   ELSE // Ansonsten den definierten Zyklus in das Array übernehmen
     // Neuer höherer Wert? Dann wegspeichern
     IF getAnzahlSystemcheckZyklen < starrStationBasisParameter[wIndex].stMKs.eSystemcheckZyklus THEN
@@ -49,6 +49,6 @@ END_FOR
 // Null-Pointer wenn kein Ergebnis gefunden wurde (fehlerhafter Zustand)
 IF ( getAnzahlSystemcheckZyklen = 0 ) THEN
   SysExceptGenerateException( RtsExceptions.RTSEXCPT_ARRAYBOUNDS );
-  //bByte := ptNull; (*cause access violation *)
+//bByte := ptNull; (*cause access violation *)
 END_IF
 END_FUNCTION

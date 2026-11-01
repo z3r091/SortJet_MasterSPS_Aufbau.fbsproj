@@ -13,7 +13,7 @@ ACTION GlasVorabPositionierung
    - Positionieren des Glases 
 *)
 IF (  bpStarteVorabPositionierung
-  AND bpAutomatikAktiv )
+     AND bpAutomatikAktiv )
 THEN
 
   (* Ausnahmefehler
@@ -26,7 +26,7 @@ THEN
   END_IF
 
   CASE steplVorabpositionieren OF
-(* GLAS VORPOSITIONIEREN ====================*)
+    (* GLAS VORPOSITIONIEREN ====================*)
     STEP_0_E:
       (* Hinweis:
          - Pruefen ob der Antrieb bereit zum verfahren ist
@@ -39,7 +39,7 @@ THEN
         steplVorabpositionieren := STEP_10_E;
       END_IF
 
-(* GLAS VORPOSITIONIEREN ====================*)
+    (* GLAS VORPOSITIONIEREN ====================*)
     STEP_10_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POSITIONIEREN UEBER DEN AUSLAUFSENSOR [AUSLAUFSEITE] >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
          
@@ -74,7 +74,7 @@ THEN
 
       END_IF
 
-(* GLAS VORPOSITIONIEREN ====================*)
+    (* GLAS VORPOSITIONIEREN ====================*)
     STEP_20_E:
       (* Vorabstop- Sensor:
          - Langsame Autotransportgeschwindigkeit in 20.0 m/min 
@@ -84,7 +84,7 @@ THEN
       END_IF
 
       IF ( Antrieb.bpDone
-        AND bpSensorAuslauf )
+           AND bpSensorAuslauf )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplVorabpositionieren := STEP_1000_E;
@@ -101,7 +101,7 @@ THEN
       END_IF
 
       IF ( Antrieb.bpDone
-        AND NOT bpSensorAuslauf )
+           AND NOT bpSensorAuslauf )
       THEN
         wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -114,7 +114,7 @@ THEN
         steplVorabpositionieren := STEP_900_E;
       END_IF
 
-(* GLAS POSITIONIEREN ====================*)
+    (* GLAS POSITIONIEREN ====================*)
     STEP_100_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< AUSLAUFSENSOR FREI FAHREN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   
@@ -123,7 +123,7 @@ THEN
       *)
       // TODO Option zum auslauf freifahren / ansonsten nur auslaufstopp   // toflAuslaufsensorFrei
       IF (  NOT Antrieb.bpAntrieblaeuft
-        AND NOT toflAuslaufsensorSTOP.Q )
+           AND NOT toflAuslaufsensorSTOP.Q )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
@@ -160,7 +160,7 @@ THEN
         steplVorabpositionieren := STEP_900_E;
       END_IF
 
-(* GLAS POSITIONIEREN ====================*)
+    (* GLAS POSITIONIEREN ====================*)
     STEP_110_E:
       (*  Hinweis:
          - Zum Anfang springen
@@ -169,17 +169,17 @@ THEN
         steplVorabpositionieren := STEP_1000_E;
       END_IF
 
-(* GLAS VORPOSITIONIEREN ====================*)
+    (* GLAS VORPOSITIONIEREN ====================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
       bpFehler := TRUE;
 
-(* GLAS VORPOSITIONIEREN ====================*)
+    (* GLAS VORPOSITIONIEREN ====================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(* GLAS VORPOSITIONIEREN ====================*)
+  (* GLAS VORPOSITIONIEREN ====================*)
 
   END_CASE
 ELSE

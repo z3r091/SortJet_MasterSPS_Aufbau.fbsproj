@@ -10,37 +10,37 @@ ACTION Austransport
 (* AKTION: STEUERUNG AUSTRANSPORT *)
 (***************************************************************************************************)
 IF (  bpAustransport
-  AND bpAutomatikAktiv )
+     AND bpAutomatikAktiv )
 THEN
 
   (* Hinweis:
      - Starten der Schrittkette 
   *)
   CASE steplAustransport OF
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_0_E:
       bpDone:= FALSE;
       blSchnittstelle_bAnforderungTransportVerbund := FALSE;
       tonlWartenAufSenken(IN:=FALSE);
       blAustransportDefaultLuftabfrage := FALSE;
 
-    IF Antrieb.bpReglerBereit THEN
+      IF Antrieb.bpReglerBereit THEN
         steplAustransport := STEP_5_E;
-    END_IF
+      END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_5_E:
       Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
       steplAustransport := STEP_6_E;
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_6_E:
-    IF Antrieb.bpDone THEN
+      IF Antrieb.bpDone THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplAustransport := STEP_10_E;
-    END_IF
+      END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_10_E:
       (* ---------------------------------------------------------------------------------------
       //  AUSTRANSPORT IM TRANSFERSHUTTLE VERBUND
@@ -51,7 +51,7 @@ THEN
 
       IF ( bpTransfershuttleVerbundAktiv ) THEN
 
-       blSchnittstelle_bAnforderungTransportVerbund := TRUE;
+        blSchnittstelle_bAnforderungTransportVerbund := TRUE;
 
         IF ( stpInTransportVerbund.bBereitZumTransportVerbund ) THEN
           steplAustransport := STEP_20_E;
@@ -62,12 +62,12 @@ THEN
 
       END_IF
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_20_E:
       blAustransportDefaultLuftabfrage := TRUE;
       steplAustransport := STEP_100_E;
 
-(*AUSTRANSPORT ==============================*)
+    (*AUSTRANSPORT ==============================*)
     STEP_100_E:
       IF ( blAbgeschlossenAustransport ) THEN
         blAustransportDefaultLuftabfrage := FALSE;
@@ -85,17 +85,17 @@ THEN
         steplAustransport := STEP_900_E;
       END_IF
 
-(*AUSTRANSPORT ==============================*)
-     STEP_900_E:
-       blSchnittstelle_bAnforderungTransportVerbund := FALSE;
-       bpFehler := TRUE;
+    (*AUSTRANSPORT ==============================*)
+    STEP_900_E:
+      blSchnittstelle_bAnforderungTransportVerbund := FALSE;
+      bpFehler := TRUE;
 
-(*AUSTRANSPORT ==============================*)
-     STEP_1000_E:
-       bpDone:=TRUE;
+    (*AUSTRANSPORT ==============================*)
+    STEP_1000_E:
+      bpDone:=TRUE;
 
-(*AUSTRANSPORT ==============================*)
- END_CASE
+  (*AUSTRANSPORT ==============================*)
+  END_CASE
 ELSE
 
   IF ( steplAustransport > STEP_0_E ) THEN

@@ -16,8 +16,8 @@ IF rtlAutomatikActiv.Q THEN
 END_IF
 
 IF ( blBetriebsartAutomatik
-  OR blBetriebartCheck
-  OR blNachSystemcheckMerker )
+     OR blBetriebartCheck
+     OR blNachSystemcheckMerker )
 THEN
 
   (* Energiesparmodus:
@@ -27,7 +27,7 @@ THEN
                                 PT := tgZeitAutoabschaltungEnergiesparModus );
 
   IF (  toflGeblaeseEnergiesparModus.Q
-    AND BasisStationsParameter.bFreigabe )
+       AND BasisStationsParameter.bFreigabe )
   THEN
     FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
       Geblaese[wlIndex].bpStart := TRUE;

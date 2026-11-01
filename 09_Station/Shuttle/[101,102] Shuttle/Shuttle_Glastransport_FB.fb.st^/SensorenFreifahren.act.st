@@ -11,10 +11,10 @@ ACTION SensorenFreifahren
 (***************************************************************************************************)
 
 IF (  bpStarteSensorFreiFahren
-  AND NOT bpCheck
-  AND NOT bpEintransport
-  AND NOT bpAustransport
-  AND bpAutomatikAktiv )
+     AND NOT bpCheck
+     AND NOT bpEintransport
+     AND NOT bpAustransport
+     AND bpAutomatikAktiv )
 THEN
 
   (* Fehlerbehandlung:
@@ -27,7 +27,7 @@ THEN
   END_IF
 
   CASE steplSensorFreiFahren OF
-(*SENSOR FREI FAHREN ==============================*)
+    (*SENSOR FREI FAHREN ==============================*)
     STEP_0_E:
       (* Hinweis:
          - Pruefen ob der Antrieb verfahren werden kann        
@@ -35,12 +35,12 @@ THEN
 
 
       IF ( Antrieb.bpReglerBereit 
-        AND blAntriebsKopplungAktiv )
+           AND blAntriebsKopplungAktiv )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplSensorFreiFahren := STEP_10_E;
       END_IF
-(*SENSOR FREI FAHREN ==============================*)
+    (*SENSOR FREI FAHREN ==============================*)
     STEP_10_E:
       (* Hinweis:
          - Pruefen welcher Sensor freigefahren werden muss
@@ -60,7 +60,7 @@ THEN
 
       END_IF
 
-(*SENSOR FREI FAHREN ==============================*)
+    (*SENSOR FREI FAHREN ==============================*)
     STEP_100_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< AUSLAUFSENSOR BELEGT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  
@@ -76,7 +76,7 @@ THEN
 
       steplSensorFreiFahren := STEP_110_E;
 
-(*SENSOR FREI FAHREN ==============================*)
+    (*SENSOR FREI FAHREN ==============================*)
     STEP_110_E:
       (* Hinweis:
          - Antrieb verfahren
@@ -95,7 +95,7 @@ THEN
         steplSensorFreiFahren := STEP_900_E;
       END_IF
 
-(*SENSOR FREI FAHREN ==============================*)
+    (*SENSOR FREI FAHREN ==============================*)
     STEP_200_E:
       (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< EINLAUFSENSOR BELEGT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  
@@ -111,7 +111,7 @@ THEN
 
       steplSensorFreiFahren := STEP_210_E;
 
-(*SENSOR FREI FAHREN ==============================*)
+    (*SENSOR FREI FAHREN ==============================*)
     STEP_210_E:
       (* Hinweis:
          - Antrieb verfahren
@@ -130,17 +130,17 @@ THEN
         steplSensorFreiFahren := STEP_900_E;
       END_IF
 
-(*SENSOR FREI FAHREN ==============================*)
+    (*SENSOR FREI FAHREN ==============================*)
     STEP_900_E:
       (* Fehlerbehandlung:
       *)
       bpFehler := TRUE;
 
-(*SENSOR FREI FAHREN ==============================*)
+    (*SENSOR FREI FAHREN ==============================*)
     STEP_1000_E:
       bpStarteSensorFreiFahren := FALSE;
 
-(*SENSOR FREI FAHREN ==============================*)
+  (*SENSOR FREI FAHREN ==============================*)
   END_CASE
 ELSE
 

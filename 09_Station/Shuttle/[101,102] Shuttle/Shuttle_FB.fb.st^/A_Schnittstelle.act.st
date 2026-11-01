@@ -35,7 +35,7 @@ END_FOR
 (* --------------------------------------------------------------------------------------- *)
 (* BAUSTEIN BASISPARAMETER *)
 BasisStationsParameter.bIstReferenziert        :=     Querfahrt.Antrieb.bpIstReferenziert
-                                                  AND Kippen.bpInReferenz;
+                                                      AND Kippen.bpInReferenz;
 
 
 (* Hinweis:
@@ -46,12 +46,12 @@ blMerkerAuftragAktiv := FALSE;
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   blMerkerAuftragAktiv := blMerkerAuftragAktiv OR
                           ( BasisStationsParameter.bEintransport[wlIndex] AND ( Eintransport[wlIndex].steplAktion  > STEP_0_E) )
-                       OR ( BasisStationsParameter.bAustransport[wlIndex] AND ( Austransport[wlIndex].steplAktion  > STEP_0_E) );
+                          OR ( BasisStationsParameter.bAustransport[wlIndex] AND ( Austransport[wlIndex].steplAktion  > STEP_0_E) );
 END_FOR
 
 BasisStationsParameter.bAuftragAktiv :=  ( blMerkerAuftragAktiv
-                                        OR ( BasisStationsParameter.bVorabpositionieren AND ( steplVorabpositionierung > STEP_0_E) )
-                                        OR BasisStationsParameter.bCheck );
+                                           OR ( BasisStationsParameter.bVorabpositionieren AND ( steplVorabpositionierung > STEP_0_E) )
+                                           OR BasisStationsParameter.bCheck );
 
 // Statistik
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO

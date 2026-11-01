@@ -8,7 +8,7 @@
 ACTION BETRIEBSART_Handplus
 // Gemeinsame Auswahl; vorhandener Parameter-Re-Entry uebernimmt den Jerk.
 rlRuckzeit := RuckFuerBewegung(bStart := asteplSchritt[HANDPLUS] = STEP_300_E,
-  bMitZiel := blSoftwareLimitAktiv, lrZiel := TO_LREAL(rpMaxPosition));
+                                bMitZiel := blSoftwareLimitAktiv, lrZiel := TO_LREAL(rpMaxPosition));
 
 CASE asteplSchritt[HANDPLUS] OF
 
@@ -44,24 +44,24 @@ CASE asteplSchritt[HANDPLUS] OF
       asteplSchritt[HANDPLUS] := STEP_1000_E;
     ELSE
       l_mc_MoveVelocity
-      (
-        Axis := ppAntriebsInformationen.wAchsID,
-        Velocity := rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT,
-        Acceleration := rlBeschleunigung * cFAKTOR_RAMPEN,
-        Deceleration := rlVerzoegerung * cFAKTOR_RAMPEN,
-        Jerk := rlRuckzeit,
-        BufferMode := MC_BufferMode.BM_ABORTING_E,
-        Direction := MC_Direction.MD_POSITIV_E,
-        Execute := TRUE
-      );
+        (
+          Axis := ppAntriebsInformationen.wAchsID,
+          Velocity := rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT,
+          Acceleration := rlBeschleunigung * cFAKTOR_RAMPEN,
+          Deceleration := rlVerzoegerung * cFAKTOR_RAMPEN,
+          Jerk := rlRuckzeit,
+          BufferMode := MC_BufferMode.BM_ABORTING_E,
+          Direction := MC_Direction.MD_POSITIV_E,
+          Execute := TRUE
+        );
       asteplSchritt[HANDPLUS] := STEP_400_E;
     END_IF
 
   STEP_400_E:
     IF ( ( ( rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT ) <> l_mc_MoveVelocity.Velocity )
-        OR ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Acceleration )
-        OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Deceleration )
-        OR (   rlRuckzeit <> l_mc_MoveVelocity.Jerk ) )
+         OR ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Acceleration )
+         OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Deceleration )
+         OR (   rlRuckzeit <> l_mc_MoveVelocity.Jerk ) )
     THEN
       l_mc_MoveVelocity( Axis := ppAntriebsInformationen.wAchsID, Execute := FALSE );
       asteplSchritt[HANDPLUS] := STEP_300_E;
@@ -75,9 +75,9 @@ CASE asteplSchritt[HANDPLUS] OF
     END_IF
 
     l_mc_MoveVelocity
-    (
-      Axis := ppAntriebsInformationen.wAchsID,
-    );
+      (
+        Axis := ppAntriebsInformationen.wAchsID,
+      );
 
     // Fehler auswertung
     IF NOT l_mc_Power.Status OR NOT bpReglerBereit THEN
@@ -94,8 +94,8 @@ CASE asteplSchritt[HANDPLUS] OF
     END_IF
 
     IF     blSoftwareLimitAktiv
-      AND ( rlVerzoegerung > 0 )
-      AND ( rpStillstandsPosition >= rpMaxPosition )
+           AND ( rlVerzoegerung > 0 )
+           AND ( rpStillstandsPosition >= rpMaxPosition )
     THEN
       l_mc_MoveVelocity( Axis := ppAntriebsInformationen.wAchsID, Execute := FALSE );
       blStopOhneReset := TRUE;
@@ -124,17 +124,17 @@ CASE asteplSchritt[HANDPLUS] OF
 
     // Parameter geändert ?
     IF ( ( ( rlGeschwindigkeit * cFAKTOR_GESCHWINDIGKEIT ) <> l_mc_MoveVelocity.Velocity )
-        OR ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Acceleration )
-        OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Deceleration )
-        OR (   rlRuckzeit <> l_mc_MoveVelocity.Jerk ) )
+         OR ( ( rlBeschleunigung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Acceleration )
+         OR ( ( rlVerzoegerung * cFAKTOR_RAMPEN ) <> l_mc_MoveVelocity.Deceleration )
+         OR (   rlRuckzeit <> l_mc_MoveVelocity.Jerk ) )
     THEN
       l_mc_MoveVelocity( Axis := ppAntriebsInformationen.wAchsID, Execute := FALSE );
       asteplSchritt[HANDPLUS] := STEP_300_E;
     END_IF
 
     IF     blSoftwareLimitAktiv
-      AND ( rlVerzoegerung > 0 )
-      AND ( rpStillstandsPosition >= rpMaxPosition )
+           AND ( rlVerzoegerung > 0 )
+           AND ( rpStillstandsPosition >= rpMaxPosition )
     THEN
       l_mc_MoveVelocity(Axis := ppAntriebsInformationen.wAchsID, Execute := FALSE);
       blStopOhneReset := TRUE;

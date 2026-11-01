@@ -10,7 +10,7 @@ ACTION Eintransport_Rueckwertig
 (* AKTION: EINTRANSPORT [NEGATIV- RICHTUNG] *)
 (***************************************************************************************************)
 IF (  bpRueckwaertsEintransportieren
-  AND bpAutomatikAktiv )
+     AND bpAutomatikAktiv )
 THEN
 
   (* Ausnahmesituation:
@@ -31,12 +31,12 @@ THEN
      - Starten der Schrittkette 
   *)
   CASE steplEintransportRueckwaertig OF
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen initialisieren
       *)
-     tlWarteZeiteAufnahme := TIME();
+      tlWarteZeiteAufnahme := TIME();
       tonlAntriebNichtFreigegeben( IN := FALSE );
 
       bpFreigabeQuerfahrt := FALSE;
@@ -46,7 +46,7 @@ THEN
 
       steplEintransportRueckwaertig := STEP_5_E;
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_5_E:
       (* Hinweis:
          - Sicherstellen das die Slavekopplung aktiv ist
@@ -55,7 +55,7 @@ THEN
         steplEintransportRueckwaertig := STEP_10_E;
       END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_10_E:
       (* Hinweis:
          - Antriebueberpruefen ob bereit zum verfahren. 
@@ -81,7 +81,7 @@ THEN
         steplEintransportRueckwaertig := STEP_900_E;
       END_IF
 
-(*EINTRANSPORT ==============================GEHT NICHT BEI MASTER SLAVE KOPPLUNG *)
+    (*EINTRANSPORT ==============================GEHT NICHT BEI MASTER SLAVE KOPPLUNG *)
     STEP_20_E:
       (* ---------------------------------------------------------------------------------------
       //  OPTIONAL - REFERENZIEREN DES ANTRIEBS
@@ -98,7 +98,7 @@ THEN
 
       steplEintransportRueckwaertig := STEP_30_E;
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_30_E:
       (* Hinweis:
          - Referenzieren des Antriebs abgeschlossen [Ist-Position = 0  bzw. 1]
@@ -108,7 +108,7 @@ THEN
         steplEintransportRueckwaertig := STEP_40_E;
       END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_40_E:
       (* ---------------------------------------------------------------------------------------
       //  WARTEN AUF KOPPLUNG
@@ -127,7 +127,7 @@ THEN
         steplEintransportRueckwaertig := STEP_100_E;
       END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  EINTRANSPORT UEBER DEN AUSLAUFSENSOR [RUECKWERTIG] 
@@ -183,7 +183,7 @@ THEN
 
       END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_110_E:
       bprtScheibe := FALSE;
 
@@ -222,7 +222,7 @@ THEN
 
       END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_120_E:
       (* Hinweis:
          - Reduzieren der Geschwindigkeit wenn die Scheibenbeladung getrennt werden muss
@@ -264,7 +264,7 @@ THEN
       END_IF
 
       IF ( Antrieb.bpDone
-        AND bpSensorAuslauf )
+           AND bpSensorAuslauf )
       THEN
         bprtScheibe := TRUE;
 
@@ -283,7 +283,7 @@ THEN
         steplEintransportRueckwaertig := STEP_900_E;
       END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_130_E:
       (* Hinweis:
          - Reduzieren der Geschwindigkeit wenn die Scheibenbeladung getrennt werden muss
@@ -316,7 +316,7 @@ THEN
       END_IF
 
       IF ( Antrieb.bpDone
-        AND NOT Antrieb.bpAntrieblaeuft )
+           AND NOT Antrieb.bpAntrieblaeuft )
       THEN
         Antrieb.rpGeschwindigkeit := REAL#0;
         Antrieb.wpBetriebsart     := KEINE_FUNKTION;
@@ -346,18 +346,18 @@ THEN
         steplEintransportRueckwaertig := STEP_900_E;
       END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_140_E:
       bprtScheibe := FALSE;
 
-    dwpWartezeit := 0;
+      dwpWartezeit := 0;
 
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplEintransportRueckwaertig := STEP_200_E;
       END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_200_E:
       (* ---------------------------------------------------------------------------------------
       //  SENSORIK PRUEFEN
@@ -372,7 +372,7 @@ THEN
 
         IF ( blScheibenMerker ) THEN
           blScheibenMerker := FALSE;
-      bprtScheibe := TRUE;
+          bprtScheibe := TRUE;
           ilScheibenZaehler := ilScheibenZaehler - 1;
         END_IF
 
@@ -405,7 +405,7 @@ THEN
         steplEintransportRueckwaertig := STEP_900_E;
       END_IF
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
@@ -413,25 +413,25 @@ THEN
       bpOutBereitZumEintransport := FALSE;
       bpFehler := TRUE;
 
-    (* Hinweis:
-       - Eintransport setzt sich Autark zurueck
-      *)
-    bpRueckwaertsEintransportieren := FALSE;
+      (* Hinweis:
+         - Eintransport setzt sich Autark zurueck
+        *)
+      bpRueckwaertsEintransportieren := FALSE;
 
-(*EINTRANSPORT ==============================*)
+    (*EINTRANSPORT ==============================*)
     STEP_1000_E:
       bpOutBereitZumEintransport := FALSE;
       bprtScheibe := FALSE;
       bpDone := TRUE;
 
-    (* Hinweis:
-       - Eintransport setzt sich Autark zurueck
-      *)
-    bpRueckwaertsEintransportieren := FALSE;
+      (* Hinweis:
+         - Eintransport setzt sich Autark zurueck
+        *)
+      bpRueckwaertsEintransportieren := FALSE;
 
-(*EINTRANSPORT ==============================*)
+  (*EINTRANSPORT ==============================*)
 
- END_CASE
+  END_CASE
 
 ELSE
 

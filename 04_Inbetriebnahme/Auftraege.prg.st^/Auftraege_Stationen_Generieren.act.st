@@ -97,13 +97,13 @@ IF  (bgAuftragGenerieren ) THEN
   bgAuftragGenerieren := FALSE;
 
   IF (      bgButtonAnlegeAuftrag
-    AND NOT bgButtonStationsAuftrag )
+       AND NOT bgButtonStationsAuftrag )
   THEN
     bgInbetriebnahmeAnlegeAuftrag   := TRUE;
     bgInbetriebnahmeStationsauftrag := FALSE;
 
   ELSIF (   bgButtonStationsAuftrag
-    AND NOT bgButtonAnlegeAuftrag )
+          AND NOT bgButtonAnlegeAuftrag )
   THEN
     bgInbetriebnahmeStationsauftrag := TRUE;
     bgInbetriebnahmeAnlegeAuftrag   := FALSE;

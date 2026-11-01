@@ -45,7 +45,7 @@ VAR
   rtlResetOA                                     : R_TRIG;
   rtlSKQuittiert                                 : ARRAY[cERSTER_SICHERHEITSKREIS..cLETZTER_SICHERHEITSKREIS] OF R_TRIG;;
 
- END_VAR
+END_VAR
 
 
 

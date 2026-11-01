@@ -17,7 +17,7 @@ ACTION Eintransport
         (beim Anlegen wertet Station_Anlegen die Quittung nicht aus, dort wird ueber SheetOnStation gebucht)
 *)
 IF ( bpEintransport
-  AND bpAutomatikAktiv )
+     AND bpAutomatikAktiv )
 THEN
 
   // Ausnahmesituation
@@ -28,7 +28,7 @@ THEN
   END_IF
 
   CASE steplEintransport OF
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen setzen
@@ -44,7 +44,7 @@ THEN
         steplEintransport := STEP_20_E;
       END_IF
 
-(*EINTRANSPORT ====================*)
+    (*EINTRANSPORT ====================*)
     STEP_10_E:
       (* Hinweis:
          - Antrieb ist referenziert
@@ -54,7 +54,7 @@ THEN
         steplEintransport := STEP_20_E;
       END_IF
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_20_E:
       (* ---------------------------------------------------------------------------------------
       //  KOPPLUNG ZWISCHEN DEN STATIONEN
@@ -70,7 +70,7 @@ THEN
         steplEintransport := STEP_100_E;
       END_IF
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_100_E:
       (* ---------------------------------------------------------------------------------------
       //  EINTRANSPORT UEBER DEN EINLAUFSENSOR
@@ -104,7 +104,7 @@ THEN
 
       END_IF
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_110_E:
       // Sicherstellen das der Einlaufsensor auch überfahren wurde
       IF ( bpSensorEinlauf ) THEN
@@ -127,7 +127,7 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_120_E:
       (* Hinweis:
          - Positionierung abwarten
@@ -143,7 +143,7 @@ THEN
         steplEintransport := STEP_140_E;
       END_IF
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_140_E:
       (* Hinweis:
          - Sicherstellen das der Antrieb steht
@@ -164,7 +164,7 @@ THEN
 
       END_IF
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_150_E:
       (* Hinweis:
          - Scheibenquittung nach abgeschlossener Positionierung
@@ -174,7 +174,7 @@ THEN
       bprtScheibe := TRUE;
       steplEintransport := STEP_1000_E;
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_200_E:
       (* ---------------------------------------------------------------------------------------
       //  EINLAUFSENSOR ANFAHREN
@@ -192,7 +192,7 @@ THEN
       Antrieb.wpBetriebsart     := RESTWEG;
       steplEintransport := STEP_210_E;
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_210_E:
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -215,7 +215,7 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_300_E:
       (* Anmerkung:
          - Auslaufsensor freifahren
@@ -230,7 +230,7 @@ THEN
       Antrieb.wpBetriebsart     := RESTWEG;
       steplEintransport := STEP_310_E;
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_310_E:
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -253,7 +253,7 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
@@ -262,12 +262,12 @@ THEN
 
       Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
-(*EINTRANSPORT =====================*)
+    (*EINTRANSPORT =====================*)
     STEP_1000_E:
       bprtScheibe := FALSE;
       bpDone := TRUE;
 
-(*EINTRANSPORT =====================*)
+  (*EINTRANSPORT =====================*)
   END_CASE
 ELSE
 

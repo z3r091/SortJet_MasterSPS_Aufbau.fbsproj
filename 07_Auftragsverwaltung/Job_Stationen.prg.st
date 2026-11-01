@@ -119,7 +119,7 @@ FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
     rtlFehler[wlIndex, wlIndexWand]( CLK := ablFehler[wlIndex, wlIndexWand] );
     IF NOT findInWORDArray(awcAusgeschlosseneStationen, wlIndex) THEN
       Station(wlIndex, wlIndexWand);
-  END_IF
+    END_IF
   END_FOR
 END_FOR
 

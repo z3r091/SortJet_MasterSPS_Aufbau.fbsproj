@@ -10,7 +10,7 @@ ACTION Eintransport
 (* AKTION EINTRANSPORT *)
 (***************************************************************************************************)
 IF ( BasisStationsParameter.bEintransport[cWAND_1]
-  AND blBetriebsartAutomatik )
+     AND blBetriebsartAutomatik )
 THEN
 
   // Ausnahmesituation
@@ -37,7 +37,7 @@ THEN
 
 
   CASE steplEintransport OF
-(* EINTRANSPORT =========================*)
+    (* EINTRANSPORT =========================*)
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen
@@ -52,7 +52,7 @@ THEN
         steplEintransport := STEP_10_E;   
       END_IF
    
-(* EINTRANSPORT =========================*)
+    (* EINTRANSPORT =========================*)
     STEP_10_E:
       (* Hinweis:
          - Rollenleiste
@@ -67,7 +67,7 @@ THEN
       END_IF
 
       // Eintransport- Position festlegen
-    CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition OF
+      CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition OF
 
         eKippen_Position_0Grad: 
           IF ( NOT ( Kippen.epKippStatus = eKippen_Position_0Grad )) THEN
@@ -91,13 +91,13 @@ THEN
 
       END_CASE
 
-(* EINTRANSPORT =========================*)
+    (* EINTRANSPORT =========================*)
     STEP_20_E:
       (* Hinweis:
          - Kippen abgeschlossen 0Grad
       *)
       IF ( ( Kippen.bpDone AND ( Kippen.epKippStatus = eKippen_Position_0Grad ) )
-        OR NOT Kippen.bpStartKippenAb )
+           OR NOT Kippen.bpStartKippenAb )
       THEN
         Kippen.bpStartKippenAb  := FALSE;
         Kippen.bpStartKippenAuf := FALSE;
@@ -105,13 +105,13 @@ THEN
         steplEintransport := STEP_100_E;
       END_IF
 
-(* EINTRANSPORT =========================*)
+    (* EINTRANSPORT =========================*)
     STEP_30_E:
       (* Hinweis:
          - Kippen abgeschlossen 90Grad
       *)
       IF ( ( Kippen.bpDone AND ( Kippen.epKippStatus = eKippen_Position_90Grad ) )
-        OR NOT Kippen.bpStartKippenAuf  )
+           OR NOT Kippen.bpStartKippenAuf  )
       THEN
         Kippen.bpStartKippenAb  := FALSE;
         Kippen.bpStartKippenAuf := FALSE;
@@ -119,7 +119,7 @@ THEN
         steplEintransport := STEP_100_E;
       END_IF
 
-(* EINTRANSPORT =========================*)
+    (* EINTRANSPORT =========================*)
     STEP_100_E:
       (* Hinweis:
          - Eintransport starten
@@ -134,29 +134,29 @@ THEN
         Rollenleiste.bpStarteOeffnen    := FALSE;
         Rollenleiste.bpStarteSchliessen := FALSE;
 
-    IF BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe THEN
+        IF BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe THEN
           steplEintransport := STEP_300_E;
-    ELSE
+        ELSE
           steplEintransport := STEP_200_E;
-    END_IF
+        END_IF
 
       END_IF
 
-(* EINTRANSPORT =========================*)
+    (* EINTRANSPORT =========================*)
     STEP_200_E:
       IF ( Glastransport.bpDone ) THEN
         Glastransport.bpEintransport := FALSE;
         steplEintransport := STEP_1000_E;
       END_IF
 
-(* EINTRANSPORT =========================*)
+    (* EINTRANSPORT =========================*)
     STEP_300_E:
       (* Hinweis:
          - Eintransport "Letzte Scheibe"
       *)
       IF (  Glastransport.bpFreigabeFremdprozess ) AND BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe THEN
-    //  Position nach Eintransport
-      CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachEintransport OF
+        //  Position nach Eintransport
+        CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachEintransport OF
         
           eKippen_Position_0Grad: 
             Kippen.bpStartKippenAb := TRUE;           
@@ -165,15 +165,15 @@ THEN
             Kippen.bpStartKippenAuf := TRUE;
             Kippen.bpLangsamKippen  := FALSE;
             IF BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke < 3 AND BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsHoehe > 1200 THEN
-             Kippen.bpLangsamKippen := TRUE;
-      END_IF
+              Kippen.bpLangsamKippen := TRUE;
+            END_IF
         
         END_CASE   
 
         steplEintransport := STEP_310_E;
       END_IF
 
-(* EINTRANSPORT =========================*)
+    (* EINTRANSPORT =========================*)
     STEP_310_E:
       (* Hinweis:
          - Kipp- Bewegung abgeschlossen
@@ -185,7 +185,7 @@ THEN
         steplEintransport := STEP_320_E;
       END_IF
 
-(* EINTRANSPORT =========================*)
+    (* EINTRANSPORT =========================*)
     STEP_320_E:
       IF ( Glastransport.bpDone ) THEN
         Glastransport.bpEintransport := FALSE;
@@ -193,15 +193,15 @@ THEN
       END_IF
 
 
-(* EINTRANSPORT =========================*)
+    (* EINTRANSPORT =========================*)
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-(*EINTRANSPORT =========================*)
-     STEP_1000_E:
-       BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] := TRUE;
+    (*EINTRANSPORT =========================*)
+    STEP_1000_E:
+      BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] := TRUE;
 
-(*EINTRANSPORT =========================*)
+  (*EINTRANSPORT =========================*)
   END_CASE
 ELSE
 
@@ -209,7 +209,7 @@ ELSE
 
     Kippen.bpStartKippenAuf := FALSE;
     Kippen.bpStartKippenAb  := FALSE;
-  Kippen.bpLangsamKippen  := FALSE;
+    Kippen.bpLangsamKippen  := FALSE;
 
     Glastransport.bpVortransport             := FALSE;
     Glastransport.bpEintransport             := FALSE;

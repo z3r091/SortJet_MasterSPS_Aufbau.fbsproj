@@ -10,7 +10,7 @@ ACTION Austransport
 // AKTION AUSTRANSPORT
 //==================================================================================================
 IF ( BasisStationsParameter.bAustransport[cWAND_1]
-  AND blBetriebsartAutomatik )
+     AND blBetriebsartAutomatik )
 THEN
 
   // Ausnahmesituation
@@ -36,7 +36,7 @@ THEN
 
 
   CASE steplAustransport OF
-//=== AUSTRANSPORT ===================================================================================
+    //=== AUSTRANSPORT ===================================================================================
     STEP_0_E:
       (* Hinweis:
          - Hubrahmen auf die Austransport-Achse stellen
@@ -46,7 +46,7 @@ THEN
 
       steplAustransport := STEP_10_E;
 
-//=== AUSTRANSPORT ===================================================================================
+    //=== AUSTRANSPORT ===================================================================================
     STEP_10_E:
       IF ( blHubrahmenInPosition ) THEN
         blHubrahmenPositionieren := FALSE;
@@ -54,7 +54,7 @@ THEN
         steplAustransport := STEP_100_E;
       END_IF
 
-//=== AUSTRANSPORT ===================================================================================
+    //=== AUSTRANSPORT ===================================================================================
     STEP_100_E:
       (* Hinweis:
          - Austransport starten
@@ -65,7 +65,7 @@ THEN
 
       steplAustransport := STEP_110_E;
 
-//=== AUSTRANSPORT ===================================================================================
+    //=== AUSTRANSPORT ===================================================================================
     STEP_110_E:
       (* Hinweis:
          - Austransport abgeschlossen
@@ -77,15 +77,15 @@ THEN
         steplAustransport := STEP_1000_E;
       END_IF
 
-//=== AUSTRANSPORT ===================================================================================
+    //=== AUSTRANSPORT ===================================================================================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-//=== AUSTRANSPORT ===================================================================================
+    //=== AUSTRANSPORT ===================================================================================
     STEP_1000_E:
       BasisStationsParameter.bAustransportAbgeschlossen[cWAND_1] := TRUE;
 
-//=== AUSTRANSPORT ===================================================================================
+  //=== AUSTRANSPORT ===================================================================================
   END_CASE
 ELSE
 

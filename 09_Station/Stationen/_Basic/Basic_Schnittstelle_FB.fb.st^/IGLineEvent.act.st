@@ -22,7 +22,7 @@ out_bAmpelEventAktiv := (blUebergabeGlas);
 (* STEUERUNG:  ISO Line EVENT abhandeln *)
 (***************************************************************************************************)
 IF ( bpStarteIGEvent
-  AND NOT blUebergabeGlas )
+     AND NOT blUebergabeGlas )
 THEN
   blUebergabeGlas := TRUE;
   bpStarteIGEvent := FALSE;
@@ -40,7 +40,7 @@ END_IF
 *)
 IF ( blUebergabeGlas ) THEN
   CASE steplUebergabeGlas OF
-(*GLASUEBERGABE ========================*)
+    (*GLASUEBERGABE ========================*)
     STEP_0_E:
 
       dwpWartezeit := 0;
@@ -62,43 +62,43 @@ IF ( blUebergabeGlas ) THEN
           steplUebergabeGlas:=STEP_1000_E;
       END_CASE
 
-(*GLASUEBERGABE ========================*)
-  STEP_10_E:
-    rtlTasterSpezial( CLK := in_bTasterSpezial );
-    rtlTasterGlasbruch( CLK := in_bTasterGlasbruch );
+    (*GLASUEBERGABE ========================*)
+    STEP_10_E:
+      rtlTasterSpezial( CLK := in_bTasterSpezial );
+      rtlTasterGlasbruch( CLK := in_bTasterGlasbruch );
 
 
-    IF ((wpAuftragsTyp = 1) OR (wpAuftragsTyp = 4) OR (wpAuftragsTyp = 5))
-      AND rtlTasterGlasbruch.CLK
-    THEN
-      steplUebergabeGlas:=STEP_100_E;
-    END_IF
+      IF ((wpAuftragsTyp = 1) OR (wpAuftragsTyp = 4) OR (wpAuftragsTyp = 5))
+         AND rtlTasterGlasbruch.CLK
+      THEN
+        steplUebergabeGlas:=STEP_100_E;
+      END_IF
 
-    IF ((wpAuftragsTyp = 2) OR (wpAuftragsTyp = 3))
-      AND rtlTasterSpezial.Q
-    THEN
-       steplUebergabeGlas:=STEP_100_E;
-    END_IF
+      IF ((wpAuftragsTyp = 2) OR (wpAuftragsTyp = 3))
+         AND rtlTasterSpezial.Q
+      THEN
+        steplUebergabeGlas:=STEP_100_E;
+      END_IF
 
-(*GLASUEBERGABE ========================*)
-  STEP_100_E:
-   (* Hinweis:
-      - Nachrichtabsetzen
-   *)
-   dwpWartezeit := TIME_TO_DWORD(TIME()- tlWarteZeiteAufnahme);
-   wSps2MmiQuittISOLineNr   := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
-   dwSps2MmiWartezeit       := dwpWartezeit;
-   MsgToMmi(auftragsnr_w    := SB0_SPS_SORTIERUNGQUITTUNGVONISOLINIE );
+    (*GLASUEBERGABE ========================*)
+    STEP_100_E:
+      (* Hinweis:
+         - Nachrichtabsetzen
+      *)
+      dwpWartezeit := TIME_TO_DWORD(TIME()- tlWarteZeiteAufnahme);
+      wSps2MmiQuittISOLineNr   := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
+      dwSps2MmiWartezeit       := dwpWartezeit;
+      MsgToMmi(auftragsnr_w    := SB0_SPS_SORTIERUNGQUITTUNGVONISOLINIE );
 
-   steplUebergabeGlas:=STEP_1000_E;
+      steplUebergabeGlas:=STEP_1000_E;
 
-(*GLASUEBERGABE ========================*)
-  STEP_1000_E:
-    steplUebergabeGlas:=STEP_0_E;
-    blUebergabeGlas:=FALSE;
-    dwpWartezeit := 0;
+    (*GLASUEBERGABE ========================*)
+    STEP_1000_E:
+      steplUebergabeGlas:=STEP_0_E;
+      blUebergabeGlas:=FALSE;
+      dwpWartezeit := 0;
 
-(*GLASUEBERGABE ========================*)
+  (*GLASUEBERGABE ========================*)
   END_CASE
 END_IF
 

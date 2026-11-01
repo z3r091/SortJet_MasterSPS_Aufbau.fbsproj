@@ -11,7 +11,7 @@ ACTION Reset
 (***************************************************************************************************)
 IF ( bpReset ) THEN
   CASE steplReset OF
-(*RESET ==========================*)
+    (*RESET ==========================*)
     STEP_0_E:
       bpDone                      := FALSE;
       bprtScheibe                 := FALSE;
@@ -33,19 +33,19 @@ IF ( bpReset ) THEN
 
       // Warten bis beide Antriebe stehen
       IF (    NOT Antrieb.bpAntrieblaeuft
-          AND ( NOT Antrieb_Slave.bpAntrieblaeuft OR NOT bpOptionSlaveAntrieb ) )
+           AND ( NOT Antrieb_Slave.bpAntrieblaeuft OR NOT bpOptionSlaveAntrieb ) )
       THEN
         steplReset := STEP_10_E;
       END_IF
 
-(*RESET ==========================*)
+    (*RESET ==========================*)
     STEP_10_E:
       Antrieb.wpBetriebsart       := AntriebsBetriebsart_EN.RESET;
       Antrieb_Slave.wpBetriebsart := AntriebsBetriebsart_EN.RESET;
 
       steplReset := STEP_20_E;
 
-(*RESET ==========================*)
+    (*RESET ==========================*)
     STEP_20_E:
       IF( Antrieb.bpDone AND ( Antrieb_Slave.bpDone OR NOT bpOptionSlaveAntrieb ) ) THEN
         Antrieb.wpBetriebsart       := KEINE_FUNKTION;
@@ -56,7 +56,7 @@ IF ( bpReset ) THEN
       // Fehlerbehandlung
       // - Mindestens ein Antrieb hat seinen Reset nicht abgeschlossen => beide Antriebe abschalten
       IF (    tonlMaxWarteAufResetErfolgreich.Q
-          AND NOT ( Antrieb.bpDone AND ( Antrieb_Slave.bpDone OR NOT bpOptionSlaveAntrieb ) ) )
+           AND NOT ( Antrieb.bpDone AND ( Antrieb_Slave.bpDone OR NOT bpOptionSlaveAntrieb ) ) )
       THEN
         Antrieb.wpBetriebsart       := KEINE_FUNKTION;
         Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
@@ -64,20 +64,20 @@ IF ( bpReset ) THEN
         steplReset := STEP_900_E;
       END_IF
 
-(*RESET ==========================*)
+    (*RESET ==========================*)
     STEP_900_E:
       (* Fehlerbehandlung
       *)
       bpFehler := TRUE;
 
-(*RESET ==========================*)
+    (*RESET ==========================*)
     STEP_1000_E:
       bpDone := TRUE;
       bpResetAbgeschlossen := TRUE;
       bpFehler := FALSE;
       wpFehlerNr := cMELDUNG_NULL;
 
-(*RESET ==========================*)
+  (*RESET ==========================*)
   END_CASE
 ELSE
   IF( steplReset > STEP_0_E )THEN

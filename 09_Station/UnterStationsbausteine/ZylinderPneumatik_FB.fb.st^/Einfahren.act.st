@@ -11,7 +11,7 @@ ACTION Einfahren
 (***************************************************************************************************)
 IF ( bpStartEinfahren ) THEN
   CASE steplEinfahren OF
-(*EINFAHREN =====================*)
+    (*EINFAHREN =====================*)
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
@@ -27,7 +27,7 @@ IF ( bpStartEinfahren ) THEN
         steplEinfahren := STEP_1000_E;
       END_IF
 
-(*EINFAHREN =====================*)
+    (*EINFAHREN =====================*)
     STEP_10_E:
       (* Hinweis:
          - Zylinder ausgefahren
@@ -43,7 +43,7 @@ IF ( bpStartEinfahren ) THEN
          - Zeitliche- Ueberwachung
       *)
       tonZylinderEingefahren( IN := NOT inStatusZylinderEingefahren,
-                               PT := cZEITLICHE_UEBERWACHUNG_BEWEGUNG_ZYLINDER );
+                              PT := cZEITLICHE_UEBERWACHUNG_BEWEGUNG_ZYLINDER );
 
       IF ( tonZylinderEingefahren.Q ) THEN
         out_bZylinderEinfahren := FALSE;
@@ -51,15 +51,15 @@ IF ( bpStartEinfahren ) THEN
         steplEinfahren := STEP_900_E;
       END_IF
 
-(*EINFAHREN =====================*)
+    (*EINFAHREN =====================*)
     STEP_900_E:
       bpFehler := TRUE;
 
-(*EINFAHREN =====================*)
+    (*EINFAHREN =====================*)
     STEP_1000_E:
       bpDone := TRUE;
 
-(*EINFAHREN =====================*)
+  (*EINFAHREN =====================*)
   END_CASE
 END_IF
 

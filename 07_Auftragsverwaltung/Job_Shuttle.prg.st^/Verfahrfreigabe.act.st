@@ -59,10 +59,10 @@ END_FOR
 // ---------------------------------------------------------------------------------------*)
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
   IF  ( starrShuttleBasisParameter[wlIndex].bPositionierAuftragZuruecksetzen ) THEN
-      IF ( AuftragsdatenStation[wlIndex].wAuftrag = eStation_Vorabpositionierung ) THEN
-        starrShuttleBasisParameter[wlIndex].bQuittungPositionierungZurueckgesetzt := TRUE;
-         AuftragsdatenStation[wlIndex].wAuftrag := eStation_Kein_Auftrag;
-      END_IF
+    IF ( AuftragsdatenStation[wlIndex].wAuftrag = eStation_Vorabpositionierung ) THEN
+      starrShuttleBasisParameter[wlIndex].bQuittungPositionierungZurueckgesetzt := TRUE;
+      AuftragsdatenStation[wlIndex].wAuftrag := eStation_Kein_Auftrag;
+    END_IF
   END_IF
 END_FOR
 

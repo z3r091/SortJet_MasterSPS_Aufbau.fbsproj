@@ -41,8 +41,8 @@ blAktiv := TRUE;
 (* STEUERUNG ANLEGEN *)
 (***************************************************************************************************)
 IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
- CASE steplSchritt OF
-(* ANLEGEN ================================================== *)
+  CASE steplSchritt OF
+    (* ANLEGEN ================================================== *)
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -60,7 +60,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
         Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
       END_IF
 
-(* ANLEGEN ================================================== *)
+    (* ANLEGEN ================================================== *)
     STEP_10_E:
       (* ---------------------------------------------------------------------------------------
       //  PRUEFUNG DER GLASDATEN [AUFTRAGSDATEN]
@@ -74,36 +74,36 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-(* ANLEGEN ================================================== *)
-     STEP_20_E:
-       (* Hinweis:
-          - Starten des Anlegevorgangs
-       *)
+    (* ANLEGEN ================================================== *)
+    STEP_20_E:
+      (* Hinweis:
+         - Starten des Anlegevorgangs
+      *)
 
-     // Glastyp bestimmen
+      // Glastyp bestimmen
       IF Auftragsdaten.bModell THEN
-          starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] := cMODELLSCHEIBE;
+        starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] := cMODELLSCHEIBE;
       ELSE
-          starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] := cDEFAULTSCHEIBE;
+        starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] := cDEFAULTSCHEIBE;
       END_IF
 
-       starrStationBasisParameter[wStation].pAuftrag[cWAND_1] := Auftragsdaten;
-       starrStationBasisParameter[wStation].bAnlegen := TRUE;
+      starrStationBasisParameter[wStation].pAuftrag[cWAND_1] := Auftragsdaten;
+      starrStationBasisParameter[wStation].bAnlegen := TRUE;
        
-       steplSchritt := STEP_30_E;
+      steplSchritt := STEP_30_E;
 
-(* ANLEGEN ================================================== *)
+    (* ANLEGEN ================================================== *)
     STEP_30_E:
       (* Hinweis:
          - Prüfen dass der Auftragsstatus sich geändert hat
       *)
       IF ( starrStationBasisParameter[wStation].eStatusAuftrag = eAuftragAktiv )
-        OR  ( starrStationBasisParameter[wStation].eStatusAuftrag = eAuftragAktivWiederholen )
+         OR  ( starrStationBasisParameter[wStation].eStatusAuftrag = eAuftragAktivWiederholen )
       THEN
         steplSchritt := STEP_100_E;
       END_IF
 
-(* ANLEGEN ================================================== *)
+    (* ANLEGEN ================================================== *)
     STEP_100_E:
       (* Hinweis
          - Station hat ihren Vorgang abgeschlossen
@@ -121,7 +121,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
             wSps2MmiInputtableNummer := starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
             dwSps2MmiWartezeit       := starrStationBasisParameter[wStation].dwWartezeit[cWAND_1];
             MsgToMmi(auftragsnr_w := SB0_SPS_SortierungQuittInputInQueue);
-      END_IF
+          END_IF
 
         END_IF
 
@@ -143,20 +143,20 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-(* ANLEGEN ================================================== *)
-     STEP_900_E:
-       bpFehler := TRUE;
+    (* ANLEGEN ================================================== *)
+    STEP_900_E:
+      bpFehler := TRUE;
 
-(* ANLEGEN ================================================== *)
-     STEP_1000_E:
-       bpDone := TRUE;
+    (* ANLEGEN ================================================== *)
+    STEP_1000_E:
+      bpDone := TRUE;
        
       IF ( starrStationBasisParameter[wStation].eStatusAuftrag = eAuftragErfolgreich ) THEN
 
         IF Auftragsdaten.bModell  OR NOT (starrStationBasisParameter[wStation].stMKs.stStationsOptionen.stGlastransport.bScheibenVermessen) THEN
           Auftragsdaten.wAuftrag := eStation_Warte_Auf_Austransport;
         ELSE
-              Auftragsdaten.wAuftrag := eStation_Hoehenmessung;
+          Auftragsdaten.wAuftrag := eStation_Hoehenmessung;
         END_IF
 
       ELSIF ( starrStationBasisParameter[wStation].eStatusAuftrag = eAuftragWiederholen ) THEN
@@ -164,7 +164,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
 
       END_IF
 
-(* ANLEGEN ================================================== *)
+  (* ANLEGEN ================================================== *)
   END_CASE
 END_IF
 
