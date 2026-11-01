@@ -315,10 +315,10 @@ THEN
     STEP_900_E:
       bpFehler := TRUE;
       wpgFehlerdaten[0] := stStationsNummern.NummerExtern;
-      SpsError( eFehler_Station, 
-                wpFehlerNr, 
-                stStationsNummern.NummerIntern, 
-                AutomatikkreisBestimmen(stStationsNummern.NummerIntern), 
+      SpsError( eFehler_Station,
+                wpFehlerNr,
+                stStationsNummern.NummerIntern,
+                AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
                 wpgFehlerdaten );
 
       FOR wlSubIndex := 1 TO cANZAHL_HUPEN DO

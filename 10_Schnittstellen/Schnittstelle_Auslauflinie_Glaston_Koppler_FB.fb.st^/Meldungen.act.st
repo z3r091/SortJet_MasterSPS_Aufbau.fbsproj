@@ -19,10 +19,10 @@ rtlFehlermeldungGenerierenKommunikation( CLK := blFehlermeldungGenerierenKommuni
 IF ( rtlFehlermeldungGenerierenKommunikation.Q ) THEN
 
   IF ( NOT bpFehlerMeldungDeaktiviert ) THEN
-    SpsError( eFehler_Schnittstelle, 
-              cMELDUNG_SCHNITTSTELLE_KOMUNIKATION_TIMEOUT, 
-              BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-              AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+    SpsError( eFehler_Schnittstelle,
+              cMELDUNG_SCHNITTSTELLE_KOMUNIKATION_TIMEOUT,
+              BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+              AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
               wpgFehlerdaten );
   END_IF
 

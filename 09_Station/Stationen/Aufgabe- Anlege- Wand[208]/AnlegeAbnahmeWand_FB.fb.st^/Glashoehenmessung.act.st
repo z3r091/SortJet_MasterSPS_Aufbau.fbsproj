@@ -97,8 +97,7 @@ THEN
                       cMELDUNG_MESSUNG_SCHEIBE_ZU_HOCH,
                       BasisStationsParameter.stMKs.stStationsNummern.NummerExtern,
                       AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                      BasisStationsParameter.awFehlerInformationen
-                    );
+                      BasisStationsParameter.awFehlerInformationen );
           BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
           steplGlashoehenmessung := STEP_1000_E;
 
@@ -108,8 +107,7 @@ THEN
                       cMELDUNG_MESSUNG_SCHEIBE_ZU_NIEDRIG,
                       BasisStationsParameter.stMKs.stStationsNummern.NummerExtern,
                       AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                      BasisStationsParameter.awFehlerInformationen
-                    );
+                      BasisStationsParameter.awFehlerInformationen );
           BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
           steplGlashoehenmessung := STEP_1000_E;
 

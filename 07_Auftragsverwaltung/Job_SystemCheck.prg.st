@@ -32,9 +32,9 @@ IF ( M_SB0_MMI_SYSTEMCHECKSTATION ) THEN
       IF NOT ( PruefungWertImIntervall( wpWert:= tMmi2SpsInfo.wSystemCheckStationSlot, wpIntervallMin := cWAND_1, wpIntervallMax := cANZAHL_WAENDE )  ) THEN
         wpgFehlerdaten[0] := tMmi2SpsInfo.wSystemCheckStationMmiNummer;
         wpgFehlerdaten[1] := tMmi2SpsInfo.wSystemCheckStationSlot;
-        SpsHinweis( eFehler_Station, 
-                    cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_WAND, 
-                    tMmi2SpsInfo.wSystemCheckStationMmiNummer, 
+        SpsHinweis( eFehler_Station,
+                    cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_WAND,
+                    tMmi2SpsInfo.wSystemCheckStationMmiNummer,
                     AutomatikkreisBestimmen(tMmi2SpsInfo.wSystemCheckStationMmiNummer),
                     wpgFehlerdaten );
 

@@ -56,12 +56,11 @@ IF ( blBetriebartCheck ) THEN
 
         MsgToMmi( auftragsnr_w := SB0_SPS_STATIONSTATUS);
 
-        SpsHinweis( eFehler_Station, 
+        SpsHinweis( eFehler_Station,
                     cMELDUNG_ANLEGEN_SICHERHEITSKREIS,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerExtern, 
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerExtern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                    BasisStationsParameter.awFehlerInformationen 
-                  );
+                    BasisStationsParameter.awFehlerInformationen );
 
         IF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
           rSps2MmiMessungScheibenlaenge       := 0.0;
@@ -246,19 +245,19 @@ IF ( blBetriebartCheck ) THEN
 
           IF ( BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben = 0 )THEN
               
-            SpsHinweis( eFehler_Station, 
-                        cMELDUNG_SYSTEMCHECK_SCHEIBE_NEU_ANLEGEN, 
-                        BasisStationsParameter.stMKs.stStationsNummern.NummerExtern, 
+            SpsHinweis( eFehler_Station,
+                        cMELDUNG_SYSTEMCHECK_SCHEIBE_NEU_ANLEGEN,
+                        BasisStationsParameter.stMKs.stStationsNummern.NummerExtern,
                         AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
-                        BasisStationsParameter.awFehlerInformationen);
+                        BasisStationsParameter.awFehlerInformationen );
           END_IF
 
         ELSE
 
           IF ( BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben >= 1 )THEN
 
-            SpsHinweis( eFehler_Station, 
-                        cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN, 
+            SpsHinweis( eFehler_Station,
+                        cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN,
                         BasisStationsParameter.stMKs.stStationsNummern.NummerExtern,
                         AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                         BasisStationsParameter.awFehlerInformationen );

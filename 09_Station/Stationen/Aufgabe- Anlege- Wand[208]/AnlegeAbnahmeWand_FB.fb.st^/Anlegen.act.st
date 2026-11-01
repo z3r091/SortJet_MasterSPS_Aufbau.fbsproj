@@ -119,8 +119,7 @@ THEN
                     cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI,
                     BasisStationsParameter.stMKs.stStationsNummern.NummerExtern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                    wpgFehlerdaten
-                  );
+                    wpgFehlerdaten );
       END_IF
 
       (* Hinweis:
@@ -134,8 +133,7 @@ THEN
                     cMELDUNG_ANLEGEN_SENSOR_EINLAUF_NICHT_BELEGT,
                     BasisStationsParameter.stMKs.stStationsNummern.NummerExtern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                    wpgFehlerdaten
-                  );
+                    wpgFehlerdaten );
       END_IF
 
       (* Hinweis:

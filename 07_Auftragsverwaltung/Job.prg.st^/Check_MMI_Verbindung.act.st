@@ -52,10 +52,10 @@ IF ( tonlNachrichtAbsetzen.Q ) THEN
   wpgFehlerdaten[0] := wlMinutenMmiNichtOk;
   wpgFehlerdaten[1] := wlSekundenMmiNichtOk;
   wpgFehlerdaten[2] := wlMilliSekundenMmiNichtOk;
-  SpsHinweis( eFehler_Mmi, 
-              cMELDUNG_MMI_VERBINDUNGS_TIME_OUT, 
-              0, 
-              AutomatikkreisBestimmen(0), 
+  SpsHinweis( eFehler_Mmi,
+              cMELDUNG_MMI_VERBINDUNGS_TIME_OUT,
+              0,
+              AutomatikkreisBestimmen(0),
               wpgFehlerdaten );
 END_IF
 END_ACTION

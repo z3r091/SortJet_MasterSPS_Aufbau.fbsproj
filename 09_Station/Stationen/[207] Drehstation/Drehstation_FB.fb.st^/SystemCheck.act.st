@@ -232,10 +232,10 @@ IF( blBetriebartCheck )THEN
 
       IF ( ( BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben = 0 ) AND BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
         wpgFehlerdaten[0] := BasisStationsParameter.stMKs.stStationsNummern.NummerExtern;
-        SpsHinweis( eFehler_Station, 
-                    cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN, 
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+        SpsHinweis( eFehler_Station,
+                    cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                     wpgFehlerdaten );
 
         BasisStationsParameter.wFehlerNummer := cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN;
@@ -245,10 +245,10 @@ IF( blBetriebartCheck )THEN
 
       IF ( ( BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben <> 0 ) AND NOT BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
         wpgFehlerdaten[0] := BasisStationsParameter.stMKs.stStationsNummern.NummerExtern;
-        SpsHinweis( eFehler_Station, 
-                    cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN, 
+        SpsHinweis( eFehler_Station,
+                    cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN,
                     BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                     wpgFehlerdaten );
 
         BasisStationsParameter.wFehlerNummer := cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN;

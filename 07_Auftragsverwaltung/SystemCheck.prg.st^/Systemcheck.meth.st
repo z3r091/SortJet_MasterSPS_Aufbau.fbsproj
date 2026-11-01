@@ -72,10 +72,10 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
         IF NOT TransferShuttleBetriebsstopAktiv(wpAutomatikkreis) THEN
           asteplCheck[wpAutomatikkreis, wpZyklus] := STEP_10_E;
         ELSE
-          SpsError( eFehler_Station, 
-                    cMELDUNG_SYSTEMCHECK_NICHT_MOEGLICH_TS_BETRIEBSSTOP, 
-                    0, 
-                    wpAutomatikkreis, 
+          SpsError( eFehler_Station,
+                    cMELDUNG_SYSTEMCHECK_NICHT_MOEGLICH_TS_BETRIEBSSTOP,
+                    0,
+                    wpAutomatikkreis,
                     wpgFehlerdaten );
           asteplCheck[wpAutomatikkreis, wpZyklus] := STEP_900_E;
         END_IF
@@ -135,10 +135,10 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
       atonlCheckWarteAufMMIDaten[wpAutomatikkreis]( IN :=  TRUE, PT := T#5S);
       IF atonlCheckWarteAufMMIDaten[wpAutomatikkreis].Q THEN
         atonlCheckWarteAufMMIDaten[wpAutomatikkreis]( IN :=  FALSE );
-        SpsError( eFehler_Station, 
-                  cMELDUNG_SYSTEMCHECK_AUFTRAGSDATEN_TIMEOUT, 
-                  0, 
-                  wpAutomatikkreis, 
+        SpsError( eFehler_Station,
+                  cMELDUNG_SYSTEMCHECK_AUFTRAGSDATEN_TIMEOUT,
+                  0,
+                  wpAutomatikkreis,
                   wpgFehlerdaten );
 
         asteplCheck[wpAutomatikkreis, wpZyklus] := STEP_900_E;
@@ -334,10 +334,10 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
             IF ( NOT starrShuttleBasisParameter[wlIndex].bCheckAbgeschlossen ) THEN
               ablTimeOutMeldungGenerieren[wpAutomatikkreis] := FALSE;
               wpgFehlerdaten[0] := wlIndex;
-              SpsError( eFehler_Station,  
-                        cMELDUNG_SYSTEMCHECK_STATION_BEENDET_DIESEN_NICHT, 
-                        wlIndex, 
-                        AutomatikkreisBestimmen(wlIndex), 
+              SpsError( eFehler_Station,
+                        cMELDUNG_SYSTEMCHECK_STATION_BEENDET_DIESEN_NICHT,
+                        wlIndex,
+                        AutomatikkreisBestimmen(wlIndex),
                         starrShuttleBasisParameter[wlIndex].awFehlerInformationen );
             END_IF
 
@@ -356,9 +356,10 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
             IF ( NOT starrStationBasisParameter[wlIndex].bCheckAbgeschlossen ) THEN
               ablTimeOutMeldungGenerieren[wpAutomatikkreis] := FALSE;
               wpgFehlerdaten[0] := wlIndex;
-              SpsError( eFehler_Station, 
-                        cMELDUNG_SYSTEMCHECK_STATION_BEENDET_DIESEN_NICHT, 
-                        wlIndex, AutomatikkreisBestimmen(wlIndex), 
+              SpsError( eFehler_Station,
+                        cMELDUNG_SYSTEMCHECK_STATION_BEENDET_DIESEN_NICHT,
+                        wlIndex,
+                        AutomatikkreisBestimmen(wlIndex),
                         starrStationBasisParameter[wlIndex].awFehlerInformationen );
             END_IF
 
@@ -377,9 +378,10 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
             IF ( NOT starrFaecherwagenBasisParameter[wlIndex].bCheckAbgeschlossen ) THEN
               ablTimeOutMeldungGenerieren[wpAutomatikkreis] := FALSE;
               wpgFehlerdaten[0] := wlIndex;
-              SpsError( eFehler_Station, 
-                        cMELDUNG_SYSTEMCHECK_STATION_BEENDET_DIESEN_NICHT, 
-                        wlIndex, AutomatikkreisBestimmen(wlIndex), 
+              SpsError( eFehler_Station,
+                        cMELDUNG_SYSTEMCHECK_STATION_BEENDET_DIESEN_NICHT,
+                        wlIndex,
+                        AutomatikkreisBestimmen(wlIndex),
                         starrFaecherwagenBasisParameter[wlIndex].awFehlerInformationen );
             END_IF
 
@@ -392,10 +394,10 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
         *)
         IF ( ablTimeOutMeldungGenerieren[wpAutomatikkreis] ) THEN
           wpgFehlerdaten[0] := wpAutomatikkreis;
-          SpsHinweis( eFehler_Station,  
-                      cMELDUNG_SYSTEMCHECK_TIMEOUT, 
-                      0, 
-                      AutomatikkreisBestimmen(wpAutomatikkreis), 
+          SpsHinweis( eFehler_Station,
+                      cMELDUNG_SYSTEMCHECK_TIMEOUT,
+                      0,
+                      AutomatikkreisBestimmen(wpAutomatikkreis),
                       wpgFehlerdaten );
         END_IF
 
@@ -414,10 +416,10 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
         THEN
           starrShuttleBasisParameter[wlIndex].bCheck := FALSE;
           wpgFehlerdaten[0] := starrShuttleBasisParameter[wlIndex].wFehlerNummer;
-          SpsError( eFehler_Station, 
-                    starrShuttleBasisParameter[wlIndex].wFehlerNummer, 
-                    wlIndex, 
-                    AutomatikkreisBestimmen(wlIndex), 
+          SpsError( eFehler_Station,
+                    starrShuttleBasisParameter[wlIndex].wFehlerNummer,
+                    wlIndex,
+                    AutomatikkreisBestimmen(wlIndex),
                     starrShuttleBasisParameter[wlIndex].awFehlerInformationen );
 
           asteplCheck[wpAutomatikkreis, wpZyklus] := STEP_900_E;
@@ -435,9 +437,10 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
         THEN
           starrStationBasisParameter[wlIndex].bCheck := FALSE;
           wpgFehlerdaten[0] := starrStationBasisParameter[wlIndex].wFehlerNummer;
-          SpsError( eFehler_Station, 
-                    starrStationBasisParameter[wlIndex].wFehlerNummer, 
-                    wlIndex, AutomatikkreisBestimmen(wlIndex), 
+          SpsError( eFehler_Station,
+                    starrStationBasisParameter[wlIndex].wFehlerNummer,
+                    wlIndex,
+                    AutomatikkreisBestimmen(wlIndex),
                     starrStationBasisParameter[wlIndex].awFehlerInformationen );
 
           asteplCheck[wpAutomatikkreis, wpZyklus] := STEP_900_E;
@@ -452,9 +455,10 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
           THEN
             starrFaecherwagenBasisParameter[wlIndex].bCheck := FALSE;
             wpgFehlerdaten[0] := starrFaecherwagenBasisParameter[wlIndex].wFehlerNummer;
-            SpsError( eFehler_Station, 
-                      starrFaecherwagenBasisParameter[wlIndex].wFehlerNummer, 
-                      wlIndex, AutomatikkreisBestimmen(wlIndex), 
+            SpsError( eFehler_Station,
+                      starrFaecherwagenBasisParameter[wlIndex].wFehlerNummer,
+                      wlIndex,
+                      AutomatikkreisBestimmen(wlIndex),
                       starrFaecherwagenBasisParameter[wlIndex].awFehlerInformationen );
                 
             asteplCheck[wpAutomatikkreis, wpZyklus] := STEP_900_E;

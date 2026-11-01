@@ -19,10 +19,10 @@ rtlFehlermeldungGenerierenKommunikation( CLK := blFehlermeldungGenerierenKommuni
 IF ( rtlFehlermeldungGenerierenKommunikation.Q ) THEN
 
   wpgFehlerdaten[0] := stStationsNummern.NummerExtern;
-  SpsError( eFehler_Schnittstelle, 
-            cMELDUNG_SCHNITTSTELLE_KOMUNIKATION_TIMEOUT, 
-            stStationsNummern.NummerSPS, 
-            1,  
+  SpsError( eFehler_Schnittstelle,
+            cMELDUNG_SCHNITTSTELLE_KOMUNIKATION_TIMEOUT,
+            stStationsNummern.NummerSPS,
+            1,
             wpgFehlerdaten );
 
 END_IF

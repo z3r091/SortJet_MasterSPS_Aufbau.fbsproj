@@ -38,9 +38,9 @@ IF ( M_SB0_MMI_TRANSFERSHUTTLECHECK ) THEN
     IF ( Job_Shuttle.abpSpeicherfachValidierung[tMmi2SpsInfo.wTransfershuttle_Nummer1] ) THEN 
       wpgFehlerdaten[0] := tMmi2SpsInfo.wTransfershuttle_Nummer1;      
       wpgFehlerdaten[1] := tMmi2SpsInfo.wTransfershuttle_Nummer1;
-      SpsHinweis( eFehler_Station, 
+      SpsHinweis( eFehler_Station,
                   cMELDUNG_TS_SPEICHERVALIDIERUNG_NOCH_AKTIV,
-                  tMmi2SpsInfo.wTransfershuttle_Nummer1, 
+                  tMmi2SpsInfo.wTransfershuttle_Nummer1,
                   AutomatikkreisBestimmen(tMmi2SpsInfo.wTransfershuttle_Nummer1),
                   wpgFehlerdaten );
     ELSE
@@ -88,9 +88,9 @@ IF ( M_SB0_MMI_TRANSFERSHUTTLECHECK ) THEN
   ELSE
     wpgFehlerdaten[0] := tMmi2SpsInfo.wTransfershuttle_Nummer1;
     wpgFehlerdaten[1] := tMmi2SpsInfo.wTransfershuttle_Nummer1;
-    SpsHinweis( eFehler_Station, 
+    SpsHinweis( eFehler_Station,
                 cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_STATION,
-                tMmi2SpsInfo.wTransfershuttle_Nummer1, 
+                tMmi2SpsInfo.wTransfershuttle_Nummer1,
                 AutomatikkreisBestimmen(tMmi2SpsInfo.wTransfershuttle_Nummer1),
                 wpgFehlerdaten );
 

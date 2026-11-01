@@ -218,10 +218,10 @@ IF ( M_SB0_MMI_SHUTTLE_INFORMATION ) THEN
       *)
       wpgFehlerdaten[0] := tMmi2SpsInfo.wAuftrag_ShuttleNummer;
       wpgFehlerdaten[1] := tMmi2SpsInfo.wAuftrag_TranferStation;
-      SpsError( eFehler_Station, 
-                cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_STATION, 
-                tMmi2SpsInfo.wAuftrag_ShuttleNummer, 
-                AutomatikkreisBestimmen(tMmi2SpsInfo.wAuftrag_ShuttleNummer), 
+      SpsError( eFehler_Station,
+                cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_STATION,
+                tMmi2SpsInfo.wAuftrag_ShuttleNummer,
+                AutomatikkreisBestimmen(tMmi2SpsInfo.wAuftrag_ShuttleNummer),
                 wpgFehlerdaten );
 
   END_CASE

@@ -43,13 +43,25 @@ IF ( rtl_Fehlermeldung.Q ) THEN
   awlFehlerinformationen[3] := ppAntriebsInformationen.wpSchaltschrank;
 
   IF ( blInternerFehler ) THEN
-    SpsError(eFehler_Antrieb, wlError, stStationsNummern.NummerIntern, AutomatikkreisBestimmen(stStationsNummern.NummerIntern), awlFehlerinformationen);
+    SpsError( eFehler_Antrieb,
+              wlError,
+              stStationsNummern.NummerIntern,
+              AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+              awlFehlerinformationen );
   ELSE
     IF ( Diagnose.eType = eRexroth_Fehler_Error ) THEN
-      SpsError( eFehler_Rexroth_Fehler + Diagnose.eErrorType , Diagnose.wFehlerNr , stStationsNummern.NummerIntern, AutomatikkreisBestimmen(stStationsNummern.NummerIntern), awlFehlerinformationen);
+      SpsError( eFehler_Rexroth_Fehler + Diagnose.eErrorType,
+                Diagnose.wFehlerNr,
+                stStationsNummern.NummerIntern,
+                AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+                awlFehlerinformationen );
     // Wir loggen keine Warnungen
     // ELSIF ( Diagnose.eType = eRexroth_Fehler_Warning ) THEN
-    //   SpsWarnung( eFehler_Rexroth_Warnung + Diagnose.eWarningType , Diagnose.wFehlerNr , stStationsNummern.NummerIntern, AutomatikkreisBestimmen(stStationsNummern.NummerIntern), awlErrorAdditional);
+    //   SpsWarnung( eFehler_Rexroth_Warnung + Diagnose.eWarningType,
+    //               Diagnose.wFehlerNr,
+    //               stStationsNummern.NummerIntern,
+    //               AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+    //               awlErrorAdditional );
     END_IF
   END_IF
 

@@ -167,9 +167,9 @@ THEN
         tonlTimeoutReadRFID(IN := FALSE); // Timer falls der Chip nicht ausgelesen werden kann
 
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_RFID_CHIP_NICHT_LESBAR;
-        SpsError( eFehler_Station, 
-                  wpFehlernr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
+        SpsError( eFehler_Station,
+                  wpFehlernr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
@@ -434,10 +434,10 @@ THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Fehler;
 
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_NICHT_IN_LADEPOSITION;
-        SpsError( eFehler_Station, 
-                  wpFehlernr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+        SpsError( eFehler_Station,
+                  wpFehlernr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplEinschleusen := STEP_900_E;

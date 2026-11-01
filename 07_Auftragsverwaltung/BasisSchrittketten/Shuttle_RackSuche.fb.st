@@ -42,10 +42,10 @@ IF ( Auftragsdaten.wAuftrag = eStation_RackSuche ) THEN
   *)
   IF starrShuttleBasisParameter[wStation].bFehler AND steplSchritt <> STEP_900_E THEN
     aShuttle[wStation].bpStarteFaecherwagensuche := FALSE;
-    SpsError( eFehler_Station, 
-              starrShuttleBasisParameter[wStation].wFehlerNummer, 
+    SpsError( eFehler_Station,
+              starrShuttleBasisParameter[wStation].wFehlerNummer,
               starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-              AutomatikkreisBestimmen(wStation), 
+              AutomatikkreisBestimmen(wStation),
               starrShuttleBasisParameter[wStation].awFehlerInformationen );
           
     steplSchritt := STEP_900_E;

@@ -9,7 +9,11 @@ ACTION Reset
 // RESET
 IF ( tonlMaxWarteAufResetErfolgreich.Q ) THEN
   BasisStationsParameter.wFehlerNummer := cMELDUNG_STATION_NICHT_ZURUECKGESETZT;
-  SpsError( eFehler_Station, cMELDUNG_STATION_NICHT_ZURUECKGESETZT, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+  SpsError( eFehler_Station,
+            cMELDUNG_STATION_NICHT_ZURUECKGESETZT,
+            BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+            AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+            BasisStationsparameter.awFehlerInformationen );
 END_IF
 
 IF blBetriebsartReset THEN

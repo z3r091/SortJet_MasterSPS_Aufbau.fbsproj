@@ -28,9 +28,9 @@ rtlFehlerMeldungGenerierenHandbetrieb( CLK :=    blBetriebsartHand
                                        AND ( BasisStationsParameter.wFehlerNummer <> 0) );
 
 IF ( rtlFehlerMeldungGenerierenHandbetrieb.Q ) THEN
-  SpsHinweis( eFehler_Station, 
-              BasisStationsParameter.wFehlerNummer, 
-              BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
+  SpsHinweis( eFehler_Station,
+              BasisStationsParameter.wFehlerNummer,
+              BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
               AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
               BasisStationsParameter.awFehlerInformationen );
 END_IF

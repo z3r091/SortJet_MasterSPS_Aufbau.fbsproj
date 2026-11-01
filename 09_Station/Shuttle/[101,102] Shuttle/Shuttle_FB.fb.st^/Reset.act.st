@@ -101,7 +101,11 @@ IF( blBetriebsartReset )THEN
         Zentralschmierung.bpReset := FALSE;
 
         BasisStationsParameter.wFehlerNummer := cMELDUNG_STATION_NICHT_ZURUECKGESETZT;
-        SpsError( eFehler_Station, cMELDUNG_STATION_NICHT_ZURUECKGESETZT, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+        SpsError( eFehler_Station,
+                  cMELDUNG_STATION_NICHT_ZURUECKGESETZT,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                  BasisStationsparameter.awFehlerInformationen );
 
         steplResetAntrieb := STEP_900_E;
 
@@ -117,12 +121,20 @@ IF( blBetriebsartReset )THEN
           IF ( NOT Glastransport[wlIndex].bpDone OR Glastransport[wlIndex].bpFehler ) THEN
             Glastransport[wlIndex].bpReset := FALSE;
             BasisStationsParameter.wFehlerNummer := Glastransport[wlIndex].wpFehlerNr;
-            SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+            SpsError( eFehler_Station,
+                      BasisStationsParameter.wFehlerNummer,
+                      BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                      BasisStationsparameter.awFehlerInformationen );
           END_IF
           IF ( NOT Wandverstellung[wlIndex].bpDone OR Wandverstellung[wlIndex].bpFehler ) THEN
             Wandverstellung[wlIndex].bpReset := FALSE;
             BasisStationsParameter.wFehlerNummer := Wandverstellung[wlIndex].wpFehlerNr;
-            SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+            SpsError( eFehler_Station,
+                      BasisStationsParameter.wFehlerNummer,
+                      BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                      BasisStationsparameter.awFehlerInformationen );
           END_IF
         END_FOR
 
@@ -132,13 +144,21 @@ IF( blBetriebsartReset )THEN
         IF ( NOT Querfahrt.bpDone OR Querfahrt.bpFehler ) THEN
           Querfahrt.bpReset := FALSE;
           BasisStationsParameter.wFehlerNummer := Querfahrt.wpFehlerNr;
-          SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+          SpsError( eFehler_Station,
+                    BasisStationsParameter.wFehlerNummer,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                    BasisStationsparameter.awFehlerInformationen );
         END_IF
 
         IF ( NOT Kippen.bpDone OR Kippen.bpFehler ) THEN
           Kippen.bpReset := FALSE;
           BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
-          SpsError( eFehler_Station, BasisStationsParameter.wFehlerNummer, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
+          SpsError( eFehler_Station,
+                    BasisStationsParameter.wFehlerNummer,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                    BasisStationsparameter.awFehlerInformationen );
         END_IF
 
       END_IF

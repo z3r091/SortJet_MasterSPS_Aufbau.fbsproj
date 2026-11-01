@@ -136,10 +136,10 @@ IF bpFreigabe THEN
         IF blSchmierhubOkBaldLeer THEN
           blSchmierhubOkBaldLeer := FALSE;
           wpgFehlerdaten[0] := stStationsNummern.NummerExtern;
-          SpsHinweis( eFehler_Station, 
-                      cMELDUNG_ZENTRALSCHMIERUNG_FETT_BALD_LEER, 
-                      stStationsNummern.NummerIntern, 
-                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern), 
+          SpsHinweis( eFehler_Station,
+                      cMELDUNG_ZENTRALSCHMIERUNG_FETT_BALD_LEER,
+                      stStationsNummern.NummerIntern,
+                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
                       wpgFehlerdaten );
 
           steplSchmierung := STEP_300_E;
@@ -148,10 +148,10 @@ IF bpFreigabe THEN
         IF tonlWartezeitFuerSchmierHub.Q THEN
           tonlWartezeitFuerSchmierHub( IN := FALSE );
           wpgFehlerdaten[0] := stStationsNummern.NummerExtern;
-          SpsError( eFehler_Station, 
-                    cMELDUNG_ZENTRALSCHMIERUNG_GERAETEFEHLER, 
-                    stStationsNummern.NummerIntern, 
-                    AutomatikkreisBestimmen(stStationsNummern.NummerIntern), 
+          SpsError( eFehler_Station,
+                    cMELDUNG_ZENTRALSCHMIERUNG_GERAETEFEHLER,
+                    stStationsNummern.NummerIntern,
+                    AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
                     wpgFehlerdaten );
 
           wSps2MmiErrorNumber           := 110;

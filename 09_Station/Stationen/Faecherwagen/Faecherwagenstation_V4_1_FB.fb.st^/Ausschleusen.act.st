@@ -191,10 +191,10 @@ THEN
         ELSE
           steplAusschleusen      := STEP_143_E;
         
-          SpsWarnung( eFehler_Station, 
-                      cMELDUNG_FAECHERWAGEN_OBERWAGEN_INPOS_VERLOREN, 
-                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+          SpsWarnung( eFehler_Station,
+                      cMELDUNG_FAECHERWAGEN_OBERWAGEN_INPOS_VERLOREN,
+                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                       BasisStationsParameter.awFehlerInformationen );
         END_IF
       ELSE

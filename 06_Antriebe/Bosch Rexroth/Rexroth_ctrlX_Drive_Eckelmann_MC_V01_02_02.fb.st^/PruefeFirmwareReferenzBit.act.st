@@ -38,7 +38,11 @@ IF blCoeS277ReadGestartet AND l_fb_CoeS277Lesen.o_b_Done THEN
     awlFehlerinformationen[1] := ppAntriebsInformationen.wpSchaltplanseite;
     awlFehlerinformationen[2] := ppAntriebsInformationen.wpSchaltplanReihe;
     awlFehlerinformationen[3] := ppAntriebsInformationen.wpSchaltschrank;
-    SpsError(eFehler_Antrieb, 999, stStationsNummern.NummerIntern, AutomatikkreisBestimmen(stStationsNummern.NummerIntern), awlFehlerinformationen);
+    SpsError( eFehler_Antrieb,
+              999,
+              stStationsNummern.NummerIntern,
+              AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+              awlFehlerinformationen );
   END_IF
 END_IF
 END_ACTION

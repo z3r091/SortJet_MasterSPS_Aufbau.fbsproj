@@ -52,9 +52,9 @@ THEN
       IF tonlTimeoutGreiferAufZu.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_GREIFER_NICHT_OFFEN;
         SpsError( eFehler_Station,
-                  wpFehlerNr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  wpFehlerNr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplGreiferOeffnen := STEP_900_E;
@@ -137,9 +137,9 @@ THEN
       IF tonlTimeoutGreiferAufZu.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_GREIFER_NICHT_GESCHLOSSEN;
         SpsError( eFehler_Station,
-                  wpFehlerNr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  wpFehlerNr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplGreiferSchliessen := STEP_900_E;

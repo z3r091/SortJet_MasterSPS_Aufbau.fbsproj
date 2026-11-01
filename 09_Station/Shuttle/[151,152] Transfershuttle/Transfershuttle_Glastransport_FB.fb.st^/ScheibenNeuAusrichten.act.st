@@ -92,10 +92,10 @@ THEN
           wpFehlerNr := cMELDUNG_UNDEFINIERTER_ZUSTAND;
         END_IF
 
-        SpsHinweis( eFehler_Station, 
-                    wpFehlerNr, 
-                    stStationsNummern.NummerIntern, 
-                    AutomatikkreisBestimmen(stStationsNummern.NummerIntern), 
+        SpsHinweis( eFehler_Station,
+                    wpFehlerNr,
+                    stStationsNummern.NummerIntern,
+                    AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
                     wpgFehlerdaten );
 
         steplScheibenNeuAusrichten := STEP_800_E;
@@ -156,10 +156,10 @@ THEN
       *)
       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation * 1.5 ) THEN
         wpgFehlerdaten[0] := stStationsNummern.NummerExtern;
-        SpsHinweis( eFehler_Station, 
-                    cMELDUNG_STATION_KEINE_SCHEIBE_GEFUNDEN, 
-                    stStationsNummern.NummerIntern, 
-                    AutomatikkreisBestimmen(stStationsNummern.NummerIntern), 
+        SpsHinweis( eFehler_Station,
+                    cMELDUNG_STATION_KEINE_SCHEIBE_GEFUNDEN,
+                    stStationsNummern.NummerIntern,
+                    AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
                     wpgFehlerdaten );
 
         Antrieb.wpBetriebsart := KEINE_FUNKTION;

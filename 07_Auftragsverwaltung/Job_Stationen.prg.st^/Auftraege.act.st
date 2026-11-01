@@ -228,10 +228,10 @@ IF ( M_SB0_MMI_MEASSURERESULT ) THEN
     ELSE
       wpgFehlerdaten[0]:= tMmi2SpsInfo.wMmiNummerAnlegeStation;
       wpgFehlerdaten[1]:= tMmi2SpsInfo.wFreigabeStation;
-      SpsError( eFehler_Station, 
-                cMELDUNG_SCANNER_NACHRICHT_FALSCHE_STATION, 
-                tMmi2SpsInfo.wMmiNummerAnlegeStation, 
-                AutomatikkreisBestimmen(tMmi2SpsInfo.wMmiNummerAnlegeStation), 
+      SpsError( eFehler_Station,
+                cMELDUNG_SCANNER_NACHRICHT_FALSCHE_STATION,
+                tMmi2SpsInfo.wMmiNummerAnlegeStation,
+                AutomatikkreisBestimmen(tMmi2SpsInfo.wMmiNummerAnlegeStation),
                 wpgFehlerdaten );
  
   END_CASE
@@ -284,10 +284,10 @@ IF ( M_SB0_MMI_STATIONSTATUS ) THEN
     ELSE
       wpgFehlerdaten[0] := tMmi2SpsInfo.wStationsNummer;
       wpgFehlerdaten[1] := tMmi2SpsInfo.wStationsStatusWord5;
-      SpsHinweis( eFehler_Mmi, 
-                  cMELDUNG_MMI_AUFTRAGSDATEN_UNGUELTIGE_STATIONSNUMMER, 
-                  0, 
-                  AutomatikkreisBestimmen(0), 
+      SpsHinweis( eFehler_Mmi,
+                  cMELDUNG_MMI_AUFTRAGSDATEN_UNGUELTIGE_STATIONSNUMMER,
+                  0,
+                  AutomatikkreisBestimmen(0),
                   wpgFehlerdaten );
 
   END_CASE
@@ -313,10 +313,10 @@ IF ( M_SB0_MMI_REQUESTTILTSTATION ) THEN
 
     ELSE
       wpgFehlerdaten[0] := tMmi2SpsInfo.wSortierungsInputSwingStationNr;
-      SpsHinweis( eFehler_Mmi, 
-                  cMELDUNG_MMI_AUFTRAGSDATEN_UNGUELTIGE_STATIONSNUMMER, 
-                  0, 
-                  AutomatikkreisBestimmen(0), 
+      SpsHinweis( eFehler_Mmi,
+                  cMELDUNG_MMI_AUFTRAGSDATEN_UNGUELTIGE_STATIONSNUMMER,
+                  0,
+                  AutomatikkreisBestimmen(0),
                   wpgFehlerdaten );
 
   END_CASE

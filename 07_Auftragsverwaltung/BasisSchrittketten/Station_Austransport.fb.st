@@ -287,10 +287,10 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
          - Station
       *)
       IF ( starrStationBasisParameter[wStation].bFehler ) THEN
-        SpsError( eFehler_Station, 
-                  starrStationBasisParameter[wStation].wFehlerNummer, 
-                  starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern), 
+        SpsError( eFehler_Station,
+                  starrStationBasisParameter[wStation].wFehlerNummer,
+                  starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
                   starrStationBasisParameter[wStation].awFehlerInformationen );
 
         starrStationBasisParameter[wStation].bAustransport[wWand] := FALSE;

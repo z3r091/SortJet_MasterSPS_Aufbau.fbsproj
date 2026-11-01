@@ -633,10 +633,10 @@ THEN
         END_IF
 
         IF ( NOT blFehlerAusloesen ) THEN
-          SpsWarnung( eFehler_Station, 
-                      cMELDUNG_SENSOR_EINLAUF_ODER_AUSLAUF_WURDE_BELEGT, 
-                      stStationsNummern.NummerIntern, 
-                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern), 
+          SpsWarnung( eFehler_Station,
+                      cMELDUNG_SENSOR_EINLAUF_ODER_AUSLAUF_WURDE_BELEGT,
+                      stStationsNummern.NummerIntern,
+                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
                       starrTransfershuttleBasisParameter[stStationsNummern.NummerIntern].awFehlerInformationen );
         END_IF
 
@@ -1095,10 +1095,10 @@ THEN
         END_IF
 
         IF ( NOT blFehlerAusloesen ) THEN
-          SpsWarnung( eFehler_Station, 
+          SpsWarnung( eFehler_Station,
                       cMELDUNG_SENSOR_EINLAUF_ODER_AUSLAUF_WURDE_BELEGT,
-                      stStationsNummern.NummerIntern, 
-                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern), 
+                      stStationsNummern.NummerIntern,
+                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
                       starrTransfershuttleBasisParameter[stStationsNummern.NummerIntern].awFehlerInformationen );
         END_IF
 

@@ -51,10 +51,10 @@ IF blRolltorAuf THEN
       IF tonlUeberwachungRolltor.Q THEN
         out_bRolltorAuf := FALSE;
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_UEBERWACHUNG_ROLLTOR_OEFFNEN;
-        SpsError( eFehler_Station, 
-                  wpFehlerNr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+        SpsError( eFehler_Station,
+                  wpFehlerNr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplRolltorAuf := STEP_900_E;
@@ -139,9 +139,9 @@ THEN
         out_bRolltorAb := FALSE;
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_UEBERWACHUNG_ROLLTOR_SCHLIESSEN;
         SpsError( eFehler_Station,
-                  wpFehlerNr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  wpFehlerNr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplRolltorAb := STEP_900_E;

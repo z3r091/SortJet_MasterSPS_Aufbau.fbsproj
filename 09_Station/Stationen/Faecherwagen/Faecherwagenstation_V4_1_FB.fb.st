@@ -346,7 +346,7 @@ IF rtlSafetyError.Q THEN
   SpsError( eFehler_Safety_Schmersal,
             usilErrorSafety,
             BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-            AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+            AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
             BasisStationsParameter.awFehlerInformationen );
 
 END_IF

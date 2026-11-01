@@ -19,10 +19,10 @@ IF ( pPositionierAuftragsdaten.rBeschleunigungsrampe <= cNULL ) THEN
   wpgFehlerdaten[0] := pPositionierAuftragsdaten.wStationsNummer;
   wpgFehlerdaten[1] := REAL_TO_WORD(pPositionierAuftragsdaten.rBeschleunigungsrampe);
   wpgFehlerdaten[2] := REAL_TO_WORD( pAntriebsinformationen.rpMaxBeschleunigung );
-  SpsError( eFehler_Station, 
-            cMELDUNG_AUFTRAGSDATEN_FALSCHE_BESCHLEUNIGUNGSRAMPE, 
+  SpsError( eFehler_Station,
+            cMELDUNG_AUFTRAGSDATEN_FALSCHE_BESCHLEUNIGUNGSRAMPE,
             pPositionierAuftragsdaten.wStationsNummer,
-            AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer), 
+            AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer),
             wpgFehlerdaten );
 
   bpErgebnis:=FALSE;
@@ -33,7 +33,11 @@ IF ( pPositionierAuftragsdaten.rBeschleunigungsrampe > pAntriebsinformationen.rp
   wpgFehlerdaten[0] := pPositionierAuftragsdaten.wStationsNummer;
   wpgFehlerdaten[1] := REAL_TO_WORD( pPositionierAuftragsdaten.rBeschleunigungsrampe );
   wpgFehlerdaten[2] := REAL_TO_WORD( pAntriebsinformationen.rpMaxBeschleunigung );
-  SpsError( eFehler_Station, cMELDUNG_AUFTRAGSDATEN_FALSCHE_BESCHLEUNIGUNGSRAMPE, pPositionierAuftragsdaten.wStationsNummer, AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer), wpgFehlerdaten );
+  SpsError( eFehler_Station,
+            cMELDUNG_AUFTRAGSDATEN_FALSCHE_BESCHLEUNIGUNGSRAMPE,
+            pPositionierAuftragsdaten.wStationsNummer,
+            AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer),
+            wpgFehlerdaten );
 
   bpErgebnis:=FALSE;
 END_IF
@@ -47,7 +51,11 @@ IF ( pPositionierAuftragsdaten.rVerzoegerungsrampe <= cNULL ) THEN
   wpgFehlerdaten[0] := pPositionierAuftragsdaten.wStationsNummer;
   wpgFehlerdaten[1] := REAL_TO_WORD(pPositionierAuftragsdaten.rVerzoegerungsrampe);
   wpgFehlerdaten[2] := REAL_TO_WORD( pAntriebsinformationen.rpMaxVerzoegerung );
-  SpsError( eFehler_Station, cMELDUNG_AUFTRAGSDATEN_FALSCHE_VERZOEGERUNGSRAMPE, pPositionierAuftragsdaten.wStationsNummer, AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer), wpgFehlerdaten );
+  SpsError( eFehler_Station,
+            cMELDUNG_AUFTRAGSDATEN_FALSCHE_VERZOEGERUNGSRAMPE,
+            pPositionierAuftragsdaten.wStationsNummer,
+            AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer),
+            wpgFehlerdaten );
 
   bpErgebnis := FALSE;
 END_IF
@@ -57,7 +65,11 @@ IF ( pPositionierAuftragsdaten.rVerzoegerungsrampe > pAntriebsinformationen.rpMa
   wpgFehlerdaten[0] := pPositionierAuftragsdaten.wStationsNummer;
   wpgFehlerdaten[1] := REAL_TO_WORD( pPositionierAuftragsdaten.rBeschleunigungsrampe );
   wpgFehlerdaten[2] := REAL_TO_WORD( pAntriebsinformationen.rpMaxVerzoegerung );
-  SpsError( eFehler_Station, cMELDUNG_AUFTRAGSDATEN_FALSCHE_VERZOEGERUNGSRAMPE, pPositionierAuftragsdaten.wStationsNummer, AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer), wpgFehlerdaten );
+  SpsError( eFehler_Station,
+            cMELDUNG_AUFTRAGSDATEN_FALSCHE_VERZOEGERUNGSRAMPE,
+            pPositionierAuftragsdaten.wStationsNummer,
+            AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer),
+            wpgFehlerdaten );
 
   bpErgebnis:=FALSE;
 END_IF

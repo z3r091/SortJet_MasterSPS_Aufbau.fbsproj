@@ -44,10 +44,10 @@ THEN
 
       IF tonlTimeoutSensorShutle.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_KLEMMZYLINDER_NICHT_EINGEFAHREN;
-        SpsError( eFehler_Station, 
-                  wpFehlerNr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+        SpsError( eFehler_Station,
+                  wpFehlerNr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplLineareinheitVor := STEP_900_E;
@@ -74,9 +74,9 @@ THEN
       IF tonlTimeoutSensorVorne.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_VORNE;
         SpsError( eFehler_Station,
-                  wpFehlerNr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  wpFehlerNr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplLineareinheitVor := STEP_900_E;
@@ -144,10 +144,10 @@ THEN
 
       IF tonlTimeoutSensorShutle.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_KLEMMZYLINDER_NICHT_EINGEFAHREN;
-        SpsError( eFehler_Station, 
-                  wpFehlerNr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+        SpsError( eFehler_Station,
+                  wpFehlerNr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplLineareinheitZur := STEP_900_E;
@@ -175,10 +175,10 @@ THEN
 
       IF tonlTimeoutSensorHinten.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_HINTEN;
-        SpsError( eFehler_Station, 
-                  wpFehlerNr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+        SpsError( eFehler_Station,
+                  wpFehlerNr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplLineareinheitZur := STEP_900_E;
@@ -247,10 +247,10 @@ THEN
 
       IF tonlTimeoutSensorShutle.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_KLEMMZYLINDER_NICHT_EINGEFAHREN;
-        SpsError( eFehler_Station, 
-                  wpFehlerNr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+        SpsError( eFehler_Station,
+                  wpFehlerNr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplLineareinheitShuttle := STEP_900_E;
@@ -278,10 +278,10 @@ THEN
 
       IF tonlTimeoutSensorShutle.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_SHUTTLE_UEBERGABE;
-        SpsError( eFehler_Station, 
-                  wpFehlerNr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+        SpsError( eFehler_Station,
+                  wpFehlerNr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplLineareinheitShuttle := STEP_900_E;

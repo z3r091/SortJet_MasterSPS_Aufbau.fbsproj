@@ -241,9 +241,9 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
          - Station
       *)
       IF ( starrShuttleBasisParameter[wStation].bFehler ) THEN
-        SpsError( eFehler_Station, 
-                  starrShuttleBasisParameter[wStation].wFehlerNummer, 
-                  starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern, 
+        SpsError( eFehler_Station,
+                  starrShuttleBasisParameter[wStation].wFehlerNummer,
+                  starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
                   AutomatikkreisBestimmen(starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
                   starrShuttleBasisParameter[wStation].awFehlerInformationen );
 

@@ -145,12 +145,11 @@ IF( bpStartePositionierung ) THEN
           rlZielPosition := ppParameterBaustein.rPosition_Minimal;
 
           wpgFehlerdaten[0] := stStationsNummern.NummerIntern;
-          SpsHinweis( eFehler_Station, 
-                      cMELDUNG_GLASFUEHRUNG_ZIEL_STELLUNG_UNGUELTIG, 
-                      stStationsNummern.NummerIntern, 
-                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern), 
-                      wpgFehlerdaten
-                    );
+          SpsHinweis( eFehler_Station,
+                      cMELDUNG_GLASFUEHRUNG_ZIEL_STELLUNG_UNGUELTIG,
+                      stStationsNummern.NummerIntern,
+                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+                      wpgFehlerdaten );
 
           steplPositionieren := STEP_900_E;
       END_CASE

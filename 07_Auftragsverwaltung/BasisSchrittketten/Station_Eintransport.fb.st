@@ -261,10 +261,10 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
          - Station
       *)
       IF ( starrStationBasisParameter[wStation].bFehler ) THEN
-        SpsError( eFehler_Station, 
-                  starrStationBasisParameter[wStation].wFehlerNummer, 
-                  starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern), 
+        SpsError( eFehler_Station,
+                  starrStationBasisParameter[wStation].wFehlerNummer,
+                  starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
                   starrStationBasisParameter[wStation].awFehlerInformationen );
 
         starrStationBasisParameter[wStation].bEintransport[wWand] := FALSE;
@@ -290,10 +290,10 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       ELSIF ( ilScheibenZuQuittieren > 0 ) THEN
         wpgFehlerdaten[0] := starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerExtern;
         wpgFehlerdaten[1] := wWand;
-        SpsError( eFehler_Station, 
-                  cMELDUNG_STATION_ZUWENIG_SCHEIBEN_QUITTIERT_EINTRANSPORT, 
-                  starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern), 
+        SpsError( eFehler_Station,
+                  cMELDUNG_STATION_ZUWENIG_SCHEIBEN_QUITTIERT_EINTRANSPORT,
+                  starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
                   wpgFehlerdaten );
         steplSchritt := STEP_900_E;
 
@@ -303,10 +303,10 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       ELSIF ( ilScheibenZuQuittieren < 0 ) THEN
         wpgFehlerdaten[0] := starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerExtern;
         wpgFehlerdaten[1] := wWand;
-        SpsError( eFehler_Station, 
-                  cMELDUNG_STATION_ZUVIELE_SCHEIBEN_QUITTIERT_EINTRANSPORT, 
-                  starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern), 
+        SpsError( eFehler_Station,
+                  cMELDUNG_STATION_ZUVIELE_SCHEIBEN_QUITTIERT_EINTRANSPORT,
+                  starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
                   wpgFehlerdaten );
         steplSchritt := STEP_900_E;
 

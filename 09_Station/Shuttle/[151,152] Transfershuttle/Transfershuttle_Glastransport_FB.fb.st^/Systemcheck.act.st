@@ -162,10 +162,10 @@ IF ( bpCheck ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
         IF ( pSystemCheckDaten.wAnzahlScheiben = 0 ) THEN
-          SpsWarnung( eFehler_Station, 
+          SpsWarnung( eFehler_Station,
                       cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN,
-                      stStationsNummern.NummerIntern, 
-                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern), 
+                      stStationsNummern.NummerIntern,
+                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
                       starrTransfershuttleBasisParameter[stStationsNummern.NummerIntern].awFehlerInformationen );
         END_IF
         steplCheck := STEP_800_E;
@@ -203,10 +203,10 @@ IF ( bpCheck ) THEN
       IF ( NOT blEinlaufSensor ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         IF ( pSystemCheckDaten.wAnzahlScheiben = 0 ) THEN
-          SpsWarnung( eFehler_Station, 
-                      cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN, 
-                      stStationsNummern.NummerIntern, 
-                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern), 
+          SpsWarnung( eFehler_Station,
+                      cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN,
+                      stStationsNummern.NummerIntern,
+                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
                       starrTransfershuttleBasisParameter[stStationsNummern.NummerIntern].awFehlerInformationen );
         END_IF
         steplCheck := STEP_800_E;

@@ -70,8 +70,7 @@ THEN
               BasisStationsParameter.wFehlerNummer,
               BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
               AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
-              BasisStationsParameter.awFehlerInformationen
-            );
+              BasisStationsParameter.awFehlerInformationen );
 END_IF
 
 //-------------------------------------------------------------------------------------------------

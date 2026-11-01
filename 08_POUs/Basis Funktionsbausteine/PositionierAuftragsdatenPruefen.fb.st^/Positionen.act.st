@@ -15,7 +15,11 @@ IF ( pPositionierAuftragsdaten.rSollPosition > getRealShuttleMaxPos(pPositionier
   wpgFehlerdaten[0] := pPositionierAuftragsdaten.wStationsNummer;
   wpgFehlerdaten[1] := REAL_TO_WORD(getRealShuttleMaxPos(pPositionierAuftragsdaten.wStationsNummer));
   wpgFehlerdaten[2] := REAL_TO_WORD(pPositionierAuftragsdaten.rSollPosition);
-  SpsError( eFehler_Station, cMELDUNG_AUFTRAGSDATEN_ZIELPOSITION_ZU_GROSS, pPositionierAuftragsdaten.wStationsNummer, AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer), wpgFehlerdaten );
+  SpsError( eFehler_Station,
+            cMELDUNG_AUFTRAGSDATEN_ZIELPOSITION_ZU_GROSS,
+            pPositionierAuftragsdaten.wStationsNummer,
+            AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer),
+            wpgFehlerdaten );
 
   bpErgebnis:=FALSE;
 END_IF
@@ -25,7 +29,11 @@ IF ( pPositionierAuftragsdaten.rSollPosition < getRealShuttleMinPos(pPositionier
   wpgFehlerdaten[0] := pPositionierAuftragsdaten.wStationsNummer;
   wpgFehlerdaten[1] := REAL_TO_WORD(getRealShuttleMinPos(pPositionierAuftragsdaten.wStationsNummer));
   wpgFehlerdaten[2] := REAL_TO_WORD(pPositionierAuftragsdaten.rSollPosition);
-  SpsError( eFehler_Station, cMELDUNG_AUFTRAGSDATEN_ZIELPOSITION_ZU_KLEIN, pPositionierAuftragsdaten.wStationsNummer, AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer), wpgFehlerdaten );
+  SpsError( eFehler_Station,
+            cMELDUNG_AUFTRAGSDATEN_ZIELPOSITION_ZU_KLEIN,
+            pPositionierAuftragsdaten.wStationsNummer,
+            AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer),
+            wpgFehlerdaten );
 
   bpErgebnis := FALSE;
 END_IF

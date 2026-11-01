@@ -51,9 +51,9 @@ THEN
       IF tonlTimeoutEntriegelungAufZu.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_ENTRIEGELUNG_NICHT_OFFEN;
         SpsError( eFehler_Station,
-                  wpFehlerNr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  wpFehlerNr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplEntriegelungOeffnen := STEP_900_E;
@@ -136,9 +136,9 @@ THEN
 
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_ENTRIEGELUNG_NICHT_GESCHLOSSEN;
         SpsError( eFehler_Station,
-                  wpFehlerNr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  wpFehlerNr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplEntriegelungSchliessen := STEP_900_E;

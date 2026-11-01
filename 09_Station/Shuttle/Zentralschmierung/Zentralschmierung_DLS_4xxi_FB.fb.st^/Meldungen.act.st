@@ -38,10 +38,10 @@ blGeraeteFehler := tonlSchmierungNichtBetriebsbereit.Q OR bpInternerFehler;
 
 IF rtlMeldungFehlerPumpe.Q THEN
   wpgFehlerdaten[0] := stStationsNummern.NummerExtern;
-  SpsError( eFehler_Station, 
-            cMELDUNG_ZENTRALSCHMIERUNG_GERAETEFEHLER, 
-            stStationsNummern.NummerIntern, 
-            AutomatikkreisBestimmen(0), 
+  SpsError( eFehler_Station,
+            cMELDUNG_ZENTRALSCHMIERUNG_GERAETEFEHLER,
+            stStationsNummern.NummerIntern,
+            AutomatikkreisBestimmen(0),
             wpgFehlerdaten );
 
   bpFehler := TRUE;
@@ -49,10 +49,10 @@ END_IF
 
 IF blKeineOderLeereKartusche THEN
   wpgFehlerdaten[0] := stStationsNummern.NummerExtern;
-  SpsError( eFehler_Station, 
-            cMELDUNG_ZENTRALSCHMIERUNG_FETT_LEER, 
-            stStationsNummern.NummerIntern, 
-            AutomatikkreisBestimmen(0), 
+  SpsError( eFehler_Station,
+            cMELDUNG_ZENTRALSCHMIERUNG_FETT_LEER,
+            stStationsNummern.NummerIntern,
+            AutomatikkreisBestimmen(0),
             wpgFehlerdaten );
 
   bpFehler   := TRUE;

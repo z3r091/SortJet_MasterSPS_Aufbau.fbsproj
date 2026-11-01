@@ -84,7 +84,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
                       cMELDUNG_AUFTRAGSDATEN_AUFTRAGSTATUS_GLAS_SENDER_UNGUELTIG,
                       starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
                       AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
-                      wpgFehlerdaten);
+                      wpgFehlerdaten );
 
             steplSchritt := STEP_900_E;
           END_IF

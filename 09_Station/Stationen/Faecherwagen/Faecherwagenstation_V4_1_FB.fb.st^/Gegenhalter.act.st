@@ -51,9 +51,9 @@ THEN
       IF tonlTimeoutGegenhalterAufZu.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_GEGENHALTER_NICHT_OFFEN;
         SpsError( eFehler_Station,
-                  wpFehlerNr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  wpFehlerNr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplGegenhalterOeffnen := STEP_900_E;
@@ -136,9 +136,9 @@ THEN
       IF tonlTimeoutGegenhalterAufZu.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_GEGENHALTER_NICHT_GESCHLOSSEN;
         SpsError( eFehler_Station,
-                  wpFehlerNr, 
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+                  wpFehlerNr,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                   BasisStationsParameter.awFehlerInformationen );
 
         steplGegenhalterSchliessen := STEP_900_E;

@@ -81,8 +81,8 @@ ELSE
           SpsHinweis( eFehler_Station,
                       cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_STATION,
                       0,
-                      AutomatikkreisBestimmen(0), 
-                      wpgFehlerdaten);
+                      AutomatikkreisBestimmen(0),
+                      wpgFehlerdaten );
 
           RETURN;
 
@@ -133,12 +133,11 @@ ELSE
             bgVisuTFSRiemenAnheben[wpStationNumber] := FALSE;
 
             wpgFehlerdaten[0] := wpStationNumber;
-            SpsError( eFehler_Station, 
+            SpsError( eFehler_Station,
                       cMELDUNG_TS_MELDET_NICHT_OBEN,
-                      wpStationNumber, 
+                      wpStationNumber,
                       AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wpStationNumber].stMKs.stStationsNummern.NummerIntern),
-                      wpgFehlerdaten 
-                    );
+                      wpgFehlerdaten );
           END_IF
 
 
@@ -229,10 +228,10 @@ ELSE
             wpgFehlerdaten[2] := REAL_TO_WORD(wpSpeicherNr);
             wpgFehlerdaten[3] := REAL_TO_WORD(wpFachNr);
             IF ABS(rpPosition - rpErmitteltePosition) > 2 THEN
-              SpsHinweis( eFehler_Station, 
+              SpsHinweis( eFehler_Station,
                           999,
-                          wpStationNumber, 
-                          AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wpStationNumber].stMKs.stStationsNummern.NummerIntern), 
+                          wpStationNumber,
+                          AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wpStationNumber].stMKs.stStationsNummern.NummerIntern),
                           wpgFehlerdaten );
             END_IF
           END_IF  

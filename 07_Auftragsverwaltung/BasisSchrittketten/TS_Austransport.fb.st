@@ -93,8 +93,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Austransport ) THEN
                       cMELDUNG_AUFTRAGSDATEN_AUFTRAGSTATUS_GLAS_EMPFAENGER_UNGUELTIG,
                       starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
                       AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
-                      wpgFehlerdaten
-                    );
+                      wpgFehlerdaten );
             steplSchritt := STEP_900_E;
           END_IF
 
@@ -118,8 +117,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Austransport ) THEN
                       cMELDUNG_AUFTRAGSDATEN_AUFTRAGSTATUS_GLAS_EMPFAENGER_UNGUELTIG,
                       starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
                       AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
-                      wpgFehlerdaten
-                    );
+                      wpgFehlerdaten );
             steplSchritt := STEP_900_E;
           END_IF
 

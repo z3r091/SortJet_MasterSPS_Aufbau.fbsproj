@@ -16,9 +16,9 @@ bpOperatorAcknowledgeRequested := EV_ToPLC_bOperatorAckReq OR ( EV_ToPLC_Error_F
 rtlMeldungQuittierungDurchBedienerErforderlich(CLK := bpOperatorAcknowledgeRequested );
 IF ( rtlMeldungQuittierungDurchBedienerErforderlich.Q ) THEN
   wpgFehlerdaten[0] := 0;
-  SpsHinweis( eFehler_Safety_Allgemein, 
-              cMELDUNG_SAFETY_OPERATOR_ACKNOWLEDGE_REQUESTED, 
-              0, 
+  SpsHinweis( eFehler_Safety_Allgemein,
+              cMELDUNG_SAFETY_OPERATOR_ACKNOWLEDGE_REQUESTED,
+              0,
               AutomatikkreisBestimmen(0),
               wpgFehlerdaten );
 END_IF

@@ -147,9 +147,9 @@ THEN
       *)
       IF ( tonlWait_Init.Q ) THEN
 
-        SpsError( eFehler_Station, 
-                  cMELDUNG_INITIALISIEURNG_TIME_OUT, 
-                  0, 
+        SpsError( eFehler_Station,
+                  cMELDUNG_INITIALISIEURNG_TIME_OUT,
+                  0,
                   AutomatikkreisBestimmen(0),
                   wpgFehlerdaten );
 
@@ -158,10 +158,10 @@ THEN
           starrShuttleBasisParameter[wlIndex].bReferenz := FALSE;
 
           IF ( NOT starrShuttleBasisParameter[wlIndex].bFehler ) THEN
-            SpsError( eFehler_Station, 
+            SpsError( eFehler_Station,
                       starrShuttleBasisParameter[wlIndex].wFehlerNummer,
-                      wlIndex, 
-                      AutomatikkreisBestimmen(wlIndex), 
+                      wlIndex,
+                      AutomatikkreisBestimmen(wlIndex),
                       starrShuttleBasisParameter[wlIndex].awFehlerInformationen );
           END_IF
 
@@ -173,7 +173,7 @@ THEN
 
           IF ( NOT starrTransfershuttleBasisParameter[wlIndex].bFehler ) THEN
             SpsError( eFehler_Station,
-                      starrTransfershuttleBasisParameter[wlIndex].wFehlerNummer, 
+                      starrTransfershuttleBasisParameter[wlIndex].wFehlerNummer,
                       wlIndex,
                       AutomatikkreisBestimmen(wlIndex),
                       starrTransfershuttleBasisParameter[wlIndex].awFehlerInformationen );
@@ -186,10 +186,10 @@ THEN
           starrStationBasisParameter[wlIndex].bReferenz := FALSE;
 
           IF ( starrStationBasisParameter[wlIndex].bFehler ) THEN
-            SpsError( eFehler_Station, 
-                      starrStationBasisParameter[wlIndex].wFehlerNummer, 
-                      wlIndex, 
-                      AutomatikkreisBestimmen(wlIndex), 
+            SpsError( eFehler_Station,
+                      starrStationBasisParameter[wlIndex].wFehlerNummer,
+                      wlIndex,
+                      AutomatikkreisBestimmen(wlIndex),
                       starrStationBasisParameter[wlIndex].awFehlerInformationen );
           END_IF
 

@@ -18,7 +18,11 @@ IF ( pPositionierAuftragsdaten.rSollGeschwindigkeit > cNULL ) THEN
   wpgFehlerdaten[0] := pPositionierAuftragsdaten.wStationsNummer;
   wpgFehlerdaten[1] := REAL_TO_WORD(pPositionierAuftragsdaten.rSollGeschwindigkeit);
   wpgFehlerdaten[2] := REAL_TO_WORD( pAntriebsinformationen.rpMaxGeschwindigkeit );
-  SpsError( eFehler_Station, cMELDUNG_AUFTRAGSDATEN_FALSCHE_GESCHWINDIGKEIT, pPositionierAuftragsdaten.wStationsNummer, AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer), wpgFehlerdaten );
+  SpsError( eFehler_Station,
+            cMELDUNG_AUFTRAGSDATEN_FALSCHE_GESCHWINDIGKEIT,
+            pPositionierAuftragsdaten.wStationsNummer,
+            AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer),
+            wpgFehlerdaten );
 
   bpErgebnis:=FALSE;
 END_IF
@@ -28,7 +32,11 @@ IF ( pPositionierAuftragsdaten.rSollGeschwindigkeit <= pAntriebsinformationen.rp
   wpgFehlerdaten[0] := pPositionierAuftragsdaten.wStationsNummer;
   wpgFehlerdaten[1] := REAL_TO_WORD( pPositionierAuftragsdaten.rSollGeschwindigkeit );
   wpgFehlerdaten[2] := REAL_TO_WORD( pAntriebsinformationen.rpMaxGeschwindigkeit );
-  SpsError( eFehler_Station, cMELDUNG_AUFTRAGSDATEN_FALSCHE_GESCHWINDIGKEIT, pPositionierAuftragsdaten.wStationsNummer, AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer), wpgFehlerdaten );
+  SpsError( eFehler_Station,
+            cMELDUNG_AUFTRAGSDATEN_FALSCHE_GESCHWINDIGKEIT,
+            pPositionierAuftragsdaten.wStationsNummer,
+            AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer),
+            wpgFehlerdaten );
 
   bpErgebnis:=FALSE;
 END_IF

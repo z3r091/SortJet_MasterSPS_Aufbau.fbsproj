@@ -122,10 +122,10 @@ THEN
         BasisStationsParameter.awFehlerInformationen[1] := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsLaenge);
         BasisStationsParameter.awFehlerInformationen[2] := REAL_TO_WORD(Glastransport.rpGemesseneGlaslaenge);
 
-        SpsWarnung( eFehler_Station, 
-                    cMELDUNG_MESSUNG_FALSCHE_GLASLAENGE, 
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, 
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern), 
+        SpsWarnung( eFehler_Station,
+                    cMELDUNG_MESSUNG_FALSCHE_GLASLAENGE,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
                     BasisStationsParameter.awFehlerInformationen );
 
         steplGlaslaengenmessung := STEP_200_E;

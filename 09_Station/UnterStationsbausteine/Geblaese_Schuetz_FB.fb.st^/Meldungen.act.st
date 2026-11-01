@@ -21,7 +21,8 @@ THEN
   wpFehlerNr := cMELDUNG_ANTRIEB_GEBLAESE;
 
   SpsError( eFehler_Station,
-            wpFehlerNr, stStationsNummern.NummerIntern,
+            wpFehlerNr,
+            stStationsNummern.NummerIntern,
             AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
             awlErrorAdditional );
 
