@@ -7,10 +7,10 @@
 *)
 ACTION GetMessage
 IF ( ilAuftraegeAnz = 0 ) THEN
-  (* CRC32-Summe für die Aufträge prüfen. *)
+  // CRC32-Summe für die Aufträge prüfen.
   dwAuftragsChecksumme := Crc32( ADR( MmiToSps.smbMessageBlock ), SIZEOF( MmiToSps.smbMessageBlock ) - cSizeOfDWord );
   IF ( HMI_GetDWORD( ADR(MmiToSps.smbMessageBlock.dwCrc32Checksumme)) = dwAuftragsChecksumme ) THEN
-    (* Nachrichten aus dem Speicher übernehmen und Quitieren *)
+    // Nachrichten aus dem Speicher übernehmen und Quitieren
     IF ( ( HMI_GetWORD(ADR(MmiToSps.smbMessageBlock.wCnt2)) <> SpsToMmi.smbMessageBlock.wQuitCnt ) AND
          ( HMI_GetWORD(ADR(MmiToSps.smbMessageBlock.wCnt1)) =  HMI_GetWORD(ADR( MmiToSps.smbMessageBlock.wCnt2 ) ))
        ) THEN
@@ -25,14 +25,14 @@ IF ( ilAuftraegeAnz = 0 ) THEN
   END_IF;
 END_IF;
 
-(* 1 Nachricht pro Zyklus verarbeiten *)
+// 1 Nachricht pro Zyklus verarbeiten
 IF ( ilAuftraegeAnz > 0 ) THEN
   MemCopy( ADR( smlSpsMessage ), ADR( asmSpsMessage[ ilAuftragIndex ] ), SIZEOF( smlSpsMessage ) );
   ilAuftragIndex := ilAuftragIndex + 1;
-  (*NEU-->*)
+  // NEU-->
   smlSpsMessage.wAuftrag := HMI_GetWORD(ADR(smlSpsMessage.wAuftrag));
   smlSpsMessage.wLaenge := HMI_GetWORD(ADR(smlSpsMessage.wLaenge));
-  (*<--NEU*)
+  // <--NEU
   IF ( MsgInterpret(smlSpsMessage) = FALSE ) THEN
   // smlErrorMsg.wAuftrag   := 32767;
   // smlErrorMsg.wLaenge    := 4;

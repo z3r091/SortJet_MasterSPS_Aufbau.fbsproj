@@ -8,588 +8,588 @@
 {attribute 'strict'}
 TYPE Fehlerkonstanten_EN :
 (
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: INTERN
   //
   //  Hinweis:
   // - eFehler_KeineKategorie
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_NULL                                                                    := 0,     (* Wildcard: -  *)
-  cMELDUNG_DIVISION_DURCH_NULL                                                     := 1,     (* Wildcard: -  *)
-  cMELDUNG_FALSCHER_ARRAY_ZUGRIFF                                                  := 2,     (* Wildcard: -  *)
-  cMELDUNG_FALSCHER_POINTER_ZUGRIFF                                                := 3,     (* Wildcard: -  *)
-  cMELDUNG_UNGUELTIGE_BETRIEBSART                                                  := 4,     (* Wildcard: -  *)
-  cMELDUNG_UNDEFINIERTER_ZUSTAND                                                   := 5,     (* Wildcard: -  *)
+  cMELDUNG_NULL                                                                    := 0,     // Wildcard: -
+  cMELDUNG_DIVISION_DURCH_NULL                                                     := 1,     // Wildcard: -
+  cMELDUNG_FALSCHER_ARRAY_ZUGRIFF                                                  := 2,     // Wildcard: -
+  cMELDUNG_FALSCHER_POINTER_ZUGRIFF                                                := 3,     // Wildcard: -
+  cMELDUNG_UNGUELTIGE_BETRIEBSART                                                  := 4,     // Wildcard: -
+  cMELDUNG_UNDEFINIERTER_ZUSTAND                                                   := 5,     // Wildcard: -
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: MMI
   //
   //  Hinweis:
   // - eFehler_Mmi
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_MMI_VERBINDUNGS_TIME_OUT                                                := 20,    (*  Wildcard: %d Minuten | %d Sekunden | %d Millisekunden  *)
-  cMELDUNG_MMI_UNGUELTIGE_NACHRICHTENNUMMER                                        := 21,    (*  Wildcard: Nummer: %d  *)
-  cMELDUNG_MMI_AUFTRAGSDATEN_UNGUELTIGE_STATIONSNUMMER                             := 22,    (*  Wildcard: Nummer: %d  *)
-  cMELDUNG_MMI_AUFTRAGSDATEN_UNGUELTIGE_WAND                                       := 23,    (*  Wildcard: Nummer: %d | Optional=> Wandnummer %d *)
+  cMELDUNG_MMI_VERBINDUNGS_TIME_OUT                                                := 20,    // Wildcard: %d Minuten | %d Sekunden | %d Millisekunden
+  cMELDUNG_MMI_UNGUELTIGE_NACHRICHTENNUMMER                                        := 21,    // Wildcard: Nummer: %d
+  cMELDUNG_MMI_AUFTRAGSDATEN_UNGUELTIGE_STATIONSNUMMER                             := 22,    // Wildcard: Nummer: %d
+  cMELDUNG_MMI_AUFTRAGSDATEN_UNGUELTIGE_WAND                                       := 23,    // Wildcard: Nummer: %d | Optional=> Wandnummer %d
 
-    (* ---------------------------------------------------------------------------------------
-  // KATEGORIE: FEHLERERKENNUNG
-  //
-  //  Hinweis:
-  // - eFehler_Debug
-  // ---------------------------------------------------------------------------------------*)
+    // ---------------------------------------------------------------------------------------
+    // KATEGORIE: FEHLERERKENNUNG
+    //
+    //  Hinweis:
+    // - eFehler_Debug
+    // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_DEBUG_MODE                                                              := 40,    (* Wildcard: - *)
+  cMELDUNG_DEBUG_MODE                                                              := 40,    // Wildcard: -
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: INITIALISIERUNG
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_INITIALISIEURNG_TIME_OUT                                                := 60,    (* Wildcard: - *)
+  cMELDUNG_INITIALISIEURNG_TIME_OUT                                                := 60,    // Wildcard: -
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: REFERENZ
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_REFERENZ_SENSOR_EINLAUF_BELEGT                                          := 80,    (* Wildcard: Station: %d  *)
-  cMELDUNG_REFERENZ_SENSOR_AUSLAUF_BELEGT                                          := 81,    (* Wildcard: Station: %d  *)
-  cMELDUNG_REFERENZ_SENSOR_EINLAUF_AUSLAUF_BELEGT                                  := 82,    (* Wildcard: Station: %d  *)
-  cMELDUNG_REFERENZ_NICHT_MOEGLICH                                                 := 83,    (* Wildcard: Station: %d  *)
+  cMELDUNG_REFERENZ_SENSOR_EINLAUF_BELEGT                                          := 80,    // Wildcard: Station: %d
+  cMELDUNG_REFERENZ_SENSOR_AUSLAUF_BELEGT                                          := 81,    // Wildcard: Station: %d
+  cMELDUNG_REFERENZ_SENSOR_EINLAUF_AUSLAUF_BELEGT                                  := 82,    // Wildcard: Station: %d
+  cMELDUNG_REFERENZ_NICHT_MOEGLICH                                                 := 83,    // Wildcard: Station: %d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: ALLGEMEIN
   //
   //  Hinweis:
   // - eFehler_Station
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_GLASTRANSPORT_SENDER_NICHT_BEREIT                                       := 100,   (* Wildcard: Station: %d  *)
-  cMELDUNG_GLASTRANSPORT_EMPFAENGER_NICHT_BEREIT                                   := 101,   (* Wildcard: Station: %d  *)
+  cMELDUNG_GLASTRANSPORT_SENDER_NICHT_BEREIT                                       := 100,   // Wildcard: Station: %d
+  cMELDUNG_GLASTRANSPORT_EMPFAENGER_NICHT_BEREIT                                   := 101,   // Wildcard: Station: %d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: SENSOREN
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_SENSOR_EINLAUF_BELEGT                                                   := 120,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_EINLAUFVORAB_BELEGT                                              := 121,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_AUSLAUFVORAB_BELEGT                                              := 122,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_AUSLAUF_BELEGT                                                   := 123,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_EINLAUF_NICHT_FREI                                               := 124,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_EINLAUFVORAB_NICHT_FREI                                          := 125,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_AUSLAUFVORAB_NICHT_FREI                                          := 126,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_AUSLAUF_NICHT_FREI                                               := 127,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_EINLAUF_SCHALTET_NICHT                                           := 128,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_EINLAUFVORAB_SCHALTET_NICHT                                      := 129,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_AUSLAUFVORAB_SCHALTET_NICHT                                      := 130,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_AUSLAUF_SCHALTET_NICHT                                           := 131,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT                                       := 132,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_EINLAUF_ODER_AUSLAUF_WURDE_BELEGT                                := 133,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_AUSLAUF_UND_AUSLAUFVORAB_SCHALTEN_NICHT                          := 134,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_EINLAUF_BELEGT_RESTWEGPOSITIONIERUNG                             := 135,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_AUSLAUF_BELEGT_RESTWEGPOSITIONIERUNG                             := 136,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_EINLAUF_NACH_POSITIONIERUNG_NICHT_BELEGT                         := 137,   (* Wildcard: Station: %d  *)
-  cMELDUNG_SENSOR_AUSLAUF_NACH_POSITIONIERUNG_NICHT_BELEGT                         := 138,   (* Wildcard: Station: %d  *)
+  cMELDUNG_SENSOR_EINLAUF_BELEGT                                                   := 120,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_EINLAUFVORAB_BELEGT                                              := 121,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_AUSLAUFVORAB_BELEGT                                              := 122,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_AUSLAUF_BELEGT                                                   := 123,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_EINLAUF_NICHT_FREI                                               := 124,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_EINLAUFVORAB_NICHT_FREI                                          := 125,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_AUSLAUFVORAB_NICHT_FREI                                          := 126,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_AUSLAUF_NICHT_FREI                                               := 127,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_EINLAUF_SCHALTET_NICHT                                           := 128,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_EINLAUFVORAB_SCHALTET_NICHT                                      := 129,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_AUSLAUFVORAB_SCHALTET_NICHT                                      := 130,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_AUSLAUF_SCHALTET_NICHT                                           := 131,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT                                       := 132,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_EINLAUF_ODER_AUSLAUF_WURDE_BELEGT                                := 133,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_AUSLAUF_UND_AUSLAUFVORAB_SCHALTEN_NICHT                          := 134,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_EINLAUF_BELEGT_RESTWEGPOSITIONIERUNG                             := 135,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_AUSLAUF_BELEGT_RESTWEGPOSITIONIERUNG                             := 136,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_EINLAUF_NACH_POSITIONIERUNG_NICHT_BELEGT                         := 137,   // Wildcard: Station: %d
+  cMELDUNG_SENSOR_AUSLAUF_NACH_POSITIONIERUNG_NICHT_BELEGT                         := 138,   // Wildcard: Station: %d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: SENSOREN EINTRANSPORT
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_BELEGT                                      := 160,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUFVORAB_BELEGT                                 := 161,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT                                 := 162,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT                                      := 163,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_NICHT_FREI                                  := 164,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUFVORAB_NICHT_FREI                             := 165,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUFVORAB_NICHT_FREI                             := 166,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI                                  := 167,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT                              := 168,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUFVORAB_SCHALTET_NICHT                         := 169,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUFVORAB_SCHALTET_NICHT                         := 170,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT                              := 171,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT                          := 172,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_ODER_AUSLAUF_BELEGT_FREIFAHREN              := 173,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_UND_EINLAUFVORAB_SCHALTEN_NICHT             := 174,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_BELEGT_EINLAUFVORAB_NICHT_GESCHALTET        := 175,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_UND_AUSLAUFVORAB_SCHALTEN_NICHT             := 176,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT_AUSLAUFVORAB_NICHT_GESCHALTET        := 177,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 178,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 179,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 180,   (* Wildcard: Station: %d  *)
-  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 181,   (* Wildcard: Station: %d  *)
+  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_BELEGT                                      := 160,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUFVORAB_BELEGT                                 := 161,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT                                 := 162,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT                                      := 163,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_NICHT_FREI                                  := 164,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUFVORAB_NICHT_FREI                             := 165,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUFVORAB_NICHT_FREI                             := 166,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI                                  := 167,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT                              := 168,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUFVORAB_SCHALTET_NICHT                         := 169,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUFVORAB_SCHALTET_NICHT                         := 170,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT                              := 171,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT                          := 172,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_ODER_AUSLAUF_BELEGT_FREIFAHREN              := 173,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_UND_EINLAUFVORAB_SCHALTEN_NICHT             := 174,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_BELEGT_EINLAUFVORAB_NICHT_GESCHALTET        := 175,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_UND_AUSLAUFVORAB_SCHALTEN_NICHT             := 176,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT_AUSLAUFVORAB_NICHT_GESCHALTET        := 177,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 178,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_EINLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 179,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 180,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 181,   // Wildcard: Station: %d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: SENSOREN AUSTRANSPORT
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_BELEGT                                      := 200,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUFVORAB_BELEGT                                 := 201,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT                                 := 202,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_BELEGT                                      := 203,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_NICHT_FREI                                  := 204,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUFVORAB_NICHT_FREI                             := 205,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUFVORAB_NICHT_FREI                             := 206,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI                                  := 207,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT                              := 208,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUFVORAB_SCHALTET_NICHT                         := 209,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUFVORAB_SCHALTET_NICHT                         := 210,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT                              := 211,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT                          := 212,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_ODER_AUSLAUF_BELEGT_FREIFAHREN              := 213,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_UND_EINLAUFVORAB_SCHALTEN_NICHT             := 214,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_BELEGT_EINLAUFVORAB_NICHT_GESCHALTET        := 215,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_UND_AUSLAUFVORAB_SCHALTEN_NICHT             := 216,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_BELEGT_AUSLAUFVORAB_NICHT_GESCHALTET        := 217,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 218,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 219,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 220,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 221,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG             := 222,   (* Wildcard: Station: %d  *)
-  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG             := 223,   (* Wildcard: Station: %d  *)
+  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_BELEGT                                      := 200,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUFVORAB_BELEGT                                 := 201,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT                                 := 202,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_BELEGT                                      := 203,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_NICHT_FREI                                  := 204,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUFVORAB_NICHT_FREI                             := 205,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUFVORAB_NICHT_FREI                             := 206,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI                                  := 207,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT                              := 208,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUFVORAB_SCHALTET_NICHT                         := 209,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUFVORAB_SCHALTET_NICHT                         := 210,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT                              := 211,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT                          := 212,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_ODER_AUSLAUF_BELEGT_FREIFAHREN              := 213,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_UND_EINLAUFVORAB_SCHALTEN_NICHT             := 214,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_BELEGT_EINLAUFVORAB_NICHT_GESCHALTET        := 215,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_UND_AUSLAUFVORAB_SCHALTEN_NICHT             := 216,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_BELEGT_AUSLAUFVORAB_NICHT_GESCHALTET        := 217,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 218,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 219,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 220,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 221,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG             := 222,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG             := 223,   // Wildcard: Station: %d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: SENSOR VORTRANSPORT
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_BELEGT                                      := 240,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUFVORAB_BELEGT                                 := 241,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT                                 := 242,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_BELEGT                                      := 243,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_NICHT_FREI                                  := 244,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUFVORAB_NICHT_FREI                             := 245,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUFVORAB_NICHT_FREI                             := 246,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI                                  := 247,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT                              := 248,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUFVORAB_SCHALTET_NICHT                         := 249,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUFVORAB_SCHALTET_NICHT                         := 250,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT                              := 251,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_SENSOREN_BELEGT                 := 252,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_UND_EINLAUFVORAB_SCHALTEN_NICHT             := 253,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_BELEGT_EINLAUFVORAB_NICHT_GESCHALTET        := 254,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_UND_AUSLAUFVORAB_SCHALTEN_NICHT             := 255,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_BELEGT_AUSLAUFVORAB_NICHT_GESCHALTET        := 256,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 257,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 258,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 259,   (* Wildcard: Station: %d  *)
-  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 260,   (* Wildcard: Station: %d  *)
+  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_BELEGT                                      := 240,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUFVORAB_BELEGT                                 := 241,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT                                 := 242,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_BELEGT                                      := 243,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_NICHT_FREI                                  := 244,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUFVORAB_NICHT_FREI                             := 245,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUFVORAB_NICHT_FREI                             := 246,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI                                  := 247,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT                              := 248,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUFVORAB_SCHALTET_NICHT                         := 249,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUFVORAB_SCHALTET_NICHT                         := 250,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT                              := 251,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_SENSOREN_BELEGT                 := 252,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_UND_EINLAUFVORAB_SCHALTEN_NICHT             := 253,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_BELEGT_EINLAUFVORAB_NICHT_GESCHALTET        := 254,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_UND_AUSLAUFVORAB_SCHALTEN_NICHT             := 255,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_BELEGT_AUSLAUFVORAB_NICHT_GESCHALTET        := 256,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 257,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_EINLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 258,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 259,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 260,   // Wildcard: Station: %d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: SYSTEM CHECK
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_BELEGT                                       := 280,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUFVORAB_BELEGT                                  := 281,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUFVORAB_BELEGT                                  := 282,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_BELEGT                                       := 283,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_NICHT_FREI                                   := 284,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUFVORAB_NICHT_FREI                              := 285,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SENSOR_VORSTOPSENSOR_NICHT_FREI                             := 286,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_NICHT_FREI                                   := 287,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_SCHALTET_NICHT                               := 288,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUFVORAB_SCHALTET_NICHT                          := 289,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUFVORAB_SCHALTET_NICHT                          := 290,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_SCHALTET_NICHT                               := 291,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT                           := 292,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_UND_AUSLAUFVORSTOP_SCHALTEN_NICHT            := 293,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_VERBUND_VORGAENGER_NACHFOLGER_NICHT_ERLAUBT                 := 294,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_VERBUND_NACHFOLGER_NICHT_ERLAUBT                            := 295,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_VERBUND_VORGAENGER_NICHT_ERLAUBT                            := 296,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_VERBUND_SEPERATE_AUTOMATIKKREISE                            := 297,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_STATION_BEENDET_DIESEN_NICHT                                := 298,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_KANN_NICHT_DURCHGEFUEHRT_WERDEN                             := 299,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_AUFTRAGSDATEN_TIMEOUT                                       := 300,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_AUFTRAGSDATEN_UNGUELTIG                                     := 301,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SCHEIBE_NEU_ANLEGEN                                         := 302,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN                                            := 303,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN                                      := 304,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN_WAND                                       := 305,  (* Wildcard: Station:%d | Wand: %d *)
-  cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN_WAND                                 := 306,  (* Wildcard: Station:%d | Wand: %d *)
-  cMELDUNG_SYSTEMCHECK_STATIONSBELEGUNG_PRUEFEN                                    := 307,  (* Wildcard: Station:%d | Status: %d  | Status: %d *)
-  cMELDUNG_SYSTEMCHECK_GREIFER_STOESSEL_IST_ZUSTAND_NICHT_LOESBAR                  := 308,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_FREMDANLAGE_NICHT_BEREIT                                    := 309,  (* Wildcard: Station:%d  *)
-  cMELDUNG_SYSTEMCHECK_MODELLSTATUS_UNBEKANNT                                      := 310,  (* Wildcard: Station:%d | Modell_Status: %d *)
-  cMELDUNG_SYSTEMCHECK_POSITION_UNDEFINIERT                                        := 311,  (* Wildcard: Station:%d  *)
+  cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_BELEGT                                       := 280,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUFVORAB_BELEGT                                  := 281,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUFVORAB_BELEGT                                  := 282,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_BELEGT                                       := 283,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_NICHT_FREI                                   := 284,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUFVORAB_NICHT_FREI                              := 285,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SENSOR_VORSTOPSENSOR_NICHT_FREI                             := 286,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_NICHT_FREI                                   := 287,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_SCHALTET_NICHT                               := 288,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUFVORAB_SCHALTET_NICHT                          := 289,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUFVORAB_SCHALTET_NICHT                          := 290,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_SCHALTET_NICHT                               := 291,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT                           := 292,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_UND_AUSLAUFVORSTOP_SCHALTEN_NICHT            := 293,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_VERBUND_VORGAENGER_NACHFOLGER_NICHT_ERLAUBT                 := 294,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_VERBUND_NACHFOLGER_NICHT_ERLAUBT                            := 295,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_VERBUND_VORGAENGER_NICHT_ERLAUBT                            := 296,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_VERBUND_SEPERATE_AUTOMATIKKREISE                            := 297,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_STATION_BEENDET_DIESEN_NICHT                                := 298,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_KANN_NICHT_DURCHGEFUEHRT_WERDEN                             := 299,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_AUFTRAGSDATEN_TIMEOUT                                       := 300,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_AUFTRAGSDATEN_UNGUELTIG                                     := 301,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SCHEIBE_NEU_ANLEGEN                                         := 302,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN                                            := 303,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN                                      := 304,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN_WAND                                       := 305,  // Wildcard: Station:%d | Wand: %d
+  cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN_WAND                                 := 306,  // Wildcard: Station:%d | Wand: %d
+  cMELDUNG_SYSTEMCHECK_STATIONSBELEGUNG_PRUEFEN                                    := 307,  // Wildcard: Station:%d | Status: %d  | Status: %d
+  cMELDUNG_SYSTEMCHECK_GREIFER_STOESSEL_IST_ZUSTAND_NICHT_LOESBAR                  := 308,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_FREMDANLAGE_NICHT_BEREIT                                    := 309,  // Wildcard: Station:%d
+  cMELDUNG_SYSTEMCHECK_MODELLSTATUS_UNBEKANNT                                      := 310,  // Wildcard: Station:%d | Modell_Status: %d
+  cMELDUNG_SYSTEMCHECK_POSITION_UNDEFINIERT                                        := 311,  // Wildcard: Station:%d
   cMELDUNG_SYSTEMCHECK_TIMEOUT                                                     := 312,
   cMELDUNG_SYSTEMCHECK_SCHEIBE_AUF_SENSOR_AUSLAUF_ERWARTET                         := 313,
   cMELDUNG_SYSTEMCHECK_NICHT_MOEGLICH_TS_BETRIEBSSTOP                              := 314,
   cMELDUNG_SYSTEMCHECK_NICHT_MOEGLICH_BEIDE_SAUGER_AUSGEFAHREN                     := 315,
   cMELDUNG_SYSTEMCHECK_HUB_UNDEFINIERT                                             := 316,
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: ANTRIEBE
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_ANTRIEB                                                                 := 340,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_NICHT_ZURUECKGESETZT                                            := 341,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_NICHT_REFERENZIERT                                              := 342,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT                                            := 343,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_ZENTRALSCHMIERUNG                                               := 344,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_KIPPEN                                                          := 345,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_RIEMEN                                                          := 346,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_ROLLEN                                                          := 347,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_GEBLAESE                                                        := 348,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_HUB                                                             := 349,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_HUBRAHMEN                                                       := 350,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_SCHWENKEN                                                       := 351,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_QUERFAHRT                                                       := 352,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_DREHEN                                                          := 353,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_MESSACHSE                                                       := 355,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_GLASTRANSPORT                                                   := 356,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_GLASTRANSPORT_MASTER                                            := 357,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_GLASTRANSPORT_SLAVE                                             := 358,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_MASTER_SLAVE_ACHSEN_SYNC                                        := 359,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_MASTER_NICHT_ZURUECKGESETZT                                     := 360,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_SLAVE_NICHT_ZURUECKGESETZT                                      := 361,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_SLAVE_NICHT_AKTIV                                               := 362,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_SLAVE_MASTER_NR_UNGUELTIG                                       := 363,   (* Wildcard: Station: %d *)
-  cMELDUNG_ANTRIEB_DICKENVERSTELLUNG                                               := 364,   (* Wildcard: Station: %d *)
+  cMELDUNG_ANTRIEB                                                                 := 340,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_NICHT_ZURUECKGESETZT                                            := 341,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_NICHT_REFERENZIERT                                              := 342,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT                                            := 343,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_ZENTRALSCHMIERUNG                                               := 344,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_KIPPEN                                                          := 345,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_RIEMEN                                                          := 346,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_ROLLEN                                                          := 347,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_GEBLAESE                                                        := 348,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_HUB                                                             := 349,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_HUBRAHMEN                                                       := 350,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_SCHWENKEN                                                       := 351,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_QUERFAHRT                                                       := 352,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_DREHEN                                                          := 353,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_MESSACHSE                                                       := 355,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_GLASTRANSPORT                                                   := 356,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_GLASTRANSPORT_MASTER                                            := 357,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_GLASTRANSPORT_SLAVE                                             := 358,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_MASTER_SLAVE_ACHSEN_SYNC                                        := 359,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_MASTER_NICHT_ZURUECKGESETZT                                     := 360,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_SLAVE_NICHT_ZURUECKGESETZT                                      := 361,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_SLAVE_NICHT_AKTIV                                               := 362,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_SLAVE_MASTER_NR_UNGUELTIG                                       := 363,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_DICKENVERSTELLUNG                                               := 364,   // Wildcard: Station: %d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: MESSACHSE
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_MESSACHSE_ENDSCHALTER_NICHT_FREI                                        := 380,  (* Wildcard: Station:%d  *)
-  cMELDUNG_MESSACHSE_VERFAHRBEREICH                                                := 381,  (* Wildcard: Station:%d | Option => SollPos: %d | paramMinPos: %d | paramMaxPos: %d *)
-  cMELDUNG_MESSACHSE_MINIMUM_ENDSCHALTER_BELEGT                                    := 382,  (* Wildcard: Station:%d  *)
-  cMELDUNG_MESSACHSE_MAXIMUM_ENDSCHALTER_BELEGT                                    := 383,  (* Wildcard: Station:%d | Option => SollPos: %d | paramMinPos: %d | paramMaxPos: %d *)
+  cMELDUNG_MESSACHSE_ENDSCHALTER_NICHT_FREI                                        := 380,  // Wildcard: Station:%d
+  cMELDUNG_MESSACHSE_VERFAHRBEREICH                                                := 381,  // Wildcard: Station:%d | Option => SollPos: %d | paramMinPos: %d | paramMaxPos: %d
+  cMELDUNG_MESSACHSE_MINIMUM_ENDSCHALTER_BELEGT                                    := 382,  // Wildcard: Station:%d
+  cMELDUNG_MESSACHSE_MAXIMUM_ENDSCHALTER_BELEGT                                    := 383,  // Wildcard: Station:%d | Option => SollPos: %d | paramMinPos: %d | paramMaxPos: %d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: SCANNER
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_SCANNER_NACHRICHT_FALSCHE_STATION                                       := 400,   (* Wildcard: Station:%d  *)
-  cMELDUNG_SCANNER_KEIN_ERGEBNIS                                                   := 401,   (* Wildcard: Station:%d  *)
-  cMELDUNG_SCANNER_SENSOR_EINLAUF_NACH_SCANNER_BELEGT                              := 402,   (* Wildcard: Station:%d  *)
-  cMELDUNG_SCANNER_SENSOR_AUSLAUF_NACH_SCANNER_BELEGT                              := 403,   (* Wildcard: Station:%d  *)
-  cMELDUNG_SCANNER_SENSOR_VOR_DEM_SCANNER_BELEGT                                   := 404,   (* Wildcard: Station:%d  *)
+  cMELDUNG_SCANNER_NACHRICHT_FALSCHE_STATION                                       := 400,   // Wildcard: Station:%d
+  cMELDUNG_SCANNER_KEIN_ERGEBNIS                                                   := 401,   // Wildcard: Station:%d
+  cMELDUNG_SCANNER_SENSOR_EINLAUF_NACH_SCANNER_BELEGT                              := 402,   // Wildcard: Station:%d
+  cMELDUNG_SCANNER_SENSOR_AUSLAUF_NACH_SCANNER_BELEGT                              := 403,   // Wildcard: Station:%d
+  cMELDUNG_SCANNER_SENSOR_VOR_DEM_SCANNER_BELEGT                                   := 404,   // Wildcard: Station:%d
 
-  cMELDUNG_MOTORSTARTER_NICHT_OK                                                   := 410,   (* Wildcard: Station:%d  *)
-  cMELDUNG_MOTORSTARTER_FEHLER_LINKSLAUF_OK                                        := 411,   (* Wildcard: Station:%d  *)
-  cMELDUNG_MOTORSTARTER_FEHLER_RECHTSLAUF_OK                                       := 412,   (* Wildcard: Station:%d  *)
+  cMELDUNG_MOTORSTARTER_NICHT_OK                                                   := 410,   // Wildcard: Station:%d
+  cMELDUNG_MOTORSTARTER_FEHLER_LINKSLAUF_OK                                        := 411,   // Wildcard: Station:%d
+  cMELDUNG_MOTORSTARTER_FEHLER_RECHTSLAUF_OK                                       := 412,   // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: KIPPEN
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_KIPPEN_BEIDE_KIPPSENSOREN_BELEGT                                        := 420,   (* Wildcard: Station:%d  *)
-  cMELDUNG_KIPPEN_SICHERUNG_NICHT_OK                                               := 421,   (* Wildcard: Station:%d  *)
-  cMELDUNG_KIPPEN_KIPPT_NICHT_AUF                                                  := 422,   (* Wildcard: Station:%d  *)
-  cMELDUNG_KIPPEN_KIPPT_NICHT_AB                                                   := 423,   (* Wildcard: Station:%d  *)
-  cMELDUNG_KIPPEN_EINLAUFSENSOR_BELEGT                                             := 424,   (* Wildcard: Station:%d  *)
-  cMELDUNG_KIPPEN_AUSLAUFSENSOR_BELEGT                                             := 425,   (* Wildcard: Station:%d  *)
-  cMELDUNG_KIPPEN_EINLAUFSENSOR_NACHFOLGER                                         := 426,   (* Wildcard: Station:%d  *)
-  cMELDUNG_KIPPEN_AUSLAUFSENSOR_VORGAENGER                                         := 427,   (* Wildcard: Station:%d  *)
-  cMELDUNG_KIPPEN_EINLAUF_AUSLAUF_SENSOR_BELEGT                                    := 428,   (* Wildcard: Station:%d  *)
-  cMELDUNG_KIPPEN_ENDSCHALTER_NICHT_FREI                                           := 429,   (* Wildcard: Station:%d  *)
-  cMELDUNG_KIPPEN_ZIEL_POSITION_UNGUELTIG                                          := 430,   (* Wildcard: Station:%d  *)
-  cMELDUNG_KIPPEN_AUF_UND_ABKIPPEN_ZEITGLEICH_AKTIV                                := 431,   (* Wildcard: Station:%d  *)
-  cMELDUNG_KIPPEN_MOTORSTARTER_NICHT_OK                                            := 432,   (* Wildcard: Station:%d  *)
-  cMELDUNG_KIPPEN_KEINE_FREIGABE                                                   := 433,   (* Wildcard: Station:%d  *)
+  cMELDUNG_KIPPEN_BEIDE_KIPPSENSOREN_BELEGT                                        := 420,   // Wildcard: Station:%d
+  cMELDUNG_KIPPEN_SICHERUNG_NICHT_OK                                               := 421,   // Wildcard: Station:%d
+  cMELDUNG_KIPPEN_KIPPT_NICHT_AUF                                                  := 422,   // Wildcard: Station:%d
+  cMELDUNG_KIPPEN_KIPPT_NICHT_AB                                                   := 423,   // Wildcard: Station:%d
+  cMELDUNG_KIPPEN_EINLAUFSENSOR_BELEGT                                             := 424,   // Wildcard: Station:%d
+  cMELDUNG_KIPPEN_AUSLAUFSENSOR_BELEGT                                             := 425,   // Wildcard: Station:%d
+  cMELDUNG_KIPPEN_EINLAUFSENSOR_NACHFOLGER                                         := 426,   // Wildcard: Station:%d
+  cMELDUNG_KIPPEN_AUSLAUFSENSOR_VORGAENGER                                         := 427,   // Wildcard: Station:%d
+  cMELDUNG_KIPPEN_EINLAUF_AUSLAUF_SENSOR_BELEGT                                    := 428,   // Wildcard: Station:%d
+  cMELDUNG_KIPPEN_ENDSCHALTER_NICHT_FREI                                           := 429,   // Wildcard: Station:%d
+  cMELDUNG_KIPPEN_ZIEL_POSITION_UNGUELTIG                                          := 430,   // Wildcard: Station:%d
+  cMELDUNG_KIPPEN_AUF_UND_ABKIPPEN_ZEITGLEICH_AKTIV                                := 431,   // Wildcard: Station:%d
+  cMELDUNG_KIPPEN_MOTORSTARTER_NICHT_OK                                            := 432,   // Wildcard: Station:%d
+  cMELDUNG_KIPPEN_KEINE_FREIGABE                                                   := 433,   // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: HUB
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_HUB_SENSOR_EINLAUF_BELEGT                                               := 450,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_SENSOR_AUSLAUF_BELEGT                                               := 451,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_SENSOR_EINLAUF_AUSLAUF_BELEGT                                       := 452,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_SENSOR_EINLAUF_NACHFOLGER_BELEGT                                    := 453,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_SENSOR_AUSLAUF_VORGAENGER_BELEGT                                    := 454,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_ENDSCHALTER_NICHT_FREI                                              := 455,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_ENDSCHALTER_MAX_NICHT_FREI                                          := 456,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_ENDSCHALTER_MIN_NICHT_FREI                                          := 457,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_BEIDE_HUBSENSOREN_BELEGT                                            := 458,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_NICHT_GEHOBEN                                                       := 459,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_NICHT_GESENKT                                                       := 460,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_POSITION_NICHT_ERREICHT                                             := 461,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_UNGUELTIG_BETRIEBSART                                               := 462,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_UNGUELTIGES_ZIEL                                                    := 463,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_SICHERUNGSZYLINDER_AUSFAHREN                                        := 464,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_SICHERUNGSZYLINDER_EINFAHREN                                        := 465,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_SICHERUNG_NICHT_OK                                                  := 466,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_STEUERTEIL_NICHT_OK                                                 := 467,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_BREMSE_NICHT_OK                                                     := 468,   (* Wildcard: Station:%d  *)
-  cMELDUNG_HUB_MOTORSTARTER_NICHT_OK                                               := 469,   (* Wildcard: Station:%d  *)
+  cMELDUNG_HUB_SENSOR_EINLAUF_BELEGT                                               := 450,   // Wildcard: Station:%d
+  cMELDUNG_HUB_SENSOR_AUSLAUF_BELEGT                                               := 451,   // Wildcard: Station:%d
+  cMELDUNG_HUB_SENSOR_EINLAUF_AUSLAUF_BELEGT                                       := 452,   // Wildcard: Station:%d
+  cMELDUNG_HUB_SENSOR_EINLAUF_NACHFOLGER_BELEGT                                    := 453,   // Wildcard: Station:%d
+  cMELDUNG_HUB_SENSOR_AUSLAUF_VORGAENGER_BELEGT                                    := 454,   // Wildcard: Station:%d
+  cMELDUNG_HUB_ENDSCHALTER_NICHT_FREI                                              := 455,   // Wildcard: Station:%d
+  cMELDUNG_HUB_ENDSCHALTER_MAX_NICHT_FREI                                          := 456,   // Wildcard: Station:%d
+  cMELDUNG_HUB_ENDSCHALTER_MIN_NICHT_FREI                                          := 457,   // Wildcard: Station:%d
+  cMELDUNG_HUB_BEIDE_HUBSENSOREN_BELEGT                                            := 458,   // Wildcard: Station:%d
+  cMELDUNG_HUB_NICHT_GEHOBEN                                                       := 459,   // Wildcard: Station:%d
+  cMELDUNG_HUB_NICHT_GESENKT                                                       := 460,   // Wildcard: Station:%d
+  cMELDUNG_HUB_POSITION_NICHT_ERREICHT                                             := 461,   // Wildcard: Station:%d
+  cMELDUNG_HUB_UNGUELTIG_BETRIEBSART                                               := 462,   // Wildcard: Station:%d
+  cMELDUNG_HUB_UNGUELTIGES_ZIEL                                                    := 463,   // Wildcard: Station:%d
+  cMELDUNG_HUB_SICHERUNGSZYLINDER_AUSFAHREN                                        := 464,   // Wildcard: Station:%d
+  cMELDUNG_HUB_SICHERUNGSZYLINDER_EINFAHREN                                        := 465,   // Wildcard: Station:%d
+  cMELDUNG_HUB_SICHERUNG_NICHT_OK                                                  := 466,   // Wildcard: Station:%d
+  cMELDUNG_HUB_STEUERTEIL_NICHT_OK                                                 := 467,   // Wildcard: Station:%d
+  cMELDUNG_HUB_BREMSE_NICHT_OK                                                     := 468,   // Wildcard: Station:%d
+  cMELDUNG_HUB_MOTORSTARTER_NICHT_OK                                               := 469,   // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: DREHEN
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_DREHEN_SENSOR_EINLAUF_BELEGT                                            := 490,  (* Wildcard: Station:%d  *)
-  cMELDUNG_DREHEN_SENSOR_AUSLAUF_BELEGT                                            := 491,  (* Wildcard: Station:%d  *)
-  cMELDUNG_DREHEN_SENSOR_EINLAUF_AUSLAUF_BELEGT                                    := 492,  (* Wildcard: Station:%d  *)
-  cMELDUNG_DREHEN_ARRETIERUNG_NICHT_EINGEFAHREN                                    := 493,  (* Wildcard: Station:%d  *)
-  cMELDUNG_DREHEN_ARRETIERUNG_NICHTAUSGEFAHREN                                     := 494,  (* Wildcard: Station:%d  *)
-  cMELDUNG_DREHEN_ENDSCHALTER_NICHT_FREI                                           := 495,  (* Wildcard: Station:%d  *)
-  cMELDUNG_DREHEN_IST_POSITION_UNGUELTIG                                           := 496,  (* Wildcard: Station:%d  *)
-  cMELDUNG_DREHEN_UNDEFINIERTE_POSITION                                            := 497,  (* Wildcard: Station:%d  *)
-  cMELDUNG_DREHEN_KEINE_DREHRICHTUNG_VORGEGEBEN                                    := 498,  (* Wildcard: Station:%d  *)
+  cMELDUNG_DREHEN_SENSOR_EINLAUF_BELEGT                                            := 490,  // Wildcard: Station:%d
+  cMELDUNG_DREHEN_SENSOR_AUSLAUF_BELEGT                                            := 491,  // Wildcard: Station:%d
+  cMELDUNG_DREHEN_SENSOR_EINLAUF_AUSLAUF_BELEGT                                    := 492,  // Wildcard: Station:%d
+  cMELDUNG_DREHEN_ARRETIERUNG_NICHT_EINGEFAHREN                                    := 493,  // Wildcard: Station:%d
+  cMELDUNG_DREHEN_ARRETIERUNG_NICHTAUSGEFAHREN                                     := 494,  // Wildcard: Station:%d
+  cMELDUNG_DREHEN_ENDSCHALTER_NICHT_FREI                                           := 495,  // Wildcard: Station:%d
+  cMELDUNG_DREHEN_IST_POSITION_UNGUELTIG                                           := 496,  // Wildcard: Station:%d
+  cMELDUNG_DREHEN_UNDEFINIERTE_POSITION                                            := 497,  // Wildcard: Station:%d
+  cMELDUNG_DREHEN_KEINE_DREHRICHTUNG_VORGEGEBEN                                    := 498,  // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: SCHWENKEN
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_SCHWENKEN_SENSOR_EINLAUF_BELEGT                                         := 510,   (* Wildcard: Station:%d  *)
-  cMELDUNG_SCHWENKEN_SENSOR_AUSLAUF_BELEGT                                         := 511,   (* Wildcard: Station:%d  *)
-  cMELDUNG_SCHWENKEN_SENSOR_EINLAUF_AUSLAUF_BELEGT                                 := 512,   (* Wildcard: Station:%d  *)
+  cMELDUNG_SCHWENKEN_SENSOR_EINLAUF_BELEGT                                         := 510,   // Wildcard: Station:%d
+  cMELDUNG_SCHWENKEN_SENSOR_AUSLAUF_BELEGT                                         := 511,   // Wildcard: Station:%d
+  cMELDUNG_SCHWENKEN_SENSOR_EINLAUF_AUSLAUF_BELEGT                                 := 512,   // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: PNEUMATIKZYLINDER ALLGEMEIN
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_ZYLINDER_NICHT_AUSGEFAHREN                                              := 530,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ZYLINDER_NICHT_EINGEFAHREN                                              := 531,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ZYLINDER_WAND_NICHT_AUSGEFAHREN                                         := 532,  (* Wildcard: Station:%d | Wand:%d *)
-  cMELDUNG_ZYLINDER_WAND_NICHT_EINGEFAHREN                                         := 533,  (* Wildcard: Station:%d | Wand:%d *)
-  cMELDUNG_ZYLINDER_SENSOREN_SCHALTEN_NICHT                                        := 534,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ZYLINDER_GLASFUEHRUNG_NICHT_AUSGEFAHREN                                 := 535,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ZYLINDER_GLASFUEHRUNG_NICHT_EINGEFAHREN                                 := 536,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ZYLINDER_STELLUNG_UNGUELTIG                                             := 537,  (* Wildcard: Station:%d  *)
+  cMELDUNG_ZYLINDER_NICHT_AUSGEFAHREN                                              := 530,  // Wildcard: Station:%d
+  cMELDUNG_ZYLINDER_NICHT_EINGEFAHREN                                              := 531,  // Wildcard: Station:%d
+  cMELDUNG_ZYLINDER_WAND_NICHT_AUSGEFAHREN                                         := 532,  // Wildcard: Station:%d | Wand:%d
+  cMELDUNG_ZYLINDER_WAND_NICHT_EINGEFAHREN                                         := 533,  // Wildcard: Station:%d | Wand:%d
+  cMELDUNG_ZYLINDER_SENSOREN_SCHALTEN_NICHT                                        := 534,  // Wildcard: Station:%d
+  cMELDUNG_ZYLINDER_GLASFUEHRUNG_NICHT_AUSGEFAHREN                                 := 535,  // Wildcard: Station:%d
+  cMELDUNG_ZYLINDER_GLASFUEHRUNG_NICHT_EINGEFAHREN                                 := 536,  // Wildcard: Station:%d
+  cMELDUNG_ZYLINDER_STELLUNG_UNGUELTIG                                             := 537,  // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: GLASFUEHRUNG
   //
   //  Hinweis:
   // -
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_GLASFUEHRUNG_NICHT_GESCHLOSSEN                                          := 550,  (* Wildcard: Station:%d  *)
-  cMELDUNG_GLASFUEHRUNG_NICHT_GEOEFFNET                                            := 551,  (* Wildcard: Station:%d  *)
-  cMELDUNG_GLASFUEHRUNG_ZIEL_STELLUNG_UNGUELTIG                                    := 552,  (* Wildcard: Station:%d  *)
+  cMELDUNG_GLASFUEHRUNG_NICHT_GESCHLOSSEN                                          := 550,  // Wildcard: Station:%d
+  cMELDUNG_GLASFUEHRUNG_NICHT_GEOEFFNET                                            := 551,  // Wildcard: Station:%d
+  cMELDUNG_GLASFUEHRUNG_ZIEL_STELLUNG_UNGUELTIG                                    := 552,  // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: HUBPALETTE
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
-  cMELDUNG_HUBPALETTE_NICHT_UNTEN                                                  := 570,  (* Wildcard: Station:%d  *)
-  cMELDUNG_HUBPALETTE_NICHT_OBEN                                                   := 571,  (* Wildcard: Station:%d  *)
+  // ---------------------------------------------------------------------------------------
+  cMELDUNG_HUBPALETTE_NICHT_UNTEN                                                  := 570,  // Wildcard: Station:%d
+  cMELDUNG_HUBPALETTE_NICHT_OBEN                                                   := 571,  // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: ANSCHLAEGE
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_ANSCHLAEGE_NICHT_OBEN                                                   := 590,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ANSCHLAEGE_NICHT_UNTEN                                                  := 591,  (* Wildcard: Station:%d  *)
+  cMELDUNG_ANSCHLAEGE_NICHT_OBEN                                                   := 590,  // Wildcard: Station:%d
+  cMELDUNG_ANSCHLAEGE_NICHT_UNTEN                                                  := 591,  // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: DURCHLAUFSPERRE
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_DURCHLAUFSPERRE_NICHT_AUSGEFAHREN                                       := 610,  (* Wildcard: Station:%d  *)
-  cMELDUNG_DURCHLAUFSPERRE_NICHT_EINGEFAHREN                                       := 611,  (* Wildcard: Station:%d  *)
+  cMELDUNG_DURCHLAUFSPERRE_NICHT_AUSGEFAHREN                                       := 610,  // Wildcard: Station:%d
+  cMELDUNG_DURCHLAUFSPERRE_NICHT_EINGEFAHREN                                       := 611,  // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: QUERFAHRT
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_EINLAUF_BELEGT                    := 630,  (* Wildcard: Station:%d  *)
-  cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_AUSLAUF_BELEGT                    := 631,  (* Wildcard: Station:%d  *)
-  cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_EINLAUF_WAND_BELEGT               := 632,  (* Wildcard: Station:%d | Wand: %d *)
-  cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_AUSLAUF_WAND_BELEGT               := 633,  (* Wildcard: Station:%d | Wand: %d *)
-  cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_EINLAUF_AUSLAUF_WAND_BELEGT       := 634,  (* Wildcard: Station:%d | Wand: %d *)
-  cMELDUNG_QUERFAHRT_ENDSCHALTER_NICHT_FREI                                        := 635,  (* Wildcard: Station:%d *)
-  cMELDUNG_QUERFAHRT_UNGUELTIGE_ZIELPOSITION                                       := 636,  (* Wildcard: Station:%d  *)
-  cMELDUNG_QUERFAHRT_VERFAEHRT_NICHT                                               := 637,  (* Wildcard: Station:%d  *)
-  cMELDUNG_QUERFAHRT_NICHT_VERFAHR_BEREIT                                          := 638,  (* Wildcard: Station:%d  *)
-  cMELDUNG_QUERFAHRT_SOLLPOSITION_NICHT_ERREICHT                                   := 639,  (* Wildcard: Station:%d  *)
-  cMELDUNG_QUERFAHRT_VERFAHRABBRUCH                                                := 640,  (* Wildcard: Station:%d  *)
-  cMELDUNG_QUERFAHRT_KEINE_REFERENZ                                                := 641,  (* Wildcard: Station:%d  *)
+  cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_EINLAUF_BELEGT                    := 630,  // Wildcard: Station:%d
+  cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_AUSLAUF_BELEGT                    := 631,  // Wildcard: Station:%d
+  cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_EINLAUF_WAND_BELEGT               := 632,  // Wildcard: Station:%d | Wand: %d
+  cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_AUSLAUF_WAND_BELEGT               := 633,  // Wildcard: Station:%d | Wand: %d
+  cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_EINLAUF_AUSLAUF_WAND_BELEGT       := 634,  // Wildcard: Station:%d | Wand: %d
+  cMELDUNG_QUERFAHRT_ENDSCHALTER_NICHT_FREI                                        := 635,  // Wildcard: Station:%d
+  cMELDUNG_QUERFAHRT_UNGUELTIGE_ZIELPOSITION                                       := 636,  // Wildcard: Station:%d
+  cMELDUNG_QUERFAHRT_VERFAEHRT_NICHT                                               := 637,  // Wildcard: Station:%d
+  cMELDUNG_QUERFAHRT_NICHT_VERFAHR_BEREIT                                          := 638,  // Wildcard: Station:%d
+  cMELDUNG_QUERFAHRT_SOLLPOSITION_NICHT_ERREICHT                                   := 639,  // Wildcard: Station:%d
+  cMELDUNG_QUERFAHRT_VERFAHRABBRUCH                                                := 640,  // Wildcard: Station:%d
+  cMELDUNG_QUERFAHRT_KEINE_REFERENZ                                                := 641,  // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: GLASVERMESSUNGEN
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_MESSUNG_FALSCHE_GLASLAENGE                                              := 660,  (* Wildcard: Station:%d | Geforderte Länge: %s | Gemessene Länge: %s  *)
-  cMELDUNG_MESSUNG_SCHEIBE_ZU_HOCH                                                 := 661,  (* Wildcard: Station:%d  *)
-  cMELDUNG_MESSUNG_SCHEIBE_ZU_NIEDRIG                                              := 662,  (* Wildcard: Station:%d  *)
-  cMELDUNG_MESSUNG_SCHEIBE_ZU_DICK                                                 := 663,  (* Wildcard: Station:%d  *)
-  cMELDUNG_MESSUNG_SCHEIBE_ZU_DUENN                                                := 664,  (* Wildcard: Station:%d  *)
-  cMELDUNG_MESSUNG_ABSTAND_NULLLINIE_NICHT_OK                                      := 665,  (* Wildcard: Station:%d | Abstand NullLinie: %d  *)
-  cMELDUNG_MESSUNG_FEHLMESSUNG                                                     := 666,  (* Wildcard: Station:%d  *)
+  cMELDUNG_MESSUNG_FALSCHE_GLASLAENGE                                              := 660,  // Wildcard: Station:%d | Geforderte Länge: %s | Gemessene Länge: %s
+  cMELDUNG_MESSUNG_SCHEIBE_ZU_HOCH                                                 := 661,  // Wildcard: Station:%d
+  cMELDUNG_MESSUNG_SCHEIBE_ZU_NIEDRIG                                              := 662,  // Wildcard: Station:%d
+  cMELDUNG_MESSUNG_SCHEIBE_ZU_DICK                                                 := 663,  // Wildcard: Station:%d
+  cMELDUNG_MESSUNG_SCHEIBE_ZU_DUENN                                                := 664,  // Wildcard: Station:%d
+  cMELDUNG_MESSUNG_ABSTAND_NULLLINIE_NICHT_OK                                      := 665,  // Wildcard: Station:%d | Abstand NullLinie: %d
+  cMELDUNG_MESSUNG_FEHLMESSUNG                                                     := 666,  // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: ANLEGEN ALLGEMEIN
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_ANLEGEN_SENSOR_EINLAUF_BELEGT                                           := 680,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ANLEGEN_SENSOR_EINLAUFVORAB_BELEGT                                      := 681,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ANLEGEN_SENSOR_AUSLAUFVORAB_BELEGT                                      := 682,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ANLEGEN_SENSOR_AUSLAUF_BELEGT                                           := 683,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ANLEGEN_SENSOR_EINLAUF_NICHT_BELEGT                                     := 684,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ANLEGEN_SENSOR_EINLAUFVORAB_NICHT_BELEGT                                := 685,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ANLEGEN_SENSOR_AUSLAUFVORAB_NICHT_BELEGT                                := 686,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ANLEGEN_SENSOR_AUSLAUF_NICHT_BELEGT                                     := 687,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ANLEGEN_SENSOR_AUSLAUF_NACHFOLGER_BELEGT                                := 688,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ANLEGEN_KEINE_SCHEIBE_ERKANNT                                           := 689,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ANLEGEN_SCHEIBE_NEU_ANLEGEN                                             := 690,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ANLEGEN_MODELL_SCHEIBE_ERKANNT                                          := 691,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ANLEGEN_MODELLSTATUS_UNBEKANNT                                          := 692,  (* Wildcard: Station:%d  *)
-  cMELDUNG_ANLEGEN_SICHERHEITSKREIS                                                := 693,  (* Wildcard: Station:%d  *)
+  cMELDUNG_ANLEGEN_SENSOR_EINLAUF_BELEGT                                           := 680,  // Wildcard: Station:%d
+  cMELDUNG_ANLEGEN_SENSOR_EINLAUFVORAB_BELEGT                                      := 681,  // Wildcard: Station:%d
+  cMELDUNG_ANLEGEN_SENSOR_AUSLAUFVORAB_BELEGT                                      := 682,  // Wildcard: Station:%d
+  cMELDUNG_ANLEGEN_SENSOR_AUSLAUF_BELEGT                                           := 683,  // Wildcard: Station:%d
+  cMELDUNG_ANLEGEN_SENSOR_EINLAUF_NICHT_BELEGT                                     := 684,  // Wildcard: Station:%d
+  cMELDUNG_ANLEGEN_SENSOR_EINLAUFVORAB_NICHT_BELEGT                                := 685,  // Wildcard: Station:%d
+  cMELDUNG_ANLEGEN_SENSOR_AUSLAUFVORAB_NICHT_BELEGT                                := 686,  // Wildcard: Station:%d
+  cMELDUNG_ANLEGEN_SENSOR_AUSLAUF_NICHT_BELEGT                                     := 687,  // Wildcard: Station:%d
+  cMELDUNG_ANLEGEN_SENSOR_AUSLAUF_NACHFOLGER_BELEGT                                := 688,  // Wildcard: Station:%d
+  cMELDUNG_ANLEGEN_KEINE_SCHEIBE_ERKANNT                                           := 689,  // Wildcard: Station:%d
+  cMELDUNG_ANLEGEN_SCHEIBE_NEU_ANLEGEN                                             := 690,  // Wildcard: Station:%d
+  cMELDUNG_ANLEGEN_MODELL_SCHEIBE_ERKANNT                                          := 691,  // Wildcard: Station:%d
+  cMELDUNG_ANLEGEN_MODELLSTATUS_UNBEKANNT                                          := 692,  // Wildcard: Station:%d
+  cMELDUNG_ANLEGEN_SICHERHEITSKREIS                                                := 693,  // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: STATION ALLGEMEIN
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_STATION_FAECHERWAGEN_NICHT_AUF_POSITION                                 := 730,  (* Wildcard: Station:%d  *)
-  cMELDUNG_STATION_ZUWENIG_SCHEIBEN_QUITTIERT_EINTRANSPORT                         := 731,  (* Wildcard: Station:%d  *)
-  cMELDUNG_STATION_ZUVIELE_SCHEIBEN_QUITTIERT_EINTRANSPORT                         := 732,  (* Wildcard: Station:%d  *)
-  cMELDUNG_STATION_ZUWENIG_SCHEIBEN_QUITTIERT_AUSTRANSPORT                         := 733,  (* Wildcard: Station:%d  *)
-  cMELDUNG_STATION_ZUVIELE_SCHEIBEN_QUITTIERT_AUSTRANSPORT                         := 734,  (* Wildcard: Station:%d  *)
-  cMELDUNG_STATION_ZUWENIG_SCHEIBEN_QUITTIERT_WAND_EINTRANSPORT                    := 735,  (* Wildcard: Station:%d | Wand:%d *)
-  cMELDUNG_STATION_ZUVIELE_SCHEIBEN_QUITTIERT_WAND_EINTRANSPORT                    := 736,  (* Wildcard: Station:%d | Wand:%d *)
-  cMELDUNG_STATION_ZUWENIG_SCHEIBEN_QUITTIERT_WAND_AUSTRANSPORT                    := 737,  (* Wildcard: Station:%d | Wand:%d *)
-  cMELDUNG_STATION_ZUVIELE_SCHEIBEN_QUITTIERT_WAND_AUSTRANSPORT                    := 738,  (* Wildcard: Station:%d | Wand:%d *)
-  cMELDUNG_STATION_IST_GESCHLOSSEN                                                 := 739,  (* Wildcard: Station:%d  *)
-  cMELDUNG_STATION_NICHT_GESCHLOSSEN                                               := 740,  (* Wildcard: Station:%d  *)
-  cMELDUNG_STATION_MELDET_SCHEIBE_ERKANNT                                          := 741,  (* Wildcard: Station:%d  *)
-  cMELDUNG_STATION_NICHT_ZURUECKGESETZT                                            := 742,  (* Wildcard: Station:%d  *)
-  cMELDUNG_STATION_GLASTRANSPORT_ABSCHALTUNG                                       := 743,  (* Wildcard: Station:%d  *)
-  cMELDUNG_STATION_BETRIEBSMODUS_UNGUELTIG                                         := 744,  (* Wildcard: Station:%d  *)
-  cMELDUNG_STATION_DATENLICHTSCHRANKE_UNTERBROCHEN                                 := 745,  (* Wildcard: Station:%d  *)
-  cMELDUNG_STATION_KEINE_SCHEIBE_GEFUNDEN                                          := 746,  (* Wildcard: Station:%d  *)
-  cMELDUNG_STATION_NOPPENSUCHE_FEHLGESCHLAGEN                                      := 747,  (* Wildcard: Station:%d  *)
-  cMELDUNG_STATION_VORABKOMPONENTENANSTEUERUN_NOT_DONE                             := 748,  (* Wildcard: Station:%d  *)
+  cMELDUNG_STATION_FAECHERWAGEN_NICHT_AUF_POSITION                                 := 730,  // Wildcard: Station:%d
+  cMELDUNG_STATION_ZUWENIG_SCHEIBEN_QUITTIERT_EINTRANSPORT                         := 731,  // Wildcard: Station:%d
+  cMELDUNG_STATION_ZUVIELE_SCHEIBEN_QUITTIERT_EINTRANSPORT                         := 732,  // Wildcard: Station:%d
+  cMELDUNG_STATION_ZUWENIG_SCHEIBEN_QUITTIERT_AUSTRANSPORT                         := 733,  // Wildcard: Station:%d
+  cMELDUNG_STATION_ZUVIELE_SCHEIBEN_QUITTIERT_AUSTRANSPORT                         := 734,  // Wildcard: Station:%d
+  cMELDUNG_STATION_ZUWENIG_SCHEIBEN_QUITTIERT_WAND_EINTRANSPORT                    := 735,  // Wildcard: Station:%d | Wand:%d
+  cMELDUNG_STATION_ZUVIELE_SCHEIBEN_QUITTIERT_WAND_EINTRANSPORT                    := 736,  // Wildcard: Station:%d | Wand:%d
+  cMELDUNG_STATION_ZUWENIG_SCHEIBEN_QUITTIERT_WAND_AUSTRANSPORT                    := 737,  // Wildcard: Station:%d | Wand:%d
+  cMELDUNG_STATION_ZUVIELE_SCHEIBEN_QUITTIERT_WAND_AUSTRANSPORT                    := 738,  // Wildcard: Station:%d | Wand:%d
+  cMELDUNG_STATION_IST_GESCHLOSSEN                                                 := 739,  // Wildcard: Station:%d
+  cMELDUNG_STATION_NICHT_GESCHLOSSEN                                               := 740,  // Wildcard: Station:%d
+  cMELDUNG_STATION_MELDET_SCHEIBE_ERKANNT                                          := 741,  // Wildcard: Station:%d
+  cMELDUNG_STATION_NICHT_ZURUECKGESETZT                                            := 742,  // Wildcard: Station:%d
+  cMELDUNG_STATION_GLASTRANSPORT_ABSCHALTUNG                                       := 743,  // Wildcard: Station:%d
+  cMELDUNG_STATION_BETRIEBSMODUS_UNGUELTIG                                         := 744,  // Wildcard: Station:%d
+  cMELDUNG_STATION_DATENLICHTSCHRANKE_UNTERBROCHEN                                 := 745,  // Wildcard: Station:%d
+  cMELDUNG_STATION_KEINE_SCHEIBE_GEFUNDEN                                          := 746,  // Wildcard: Station:%d
+  cMELDUNG_STATION_NOPPENSUCHE_FEHLGESCHLAGEN                                      := 747,  // Wildcard: Station:%d
+  cMELDUNG_STATION_VORABKOMPONENTENANSTEUERUN_NOT_DONE                             := 748,  // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: TRANSFERSHUTTLE ALLGEMEIN
   //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_TS_MELDET_NICHT_OBEN                                                    := 770,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_MELDET_NICHT_UNTEN                                                   := 771,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_OBEN                                      := 772,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_UNTEN                                     := 773,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_OBEN                                      := 774,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_UNTEN                                     := 775,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_DRUCKLUFT_EINLAUF_NICHT_OK                                           := 776,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_DRUCKLUFT_AUSLAUF_NICHT_OK                                           := 777,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_AUSLAUFSENSOR_WIRD_NICHT_FREI                                        := 778,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_EINLAUFSENSOR_WIRD_NICHT_FREI                                        := 779,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_EINLAUF_UND_AUSLAUFSENSOR_MELDEN_NICHT_FREI                          := 780,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_BREITER_EINLAUFSENSOR_MELDET_NICHT_OBEN                              := 781,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_BREITER_EINLAUFSENSOR_MELDET_NICHT_UNTEN                             := 782,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_BREITER_AUSLAUFSENSOR_MELDET_NICHT_OBEN                              := 783,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_BREITER_AUSLAUFSENSOR_MELDET_NICHT_UNTEN                             := 784,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_BREITER_AUSLAUFSENSOR_WIRD_NICHT_FREI                                := 785,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_BREITER_EINLAUFSENSOR_WIRD_NICHT_FREI                                := 786,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_AUSLAUFSENSOR_BELEGT_FREIFAHREN                                      := 787,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_KONNTE_KEIN_MASTER_TS_ERMITTELT_WERDEN                               := 788,  (* Wildcard: Station:%d  *)
-  cMELDUNG_TS_SPEICHERVALIDIERUNG_NOCH_AKTIV                                       := 789,  (* Wildcard: Station:%d  *)
+  cMELDUNG_TS_MELDET_NICHT_OBEN                                                    := 770,  // Wildcard: Station:%d
+  cMELDUNG_TS_MELDET_NICHT_UNTEN                                                   := 771,  // Wildcard: Station:%d
+  cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_OBEN                                      := 772,  // Wildcard: Station:%d
+  cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_UNTEN                                     := 773,  // Wildcard: Station:%d
+  cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_OBEN                                      := 774,  // Wildcard: Station:%d
+  cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_UNTEN                                     := 775,  // Wildcard: Station:%d
+  cMELDUNG_TS_DRUCKLUFT_EINLAUF_NICHT_OK                                           := 776,  // Wildcard: Station:%d
+  cMELDUNG_TS_DRUCKLUFT_AUSLAUF_NICHT_OK                                           := 777,  // Wildcard: Station:%d
+  cMELDUNG_TS_AUSLAUFSENSOR_WIRD_NICHT_FREI                                        := 778,  // Wildcard: Station:%d
+  cMELDUNG_TS_EINLAUFSENSOR_WIRD_NICHT_FREI                                        := 779,  // Wildcard: Station:%d
+  cMELDUNG_TS_EINLAUF_UND_AUSLAUFSENSOR_MELDEN_NICHT_FREI                          := 780,  // Wildcard: Station:%d
+  cMELDUNG_TS_BREITER_EINLAUFSENSOR_MELDET_NICHT_OBEN                              := 781,  // Wildcard: Station:%d
+  cMELDUNG_TS_BREITER_EINLAUFSENSOR_MELDET_NICHT_UNTEN                             := 782,  // Wildcard: Station:%d
+  cMELDUNG_TS_BREITER_AUSLAUFSENSOR_MELDET_NICHT_OBEN                              := 783,  // Wildcard: Station:%d
+  cMELDUNG_TS_BREITER_AUSLAUFSENSOR_MELDET_NICHT_UNTEN                             := 784,  // Wildcard: Station:%d
+  cMELDUNG_TS_BREITER_AUSLAUFSENSOR_WIRD_NICHT_FREI                                := 785,  // Wildcard: Station:%d
+  cMELDUNG_TS_BREITER_EINLAUFSENSOR_WIRD_NICHT_FREI                                := 786,  // Wildcard: Station:%d
+  cMELDUNG_TS_AUSLAUFSENSOR_BELEGT_FREIFAHREN                                      := 787,  // Wildcard: Station:%d
+  cMELDUNG_TS_KONNTE_KEIN_MASTER_TS_ERMITTELT_WERDEN                               := 788,  // Wildcard: Station:%d
+  cMELDUNG_TS_SPEICHERVALIDIERUNG_NOCH_AKTIV                                       := 789,  // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: FAECHERWAGENSTATION
   //
   //  Hinweis:
   // - eFehler_Faecherwagenstation
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_FAECHERWAGEN_NICHT_IN_LADEPOSITION                                      := 800,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_VORFAHREN_ZENTRIERUNG_NICHT_OFFEN                          := 801,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_VORFAHREN_STATION_NICHT_OBEN                               := 802,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_ZURUECKFAHREN_ZENTRIERUNG_NICHT_OFFEN                      := 803,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_ZURUECKFAHREN_STATION_NICHT_OBEN                           := 804,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_HEBEN_HINTERE_POSITION                                     := 805,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_SENKEN_HINTERE_POSITION                                    := 806,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_UEBERWACHUNG_ZENTRIERUNG_SCHLIESSEN                        := 807,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_UEBERWACHUNG_ZENTRIERUNG_OEFFNEN                           := 808,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_LICHTSCHRANKE_AUSGELOEST                                   := 809,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_LICHTSCHRANKE_MUTING_NICHT_AKTIV                           := 810,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_NICHT_VORHANDEN_EINSCHLEUSEN                               := 811,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_UNGUELTIGE_GROESSE                                         := 812,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_UEBERWACHUNG_ROLLTOR_OEFFNEN                               := 813,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_UEBERWACHUNG_ROLLTOR_SCHLIESSEN                            := 814,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_SENSOR_UNTEN_SCHALTET_NICHT                                := 816,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_SENSOR_OBEN_SCHALTET_NICHT                                 := 817,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_SENSOR_VORNE_SCHALTET_NICHT                                := 818,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_SENSOR_HINTEN_SCHALTET_NICHT                               := 819,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_RFID_CHIP_NICHT_LESBAR                                     := 820,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_ENTRIEGELUNG_NICHT_OFFEN                                   := 821,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_ENTRIEGELUNG_NICHT_GESCHLOSSEN                             := 822,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_GREIFER_NICHT_OFFEN                                        := 823,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_GREIFER_NICHT_GESCHLOSSEN                                  := 824,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_GEGENHALTER_NICHT_OFFEN                                    := 825,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_GEGENHALTER_NICHT_GESCHLOSSEN                              := 826,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_VORNE                                  := 827,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_HINTEN                                 := 828,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_SHUTTLE_UEBERGABE                      := 829,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_SYSTEMCHECK_NICHT_MOEGLICH                                 := 830,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_OBERWAGEN_INPOS_VERLOREN                                   := 831,  (* Wildcard: Station:%d  *)
-  cMELDUNG_FAECHERWAGEN_KLEMMZYLINDER_NICHT_EINGEFAHREN                            := 832,  (* Wildcard: Station:%d  *)
+  cMELDUNG_FAECHERWAGEN_NICHT_IN_LADEPOSITION                                      := 800,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_VORFAHREN_ZENTRIERUNG_NICHT_OFFEN                          := 801,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_VORFAHREN_STATION_NICHT_OBEN                               := 802,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_ZURUECKFAHREN_ZENTRIERUNG_NICHT_OFFEN                      := 803,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_ZURUECKFAHREN_STATION_NICHT_OBEN                           := 804,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_HEBEN_HINTERE_POSITION                                     := 805,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_SENKEN_HINTERE_POSITION                                    := 806,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_UEBERWACHUNG_ZENTRIERUNG_SCHLIESSEN                        := 807,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_UEBERWACHUNG_ZENTRIERUNG_OEFFNEN                           := 808,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_LICHTSCHRANKE_AUSGELOEST                                   := 809,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_LICHTSCHRANKE_MUTING_NICHT_AKTIV                           := 810,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_NICHT_VORHANDEN_EINSCHLEUSEN                               := 811,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_UNGUELTIGE_GROESSE                                         := 812,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_UEBERWACHUNG_ROLLTOR_OEFFNEN                               := 813,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_UEBERWACHUNG_ROLLTOR_SCHLIESSEN                            := 814,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_SENSOR_UNTEN_SCHALTET_NICHT                                := 816,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_SENSOR_OBEN_SCHALTET_NICHT                                 := 817,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_SENSOR_VORNE_SCHALTET_NICHT                                := 818,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_SENSOR_HINTEN_SCHALTET_NICHT                               := 819,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_RFID_CHIP_NICHT_LESBAR                                     := 820,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_ENTRIEGELUNG_NICHT_OFFEN                                   := 821,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_ENTRIEGELUNG_NICHT_GESCHLOSSEN                             := 822,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_GREIFER_NICHT_OFFEN                                        := 823,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_GREIFER_NICHT_GESCHLOSSEN                                  := 824,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_GEGENHALTER_NICHT_OFFEN                                    := 825,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_GEGENHALTER_NICHT_GESCHLOSSEN                              := 826,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_VORNE                                  := 827,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_HINTEN                                 := 828,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_LINEAREINHEIT_NICHT_SHUTTLE_UEBERGABE                      := 829,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_SYSTEMCHECK_NICHT_MOEGLICH                                 := 830,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_OBERWAGEN_INPOS_VERLOREN                                   := 831,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_KLEMMZYLINDER_NICHT_EINGEFAHREN                            := 832,  // Wildcard: Station:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: AUFTRAGSDATEN
   //
   //  Hinweis:
   // -
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
   cMELDUNG_AUFTRAGSDATEN_ZIELPOSITION_ZU_GROSS                                     := 840,
   cMELDUNG_AUFTRAGSDATEN_ZIELPOSITION_ZU_KLEIN                                     := 841,
@@ -612,49 +612,49 @@ TYPE Fehlerkonstanten_EN :
   cMELDUNG_AUFTRAGSDATEN_AUFTRAGSTATUS_GLAS_SENDER_UNGUELTIG                       := 858,
   cMELDUNG_AUFTRAGSDATEN_AUFTRAGSTATUS_GLAS_EMPFAENGER_UNGUELTIG                   := 859,
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: SCHNITTSTELLE
   //
   //  Hinweis:
   // - eFehler_Schnittstelle
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
-  cMELDUNG_SCHNITTSTELLE_UNGUELTIGE_SHEETID_                                       := 880,  (* Wildcard: Nr.:%d  *)
-  cMELDUNG_SCHNITTSTELLE_KOMUNIKATION_TIMEOUT                                      := 881,  (* Wildcard: Nr.:%d  *)
-  cMELDUNG_SCHNITTSTELLE_DATEN_NICHT_AEQUIVALENT                                   := 882,  (* Wildcard: Nr. :%d  *)
-  cMELDUNG_SCHNITTSTELLE_AUFTRAGSDATEN_SCHNITTSTELLE_FEHLENDE_FOLGENACHRICHT       := 883,  (* Wildcard: Nr.:%d  *)
-  cMELDUNG_SCHNITTSTELLE_AUFTRAGSDATEN_SCHNITTSTELLE_NACHRICHTENANZAHL_FEHLERHAFT  := 884,  (* Wildcard: Anzahl:%d  *)
-  cMELDUNG_SCHNITTSTELLE_AUFTRAGSDATEN_SCHNITTSTELLE_NACHRICHTENINDEX_FEHLERHAFT   := 885,  (* Wildcard: Index:%d  *)
+  cMELDUNG_SCHNITTSTELLE_UNGUELTIGE_SHEETID_                                       := 880,  // Wildcard: Nr.:%d
+  cMELDUNG_SCHNITTSTELLE_KOMUNIKATION_TIMEOUT                                      := 881,  // Wildcard: Nr.:%d
+  cMELDUNG_SCHNITTSTELLE_DATEN_NICHT_AEQUIVALENT                                   := 882,  // Wildcard: Nr. :%d
+  cMELDUNG_SCHNITTSTELLE_AUFTRAGSDATEN_SCHNITTSTELLE_FEHLENDE_FOLGENACHRICHT       := 883,  // Wildcard: Nr.:%d
+  cMELDUNG_SCHNITTSTELLE_AUFTRAGSDATEN_SCHNITTSTELLE_NACHRICHTENANZAHL_FEHLERHAFT  := 884,  // Wildcard: Anzahl:%d
+  cMELDUNG_SCHNITTSTELLE_AUFTRAGSDATEN_SCHNITTSTELLE_NACHRICHTENINDEX_FEHLERHAFT   := 885,  // Wildcard: Index:%d
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: Vakuum
   //
   //  Hinweis:
   // - eFehler_Station
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
   cMELDUNG_VAKUUM_NICHT_OK                                                         := 900,
 
   // - eFehler_SBT_Allgemein
   // ---------------------------------------------------------------------------------------*)
 
-  cMELDUNG_SAFETY_OPERATOR_ACKNOWLEDGE_REQUESTED                                   := 920, (* Wildcard:- *)
+  cMELDUNG_SAFETY_OPERATOR_ACKNOWLEDGE_REQUESTED                                   := 920, // Wildcard:-
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: VERFAHRUEBERWACHUNG
   //
   //  Hinweis:
   // - eFehler_Verfahrueberwachung | eFehler_Station
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
   cMELDUNG_VERFAHRUEBERWACHUNG_UNGUELTIGE_PARKPOSITION                             := 940,
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: ZENTRALSCHMIERUNG
   //
   //  Hinweis:
   // - eFehler_Station
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
   cMELDUNG_ZENTRALSCHMIERUNG_FETT_BALD_LEER                                        := 1010,
   cMELDUNG_ZENTRALSCHMIERUNG_FETT_LEER                                             := 1011,

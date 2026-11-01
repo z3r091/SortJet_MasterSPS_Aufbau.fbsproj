@@ -6,32 +6,29 @@
 }
 *)
 ACTION A_Ausgaenge
-(***************************************************************************************************)
-(* AUSGAENGE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUSGAENGE
+//-------------------------------------------------------------------------------------------------
 
 
-(* Zuweisung[Lokal]:
-   - Sicherstellen das kein Interner-Vortransport aktiviert wird wenn in der Steuerung der autarke Vortransport
-     aktiv ist
-*)
+// Zuweisung[Lokal]:
+//   - Sicherstellen das kein Interner-Vortransport aktiviert wird wenn in der Steuerung der autarke Vortransport
+//     aktiv ist
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   ablVortransportAktiv[wlIndex] := Glastransport[wlIndex].bpVortransportAktiv;
 END_FOR
 
 
-(* Zuweisung[Lokal]:
-   - Sicherstellen das bestimmte Komponenten Prozesse nicht ueberschrieben werden
-     => Beachten der Bausteinaufrufe (Start- Bit und Rucksetzen)
-*)
+// Zuweisung[Lokal]:
+//   - Sicherstellen das bestimmte Komponenten Prozesse nicht ueberschrieben werden
+//     => Beachten der Bausteinaufrufe (Start- Bit und Rucksetzen)
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   blVorAbAuftragAktiv[wlIndex] :=    (  BasisStationsParameter.bVorabKomponentenAnsteuerung[wlIndex]
                                        OR ( NOT BasisStationsParameter.bVorabKomponentenAnsteuerung[wlIndex] AND ( AnsteuerungRessourcen[wlIndex].steplAktion > STEP_0_E )));
 END_FOR
 
-(* Ausgaenge:
-   - Der Auftragsstatus [cSHUTTLE_VORABPOSITIONIEREN] muss zurueck gesetzt werden
-*)
+// Ausgaenge:
+//   - Der Auftragsstatus [cSHUTTLE_VORABPOSITIONIEREN] muss zurueck gesetzt werden
 BasisStationsParameter.bPositionierAuftragZuruecksetzen := Querfahrt.bpAuftragsstatusZuruecksetzen;
 
 
@@ -41,10 +38,9 @@ BasisStationsParameter.bPositionierAuftragZuruecksetzen := Querfahrt.bpAuftragss
 BasisStationsParameter.rAktuellePositionQuerfahrt := Querfahrt.rpAktPosition;
 
 
-(* Positionsabfrage:
-   - Wurde die Zielposition aus dem Auftrag erreicht, bzw. stimmt die aktuelle Shuttleposition mit der
-     Position aus dem Auftrag ueberein. 
-*)
+// Positionsabfrage:
+//   - Wurde die Zielposition aus dem Auftrag erreicht, bzw. stimmt die aktuelle Shuttleposition mit der
+//     Position aus dem Auftrag ueberein.
 blZielPositionErreicht := (     ( ABS( BasisStationsParameter.rAktuellePositionQuerfahrt - argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )
                             OR ( ABS( BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition - argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz ) 
                             OR  ( ABS(ABS(BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition) - ABS(BasisStationsParameter.rAktuellePositionQuerfahrt) ) <= rgMKZielPositionToleranz ) );

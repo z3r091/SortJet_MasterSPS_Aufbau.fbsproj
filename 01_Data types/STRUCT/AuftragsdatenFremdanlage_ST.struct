@@ -8,7 +8,7 @@
 TYPE AuftragsdatenFremdanlage_ST :
 
   STRUCT
-    xSaeumen        : BOOL;  (* Hinweis: TRUE = Saeumen | FALSE = ohne Saeumen  *)
+    xSaeumen        : BOOL;  // Hinweis: TRUE = Saeumen | FALSE = ohne Saeumen
   END_STRUCT
 
 END_TYPE

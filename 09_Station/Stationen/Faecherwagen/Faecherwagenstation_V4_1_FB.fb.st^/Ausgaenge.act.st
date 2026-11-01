@@ -6,17 +6,17 @@
 }
 *)
 ACTION Ausgaenge
-(***************************************************************************************************)
-(* AUSGAENGE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUSGAENGE
+//-------------------------------------------------------------------------------------------------
 
 
-(* ---------------------------------------------------------------------------------------
-// STANDART AUSGAENGE 
-//         
+// ---------------------------------------------------------------------------------------
+// STANDART AUSGAENGE
+//
 // Hinweis:
-// - Hydraulik-Komponenten ansteuern 
-// ---------------------------------------------------------------------------------------*)
+// - Hydraulik-Komponenten ansteuern
+// ---------------------------------------------------------------------------------------
 
 (* Hinweis:
    - Auftrag aktiv
@@ -40,22 +40,22 @@ tonlWagenInShuttleTransferposition(IN:=blLinearEinheitSH,PT:=t#1s);
 
 ResetSchmersal();
 
-(* ---------------------------------------------------------------------------------------
-// OPTION - DEFAULT FAECHERWAGENSTATION 
-//         
+// ---------------------------------------------------------------------------------------
+// OPTION - DEFAULT FAECHERWAGENSTATION
+//
 // Hinweis:
-// - Hydraulik-Komponenten  
-// ---------------------------------------------------------------------------------------*)
+// - Hydraulik-Komponenten
+// ---------------------------------------------------------------------------------------
 
 (* Hinweis:
- - FW in einer undefinierten Position
+   - FW in einer undefinierten Position
 *)
 blStationsposUndefiniert :=      NOT bpBoxInHomePosition
                                  AND NOT bpStatusStationInBeladePosition
                                  AND NOT bpAuftragAktiv;
 
 (* Hinweis:
-   - Homeposition 
+   - Homeposition
 *)
 bpBoxInHomePosition := in_bGegenhalterOffen AND
                        in_bEntriegelungGeschlossen AND
@@ -63,7 +63,7 @@ bpBoxInHomePosition := in_bGegenhalterOffen AND
                        blGreiferOffen AND blRolltorUnten;
 
 (* Hinweis:
-   - FW Eeingeschleust 
+   - FW Eeingeschleust
 *)
 bpStatusStationInBeladePosition := blLinearEinheitSH AND blGreiferZu AND blRolltorUnten;
 END_ACTION

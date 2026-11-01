@@ -10,7 +10,7 @@ VAR_INPUT
 
   // BOOLEAN
   abpCheck                 : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
-  abpReset                 : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL; (* Fehler aus dem Resetbaustein heraus zurücksetzen *)
+  abpReset                 : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL; // Fehler aus dem Resetbaustein heraus zurücksetzen
   abpStationsDatenErhalten : ARRAY [cERSTES_SHUTTLE..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
 
 
@@ -33,7 +33,7 @@ VAR
   ablFWCheckAktiv                     : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
   ablShuttleCheckAktiv                : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF BOOL;
 
-  (* STEPS *)
+  // STEPS
   asteplCheck                         : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS, 1..cMAX_ANZAHL_SYSTEMCHECKZYKLEN] OF Steps_TE;
 
   // WORD
@@ -57,12 +57,11 @@ VAR
   tonlCheckAktiv                     : ton;
 
 END_VAR
-(***************************************************************************************************)
-(* INITIALISIERUNG *)
-(***************************************************************************************************)
-(* Zeiger Initialisieren
-  - SystemCheck mit Vorgaenger- bzw. Nachfolger- Station
-*)
+//-------------------------------------------------------------------------------------------------
+// INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
+// Zeiger Initialisieren
+//  - SystemCheck mit Vorgaenger- bzw. Nachfolger- Station
 IF ( blErsterZyklus ) THEN
   blErsterZyklus := FALSE;
 
@@ -87,14 +86,14 @@ IF tonlCheckAktiv.Q THEN
   RETURN; //Funktioniert noch nicht richtig
 END_IF
 
-(***************************************************************************************************)
-(* TIMER *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// TIMER
+//-------------------------------------------------------------------------------------------------
 (* Anmerkung:
    - Wartezeit bis mit dem SystemCheck begonnen wird
-   - Die Sicherheitskreise müssen einen Moment lang quittiert sein, damit alle Antriebe hoch gelaufen sind 
+   - Die Sicherheitskreise müssen einen Moment lang quittiert sein, damit alle Antriebe hoch gelaufen sind
 
-   SystemCheck starten
+     SystemCheck starten
    - Verbindung zur MMI ist vorhanden
    - Freigabe [Rest ist nicht aktiv]
    - Sicherheitskreise geschlossen
@@ -113,9 +112,9 @@ FOR wlIndexAutomatikkreis := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS D
 
 END_FOR
 
-(***************************************************************************************************)
-(* AKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 
 Vorsteuerung();
 

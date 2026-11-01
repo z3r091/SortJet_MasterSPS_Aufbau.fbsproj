@@ -6,9 +6,9 @@
 }
 *)
 ACTION Vortransport
-(****************************************************************************************)
-(* AKTION VORTRANSPORT *)
-(****************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION VORTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bVortransport[cWAND_1]
      AND blBetriebsartAutomatik )
 THEN
@@ -22,12 +22,12 @@ THEN
   
   
   CASE steplVortransport OF
-    (*VORTRANSPORT =====================*)
+    // VORTRANSPORT =====================
     STEP_0_E:
       BasisStationsParameter.bVortransportAbgeschlossen[cWAND_1] := FALSE;
       steplVortransport := STEP_10_E;
 
-    (*VORTRANSPORT =====================*)
+    // VORTRANSPORT =====================
     STEP_10_E:
       (* Hinweis:
          - Starten des Vortransports
@@ -36,7 +36,7 @@ THEN
 
       steplVortransport := STEP_20_E;
 
-    (*VORTRANSPORT =====================*)
+    // VORTRANSPORT =====================
     STEP_20_E:
       (* Anmerkung:
          - Vortransport abgeschlossen
@@ -46,15 +46,15 @@ THEN
         steplVortransport := STEP_1000_E;
       END_IF
 
-    (*VORTRANSPORT =====================*)
+    // VORTRANSPORT =====================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*VORTRANSPORT =====================*)
+    // VORTRANSPORT =====================
     STEP_1000_E:
       BasisStationsParameter.bVortransportAbgeschlossen[cWAND_1] := TRUE;
 
-  (*VORTRANSPORT =====================*)
+  // VORTRANSPORT =====================
   END_CASE
 ELSE
   IF (steplVortransport > STEP_0_E) THEN

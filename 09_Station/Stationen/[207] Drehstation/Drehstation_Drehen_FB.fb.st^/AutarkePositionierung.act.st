@@ -6,9 +6,9 @@
 }
 *)
 ACTION AutarkePositionierung
-(***************************************************************************************************)
-(* AUTARKE POSITIONIERUNG  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUTARKE POSITIONIERUNG
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
    - Positionierung ohne direkte Zielvorgabe
@@ -16,7 +16,7 @@ ACTION AutarkePositionierung
 IF ( bpStarteDrehBewegung ) THEN
 
 
-  (* AUSNAHMEFEHLER:
+  (* Ausnahmefehler:
      - Sensorik
   *)
   IF ( bpAuslaufSensor AND NOT bpEinlaufSensor ) THEN
@@ -41,7 +41,7 @@ IF ( bpStarteDrehBewegung ) THEN
      - Starten der Schrittkette
   *)
   CASE steplDrehBewegung OF
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_0_E:
       (* Hinweis:
          - Variablen zurueck setzen
@@ -69,7 +69,7 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_900_E;
       END_IF
 
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_10_E:
       (* Anmerkung:
          - Loesen der Arretierung
@@ -78,7 +78,7 @@ IF ( bpStarteDrehBewegung ) THEN
 
       steplDrehBewegung := STEP_20_E;
 
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_20_E:
       (* Hinweis:
          - Arretierung ist eingefahren
@@ -88,7 +88,7 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_30_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Arretierung [Pneumatik Zylinder]
       *)
       IF ( Arretierung.bpFehler ) THEN
@@ -97,11 +97,11 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_900_E;
       END_IF
 
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_30_E:
       (* Hinweis:
          - Vor dem Verfahren pruefen ob der Antrieb in einem Endschalter steht
-           => Nach einer Stop- Situation 
+           => Nach einer Stop- Situation
       *)
       IF (  NOT Antrieb.bpMinSchalterBelegt
            AND NOT Antrieb.bpMaxSchalterBelegt )
@@ -111,11 +111,11 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_40_E;
       END_IF
 
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_40_E:
       (* Hinweis:
-         - Versuchen den Endschalter frei zufahren 
-         WICHTIG [PROJEKT INTERPANE HOERDT]
+         - Versuchen den Endschalter frei zufahren
+           WICHTIG [PROJEKT INTERPANE HOERDT]
          - Geschwindigkeit sehrlangsam
       *)
       tonlEndschalterFreifahren( IN := TRUE, PT:= T#10s);
@@ -163,7 +163,7 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_900_E;
       END_IF
 
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_50_E:
       (* Hinweis:
          - Erzwungene Pause, damit der Antrieb wieder ordnungsgemaeß schaltet
@@ -175,15 +175,14 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_100_E;
       END_IF
 
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_100_E:
-      (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ERMITTELN DER DREH- POSITION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  
-         Hinweis:
-         - Bestimmen der Ziel- Position 
-          => Step 100: Starten der Positionierung
-          => Step  50: Undefinierte Positionen aufschluesseln
-      *)
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ERMITTELN DER DREH- POSITION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      //
+      //   Hinweis:
+      //   - Bestimmen der Ziel- Position
+      //    => Step 100: Starten der Positionierung
+      //    => Step  50: Undefinierte Positionen aufschluesseln
       steplDrehBewegung := STEP_200_E;
 
       CASE epDrehPositionsStatus OF
@@ -199,7 +198,7 @@ IF ( bpStarteDrehBewegung ) THEN
 
       END_CASE
 
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_110_E:
       (* Hinweis:
          - Undefinierte Position korregieren
@@ -222,14 +221,13 @@ IF ( bpStarteDrehBewegung ) THEN
 
       END_IF
 
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_200_E:
-      (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< STARTEN DER DREHBEWEGUNG >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-         Hinweis:
-         - Antriebsparameter initialisieren
-           => Die Geschwindigkeit beim Drehkreuz wird in U/min uebergeben
-      *)
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< STARTEN DER DREHBEWEGUNG >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      //
+      //   Hinweis:
+      //   - Antriebsparameter initialisieren
+      //     => Die Geschwindigkeit beim Drehkreuz wird in U/min uebergeben
       Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
       Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -238,7 +236,7 @@ IF ( bpStarteDrehBewegung ) THEN
 
       steplDrehBewegung := STEP_210_E;
 
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_210_E:
       (* Hinweis:
          - Starten der Drehbewegung
@@ -248,7 +246,7 @@ IF ( bpStarteDrehBewegung ) THEN
 
       steplDrehBewegung := STEP_220_E;
 
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_220_E:
       (* Hinweis:
          - Drehbewegung abgeschlossen
@@ -268,7 +266,7 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_900_E;
       END_IF
 
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_230_E:
       (* Anmerkung:
          - Setzen der Arretierung
@@ -290,7 +288,7 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_900_E;
       END_IF
 
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_240_E:
       (* Hinweis:
          - Arretierung ist ausgefahren
@@ -299,8 +297,8 @@ IF ( bpStarteDrehBewegung ) THEN
         Arretierung.bpStartAusfahren := FALSE;
 
         (* Anmerkung:
-             - melden der Drehposition ans MMI zur
-               Datensynchronisation für den weiteren Automatikabaluf 
+           - melden der Drehposition ans MMI zur
+               Datensynchronisation für den weiteren Automatikabaluf
         *)
         wgSps2MmiDrehStation       := stStationsNummern.NummerIntern;
         wgSps2MmiPosDrehStation    := epDrehPositionsStatus;
@@ -310,7 +308,7 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_1000_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Arretierung [Pneumatik Zylinder]
       *)
       IF ( Arretierung.bpFehler ) THEN
@@ -319,17 +317,17 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_900_E;
       END_IF
 
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       bpFehler := TRUE;
 
-    (* DREHBEWEGUNG =========================*)
+    // DREHBEWEGUNG =========================
     STEP_1000_E: ;
       bpDone := TRUE;
 
-  (* DREHBEWEGUNG =========================*)
+  // DREHBEWEGUNG =========================
   END_CASE
 
 END_IF
@@ -350,13 +348,11 @@ IF ( NOT bpStarteDrehBewegung ) THEN
 
 END_IF
 
-(*
-_________________________________________________________________________
- ************************ ENDE - Drehen ********************************
-_________________________________________________________________________
-*)
+//_________________________________________________________________________
+// ************************ ENDE - Drehen ********************************
+//_________________________________________________________________________
 
-(***************************************************************************************************)
-(* E N D E - Betriebstypen des Positionieren *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// E N D E - Betriebstypen des Positionieren
+//-------------------------------------------------------------------------------------------------
 END_ACTION

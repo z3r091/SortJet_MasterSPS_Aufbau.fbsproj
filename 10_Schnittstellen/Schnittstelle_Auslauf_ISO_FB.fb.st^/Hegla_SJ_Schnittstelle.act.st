@@ -6,9 +6,8 @@
 }
 *)
 ACTION Hegla_SJ_Schnittstelle
-(* Ausgang 1:
-   - Sender Bereit = Sortierung bzw. Quadrowand-Senkrechtfoerderer befindet sich in keinem Fehler
-*)
+// Ausgang 1:
+//   - Sender Bereit = Sortierung bzw. Quadrowand-Senkrechtfoerderer befindet sich in keinem Fehler
 blSenderGlasBereit := ( ( BasisStationsParameter.bAutomatik )
                         AND NOT BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1].bFehler ) 
                       AND ( BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1].bBereitZumAustransport 

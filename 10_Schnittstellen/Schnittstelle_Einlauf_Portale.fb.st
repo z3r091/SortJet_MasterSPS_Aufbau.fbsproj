@@ -30,9 +30,9 @@ END_VAR
 // der VSG gesetzt wenn Glas bereit liegt und die Riemen in SlaveMode sind. Wir starten dann denn Eintransport.
 // Der SlaveMode bleibt so lange aktiv, bis wir das Signal "out_bBereitZumEintrasport" wegnehmen.
 
-(***************************************************************************************************)
-(* INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 // Master aufrufen
 SUPER^(BasisStationsParameter := BasisStationsParameter);
 
@@ -40,21 +40,21 @@ SUPER^(BasisStationsParameter := BasisStationsParameter);
 Signal_Logger();
 //END_IF
 
-(***************************************************************************************************)
-(* SCHNITTSTELLE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// SCHNITTSTELLE
+//-------------------------------------------------------------------------------------------------
 // Signale von der VSG
 blBereitZumAustransport := in_bGlasAufgestellt OR bgVisu_Schnittstelle_Einlauf_Force_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern];
 
-(***************************************************************************************************)
-(* AUSGAENGE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUSGAENGE
+//-------------------------------------------------------------------------------------------------
 // Signale zur VSG
 out_bBereitZumAufstellen := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1].bBereitZumEintransport;
 
-(***************************************************************************************************)
-(* VISU *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// VISU
+//-------------------------------------------------------------------------------------------------
 bgVisu_Schnittstelle_Einlauf_Status_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern]   := BasisStationsParameter.OutGlasTransport[cWAND_1].bBereitZumAustransport;
 bgVisu_Schnittstelle_Status_BereitZumEintrasport[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern] := out_bBereitZumAufstellen;
 END_FUNCTION_BLOCK

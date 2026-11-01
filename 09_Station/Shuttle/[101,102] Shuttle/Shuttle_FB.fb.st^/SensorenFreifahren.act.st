@@ -6,9 +6,9 @@
 }
 *)
 ACTION SensorenFreifahren
-(***************************************************************************************************)
-(* AKTION SENSORIK FREI FAHREN NACH VERFAHRABBRUCH *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION SENSORIK FREI FAHREN NACH VERFAHRABBRUCH
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Kommt es zu einem Verfahrabbruch aufgrund des Einlauf- bzw. Auslauf- Sensors muss dieser
      frei gefahren werden, damit der Verfahrbefehl neu gesendet werden kann

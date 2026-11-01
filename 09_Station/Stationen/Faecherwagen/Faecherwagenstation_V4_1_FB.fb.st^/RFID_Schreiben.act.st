@@ -6,11 +6,11 @@
 }
 *)
 ACTION RFID_Schreiben
-(* RFID Schreiben *)
+// RFID Schreiben
 IF blRFID_Schreiben THEN
   CASE steplRFID_Schreiben OF
 
-    (* RFID Schreiben *)
+    // RFID Schreiben
     STEP_0_E:
 
       out_bRFID_Sensor_Start_RW := FALSE;
@@ -20,7 +20,7 @@ IF blRFID_Schreiben THEN
 
       IF BasisStationsParameter.stMKs.stStationsAufbau.bRFID AND bpBoxInHomePosition THEN
         IF blTagPresent THEN
-          (* Umstellen auf den Schreib-Modus *)
+          // Umstellen auf den Schreib-Modus
           blRFID_Sensor_ModusBit_0 := FALSE;
           blRFID_Sensor_ModusBit_1 := TRUE;
           blRFID_Sensor_ModusBit_2 := FALSE;
@@ -38,11 +38,11 @@ IF blRFID_Schreiben THEN
 
 
     STEP_50_E:
-      (* ---------------------------------------------------------------------------------------
-         OPTION - DEFAULT FAECHERWAGENSTATION
-         Hinweis:
-         - Vorbereiten der Daten
-         --------------------------------------------------------------------------------------- *)
+      // ---------------------------------------------------------------------------------------
+      //   OPTION - DEFAULT FAECHERWAGENSTATION
+      //   Hinweis:
+      //   - Vorbereiten der Daten
+      //   ---------------------------------------------------------------------------------------
 
       FOR wlIndexByte := ERSTES_ZEICHEN TO (ERSTE_ZIFFER_RFID - 1) DO
         SysMemCpy(
@@ -54,7 +54,7 @@ IF blRFID_Schreiben THEN
 
       slRFID_Nummer := WORD_TO_STRING(wlRFID_Nummer_Schreiben);
 
-      (* Anzahl fehlender Stellen berechnen *)
+      // Anzahl fehlender Stellen berechnen
       FOR wlIndex_STRING := 1 TO ((ANZAHL_ZIFFERN_RFID) - INT_TO_WORD(LEN(WORD_TO_STRING(wlRFID_Nummer_Schreiben)))) DO
         slRFID_Nummer := CONCAT('0', slRFID_Nummer);
       END_FOR
@@ -73,12 +73,12 @@ IF blRFID_Schreiben THEN
       steplRFID_Schreiben := STEP_100_E;
 
 
-    (* RFID Schreiben *)
+    // RFID Schreiben
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
-         Hinweis:
-         - Werte auf Ausgang schreiben
-         --------------------------------------------------------------------------------------- *)
+      // ---------------------------------------------------------------------------------------
+      //   Hinweis:
+      //   - Werte auf Ausgang schreiben
+      //   ---------------------------------------------------------------------------------------
 
       FOR wlIndexByte := ERSTES_ZEICHEN TO (ERSTE_ZIFFER_RFID + ANZAHL_ZIFFERN_RFID - 1) DO
         ablRFID_out[wlIndexByte,0] := abylBytesRFID_out[wlIndexByte].0;
@@ -94,7 +94,7 @@ IF blRFID_Schreiben THEN
       steplRFID_Schreiben := STEP_110_E;
 
 
-    (* Deaktivieren der Antenne um den Chip neu zu erfassen *)
+    // Deaktivieren der Antenne um den Chip neu zu erfassen
     STEP_110_E:
 
       tonlWarteSchritt(IN := TRUE, PT := T#1S);
@@ -140,13 +140,13 @@ IF blRFID_Schreiben THEN
       steplRFID_Schreiben := STEP_150_E;
 
 
-    (* RFID Schreiben *)
+    // RFID Schreiben
     STEP_150_E:
-      (* ---------------------------------------------------------------------------------------
-         OPTION - DEFAULT FAECHERWAGENSTATION
-         Hinweis:
-         - Sensor schreiben auslösen und warten bis abgeschlossen
-         --------------------------------------------------------------------------------------- *)
+      // ---------------------------------------------------------------------------------------
+      //   OPTION - DEFAULT FAECHERWAGENSTATION
+      //   Hinweis:
+      //   - Sensor schreiben auslösen und warten bis abgeschlossen
+      //   ---------------------------------------------------------------------------------------
 
       out_bRFID_Sensor_Start_RW := TRUE;
 
@@ -174,7 +174,7 @@ IF blRFID_Schreiben THEN
       out_bDeactivateAntenna := FALSE;
       tonlWarteSchritt(IN := FALSE);
 
-      (* Umschalten auf AUTO_READ Modus *)
+      // Umschalten auf AUTO_READ Modus
       out_bRFID_Sensor_Start_RW := FALSE;
 
       blRFID_Sensor_ModusBit_0 := TRUE;
@@ -189,7 +189,7 @@ IF blRFID_Schreiben THEN
       steplRFID_Schreiben := STEP_300_E;
 
 
-    (* Deaktivieren der Antenne um den Chip neu zu erfassen *)
+    // Deaktivieren der Antenne um den Chip neu zu erfassen
     STEP_300_E:
 
       tonlWarteSchritt(IN := TRUE, PT := T#1S);
@@ -223,7 +223,7 @@ IF blRFID_Schreiben THEN
 
 
     STEP_450_E:
-      (* Auslesen des geschriebenen Wertes *)
+      // Auslesen des geschriebenen Wertes
 
       blRFID_Auslesen := TRUE;
       tonlTimeoutReadRFID(IN := TRUE, PT := T#10S);

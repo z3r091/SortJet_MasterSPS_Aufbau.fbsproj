@@ -6,11 +6,11 @@
 }
 *)
 ACTION Positionieren
-(***************************************************************************************************)
-(* POSITIONIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// POSITIONIEREN
+//-------------------------------------------------------------------------------------------------
 (* Anmerkung:
-   - 
+   - -
 *)
 IF( bpStartePositionierung ) THEN
 
@@ -30,7 +30,7 @@ IF( bpStartePositionierung ) THEN
      - Starten der Schrittkette
   *)
   CASE steplPositionieren OF
-    (*POSITIONIEREN ====================*)
+    // POSITIONIEREN ====================
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen
@@ -59,7 +59,7 @@ IF( bpStartePositionierung ) THEN
 
       END_IF
 
-    (*POSITIONIEREN ====================*)
+    // POSITIONIEREN ====================
     STEP_10_E:
       tonlEndschalterFreifahren(IN := TRUE, PT:= T#10s);
 
@@ -91,7 +91,7 @@ IF( bpStartePositionierung ) THEN
       (* Fehlerbehandlung:
          - Endschalter wird nicht frei !
          - Antrieb
-       *)
+      *)
       IF ( tonlEndschalterFreifahren.Q
            AND ( Antrieb.bpMaxSchalterBelegt
                  OR Antrieb.bpMinSchalterBelegt ))
@@ -101,7 +101,7 @@ IF( bpStartePositionierung ) THEN
         steplPositionieren := STEP_900_E;
       END_IF
 
-    (*POSITIONIEREN ====================*)
+    // POSITIONIEREN ====================
     STEP_20_E:
       (* Hinweis:
          - Erzwungene Pause, damit der Lenze Antrieb wieder ordnungsgemäß schaltet
@@ -112,14 +112,14 @@ IF( bpStartePositionierung ) THEN
         steplPositionieren := STEP_100_E;
       END_IF
 
-    (*POSITIONIEREN ====================*)
+    // POSITIONIEREN ====================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  AUFTRAGSDATEN PRUEFEN [STELLUNG]
-      //         
+      //
       //  Hinweis:
       //  - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
       Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -157,14 +157,14 @@ IF( bpStartePositionierung ) THEN
 
 
 
-    (*POSITIONIEREN ====================*)
+    // POSITIONIEREN ====================
     STEP_110_E:
-      (* ---------------------------------------------------------------------------------------
-      //  STARTEN DER POSITIONIERUNG 
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  STARTEN DER POSITIONIERUNG
+      //
       //  Hinweis:
       //  - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
       IF bpOptionMotorischAktivieren THEN
         Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
         Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -179,22 +179,22 @@ IF( bpStartePositionierung ) THEN
 
       END_IF
 
-    (*POSITIONIEREN ====================*)
+    // POSITIONIEREN ====================
     STEP_120_E:
       IF ( Antrieb.bpDone OR NOT bpOptionMotorischAktivieren ) THEN
         Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
         steplPositionieren := STEP_1000_E;
       END_IF
 
-    (*POSITIONIEREN ====================*)
+    // POSITIONIEREN ====================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*POSITIONIEREN ====================*)
+    // POSITIONIEREN ====================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*POSITIONIEREN ====================*)
+  // POSITIONIEREN ====================
   END_CASE
 ELSE
   IF( steplPositionieren > STEP_0_E )THEN

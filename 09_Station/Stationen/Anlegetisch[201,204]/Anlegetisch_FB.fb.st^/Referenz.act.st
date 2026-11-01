@@ -6,12 +6,11 @@
 }
 *)
 ACTION Referenz
-(***************************************************************************************************)
-(* AKTION: REFERENZIERUNG *)
-(***************************************************************************************************)
-(* Referenzieren:
-   - Antriebe referenzieren 
-*)
+//-------------------------------------------------------------------------------------------------
+// AKTION: REFERENZIERUNG
+//-------------------------------------------------------------------------------------------------
+// Referenzieren:
+//   - Antriebe referenzieren
 IF ( blBetriebsartReferenz ) THEN  
 
   // Ausnahmesituation
@@ -29,7 +28,7 @@ IF ( blBetriebsartReferenz ) THEN
 
   
   CASE steplReferenz OF
-    (*REFERENZ ============================*)
+    // REFERENZ ============================
     STEP_0_E:
       BasisStationsParameter.bReferenzAbgeschlossen := FALSE;
 
@@ -37,14 +36,14 @@ IF ( blBetriebsartReferenz ) THEN
         steplReferenz := STEP_10_E;
       END_IF
 
-    (*REFERENZ ============================*)
+    // REFERENZ ============================
     STEP_10_E:
       Messachse.bpReferenz     := TRUE;
       Glastransport.bpReferenz := TRUE;
 
       steplReferenz := STEP_20_E;
 
-    (*REFERENZ ============================*)
+    // REFERENZ ============================
     STEP_20_E:
       (* Hinweis:
          - Referenzierung Abgeschlossen
@@ -54,22 +53,22 @@ IF ( blBetriebsartReferenz ) THEN
         steplReferenz := STEP_30_E;
       END_IF
 
-    (*REFERENZ ============================*)
+    // REFERENZ ============================
     STEP_30_E:
       IF ( Glastransport.bpDone  ) THEN
         Glastransport.bpReferenz := FALSE;
         steplReferenz := STEP_1000_E;
       END_IF
 
-    (*REFERENZ ============================*)
+    // REFERENZ ============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*REFERENZ ============================*)
+    // REFERENZ ============================
     STEP_1000_E:
       BasisStationsParameter.bReferenzAbgeschlossen := TRUE;
 
-  (*REFERENZ ============================*)
+  // REFERENZ ============================
   END_CASE
 ELSE
 

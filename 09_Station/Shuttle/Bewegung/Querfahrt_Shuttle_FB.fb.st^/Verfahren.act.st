@@ -6,9 +6,9 @@
 }
 *)
 ACTION Verfahren
-(***************************************************************************************************)
-(* VERFAHREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// VERFAHREN
+//-------------------------------------------------------------------------------------------------
 
 IF ( bpVerfahreShuttle 
      OR bgVisuVerfahreShuttle[stStationsNummern.NummerSPS] ) 
@@ -24,13 +24,12 @@ THEN
   END_IF
 
   CASE STEP_Mov_Shuttle_W OF
-    (* VERFAHREN ================================= *)
+    // VERFAHREN =================================
     STEP_0_E:
       bpDone := FALSE;
       wSps2ShuttleStopped[stStationsNummern.NummerSPS] := 0;
 
       (* Hinweis:
-
       *)
       IF ( ABS(rpDestinationPosition - rpAktPosition) > 0.5) THEN
 
@@ -45,7 +44,7 @@ THEN
 
             (* Hinweis:
                - Verfahrfreigabe überprüfen
-                 => Fehlt: Abbruch des Verfahr-Auftrags 
+                 => Fehlt: Abbruch des Verfahr-Auftrags
             *)
             IF ( bpVerfahrfreigabe ) THEN
               STEP_Mov_Shuttle_W := STEP_10_E;
@@ -76,23 +75,21 @@ THEN
         END_IF
 
       ELSE
-        (*
-          zu kleine PositionsÃ¤nderung, KEIN Verfahren nÃ¶tig !
-          Hinweis: gilt nur fÃ¼r die Shuttleantriebe einer Sortierung !
-        *)
+        //  zu kleine PositionsÃ¤nderung, KEIN Verfahren nÃ¶tig !
+        //  Hinweis: gilt nur fÃ¼r die Shuttleantriebe einer Sortierung !
         STEP_Mov_Shuttle_W := STEP_1000_E;
       END_IF
 
-    (* VERFAHREN ================================= *)
+    // VERFAHREN =================================
     STEP_5_E:
       tonlWarteAufReset(IN:=FALSE);
       Antrieb.wpBetriebsart :=  AntriebsBetriebsart_EN.RESET;
       STEP_Mov_Shuttle_W := STEP_8_E;
 
-    (* VERFAHREN ================================= *)
+    // VERFAHREN =================================
     STEP_8_E:
       (* Hinweis:
-         - Antrieb Fehler zurücksetzen 
+         - Antrieb Fehler zurücksetzen
       *)
       tonlWarteAufReset(IN := NOT Antrieb.bpDone, PT := T#5S);
 
@@ -102,7 +99,7 @@ THEN
       END_IF
 
       (* Fehlerbehandlung:
-         - Antrieb  
+         - Antrieb
       *)
       IF ( tonlWarteAufReset.Q ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -110,7 +107,7 @@ THEN
         STEP_Mov_Shuttle_W := STEP_900_E;
       END_IF
 
-    (* VERFAHREN ================================= *)
+    // VERFAHREN =================================
     STEP_10_E:
       IF ( NOT Antrieb.bpMaxSchalterBelegt
            AND NOT Antrieb.bpMinSchalterBelegt )
@@ -120,11 +117,10 @@ THEN
         STEP_Mov_Shuttle_W := STEP_20_E;
       END_IF
 
-    (* VERFAHREN ================================= *)
+    // VERFAHREN =================================
     STEP_20_E:
-      (* MAXIMUM Endschalter belegt:
-         per HANDMINUS/PLUS versuchen frei zu fahren 
-      *)
+      // MAXIMUM Endschalter belegt:
+      //   per HANDMINUS/PLUS versuchen frei zu fahren
       tonlEndschalterFreifahren(IN := TRUE, PT:= T#10s);
       toflHardwareEndschalterFrei( IN := (  Antrieb.bpMaxSchalterBelegt
                                            OR Antrieb.bpMinSchalterBelegt),
@@ -143,7 +139,7 @@ THEN
       END_IF
 
       (* Hinweis:
-         - Endschalter min. 1 sec freifahren 
+         - Endschalter min. 1 sec freifahren
       *)
       IF ( NOT toflHardwareEndschalterFrei.Q ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -153,7 +149,7 @@ THEN
       (* Fehlerbehandlung:
          - Endschalter wird nicht frei
          - Antrieb
-       *)
+      *)
       IF ( tonlEndschalterFreifahren.Q
            AND ( Antrieb.bpMaxSchalterBelegt
                  OR Antrieb.bpMinSchalterBelegt ))
@@ -163,7 +159,7 @@ THEN
         STEP_Mov_Shuttle_W := STEP_900_E;
       END_IF
 
-    (* VERFAHREN ================================= *)
+    // VERFAHREN =================================
     STEP_30_E:
       (* Hinweis:
          - Antrieb steht
@@ -172,7 +168,7 @@ THEN
         STEP_Mov_Shuttle_W := STEP_50_E;
       END_IF
 
-    (* VERFAHREN ================================= *)
+    // VERFAHREN =================================
     STEP_50_E:
       (* Hinweis:
          - Geschwindigkeit / Beschleunigung / Verzoegerung uebergeben
@@ -197,7 +193,7 @@ THEN
 
         END_IF
 
-      ELSE (* Fächerwagensuche aktiv *)
+      ELSE // Fächerwagensuche aktiv
 
         Antrieb.rpGeschwindigkeit  := ppAntriebsInformationen.rpGeschwindigkeitMessen;
         Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpReduzierteBeschleunigung;
@@ -215,7 +211,7 @@ THEN
 
       STEP_Mov_Shuttle_W := STEP_120_E;
 
-    (* VERFAHREN ================================= *)
+    // VERFAHREN =================================
     STEP_120_E:
       (* Hinweis:
          - Antrieb hat seine Ziel-Position erreicht
@@ -238,7 +234,7 @@ THEN
         Antrieb.wpBetriebsart    := KEINE_FUNKTION;
         Antrieb.rpZielPosition   := Antrieb.rpIstPosition;
 
-        (* wSps2MmiMeasureSlotNummer  := 0; 0 =  Shuttle bremst noch / 1 = Shuttle gestoppt und steht *)
+        // wSps2MmiMeasureSlotNummer  := 0; 0 =  Shuttle bremst noch / 1 = Shuttle gestoppt und steht
         wgSps2MmiShuttleNr                                  := stStationsNummern.NummerIntern;
         rSps2MmiShuttlePosition[0]                          := Antrieb.rpIstPosition;
         wSps2ShuttleStopped[stStationsNummern.NummerIntern] := 0;
@@ -256,7 +252,7 @@ THEN
 
       END_IF
 
-    (* VERFAHREN ================================= *)
+    // VERFAHREN =================================
     STEP_130_E:
       (* Hinweis:
          - Verfahrauftrag wurde abgebrochen und wird neu gestartet
@@ -266,7 +262,7 @@ THEN
         Antrieb.rpZielPosition := Antrieb.rpIstPosition;
 
         bpAuftragsstatusZuruecksetzen := TRUE;
-        (* wSps2MmiMeasureSlotNummer := 0; 0 = Shuttle bremst noch / 1 = Shuttle gestoppt und steht *)
+        // wSps2MmiMeasureSlotNummer := 0; 0 = Shuttle bremst noch / 1 = Shuttle gestoppt und steht
         wgSps2MmiShuttleNr := stStationsNummern.NummerIntern;
         rSps2MmiShuttlePosition[0] := Antrieb.rpIstPosition;
         wSps2ShuttleStopped[stStationsNummern.NummerSPS] := 1;
@@ -275,7 +271,7 @@ THEN
         STEP_Mov_Shuttle_W := STEP_140_E;
       END_IF
 
-    (* VERFAHREN ================================= *)
+    // VERFAHREN =================================
     STEP_140_E:
       (* Hinweis:
          - Verfahrauftrag wird abgebrochen und von der Oberflaeche neu angestossen
@@ -285,17 +281,17 @@ THEN
       bpAbbruchPositionierung       := TRUE;
       bpAuftragsstatusZuruecksetzen := TRUE;
 
-    (* VERFAHREN ================================= *)
+    // VERFAHREN =================================
     STEP_900_E:
       bpFehler:=TRUE;
       blFreigabeGesetzt := FALSE;
 
-    (* VERFAHREN ================================= *)
+    // VERFAHREN =================================
     STEP_1000_E:
       bpDone := TRUE;
       blFreigabeGesetzt := FALSE;
 
-  (* VERFAHREN ================================= *)
+  // VERFAHREN =================================
   END_CASE
 END_IF
 

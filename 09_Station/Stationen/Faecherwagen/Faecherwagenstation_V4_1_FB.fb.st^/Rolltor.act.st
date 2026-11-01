@@ -6,12 +6,12 @@
 }
 *)
 ACTION Rolltor
-(* @TEXT_IMPLEMENTATION := 'ST' *)
-(* ROLLTOR HOCH *)
+// @TEXT_IMPLEMENTATION := 'ST'
+// ROLLTOR HOCH
 
 IF blRolltorAuf THEN
   CASE steplRolltorAuf OF
-    (* ROLLER DOOR UP  ============================ *)
+    // ROLLER DOOR UP  ============================
     STEP_0_E:
       blRolltorAufDone := FALSE;
       tonlZeitRunterfahren(IN := FALSE);
@@ -25,14 +25,14 @@ IF blRolltorAuf THEN
         steplRolltorAuf := STEP_1000_E;
       END_IF
 
-    (* ROLLTOR HOCH  ============================ *)
+    // ROLLTOR HOCH  ============================
     STEP_5_E:
       out_bRolltorAuf := TRUE; 
       out_bRolltorAb  := FALSE;
       tonlZeitHochfahren(IN := TRUE, PT := t#60s);
       steplRolltorAuf := STEP_10_E;
 
-    (* ROLLTOR HOCH  ============================ *)
+    // ROLLTOR HOCH  ============================
     STEP_10_E:
       tonlUeberwachungRolltor( IN := in_bNichtRolltorGeoeffnet, PT := T#60S );
       tonlRolltorOeffnenSchliesen( IN := NOT in_bNichtRolltorGeoeffnet, PT := T#500MS );
@@ -46,9 +46,8 @@ IF blRolltorAuf THEN
         steplRolltorAuf := STEP_1000_E;
       END_IF
 
-      (*  Fehler:
-         - Zeitliche Überwachung Rolltor
-      *)
+      // Fehler:
+      //   - Zeitliche Überwachung Rolltor
       IF tonlUeberwachungRolltor.Q THEN
         out_bRolltorAuf := FALSE;
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_UEBERWACHUNG_ROLLTOR_OEFFNEN;
@@ -61,17 +60,17 @@ IF blRolltorAuf THEN
         steplRolltorAuf := STEP_900_E;
       END_IF
 
-    (* ROLLTOR HOCH  ============================ *)
+    // ROLLTOR HOCH  ============================
     STEP_900_E:
       out_bRolltorAb  := FALSE;
       out_bRolltorAuf := FALSE;
       BasisStationsParameter.bFehler := TRUE;
 
-    (* ROLLTOR HOCH  ============================ *)
+    // ROLLTOR HOCH  ============================
     STEP_1000_E:
       blRolltorAufDone := TRUE;
 
-  (* ROLLTOR HOCH  ============================ *)
+  // ROLLTOR HOCH  ============================
   END_CASE
 END_IF
 
@@ -89,14 +88,14 @@ IF NOT blRolltorAuf THEN
 
 END_IF
 
-(***********************************************************************************)
-(* ROLLTOR RUNTER *)
+// *********************************************************************************
+// ROLLTOR RUNTER
 
 IF blRolltorAb AND
    (blLinearEinheitHinten OR blLineareinheitSH)
 THEN
   CASE steplRolltorAb OF
-    (* ROLLTOR RUNTER ============================ *)
+    // ROLLTOR RUNTER ============================
     STEP_0_E:
       blRolltorAbDone := FALSE;
       tonlZeitRunterfahren(IN := FALSE);
@@ -110,7 +109,7 @@ THEN
         steplRolltorAb := STEP_5_E;
       END_IF
 
-    (* ROLLTOR RUNTER ============================ *)
+    // ROLLTOR RUNTER ============================
     STEP_5_E:
       out_bRolltorAb  := TRUE;
       out_bRolltorAuf := FALSE;
@@ -120,7 +119,7 @@ THEN
       tonlRolltorOeffnenSchliesen( IN := FALSE );
       steplRolltorAb := STEP_10_E;
 
-    (* ROLLTOR RUNTER ============================ *)
+    // ROLLTOR RUNTER ============================
     STEP_10_E:
       tonlUeberwachungRolltor( IN := NOT blRolltorUnten, PT := T#60S );
       tonlRolltorOeffnenSchliesen( IN := blRolltorUnten, PT := t#600ms );
@@ -134,9 +133,8 @@ THEN
         steplRolltorAb := STEP_1000_E;
       END_IF
 
-      (* Fehler:
-         - Zeitliche Überwachung Rolltor
-      *)
+      // Fehler:
+      //   - Zeitliche Überwachung Rolltor
       IF tonlUeberwachungRolltor.Q THEN
         out_bRolltorAb := FALSE;
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_UEBERWACHUNG_ROLLTOR_SCHLIESSEN;
@@ -149,17 +147,17 @@ THEN
         steplRolltorAb := STEP_900_E;
       END_IF
 
-    (* ROLLTOR RUNTER ============================ *)
+    // ROLLTOR RUNTER ============================
     STEP_900_E:
       out_bRolltorAb  := FALSE;
       out_bRolltorAuf := FALSE;
       BasisStationsParameter.bFehler := TRUE;
 
-    (* ROLLTOR RUNTER ============================ *)
+    // ROLLTOR RUNTER ============================
     STEP_1000_E:
       blRolltorAbDone := TRUE;
 
-  (* ROLLTOR RUNTER ============================ *)
+  // ROLLTOR RUNTER ============================
   END_CASE
 END_IF
 

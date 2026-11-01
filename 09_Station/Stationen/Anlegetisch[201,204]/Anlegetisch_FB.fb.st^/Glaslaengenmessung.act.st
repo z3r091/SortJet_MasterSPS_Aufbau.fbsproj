@@ -6,9 +6,9 @@
 }
 *)
 ACTION Glaslaengenmessung
-(***************************************************************************************************)
-(* AKTION: MESSUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: MESSUNG
+//-------------------------------------------------------------------------------------------------
 IF( BasisStationsParameter.bGlaslaengenmessung
     AND blBetriebsartAutomatik )
 THEN
@@ -36,11 +36,11 @@ THEN
 
 
   CASE steplGlaslaengenmessung OF
-    (* GLASLAENGENMESSUNG ==================================*)
+    // GLASLAENGENMESSUNG ==================================
     STEP_0_E:
       (* Anmerkung:
          - Starten des Anlegeauftrags
-         - Sicherung des Geblaeses Oeffner Kontakt 
+         - Sicherung des Geblaeses Oeffner Kontakt
       *)
       BasisStationsParameter.eStatusAuftrag := eAuftragAktiv;
 
@@ -50,13 +50,13 @@ THEN
       
       steplGlaslaengenmessung := STEP_10_E;      
 
-    (* GLASLAENGENMESSUNG ==================================*)
+    // GLASLAENGENMESSUNG ==================================
     STEP_10_E:
       (* Anmerkung:
          - Anschlaege gesenkt
          - Hubrahmen 1 gehoben
-     - Glastransport Referenz
-      *)   
+         - Glastransport Referenz
+      *)
       Hubrahmen.bpStartAusfahren := TRUE;
       Anschlag.bpStartEinfahren  := TRUE;
       Glastransport.bpReferenz   := TRUE;
@@ -72,9 +72,9 @@ THEN
         steplGlaslaengenmessung := STEP_20_E;
       END_IF
 
-    (* GLASLAENGENMESSUNG ==================================*)
+    // GLASLAENGENMESSUNG ==================================
     STEP_20_E:
-      (* Anmerkung
+      (* Anmerkung:
          - Starten der Glaslaengenmessung mittels Riemen
       *)
       IF NOT Glastransport.bpDone THEN
@@ -86,11 +86,11 @@ THEN
         steplGlaslaengenmessung := STEP_30_E;
       END_IF
 
-    (* GLASLAENGENMESSUNG ==================================*)
+    // GLASLAENGENMESSUNG ==================================
     STEP_30_E:
       (* Anmerkung:
          - Sollte das Fusspedal betaetigt worden sein ohne das Glas aufgelegt worden ist. Wird dieses durch den Glastransport abgefangen und ein Hinweis ausgegeben.
-           Durch drücken des Fusspedals kann der Eintransport erneut gestartet werden. 
+           Durch drücken des Fusspedals kann der Eintransport erneut gestartet werden.
       *)
       IF ( Glastransport.bpAnforderungMessergebnis AND NOT ( BasisStationsParameter.wGlastyp[cWAND_1] = eScheibe_Modell ) ) THEN
         steplGlaslaengenmessung := STEP_40_E;
@@ -98,7 +98,7 @@ THEN
         steplGlaslaengenmessung := STEP_50_E;
       END_IF
 
-    (* GLASLAENGENMESSUNG ==================================*)
+    // GLASLAENGENMESSUNG ==================================
     STEP_40_E:
       (* Hinweis:
          - Auswertung des Messergebnisses
@@ -112,7 +112,7 @@ THEN
         Glastransport.bpScheibeQuittiert   := FALSE;
 
         wSPS2MMITransportstateStation := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
-        wSPS2MMITRANSPORTSTATE := 1; (* Scheibe OK und eingefahren *)
+        wSPS2MMITRANSPORTSTATE := 1; // Scheibe OK und eingefahren
         MsgToMmi(auftragsnr_w := SB0_SPS_TRANSPORTSTATE );
 
         steplGlaslaengenmessung := STEP_100_E;
@@ -132,7 +132,7 @@ THEN
 
       END_IF
 
-    (* GLASLAENGENMESSUNG !!! Modellbetrieb !!! ==================================*)
+    // GLASLAENGENMESSUNG !!! Modellbetrieb !!! ==================================
     STEP_50_E:
 
       IF bpFreigabeScheibe THEN
@@ -141,7 +141,7 @@ THEN
         bpKeineFreigabeScheibe := FALSE;
 
         wSPS2MMITransportstateStation := BasisStationsParameter.awFehlerInformationen[0];
-        wSPS2MMITRANSPORTSTATE := 1; (* Scheibe OK und eingefahren *)
+        wSPS2MMITRANSPORTSTATE := 1; // Scheibe OK und eingefahren
         MsgToMmi(auftragsnr_w := SB0_SPS_TRANSPORTSTATE );
 
         Glastransport.bpScheibeFreigegeben := TRUE;
@@ -160,13 +160,12 @@ THEN
       END_IF
 
 
-    (* GLASLAENGENMESSUNG ==================================*)
+    // GLASLAENGENMESSUNG ==================================
     STEP_100_E:
-      (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PLAUSIBELES MESSERGEBNIS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-         
-         Anmerkung:
-         - Beenden der Glastransport- Messfahrt
-      *)
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PLAUSIBELES MESSERGEBNIS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      //
+      //   Anmerkung:
+      //   - Beenden der Glastransport- Messfahrt
       IF ( Glastransport.bpDone ) THEN
         Glastransport.bpGlaslaengenmessung := FALSE;
 
@@ -176,18 +175,17 @@ THEN
 
       END_IF
 
-    (* GLASLAENGENMESSUNG ==================================*)
+    // GLASLAENGENMESSUNG ==================================
     STEP_200_E:
-      (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FEHLERHAFTES MESSERGEBNIS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-         
-         Anmerkung:
-         - Ampel
-         - Moeglichkeit Fehlmessung quittieren --> Scheibe freigegeben zum Austransport
-         - Knebelschalter Glas zurueck auf die Station fahren 
-         - Quittiern
-           => Nachricht an die Oberflaeche
-             wSPS2MMITRANSPORTSTATE := 1 ==  Scheibe OK und eingefahren 
-      *)
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FEHLERHAFTES MESSERGEBNIS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      //
+      //   Anmerkung:
+      //   - Ampel
+      //   - Moeglichkeit Fehlmessung quittieren --> Scheibe freigegeben zum Austransport
+      //   - Knebelschalter Glas zurueck auf die Station fahren
+      //   - Quittiern
+      //     => Nachricht an die Oberflaeche
+      //       wSPS2MMITRANSPORTSTATE := 1 ==  Scheibe OK und eingefahren
       Anschlag.bpStartAusfahren := FALSE;
       Anschlag.bpStartEinfahren := FALSE;
       out_bSignalTasterScheibeQuittieren := gbFlashbit05sec;
@@ -216,10 +214,10 @@ THEN
         steplGlaslaengenmessung := STEP_210_E;
       END_IF
 
-    (* GLASLAENGENMESSUNG ==================================*)
+    // GLASLAENGENMESSUNG ==================================
     STEP_210_E:
       (* Anmerkung [FEHLERHAFTES SCANNERGEBNIS]:
-         - Knebelschalter betaetigt -->WICHTIG: wird jetzt der Quittierungstaster betaetigt ist das die Bestaetigung das die Scheibe 
+         - Knebelschalter betaetigt -->WICHTIG: wird jetzt der Quittierungstaster betaetigt ist das die Bestaetigung das die Scheibe
            neu angelegt werden kann und neu gescannt werden muss [Auftrag bleibt Aktiv]
       *)
       out_bAmpelSignalGruenScheibeAnlegen := FALSE;
@@ -241,7 +239,7 @@ THEN
         Glastransport.bpScheibeQuittiert := TRUE;
 
         wSPS2MMITransportstateStation := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
-        wSPS2MMITRANSPORTSTATE := 0; (* Scheibe nicht und wird zurück geholt *)
+        wSPS2MMITRANSPORTSTATE := 0; // Scheibe nicht und wird zurück geholt
         MsgToMmi(auftragsnr_w := SB0_SPS_TRANSPORTSTATE );
 
         BasisStationsParameter.eStatusAuftrag := eAuftragWiederholen;
@@ -282,16 +280,16 @@ THEN
         steplGlaslaengenmessung := STEP_900_E;
       END_IF
 
-    (* GLASLAENGENMESSUNG ==================================*)
+    // GLASLAENGENMESSUNG ==================================
     STEP_900_E:
       Glastransport.bpScheibeZurueckFahren := FALSE;
       BasisStationsParameter.bFehler        := TRUE;
 
-    (* GLASLAENGENMESSUNG ==================================*)
+    // GLASLAENGENMESSUNG ==================================
     STEP_1000_E:
       BasisStationsParameter.bGlaslaengenmessungAbgeschlossen := TRUE;
 
-  (* GLASLAENGENMESSUNG ==================================*)
+  // GLASLAENGENMESSUNG ==================================
   END_CASE
 ELSE
 

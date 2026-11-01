@@ -6,14 +6,14 @@
 }
 *)
 ACTION SystemCheck
-(***************************************************************************************************)
-(* AKTION SYSTEMCHECK *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION SYSTEMCHECK
+//-------------------------------------------------------------------------------------------------
 IF ( blBetriebartCheck ) THEN
-  (* Fehlerbehandlung
-    - Glastransport
-    - Kippbaustein
-  *)      
+  (* Fehlerbehandlung:
+     - Glastransport
+     - Kippbaustein
+  *)
   IF ( Glastransport.bpFehler ) THEN
     Glastransport.bpCheck := FALSE;
     out_bDrosselklappeOeffnen := FALSE;
@@ -28,10 +28,10 @@ IF ( blBetriebartCheck ) THEN
   END_IF
   
   CASE steplCheck OF
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_0_E:
-      (* Hinweis :
-         - Zuerst Prüfung ob der Sicherheitskreis quittiert wurde. 
+      (* Hinweis:
+         - Zuerst Prüfung ob der Sicherheitskreis quittiert wurde.
       *)
       BasisStationsParameter.bStationBelegt[cWAND_1] := FALSE;
 
@@ -83,7 +83,7 @@ IF ( blBetriebartCheck ) THEN
 
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_10_E:
       IF ( tonlFreigabeErhalten.Q ) THEN
 
@@ -100,13 +100,13 @@ IF ( blBetriebartCheck ) THEN
 
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_20_E:
       (* Anmerkung:
-          - Wand gekippt oder senkrecht
+         - Wand gekippt oder senkrecht
              => senkrecht : Glastransport vor bis Station frei oder Sensor belegt dann Station belegt oder frei
              => waagerecht: Glastransport zurück bis Station frei oder Sensor belegt dann Station zwar belegt aber Scheibe muss neu angelegt werden
-         -  Zentrierleiste evtl. überprüfen 
+         -  Zentrierleiste evtl. überprüfen
       *)
       Glastransport.pAuftrag := BasisStationsParameter.pAuftrag[cWAND_1];
 
@@ -142,7 +142,7 @@ IF ( blBetriebartCheck ) THEN
 
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_30_E:
       (* Hinweis:
          - Station in eine definierte Position gekippt
@@ -154,7 +154,7 @@ IF ( blBetriebartCheck ) THEN
         steplCheck := STEP_20_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_100_E:
       BasisStationsParameter.bStationBelegt[cWAND_1] := Glastransport.bpStationBelegt;
 
@@ -171,35 +171,35 @@ IF ( blBetriebartCheck ) THEN
         steplCheck := STEP_110_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_110_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       // OPTION - KOMPONENTEN ANSTEUERN
-      //         
+      //
       //  Hinweis:
-      //  - n/c 
-      // ---------------------------------------------------------------------------------------*)
+      //  - n/c
+      // ---------------------------------------------------------------------------------------
 
       Kippen.epZielPosition := eKippen_Position_84Grad;
       Kippen.bpPositionieren := BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1];
 
       steplCheck := STEP_120_E;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_120_E:
       IF ( (Kippen.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1]) ) THEN
         Kippen.bpPositionieren := FALSE;
         steplCheck := STEP_200_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_200_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  STATUSNACHRICHT AN DIE HMI SENDEN
-      //         
+      //
       //  Hinweis:
       // - n/C
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
         wSPS2MMIStationsNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
@@ -215,14 +215,14 @@ IF ( blBetriebartCheck ) THEN
 
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_800_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       // BELADUNGSZUSTAND PRUEFEN UND FOLGE-ZUSTAND BESTIMMEN
-      //         
+      //
       //  Hint:
       //  -  n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       (* Hinweis:
          - Abnahmescheibe: Transferstation = Stationsnummer
@@ -271,7 +271,7 @@ IF ( blBetriebartCheck ) THEN
 
       steplCheck := STEP_1000_E;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
@@ -281,7 +281,7 @@ IF ( blBetriebartCheck ) THEN
 
       MsgToMmi( auftragsnr_w := SB0_SPS_SETSHEETSONSTATION );
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_1000_E:
       // Auftrag für erneuten Automatikbetrieb setzen      
       IF //starrStationBasisParameter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].stMKs.stStationsOptionen.bScheibeAbnehmenNachEintransport 
@@ -297,7 +297,7 @@ IF ( blBetriebartCheck ) THEN
 
       BasisStationsParameter.bCheckAbgeschlossen := TRUE;
 
-  (*SYSTEM CHECK=========================*)
+  // SYSTEM CHECK=========================
   END_CASE
 ELSE
   IF (steplCheck > 0) THEN

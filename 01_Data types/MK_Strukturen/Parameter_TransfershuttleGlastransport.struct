@@ -7,15 +7,15 @@
 *)
 TYPE Parameter_TransfershuttleGlastransport :
   STRUCT
-    rlLaengeStation                            : REAL; (* Länge der Station *)
-    rStopFreiFahren                            : REAL; (* So weit soll die Scheibe beim Austransport länger fahren *)
-    rWegUeberEinlaufEintransport               : REAL; (* So weit soll der Einlaufsensor überfahren werden *)
-    rWegUeberEinlaufAustransport               : REAL; (* So weit soll der Einlaufsensor überfahren werden *)
-    rWegUeberAuslaufEintransport               : REAL; (* So weit soll der Einlaufsensor überfahren werden *)
-    rWegUeberAuslaufAustransport               : REAL; (* So weit soll der Einlaufsensor überfahren werden *)
-    wEnergieSparZeit                           : WORD; (* in Sec, Zeitspanne nach der, der Antrieb deaktiviert wird wenn er keinen Auftrag hat*)
-    rMaxPosAuslaufSensorFreiFahren             : REAL; (* Bestimmt die Strecke die Maximal zurueck gefahren werden soll bis der Auslaufsensor  wieder frei ist *)
-    rMaxPosEinlaufSensorFreiFahren             : REAL; (* So weit darf maximal der Einlaufsensor frei gefahren weirden *)
-    rgAbstandLuftAbfrageAuslaufShuttle         : REAL; (* Abstand in mm von der Einlaufluftschranke zum Inputshuttle Auslaufsensor  *)
+    rlLaengeStation                            : REAL; // Länge der Station
+    rStopFreiFahren                            : REAL; // So weit soll die Scheibe beim Austransport länger fahren
+    rWegUeberEinlaufEintransport               : REAL; // So weit soll der Einlaufsensor überfahren werden
+    rWegUeberEinlaufAustransport               : REAL; // So weit soll der Einlaufsensor überfahren werden
+    rWegUeberAuslaufEintransport               : REAL; // So weit soll der Einlaufsensor überfahren werden
+    rWegUeberAuslaufAustransport               : REAL; // So weit soll der Einlaufsensor überfahren werden
+    wEnergieSparZeit                           : WORD; // in Sec, Zeitspanne nach der, der Antrieb deaktiviert wird wenn er keinen Auftrag hat
+    rMaxPosAuslaufSensorFreiFahren             : REAL; // Bestimmt die Strecke die Maximal zurueck gefahren werden soll bis der Auslaufsensor  wieder frei ist
+    rMaxPosEinlaufSensorFreiFahren             : REAL; // So weit darf maximal der Einlaufsensor frei gefahren weirden
+    rgAbstandLuftAbfrageAuslaufShuttle         : REAL; // Abstand in mm von der Einlaufluftschranke zum Inputshuttle Auslaufsensor
   END_STRUCT
 END_TYPE

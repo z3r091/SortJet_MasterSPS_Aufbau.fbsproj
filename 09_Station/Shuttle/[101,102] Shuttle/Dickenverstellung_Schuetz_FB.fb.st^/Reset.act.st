@@ -6,12 +6,12 @@
 }
 *)
 ACTION Reset
-(***************************************************************************************************)
-(* AKTION: RESET *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: RESET
+//-------------------------------------------------------------------------------------------------
 IF ( bpReset ) THEN
   CASE steplReset OF
-    (*RESET =====================*)
+    // RESET =====================
     STEP_0_E:
       tonlMaximaleWartezeitAufReset( IN := FALSE );
 
@@ -22,7 +22,7 @@ IF ( bpReset ) THEN
       out_bVerstellungOeffnen := FALSE;
       steplReset := STEP_10_E;
 
-    (*RESET =====================*)
+    // RESET =====================
     STEP_10_E:
       IF ( in_bMotorstarter_OK AND in_bSicherungMotorOK ) THEN
         out_bMotorstarterReset := FALSE;
@@ -34,15 +34,15 @@ IF ( bpReset ) THEN
         steplReset := STEP_900_E;
       END_IF
 
-    (*RESET =====================*)
+    // RESET =====================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*RESET =====================*)
+    // RESET =====================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*RESET =====================*)
+  // RESET =====================
   END_CASE
 END_IF
 IF ( NOT bpReset ) THEN

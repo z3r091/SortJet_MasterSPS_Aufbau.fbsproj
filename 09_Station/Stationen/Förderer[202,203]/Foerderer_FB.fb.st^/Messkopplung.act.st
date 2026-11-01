@@ -6,9 +6,9 @@
 }
 *)
 ACTION Messkopplung
-(***************************************************************************************************)
-(* AKTION MESSKOPPLUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION MESSKOPPLUNG
+//-------------------------------------------------------------------------------------------------
 IF (  BasisStationsParameter.bMesskopplung[cWAND_1]
      AND blBetriebsartAutomatik )
 THEN
@@ -40,11 +40,11 @@ THEN
 
 
   CASE steplMesskopplung OF
-    (* MESSKOPPLUNG ===================================*)
+    // MESSKOPPLUNG ===================================
     STEP_0_E:
       steplMesskopplung := STEP_10_E;
 
-    (* EINTRANSPORT ===============================*)
+    // EINTRANSPORT ===============================
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob die Geblase aktiv sind
@@ -66,7 +66,7 @@ THEN
 
       END_IF
 
-    (* EINTRANSPORT ===============================*)
+    // EINTRANSPORT ===============================
     STEP_20_E:
       IF ( ( Kippen.bpDone )
            AND ( Roellchenleiste.bpDone )
@@ -80,7 +80,7 @@ THEN
 
       END_IF
 
-    (* MESSKOPPLUNG ===================================*)
+    // MESSKOPPLUNG ===================================
     STEP_100_E:
       (* Anmerkung:
          - Starten des Prozesses
@@ -88,15 +88,15 @@ THEN
       Glastransport.bpMesskopplung := TRUE;
       steplMesskopplung := STEP_1000_E;
 
-    (* MESSKOPPLUNG ===================================*)
+    // MESSKOPPLUNG ===================================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (* MESSKOPPLUNG ===================================*)
+    // MESSKOPPLUNG ===================================
     STEP_1000_E:
       ;
 
-  (* MESSKOPPLUNG ===================================*)
+  // MESSKOPPLUNG ===================================
   END_CASE
 ELSE
 

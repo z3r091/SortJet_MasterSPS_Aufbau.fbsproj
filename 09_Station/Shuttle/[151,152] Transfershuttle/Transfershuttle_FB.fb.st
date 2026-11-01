@@ -8,7 +8,7 @@
 FUNCTION_BLOCK Transfershuttle_FB
 VAR_IN_OUT
 
-  (* STRUKT *)
+  // STRUKT
   BasisStationsParameter : StationBasisParameter_ST;
 
 END_VAR
@@ -16,49 +16,49 @@ VAR_INPUT
 
   // BOOLEAN
   bpStarteSpeicherfachValidierung       : BOOL;
-  bpTransfershuttleVerbundAktiv         : BOOL := false; (* Hinweis: Transferverbund zwischen 2 Transvershuttle-Systmen aktiv *)
+  bpTransfershuttleVerbundAktiv         : BOOL := false; // Hinweis: Transferverbund zwischen 2 Transvershuttle-Systmen aktiv
   bpScheibenNeuAusrichten               : BOOL;
 
   // REAL 
-  rpVorpositionierweg                   : REAL; (* Auftragsdaten: Der Weg der Vorpositioniert werden soll *)
+  rpVorpositionierweg                   : REAL; // Auftragsdaten: Der Weg der Vorpositioniert werden soll
 
   // STRUCT 
-  stpInTransportVerbund                 : Interface_TransfershuttleVerbund; (* STRUKTUR: Schnittstelle zwischen den Transfershuttlen *)
-  pAuftragsdatenPositionieren           : PositionierAuftrag_ST; (* Daten fur die Positionierung [Rampen / Soll- Position / Soll- Geschwindigkeit *)
+  stpInTransportVerbund                 : Interface_TransfershuttleVerbund; // STRUKTUR: Schnittstelle zwischen den Transfershuttlen
+  pAuftragsdatenPositionieren           : PositionierAuftrag_ST; // Daten fur die Positionierung [Rampen / Soll- Position / Soll- Geschwindigkeit
                                         
 END_VAR
 VAR_OUTPUT
 
   // BOOLEAN
-  bpShuttleKannSicherVerfahrenWerden     : BOOL; (* Shuttle kann sicherverfahren werden - Shuttle ist unten , Abfragen sind unten *)
-  bpAnforderungBetriebsstopp             : BOOL; (* Hinweis: Anforderung zum setzen des Betriebsstopps fuer die Auslaufseite des Transfershuttles *)
-  bpSpeicherfachValidierungAbgeschlossen : BOOL; (* BETRIEBSART: Validierung des Speicherfachs wurde abgeschlossen *)
+  bpShuttleKannSicherVerfahrenWerden     : BOOL; // Shuttle kann sicherverfahren werden - Shuttle ist unten , Abfragen sind unten
+  bpAnforderungBetriebsstopp             : BOOL; // Hinweis: Anforderung zum setzen des Betriebsstopps fuer die Auslaufseite des Transfershuttles
+  bpSpeicherfachValidierungAbgeschlossen : BOOL; // BETRIEBSART: Validierung des Speicherfachs wurde abgeschlossen
   bpScheibenNeuAusrichtenAbgeschlossen   : BOOL;
 
   // WORD
-  wpAusnahmefehlerTyp    : WORD := WORD#0; (* Sensorfehlertyp: 0 = Allgemeiner Fehler / 1 = Einlauf / 2 = Auslauf / 3 = Ein- Aus- Lauf *)
+  wpAusnahmefehlerTyp    : WORD := WORD#0; // Sensorfehlertyp: 0 = Allgemeiner Fehler / 1 = Einlauf / 2 = Auslauf / 3 = Ein- Aus- Lauf
 
   // DWORD 
-  dwlHandfunktionen      : DWORD;  (* Handfunktionen: 0..31 Bit *)
+  dwlHandfunktionen      : DWORD;  // Handfunktionen: 0..31 Bit
 
   // INT 
   iPhaseSpeichervalidierung : INT;
 
   // REAL 
-  rpVorpositionierterWeg          : REAL; (* OUT-STATUS: Status wie weit vorpositioniert wurde *)
+  rpVorpositionierterWeg          : REAL; // OUT-STATUS: Status wie weit vorpositioniert wurde
   rpIstPositionNachPositionierung : REAL;
 
   // ENUM 
   ReservierungsStatus    : TransfershuttleReservierungsTyp_EN;
 
   // STRUKTUR 
-  stpOutTransportVerbund : Interface_TransfershuttleVerbund; (* STRUKTUR: Schnittstelle zwischen den Transfershuttlen *)
+  stpOutTransportVerbund : Interface_TransfershuttleVerbund; // STRUKTUR: Schnittstelle zwischen den Transfershuttlen
 
 END_VAR
 VAR
 
   // BOOLEAN 
-  blErsterZyklus                             : BOOL := TRUE; (* Initialisierung *)
+  blErsterZyklus                             : BOOL := TRUE; // Initialisierung
   blZielPositionErreicht                     : BOOL;
   blShuttleKannSicherVerfahrenWerden         : BOOL := FALSE;
   blUpdateTimer                              : BOOL; // VERFAHRLOGIK 
@@ -113,9 +113,9 @@ VAR
   
 END_VAR
 
-(***************************************************************************************************)
-(* INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus ) THEN
   blErsterZyklus:=FALSE;
 
@@ -128,9 +128,9 @@ BasisStationsParameter.stMKs.bDeaktivieren := BasisStationsParameter.stMKs.bDeak
 in_bSensorScheibenKontrolleEinlaufSeiteFrei := Glastransport.Antrieb.blSensoren[1];
 in_bSensorScheibenKontrolleAuslaufSeiteFrei := Glastransport.Antrieb.blSensoren[2];
 
-(***************************************************************************************************)
-(* DEAKTIVIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEAKTIVIERUNG
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
    - Werte wieder passend abloeschen, wenn der Baustein wieder aktiviert wird
@@ -156,7 +156,7 @@ END_IF
 
 (* Hinweis:
    - Deaktivierung des Bausteins
-     => Der Baustein wird zum Ende der RETURN-Anweisung verlassen 
+     => Der Baustein wird zum Ende der RETURN-Anweisung verlassen
 *)
 IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
   
@@ -185,9 +185,9 @@ IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* AKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
    - SystemCheck

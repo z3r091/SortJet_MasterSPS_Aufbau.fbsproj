@@ -6,9 +6,9 @@
 }
 *)
 ACTION SystemCheck
-(***************************************************************************************************)
-(* AKTION: SYSTEMCHECK *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: SYSTEMCHECK
+//-------------------------------------------------------------------------------------------------
 (* Anmerkung:
    - Kein SystemCheck  => Fehler muessen manuell vom Bediener geloest werden
 *)
@@ -23,7 +23,7 @@ IF( blBetriebartCheck )THEN
   
   
   CASE steplCheck OF
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_0_E:
       (* Hinweis:
          - Sicherstellen das der Antrieb keinen Fehler hat
@@ -39,7 +39,7 @@ IF( blBetriebartCheck )THEN
 
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_10_E:
       (* Hinweis:
          - Bereit zum Referenzieren
@@ -51,7 +51,7 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_30_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_20_E:
       (* Hinweis:
          - Referenz abgeschlossen
@@ -61,13 +61,13 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_30_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_30_E:
       IF ( BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben = 0 ) THEN
 
         (* Hinweis:
            - Meldung an den Bediener das die Scheibe neu angelegt werden soll
-        *)   
+        *)
         IF ( Glastransport.bpSensorAuslauf ) THEN
 
           IF  BasisStationsParameter.bCheckMitNachfolger[cWAND_1] THEN
@@ -113,11 +113,11 @@ IF( blBetriebartCheck )THEN
 
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_40_E:
       (* Anmerkung:
          - Hubpalette heben
-      *) 
+      *)
       IF ( Hubrahmen.bpDone ) THEN
         Hubrahmen.bpStartEinfahren := FALSE;
 
@@ -135,12 +135,11 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_900_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_100_E:
-      (* <<<<<<<<<<<<<<<<<< Verbund
-         Anmerkung:
-         - Hubpalette heben
-      *) 
+      // <<<<<<<<<<<<<<<<<< Verbund
+      //   Anmerkung:
+      //   - Hubpalette heben
       IF ( Hubrahmen.bpDone ) THEN
         Hubrahmen.bpStartAusfahren := FALSE;
 
@@ -158,18 +157,17 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_900_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_110_E:
-      (*
-        Hinweis:
-       - Systemcheck des Riemens starten
+      (* Hinweis:
+         - Systemcheck des Riemens starten
       *)
       Glastransport.bpCheckMitNachfolger := BasisStationsParameter.bCheckMitNachfolger[cWAND_1];
       Glastransport.bpCheck := TRUE;
 
       steplCheck := STEP_120_E;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_120_E:
 
       IF ( ftlGlastransportCheckMitNachfolger.Q ) THEN
@@ -177,7 +175,7 @@ IF( blBetriebartCheck )THEN
       END_IF
 
       (* Hinweis:
-         - Station belegt melden nur wenn auch Glas laut MMI drauf liegen soll 
+         - Station belegt melden nur wenn auch Glas laut MMI drauf liegen soll
       *)
       BasisStationsParameter.bStationBelegt[cWAND_1] := Glastransport.bpStationBelegt;
 
@@ -187,7 +185,7 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_150_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_150_E:
       (* Hinweis:
          - Hubrahmen wieder einfahren  wenn laut MMI die Scheibe gebucht ist
@@ -203,11 +201,11 @@ IF( blBetriebartCheck )THEN
       END_IF
 
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_160_E:
       (* Anmerkung:
          - Hubpalette heben
-      *) 
+      *)
       IF ( Hubrahmen.bpDone ) THEN
         Hubrahmen.bpStartEinfahren := FALSE;
 
@@ -225,14 +223,13 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_900_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_890_E:
-      (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NACHRICHT ABSETZEN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-         Hinweis:
-         - Nachricht fuer die Glaslaenge absetzen
-         - Nachricht muss auch abgesetzt werden wenn die Station leer ist
-      *)
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NACHRICHT ABSETZEN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      //
+      //   Hinweis:
+      //   - Nachricht fuer die Glaslaenge absetzen
+      //   - Nachricht muss auch abgesetzt werden wenn die Station leer ist
 
       IF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
         rSps2MmiMessungScheibenlaenge       := 0;
@@ -252,11 +249,11 @@ IF( blBetriebartCheck )THEN
 
       steplCheck := STEP_1000_E;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_1000_E:
       // Auftrag für erneuten Automatikbetrieb setzen
       IF ( BasisStationsParameter.bStationBelegt[cWAND_1] AND ( BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben = 1 ) ) THEN
@@ -269,7 +266,7 @@ IF( blBetriebartCheck )THEN
 
       BasisStationsParameter.bCheckAbgeschlossen := TRUE;
 
-  (*SYSTEM CHECK=========================*)
+  // SYSTEM CHECK=========================
   END_CASE
 ELSE
   IF (steplCheck > 0 ) THEN

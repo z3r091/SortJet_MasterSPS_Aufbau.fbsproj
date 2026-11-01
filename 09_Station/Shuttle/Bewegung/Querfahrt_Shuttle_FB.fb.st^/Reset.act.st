@@ -6,13 +6,13 @@
 }
 *)
 ACTION Reset
-(***************************************************************************************************)
-(* RESET *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// RESET
+//-------------------------------------------------------------------------------------------------
 
 IF ( bpReset ) THEN
   CASE schrittlReset OF
-    (* RESET ======================= *)
+    // RESET =======================
     STEP_0_E:
       bpDone := FALSE;
       tonlWarteAufStop(IN := FALSE);
@@ -26,17 +26,17 @@ IF ( bpReset ) THEN
 
       schrittlReset := STEP_10_E;
 
-    (* RESET ======================= *)
-    STEP_10_E: (* Shuttle sicher anhalten *)
+    // RESET =======================
+    STEP_10_E: // Shuttle sicher anhalten
       bpVerfahreShuttle:= FALSE;
       STEP_Mov_Shuttle_W := STEP_0_E;
 
       schrittlReset := STEP_20_E;
 
-    (* RESET ======================= *)
+    // RESET =======================
     STEP_20_E:
       (* Hinweis:
-         - Shuttle sicher anhalten 
+         - Shuttle sicher anhalten
       *)
       tonlWarteAufStop(IN := NOT Antrieb.bpDone, PT := T#5S);
 
@@ -50,10 +50,10 @@ IF ( bpReset ) THEN
         schrittlReset := STEP_900_E;
       END_IF
 
-    (* RESET ======================= *)
+    // RESET =======================
     STEP_30_E:
       (* Hinweis:
-         - Antrieb Fehler zurücksetzen 
+         - Antrieb Fehler zurücksetzen
       *)
       blFreigabeGesetzt := FALSE;
       Antrieb.bpFreigabe := FALSE;
@@ -63,10 +63,10 @@ IF ( bpReset ) THEN
 
       schrittlReset := STEP_40_E;
 
-    (* RESET ======================= *)
+    // RESET =======================
     STEP_40_E:
       (* Hinweis:
-         - Antrieb Fehler zurücksetzen 
+         - Antrieb Fehler zurücksetzen
       *)
       tonlWarteAufReset(IN := NOT Antrieb.bpDone, PT := tgMaxWartezeitReset);
 
@@ -76,7 +76,7 @@ IF ( bpReset ) THEN
       END_IF
 
       (* Fehlerbehandlung:
-         - Antrieb  
+         - Antrieb
       *)
       IF ( tonlWarteAufReset.Q ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -84,17 +84,17 @@ IF ( bpReset ) THEN
         schrittlReset := STEP_900_E;
       END_IF
 
-    (* RESET ======================= *)
+    // RESET =======================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* RESET ======================= *)
+    // RESET =======================
     STEP_1000_E:
       Antrieb.rpZielPosition := Antrieb.rpIstPosition;
       bpDone := TRUE;
       bpFehler := FALSE;
 
-  (* RESET ======================= *)
+  // RESET =======================
   END_CASE
 END_IF
 

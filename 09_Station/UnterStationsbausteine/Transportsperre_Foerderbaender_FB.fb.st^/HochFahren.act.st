@@ -6,21 +6,19 @@
 }
 *)
 ACTION HochFahren
-(*
-_________________________________________________________________________
- ************************ Aktion Zylinder -Hoch ********************
-_________________________________________________________________________
-*)
+//_________________________________________________________________________
+// ************************ Aktion Zylinder -Hoch ********************
+//_________________________________________________________________________
 IF (  bpStartHoch
      AND NOT tofRunter.Q
      AND bpFreigabe )
 THEN
   CASE steplHoch OF
-    (*EINFAHREN =====================*)
+    // EINFAHREN =====================
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
-         - Zylinder ausfahren starten 
+         - Zylinder ausfahren starten
       *)
       IF ( NOT in_bOben ) THEN
         tonlOben(IN := FALSE);
@@ -31,7 +29,7 @@ THEN
         steplHoch := STEP_1000_E;
       END_IF
 
-    (*EINFAHREN =====================*)
+    // EINFAHREN =====================
     STEP_10_E:
       tonlOben( IN := NOT in_bOben, PT := T#15s );
 
@@ -47,15 +45,15 @@ THEN
         steplHoch := STEP_900_E;
       END_IF
 
-    (*EINFAHREN =====================*)
+    // EINFAHREN =====================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*EINFAHREN =====================*)
+    // EINFAHREN =====================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*EINFAHREN =====================*)
+  // EINFAHREN =====================
   END_CASE
 ELSE
   IF (steplHoch > STEP_0_E) THEN

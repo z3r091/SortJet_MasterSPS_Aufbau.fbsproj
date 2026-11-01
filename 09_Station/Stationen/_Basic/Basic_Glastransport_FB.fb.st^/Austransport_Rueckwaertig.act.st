@@ -6,9 +6,9 @@
 }
 *)
 ACTION Austransport_Rueckwaertig
-(***************************************************************************************************)
-(* AKTION: AUSTRANSPORT RÜCKWÄRTIG*)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: AUSTRANSPORT RÜCKWÄRTIG
+//-------------------------------------------------------------------------------------------------
 
 IF ( bpAustransportRueckwaertig
      AND bpAutomatikAktiv )
@@ -31,10 +31,10 @@ THEN
   END_IF
 
   CASE steplAustransportRueckwaertig OF
-    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_0_E:
-      (*  Anmerkung:
-          - Initialisierung Variablen
+      (* Anmerkung:
+         - Initialisierung Variablen
       *)
       bpDone                     := FALSE;
       bprtScheibe                := FALSE;
@@ -57,14 +57,14 @@ THEN
         steplAustransportRueckwaertig := STEP_10_E;
       END_IF
 
-    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_10_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  WARTEN AUF FREIGABE ZUM GLASTRANSPORT
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*) 
+      // ---------------------------------------------------------------------------------------
 
       Antrieb.rpGeschwindigkeit  := REAL#0 ;
 
@@ -83,7 +83,7 @@ THEN
 
       END_IF
 
-    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_20_E:
       (* Hinweis:
          - Pruefen ob der Auslaufsensor belegt ist.
@@ -118,10 +118,10 @@ THEN
 
       END_IF
 
-    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_30_E:
-      (*  Hinweis:
-          - Wird der Vorstop- Sensor ueberfahren die Geschwindigkeit des
+      (* Hinweis:
+         - Wird der Vorstop- Sensor ueberfahren die Geschwindigkeit des
             Antriebsdrosseln.
       *)
       IF ( bpSensorEinlaufVorAb ) THEN
@@ -132,14 +132,14 @@ THEN
 
       (* Fehlerbehandlung:
          - kein Glas auf der Station ( Stationslaemge abfahren)
-         - Auslaufsensor wurde belegt 
+         - Auslaufsensor wurde belegt
       *)
       IF (ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_UND_EINLAUFVORAB_SCHALTEN_NICHT;
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
-    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_40_E:
       (* Hinweis:
          - Reduzieren der Geschwindigkeit sollte der Vorabstop- Sensor belegt worden sein
@@ -168,14 +168,14 @@ THEN
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
-    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  STARTEN DES AUSTRANSPORTS
-      //         
+      //
       //  Hinweis:
       // - Betriebsart: Handplus
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       ilScheibenZaehler := WORD_TO_INT(pAuftrag.wAnzahlScheiben);
 
@@ -197,7 +197,7 @@ THEN
 
       steplAustransportRueckwaertig := STEP_110_E;
 
-    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_110_E:
       bprtScheibe := FALSE;
       tonlMaximaleZeitSensorAnfahren( IN:= TRUE, PT :=T#60S );
@@ -208,17 +208,17 @@ THEN
       END_IF
 
       (* Fehlerbehandlung:
-            - Auslaufsensor schaltet nicht
-         *)
+         - Auslaufsensor schaltet nicht
+      *)
       IF ( tonlMaximaleZeitSensorAnfahren.Q ) THEN
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
-    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_120_E:
       (* Hinweis:
-         - Scheibenzaehlen 
+         - Scheibenzaehlen
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportVorgaenger.rGeschwindigkeit;
 
@@ -239,7 +239,7 @@ THEN
 
       END_IF
 
-    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_130_E:
       (* Hinweis:
          - Scheibentrigger ( Scheibenzaehler ) zurueck setzen
@@ -253,11 +253,11 @@ THEN
         steplAustransportRueckwaertig := STEP_140_E;
       END_IF
 
-    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_140_E:
       (* Anmerkung:
          - Pruefen ob der Einlaufsensor angefahren wurde
-      *) 
+      *)
       IF (  NOT toflEinlaufsensor.Q
            AND NOT InGlasTransportVorgaenger.bAuslaufsensor )
       THEN
@@ -286,9 +286,9 @@ THEN
 
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Einlaufsensor belegt
-         - Verfahrweg- Ueberwachung 
+         - Verfahrweg- Ueberwachung
       *)
       IF ( bpSensorAuslauf ) THEN
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT;
@@ -300,7 +300,7 @@ THEN
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
-    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_900_E:
       (* Fehlerbehandlung:
          - Fehlerschritt
@@ -314,13 +314,13 @@ THEN
       bpOutBereitZumAustransport := FALSE;
       bpOutBereitZumEintransport := FALSE;
 
-    (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+    // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_1000_E:
       bprtScheibe := FALSE;
       bpUebergrosseScheibeUebergang := FALSE;
       bpDone := TRUE;
 
-  (*AUSTRANSPORT RÜCKWÄRTIG ====================*)
+  // AUSTRANSPORT RÜCKWÄRTIG ====================
   END_CASE
 ELSE
 

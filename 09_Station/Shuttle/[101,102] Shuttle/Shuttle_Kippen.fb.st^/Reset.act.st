@@ -6,13 +6,13 @@
 }
 *)
 ACTION Reset
-(***************************************************************************************************)
-(* AKTION RESET *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION RESET
+//-------------------------------------------------------------------------------------------------
 IF ( bpReset ) THEN
 
   CASE steplReset OF
-    (*RESET ===============================*)
+    // RESET ===============================
     STEP_0_E:
       bpDone := FALSE;
 
@@ -36,21 +36,21 @@ IF ( bpReset ) THEN
 
       END_IF
 
-    (*RESET ===============================*)
+    // RESET ===============================
     STEP_10_E:
       Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.RESET;
 
       steplReset := STEP_20_E;
 
-    (*RESET ===============================*)
+    // RESET ===============================
     STEP_20_E:
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplReset := STEP_1000_E;
       END_IF
 
-      (* Fehlerbehandlung
-         - Antrieb 
+      (* Fehlerbehandlung:
+         - Antrieb
       *)
       IF ( NOT Antrieb.bpDone AND tonlMaxWarteAufResetErfolgreich.Q ) THEN
         Antrieb.wpBetriebsart:= KEINE_FUNKTION;
@@ -59,18 +59,18 @@ IF ( bpReset ) THEN
       END_IF
 
 
-    (*RESET ===============================*)
+    // RESET ===============================
     STEP_900_E:
       // Fehlerbehandlung
       bpFehler := TRUE;
 
-    (*RESET ===============================*)
+    // RESET ===============================
     STEP_1000_E:
       bpFehler := FALSE;
       wpFehlerNr := cMELDUNG_NULL;
       bpDone := TRUE;
 
-  (*RESET ===============================*)
+  // RESET ===============================
   END_CASE
 
 END_IF

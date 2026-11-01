@@ -8,13 +8,13 @@
 PROGRAM Schrittketten_Logger
 VAR
 
-  (* WORD *)
+  // WORD
   i              : WORD;
   j              : WORD;
   wiSchrittkette : ARRAY[0..7] OF WORD;
   wlSchrittkette : ARRAY[0..7,0..31] OF WORD;
 
-  (* STRING *)
+  // STRING
   sBezeichnung   : ARRAY[0..7] OF STRING;
 
 

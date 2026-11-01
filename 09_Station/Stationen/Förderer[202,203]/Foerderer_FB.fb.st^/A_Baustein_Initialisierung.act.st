@@ -6,9 +6,9 @@
 }
 *)
 ACTION A_Baustein_Initialisierung
-(***************************************************************************************************)
-(* AKTION INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 // Antriebsparameter zuweisen  
 Glastransport.ppAntriebsInformationen      REF= BasisStationsParameter.stAntriebsparameter.stGlastransport[1];
 Glastransport.ppAntriebsInformationenSlave REF= BasisStationsParameter.stAntriebsparameter.stGlastransportSlave[1];
@@ -20,12 +20,12 @@ Glastransport.ppParameterBaustein          REF= BasisStationsParameter.stParamet
 Kippen.ppParameterBaustein                 REF= BasisStationsParameter.stParameterStationskomponenten.stKippen[1];
 Querfahrt.ppParameterBaustein              REF= BasisStationsParameter.stParameterStationskomponenten.stQuerfahrt;
 
-(* ---------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------
 //  INITIALISIERUNG DES BAUSTEIN AUFBAUS
-//         
+//
 //  Hinweis:
 // - Komponenten aktivieren bzw. deaktivieren
-// ---------------------------------------------------------------------------------------*)
+// ---------------------------------------------------------------------------------------
 
 (* Hinweis:
    - Querfahrt

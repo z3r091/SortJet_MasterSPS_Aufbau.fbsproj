@@ -6,23 +6,23 @@
 }
 *)
 ACTION Vorabpositionierung
-(***************************************************************************************************)
-(* AKTION VORABPOSITIONIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION VORABPOSITIONIERUNG
+//-------------------------------------------------------------------------------------------------
 (* Anmerkung:
    - Auftragsart = 3 => Verfahrauftrag zu einer bestimmten Position.[ Ohne Ein- oder Austransport von Glas]
      Dieser Auftrag wird nur ausgeführt und nicht quittiert zum MMI.
    - Auftrag kann jederzeit abgebrochen werden wenn ein Ein- bzw. Austransport Auftrag aktiv wird [Auftragsart 0 bzw. 1]
 
-  Hinweis:
-  - !!! Der Positionier-Auftrag soll jetzt auch fuer das MANUELLE POSITIONIEREN genutzt werden !!!     
+     Hinweis:
+   - !!! Der Positionier-Auftrag soll jetzt auch fuer das MANUELLE POSITIONIEREN genutzt werden !!!
 *)
 IF ( BasisStationsParameter.bVorabpositionieren
      AND NOT BasisStationsParameter.bEintransport[cWAND_1]
      AND NOT BasisStationsParameter.bAustransport[cWAND_1] )
 THEN
   CASE steplVorabpositionierung OF
-    (*VORABPOSITIONIERUNG ==============================*)
+    // VORABPOSITIONIERUNG ==============================
     STEP_0_E:
       BasisStationsParameter.bUpdateVorabPositionieren := FALSE;
       blUpdateTimer := FALSE;
@@ -30,8 +30,8 @@ THEN
 
       rpIstPositionNachPositionierung := REAL#0;
 
-      (* evtl. Zielposition shon erreicht ?
-          z.B.: für ein Vortransport *)
+      // evtl. Zielposition shon erreicht ?
+      //    z.B.: für ein Vortransport
       IF (ABS( Querfahrt.rpAktPosition - BasisStationsParameter.pAuftragVorabPositionierung.rVorabPosition ) <= rgMKZielPositionToleranz ) THEN
         rpIstPositionNachPositionierung := Querfahrt.rpAktPosition;
         BasisStationsParameter.bUpdateVorabPositionieren := TRUE;
@@ -42,7 +42,7 @@ THEN
         steplVorabpositionierung := STEP_10_E;
 
       END_IF
-    (*VORABPOSITIONIERUNG ==============================*)
+    // VORABPOSITIONIERUNG ==============================
     STEP_10_E:
       (* Hinweis:
          - Warten auf evtl. noch einzufahrenden Luftschranken oder Zylinder
@@ -50,8 +50,7 @@ THEN
       tonlWarteShuttleSicherVerfahren(IN:=TRUE,PT:=t#4s);
 
 
-      (* Shuttle auf Position fahren
-      *)
+      // Shuttle auf Position fahren
       IF ( Glastransport.bpBereitZumVerfahren AND blShuttleKannSicherVerfahrenWerden ) THEN
         Querfahrt.rpDestinationPosition := BasisStationsParameter.pAuftragVorabPositionierung.rVorabPosition;
         steplVorabpositionierung := STEP_20_E;
@@ -62,7 +61,7 @@ THEN
         steplVorabpositionierung := STEP_900_E;
       END_IF
 
-    (*VORABPOSITIONIERUNG ==============================*)
+    // VORABPOSITIONIERUNG ==============================
     STEP_20_E:
       Querfahrt.bpVerfahreShuttle := TRUE;
 
@@ -71,7 +70,7 @@ THEN
         steplVorabpositionierung := STEP_30_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Querfahrt [VERFAHRLOGIK]
       *)
       IF ( Querfahrt.bpFehler ) THEN
@@ -80,7 +79,7 @@ THEN
         steplVorabpositionierung := STEP_900_E;
       END_IF
 
-    (*VORABPOSITIONIERUNG ==============================*)
+    // VORABPOSITIONIERUNG ==============================
     STEP_30_E:
       (* Anmerkung:
          - Sollte das Verfahren frueher abgeschlossen werden als der Zeitwert des Timers "tonlUpdateTimer"
@@ -90,9 +89,9 @@ THEN
       *)
       IF ( Querfahrt.bpDone (* AND blZielPositionErreicht *) ) THEN
 
-        (* HINWEIS:
-          - Position merken vor dem heben, durch das Heben kann es passieren das sich die Endposition 
-            verschiebt und damit an die HMI eine fehlerhafte Ist-Position geschickt wird
+        (* Hinweis:
+           - Position merken vor dem heben, durch das Heben kann es passieren das sich die Endposition
+             verschiebt und damit an die HMI eine fehlerhafte Ist-Position geschickt wird
         *)
         rpIstPositionNachPositionierung := Querfahrt.rpAktPosition;
 
@@ -116,7 +115,7 @@ THEN
         BasisStationsParameter.bUpdateVorabPositionieren := TRUE;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Querfahrt [VERFAHRLOGIK]
       *)
       IF ( Querfahrt.bpFehler ) THEN
@@ -125,27 +124,26 @@ THEN
         steplVorabpositionierung := STEP_900_E;
       END_IF
 
-    (*VORABPOSITIONIERUNG ==============================*)
+    // VORABPOSITIONIERUNG ==============================
     STEP_100_E:
-      (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FOLGEAUFTRAG IST EIN- AUS- TRANSPORT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-         HINWEIS:
-         - Nach dem Positionieren kann das Transfershuttle heben wenn der Folgeauftrag ein Ein- bzw. Aus- Transportauftrag ist
-      *)
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FOLGEAUFTRAG IST EIN- AUS- TRANSPORT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      //
+      //   HINWEIS:
+      //   - Nach dem Positionieren kann das Transfershuttle heben wenn der Folgeauftrag ein Ein- bzw. Aus- Transportauftrag ist
       IF ( pAuftragsdatenPositionieren.wAuftragstyp  = cFOLGEAUFTRAG_AKTIV ) THEN
 
         IF ( BasisStationsParameter.pVorAbAuftragsdaten[cWAND_1].wShuttleNummer = BasisStationsParameter.stMKs.stStationsNummern.NummerSPS )
         THEN
 
           (* Hinweis:
-             - Der Auftragsstyp ist immer der selbe wie im dazugehörigen <MULTISHUTTLEDATA>- der Transportshuttle. 
+             - Der Auftragsstyp ist immer der selbe wie im dazugehörigen <MULTISHUTTLEDATA>- der Transportshuttle.
                Dies Bedeutet konkret:
                => (Input-) Shuttle Austransport-Auftrag so wird das Transfershuttle auch den Auftragsstatus Austransport gesendet bekommen
                   Die Logik ist somit invertiert zum Shuttle:
                Beispiel:
                     Shuttle - 0 -> Eintransport => TS - 0 -> Austransport
                     Shuttle - 1 -> Austransport => TS - 1 -> Eintransport
-          ReservierungsStatus := SEL( pVorAbAuftragsdaten.wAuftragstyp.0,
+               ReservierungsStatus := SEL( pVorAbAuftragsdaten.wAuftragstyp.0,
                                       TS_AUSTRANSPORT_RESERVIERUNG,
                                       TS_EINTRANSPORT_RESERVIERUNG );
           *)
@@ -165,7 +163,7 @@ THEN
 
       END_IF
 
-    (*VORABPOSITIONIERUNG ==============================*)
+    // VORABPOSITIONIERUNG ==============================
     STEP_110_E:
       (* Hinweis:
          - Hebe-Vorgang abgeschlossen
@@ -183,15 +181,15 @@ THEN
         steplVorabpositionierung := STEP_900_E;
       END_IF
 
-    (*VORABPOSITIONIERUNG ==============================*)
+    // VORABPOSITIONIERUNG ==============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*VORABPOSITIONIERUNG ==============================*)
+    // VORABPOSITIONIERUNG ==============================
     STEP_1000_E:
       BasisStationsParameter.bVorabpositionierenAbgeschlossen := TRUE;
 
-  (*VORABPOSITIONIERUNG ==============================*)
+  // VORABPOSITIONIERUNG ==============================
   END_CASE
 END_IF
 

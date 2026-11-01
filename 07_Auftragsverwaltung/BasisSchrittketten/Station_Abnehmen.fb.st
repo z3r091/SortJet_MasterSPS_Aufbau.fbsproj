@@ -8,39 +8,39 @@
 FUNCTION_BLOCK Station_Abnehmen
 VAR_INPUT
     
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset                : BOOL;
   
-  (* WORD *)
+  // WORD
   wStation               : WORD;
   
-  (* STRUKTUR *)
+  // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN*)
+  // BOOLEAN
   bpDone                 : BOOL;
   bpFehler               : BOOL;
 
 END_VAR
 VAR
 
-  (* INT *)
+  // INT
   ilScheibenZuQuittieren :  INT;
   
-  (* STEPS *)
+  // STEPS
   steplSchritt           : STEPS_TE;
 
 END_VAR
 
-(***************************************************************************************************)
-(* STEUERUNG ABNEHMEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG ABNEHMEN
+//-------------------------------------------------------------------------------------------------
 IF ( Auftragsdaten.wAuftrag = eStation_Abnehmen ) THEN
   CASE steplSchritt OF
-    (* ABNEHMEN ================================= *)
+    // ABNEHMEN =================================
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -49,14 +49,14 @@ IF ( Auftragsdaten.wAuftrag = eStation_Abnehmen ) THEN
         steplSchritt := STEP_10_E;
       END_IF
 
-    (* ABNEHMEN ================================= *)
+    // ABNEHMEN =================================
     STEP_10_E:
       starrStationBasisParameter[wStation].pAuftrag[cWAND_1] := Auftragsdaten;
       starrStationBasisParameter[wStation].bAbnehmen := TRUE;
 
       steplSchritt := STEP_20_E;
 
-    (* ABNEHMEN ================================= *)
+    // ABNEHMEN =================================
     STEP_20_E:
       IF (  starrStationBasisParameter[wStation].OutGlasTransport[cWAND_1].bQuittScheibe
            AND ilScheibenZuQuittieren > 0 )
@@ -68,7 +68,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Abnehmen ) THEN
         steplSchritt := STEP_30_E;
       END_IF
 
-    (* ABNEHMEN ================================= *)
+    // ABNEHMEN =================================
     STEP_30_E:
       (* Hinweis:
          - Glas wurde abgenommen
@@ -76,13 +76,12 @@ IF ( Auftragsdaten.wAuftrag = eStation_Abnehmen ) THEN
       IF ( starrStationBasisParameter[wStation].bAbnehmenAbgeschlossen ) THEN
         starrStationBasisParameter[wStation].bAbnehmen := FALSE;
 
-        (* Nachricht:
-           - Das der Bediener die Scheibe abgenommen hat
-             => Quittierung fuer Glas abgenommen
-           - Nachricht dient nur zur Ueberwachung
-           Wichtig:
-           - Es kann sich aber immer noch Glas auf der Station befinden wenn der Bediener die Scheibe nicht entfernt hat
-        *)
+        // Nachricht:
+        //   - Das der Bediener die Scheibe abgenommen hat
+        //     => Quittierung fuer Glas abgenommen
+        //   - Nachricht dient nur zur Ueberwachung
+        //   Wichtig:
+        //   - Es kann sich aber immer noch Glas auf der Station befinden wenn der Bediener die Scheibe nicht entfernt hat
         wSps2MmiStationsNummer := starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
         MsgToMmi(auftragsnr_w := SB0_SPS_SHEETREMOVEDAPPROVALWALL);
 
@@ -103,16 +102,16 @@ IF ( Auftragsdaten.wAuftrag = eStation_Abnehmen ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (* ABNEHMEN ================================= *)
+    // ABNEHMEN =================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* ABNEHMEN ================================= *)
+    // ABNEHMEN =================================
     STEP_1000_E:
       bpDone := TRUE;
       Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
 
-  (* ABNEHMEN ================================= *)
+  // ABNEHMEN =================================
   END_CASE
 END_IF
 

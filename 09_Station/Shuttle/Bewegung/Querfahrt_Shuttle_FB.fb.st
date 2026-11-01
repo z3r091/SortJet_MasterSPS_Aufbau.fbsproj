@@ -8,32 +8,32 @@
 FUNCTION_BLOCK Querfahrt_Shuttle_FB
 VAR_INPUT
 
-  (* BOOLEAN *)
-  bpAktivieren                           : BOOL; (* Hinweis: Baustein aktivieren *)
-  bpReset                                : BOOL; (* BETRIEBSART: Fehler zuruecksetzen *)
+  // BOOLEAN
+  bpAktivieren                           : BOOL; // Hinweis: Baustein aktivieren
+  bpReset                                : BOOL; // BETRIEBSART: Fehler zuruecksetzen
   bpStartReferenz                        : BOOL;
   bpHandplus                             : BOOL;
   bpHandminus                            : BOOL;
-  bpFreigabe                             : BOOL; (* Sicherheitsfreigabe Regler darf Freigeben *)
-  bpAutomatikAktiv                       : BOOL; (* BETRIEBSART: Umschaltung der Geschwindigkeit*)
-  bpVerfahreShuttle                      : BOOL; (* Befehl zum Positionieren *)
-  bpVerfahrfreigabe                      : BOOL; (* Das entsprechende Shutte setzt die Verfahrfreigabe und überträgt es an die Verfahrkontrolle *)
+  bpFreigabe                             : BOOL; // Sicherheitsfreigabe Regler darf Freigeben
+  bpAutomatikAktiv                       : BOOL; // BETRIEBSART: Umschaltung der Geschwindigkeit
+  bpVerfahreShuttle                      : BOOL; // Befehl zum Positionieren
+  bpVerfahrfreigabe                      : BOOL; // Das entsprechende Shutte setzt die Verfahrfreigabe und überträgt es an die Verfahrkontrolle
   bpSofortStop                           : BOOL;
-  bpQuittungAuftragsstatusZurueckgesetzt : BOOL; (* Auftrag wurde zurueckgesetzt *)
+  bpQuittungAuftragsstatusZurueckgesetzt : BOOL; // Auftrag wurde zurueckgesetzt
   bpTeilnehmerErreichbar                 : BOOL;
   bpShuttleFaecherwagenSuche             : BOOL;
   bpLangsamfahrtNockenAktivieren         : BOOL;
 
-  (* WORD *)
+  // WORD
   wpAuftragsTyp                          : WORD; // Bit 1 = Positionierauftrag mit Messgeschwindigkeit (RackSuche); Anbindung folgt mit P2.1
 
-  (* REAL *)
-  rpDestinationPosition                  : REAL; (* ZielPosition *)  
+  // REAL
+  rpDestinationPosition                  : REAL; // ZielPosition  
   rpMinPosSwEsEingrenzung                : REAL;
   rpMaxPosSwEsEingrenzung                : REAL;
 
-  (* POINTER *)
-  ppAntriebsInformationen  : REFERENCE TO AntriebsInformationen; (* Hinweis: Beinhaltet die Geschwindigkeiten / Rampen der einzelnen Shuttle *)
+  // POINTER
+  ppAntriebsInformationen  : REFERENCE TO AntriebsInformationen; // Hinweis: Beinhaltet die Geschwindigkeiten / Rampen der einzelnen Shuttle
 
   // STRUKTUR
   stStationsNummern     : Station_ST;
@@ -41,7 +41,7 @@ VAR_INPUT
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpDone                         : BOOL;
   bpFehler                       : BOOL;
   bpPositionierungAktiv          : BOOL;
@@ -50,14 +50,14 @@ VAR_OUTPUT
   bpAuftragsstatusZuruecksetzen  : BOOL := FALSE;
   bpAbbruchPositionierung        : BOOL := FALSE;
 
-  (* WORD *)
-  wpFehlerNr     : WORD; (* Exception- Handle: Fehlernummer *)
+  // WORD
+  wpFehlerNr     : WORD; // Exception- Handle: Fehlernummer
 
-  (* REAL *)
+  // REAL
   rpAktPosition : REAL;
   rpAktSpeed    : REAL;
 
-  (* HARDWARE EINGAENGE *)
+  // HARDWARE EINGAENGE
   in_bLeistungsschutzFremdluefter : BOOL;
   in_bEndschalterMax              : BOOL; // Oeffner (TRUE = frei), gemappt; zum Umrichter ueber Signal-Steuerwort Bit 9, wirkt nur bei Endschalterquelle SPS
   in_bEndschalterMin              : BOOL; // Oeffner (TRUE = frei), gemappt; zum Umrichter ueber Signal-Steuerwort Bit 10, wirkt nur bei Endschalterquelle SPS
@@ -65,26 +65,26 @@ VAR_OUTPUT
 END_VAR
 VAR
 
-  (* BOOLEAN *)
+  // BOOLEAN
   Antrieb : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
 
-  (* BOOLEAN *)
+  // BOOLEAN
   blErsterZyklus                : BOOL := TRUE;
   blFreigabeGesetzt             : BOOL;
   blAlterStatus_Bewegung        : BOOL;
 
-  (* REAL *)
+  // REAL
   rlAlterStatus_Position        : REAL;
 
-  (* STEPS *)
+  // STEPS
   STEP_Mov_Shuttle_W    : Steps_TE;
   schrittlReset         : STEPS_TE;
   steplReferenz         : STEPS_TE;
 
-  (* TIMER *)
-  tonlWarteAufStop                      : TON; (* EINSCHALTVERZOEGERUNG: *)
-  tonlWarteAufReset                     : TON; (* EINSCHALTVERZOEGERUNG: *)
-  tofAntriebFreigabe                    : TOF; (* AUSSCHALTVERZÖGERUNG  *)
+  // TIMER
+  tonlWarteAufStop                      : TON; // EINSCHALTVERZOEGERUNG:
+  tonlWarteAufReset                     : TON; // EINSCHALTVERZOEGERUNG:
+  tofAntriebFreigabe                    : TOF; // AUSSCHALTVERZÖGERUNG
   tonlEndschalterFreifahren             : TON;
   tonlWarteSchrittEndschalterFreifahren : TON;
   toflHardwareEndschalterFrei           : TOF;
@@ -93,14 +93,14 @@ VAR
   tonlAntriebNichtBetriebsbereit        : TON;
   tonlStatusMelden                      : TON;
 
-  (* TRIGGER *)
+  // TRIGGER
   rtlAutoAktiv : R_TRIG;
 
 END_VAR
 
-(***************************************************************************************************)
-(* S T A R T - Initialisierung *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// S T A R T - Initialisierung
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus ) THEN
 
   IF ( __ISVALIDREF(ppAntriebsInformationen) ) THEN
@@ -134,17 +134,17 @@ IF ( blErsterZyklus ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* E N D E - Initialisierung *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// E N D E - Initialisierung
+//-------------------------------------------------------------------------------------------------
 
 // Endschalter zyklisch an den Antrieb geben, auch bei deaktivierter Bewegung
 Antrieb.bpEndschalterMinExtern := in_bEndschalterMin;
 Antrieb.bpEndschalterMaxExtern := in_bEndschalterMax;
 
-(***************************************************************************************************)
-(* DEAKTIVIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEAKTIVIEREN
+//-------------------------------------------------------------------------------------------------
 IF ( NOT bpAktivieren ) THEN
 
   bpDone                        := TRUE;
@@ -160,9 +160,9 @@ IF ( NOT bpAktivieren ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* S T A R T - Timer *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// S T A R T - Timer
+//-------------------------------------------------------------------------------------------------
 
 rtlAutoAktiv(CLK := bpAutomatikAktiv);
 
@@ -176,13 +176,13 @@ END_IF
 *)
 tofAntriebFreigabe( IN := blFreigabeGesetzt AND Antrieb.bpReglerBereit  , PT := T#10S );
 
-(***************************************************************************************************)
+// *************************************************************************************************
 
-(***************************************************************************************************)
-(* S T A R T - Verfahrschrittketten zurücksetzen *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// S T A R T - Verfahrschrittketten zurücksetzen
+//-------------------------------------------------------------------------------------------------
 
-(***************************************************************************************************)
+// *************************************************************************************************
 
 IF (   bpVerfahrfreigabe
      AND bpAbbruchPositionierung
@@ -198,22 +198,22 @@ THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* S T A R T - BAUSTEINE AUFRUFEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// S T A R T - BAUSTEINE AUFRUFEN
+//-------------------------------------------------------------------------------------------------
 
-(***************************************************************************************************)
-(* S T A R T - BAUSTEINE AUFRUFEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// S T A R T - BAUSTEINE AUFRUFEN
+//-------------------------------------------------------------------------------------------------
 Verfahren();
 Handfunktionen();
 Referenz();
 Reset();
 Meldungen();
 
-(***************************************************************************************************)
-(* E N D E - BAUSTEINE AUFRUFEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// E N D E - BAUSTEINE AUFRUFEN
+//-------------------------------------------------------------------------------------------------
 IF ( bpSofortStop OR NOT abgVerfahrfreigabeShuttle[stStationsNummern.NummerSPS] ) OR NOT bpFreigabe THEN
   Antrieb.bpFreigabe := FALSE;
 END_IF 
@@ -224,9 +224,9 @@ Antrieb.bpAktiviereLangsamfahrtNocke := bpLangsamfahrtNockenAktivieren;
 Antrieb.rpMinSwEsEingrenzung         := rpMinPosSwEsEingrenzung;
 Antrieb.rpMaxSwEsEingrenzung         := rpMaxPosSwEsEingrenzung;
 
-(* übergabe der aktuellen Position *)
+// übergabe der aktuellen Position
 rpAktPosition   := Antrieb.rpIstPosition;
-rpAktSpeed      := Antrieb.rpIstGeschwindigkeit; (* mm/s, mit Vorzeichen *)
+rpAktSpeed      := Antrieb.rpIstGeschwindigkeit; // mm/s, mit Vorzeichen
 bpInReference   := Antrieb.bpIstReferenziert;
 bpAntriebLaeuft := Antrieb.bpAntrieblaeuft;
 

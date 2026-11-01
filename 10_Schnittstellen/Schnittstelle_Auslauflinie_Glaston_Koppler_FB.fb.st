@@ -41,31 +41,31 @@ VAR
   wlOutSignale               : WORD;
   wlInSignale                : WORD;
 
-  (* DWORD *)
+  // DWORD
   dwlGeschwindigkeit         : DWORD;                   // Geschwindigkeit des Empfaengers [mm/s], ggf. geswappt
   adwlLadeID                 : ARRAY [0..3] OF DWORD;   // Lade-ID (= Scheiben-ID 1), ggf. geswappt
 
-  (* INT *)
+  // INT
   ilIndex                    : INT;
 
-  (* TRIGGER *)
+  // TRIGGER
   ftlGlasBereit                           : F_TRIG; // Hinweis: Glas-Sender besitzt noch einen aktiven Transport-Zustand 
   ftlFremdanlageDatenVerarbeitet          : F_TRIG;
   rtlFehlermeldungGenerierenAuftragsdaten : R_TRIG;
   rtlFehlermeldungGenerierenKommunikation : R_TRIG;
 
 
-  (* TIMER *)
+  // TIMER
   tonlZeitLiveCounterNichtAequivalent     : TON; 
   tonlZeitLiveCounterInkrementieren       : TON; 
   tonlZeitAuftragsdatenNichtAequivalent   : TON; 
   tonlManuellerModus                      : TON; 
   tonlAuftragdatenVorhanden               : TON;
   
-  (*  STRING *)
+  // STRING
   strScheibenID  : STRING;
 
-  (* REFERENZ *)
+  // REFERENZ
   stlVorgaenger  : REFERENCE TO StationBasisParameter_ST; // SortJet- Station vor der Schnittstelle (SF/SB)
 
   
@@ -113,29 +113,29 @@ VAR
 END_VAR
 VAR CONSTANT
 
-  (* WORD *)
-  cVERBINDUNGSVERSUCHE_BIS_FEHLER  : WORD := 5;         (* WICHTIG: Aenderung an diesem Wert veraendert das Verhalten ab wieviel Kommunikations-Versuchen wann ein Fehler ausgegeben wird  *)
+  // WORD
+  cVERBINDUNGSVERSUCHE_BIS_FEHLER  : WORD := 5;         // WICHTIG: Aenderung an diesem Wert veraendert das Verhalten ab wieviel Kommunikations-Versuchen wann ein Fehler ausgegeben wird
   
-  (* INT *)
-  cWERTEBREICH_INT                 : INT  := 32767; (* WICHTIG: Aenderung an diesem Wert aendert den Wertebereich eines INTs [positiver Wertebereich] *)
-  cWERTEBREICH_WORD                : WORD := 32767; (* WICHTIG: Aenderung an diesem Wert aendert den Wertebereich eines INTs [positiver Wertebereich] *)
+  // INT
+  cWERTEBREICH_INT                 : INT  := 32767; // WICHTIG: Aenderung an diesem Wert aendert den Wertebereich eines INTs [positiver Wertebereich]
+  cWERTEBREICH_WORD                : WORD := 32767; // WICHTIG: Aenderung an diesem Wert aendert den Wertebereich eines INTs [positiver Wertebereich]
 
-  (* TIME *)
-  cZEIT_AUFTRAGSDATEN_GUELTIG                : TIME :=T#5s;         (* WICHTIG: Aenderung an diesem Wert aendert die Zeit ab wann ein Fehlergeneriert wird [s] *)
-  cZEIT_GESPIEGELTE_AUFTRAGSDATEN_UNGUELTIG  : TIME :=T#5s;         (* WICHTIG: Aenderung an diesem Wert aendert die Zeit ab wann ein Fehlergeneriert wird [s] *)
+  // TIME
+  cZEIT_AUFTRAGSDATEN_GUELTIG                : TIME :=T#5s;         // WICHTIG: Aenderung an diesem Wert aendert die Zeit ab wann ein Fehlergeneriert wird [s]
+  cZEIT_GESPIEGELTE_AUFTRAGSDATEN_UNGUELTIG  : TIME :=T#5s;         // WICHTIG: Aenderung an diesem Wert aendert die Zeit ab wann ein Fehlergeneriert wird [s]
   cZEIT_MANUELLER_MODUS_SIGNAL               : TIME :=T#10s;
   cZEIT_LIVECOUNTER_INKREMENTIEREN           : TIME :=T#250ms;
   cZEIT_LIVECOUNTER_NICHT_GUELTIG            : TIME :=T#1500ms;
 
 END_VAR
-(***************************************************************************************************)
-(* MASTER AUFRUFEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// MASTER AUFRUFEN
+//-------------------------------------------------------------------------------------------------
 SUPER^(BasisStationsParameter := BasisStationsParameter);
 
-(***************************************************************************************************)
-(* BAUSTEIN: INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus  ) THEN
   blErsterZyklus := FALSE;
 
@@ -144,9 +144,9 @@ IF ( blErsterZyklus  ) THEN
     
 END_IF
 
-(***************************************************************************************************)
-(*  TIMER *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// TIMER
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Zeitlicheueberwachung der Kommunikation
 *)
@@ -154,9 +154,9 @@ tonlZeitLiveCounterNichtAequivalent( IN := NOT blLiveCounterGueltig,
                                      PT := cZEIT_LIVECOUNTER_NICHT_GUELTIG );
 
 
-(***************************************************************************************************)
-(* AKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 LiveCounter();
 Meldungen();
 AuftragsdatenVerwaltung();
@@ -170,12 +170,11 @@ IF BasisStationsParameter.stMKs.stFremdanlage.bSignaleLoggen THEN
   Signal_Logger();
 END_IF
 
-(***************************************************************************************************)
-(*  RESET *)
-(***************************************************************************************************)
-(* Fehlverhalten:
-   - Anstehenden Fehler zuruecksetzen
-*)
+//-------------------------------------------------------------------------------------------------
+// RESET
+//-------------------------------------------------------------------------------------------------
+// Fehlverhalten:
+//   - Anstehenden Fehler zuruecksetzen
 IF ( BasisStationsParameter.bReset ) THEN
 
   out_bSenderAuftragdatenPlausibel := FALSE;
@@ -197,8 +196,8 @@ IF ( BasisStationsParameter.bReset ) THEN
 END_IF
 
 
-(***************************************************************************************************)
-(*  Aufrufe *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Aufrufe
+//-------------------------------------------------------------------------------------------------
 Horn( bpAktiv := bgHornAktivieren );
 END_FUNCTION_BLOCK

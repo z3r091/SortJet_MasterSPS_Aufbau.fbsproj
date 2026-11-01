@@ -6,12 +6,12 @@
 }
 *)
 ACTION HubAb
-(******************************************************************************)
-(* AKTION: SENKEN [HUB AB] *)
-(******************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: SENKEN [HUB AB]
+//-------------------------------------------------------------------------------------------------
 IF ( bpStartHubAb AND NOT bpStartHubAuf ) THEN
   CASE steplHubAb OF
-    (*ABHub ==========================*)
+    // ABHub ==========================
     STEP_0_E:
       IF ( in_bSensorNichtUnten ) THEN
         out_bHubAbSetzen := TRUE;
@@ -21,7 +21,7 @@ IF ( bpStartHubAb AND NOT bpStartHubAuf ) THEN
         steplHubAb := STEP_1000_E;
       END_IF
 
-    (*ABHub ==========================*)
+    // ABHub ==========================
     STEP_10_E:
       IF ( NOT in_bSensorNichtUnten ) THEN
         out_bHubAbSetzen := FALSE;
@@ -37,15 +37,15 @@ IF ( bpStartHubAb AND NOT bpStartHubAuf ) THEN
         steplHubAb := STEP_900_E;
       END_IF
 
-    (*ABHub ==========================*)
+    // ABHub ==========================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*ABHub ==========================*)
+    // ABHub ==========================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*ABHub ==========================*)
+  // ABHub ==========================
   END_CASE
 else
   IF (steplHubAb > STEP_0_E) THEN

@@ -6,15 +6,15 @@
 }
 *)
 ACTION Reset
-(***************************************************************************************************)
-(* AKTION RESET *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION RESET
+//-------------------------------------------------------------------------------------------------
 tonlMaxWarteAufResetErfolgreich( IN:= BasisStationsParameter.bReset,
                                  PT:= tgMaxWartezeitReset);
 
 IF( blBetriebsartReset )THEN
   CASE steplResetAntrieb OF
-    (*RESET ===============================*)
+    // RESET ===============================
     STEP_0_E:
       (* Hinweis:
          - Geblaese stoppen
@@ -36,9 +36,9 @@ IF( blBetriebsartReset )THEN
 
       steplResetAntrieb := STEP_10_E;
 
-    (*RESET ================================*)
+    // RESET ================================
     STEP_10_E:
-      (* WICHTIG
+      (* Wichtig:
          - Reset wird vom Baustein selbst zurueckgesetzt.
       *)
       FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
@@ -53,7 +53,7 @@ IF( blBetriebsartReset )THEN
 
       steplResetAntrieb := STEP_20_E;
 
-    (*RESET ================================*)
+    // RESET ================================
     STEP_20_E:
       (* Hinweis:
          - Warten bis die Bausteine ihren Reset durchgefuehrt haben
@@ -105,9 +105,9 @@ IF( blBetriebsartReset )THEN
 
         steplResetAntrieb := STEP_900_E;
 
-        (* WICHTIG:
-           - Geblaese nur auf Fehlerabfragen 
-             => Keine "Abgeschlossen" Meldung, da sich der Reset selbst quittiert 
+        (* Wichtig:
+           - Geblaese nur auf Fehlerabfragen
+             => Keine "Abgeschlossen" Meldung, da sich der Reset selbst quittiert
         *)
         FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
           IF ( Geblaese[wlIndex].bpFehler ) THEN
@@ -143,24 +143,23 @@ IF( blBetriebsartReset )THEN
 
       END_IF
 
-    (*RESET ===============================*)
+    // RESET ===============================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       BasisStationsParameter.bFehler := TRUE;
       BasisStationsParameter.bReset := FALSE;
 
-    (*RESET ===============================*)
+    // RESET ===============================
     STEP_1000_E:
       BasisStationsParameter.wFehlerNummer := cMELDUNG_NULL;
       BasisStationsParameter.bFehler := FALSE;
       BasisStationsParameter.bReset := FALSE;
 
-  (*RESET ===============================*)
+  // RESET ===============================
   END_CASE
 ELSE
-  (*Reset wegen Abbruch der Schrittkette
-  *)
+  // Reset wegen Abbruch der Schrittkette
   IF( steplResetAntrieb > STEP_0_E ) THEN
 
     FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO

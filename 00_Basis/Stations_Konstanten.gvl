@@ -91,9 +91,9 @@ VAR_GLOBAL CONSTANT
   cSTATION_503             : WORD := 503;
 
 
-(***************************************************************************************************)
-(* STATIONSNUMMERN [SPRECHEND] *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STATIONSNUMMERN [SPRECHEND]
+//-------------------------------------------------------------------------------------------------
   (* Anmerkung:
      - Konstanten die immer gleichbleiben in ihrer Benamung und nicht mehr
        angepasst werden muessen (ggf. der numerische Wert)
@@ -145,9 +145,8 @@ VAR_GLOBAL CONSTANT
   cDURCHGANG_2                         : WORD := 2;
   cDURCHGANG_3                         : WORD := 3;
 
-  (* MMI WANDNUMMER
-     - Wird gebraucht fuer die Fehlermeldung der Scheibenquittierung 
-  *)
+  // MMI WANDNUMMER
+  //   - Wird gebraucht fuer die Fehlermeldung der Scheibenquittierung
   cMMI_WAND_1                         : WORD := 0;
   cMMI_WAND_2                         : WORD := 1;
   cMMI_WAND_3                         : WORD := 2;
@@ -158,8 +157,8 @@ VAR_GLOBAL CONSTANT
   cHUBRAHMEN_2                        : WORD := 1;
 
   // EBENEN
-  cEBENE_1                            : WORD := 2#0000000000000001; (* 1; *)
-  cEBENE_2                            : WORD := 2#0000000000000010; (* 2; *)
+  cEBENE_1                            : WORD := 2#0000000000000001; // 1;
+  cEBENE_2                            : WORD := 2#0000000000000010; // 2;
 
 END_VAR
 

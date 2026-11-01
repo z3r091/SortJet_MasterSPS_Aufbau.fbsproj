@@ -15,13 +15,13 @@ VAR
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   abpDruckluftOK    : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
   bpAnlageOK        : BOOL;
 END_VAR
 VAR
 
-  (* TIMER *)
+  // TIMER
   toflDruckluftShuttleOK           : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF TOF;
   toflDruckluftTSShuttleOK         : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF TOF;
   toflDruckluft101_OK              : TOF;
@@ -31,10 +31,10 @@ END_VAR
 
 VAR
 
-  (* Druckluft *)
-  in_bDruckluft_FW_OK                         AT %I*   : BOOL; (* Wartungseinheit *)
-  in_bDruckluft_101_OK                        AT %I*   : BOOL; (* Wartungseinheit *)
-  in_bDruckluft_102_OK                        AT %I*   : BOOL; (* Wartungseinheit *)
+  // Druckluft
+  in_bDruckluft_FW_OK                         AT %I*   : BOOL; // Wartungseinheit
+  in_bDruckluft_101_OK                        AT %I*   : BOOL; // Wartungseinheit
+  in_bDruckluft_102_OK                        AT %I*   : BOOL; // Wartungseinheit
 
   // CAB 2
   in_bCAB2_KlimaGeraet_OK                     AT %I* : BOOL;
@@ -49,13 +49,13 @@ END_VAR
 
 VAR CONSTANT
 
-  (* TIME*)
+  // TIME
   ZEIT_DRUCKWAECHTERSIGNAL_ENTPRELLT : TIME := T#3s;
 
 END_VAR
-(***************************************************************************************************)
-(* STATUS DER BASIS-KOMPONENTEN INHERHALB DER ANLAGE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STATUS DER BASIS-KOMPONENTEN INHERHALB DER ANLAGE
+//-------------------------------------------------------------------------------------------------
 
 // Entprellen des Druckwaechter- Einheit => SHUTTLE
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO

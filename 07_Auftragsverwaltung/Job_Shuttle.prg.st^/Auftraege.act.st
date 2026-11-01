@@ -6,9 +6,9 @@
 }
 *)
 ACTION Auftraege
-(***************************************************************************************************)
-(* AUFTRAG: M_SB0_MMI_SHEET_ORDER_SHUTTLE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFTRAG: M_SB0_MMI_SHEET_ORDER_SHUTTLE
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Auftragsdaten an ein Shuttle uebergeben
 *)
@@ -30,19 +30,19 @@ IF ( M_SB0_MMI_SHEET_ORDER_SHUTTLE ) THEN
 
     LocalAuftragsSpeicher.NeuerAuftrag.wStationsNr            := tMmi2SpsInfo.wStationsNr;
     LocalAuftragsSpeicher.NeuerAuftrag.rVorabPosition         := tMmi2SpsInfo.rStationsPosition;
-    LocalAuftragsSpeicher.NeuerAuftrag.rStationsZielposition  := tMmi2SpsInfo.rStationsPosition;     (* Stationsposition der Quellstation *)
-    LocalAuftragsSpeicher.NeuerAuftrag.rAuftragsLaenge        := tMmi2SpsInfo.rAuftragsLaenge;       (* Länge der Scheibe/Batch *)
-    LocalAuftragsSpeicher.NeuerAuftrag.rAuftragsHoehe         := tMmi2SpsInfo.rAuftragsHoehe;        (* Höhe der Scheibe/Batch *)
-    LocalAuftragsSpeicher.NeuerAuftrag.rAuftragsDicke         := tMmi2SpsInfo.rAuftragsDicke;        (* Dicke der Scheibe/Batch *)
-    LocalAuftragsSpeicher.NeuerAuftrag.wErsteLetzteScheibe    := tMmi2SpsInfo.wErsteLetzteScheibe;  (* Kennzeichnung Erste und Letzte Scheibe *)
-    LocalAuftragsSpeicher.NeuerAuftrag.wAnzahlScheiben        := tMmi2SpsInfo.wAnzahlScheiben;       (* Anzahl der Scheiben *)
-    LocalAuftragsSpeicher.NeuerAuftrag.wStationsWand          := tMmi2SpsInfo.wAuftragsWand;         (* Stationswand der Quellstation *)
-    LocalAuftragsSpeicher.NeuerAuftrag.wTransferstationsNr1   := tMmi2SpsInfo.wTransferstationsNr1;  (* Stationsnummer der Zielstation 1 *)
-    LocalAuftragsSpeicher.NeuerAuftrag.wTransferstationsNr2   := tMmi2SpsInfo.wTransferstationsNr2;  (* Stationsnummer der Zielstation 2 *)
-    LocalAuftragsSpeicher.NeuerAuftrag.rTransferposition1     := tMmi2SpsInfo.rTransferposition1;    (* Stationsposition der Zielstation 1 *)
-    LocalAuftragsSpeicher.NeuerAuftrag.rTransferposition2     := tMmi2SpsInfo.rTransferposition2;    (* Stationsposition der Zielstation 2 *)
-    LocalAuftragsSpeicher.NeuerAuftrag.wTransferwand          := tMmi2SpsInfo.wTransferwand;         (* Stationswand der Zielstationen 1 *)
-    LocalAuftragsSpeicher.NeuerAuftrag.stAuftragsInformationen.wAuftragsInformationen := tMmi2SpsInfo.wAuftragsTyp;            (* Zusaetzliche Auftrags- Informationen *)
+    LocalAuftragsSpeicher.NeuerAuftrag.rStationsZielposition  := tMmi2SpsInfo.rStationsPosition;     // Stationsposition der Quellstation
+    LocalAuftragsSpeicher.NeuerAuftrag.rAuftragsLaenge        := tMmi2SpsInfo.rAuftragsLaenge;       // Länge der Scheibe/Batch
+    LocalAuftragsSpeicher.NeuerAuftrag.rAuftragsHoehe         := tMmi2SpsInfo.rAuftragsHoehe;        // Höhe der Scheibe/Batch
+    LocalAuftragsSpeicher.NeuerAuftrag.rAuftragsDicke         := tMmi2SpsInfo.rAuftragsDicke;        // Dicke der Scheibe/Batch
+    LocalAuftragsSpeicher.NeuerAuftrag.wErsteLetzteScheibe    := tMmi2SpsInfo.wErsteLetzteScheibe;  // Kennzeichnung Erste und Letzte Scheibe
+    LocalAuftragsSpeicher.NeuerAuftrag.wAnzahlScheiben        := tMmi2SpsInfo.wAnzahlScheiben;       // Anzahl der Scheiben
+    LocalAuftragsSpeicher.NeuerAuftrag.wStationsWand          := tMmi2SpsInfo.wAuftragsWand;         // Stationswand der Quellstation
+    LocalAuftragsSpeicher.NeuerAuftrag.wTransferstationsNr1   := tMmi2SpsInfo.wTransferstationsNr1;  // Stationsnummer der Zielstation 1
+    LocalAuftragsSpeicher.NeuerAuftrag.wTransferstationsNr2   := tMmi2SpsInfo.wTransferstationsNr2;  // Stationsnummer der Zielstation 2
+    LocalAuftragsSpeicher.NeuerAuftrag.rTransferposition1     := tMmi2SpsInfo.rTransferposition1;    // Stationsposition der Zielstation 1
+    LocalAuftragsSpeicher.NeuerAuftrag.rTransferposition2     := tMmi2SpsInfo.rTransferposition2;    // Stationsposition der Zielstation 2
+    LocalAuftragsSpeicher.NeuerAuftrag.wTransferwand          := tMmi2SpsInfo.wTransferwand;         // Stationswand der Zielstationen 1
+    LocalAuftragsSpeicher.NeuerAuftrag.stAuftragsInformationen.wAuftragsInformationen := tMmi2SpsInfo.wAuftragsTyp;            // Zusaetzliche Auftrags- Informationen
 
     // Soll Drehpos der Folgestation für den Eintransport    
     LocalAuftragsSpeicher.NeuerAuftrag.wTransferVersatzVorne   := tMmi2SpsInfo.rTransferstationModellversatzVorne;
@@ -50,14 +50,14 @@ IF ( M_SB0_MMI_SHEET_ORDER_SHUTTLE ) THEN
     LocalAuftragsSpeicher.NeuerAuftrag.wTransferVersatzHinten  := tMmi2SpsInfo.rTransferstationModellversatzHinten;
 
     (* Hinweis:
-       - Zuweisung der Bits "erste" und "letzte" Scheibe 
+       - Zuweisung der Bits "erste" und "letzte" Scheibe
     *)
     ErsteUndLetzteScheibeBits( wpErsteUndLetzteScheibe:= tMmi2SpsInfo.wErsteLetzteScheibe ,
                                wpLetzteScheibe => wlLetzteScheibe,
                                wpErsteScheibe  => wlErsteScheibe );
 
-    LocalAuftragsSpeicher.NeuerAuftrag.bLetzteScheibe  := wlLetzteScheibe > 0;   (* Stationsposition der Zielstation 2 *)
-    LocalAuftragsSpeicher.NeuerAuftrag.bErsteScheibe   := wlErsteScheibe  > 0;        (* Stationswand der Zielstationen *)
+    LocalAuftragsSpeicher.NeuerAuftrag.bLetzteScheibe  := wlLetzteScheibe > 0;   // Stationsposition der Zielstation 2
+    LocalAuftragsSpeicher.NeuerAuftrag.bErsteScheibe   := wlErsteScheibe  > 0;        // Stationswand der Zielstationen
 
     (* Hinweis:
        - 0 -> Eintransport
@@ -75,11 +75,11 @@ IF ( M_SB0_MMI_SHEET_ORDER_SHUTTLE ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* AUFTRAG: M_SB0_MMI_SortierungInsertExtractionShuttleData *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFTRAG: M_SB0_MMI_SortierungInsertExtractionShuttleData
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   - Austransportschlitten mit einem Scheibenvortransport-Auftrag versehen 
+   - Austransportschlitten mit einem Scheibenvortransport-Auftrag versehen
 *)
 IF ( M_SB0_MMI_SortierungInsertExtractionShuttleData ) THEN
 
@@ -87,13 +87,13 @@ IF ( M_SB0_MMI_SortierungInsertExtractionShuttleData ) THEN
 
   IF ( bgTransfershuttleVortransportAktivieren ) THEN
 
-    (* ---------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------
     //  TRANSFERSHUTTLE VORTRANSPORT
-    //         
+    //
     //  Hinweis:
     //  - VortransportNummer_TS2 = 0   => Vortransport mit nur einem Transfershuttle
     //  - VortransportNummer_TS1 <> 0  => Vortransport im Transfershuttle-Verbund
-    // ---------------------------------------------------------------------------------------*)
+    // ---------------------------------------------------------------------------------------
     IF ( tMmi2SpsInfo.wVortransportNummer_TS2 = 0  ) THEN
 
       AuftragsSpeicherTransfershuttle[tMmi2SpsInfo.wVortransportNummer_TS1].NeuerAuftrag.rStationsZielposition := tMmi2SpsInfo.rVortransportSollPosition_TS1;
@@ -127,11 +127,11 @@ IF ( M_SB0_MMI_SortierungInsertExtractionShuttleData ) THEN
   ELSE
 
     (* Hinweis:
-       - Quittierung des Vortransportes 
+       - Quittierung des Vortransportes
     *)
     wSps2MmiQuittierungVortransportStationsNr1 := tMmi2SpsInfo.wVortransportNummer_TS1;
     wSps2MmiQuittierungVortransportStationsNr2 := tMmi2SpsInfo.wVortransportNummer_TS2;
-    wSps2MmiQuittierungVortransportStatus      := 1; (* 0  = nicht Erfolgreich / 1 = erfolgreich *)
+    wSps2MmiQuittierungVortransportStatus      := 1; // 0  = nicht Erfolgreich / 1 = erfolgreich
     rSps2MmiQuittierungVortransportWegStrecke  := tMmi2SpsInfo.rVortransportStrecke;
 
     MsgToMmi(auftragsnr_w := SB0_SPS_SortierungQuittExtractionShuttleData );
@@ -140,9 +140,9 @@ IF ( M_SB0_MMI_SortierungInsertExtractionShuttleData ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* AUFTRAG: M_SB0_MMI_SHUTTLE_INFORMATION *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFTRAG: M_SB0_MMI_SHUTTLE_INFORMATION
+//-------------------------------------------------------------------------------------------------
 IF ( M_SB0_MMI_SHUTTLE_INFORMATION ) THEN
 
   M_SB0_MMI_SHUTTLE_INFORMATION := FALSE;
@@ -228,14 +228,14 @@ IF ( M_SB0_MMI_SHUTTLE_INFORMATION ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* AUFTRAG: M_SB0_MMI_GETSORTIERUNGSHUTTLEPOS *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFTRAG: M_SB0_MMI_GETSORTIERUNGSHUTTLEPOS
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Verfarhlogik
      => Absetzen der Positionen
-     => Melden der IST- Position wenn die Positionierung aufgrund eines 
-        Fehler [ Verfahrfreigabe fehlt ] nicht durchgefuehrt werden kann   
+     => Melden der IST- Position wenn die Positionierung aufgrund eines
+        Fehler [ Verfahrfreigabe fehlt ] nicht durchgefuehrt werden kann
 *)
 IF ( M_SB0_MMI_GETSORTIERUNGSHUTTLEPOS ) THEN
 
@@ -245,9 +245,9 @@ IF ( M_SB0_MMI_GETSORTIERUNGSHUTTLEPOS ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* AUFTRAG: M_SB0_MMI_TS_REPOSITIONING_LITES *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFTRAG: M_SB0_MMI_TS_REPOSITIONING_LITES
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
    - Funktion zum zurueckfahren der Glaeser und neu Positionieren im Speicher
@@ -291,9 +291,9 @@ IF ( M_SB0_MMI_TS_REPOSITIONING_LITES ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* AUFTRAG: M_SB0_MMI_SORTIERUNGCANcELSHUTTLEDATA *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFTRAG: M_SB0_MMI_SORTIERUNGCANcELSHUTTLEDATA
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Abbrechen eines aktiven Shuttleauftrags
 *)
@@ -317,9 +317,9 @@ IF ( M_SB0_MMI_SORTIERUNGCANCELSHUTTLEDATA ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* S T A R T - Fächerwagen Suche mittels Sensor *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// S T A R T - Fächerwagen Suche mittels Sensor
+//-------------------------------------------------------------------------------------------------
 
 IF ( M_SB0_MMI_POSITIONMEASUREONOFF ) THEN
 
@@ -336,9 +336,9 @@ IF ( M_SB0_MMI_POSITIONMEASUREONOFF ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* SHUTTLE DEAKTIVIEREN VIA MMI *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// SHUTTLE DEAKTIVIEREN VIA MMI
+//-------------------------------------------------------------------------------------------------
 IF ( M_SB0_MMI_STATIONSTATUS ) THEN
 
   CASE tMmi2SpsInfo.wStationsNummer OF

@@ -11,7 +11,7 @@ END_VAR
 
 VAR_INPUT
 
-  (* WORD *)
+  // WORD
   wTransferstation1 : WORD;
   wTransferstation2 : WORD;
 
@@ -19,10 +19,10 @@ END_VAR
 
 VAR_OUTPUT
 
-  (* BOOL *)
+  // BOOL
   bpFehler : BOOL;
 
-  (* WORD *)
+  // WORD
   wTransferstationMaster : WORD;
   wTransferstationSlave  : WORD;
 
@@ -30,9 +30,9 @@ VAR_OUTPUT
 END_VAR
 
 
-(***************************************************************************************************)
-(* BAUSTEIN: LOGIK *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: LOGIK
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Fehler ggf. zuruecksetzen
 *)

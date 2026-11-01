@@ -6,19 +6,17 @@
 }
 *)
 ACTION AusEinFahren
-(*
-_________________________________________________________________________
- ****************** START Zylinder - Aus- & Einfahren ********************
-_________________________________________________________________________
-*)
+//_________________________________________________________________________
+// ****************** START Zylinder - Aus- & Einfahren ********************
+//_________________________________________________________________________
 IF (  bpStartPneumatik )
 THEN
   CASE steplAusfahren OF
-    (*AUS - &  EINFAHREN =====================*)
+    // AUS - &  EINFAHREN =====================
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
-         - Zylinder ausfahren starten 
+         - Zylinder ausfahren starten
       *)
       tonlZylinder1Ausgefahren(IN := FALSE);
       tonlZylinder1Eingefahren(IN := FALSE);
@@ -28,7 +26,7 @@ THEN
       steplAusfahren := STEP_10_E;
 
 
-    (*AUS - &  EINFAHREN =====================*)
+    // AUS - &  EINFAHREN =====================
     STEP_10_E:
 
       CASE epOeffnungsStellung OF
@@ -79,11 +77,10 @@ THEN
 
 
 
-    (*AUS - &  EINFAHREN =====================*)
+    // AUS - &  EINFAHREN =====================
     STEP_20_E:
-      (*
-        Hinweis:
-        - wenn keine Abfragen verbaut sind, pauschal die Schaltung der Ventile zurücksetzen
+      (* Hinweis:
+         - wenn keine Abfragen verbaut sind, pauschal die Schaltung der Ventile zurücksetzen
       *)
       tonlWarteZeitAufVentile(IN:= TRUE,PT:=t#3s);
       tonlZylinder1Ausgefahren(IN := FALSE);
@@ -112,7 +109,7 @@ THEN
 
 
 
-    (*AUS - &  EINFAHREN =====================*)
+    // AUS - &  EINFAHREN =====================
     STEP_30_E:
       tonlZylinder1Ausgefahren(IN := NOT in_bStatusZylinder1Ausgefahren, PT := t#3s);
       tonlZylinder1Eingefahren(IN := NOT in_bStatusZylinder1Eingefahren, PT := t#3s);
@@ -237,15 +234,15 @@ THEN
 
       END_CASE
 
-    (*AUS - &  EINFAHREN =====================*)
+    // AUS - &  EINFAHREN =====================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*AUS - &  EINFAHREN =====================*)
+    // AUS - &  EINFAHREN =====================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*AUS - &  EINFAHREN =====================*)
+  // AUS - &  EINFAHREN =====================
   END_CASE
 ELSE
   IF (steplAusfahren > STEP_0_E) THEN
@@ -262,9 +259,7 @@ ELSE
     steplAusfahren := STEP_0_E;
   END_IF
 END_IF
-(*
-_________________________________________________________________________
- ************************ Zylinder - Aus- & Einfahren ********************
-_________________________________________________________________________
-*)
+//_________________________________________________________________________
+// ************************ Zylinder - Aus- & Einfahren ********************
+//_________________________________________________________________________
 END_ACTION

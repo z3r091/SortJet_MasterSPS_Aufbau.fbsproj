@@ -6,9 +6,9 @@
 }
 *)
 ACTION Referenz
-(***************************************************************************************************)
-(* AKTION REFERENZ *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION REFERENZ
+//-------------------------------------------------------------------------------------------------
 IF ( bpReferenz ) THEN
 
   // Ausnahmesituation
@@ -20,11 +20,11 @@ IF ( bpReferenz ) THEN
 
   
   CASE steplReferenz OF
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen
-           => Timer  
+           => Timer
       *)
       tonlEndschalterFreifahren( IN := FALSE );
       tofHardwareEndschalterFrei( IN := FALSE );
@@ -39,7 +39,7 @@ IF ( bpReferenz ) THEN
         steplReferenz := STEP_10_E;
       END_IF
 
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_10_E:
       tonlEndschalterFreifahren(IN := TRUE, PT:= T#10s);
 
@@ -69,7 +69,7 @@ IF ( bpReferenz ) THEN
       (* Fehlerbehandlung:
          - Endschalter wird nicht frei !
          - Antrieb
-       *)
+      *)
       IF ( tonlEndschalterFreifahren.Q
            AND ( Antrieb.bpMaxSchalterBelegt
                  OR Antrieb.bpMinSchalterBelegt ))
@@ -79,7 +79,7 @@ IF ( bpReferenz ) THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_20_E:
       (* Hinweis:
          - Erzwungene Pause, damit der Lenze Antrieb wieder ordnungsgemäß schaltet
@@ -91,7 +91,7 @@ IF ( bpReferenz ) THEN
       END_IF
 
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_30_E:
 
       IF (  NOT bpSensorEinlauf
@@ -108,7 +108,7 @@ IF ( bpReferenz ) THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_40_E:
       (* Hinweis:
          - Prozess abgeschlossen
@@ -118,15 +118,15 @@ IF ( bpReferenz ) THEN
         steplReferenz := STEP_1000_E;
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_900_E:
       bpFehler :=TRUE;
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*REFERENZ =============================*)
+  // REFERENZ =============================
   END_CASE
 ELSE
   IF( steplReferenz > STEP_0_E )THEN

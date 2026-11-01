@@ -6,26 +6,24 @@
 }
 *)
 ACTION Handfunktionen
-(***************************************************************************************************)
-(* AKTION HANDBETRIEB *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION HANDBETRIEB
+//-------------------------------------------------------------------------------------------------
 
 IF ( blBetriebsartHand ) THEN
 
-  (* Handfunktionen [Glastransport]
-     - Handplus
-     - Handminus
-  *)
+  // Handfunktionen [Glastransport]
+  //   - Handplus
+  //   - Handminus
   Glastransport.bpHandfahrenPlus  := (        ( dwlHandfunktionen.0 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1])
-                                       AND NOT ( dwlHandfunktionen.1 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] ) );  (* Bit 1 = Rollen / Riemen vor *)
+                                       AND NOT ( dwlHandfunktionen.1 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] ) );  // Bit 1 = Rollen / Riemen vor
 
   Glastransport.bpHandfahrenMinus := (        ( dwlHandfunktionen.1 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] )
-                                       AND NOT ( dwlHandfunktionen.0 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] ) );  (* Bit 2 = Rollen / Riemen zurück *)
+                                       AND NOT ( dwlHandfunktionen.0 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] ) );  // Bit 2 = Rollen / Riemen zurück
 
-  (* Handfunktionen [Kippen]:
-     - Positionieren auf Uebergabepositionen [Senkrecht 90 Grad / Waagerecht 0 Grad]
-     - Referenzieren
-  *)
+  // Handfunktionen [Kippen]:
+  //   - Positionieren auf Uebergabepositionen [Senkrecht 90 Grad / Waagerecht 0 Grad]
+  //   - Referenzieren
   Kippen.bpReferenz := ((  dwlHandfunktionen.4
                           OR bgVISUKippenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                          AND NOT (   dwlHandfunktionen.2
@@ -52,18 +50,16 @@ IF ( blBetriebsartHand ) THEN
                                             OR bgVISUKippenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]));
 
 
-  (* Handfunktion:
-     - Scheibenfuehrung \ Rollenleiste
-  Rollenleiste.bpStarteOeffnen    := (        ( dwlHandfunktionen.5 OR bgVISUW1GlastransportOeffnungMaximal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
-                                      AND NOT ( dwlHandfunktionen.6 OR bgVISUW1GlastransportOeffnungMinimal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]));
+  // Handfunktion:
+  //   - Scheibenfuehrung \ Rollenleiste
+  //Rollenleiste.bpStarteOeffnen    := (        ( dwlHandfunktionen.5 OR bgVISUW1GlastransportOeffnungMaximal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
+  //                                    AND NOT ( dwlHandfunktionen.6 OR bgVISUW1GlastransportOeffnungMinimal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]));
+  //
+  //Rollenleiste.bpStarteSchliessen := (        ( dwlHandfunktionen.6 OR bgVISUW1GlastransportOeffnungMinimal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
+  //                                    AND NOT ( dwlHandfunktionen.5 OR bgVISUW1GlastransportOeffnungMaximal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]));
 
-  Rollenleiste.bpStarteSchliessen := (        ( dwlHandfunktionen.6 OR bgVISUW1GlastransportOeffnungMinimal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
-                                      AND NOT ( dwlHandfunktionen.5 OR bgVISUW1GlastransportOeffnungMaximal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]));
-  *)
 
-
-  (* Handfunktionen [Querfahrt]:
-  *)
+  // Handfunktionen [Querfahrt]:
   Querfahrt.bpReferenz        := ( dwlHandfunktionen.9 OR bgVISUQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                                  AND NOT ( dwlHandfunktionen.7 OR dwlHandfunktionen.8 OR bgVISUQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] OR bgVISUQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] );
 

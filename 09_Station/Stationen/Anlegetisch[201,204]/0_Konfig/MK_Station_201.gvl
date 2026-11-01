@@ -9,9 +9,9 @@
 NAMESPACE MK_Station_201
 VAR_GLOBAL
 
-(***************************************************************************************************)
-(* MASCHINEPARAMETER: ANLEGETISCH *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// MASCHINEPARAMETER: ANLEGETISCH
+//-------------------------------------------------------------------------------------------------
 
   apgMKStation201 : Parameter_Station :=
     (
@@ -97,11 +97,11 @@ VAR_GLOBAL
                                               ),
       // stFremdanlage
       stGlasdaten                           := [(
-                                                 rlMinGlasLaenge                  := 350,  (* minimal zulässige GlasLänge *)
-                                                 rlMaxGlasLaenge                  := 4500, (* maximal zulässige GlasLänge *)
-                                                 rlMinGlasHoehe                   := 250,  (* minimal zulässige GlasHöhe *)
-                                                 rlMaxGlasHoehe                   := 2810, (* maximal zulässige GlasHöhe *)
-                                                 rlMinGlasDicke                   := 0.5,  (* minimal zulässige GlasDicke *)
+                                                 rlMinGlasLaenge                  := 350,  // minimal zulässige GlasLänge
+                                                 rlMaxGlasLaenge                  := 4500, // maximal zulässige GlasLänge
+                                                 rlMinGlasHoehe                   := 250,  // minimal zulässige GlasHöhe
+                                                 rlMaxGlasHoehe                   := 2810, // maximal zulässige GlasHöhe
+                                                 rlMinGlasDicke                   := 0.5,  // minimal zulässige GlasDicke
                                                  rlMaxGlasDicke                   := 24,//13    (* maximal zulässige GlasDicke *) 
                                                  rlLaengeMaxGlas                  := 0.0
                                                )]

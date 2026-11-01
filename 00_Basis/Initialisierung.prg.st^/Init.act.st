@@ -6,15 +6,15 @@
 }
 *)
 ACTION Init
-(***************************************************************************************************)
-(* AKTION: INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 
 IF ( bpInitialisierung
      AND NOT bpReset )
 THEN
   CASE steplInitialisierung OF
-    (* INITIALISIERUNG [REFERENZ] ===================================== *)
+    // INITIALISIERUNG [REFERENZ] =====================================
     STEP_0_E:
       IF ( tonlFreigabeReferenzierung.Q ) THEN
 
@@ -48,7 +48,7 @@ THEN
 
       END_IF
 
-    (* INITIALISIERUNG [REFERENZ] ===================================== *)
+    // INITIALISIERUNG [REFERENZ] =====================================
     STEP_5_E:
       (* Hinweis:
          - Referenzierung der Antriebe
@@ -88,7 +88,7 @@ THEN
 
       steplInitialisierung := STEP_100_E;
 
-    (* INITIALISIERUNG [REFERENZ] ===================================== *)
+    // INITIALISIERUNG [REFERENZ] =====================================
     STEP_100_E:
       (* Anmerkung:
          - Warten bis die Antriebe referneziert melden,wenn kein Fehlerauftritt muss die referenzierung der Antriebe wieder zurueck genommen werden.
@@ -143,7 +143,7 @@ THEN
       END_IF
 
       (* Fehlerbehandlung:
-         - Zeitlicheueberwachung, ob die Referenzierung der Antriebe in der angegebenen Zeit ablaeuft. 
+         - Zeitlicheueberwachung, ob die Referenzierung der Antriebe in der angegebenen Zeit ablaeuft.
       *)
       IF ( tonlWait_Init.Q ) THEN
 
@@ -199,15 +199,15 @@ THEN
 
       END_IF
 
-    (* INITIALISIERUNG [REFERENZ] ===================================== *)
+    // INITIALISIERUNG [REFERENZ] =====================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* INITIALISIERUNG [REFERENZ] ===================================== *)
+    // INITIALISIERUNG [REFERENZ] =====================================
     STEP_1000_E:
       M_Init_Ok := TRUE;
 
-  (* INITIALISIERUNG [REFERENZ] ===================================== *)
+  // INITIALISIERUNG [REFERENZ] =====================================
   END_CASE
 
 END_IF

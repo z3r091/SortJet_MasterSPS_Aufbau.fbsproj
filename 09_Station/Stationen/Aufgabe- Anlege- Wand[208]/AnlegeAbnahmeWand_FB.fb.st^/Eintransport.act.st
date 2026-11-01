@@ -6,17 +6,17 @@
 }
 *)
 ACTION Eintransport
-(***************************************************************************************************)
-(* AKTION: EINTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: EINTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF (  BasisStationsParameter.bEintransport[cWAND_1]
      AND blBetriebsartAutomatik )
 THEN
-  (* Fehlerbehandlung
+  (* Fehlerbehandlung:
      - Glastransport
      - Kippbaustein
      - Hoehenkontrolle
-   *)      
+  *)
   IF ( Glastransport.bpFehler ) THEN
     Glastransport.bpEintransport             := FALSE;
     Glastransport.bpEintransportRueckwaertig := FALSE;
@@ -44,7 +44,7 @@ THEN
   END_IF  
   
   CASE steplEintransport OF
-    (*EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_0_E:
       (* Hinweis:
          - Freigabe durch Quittierten Si-Kreis da ?
@@ -55,7 +55,7 @@ THEN
         steplEintransport := STEP_5_E;
       END_IF
 
-    (*EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_5_E:
       (* Hinweis:
          - Pruefen ob das Geblase aktiv ist
@@ -72,19 +72,18 @@ THEN
 
       END_IF
 
-    (*EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_10_E:
-      (* Hoehenkontrolle auf Position fahren
-         - Es findet keine Messung statt Station kippen
-         - Kippen auf 90 Grad [ Uebergabe zum Shuttle]
-      *)
+      // Hoehenkontrolle auf Position fahren
+      //   - Es findet keine Messung statt Station kippen
+      //   - Kippen auf 90 Grad [ Uebergabe zum Shuttle]
       IF (BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[cWAND_1]) THEN
 
         IF ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= wgMKScheibenDicke13mm ) THEN
           Dickenverstellung.epOeffnungsStellung := (* eZylinderStellung16mm *) eZylinderStellung29mm; (* Immer auf 29 mm öffnen *);
 
         ELSIF ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= wgMKScheibenDicke19mm ) THEN
-          Dickenverstellung.epOeffnungsStellung := (* eZylinderStellung23mm *)eZylinderStellung29mm; (* Immer auf 29 mm öffnen *)
+          Dickenverstellung.epOeffnungsStellung := (* eZylinderStellung23mm *)eZylinderStellung29mm; // Immer auf 29 mm öffnen
 
         ELSIF ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= wgMKScheibenDicke23mm ) THEN
           Dickenverstellung.epOeffnungsStellung := eZylinderStellung29mm;
@@ -105,7 +104,7 @@ THEN
 
       steplEintransport := STEP_20_E;
 
-    (*EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_20_E:
       (* Hinweis:
          - Hoehenkontrolle ist auf Position gefahren
@@ -121,10 +120,10 @@ THEN
         steplEintransport := STEP_30_E;
       END_IF
 
-    (*EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_30_E:
       (* Anmerkung:
-         - Abhandlung des Eintransport auf die Station ueber den Antriebs-Baustein 
+         - Abhandlung des Eintransport auf die Station ueber den Antriebs-Baustein
       *)
       Glastransport.pAuftrag := BasisStationsParameter.pAuftrag[cWAND_1];
       Glastransport.bpScheibenTrennen :=  BasisStationsParameter.bScheibenTrennen[cWAND_1];
@@ -134,7 +133,7 @@ THEN
 
       steplEintransport := STEP_40_E;
 
-    (*EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_40_E:
       (* Hinweis:
          - Eintransport abgeschlossen
@@ -145,7 +144,7 @@ THEN
         steplEintransport := STEP_100_E;
       END_IF
 
-    (*EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_100_E:
       (* Hinweis:
          - Station nach dem Eintransport abkippen
@@ -155,7 +154,7 @@ THEN
 
       steplEintransport := STEP_110_E;
 
-    (*EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_110_E:
 
       IF ( (Kippen.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1]) ) THEN
@@ -163,15 +162,15 @@ THEN
         steplEintransport := STEP_1000_E;
       END_IF
 
-    (*EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_1000_E:
       BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] := TRUE;
 
-  (*EINTRANSPORT ==================================*)
+  // EINTRANSPORT ==================================
   END_CASE
 ELSE
   IF ( steplEintransport > STEP_0_E ) THEN

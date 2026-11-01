@@ -6,15 +6,14 @@
 }
 *)
 ACTION Handfunktionen
-(***************************************************************************************************)
-(* AKTION HANDFUNKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION HANDFUNKTIONEN
+//-------------------------------------------------------------------------------------------------
 
 IF ( blBetriebsartHand ) THEN
 
-  (* Handfunktion:
-     - Gebläse an / aus 
-  *)
+  // Handfunktion:
+  //   - Gebläse an / aus
   IF ( dwlHandfunktionen.0
        OR bgVISUGeblaese[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] )
   THEN
@@ -28,10 +27,10 @@ IF ( blBetriebsartHand ) THEN
   
   // Glastranspoert
   Glastransport.bpHandfahrenPlus  := (         ( dwlHandfunktionen.1 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] )
-                                       AND NOT ( dwlHandfunktionen.2 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] ) );  (* Bit 1 = Glastransport / Glastransport vor *)
+                                       AND NOT ( dwlHandfunktionen.2 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] ) );  // Bit 1 = Glastransport / Glastransport vor
 
   Glastransport.bpHandfahrenMinus := (         ( dwlHandfunktionen.2 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] )
-                                       AND NOT ( dwlHandfunktionen.1 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] ) );  (* Bit 2 = Glastransport / Glastransport zurück *)
+                                       AND NOT ( dwlHandfunktionen.1 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] ) );  // Bit 2 = Glastransport / Glastransport zurück
 
 
   // Kippen
@@ -119,8 +118,7 @@ IF ( blBetriebsartHand ) THEN
 
   END_IF
   
-  (* Handfunktionen [Querfahrt]:
-  *)
+  // Handfunktionen [Querfahrt]:
   Querfahrt.bpReferenz        := ( dwlHandfunktionen.9 OR bgVISUQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                                  AND NOT ( dwlHandfunktionen.7 OR dwlHandfunktionen.8 OR bgVISUQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] OR bgVISUQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] );
 

@@ -6,9 +6,9 @@
 }
 *)
 ACTION Meldungen
-(***************************************************************************************************)
-(* BAUSTEIN: AUSNAHMESITUATION *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AUSNAHMESITUATION
+//-------------------------------------------------------------------------------------------------
 IF (bpStartHubAb OR bpStartHubAuf) THEN
 
   IF ( bpSensorEinlauf ) THEN
@@ -43,9 +43,8 @@ IF (bpStartHubAb OR bpStartHubAuf) THEN
 
 END_IF
 
-(* Ausnahmesituation:
-   - Beide Sensoren belegt
-*)
+// Ausnahmesituation:
+//   - Beide Sensoren belegt
 IF ( NOT in_bSensorNichtoben AND NOT in_bSensorNichtUnten ) THEN
   bpFehler := TRUE;
   wpFehlerNr := cMELDUNG_HUB_BEIDE_HUBSENSOREN_BELEGT;
@@ -88,7 +87,7 @@ IF ( NOT in_bLSBremse_OK ) THEN
   wpFehlerNr := cMELDUNG_HUB_BREMSE_NICHT_OK;
 
   (* Hinweis:
-    - Variablen zuruecksetzen
+     - Variablen zuruecksetzen
   *)
   bpStartHubAuf     := FALSE;
   bpStartHubAb      := FALSE;
@@ -101,7 +100,7 @@ IF ( NOT in_bMotorstarter_OK ) THEN
   wpFehlerNr := cMELDUNG_HUB_SICHERUNG_NICHT_OK;
 
   (* Hinweis:
-    - Variablen zuruecksetzen
+     - Variablen zuruecksetzen
   *)
   bpStartHubAuf     := FALSE;
   bpStartHubAb      := FALSE;

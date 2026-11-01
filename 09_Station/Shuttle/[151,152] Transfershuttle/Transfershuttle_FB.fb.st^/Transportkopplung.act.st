@@ -7,14 +7,14 @@
 *)
 {attribute 'excludefrombuild'}
 ACTION Transportkopplung
-(***************************************************************************************************)
-(* AKTION TRANSPORTKOPPLUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION TRANSPORTKOPPLUNG
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bTransportkopplung[cWAND_1] )
 THEN
 
   CASE steplTransportkopplung OF
-    (*TRANSPORTKOPPLUNG ==============================*)
+    // TRANSPORTKOPPLUNG ==============================
     STEP_0_E:
       (* Hinweis:
          - Status setzen (Resource reservieren)
@@ -26,11 +26,10 @@ THEN
       steplTransportkopplung := STEP_10_E;
 
 
-    (*TRANSPORTKOPPLUNG ==============================*)
+    // TRANSPORTKOPPLUNG ==============================
     STEP_10_E:
-      (* Hinwies:
-         - Pruefen der Ist-Position
-      *)
+      // Hinwies:
+      //   - Pruefen der Ist-Position
       IF ( blZielPositionErreicht ) THEN
         steplTransportkopplung := STEP_20_E;
       ELSE
@@ -41,14 +40,14 @@ THEN
         steplTransportkopplung := STEP_900_E;
       END_IF
 
-    (*TRANSPORTKOPPLUNG ==============================*)
+    // TRANSPORTKOPPLUNG ==============================
     STEP_20_E:
-      (* ---------------------------------------------------------------------------------------
-      //  OPTIONALE - ABFRAGE DES SICHERHEITSKREISES 
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  OPTIONALE - ABFRAGE DES SICHERHEITSKREISES
+      //
       //  Hinweis:
       // - Sicherstellen das der Sicherheitskreis geschlossen und nicht angefordert worden ist
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF (  Sicherheitskreis[2].bpSicherheitskreisGeschlossen
            AND NOT Sicherheitskreis[2].bpAnforderungSKGestellt )
@@ -61,10 +60,10 @@ THEN
 
       END_IF
 
-    (*TRANSPORTKOPPLUNG ==============================*)
+    // TRANSPORTKOPPLUNG ==============================
     STEP_30_E:
       (* Anmerkung:
-         - Shuttle steht an der gewuenschten Position und es kann mit dem Eintransport 
+         - Shuttle steht an der gewuenschten Position und es kann mit dem Eintransport
            begonnen werden
       *)
       Glastransport.pAuftrag        := BasisStationsParameter.pAuftrag[cWAND_1];
@@ -72,21 +71,21 @@ THEN
 
       steplTransportkopplung := STEP_1000_E;
 
-    (*TRANSPORTKOPPLUNG ==============================*)
+    // TRANSPORTKOPPLUNG ==============================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       BasisStationsParameter.bFehler  := TRUE;
       Glastransport.bpSlaveKopplung   := FALSE;
 
-    (*TRANSPORTKOPPLUNG ==============================*)
+    // TRANSPORTKOPPLUNG ==============================
     STEP_1000_E:
       (* Hinweis:
          - Warteschritt
       *)
       ;
 
-  (*TRANSPORTKOPPLUNG ==============================*)
+  // TRANSPORTKOPPLUNG ==============================
   END_CASE
 ELSE
 

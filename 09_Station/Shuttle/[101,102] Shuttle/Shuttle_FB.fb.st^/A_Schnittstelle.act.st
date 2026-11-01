@@ -6,9 +6,9 @@
 }
 *)
 ACTION A_Schnittstelle
-(***************************************************************************************************)
-(* SCHNITTSTELLE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// SCHNITTSTELLE
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Abhandlung des Ein-Aus- Transports [Setzen der Variablen das man bereit ist zum Glastransport]
 *)
@@ -32,14 +32,14 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
 
 END_FOR
 
-(* --------------------------------------------------------------------------------------- *)
-(* BAUSTEIN BASISPARAMETER *)
+// ---------------------------------------------------------------------------------------
+// BAUSTEIN BASISPARAMETER
 BasisStationsParameter.bIstReferenziert        :=     Querfahrt.Antrieb.bpIstReferenziert
                                                       AND Kippen.bpInReferenz;
 
 
 (* Hinweis:
-   - Status ob Glastransportiert wird 
+   - Status ob Glastransportiert wird
      => Gebrauch der Resourcen Glastransport
 *)
 blMerkerAuftragAktiv := FALSE;

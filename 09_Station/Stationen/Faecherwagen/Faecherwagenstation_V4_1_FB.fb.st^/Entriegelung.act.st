@@ -6,9 +6,9 @@
 }
 *)
 ACTION Entriegelung
-(***************************************************************************************************)
-(*  ENTRIEGELUNG AUF => FUER MULTIBELADUNG  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// ENTRIEGELUNG AUF => FUER MULTIBELADUNG
+//-------------------------------------------------------------------------------------------------
 
 IF ( blEntriegelungOeffnen 
    //AND bpUntergestellErkannt //safety eingang
@@ -17,7 +17,7 @@ IF ( blEntriegelungOeffnen
 THEN
   CASE steplEntriegelungOeffnen OF
 
-    (* ENTRIEGELUNG AUF  ============================*)
+    // ENTRIEGELUNG AUF  ============================
     STEP_0_E:
       blEntriegelungOeffnenDone := FALSE;
 
@@ -35,7 +35,7 @@ THEN
         END_IF
       END_IF
 
-    (* ENTRIEGELUNG AUF  ============================*)
+    // ENTRIEGELUNG AUF  ============================
     STEP_10_E:
       tonlEntriegelungAufZu( IN := in_bEntriegelungOffen, PT := T#0.5S );
       tonlTimeoutEntriegelungAufZu(IN := NOT in_bEntriegelungOffen, PT := TIMEOUT_SENSOR);
@@ -45,9 +45,8 @@ THEN
         steplEntriegelungOeffnen := STEP_1000_E;
       END_IF
 
-      (* FEHLER:
-         - Sensor
-      *)
+      // FEHLER:
+      //   - Sensor
 
       IF tonlTimeoutEntriegelungAufZu.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_ENTRIEGELUNG_NICHT_OFFEN;
@@ -61,13 +60,13 @@ THEN
       END_IF
 
 
-    (* ENTRIEGELUNG AUF  ============================*)
+    // ENTRIEGELUNG AUF  ============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       out_bEntriegelungAusfahren := FALSE;
 
 
-    (* ENTRIEGELUNG AUF  ============================*)
+    // ENTRIEGELUNG AUF  ============================
     STEP_1000_E:
       blEntriegelungOeffnenDone:=TRUE;
 
@@ -92,17 +91,17 @@ END_IF
 
 
 
-(***************************************************************************************************)
-(*  ENTRIEGELUNG AB => FUER MULTIBELADUNG  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// ENTRIEGELUNG AB => FUER MULTIBELADUNG
+//-------------------------------------------------------------------------------------------------
 
 IF blEntriegelungSchliessen 
-(*AND BasisStationsParameter.bFreigabe*)
+// AND BasisStationsParameter.bFreigabe
 //AND bpUntergestellErkannt //safety eingang
 THEN
   CASE steplEntriegelungSchliessen OF
 
-    (* ENTRIEGELUNG AB ============================*)
+    // ENTRIEGELUNG AB ============================
     STEP_0_E:
       blEntriegelungSchliessenDone := FALSE;
 
@@ -120,7 +119,7 @@ THEN
         END_IF
       END_IF
 
-    (* ENTRIEGELUNG AB  ============================*)
+    // ENTRIEGELUNG AB  ============================
     STEP_10_E:
       tonlEntriegelungAufZu( IN := in_bEntriegelungGeschlossen, PT := T#0.5S );
       tonlTimeoutEntriegelungAufZu(IN := NOT in_bEntriegelungGeschlossen, PT := TIMEOUT_SENSOR);
@@ -130,9 +129,8 @@ THEN
         steplEntriegelungSchliessen := STEP_1000_E;
       END_IF
 
-      (* FEHLER:
-         - Sensor
-      *)
+      // FEHLER:
+      //   - Sensor
 
       IF tonlTimeoutEntriegelungAufZu.Q THEN
 
@@ -147,17 +145,17 @@ THEN
       END_IF
 
 
-    (* ENTRIEGELUNG AB  ============================*)
+    // ENTRIEGELUNG AB  ============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       out_bEntriegelungEinfahren := FALSE;
 
 
-    (* ENTRIEGELUNG AB ============================*)
+    // ENTRIEGELUNG AB ============================
     STEP_1000_E:
       blEntriegelungSchliessenDone:=TRUE;
 
-  (* ENTRIEGELUNG AB ============================*)
+  // ENTRIEGELUNG AB ============================
   END_CASE
 END_IF
 

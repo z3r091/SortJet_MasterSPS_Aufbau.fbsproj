@@ -8,41 +8,41 @@
 FUNCTION_BLOCK Station_Anlegen
 VAR_INPUT
     
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset                : BOOL;
   bpAbbruchAnlegeauftrag : BOOL;
   
-  (* WORD *)
+  // WORD
   wStation               : WORD;
   
-  (* STRUKTUR *)
+  // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN*)
+  // BOOLEAN
   bpDone                 : BOOL;
   bpFehler               : BOOL;
 
 END_VAR
 VAR
   
-  (* BOOL *)
+  // BOOL
   blAktiv                : BOOL;
   
-  (* STEPS *)
+  // STEPS
   steplSchritt           : STEPS_TE;
 
 END_VAR
 
 blAktiv := TRUE;
-(***************************************************************************************************)
-(* STEUERUNG ANLEGEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG ANLEGEN
+//-------------------------------------------------------------------------------------------------
 IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
   CASE steplSchritt OF
-    (* ANLEGEN ================================================== *)
+    // ANLEGEN ==================================================
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -60,21 +60,21 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
         Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
       END_IF
 
-    (* ANLEGEN ================================================== *)
+    // ANLEGEN ==================================================
     STEP_10_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  PRUEFUNG DER GLASDATEN [AUFTRAGSDATEN]
-      //         
+      //
       //  Hinweis:
       // - Anlegeauftraege muessen immer auf richte GLas- Abmessungen geprueft werden
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
       steplSchritt := STEP_20_E;
 
       IF NOT AuftragsdatenPruefen( wStation, cWAND_1, Auftragsdaten) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (* ANLEGEN ================================================== *)
+    // ANLEGEN ==================================================
     STEP_20_E:
       (* Hinweis:
          - Starten des Anlegevorgangs
@@ -92,7 +92,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
        
       steplSchritt := STEP_30_E;
 
-    (* ANLEGEN ================================================== *)
+    // ANLEGEN ==================================================
     STEP_30_E:
       (* Hinweis:
          - Prüfen dass der Auftragsstatus sich geändert hat
@@ -103,9 +103,9 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
         steplSchritt := STEP_100_E;
       END_IF
 
-    (* ANLEGEN ================================================== *)
+    // ANLEGEN ==================================================
     STEP_100_E:
-      (* Hinweis
+      (* Hinweis:
          - Station hat ihren Vorgang abgeschlossen
       *)
       IF ( starrStationBasisParameter[wStation].bAnlegenAbgeschlossen ) THEN
@@ -143,11 +143,11 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (* ANLEGEN ================================================== *)
+    // ANLEGEN ==================================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* ANLEGEN ================================================== *)
+    // ANLEGEN ==================================================
     STEP_1000_E:
       bpDone := TRUE;
        
@@ -164,7 +164,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
 
       END_IF
 
-  (* ANLEGEN ================================================== *)
+  // ANLEGEN ==================================================
   END_CASE
 END_IF
 

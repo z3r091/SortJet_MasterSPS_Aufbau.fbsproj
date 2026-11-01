@@ -8,13 +8,13 @@
 {attribute 'allow_unqualified_access'}
 NAMESPACE Konfiguration_152
 VAR_CONFIG
-(***************************************************************************************************)
-(* KONFIGURATION: BAUSTEIN IO´s  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// KONFIGURATION: BAUSTEIN IO´s
+//-------------------------------------------------------------------------------------------------
          
   // Leitungsschutzschalter                                                                                  
-  Globale_Bausteine.aTransfershuttles[152].in_bLeitungsschutz_Querfahrt_OK                                     AT %IX1.0    : BOOL; (* OPTION *)
-  Globale_Bausteine.aTransfershuttles[152].in_bDruckluftWartungseinheitOK                                    AT %IX4.7    : BOOL; (* OPTION *) 
+  Globale_Bausteine.aTransfershuttles[152].in_bLeitungsschutz_Querfahrt_OK                                     AT %IX1.0    : BOOL; // OPTION
+  Globale_Bausteine.aTransfershuttles[152].in_bDruckluftWartungseinheitOK                                    AT %IX4.7    : BOOL; // OPTION 
           
 END_VAR
 

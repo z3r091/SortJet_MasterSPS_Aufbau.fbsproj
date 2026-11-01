@@ -6,7 +6,7 @@
 }
 *)
 ACTION SendMsg
-(*--------------------------Datenabgleich wird bei jeder veränderung ausgeführt--------------------------*)
+// --------------------------Datenabgleich wird bei jeder veränderung ausgeführt--------------------------
 IF ( bgTcpConnected AND (Client.hSocket <> RTS_INVALID_HANDLE)) THEN
 
   IF ( MemComp( ADR( SpsToTcp.wWatchdog ), ADR( SpsToMmiMem.wWatchdog ), SIZEOF( SpsToMmiMem.wWatchdog ) ) <> 0 ) THEN
@@ -49,17 +49,17 @@ IF ( NOT bgTcpConnected ) THEN
   wZyklenOff := 0;
 END_IF
 
-(*--------------------------Watchdog versenden-------------------------------------------------------*)
+// --------------------------Watchdog versenden-------------------------------------------------------
 IF bSendWatchDog AND (Client.hSocket <> RTS_INVALID_HANDLE) THEN
 
   HMI_PutWORD( ADR( mhMsgHeader.wType ), cMsg_Watchdog );
   HMI_PutWORD( ADR( mhMsgHeader.wLenght ), SIZEOF( SpsToTcp.wWatchdog ) );
   HMI_PutWORD( ADR( bBuffer_Send[0] ),SpsToTcp.wWatchdog );
 
-  (* Header Versenden *)
+  // Header Versenden
   diSent := TcpSendData( Client.hSocket, ADR( mhMsgHeader ), SIZEOF( mhMsgHeader), ADR(tcpLastError) );
   IF diSent = SIZEOF( mhMsgHeader ) THEN
-    (* Daten Versenden *)
+    // Daten Versenden
     diSent := TcpSendData( Client.hSocket, ADR( bBuffer_Send[0] ), SIZEOF( SpsToTcp.wWatchdog), ADR(tcpLastError) ) ;
     IF diSent = SIZEOF( SpsToTcp.wWatchdog ) THEN
       bSendWatchDog := FALSE;
@@ -77,16 +77,16 @@ IF bSendWatchDog AND (Client.hSocket <> RTS_INVALID_HANDLE) THEN
   END_IF
 END_IF
 
-(*--------------------------MsgBlock versenden-------------------------------------------------------*)
+// --------------------------MsgBlock versenden-------------------------------------------------------
 IF ( bSendMsgBlock AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
   wSendMsgBlock := wSendMsgBlock+1;
 
-  (*Daten umkopieren und für die Oberfläche vorbereiten*)
-  (*Es kann nicht der gesammte Msg Block 1:1 umkopiert werden weil es bei der Ekelmann Steuerung
-    nachdem 3 Word und vor dem letzen DWORD des MsgBlock 2 Buffer Bytes gibt*)
+  // Daten umkopieren und für die Oberfläche vorbereiten
+  // Es kann nicht der gesammte Msg Block 1:1 umkopiert werden weil es bei der Ekelmann Steuerung
+  //  nachdem 3 Word und vor dem letzen DWORD des MsgBlock 2 Buffer Bytes gibt
 
   HMI_PutWORD( ADR( mhMsgHeader.wType ), cMsg_MsgBlock );
-  HMI_PutWORD( ADR( mhMsgHeader.wLenght ), 332 );(*Original Byte Größe verwenden bei Sizeof() werden BufferBytes mitberechnet*)
+  HMI_PutWORD( ADR( mhMsgHeader.wLenght ), 332 );// Original Byte Größe verwenden bei Sizeof() werden BufferBytes mitberechnet
 
   HMI_PutWORD( ADR( bBuffer_Send[0] ),SpsToTcp.smbMessageBlock.wQuitCnt );
   HMI_PutWORD( ADR( bBuffer_Send[2] ),SpsToTcp.smbMessageBlock.wCnt1 );
@@ -102,7 +102,7 @@ IF ( bSendMsgBlock AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
   pbCurPos_Send := pbCurPos_Send +2 ;
   HMI_PutDWORD( pbCurPos_Send,dwCrcTemp );
 
-  (*Header versenden*)
+  // Header versenden
   diSent := TcpSendData( Client.hSocket, ADR( mhMsgHeader ), SIZEOF( mhMsgHeader ), ADR(tcpLastError)  );
   IF diSent = SIZEOF( mhMsgHeader ) THEN
     diSent := TcpSendData( Client.hSocket, ADR( bBuffer_Send[0] ), 332, ADR(tcpLastError)  );
@@ -118,7 +118,7 @@ IF ( bSendMsgBlock AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
   END_IF
 END_IF
 
-(*-------------------------- ConrolSystem versenden-------------------------------------------------------*)
+// -------------------------- ConrolSystem versenden-------------------------------------------------------
 IF ( bSendControlSystem AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
   wSendControlSystem := wSendControlSystem+1;
 
@@ -128,9 +128,9 @@ IF ( bSendControlSystem AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
   MemCopy( ADR( bBuffer_Send[0] ), ADR( SpsToTcp.aucControlSystem ), SIZEOF( SpsToTcp.aucControlSystem ) );
 
   diSent := TcpSendData( Client.hSocket, ADR( mhMsgHeader ), SIZEOF( mhMsgHeader ), ADR(tcpLastError)  );
-  (*Header Versenden*)
+  // Header Versenden
   IF diSent = SIZEOF( mhMsgHeader ) THEN
-    (*Daten versenden*)
+    // Daten versenden
     diSent := TcpSendData( Client.hSocket, ADR( bBuffer_Send[0] ), SIZEOF( SpsToTcp.aucControlSystem ), ADR(tcpLastError)  );
     IF diSent = SIZEOF( SpsToTcp.aucControlSystem ) THEN
       bSendControlSystem := FALSE;
@@ -144,7 +144,7 @@ IF ( bSendControlSystem AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
   END_IF
 END_IF
 
-(*-------------------------- IO's versenden-------------------------------------------------------*)
+// -------------------------- IO's versenden-------------------------------------------------------
 
 IF ( bSendIoSystem AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
   wSendIoSystem := wSendIoSystem+1;
@@ -154,10 +154,10 @@ IF ( bSendIoSystem AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
 
   MemCopy( ADR( bBuffer_Send[0] ), ADR( SpsToTcp.ioSystem ), SIZEOF( SpsToTcp.ioSystem ) );
 
-  (*Header versenden*)
+  // Header versenden
   diSent := TcpSendData( Client.hSocket, ADR( mhMsgHeader ), SIZEOF( mhMsgHeader ), ADR(tcpLastError) );
   IF diSent = SIZEOF( mhMsgHeader ) THEN
-    (*Daten Versenden*)
+    // Daten Versenden
     diSent := TcpSendData( Client.hSocket, ADR( bBuffer_Send[0] ), SIZEOF( SpsToTcp.ioSystem ), ADR(tcpLastError) );
     IF diSent = SIZEOF( SpsToTcp.ioSystem ) THEN
       bSendIoSystem := FALSE;
@@ -191,10 +191,10 @@ IF ( FALSE AND  bSendDrives AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
 
   END_FOR;
 
-  (*Header Versenden*)
+  // Header Versenden
   diSent := TcpSendData( Client.hSocket, ADR( mhMsgHeader ), SIZEOF( mhMsgHeader ), ADR(tcpLastError) );
   IF diSent = SIZEOF( mhMsgHeader ) THEN
-    (*Daten Versenden*)
+    // Daten Versenden
     diSent := TcpSendData( Client.hSocket, ADR( bBuffer_Send[0] ), SIZEOF( SpsToTcp.aAntrieb ), ADR(tcpLastError) );
     IF diSent = SIZEOF( SpsToTcp.aAntrieb ) THEN
       bSendDrives := FALSE;

@@ -6,14 +6,12 @@
 }
 *)
 FUNCTION TcpSendData : __XINT
-(*
-  Send data via TCP socket.
-  Return: Number of bytes sent or a value < 0 for an error (-1: gracefully closed; -2: error)
-*)
+//  Send data via TCP socket.
+//  Return: Number of bytes sent or a value < 0 for an error (-1: gracefully closed; -2: error)
 VAR_INPUT
-  diSocket: RTS_IEC_HANDLE; (* Socket-ID *)
-  pbyData: POINTER TO DWORD; (* Address of data buffer *)
-  diDataSize: DINT; (* Size of data to send *)
+  diSocket: RTS_IEC_HANDLE; // Socket-ID
+  pbyData: POINTER TO DWORD; // Address of data buffer
+  diDataSize: DINT; // Size of data to send
   tcpLastError : POINTER TO LINT;
 END_VAR
 VAR

@@ -15,15 +15,15 @@ VAR
 END_VAR
 
 i := smqSpsMessageQueue.iInzeig;
-j := (i+1) MOD 25;   (* 25 mögliche Queueeinträge möglich *)
+j := (i+1) MOD 25;   // 25 mögliche Queueeinträge möglich
 
-(* noch Platz frei ? *)
+// noch Platz frei ?
 IF( j = smqSpsMessageQueue.iOutzeig )THEN
-  (* Queue ist voll, älteste Nachricht wird verworfen *)
+  // Queue ist voll, älteste Nachricht wird verworfen
   smqSpsMessageQueue.iOutzeig := (j+1) MOD 25;
 END_IF;
 
-(* in jedem Fall eintragen *)
+// in jedem Fall eintragen
 smqSpsMessageQueue.asmSpsMessage[i] := psmSpsMessage;
 smqSpsMessageQueue.iInzeig  := j;
 

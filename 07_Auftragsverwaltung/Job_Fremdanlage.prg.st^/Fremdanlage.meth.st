@@ -24,26 +24,26 @@ END_VAR
 ptVorgaenger REF= getBasis( wVorgaenger );
 bVorgaengerShuttle := __ISVALIDREF( ptVorgaenger ) AND_THEN __ISVALIDREF( ptVorgaenger.stMKs ) AND_THEN ptVorgaenger.stMKs.stSchnittstellendaten.bStationIstShuttle;
 
-(***************************************************************************************************)
-(* STEUERUNG EINTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG EINTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( AuftragsdatenFremdanlage[wFremdanlage].wAuftrag = eStation_Eintransport ) THEN
   CASE astplEintransportFremdanlage[wFremdanlage] OF
-    (* EINTRANSPORT =========================================== *)
+    // EINTRANSPORT ===========================================
     STEP_0_E:
       (* Hinweis:
-         Ueberpruefung des Sicherheitskreises
+         - Ueberpruefung des Sicherheitskreises
       *)
       astplEintransportFremdanlage[wFremdanlage] := STEP_10_E;
 
-    (* EINTRANSPORT =========================================== *)
+    // EINTRANSPORT ===========================================
     STEP_10_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       // GLAS-SENDER PRUEFUNG
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       (* Hinweis:
          - Glas- Sender bestimmen und merken
@@ -55,14 +55,14 @@ IF ( AuftragsdatenFremdanlage[wFremdanlage].wAuftrag = eStation_Eintransport ) T
         astplEintransportFremdanlage[wFremdanlage] := STEP_30_E;
       END_IF
 
-    (* EINTRANSPORT =========================================== *)
+    // EINTRANSPORT ===========================================
     STEP_30_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       // PRUEFUNG AUFTRAGSSTATUS GLAS-SENDER
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
       IF bVorgaengerShuttle THEN
         ptAuftragsdatenSender REF= Job_Shuttle.AuftragsdatenWand[wVorgaenger, cWAND_1];
       ELSE
@@ -86,7 +86,7 @@ IF ( AuftragsdatenFremdanlage[wFremdanlage].wAuftrag = eStation_Eintransport ) T
 
       END_IF
 
-    (* EINTRANSPORT =========================================== *)
+    // EINTRANSPORT ===========================================
     STEP_40_E:
       IF bDurchtransportierendeStation THEN
         IF ptAuftragsdatenSender.wAuftrag <> eStation_Durchtransport THEN
@@ -110,15 +110,15 @@ IF ( AuftragsdatenFremdanlage[wFremdanlage].wAuftrag = eStation_Eintransport ) T
         END_IF
       END_IF
 
-    (* EINTRANSPORT =========================================== *)
+    // EINTRANSPORT ===========================================
     STEP_900_E:
       abpFehler[wAutomatikkreis] := TRUE;
 
-    (* EINTRANSPORT =========================================== *)
+    // EINTRANSPORT ===========================================
     STEP_1000_E:
       AuftragsdatenFremdanlage[wFremdanlage].wAuftrag := eStation_Kein_Auftrag;
 
-  (* EINTRANSPORT =========================================== *)
+  // EINTRANSPORT ===========================================
   END_CASE
 END_IF
 

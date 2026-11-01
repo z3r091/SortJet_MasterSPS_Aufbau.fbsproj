@@ -60,9 +60,9 @@ VAR
   out_bVerriegelungSchliessen              AT %Q* : BOOL;
   
 END_VAR
-(***************************************************************************************************)
-(* Initialisierung *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Initialisierung
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus  ) THEN
   blErsterZyklus := FALSE;
   
@@ -75,16 +75,16 @@ END_IF
 bpAbschrankung_Geschlossen:= BeweglicheAbschrankung.inStatusZylinderEingefahren;
   
  
-(***************************************************************************************************)
-(* BAUSTEIN: EINSTELLUNGEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: EINSTELLUNGEN
+//-------------------------------------------------------------------------------------------------
 // Timer
 tonlNotEinlass(IN := in_bTasterAnforderungOeffnen_1 OR in_bTasterAnforderungOeffnen_2, PT := T#7S);
 
 
-(***************************************************************************************************)
-(* BAUSTEIN: VERWALTUNG DER TÜREN  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: VERWALTUNG DER TÜREN
+//-------------------------------------------------------------------------------------------------
 //Anforderung zum betreten des Sicherheitskreises durch die entsprechende Tür
 IF( in_bTasterAnforderungOeffnen_1 OR in_bTasterAnforderungOeffnen_2 ) THEN
   bpAnforderungZumDurchgangOffnenGestellt := TRUE;
@@ -157,9 +157,9 @@ ELSE
   out_bVerriegelungOeffnen    := NOT out_bDurchgangSperren;
 END_IF
 
-(***************************************************************************************************)
-(* BAUSTEIN: AUSGAENGE  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AUSGAENGE
+//-------------------------------------------------------------------------------------------------
 // Meldung ob die Tuer geschlossen und verschlossen ist
 bpStatusDurchgangNichtGeschlossen       := NOT bpSKGeschlossen;
 out_bLeuchteTasterQuittierungDurchgang1 := out_bLeuchteTasterQuittierungDurchgang2 := NOT bpDurchgangGeschlossen;

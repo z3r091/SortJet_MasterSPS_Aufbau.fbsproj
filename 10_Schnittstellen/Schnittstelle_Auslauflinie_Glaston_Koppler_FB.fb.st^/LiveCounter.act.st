@@ -6,9 +6,9 @@
 }
 *)
 ACTION LiveCounter
-(***************************************************************************************************)
-(* AKTION: PRUEFEN DER SCHNITTSTELLE [LIVECOUNTER] *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: PRUEFEN DER SCHNITTSTELLE [LIVECOUNTER]
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
    - Werte- Vergleichen
@@ -79,8 +79,8 @@ IF ( tonlZeitLiveCounterNichtAequivalent.Q ) THEN
   wlLiveCounterSortJet   := INCW(wlLiveCounterSortJet,cWERTEBREICH_WORD);
 
   (* Hinweis:
-     - Ueberwachung zuruecksetzen 
-       => Sicherstellen das der naechste Verbindungsversuch erst nach 1 Sekunde wieder erfolgt 
+     - Ueberwachung zuruecksetzen
+       => Sicherstellen das der naechste Verbindungsversuch erst nach 1 Sekunde wieder erfolgt
   *)
   tonlZeitLiveCounterNichtAequivalent( IN := FALSE );
 

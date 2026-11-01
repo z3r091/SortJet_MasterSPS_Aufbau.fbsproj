@@ -31,7 +31,7 @@ IF NOT bgDeaktiviereWatchIOs THEN
       END_IF
 
     ELSE
-      (* Überwachung starten *)
+      // Überwachung starten
       aicgIoControl[ wpControlIndex ].tWatchStart := TIME();
     END_IF
   ELSE

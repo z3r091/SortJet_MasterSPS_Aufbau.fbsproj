@@ -6,12 +6,12 @@
 }
 *)
 ACTION Meldungen
-(* HINWEIS:
+(* Hinweis:
    - Instanzerkennung
      => Erleichterung der Zuweisung der WatchIO- Meldungen [es gibt 8 Instanzen = (0..7)]
-        - 0 erste Instanz
-        - 1 zweite Instanz
-        - etc. 
+   - 0 erste Instanz
+   - 1 zweite Instanz
+   - etc.
 *)
 wlIoccMeldungsNummer := BasisStationsParameter.stMKs.wMeldungsNummer;
 

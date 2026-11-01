@@ -6,9 +6,9 @@
 }
 *)
 ACTION Durchtransport
-(***************************************************************************************************)
-(* AKTION DURCHTRANSPORT  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION DURCHTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bDurchtransport[cWAND_1]
      AND blBetriebsartAutomatik )
 THEN
@@ -22,35 +22,35 @@ THEN
   
   
   CASE steplDurchtransport OF
-    (* DURCHTRANSPORT =============================*)
+    // DURCHTRANSPORT =============================
     STEP_0_E:
       BasisStationsParameter.bDurchtransportAbgeschlossen[cWAND_1] := FALSE;
 
       steplDurchtransport := STEP_10_E;
 
-    (*AUSTRANSPORT =============================*)
+    // AUSTRANSPORT =============================
     STEP_10_E:
       Glastransport.pAuftrag := BasisStationsParameter.pAuftrag[cWAND_1];
       Glastransport.bpDurchtransport := TRUE;
 
       steplDurchtransport := STEP_20_E;
 
-    (* DURCHTRANSPORT =============================*)
+    // DURCHTRANSPORT =============================
     STEP_20_E:
       IF ( Glastransport.bpDone )  THEN
         Glastransport.bpDurchtransport := FALSE;
         steplDurchtransport := STEP_1000_E;
       END_IF
 
-    (* DURCHTRANSPORT =============================*)
+    // DURCHTRANSPORT =============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (* DURCHTRANSPORT =============================*)
+    // DURCHTRANSPORT =============================
     STEP_1000_E:
       BasisStationsParameter.bDurchtransportAbgeschlossen[cWAND_1] := TRUE;
 
-  (* DURCHTRANSPORT =============================*)
+  // DURCHTRANSPORT =============================
   END_CASE
 ELSE
   IF (steplDurchtransport > STEP_0_E) THEN

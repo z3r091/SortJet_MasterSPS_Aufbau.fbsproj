@@ -8,13 +8,13 @@
 PROGRAM Job_Stationen
 VAR_INPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   abpReset                              : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
-  abpAbbruchAnlegeauftrag               : ARRAY [cERSTE_STATION..cLETZTE_STATION] OF BOOL; (* Hinweis: Wird ein Anlegeauftrag abgebrochen (M_SB0_MMI_SORTIERUNGCANCELQUEUEDATA) so darf die *)
+  abpAbbruchAnlegeauftrag               : ARRAY [cERSTE_STATION..cLETZTE_STATION] OF BOOL; // Hinweis: Wird ein Anlegeauftrag abgebrochen (M_SB0_MMI_SORTIERUNGCANCELQUEUEDATA) so darf die
   abpStarteParalleleBausteinAnsteuerung : ARRAY [cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
   abpResetTransportkopplung             : ARRAY [cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
 
-  (* AUJFTRAGSSPEICHER *)
+  // AUJFTRAGSSPEICHER
   AuftragsSpeicherStation     : ARRAY [cERSTE_STATION..cLETZTE_STATION]                          OF AuftragsSpeicherStationen;
   AuftragsSpeicherWand        : ARRAY [cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF AuftragsSpeicherStationen;
 
@@ -32,13 +32,13 @@ VAR_OUTPUT
 END_VAR
 VAR
 
-  (* BOOLEAN *)
+  // BOOLEAN
   blErsterZyklus   : BOOL := TRUE;
   ablFreigabeZurParalleleBausteinAnsteuerung : ARRAY [cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
   ablMerkerLetzteScheibeStation              : ARRAY [cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
   ablFehler                                  : ARRAY [cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
 
-  (* WORD *)
+  // WORD
   wlIndex,
   wlIndexWand,
   wlIndexReset,
@@ -47,10 +47,10 @@ VAR
   wlErsteScheibe : WORD;
 
   // INT 
-  ailScheibenZuQuittierenEintransport        : ARRAY [cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF INT; (* Scheibenzaehlung fuer die Quittierung *)
-  ailScheibenZuQuittierenAustransport        : ARRAY [cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF INT; (* Scheibenzaehlung fuer die Quittierung *)
+  ailScheibenZuQuittierenEintransport        : ARRAY [cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF INT; // Scheibenzaehlung fuer die Quittierung
+  ailScheibenZuQuittierenAustransport        : ARRAY [cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF INT; // Scheibenzaehlung fuer die Quittierung
 
-  (* TRIGGER *)
+  // TRIGGER
   rtlFehler          : ARRAY[cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF R_TRIG;
   rtlStartAutomatik  : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF R_TRIG;
 
@@ -74,21 +74,21 @@ VAR
 END_VAR
 VAR CONSTANT
 
-  (* Stationen die nicht in den dynamischen Methoden aufgerufen werden dürfen *)  
+  // Stationen die nicht in den dynamischen Methoden aufgerufen werden dürfen
   awcAusgeschlosseneStationen : ARRAY[1..10] OF WORD := [ 218, 9(cSTATION_DEFAULT) ];
 
 END_VAR
-(***************************************************************************************************)
-(* BAUSTEIN: INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 IF blErsterZyklus THEN
   blErsterZyklus := FALSE;
 
 END_IF
 
-(***************************************************************************************************)
-(* Transportkopplungen zurücksetzen, wenn vom Master gefordert  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Transportkopplungen zurücksetzen, wenn vom Master gefordert
+//-------------------------------------------------------------------------------------------------
 
 FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
   FOR wlIndexWand := cWAND_1 TO cANZAHL_WAENDE DO
@@ -102,9 +102,9 @@ FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
 END_FOR
 
 
-(***************************************************************************************************)
-(* BAUSTEIN: AKTIONEN  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AKTIONEN
+//-------------------------------------------------------------------------------------------------
 
 Status_Automatikkreis_Start();
 

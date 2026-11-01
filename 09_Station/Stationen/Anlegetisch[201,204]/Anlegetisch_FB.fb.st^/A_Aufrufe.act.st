@@ -6,9 +6,9 @@
 }
 *)
 ACTION A_Aufrufe
-(***************************************************************************************************)
-(* AUFRUFE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFRUFE
+//-------------------------------------------------------------------------------------------------
 // Glastransport
 Glastransport( stStationsNummern              := BasisStationsParameter.stMKs.stStationsNummern,
                bpFreigabe                     := BasisStationsParameter.bFreigabe AND NOT ( in_bTasterAnforderungKippen OR in_bTasterAnforderungKippen_OP ),

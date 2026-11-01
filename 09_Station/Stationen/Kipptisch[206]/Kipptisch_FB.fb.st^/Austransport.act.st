@@ -6,9 +6,9 @@
 }
 *)
 ACTION Austransport
-(***************************************************************************************************)
-(* AKTION AUSTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION AUSTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bAustransport[cWAND_1]
      AND blBetriebsartAutomatik )
 THEN
@@ -38,7 +38,7 @@ THEN
 
 
   CASE steplAustransport OF
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen
@@ -52,14 +52,14 @@ THEN
       IF ( blZielPositionErreicht ) THEN
         steplAustransport := STEP_10_E;   
       END_IF
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_10_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  KIPP- POSITION BESTIMMEN
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
       
       Glastransport.pAuftrag       := BasisStationsParameter.pAuftrag[cWAND_1];
       Glastransport.bpVortransport := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bVortransport;
@@ -89,7 +89,7 @@ THEN
 
       END_CASE
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_20_E:
       (* Hinweis:
          - "Auf" -kippen abgeschlossen
@@ -101,7 +101,7 @@ THEN
         steplAustransport := STEP_40_E;
       END_IF
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_30_E:
       (* Hinweis:
          - "Ab" -kippen abgeschlossen
@@ -113,10 +113,10 @@ THEN
         steplAustransport := STEP_40_E;
       END_IF
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_40_E:
       (* Anmerkung:
-         - Vortransport ggf. vorzeitigabbrechen wenn er Glas-Empfaenger schon bereit zum  
+         - Vortransport ggf. vorzeitigabbrechen wenn er Glas-Empfaenger schon bereit zum
       *)
       Glastransport.bpAbbruchVortransport := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1].bBereitZumEintransport;
       
@@ -126,21 +126,21 @@ THEN
         steplAustransport := STEP_100_E;
       END_IF
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  STARTEN DES AUSTRANSPORTS
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       Glastransport.pAuftrag        := BasisStationsParameter.pAuftrag[cWAND_1];
       Glastransport.bpAustransport  := TRUE;
 
       steplAustransport := STEP_110_E;
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_110_E:
       IF (  Glastransport.bpFreigabeFremdprozess
            AND BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBIT_SRCSTATION_EMPTY )
@@ -162,7 +162,7 @@ THEN
         steplAustransport := STEP_120_E;
       END_IF
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_120_E:
       (* Hinweis:
          - Station in die Grundstellung kippen
@@ -188,7 +188,7 @@ THEN
 
       END_IF
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_130_E:
       IF ( Kippen.bpStartKippenAuf ) THEN
 
@@ -228,31 +228,31 @@ THEN
 
       END_IF
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_200_E:
       (* Hinweis:
-         - Die Position der Antriebe NULLEN um Zaehlerueberlauf (des Gebers) zu verhindern 
+         - Die Position der Antriebe NULLEN um Zaehlerueberlauf (des Gebers) zu verhindern
       *)
       Glastransport.bpReferenz := TRUE;
 
       steplAustransport := STEP_210_E;
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_210_E:
       IF (  Glastransport.bpDone ) THEN
         Glastransport.bpReferenz := FALSE;
         steplAustransport := STEP_1000_E;
       END_IF
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_1000_E:
       BasisStationsParameter.bAustransportAbgeschlossen[cWAND_1] := TRUE;
 
-  (*AUSTRANSPORT =========================*)
+  // AUSTRANSPORT =========================
   END_CASE
 ELSE
 

@@ -6,7 +6,7 @@
 }
 *)
 ACTION Reset
-(* RESET *)
+// RESET
 IF ( tonlMaxWarteAufResetErfolgreich.Q ) THEN
   BasisStationsParameter.wFehlerNummer := cMELDUNG_STATION_NICHT_ZURUECKGESETZT;
   SpsError( eFehler_Station, cMELDUNG_STATION_NICHT_ZURUECKGESETZT, BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS), BasisStationsparameter.awFehlerInformationen );
@@ -15,7 +15,7 @@ END_IF
 IF blBetriebsartReset THEN
 
   CASE steplStationReset OF
-    (*RESET ===================================== *)
+    // RESET =====================================
     STEP_0_E:
       BasisStationsParameter.bEintransport[1] := FALSE;
       BasisStationsParameter.bAustransport[1] := FALSE;
@@ -39,7 +39,7 @@ IF blBetriebsartReset THEN
 
       steplStationReset := STEP_100_E;
 
-    (*RESET ===================================== *)
+    // RESET =====================================
     STEP_100_E:
       blRFID_DataWasValid                  := FALSE;
       blLineareinheitVor                 := FALSE;
@@ -60,12 +60,12 @@ IF blBetriebsartReset THEN
       wpFehlerNr := 0;
       steplStationReset := STEP_1000_E;
 
-    (*RESET ===================================== *)
+    // RESET =====================================
     STEP_1000_E:
       bpDone := TRUE;
       BasisStationsParameter.bReset := FALSE;
 
-  (*RESET ===================================== *)
+  // RESET =====================================
   END_CASE
 ELSE
 

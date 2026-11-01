@@ -6,13 +6,13 @@
 }
 *)
 ACTION Kipparme
-(***************************************************************************************************)
-(* AKTION KIPPARME *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION KIPPARME
+//-------------------------------------------------------------------------------------------------
 rtlKipparmeAnschlaegeAuf(CLK := in_bTasterKipparmeAuf);
 rtlKipparmeAnschlaegeAb(CLK := in_bTasterKipparmeAb);
 
-(* Anschläge ein/aus fahren *)
+// Anschläge ein/aus fahren
 IF rtlKipparmeAnschlaegeAuf.Q
    AND NOT in_bSensorKipparmeAnschlaegeOben
 THEN
@@ -27,7 +27,7 @@ THEN
   outbKipparmeAnschlaegeAuf := FALSE;
 END_IF
 
-(* Kipparme auf fahren *)
+// Kipparme auf fahren
 IF in_bTasterKipparmeAuf
    AND in_bSensorKipparmeAnschlaegeOben
    AND in_bSensorKipparmeNichtOben
@@ -39,7 +39,7 @@ ELSE
   outbKipparmeAuf := FALSE;
 END_IF
 
-(* Kipparme ab fahren *)
+// Kipparme ab fahren
 IF in_bTasterKipparmeAb
    AND in_bSensorKipparmeNichtUnten
    AND NOT in_bTasterKipparmeAuf

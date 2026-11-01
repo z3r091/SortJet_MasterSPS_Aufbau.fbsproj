@@ -10,14 +10,18 @@ VAR_INPUT
   wStation : WORD;
 END_VAR
 
-(*****************************************************9**********************************************)
-(* STEUERUNG: TRANSPORTKOPPLUNG *)
-(***************************************************************************************************)
+// ****************************************************9*********************************************
+// STEUERUNG: TRANSPORTKOPPLUNG
+// *************************************************************************************************
 
 IF ( AuftragsdatenTransfershuttle[wStation].wAuftrag = eStation_Transportkopplung ) THEN
-  (* Hinweis: Aufruf der Schrittkette *)
+  (* Hinweis:
+     - Aufruf der Schrittkette
+  *)
   TS_Transportkopplung[wStation]( Auftragsdaten := AuftragsdatenTransfershuttle[wStation], wStation := wStation );
-  (* Hinweis: Fehler-Auswertung *)
+  (* Hinweis:
+     - Fehler-Auswertung
+  *)
   blFehlerTS[wStation] := TS_Transportkopplung[wStation].bpFehler;
   IF rtlFehlerTS[wStation].Q THEN
     CASE AuftragsdatenTransfershuttle[wStation - 1].wAuftrag OF
@@ -54,31 +58,41 @@ IF ( AuftragsdatenTransfershuttle[wStation].wAuftrag = eStation_Transportkopplun
     END_CASE
   END_IF
 ELSE
-  (* Hinweis: Reset der Schrittkette *)
+  (* Hinweis:
+     - Reset der Schrittkette
+  *)
   IF ( TS_Transportkopplung[wStation].steplSchritt <> STEP_0_E ) THEN 
     TS_Transportkopplung[wStation](bpReset := TRUE);
   END_IF
 END_IF
 
-(*****************************************************9**********************************************)
-(* STEUERUNG: QUERFAHRT *)
-(***************************************************************************************************)
+// ****************************************************9*********************************************
+// STEUERUNG: QUERFAHRT
+// *************************************************************************************************
 
 IF ( AuftragsdatenTransfershuttle[wStation].wAuftrag = eStation_Vorabpositionierung ) THEN
-  (* Hinweis: Aufruf der Schrittkette *)
+  (* Hinweis:
+     - Aufruf der Schrittkette
+  *)
   TS_Querfahrt[wStation]( Auftragsdaten := AuftragsdatenTransfershuttle[wStation], wStation := wStation );
-  (* Hinweis: Abschluss der Schrittkette *)
+  (* Hinweis:
+     - Abschluss der Schrittkette
+  *)
   IF TS_Querfahrt[wStation].bpDone THEN
     AuftragsdatenTransfershuttle[wStation] := Querfahrt[wStation].Auftragsdaten;
     TS_Querfahrt[wStation](bpReset := TRUE);
   END_IF
-  (* Hinweis: Fehler-Auswertung *)
+  (* Hinweis:
+     - Fehler-Auswertung
+  *)
   blFehlerTS[wStation] := TS_Querfahrt[wStation].bpFehler;
   IF rtlFehlerTS[wStation].Q THEN
     AutomatikFehlerSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler);
   END_IF
 ELSE
-  (* Hinweis: Reset der Schrittkette *)
+  (* Hinweis:
+     - Reset der Schrittkette
+  *)
   IF ( TS_Querfahrt[wStation].steplSchritt <> STEP_0_E ) THEN 
     TS_Querfahrt[wStation](bpReset := TRUE);
   END_IF

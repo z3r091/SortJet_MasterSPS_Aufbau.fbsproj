@@ -13,8 +13,8 @@ END_VAR
 
 VAR_GLOBAL CONSTANT
 
-(* ================================================= NOTAUS ============================================================ *)
-  ioccNotAusBetaetigt                                : WORD := 1; (* Not-Aus Allgemein ausgeloest *)
+// ================================================= NOTAUS ============================================================
+  ioccNotAusBetaetigt                                : WORD := 1; // Not-Aus Allgemein ausgeloest
 
   ioccNotausAnOP1Betaetigt                           : WORD := 2;
   ioccNotausAnOP2Betaetigt                           : WORD := 3;
@@ -51,22 +51,22 @@ VAR_GLOBAL CONSTANT
   ioccNotaus10Betaetigt                              : WORD := 44;
 
   
-(* ================================================= SICHERHEITSKREISE ================================================= *)
-  ioccSiKreis1                                       : WORD := 60; (* Sicherheitskreis 1 ausgeloest *)
-  ioccSiKreis2                                       : WORD := 61; (* Sicherheitskreis 2 ausgeloest *)
-  ioccSiKreis3                                       : WORD := 62; (* Sicherheitskreis 3 ausgeloest *)
-  ioccSiKreis4                                       : WORD := 63; (* Sicherheitskreis 4 ausgeloest *)
-  ioccSiKreis5                                       : WORD := 64; (* Sicherheitskreis 5 ausgeloest *)
-  ioccSiKreis6                                       : WORD := 65; (* Sicherheitskreis 6 ausgeloest *)
-  ioccSiKreis7                                       : WORD := 66; (* Sicherheitskreis 7 ausgeloest *)
-  ioccSiKreis8                                       : WORD := 67; (* Sicherheitskreis 8 ausgeloest *)
-  ioccSiKreis9                                       : WORD := 68; (* Sicherheitskreis 9 ausgeloest *)
-  ioccSiKreis10                                      : WORD := 69; (* Sicherheitskreis 10 ausgeloest *)
+// ================================================= SICHERHEITSKREISE =================================================
+  ioccSiKreis1                                       : WORD := 60; // Sicherheitskreis 1 ausgeloest
+  ioccSiKreis2                                       : WORD := 61; // Sicherheitskreis 2 ausgeloest
+  ioccSiKreis3                                       : WORD := 62; // Sicherheitskreis 3 ausgeloest
+  ioccSiKreis4                                       : WORD := 63; // Sicherheitskreis 4 ausgeloest
+  ioccSiKreis5                                       : WORD := 64; // Sicherheitskreis 5 ausgeloest
+  ioccSiKreis6                                       : WORD := 65; // Sicherheitskreis 6 ausgeloest
+  ioccSiKreis7                                       : WORD := 66; // Sicherheitskreis 7 ausgeloest
+  ioccSiKreis8                                       : WORD := 67; // Sicherheitskreis 8 ausgeloest
+  ioccSiKreis9                                       : WORD := 68; // Sicherheitskreis 9 ausgeloest
+  ioccSiKreis10                                      : WORD := 69; // Sicherheitskreis 10 ausgeloest
 
-(* ================================================= Meldungen ================================================= *)
+// ================================================= Meldungen =================================================
   ioccEtherCatNotRunning                             : WORD := 70; 
   
-(* ================================================= STATUS ANLAGE ================================================= *)
+// ================================================= STATUS ANLAGE =================================================
   ioccCAB2_Klimageraet_Nicht_OK                      : WORD := 100;
   ioccCAB2_Netzteil_24V_Nicht_Ok                     : WORD := 101; 
   ioccCAB2_LS_24V_Schaltschrank_Nicht_OK             : WORD := 102;
@@ -77,7 +77,7 @@ VAR_GLOBAL CONSTANT
   ioccCAB2_FW_Abrollsicherung_Nicht_OK               : WORD := 107;// todo Text ergänzen
 
 
-(* ================================================= DRUCKLUFT ========================================================= *)
+// ================================================= DRUCKLUFT =========================================================
   ioccDruckluft1                                     : WORD := 120;
   ioccDruckluft2                                     : WORD := 121;
   ioccDruckluft3                                     : WORD := 122;
@@ -86,26 +86,26 @@ VAR_GLOBAL CONSTANT
   ioccDruckluft6                                     : WORD := 125;
 
 
-(* ================================================= BETRIEBSSPTOP ===================================================== *)
-  ioccBetriebsstop1                                  : WORD := 130; (* Betriebsstopp ausgeloest Kreis 1 *)
-  ioccBetriebsstop2                                  : WORD := 131; (* Betriebsstopp ausgeloest Kreis 2 *)
-  ioccBetriebsstop3                                  : WORD := 132; (* Betriebsstopp ausgeloest Kreis 3 *)
-  ioccBetriebsstop4                                  : WORD := 133; (* Betriebsstopp ausgeloest Kreis 4 *)
-  ioccBetriebsstop5                                  : WORD := 134; (* Betriebsstopp ausgeloest Kreis 5 *)
-  ioccBetriebsstop6                                  : WORD := 135; (* Betriebsstopp ausgeloest Kreis 6 *)
-  ioccBetriebsstop7                                  : WORD := 136; (* Betriebsstopp ausgeloest Kreis 7 *)
-  ioccBetriebsstop8                                  : WORD := 137; (* Betriebsstopp ausgeloest Kreis 8 *)
-  ioccBetriebsstop9                                  : WORD := 138; (* Betriebsstopp ausgeloest Kreis 9 *)
-  ioccBetriebsstop10                                 : WORD := 139; (* Betriebsstopp ausgeloest Kreis 10 *)
+// ================================================= BETRIEBSSPTOP =====================================================
+  ioccBetriebsstop1                                  : WORD := 130; // Betriebsstopp ausgeloest Kreis 1
+  ioccBetriebsstop2                                  : WORD := 131; // Betriebsstopp ausgeloest Kreis 2
+  ioccBetriebsstop3                                  : WORD := 132; // Betriebsstopp ausgeloest Kreis 3
+  ioccBetriebsstop4                                  : WORD := 133; // Betriebsstopp ausgeloest Kreis 4
+  ioccBetriebsstop5                                  : WORD := 134; // Betriebsstopp ausgeloest Kreis 5
+  ioccBetriebsstop6                                  : WORD := 135; // Betriebsstopp ausgeloest Kreis 6
+  ioccBetriebsstop7                                  : WORD := 136; // Betriebsstopp ausgeloest Kreis 7
+  ioccBetriebsstop8                                  : WORD := 137; // Betriebsstopp ausgeloest Kreis 8
+  ioccBetriebsstop9                                  : WORD := 138; // Betriebsstopp ausgeloest Kreis 9
+  ioccBetriebsstop10                                 : WORD := 139; // Betriebsstopp ausgeloest Kreis 10
 
 
-(* ================================================= INITIALISIERUNG ================================================= *)
-  ioccInitAktiv                                      : WORD := 140;   (* Initialisierung aktiv *)
+// ================================================= INITIALISIERUNG =================================================
+  ioccInitAktiv                                      : WORD := 140;   // Initialisierung aktiv
 
-  ioccInitBlockNotAus                                : WORD := 141;  (* Initialisierung blockiert Not-Aus *)
-  ioccInitBlockDruckluft                             : WORD := 142;  (* Initialisierung blockiert Druckluft *)
-  ioccInitBlockPowerrail                             : WORD := 143;  (* Initialisierung blockiert Stromschiene *)
-  ioccInitBlockSK                                    : WORD := 144;  (* Initialisierung blockiert durch SK *)
+  ioccInitBlockNotAus                                : WORD := 141;  // Initialisierung blockiert Not-Aus
+  ioccInitBlockDruckluft                             : WORD := 142;  // Initialisierung blockiert Druckluft
+  ioccInitBlockPowerrail                             : WORD := 143;  // Initialisierung blockiert Stromschiene
+  ioccInitBlockSK                                    : WORD := 144;  // Initialisierung blockiert durch SK
   
   
   ioccInit101Referenz                                : WORD := 150;
@@ -161,16 +161,16 @@ VAR_GLOBAL CONSTANT
   ioccInit229Referenz                                : WORD := 208;
 
 
-(* ================================================= SYSTEM CHECK =================================================== *)
-  ioccCheckWaitInit                                  : WORD := 210; (* Systemcheck wird nach der Initialisierung gestartet *)
-  ioccCheckBlockDruckluft                            : WORD := 211; (* Druckluft blockt den SystemCheck *)
-  ioccCheckBlockPowerrail                            : WORD := 212;  (* Initialisierung blockiert Stromschiene *)
+// ================================================= SYSTEM CHECK ===================================================
+  ioccCheckWaitInit                                  : WORD := 210; // Systemcheck wird nach der Initialisierung gestartet
+  ioccCheckBlockDruckluft                            : WORD := 211; // Druckluft blockt den SystemCheck
+  ioccCheckBlockPowerrail                            : WORD := 212;  // Initialisierung blockiert Stromschiene
   
-  ioccCheckWaitSK_AK1                                : WORD := 220; (* AK 1 durch einen SK geblockt *)
-  ioccCheckWaitSK_AK2                                : WORD := 221; (* AK 2 durch einen SK geblockt *)
-  ioccCheckWaitSK_AK3                                : WORD := 222; (* AK 3 durch einen SK geblockt *)
+  ioccCheckWaitSK_AK1                                : WORD := 220; // AK 1 durch einen SK geblockt
+  ioccCheckWaitSK_AK2                                : WORD := 221; // AK 2 durch einen SK geblockt
+  ioccCheckWaitSK_AK3                                : WORD := 222; // AK 3 durch einen SK geblockt
 
-(* ================================================= TUER [EUCHNER] ================================================================ *)
+// ================================================= TUER [EUCHNER] ================================================================
   ioccTuer1NichtGeschlossen                           : WORD := 230;
   ioccTuer2NichtGeschlossen                           : WORD := 231;
   ioccTuer3NichtGeschlossen                           : WORD := 232;
@@ -183,32 +183,32 @@ VAR_GLOBAL CONSTANT
   ioccTuer10NichtGeschlossen                          : WORD := 239;
 
 
-(* ================================================= VERFAHRFREIGABE SHUTTLE  ====================================== *)
-  ioccShuttle1VerfahrfreigabeFehlt                   : WORD := 240; (* Shuttle 1  ->  Verfahrfreigabe Querfahrt *)
-  ioccShuttle2VerfahrfreigabeFehlt                   : WORD := 241; (* Shuttle 2  ->  Verfahrfreigabe Querfahrt *)
-  ioccShuttle3VerfahrfreigabeFehlt                   : WORD := 242; (* Shuttle 3  ->  Verfahrfreigabe Querfahrt *)
-  ioccShuttle4VerfahrfreigabeFehlt                   : WORD := 243; (* Shuttle 4  ->  Verfahrfreigabe Querfahrt *)
-  ioccShuttle5VerfahrfreigabeFehlt                   : WORD := 244; (* Shuttle 5  ->  Verfahrfreigabe Querfahrt *)
-  ioccShuttle6VerfahrfreigabeFehlt                   : WORD := 245; (* Shuttle 6  ->  Verfahrfreigabe Querfahrt *)
-  ioccShuttle7VerfahrfreigabeFehlt                   : WORD := 246; (* Shuttle 7  ->  Verfahrfreigabe Querfahrt *)
-  ioccShuttle8VerfahrfreigabeFehlt                   : WORD := 247; (* Shuttle 8  ->  Verfahrfreigabe Querfahrt *)
-  ioccShuttle9VerfahrfreigabeFehlt                   : WORD := 248; (* Shuttle 9  ->  Verfahrfreigabe Querfahrt *)
-  ioccShuttle10VerfahrfreigabeFehlt                  : WORD := 249; (* Shuttle 10 ->  Verfahrfreigabe Querfahrt *)
+// ================================================= VERFAHRFREIGABE SHUTTLE  ======================================
+  ioccShuttle1VerfahrfreigabeFehlt                   : WORD := 240; // Shuttle 1  ->  Verfahrfreigabe Querfahrt
+  ioccShuttle2VerfahrfreigabeFehlt                   : WORD := 241; // Shuttle 2  ->  Verfahrfreigabe Querfahrt
+  ioccShuttle3VerfahrfreigabeFehlt                   : WORD := 242; // Shuttle 3  ->  Verfahrfreigabe Querfahrt
+  ioccShuttle4VerfahrfreigabeFehlt                   : WORD := 243; // Shuttle 4  ->  Verfahrfreigabe Querfahrt
+  ioccShuttle5VerfahrfreigabeFehlt                   : WORD := 244; // Shuttle 5  ->  Verfahrfreigabe Querfahrt
+  ioccShuttle6VerfahrfreigabeFehlt                   : WORD := 245; // Shuttle 6  ->  Verfahrfreigabe Querfahrt
+  ioccShuttle7VerfahrfreigabeFehlt                   : WORD := 246; // Shuttle 7  ->  Verfahrfreigabe Querfahrt
+  ioccShuttle8VerfahrfreigabeFehlt                   : WORD := 247; // Shuttle 8  ->  Verfahrfreigabe Querfahrt
+  ioccShuttle9VerfahrfreigabeFehlt                   : WORD := 248; // Shuttle 9  ->  Verfahrfreigabe Querfahrt
+  ioccShuttle10VerfahrfreigabeFehlt                  : WORD := 249; // Shuttle 10 ->  Verfahrfreigabe Querfahrt
   
   
-  (* ================================================= VERFAHRFREIGABE TRANSSHUTTLE  ====================================== *)
-  ioccTransfershuttle1VerfahrfreigabeFehlt           : WORD := 250; (* TRANSSHUTTLE 1 ->  Verfahrfreigabe Querfahrt *)
-  ioccTransfershuttle2VerfahrfreigabeFehlt           : WORD := 251; (* TRANSSHUTTLE 2 ->  Verfahrfreigabe Querfahrt *)
-  ioccTransfershuttle3VerfahrfreigabeFehlt           : WORD := 252; (* TRANSSHUTTLE 3 ->  Verfahrfreigabe Querfahrt *)
-  ioccTransfershuttle4VerfahrfreigabeFehlt           : WORD := 253; (* TRANSSHUTTLE 4 ->  Verfahrfreigabe Querfahrt *)
-  ioccTransfershuttle5VerfahrfreigabeFehlt           : WORD := 254; (* TRANSSHUTTLE 5 ->  Verfahrfreigabe Querfahrt *)
-  ioccTransfershuttle6VerfahrfreigabeFehlt           : WORD := 255; (* TRANSSHUTTLE 6 ->  Verfahrfreigabe Querfahrt *)
-  ioccTransfershuttle7VerfahrfreigabeFehlt           : WORD := 256; (* TRANSSHUTTLE 7 ->  Verfahrfreigabe Querfahrt *)
-  ioccTransfershuttle8VerfahrfreigabeFehlt           : WORD := 257; (* TRANSSHUTTLE 8 ->  Verfahrfreigabe Querfahrt *)
-  ioccTransfershuttle9VerfahrfreigabeFehlt           : WORD := 258; (* TRANSSHUTTLE 9 ->  Verfahrfreigabe Querfahrt *)
-  ioccTransfershuttle10VerfahrfreigabeFehlt          : WORD := 259; (* TRANSSHUTTLE 10 ->  Verfahrfreigabe Querfahrt *)     
+  // ================================================= VERFAHRFREIGABE TRANSSHUTTLE  ======================================
+  ioccTransfershuttle1VerfahrfreigabeFehlt           : WORD := 250; // TRANSSHUTTLE 1 ->  Verfahrfreigabe Querfahrt
+  ioccTransfershuttle2VerfahrfreigabeFehlt           : WORD := 251; // TRANSSHUTTLE 2 ->  Verfahrfreigabe Querfahrt
+  ioccTransfershuttle3VerfahrfreigabeFehlt           : WORD := 252; // TRANSSHUTTLE 3 ->  Verfahrfreigabe Querfahrt
+  ioccTransfershuttle4VerfahrfreigabeFehlt           : WORD := 253; // TRANSSHUTTLE 4 ->  Verfahrfreigabe Querfahrt
+  ioccTransfershuttle5VerfahrfreigabeFehlt           : WORD := 254; // TRANSSHUTTLE 5 ->  Verfahrfreigabe Querfahrt
+  ioccTransfershuttle6VerfahrfreigabeFehlt           : WORD := 255; // TRANSSHUTTLE 6 ->  Verfahrfreigabe Querfahrt
+  ioccTransfershuttle7VerfahrfreigabeFehlt           : WORD := 256; // TRANSSHUTTLE 7 ->  Verfahrfreigabe Querfahrt
+  ioccTransfershuttle8VerfahrfreigabeFehlt           : WORD := 257; // TRANSSHUTTLE 8 ->  Verfahrfreigabe Querfahrt
+  ioccTransfershuttle9VerfahrfreigabeFehlt           : WORD := 258; // TRANSSHUTTLE 9 ->  Verfahrfreigabe Querfahrt
+  ioccTransfershuttle10VerfahrfreigabeFehlt          : WORD := 259; // TRANSSHUTTLE 10 ->  Verfahrfreigabe Querfahrt     
   
-(* ================================================= STROMSCHIENE ====================================== *)
+// ================================================= STROMSCHIENE ======================================
   ioccUeberwachungRelaisInputStromschieneEingeschaltet  : WORD := 275;
   ioccUeberwachungRelaisOutputStromschieneEingeschaltet : WORD := 276;
 
@@ -266,27 +266,27 @@ VAR_GLOBAL CONSTANT
   ioccDurchgang10AbschrankungNichGeoeffnet            : WORD := 339;  
   
 
-(* ================================================= TRANSFERSHUTTLE ALLGEMEIN ============================================== *)
-  (* Transfershuttle 1 *)
+// ================================================= TRANSFERSHUTTLE ALLGEMEIN ==============================================
+  // Transfershuttle 1
 
   ioccTransfershuttle1LeitungsschutzQuerfahrtNichtOK       : WORD := 350;
   ioccTransfershuttle1ThermokontaktQuerfahrtNichtOK        : WORD := 351;
   ioccTransfershuttle1LeitungsschutzRiemenNichtOK          : WORD := 352;
-  ioccTransfershuttle1QuerfahrtAntriebNichtBereit          : WORD := 353; (* Verfahrfreigabe *)
-  ioccTransfershuttle1EinlaufAbfrageDruckluftOK            : WORD := 354; (* Druckluft Einlaufseite *)
-  ioccTransfershuttle1AuslaufAbfrageDruckluftOK            : WORD := 355; (* Druckluft Auslaufseite *)
-  ioccTransfershuttle1EinlaufAbfrageUnten                  : WORD := 356; (* LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle1EinlaufAbfrageOben                   : WORD := 357; (* LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle1AuslaufAbfrageUnten                  : WORD := 358; (* LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle1AuslaufAbfrageOben                   : WORD := 359; (* LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle1NichtAngehoben                       : WORD := 360; (* Shuttle gehoben *)
-  ioccTransfershuttle1NichtAbgesenkt                       : WORD := 361; (* Shuttle gesenkt *)
-  ioccTransfershuttle1ZentralschmierungNichtBereit         : WORD := 362; (* Zentralschmierung *)
-  ioccTransfershuttle1BreiteEinlaufAbfrageUnten            : WORD := 363; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle1BreiteEinlaufAbfrageOben             : WORD := 364; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle1BreiteAuslaufAbfrageUnten            : WORD := 365; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle1BreiteAuslaufAbfrageOben             : WORD := 366; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle1Endschalter                          : WORD := 367; (* Endschalter belegt *)
+  ioccTransfershuttle1QuerfahrtAntriebNichtBereit          : WORD := 353; // Verfahrfreigabe
+  ioccTransfershuttle1EinlaufAbfrageDruckluftOK            : WORD := 354; // Druckluft Einlaufseite
+  ioccTransfershuttle1AuslaufAbfrageDruckluftOK            : WORD := 355; // Druckluft Auslaufseite
+  ioccTransfershuttle1EinlaufAbfrageUnten                  : WORD := 356; // LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle1EinlaufAbfrageOben                   : WORD := 357; // LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle1AuslaufAbfrageUnten                  : WORD := 358; // LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle1AuslaufAbfrageOben                   : WORD := 359; // LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle1NichtAngehoben                       : WORD := 360; // Shuttle gehoben
+  ioccTransfershuttle1NichtAbgesenkt                       : WORD := 361; // Shuttle gesenkt
+  ioccTransfershuttle1ZentralschmierungNichtBereit         : WORD := 362; // Zentralschmierung
+  ioccTransfershuttle1BreiteEinlaufAbfrageUnten            : WORD := 363; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle1BreiteEinlaufAbfrageOben             : WORD := 364; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle1BreiteAuslaufAbfrageUnten            : WORD := 365; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle1BreiteAuslaufAbfrageOben             : WORD := 366; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle1Endschalter                          : WORD := 367; // Endschalter belegt
   ioccTransfershuttle1QuerfahrtKeineReferenz               : WORD := 368;
   ioccTransfershuttle1AuslaufsensorBelegt                  : WORD := 369;
   ioccTransfershuttle1EinlaufsensorBelegt                  : WORD := 370;
@@ -294,25 +294,25 @@ VAR_GLOBAL CONSTANT
   ioccTransfershuttle1TransportGeblocktSicherheitskreis    : WORD := 373;
 
 
-  (* Transfershuttle 2 *)
+  // Transfershuttle 2
   ioccTransfershuttle2LeitungsschutzQuerfahrtNichtOK       : WORD := 380;
   ioccTransfershuttle2ThermokontaktQuerfahrtNichtOK        : WORD := 381;
   ioccTransfershuttle2LeitungsschutzRiemenNichtOK          : WORD := 382;
-  ioccTransfershuttle2QuerfahrtAntriebNichtBereit          : WORD := 383; (* Verfahrfreigabe *)
-  ioccTransfershuttle2EinlaufAbfrageDruckluftOK            : WORD := 384; (* Druckluft Einlaufseite *)
-  ioccTransfershuttle2AuslaufAbfrageDruckluftOK            : WORD := 385; (* Druckluft Auslaufseite *)
-  ioccTransfershuttle2EinlaufAbfrageUnten                  : WORD := 386; (* LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle2EinlaufAbfrageOben                   : WORD := 387; (* LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle2AuslaufAbfrageUnten                  : WORD := 388; (* LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle2AuslaufAbfrageOben                   : WORD := 389; (* LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle2NichtAngehoben                       : WORD := 390; (* Shuttle gehoben *)
-  ioccTransfershuttle2NichtAbgesenkt                       : WORD := 391; (* Shuttle gesenkt *)
-  ioccTransfershuttle2ZentralschmierungNichtBereit         : WORD := 392; (* Zentralschmierung *)
-  ioccTransfershuttle2BreiteEinlaufAbfrageUnten            : WORD := 393; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle2BreiteEinlaufAbfrageOben             : WORD := 394; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle2BreiteAuslaufAbfrageUnten            : WORD := 395; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle2BreiteAuslaufAbfrageOben             : WORD := 396; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle2Endschalter                          : WORD := 397; (* Endschalter belegt *)
+  ioccTransfershuttle2QuerfahrtAntriebNichtBereit          : WORD := 383; // Verfahrfreigabe
+  ioccTransfershuttle2EinlaufAbfrageDruckluftOK            : WORD := 384; // Druckluft Einlaufseite
+  ioccTransfershuttle2AuslaufAbfrageDruckluftOK            : WORD := 385; // Druckluft Auslaufseite
+  ioccTransfershuttle2EinlaufAbfrageUnten                  : WORD := 386; // LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle2EinlaufAbfrageOben                   : WORD := 387; // LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle2AuslaufAbfrageUnten                  : WORD := 388; // LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle2AuslaufAbfrageOben                   : WORD := 389; // LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle2NichtAngehoben                       : WORD := 390; // Shuttle gehoben
+  ioccTransfershuttle2NichtAbgesenkt                       : WORD := 391; // Shuttle gesenkt
+  ioccTransfershuttle2ZentralschmierungNichtBereit         : WORD := 392; // Zentralschmierung
+  ioccTransfershuttle2BreiteEinlaufAbfrageUnten            : WORD := 393; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle2BreiteEinlaufAbfrageOben             : WORD := 394; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle2BreiteAuslaufAbfrageUnten            : WORD := 395; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle2BreiteAuslaufAbfrageOben             : WORD := 396; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle2Endschalter                          : WORD := 397; // Endschalter belegt
   ioccTransfershuttle2QuerfahrtKeineReferenz               : WORD := 398;
   ioccTransfershuttle2AuslaufsensorBelegt                  : WORD := 399;
   ioccTransfershuttle2EinlaufsensorBelegt                  : WORD := 400;
@@ -321,25 +321,25 @@ VAR_GLOBAL CONSTANT
   ioccTransfershuttle2TransportGeblocktSicherheitskreis    : WORD := 403;
 
 
-  (* Transfershuttle 3 *)
+  // Transfershuttle 3
   ioccTransfershuttle3LeitungsschutzQuerfahrtNichtOK       : WORD := 410;
   ioccTransfershuttle3ThermokontaktQuerfahrtNichtOK        : WORD := 411;
   ioccTransfershuttle3LeitungsschutzRiemenNichtOK          : WORD := 412;
-  ioccTransfershuttle3QuerfahrtAntriebNichtBereit          : WORD := 413; (* Verfahrfreigabe *)
-  ioccTransfershuttle3EinlaufAbfrageDruckluftOK            : WORD := 414; (* Druckluft Einlaufseite *)
-  ioccTransfershuttle3AuslaufAbfrageDruckluftOK            : WORD := 415; (* Druckluft Auslaufseite *)
-  ioccTransfershuttle3EinlaufAbfrageUnten                  : WORD := 416; (* LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle3EinlaufAbfrageOben                   : WORD := 417; (* LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle3AuslaufAbfrageUnten                  : WORD := 418; (* LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle3AuslaufAbfrageOben                   : WORD := 419; (* LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle3NichtAngehoben                       : WORD := 420; (* Shuttle gehoben *)
-  ioccTransfershuttle3NichtAbgesenkt                       : WORD := 421; (* Shuttle gesenkt *)
-  ioccTransfershuttle3ZentralschmierungNichtBereit         : WORD := 422; (* Zentralschmierung *)
-  ioccTransfershuttle3BreiteEinlaufAbfrageUnten            : WORD := 423; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle3BreiteEinlaufAbfrageOben             : WORD := 424; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle3BreiteAuslaufAbfrageUnten            : WORD := 425; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle3BreiteAuslaufAbfrageOben             : WORD := 426; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle3Endschalter                          : WORD := 427; (* Endschalter belegt *)
+  ioccTransfershuttle3QuerfahrtAntriebNichtBereit          : WORD := 413; // Verfahrfreigabe
+  ioccTransfershuttle3EinlaufAbfrageDruckluftOK            : WORD := 414; // Druckluft Einlaufseite
+  ioccTransfershuttle3AuslaufAbfrageDruckluftOK            : WORD := 415; // Druckluft Auslaufseite
+  ioccTransfershuttle3EinlaufAbfrageUnten                  : WORD := 416; // LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle3EinlaufAbfrageOben                   : WORD := 417; // LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle3AuslaufAbfrageUnten                  : WORD := 418; // LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle3AuslaufAbfrageOben                   : WORD := 419; // LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle3NichtAngehoben                       : WORD := 420; // Shuttle gehoben
+  ioccTransfershuttle3NichtAbgesenkt                       : WORD := 421; // Shuttle gesenkt
+  ioccTransfershuttle3ZentralschmierungNichtBereit         : WORD := 422; // Zentralschmierung
+  ioccTransfershuttle3BreiteEinlaufAbfrageUnten            : WORD := 423; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle3BreiteEinlaufAbfrageOben             : WORD := 424; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle3BreiteAuslaufAbfrageUnten            : WORD := 425; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle3BreiteAuslaufAbfrageOben             : WORD := 426; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle3Endschalter                          : WORD := 427; // Endschalter belegt
   ioccTransfershuttle3QuerfahrtKeineReferenz               : WORD := 428;
   ioccTransfershuttle3AuslaufsensorBelegt                  : WORD := 429;
   ioccTransfershuttle3EinlaufsensorBelegt                  : WORD := 430;
@@ -348,25 +348,25 @@ VAR_GLOBAL CONSTANT
   ioccTransfershuttle3TransportGeblocktSicherheitskreis    : WORD := 433;
 
 
-  (* Transfershuttle 4 *)
+  // Transfershuttle 4
   ioccTransfershuttle4LeitungsschutzQuerfahrtNichtOK       : WORD := 440;
   ioccTransfershuttle4ThermokontaktQuerfahrtNichtOK        : WORD := 441;
   ioccTransfershuttle4LeitungsschutzRiemenNichtOK          : WORD := 442;
-  ioccTransfershuttle4QuerfahrtAntriebNichtBereit          : WORD := 443; (* Verfahrfreigabe *)
-  ioccTransfershuttle4EinlaufAbfrageDruckluftOK            : WORD := 444; (* Druckluft Einlaufseite *)
-  ioccTransfershuttle4AuslaufAbfrageDruckluftOK            : WORD := 445; (* Druckluft Auslaufseite *)
-  ioccTransfershuttle4EinlaufAbfrageUnten                  : WORD := 446; (* LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle4EinlaufAbfrageOben                   : WORD := 447; (* LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle4AuslaufAbfrageUnten                  : WORD := 448; (* LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle4AuslaufAbfrageOben                   : WORD := 449; (* LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle4NichtAngehoben                       : WORD := 450; (* Shuttle gehoben *)
-  ioccTransfershuttle4NichtAbgesenkt                       : WORD := 451; (* Shuttle gesenkt *)
-  ioccTransfershuttle4ZentralschmierungNichtBereit         : WORD := 452; (* Zentralschmierung *)
-  ioccTransfershuttle4BreiteEinlaufAbfrageUnten            : WORD := 453; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle4BreiteEinlaufAbfrageOben             : WORD := 454; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle4BreiteAuslaufAbfrageUnten            : WORD := 455; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle4BreiteAuslaufAbfrageOben             : WORD := 456; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle4Endschalter                          : WORD := 457; (* Endschalter belegt *)
+  ioccTransfershuttle4QuerfahrtAntriebNichtBereit          : WORD := 443; // Verfahrfreigabe
+  ioccTransfershuttle4EinlaufAbfrageDruckluftOK            : WORD := 444; // Druckluft Einlaufseite
+  ioccTransfershuttle4AuslaufAbfrageDruckluftOK            : WORD := 445; // Druckluft Auslaufseite
+  ioccTransfershuttle4EinlaufAbfrageUnten                  : WORD := 446; // LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle4EinlaufAbfrageOben                   : WORD := 447; // LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle4AuslaufAbfrageUnten                  : WORD := 448; // LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle4AuslaufAbfrageOben                   : WORD := 449; // LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle4NichtAngehoben                       : WORD := 450; // Shuttle gehoben
+  ioccTransfershuttle4NichtAbgesenkt                       : WORD := 451; // Shuttle gesenkt
+  ioccTransfershuttle4ZentralschmierungNichtBereit         : WORD := 452; // Zentralschmierung
+  ioccTransfershuttle4BreiteEinlaufAbfrageUnten            : WORD := 453; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle4BreiteEinlaufAbfrageOben             : WORD := 454; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle4BreiteAuslaufAbfrageUnten            : WORD := 455; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle4BreiteAuslaufAbfrageOben             : WORD := 456; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle4Endschalter                          : WORD := 457; // Endschalter belegt
   ioccTransfershuttle4QuerfahrtKeineReferenz               : WORD := 458;
   ioccTransfershuttle4AuslaufsensorBelegt                  : WORD := 459;
   ioccTransfershuttle4EinlaufsensorBelegt                  : WORD := 460;
@@ -376,25 +376,25 @@ VAR_GLOBAL CONSTANT
 
 
 
-  (* Transfershuttle 5 *)
+  // Transfershuttle 5
   ioccTransfershuttle5LeitungsschutzQuerfahrtNichtOK       : WORD := 470;
   ioccTransfershuttle5ThermokontaktQuerfahrtNichtOK        : WORD := 471;
   ioccTransfershuttle5LeitungsschutzRiemenNichtOK          : WORD := 472;
-  ioccTransfershuttle5QuerfahrtAntriebNichtBereit          : WORD := 473; (* Verfahrfreigabe *)
-  ioccTransfershuttle5EinlaufAbfrageDruckluftOK            : WORD := 474; (* Druckluft Einlaufseite *)
-  ioccTransfershuttle5AuslaufAbfrageDruckluftOK            : WORD := 475; (* Druckluft Auslaufseite *)
-  ioccTransfershuttle5EinlaufAbfrageUnten                  : WORD := 476; (* LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle5EinlaufAbfrageOben                   : WORD := 477; (* LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle5AuslaufAbfrageUnten                  : WORD := 478; (* LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle5AuslaufAbfrageOben                   : WORD := 479; (* LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle5NichtAngehoben                       : WORD := 480; (* Shuttle gehoben *)
-  ioccTransfershuttle5NichtAbgesenkt                       : WORD := 481; (* Shuttle gesenkt *)
-  ioccTransfershuttle5ZentralschmierungNichtBereit         : WORD := 482; (* Zentralschmierung *)
-  ioccTransfershuttle5BreiteEinlaufAbfrageUnten            : WORD := 483; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle5BreiteEinlaufAbfrageOben             : WORD := 484; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle5BreiteAuslaufAbfrageUnten            : WORD := 485; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle5BreiteAuslaufAbfrageOben             : WORD := 486; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle5Endschalter                          : WORD := 487; (* Endschalter belegt *)
+  ioccTransfershuttle5QuerfahrtAntriebNichtBereit          : WORD := 473; // Verfahrfreigabe
+  ioccTransfershuttle5EinlaufAbfrageDruckluftOK            : WORD := 474; // Druckluft Einlaufseite
+  ioccTransfershuttle5AuslaufAbfrageDruckluftOK            : WORD := 475; // Druckluft Auslaufseite
+  ioccTransfershuttle5EinlaufAbfrageUnten                  : WORD := 476; // LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle5EinlaufAbfrageOben                   : WORD := 477; // LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle5AuslaufAbfrageUnten                  : WORD := 478; // LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle5AuslaufAbfrageOben                   : WORD := 479; // LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle5NichtAngehoben                       : WORD := 480; // Shuttle gehoben
+  ioccTransfershuttle5NichtAbgesenkt                       : WORD := 481; // Shuttle gesenkt
+  ioccTransfershuttle5ZentralschmierungNichtBereit         : WORD := 482; // Zentralschmierung
+  ioccTransfershuttle5BreiteEinlaufAbfrageUnten            : WORD := 483; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle5BreiteEinlaufAbfrageOben             : WORD := 484; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle5BreiteAuslaufAbfrageUnten            : WORD := 485; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle5BreiteAuslaufAbfrageOben             : WORD := 486; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle5Endschalter                          : WORD := 487; // Endschalter belegt
   ioccTransfershuttle5QuerfahrtKeineReferenz               : WORD := 488;
   ioccTransfershuttle5AuslaufsensorBelegt                  : WORD := 489;
   ioccTransfershuttle5EinlaufsensorBelegt                  : WORD := 490;
@@ -403,25 +403,25 @@ VAR_GLOBAL CONSTANT
   ioccTransfershuttle5TransportGeblocktSicherheitskreis    : WORD := 493;
 
 
-  (* Transfershuttle 6 *)
+  // Transfershuttle 6
   ioccTransfershuttle6LeitungsschutzQuerfahrtNichtOK       : WORD := 500;
   ioccTransfershuttle6ThermokontaktQuerfahrtNichtOK        : WORD := 501;
   ioccTransfershuttle6LeitungsschutzRiemenNichtOK          : WORD := 502;
-  ioccTransfershuttle6QuerfahrtAntriebNichtBereit          : WORD := 503; (* Verfahrfreigabe *)
-  ioccTransfershuttle6EinlaufAbfrageDruckluftOK            : WORD := 504; (* Druckluft Einlaufseite *)
-  ioccTransfershuttle6AuslaufAbfrageDruckluftOK            : WORD := 505; (* Druckluft Auslaufseite *)
-  ioccTransfershuttle6EinlaufAbfrageUnten                  : WORD := 506; (* LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle6EinlaufAbfrageOben                   : WORD := 507; (* LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle6AuslaufAbfrageUnten                  : WORD := 508; (* LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle6AuslaufAbfrageOben                   : WORD := 509; (* LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle6NichtAngehoben                       : WORD := 510; (* Shuttle gehoben *)
-  ioccTransfershuttle6NichtAbgesenkt                       : WORD := 511; (* Shuttle gesenkt *)
-  ioccTransfershuttle6ZentralschmierungNichtBereit         : WORD := 512; (* Zentralschmierung *)
-  ioccTransfershuttle6BreiteEinlaufAbfrageUnten            : WORD := 513; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle6BreiteEinlaufAbfrageOben             : WORD := 514; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle6BreiteAuslaufAbfrageUnten            : WORD := 515; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle6BreiteAuslaufAbfrageOben             : WORD := 516; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle6Endschalter                          : WORD := 517; (* Endschalter belegt *)
+  ioccTransfershuttle6QuerfahrtAntriebNichtBereit          : WORD := 503; // Verfahrfreigabe
+  ioccTransfershuttle6EinlaufAbfrageDruckluftOK            : WORD := 504; // Druckluft Einlaufseite
+  ioccTransfershuttle6AuslaufAbfrageDruckluftOK            : WORD := 505; // Druckluft Auslaufseite
+  ioccTransfershuttle6EinlaufAbfrageUnten                  : WORD := 506; // LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle6EinlaufAbfrageOben                   : WORD := 507; // LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle6AuslaufAbfrageUnten                  : WORD := 508; // LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle6AuslaufAbfrageOben                   : WORD := 509; // LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle6NichtAngehoben                       : WORD := 510; // Shuttle gehoben
+  ioccTransfershuttle6NichtAbgesenkt                       : WORD := 511; // Shuttle gesenkt
+  ioccTransfershuttle6ZentralschmierungNichtBereit         : WORD := 512; // Zentralschmierung
+  ioccTransfershuttle6BreiteEinlaufAbfrageUnten            : WORD := 513; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle6BreiteEinlaufAbfrageOben             : WORD := 514; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle6BreiteAuslaufAbfrageUnten            : WORD := 515; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle6BreiteAuslaufAbfrageOben             : WORD := 516; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle6Endschalter                          : WORD := 517; // Endschalter belegt
   ioccTransfershuttle6QuerfahrtKeineReferenz               : WORD := 518;
   ioccTransfershuttle6AuslaufsensorBelegt                  : WORD := 519;
   ioccTransfershuttle6EinlaufsensorBelegt                  : WORD := 520;
@@ -430,25 +430,25 @@ VAR_GLOBAL CONSTANT
   ioccTransfershuttle6TransportGeblocktSicherheitskreis    : WORD := 523;
 
 
-  (* Transfershuttle 7 *)
+  // Transfershuttle 7
   ioccTransfershuttle7LeitungsschutzQuerfahrtNichtOK       : WORD := 530;
   ioccTransfershuttle7ThermokontaktQuerfahrtNichtOK        : WORD := 531;
   ioccTransfershuttle7LeitungsschutzRiemenNichtOK          : WORD := 532;
-  ioccTransfershuttle7QuerfahrtAntriebNichtBereit          : WORD := 533; (* Verfahrfreigabe *)
-  ioccTransfershuttle7EinlaufAbfrageDruckluftOK            : WORD := 534; (* Druckluft Einlaufseite *)
-  ioccTransfershuttle7AuslaufAbfrageDruckluftOK            : WORD := 535; (* Druckluft Auslaufseite *)
-  ioccTransfershuttle7EinlaufAbfrageUnten                  : WORD := 536; (* LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle7EinlaufAbfrageOben                   : WORD := 537; (* LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle7AuslaufAbfrageUnten                  : WORD := 538; (* LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle7AuslaufAbfrageOben                   : WORD := 539; (* LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle7NichtAngehoben                       : WORD := 540; (* Shuttle gehoben *)
-  ioccTransfershuttle7NichtAbgesenkt                       : WORD := 541; (* Shuttle gesenkt *)
-  ioccTransfershuttle7ZentralschmierungNichtBereit         : WORD := 542; (* Zentralschmierung *)
-  ioccTransfershuttle7BreiteEinlaufAbfrageUnten            : WORD := 543; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle7BreiteEinlaufAbfrageOben             : WORD := 544; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle7BreiteAuslaufAbfrageUnten            : WORD := 545; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle7BreiteAuslaufAbfrageOben             : WORD := 546; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle7Endschalter                          : WORD := 547; (* Endschalter belegt *)
+  ioccTransfershuttle7QuerfahrtAntriebNichtBereit          : WORD := 533; // Verfahrfreigabe
+  ioccTransfershuttle7EinlaufAbfrageDruckluftOK            : WORD := 534; // Druckluft Einlaufseite
+  ioccTransfershuttle7AuslaufAbfrageDruckluftOK            : WORD := 535; // Druckluft Auslaufseite
+  ioccTransfershuttle7EinlaufAbfrageUnten                  : WORD := 536; // LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle7EinlaufAbfrageOben                   : WORD := 537; // LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle7AuslaufAbfrageUnten                  : WORD := 538; // LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle7AuslaufAbfrageOben                   : WORD := 539; // LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle7NichtAngehoben                       : WORD := 540; // Shuttle gehoben
+  ioccTransfershuttle7NichtAbgesenkt                       : WORD := 541; // Shuttle gesenkt
+  ioccTransfershuttle7ZentralschmierungNichtBereit         : WORD := 542; // Zentralschmierung
+  ioccTransfershuttle7BreiteEinlaufAbfrageUnten            : WORD := 543; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle7BreiteEinlaufAbfrageOben             : WORD := 544; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle7BreiteAuslaufAbfrageUnten            : WORD := 545; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle7BreiteAuslaufAbfrageOben             : WORD := 546; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle7Endschalter                          : WORD := 547; // Endschalter belegt
   ioccTransfershuttle7QuerfahrtKeineReferenz               : WORD := 548;
   ioccTransfershuttle7AuslaufsensorBelegt                  : WORD := 549;
   ioccTransfershuttle7EinlaufsensorBelegt                  : WORD := 550;
@@ -457,25 +457,25 @@ VAR_GLOBAL CONSTANT
   ioccTransfershuttle7TransportGeblocktSicherheitskreis    : WORD := 553;
 
 
-  (* Transfershuttle 8 *)
+  // Transfershuttle 8
   ioccTransfershuttle8LeitungsschutzQuerfahrtNichtOK       : WORD := 560;
   ioccTransfershuttle8ThermokontaktQuerfahrtNichtOK        : WORD := 561;
   ioccTransfershuttle8LeitungsschutzRiemenNichtOK          : WORD := 562;
-  ioccTransfershuttle8QuerfahrtAntriebNichtBereit          : WORD := 563; (* Verfahrfreigabe *)
-  ioccTransfershuttle8EinlaufAbfrageDruckluftOK            : WORD := 564; (* Druckluft Einlaufseite *)
-  ioccTransfershuttle8AuslaufAbfrageDruckluftOK            : WORD := 565; (* Druckluft Auslaufseite *)
-  ioccTransfershuttle8EinlaufAbfrageUnten                  : WORD := 566; (* LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle8EinlaufAbfrageOben                   : WORD := 567; (* LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle8AuslaufAbfrageUnten                  : WORD := 568; (* LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle8AuslaufAbfrageOben                   : WORD := 569; (* LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle8NichtAngehoben                       : WORD := 570; (* Shuttle gehoben *)
-  ioccTransfershuttle8NichtAbgesenkt                       : WORD := 571; (* Shuttle gesenkt *)
-  ioccTransfershuttle8ZentralschmierungNichtBereit         : WORD := 572; (* Zentralschmierung *)
-  ioccTransfershuttle8BreiteEinlaufAbfrageUnten            : WORD := 573; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt *)
-  ioccTransfershuttle8BreiteEinlaufAbfrageOben             : WORD := 574; (* [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben *)
-  ioccTransfershuttle8BreiteAuslaufAbfrageUnten            : WORD := 575; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt *)
-  ioccTransfershuttle8BreiteAuslaufAbfrageOben             : WORD := 576; (* [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben *)
-  ioccTransfershuttle8Endschalter                          : WORD := 577; (* Endschalter belegt *)
+  ioccTransfershuttle8QuerfahrtAntriebNichtBereit          : WORD := 563; // Verfahrfreigabe
+  ioccTransfershuttle8EinlaufAbfrageDruckluftOK            : WORD := 564; // Druckluft Einlaufseite
+  ioccTransfershuttle8AuslaufAbfrageDruckluftOK            : WORD := 565; // Druckluft Auslaufseite
+  ioccTransfershuttle8EinlaufAbfrageUnten                  : WORD := 566; // LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle8EinlaufAbfrageOben                   : WORD := 567; // LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle8AuslaufAbfrageUnten                  : WORD := 568; // LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle8AuslaufAbfrageOben                   : WORD := 569; // LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle8NichtAngehoben                       : WORD := 570; // Shuttle gehoben
+  ioccTransfershuttle8NichtAbgesenkt                       : WORD := 571; // Shuttle gesenkt
+  ioccTransfershuttle8ZentralschmierungNichtBereit         : WORD := 572; // Zentralschmierung
+  ioccTransfershuttle8BreiteEinlaufAbfrageUnten            : WORD := 573; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gesenkt
+  ioccTransfershuttle8BreiteEinlaufAbfrageOben             : WORD := 574; // [BREITE ABFRAGEN] LuftSensoren Einlaufen gehoben
+  ioccTransfershuttle8BreiteAuslaufAbfrageUnten            : WORD := 575; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gesenkt
+  ioccTransfershuttle8BreiteAuslaufAbfrageOben             : WORD := 576; // [BREITE ABFRAGEN] LuftSensoren Auslaufen gehoben
+  ioccTransfershuttle8Endschalter                          : WORD := 577; // Endschalter belegt
   ioccTransfershuttle8QuerfahrtKeineReferenz               : WORD := 578;
   ioccTransfershuttle8AuslaufsensorBelegt                  : WORD := 579;
   ioccTransfershuttle8EinlaufsensorBelegt                  : WORD := 580;
@@ -483,165 +483,165 @@ VAR_GLOBAL CONSTANT
   ioccTransfershuttle8UCS11B_Stoerung                      : WORD := 582;
   ioccTransfershuttle8TransportGeblocktSicherheitskreis    : WORD := 583;
 
-(* ================================================= SHUTTLE ALLGEMEIN ==================================================== *)
+// ================================================= SHUTTLE ALLGEMEIN ====================================================
 
-  (* SHUTTLE 101 *)
-  ioccStation101_DatenLichtschranke_Station_Unterbrochen   : WORD := 600; (*  0 *)
-  ioccStation101_DatenLichtschranke101_Bahn_Unterbrochen   : WORD := 601; (*  1 *)
-  ioccStation101_Netzteil_24V                              : WORD := 602; (*  2 *)
-  ioccStation101_Leitungsschutz_24V                        : WORD := 603; (*  3 *)
-  ioccStation101_Leitungsschutz_Klimageraet                : WORD := 604; (*  4 *)
-  ioccStation101_Leitungsschutz_Kompressor                 : WORD := 605; (*  5 *)
-  ioccStation101_Leitungsschutz_Steuertrafo_230V           : WORD := 606; (*  6 *)
-                                                                          (*  7 *)
-  ioccStation101_Leitungsschutz_Querfahrt_Bremse           : WORD := 608; (*  8 *)
-  ioccStation101_Leitungsschutz_Querfahrt_Fremdluefter     : WORD := 609; (*  9 *)
-                                                                          (* 10 *)
-                                                                          (* 11 *)
-                                                                          (* 12 *)
-                                                                          (* 13 *)
-                                                                          (* 14 *)
-  ioccStation101_Motorschutz_Geblaese_W1                   : WORD := 615; (* 15 *)
-  ioccStation101_Motorschutz_Geblaese_W2                   : WORD := 616; (* 16 *)
-                                                                          (* 17 *)
-                                                                          (* 18 *)
-  ioccStation101_Querfahrt_Referenz                        : WORD := 619; (* 19 *)
-  ioccStation101_Querfahrt_Minumum_Endschalter             : WORD := 620; (* 20 *)
-  ioccStation101_Querfahrt_Maximum_Endschalter             : WORD := 621; (* 21 *)
-  ioccStation101_Druckluft                                 : WORD := 624; (* 24 *)
-                                                                          (* 25 *)
-                                                                          (* 26 *)
-  ioccStation101_Verfahrfreigabe_W1                        : WORD := 627; (* 27 *) 
-  ioccStation101_Verfahrfreigabe_W2                        : WORD := 628; (* 28 *) 
-  ioccStation101_Verfahrfreigabe_Anhalten                  : WORD := 629; (* 29 *)
-                                                                          (* 32 *)
-  ioccStation101_Zentralschmierung_nicht_OK                : WORD := 633; (* 33 *)
-  ioccStation101_ThermokontaktBremswiderstand_Riemen_W1    : WORD := 634; (* 34 *)
-  ioccStation101_ThermokontaktBremswiderstand_Riemen_W2    : WORD := 635; (* 35 *)
-  ioccStation101_Leitungsschutz_Kippen                     : WORD := 636; (* 36 *)
-  ioccStation101_Leitungsschutz_Kippen_Bremse              : WORD := 637; (* 37 *)
-  ioccStation101_Leitungsschutz_wandverstellung            : WORD := 638; (* 38 *)
-  ioccStation101_Leitungsschutz_Wandverstellung_Bremse     : WORD := 639; (* 39 *)
+  // SHUTTLE 101
+  ioccStation101_DatenLichtschranke_Station_Unterbrochen   : WORD := 600; // 0
+  ioccStation101_DatenLichtschranke101_Bahn_Unterbrochen   : WORD := 601; // 1
+  ioccStation101_Netzteil_24V                              : WORD := 602; // 2
+  ioccStation101_Leitungsschutz_24V                        : WORD := 603; // 3
+  ioccStation101_Leitungsschutz_Klimageraet                : WORD := 604; // 4
+  ioccStation101_Leitungsschutz_Kompressor                 : WORD := 605; // 5
+  ioccStation101_Leitungsschutz_Steuertrafo_230V           : WORD := 606; // 6
+                                                                          // 7
+  ioccStation101_Leitungsschutz_Querfahrt_Bremse           : WORD := 608; // 8
+  ioccStation101_Leitungsschutz_Querfahrt_Fremdluefter     : WORD := 609; // 9
+                                                                          // 10
+                                                                          // 11
+                                                                          // 12
+                                                                          // 13
+                                                                          // 14
+  ioccStation101_Motorschutz_Geblaese_W1                   : WORD := 615; // 15
+  ioccStation101_Motorschutz_Geblaese_W2                   : WORD := 616; // 16
+                                                                          // 17
+                                                                          // 18
+  ioccStation101_Querfahrt_Referenz                        : WORD := 619; // 19
+  ioccStation101_Querfahrt_Minumum_Endschalter             : WORD := 620; // 20
+  ioccStation101_Querfahrt_Maximum_Endschalter             : WORD := 621; // 21
+  ioccStation101_Druckluft                                 : WORD := 624; // 24
+                                                                          // 25
+                                                                          // 26
+  ioccStation101_Verfahrfreigabe_W1                        : WORD := 627; // 27 
+  ioccStation101_Verfahrfreigabe_W2                        : WORD := 628; // 28 
+  ioccStation101_Verfahrfreigabe_Anhalten                  : WORD := 629; // 29
+                                                                          // 32
+  ioccStation101_Zentralschmierung_nicht_OK                : WORD := 633; // 33
+  ioccStation101_ThermokontaktBremswiderstand_Riemen_W1    : WORD := 634; // 34
+  ioccStation101_ThermokontaktBremswiderstand_Riemen_W2    : WORD := 635; // 35
+  ioccStation101_Leitungsschutz_Kippen                     : WORD := 636; // 36
+  ioccStation101_Leitungsschutz_Kippen_Bremse              : WORD := 637; // 37
+  ioccStation101_Leitungsschutz_wandverstellung            : WORD := 638; // 38
+  ioccStation101_Leitungsschutz_Wandverstellung_Bremse     : WORD := 639; // 39
 
 
-  (* SHUTTLE 102 *)
-  ioccStation102_DatenLichtschranke_Station_Unterbrochen   : WORD := 650; (*  0 *)
-  ioccStation102_DatenLichtschranke101_Bahn_Unterbrochen   : WORD := 651; (*  1 *)
-  ioccStation102_Netzteil_24V                              : WORD := 652; (*  2 *)
-  ioccStation102_Leitungsschutz_24V                        : WORD := 653; (*  3 *)
-  ioccStation102_Leitungsschutz_Klimageraet                : WORD := 654; (*  4 *)
-  ioccStation102_Leitungsschutz_Kompressor                 : WORD := 655; (*  5 *)
-  ioccStation102_Leitungsschutz_Steuertrafo_230V           : WORD := 656; (*  6 *)
-                                                                          (*  7 *)
-  ioccStation102_Leitungsschutz_Querfahrt_Bremse           : WORD := 658; (*  8 *)
-  ioccStation102_Leitungsschutz_Querfahrt_Fremdluefter     : WORD := 659; (*  9 *)
-                                                                          (* 10 *)
-                                                                          (* 11 *)
-                                                                          (* 12 *)
-                                                                          (* 13 *)
-                                                                          (* 14 *)
-  ioccStation102_Motorschutz_Geblaese_W1                   : WORD := 665; (* 15 *)
-  ioccStation102_Motorschutz_Geblaese_W2                   : WORD := 666; (* 16 *)
-                                                                          (* 17 *)
-                                                                          (* 18 *)
-  ioccStation102_Querfahrt_Referenz                        : WORD := 669; (* 19 *)
-  ioccStation102_Querfahrt_Minumum_Endschalter             : WORD := 670; (* 20 *)
-  ioccStation102_Querfahrt_Maximum_Endschalter             : WORD := 671; (* 21 *)
-  ioccStation102_Druckluft                                 : WORD := 674; (* 24 *)
-                                                                          (* 25 *)
-                                                                          (* 26 *)
-  ioccStation102_Verfahrfreigabe_W1                        : WORD := 677; (* 27 *) 
-  ioccStation102_Verfahrfreigabe_W2                        : WORD := 678; (* 28 *) 
-  ioccStation102_Verfahrfreigabe_Anhalten                  : WORD := 679; (* 29 *) 
-                                                                          (* 32 *)
-  ioccStation102_Zentralschmierung_nicht_OK                : WORD := 683; (* 33 *)
-  ioccStation102_ThermokontaktBremswiderstand_Riemen_W1    : WORD := 684; (* 34 *)
-  ioccStation102_ThermokontaktBremswiderstand_Riemen_W2    : WORD := 685; (* 35 *)
-  ioccStation102_Leitungsschutz_Kippen                     : WORD := 686; (* 36 *)
-  ioccStation102_Leitungsschutz_Kippen_Bremse              : WORD := 687; (* 37 *)
-  ioccStation102_Leitungsschutz_wandverstellung            : WORD := 688; (* 38 *)
-  ioccStation102_Leitungsschutz_Wandverstellung_Bremse     : WORD := 689; (* 39 *)
+  // SHUTTLE 102
+  ioccStation102_DatenLichtschranke_Station_Unterbrochen   : WORD := 650; // 0
+  ioccStation102_DatenLichtschranke101_Bahn_Unterbrochen   : WORD := 651; // 1
+  ioccStation102_Netzteil_24V                              : WORD := 652; // 2
+  ioccStation102_Leitungsschutz_24V                        : WORD := 653; // 3
+  ioccStation102_Leitungsschutz_Klimageraet                : WORD := 654; // 4
+  ioccStation102_Leitungsschutz_Kompressor                 : WORD := 655; // 5
+  ioccStation102_Leitungsschutz_Steuertrafo_230V           : WORD := 656; // 6
+                                                                          // 7
+  ioccStation102_Leitungsschutz_Querfahrt_Bremse           : WORD := 658; // 8
+  ioccStation102_Leitungsschutz_Querfahrt_Fremdluefter     : WORD := 659; // 9
+                                                                          // 10
+                                                                          // 11
+                                                                          // 12
+                                                                          // 13
+                                                                          // 14
+  ioccStation102_Motorschutz_Geblaese_W1                   : WORD := 665; // 15
+  ioccStation102_Motorschutz_Geblaese_W2                   : WORD := 666; // 16
+                                                                          // 17
+                                                                          // 18
+  ioccStation102_Querfahrt_Referenz                        : WORD := 669; // 19
+  ioccStation102_Querfahrt_Minumum_Endschalter             : WORD := 670; // 20
+  ioccStation102_Querfahrt_Maximum_Endschalter             : WORD := 671; // 21
+  ioccStation102_Druckluft                                 : WORD := 674; // 24
+                                                                          // 25
+                                                                          // 26
+  ioccStation102_Verfahrfreigabe_W1                        : WORD := 677; // 27 
+  ioccStation102_Verfahrfreigabe_W2                        : WORD := 678; // 28 
+  ioccStation102_Verfahrfreigabe_Anhalten                  : WORD := 679; // 29 
+                                                                          // 32
+  ioccStation102_Zentralschmierung_nicht_OK                : WORD := 683; // 33
+  ioccStation102_ThermokontaktBremswiderstand_Riemen_W1    : WORD := 684; // 34
+  ioccStation102_ThermokontaktBremswiderstand_Riemen_W2    : WORD := 685; // 35
+  ioccStation102_Leitungsschutz_Kippen                     : WORD := 686; // 36
+  ioccStation102_Leitungsschutz_Kippen_Bremse              : WORD := 687; // 37
+  ioccStation102_Leitungsschutz_wandverstellung            : WORD := 688; // 38
+  ioccStation102_Leitungsschutz_Wandverstellung_Bremse     : WORD := 689; // 39
   
 
-  (* SHUTTLE 103 *)
-  ioccStation103_DatenLichtschranke_Station_Unterbrochen   : WORD := 700; (*  0 *)
-  ioccStation103_DatenLichtschranke101_Bahn_Unterbrochen   : WORD := 701; (*  1 *)
-  ioccStation103_Netzteil_24V                              : WORD := 702; (*  2 *)
-  ioccStation103_Leitungsschutz_24V                        : WORD := 703; (*  3 *)
-  ioccStation103_Leitungsschutz_Klimageraet                : WORD := 704; (*  4 *)
-  ioccStation103_Leitungsschutz_Kompressor                 : WORD := 705; (*  5 *)
-  ioccStation103_Leitungsschutz_Steuertrafo_230V           : WORD := 706; (*  6 *)
-                                                                          (*  7 *)
-  ioccStation103_Leitungsschutz_Querfahrt_Bremse           : WORD := 708; (*  8 *)
-  ioccStation103_Leitungsschutz_Querfahrt_Fremdluefter     : WORD := 709; (*  9 *)
-                                                                          (* 10 *)
-                                                                          (* 11 *)
-                                                                          (* 12 *)
-                                                                          (* 13 *)
-                                                                          (* 14 *)
-  ioccStation103_Motorschutz_Geblaese_W1                   : WORD := 715; (* 15 *)
-  ioccStation103_Motorschutz_Geblaese_W2                   : WORD := 716; (* 16 *)
-                                                                          (* 17 *)
-                                                                          (* 18 *)
-  ioccStation103_Querfahrt_Referenz                        : WORD := 719; (* 19 *)
-  ioccStation103_Querfahrt_Minumum_Endschalter             : WORD := 720; (* 20 *)
-  ioccStation103_Querfahrt_Maximum_Endschalter             : WORD := 721; (* 21 *)
-  ioccStation103_Druckluft                                 : WORD := 724; (* 24 *)
-                                                                          (* 25 *)
-                                                                          (* 26 *)
-  ioccStation103_Verfahrfreigabe_W1                        : WORD := 727; (* 27 *) 
-  ioccStation103_Verfahrfreigabe_W2                        : WORD := 728; (* 28 *) 
-  ioccStation103_Verfahrfreigabe_Anhalten                  : WORD := 729; (* 29 *) 
-                                                                          (* 32 *)
-  ioccStation103_Zentralschmierung_nicht_OK                : WORD := 733; (* 33 *)
-  ioccStation103_ThermokontaktBremswiderstand_Riemen_W1    : WORD := 734; (* 34 *)
-  ioccStation103_ThermokontaktBremswiderstand_Riemen_W2    : WORD := 735; (* 35 *)
-  ioccStation103_Leitungsschutz_Kippen                     : WORD := 736; (* 36 *)
-  ioccStation103_Leitungsschutz_Kippen_Bremse              : WORD := 737; (* 37 *)
-  ioccStation103_Leitungsschutz_wandverstellung            : WORD := 738; (* 38 *)
-  ioccStation103_Leitungsschutz_Wandverstellung_Bremse     : WORD := 739; (* 39 *)
+  // SHUTTLE 103
+  ioccStation103_DatenLichtschranke_Station_Unterbrochen   : WORD := 700; // 0
+  ioccStation103_DatenLichtschranke101_Bahn_Unterbrochen   : WORD := 701; // 1
+  ioccStation103_Netzteil_24V                              : WORD := 702; // 2
+  ioccStation103_Leitungsschutz_24V                        : WORD := 703; // 3
+  ioccStation103_Leitungsschutz_Klimageraet                : WORD := 704; // 4
+  ioccStation103_Leitungsschutz_Kompressor                 : WORD := 705; // 5
+  ioccStation103_Leitungsschutz_Steuertrafo_230V           : WORD := 706; // 6
+                                                                          // 7
+  ioccStation103_Leitungsschutz_Querfahrt_Bremse           : WORD := 708; // 8
+  ioccStation103_Leitungsschutz_Querfahrt_Fremdluefter     : WORD := 709; // 9
+                                                                          // 10
+                                                                          // 11
+                                                                          // 12
+                                                                          // 13
+                                                                          // 14
+  ioccStation103_Motorschutz_Geblaese_W1                   : WORD := 715; // 15
+  ioccStation103_Motorschutz_Geblaese_W2                   : WORD := 716; // 16
+                                                                          // 17
+                                                                          // 18
+  ioccStation103_Querfahrt_Referenz                        : WORD := 719; // 19
+  ioccStation103_Querfahrt_Minumum_Endschalter             : WORD := 720; // 20
+  ioccStation103_Querfahrt_Maximum_Endschalter             : WORD := 721; // 21
+  ioccStation103_Druckluft                                 : WORD := 724; // 24
+                                                                          // 25
+                                                                          // 26
+  ioccStation103_Verfahrfreigabe_W1                        : WORD := 727; // 27 
+  ioccStation103_Verfahrfreigabe_W2                        : WORD := 728; // 28 
+  ioccStation103_Verfahrfreigabe_Anhalten                  : WORD := 729; // 29 
+                                                                          // 32
+  ioccStation103_Zentralschmierung_nicht_OK                : WORD := 733; // 33
+  ioccStation103_ThermokontaktBremswiderstand_Riemen_W1    : WORD := 734; // 34
+  ioccStation103_ThermokontaktBremswiderstand_Riemen_W2    : WORD := 735; // 35
+  ioccStation103_Leitungsschutz_Kippen                     : WORD := 736; // 36
+  ioccStation103_Leitungsschutz_Kippen_Bremse              : WORD := 737; // 37
+  ioccStation103_Leitungsschutz_wandverstellung            : WORD := 738; // 38
+  ioccStation103_Leitungsschutz_Wandverstellung_Bremse     : WORD := 739; // 39
 
 
-  (* SHUTTLE 104 *)
-  ioccStation104_DatenLichtschranke_Station_Unterbrochen   : WORD := 750; (*  0 *)
-  ioccStation104_DatenLichtschranke101_Bahn_Unterbrochen   : WORD := 751; (*  1 *)
-  ioccStation104_Netzteil_24V                              : WORD := 752; (*  2 *)
-  ioccStation104_Leitungsschutz_24V                        : WORD := 753; (*  3 *)
-  ioccStation104_Leitungsschutz_Klimageraet                : WORD := 754; (*  4 *)
-  ioccStation104_Leitungsschutz_Kompressor                 : WORD := 755; (*  5 *)
-  ioccStation104_Leitungsschutz_Steuertrafo_230V           : WORD := 756; (*  6 *)
-                                                                          (*  7 *)
-  ioccStation104_Leitungsschutz_Querfahrt_Bremse           : WORD := 758; (*  8 *)
-  ioccStation104_Leitungsschutz_Querfahrt_Fremdluefter     : WORD := 759; (*  9 *)
-                                                                          (* 10 *)
-                                                                          (* 11 *)
-                                                                          (* 12 *)
-                                                                          (* 13 *)
-                                                                          (* 14 *)
-  ioccStation104_Motorschutz_Geblaese_W1                   : WORD := 765; (* 15 *)
-  ioccStation104_Motorschutz_Geblaese_W2                   : WORD := 766; (* 16 *)
-                                                                          (* 17 *)
-                                                                          (* 18 *)
-  ioccStation104_Querfahrt_Referenz                        : WORD := 769; (* 19 *)
-  ioccStation104_Querfahrt_Minumum_Endschalter             : WORD := 770; (* 20 *)
-  ioccStation104_Querfahrt_Maximum_Endschalter             : WORD := 771; (* 21 *)
-  ioccStation104_Druckluft                                 : WORD := 774; (* 24 *)
-                                                                          (* 25 *)
-                                                                          (* 26 *)
-  ioccStation104_Verfahrfreigabe_W1                        : WORD := 777; (* 27 *) 
-  ioccStation104_Verfahrfreigabe_W2                        : WORD := 778; (* 28 *) 
-  ioccStation104_Verfahrfreigabe_Anhalten                  : WORD := 779; (* 29 *)
-                                                                          (* 32 *)
-  ioccStation104_Zentralschmierung_nicht_OK                : WORD := 783; (* 33 *)
-  ioccStation104_ThermokontaktBremswiderstand_Riemen_W1    : WORD := 784; (* 34 *)
-  ioccStation104_ThermokontaktBremswiderstand_Riemen_W2    : WORD := 785; (* 35 *)
-  ioccStation104_Leitungsschutz_Kippen                     : WORD := 786; (* 36 *)
-  ioccStation104_Leitungsschutz_Kippen_Bremse              : WORD := 787; (* 37 *)
-  ioccStation104_Leitungsschutz_wandverstellung            : WORD := 788; (* 38 *)
-  ioccStation104_Leitungsschutz_Wandverstellung_Bremse     : WORD := 789; (* 39 *)
+  // SHUTTLE 104
+  ioccStation104_DatenLichtschranke_Station_Unterbrochen   : WORD := 750; // 0
+  ioccStation104_DatenLichtschranke101_Bahn_Unterbrochen   : WORD := 751; // 1
+  ioccStation104_Netzteil_24V                              : WORD := 752; // 2
+  ioccStation104_Leitungsschutz_24V                        : WORD := 753; // 3
+  ioccStation104_Leitungsschutz_Klimageraet                : WORD := 754; // 4
+  ioccStation104_Leitungsschutz_Kompressor                 : WORD := 755; // 5
+  ioccStation104_Leitungsschutz_Steuertrafo_230V           : WORD := 756; // 6
+                                                                          // 7
+  ioccStation104_Leitungsschutz_Querfahrt_Bremse           : WORD := 758; // 8
+  ioccStation104_Leitungsschutz_Querfahrt_Fremdluefter     : WORD := 759; // 9
+                                                                          // 10
+                                                                          // 11
+                                                                          // 12
+                                                                          // 13
+                                                                          // 14
+  ioccStation104_Motorschutz_Geblaese_W1                   : WORD := 765; // 15
+  ioccStation104_Motorschutz_Geblaese_W2                   : WORD := 766; // 16
+                                                                          // 17
+                                                                          // 18
+  ioccStation104_Querfahrt_Referenz                        : WORD := 769; // 19
+  ioccStation104_Querfahrt_Minumum_Endschalter             : WORD := 770; // 20
+  ioccStation104_Querfahrt_Maximum_Endschalter             : WORD := 771; // 21
+  ioccStation104_Druckluft                                 : WORD := 774; // 24
+                                                                          // 25
+                                                                          // 26
+  ioccStation104_Verfahrfreigabe_W1                        : WORD := 777; // 27 
+  ioccStation104_Verfahrfreigabe_W2                        : WORD := 778; // 28 
+  ioccStation104_Verfahrfreigabe_Anhalten                  : WORD := 779; // 29
+                                                                          // 32
+  ioccStation104_Zentralschmierung_nicht_OK                : WORD := 783; // 33
+  ioccStation104_ThermokontaktBremswiderstand_Riemen_W1    : WORD := 784; // 34
+  ioccStation104_ThermokontaktBremswiderstand_Riemen_W2    : WORD := 785; // 35
+  ioccStation104_Leitungsschutz_Kippen                     : WORD := 786; // 36
+  ioccStation104_Leitungsschutz_Kippen_Bremse              : WORD := 787; // 37
+  ioccStation104_Leitungsschutz_wandverstellung            : WORD := 788; // 38
+  ioccStation104_Leitungsschutz_Wandverstellung_Bremse     : WORD := 789; // 39
 
 
-  (* ================================================= Safety (SICHERHEITSTECHNIK) MELDUNGEN =============================== *)
+  // ================================================= Safety (SICHERHEITSTECHNIK) MELDUNGEN ===============================
   ioccSLC_Error_FSoE_Master                                : WORD := 1000;
   ioccSLC_EDM_FehlerAktiv                                  : WORD := 1001;
   ioccSLC_Safety_Operator_Acknowledge_Requested            : WORD := 1002; 
@@ -750,7 +750,7 @@ VAR_GLOBAL CONSTANT
   ioccSLC_EDM_Error63                                      : WORD := 1105;
   ioccSLC_EDM_Error64                                      : WORD := 1106;
   
-(* ================================================= SCHNITTSTELLE ========================================================== *)
+// ================================================= SCHNITTSTELLE ==========================================================
   ioccSchnittstelle_Linie_1_KommunikationsTimeOut          : WORD := 1300;
   ioccSchnittstelle_Linie_1_Daten_Nicht_Aequivalent        : WORD := 1301;
   ioccSchnittstelle_Linie_1_Kein_Glas_Abruf                : WORD := 1302;
@@ -765,10 +765,10 @@ VAR_GLOBAL CONSTANT
   ioccSchnittstelle_Linie_3_Kein_Glas_Abruf                : WORD := 1322;
 
 
-(* ================================================= FAECHERWAGENSTATION=============================================== *)
+// ================================================= FAECHERWAGENSTATION===============================================
 
   (* Hinweis:
-     - Faecherwagenstation 1 
+     - Faecherwagenstation 1
   *)
   ioccFaecherwagenStation1NichtOben                     : WORD := 1400;
   ioccFaecherwagenStation1NichtUnten                    : WORD := 1401;
@@ -790,7 +790,7 @@ VAR_GLOBAL CONSTANT
   ioccFaecherwagenStation1SKNichtOK                     : WORD := 1417;
 
   (* Hinweis:
-     - Faecherwagenstation 2 
+     - Faecherwagenstation 2
   *)
   ioccFaecherwagenStation2NichtOben                     : WORD := 1420;
   ioccFaecherwagenStation2NichtUnten                    : WORD := 1421;
@@ -812,7 +812,7 @@ VAR_GLOBAL CONSTANT
   ioccFaecherwagenStation2SKNichtOK                     : WORD := 1437;
 
   (* Hinweis:
-     - Faecherwagenstation 3 
+     - Faecherwagenstation 3
   *)
   ioccFaecherwagenStation3NichtOben                     : WORD := 1440;
   ioccFaecherwagenStation3NichtUnten                    : WORD := 1441;
@@ -834,7 +834,7 @@ VAR_GLOBAL CONSTANT
   ioccFaecherwagenStation3SKNichtOK                     : WORD := 1457;
 
   (* Hinweis:
-     - Faecherwagenstation 4 
+     - Faecherwagenstation 4
   *)
   ioccFaecherwagenStation4NichtOben                     : WORD := 1460;
   ioccFaecherwagenStation4NichtUnten                    : WORD := 1461;
@@ -856,7 +856,7 @@ VAR_GLOBAL CONSTANT
 
 
   (* Hinweis:
-     - Faecherwagenstation 5 
+     - Faecherwagenstation 5
   *)
   ioccFaecherwagenStation5NichtOben                     : WORD := 1480;
   ioccFaecherwagenStation5NichtUnten                    : WORD := 1481;
@@ -878,7 +878,7 @@ VAR_GLOBAL CONSTANT
 
 
   (* Hinweis:
-     - Faecherwagenstation 6 
+     - Faecherwagenstation 6
   *)
   ioccFaecherwagenStation6NichtOben                     : WORD := 1500;
   ioccFaecherwagenStation6NichtUnten                    : WORD := 1501;
@@ -900,7 +900,7 @@ VAR_GLOBAL CONSTANT
 
 
   (* Hinweis:
-     - Faecherwagenstation 7 
+     - Faecherwagenstation 7
   *)
   ioccFaecherwagenStation7NichtOben                     : WORD := 1520;
   ioccFaecherwagenStation7NichtUnten                    : WORD := 1521;
@@ -921,7 +921,7 @@ VAR_GLOBAL CONSTANT
   ioccFaecherwagenStation7DruckluftNichtOK              : WORD := 1536;
 
   (* Hinweis:
-     - 
+     - -
   *)
   ioccHydraulikkreis_1_Motorschuetz                     : WORD := 2000;
 

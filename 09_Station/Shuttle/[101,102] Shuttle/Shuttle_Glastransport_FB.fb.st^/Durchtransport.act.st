@@ -6,14 +6,13 @@
 }
 *)
 ACTION Durchtransport
-(***************************************************************************************************)
-(* DURCHTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DURCHTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF (  bpDurchtransport ) THEN
 
-  (* Ausnahmesituation:
-     - ANTRIEB
-  *)
+  // Ausnahmesituation:
+  //   - ANTRIEB
   IF ( Antrieb.bpFehler ) THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
@@ -36,7 +35,7 @@ IF (  bpDurchtransport ) THEN
      - Starten der Schrittkette
   *)
   CASE steplDurchtransport OF
-    (* DURCHTRANSPORT ========================================*)
+    // DURCHTRANSPORT ========================================
     STEP_0_E:
       (* Hinweis:
          - Pruefen ob der Antrieb bereit zum verfahren ist
@@ -48,10 +47,10 @@ IF (  bpDurchtransport ) THEN
 
       steplDurchtransport := STEP_10_E;
 
-    (* DURCHTRANSPORT ========================================*)
+    // DURCHTRANSPORT ========================================
     STEP_10_E:
       (* Hinweis:
-         - Antriebueberpruefen ob bereit zum verfahren. 
+         - Antriebueberpruefen ob bereit zum verfahren.
       *)
       IF ( Antrieb.bpReglerBereit ) THEN
         Antrieb.rpGeschwindigkeit := REAL#0;
@@ -62,7 +61,7 @@ IF (  bpDurchtransport ) THEN
         steplDurchtransport := STEP_15_E;
       END_IF
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_15_E:
       (* Hinweis:
          - Sicherstellen das die Slavekopplung aktiv ist
@@ -71,7 +70,7 @@ IF (  bpDurchtransport ) THEN
         steplDurchtransport := STEP_20_E;
       END_IF
 
-    (* DURCHTRANSPORT ========================================*)
+    // DURCHTRANSPORT ========================================
     STEP_20_E:
       (* Anmerkung:
          - Warten bis die Nachfolgestation bereit ist zum Eintransport
@@ -82,7 +81,7 @@ IF (  bpDurchtransport ) THEN
         steplDurchtransport := STEP_30_E;
       END_IF
 
-    (* DURCHTRANSPORT ========================================*)
+    // DURCHTRANSPORT ========================================
     STEP_30_E:
       (* Anmerkung:
          - Warten bis die Nachfolgestation bereit ist zum Eintransport
@@ -93,10 +92,10 @@ IF (  bpDurchtransport ) THEN
         steplDurchtransport := STEP_100_E;
       END_IF
 
-    (* DURCHTRANSPORT ========================================*)
+    // DURCHTRANSPORT ========================================
     STEP_100_E:
       (* Hinweis:
-        - Antrieb in den Master- Slave- Modus setzen
+         - Antrieb in den Master- Slave- Modus setzen
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -106,9 +105,9 @@ IF (  bpDurchtransport ) THEN
 
       steplDurchtransport := STEP_110_E;
 
-    (* DURCHTRANSPORT ========================================*)
+    // DURCHTRANSPORT ========================================
     STEP_110_E:
-      (* WICHTIG:
+      (* Wichtig:
          - Kopplung wird solange aktiv gehalten bis der Nachfolger seinen Transport beendet hat
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
@@ -121,9 +120,9 @@ IF (  bpDurchtransport ) THEN
         steplDurchtransport := STEP_1000_E;
       END_IF
 
-    (* DURCHTRANSPORT ========================================*)
+    // DURCHTRANSPORT ========================================
     STEP_120_E:
-      (* WICHTIG:
+      (* Wichtig:
          - Kopplung wird solange aktiv gehalten bis der Nachfolger seinen Transport beendet hat
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
@@ -137,12 +136,12 @@ IF (  bpDurchtransport ) THEN
         steplDurchtransport := STEP_1000_E;
       END_IF
 
-    (* DURCHTRANSPORT ========================================*)
+    // DURCHTRANSPORT ========================================
     STEP_130_E:
 
       bprtScheibe := FALSE;
 
-      (* WICHTIG:
+      (* Wichtig:
          - Kopplung wird solange aktiv gehalten bis der Nachfolger seinen Transport beendet hat
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
@@ -151,9 +150,9 @@ IF (  bpDurchtransport ) THEN
         steplDurchtransport := STEP_1000_E;
       END_IF
 
-    (* DURCHTRANSPORT ========================================*)
+    // DURCHTRANSPORT ========================================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       bpOutBereitZumEintransport := FALSE;
       bpOutBereitZumAustransport := FALSE;
@@ -161,7 +160,7 @@ IF (  bpDurchtransport ) THEN
 
       bpFehler := TRUE;
 
-    (* DURCHTRANSPORT ========================================*)
+    // DURCHTRANSPORT ========================================
     STEP_1000_E:
       bpOutBereitZumEintransport := FALSE;
       bpOutBereitZumAustransport := FALSE;
@@ -170,7 +169,7 @@ IF (  bpDurchtransport ) THEN
 
       bpDone := TRUE;
 
-  (* DURCHTRANSPORT ========================================*)
+  // DURCHTRANSPORT ========================================
   END_CASE
 ELSE
   IF (steplDurchtransport > STEP_0_E ) THEN

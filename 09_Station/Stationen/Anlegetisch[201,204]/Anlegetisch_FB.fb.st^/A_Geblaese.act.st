@@ -6,9 +6,9 @@
 }
 *)
 ACTION A_Geblaese
-(***************************************************************************************************)
-(* AKTION GEBLÄSE*)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION GEBLÄSE
+//-------------------------------------------------------------------------------------------------
 
 // Gebläse starten durch den Einlaufsensor
 rtlGeblaese( CLK := rtlAnlegen.Q OR ( Glastransport.bpSensorEinlauf AND blFreigabeGeblaeseStartenSensor ) );
@@ -29,7 +29,7 @@ tofGeblaeseFreigabeAusschalten ( IN := out_bGeblaese1Ein OR out_bGeblaese2Ein,
                                  PT := ZEIT_GEBLASE_FREIGABE_AUSSCHALTEN );
 
 (* Hinweis:
-   - Energiesparmodus: Geblaese bei längerer Inaktivität ausschalten 
+   - Energiesparmodus: Geblaese bei längerer Inaktivität ausschalten
 *)
 toflGeblaeseEnergiesparModus( IN := ( rtlGeblaese.Q OR rtlTasterGeblaese.Q ),
                               PT := tgZeitAutoabschaltungEnergiesparModus );

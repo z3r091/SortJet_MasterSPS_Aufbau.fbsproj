@@ -6,9 +6,9 @@
 }
 *)
 ACTION Kippen_Schuetz
-(******************************************************************************)
-(* KIPPEN SCHÜTZ *)
-(******************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// KIPPEN SCHÜTZ
+//-------------------------------------------------------------------------------------------------
 IF ( bpPositionieren ) THEN
 
   IF(  bpSensorEinlauf ) THEN
@@ -33,7 +33,7 @@ IF ( bpPositionieren ) THEN
   END_IF
 
   CASE steplKippenSchuetz OF
-    (*KIPPEN SCHÜTZ AUFKIPPEN =================================*)
+    // KIPPEN SCHÜTZ AUFKIPPEN =================================
     STEP_0_E:
       // Keine Sollposition vorgegeben
       IF ( epZielPosition = eKippen_Default ) THEN
@@ -56,14 +56,14 @@ IF ( bpPositionieren ) THEN
         steplKippenSchuetz := STEP_100_E;
       END_IF
 
-    (*KIPPEN SCHÜTZ AUFKIPPEN =================================*)
+    // KIPPEN SCHÜTZ AUFKIPPEN =================================
     STEP_10_E:
       IF ( NOT in_bSensorNicht90Grad ) THEN
         out_bKippenAufSetzen := FALSE;
         steplKippenSchuetz := STEP_1000_E;
       END_IF
 
-    (*KIPPEN SCHÜTZ ABKIPPEN ==========================*)
+    // KIPPEN SCHÜTZ ABKIPPEN ==========================
     STEP_100_E:
       IF ( epZielPosition = eKippen_Position_84Grad ) THEN
         IF ( in_bSensorNicht84Grad ) THEN
@@ -78,22 +78,22 @@ IF ( bpPositionieren ) THEN
         steplKippenSchuetz := STEP_900_E;
       END_IF
 
-    (*KIPPEN SCHÜTZ ABKIPPEN ==========================*)
+    // KIPPEN SCHÜTZ ABKIPPEN ==========================
     STEP_110_E:
       IF ( NOT in_bSensorNicht84Grad ) THEN
         out_bKippenAbSetzen := FALSE;
         steplKippenSchuetz := STEP_1000_E;
       END_IF
 
-    (*KIPPEN SCHÜTZ =================================*)
+    // KIPPEN SCHÜTZ =================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*KIPPEN SCHÜTZ =================================*)
+    // KIPPEN SCHÜTZ =================================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*KIPPEN SCHÜTZ =================================*)
+  // KIPPEN SCHÜTZ =================================
   END_CASE
 
 ELSE

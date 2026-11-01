@@ -8,15 +8,15 @@
 FUNCTION_BLOCK Shuttle_FB
 VAR_IN_OUT
 
-  (* STRUKT *)
+  // STRUKT
   BasisStationsParameter : StationBasisParameter_ST;
 
 END_VAR
 VAR_INPUT
 
   // BOOLEAN
-  bpShuttleAnhalten                      : BOOL; (* HINWEIS: Nehmen der Verfahrfreigabe wenn bei der Folge- bzw. Nachfolgestation der Einlauf- / Auslauf- Sensor belegt wurde *)
-  bpStarteFaecherwagensuche              : BOOL; (* Der Fächerwagen kann mittels Sensor gesucht werden um die Fachpositionen zu bestimmen *)
+  bpShuttleAnhalten                      : BOOL; // HINWEIS: Nehmen der Verfahrfreigabe wenn bei der Folge- bzw. Nachfolgestation der Einlauf- / Auslauf- Sensor belegt wurde
+  bpStarteFaecherwagensuche              : BOOL; // Der Fächerwagen kann mittels Sensor gesucht werden um die Fachpositionen zu bestimmen
     
   // WORD
   rpMinPosSwEsEingrenzung                : REAL;
@@ -34,37 +34,37 @@ VAR_OUTPUT
 END_VAR
 VAR
 
-  (* BOOL *)
-  blErsterZyklus                         : BOOL := TRUE;(* Initialisierungsphase *)
+  // BOOL
+  blErsterZyklus                         : BOOL := TRUE;// Initialisierungsphase
   blGeblaeseAktiv                        : BOOL;
   blBetriebsartHand                      : BOOL;
   blBetriebsartReset                     : BOOL;
   blBetriebartCheck                      : BOOL;
   blBetriebsartAutomatik                 : BOOL;
   blBetriebsartReferenz                  : BOOL;
-  blZielPositionErreicht                 : BOOL; (* Ueberpruefung ob die Zielposition aus dem Auftrag mit der aktuellen Position uebereinstimmt [Abweichung + - 1mm] *)
-  blVorAbAuftragAktiv                    : ARRAY [cWAND_1..cANZAHL_WAENDE] OF BOOL; (* STATUS: Merker ob die Komponenten Ansteuerung aktiv ist [Angesteuert mit dem Starten der Querfahrt](Autark gesteuert) *)
+  blZielPositionErreicht                 : BOOL; // Ueberpruefung ob die Zielposition aus dem Auftrag mit der aktuellen Position uebereinstimmt [Abweichung + - 1mm]
+  blVorAbAuftragAktiv                    : ARRAY [cWAND_1..cANZAHL_WAENDE] OF BOOL; // STATUS: Merker ob die Komponenten Ansteuerung aktiv ist [Angesteuert mit dem Starten der Querfahrt](Autark gesteuert)
   blUpdateTimer                          : BOOL;
-  blNachSystemcheckMerker                : BOOL; (* Merkt sich, wenn der Systemcheck erfolgreich durchgeführt wurde, damit die Gebläse nicht nach dem Systemcheck ausgehen *)
-  ablVortransportAktiv                   : ARRAY [cWAND_1..cANZAHL_WAENDE] OF BOOL; (* STATUS: Merker ob der Vortransport (Autark gesteuert) aktiv ist -> Wichtig für den Austransport zum sicherstellen das erst dann Transportiert werden kann *)
+  blNachSystemcheckMerker                : BOOL; // Merkt sich, wenn der Systemcheck erfolgreich durchgeführt wurde, damit die Gebläse nicht nach dem Systemcheck ausgehen
+  ablVortransportAktiv                   : ARRAY [cWAND_1..cANZAHL_WAENDE] OF BOOL; // STATUS: Merker ob der Vortransport (Autark gesteuert) aktiv ist -> Wichtig für den Austransport zum sicherstellen das erst dann Transportiert werden kann
   blDatenlichtschrankeUnterbrochenMelden : BOOL;
   blFehlerAusAutomatikBetrieb            : BOOL;
   blShuttleErreichbar                    : BOOL;
   blMerkerAuftragAktiv                   : BOOL;
   blMerkerEinOderAustransportAktiv       : BOOL;
 
-  (* WORD *)
+  // WORD
   wlBetriebsart              : WORD;
   wlWatchIONachrichtenNummer : WORD;
   wlIndex                    : WORD;
 
-  (* DWORD *)
-  dwlHandfunktionen : DWORD;  (* Handfunktionen: 0..31 Bit *)
+  // DWORD
+  dwlHandfunktionen : DWORD;  // Handfunktionen: 0..31 Bit
 
-  (* REAL *)
+  // REAL
   rlLetztePosition  : REAL;
 
-  (* TIMER *)
+  // TIMER
   toflGeblaeseEnergiesparModus          : TOF; //Timer um das Geblaese bei langen Stillstandszeiten abzuschalten 
   tonlMaxWarteAufResetErfolgreich       : TON; 
   tonlUpdateTimer                       : TON; // Verfahrlogik 
@@ -76,7 +76,7 @@ VAR
   atoflSensorAuslauf                    : ARRAY[cWAND_1..cANZAHL_WAENDE] OF TOF;
   atoflSensorAUslaufStopp               : ARRAY[cWAND_1..cANZAHL_WAENDE] OF TOF;
 
-  (* TRIGGER *)
+  // TRIGGER
   rtlAutomatikActiv                     : R_TRIG;
   rtlGlastransportVerfahrfreigabe       : ARRAY [cWAND_1..cANZAHL_WAENDE] OF R_TRIG;
   rtlDatenlichtschrankeUnterbrochen     : R_TRIG;
@@ -87,7 +87,7 @@ VAR
   rtlRackPositionGefunden               : R_TRIG;
   ftlBausteinDeaktivierung              : F_TRIG;
 
-  (* STEPS *)
+  // STEPS
   steplCheck                       : STEPS_TE;
   steplResetAntrieb                : STEPS_TE;
   steplReferenz                    : Steps_TE;
@@ -119,14 +119,14 @@ VAR
   blDone                     : BOOL;
   blFehlerAktiv              : BOOL;
 
-  (* HARDWARE EINGAENGE *)
-  in_bSensorEinlauf                                   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; (* Shuttle Sensoren von links nach rechts Sensor 1*)
-  in_bSensorAuslauf                                   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; (* Shuttle Sensoren von links nach rechts Sensor 4*)
-  in_bSensorEinlaufVorab                              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; (* Shuttle Sensoren von links nach rechts Sensor 2*)
-  in_bSensorAuslaufVorab                              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; (* Shuttle Sensoren von links nach rechts Sensor 3*)
-  in_bSensorAuslaufStopp                              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; (* Shuttle Sensoren von links nach rechts Sensor 5*)
-  in_bDatenlichtschrankeShuttlebahnOK          AT %I* : BOOL; (* Bauteil an der Shuttlebahn => Sender / Empfaenger *)
-  in_bDatenlichtschrankeShuttleOK              AT %I* : BOOL; (* Bauteil auf dem Shuttle => Sender / Empfaenger *)
+  // HARDWARE EINGAENGE
+  in_bSensorEinlauf                                   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle Sensoren von links nach rechts Sensor 1
+  in_bSensorAuslauf                                   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle Sensoren von links nach rechts Sensor 4
+  in_bSensorEinlaufVorab                              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle Sensoren von links nach rechts Sensor 2
+  in_bSensorAuslaufVorab                              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle Sensoren von links nach rechts Sensor 3
+  in_bSensorAuslaufStopp                              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle Sensoren von links nach rechts Sensor 5
+  in_bDatenlichtschrankeShuttlebahnOK          AT %I* : BOOL; // Bauteil an der Shuttlebahn => Sender / Empfaenger
+  in_bDatenlichtschrankeShuttleOK              AT %I* : BOOL; // Bauteil auf dem Shuttle => Sender / Empfaenger
   in_bNetzteil_24V_OK                          AT %I* : BOOL;
   in_bKlimageraet_OK                                  : BOOL;
   in_bSicherungen24V_OK                               : BOOL;
@@ -135,11 +135,11 @@ VAR
   in_bLSQuerfahrtBremseOK                      AT %I* : BOOL;
 
   in_bSicherungen230V_OK                       AT %I* : BOOL;
-  in_iAnalogwertChannel1                              : INT; (* Hinweis: Eingaenge des Analogmoduls u.a fuer die automatische Fachaufnahme *)
-  in_iAnalogwertChannel2                              : INT; (* Hinweis: Eingaenge des Analogmoduls u.a fuer die automatische Fachaufnahme *)
+  in_iAnalogwertChannel1                              : INT; // Hinweis: Eingaenge des Analogmoduls u.a fuer die automatische Fachaufnahme
+  in_iAnalogwertChannel2                              : INT; // Hinweis: Eingaenge des Analogmoduls u.a fuer die automatische Fachaufnahme
   in_bWandverstellungsAntriebsSicherungOK      AT %I* : BOOL;
   in_bWandverstellungsBremsSicherungOK         AT %I* : BOOL;
-  in_bFaecherwagenSuchSensor                          : BOOL; (* Shuttle Sensor zum Suchen der Fächerwagen um die Fachpositionen zu bestimmen *)
+  in_bFaecherwagenSuchSensor                          : BOOL; // Shuttle Sensor zum Suchen der Fächerwagen um die Fachpositionen zu bestimmen
 
   aHand : ARRAY[0..31] OF BOOL;
   i     : INT;
@@ -147,22 +147,22 @@ VAR
 END_VAR
 VAR CONSTANT
 
-  (* TIME *)
+  // TIME
   ZEIT_SENSOR_ENTPRELLEN         : TIME := T#50ms;
 
 END_VAR
 (* Anmerkung:
    - Shuttle Koordinationsbaustein regelt das komplette Shuttle
-*) 
-(***************************************************************************************************)
-(* BAUSTEIN: INITIALISIERUNG *)
-(***************************************************************************************************)
+*)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 
 IF ( blErsterZyklus ) THEN
   blErsterZyklus:=FALSE;
 
-  (* WICHTIG:
-     - Initialisierung 
+  (* Wichtig:
+     - Initialisierung
   *)
   A_Baustein_Initialisierung();
 
@@ -189,9 +189,9 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   blAlleVerfahrfreigaben     := blAlleVerfahrfreigaben AND Glastransport[wlIndex].bpVerfahrFreigabe;
 END_FOR
 
-(***************************************************************************************************)
-(* DEAKTIVIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEAKTIVIERUNG
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
    - Werte wieder passend abloeschen, wenn der Baustein wieder aktiviert wird
@@ -215,7 +215,7 @@ END_IF
 
 (* Hinweis:
    - Deaktivierung des Bausteins
-     => Der Baustein wird zum Ende der RETURN-Anweisung verlassen 
+     => Der Baustein wird zum Ende der RETURN-Anweisung verlassen
 *)
 IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
 
@@ -255,9 +255,9 @@ IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* AKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 Betriebsart();
 
 SystemCheck();

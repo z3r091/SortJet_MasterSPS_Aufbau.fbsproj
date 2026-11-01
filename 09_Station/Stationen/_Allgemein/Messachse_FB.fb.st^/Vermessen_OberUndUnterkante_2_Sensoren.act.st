@@ -6,9 +6,9 @@
 }
 *)
 ACTION Vermessen_OberUndUnterkante_2_Sensoren
-(***************************************************************************************************)
-(* AKTION: SCHEIBE VERMESSEN OBER UND UNTERKANTE 2 SENSOREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: SCHEIBE VERMESSEN OBER UND UNTERKANTE 2 SENSOREN
+//-------------------------------------------------------------------------------------------------
 
 IF( bpVermessen_OberUndUnterkante_2_Sensoren ) THEN
 
@@ -117,7 +117,7 @@ IF( bpVermessen_OberUndUnterkante_2_Sensoren ) THEN
         END_IF
       END_IF
 
-    (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< STARTEN DER SUCHE NACH DER UNTERKANTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  *)
+    // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< STARTEN DER SUCHE NACH DER UNTERKANTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     // VERMESSEN OBER UNTERKANTE 2 SENSOREN ====================
     STEP_100_E:
       // Starten der Positionierung
@@ -151,7 +151,7 @@ IF( bpVermessen_OberUndUnterkante_2_Sensoren ) THEN
 
       END_IF
 
-    (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< SUCHE NACH DER OBERKANTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  *)
+    // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< SUCHE NACH DER OBERKANTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     // VERMESSEN OBER UNTERKANTE 2 SENSOREN ====================
     STEP_120_E:
       // Antrieb zum Scheibenende verlangsamen

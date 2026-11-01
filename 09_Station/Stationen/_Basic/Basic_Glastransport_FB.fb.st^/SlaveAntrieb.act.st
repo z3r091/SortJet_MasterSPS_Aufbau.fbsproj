@@ -6,9 +6,9 @@
 }
 *)
 ACTION SlaveAntrieb
-(***************************************************************************************************)
-(* AKTION: SLAVE ANTRIEB *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: SLAVE ANTRIEB
+//-------------------------------------------------------------------------------------------------
 // Starten der Slave-Kopplung
 blStarteSlaveKopplung := ( (    bpEintransport
                              OR bpEintransportRueckwaertig
@@ -29,10 +29,9 @@ IF (  blStarteSlaveKopplung
      AND NOT bpReferenz )
 THEN
 
-  (* Fehlerauswertung:
-     - Antrieb
-     - Sicherstellen das der Slavekopplung aktiv ist
-  *)
+  // Fehlerauswertung:
+  //   - Antrieb
+  //   - Sicherstellen das der Slavekopplung aktiv ist
   IF ( Antrieb.bpFehler ) THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
     steplSlave := STEP_900_E;
@@ -46,7 +45,7 @@ THEN
 
 
   CASE steplSlave OF
-    (*SLAVE ANTRIEB ====================*)
+    // SLAVE ANTRIEB ====================
     STEP_0_E:
       IF ( Antrieb.bpReglerBereit AND Antrieb_Slave.bpReglerBereit ) THEN
         
@@ -64,7 +63,7 @@ THEN
       
       END_IF
 
-    (*SLAVE ANTRIEB ====================*)
+    // SLAVE ANTRIEB ====================
     STEP_60_E:
       (* Hinweis:
          - Antrieb ist referenziert
@@ -77,7 +76,7 @@ THEN
         steplSlave := STEP_100_E;
       END_IF
 
-    (*SLAVE ANTRIEB ====================*)
+    // SLAVE ANTRIEB ====================
     STEP_100_E:
       tonlUberwachungSlaveAktiv( IN := FALSE);
 
@@ -88,7 +87,7 @@ THEN
         steplSlave := STEP_200_E;
       END_IF
 
-    (*SLAVE ANTRIEB ====================*)
+    // SLAVE ANTRIEB ====================
     STEP_200_E:
       (* Anmerkung:
          - Überwachung ob die Achsen synchron laufen
@@ -102,18 +101,18 @@ THEN
         steplSlave := STEP_900_E;
       END_IF
 
-    (*SLAVE ANTRIEB ====================*)
+    // SLAVE ANTRIEB ====================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       Antrieb_Slave.wpBetriebsart:= KEINE_FUNKTION;
       bpFehler := TRUE;
 
-    (*SLAVE ANTRIEB ====================*)
+    // SLAVE ANTRIEB ====================
     STEP_1000_E:
       ;
 
-  (*SLAVE ANTRIEB ====================*)
+  // SLAVE ANTRIEB ====================
   END_CASE
 ELSE
 

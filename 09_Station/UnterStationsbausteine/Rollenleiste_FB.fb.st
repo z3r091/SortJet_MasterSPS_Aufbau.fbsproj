@@ -8,7 +8,7 @@
 FUNCTION_BLOCK Rollenleiste_FB
 VAR_INPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpStarteOeffnen    : BOOL;
   bpStarteSchliessen : BOOL;
   bpReset            : BOOL;
@@ -17,49 +17,49 @@ VAR_INPUT
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpDone    : BOOL;
   bpFehler  : BOOL;
 
-  (* WORD *)
+  // WORD
   wpFehlerNr  : WORD;
 
 END_VAR
 VAR
 
-  (* STEPS *)
+  // STEPS
   steplSchrittketteOeffnen    : Steps_TE;
   steplSchrittketteSchliessen : Steps_TE;
 
-  (* TIMER *)
-  tonlRollenleisteGeoeffnet   : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben *)
-  tonlRollenleisteGeschlossen : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben *)
+  // TIMER
+  tonlRollenleisteGeoeffnet   : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
+  tonlRollenleisteGeschlossen : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
 
-  (* TRIGGER *)
+  // TRIGGER
   ftlDeaktivieren : F_TRIG;
 
 END_VAR
 VAR
 
-  (* HARDWARE EINGAENGE *)
-  in_bGeoeffnet     AT %I* : BOOL; (* STATUS: Sensor meldet geöffnet *)
-  in_bGeschlossen   AT %I* : BOOL; (* STATUS: Sensor meldet geschlossen *)
+  // HARDWARE EINGAENGE
+  in_bGeoeffnet     AT %I* : BOOL; // STATUS: Sensor meldet geöffnet
+  in_bGeschlossen   AT %I* : BOOL; // STATUS: Sensor meldet geschlossen
 
-  (* HARDWARE AUSGAENGE *)
-  out_bOeffnen      AT %Q* : BOOL; (* AKTION: Verstellen der Wandoeffnung -> Maximal Geoeffnet *)
-  out_bSchliessen   AT %Q* : BOOL; (* AKTION: Verstellen der Wandoeffnung -> Minimal Geoeffnet *)
+  // HARDWARE AUSGAENGE
+  out_bOeffnen      AT %Q* : BOOL; // AKTION: Verstellen der Wandoeffnung -> Maximal Geoeffnet
+  out_bSchliessen   AT %Q* : BOOL; // AKTION: Verstellen der Wandoeffnung -> Minimal Geoeffnet
 
 END_VAR
 VAR CONSTANT
 
-  (* TIME *)
+  // TIME
   cZEITWERT_UEBERWACHUNG_BEWEGUNG : TIME := T#5s;
 
 END_VAR
 
-(***************************************************************************************************)
-(* BAUSTEIN: ABLAUF *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: ABLAUF
+//-------------------------------------------------------------------------------------------------
 
 IF ( bpReset ) THEN
 

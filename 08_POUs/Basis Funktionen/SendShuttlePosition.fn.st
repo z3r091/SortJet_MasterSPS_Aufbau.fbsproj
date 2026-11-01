@@ -11,14 +11,12 @@ END_VAR
 VAR
 END_VAR
 
-(*
-########################################## Changelog ################################################
-
-  2017-11-26 KV - Erstellt
-     => Function to send the current actual position of shuttle
-
-########################################## Changelog ################################################ 
-*)
+//########################################## Changelog ################################################
+//
+//  2017-11-26 KV - Erstellt
+//     => Function to send the current actual position of shuttle
+//
+//########################################## Changelog ################################################
 
 // SHUTTLE
 rSps2MmiShuttlePosition[0]  := starrShuttleBasisParameter[cSHUTTLE_101].rAktuellePositionQuerfahrt;

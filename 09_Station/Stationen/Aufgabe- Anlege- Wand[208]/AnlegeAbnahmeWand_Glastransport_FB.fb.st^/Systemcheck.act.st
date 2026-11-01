@@ -6,13 +6,13 @@
 }
 *)
 ACTION Systemcheck
-(***************************************************************************************************)
-(* AKTION SYSTEMCHECK *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION SYSTEMCHECK
+//-------------------------------------------------------------------------------------------------
 
 IF ( bpCheck ) THEN
   CASE ( steplCheck ) OF
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_0_E:
       bpStationBelegt := FALSE;
 
@@ -29,14 +29,14 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_900_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_10_E:
-      (* ---------------------------------------------------------------------------------------
-      //  OPTIONAL- ANTRIEB REFERENZIEREN 
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  OPTIONAL- ANTRIEB REFERENZIEREN
+      //
       //  Hinweis:
       // - Die aktuelle Position auf dem Regler nullen ( Referenz ).
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReferenzGeschwindigkeit;
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -45,7 +45,7 @@ IF ( bpCheck ) THEN
 
       steplCheck := STEP_20_E;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_20_E:
       (* Hinweis:
          - Referenzieren des Antriebs abgeschlossen [Ist-Position = 0  bzw. 1]
@@ -55,7 +55,7 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_30_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_30_E:
       (* Anmerkung:
          - Es gibt keine Vorgaengerstation
@@ -68,15 +68,15 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_300_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_100_E:
       (* Anmerkung:
          - Ueberpruefen ob sich auf der Station Glas befindet
 
-         Ueberpruefung:
-         - Kein Sensor belegt [Einlauf- Vorab - Auslauf]    
+           Ueberpruefung:
+         - Kein Sensor belegt [Einlauf- Vorab - Auslauf]
          - Auslauf und Vorabstop belegt [Freifahren ohne das der Einlaufsensor belegt wird]
-         -
+         - -
       *)
       IF (  NOT bpSensorEinlauf
            AND NOT bpSensorEinlaufVorab
@@ -89,14 +89,14 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_890_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_110_E:
-      (* ---------------------------------------------------------------------------------------
-       //  SCHEIBENSUCHFAHRT 
-       //         
-       //  Hint:
-       //  - n/c
-       // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
+      //  SCHEIBENSUCHFAHRT
+      //
+      //  Hint:
+      //  - n/c
+      // ---------------------------------------------------------------------------------------
 
       Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -107,7 +107,7 @@ IF ( bpCheck ) THEN
 
       steplCheck := STEP_120_E;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_120_E:
       IF (  bpSensorAuslaufVorab
            AND NOT bpSensorAuslauf )
@@ -123,7 +123,7 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_890_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Sensoren [Einlauf- Auslauf]
          - Antriebe
       *)
@@ -145,7 +145,7 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_900_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_130_E:
       IF ( NOT bpSensorAuslauf
            AND NOT Antrieb.bpAntrieblaeuft )
@@ -153,7 +153,7 @@ IF ( bpCheck ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplCheck := STEP_890_E;
       END_IF
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Sensoren [Einlauf- Auslauf]
       *)
       IF ( bpSensorAuslauf ) THEN
@@ -167,46 +167,45 @@ IF ( bpCheck ) THEN
       END_IF
 
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_300_E:
-      (* ---------------------------------------------------------------------------------------
-      //  INITIALISIERUNG VERBUND-SYSTEMCHECK  
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  INITIALISIERUNG VERBUND-SYSTEMCHECK
+      //
       //  Hint:
       //  - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF (  bpCheckMitVorgaenger
            AND NOT bpCheckMitNachfolger )
       THEN
         steplCheck := STEP_400_E;
 
-      (* Check mit Nachfolger:
-      *)
+      // Check mit Nachfolger:
       ELSIF( bpCheckMitNachfolger
              AND NOT bpCheckMitVorgaenger )
       THEN
         steplCheck := STEP_600_E;
       
       ELSE
-        (* Fehlerbehandlung
+        (* Fehlerbehandlung:
         *)
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_VERBUND_VORGAENGER_NACHFOLGER_NICHT_ERLAUBT;
         steplCheck := STEP_900_E;
 
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_400_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  SYSTEM CHECK MIT DER VORGAENGERSTATION
-      //         
+      //
       //  Hint:
       //  - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       (* Hinweis:
-         - Unterscheidung ob das Glas auf die Station bzw. von der Station gefahren werden muss. 
+         - Unterscheidung ob das Glas auf die Station bzw. von der Station gefahren werden muss.
       *)
       bpOutBereitZumEintransport := TRUE;
       Antrieb.rpGeschwindigkeit := 0.0;
@@ -217,7 +216,7 @@ IF ( bpCheck ) THEN
       END_IF
 
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_410_E:
       (* Anmerkung:
          - Glas wird auf die Station gezogen und es wird eine Glasposition gesendet
@@ -241,7 +240,7 @@ IF ( bpCheck ) THEN
 
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Auslaufsensor
          - Riemenverfahrweg- Ueberwachung
       *)
@@ -257,14 +256,14 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_900_E;
       END_IF                 
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_500_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  RUECKWERTIGER- TRANSPORT MIT DER VORGAENGERSTATION
-      //         
+      //
       //  Hinweis:
       // - Transport in die "negative" Richtung
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
       
       bpOutBereitZumAustransport := TRUE;
 
@@ -275,7 +274,7 @@ IF ( bpCheck ) THEN
 
       steplCheck := STEP_510_E;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_510_E:
       (* Hinweis:
          - Scheibenzaehler
@@ -299,7 +298,7 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_520_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_520_E:
       (* Anmerkung:
          - Antrieb in keine Funktion setzen
@@ -321,7 +320,7 @@ IF ( bpCheck ) THEN
 
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_530_E:
       (* Anmerkung:
          - Pruefen ob nicht noch eine Scheibe auf den Auslaufsensor gerutscht ist
@@ -339,9 +338,9 @@ IF ( bpCheck ) THEN
         Antrieb.wpBetriebsart     := HANDPLUS;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Einlaufsensor
-         - Verfahrwegueberwachung 
+         - Verfahrwegueberwachung
       *)
       IF ( bpSensorAuslauf ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -358,14 +357,14 @@ IF ( bpCheck ) THEN
 
 
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_600_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  SYSTEM CHECK MIT DER NACHFOLGESTATION
-      //         
+      //
       //  Hint:
-      //  - Transport in "Positive" Richtung ( Auslaufseite )  
-      // ---------------------------------------------------------------------------------------*)
+      //  - Transport in "Positive" Richtung ( Auslaufseite )
+      // ---------------------------------------------------------------------------------------
 
       IF ( InGlasTransportNachfolger.bBereitZumEintransport ) THEN
 
@@ -377,7 +376,7 @@ IF ( bpCheck ) THEN
 
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_610_E:
       bpOutBereitZumAustransport := TRUE;
 
@@ -388,7 +387,7 @@ IF ( bpCheck ) THEN
 
       steplCheck := STEP_620_E;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_620_E:
       (* Hinweis:
          - Scheibenzaehler
@@ -412,7 +411,7 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_630_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_630_E:
       (* Anmerkung:
          - Antrieb in keine Funktion setzen
@@ -434,7 +433,7 @@ IF ( bpCheck ) THEN
 
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_640_E:
       (* Anmerkung:
          - Pruefen ob nicht noch eine Scheibe auf den Auslaufsensor gerutscht ist
@@ -452,9 +451,9 @@ IF ( bpCheck ) THEN
         Antrieb.wpBetriebsart     := HANDMINUS;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Einlaufsensor
-         - Verfahrwegueberwachung 
+         - Verfahrwegueberwachung
       *)
       IF ( bpSensorEinlauf ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -468,14 +467,14 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_900_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_650_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  MASTER- SLAVE TRANSPORT MIT DER VORGAENGERSTATION
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       Antrieb.wpMaster := InGlasTransportNachfolger.wAchsID;
       Antrieb.wpBetriebsart := SYNC_AUF_MASTER;
@@ -486,10 +485,10 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_660_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_660_E:
       (* Hinweis:
-         - Ruecksprung in den default Ablauf 
+         - Ruecksprung in den default Ablauf
       *)
       bprtScheibe := FALSE;
 
@@ -499,14 +498,14 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_630_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_890_E:
-      (* ---------------------------------------------------------------------------------------
-       //  NACHRICHT GENERIEREN 
-       //         
-       //  Hint:
-       //  - n/c
-       // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
+      //  NACHRICHT GENERIEREN
+      //
+      //  Hint:
+      //  - n/c
+      // ---------------------------------------------------------------------------------------
 
       bprtScheibe := FALSE;
 
@@ -533,7 +532,7 @@ IF ( bpCheck ) THEN
 
       END_IF
 
-    (*SYSTEM CHECK ====================*)
+    // SYSTEM CHECK ====================
     STEP_895_E:
 
       Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReferenzGeschwindigkeit;
@@ -553,7 +552,7 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_900_E;
       END_IF
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_896_E:
       (* Hinweis:
          - Referenzieren des Antriebs abgeschlossen [Ist-Position = 0  bzw. 1]
@@ -572,17 +571,17 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_900_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_900_E: ;
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       bpFehler := TRUE;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_1000_E: ;
       bpDone := TRUE;
 
-  (*SYSTEM CHECK=========================*)
+  // SYSTEM CHECK=========================
   END_CASE
 ELSE
   IF (steplCheck > STEP_0_E ) THEN

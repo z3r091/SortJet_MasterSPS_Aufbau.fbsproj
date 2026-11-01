@@ -8,7 +8,7 @@
 FUNCTION_BLOCK Basic_Station_FB
 VAR_IN_OUT
 
-  (* STRUKT *)
+  // STRUKT
   BasisStationsParameter : StationBasisParameter_ST;
 
 END_VAR
@@ -67,9 +67,9 @@ VAR
 
 END_VAR
 
-(***************************************************************************************************)
-(* INITIALISIERUNG UND EINSTELLUNGEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// INITIALISIERUNG UND EINSTELLUNGEN
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus  ) THEN
 
   blErsterZyklus := FALSE;
@@ -79,9 +79,9 @@ IF ( blErsterZyklus  ) THEN
   
 END_IF
 
-(***************************************************************************************************)
-(* DEAKTIVIERUNG DES BAUSTEINS *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEAKTIVIERUNG DES BAUSTEINS
+//-------------------------------------------------------------------------------------------------
 
 // Werte wieder passend abloeschen, wenn der Baustein wieder aktiviert wird
 ftlBausteinDeaktivierung( CLK := BasisStationsParameter.stMKs.bDeaktivieren );
@@ -110,7 +110,7 @@ END_IF
 
 (* Hinweis:
    - Deaktivierung des Bausteins
-     => Der Baustein wird zum Ende der RETURN-Anweisung verlassen 
+     => Der Baustein wird zum Ende der RETURN-Anweisung verlassen
 *)
 IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
 
@@ -152,16 +152,16 @@ IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* AKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 A_Schnittstelle();
 Betriebsart();
 Meldungen();
 
-(***************************************************************************************************)
-(* TIMER *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// TIMER
+//-------------------------------------------------------------------------------------------------
 // Reset
 tonlMaxWarteAufResetErfolgreich( IN := BasisStationsParameter.bReset, PT := tgMaxWartezeitReset);
 END_FUNCTION_BLOCK

@@ -81,9 +81,9 @@ VAR
 
 END_VAR
 
-(***************************************************************************************************)
-(* INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus ) THEN
 
   IF ( __ISVALIDREF(ppAntriebsInformationen) ) THEN
@@ -116,9 +116,9 @@ IF ( blErsterZyklus ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* DEAKTIVIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEAKTIVIEREN
+//-------------------------------------------------------------------------------------------------
 IF ( NOT bpAktivieren ) THEN
 
   bpDone                        := TRUE;
@@ -131,9 +131,9 @@ IF ( NOT bpAktivieren ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* AKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 // Verfahrfreigabe (lokal, der Eingang wird nicht ueberschrieben)
 blVerfahrfreigabe :=     bpVerfahrfreigabe
                          AND NOT bpSensorEinlauf
@@ -147,16 +147,16 @@ Reset();
 Referenz();
 Meldungen();
 
-(***************************************************************************************************)
-(* Freigabe zum Verfahren *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Freigabe zum Verfahren
+//-------------------------------------------------------------------------------------------------
 IF NOT blVerfahrfreigabe AND Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.RESET AND Antrieb.wpBetriebsart <> KEINE_FUNKTION THEN
   Antrieb.wpBetriebsart := KEINE_FUNKTION;
 END_IF
 
-(***************************************************************************************************)
-(* Freigaben *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Freigaben
+//-------------------------------------------------------------------------------------------------
 // Antriebsfreigabe
 toflReglerFreigabeErhalten( IN := (   bpPositionieren
                                     OR bpReferenz
@@ -180,10 +180,9 @@ bpMaxEndschalterBelegt     := Antrieb.bpMaxSchalterBelegt;
 bpPositionierungGestartet  := steplPositionieren > STEP_0_E;
 bpPositionierungAbgeschlossen := bpDone AND NOT bpPositionieren;
 
-(* Positionsabfrage:
-    - Wurde die Zielposition aus dem Auftrag erreicht, bzw. stimmt die aktuelle Shuttleposition mit der
-      Position aus dem Auftrag ueberein.
-*)
+// Positionsabfrage:
+//    - Wurde die Zielposition aus dem Auftrag erreicht, bzw. stimmt die aktuelle Shuttleposition mit der
+//      Position aus dem Auftrag ueberein.
 bpZielPositionErreicht := ( ( ABS( Antrieb.rpIstPosition - argZuletztQuittiertePositionShuttle[stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )
                             OR
                             ( ABS( rpZielposition - argZuletztQuittiertePositionShuttle[stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )

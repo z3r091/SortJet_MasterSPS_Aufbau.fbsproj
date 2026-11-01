@@ -6,18 +6,18 @@
 }
 *)
 ACTION Reset
-(***************************************************************************************************)
-(* BAUSTEIN: RESET *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: RESET
+//-------------------------------------------------------------------------------------------------
 IF bpReset THEN
 
   CASE steplReset OF
 
-    (* RESET ============================================================================ *)
+    // RESET ============================================================================
     STEP_0_E:
 
       (* Hinweis:
-          - Zu Beginn die Grundsätzlichsten Dinge zurücksetzen
+         - Zu Beginn die Grundsätzlichsten Dinge zurücksetzen
       *)
       IF blStarteSchmierung AND ( steplSchmierung = STEP_900_E ) THEN
 
@@ -63,10 +63,10 @@ IF bpReset THEN
         steplReset := STEP_1000_E;
       END_IF
 
-    (* RESET ============================================================================ *)
+    // RESET ============================================================================
     STEP_100_E:
       (* Hinweis:
-          - Das Steuersignal so lange setzen wie notwendig, 
+         - Das Steuersignal so lange setzen wie notwendig,
             um einen Reset durchzuführen
       *)
       tonlSteuerSignal_Reset_Starten( IN := TRUE , PT := tResetStarten );
@@ -83,14 +83,14 @@ IF bpReset THEN
 
       END_IF
 
-    (* RESET ============================================================================ *)
+    // RESET ============================================================================
     STEP_1000_E:
       bpFehler := FALSE;
       bpInternerFehler := FALSE;
       out_bSteuerSignal := FALSE;
 
       (* Hinweis:
-          - Meldung Fett leer quittieren. Ist die Kartusche weiter leer, meldet die Pumpe es beim naechsten Hub erneut
+         - Meldung Fett leer quittieren. Ist die Kartusche weiter leer, meldet die Pumpe es beim naechsten Hub erneut
       *)
       blFettLeer := FALSE;
 

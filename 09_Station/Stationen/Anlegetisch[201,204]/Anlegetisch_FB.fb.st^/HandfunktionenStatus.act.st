@@ -6,10 +6,10 @@
 }
 *)
 ACTION HandfunktionenStatus
-(* Aktive Handfunktionen mit der Bitbelegung des MMI-Befehls zurueckmelden. *)
+// Aktive Handfunktionen mit der Bitbelegung des MMI-Befehls zurueckmelden.
 IF    NOT BasisStationsParameter.stMKs.bDeaktivieren
       AND blBetriebsartHand
-      AND NOT bgSimAktiv (* Demo/Messe: Handbits kommen aus der Simulation -> nicht ans MMI melden *)
+      AND NOT bgSimAktiv // Demo/Messe: Handbits kommen aus der Simulation -> nicht ans MMI melden
 THEN
   dwpHandfunktionenReturn.0  := out_bGeblaese1Ein OR out_bGeblaese2Ein;
   dwpHandfunktionenReturn.1  := Glastransport.bpHandfahrenPlus;

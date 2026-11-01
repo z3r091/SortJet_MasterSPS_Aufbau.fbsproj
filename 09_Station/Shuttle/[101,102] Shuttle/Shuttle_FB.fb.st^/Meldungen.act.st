@@ -6,15 +6,15 @@
 }
 *)
 ACTION Meldungen
-(***************************************************************************************************)
-(* AKTION MELDUNGEN  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION MELDUNGEN
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Diese Fehlerbehandlung sollte nur dann aufgerufen werden wenn in den Schrittketten der
      Fehler nicht abgefangen wurde.
-   Fehlerbehandlung:
+     Fehlerbehandlung:
    - Fremdluefter auf den Antrieben ( Querfahrt )
-   - Riemen 
+   - Riemen
    - Geblaese
 *)
 blFehlerAktiv := FALSE;
@@ -47,8 +47,8 @@ END_IF
 
 (* Hinweis:
    - Im Handbetrieb einen Fehlermelden
-  WICHTIG:
-  - Vermeiden das die Meldung doppelt generiert wird wenn von Automatik in Hand gewechselt wird
+     WICHTIG:
+   - Vermeiden das die Meldung doppelt generiert wird wenn von Automatik in Hand gewechselt wird
 *)
 rtlFehlerAusgeloestImAutomatikbetrieb( CLK :=     blBetriebsartAutomatik
                                        AND BasisStationsParameter.bFehler );
@@ -74,12 +74,11 @@ THEN
             );
 END_IF
 
-(***************************************************************************************************)
-(* AKTION: MELDUNGEN [WATCH IO]  *)
-(***************************************************************************************************)
-(* WatchIO:
-   - Datenlichtschranke 
-*)
+//-------------------------------------------------------------------------------------------------
+// AKTION: MELDUNGEN [WATCH IO]
+//-------------------------------------------------------------------------------------------------
+// WatchIO:
+//   - Datenlichtschranke
 blShuttleErreichbar := TRUE;
 
 wlWatchIONachrichtenNummer := BasisStationsParameter.stMKs.wMeldungsNummer;
@@ -121,9 +120,9 @@ WatchIo( blShuttleErreichbar AND NOT Kippen.in_bLeitungsschutzschalterBremseOK  
 WatchIo( blShuttleErreichbar AND NOT in_bWandverstellungsAntriebsSicherungOK                                                                ,wlWatchIONachrichtenNummer + 38 );
 WatchIo( blShuttleErreichbar AND NOT in_bWandverstellungsBremsSicherungOK                                                                   ,wlWatchIONachrichtenNummer + 39 );
 
-(***************************************************************************************************)
-(* S T A R T - Hinweismeldung beim Durchschreiten der Datenlichtschranke *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// S T A R T - Hinweismeldung beim Durchschreiten der Datenlichtschranke
+//-------------------------------------------------------------------------------------------------
 rtlDatenlichtschrankeUnterbrochen( CLK := (NOT(in_bDatenlichtschrankeShuttlebahnOK) OR NOT(in_bDatenlichtschrankeShuttleOK)) );
 
 IF ( rtlDatenlichtschrankeUnterbrochen.Q
@@ -144,9 +143,9 @@ THEN
   blDatenlichtschrankeUnterbrochenMelden := FALSE;
 END_IF
 
-(***************************************************************************************************)
-(* AKTION: VERFAHRFREIGABEN  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: VERFAHRFREIGABEN
+//-------------------------------------------------------------------------------------------------
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   rtlGlastransportVerfahrfreigabe[wlIndex](CLK := ( NOT Glastransport[wlIndex].bpVerfahrFreigabe ) );
   IF ( rtlGlastransportVerfahrfreigabe[wlIndex].Q

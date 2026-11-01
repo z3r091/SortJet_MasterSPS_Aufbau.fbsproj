@@ -6,12 +6,11 @@
 }
 *)
 ACTION A_Geblaese
-(***************************************************************************************************)
-(* STEUERUNG GEBLAESE *)
-(***************************************************************************************************)
-(* Energiesparrmodus:
-   -  Geblaese bei laengerer Inaktivitaet ausschalten 
-*)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG GEBLAESE
+//-------------------------------------------------------------------------------------------------
+// Energiesparrmodus:
+//   -  Geblaese bei laengerer Inaktivitaet ausschalten
 rtlAutomatikActiv(CLK := blBetriebsartAutomatik );
 
 IF rtlAutomatikActiv.Q THEN
@@ -20,9 +19,8 @@ END_IF
 
 IF ( blBetriebsartAutomatik OR blBetriebartCheck OR blNachSystemcheckMerker ) THEN
 
-  (* Energiesparmodus:
-     - Gebläse bei längerer Inaktivität ausschalten 
-  *)
+  // Energiesparmodus:
+  //   - Gebläse bei längerer Inaktivität ausschalten
   toflGeblaeseEnergiesparModus( IN := (    BasisStationsParameter.bAuftragAktiv
                                         OR rtlAutomatikActiv.Q) ,
                                 PT := tgZeitAutoabschaltungEnergiesparModus );

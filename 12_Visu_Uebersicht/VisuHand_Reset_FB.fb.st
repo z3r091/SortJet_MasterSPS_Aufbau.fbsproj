@@ -6,10 +6,9 @@
 }
 *)
 FUNCTION_BLOCK VisuHand_Reset_FB
-(* Stations-Reset aus der Visu:
-   - setzt BasisStationsParameter.bReset (die Station fuehrt ihre eigene Reset-Aktion aus und setzt bReset selbst zurueck)
-   - nur ausserhalb der Automatik, nicht wenn die Station deaktiviert ist oder bereits ein Reset laeuft
-*)
+// Stations-Reset aus der Visu:
+//   - setzt BasisStationsParameter.bReset (die Station fuehrt ihre eigene Reset-Aktion aus und setzt bReset selbst zurueck)
+//   - nur ausserhalb der Automatik, nicht wenn die Station deaktiviert ist oder bereits ein Reset laeuft
 VAR_IN_OUT
   stBP : StationBasisParameter_ST;
   stH  : VisuHand_Station_ST;

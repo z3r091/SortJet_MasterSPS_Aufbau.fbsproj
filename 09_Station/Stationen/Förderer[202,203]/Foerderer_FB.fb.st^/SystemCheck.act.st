@@ -6,9 +6,9 @@
 }
 *)
 ACTION SystemCheck
-(****************************************************************************************)
-(* AKTION: SYSTEM-CHECK *)
-(****************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: SYSTEM-CHECK
+//-------------------------------------------------------------------------------------------------
 IF ( blBetriebartCheck ) THEN
 
   // Ausnahmesituation
@@ -20,17 +20,17 @@ IF ( blBetriebartCheck ) THEN
 
   
   CASE steplCheck OF
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_0_E:
       (* Hinweis:
-         - Variablen zuruecksetzen     
+         - Variablen zuruecksetzen
       *)
       BasisStationsParameter.bCheckAbgeschlossen     := FALSE;
       BasisStationsParameter.bStationBelegt[cWAND_1] := FALSE;
 
 
       (* Hinweis:
-         - Sollte es sich z.B. um eine Station handeln die in einen anderen SK transportiert 
+         - Sollte es sich z.B. um eine Station handeln die in einen anderen SK transportiert
            kann die <<Freigabe>> [Hardware-] entzogen sein wenn dieser geoeffnet ist.
       *)
       IF ( BasisStationsParameter.bFreigabe ) THEN
@@ -65,30 +65,30 @@ IF ( blBetriebartCheck ) THEN
 
       END_IF
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_10_E:
       (* Hinweis:
-         - Wenn die Geblaese gestartet sind kann mit dem SystemCheck begonnen werden.           
+         - Wenn die Geblaese gestartet sind kann mit dem SystemCheck begonnen werden.
       *)
       IF ( blGeblaeseAktiv  ) THEN
         steplCheck := STEP_100_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       IF ( Geblaese.bpFehler ) THEN
         BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_GEBLAESE;
         steplCheck:=STEP_900_E;
       END_IF
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  STARTEN DES SYSTEM CHECKS
-      //         
+      //
       //  Hinweis:
       //  - Restweg-Positionierung
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       Glastransport.bpCheckMitNachfolger := BasisStationsParameter.bCheckMitNachfolger[cWAND_1];
       Glastransport.bpCheckMitVorgaenger := BasisStationsParameter.bCheckMitVorgaenger[cWAND_1];
@@ -97,7 +97,7 @@ IF ( blBetriebartCheck ) THEN
 
       steplCheck:=STEP_110_E;
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_110_E:
       (* Hinweis:
          - Pruefen ob die Station belegt ist
@@ -109,14 +109,14 @@ IF ( blBetriebartCheck ) THEN
         steplCheck:=STEP_800_E;
       END_IF
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_800_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  AUSWERTEN DES BELADUNGSSTATUS MIT DEN MMI DATEN
-      //         
+      //
       //  Hinweis:
       // - Nachricht an den Bediener senden wenn die Daten nicht passen
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       steplCheck := STEP_1000_E;
 
@@ -138,12 +138,12 @@ IF ( blBetriebartCheck ) THEN
                     wpgFehlerdaten );
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       blNachSystemcheckMerker := FALSE;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_1000_E:
       // Auftrag für erneuten Automatikbetrieb setzen
       IF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
@@ -155,7 +155,7 @@ IF ( blBetriebartCheck ) THEN
       BasisStationsParameter.bCheckAbgeschlossen  := TRUE;
       blNachSystemcheckMerker := TRUE;
 
-  (*SYSTEM CHECK=========================*)
+  // SYSTEM CHECK=========================
   END_CASE
 
 ELSE

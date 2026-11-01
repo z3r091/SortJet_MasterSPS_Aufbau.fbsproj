@@ -6,11 +6,11 @@
 }
 *)
 ACTION Timer
-(***************************************************************************************************)
-(* BAUSTEIN: TIMER, TRIGGER, ETC. *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: TIMER, TRIGGER, ETC.
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   - Ueberwachung 
+   - Ueberwachung
 *)
 tonlMaxWarteZeit(IN:=( (   bpVerstellungSchliessen AND out_bVerstellungSchliessen)
                        OR (bpVerstellungOeffnen AND out_bVerstellungOeffnen)),
@@ -18,8 +18,8 @@ tonlMaxWarteZeit(IN:=( (   bpVerstellungSchliessen AND out_bVerstellungSchliesse
 
 
 (* Hinweis:
-   - Um nicht beim Starten der Anlage in einem Fehler zustehen (HubAntrieb Fehler ist Zeitgesteuert), 
-     wird der Fehler erst nach einigen Sekunden nach dem ersten Durchlaufen dieses Bausteins ausgewertet 
+   - Um nicht beim Starten der Anlage in einem Fehler zustehen (HubAntrieb Fehler ist Zeitgesteuert),
+     wird der Fehler erst nach einigen Sekunden nach dem ersten Durchlaufen dieses Bausteins ausgewertet
 *)
 tonlFehlermeldungUnterdrueckenAntriebOK( IN := NOT blErsterZyklus,
                                          PT := T#4s );

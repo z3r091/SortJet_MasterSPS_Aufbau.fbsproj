@@ -9,9 +9,9 @@
 NAMESPACE Stations_Konfig
 VAR_GLOBAL CONSTANT
 
-(***************************************************************************************************)
-(* KONFIG VORHANDENE STATIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// KONFIG VORHANDENE STATIONEN
+//-------------------------------------------------------------------------------------------------
 
   // Antriebe
   cANZAHL_ANTRIEBE                     : WORD := 29;
@@ -85,20 +85,20 @@ VAR_GLOBAL CONSTANT
   cLETZTER_DURCHGANG                   : WORD := 1;
 
 
-(***************************************************************************************************)
-(* KONFIGURATION *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// KONFIGURATION
+//-------------------------------------------------------------------------------------------------
   (* Hinweis:
-     - Positionsüberprüfung aller Shuttles und Doppelfördererstationen,da diese als Shuttles gesehne werden 
-       => Wichtig: Anzahl ist die Ist-Anzahl - 1 [ Teutoglas: 10 Shuttle - 1 ] 
+     - Positionsüberprüfung aller Shuttles und Doppelfördererstationen,da diese als Shuttles gesehne werden
+       => Wichtig: Anzahl ist die Ist-Anzahl - 1 [ Teutoglas: 10 Shuttle - 1 ]
   *)
-  cANZAHL_SHUTTLE                      : WORD := 2; (*Input-, Outputshuttles *)
-  cANZAHL_TRANSFERSHUTTLE              : WORD := 2; (* Transfershuttles *)
+  cANZAHL_SHUTTLE                      : WORD := 2; // Input-, Outputshuttles
+  cANZAHL_TRANSFERSHUTTLE              : WORD := 2; // Transfershuttles
   cANZAHL_SHUTTLESTATIONENSYSTEMCHECK  : WORD := 2;
 
-(***************************************************************************************************)
-(* DEFINITIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEFINITIONEN
+//-------------------------------------------------------------------------------------------------
  
   // AUTOMATIKKREISE 
   cAUTOMATIKKREIS_1                     : WORD := 1;

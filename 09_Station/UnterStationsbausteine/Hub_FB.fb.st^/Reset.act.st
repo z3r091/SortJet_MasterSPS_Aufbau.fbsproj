@@ -6,12 +6,12 @@
 }
 *)
 ACTION Reset
-(***************************************************************************************************)
-(* AKTION: RESET *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: RESET
+//-------------------------------------------------------------------------------------------------
 IF ( bpReset ) THEN
   CASE steplReset OF
-    (*RESET =====================*)
+    // RESET =====================
     STEP_0_E:
       tonlMaximaleWartezeitAufReset( IN := FALSE );
       tonlReset( IN := FALSE );
@@ -28,7 +28,7 @@ IF ( bpReset ) THEN
         steplReset := STEP_10_E;
       END_IF
 
-    (*RESET =====================*)
+    // RESET =====================
     STEP_5_E:
       // Reset- Phoenix Modul
       tonlReset( IN := TRUE , PT :=  T#1500MS );
@@ -38,7 +38,7 @@ IF ( bpReset ) THEN
         steplReset := STEP_10_E;
       END_IF
 
-    (*RESET =====================*)
+    // RESET =====================
     STEP_10_E:
       IF ( in_bLS400V_OK ) THEN
         steplReset := STEP_15_E;
@@ -48,7 +48,7 @@ IF ( bpReset ) THEN
         steplReset := STEP_900_E;
       END_IF
 
-    (*RESET =====================*)
+    // RESET =====================
     STEP_15_E:
       IF ( in_bMotorstarter_OK ) THEN
         steplReset := STEP_20_E;
@@ -58,7 +58,7 @@ IF ( bpReset ) THEN
         steplReset := STEP_900_E;
       END_IF
 
-    (*RESET =====================*)
+    // RESET =====================
     STEP_20_E:
       IF ( in_bLSBremse_OK ) THEN
         steplReset := STEP_1000_E;
@@ -68,18 +68,18 @@ IF ( bpReset ) THEN
         steplReset := STEP_900_E;
       END_IF
 
-    (*RESET =====================*)
+    // RESET =====================
     STEP_900_E:
       out_bReset := FALSE;
       bpFehler   := TRUE;
 
-    (*RESET =====================*)
+    // RESET =====================
     STEP_1000_E:
       wpFehlerNr := cMELDUNG_NULL;
       bpFehler   := FALSE;
       bpDone := TRUE;
 
-  (*RESET =====================*)
+  // RESET =====================
   END_CASE
   
 ELSE

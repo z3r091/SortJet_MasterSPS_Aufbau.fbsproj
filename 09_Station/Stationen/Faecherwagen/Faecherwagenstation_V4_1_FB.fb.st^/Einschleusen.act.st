@@ -6,7 +6,7 @@
 }
 *)
 ACTION Einschleusen
-(* EINSCHLEUSEN *)
+// EINSCHLEUSEN
 
 (* Hinweis:
    - Fächerwageneintransport
@@ -33,7 +33,7 @@ THEN
   END_IF
 
   CASE steplEinschleusen OF
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_0_E:
       (* Hinweis:
          - Initialisierung der Variablen
@@ -65,14 +65,14 @@ THEN
       END_IF
 
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - Überprüfen, das ein Wagen zum Andocken bereit steht
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Warte_Auf_Faecherwagen_In_Box_100;
       
@@ -87,16 +87,16 @@ THEN
       END_IF
 
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_105_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - Nach start des Bedieners  wird der Vorgang gestartet
-    // - LS muss quittiert sein und noch immer ein Wagen in der Box stehen
-    // - es wird direkt der Gegenhalter unter dem Wagen ausgefahren um sicherzustellen, das der Wagen nicht verrutscht
-      // ---------------------------------------------------------------------------------------*)
+      // - LS muss quittiert sein und noch immer ein Wagen in der Box stehen
+      // - es wird direkt der Gegenhalter unter dem Wagen ausgefahren um sicherzustellen, das der Wagen nicht verrutscht
+      // ---------------------------------------------------------------------------------------
 
       eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Warten_Auf_Lichtschranke_Und_Quittierung_105;
 
@@ -114,15 +114,15 @@ THEN
         steplEinschleusen := STEP_110_E;
       END_IF
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_110_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - sobald der Gegenhalter Ausgefahren wird wird das auslesen des RFID-Chips gestartet
-      // 
-      // ---------------------------------------------------------------------------------------*)
+      //
+      // ---------------------------------------------------------------------------------------
 
       IF ( blGegenhalterSchliessenDone )
       THEN
@@ -137,17 +137,17 @@ THEN
       END_IF
 
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_115_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - sobald der RFID-Chip ausgelesen wurde, wird das Rolltor geöffnet und die Verriegelung geöffnet
-      // 
-      // ---------------------------------------------------------------------------------------*)
+      //
+      // ---------------------------------------------------------------------------------------
 
-      tonlTimeoutReadRFID(IN := TRUE, PT := T#5S); (* Timer falls der Chip nicht ausgelesen werden kann*)
+      tonlTimeoutReadRFID(IN := TRUE, PT := T#5S); // Timer falls der Chip nicht ausgelesen werden kann
 
       blRFID_Auslesen := TRUE;
         
@@ -164,7 +164,7 @@ THEN
       ELSIF tonlTimeoutReadRFID.Q AND BasisStationsParameter.stMKs.stStationsAufbau.bRFID THEN
 
         blRFID_Auslesen := FALSE;
-        tonlTimeoutReadRFID(IN := FALSE); (* Timer falls der Chip nicht ausgelesen werden kann*)
+        tonlTimeoutReadRFID(IN := FALSE); // Timer falls der Chip nicht ausgelesen werden kann
 
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_RFID_CHIP_NICHT_LESBAR;
         SpsError( eFehler_Station, 
@@ -177,15 +177,15 @@ THEN
 
       END_IF
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_120_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - wenn das Rolltor und die Verriegelung geöffnet sind müssen die Greiferbacken geöffnet werden
-      // 
-      // ---------------------------------------------------------------------------------------*)
+      //
+      // ---------------------------------------------------------------------------------------
 
       IF ( blRolltorAufDone )
       THEN
@@ -198,15 +198,15 @@ THEN
         blRolltorAuf          := TRUE;
       END_IF
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_125_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - Wenn der Greifer offen ist wird die Lineareinheit auf die Greifposition gefahren
-      // 
-      // ---------------------------------------------------------------------------------------*)
+      //
+      // ---------------------------------------------------------------------------------------
 
       IF ( blGreiferOeffnenDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Lineareinheit_Vor_130;
@@ -218,15 +218,15 @@ THEN
         blGreiferOeffnen   := TRUE;
       END_IF
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_130_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - Wenn die LinearEinheit vorne ist wird der Wagen das erste mal gegriffen
-      // 
-      // ---------------------------------------------------------------------------------------*)
+      //
+      // ---------------------------------------------------------------------------------------
 
       IF ( blLineareinheitVorDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Greifer_Schliessen_135;
@@ -238,15 +238,15 @@ THEN
         blLineareinheitVor      := TRUE;
       END_IF
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_135_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - WSobald der Wagen gegriffen wurde kann die Verriegelung geöffnet werden
-      // 
-      // ---------------------------------------------------------------------------------------*)
+      //
+      // ---------------------------------------------------------------------------------------
 
       IF ( blGreiferSchliessenDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Entrieglung_Oeffnen_140;
@@ -258,15 +258,15 @@ THEN
         blGreiferSchliessen   := TRUE;
       END_IF
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_140_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - Wenn der Wagen entriegelt wurde wird der Wagen soweit wie möglich auf die Station gezogen, damit umgegriffen werden kann
-      // 
-      // ---------------------------------------------------------------------------------------*)
+      //
+      // ---------------------------------------------------------------------------------------
 
       IF ( blEntriegelungOeffnenDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Lineareinheit_zurueck_145;
@@ -278,15 +278,15 @@ THEN
         blEntriegelungOeffnen  := TRUE;
       END_IF
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_145_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - Sobald die Lineareinheit hinten angekommen ist wird der Greifer geöffnet, damit wir erneut nach vorne fahren können
-      // 
-      // ---------------------------------------------------------------------------------------*)
+      //
+      // ---------------------------------------------------------------------------------------
       
       IF ( blLineareinheitZurueckDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Greifer_Oeffnen_150;
@@ -298,15 +298,15 @@ THEN
         blLineareinheitZurueck := TRUE;
       END_IF
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_150_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - Sobald der GReifer geöffnet wurde kann erneut nach vorne gefahren werden, um den Wagen erneut zu greifen
-      // 
-      // ---------------------------------------------------------------------------------------*)
+      //
+      // ---------------------------------------------------------------------------------------
 
       IF ( blGreiferOeffnenDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Lineareinheit_Vor_155;
@@ -318,15 +318,15 @@ THEN
         blGreiferOeffnen := TRUE;
       END_IF
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_155_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
-      // - Lineareinheit ist erneut vorne und der Greifer kann in die hinteren Löcher greifen 
-      // 
-      // ---------------------------------------------------------------------------------------*)
+      // - Lineareinheit ist erneut vorne und der Greifer kann in die hinteren Löcher greifen
+      //
+      // ---------------------------------------------------------------------------------------
 
       IF ( blLineareinheitVorDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Greifer_Schliessen_160;
@@ -338,15 +338,15 @@ THEN
         blLineareinheitVor  := TRUE;
       END_IF
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_160_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - Greifer sind geschlossen und die Lineareinheit kann zum Shuttle fahren
-      // 
-      // ---------------------------------------------------------------------------------------*)
+      //
+      // ---------------------------------------------------------------------------------------
 
       IF ( blGreiferSchliessenDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Lineareinheit_Shuttle_165;
@@ -358,15 +358,15 @@ THEN
         blGreiferSchliessen    := TRUE;
       END_IF
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_165_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - Lineareinheit ist am Shuttle angekommen und das Rolltor kann geschlossen werden
-      // 
-      // ---------------------------------------------------------------------------------------*)
+      //
+      // ---------------------------------------------------------------------------------------
 
       IF ( blLineareinheitShuttleDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Rolltor_Ab_170;
@@ -378,16 +378,16 @@ THEN
         blLineareinheitShuttle := TRUE;
       END_IF
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_170_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - Rolltor wurde geschlossen und der Einschleusevorgang ist abgeschlossen
       // - Nachfolgend Meldung an das MMI
-      // 
-      // ---------------------------------------------------------------------------------------*)
+      //
+      // ---------------------------------------------------------------------------------------
 
       IF ( blRolltorAbDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Auswertung_180;
@@ -398,11 +398,11 @@ THEN
         blRolltorAb            := TRUE;
       END_IF
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_180_E:
       IF ( bpStatusStationInBeladePosition ) THEN
 
-        (* Mit RFID Chip *)
+        // Mit RFID Chip
         IF ( BasisStationsParameter.stMKs.stStationsAufbau.bRFID ) THEN
 
           IF ( blRFID_DataWasValid OR BasisStationsParameter.bCheck ) THEN
@@ -417,7 +417,7 @@ THEN
 
           END_IF
 
-        ELSE (* Ohne RFID CHip *)
+        ELSE // Ohne RFID CHip
           wSps2MmiRackPositionNummer:= BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
           wSps2MmiRackPosition := 0;
           wSps2MmiRackNumber   := 0;
@@ -444,17 +444,17 @@ THEN
 
       END_IF
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       BasisStationsParameter.bEintransport[1] := FALSE;
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_950_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       // GEGENHALTER WIEDER ÖFFNEN
-      //         
-      // ---------------------------------------------------------------------------------------*)
+      //
+      // ---------------------------------------------------------------------------------------
 
       blGegenhalterOeffnen := TRUE;
       IF blGegenhalterOeffnenDone THEN
@@ -465,7 +465,7 @@ THEN
       END_IF
 
 
-    (* EINSCHLEUSEN ========================== *)
+    // EINSCHLEUSEN ==========================
     STEP_1000_E:
       BasisStationsParameter.bFehler := FALSE;
       wlRFID_NummerMerker   := 0;
@@ -473,7 +473,7 @@ THEN
       bpEinschleusenAbgeschlossen := TRUE;
       BasisStationsParameter.bEintransport[1] := FALSE;
 
-  (* EINSCHLEUSEN ========================== *)
+  // EINSCHLEUSEN ==========================
   END_CASE
 ELSE
 

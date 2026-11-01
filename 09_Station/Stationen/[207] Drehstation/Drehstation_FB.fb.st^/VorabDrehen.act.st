@@ -6,9 +6,9 @@
 }
 *)
 ACTION VorabDrehen
-(***************************************************************************************************)
-(* DREHEN  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DREHEN
+//-------------------------------------------------------------------------------------------------
 
 IF ( BasisStationsParameter.bVorabDrehen ) THEN
 
@@ -21,28 +21,28 @@ IF ( BasisStationsParameter.bVorabDrehen ) THEN
 
   CASE steplVorabDrehen OF
 
-    (* Vorab Drehen ========================= *)
+    // Vorab Drehen =========================
     STEP_0_E:
       (* Hinweis:
          - Sicherstellen dass das Geblaese aktiv ist
       *)
       steplVorabDrehen := STEP_100_E;
 
-    (* Vorab Drehen =========================*)
+    // Vorab Drehen =========================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  BEWEGUNG STARTEN
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       Drehen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eDrehen_Sollposition;
       Drehen.bpStarteAbsolutPositionierung := TRUE;
 
       steplVorabDrehen := STEP_110_E;
 
-    (* Vorab Drehen =========================*)
+    // Vorab Drehen =========================
     STEP_110_E:
       IF ( Drehen.bpAbsolutPositionierungAbgeschlossen ) THEN
         Drehen.bpStarteAbsolutPositionierung := FALSE;
@@ -50,15 +50,15 @@ IF ( BasisStationsParameter.bVorabDrehen ) THEN
         steplVorabDrehen := STEP_1000_E;
       END_IF
 
-    (* Vorab Drehen =========================*)
+    // Vorab Drehen =========================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (* Vorab Drehen =========================*)
+    // Vorab Drehen =========================
     STEP_1000_E:
       BasisStationsParameter.bVorabDrehenAbgeschlossen := TRUE;
 
-  (* Vorab Drehen =========================*)
+  // Vorab Drehen =========================
   END_CASE
 ELSE
   IF ( steplVorabDrehen > STEP_0_E ) THEN

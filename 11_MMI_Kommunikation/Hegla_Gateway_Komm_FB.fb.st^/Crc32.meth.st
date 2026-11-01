@@ -15,7 +15,7 @@ VAR
   ilIndex : INT;
 END_VAR
 
-(* Funktion zur Berechnung einer CRC32-Prüfsumme *)
+// Funktion zur Berechnung einer CRC32-Prüfsumme
 dwlCrc := 16#FFFFFFFF;
 
 

@@ -6,13 +6,13 @@
 }
 *)
 ACTION Referenz
-(***************************************************************************************************)
-(* S T A R T - Referenzpunktfahrt *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// S T A R T - Referenzpunktfahrt
+//-------------------------------------------------------------------------------------------------
 
 IF( bpReferenz )THEN
   CASE steplReferenz OF
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_0_E:
       (* Hinweis:
          - Timer zuruecksetzen
@@ -36,7 +36,7 @@ IF( bpReferenz )THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_10_E:
       (* Anmerkung:
          - Loesen der Arretierung
@@ -44,7 +44,7 @@ IF( bpReferenz )THEN
       Arretierung.bpStartEinfahren := TRUE;
       steplReferenz := STEP_20_E;
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_20_E:
       (* Hinweis:
          - Arretierung ist eingefahren
@@ -54,7 +54,7 @@ IF( bpReferenz )THEN
         steplReferenz := STEP_30_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Arretierung [Pneumatik Zylinder]
       *)
       IF ( Arretierung.bpFehler) THEN
@@ -63,10 +63,10 @@ IF( bpReferenz )THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_30_E:
       (* Hinweis:
-         - Einlauf und Auslaufsensor vor dem Verfahren pruefen 
+         - Einlauf und Auslaufsensor vor dem Verfahren pruefen
            => Vor dem Verfahren pruefen ob der Antrieb in einem Endschalter steht
       *)
       IF (  NOT bpEinlaufSensor
@@ -87,10 +87,10 @@ IF( bpReferenz )THEN
 
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_40_E:
       (* Hinweis:
-         - Versuchen den Endschalter frei zufahren 
+         - Versuchen den Endschalter frei zufahren
       *)
       tonlEndschalterFreifahren( IN := TRUE, PT:= T#10s);
 
@@ -119,7 +119,7 @@ IF( bpReferenz )THEN
       END_IF
 
       (* Fehlerbehandlung:
-         - Endschalter wird nicht frei 
+         - Endschalter wird nicht frei
          - Antrieb
       *)
       IF ( tonlEndschalterFreifahren.Q
@@ -137,7 +137,7 @@ IF( bpReferenz )THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_50_E:
       (* Hinweis:
          - Erzwungene Pause, damit der Antrieb wieder ordnungsgemäß schaltet
@@ -157,7 +157,7 @@ IF( bpReferenz )THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_100_E:
       (* Hinweis:
          - Initialisieren der Antriebsparameter
@@ -170,7 +170,7 @@ IF( bpReferenz )THEN
 
       steplReferenz := STEP_110_E;
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_110_E:
       (* Hinweis:
          - Betriebsart absetzen
@@ -179,10 +179,10 @@ IF( bpReferenz )THEN
 
       steplReferenz := STEP_120_E;
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_120_E:
       (* Hinweis:
-         - Referenzierung abgeschlossen 
+         - Referenzierung abgeschlossen
          - Setzen der Arretierung
       *)
       IF( Antrieb.bpDone )THEN
@@ -191,7 +191,7 @@ IF( bpReferenz )THEN
       END_IF
 
       (* Fehlerbehandlung:
-         - Antrieb 
+         - Antrieb
       *)
       IF ( Antrieb.bpFehler ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -199,13 +199,12 @@ IF( bpReferenz )THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_200_E:
-      (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ANTRIEB NACH REFERENZ POSITIONIEREN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-         Hinweis:
-         - Starten der Positionierung auf 0 Grad
-      *)
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ANTRIEB NACH REFERENZ POSITIONIEREN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      //
+      //   Hinweis:
+      //   - Starten der Positionierung auf 0 Grad
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -217,7 +216,7 @@ IF( bpReferenz )THEN
       END_IF
 
       (* Fehlerbehandlung:
-         - Antrieb 
+         - Antrieb
       *)
       IF ( Antrieb.bpFehler ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -225,7 +224,7 @@ IF( bpReferenz )THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_210_E:
       (* Hinweis:
          - Positionierung abgeschlossen
@@ -236,7 +235,7 @@ IF( bpReferenz )THEN
       END_IF
 
       (* Fehlerbehandlung:
-         - Antrieb 
+         - Antrieb
       *)
       IF ( Antrieb.bpFehler ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -244,17 +243,17 @@ IF( bpReferenz )THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_220_E:
       (* Hinweis:
-         -Sicherstellen das der ANtrieb sicher steht dann die Arretierung ausfahren
+         - -Sicherstellen das der ANtrieb sicher steht dann die Arretierung ausfahren
       *)
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
         Arretierung.bpStartAusfahren := TRUE;
         steplReferenz := STEP_230_E;
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_230_E:
       (* Hinweis:
          - Arretierung ist ausgefahren
@@ -264,7 +263,7 @@ IF( bpReferenz )THEN
         steplReferenz := STEP_1000_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Arretierung [Pneumatik Zylinder]
       *)
       IF ( Arretierung.bpFehler ) THEN
@@ -273,17 +272,17 @@ IF( bpReferenz )THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       bpFehler :=TRUE;
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*REFERENZ =============================*)
+  // REFERENZ =============================
   END_CASE
 
 ELSE
@@ -298,7 +297,7 @@ ELSE
     steplReferenz := STEP_0_E;
   END_IF
 END_IF
-(***************************************************************************************************)
-(* S T A R T - Referenzpunktfahrt *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// S T A R T - Referenzpunktfahrt
+//-------------------------------------------------------------------------------------------------
 END_ACTION

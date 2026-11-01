@@ -11,9 +11,9 @@ NAMESPACE Global_Vars
 // Vor StationBasisParameter (Slot 310) initialisieren, dort werden bgFALSE/rgNULL verwendet
 {attribute 'global_init_slot' := '295'}
 VAR_GLOBAL
-(***************************************************************************************************)
-(* ALLGEMEINE VARIABLEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// ALLGEMEINE VARIABLEN
+//-------------------------------------------------------------------------------------------------
 
   // Workaround für Output/Input Warnungen
   bgDruckluftFaecherwagenstationenOK : BOOL;
@@ -57,11 +57,11 @@ VAR_GLOBAL
   rgNULL      : REAL  := 0;
   wgNULL      : WORD  := 0;
 
-  (* HINWEIS:
-     Das Log-Level bestimmt ob und wie die Fehlermeldung geworfen werden->
-     Level 0 :=  Nur die übergeordneteten Bausteine werfen einen Fehler
-     Level 1 :=  Übergeordnetete Bausteine + Station werfen einen Fehler
-     Level 2 :=  Übergeordnetete Bausteine + Station + Unterbausteine werfen einen Fehler
+  (* Hinweis:
+     - Das Log-Level bestimmt ob und wie die Fehlermeldung geworfen werden->
+       Level 0 :=  Nur die übergeordneteten Bausteine werfen einen Fehler
+       Level 1 :=  Übergeordnetete Bausteine + Station werfen einen Fehler
+       Level 2 :=  Übergeordnetete Bausteine + Station + Unterbausteine werfen einen Fehler
   *)
   wgLogLevel : WORD := 0;
   bgTSLog    : BOOL := TRUE;
@@ -71,30 +71,30 @@ VAR_GLOBAL
   Visu_Start_Auto          : BOOL;
   Visu_Notaus_OK           : BOOL := FALSE;
 
-  (* Globale Einstellungen *)
+  // Globale Einstellungen
   bgStartSimulation : BOOL;
-  bgSimAktiv        : BOOL; (* Messe: Simulation aktiv ODER kontrolliertes Beenden laeuft (gibt Handfunktionen frei) *)
-  bgSimAbbruch          : BOOL;         (* Messe: Harter Abbruch der Simulation (z.B. Automatik-Stop / NotHalt) -> sofort alles zuruecksetzen, kein kontrolliertes Beenden *)
-  bgSimFWSchleusenAktiv : BOOL := TRUE; (* Messe: FW nach n Zyklen aus-/einschleusen. FALSE -> FW-Ablauf wird abgebrochen/uebersprungen, Zyklus RKT/SH/TS laeuft weiter *)
+  bgSimAktiv        : BOOL; // Messe: Simulation aktiv ODER kontrolliertes Beenden laeuft (gibt Handfunktionen frei)
+  bgSimAbbruch          : BOOL;         // Messe: Harter Abbruch der Simulation (z.B. Automatik-Stop / NotHalt) -> sofort alles zuruecksetzen, kein kontrolliertes Beenden
+  bgSimFWSchleusenAktiv : BOOL := TRUE; // Messe: FW nach n Zyklen aus-/einschleusen. FALSE -> FW-Ablauf wird abgebrochen/uebersprungen, Zyklus RKT/SH/TS laeuft weiter
 
 
-  (* Globale Einstellungen *)
-  bgInitialisierungUeberbruecken           : BOOL := FALSE; (* Init überspringen *)
-  bgInbetriebnahmeBit                      : BOOL := FALSE; (* Inbetriebnahme de/aktivieren *)
-  bgHornAktivieren                         : BOOL := FALSE;  (* Horn / Hupe an der Anlage de/aktivieren *)
-  bgSicherheitstechnikBruecken             : BOOL := FALSE; (* Inbetriebnahme de/aktivieren *)
+  // Globale Einstellungen
+  bgInitialisierungUeberbruecken           : BOOL := FALSE; // Init überspringen
+  bgInbetriebnahmeBit                      : BOOL := FALSE; // Inbetriebnahme de/aktivieren
+  bgHornAktivieren                         : BOOL := FALSE;  // Horn / Hupe an der Anlage de/aktivieren
+  bgSicherheitstechnikBruecken             : BOOL := FALSE; // Inbetriebnahme de/aktivieren
   bgMMIBruecken                            : BOOL := FALSE;
   bgDeaktiviereWatchIOs                    : BOOL := FALSE;
   bgSPS_SIMULATION                         : BOOL := FALSE;
-bgSimFehlmessungErzwingen                : BOOL; (* Simulation: TRUE = die NAECHSTE Scheibenlaengenmessung (Scheibenmessung_FB) liefert eine Fehlmessung; wird danach automatisch zurueckgesetzt *)
-bgSimFehlmessungDauer                    : BOOL; (* Simulation: TRUE = ALLE Scheibenlaengenmessungen liefern eine Fehlmessung, bis wieder FALSE *)
-rgSimFehlmessungAbweichung               : REAL := 100.0; (* Simulation: Abweichung [mm], die bei einer Fehlmessung auf die Scheibenlaenge addiert wird (muss groesser als rMesstoleranz sein) *)
-rgSimScheibenlaenge                      : REAL := 1000.0; (* Simulation (bgSPS_SIMULATION): virtuelle Scheibenlaenge [mm] fuer Scheibenmessung und Restwegmessung der simulierten Antriebe *)
-  bgTransfershuttleVortransportAktivieren  : BOOL := FALSE;  (* Quittierung des Vortransportauftrags (Ohne Ablauf) *)
+bgSimFehlmessungErzwingen                : BOOL; // Simulation: TRUE = die NAECHSTE Scheibenlaengenmessung (Scheibenmessung_FB) liefert eine Fehlmessung; wird danach automatisch zurueckgesetzt
+bgSimFehlmessungDauer                    : BOOL; // Simulation: TRUE = ALLE Scheibenlaengenmessungen liefern eine Fehlmessung, bis wieder FALSE
+rgSimFehlmessungAbweichung               : REAL := 100.0; // Simulation: Abweichung [mm], die bei einer Fehlmessung auf die Scheibenlaenge addiert wird (muss groesser als rMesstoleranz sein)
+rgSimScheibenlaenge                      : REAL := 1000.0; // Simulation (bgSPS_SIMULATION): virtuelle Scheibenlaenge [mm] fuer Scheibenmessung und Restwegmessung der simulierten Antriebe
+  bgTransfershuttleVortransportAktivieren  : BOOL := FALSE;  // Quittierung des Vortransportauftrags (Ohne Ablauf)
   bgNeueDialogeVerwenden                   : BOOL := TRUE;
   bgNotHalt_SPS_OK                         : BOOL := TRUE;
 
-  (* Ausgaenger - Blink - *)
+  // Ausgaenger - Blink -
   gbFlashbit02sec  : BOOL;
   gbFlashbit05sec  : BOOL;
   gbFlashbit1sec   : BOOL;
@@ -108,22 +108,21 @@ rgSimScheibenlaenge                      : REAL := 1000.0; (* Simulation (bgSPS_
   // Init
   M_Init_Ok        : BOOL;
 
-  (* Automatikkreise [Speicher - Shuttle - Transfershuttle - ggf. Perepherie *)
+  // Automatikkreise [Speicher - Shuttle - Transfershuttle - ggf. Perepherie
   M_Automatik_Aktiv                         : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
   tonAutomatik_Aktiv                        : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF TON;
 
-  (* SystemCheck:
-     - neue Strukturen aufrufen 
-  *)
-  abgDateStationCheck  : ARRAY[101..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF Auftragsdaten_ST; (* Daten die fuer den SystemCheck gebraucht werden *)
+  // SystemCheck:
+  //   - neue Strukturen aufrufen
+  abgDateStationCheck  : ARRAY[101..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF Auftragsdaten_ST; // Daten die fuer den SystemCheck gebraucht werden
 
-(***************************************************************************************************)
-(* ALLGEMEINE STRUKTUREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// ALLGEMEINE STRUKTUREN
+//-------------------------------------------------------------------------------------------------
   igIndexFaecherwagenDatenEmpfangen : INT := 0;
   igIndexFaecherwagenDatenSenden    : INT := 0;
 
-  (* Hinweis
+  (* Hinweis:
      - Puffer in der Shuttlebahn
   *)
   wgStatusPuffer                       : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF WORD;
@@ -131,31 +130,31 @@ rgSimScheibenlaenge                      : REAL := 1000.0; (* Simulation (bgSPS_
   (* Hinweis:
      - Allgemeine Konstanten aus der Mathematik
   *)
-(***************************************************************************************************)
+// *************************************************************************************************
   (* Hinweis:
      - Allgemeine Konstanten aus der Mathematik
   *)
   Mathe : CONSTANTS_MATH;
 
-(***************************************************************************************************)
-(* HANDFUNKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// HANDFUNKTIONEN
+//-------------------------------------------------------------------------------------------------
 
-  (* STATION *)
+  // STATION
   adwgHandfunktionenStationen             : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF DWORD;
 
-  (* SHUTTLE *)
+  // SHUTTLE
   adwgHandfunktionenShuttle               : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF DWORD;
 
-  (* TRANSFERSHUTTLE *)
+  // TRANSFERSHUTTLE
   adwgHandfunktionenTransfershuttle       : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF DWORD;
 
-  (* FAECHERWAGENSTATION *)
+  // FAECHERWAGENSTATION
   adwgHandfunktionenFaecherwagenStationen : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF DWORD;
 
-(***************************************************************************************************)
-(* SYSTEMCHECK *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// SYSTEMCHECK
+//-------------------------------------------------------------------------------------------------
   wgAnzahlSystemcheckZyklen              : WORD; //  Wird automatisch erkannt
  
 END_VAR

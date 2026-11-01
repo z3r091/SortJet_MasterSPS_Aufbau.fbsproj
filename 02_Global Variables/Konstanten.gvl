@@ -9,11 +9,11 @@
 NAMESPACE Konstanten
 VAR_GLOBAL CONSTANT
 
-  (* Konstanten für die Profibus Master (falls mehrere vorhanden sind) *)
+  // Konstanten für die Profibus Master (falls mehrere vorhanden sind)
   cPROFIBUSMASTER_1 : BYTE := 0;
   cPROFIBUSMASTER_2 : BYTE := 1;
 
-  (* Konstanten als Ersatz für sizeof *)
+  // Konstanten als Ersatz für sizeof
   cSizeOfByte  : WORD := 1;
   cSizeOfWord  : WORD := 2;
   cSizeOfDWord : WORD := 4;
@@ -28,22 +28,22 @@ VAR_GLOBAL CONSTANT
   cMillisecToSec    : WORD  := 1000;
   cMillisecToMinute : WORD  := 60000;
 
-(***************************************************************************************************)
-(*SYSTEMCHECK *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// SYSTEMCHECK
+//-------------------------------------------------------------------------------------------------
   cMAX_ANZAHL_SYSTEMCHECKZYKLEN : WORD := 6;
 
   // Maximale Anzahl konfigurierbarer Ueberwachungsquellen fuer bpShuttleAnhalten pro Shuttle
   cMAX_SHUTTLE_ANHALTEN_QUELLEN  : WORD := 6;
   
-(***************************************************************************************************)
-(* BIT- MASKEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BIT- MASKEN
+//-------------------------------------------------------------------------------------------------
 
   (* Hinweis:
      - Bit Maske
   *)
-  (*                       5432109876543210 --- *)
+  // 5432109876543210 ---
   Maske_Bit_0  : WORD := 2#0000000000000001 ;
   Maske_Bit_1  : WORD := 2#0000000000000010 ;
   Maske_Bit_2  : WORD := 2#0000000000000100 ;
@@ -61,7 +61,7 @@ VAR_GLOBAL CONSTANT
   Maske_Bit_14 : WORD := 2#0100000000000000 ;
   Maske_Bit_15 : WORD := 2#1000000000000000 ;
 
-  (* ### KONFIGURIEREN ### *)
+  // ### KONFIGURIEREN ###
 
   (* Hinweis:
      - Die folgende Constante darf nicht vergrößert werden, weil es sonst zu einem
@@ -81,7 +81,7 @@ VAR_GLOBAL CONSTANT
   GLASSTAERKE_DEFAULT_MIN         : WORD := WORD#3;
   GLASSTAERKE_DEFAULT_MAX         : WORD := WORD#14;
   
-  (* FAECHERWAGENSTATION *)
+  // FAECHERWAGENSTATION
   cEINSCHLEUSESTATION : WORD := 1;
   cPUFFERSTATION      : WORD := 2;
   cFUELLSTATION       : WORD := 3;
@@ -111,7 +111,7 @@ VAR_GLOBAL CONSTANT
   rgPOSITION_360Grad : REAL := REAL#360;
 
   (* Hinweis:
-     - Modus wie der FB den Antrieb ansteuern soll 
+     - Modus wie der FB den Antrieb ansteuern soll
   *)
   cMODUS_MASTER_SLAVE : BYTE := 0;
   cMODUS_HAND         : BYTE := 1;
@@ -123,7 +123,7 @@ VAR_GLOBAL CONSTANT
   cSPEICHER_EINLAUFSEITE : BYTE := 1;
   cSPEICHER_AUSLAUFSEITE : BYTE := 2;
 
-  (* Zuweisungskonstanten *)
+  // Zuweisungskonstanten
   cNULL              : WORD := 0;
   cNULL_WORD_ARRAY   : ARRAY [0..3] OF WORD  :=[ 4(0)];
   cNULL_DWORD_ARRAY  : ARRAY [0..3] OF DWORD :=[ 4(0)];
@@ -136,29 +136,29 @@ VAR_GLOBAL CONSTANT
   cSCHMIERKREIS_1_2  : WORD := 3;
 
 
-(***************************************************************************************************)
-(* FOLGEAUFTRAGSTYPEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// FOLGEAUFTRAGSTYPEN
+//-------------------------------------------------------------------------------------------------
   cFOLGEAUFTRAG_NICHT_AKTIV : WORD := 0;
   cFOLGEAUFTRAG_AKTIV       : WORD := 1;
 
 
-(***************************************************************************************************)
-(* S T A R T - Beladungs- Typ fuer die Shuttle / Stationen nach einem SystemCheck  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// S T A R T - Beladungs- Typ fuer die Shuttle / Stationen nach einem SystemCheck
+//-------------------------------------------------------------------------------------------------
   cSTATUS_STATION_FREI              : WORD := 0;
   cSTATUS_STATION_BELEGT            : WORD := 1;
   cSTATUS_STATION_BELEGT_NACHFOLGER : WORD := 2;
   cSTATUS_STATION_BELEGT_VORGEANGER : WORD := 3;
 
 
-(***************************************************************************************************)
-(* BIT-ZUGRIFF WAENDE  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BIT-ZUGRIFF WAENDE
+//-------------------------------------------------------------------------------------------------
   (* Hinweis:
      - Statuswort <wLetzteScheibe> / <wErsteScheibe>
      - Globale Konstanetn fuer den <bitaccess> der Strukturen ErsteScheibe_ST und LetzteScheibe_ST
-     - Werde sind Bit-Codiert 
+     - Werde sind Bit-Codiert
   *)
   cBIT_WAND1   : INT := 0 ;
   cBIT_WAND2   : INT := 1 ;
@@ -194,9 +194,9 @@ VAR_GLOBAL CONSTANT
   cBIT_BUFFERSLOT_THICKNESS : WORD := 10;
 
 
-(***************************************************************************************************)
-(* Sensorfehlertypen  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Sensorfehlertypen
+//-------------------------------------------------------------------------------------------------
 
   cAUSNAHMESITUATION_KEIN_SENSOR            : WORD := 0;
   cAUSNAHMESITUATION_EINLAUFSENSOR          : WORD := 1;
@@ -204,24 +204,24 @@ VAR_GLOBAL CONSTANT
   cAUSNAHMESITUATION_EINLAUF_AUSLAUF_SENSOR : WORD := 3;
 
 
-(***************************************************************************************************)
-(* Status Auftrag  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Status Auftrag
+//-------------------------------------------------------------------------------------------------
 
   cAUFTRAG_FEHLER      : BYTE := 0;
   cAUFTRAG_ERFOLGREICH : BYTE := 1;
   cAUFTRAG_KEIN_STATUS : BYTE := 99;
 
-(***************************************************************************************************)
-(* String- Verarbeitung  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// String- Verarbeitung
+//-------------------------------------------------------------------------------------------------
 
    cLINE_FEED       : BYTE := BYTE#16#0A;
    cCARRIAGE_RETURN : BYTE := BYTE#16#0D;
 
-(***************************************************************************************************)
-(* ASCII TABELLE  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// ASCII TABELLE
+//-------------------------------------------------------------------------------------------------
 
   (* Hinweis:
      - Datenwoerter in String konvertieren
@@ -235,9 +235,9 @@ VAR_GLOBAL CONSTANT
                                         'u' ,'v' ,'w' ,'x' ,'y' ,'z' ,'{' ,'|' ,'}' ,'~'];
 
 
-(***************************************************************************************************)
-(* Globale Konstanetn  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Globale Konstanetn
+//-------------------------------------------------------------------------------------------------
   cEVENT_STATUS_STATION_BELADEN         : WORD := 16#1;
   cEVENT_STATUS_FREIGEGEBEN             : WORD := 16#2;
   cEVENT_STATUS_GLAS_NICHT_FREIGEGEBEN  : WORD := 16#4;
@@ -245,9 +245,9 @@ VAR_GLOBAL CONSTANT
   cEVENT_STATUS_GLASBRUCH               : WORD := 16#10;
   cEVENT_STATUS_GLASABGENOMMEN          : WORD := 16#20;
 
-(***************************************************************************************************)
-(* IO am Umrichter*)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// IO am Umrichter
+//-------------------------------------------------------------------------------------------------
 
   // DI an XG31
   cXG31_1_I_1     : WORD  := 16;

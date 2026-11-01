@@ -6,9 +6,9 @@
 }
 *)
 ACTION Laengenmessung
-(***************************************************************************************************)
-(* AKTION LÄNGENVERMESSUNG  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION LÄNGENVERMESSUNG
+//-------------------------------------------------------------------------------------------------
 IF ( bpGlaslaengenmessung
      AND bpAutomatikAktiv)
 THEN
@@ -22,10 +22,10 @@ THEN
 
   
   CASE steplGlaslaengenMessung OF
-    (* GLASLAENGENMESSUNG =============================*)
+    // GLASLAENGENMESSUNG =============================
     STEP_0_E:
       (* Hinweis:
-         - Variablen setzen 
+         - Variablen setzen
          - Pruefen ob der Antrieb bereit zum verfahren ist
       *)
       rpGemesseneGlaslaenge := 0;
@@ -50,7 +50,7 @@ THEN
       END_IF
 
 
-    (* GLASLAENGENMESSUNG =============================*)
+    // GLASLAENGENMESSUNG =============================
     STEP_10_E:
       (* Hinweis:
          - Vorgehen bei einer maximalen Scheibe
@@ -69,10 +69,10 @@ THEN
         steplGlaslaengenMessung := STEP_100_E;
       END_IF
 
-    (* GLASLAENGENMESSUNG =============================*)
+    // GLASLAENGENMESSUNG =============================
     STEP_100_E:
       (* Anmerkung:
-         - Starten der Glaslaengenvermessung 
+         - Starten der Glaslaengenvermessung
       *)
       rpGemesseneGlaslaenge := 0.0;
 
@@ -89,9 +89,9 @@ THEN
         steplGlaslaengenMessung := STEP_110_E;
       END_IF
 
-      (* Fehlerbehandlung
-        - Scheibenmessung
-        - Wegüberschreitung
+      (* Fehlerbehandlung:
+         - Scheibenmessung
+         - Wegüberschreitung
       *)
       IF ( Scheibenmessung.bpFehler ) THEN
         Scheibenmessung.bpGlasvermessung := FALSE;
@@ -99,11 +99,11 @@ THEN
         steplGlaslaengenMessung := STEP_900_E;
       END_IF
 
-    (* GLASLAENGENMESSUNG =============================*)
+    // GLASLAENGENMESSUNG =============================
     STEP_110_E:
       (* Hinweis:
          - Auslaufsensor muss nach der Messung belegt sein
-           => Pruefen des Messergebnisses          
+           => Pruefen des Messergebnisses
       *)
       IF ( bpSensorAuslauf ) THEN
         bpAnforderungMessergebnis := TRUE;
@@ -118,17 +118,17 @@ THEN
 
       END_IF
 
-    (* GLASLAENGENMESSUNG !!! Modellbetrieb !!! =============================*)
+    // GLASLAENGENMESSUNG !!! Modellbetrieb !!! =============================
     STEP_200_E:
       (* Hinweis:
          - Scheibe mittels Restwegpositionierung auf den Doppelkipptisch fahren
-           -> Welche Schwingen mitfahren, wird in der Steuerung 201 entschieden und entsprechend gekoppelt
+         - -> Welche Schwingen mitfahren, wird in der Steuerung 201 entschieden und entsprechend gekoppelt
       *)
       Antrieb.rpGeschwindigkeit  := ppAntriebsInformationen.rpGeschwindigkeitMessen;
       Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
       Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
 
-      (* Sicherstellen, dass das Glas komplett auf den Doppelkipptisch gefahren wird *)
+      // Sicherstellen, dass das Glas komplett auf den Doppelkipptisch gefahren wird
       Antrieb.rpZielPosition     := ( ppParameterBaustein.rWegUeberAuslauf + pAuftrag.rAuftragsLaenge )
                                     - pAuftrag.rModellVersatzVorne
                                     (* + pAuftrag.rModellVersatzHinten *) ;
@@ -137,11 +137,11 @@ THEN
 
       steplGlaslaengenMessung := STEP_210_E;
 
-    (* GLASLAENGENMESSUNG !!! Modellbetrieb !!! =============================*)
+    // GLASLAENGENMESSUNG !!! Modellbetrieb !!! =============================
     STEP_210_E:
       (* Hinweis:
          - Scheibe mittels Restwegpositionierung auf den Doppelkipptisch fahren
-           -> Welche Schwingen mitfahren, wird in der Steuerung 201 entschieden und entsprechend gekoppelt
+         - -> Welche Schwingen mitfahren, wird in der Steuerung 201 entschieden und entsprechend gekoppelt
       *)
       IF Antrieb.bpDone THEN
 
@@ -150,15 +150,14 @@ THEN
 
       END_IF
 
-    (* GLASLAENGENMESSUNG =============================*)
+    // GLASLAENGENMESSUNG =============================
     STEP_400_E:
-      (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< WARTEN AUF DAS MESSERGEBNIS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        
-        Anmerkung:
-         - Warteschritt ob die Messung okay bzw. fehlerhaft ist
-           => Messergebnis OK / Quittiert --> ENDE
-           => Kenebel                     --> Glas zurueck fahren
-      *)
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< WARTEN AUF DAS MESSERGEBNIS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      //
+      //  Anmerkung:
+      //   - Warteschritt ob die Messung okay bzw. fehlerhaft ist
+      //     => Messergebnis OK / Quittiert --> ENDE
+      //     => Kenebel                     --> Glas zurueck fahren
       IF ( bpScheibeQuittiert
            OR bpScheibeFreigegeben )
       THEN
@@ -171,14 +170,13 @@ THEN
         steplGlaslaengenMessung := STEP_600_E;
       END_IF
 
-    (* GLASLAENGENMESSUNG =============================*)
+    // GLASLAENGENMESSUNG =============================
     STEP_600_E:
-      (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< KNEBEL SCHEIBE ZURUECK FAHREN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-         Hinweis:
-         - Scheibe wird zurueck richtung Bediener gefahren
-           => Schabe muss nach dem zurueck fahren neu angelegt werden
-       *)
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< KNEBEL SCHEIBE ZURUECK FAHREN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      //
+      //   Hinweis:
+      //   - Scheibe wird zurueck richtung Bediener gefahren
+      //     => Schabe muss nach dem zurueck fahren neu angelegt werden
       IF ( bpScheibeZurueckFahren ) THEN
         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -197,25 +195,25 @@ THEN
         steplGlaslaengenMessung := STEP_800_E;
       END_IF
 
-    (* GLASLAENGENMESSUNG =============================*)
+    // GLASLAENGENMESSUNG =============================
     STEP_800_E:
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
         Antrieb.wpBetriebsart   := KEINE_FUNKTION;
         steplGlaslaengenMessung := STEP_1000_E;
       END_IF
 
-    (* GLASLAENGENMESSUNG =============================*)
+    // GLASLAENGENMESSUNG =============================
     STEP_900_E:
       bpOutBereitZumAustransport := FALSE;
 
       bpFehler := TRUE;
 
-    (* GLASLAENGENMESSUNG =============================*)
+    // GLASLAENGENMESSUNG =============================
     STEP_1000_E:
       bpOutBereitZumAustransport := FALSE;
       bpDone := TRUE;
 
-  (* GLASLAENGENMESSUNG =============================*)
+  // GLASLAENGENMESSUNG =============================
   END_CASE
 ELSE
   IF (steplGlaslaengenMessung > STEP_0_E) THEN

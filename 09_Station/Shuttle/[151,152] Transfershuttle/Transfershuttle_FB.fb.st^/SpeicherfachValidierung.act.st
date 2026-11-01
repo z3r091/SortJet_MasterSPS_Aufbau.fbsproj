@@ -6,25 +6,25 @@
 }
 *)
 ACTION SpeicherfachValidierung
-(***************************************************************************************************)
-(* SPEICHERFACH VALIDIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// SPEICHERFACH VALIDIEREN
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Validierung eines Speicherfachs nach einer Ausnahmesituation
-     => Eine Ausnahmesituation entsteht dann wenn Glas aus dem Speicher herraus stehen koennte       
+     => Eine Ausnahmesituation entsteht dann wenn Glas aus dem Speicher herraus stehen koennte
 *)
 IF ( bpStarteSpeicherfachValidierung ) THEN
 
   CASE iPhaseSpeichervalidierung OF
 
-    (* --------------------------------------------------------- *)
+    // ---------------------------------------------------------
     SPEICHERFACHVALIDIERUNG_IDLE:
       bpSpeicherfachValidierungAbgeschlossen := FALSE;
 
       iPhaseSpeichervalidierung := SPEICHERFACHVALIDIERUNG_INIT;
 
 
-    (* --------------------------------------------------------- *)
+    // ---------------------------------------------------------
     SPEICHERFACHVALIDIERUNG_INIT:
       bpSpeicherfachValidierungAbgeschlossen := FALSE;
 
@@ -39,7 +39,7 @@ IF ( bpStarteSpeicherfachValidierung ) THEN
       END_IF
 
 
-    (* --------------------------------------------------------- *)
+    // ---------------------------------------------------------
     SPEICHERFACHVALIDIERUNG_AKTIV:
       (* Hinweis:
          - Validierung des Speicherfachs erfolgreich abgeschlossen
@@ -49,7 +49,7 @@ IF ( bpStarteSpeicherfachValidierung ) THEN
         iPhaseSpeichervalidierung := SPEICHERFACHVALIDIERUNG_ABGESCHLOSSEN;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Glastransport
       *)
       IF ( Glastransport.bpFehler ) THEN
@@ -59,12 +59,12 @@ IF ( bpStarteSpeicherfachValidierung ) THEN
       END_IF
 
 
-    (* --------------------------------------------------------- *)
+    // ---------------------------------------------------------
     SPEICHERFACHVALIDIERUNG_FEHLER:
       BasisStationsParameter.bFehler := TRUE;
 
 
-    (* --------------------------------------------------------- *)
+    // ---------------------------------------------------------
     SPEICHERFACHVALIDIERUNG_ABGESCHLOSSEN:
       bpSpeicherfachValidierungAbgeschlossen := TRUE;
 

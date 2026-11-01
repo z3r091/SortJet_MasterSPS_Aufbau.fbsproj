@@ -49,8 +49,8 @@ VAR
   // HARDWARE EINGÄNGE
   in_bVerstellungGeoeffnet         AT %I* : BOOL;
   in_bVerstellungGeschlossen       AT %I* : BOOL;
-  in_bMotorstarter_OK              AT %I* : BOOL; (* Sicherung des Kippantriebs ÖFFNER KONTAKT !! *)
-  in_bBremseOK                     AT %I* : BOOL; (* Sicherung des Kippantriebs ÖFFNER KONTAKT !! *)
+  in_bMotorstarter_OK              AT %I* : BOOL; // Sicherung des Kippantriebs ÖFFNER KONTAKT !!
+  in_bBremseOK                     AT %I* : BOOL; // Sicherung des Kippantriebs ÖFFNER KONTAKT !!
   in_bSicherungMotorOK             AT %I* : BOOL;
   
   // HARDWARE AUSGÄNGE 
@@ -61,9 +61,9 @@ VAR
 
 END_VAR
 
-(***************************************************************************************************)
-(* BAUSTEIN: INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus ) THEN
   blErsterZyklus := FALSE;
 
@@ -78,9 +78,9 @@ END_IF
 
 
 
-(***************************************************************************************************)
-(* BAUSTEIN: AKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AKTIONEN
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Aktionen
 *)
@@ -116,7 +116,7 @@ ELSE
     bpDone   := TRUE;
     bpFehler := FALSE;
 
-  END_IF (* => bpAktiv *)
+  END_IF // => bpAktiv
 
-END_IF(* => bpReset *)
+END_IF// => bpReset
 END_FUNCTION_BLOCK

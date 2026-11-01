@@ -6,9 +6,9 @@
 }
 *)
 ACTION Austransport
-(***************************************************************************************************)
-(* AUSTRANSPORT  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUSTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF (  BasisStationsParameter.bAustransport[cWAND_1]
      AND blBetriebsartAutomatik )
 THEN
@@ -41,7 +41,7 @@ THEN
 
 
   CASE steplAustransport OF
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_0_E:
       (* Hinweis:
          - Sicherstellen dass das Geblaese aktiv ist
@@ -61,18 +61,17 @@ THEN
         steplAustransport := STEP_900_E;
       END_IF
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_10_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  OPTIONALE - KOMPONENTEN
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
-      (* Option:
-         - Dickenverstellung der Wand \ Scheibenfuehrung \ etc.
-      *)
+      // Option:
+      //   - Dickenverstellung der Wand \ Scheibenfuehrung \ etc.
       Dickenverstellung.epOeffnungsStellung := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eDickenverstellung;
       Dickenverstellung.bpStartPneumatik    := TRUE;
 
@@ -104,14 +103,14 @@ THEN
       END_IF
 
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_50_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  OPTIONALE - KOMPONENTEN PROZESSES ABGESCHLOSSEN
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF ( ( Querachse.bpDone OR NOT Querachse.bpStartPneumatik )
            AND Kippen.bpDone
@@ -124,7 +123,7 @@ THEN
         steplAustransport := STEP_100_E;
       END_IF
 
-    (*AUSTRANSPORT ==================================================================*)
+    // AUSTRANSPORT ==================================================================
     STEP_100_E:
       (* Hinweis:
          - Sicherstellen das die Zielposition erreicht worden ist
@@ -141,14 +140,14 @@ THEN
 
       END_IF
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_110_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  STARTEN DES AUSTRANSPORTS
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       Glastransport.pAuftrag                   := BasisStationsParameter.pAuftrag[cWAND_1];
       Glastransport.bpAustransport             := NOT BasisStationsParameter.bRueckwaertsTransportieren[cWAND_1];
@@ -156,7 +155,7 @@ THEN
 
       steplAustransport := STEP_120_E;
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_120_E:
       (* Hinweis:
          - Austransport abgeschlossen
@@ -178,14 +177,14 @@ THEN
         steplAustransport := STEP_900_E;
       END_IF
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_200_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  OPTION - KOMPONENTEN ANSTEUERN
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       (* Hinweis:
          - Ansteuerung Kippen
@@ -206,10 +205,10 @@ THEN
       steplAustransport :=  STEP_210_E;
 
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_210_E:
       (* Hinweis:
-         - Drehung abgeschlossen 
+         - Drehung abgeschlossen
       *)
       IF (  ( Drehen.bpDone OR NOT Drehen.bpStarteAbsolutPositionierung )
            AND   Kippen.bpDone OR NOT Kippen.bpPositionieren )
@@ -220,15 +219,15 @@ THEN
         steplAustransport :=  STEP_1000_E;
       END_IF
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*AUSTRANSPORT =========================*)
+    // AUSTRANSPORT =========================
     STEP_1000_E:
       BasisStationsParameter.bAustransportAbgeschlossen[cWAND_1] := TRUE;
 
-  (*AUSTRANSPORT =========================*)
+  // AUSTRANSPORT =========================
   END_CASE
 ELSE
 

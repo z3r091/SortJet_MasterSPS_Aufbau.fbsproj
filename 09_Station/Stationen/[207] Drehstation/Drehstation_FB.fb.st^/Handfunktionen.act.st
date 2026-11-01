@@ -6,15 +6,14 @@
 }
 *)
 ACTION Handfunktionen
-(***************************************************************************************************)
-(* HANDBETRIEB *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// HANDBETRIEB
+//-------------------------------------------------------------------------------------------------
 
 IF ( blBetriebsartHand and not BasisStationsParameter.bVorabpositionieren ) THEN
 
-  (* Handfunktionen:
-     - Geblaese an/aus
-  *)
+  // Handfunktionen:
+  //   - Geblaese an/aus
   toflGeblaeseHandfahren( IN := (    Glastransport.bpHandfahrenPlus
                                   OR Glastransport.bpHandfahrenMinus ),
                           PT := t#15s );
@@ -27,18 +26,16 @@ IF ( blBetriebsartHand and not BasisStationsParameter.bVorabpositionieren ) THEN
     Geblaese.bpStart := FALSE;
   END_IF
 
-  (* Handfunktionen:
-     - Glastransport vor / zurück
-  *)
+  // Handfunktionen:
+  //   - Glastransport vor / zurück
   Glastransport.bpHandfahrenPlus  := (  ( dwlHandfunktionen.1 AND NOT dwlHandfunktionen.2 )
                                        OR ( bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, cWAND_1] AND NOT bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, cWAND_1]));
 
   Glastransport.bpHandfahrenMinus := (  ( dwlHandfunktionen.2 AND NOT dwlHandfunktionen.1 )
-                                       OR ( bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, cWAND_1] AND NOT bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, cWAND_1]));  (* Bit 2 = Glastransport / Glastransport zurück *)
+                                       OR ( bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, cWAND_1] AND NOT bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, cWAND_1]));  // Bit 2 = Glastransport / Glastransport zurück
 
-  (* Handfunktionen:
-     - Drehbewegung zwischen 0 - 180 Grad 
-  *)
+  // Handfunktionen:
+  //   - Drehbewegung zwischen 0 - 180 Grad
   IF ( bgVISUDrehen0Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern] OR dwlHandfunktionen.7 )
      AND NOT (    dwlHandfunktionen.8
                OR dwlHandfunktionen.9
@@ -76,9 +73,8 @@ IF ( blBetriebsartHand and not BasisStationsParameter.bVorabpositionieren ) THEN
 
   END_IF
 
-  (* Handfunktion:
-     - Referentahrt Drehkreuz 
-   *)
+  // Handfunktion:
+  //   - Referentahrt Drehkreuz
   Drehen.bpReferenz := (         ( dwlHandfunktionen.11 OR  bgVISUDrehenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern])
                          AND NOT (    dwlHandfunktionen.7
                                    OR dwlHandfunktionen.8
@@ -92,9 +88,8 @@ IF ( blBetriebsartHand and not BasisStationsParameter.bVorabpositionieren ) THEN
   Drehen.bpHandZentrierungEinfahren := ( bgVISUZentrierbolzenEinfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern] OR dwlHandfunktionen.12 ) AND NOT dwlHandfunktionen.13;
   Drehen.bpHandZentrierungAusfahren := ( bgVISUZentrierbolzenAusfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern] OR dwlHandfunktionen.13 ) AND NOT dwlHandfunktionen.12;
 
-  (* Handfunktionen:
-     - Drehen ( Hand plus und minus  )
-  *)
+  // Handfunktionen:
+  //   - Drehen ( Hand plus und minus  )
   Drehen.bpHandfahrenPlus  := FALSE;
   Drehen.bpHandfahrenMinus := FALSE;
 
@@ -178,39 +173,37 @@ IF ( blBetriebsartHand and not BasisStationsParameter.bVorabpositionieren ) THEN
                                              OR dwlHandfunktionen.16
                                              OR bgVISUQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
 
-(*
-  (* Hinweis:
-     - Querachse
-  *)
-IF     ( ( dwlHandfunktionen.5 OR bgVISUW1QuerverstellungMinimal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
-         AND NOT ( dwlHandfunktionen.6 OR bgVISUW1QuerverstellungMittel[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
-         AND NOT ( dwlHandfunktionen.30 OR bgVISUW1QuerverstellungMaximal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]) )
-THEN
-
-  Querachse.epOeffnungsStellung := eZylinderStellung16mm;
-  Querachse.bpStartPneumatik    := TRUE;
-
-ELSIF  ( ( dwlHandfunktionen.6 OR bgVISUW1QuerverstellungMittel[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
-         AND NOT ( dwlHandfunktionen.5 OR bgVISUW1QuerverstellungMaximal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
-         AND NOT ( dwlHandfunktionen.30 OR bgVISUW1QuerverstellungMinimal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]) )
-THEN
-
-  Querachse.epOeffnungsStellung := eZylinderStellung23mm;
-  Querachse.bpStartPneumatik    := TRUE;
-
-ELSIF  ( ( dwlHandfunktionen.30 OR bgVISUW1QuerverstellungMaximal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
-         AND NOT ( dwlHandfunktionen.5 OR bgVISUW1QuerverstellungMittel[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
-         AND NOT ( dwlHandfunktionen.6 OR bgVISUW1QuerverstellungMinimal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]) )
-THEN
-
-  Querachse.epOeffnungsStellung := eZylinderStellung29mm;
-  Querachse.bpStartPneumatik    := TRUE;
-
-ELSE
-
-  Querachse.bpStartPneumatik    := FALSE;
-
-END_IF
-*)
+//  (* Hinweis:
+//     - Querachse
+//  *)
+//IF     ( ( dwlHandfunktionen.5 OR bgVISUW1QuerverstellungMinimal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
+//         AND NOT ( dwlHandfunktionen.6 OR bgVISUW1QuerverstellungMittel[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
+//         AND NOT ( dwlHandfunktionen.30 OR bgVISUW1QuerverstellungMaximal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]) )
+//THEN
+//
+//  Querachse.epOeffnungsStellung := eZylinderStellung16mm;
+//  Querachse.bpStartPneumatik    := TRUE;
+//
+//ELSIF  ( ( dwlHandfunktionen.6 OR bgVISUW1QuerverstellungMittel[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
+//         AND NOT ( dwlHandfunktionen.5 OR bgVISUW1QuerverstellungMaximal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
+//         AND NOT ( dwlHandfunktionen.30 OR bgVISUW1QuerverstellungMinimal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]) )
+//THEN
+//
+//  Querachse.epOeffnungsStellung := eZylinderStellung23mm;
+//  Querachse.bpStartPneumatik    := TRUE;
+//
+//ELSIF  ( ( dwlHandfunktionen.30 OR bgVISUW1QuerverstellungMaximal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
+//         AND NOT ( dwlHandfunktionen.5 OR bgVISUW1QuerverstellungMittel[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
+//         AND NOT ( dwlHandfunktionen.6 OR bgVISUW1QuerverstellungMinimal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]) )
+//THEN
+//
+//  Querachse.epOeffnungsStellung := eZylinderStellung29mm;
+//  Querachse.bpStartPneumatik    := TRUE;
+//
+//ELSE
+//
+//  Querachse.bpStartPneumatik    := FALSE;
+//
+//END_IF
 END_IF
 END_ACTION

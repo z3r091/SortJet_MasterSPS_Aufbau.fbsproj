@@ -6,9 +6,9 @@
 }
 *)
 ACTION Referenz
-(***************************************************************************************************)
-(* REFERENZ *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// REFERENZ
+//-------------------------------------------------------------------------------------------------
 IF ( bpReferenz )THEN
 
   // Ausnahmesituation
@@ -24,7 +24,7 @@ IF ( bpReferenz )THEN
   
 
   CASE steplReferenz OF
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_0_E:
 
       bpDone := FALSE;
@@ -40,12 +40,12 @@ IF ( bpReferenz )THEN
         steplReferenz := STEP_10_E;
       END_IF
 
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_10_E:
       (* Hinweis:
          - Starten der Referenzierung
-         WICHTIG
-         - Zeitliche Verzoegerung damit der Slave komplett abgekoppelt ist und nicht in 
+           WICHTIG
+         - Zeitliche Verzoegerung damit der Slave komplett abgekoppelt ist und nicht in
            einen Schleppfehler kommt.
       *)
       tonlSlaveKopplungDeaktiviert( IN := NOT blAntriebsKopplungAktiv,
@@ -74,7 +74,7 @@ IF ( bpReferenz )THEN
 
       END_IF
 
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_20_E:
       (* Hinweis:
          - Referenzierung abgeschlossen
@@ -87,19 +87,19 @@ IF ( bpReferenz )THEN
         steplReferenz := STEP_1000_E;
       END_IF
 
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       Antrieb.wpBetriebsart       := KEINE_FUNKTION;
       Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
       bpFehler :=TRUE;
 
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*REFERENZ =========================*)
+  // REFERENZ =========================
   END_CASE
 
 ELSE

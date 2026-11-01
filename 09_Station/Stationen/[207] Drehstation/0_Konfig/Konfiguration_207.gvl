@@ -10,46 +10,46 @@ NAMESPACE Konfiguration_207
 VAR_CONFIG
 
   // GEBLÄSE
-  Globale_Bausteine.Drehstation207.Geblaese.in_bMotorschutzschalter_OK                      AT %MX1.1   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Geblaese.out_bStarteGeblaese                             AT %MX218.1 : BOOL; (* OK *)  
+  Globale_Bausteine.Drehstation207.Geblaese.in_bMotorschutzschalter_OK                      AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Geblaese.out_bStarteGeblaese                             AT %MX218.1 : BOOL; // OK  
   
   
   // KIPPEN  
-  Globale_Bausteine.Drehstation207.Kippen.in_bSensorNicht90Grad                             AT %MX1.0   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Kippen.in_bSensorNicht84Grad                             AT %MX1.0   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Kippen.in_bMotorschutzschalter_OK                        AT %IX1.4   : BOOL; (* IO-L *)
-  Globale_Bausteine.Drehstation207.Kippen.in_bMotorstarter_OK                               AT %MX1.1   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Kippen.in_bLSBremse_OK                                   AT %MX1.1   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Kippen.in_bLS400V_OK                                     AT %MX1.1   : BOOL; (* OPTION *)
+  Globale_Bausteine.Drehstation207.Kippen.in_bSensorNicht90Grad                             AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Kippen.in_bSensorNicht84Grad                             AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Kippen.in_bMotorschutzschalter_OK                        AT %IX1.4   : BOOL; // IO-L
+  Globale_Bausteine.Drehstation207.Kippen.in_bMotorstarter_OK                               AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Kippen.in_bLSBremse_OK                                   AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Kippen.in_bLS400V_OK                                     AT %MX1.1   : BOOL; // OPTION
   
-  Globale_Bausteine.Drehstation207.Kippen.out_bKippen84Grad                                 AT %QX3.3   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Kippen.out_bKippen90Grad                                 AT %QX3.2   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Kippen.out_bBremseLoesen                                 AT %MX2.0   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Kippen.out_bReset                                        AT %MX2.0   : BOOL; (* OPTION *)
+  Globale_Bausteine.Drehstation207.Kippen.out_bKippen84Grad                                 AT %QX3.3   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Kippen.out_bKippen90Grad                                 AT %QX3.2   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Kippen.out_bBremseLoesen                                 AT %MX2.0   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Kippen.out_bReset                                        AT %MX2.0   : BOOL; // OPTION
   
 
   // WANDVERSTELLUNG
-  Globale_Bausteine.Drehstation207.Dickenverstellung.in_bStatusZylinder1Ausgefahren         AT %MX204.3 : BOOL; (* OK *)
-  Globale_Bausteine.Drehstation207.Dickenverstellung.in_bStatusZylinder1Eingefahren         AT %MX204.4 : BOOL; (* OK *)
-  Globale_Bausteine.Drehstation207.Dickenverstellung.in_bStatusZylinder2Ausgefahren         AT %MX1.0   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Dickenverstellung.in_bStatusZylinder2Eingefahren         AT %MX1.0   : BOOL; (* OPTION *)
+  Globale_Bausteine.Drehstation207.Dickenverstellung.in_bStatusZylinder1Ausgefahren         AT %MX204.3 : BOOL; // OK
+  Globale_Bausteine.Drehstation207.Dickenverstellung.in_bStatusZylinder1Eingefahren         AT %MX204.4 : BOOL; // OK
+  Globale_Bausteine.Drehstation207.Dickenverstellung.in_bStatusZylinder2Ausgefahren         AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Dickenverstellung.in_bStatusZylinder2Eingefahren         AT %MX1.0   : BOOL; // OPTION
   
-  Globale_Bausteine.Drehstation207.Dickenverstellung.out_bZylinder1Ausfahren                AT %MX204.5 : BOOL; (* OK *)
-  Globale_Bausteine.Drehstation207.Dickenverstellung.out_bZylinder1Einfahren                AT %MX204.6 : BOOL; (* OK *)
-  Globale_Bausteine.Drehstation207.Dickenverstellung.out_bZylinder2Ausfahren                AT %MX2.0   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Dickenverstellung.out_bZylinder2Einfahren                AT %MX2.0   : BOOL; (* OPTION *)
+  Globale_Bausteine.Drehstation207.Dickenverstellung.out_bZylinder1Ausfahren                AT %MX204.5 : BOOL; // OK
+  Globale_Bausteine.Drehstation207.Dickenverstellung.out_bZylinder1Einfahren                AT %MX204.6 : BOOL; // OK
+  Globale_Bausteine.Drehstation207.Dickenverstellung.out_bZylinder2Ausfahren                AT %MX2.0   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Dickenverstellung.out_bZylinder2Einfahren                AT %MX2.0   : BOOL; // OPTION
 
 
   // QUERACHSE
-  Globale_Bausteine.Drehstation207.Querachse.in_bStatusZylinder1Ausgefahren                AT %MX1.0   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Querachse.in_bStatusZylinder1Eingefahren                AT %MX1.0   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Querachse.in_bStatusZylinder2Ausgefahren                AT %MX1.0   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Querachse.in_bStatusZylinder2Eingefahren                AT %MX1.0   : BOOL; (* OPTION *)
+  Globale_Bausteine.Drehstation207.Querachse.in_bStatusZylinder1Ausgefahren                AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Querachse.in_bStatusZylinder1Eingefahren                AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Querachse.in_bStatusZylinder2Ausgefahren                AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Querachse.in_bStatusZylinder2Eingefahren                AT %MX1.0   : BOOL; // OPTION
 
-  Globale_Bausteine.Drehstation207.Querachse.out_bZylinder1Ausfahren                       AT %MX2.0   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Querachse.out_bZylinder1Einfahren                       AT %MX2.0   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Querachse.out_bZylinder2Ausfahren                       AT %MX2.0   : BOOL; (* OPTION *)
-  Globale_Bausteine.Drehstation207.Querachse.out_bZylinder2Einfahren                       AT %MX2.0   : BOOL; (* OPTION *)
+  Globale_Bausteine.Drehstation207.Querachse.out_bZylinder1Ausfahren                       AT %MX2.0   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Querachse.out_bZylinder1Einfahren                       AT %MX2.0   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Querachse.out_bZylinder2Ausfahren                       AT %MX2.0   : BOOL; // OPTION
+  Globale_Bausteine.Drehstation207.Querachse.out_bZylinder2Einfahren                       AT %MX2.0   : BOOL; // OPTION
 
 
 END_VAR

@@ -6,9 +6,9 @@
 }
 *)
 ACTION Messkopplung
-(***************************************************************************************************)
-(* AKTION: MESSKOPPLUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: MESSKOPPLUNG
+//-------------------------------------------------------------------------------------------------
 
 IF (  bpMesskopplung
      AND bpAutomatikAktiv )
@@ -33,7 +33,7 @@ THEN
 
   CASE steplMesskopplung OF
 
-    (*MESSKOPPLUNG ================================================ *)
+    // MESSKOPPLUNG ================================================
     STEP_0_E:
       (* Hinweis:
          - Pruefen ob der Antrieb bereit zum verfahren ist
@@ -47,7 +47,7 @@ THEN
       steplMesskopplung := STEP_100_E;
 
 
-    (*MESSKOPPLUNG ================================================ *)
+    // MESSKOPPLUNG ================================================
     STEP_100_E:
       (* Anmerkung:
          - Warten bis die Nachfolgestation bereit ist zum Eintransport
@@ -56,10 +56,10 @@ THEN
         steplMesskopplung := STEP_110_E;
       END_IF
 
-    (*MESSKOPPLUNG ================================================ *)
+    // MESSKOPPLUNG ================================================
     STEP_110_E:
       (* Hinweis:
-        - Antrieb in den Master- Slave- Modus setzen
+         - Antrieb in den Master- Slave- Modus setzen
       *)
       Antrieb.wpMaster := InGlasTransportVorgaenger.wAchsID;
       Antrieb.wpBetriebsart := SYNC_AUF_MASTER;
@@ -70,27 +70,27 @@ THEN
         steplMesskopplung := STEP_120_E;
       END_IF
 
-    (*MESSKOPPLUNG ================================================ *)
+    // MESSKOPPLUNG ================================================
     STEP_120_E:
-      (* WICHTIG:
-         - Kopplung wird solange aktiv gehalten bis diese von dem uebergeordneten Baustein geloest wird 
+      (* Wichtig:
+         - Kopplung wird solange aktiv gehalten bis diese von dem uebergeordneten Baustein geloest wird
       *)
       bpDone := TRUE;
 
-    (*MESSKOPPLUNG ================================================ *)
+    // MESSKOPPLUNG ================================================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
       Antrieb.wpBetriebsart       := KEINE_FUNKTION;
       bpFehler := TRUE;
 
-    (*MESSKOPPLUNG ================================================ *)
+    // MESSKOPPLUNG ================================================
     STEP_1000_E:
       bprtScheibe := FALSE;
       bpDone := TRUE;
 
-  (*MESSKOPPLUNG ================================================ *)
+  // MESSKOPPLUNG ================================================
   END_CASE
 END_IF
 

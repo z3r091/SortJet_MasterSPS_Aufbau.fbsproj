@@ -8,51 +8,51 @@
 FUNCTION_BLOCK Station_Austransport
 VAR_INPUT
     
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset                : BOOL;
   
-  (* WORD *)
+  // WORD
   wStation               : WORD;
   wWand                  : WORD;
   
-  (* STRUKTUR *)
+  // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN*)
+  // BOOLEAN
   bpDone                 : BOOL;
   bpFehler               : BOOL;
 
 END_VAR
 VAR
     
-  (* BOOLEAN *)
+  // BOOLEAN
   blStationQuittiertScheiben      : BOOL;
   blGegenstelleIstShuttle         : BOOL;
   
-  (* INT *)
+  // INT
   ilScheibenZuQuittieren          : INT;
   
-  (* WORD *)
+  // WORD
   wlAustransportstation           : WORD;
   wlAustransportstationVorgaenger : WORD;
 
-  (* REFERENZ *)
+  // REFERENZ
   Gegenstelle                     : REFERENCE TO StationBasisParameter_ST;
 
-  (* STEPS *)
+  // STEPS
   steplSchritt           : STEPS_TE;
 
 END_VAR
 
-(***************************************************************************************************)
-(* STEUERUNG AUSTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG AUSTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
   CASE steplSchritt OF
-    (* AUSTRANSPORT ================================= *)
+    // AUSTRANSPORT =================================
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -61,30 +61,30 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
         steplSchritt := STEP_10_E;
       END_IF
 
-    (* AUSTRANSPORT ================================================== *)
+    // AUSTRANSPORT ==================================================
     STEP_10_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  OPTIONALE - PRUEFUNG DER GLASDATEN
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
       steplSchritt := STEP_20_E;
 
       IF NOT AuftragsdatenPruefen( wStation, wWand, Auftragsdaten) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (* AUSTRANSPORT ================================= *)
+    // AUSTRANSPORT =================================
     STEP_20_E:
-      (* Hinweis
-         - Uebergabe der Quellstation [Sender] fuer den Austransport [Zum ueberpruefen des Zustandes der Station]       
+      (* Hinweis:
+         - Uebergabe der Quellstation [Sender] fuer den Austransport [Zum ueberpruefen des Zustandes der Station]
       *)
       wlAustransportstation := Auftragsdaten.wTransferstationsNr1;
 
       (* Hinweis:
          - Nach einem Systemcheck mit übergroßen Scheiben kann es sein das die Scheibe noch zum Teil auf der Vorgänger Station liegt. Im Systemcheck wird dann "eStation_Warte_Auf_Austransport_Nachfolger" gesetzt
-      - Die Station muss dann in Austransport gesetzt weren
+         - Die Station muss dann in Austransport gesetzt weren
       *)
 
       wlAustransportstationVorgaenger := starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wVorgaengerStation;
@@ -103,7 +103,7 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
         // Shuttles
         cERSTES_SHUTTLE..cLETZTES_SHUTTLE:
           (* Hinweis:
-             - Transportkopplung 
+             - Transportkopplung
           *)
           IF ( starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.Station[Auftragsdaten.wTransferstationsNr1] = Vorwaertig ) THEN
             starrStationBasisParameter[wStation].InGlasTransportNachfolger[wWand] := starrShuttleBasisParameter[Auftragsdaten.wTransferstationsNr1].OutGlasTransport[Auftragsdaten.wTransferwand];
@@ -194,16 +194,16 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
 
       END_CASE
 
-    (* AUSTRANSPORT ================================= *)
+    // AUSTRANSPORT =================================
     STEP_30_E:
 
       (* Hinweis:
-         - Scheibenquittierung 
+         - Scheibenquittierung
       *)
       ilScheibenZuQuittieren := WORD_TO_INT(Auftragsdaten.wAnzahlScheiben);
 
       (* Hinweis:
-         Auftragsdaten zuweisen
+         - Auftragsdaten zuweisen
       *)
       starrStationBasisParameter[wStation].pAuftrag[wWand] := Auftragsdaten;
 
@@ -235,13 +235,13 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
 
       steplSchritt := STEP_35_E;
 
-    (* AUSTRANSPORT ================================= *)
+    // AUSTRANSPORT =================================
     STEP_35_E:
       // Im Step 35 wird in dem vererbten FB Anlagenspezifische Auftragsoptionen gesetzt         
       starrStationBasisParameter[wStation].bAustransport[wWand] := TRUE;
       steplSchritt := STEP_40_E;
 
-    (* AUSTRANSPORT ================================= *)
+    // AUSTRANSPORT =================================
     STEP_40_E:
 
       (* Hinweis:
@@ -298,7 +298,7 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (*AUSTRANSPORT ==============================================*)
+    // AUSTRANSPORT ==============================================
     STEP_100_E:
       (* Anmerkung:
          - Gueltige Anzahl von Scheiben wurden quittiert
@@ -337,11 +337,11 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (* AUSTRANSPORT ================================= *)
+    // AUSTRANSPORT =================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* AUSTRANSPORT ================================= *)
+    // AUSTRANSPORT =================================
     STEP_1000_E:
       bpDone := TRUE;
       IF Auftragsdaten.stAuftragsInformationen.cBIT_SRCSTATION_EMPTY THEN

@@ -6,9 +6,9 @@
 }
 *)
 ACTION Verfahrfreigabe
-(***************************************************************************************************)
-(* BAUSTEIN: VERFAHRFREIGABE SHUTTLE                                                               *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: VERFAHRFREIGABE SHUTTLE
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - bpShuttleAnhalten wird generisch aus starrShuttleBasisParameter[...].stMKs.astShuttleAnhaltenQuellen gebildet.
    - Pro Shuttle werden alle aktiven Eintraege per OR verknuepft.
@@ -51,12 +51,12 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
 
 END_FOR
 
-(* ---------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------
 //  VERFAHRLOGIK - RESET DER POSITIONIERUNG NACH ABBRUCH
-//         
+//
 //  Hinweis:
 //  - Zurueck des Auftrags  "cSHUTTLE_VORABPOSITIONIERUNG" wenn dieser aktiv gewesen ist
-// ---------------------------------------------------------------------------------------*)
+// ---------------------------------------------------------------------------------------
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
   IF  ( starrShuttleBasisParameter[wlIndex].bPositionierAuftragZuruecksetzen ) THEN
     IF ( AuftragsdatenStation[wlIndex].wAuftrag = eStation_Vorabpositionierung ) THEN
@@ -66,12 +66,12 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
   END_IF
 END_FOR
 
-(* ---------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------
 //  VERFAHRLOGIK TRANSFERSHUTTLE - RESET DER POSITIONIERUNG NACH ABBRUCH
-//         
+//
 //  Hinweis:
 //  - Zurueck des Auftrags  "cSHUTTLE_VORABPOSITIONIERUNG" wenn dieser aktiv gewesen ist
-// ---------------------------------------------------------------------------------------*)
+// ---------------------------------------------------------------------------------------
 FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
   IF  ( starrTransfershuttleBasisParameter[wlIndex].bPositionierAuftragZuruecksetzen ) THEN
     IF ( AuftragsdatenTransfershuttle[wlIndex].wAuftrag = eStation_Vorabpositionierung ) THEN

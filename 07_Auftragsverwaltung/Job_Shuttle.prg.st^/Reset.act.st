@@ -6,9 +6,9 @@
 }
 *)
 ACTION Reset
-(***************************************************************************************************)
-(* AKTION: RESET *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: RESET
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
    - Zuruecksetzen des AK
@@ -137,7 +137,7 @@ FOR wlIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
             AuftragsdatenTransfershuttle[wlIndex].wAuftrag := eStation_Kein_Auftrag;
             starrTransferShuttleBasisParameter[wlIndex].bReset := TRUE;
             blFehlerTS[wlIndex] := FALSE;
-            (* WICHTIG:
+            (* Wichtig:
                - Gilt nur fuer Systeme mit Master - Slave  Transfershuttle-Verbund
             *)
             IF ( wlIndex MOD 2 = 1 ) AND ( UPPER_BOUND(AuftragsdatenTransfershuttle, 1 ) >= (wlIndex + 1) ) AND_THEN ( AuftragsdatenTransfershuttle[wlIndex + 1].wAuftrag = eStation_Transportkopplung ) THEN

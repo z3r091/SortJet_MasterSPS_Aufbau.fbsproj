@@ -9,41 +9,41 @@ FUNCTION_BLOCK Auftragsspeicher_FB
 VAR_INPUT
 
   bpAktivieren     : BOOL := TRUE;
-  bpWertAuslesen   : BOOL; (* READ  *)
-  bpWerteSchreiben : BOOL; (* WRITE *)
-  bpReset          : BOOL; (* RST *)
+  bpWertAuslesen   : BOOL; // READ
+  bpWerteSchreiben : BOOL; // WRITE
+  bpReset          : BOOL; // RST
 
-  (* STRUCT *)
+  // STRUCT
   stEingabeWert : Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   blWarteschlangeLeer : BOOL := TRUE;
   blWarteschlangeVoll : BOOL;
 
-  (* STRUCT *)
+  // STRUCT
   stAusgabeWert  : Auftragsdaten_ST;
 
 END_VAR
 VAR
 
-  (* STRUCT *)
+  // STRUCT
   warrlWarteSchlange : ARRAY[0..cINDEX] OF Auftragsdaten_ST;
 
-  (* INT *)
-  ilReadPosition   : INT; (* pr *)
-  ilWritePosition  : INT; (* pw *)
+  // INT
+  ilReadPosition   : INT; // pr
+  ilWritePosition  : INT; // pw
   iIndex           : INT;
 END_VAR
 
 VAR CONSTANT
-  cINDEX : INT := 10;   (* WICHTIG: Aenderungen an diesem Wert aendert die Anzahl der Elemente in der Warteschlange [FIFO] *)
+  cINDEX : INT := 10;   // WICHTIG: Aenderungen an diesem Wert aendert die Anzahl der Elemente in der Warteschlange [FIFO]
 END_VAR
-(***************************************************************************************************)
-(* BAUSTEIN: AUFTRAGSVERWALTUNG TRANSFERSHUTTLE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AUFTRAGSVERWALTUNG TRANSFERSHUTTLE
+//-------------------------------------------------------------------------------------------------
 IF ( bpReset ) THEN
 
   ilReadPosition      := 0;

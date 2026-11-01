@@ -6,22 +6,20 @@
 }
 *)
 ACTION Einfahren
-(*
-_________________________________________________________________________
- ************************ Aktion Zylinder -Einfahren ********************
-_________________________________________________________________________
-*)
+//_________________________________________________________________________
+// ************************ Aktion Zylinder -Einfahren ********************
+//_________________________________________________________________________
 IF (  bpStartEinfahren
      AND NOT tofAusfahren.Q
      AND bpFreigabeEinfahren
      AND bpFreigabe )
 THEN
   CASE steplEinfahren OF
-    (*EINFAHREN =====================*)
+    // EINFAHREN =====================
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
-         - Zylinder ausfahren starten 
+         - Zylinder ausfahren starten
       *)
       IF ( NOT in_StatusZylinderEingefahren ) THEN
         tonlZylinderEingefahren(IN := FALSE);
@@ -32,7 +30,7 @@ THEN
         steplEinfahren := STEP_1000_E;
       END_IF
 
-    (*EINFAHREN =====================*)
+    // EINFAHREN =====================
     STEP_10_E:
       tonlZylinderEingefahren( IN := NOT in_StatusZylinderEingefahren, PT := T#15s );
 
@@ -50,15 +48,15 @@ THEN
         steplEinfahren := STEP_900_E;
       END_IF
 
-    (*EINFAHREN =====================*)
+    // EINFAHREN =====================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*EINFAHREN =====================*)
+    // EINFAHREN =====================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*EINFAHREN =====================*)
+  // EINFAHREN =====================
   END_CASE
 ELSE
   IF (steplEinfahren > STEP_0_E) THEN

@@ -6,19 +6,18 @@
 }
 *)
 ACTION SlaveBetrieb
-(* @TEXT_IMPLEMENTATION := 'ST' *)
-(***************************************************************************************************)
-(* AKTION: SLAVE-BETRIEB *)
-(***************************************************************************************************)
+// @TEXT_IMPLEMENTATION := 'ST'
+//-------------------------------------------------------------------------------------------------
+// AKTION: SLAVE-BETRIEB
+//-------------------------------------------------------------------------------------------------
 IF (  bpSlaveKopplung
      AND NOT bpReset
      AND NOT bpFahreReferenz )
 THEN
 
-  (* Fehlerauswertung:
-     - Antrieb
-     - Sicherstellen das der Slavekopplung aktiv ist
-  *)
+  // Fehlerauswertung:
+  //   - Antrieb
+  //   - Sicherstellen das der Slavekopplung aktiv ist
   IF ( Antrieb.bpFehler ) THEN
     bpSlaveAktiv := FALSE;
     blSchnittstelle_bBereitZumTransportVerbund := FALSE;
@@ -31,7 +30,7 @@ THEN
      - Starten der Schrittkette
   *)
   CASE steplSlave OF
-    (* SLAVE BETRIEB ================================== *)
+    // SLAVE BETRIEB ==================================
     STEP_0_E:
       (* Hinweis:
          - Variablen initialisieren
@@ -50,19 +49,19 @@ THEN
         steplSlave := STEP_5_E;
       END_IF
 
-    (*SLAVE BETRIEB ==============================*)
+    // SLAVE BETRIEB ==============================
     STEP_5_E:
       Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
       steplSlave := STEP_6_E;
 
-    (*SLAVE BETRIEB ==============================*)
+    // SLAVE BETRIEB ==============================
     STEP_6_E:
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplSlave := STEP_10_E;
       END_IF
 
-    (* SLAVE BETRIEB ================================== *)
+    // SLAVE BETRIEB ==================================
     STEP_10_E:
       (* Hinweis:
          - Antrieb in Slavemode schalten
@@ -77,14 +76,14 @@ THEN
 
       END_IF
 
-    (* SLAVE BETRIEB ================================== *)
+    // SLAVE BETRIEB ==================================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
-      //  DEFAULT LUFTABFRAGEN HEBEN  
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  DEFAULT LUFTABFRAGEN HEBEN
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       out_bShuttleAnheben                   := TRUE;
       out_bScheibenKontrolleAuslaufSeiteAuf := TRUE;
@@ -112,15 +111,15 @@ THEN
 
       IF ( tonlWartenAufAnheben.Q ) THEN
 
-        (* Glastransport oben *)
+        // Glastransport oben
         IF ( NOT blSensorGlastransportOben ) THEN
           wpFehlerNr := cMELDUNG_TS_MELDET_NICHT_OBEN;
-        (* Luftsensoren oben *)
+        // Luftsensoren oben
         ELSIF ( NOT bpSensorScheibenKontrolleEinlaufSeiteOben ) THEN
           wpFehlerNr := cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_OBEN;
         ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteOben ) THEN
           wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_OBEN;
-        (* Druckluft Ok *)
+        // Druckluft Ok
         ELSIF ( NOT blDruckluftAuslaufSeiteOK ) THEN
           wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_AUSLAUF_NICHT_OK;
         ELSE
@@ -130,14 +129,14 @@ THEN
         steplSlave := STEP_900_E;
       END_IF
 
-    (* SLAVE BETRIEB ================================== *)
+    // SLAVE BETRIEB ==================================
     STEP_300_E:
-      (* ---------------------------------------------------------------------------------------
-      // ABSCHLUSS DER KOPPLUNG  
-      //         
+      // ---------------------------------------------------------------------------------------
+      // ABSCHLUSS DER KOPPLUNG
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
       IF ( NOT stpInTransportVerbund.bAnforderungTransportVerbund ) THEN
         blSchnittstelle_bBereitZumTransportVerbund := FALSE;
         Antrieb.wpBetriebsart:= KEINE_FUNKTION;
@@ -158,14 +157,14 @@ THEN
         steplSlave := STEP_900_E;
       END_IF
 
-    (* SLAVE BETRIEB ================================== *)
+    // SLAVE BETRIEB ==================================
     STEP_310_E:
-      (* ---------------------------------------------------------------------------------------
-      //  LUFTABFRAGEN SENKEN \ TRANSFERSHUTTLE SENKEN 
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  LUFTABFRAGEN SENKEN \ TRANSFERSHUTTLE SENKEN
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       bpSlaveAktiv := FALSE;
 
@@ -184,17 +183,17 @@ THEN
 
 
       (* Fehlerbehandlung:
-        - Glastransport unten
-        - Ein- Aus- Laufsensoren
+         - Glastransport unten
+         - Ein- Aus- Laufsensoren
       *)
       IF ( tonlWartenAufSenken.Q ) THEN
-        (* Glastransport unten *)
+        // Glastransport unten
         IF ( NOT blSensorGlastransportUnten ) THEN
           wpFehlerNr := cMELDUNG_TS_MELDET_NICHT_UNTEN;
-        (* Luftsensoren unten *)
+        // Luftsensoren unten
         ELSIF ( NOT bpSensorScheibenKontrolleEinlaufSeiteUnten ) THEN
           wpFehlerNr := cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_UNTEN;
-        (* Luftsensoren unten *)
+        // Luftsensoren unten
         ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteUnten ) THEN
           wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_UNTEN;
         ELSE
@@ -205,19 +204,19 @@ THEN
 
       END_IF
 
-    (* SLAVE BETRIEB ================================== *)
+    // SLAVE BETRIEB ==================================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       blSchnittstelle_bBereitZumTransportVerbund := FALSE;
       Antrieb.wpBetriebsart:= KEINE_FUNKTION;
       bpFehler := TRUE;
 
-    (* SLAVE BETRIEB ================================== *)
+    // SLAVE BETRIEB ==================================
     STEP_1000_E:
       ;
 
-  (* SLAVE BETRIEB ================================== *)
+  // SLAVE BETRIEB ==================================
   END_CASE
 ELSE
 

@@ -6,19 +6,18 @@
 }
 *)
 ACTION A_Ausgaenge
-(***************************************************************************************************)
-(* AUSGAENGE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUSGAENGE
+//-------------------------------------------------------------------------------------------------
 
-(* HINWEIS:
-   - Anforderung des Betriebsstop fuer die Auslaufseite 
+(* Hinweis:
+   - Anforderung des Betriebsstop fuer die Auslaufseite
      => Scheibe ist ueber den Auslaufsensor gefahren und kann nicht mehr korregiert werden
 *)
 bpAnforderungBetriebsstopp := Glastransport.bpAnforderungBetriebsstopp;
 
-(* Ausgaenge:
-   - Der Auftragsstatus [cSHUTTLE_VORABPOSITIONIEREN] muss zurueck gesetzt werden
-*)
+// Ausgaenge:
+//   - Der Auftragsstatus [cSHUTTLE_VORABPOSITIONIEREN] muss zurueck gesetzt werden
 BasisStationsParameter.bPositionierAuftragZuruecksetzen := Querfahrt.bpAuftragsstatusZuruecksetzen;
  
 
@@ -27,9 +26,9 @@ BasisStationsParameter.bPositionierAuftragZuruecksetzen := Querfahrt.bpAuftragss
 *)
 wpAusnahmefehlerTyp := Glastransport.wpAusnahmefehlerTyp;
 
-(***************************************************************************************************)
-(* VERFAHRUEBERWACHUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// VERFAHRUEBERWACHUNG
+//-------------------------------------------------------------------------------------------------
 (* Anmerkung:
    - Übergabe der aktuellen IST- Position des Shuttles
 *)
@@ -42,13 +41,13 @@ bpShuttleKannSicherVerfahrenWerden := Glastransport.bpBereitZumVerfahren;
 
 (* Anmerkung:
    - Positionsabfrage ob die Position korrekt angefahren wurde
- *)
+*)
 blZielPositionErreicht := (     ( ABS( BasisStationsParameter.rAktuellePositionQuerfahrt - argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )
                             OR ( ABS( BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition - argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )
                             OR  ( ABS(ABS(BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition) - ABS(BasisStationsParameter.rAktuellePositionQuerfahrt) ) <= rgMKZielPositionToleranz ) );
 
 (* Hinweis:
-   - Abfrage ob die Luftabfrage [Ein- Aus- Lauf] unten ist 
+   - Abfrage ob die Luftabfrage [Ein- Aus- Lauf] unten ist
      => Verwendung fuer die Freigabe der Querfahrtsantriebs
 *)
 IF ( BasisStationsParameter.stMKs.stStationsAufbau.bSensorAuslauf ) THEN
@@ -69,7 +68,7 @@ ELSE
 END_IF
 
 (* Anmerkung:
-   - Doppelte Sicherheit => Es darf nicht verfahren werden wenn das Transfershuttle bzw. die Sensoren oben sind 
+   - Doppelte Sicherheit => Es darf nicht verfahren werden wenn das Transfershuttle bzw. die Sensoren oben sind
 *)
 
 blShuttleKannSicherVerfahrenWerden := (     NOT in_bSensorShuttleOben

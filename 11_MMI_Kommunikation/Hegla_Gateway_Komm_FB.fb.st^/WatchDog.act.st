@@ -20,7 +20,7 @@ END_IF
 IF ( ilDiff <> 1 ) THEN
 
   IF ( tlTimeDiff > T#5s ) THEN
-    (* Kommunikationstimeout erreicht *)
+    // Kommunikationstimeout erreicht
     IF (wZyklenOff>30)
     THEN
       o_b_WatchdogOk := FALSE;

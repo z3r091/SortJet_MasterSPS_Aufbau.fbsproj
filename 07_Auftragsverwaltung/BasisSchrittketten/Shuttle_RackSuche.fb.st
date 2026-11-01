@@ -8,32 +8,32 @@
 FUNCTION_BLOCK Shuttle_RackSuche
 VAR_INPUT
     
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset                : BOOL;
   
-  (* WORD *)
+  // WORD
   wStation               : WORD;
   
-  (* STRUKTUR *)
+  // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN*)
+  // BOOLEAN
   bpDone                 : BOOL;
   bpFehler               : BOOL;
 
 END_VAR
 VAR
 
-  (* STEPS *)
+  // STEPS
   steplSchritt           : STEPS_TE;
 
 END_VAR
-(***************************************************************************************************)
-(*  STEUERUNG VORABKOMPONENETEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG VORABKOMPONENETEN
+//-------------------------------------------------------------------------------------------------
 
 IF ( Auftragsdaten.wAuftrag = eStation_RackSuche ) THEN
 
@@ -52,7 +52,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_RackSuche ) THEN
   END_IF
 
   CASE steplSchritt OF
-    (* RACKSUCHE ===========================================*)
+    // RACKSUCHE ===========================================
     STEP_0_E:
       (* Hinweis:
          - Pruefen ob der Sicherheitskreis ausgeloest oder angefragz wurde
@@ -61,19 +61,19 @@ IF ( Auftragsdaten.wAuftrag = eStation_RackSuche ) THEN
         steplSchritt := STEP_10_E;
       END_IF
 
-    (* RACKSUCHE ===========================================*)
+    // RACKSUCHE ===========================================
     STEP_10_E:
       (* Hinweis:
-         - Starten der Schrittkette -> MMI Fährt mittel Shuttlepositionierung den Weg ab 
+         - Starten der Schrittkette -> MMI Fährt mittel Shuttlepositionierung den Weg ab
       *)
       aShuttle[wStation].bpStarteFaecherwagensuche := TRUE;
 
       steplSchritt := STEP_100_E;
 
-    (* RACKSUCHE ===========================================*)
+    // RACKSUCHE ===========================================
     STEP_100_E:
       (* Hinweis:
-          Fächerwagensuche: Wort 0 = (int) SPS Nr Shuttle  / Wort 1+2 = (real) Position rechte (?) Kante der Folie[-1 für nicht gefunden]
+         - Fächerwagensuche: Wort 0 = (int) SPS Nr Shuttle  / Wort 1+2 = (real) Position rechte (?) Kante der Folie[-1 für nicht gefunden]
            => Nachricht absetzen
       *)
       IF ( aShuttle[wStation].bpFaecherwagenGefunden ) THEN
@@ -86,16 +86,16 @@ IF ( Auftragsdaten.wAuftrag = eStation_RackSuche ) THEN
 
       END_IF
 
-    (* RACKSUCHE ===========================================*)
+    // RACKSUCHE ===========================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* RACKSUCHE ===========================================*)
+    // RACKSUCHE ===========================================
     STEP_1000_E:
       bpDone := TRUE;
       Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
 
-  (* RACKSUCHE ===========================================*)
+  // RACKSUCHE ===========================================
   END_CASE
 
 END_IF
@@ -105,7 +105,7 @@ IF bpReset THEN
   bpDone := FALSE;
   bpReset := FALSE;
   aShuttle[wStation].bpStarteFaecherwagensuche := FALSE;
-  IF (aShuttle[wStation].rpAktuelleFaecherwagenPosition = -100000)  THEN (* ungültige Rackposition von -10000 angeben da kein Rack gefunden  *)
+  IF (aShuttle[wStation].rpAktuelleFaecherwagenPosition = -100000)  THEN // ungültige Rackposition von -10000 angeben da kein Rack gefunden
     wSps2MmiStationsNummer     := starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
     rSps2MmiShuttlePosition[0] := aShuttle[wStation].rpAktuelleFaecherwagenPosition;
     MsgToMmi(auftragsnr_w := SB0_SPS_POSITIONMEASUREDATA );

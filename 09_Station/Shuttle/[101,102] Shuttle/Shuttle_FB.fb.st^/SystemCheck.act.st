@@ -6,11 +6,11 @@
 }
 *)
 ACTION SystemCheck
-(***************************************************************************************************)
-(* AKTION SYSTEMCHECK *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION SYSTEMCHECK
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   - SystemCheck 
+   - SystemCheck
 *)
 IF ( blBetriebartCheck ) THEN
 
@@ -36,19 +36,19 @@ IF ( blBetriebartCheck ) THEN
   END_IF
 
   CASE steplCheck OF
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_0_E:
 
       BasisStationsParameter.bCheckAbgeschlossen := FALSE;
 
       (* Hinweis:
-         - Wenn die Geblaese gestartet sind kann mit dem SystemCheck begonnen werden.           
+         - Wenn die Geblaese gestartet sind kann mit dem SystemCheck begonnen werden.
       *)
       IF ( blGeblaeseAktiv  ) THEN
         steplCheck:=STEP_50_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_50_E:
       (* Hinweis:
          - Starten des SystemCheck mittels Glastransport
@@ -63,7 +63,7 @@ IF ( blBetriebartCheck ) THEN
 
       steplCheck:=STEP_60_E;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_60_E:
 
       FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
@@ -91,7 +91,7 @@ IF ( blBetriebartCheck ) THEN
         steplCheck:=STEP_100_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_100_E:
       (* Hinweis:
          - Status des Kippen prüfen und ggf. korrigieren
@@ -106,7 +106,7 @@ IF ( blBetriebartCheck ) THEN
 
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_110_E:
       (* Hinweis:
          - Kippen abschließen
@@ -119,7 +119,7 @@ IF ( blBetriebartCheck ) THEN
       END_IF
 
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_900_E:
       FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
         Glastransport[wlIndex].bpCheck := FALSE;
@@ -131,13 +131,13 @@ IF ( blBetriebartCheck ) THEN
 
       BasisStationsParameter.bFehler := TRUE;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_1000_E:
       blNachSystemcheckMerker := TRUE;
 
       BasisStationsParameter.bCheckAbgeschlossen := TRUE;
 
-  (*SYSTEM CHECK=========================*)
+  // SYSTEM CHECK=========================
   END_CASE
 ELSE
   IF (steplCheck > STEP_0_E) THEN

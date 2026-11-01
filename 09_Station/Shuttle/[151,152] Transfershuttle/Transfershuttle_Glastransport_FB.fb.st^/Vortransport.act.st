@@ -6,9 +6,9 @@
 }
 *)
 ACTION Vortransport
-(***************************************************************************************************)
-(* AKTION: VORTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: VORTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( bpVortransport
      AND bpAutomatikAktiv )
 THEN
@@ -24,10 +24,10 @@ THEN
 
 
   (* Hinweis:
-     - Starten der Schrittkette 
+     - Starten der Schrittkette
   *)
   CASE steplVortransport OF
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_0_E:
       IF ( Antrieb.bpReglerBereit )THEN
         Antrieb.rpGeschwindigkeit := REAL#0;
@@ -38,26 +38,26 @@ THEN
         steplVortransport := STEP_5_E;
       END_IF
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_5_E:
       Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
       steplVortransport := STEP_6_E;
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_6_E:
       IF Antrieb.bpDone THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplVortransport := STEP_10_E;
       END_IF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_10_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  VORTRANSPORT IM TRANSFERSHUTTLE VERBUND
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF ( bpTransfershuttleVerbundAktiv ) THEN
 
@@ -72,7 +72,7 @@ THEN
 
       END_IF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_20_E:
       (* Anmerkung:
          - Timer zum prüfen der Einlauf- Auslauf- Sensoren [Luftdruck] zuruecksetzen
@@ -85,11 +85,10 @@ THEN
 
       steplVortransport := STEP_100_E;
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_100_E:
-      (* Ueberpruefung ob die Luftsensoren frei sind und richtig durchschalten
-         - Einlauf- Auslauf- Sensoren
-      *)
+      // Ueberpruefung ob die Luftsensoren frei sind und richtig durchschalten
+      //   - Einlauf- Auslauf- Sensoren
       blScheibenKontrolleAuslaufseiteEin := TRUE;
       blScheibenKontrolleEinlaufseiteEin := TRUE;
 
@@ -102,7 +101,7 @@ THEN
         steplVortransport := STEP_110_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Einlaufseite frei
          - Auslaufseite frei
       *)
@@ -116,14 +115,14 @@ THEN
         steplVortransport := STEP_900_E;
       END_IF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_110_E:
       (* Anmerkung:
          - Transfershuttle heben
          - Einlauf- Auslauf- Sensoren heben
-         Die Variable  << blGlastransportUndAbfragenGehoben >> wird gebildet durch:
+           Die Variable  << blGlastransportUndAbfragenGehoben >> wird gebildet durch:
          - tonlGlastransportOben.Q  | tonlKontrolleEinlaufOben.Q  | blDruckluftAuslaufSeiteOK
-           tonlKontrolleAuslaufOben.Q | blDruckluftEinlaufSeiteOK 
+           tonlKontrolleAuslaufOben.Q | blDruckluftEinlaufSeiteOK
       *)
       out_bShuttleAnheben := TRUE;
       out_bScheibenKontrolleAuslaufseiteAuf := TRUE;
@@ -144,19 +143,19 @@ THEN
          - Ein- Aus- Laufsensoren
       *)
       IF ( tonlWartenAufAnheben.Q ) THEN
-        (* Glastransport oben *)
+        // Glastransport oben
         IF ( NOT blSensorGlastransportOben ) THEN
           wpFehlerNr := cMELDUNG_TS_MELDET_NICHT_OBEN;
-        (* Luftsensoren oben *)
+        // Luftsensoren oben
         ELSIF ( NOT bpSensorScheibenKontrolleEinlaufSeiteOben ) THEN
           wpFehlerNr := cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_OBEN;
-        (* Luftsensoren oben *)
+        // Luftsensoren oben
         ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteOben ) THEN
           wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_OBEN;
-        (* Druckluft Ok *)
+        // Druckluft Ok
         ELSIF NOT blDruckluftEinlaufSeiteOK THEN
           wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_EINLAUF_NICHT_OK;
-        (* Druckluft Ok *)
+        // Druckluft Ok
         ELSIF ( NOT blDruckluftAuslaufSeiteOK ) THEN
           wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_AUSLAUF_NICHT_OK;
         END_IF
@@ -165,14 +164,14 @@ THEN
         bpOutBereitZumEintransport := FALSE;
       END_IF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_120_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  STARTEN DES VORTRANSPORTS
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
       rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
       rlAntriebsPositionStartVortransport := Antrieb.rpIstPosition;
 
@@ -185,7 +184,7 @@ THEN
 
       steplVortransport := STEP_130_E;
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_130_E:
       IF ( NOT Antrieb.bpDone
            AND Antrieb.bpAntrieblaeuft )
@@ -200,7 +199,7 @@ THEN
         steplVortransport := STEP_200_E;
       END_IF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_140_E:
       IF ( Antrieb.bpDone
            AND NOT Antrieb.bpAntrieblaeuft )
@@ -217,14 +216,14 @@ THEN
         steplVortransport := STEP_200_E;
       END_IF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_200_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  VERSUCH AUSLAUFSENSOR FREI FAHREN
-      //         
+      //
       //  Hinweis:
       // - Wenn der Antrieb nicht mehr dreht Versuchen dem Sensor frei zu fahren
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
       Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
       IF ( NOT toflAntriebLaeuft.Q ) THEN
@@ -232,7 +231,7 @@ THEN
         steplVortransport := STEP_210_E;
       END_IF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_210_E:
       (* Hinweis:
          - Antrieb verfahren (Handfahren)
@@ -249,10 +248,10 @@ THEN
         steplVortransport := STEP_220_E;
       END_IF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_220_E:
       (* Anmerkung:
-         - Auslaufsensor frei 
+         - Auslaufsensor frei
          - Strecke die maximal Verfahren werden darf zum Sensor freifahren
          - Einlaufsensor belegt sofoert mit einem Fehlerbeenden
       *)
@@ -278,14 +277,14 @@ THEN
         steplVortransport := STEP_900_E;
       END_IF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_300_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  RIEMEN UND ABFRAGEN SENKEN
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       out_bShuttleAnheben := FALSE;
 
@@ -305,13 +304,13 @@ THEN
          - Ein- Aus- Laufsensoren
       *)
       IF ( tonlWartenAufSenken.Q ) THEN
-        (* Glastransport unten *)
+        // Glastransport unten
         IF ( NOT blSensorGlastransportUnten ) THEN
           wpFehlerNr := cMELDUNG_TS_MELDET_NICHT_UNTEN;
-        (* Luftsensoren unten *)
+        // Luftsensoren unten
         ELSIF ( NOT bpSensorScheibenKontrolleEinlaufSeiteUnten ) THEN
           wpFehlerNr := cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_UNTEN;
-        (* Luftsensoren unten *)
+        // Luftsensoren unten
         ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteUnten ) THEN
           wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_UNTEN;
         ELSE
@@ -322,15 +321,15 @@ THEN
         bpOutBereitZumEintransport := FALSE;
       END_IF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*VORTRANSPORT ==============================*)
+  // VORTRANSPORT ==============================
   END_CASE
 ELSE
   IF ( steplVortransport > STEP_0_E ) THEN
@@ -346,9 +345,7 @@ ELSE
     steplVortransport := STEP_0_E;
   END_IF
 END_IF
-(*
-_________________________________________________________________________
- ************************ ENDE Glas- Vortransport **********************
-_________________________________________________________________________
-*)
+//_________________________________________________________________________
+// ************************ ENDE Glas- Vortransport **********************
+//_________________________________________________________________________
 END_ACTION

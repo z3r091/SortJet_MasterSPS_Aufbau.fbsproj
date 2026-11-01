@@ -44,14 +44,14 @@ VAR_INPUT
   rpRuckzeit                          : REAL;
   rpZielposition                      : REAL;
   rpRestweg                           : REAL;
-  rpMinSwEsEingrenzung                : REAL; (* Externer zusaetzlicher Software-Endschalter MIN; 0 = inaktiv; darf den MK-MIN nur weiter eingrenzen *)
-  rpMaxSwEsEingrenzung                : REAL; (* Externer zusaetzlicher Software-Endschalter MAX; 0 = inaktiv; darf den MK-MAX nur weiter eingrenzen *)
+  rpMinSwEsEingrenzung                : REAL; // Externer zusaetzlicher Software-Endschalter MIN; 0 = inaktiv; darf den MK-MIN nur weiter eingrenzen
+  rpMaxSwEsEingrenzung                : REAL; // Externer zusaetzlicher Software-Endschalter MAX; 0 = inaktiv; darf den MK-MAX nur weiter eingrenzen
   rpPositionMesstaster1Positiv        : REAL;
   rpPositionMesstaster2Positiv        : REAL;
   rpPositionMesstaster1Negativ        : REAL;
   rpPositionMesstaster2Negativ        : REAL;
   rpOverride                          : REAL := 100;
-  rpSimMessErgebnis                   : REAL; (* Nur Simulation: von der Station vorgegebenes Ergebnis der Scheibenmessung (Echtbetrieb: Laenge - Messstrecke); 0 = virtuelle Scheibenlaenge rgSimScheibenlaenge *)
+  rpSimMessErgebnis                   : REAL; // Nur Simulation: von der Station vorgegebenes Ergebnis der Scheibenmessung (Echtbetrieb: Laenge - Messstrecke); 0 = virtuelle Scheibenlaenge rgSimScheibenlaenge
 
   // POINTER
   ppAntriebsInformationen             : REFERENCE TO AntriebsInformationen;

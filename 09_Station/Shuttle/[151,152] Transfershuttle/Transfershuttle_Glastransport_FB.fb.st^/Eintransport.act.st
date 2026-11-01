@@ -6,18 +6,18 @@
 }
 *)
 ACTION Eintransport
-(***************************************************************************************************)
-(* AKTION: STEUERUNG EINTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: STEUERUNG EINTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF (  bpEintransport
      AND bpAutomatikAktiv )
 THEN
 
   (* Hinweis:
-     - Starten der Schrittkette 
+     - Starten der Schrittkette
   *)
   CASE steplEintransport OF
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_0_E:
       bpDone:= FALSE;
       blSchnittstelle_bAnforderungTransportVerbund := FALSE;
@@ -28,26 +28,26 @@ THEN
         steplEintransport := STEP_5_E;
       END_IF
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_5_E:
       Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
       steplEintransport := STEP_6_E;
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_6_E:
       IF Antrieb.bpDone THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplEintransport := STEP_10_E;
       END_IF
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_10_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  EINTRANSPORT IM TRANSFERSHUTTLE VERBUND
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF ( bpTransfershuttleVerbundAktiv ) THEN
 
@@ -62,12 +62,12 @@ THEN
 
       END_IF
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_20_E:
       blEintransportDefaultLuftabfrage := TRUE;
       steplEintransport := STEP_100_E;
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_100_E:
       IF ( blAbgeschlossenEintransport ) THEN
         blEintransportDefaultLuftabfrage := FALSE;
@@ -85,17 +85,17 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_900_E:
       blSchnittstelle_bAnforderungTransportVerbund := FALSE;
       bpFehler := TRUE;
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_1000_E:
 
       bpDone:=TRUE;
 
-  (*EINTRANSPORT ==============================*)
+  // EINTRANSPORT ==============================
   END_CASE
 ELSE
 

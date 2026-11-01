@@ -10,35 +10,35 @@ VAR_INPUT
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   abpBetriebsstop  : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
 
 END_VAR
 VAR
 
-  (* BOOLEAN *)
-  blBetriebsstop  : BOOL; (* Merkervariable *)
+  // BOOLEAN
+  blBetriebsstop  : BOOL; // Merkervariable
 
-  (* WORD *)
+  // WORD
   wlIndex                    : WORD;
   wMeldungsNrInkrementieren  : WORD := 0;
   
 END_VAR
-(***************************************************************************************************)
-(* BAUSTEIN: BETRIEBSSTATUS *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: BETRIEBSSTATUS
+//-------------------------------------------------------------------------------------------------
 
-(*Hinweis:
-  - Betriebs- Stopp ausloesen 
-  - Internen Betriebsstop ausloesen 
+(* Hinweis:
+   - Betriebs- Stopp ausloesen
+   - Internen Betriebsstop ausloesen
 *)
 
 blBetriebsstop := (  ( NOT bgMMIOK AND NOT bgMMIBruecken ) );
 
 
-(***************************************************************************************************)
-(* BAUSTEIN: MELDUNGEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: MELDUNGEN
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Generieren einer Meldung
 *)

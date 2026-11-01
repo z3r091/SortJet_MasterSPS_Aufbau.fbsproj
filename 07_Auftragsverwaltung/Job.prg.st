@@ -8,13 +8,13 @@
 PROGRAM Job
 VAR
  
-  (* BOOLEAN *)
+  // BOOLEAN
   blMerkerMmiNichtOk        : BOOL;
   blMerkerNachrichtabsetzen : BOOL;
   blSendJobStatus           : BOOL;
   ablFehlerAktiv            : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
 
-  (* WORD *)
+  // WORD
   wlMinutenMmiNichtOk       : WORD;
   wlSekundenMmiNichtOk      : WORD;
   wlMilliSekundenMmiNichtOk : WORD;
@@ -24,16 +24,16 @@ VAR
   wIndexReset               : WORD := 0;
   wIndexCheck               : WORD := 0;
 
-  (* LREAL *)
+  // LREAL
   lrlAktuelleZeit : LREAL;
   lrlMmiNichtOk   : LREAL;
 
-  (* TIMER *)
+  // TIMER
   timelMmiNichtOk       : TIME;
   tonlNachrichtAbsetzen : TON;
   tonlMmiOk             : TON;
 
-  (* TRIGGER *)
+  // TRIGGER
   rtlMmiOk                  : R_TRIG;
   ftlMmiOk                  : F_TRIG;
   ftlNotHaltAusgeloest      : F_TRIG;
@@ -46,9 +46,9 @@ VAR
   oldValue : BOOL;
 
 END_VAR
-(***************************************************************************************************)
-(* STOPPEN DES AUTOMATIK- BETRIEBS [NOT-AUS]  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STOPPEN DES AUTOMATIK- BETRIEBS [NOT-AUS]
+//-------------------------------------------------------------------------------------------------
 (* Anmerkung:
    - Automatikkreise stoppen sollte Notaus
 *)
@@ -66,9 +66,9 @@ FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
   tonAutomatik_Aktiv[wlIndex]( IN := M_Automatik_Aktiv[wlIndex] AND NOT Stop_Baustein.abpBetriebsstop[wlIndex], PT := t#1s );
 END_FOR
 
-(***************************************************************************************************)
-(* AKTIONEN  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 FehlerAktiv();
 CheckBetriebsart();
 Check_MMI_Verbindung();

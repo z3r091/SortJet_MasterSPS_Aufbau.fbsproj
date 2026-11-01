@@ -6,9 +6,9 @@
 }
 *)
 ACTION OperatorAcknowledge
-(***************************************************************************************************)
-(* AKTION OPERATOR ACKNOWLEDGE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION OPERATOR ACKNOWLEDGE
+//-------------------------------------------------------------------------------------------------
 // Eingang von SLC
 bpOperatorAcknowledgeRequested := EV_ToPLC_bOperatorAckReq OR ( EV_ToPLC_Error_FSoE_Master_1 <> 0 ) OR ( EV_ToPLC_Error_FSoE_Master_2 <> 0 );
 
@@ -24,7 +24,7 @@ IF ( rtlMeldungQuittierungDurchBedienerErforderlich.Q ) THEN
 END_IF
 
 (* Hinweis:
-   - Erforderlich das ein Bediener die Sicherheitstechnik quittiert 
+   - Erforderlich das ein Bediener die Sicherheitstechnik quittiert
      => Module befinden sich im Stopp
 *)
 rtlResetOA( CLK := ( bpResetOperatorAcknowledge OR bpVisuResetFSoEMaster ) AND bpOperatorAcknowledgeRequested );

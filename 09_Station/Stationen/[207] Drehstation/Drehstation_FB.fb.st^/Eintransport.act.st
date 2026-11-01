@@ -6,9 +6,9 @@
 }
 *)
 ACTION Eintransport
-(***************************************************************************************************)
-(* EINTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// EINTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF (  BasisStationsParameter.bEintransport[cWAND_1]
      AND blBetriebsartAutomatik )
 THEN
@@ -49,7 +49,7 @@ THEN
 
 
   CASE steplEintransport OF
-    (*EINTRANSPORT ==================================================================*)
+    // EINTRANSPORT ==================================================================
     STEP_0_E:
       (* Hinweis:
          - Variablen zurueck setzen
@@ -71,18 +71,17 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT ==================================================================*)
+    // EINTRANSPORT ==================================================================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  ANSTEUERUNG DER BAUSTEIN-KOMPONENTEN
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
-      (* Option:
-         - Dickenverstellung der Wand \ Scheibenfuehrung \ etc.
-      *)
+      // Option:
+      //   - Dickenverstellung der Wand \ Scheibenfuehrung \ etc.
       Dickenverstellung.epOeffnungsStellung := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eDickenverstellung;
       Dickenverstellung.bpStartPneumatik    := TRUE;
 
@@ -113,7 +112,7 @@ THEN
       END_IF
 
 
-    (*EINTRANSPORT ==================================================================*)
+    // EINTRANSPORT ==================================================================
     STEP_110_E:
       (* Hinweis:
          - Drehung abgeschlossen [Drehen von 0- 180 Grad ; 180 - 0 Grad ]
@@ -131,7 +130,7 @@ THEN
         steplEintransport := STEP_120_E;
       END_IF
 
-    (*EINTRANSPORT ==================================================================*)
+    // EINTRANSPORT ==================================================================
     STEP_120_E:
       (* Hinweis:
          - Sicherstellen das die Zielposition erreicht worden ist
@@ -149,16 +148,16 @@ THEN
       END_IF
 
 
-    (*EINTRANSPORT ==================================================================*)
+    // EINTRANSPORT ==================================================================
     STEP_200_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  STARTEN DES GLAS-TRANSPORTS [EINTRANSPORT]
-      //         
+      //
       //  Hinweis:
       //  - Anhand der Drehposition bestimmen um welchen Eintransport-Typ es sich handelt
-      //    => Position 0 Grad   : Transport ueber den Einlaufsensor 
+      //    => Position 0 Grad   : Transport ueber den Einlaufsensor
       //    => Position 180 Grad : Transport ueber den Auslaufsensor
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       Glastransport.pAuftrag                   := BasisStationsParameter.pAuftrag[cWAND_1];
       Glastransport.bpScheibentrennen          := BasisStationsParameter.bScheibentrennen[cWAND_1];
@@ -171,14 +170,14 @@ THEN
         steplEintransport := STEP_300_E;
       END_IF
 
-    (*EINTRANSPORT ==================================================================*)
+    // EINTRANSPORT ==================================================================
     STEP_300_E:
-      (* ---------------------------------------------------------------------------------------
-      //  OPTION - EINTRANSPORT BIT LETZTE SCHEIBE = FALSE [KEINE DREH-BEWEGUNG] 
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  OPTION - EINTRANSPORT BIT LETZTE SCHEIBE = FALSE [KEINE DREH-BEWEGUNG]
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       BasisStationsParameter.dwWartezeit[cWAND_1] := Glastransport.dwpWartezeit;
 
@@ -189,21 +188,20 @@ THEN
         steplEintransport := STEP_1000_E;
       END_IF
 
-    (*EINTRANSPORT ==================================================================*)
+    // EINTRANSPORT ==================================================================
     STEP_400_E:
-      (* ---------------------------------------------------------------------------------------
-      //  OPTION - EINTRANSPORT BIT LETZTE SCHEIBE = TRUE [DREH-BEWEGUNG] 
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  OPTION - EINTRANSPORT BIT LETZTE SCHEIBE = TRUE [DREH-BEWEGUNG]
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
       (* Hinweis:
          - Eintransport abgeschlossen
       *)
       BasisStationsParameter.dwWartezeit[cWAND_1] := Glastransport.dwpWartezeit;
 
-      (* => Glastransport gibt die Freigabe zum Drehen \ Kippen \ etc.
-      *)
+      // => Glastransport gibt die Freigabe zum Drehen \ Kippen \ etc.
       IF ( Glastransport.bpFreigabeFremdprozess ) THEN
         Drehen.epZielPosition :=  BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport;
         Drehen.bpStarteAbsolutPositionierung := TRUE;
@@ -233,8 +231,7 @@ THEN
 
       END_IF
 
-      (* => Glastransport hat seinen Eintransport abgeschlossen
-      *)
+      // => Glastransport hat seinen Eintransport abgeschlossen
       IF ( Glastransport.bpDone ) THEN
 
         Glastransport.bpEintransport             := FALSE;
@@ -269,24 +266,24 @@ THEN
 
       END_IF
 
-    (*EINTRANSPORT ==================================================================*)
+    // EINTRANSPORT ==================================================================
     STEP_410_E:
       (* Hinweis:
-         - Ansteuerung Drehen 
+         - Ansteuerung Drehen
       *)
       Drehen.epZielPosition :=  BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport;
       Drehen.bpStarteAbsolutPositionierung := TRUE;
 
 
       (* Hinweis:
-         - Ansteuerung Kippen 
+         - Ansteuerung Kippen
       *)
       Kippen.epZielPosition := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition_NachEintransport;
       Kippen.bpPositionieren  := TRUE;
 
 
       (* Hinweis:
-         - Ansteuerung Vortransport 
+         - Ansteuerung Vortransport
       *)
       CASE BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport OF
 
@@ -320,11 +317,10 @@ THEN
       steplEintransport := STEP_420_E;
 
 
-    (*EINTRANSPORT ==================================================================*)
+    // EINTRANSPORT ==================================================================
     STEP_420_E:
 
-      (* => Betriebsart des Vortransport abloeschen
-      *)
+      // => Betriebsart des Vortransport abloeschen
       IF ( Glastransport.bpDone
            AND ( Glastransport.bpVortransport OR Glastransport.bpVortransportRueckwaertig ) ) AND Querachse.bpDone
       THEN
@@ -344,24 +340,23 @@ THEN
         steplEintransport := STEP_1000_E;
       END_IF
 
-      (* Ausnahmesituation:
-         - Drehen
-      *)
+      // Ausnahmesituation:
+      //   - Drehen
       IF ( Drehen.bpFehler ) THEN
         Drehen.bpStarteAbsolutPositionierung := FALSE;
         BasisStationsParameter.wFehlerNummer := Drehen.wpFehlerNr;
         steplEintransport := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT ==================================================================*)
+    // EINTRANSPORT ==================================================================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*EINTRANSPORT ==================================================================*)
+    // EINTRANSPORT ==================================================================
     STEP_1000_E:
       BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] := TRUE;
 
-  (*EINTRANSPORT ==================================================================*)
+  // EINTRANSPORT ==================================================================
   END_CASE
 
 ELSE

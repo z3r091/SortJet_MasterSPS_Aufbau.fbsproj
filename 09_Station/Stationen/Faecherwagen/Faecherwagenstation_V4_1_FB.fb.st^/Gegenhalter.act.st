@@ -6,9 +6,9 @@
 }
 *)
 ACTION Gegenhalter
-(***************************************************************************************************)
-(*  Gegenhalter AB => FUER MULTIBELADUNG  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Gegenhalter AB => FUER MULTIBELADUNG
+//-------------------------------------------------------------------------------------------------
 
 IF ( blGegenhalterOeffnen 
    //  AND bpUntergestellErkannt //safety eingang
@@ -17,7 +17,7 @@ IF ( blGegenhalterOeffnen
 THEN
   CASE steplGegenhalterOeffnen OF
 
-    (* Gegenhalter AB  ============================*)
+    // Gegenhalter AB  ============================
     STEP_0_E:
       blGegenhalterOeffnenDone := FALSE;
 
@@ -35,7 +35,7 @@ THEN
         END_IF
       END_IF
 
-    (* Gegenhalter AB  ============================*)
+    // Gegenhalter AB  ============================
     STEP_10_E:
       tonlGegenhalterAufZu( IN := in_bGegenhalterOffen, PT := T#1S );
       tonlTimeoutGegenhalterAufZu(IN := NOT in_bGegenhalterOffen, PT := TIMEOUT_SENSOR);
@@ -45,9 +45,8 @@ THEN
         steplGegenhalterOeffnen := STEP_1000_E;
       END_IF
 
-      (* FEHLER:
-         - Sensor
-      *)
+      // FEHLER:
+      //   - Sensor
 
       IF tonlTimeoutGegenhalterAufZu.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_GEGENHALTER_NICHT_OFFEN;
@@ -61,13 +60,13 @@ THEN
       END_IF
 
 
-    (* Gegenhalter AB  ============================*)
+    // Gegenhalter AB  ============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       out_bGegenhalterEinfahren := FALSE;
 
 
-    (* Gegenhalter AB  ============================*)
+    // Gegenhalter AB  ============================
     STEP_1000_E:
       blGegenhalterOeffnenDone:=TRUE;
 
@@ -92,18 +91,18 @@ END_IF
 
 
 
-(***************************************************************************************************)
-(*  Gegenhalter AUF => FUER MULTIBELADUNG  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Gegenhalter AUF => FUER MULTIBELADUNG
+//-------------------------------------------------------------------------------------------------
 
 IF blGegenhalterSchliessen 
-(*AND BasisStationsParameter.bFreigabe*)
+// AND BasisStationsParameter.bFreigabe
 //  AND bpUntergestellErkannt //safety eingang
 // AND NOT in_bFaecherwagenNichtInPos // Gestell ist auf dem Wagen
 THEN
   CASE steplGegenhalterSchliessen OF
 
-    (* Gegenhalter Auf ============================*)
+    // Gegenhalter Auf ============================
     STEP_0_E:
       blGegenhalterSchliessenDone := FALSE;
 
@@ -121,7 +120,7 @@ THEN
         END_IF
       END_IF
 
-    (* Gegenhalter AUF  ============================*)
+    // Gegenhalter AUF  ============================
     STEP_10_E:
       tonlGegenhalterAufZu( IN := in_bGegenhalterZu, PT := T#1S );
       tonlTimeoutGegenhalterAufZu(IN := NOT in_bGegenhalterOffen, PT := TIMEOUT_SENSOR);
@@ -131,9 +130,8 @@ THEN
         steplGegenhalterSchliessen := STEP_1000_E;
       END_IF
 
-      (* FEHLER:
-         - Sensor
-      *)
+      // FEHLER:
+      //   - Sensor
 
       IF tonlTimeoutGegenhalterAufZu.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_GEGENHALTER_NICHT_GESCHLOSSEN;
@@ -147,17 +145,17 @@ THEN
       END_IF
 
 
-    (* Gegenhalter AUF  ============================*)
+    // Gegenhalter AUF  ============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       out_bGegenhalterAusfahren := FALSE;
 
 
-    (* Gegenhalter AUF ============================*)
+    // Gegenhalter AUF ============================
     STEP_1000_E:
       blGegenhalterSchliessenDone:=TRUE;
 
-  (* Gegenhalter AUF ============================*)
+  // Gegenhalter AUF ============================
   END_CASE
 END_IF
 

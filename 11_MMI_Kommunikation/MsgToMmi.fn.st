@@ -6,7 +6,7 @@
 }
 *)
 FUNCTION MsgToMmi : BOOL
-(* ------ Senden von Nachrichten zum MMI ------ *)
+// ------ Senden von Nachrichten zum MMI ------
 VAR_INPUT
   auftragsnr_w: WORD;
 END_VAR
@@ -19,7 +19,7 @@ VAR
 END_VAR
 CASE( auftragsnr_w ) OF
 
-    (* Aktive Handfunktionen: Stationsnummer, niedriges Word, hohes Word. *)
+    // Aktive Handfunktionen: Stationsnummer, niedriges Word, hohes Word.
     SB0_SPS_HANDFUNKTION_STATUS,
       SB0_SPS_SHUTTLEHANDFUNKTION_STATUS:
     msg_st.wAuftrag := auftragsnr_w;
@@ -28,7 +28,7 @@ CASE( auftragsnr_w ) OF
     HMI_PutDWORD( pbyAddr := ADR( msg_st.awDaten[1] ), dwVal := dwSps2MmiHandfunktionenStatus );
 
   (* Hinweis:
-     - Versionsstring 
+     - Versionsstring
   *)
   SB0_SPS_SPSVERSION:
     msg_st.wAuftrag := auftragsnr_w;
@@ -57,30 +57,30 @@ CASE( auftragsnr_w ) OF
      - Quittung des Anlegeauftrages
        => Scheibe wurde vermessen und kann ins System eingebucht werden
        WORD [1] und [2] sind reserviert für Höhe
-       WORD [3] und [4] sind reserviert für Länge 
+       WORD [3] und [4] sind reserviert für Länge
   *)
-  SB0_SPS_SortierungQuittInputInQueue:  (* Auftrag für den Anlegetisch *)
+  SB0_SPS_SortierungQuittInputInQueue:  // Auftrag für den Anlegetisch
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 14;
-    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[0] ), wVal := wSps2MmiInputtableNummer );(*Tischnummer*)
+    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[0] ), wVal := wSps2MmiInputtableNummer );// Tischnummer
     HMI_PutDWORD( pbyAddr := ADR( msg_st.awDaten[6] ), dwVal := dwSps2MmiWartezeit );
 
   (* Hinweis:
-     -Event-State einer Station 
+     - -Event-State einer Station
   *)
   SBO_SPS_STATIONSEVENT:
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 2;
-    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[0] ), wVal := wSps2MmiStationsNummer );(*Stationsnummer*)
-    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[1] ), wVal := wSPS2MMIStationEventStatus );(*Station Event-Typ*)
+    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[0] ), wVal := wSps2MmiStationsNummer );// Stationsnummer
+    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[1] ), wVal := wSPS2MMIStationEventStatus );// Station Event-Typ
 
     
   SB0_SPS_ErrorMSG:
-    msg_st.wAuftrag := auftragsnr_w;  (*Konstanten Nr. !!*)
+    msg_st.wAuftrag := auftragsnr_w;  // Konstanten Nr. !!
     msg_st.wLaenge := 10;
-    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[0] ), wVal := wSps2MmiErrorNumber );(* + Parameter z.B.: Fehlernummer des Antriebes *)
-    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[1] ), wVal := wSps2MmiErrorShuttleNumber );(* + Parameter z.B.: Shuttlenummer  *)
-    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[2] ), wVal := wSps2MmiErrorShuttleSchritt );(* + Parameter z.B.: Schrittkettenschritt *)
+    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[0] ), wVal := wSps2MmiErrorNumber );// + Parameter z.B.: Fehlernummer des Antriebes
+    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[1] ), wVal := wSps2MmiErrorShuttleNumber );// + Parameter z.B.: Shuttlenummer
+    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[2] ), wVal := wSps2MmiErrorShuttleSchritt );// + Parameter z.B.: Schrittkettenschritt
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[3] ), wVal := wSps2MmiErrorShuttlePosition4 );
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[4] ), wVal := wSps2MmiErrorShuttlePosition5 );
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[5] ), wVal := wSps2MmiErrorShuttlePosition6 );
@@ -90,11 +90,11 @@ CASE( auftragsnr_w ) OF
 
 
   SB0_SPS_DEBUG_TRACE:
-    msg_st.wAuftrag := auftragsnr_w;  (*Konstanten Nr. !!*)
+    msg_st.wAuftrag := auftragsnr_w;  // Konstanten Nr. !!
     msg_st.wLaenge := 9;
-    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[0] ), wVal := wSps2MmiDebugLogWord1); (* + Parameter z.B.: Fehlernummer des Antriebes *)
-    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[1] ), wVal := wSps2MmiDebugLogWord2); (* + Parameter z.B.: Shuttlenummer  *)
-    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[2] ), wVal := wSps2MmiDebugLogWord3); (* + Parameter z.B.: Schrittkettenschritt *)
+    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[0] ), wVal := wSps2MmiDebugLogWord1); // + Parameter z.B.: Fehlernummer des Antriebes
+    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[1] ), wVal := wSps2MmiDebugLogWord2); // + Parameter z.B.: Shuttlenummer
+    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[2] ), wVal := wSps2MmiDebugLogWord3); // + Parameter z.B.: Schrittkettenschritt
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[3] ), wVal := wSps2MmiDebugLogWord4);
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[4] ), wVal := wSps2MmiDebugLogWord5);
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[5] ), wVal := wSps2MmiDebugLogWord6);
@@ -118,10 +118,10 @@ CASE( auftragsnr_w ) OF
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[2] ), wVal := INT_TO_WORD(iSps2MmiMessungScheibenanzahl) );
     HMI_PutREAL( pbyAddr := ADR( msg_st.awDaten[3] ), rVal := rSps2MmiMessungScheibenlaenge );
     
-  (* Hinweis
+  (* Hinweis:
      - Auftragsquittierung fuer die Scheibenvorpositionierung im Speicher mit dem Transfershuttle
   *)
-  SB0_SPS_SortierungQuittExtractionShuttleData: (* *)
+  SB0_SPS_SortierungQuittExtractionShuttleData: //
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 6;
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[0] ), wVal := wSps2MmiQuittierungVortransportStationsNr1 );
@@ -138,7 +138,7 @@ CASE( auftragsnr_w ) OF
 
     
   (* Hinweis:
-     - Transporstatus der Eckuebergabe/Anlegetisch [Scanner] zum MMI 
+     - Transporstatus der Eckuebergabe/Anlegetisch [Scanner] zum MMI
   *)
   SB0_SPS_TRANSPORTSTATE:
     msg_st.wAuftrag := auftragsnr_w;
@@ -180,13 +180,13 @@ CASE( auftragsnr_w ) OF
       HMI_PutREAL(  pbyAddr := ADR( msg_st.awDaten[(2*(wlIndex)) + 3] ), rVal  := rSps2MmiMeasureResult[wlIndex] );
     END_FOR
     
-    (* Werte zuruecksetzen *)
+    // Werte zuruecksetzen
     wSps2MmiMeasureShuttleNummer  := 0;
     wSps2MmiMessungSlotNummer     := 0;
     iSps2MmiMessungScheibenanzahl := 0;
 
   (* Hinweis:
-     - GETTER: Anfrage des Stations- Status [z.B. Status Ein-/Aus- Transport] 
+     - GETTER: Anfrage des Stations- Status [z.B. Status Ein-/Aus- Transport]
   *)
   SB0_SPS_GETSTATIONSTATUS:
     msg_st.wAuftrag := auftragsnr_w;
@@ -307,7 +307,7 @@ CASE( auftragsnr_w ) OF
 
     
   (* Hinweis:
-     - Ausmessen von FW 
+     - Ausmessen von FW
   *)
   SB0_SPS_POSITIONMEASUREDATA:
     msg_st.wAuftrag := auftragsnr_w;
@@ -336,10 +336,10 @@ CASE( auftragsnr_w ) OF
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ),  wVal  := wSps2MmiWatchDogTestCount );
 
     
-  (*++++++++++++++++++++++++ Fächerwagenstationen ++++++++++++++++++++++++++++++++++++ *)
+  // ++++++++++++++++++++++++ Fächerwagenstationen ++++++++++++++++++++++++++++++++++++
   (* Hinweis [FAECHERWAGEN]:
      - Faecherwagenwechsel von Station A nach B erfolgreich
-   *)
+  *)
   SB0_SPS_RACKONLOADINGSTATION:
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 3;
@@ -358,20 +358,20 @@ CASE( auftragsnr_w ) OF
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ),  wVal  := wSps2FaecherwagenStationNr );
 
     
-  SB0_SPS_SortierungRackinPos: (* Fächerwagenwechsel von Station A nach B erfolgreich *)
+  SB0_SPS_SortierungRackinPos: // Fächerwagenwechsel von Station A nach B erfolgreich
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 2;
-    HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ),  wVal  := wSps2FaecherwagenStart );(* Wo kommt der Wagen her *)
-    HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[1] ),  wVal  := wSps2FaecherwagenStart );(* Wo geht der Wagen hin *)
+    HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ),  wVal  := wSps2FaecherwagenStart );// Wo kommt der Wagen her
+    HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[1] ),  wVal  := wSps2FaecherwagenStart );// Wo geht der Wagen hin
 
   (* Hinweis:
      - [FAECHERWAGENSTATION] Gibt den Status der Faecherwagenstation zurueck
-       => 0 = wird nicht benutzt                                              
+       => 0 = wird nicht benutzt
        => 1 = frei
        => 2 = belegt
-    Wichtig:
-    => Groesse des Arrays <awSps2MmmiStatusFaecherwagenstation> beachten ggf. den Index vergroessern 
-    => <igIndexFaecherwagenDatenSenden> Aufgrund des Datenwortes das bei "0" startet [Index]  
+       Wichtig:
+       => Groesse des Arrays <awSps2MmmiStatusFaecherwagenstation> beachten ggf. den Index vergroessern
+       => <igIndexFaecherwagenDatenSenden> Aufgrund des Datenwortes das bei "0" startet [Index]
   *)
    
   (* Hinweis [FAECHERWAGEN]:
@@ -402,11 +402,9 @@ CASE( auftragsnr_w ) OF
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 4;
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ),  wVal  := wSps2MmiRackNumber );
-    HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[1] ),  wVal  := wSps2MmiRackStatus );(*1 Wagen wird ausgeschleust, 2 Wagen wird Notausgeschleust*)
+    HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[1] ),  wVal  := wSps2MmiRackStatus );// 1 Wagen wird ausgeschleust, 2 Wagen wird Notausgeschleust
     
-  (* 
-    - Anfrage vom MMI nach dem Status einer EINZELNEN Fächerwagenstation => belegt, Muting OK, RFID-Nr. 
-  *)
+  //  - Anfrage vom MMI nach dem Status einer EINZELNEN Fächerwagenstation => belegt, Muting OK, RFID-Nr.
   SB0_SPS_STATUSRACKSTATION:
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 6;
@@ -439,7 +437,7 @@ CASE( auftragsnr_w ) OF
     wlIndex  := 3;
     wlAnzahl := 0;
     FOR wlWert := 1 TO MIN( stStationUpdate.wAnzahlWerte, 13 ) DO
-      (* Platzbedarf in Words inkl. Datentyp-Word *)
+      // Platzbedarf in Words inkl. Datentyp-Word
       CASE stStationUpdate.astWerte[wlWert].eDatenTyp OF
         UpdateDatenTyp_EN.TYP_WORD, UpdateDatenTyp_EN.TYP_BOOL: wlBenoetigt := 2;
         UpdateDatenTyp_EN.TYP_DWORD, UpdateDatenTyp_EN.TYP_REAL: wlBenoetigt := 3;
@@ -460,8 +458,8 @@ CASE( auftragsnr_w ) OF
       wlIndex  := wlIndex + wlBenoetigt;
       wlAnzahl := wlAnzahl + 1;
     END_FOR
-    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[2] ), wVal := wlAnzahl ); (* tatsaechlich gesendete Werte *)
-    msg_st.wLaenge := wlIndex * 2;                                        (* Laenge in Byte *)
+    HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[2] ), wVal := wlAnzahl ); // tatsaechlich gesendete Werte
+    msg_st.wLaenge := wlIndex * 2;                                        // Laenge in Byte
 
   ELSE
     MsgToMmi := FALSE;

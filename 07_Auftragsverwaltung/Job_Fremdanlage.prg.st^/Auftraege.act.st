@@ -7,11 +7,11 @@
 *)
 ACTION Auftraege
 
-(***************************************************************************************************)
-(* AUFTRAG: M_SB0_MMI_ISOQUITTUNG   *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFTRAG: M_SB0_MMI_ISOQUITTUNG
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   - Unabhaengige Quittung der Sondergläser durch Tasterdruck anfordern 
+   - Unabhaengige Quittung der Sondergläser durch Tasterdruck anfordern
 *)
 IF ( M_SB0_MMI_ISOQUITTUNG ) THEN
   M_SB0_MMI_ISOQUITTUNG:=FALSE;
@@ -26,11 +26,11 @@ IF ( M_SB0_MMI_ISOQUITTUNG ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* AUFTRAG: M_SB0_MMI_SORTIERUNGCANCELISOLINEEVENT   *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFTRAG: M_SB0_MMI_SORTIERUNGCANCELISOLINEEVENT
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   -  Abbruch des offenen ISO Line Events 
+   -  Abbruch des offenen ISO Line Events
 *)
 
 IF ( M_SB0_MMI_SORTIERUNGCANCELISOLINEEVENT ) THEN
@@ -45,11 +45,11 @@ IF ( M_SB0_MMI_SORTIERUNGCANCELISOLINEEVENT ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* AUFTRAG: M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE   *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFTRAG: M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   -  Auftragsdaten fuer die Fremdanlage 
+   -  Auftragsdaten fuer die Fremdanlage
 *)
 IF ( M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE ) THEN
   M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE := FALSE;
@@ -59,7 +59,7 @@ IF ( M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE ) THEN
 
     cERSTE_FREMDANLAGE..cLETZTE_FREMDANLAGE:
       (* Hinweis:
-         - Es folgt hier keine weitere Nachricht 
+         - Es folgt hier keine weitere Nachricht
       *)
       IF ( tMmi2SpsInfo.wNachrichtenAnzahl = 1 ) THEN
         stAuftragScheibenIDs.adwScheibenID_1 := ScheibenID(tMmi2SpsInfo.wFremdanlageNr, tMmi2SpsInfo.adwScheibenID_1);
@@ -132,7 +132,7 @@ IF ( M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE ) THEN
 
 
         (* Hinweis:
-           - Werte zuruecksetzen wenn alle Nachrichten Empfangen worden sind 
+           - Werte zuruecksetzen wenn alle Nachrichten Empfangen worden sind
         *)
         IF (  ablNachrichtEmpfangen[1]
              AND ablNachrichtEmpfangen[2] )

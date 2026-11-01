@@ -6,17 +6,17 @@
 }
 *)
 ACTION Ausfahren
-(***************************************************************************************************)
-(* AUSFAHREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUSFAHREN
+//-------------------------------------------------------------------------------------------------
 IF (  bpStartAusfahren )
 THEN
   CASE steplAusfahren OF
-    (*AUSFAHREN =====================*)
+    // AUSFAHREN =====================
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
-         - Zylinder ausfahren starten 
+         - Zylinder ausfahren starten
       *)
       IF ( NOT in_bStatusZylinderAusgefahren ) THEN
         tonlZylinderAusgefahren(IN := FALSE);
@@ -27,7 +27,7 @@ THEN
         steplAusfahren := STEP_1000_E;
       END_IF
 
-    (*AUSFAHREN =====================*)
+    // AUSFAHREN =====================
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob die Zylinder ausgefahren sind
@@ -50,15 +50,15 @@ THEN
         steplAusfahren := STEP_900_E;
       END_IF
 
-    (*AUSFAHREN =====================*)
+    // AUSFAHREN =====================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*AUSFAHREN =====================*)
+    // AUSFAHREN =====================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*AUSFAHREN =====================*)
+  // AUSFAHREN =====================
   END_CASE
 ELSE
   IF (steplAusfahren > STEP_0_E) THEN

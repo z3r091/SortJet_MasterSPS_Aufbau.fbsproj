@@ -8,9 +8,9 @@
 TYPE Parameter_Hub :
   STRUCT
     wMaximaleWartezeitHub         : WORD; // Maximale Wartezeit die abgewartet wird bis der Hub-Antrieb auf Position gefahren ist *)
-    rToleranz                     : REAL; (* Toleranz beim entscheiden der Aktuellen Positionen => Rueckgabewert beim pruefen des Positionsenums *)
+    rToleranz                     : REAL; // Toleranz beim entscheiden der Aktuellen Positionen => Rueckgabewert beim pruefen des Positionsenums
 
-    (* Aubau *)
-  bHubMitSchuetz                : BOOL; (* Hub mit Schütz oder Antrieb gelöst*)
+    // Aubau
+  bHubMitSchuetz                : BOOL; // Hub mit Schütz oder Antrieb gelöst
   END_STRUCT
 END_TYPE

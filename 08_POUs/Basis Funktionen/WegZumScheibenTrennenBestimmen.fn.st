@@ -8,16 +8,16 @@
 FUNCTION WegZumScheibenTrennenBestimmen : REAL
 VAR_INPUT
 
-  (* REAL *)
-  rpAuftragsLaenge       : REAL := REAL#0; (* [mm] *)
-  rpRampe                : REAL := 1000.0; (* [mm/s^2] Verzoegerungsrampe  => Werte muessen umgerechnet werden in [m/s^2] *)
-  rpGeschwindigkeit      : REAL := 1000;   (* [m/s]   Sollgeschwindigkeit => Werte muessen umgerechnet werden in [m/s]    *)
-  rpTrennGeschwindigkeit : REAL := 500;    (* [m/s]   Geschwindigkeit mit der die Beladung aufgetrennt werden soll => Werte muessen umgerechnet werden in [m/s] *)
+  // REAL
+  rpAuftragsLaenge       : REAL := REAL#0; // [mm]
+  rpRampe                : REAL := 1000.0; // [mm/s^2] Verzoegerungsrampe  => Werte muessen umgerechnet werden in [m/s^2]
+  rpGeschwindigkeit      : REAL := 1000;   // [m/s]   Sollgeschwindigkeit => Werte muessen umgerechnet werden in [m/s]
+  rpTrennGeschwindigkeit : REAL := 500;    // [m/s]   Geschwindigkeit mit der die Beladung aufgetrennt werden soll => Werte muessen umgerechnet werden in [m/s]
 
 END_VAR
 VAR
 
-  (* REAL *)
+  // REAL
   rlBerechneteTrennStrecke         : REAL := REAL#0;
   rlBerechneteVerzoegerungsStrecke : REAL := REAL#0;
   rlValidierungWert                : REAL := REAL#0;
@@ -26,25 +26,24 @@ VAR
 END_VAR
 VAR CONSTANT
 
-  (* REAL *)
+  // REAL
   cVALIDIERUNG_NULL             : REAL := REAL#0;
   cVALIDIERUNGSWERT             : REAL := 100.0;
   cDEFAULT_RAMPE                : REAL := 1000.0;
   cDEFAULT_GESCHWINDIGKEIT      : REAL := 1000.0;
   cDEFAULT_TRENNGESCHWINDIGKEIT : REAL := 500.0;
 
-  (* WORD *)
+  // WORD
   cMILLIMETER_ZU_METER_FAKTOR   : WORD := 1000;
 
 END_VAR
-(* Info:
-   - Es wird mittels uebergebener Daten ein Weg berechnet ab wann der Antrieb verzoegern muss, um 
-     eine Stationsbeladung sauber aufzutrennen.
-*)
+// Info:
+//   - Es wird mittels uebergebener Daten ein Weg berechnet ab wann der Antrieb verzoegern muss, um
+//     eine Stationsbeladung sauber aufzutrennen.
 
-(***************************************************************************************************)
-(* FUNKTION: ERMITTELN EINER STRECKE ZUM TRENNEN EINER STATIONSBELADUNG   *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// FUNKTION: ERMITTELN EINER STRECKE ZUM TRENNEN EINER STATIONSBELADUNG
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Auftragslaenge muss angegeben werden
 *)
@@ -55,7 +54,7 @@ END_IF
 
 (* Hinweis:
    - Sicherstellen das keine 0 Rampen bzw. keine 0 Geschwindigkeit angegeben wurde
-     => Fuellen mit default Werten (Division durch null Verhindern) 
+     => Fuellen mit default Werten (Division durch null Verhindern)
 *)
 IF ( ABS(rpRampe) <= cVALIDIERUNG_NULL ) THEN
   rpRampe := cDEFAULT_RAMPE;
@@ -82,9 +81,9 @@ rpAuftragsLaenge        := ABS( rpAuftragsLaenge / cMILLIMETER_ZU_METER_FAKTOR )
 
 
 (* Hinweis:
-   - Strecke berechnen die benoetigt wird, um von der Soll- Geschwindigkeit auf die reduzierte 
+   - Strecke berechnen die benoetigt wird, um von der Soll- Geschwindigkeit auf die reduzierte
      Trenn- Geschwindigkeit zu kommen
-      => s =  v^2 - v0^2 / 2*a  
+      => s =  v^2 - v0^2 / 2*a
 *)
 rlBerechneteTrennStrecke := LREAL_TO_REAL(ABS((EXPT(rpGeschwindigkeit,2) - EXPT(rpTrennGeschwindigkeit,2)) / ( 2 * rpRampe )));
 
@@ -95,7 +94,7 @@ rlBerechneteTrennStrecke := LREAL_TO_REAL(ABS((EXPT(rpGeschwindigkeit,2) - EXPT(
 rlBerechneteVerzoegerungsStrecke := LREAL_TO_REAL((EXPT(rpGeschwindigkeit,2) ) / ( 2 * rpRampe ));
 
 (* Hinweis:
-    - Strecken summieren
+   - Strecken summieren
 *)
 rlValidierungWert :=  ( ( rpAuftragsLaenge - ( rlBerechneteVerzoegerungsStrecke + rlBerechneteTrennStrecke) ) * cMILLIMETER_ZU_METER_FAKTOR );
 

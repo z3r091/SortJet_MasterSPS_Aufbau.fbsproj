@@ -6,13 +6,11 @@
 }
 *)
 FUNCTION TcpServerWaitForConnect : TCP_CLIENT_ACCEPT
-(*
-  Wait for a client to connect.
-  Return: Socket and IP-Address of connected client
-*)
+//  Wait for a client to connect.
+//  Return: Socket and IP-Address of connected client
 VAR_INPUT
-  hSocket: RTS_IEC_HANDLE; (* Socket-ID *)
-  diTimeout: DINT; (* Timeout in ms *)
+  hSocket: RTS_IEC_HANDLE; // Socket-ID
+  diTimeout: DINT; // Timeout in ms
 END_VAR
 VAR
   pResult: RTS_IEC_RESULT;

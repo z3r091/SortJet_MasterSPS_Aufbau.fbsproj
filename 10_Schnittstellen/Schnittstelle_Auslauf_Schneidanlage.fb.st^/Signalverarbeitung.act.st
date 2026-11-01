@@ -20,13 +20,12 @@ ELSIF NOT BasisStationsParameter.stMKs.stFremdanlage.bAnalogwertAktiv THEN
   END_IF
   
 // Analogwert aktiv
-(*
-ELSIF (in_wAnalogwertISOLinie >= BasisStationsParameter.stMKs.stFremdanlage.wMindestAnalogWert) AND ( blBereitZumEintransport OR in_bTransportRueckwaerts ) THEN
-  IF in_bTransportRueckwaerts THEN
-    rpGeschwindigkeit := - WORD_TO_REAL(in_wAnalogwertISOLinie) / BasisStationsParameter.stMKs.stFremdanlage.rAnalogWertVerhaeltniss;
-  ELSE
-    rpGeschwindigkeit := WORD_TO_REAL(in_wAnalogwertISOLinie) / BasisStationsParameter.stMKs.stFremdanlage.rAnalogWertVerhaeltniss;
-  END_IF*)
+//ELSIF (in_wAnalogwertISOLinie >= BasisStationsParameter.stMKs.stFremdanlage.wMindestAnalogWert) AND ( blBereitZumEintransport OR in_bTransportRueckwaerts ) THEN
+//  IF in_bTransportRueckwaerts THEN
+//    rpGeschwindigkeit := - WORD_TO_REAL(in_wAnalogwertISOLinie) / BasisStationsParameter.stMKs.stFremdanlage.rAnalogWertVerhaeltniss;
+//  ELSE
+//    rpGeschwindigkeit := WORD_TO_REAL(in_wAnalogwertISOLinie) / BasisStationsParameter.stMKs.stFremdanlage.rAnalogWertVerhaeltniss;
+//  END_IF
 ELSE
   rpGeschwindigkeit := 0;
 END_IF

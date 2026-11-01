@@ -6,12 +6,12 @@
 }
 *)
 ACTION Reset
-(***************************************************************************************************)
-(* RESET *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// RESET
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Fehlerbit zuruecksetzen
-   - Shuttledatenbit zuruecksetzen  
+   - Shuttledatenbit zuruecksetzen
    - Merker zuruecksetzen [Welches Transfershuttle benutzt wurde]
 *)
 FOR wlIndexAutomatikkreis := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO

@@ -23,7 +23,7 @@ END_VAR
 VAR_OUTPUT
 
   // DWORD
-  dwpHandfunktionenReturn : DWORD; (* Aktive Handfunktionen, gleiche Bitbelegung wie dwlHandfunktionen *)
+  dwpHandfunktionenReturn : DWORD; // Aktive Handfunktionen, gleiche Bitbelegung wie dwlHandfunktionen
 
   // ENUM
   epTypeHoehenmessung         : ModusHoehenvermessung_EN;
@@ -169,16 +169,16 @@ VAR CONSTANT
 
 
   // TIME
-  ZEIT_GEBLASE_FREIGABE_AUSSCHALTEN             : TIME := T#4000MS;  (* Zeit ab wann das Geblaese ueber den Taster ausgeschaltet werden kann, nach dem der Ausgang <<Geblaese ein>> gesetzt wurde *)
+  ZEIT_GEBLASE_FREIGABE_AUSSCHALTEN             : TIME := T#4000MS;  // Zeit ab wann das Geblaese ueber den Taster ausgeschaltet werden kann, nach dem der Ausgang <<Geblaese ein>> gesetzt wurde
   ZEITLICHE_VERZOEGERUNG_TASTER_GLASBRUCH       : TIME := T#200ms;
   ZEITLICHE_VERZOEGERUNG_TASTER_GLASABGENOMMEN  : TIME := T#200ms;
   ZEITLICHE_SPERRUNG_TASTER_GLASBRUCH           : TIME := T#2s;
 
 END_VAR
 
-(***************************************************************************************************)
-(* MASTER AUFRUFEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// MASTER AUFRUFEN
+//-------------------------------------------------------------------------------------------------
 IF blErsterZyklus THEN
   // Default aus der Stationsoption, ueber den Taster Anschlaege umschaltbar (siehe Aktion Taster)
   blAnschlagAutomatischFahren := BasisStationsParameter.stMKs.stStationsOptionen.stAnlegetisch.bAnschlagAutomatischAusfahren;
@@ -186,17 +186,17 @@ END_IF
 
 SUPER^(BasisStationsParameter := BasisStationsParameter);
 
-(***************************************************************************************************)
-(* DEAKTIVIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEAKTIVIEREN
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
   HandfunktionenStatus();
   RETURN;
 END_IF
 
-(***************************************************************************************************)
-(* IO ZUWEISUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// IO ZUWEISUNG
+//-------------------------------------------------------------------------------------------------
 
 // Riemen
 Hubrahmen.in_bStatusZylinderAusgefahren := Glastransport.Antrieb.udipEingaengeUmrichter.cXG37_5_I_7;
@@ -219,9 +219,9 @@ in_bFussschalterGlasAngelegt := Glastransport.Antrieb.udipEingaengeUmrichter.cXG
 Glastransport.Antrieb.wpAusgaengeUmrichter.cXG37_IO_3 := out_bAmpelSignalRot OR abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].boutAmpelRot;
 Glastransport.Antrieb.wpAusgaengeUmrichter.cXG37_IO_4 := out_bAmpelSignalGruenScheibeAnlegen  OR abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].boutAmpelGruen;
 
-(***************************************************************************************************)
-(* DEAKTIVIERUNG *)
-(***************************************************************************************************) 
+//-------------------------------------------------------------------------------------------------
+// DEAKTIVIERUNG
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Werte wieder passend abloeschen, wenn der Baustein wieder aktiviert wird
 *)
@@ -242,7 +242,7 @@ END_IF
 
 (* Hinweis:
    - Deaktivierung des Bausteins
-     => Der Baustein wird zum Ende der RETURN-Anweisung verlassen 
+     => Der Baustein wird zum Ende der RETURN-Anweisung verlassen
 *)
 IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
 
@@ -272,9 +272,9 @@ IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* AKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 
 // Basis
 Reset();

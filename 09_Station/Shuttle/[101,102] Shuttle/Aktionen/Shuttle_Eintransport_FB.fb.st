@@ -8,9 +8,9 @@
 FUNCTION_BLOCK Shuttle_Eintransport_FB EXTENDS Basic_Shuttle_Aktion_FB
 VAR
 END_VAR
-(***************************************************************************************************)
-(* EINTRANSPORT WAND 1 *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// EINTRANSPORT WAND 1
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bEintransport[wWand]
      AND bpAutomatikAktiv ) 
 THEN
@@ -40,21 +40,21 @@ THEN
   END_IF
 
   CASE steplAktion OF
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_0_E:
       (* Hinweis:
-         - Variablen zuruecksetzen         
+         - Variablen zuruecksetzen
       *)
       BasisStationsParameter.bEintransportAbgeschlossen[wWand] := FALSE;
 
       steplAktion := STEP_10_E;
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob die Geblase aktiv sind
          - Wandverstellung starten
-      - Kippen starten
+         - Kippen starten
       *)
       IF ( bpGeblaeseAktiv ) THEN
 
@@ -71,12 +71,11 @@ THEN
 
       END_IF
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_20_E:
-      (* Verfahrauftrag ans Shuttle uebergeben [Verfahrueberwachung]:
-         - Pruefen ob das Shuttel zum verfahren freigegeben ist, wenn ja Zielposition
-           aus dem Auftrag uebergeben.
-      *)
+      // Verfahrauftrag ans Shuttle uebergeben [Verfahrueberwachung]:
+      //   - Pruefen ob das Shuttel zum verfahren freigegeben ist, wenn ja Zielposition
+      //     aus dem Auftrag uebergeben.
       IF ( bpZielPositionErreicht ) THEN
         steplAktion := STEP_30_E;
 
@@ -88,7 +87,7 @@ THEN
         steplAktion := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_30_E:
       (* Hinweis:
          - Sicherstellen das die Wand auch wirklich ihre Soll-Position erreicht hat
@@ -104,7 +103,7 @@ THEN
         steplAktion := STEP_40_E;   
       END_IF
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_40_E:
       (* Hinweis:
          - Kippen abgeschlossen -> pruefen ob Position erreicht
@@ -117,14 +116,14 @@ THEN
         steplAktion := STEP_100_E;
       END_IF
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
-      //  STARTEN DES EINTRANSPORTS 
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  STARTEN DES EINTRANSPORTS
+      //
       //  Hinweis:
-      //  - Unterscheidung ob Rueckwertiger- Transport 
-      // ---------------------------------------------------------------------------------------*)
+      //  - Unterscheidung ob Rueckwertiger- Transport
+      // ---------------------------------------------------------------------------------------
 
       Glastransport.bpRueckwaertsEintransportieren   := BasisStationsParameter.bRueckwaertsTransportieren[wWand];
       Glastransport.bpEintransport                   := NOT BasisStationsParameter.bRueckwaertsTransportieren[wWand];
@@ -136,7 +135,7 @@ THEN
 
       steplAktion := STEP_110_E;
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_110_E:
       (* Hinweis:
          - Quittierung der Scheibe
@@ -153,24 +152,24 @@ THEN
       END_IF
 
       (* Hinweis:
-          - Eintransport vorzeitig quittieren damit die Querfahrt starten kann 
-        *)
+         - Eintransport vorzeitig quittieren damit die Querfahrt starten kann
+      *)
       IF (  BasisStationsParameter.pAuftrag[wWand].bLetzteScheibe
            AND Glastransport.bpFreigabeQuerfahrt )
       THEN
         steplAktion := STEP_1000_E;
       END_IF
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_1000_E:
       bprtScheibe := FALSE;
       BasisStationsParameter.bEintransportAbgeschlossen[wWand] := TRUE;
 
-  (*EINTRANSPORT ==============================*)
+  // EINTRANSPORT ==============================
   END_CASE
 ELSE
 

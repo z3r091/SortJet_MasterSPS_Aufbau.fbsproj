@@ -6,21 +6,21 @@
 }
 *)
 ACTION Auftraege_Shuttle_Generieren
-(***************************************************************************************************)
-(* AKTION: AUFTRAEGE FUER SHUTTLE GENERIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: AUFTRAEGE FUER SHUTTLE GENERIEREN
+//-------------------------------------------------------------------------------------------------
 
 
-(* ---------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------
 //  ABSETZEN DES AUFTRAGS ZUM POSITIONIEREN [QUERFAHRT]
-//         
+//
 //  Hinweis:
 // - Absetzen des Auftrags
-// ---------------------------------------------------------------------------------------*)
+// ---------------------------------------------------------------------------------------
 IF ( bgShuttleVerfahren ) THEN
   bgShuttleVerfahren := FALSE;
 
-  (* SHUTTLE *)
+  // SHUTTLE
   IF bgShuttleAuswahl_101 THEN
     wlInbetriebnahmeShuttlenummer := cSHUTTLE_101;
     bgInbetriebnahmeShuttelverfahrAuftrag := TRUE;
@@ -45,7 +45,7 @@ IF ( bgShuttleVerfahren ) THEN
     wlInbetriebnahmeShuttlenummer := cSHUTTLE_106;
     bgInbetriebnahmeShuttelverfahrAuftrag := TRUE;
 
-  (* TRANSFERSHUTTLE *)
+  // TRANSFERSHUTTLE
   ELSIF bgShuttleAuswahl_151 THEN
     wlInbetriebnahmeShuttlenummer := cSHUTTLE_151;
     bgInbetriebnahmeShuttelverfahrAuftrag := TRUE;
@@ -85,17 +85,17 @@ IF ( bgShuttleVerfahren ) THEN
 
 END_IF
 
-(* ---------------------------------------------------------------------------------------
-//  ABSETZEN DES AUFTRAGS 
-//         
+// ---------------------------------------------------------------------------------------
+//  ABSETZEN DES AUFTRAGS
+//
 //  Hinweis:
 // - Absetzen des Auftrags
-// ---------------------------------------------------------------------------------------*)
+// ---------------------------------------------------------------------------------------
 IF ( bgButtonShuttleAuftragSetzen ) THEN
 
   bgButtonShuttleAuftragSetzen := FALSE;
 
-  (* SHUTTLE *)
+  // SHUTTLE
   IF ( bgShuttleAuswahl_101 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
@@ -186,7 +186,7 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
 
     END_IF
 
-  (* TRANSFERSHUTTLE *)
+  // TRANSFERSHUTTLE
   ELSIF ( bgShuttleAuswahl_151 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )

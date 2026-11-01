@@ -12,7 +12,7 @@ IF rtlChangeWatchIOStatus.Q THEN
   WatchIo( NOT bgVISUWatchIOAktiv, wgVISUWatchIONr );
 END_IF
 
-(* Station 1 *)
+// Station 1
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   IF aStation1Wand[wlIndex] THEN
     bgVISUGlastransportVor[iGewaehlteStation1, wlIndex]     := bgVisu2StationenVor;
@@ -20,17 +20,17 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   END_IF
 END_FOR
 
-(* Station 2 – je nach Drehrichtung *)
+// Station 2 – je nach Drehrichtung
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   IF aStation2Wand[wlIndex] THEN
         
     IF NOT bgVisu2StationenDrehrichtungWechsel THEN
-      (* normale Richtung *)
+      // normale Richtung
       bgVISUGlastransportVor[iGewaehlteStation2, wlIndex]     := bgVisu2StationenVor;
       bgVISUGlastransportZurueck[iGewaehlteStation2, wlIndex] := bgVisu2StationenZurueck;
 
     ELSE
-      (* Richtung vertauscht *)
+      // Richtung vertauscht
       bgVISUGlastransportVor[iGewaehlteStation2, wlIndex]     := bgVisu2StationenZurueck;
       bgVISUGlastransportZurueck[iGewaehlteStation2, wlIndex] := bgVisu2StationenVor;
     END_IF

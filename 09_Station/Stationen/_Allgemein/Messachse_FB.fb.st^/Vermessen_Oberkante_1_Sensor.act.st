@@ -6,9 +6,9 @@
 }
 *)
 ACTION Vermessen_Oberkante_1_Sensor
-(***************************************************************************************************)
-(* AKTION: VERMESSUNG DER SCHEIBE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: VERMESSUNG DER SCHEIBE
+//-------------------------------------------------------------------------------------------------
 IF ( bpVermessen_Oberkante_1_Sensor ) THEN
 
   // Ausnahmesituation
@@ -19,7 +19,7 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
   END_IF
 
   CASE steplOberkante_1_Sensor OF
-    (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+    // VERMESSEN OBER KANTE 1 SENSOR  ====================
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen
@@ -34,7 +34,7 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
         steplOberkante_1_Sensor := STEP_10_E;
       END_IF
 
-    (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+    // VERMESSEN OBER KANTE 1 SENSOR  ====================
     STEP_10_E:
       (* Hinweis:
          - Starten der Positionierung. Der Sensor muss belegt sein. Wenn nicht gleich
@@ -44,7 +44,7 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
         rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
 
         (* Wichtig:
-            - Rest-Positionierung | Positionieren auf die Ermittelte Position
+           - Rest-Positionierung | Positionieren auf die Ermittelte Position
         *)
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -62,16 +62,16 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
 
       END_IF
 
-    (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+    // VERMESSEN OBER KANTE 1 SENSOR  ====================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  RESTWEG [VERMESSEN DER SCHEIBE MITTELS RESTWEGPOSITIONIERUNG]
       //
       //  Hinweis:
       // - Positionierung des Sensors mittels Restweg auf die "Fallende Flanke" [Scheibenkante]
       //   um einen Wert um so anhand der Ist-Position die Scheiben- Hoehe \ Laenge zur
       //   ermitteln
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       (* Hinweis:
          - Antrieb ist verfahren
@@ -99,7 +99,7 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
       END_IF
 
       (* Fehlerbehandlung:
-          - Pruefen der Position. Liegt die Position ausserhalb des Verfahrbereichs darf nicht verfahren werden
+         - Pruefen der Position. Liegt die Position ausserhalb des Verfahrbereichs darf nicht verfahren werden
             => Position ausserhalb der SW-Endschalter = Referenzverlust bei SEW
       *)
       IF (  Antrieb.rpIstPosition >= Antrieb.rpMaxPosition
@@ -113,7 +113,7 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
 
       END_IF
 
-    (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+    // VERMESSEN OBER KANTE 1 SENSOR  ====================
     STEP_110_E:
       (* Hinweis:
          - Sicherstellen das der Antrieb steht
@@ -125,17 +125,17 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
         steplOberkante_1_Sensor := STEP_120_E;
       END_IF
 
-    (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+    // VERMESSEN OBER KANTE 1 SENSOR  ====================
     STEP_120_E:
       (* Hinweis:
          - Belegung des Sensors-pruefen
-          Wichtig:
+           Wichtig:
          - Aufgrund der Weg-Ueberwachung kann die Restweg-Positionierung abgebrochen werden und somit der Sensor belegt sein.
       *)
       IF ( NOT in_bSensorUnten ) THEN
 
         (* Wichtig:
-            - In das Messergebnis muss ein Korrekturwert inkludiert werden aufgrund der ruckelnden Verefahrbewegung + Schaltverzug des Sensors
+           - In das Messergebnis muss ein Korrekturwert inkludiert werden aufgrund der ruckelnden Verefahrbewegung + Schaltverzug des Sensors
         *)
         rlMessErgebnis := ( (ABS(Antrieb.rpIstPosition) - ppParameterBaustein.rStreckePositionieren) + ppParameterBaustein.rOffsetMessung );
 
@@ -161,15 +161,15 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
 
       END_IF
 
-    (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+    // VERMESSEN OBER KANTE 1 SENSOR  ====================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+    // VERMESSEN OBER KANTE 1 SENSOR  ====================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (* VERMESSEN OBER KANTE 1 SENSOR  ====================*)
+  // VERMESSEN OBER KANTE 1 SENSOR  ====================
   END_CASE
 
 ELSE

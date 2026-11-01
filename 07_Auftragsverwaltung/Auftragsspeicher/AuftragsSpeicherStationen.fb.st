@@ -8,28 +8,28 @@
 FUNCTION_BLOCK AuftragsSpeicherStationen
 VAR_INPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset            : BOOL;
   bpNeuerAuftrag     : BOOL;
   bpNaechsterAuftrag : BOOL;
 
-  (* STRUCT *)
+  // STRUCT
   NeuerAuftrag : Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpFehler             : BOOL;
   bpAuftragverfuegbar : BOOL := FALSE;
 
-  (* STRUCT *)
+  // STRUCT
   AktAuftrag : Auftragsdaten_ST;
 
 END_VAR
 VAR
 
-  (* STRUCT *)
+  // STRUCT
   MerkerAuftrag :Auftragsdaten_ST;
 
 END_VAR

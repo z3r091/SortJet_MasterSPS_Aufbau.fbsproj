@@ -7,41 +7,41 @@
 *)
 FUNCTION_BLOCK ZylinderPneumatik_Riemen_FB
 VAR_INPUT
-  (* HARDWARE EINGAENGE *)
-  in_bStatusZylinderAusgefahren : BOOL; (* STATUS: Sensor meldt ausgfahren  *)
-  in_bStatusZylinderEingefahren : BOOL; (* STATUS: Sensor meldt eingefahren *)
+  // HARDWARE EINGAENGE
+  in_bStatusZylinderAusgefahren : BOOL; // STATUS: Sensor meldt ausgfahren
+  in_bStatusZylinderEingefahren : BOOL; // STATUS: Sensor meldt eingefahren
   
-  (* BOOLEAN *)
-  bpAktivieren     : BOOL; (* AKTIVIERUNG: stStationsAufbau.bHubrahmen *)
-  bpStartAusfahren : BOOL; (* BETRIEBTYP: Zylinder wird ausgefahren *)
-  bpStartEinfahren : BOOL; (* BETRIEBTYP: Zylinder wird eingefahren *)
-  bpReset          : BOOL; (* BETRIEBTYP: Zylinderbaustein wird zurueckgesetzt *)
+  // BOOLEAN
+  bpAktivieren     : BOOL; // AKTIVIERUNG: stStationsAufbau.bHubrahmen
+  bpStartAusfahren : BOOL; // BETRIEBTYP: Zylinder wird ausgefahren
+  bpStartEinfahren : BOOL; // BETRIEBTYP: Zylinder wird eingefahren
+  bpReset          : BOOL; // BETRIEBTYP: Zylinderbaustein wird zurueckgesetzt
 
 END_VAR
 VAR_OUTPUT
-  (* HARDWARE AUSGAENGE *)
-  out_bZylinderAusfahren : BOOL; (* AUSGANG: (in Glasflussrichtung) Signal zum Ausfahren  [Federrueckstell- Ventiel] *)
+  // HARDWARE AUSGAENGE
+  out_bZylinderAusfahren : BOOL; // AUSGANG: (in Glasflussrichtung) Signal zum Ausfahren  [Federrueckstell- Ventiel]
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpFehler   : BOOL;
   bpDone     : BOOL;
 
-  (* WORD *)
+  // WORD
   wpFehlerNr : WORD;
 
-  (* ENUM *)
+  // ENUM
   epStatusZylinder : PneumatikZylinderStatus_EN;
 
 END_VAR
 VAR
-  (* STEPS *)
+  // STEPS
   steplAusfahren   : Steps_TE;
   steplEinfahren   : Steps_TE;
   steplReset       : Steps_TE;
 
-  (* TIMER *)
-  tonlZylinderEingefahren  : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben *)
-  tonlZylinderAusgefahren  : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder ausgefahren wurde. Sonst wird ein Fehlerausgegeben *)
+  // TIMER
+  tonlZylinderEingefahren  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben
+  tonlZylinderAusgefahren  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder ausgefahren wurde. Sonst wird ein Fehlerausgegeben
 
 END_VAR
 (* Hinweis:
@@ -49,9 +49,9 @@ END_VAR
 *)
 
 
-(***************************************************************************************************)
-(* DEAKTIVIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEAKTIVIEREN
+//-------------------------------------------------------------------------------------------------
 IF ( NOT bpAktivieren ) THEN
 
   out_bZylinderAusfahren := FALSE;
@@ -73,23 +73,22 @@ IF ( NOT bpAktivieren ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* Betriebstypen [Ausfahren, Einfahren] *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Betriebstypen [Ausfahren, Einfahren]
+//-------------------------------------------------------------------------------------------------
 Ausfahren();
 Einfahren();
 Reset();
 
-(***************************************************************************************************)
-(* S T A R T - Ausgaenge *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// S T A R T - Ausgaenge
+//-------------------------------------------------------------------------------------------------
 
-(* Ausgang:
-   - Status des Zylinders
-     => Ausgefahren
-     => Eingefahren
-     => Undefiniert
-*)
+// Ausgang:
+//   - Status des Zylinders
+//     => Ausgefahren
+//     => Eingefahren
+//     => Undefiniert
 IF (         in_bStatusZylinderAusgefahren
      AND NOT in_bStatusZylinderEingefahren )
 THEN

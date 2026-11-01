@@ -8,64 +8,64 @@
 FUNCTION_BLOCK ZylinderPneumatik_FB
 VAR_INPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset            : BOOL;
   bpAktivieren       : BOOL;
-  bpStartAusfahren   : BOOL; (* BETRIEBTYP: Zylinder wird ausgefahren *)
-  bpStartEinfahren   : BOOL; (* BETRIEBTYP: Zylinder wird eingefahren *)
+  bpStartAusfahren   : BOOL; // BETRIEBTYP: Zylinder wird ausgefahren
+  bpStartEinfahren   : BOOL; // BETRIEBTYP: Zylinder wird eingefahren
   bpVariablen_Mappen : BOOL;
   
   
-  (* HARDWARE EINGAENGE *)
-  inStatusZylinderAusgefahren          : BOOL; (* STATUS: Sensor meldt ausgfahren  [Oben] *)
-  inStatusZylinderEingefahren          : BOOL; (* STATUS: Sensor meldt eingefahren [Unten] *)
+  // HARDWARE EINGAENGE
+  inStatusZylinderAusgefahren          : BOOL; // STATUS: Sensor meldt ausgfahren  [Oben]
+  inStatusZylinderEingefahren          : BOOL; // STATUS: Sensor meldt eingefahren [Unten]
 
-  in_bStatusZylinderAusgefahren   : BOOL; (* STATUS: Sensor meldt ausgfahren  [Oben] *)
-  in_bStatusZylinderEingefahren   : BOOL; (* STATUS: Sensor meldt eingefahren [Unten] *)
+  in_bStatusZylinderAusgefahren   : BOOL; // STATUS: Sensor meldt ausgfahren  [Oben]
+  in_bStatusZylinderEingefahren   : BOOL; // STATUS: Sensor meldt eingefahren [Unten]
   
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpFehler                       : BOOL;
   bpDone                         : BOOL;
 
-  (* WORD *)
+  // WORD
   wpFehlerNr       : WORD;
 
-  (* ENUM *)
+  // ENUM
   epStatusZylinder : PneumatikZylinderStatus_EN;
 
 END_VAR
 VAR
 
-  (* STEPS *)
+  // STEPS
   steplAusfahren   : Steps_TE;
   steplEinfahren   : Steps_TE;
 
-  (* TIMER *)
-  tonZylinderEingefahren  : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben *)
-  tonZylinderAusgefahren  : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder ausgefahren wurde. Sonst wird ein Fehlerausgegeben *)
+  // TIMER
+  tonZylinderEingefahren  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben
+  tonZylinderAusgefahren  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder ausgefahren wurde. Sonst wird ein Fehlerausgegeben
 
 END_VAR
 VAR
 
 
-  (* HARDWARE AUSGAENGE *)
-  out_bZylinderAusfahren    : BOOL; (* AKTION: Zylinder ausfahren *)
-  out_bZylinderEinfahren    : BOOL; (* AKTION: Zylinder einfahren *)
+  // HARDWARE AUSGAENGE
+  out_bZylinderAusfahren    : BOOL; // AKTION: Zylinder ausfahren
+  out_bZylinderEinfahren    : BOOL; // AKTION: Zylinder einfahren
 
 END_VAR
 VAR CONSTANT
 
-  (* TIME*)
+  // TIME
   cZEITLICHE_UEBERWACHUNG_BEWEGUNG_ZYLINDER : TIME := T#15s;
 
 END_VAR
-(***************************************************************************************************)
-(* BNAUSTEIN: STEUERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BNAUSTEIN: STEUERUNG
+//-------------------------------------------------------------------------------------------------
 
 IF ( bpReset ) THEN
 
@@ -97,9 +97,8 @@ ELSE
     Ausfahren();
     Einfahren();
 
-    (* Ausgang:
-       - Status des Zylinders
-    *)  
+    // Ausgang:
+    //   - Status des Zylinders
     IF (      inStatusZylinderAusgefahren
          AND NOT inStatusZylinderEingefahren )
     THEN

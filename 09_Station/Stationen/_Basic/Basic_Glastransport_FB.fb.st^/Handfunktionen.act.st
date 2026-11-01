@@ -6,9 +6,9 @@
 }
 *)
 ACTION Handfunktionen
-(***************************************************************************************************)
-(* AKTION: HANDFUNKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: HANDFUNKTIONEN
+//-------------------------------------------------------------------------------------------------
 IF (  NOT bpAutomatikAktiv
      AND NOT bpCheck
      AND NOT bpReset
@@ -16,10 +16,9 @@ IF (  NOT bpAutomatikAktiv
      AND NOT bgVisuAntriebeVerfahrenAktiv )
 THEN
 
-  (* Handplus oder Handminus den Glastransport verfahren
-     Uebergabe an den Antrieb:
-       - Geschwindigkeit / Beschleunigung / Verzoegerung 
-  *)
+  // Handplus oder Handminus den Glastransport verfahren
+  //   Uebergabe an den Antrieb:
+  //     - Geschwindigkeit / Beschleunigung / Verzoegerung
   Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
   Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
   Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;

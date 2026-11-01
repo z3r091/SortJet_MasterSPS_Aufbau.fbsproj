@@ -6,7 +6,7 @@
 }
 *)
 ACTION Handfunktionen
-(* HANDFUNKTIONEN *)
+// HANDFUNKTIONEN
 IF    NOT BasisStationsParameter.bEintransport[1] 
       AND NOT BasisStationsParameter.bAustransport[1] 
       AND NOT blBetriebsartCheck

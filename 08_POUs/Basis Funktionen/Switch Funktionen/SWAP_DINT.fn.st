@@ -8,14 +8,14 @@
 FUNCTION SWAP_DINT : DINT
 VAR_INPUT
 
-  (* REAL *)
+  // REAL
   dipWert : DINT;
 
 END_VAR
 
 VAR
 
-  (* BYTE *)
+  // BYTE
   aInByte  : ARRAY [0..3] OF BYTE ;
   aOutByte : ARRAY [0..3] OF BYTE ;
 

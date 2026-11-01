@@ -6,9 +6,9 @@
 }
 *)
 ACTION Kippen_Schuetz
-(****************************************************************************************)
-(* POSITIONIEREN *)
-(****************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// POSITIONIEREN
+//-------------------------------------------------------------------------------------------------
 
 IF ( bpPositionieren ) THEN
 
@@ -35,7 +35,7 @@ IF ( bpPositionieren ) THEN
 
 
   CASE steplPositionieren OF
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_0_E:
       (* Hinweis:
          - Variablen zurueck setzen
@@ -47,7 +47,7 @@ IF ( bpPositionieren ) THEN
       steplPositionieren := STEP_10_E;
 
 
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_10_E:
       (* Hinweis:
          - Es darf weder der Einlauf noch der Auslauf- Sensor während der Dreh-Bewegung belegt sein
@@ -86,14 +86,14 @@ IF ( bpPositionieren ) THEN
 
       END_IF
 
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_40_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  STARTEN DER ABSOLUT- POSITIONIERUNG
-      //         
+      //
       //  Hinweis:
       // - Uebergabe der Zielposition fuer den Antrieb
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
       CASE epZielPosition OF
 
         eKippen_Position_84Grad:
@@ -111,7 +111,7 @@ IF ( bpPositionieren ) THEN
       steplPositionieren := STEP_120_E;
 
 
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_120_E:
       (* Hinweis:
          - Bewegung abgeschlossen
@@ -127,8 +127,8 @@ IF ( bpPositionieren ) THEN
           END_IF
 
           (* Ausnahmefehler:
-              - Sensoren
-           *)    
+             - Sensoren
+          *)
           IF ( tonlMaxWarteZeit.Q )THEN
             wpFehlerNr := cMELDUNG_KIPPEN_KIPPT_NICHT_AB;
             out_bKippen84Grad := FALSE;
@@ -144,8 +144,8 @@ IF ( bpPositionieren ) THEN
           END_IF
 
           (* Ausnahmefehler:
-              - Sensoren
-           *)    
+             - Sensoren
+          *)
           IF ( tonlMaxWarteZeit.Q )THEN
             wpFehlerNr := cMELDUNG_KIPPEN_KIPPT_NICHT_AUF;
             out_bKippen90Grad := FALSE;
@@ -154,18 +154,18 @@ IF ( bpPositionieren ) THEN
 
       END_CASE
  
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_1000_E:
       out_bKippen84Grad := FALSE;
       out_bKippen90Grad := FALSE;
       bpDone := TRUE;
       bpPositionierenAbgeschlossen := TRUE;
 
-  (*POSITIONIEREN =================================== *)
+  // POSITIONIEREN ===================================
   END_CASE
 
 END_IF

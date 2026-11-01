@@ -8,8 +8,8 @@
 FUNCTION getBasis : REFERENCE TO  StationBasisParameter_ST
 VAR_INPUT
 
-  (* WORD *)
-  wpMmiNummer  : WORD; (* Stationsnummer von der die Auftraege geprueft werden sollen *)
+  // WORD
+  wpMmiNummer  : WORD; // Stationsnummer von der die Auftraege geprueft werden sollen
 
 END_VAR
 CASE wpMmiNummer OF

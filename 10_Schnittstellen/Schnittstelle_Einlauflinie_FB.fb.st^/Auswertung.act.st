@@ -6,12 +6,12 @@
 }
 *)
 ACTION Auswertung
-(***************************************************************************************************)
-(* AUSWERTUNG DER BYTE REIHENFOLGE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUSWERTUNG DER BYTE REIHENFOLGE
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
-   - Anzeige der Byte- Reihenfolge 
+   - Anzeige der Byte- Reihenfolge
      => Visualisierung
 *)
 SysMemCpy(ADR(aInByteAuftragsdatenScheibenID_1_0), ADR(in_stSenderAuftragsdaten.adwScheibenID_1[0]), 4 );
@@ -30,12 +30,10 @@ aInDWordAuftragsdatenScheibenID[2] := SWAP_DWORD_SIEMENS(dwpWert := in_stSenderA
 aInDWordAuftragsdatenScheibenID[3] := SWAP_DWORD_SIEMENS(dwpWert := in_stSenderAuftragsdaten.adwScheibenID_1[3] );
 
 
-(*
-aInDWordAuftragsdatenScheibenID[0] := in_stSenderAuftragsdaten.adwScheibenID_1[0];
-aInDWordAuftragsdatenScheibenID[1] := in_stSenderAuftragsdaten.adwScheibenID_1[1];
-aInDWordAuftragsdatenScheibenID[2] := in_stSenderAuftragsdaten.adwScheibenID_1[2];
-aInDWordAuftragsdatenScheibenID[3] := in_stSenderAuftragsdaten.adwScheibenID_1[3];
-*)
+//aInDWordAuftragsdatenScheibenID[0] := in_stSenderAuftragsdaten.adwScheibenID_1[0];
+//aInDWordAuftragsdatenScheibenID[1] := in_stSenderAuftragsdaten.adwScheibenID_1[1];
+//aInDWordAuftragsdatenScheibenID[2] := in_stSenderAuftragsdaten.adwScheibenID_1[2];
+//aInDWordAuftragsdatenScheibenID[3] := in_stSenderAuftragsdaten.adwScheibenID_1[3];
 
 SysMemCpy(ADR(aInByteSwapAuftragsdatenScheibenID_1_0), ADR(aInDWordAuftragsdatenScheibenID[0]), 4 );
 SysMemCpy(ADR(aInByteSwapAuftragsdatenScheibenID_1_1), ADR(aInDWordAuftragsdatenScheibenID[1]), 4 );
@@ -92,7 +90,7 @@ END_IF
 
 
 (* Hinweis:
-   - Anzeige des Live Counters 
+   - Anzeige des Live Counters
      => Visualisierung
 *)
 wlLiveCounterSender := SWAP_WORD( wpWert := in_wSenderLiveCounter) ;

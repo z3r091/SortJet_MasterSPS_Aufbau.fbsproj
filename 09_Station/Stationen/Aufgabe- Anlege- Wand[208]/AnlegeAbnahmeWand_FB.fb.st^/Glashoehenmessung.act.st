@@ -6,16 +6,16 @@
 }
 *)
 ACTION Glashoehenmessung
-(***************************************************************************************************)
-(* AKTION HÖHENMESSUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION HÖHENMESSUNG
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bGlashoehenmessung )
 THEN
 
-  (* Fehlerbehandlung
+  (* Fehlerbehandlung:
      - Anschlag
      - Hubrahmen
-  *) 
+  *)
   IF ( Messachse.bpFehler ) THEN
     Messachse.bpPositionierung      := FALSE;
     BasisStationsParameter.wFehlerNummer := Messachse.wpFehlerNr;
@@ -28,7 +28,7 @@ THEN
   END_IF
 
   CASE steplGlashoehenmessung OF
-    (*HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_0_E:
       (* Hinweis:
          - Variablen initalisieren
@@ -40,7 +40,7 @@ THEN
 
 
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_20_E:
       (* Hinweis:
          - Für die Steuerschrittkette müssen wir einmal kurz in eAuftragAktiv wechseln bevor
@@ -53,7 +53,7 @@ THEN
       END_IF
 
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_200_E:
       (* Hinweis:
          - Messachse nochmal auf Position fahren
@@ -63,7 +63,7 @@ THEN
 
       steplGlashoehenmessung := STEP_210_E;
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_210_E:
       (* Hinweis:
          - Messachse nochmal auf Position fahren
@@ -80,7 +80,7 @@ THEN
       END_IF
 
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_300_E:
 
       (* Hinweis:
@@ -115,17 +115,16 @@ THEN
 
       END_CASE
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_320_E:
-      (*
-          Anmerkung:
-          - Ampel
-          - Moeglichkeit Fehlmessung quittieren --> Scheibe freigegeben zum Austransport
-          - Knebelschalter Glas zurueck auf die Station fahren 
-          - Quittiern
+      (* Anmerkung:
+         - Ampel
+         - Moeglichkeit Fehlmessung quittieren --> Scheibe freigegeben zum Austransport
+         - Knebelschalter Glas zurueck auf die Station fahren
+         - Quittiern
             => Nachricht an die Oberflaeche
-              wSPS2MMITRANSPORTSTATE := 1 ==  Scheibe OK und eingefahren 
-       *)
+              wSPS2MMITRANSPORTSTATE := 1 ==  Scheibe OK und eingefahren
+      *)
       out_bSignalScheibeAufgegeben := gbFlashbit05sec;
       out_bAmpelSignalGruen    := gbFlashbit05sec;
 
@@ -143,7 +142,7 @@ THEN
         steplGlashoehenmessung := STEP_330_E;
       END_IF
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_330_E:
       out_bAmpelSignalGruen := FALSE;
 
@@ -182,7 +181,7 @@ THEN
       END_IF
 
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_800_E:
 
       (* Hinweis:
@@ -192,18 +191,18 @@ THEN
 
       steplGlashoehenmessung := STEP_1000_E;
 
-    (*HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_900_E:
       Glastransport.bpScheibeZurueckFahren    := FALSE;
       BasisStationsParameter.eStatusAuftrag := eAuftragFehler;
 
       BasisStationsParameter.bFehler := TRUE;
 
-    (*HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_1000_E:
       BasisStationsParameter.bGlashoehenmessungAbgeschlossen := TRUE;
 
-  (*HÖHENMESSUNG ==================================*)
+  // HÖHENMESSUNG ==================================
   END_CASE
 ELSE
 

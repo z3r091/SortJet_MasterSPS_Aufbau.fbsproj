@@ -57,9 +57,9 @@ VAR_INPUT
   eGlastyp : GlasTyp_EN;
 
   // STRUCT 
-  InGlasTransportVorgaenger   : Interface_GlasTransport; (* STRUKTUR: Informationen ueber den Aus- Ein- Transport der Vorgaengerstation  *)
-  InGlasTransportNachfolger   : Interface_GlasTransport; (* STRUKTUR: Informationen ueber den Aus- Ein- Transport der Nachfolge- Station *)
-  pAuftrag                    : Auftragsdaten_ST;            (* AUFTRAG: Aktuelle daten zum Auftrag [Laenge, Hoehe, Modelle] *)
+  InGlasTransportVorgaenger   : Interface_GlasTransport; // STRUKTUR: Informationen ueber den Aus- Ein- Transport der Vorgaengerstation
+  InGlasTransportNachfolger   : Interface_GlasTransport; // STRUKTUR: Informationen ueber den Aus- Ein- Transport der Nachfolge- Station
+  pAuftrag                    : Auftragsdaten_ST;            // AUFTRAG: Aktuelle daten zum Auftrag [Laenge, Hoehe, Modelle]
   stStationsNummern           : Station_ST;
 
   // POINTER 
@@ -78,14 +78,14 @@ VAR_OUTPUT
   // BOOL
   bpDone                        : BOOL;
   bpFehler                      : BOOL;
-  bprtScheibe                   : BOOL; (* Scheibenzaehler: Bool der wie ein Trigger genutzt wird *)
+  bprtScheibe                   : BOOL; // Scheibenzaehler: Bool der wie ein Trigger genutzt wird
   bpStationBelegt               : BOOL;
   bpVerfahrFreigabe             : BOOL;
-  bpScheibeFaehrtUeberAuslauf   : BOOL; (* HINWEIS: Glas ist ueber den Auslauf-Sensor gefahren und somit in den Verfahrbereich des Transportshuttles -> Nehmen der Verfahrfreigabe fuer das Transportshuttles *)
+  bpScheibeFaehrtUeberAuslauf   : BOOL; // HINWEIS: Glas ist ueber den Auslauf-Sensor gefahren und somit in den Verfahrbereich des Transportshuttles -> Nehmen der Verfahrfreigabe fuer das Transportshuttles
   bpScheibeFaehrtUeberEinlauf   : BOOL;
-  bpResetAbgeschlossen          : BOOL; (* STATUS: Reset wurde abgeschlossen TRUE / FALSE *)
-  bpOutBereitZumAustransport    : BOOL; (* OUT STATUS: Bereit zum Austransport [Eintransport auf die Nachfolgerstation] *)
-  bpOutBereitZumEintransport    : BOOL; (* OUT STATUS: Bereit zum Eintransport [Austransport auf die Vorgaengerstation] *)
+  bpResetAbgeschlossen          : BOOL; // STATUS: Reset wurde abgeschlossen TRUE / FALSE
+  bpOutBereitZumAustransport    : BOOL; // OUT STATUS: Bereit zum Austransport [Eintransport auf die Nachfolgerstation]
+  bpOutBereitZumEintransport    : BOOL; // OUT STATUS: Bereit zum Eintransport [Austransport auf die Vorgaengerstation]
   bpFreigabeFremdprozess        : BOOL;
   bpSlaveAktiv                  : BOOL;
   bpDurchtransportWarAktiv      : BOOL;
@@ -95,7 +95,7 @@ VAR_OUTPUT
   wpFehlerNr                   : WORD;
 
   // DWORD 
-  dwpWartezeit                 : DWORD; (* STATISTIK: Zeitwerte fuer die Statistik zum auswerten *)
+  dwpWartezeit                 : DWORD; // STATISTIK: Zeitwerte fuer die Statistik zum auswerten
 
   // REAL 
   rpOutGeschwindigkeit         : REAL;
@@ -117,7 +117,7 @@ VAR
   ilIndexScheibenmessung        : INT := 1;
 
   // REAL 
-  rlGefahreneStreckeEintransport    : REAL; (* HINWEIS: Weg-Merker fuer die Strecke die beim Eintransport zurueck gelegt werden muss laut Auftrag *)
+  rlGefahreneStreckeEintransport    : REAL; // HINWEIS: Weg-Merker fuer die Strecke die beim Eintransport zurueck gelegt werden muss laut Auftrag
   rlPositionAntriebBeiStart         : REAL;
   rlGlasgewicht                     : REAL;
   rlPositionScheibenAnfangErkannt   : REAL;
@@ -158,7 +158,7 @@ VAR
   rtlMessungOK                              : R_TRIG;
 
   // TIME 
-  tlWarteZeitAufnahme    : TIME; (* STATISTIK *)
+  tlWarteZeitAufnahme    : TIME; // STATISTIK
 
 END_VAR
 
@@ -176,9 +176,9 @@ VAR CONSTANT
 
 END_VAR
 
-(***************************************************************************************************)
-(* INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus ) THEN
 
   IF ( __ISVALIDREF(ppAntriebsInformationen) ) THEN
@@ -227,10 +227,9 @@ IF ( blErsterZyklus ) THEN
       Antrieb_Slave.rpRuckzeit        := ppAntriebsInformationenSlave.rpMaxRuckzeit;
     END_IF
     
-    (* Pointer
-       - Initialisierung zur vermeidung von null Pointerexceptions
-         => Scheibenmessung
-    *)
+    // Pointer
+    //   - Initialisierung zur vermeidung von null Pointerexceptions
+    //     => Scheibenmessung
     Scheibenmessung.ppAntriebsInformationen REF= ppAntriebsInformationen;
     Scheibenmessung.ppAntrieb               REF= Antrieb;
     Scheibenmessung.pbpVorstopSensor        REF= bgFALSE;
@@ -242,9 +241,9 @@ IF ( blErsterZyklus ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* DEAKTIVIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEAKTIVIEREN
+//-------------------------------------------------------------------------------------------------
 IF ( NOT bpAktivieren ) THEN
 
   bpVerfahrFreigabe := TRUE;
@@ -260,17 +259,17 @@ IF ( NOT bpAktivieren ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* IO ZUWEISUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// IO ZUWEISUNG
+//-------------------------------------------------------------------------------------------------
 bpSensorEinlauf      := Antrieb.udipEingaengeUmrichter.cXG31_1_I_1;
 bpSensorEinlaufVorAb := Antrieb.udipEingaengeUmrichter.cXG31_6_I_4;
 bpSensorAuslaufVorab := Antrieb.udipEingaengeUmrichter.cXG31_7_I_5;
 bpSensorAuslauf      := Antrieb.udipEingaengeUmrichter.cXG31_2_I_2;
 
-(***************************************************************************************************)
-(* TIMER, SETTINGS, ETC. *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// TIMER, SETTINGS, ETC.
+//-------------------------------------------------------------------------------------------------
 // Sensorenflackern
 toflEinlaufsensor(IN := bpSensorEinlauf, PT := T#50MS);
 toflAuslaufsensor(IN := bpSensorAuslauf, PT := T#50MS);
@@ -280,9 +279,9 @@ toflVorAbStopSensorAuslauf(IN := bpSensorAuslaufVorAb, PT := t#50ms);
 // Reset
 tonlMaxWarteAufResetErfolgreich(IN:=bpReset,pt:=tgMaxWartezeitReset-T#1S);
 
-(***************************************************************************************************)
-(*  AUFRUFE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFRUFE
+//-------------------------------------------------------------------------------------------------
 Eintransport();
 Eintransport_Rueckwaertig();
 Vortransport();
@@ -316,12 +315,11 @@ ELSE
 END_IF
 
 
-(***************************************************************************************************)
-(* FREIGABEN UND AUFRUFE *)
-(***************************************************************************************************)
-(* Glastransportfreigabe
-   - Freigabe
-*)
+//-------------------------------------------------------------------------------------------------
+// FREIGABEN UND AUFRUFE
+//-------------------------------------------------------------------------------------------------
+// Glastransportfreigabe
+//   - Freigabe
 toflAutoAbschaltung( IN := (  bpAutomatikAktiv
                              AND ( bpAustransport
                                    OR bpAustransportRueckwaertig
@@ -340,10 +338,9 @@ toflAutoAbschaltung( IN := (  bpAutomatikAktiv
                      OR bpReferenz,
                      PT:= tgZeitAutoabschaltungEnergiesparModus );
 
-(* Aufruf:
-   - Antriebe
-   - Scheibenmessung
-*)
+// Aufruf:
+//   - Antriebe
+//   - Scheibenmessung
 Antrieb.bpFreigabe        := toflAutoAbschaltung.Q AND bpFreigabe;
 Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
 Antrieb.stStationsNummern := stStationsNummern;
@@ -364,14 +361,13 @@ Scheibenmessung( stStationsNummern                   := stStationsNummern,
                  bpAuswahlSensorVorabScheibenmessung := bpOptionbScheibenmessungSensorVorabAuslauf,
                  rpFaktorBremswegverlaengern         := 1.6 ) ;
 
-(***************************************************************************************************)
-(* AKTION AUSGAENGE *)
-(***************************************************************************************************)
-(* Ausgaeng:
-   - Aktuelle Geschwindigkeit des Antriebs
-     -> Soll- Wertkopplung ( Soll-Geschwindigkeit des Antriebs)
-     -> Ist- Wertkopplung ( Soll-Geschwindigkeit des Antriebs)
-*)
+//-------------------------------------------------------------------------------------------------
+// AKTION AUSGAENGE
+//-------------------------------------------------------------------------------------------------
+// Ausgaeng:
+//   - Aktuelle Geschwindigkeit des Antriebs
+//     -> Soll- Wertkopplung ( Soll-Geschwindigkeit des Antriebs)
+//     -> Ist- Wertkopplung ( Soll-Geschwindigkeit des Antriebs)
 IF ( ( bpEintransport OR bpEintransportRueckwaertig ) AND bpOutBereitZumEintransport )THEN
   rpOutGeschwindigkeit :=  ABS(Antrieb.rpGeschwindigkeit);
 ELSE

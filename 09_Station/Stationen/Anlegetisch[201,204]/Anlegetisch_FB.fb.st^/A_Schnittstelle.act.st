@@ -6,13 +6,13 @@
 }
 *)
 ACTION A_Schnittstelle
-(***************************************************************************************************)
-(* AKTION SCHNITTSTELLE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION SCHNITTSTELLE
+//-------------------------------------------------------------------------------------------------
 
 SUPER^.A_Schnittstelle();
 
-(* --------------------------------------------------------------------------------------- *)
+// ---------------------------------------------------------------------------------------
 
 (* Hinweis:
    - Abhandlung des Ein-Aus- Transports [Setzen der Variablen das man bereit ist zum Glastransport]
@@ -27,8 +27,8 @@ BasisStationsParameter.OutGlasTransport[cWAND_1].bQuittScheibe              REF=
 BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberEinlauf REF= bgFALSE;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberAuslauf REF= bgFALSE;
 
-(* --------------------------------------------------------------------------------------- *)
-(* BAUSTEIN BASISPARAMETER *)
+// ---------------------------------------------------------------------------------------
+// BAUSTEIN BASISPARAMETER
 BasisStationsParameter.bIstReferenziert        := Messachse.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bMessachse;
 
 // SK Freigeben obwohl Auftrag aktiv
@@ -64,9 +64,8 @@ abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bInTasterGlasbruch           := in_bTasterGlasBruch;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bInTasterFehlmessung         := in_bKnebelRiemenZurueck;
 
-(* Ausgang:
-   - Meldeleuchte für die ausgelöste Schaltleiste
-*)
+// Ausgang:
+//   - Meldeleuchte für die ausgelöste Schaltleiste
 out_bSchaltleisteAusgeloest := in_bSchaltleisteAusgeloest OR in_bSchaltleisteAusgeloest_Safety;
 out_bLeuchteKipptischOffen := out_bLeuchteKipptischOffen_OP := NOT in_bSensorKipptischUnten;
 

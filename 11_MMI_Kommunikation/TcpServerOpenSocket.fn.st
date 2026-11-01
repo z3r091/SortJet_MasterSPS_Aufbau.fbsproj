@@ -6,13 +6,11 @@
 }
 *)
 FUNCTION TcpServerOpenSocket : RTS_IEC_HANDLE
-(*
-  Opens a TCP server socket.
-  Return: Socket-ID
-*)
+//  Opens a TCP server socket.
+//  Return: Socket-ID
 VAR_INPUT
-  uiPort: UINT; (* Port number *)
-  diMaxConnections: DINT; (* Max possible client connections of the server *)
+  uiPort: UINT; // Port number
+  diMaxConnections: DINT; // Max possible client connections of the server
 END_VAR
 VAR
   hSocket: RTS_IEC_HANDLE;

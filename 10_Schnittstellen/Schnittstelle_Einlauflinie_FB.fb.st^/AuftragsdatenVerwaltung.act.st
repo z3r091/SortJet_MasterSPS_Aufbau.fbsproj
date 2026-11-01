@@ -6,12 +6,12 @@
 }
 *)
 ACTION AuftragsdatenVerwaltung
-(***************************************************************************************************)
-(* AUFTRAGSDATENVERWALTUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFTRAGSDATENVERWALTUNG
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
-   - Auftragsdaten nochmal an die HMI melden nach einer Stopp-Start- Situation  
+   - Auftragsdaten nochmal an die HMI melden nach einer Stopp-Start- Situation
 *)
 rtlAutomatikActiv(CLK := bpSortierungInAutomatik );
 
@@ -27,7 +27,7 @@ END_IF
 
 (* Hinweis:
    - Auftragsdaten werden zurueck auf die Schnittstelle geschrieben. Der Glas-Sender wird nun
-     die gespiegelten Daten validierung  
+     die gespiegelten Daten validierung
 *)
 IF ( in_bSenderAuftragdatenVorhanden
      AND NOT in_bsenderAuftragdatenPlausibel )
@@ -39,7 +39,7 @@ END_IF
 
 
 (* Hinweis:
-   - Die gespiegelten Daten sind gleich und koennen nun verarbeitet werden  
+   - Die gespiegelten Daten sind gleich und koennen nun verarbeitet werden
 *)
 rtlAuftragsdatenPlausibel( CLK := in_bsenderAuftragdatenPlausibel );
 
@@ -47,7 +47,7 @@ IF ( rtlAuftragsdatenPlausibel.Q ) THEN
 
 
   (* Hinweis:
-     - Drehen der Bytes auf Grund der Sendereihenfolge [Sender => Siemens- PLC] 
+     - Drehen der Bytes auf Grund der Sendereihenfolge [Sender => Siemens- PLC]
   *)
   FOR ilIndex := 0 TO 3 DO
     Auftragsdaten.stScheibenID.adwScheibenID_1[ilIndex] := SWAP_DWORD_SIEMENS(dwpWert := in_stSenderAuftragsdaten.adwScheibenID_1[ilIndex] );
@@ -67,7 +67,7 @@ END_IF
 
 
 (* Hinweis:
-   - Daten auf der Schnittstelle zuruecksetzen  
+   - Daten auf der Schnittstelle zuruecksetzen
 *)
 ftlAuftragsdatenVorhanden( CLK := in_bSenderAuftragdatenVorhanden );
 

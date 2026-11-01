@@ -6,9 +6,9 @@
 }
 *)
 ACTION A_Baustein_Initialisierung
-(***************************************************************************************************)
-(* BAUSTEIN INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 
 // Antriebsparameter zuweisen  
 Glastransport.ppAntriebsInformationen      REF= BasisStationsParameter.stAntriebsparameter.stGlastransport[1];

@@ -6,9 +6,9 @@
 }
 *)
 ACTION Betriebsart
-(***************************************************************************************************)
-(* BETRIEBSART *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BETRIEBSART
+//-------------------------------------------------------------------------------------------------
 
 wlBetriebsart.0 := BasisStationsParameter.bReset;
 wlBetriebsart.1 := BasisStationsParameter.bCheck;
@@ -39,9 +39,7 @@ CASE wlBetriebsart OF
     blBetriebsartReferenz := TRUE;
 
   ELSE
-    (*
-      Nicht unterstützte Betriebsart 
-    *)
+    //  Nicht unterstützte Betriebsart
     BasisStationsParameter.wFehlerNummer := cMELDUNG_UNGUELTIGE_BETRIEBSART;
     BasisStationsParameter.bFehler := TRUE;
 

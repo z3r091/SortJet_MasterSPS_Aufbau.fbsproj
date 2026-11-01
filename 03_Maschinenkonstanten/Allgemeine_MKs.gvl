@@ -9,88 +9,88 @@
 NAMESPACE Allgemeine_MKs
 VAR_GLOBAL
 
-(***************************************************************************************************)
-(* KONFIGURATION: BASIS EINSTELLUNGEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// KONFIGURATION: BASIS EINSTELLUNGEN
+//-------------------------------------------------------------------------------------------------
 
 
-  wgMKScheibenDicke13mm                                 : WORD  := 13;       (* Scheibendicke in mm *)
-  wgMKScheibenDicke19mm                                 : WORD  := 19;       (* Scheibendicke in mm *)
-  wgMKScheibenDicke23mm                                 : WORD  := 23;       (* Scheibendicke in mm *)
-  wgMKScheibenDicke24mm                                 : WORD  := 24;       (* Scheibendicke in mm *)
+  wgMKScheibenDicke13mm                                 : WORD  := 13;       // Scheibendicke in mm
+  wgMKScheibenDicke19mm                                 : WORD  := 19;       // Scheibendicke in mm
+  wgMKScheibenDicke23mm                                 : WORD  := 23;       // Scheibendicke in mm
+  wgMKScheibenDicke24mm                                 : WORD  := 24;       // Scheibendicke in mm
 
   wgUnterteilerMinMaxGlasdicke                          : REAL  := 19;
 
-  (* DEBUG- MODUS *)
-  bgMKDebugModus                                        : BOOL  := FALSE;     (* !!!!Entwicklermodus: Ausgabe der Schrittkette etc. in einem Hinweis- Dialog wenn ein Fehleraufgetreten ist !!!!! *)
+  // DEBUG- MODUS
+  bgMKDebugModus                                        : BOOL  := FALSE;     // !!!!Entwicklermodus: Ausgabe der Schrittkette etc. in einem Hinweis- Dialog wenn ein Fehleraufgetreten ist !!!!!
 
 
-  (* ENERGIESPARTIMER *)
-  tgZeitAutoabschaltungEnergiesparModus                 : TIME  := T#15M;      (* nachder das Gebläse des Shuttles ausgeht wenn es ohne Auftrag ist in sec. *)
-  dwgMkWarteZeitAufPCStart                              : DWORD := 1;        (* Wartezeit bis der Anlagen PC hochgefahren ist *)
+  // ENERGIESPARTIMER
+  tgZeitAutoabschaltungEnergiesparModus                 : TIME  := T#15M;      // nachder das Gebläse des Shuttles ausgeht wenn es ohne Auftrag ist in sec.
+  dwgMkWarteZeitAufPCStart                              : DWORD := 1;        // Wartezeit bis der Anlagen PC hochgefahren ist
 
   rgSchwellwertReferenzieren                            : REAL := 90000.00;
 
-  (* UEBERWACHUNGSZEITEN [RESET, SYSTEMCHECK, INIT] *)
-  tgMaxWartezeitReset                                   : TIME := T#10S;     (* Zeit, die der Station gegeben wird um einen Fehler zurück zu setzen *)
-  tgTimeWarteAufCheckDone                               : TIME := T#2M;      (* [ ZEITEINHEIT MINUTEN ] Zeit, die der Station gegeben wird um den Check durchzuführen [ DEFAULT 60000 ] *)
-  tgTimeWarteAufInitDone                                : TIME := T#2M;      (* Zeit, die der Station gegeben wird um die Initialisierung durchzuführen in min *)
+  // UEBERWACHUNGSZEITEN [RESET, SYSTEMCHECK, INIT]
+  tgMaxWartezeitReset                                   : TIME := T#10S;     // Zeit, die der Station gegeben wird um einen Fehler zurück zu setzen
+  tgTimeWarteAufCheckDone                               : TIME := T#2M;      // [ ZEITEINHEIT MINUTEN ] Zeit, die der Station gegeben wird um den Check durchzuführen [ DEFAULT 60000 ]
+  tgTimeWarteAufInitDone                                : TIME := T#2M;      // Zeit, die der Station gegeben wird um die Initialisierung durchzuführen in min
   tgAntriebsverzoegerung                                : TIME := T#0MS;
   
 
-  (* FAECHERWAGENSTATION *)
-  dwgWarteZeitUeberwachungFaecherwagenPosition          : DWORD := 30;       (* [Min] Zeit bis der Hydraulik- Zylinder fuer die Position "Oben" nochmal angesteuert wird um den FW oben zu halten *)
-  wgTimeHydraulikUmlaufEin                              : WORD  := 3;        (* Zeit in sec., bevor der Hydraulikumlauf eingeschaltet wird *)
+  // FAECHERWAGENSTATION
+  dwgWarteZeitUeberwachungFaecherwagenPosition          : DWORD := 30;       // [Min] Zeit bis der Hydraulik- Zylinder fuer die Position "Oben" nochmal angesteuert wird um den FW oben zu halten
+  wgTimeHydraulikUmlaufEin                              : WORD  := 3;        // Zeit in sec., bevor der Hydraulikumlauf eingeschaltet wird
 
   
-  (* ALLGEMEIN GEWICHT *)
-  rgReduzierteGeschwindigkeitGlasGewicht                : WORD  := 250;   (* WICHTIG:[kg] Reduzieren der Beschleunigung und der Geschwindigkeit nach Glasgewicht *)
+  // ALLGEMEIN GEWICHT
+  rgReduzierteGeschwindigkeitGlasGewicht                : WORD  := 250;   // WICHTIG:[kg] Reduzieren der Beschleunigung und der Geschwindigkeit nach Glasgewicht
 
-  (* FAECHERWAEGEN *)
-  igMaximialeProzessAnzahl                              : INT := 1; (* Hinweis: Soviele Prozesse\ Auftraege koennen gleichzeitig Ausgefuerht werden *)
+  // FAECHERWAEGEN
+  igMaximialeProzessAnzahl                              : INT := 1; // Hinweis: Soviele Prozesse\ Auftraege koennen gleichzeitig Ausgefuerht werden
 
 
-  (* TRANSFERSHUTTLE *)
+  // TRANSFERSHUTTLE
   bgMKSpeicherfachValidierungSensorFreifahrenAktiv      : BOOL := FALSE;
   bgAktivierungTransfershuttleSystemcheck               : BOOL := TRUE;
 
 
-  (* VERFAHRLOGIK *)
+  // VERFAHRLOGIK
   rgMKZielPositionToleranz                              : REAL  := REAL#1.1;
 
 
-  (* ALLGEMEIN *)
-  rgMKWegSensorFreiFahrenVerfahrabbruch                 : REAL := 250; (* WICHTIG:[mm] Strecke in Millimetern die der Sensor frei gefahren werden soll wenn es zu einem Verfahrabbruch gekommen ist *)
-  rgMKWegSensorFreiFahrenStationVerfahrabbruch          : REAL := 50;  (* WICHTIG:[mm] Strecke in Millimetern die der Sensor frei gefahren werden soll wenn es zu einem Positionierungsabbruch gekommen ist *)
+  // ALLGEMEIN
+  rgMKWegSensorFreiFahrenVerfahrabbruch                 : REAL := 250; // WICHTIG:[mm] Strecke in Millimetern die der Sensor frei gefahren werden soll wenn es zu einem Verfahrabbruch gekommen ist
+  rgMKWegSensorFreiFahrenStationVerfahrabbruch          : REAL := 50;  // WICHTIG:[mm] Strecke in Millimetern die der Sensor frei gefahren werden soll wenn es zu einem Positionierungsabbruch gekommen ist
   rgMKWegAnlegetischUebergroesseScheibeBerechnen        : REAL := 20;  // Weg der von der Messstrecke am Anlegetisch abgezogen wird, um Max Glas zu berechnen
 
-(***************************************************************************************************)
-(* KONFIGURATION: GESCHWINDIGKEITEN *)
-(***************************************************************************************************)
-  (*Hinweis:
-    - Zu fahrende Geschwindigkeit [SEW- ANTRIEB] 
+//-------------------------------------------------------------------------------------------------
+// KONFIGURATION: GESCHWINDIGKEITEN
+//-------------------------------------------------------------------------------------------------
+  (* Hinweis:
+     - Zu fahrende Geschwindigkeit [SEW- ANTRIEB]
   *)
-  rgGeschwindigkeit60                                   : REAL := 1000;     (* 60.0 [m/min] ~1000 mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle *)
-  rgGeschwindigkeit55                                   : REAL := 917;      (* 55.0 [m/min] ~917  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle *)
-  rgGeschwindigkeit50                                   : REAL := 833;      (* 50.0 [m/min] ~833  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle *)
-  rgGeschwindigkeit45                                   : REAL := 750;      (* 45.0 [m/min] ~750  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle *)
-  rgGeschwindigkeit40                                   : REAL := 667;      (* 40.0 [m/min] ~667  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle *)
-  rgGeschwindigkeit35                                   : REAL := 583;      (* 35.0 [m/min] ~583  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle *)
-  rgGeschwindigkeit30                                   : REAL := 500;      (* 30.0 [m/min] ~500  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle *)
-  rgGeschwindigkeit25                                   : REAL := 417;      (* 25.0 [m/min] ~417  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle *)
-  rgGeschwindigkeit20                                   : REAL := 333;      (* 20.0 [m/min] ~333  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle *)
-  rgGeschwindigkeit15                                   : REAL := 250;      (* 15.0 [m/min] ~250  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle *)
-  rgGeschwindigkeit10                                   : REAL := 167;      (* 10.0 [m/min] ~167  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle *)
-  rgGeschwindigkeit05                                   : REAL := 83;       (*  5.0 [m/min] ~83   mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle *)
+  rgGeschwindigkeit60                                   : REAL := 1000;     // 60.0 [m/min] ~1000 mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle
+  rgGeschwindigkeit55                                   : REAL := 917;      // 55.0 [m/min] ~917  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle
+  rgGeschwindigkeit50                                   : REAL := 833;      // 50.0 [m/min] ~833  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle
+  rgGeschwindigkeit45                                   : REAL := 750;      // 45.0 [m/min] ~750  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle
+  rgGeschwindigkeit40                                   : REAL := 667;      // 40.0 [m/min] ~667  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle
+  rgGeschwindigkeit35                                   : REAL := 583;      // 35.0 [m/min] ~583  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle
+  rgGeschwindigkeit30                                   : REAL := 500;      // 30.0 [m/min] ~500  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle
+  rgGeschwindigkeit25                                   : REAL := 417;      // 25.0 [m/min] ~417  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle
+  rgGeschwindigkeit20                                   : REAL := 333;      // 20.0 [m/min] ~333  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle
+  rgGeschwindigkeit15                                   : REAL := 250;      // 15.0 [m/min] ~250  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle
+  rgGeschwindigkeit10                                   : REAL := 167;      // 10.0 [m/min] ~167  mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle
+  rgGeschwindigkeit05                                   : REAL := 83;       // 5.0 [m/min] ~83   mm/s -> Geschwindigkeit für den Vortransport auf dem Shuttle
 
-  (* AUTOMATIK-GESCHWINIGKEITEN *)
-  rgGeschwindigkeitVorpositionieren                     : REAL := 500;      (* 30.0 [m/min] ~500  mm/s -> Autotransportgeschwindigkeit für das Vorpositionieren in m/min *)
-  rgGeschwindigkeitSlow                                 : REAL := 334;      (* 20.0 [m/min] ~334  mm/s -> langsame Autotransportgeschwindigkeit in m/min *)
-  rgGeschwindigkeitSystemcheck                          : REAL := 667;      (* 40.0 [m/min] ~667  mm/s -> Geschwindigkeit für die Checkroutine in m/min *)
-  rgGeschwindigkeitLangsameSensorpositionierung         : REAL := 167;      (* 10.0 [m/min] ~167  mm/s -> Reduzieren der Eintransport- Geschwindigkeit zum Teilen eines Scheiben Batches *)
-  rgGeschwindigkeitVerySlow                             : REAL := 84;       (*  5.0 [m/min] ~167  mm/s -> sehr langsame Autotransportgeschwindigkeit in m/min *)
-  rgGeschwindigkeitSensorenFreifahren                   : REAL := 167;      (* 10.0 [m/min] ~167  mm/s -> Geschwindigkeit in M/MIN zum Freifahren der Sensoren *)
-  rgGeschwindigkeitGlaspositionieren                    : REAL := 334.0;    (* 20.0 [m/min] ~334  mm/s -> Hinweis: Geschwindigkeit Glas- Vorpositionieren *)
+  // AUTOMATIK-GESCHWINIGKEITEN
+  rgGeschwindigkeitVorpositionieren                     : REAL := 500;      // 30.0 [m/min] ~500  mm/s -> Autotransportgeschwindigkeit für das Vorpositionieren in m/min
+  rgGeschwindigkeitSlow                                 : REAL := 334;      // 20.0 [m/min] ~334  mm/s -> langsame Autotransportgeschwindigkeit in m/min
+  rgGeschwindigkeitSystemcheck                          : REAL := 667;      // 40.0 [m/min] ~667  mm/s -> Geschwindigkeit für die Checkroutine in m/min
+  rgGeschwindigkeitLangsameSensorpositionierung         : REAL := 167;      // 10.0 [m/min] ~167  mm/s -> Reduzieren der Eintransport- Geschwindigkeit zum Teilen eines Scheiben Batches
+  rgGeschwindigkeitVerySlow                             : REAL := 84;       // 5.0 [m/min] ~167  mm/s -> sehr langsame Autotransportgeschwindigkeit in m/min
+  rgGeschwindigkeitSensorenFreifahren                   : REAL := 167;      // 10.0 [m/min] ~167  mm/s -> Geschwindigkeit in M/MIN zum Freifahren der Sensoren
+  rgGeschwindigkeitGlaspositionieren                    : REAL := 334.0;    // 20.0 [m/min] ~334  mm/s -> Hinweis: Geschwindigkeit Glas- Vorpositionieren
   rgAutoGeschwindigkeitTSVortransport                   : REAL := 334.0;
   rgMkAutoGeschwindigkeitFremdanlage                    : REAL := 334.0;
 

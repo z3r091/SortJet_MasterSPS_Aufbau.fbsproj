@@ -11,7 +11,7 @@ VAR_INPUT
   // BOOL
   abpReset                    : ARRAY[cAUTOMATIKKREIS_1..cLETZTER_AUTOMATIKKREIS] OF BOOL;
 
-  (* AUJFTRAGSSPEICHER *)
+  // AUJFTRAGSSPEICHER
   AuftragsSpeicherFremdanlage : ARRAY [cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF AuftragsSpeicherStationen;
 
   // AUFTRAGS-STRUKTUREN
@@ -49,9 +49,9 @@ VAR CONSTANT
   cNACHRICHTEN_INDEX_2 : BYTE := 2;
 
 END_VAR
-(***************************************************************************************************)
-(* BAUSTEIN: INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus ) THEN
   blErsterZyklus := FALSE;
 
@@ -61,9 +61,9 @@ IF ( blErsterZyklus ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* BAUSTEIN: AUFTRAGSVERWALTUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AUFTRAGSVERWALTUNG
+//-------------------------------------------------------------------------------------------------
 FOR wlIndex := cERSTE_FREMDANLAGE_AUSLAUF TO cLETZTE_FREMDANLAGE_EINLAUF DO
 
   AuftragsSpeicherFremdanlage[wlIndex]();
@@ -80,9 +80,9 @@ FOR wlIndex := cERSTE_FREMDANLAGE_AUSLAUF TO cLETZTE_FREMDANLAGE_EINLAUF DO
 
 END_FOR
 
-(***************************************************************************************************)
-(* AKTIONEN  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 Reset();
 Auftraege();
 

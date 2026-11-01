@@ -8,38 +8,38 @@
 FUNCTION_BLOCK TS_Vortransport
 VAR_INPUT
     
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset                : BOOL;
   
-  (* WORD *)
+  // WORD
   wStation               : WORD;
   
-  (* STRUKTUR *)
+  // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN*)
+  // BOOLEAN
   bpDone                 : BOOL;
   bpFehler               : BOOL;
 
 END_VAR
 VAR
      
-  (* WORD *)
+  // WORD
   wlVerbundStation       : WORD;
 
-  (* STEPS *)
+  // STEPS
   steplSchritt           : STEPS_TE;
 
 END_VAR
-(***************************************************************************************************)
-(* STEUERUNG: VORTRANSPORT  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG: VORTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
   CASE steplSchritt OF
-    (* VORTRANSPORT ============================================== *)
+    // VORTRANSPORT ==============================================
     STEP_0_E:
       IF (  checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation])
            AND NOT starrTransfershuttleBasisParameter[wStation].bReset )
@@ -76,15 +76,15 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
 
       END_IF
 
-    (* VORTRANSPORT ============================================== *)
+    // VORTRANSPORT ==============================================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  PRUEFEN TRANSFERSHUTTLE VERBUND
-      //         
+      //
       //  Hinweis:
       //  - Transferstation2 = 0   => Vortransport mit nur einem Transfershuttle
       //  - Transferstation2 <> 0  => Vortransport im Transfershuttle-Verbund
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF ( Auftragsdaten.wTransferstationsNr2 = 0 ) THEN
 
@@ -104,14 +104,14 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
 
       END_IF
 
-    (* VORTRANSPORT ============================================== *)
+    // VORTRANSPORT ==============================================
     STEP_200_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  TRANSFERSHUTTLE VERBUND
-      //         
+      //
       //  Hinweis:
       //  - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF ( NOT starrTransfershuttleBasisParameter[wStation].bAuftragAktiv ) THEN
 
@@ -139,14 +139,14 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
 
       END_IF
 
-    (* VORTRANSPORT ============================================== *)
+    // VORTRANSPORT ==============================================
     STEP_400_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  TRANSFERSHUTTLE VORTRANSPORT ABGESCHLOSSEN
-      //         
+      //
       //  Hinweis:
       //  - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF ( starrTransfershuttleBasisParameter[wStation].bVortransportAbgeschlossen[cWAND_1] ) THEN
 
@@ -155,7 +155,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
         *)
         wSps2MmiQuittierungVortransportStationsNr1 := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
         wSps2MmiQuittierungVortransportStationsNr2 := Auftragsdaten.wTransferstationsNr2;
-        wSps2MmiQuittierungVortransportStatus      := 1; (* 0  = nicht Erfolgreich / 1 = erfolgreich *)
+        wSps2MmiQuittierungVortransportStatus      := 1; // 0  = nicht Erfolgreich / 1 = erfolgreich
         rSps2MmiQuittierungVortransportWegStrecke  := aTransfershuttles[wStation].rpVorpositionierterWeg;
 
         MsgToMmi(auftragsnr_w := SB0_SPS_SortierungQuittExtractionShuttleData );
@@ -166,7 +166,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
       END_IF
 
       (* Hinweis:
-         -Ausnahmefehler
+         - -Ausnahmefehler
       *)
       IF ( starrTransfershuttleBasisParameter[wStation].bFehler ) THEN
         SpsError( eFehler_Station,
@@ -180,11 +180,11 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (* VORTRANSPORT ============================================== *)
+    // VORTRANSPORT ==============================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* VORTRANSPORT ============================================== *)
+    // VORTRANSPORT ==============================================
     STEP_1000_E:
       bpDone := TRUE;
 
@@ -201,7 +201,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
 
       END_IF
 
-  (* VORTRANSPORT ============================================== *)
+  // VORTRANSPORT ==============================================
   END_CASE
 END_IF
 

@@ -9,36 +9,36 @@ FUNCTION_BLOCK Auftragswarteschlange_Fremdanlage_FB
 VAR_INPUT
 
   bpAktivieren     : BOOL := TRUE;
-  bpWertAuslesen   : BOOL; (* READ  *)
-  bpWerteSchreiben : BOOL; (* WRITE *)
-  bpReset          : BOOL; (* RST *)
+  bpWertAuslesen   : BOOL; // READ
+  bpWerteSchreiben : BOOL; // WRITE
+  bpReset          : BOOL; // RST
 
-  (* WORD *)
+  // WORD
   ppEingabeWert : Schnittstelle_Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
-  (* BOOLEAN *)
+  // BOOLEAN
   bpWarteschlangeLeer  : BOOL := TRUE;
   bpWarteschlangeVoll  : BOOL;
 
-  (* STRUCT *)
+  // STRUCT
   ppAusgabeWert  : Schnittstelle_Auftragsdaten_ST;
 
 END_VAR
 VAR
 
-  (* STRUCT *)
+  // STRUCT
   awlWarteSchlange : ARRAY[0..cINDEX] OF Schnittstelle_Auftragsdaten_ST;
 
-  (* INT *)
-  ilAktuellePosition  : INT; (* pr *)
-  ilLetztePosition    : INT; (* pw *)
+  // INT
+  ilAktuellePosition  : INT; // pr
+  ilLetztePosition    : INT; // pw
 
 END_VAR
 
 VAR CONSTANT
-  cINDEX : INT := 5;    (* WICHTIG: Aenderungen an diesem Wert aendert die Anzahl der Elemente in der Warteschlange [FIFO] *)
+  cINDEX : INT := 5;    // WICHTIG: Aenderungen an diesem Wert aendert die Anzahl der Elemente in der Warteschlange [FIFO]
 END_VAR
 IF ( bpReset ) THEN
   ilLetztePosition := ilAktuellePosition := 0 ;

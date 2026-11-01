@@ -8,20 +8,20 @@
 FUNCTION_BLOCK Shuttle_Vorabkomponenten
 VAR_INPUT
     
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset                : BOOL;
   
-  (* WORD *)
+  // WORD
   wStation               : WORD;
   wWand                  : WORD;
   
-  (* STRUKTUR *)
+  // STRUKTUR
   Auftragsdaten          : VorAbAuftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN*)
+  // BOOLEAN
   bpDone                 : BOOL;
   bpFehler               : BOOL;
 
@@ -34,26 +34,26 @@ VAR
   // WORD
   wlNextTransferstation  : WORD;
 
-  (* STEPS *)
+  // STEPS
   steplSchritt           : STEPS_TE;
 
 END_VAR
-(***************************************************************************************************)
-(*  STEUERUNG VORABKOMPONENETEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG VORABKOMPONENETEN
+//-------------------------------------------------------------------------------------------------
 
 
 IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
 
   (* Hinweis:
-   - Setzen der Freigabe fuer die Resourcen-Ansteuerung wenn zum Zeitpunkt des "STARTENS"
-     kein Auftrag aktiv ist. Ist die Ansteuerung "Aktiv" kann diese Variable wieder abfallen.
+     - Setzen der Freigabe fuer die Resourcen-Ansteuerung wenn zum Zeitpunkt des "STARTENS"
+       kein Auftrag aktiv ist. Ist die Ansteuerung "Aktiv" kann diese Variable wieder abfallen.
   *)
   blFreigabeVorabAuftrag := ( Job_Shuttle.AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Kein_Auftrag );
 
   CASE steplSchritt OF
 
-    (*VORABKOMPONENETEN ===============================================*)
+    // VORABKOMPONENETEN ===============================================
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -68,7 +68,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
         END_IF
       END_IF
 
-    (*VORABKOMPONENETEN ===============================================*)
+    // VORABKOMPONENETEN ===============================================
     STEP_10_E:
       // Transferstation bestimmen
       wlNextTransferstation := Auftragsdaten.wTransferStation;
@@ -88,7 +88,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
       END_IF
 
       (* Hinweis:
-         - Austransport 
+         - Austransport
       *)
       IF ( Auftragsdaten.wAuftragstyp.0 ) THEN
         // Folgestation beruecksichtigen damit in verschiedene Richtungen vorpositioniert werden kann. 
@@ -99,7 +99,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
       END_IF
 
       (* Hinweis:
-         - Scheibenführung / Wandverstellung anstellen 
+         - Scheibenführung / Wandverstellung anstellen
          - Aus dem Speicher: Speicherslotdicke nehmen ; von einer Station die Scheibendicke nehmen
       *)
       IF ( starrShuttleBasisParameter[wStation].pAuftrag[cWAND_1].rAuftragsDicke <= wgMKScheibenDicke13mm ) THEN
@@ -115,7 +115,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
 
       steplSchritt := STEP_400_E;
 
-    (*VORABKOMPONENETEN ===============================================*)
+    // VORABKOMPONENETEN ===============================================
     STEP_400_E:
       (* Hinweis:
          - Abschliessen des Austransports
@@ -125,7 +125,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
         steplSchritt := STEP_1000_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Inputshuttle
       *)
       IF ( starrShuttleBasisParameter[wStation].bFehler ) THEN
@@ -138,18 +138,18 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (*VORABKOMPONENETEN ===============================================*)
+    // VORABKOMPONENETEN ===============================================
     STEP_900_E: 
       blFreigabeVorabAuftrag := FALSE;
       bpFehler := TRUE;
 
-    (*VORABKOMPONENETEN ===============================================*)
+    // VORABKOMPONENETEN ===============================================
     STEP_1000_E:
       bpDone := TRUE;
       blFreigabeVorabAuftrag := FALSE;
       Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
 
-  (*VORABKOMPONENETEN ===============================================*)
+  // VORABKOMPONENETEN ===============================================
   END_CASE
 
 END_IF

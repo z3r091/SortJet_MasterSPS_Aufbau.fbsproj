@@ -6,12 +6,12 @@
 }
 *)
 ACTION AutomatikStop
-(***************************************************************************************************)
-(* STOPP AUTOMATIKKREISE - RESET -  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STOPP AUTOMATIKKREISE - RESET -
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Bei einem NotAus muss die Anlage in Stop- Versetzt werden, damit nach dem der
-     NotAus quittiert wurde die Anlage in der Betriebsart "Hand" steht. 
+     NotAus quittiert wurde die Anlage in der Betriebsart "Hand" steht.
 *)
 ftlNotHaltAusgeloest( CLK := NotHalt.bpNotHaltOK );
 
@@ -20,7 +20,7 @@ IF ( ftlNotHaltAusgeloest.Q ) THEN
   tMmi2SpsInfo.wAutomatikStopArea := cSTOPP_ALLE_AUTOMATIKKREIS;
 END_IF
 
-(* Hinweis
+(* Hinweis:
    - STOP durch das HMI
 *)
 IF ( M_SB0_MMI_SortierungAutomatik_Stop ) THEN

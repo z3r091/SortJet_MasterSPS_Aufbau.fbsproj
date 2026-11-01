@@ -8,36 +8,36 @@
 FUNCTION_BLOCK Station_Transportkopplung
 VAR_INPUT
     
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset                : BOOL;
   
-  (* WORD *)
+  // WORD
   wStation               : WORD;
   wWand                  : WORD;
   
-  (* STRUKTUR *)
+  // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN*)
+  // BOOLEAN
   bpDone                 : BOOL;
   bpFehler               : BOOL;
 
 END_VAR
 VAR
 
-  (* STEPS *)
+  // STEPS
   steplSchritt           : STEPS_TE;
 
 END_VAR
-(***************************************************************************************************)
-(* STEUERUNG: MESSUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG: MESSUNG
+//-------------------------------------------------------------------------------------------------
 IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
   CASE steplSchritt OF
-    (* MESSFAHRT ================================================== *)
+    // MESSFAHRT ==================================================
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -46,12 +46,12 @@ IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
         steplSchritt := STEP_30_E;
       END_IF
 
-    (* MESSFAHRT ================================================== *)
+    // MESSFAHRT ==================================================
     STEP_30_E:
       (* Hinweis:
-          - Auftragsdaten uebergeben
-          - Starten der Glasmessung
-       *)
+         - Auftragsdaten uebergeben
+         - Starten der Glasmessung
+      *)
       starrStationBasisParameter[wStation].pAuftrag[wWand] := Auftragsdaten;
 
       starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition := starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Kippen[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wVorgaengerStation];
@@ -68,7 +68,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
 
       steplSchritt := STEP_100_E;
 
-    (* MESSFAHRT ================================================== *)
+    // MESSFAHRT ==================================================
     STEP_100_E:
       (* Fehlerbehandlung:
          - Transportkopplung
@@ -84,18 +84,18 @@ IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (* MESSFAHRT ================================================== *)
+    // MESSFAHRT ==================================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* MESSFAHRT ================================================== *)
+    // MESSFAHRT ==================================================
     STEP_1000_E:
       (* Wichtig:
          - Auftragsstatus zuweisen
       *)
       bpDone := TRUE;
 
-  (* MESSFAHRT ================================================== *)
+  // MESSFAHRT ==================================================
   END_CASE
 END_IF
 

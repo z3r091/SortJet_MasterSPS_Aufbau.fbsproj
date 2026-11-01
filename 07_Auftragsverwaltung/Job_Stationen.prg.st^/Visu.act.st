@@ -6,7 +6,7 @@
 }
 *)
 ACTION Visu
-(***************************************************************************************************)
+// *************************************************************************************************
 // Daten in das VisoArray kopieren
 FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
   VisuAuftragsdaten[wlIndex].eStation := TO_WORD(AuftragsdatenStation[wlIndex].wAuftrag);

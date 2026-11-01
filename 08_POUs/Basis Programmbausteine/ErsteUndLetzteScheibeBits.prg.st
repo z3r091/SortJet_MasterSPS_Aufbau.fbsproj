@@ -8,33 +8,33 @@
 PROGRAM ErsteUndLetzteScheibeBits
 VAR_INPUT
 
-  (* WORD *)
+  // WORD
   wpErsteUndLetzteScheibe : WORD;
 
 END_VAR
 VAR_OUTPUT
 
-  (* WORD *)
+  // WORD
   wpLetzteScheibe,
   wpErsteScheibe   : WORD;
 
 END_VAR
 VAR
 
-  (* WORD *)
+  // WORD
   wlMerkerErsteUndLetzteScheibe  : WORD;
 
 END_VAR
 VAR CONSTANT
 
-  (* WORD *)
+  // WORD
   cBIT_MASKE_LETZTE_SCHEIBE  : WORD := 2#0000000011111111;
 
 END_VAR
 
-(***************************************************************************************************)
-(* BAUSTEIN: LOGIK  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: LOGIK
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
    - Erste Scheibe

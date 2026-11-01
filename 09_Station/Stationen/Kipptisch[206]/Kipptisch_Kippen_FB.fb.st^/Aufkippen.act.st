@@ -6,9 +6,9 @@
 }
 *)
 ACTION Aufkippen
-(***************************************************************************************************)
-(* AKTION AUFKIPPEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION AUFKIPPEN
+//-------------------------------------------------------------------------------------------------
 IF ( bpStartKippenAuf
      AND NOT bpStartKippenAb
      AND bpFreigabe )
@@ -23,7 +23,7 @@ THEN
 
 
   CASE steplKippenAuf OF
-    (* KIPPEN AUF  ================*)
+    // KIPPEN AUF  ================
     STEP_0_E:
       bpDone := FALSE;
 
@@ -35,14 +35,14 @@ THEN
         END_IF
       END_IF
 
-    (* KIPPEN AUF ================*)
+    // KIPPEN AUF ================
     STEP_10_E:
-      (* Anmerkung[Sensoren]
+      (* Anmerkung [Sensoren]:
          - Einlauf- Auslauf- Sensoren duerfen nicht belegt sein beim Kippen
-         Anmerkung [Antrieb]:
+           Anmerkung [Antrieb]:
          - Geschwindigkeit muss in U/min angegeben werden
-         - Rampe 2s [2000 ms]         
-      *)     
+         - Rampe 2s [2000 ms]
+      *)
       IF (  NOT bpSensorEinlauf
            AND NOT bpSensorAuslauf )
       THEN
@@ -82,7 +82,7 @@ THEN
         steplKippenAuf := STEP_900_E;
       END_IF
 
-    (* KIPPEN AUF ================*)
+    // KIPPEN AUF ================
     STEP_20_E:
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart:= KEINE_FUNKTION;
@@ -105,21 +105,21 @@ THEN
         steplKippenAuf := STEP_900_E;
       END_IF
 
-    (* KIPPEN AUF ================*)
+    // KIPPEN AUF ================
     STEP_900_E:
       IF NOT Antrieb.bpAntrieblaeuft THEN
         steplKippenAuf := STEP_910_E;
       END_IF
 
-    (* KIPPEN AUF ================*)
+    // KIPPEN AUF ================
     STEP_910_E:
       bpFehler := TRUE;
 
-    (* KIPPEN AUF ================*)
+    // KIPPEN AUF ================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (* KIPPEN AUF ================*)
+  // KIPPEN AUF ================
   END_CASE
 ELSE
   IF ( steplKippenAuf > STEP_0_E ) THEN

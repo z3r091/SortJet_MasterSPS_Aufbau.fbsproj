@@ -6,26 +6,24 @@
 }
 *)
 ACTION Handfunktionen
-(***************************************************************************************************)
-(* AKTION HANDFUNKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION HANDFUNKTIONEN
+//-------------------------------------------------------------------------------------------------
 IF ( blBetriebsartHand ) THEN
 
-  (* Handfunktion
-     - Glastransport/Glastransport - vor bzw. zurück 
-  *)
+  // Handfunktion
+  //   - Glastransport/Glastransport - vor bzw. zurück
   Glastransport.bpHandfahrenMinus := ( BasisStationsParameter.dwHandfunktionen.2 AND NOT BasisStationsParameter.dwHandfunktionen.1 )
                                      OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]
-                                     OR in_bKnebelGlastransportZurueck;  (* Bit 2 = Glastransport / Glastransport zurück *)
+                                     OR in_bKnebelGlastransportZurueck;  // Bit 2 = Glastransport / Glastransport zurück
   Glastransport.bpHandfahrenPlus  := ( BasisStationsParameter.dwHandfunktionen.1 AND NOT BasisStationsParameter.dwHandfunktionen.2 )
                                      OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] 
                                      OR in_bTasterGlasAngelegt
-                                     OR in_bKnebelGlastransportVor;  (* Bit 2 = Glastransport / Glastransport zurück *);  (* Bit 1 = Glastransport / Glastransport vor *)
+                                     OR in_bKnebelGlastransportVor;  (* Bit 2 = Glastransport / Glastransport zurück *);  // Bit 1 = Glastransport / Glastransport vor
 
 
-  (* Handfunktion:
-     - Kippen 
-  *)
+  // Handfunktion:
+  //   - Kippen
   IF (BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1]) THEN
 
     IF ( BasisStationsParameter.dwHandfunktionen.7 OR bgVISUKippenW1Hoch[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
@@ -45,9 +43,8 @@ IF ( blBetriebsartHand ) THEN
   END_IF
 
 
-  (* Handfunktion:
-     - Kippen 
-  *)
+  // Handfunktion:
+  //   - Kippen
   Messachse.bpHandplus     := (         ( BasisStationsParameter.dwHandfunktionen.3 OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                                 AND NOT (    BasisStationsParameter.dwHandfunktionen.4 
                                           OR BasisStationsParameter.dwHandfunktionen.5 

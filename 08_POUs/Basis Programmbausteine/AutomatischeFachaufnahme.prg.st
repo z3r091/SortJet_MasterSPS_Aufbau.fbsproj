@@ -8,14 +8,14 @@
 PROGRAM AutomatischeFachaufnahme
 VAR_INPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpStarteFachaufnahme : BOOL := FALSE;
   bpAktiv              : BOOL := TRUE;
 
-  (* WORD *)
+  // WORD
   wpMMINummer  : WORD;
 
-  (* POINTER *)
+  // POINTER
   ptQuerfahrtShuttle : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
 
   // REF
@@ -25,17 +25,17 @@ END_VAR
 
 VAR
 
-  (* STEP *)
+  // STEP
   steplAufnahme            : STEPS_TE;
 
-  (* WORD *)
+  // WORD
 
-  (* REAL *)
+  // REAL
   rlLetztePosition         : REAL;
   rlMerkerGeschwindigkeit  : real;
 
 
-  (* POINTER *)
+  // POINTER
   ptlAnalogwertChannel1  : REFERENCE TO INT;
   ptlAnalogwertChannel2  : REFERENCE TO INT;
 
@@ -43,7 +43,7 @@ END_VAR
 
 VAR CONSTANT
 
-  (* WORD *)
+  // WORD
   wGeschwindigkeitFachaufnahme : WORD := 5;
   wDefaultHandgeschwindigkeit  : WORD := 300;
 
@@ -51,10 +51,10 @@ END_VAR
 
 
 
-(***************************************************************************************************)
-(* AUTOMATISIERTE FACHAUFNAHME  *)
-(***************************************************************************************************)
-(*Anmerkung:
+//-------------------------------------------------------------------------------------------------
+// AUTOMATISIERTE FACHAUFNAHME
+//-------------------------------------------------------------------------------------------------
+(* Anmerkung:
    - Shuttle-Koordinationsbaustein zur Fachaufnahme
 *)
 IF ( bpAktiv ) THEN
@@ -81,14 +81,14 @@ IF ( bpAktiv ) THEN
 
       CASE steplAufnahme OF
 
-        (* ----------------------------------------------------------------------- *)
+        // -----------------------------------------------------------------------
         STEP_0_E:
           rlMerkerGeschwindigkeit :=  ptQuerfahrtShuttle.ppAntriebsInformationen.rpHandGeschwindigkeit;
           ptQuerfahrtShuttle.ppAntriebsInformationen.rpHandGeschwindigkeit := wGeschwindigkeitFachaufnahme;
 
           steplAufnahme:= STEP_10_E;
 
-        (* ----------------------------------------------------------------------- *)
+        // -----------------------------------------------------------------------
         STEP_10_E:
           IF (  ( ptQuerfahrtShuttle.rpIstPosition <> rlLetztePosition )
                AND ( ptQuerfahrtShuttle.rpIstPosition <> 0 ) )

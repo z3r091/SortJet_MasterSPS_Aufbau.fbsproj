@@ -8,7 +8,7 @@
 FUNCTION PruefungWertImIntervallAutomatikkreise : BOOL
 VAR_INPUT
 
-  (* WORD *)
+  // WORD
   wpWert         : ARRAY[cERSTER_AUTOMATIKKREIS..cANZAHL_AUTOMATIKKREISE] OF Automatikkreis_EN;
   wpIntervallMin : WORD;
   wpIntervallMax : WORD;
@@ -17,9 +17,9 @@ END_VAR
 VAR
   wlIndex : WORD;
 END_VAR
-(***************************************************************************************************)
-(* LOGIK  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// LOGIK
+//-------------------------------------------------------------------------------------------------
 PruefungWertImIntervallAutomatikkreise := FALSE;
 
 FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cANZAHL_AUTOMATIKKREISE DO

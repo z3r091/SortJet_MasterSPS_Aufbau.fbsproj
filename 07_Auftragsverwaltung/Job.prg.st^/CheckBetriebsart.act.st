@@ -6,11 +6,11 @@
 }
 *)
 ACTION CheckBetriebsart
-(***************************************************************************************************)
-(* AKTION: BETRIEBSART PRUEFEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: BETRIEBSART PRUEFEN
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   - Dieser Buastein soll alle Stop- und Unterbrechungsszenarien abfangen und verwalten 
+   - Dieser Buastein soll alle Stop- und Unterbrechungsszenarien abfangen und verwalten
    - inkl. Messagehandling an die Steuerung beim Auftreten eines Stopszenarios (Notaus, Sicherheitskreis, Betriebsstop,...
 *)
 
@@ -26,7 +26,7 @@ IF (  (awSPS2MMIMaschineStatusWord[6].0 <> FALSE ) ) THEN
 END_IF
 
 
-(*----------------------------------------------------------------------------------------------------------*)
+// ----------------------------------------------------------------------------------------------------------
 // 1. Statuswort: Autmatik aktiv
 FOR i := ( cERSTER_AUTOMATIKKREIS -1 ) TO ( cLETZTER_AUTOMATIKKREIS -1 ) DO
   mask := SHL(1, i); // 1 << i
@@ -46,7 +46,7 @@ FOR i := ( cERSTER_AUTOMATIKKREIS -1 ) TO ( cLETZTER_AUTOMATIKKREIS -1 ) DO
   END_IF
 END_FOR
 
-(************************************************************************************************************)
+// **********************************************************************************************************
 // 2. Statuswort: Sicherheitskreise geschlossen
 FOR i := ( cERSTER_SICHERHEITSKREIS -1 ) TO ( cLETZTER_SICHERHEITSKREIS -1 ) DO
   mask := SHL(1, i); // 1 << i
@@ -66,7 +66,7 @@ FOR i := ( cERSTER_SICHERHEITSKREIS -1 ) TO ( cLETZTER_SICHERHEITSKREIS -1 ) DO
   END_IF
 END_FOR
 
-(************************************************************************************************************)
+// **********************************************************************************************************
 // 3. Statuswort: Sicherheitskreis angefordert
 FOR i := ( cERSTER_SICHERHEITSKREIS -1 ) TO ( cLETZTER_SICHERHEITSKREIS -1 ) DO
   mask := SHL(1, i); // 1 << i
@@ -86,7 +86,7 @@ FOR i := ( cERSTER_SICHERHEITSKREIS -1 ) TO ( cLETZTER_SICHERHEITSKREIS -1 ) DO
   END_IF
 END_FOR
 
-(************************************************************************************************************)
+// **********************************************************************************************************
 // 4. Statuswort: Betriebsstop
 FOR i := ( cERSTER_AUTOMATIKKREIS -1 ) TO ( cLETZTER_AUTOMATIKKREIS -1 ) DO
   mask := SHL(1, i); // 1 << i
@@ -106,7 +106,7 @@ FOR i := ( cERSTER_AUTOMATIKKREIS -1 ) TO ( cLETZTER_AUTOMATIKKREIS -1 ) DO
   END_IF
 END_FOR
 
-(************************************************************************************************************)
+// **********************************************************************************************************
 // 5. Statuswort: Not-Halt
 FOR i := ( cERSTER_AUTOMATIKKREIS -1 ) TO ( cLETZTER_AUTOMATIKKREIS -1 ) DO
   mask := SHL(1, i); // 1 << i
@@ -126,7 +126,7 @@ FOR i := ( cERSTER_AUTOMATIKKREIS -1 ) TO ( cLETZTER_AUTOMATIKKREIS -1 ) DO
   END_IF
 END_FOR
 
-(************************************************************************************************************)
+// **********************************************************************************************************
 //7. Statuswort: Safety, EtherCAT
 IF (  (awSPS2MMIMaschineStatusWord[7].0 <> NOT Interface_SLC.bpOperatorAcknowledgeRequested ) OR
      (awSPS2MMIMaschineStatusWord[7].1 <> bgEtherCatOK )
@@ -136,7 +136,7 @@ IF (  (awSPS2MMIMaschineStatusWord[7].0 <> NOT Interface_SLC.bpOperatorAcknowled
   blSendJobStatus := TRUE;
 END_IF
 
-(************************************************************************************************************)
+// **********************************************************************************************************
 // 8. Statuswort: Systemcheck
 FOR i := ( cERSTER_AUTOMATIKKREIS -1 ) TO ( cLETZTER_AUTOMATIKKREIS -1 ) DO
   mask := SHL(1, i); // 1 << i
@@ -156,7 +156,7 @@ FOR i := ( cERSTER_AUTOMATIKKREIS -1 ) TO ( cLETZTER_AUTOMATIKKREIS -1 ) DO
   END_IF
 END_FOR
 
-(************************************************************************************************************)
+// **********************************************************************************************************
 // 9. Statuswort: Init
 FOR i := ( cERSTER_AUTOMATIKKREIS -1 ) TO ( cLETZTER_AUTOMATIKKREIS -1 ) DO
   mask := SHL(1, i); // 1 << i
@@ -176,7 +176,7 @@ FOR i := ( cERSTER_AUTOMATIKKREIS -1 ) TO ( cLETZTER_AUTOMATIKKREIS -1 ) DO
   END_IF
 END_FOR
 
-(************************************************************************************************************)
+// **********************************************************************************************************
 // 10. Statuswort: Shuttle Status
 FOR i := ( cERSTES_SHUTTLE -101 ) TO ( cLETZTES_SHUTTLE -101 ) DO
   mask := SHL(1, i); // 1 << i
@@ -196,7 +196,7 @@ FOR i := ( cERSTES_SHUTTLE -101 ) TO ( cLETZTES_SHUTTLE -101 ) DO
   END_IF
 END_FOR
 
-(************************************************************************************************************)
+// **********************************************************************************************************
 // 11. Statuswort: Reset
 FOR i := ( cERSTER_AUTOMATIKKREIS -1 ) TO ( cLETZTER_AUTOMATIKKREIS -1 ) DO
   mask := SHL(1, i); // 1 << i

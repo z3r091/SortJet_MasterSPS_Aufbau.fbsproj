@@ -6,16 +6,16 @@
 }
 *)
 ACTION WandverstellungOeffnen
-(***************************************************************************************************)
-(* AKTION - Wandverstellung öffnen *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION - Wandverstellung öffnen
+//-------------------------------------------------------------------------------------------------
 
 IF ( bpWandverstellungOeffnen
      AND NOT bpWandverstellungSchliessen )
 THEN
 
   CASE steplWandverstellungOeffnen OF
-    (* Wandverstellung öffnen =====================*)
+    // Wandverstellung öffnen =====================
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
@@ -36,7 +36,7 @@ THEN
 
       END_IF
 
-    (* Wandverstellung öffnen =====================*)
+    // Wandverstellung öffnen =====================
     STEP_10_E:
       (* Hinweis:
          - Initialisieren der Timer
@@ -69,15 +69,15 @@ THEN
         steplWandverstellungOeffnen := STEP_900_E;
       END_IF
 
-    (* Wandverstellung öffnen =====================*)
+    // Wandverstellung öffnen =====================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* Wandverstellung öffnen =====================*)
+    // Wandverstellung öffnen =====================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (* Wandverstellung öffnen =====================*)
+  // Wandverstellung öffnen =====================
   END_CASE
 END_IF
 

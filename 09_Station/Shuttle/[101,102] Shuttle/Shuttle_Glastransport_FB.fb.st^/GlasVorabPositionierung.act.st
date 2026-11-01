@@ -6,18 +6,18 @@
 }
 *)
 ACTION GlasVorabPositionierung
-(***************************************************************************************************)
-(* AKTION GLAS VORABPOSITIONIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION GLAS VORABPOSITIONIEREN
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   - Positionieren des Glases 
+   - Positionieren des Glases
 *)
 IF (  bpStarteVorabPositionierung
      AND bpAutomatikAktiv )
 THEN
 
-  (* Ausnahmefehler
-    - ANTRIEB
+  (* Ausnahmefehler:
+     - ANTRIEB
   *)
   IF ( Antrieb.bpFehler ) THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -26,7 +26,7 @@ THEN
   END_IF
 
   CASE steplVorabpositionieren OF
-    (* GLAS VORPOSITIONIEREN ====================*)
+    // GLAS VORPOSITIONIEREN ====================
     STEP_0_E:
       (* Hinweis:
          - Pruefen ob der Antrieb bereit zum verfahren ist
@@ -39,15 +39,14 @@ THEN
         steplVorabpositionieren := STEP_10_E;
       END_IF
 
-    (* GLAS VORPOSITIONIEREN ====================*)
+    // GLAS VORPOSITIONIEREN ====================
     STEP_10_E:
-      (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POSITIONIEREN UEBER DEN AUSLAUFSENSOR [AUSLAUFSEITE] >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-         
-         Hinweis:
-         - Sicherstellen das der Auslaufsensor nicht belegt ist
-         - Geschwindigkreit reduzieren wenn der Vorabstob schon belegt ist 
-           [Besseres Ergebnis fuer die Restwegpositionierung]
-      *)
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POSITIONIEREN UEBER DEN AUSLAUFSENSOR [AUSLAUFSEITE] >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      //
+      //   Hinweis:
+      //   - Sicherstellen das der Auslaufsensor nicht belegt ist
+      //   - Geschwindigkreit reduzieren wenn der Vorabstob schon belegt ist
+      //     [Besseres Ergebnis fuer die Restwegpositionierung]
       IF ( NOT bpSensorAuslauf ) THEN
 
         rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
@@ -74,11 +73,10 @@ THEN
 
       END_IF
 
-    (* GLAS VORPOSITIONIEREN ====================*)
+    // GLAS VORPOSITIONIEREN ====================
     STEP_20_E:
-      (* Vorabstop- Sensor:
-         - Langsame Autotransportgeschwindigkeit in 20.0 m/min 
-      *)
+      // Vorabstop- Sensor:
+      //   - Langsame Autotransportgeschwindigkeit in 20.0 m/min
       IF ( bpSensorAuslaufVorab ) THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit15;
       END_IF
@@ -90,7 +88,7 @@ THEN
         steplVorabpositionieren := STEP_1000_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Auslaufsensor schaltet nicht [Wegueberwachung]
          - Antrieb
       *)
@@ -114,13 +112,12 @@ THEN
         steplVorabpositionieren := STEP_900_E;
       END_IF
 
-    (* GLAS POSITIONIEREN ====================*)
+    // GLAS POSITIONIEREN ====================
     STEP_100_E:
-      (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< AUSLAUFSENSOR FREI FAHREN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  
-         Hinweis:
-         - Versuchen den Auslaufsensor frei zufahren
-      *)
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< AUSLAUFSENSOR FREI FAHREN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      //
+      //   Hinweis:
+      //   - Versuchen den Auslaufsensor frei zufahren
       // TODO Option zum auslauf freifahren / ansonsten nur auslaufstopp   // toflAuslaufsensorFrei
       IF (  NOT Antrieb.bpAntrieblaeuft
            AND NOT toflAuslaufsensorSTOP.Q )
@@ -142,9 +139,9 @@ THEN
 
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Einlaufsensor belegt
-         - Verfahrweg- Ueberwachung 
+         - Verfahrweg- Ueberwachung
       *)
       IF ( bpSensorEinlauf ) THEN
         bpOutBereitZumAustransport := FALSE;
@@ -160,26 +157,26 @@ THEN
         steplVorabpositionieren := STEP_900_E;
       END_IF
 
-    (* GLAS POSITIONIEREN ====================*)
+    // GLAS POSITIONIEREN ====================
     STEP_110_E:
-      (*  Hinweis:
+      (* Hinweis:
          - Zum Anfang springen
       *)
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
         steplVorabpositionieren := STEP_1000_E;
       END_IF
 
-    (* GLAS VORPOSITIONIEREN ====================*)
+    // GLAS VORPOSITIONIEREN ====================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       bpFehler := TRUE;
 
-    (* GLAS VORPOSITIONIEREN ====================*)
+    // GLAS VORPOSITIONIEREN ====================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (* GLAS VORPOSITIONIEREN ====================*)
+  // GLAS VORPOSITIONIEREN ====================
 
   END_CASE
 ELSE

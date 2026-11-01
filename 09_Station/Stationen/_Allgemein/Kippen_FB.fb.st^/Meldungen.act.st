@@ -6,9 +6,9 @@
 }
 *)
 ACTION Meldungen
-(***************************************************************************************************)
-(* BAUSTEIN: AUSNAHMESITUATION *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AUSNAHMESITUATION
+//-------------------------------------------------------------------------------------------------
 IF ( bpPositionieren ) THEN
 
   IF ( bpSensorAuslaufVorgaenger ) THEN
@@ -25,9 +25,8 @@ IF ( bpPositionieren ) THEN
 
 END_IF
 
-(* Ausnahmesituation:
-   - Beide Sensoren belegt
-*)
+// Ausnahmesituation:
+//   - Beide Sensoren belegt
 IF ( NOT bpSensorNicht84Grad AND NOT bpSensorNicht90Grad ) AND ppParameterBaustein.bKippenMitSchuetz THEN
   bpFehler := TRUE;
   wpFehlerNr := cMELDUNG_KIPPEN_BEIDE_KIPPSENSOREN_BELEGT;
@@ -54,7 +53,7 @@ IF ( tonlFehlermeldungUnterdrueckenAntriebOK.Q ) THEN
 
     (* Hinweis:
        - Variablen zuruecksetzen
-    *)  
+    *)
     bpPositionieren   := FALSE;
     out_bKippen84Grad := FALSE;
     out_bKippen90Grad := FALSE;

@@ -6,9 +6,9 @@
 }
 *)
 ACTION Positionieren
-(***************************************************************************************************)
-(* AKTION: AUFKIPPEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: AUFKIPPEN
+//-------------------------------------------------------------------------------------------------
 IF ( bpPositionieren )THEN
   (* Fehlerbehandlung:
      - Kippantrieb
@@ -20,7 +20,7 @@ IF ( bpPositionieren )THEN
   END_IF
 
   CASE steplPositionieren OF
-    (* AUFKIPPEN  ================*)
+    // AUFKIPPEN  ================
     STEP_0_E:
       bpDone := FALSE;
 
@@ -34,9 +34,9 @@ IF ( bpPositionieren )THEN
         END_IF
       END_IF  
 
-    (* AUFKIPPEN ================*)
+    // AUFKIPPEN ================
     STEP_10_E:
-      (* Anmerkung
+      (* Anmerkung:
          - Einlauf- Auslauf- Sensoren duerfen nicht belegt sein beim Kippen
          - Geschwindigkeit muss in U/min angegeben werden
       *)
@@ -93,7 +93,7 @@ IF ( bpPositionieren )THEN
         steplPositionieren := STEP_900_E;
       END_IF
 
-    (* AUFKIPPEN ================*)
+    // AUFKIPPEN ================
     STEP_20_E:
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart:= KEINE_FUNKTION;
@@ -118,23 +118,23 @@ IF ( bpPositionieren )THEN
         steplPositionieren := STEP_900_E;
       END_IF
 
-    (* AUFKIPPEN ================*)
+    // AUFKIPPEN ================
     STEP_900_E:
       // Fehlerbehandlung
       IF NOT Antrieb.bpAntrieblaeuft THEN
         steplPositionieren := STEP_910_E;
       END_IF
 
-    (* AUFKIPPEN ================*)
+    // AUFKIPPEN ================
     STEP_910_E:
       // Fehlerbehandlung
       bpFehler := TRUE;
 
-    (* AUFKIPPEN ================*)
+    // AUFKIPPEN ================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (* AUFKIPPEN ================*)
+  // AUFKIPPEN ================
   END_CASE
 ELSE
   IF ( steplPositionieren > STEP_0_E ) THEN

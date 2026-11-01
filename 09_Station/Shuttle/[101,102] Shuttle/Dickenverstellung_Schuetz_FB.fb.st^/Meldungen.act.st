@@ -6,9 +6,8 @@
 }
 *)
 ACTION Meldungen
-(* Ausnahmesituation:
-   - Beide Sensoren belegt
-*)
+// Ausnahmesituation:
+//   - Beide Sensoren belegt
 IF ( NOT in_bVerstellungGeoeffnet AND NOT in_bVerstellungGeschlossen ) THEN
   bpFehler := TRUE;
   wpFehlerNr := cMELDUNG_HUB_BEIDE_HUBSENSOREN_BELEGT;
@@ -49,7 +48,7 @@ IF ( NOT in_bBremseOK ) THEN
   wpFehlerNr := cMELDUNG_HUB_BREMSE_NICHT_OK;
 
   (* Hinweis:
-    - Variablen zuruecksetzen
+     - Variablen zuruecksetzen
   *)
   bpVerstellungOeffnen       := FALSE;
   bpVerstellungSchliessen    := FALSE;
@@ -63,7 +62,7 @@ IF ( NOT in_bMotorstarter_OK OR NOT in_bSicherungMotorOK ) THEN
   wpFehlerNr := cMELDUNG_HUB_SICHERUNG_NICHT_OK;
 
   (* Hinweis:
-    - Variablen zuruecksetzen
+     - Variablen zuruecksetzen
   *)
   bpVerstellungOeffnen       := FALSE;
   bpVerstellungSchliessen    := FALSE;

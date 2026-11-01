@@ -6,23 +6,23 @@
 }
 *)
 ACTION Referenz
-(***************************************************************************************************)
-(* AKTION REFERENZIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION REFERENZIEREN
+//-------------------------------------------------------------------------------------------------
 IF ( blBetriebsartReferenz ) THEN
   CASE steplReferenz OF
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_0_E:
       BasisStationsParameter.bReferenzAbgeschlossen := FALSE;
 
       steplReferenz := STEP_10_E;
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_10_E:
       (* Hinweis:
-         - Nur Referenz fahren wenn keine Referenzierte Achse vorliegt, 
+         - Nur Referenz fahren wenn keine Referenzierte Achse vorliegt,
            ansonsten da Absolutgeber nur in Hand Referenzfahrt starten
-     *)
+      *)
       FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
         Wandverstellung[wlIndex].bpReferenz := NOT Wandverstellung[wlIndex].bpInReferenz;
       END_FOR
@@ -30,7 +30,7 @@ IF ( blBetriebsartReferenz ) THEN
 
       steplReferenz := STEP_20_E;
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_20_E:
       (* Hinweis:
          - Referenzieren des Bausteins abgeschlossen
@@ -46,7 +46,7 @@ IF ( blBetriebsartReferenz ) THEN
       END_IF
 
       (* Fehlerbehandlung:
-         -wandverstellung  
+         - -wandverstellung
       *)
       FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
         IF ( Wandverstellung[wlIndex].bpFehler ) THEN
@@ -56,15 +56,15 @@ IF ( blBetriebsartReferenz ) THEN
         END_IF
       END_FOR
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_1000_E:
       BasisStationsParameter.bReferenzAbgeschlossen := TRUE;
 
-  (*REFERENZ ===============================*)
+  // REFERENZ ===============================
   END_CASE
 ELSE
   IF ( steplReferenz > STEP_0_E ) THEN

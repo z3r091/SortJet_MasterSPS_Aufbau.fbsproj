@@ -6,18 +6,17 @@
 }
 *)
 ACTION Geblaese
-(***************************************************************************************************)
-(* AKTION GEBLÄSE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION GEBLÄSE
+//-------------------------------------------------------------------------------------------------
 
 
-(* Möglichkeit, dem MMI mitzuteilen, dass eine im Systemcheck erkannte Scheibe abgenommen wurde,
-   damit neue Scheiben zum abnehmen herausgefahren werden.
-   Sollte im Sys-Check eine Scheibe erkannt werden, wird der Abnahmeprozess nicht neu gestartet
-   und die Station meldet belegt, aber niemals mehr frei - einzige Lösung wäre STOP -> START
-   Um das zu vermeiden, hier 7 Sekunden lang den Taster gedrückt halten, um ein geforced Frei/Belegt zu
-   schicken!
-  *)
+// Möglichkeit, dem MMI mitzuteilen, dass eine im Systemcheck erkannte Scheibe abgenommen wurde,
+//   damit neue Scheiben zum abnehmen herausgefahren werden.
+//   Sollte im Sys-Check eine Scheibe erkannt werden, wird der Abnahmeprozess nicht neu gestartet
+//   und die Station meldet belegt, aber niemals mehr frei - einzige Lösung wäre STOP -> START
+//   Um das zu vermeiden, hier 7 Sekunden lang den Taster gedrückt halten, um ein geforced Frei/Belegt zu
+//   schicken!
 tonlQuittierungGlasAbgenommen( IN := in_bTasterQuittierungGlasAbgenommen OR in_bFussTaster, PT := T#7S );
 IF tonlQuittierungGlasAbgenommen.Q THEN
   BasisStationsParameter.bStationBelegt[cWAND_1] := (Glastransport.bpSensorEinlauf OR Glastransport.bpSensorAuslaufVorAb OR Glastransport.bpSensorAuslauf OR Glastransport.bpSensorEinlaufVorAb );
@@ -31,7 +30,7 @@ IF tonlQuittierungGlasAbgenommen.Q THEN
 END_IF
 
 (* Hinweis:
-   - Energiesparmodus: Geblaese bei laengerer Inaktivitaet ausschalten 
+   - Energiesparmodus: Geblaese bei laengerer Inaktivitaet ausschalten
 *)
 rtlGeblaese( CLK:=     BasisStationsParameter.bAnlegen
              OR BasisStationsParameter.bEintransport[cWAND_1]

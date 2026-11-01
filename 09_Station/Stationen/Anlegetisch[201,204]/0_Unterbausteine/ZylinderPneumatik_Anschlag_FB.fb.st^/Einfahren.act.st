@@ -6,16 +6,16 @@
 }
 *)
 ACTION Einfahren
-(***************************************************************************************************)
-(* AKTION: EINFAHREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: EINFAHREN
+//-------------------------------------------------------------------------------------------------
 IF ( bpStartEinfahren ) THEN
   CASE steplEinfahren OF
-    (*EINFAHREN =====================*)
+    // EINFAHREN =====================
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
-         - Zylinder ausfahren starten 
+         - Zylinder ausfahren starten
       *)
       bpDone := FALSE;
 
@@ -27,7 +27,7 @@ IF ( bpStartEinfahren ) THEN
         steplEinfahren := STEP_1000_E;
       END_IF
 
-    (*EINFAHREN =====================*)
+    // EINFAHREN =====================
     STEP_10_E:
       (* Hinweis:
          - Zylinder ausgefahren
@@ -51,15 +51,15 @@ IF ( bpStartEinfahren ) THEN
         steplEinfahren := STEP_900_E;
       END_IF
 
-    (*EINFAHREN =====================*)
+    // EINFAHREN =====================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*EINFAHREN =====================*)
+    // EINFAHREN =====================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*EINFAHREN =====================*)
+  // EINFAHREN =====================
   END_CASE
 
 ELSE

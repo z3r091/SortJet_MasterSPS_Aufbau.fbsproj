@@ -8,27 +8,27 @@
 FUNCTION ScheibenQuittierung : BOOL
 VAR_INPUT
 
-  (* WORD *)
+  // WORD
   wpQuellstation : WORD;
   wpZielStation  : WORD;
   wpQuellwand    : WORD := 1;
   wpZielwand     : WORD := 1;
   wpAuftragsTyp  : WORD := 0;
 
-  (* DWORD *)
+  // DWORD
   dwpWartezeit   : DWORD := 0;
 
 END_VAR
 
 VAR
 
-  (* BOOLEAN *)
+  // BOOLEAN
   blResult : BOOL := FALSE;
 
 END_VAR
-(***************************************************************************************************)
-(* FUNKTION: QUITTIEREN DER SCHEIBE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// FUNKTION: QUITTIEREN DER SCHEIBE
+//-------------------------------------------------------------------------------------------------
 
 wSps2MmiZielStation  := wpZielStation;
 wSps2MmiQuellStation := wpQuellstation;

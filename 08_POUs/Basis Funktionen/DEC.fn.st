@@ -16,7 +16,7 @@ END_VAR
 
 
 (* Hinweis:
-   - Funktion zum reduzieren der Eingangsvariablen X um 1. 
+   - Funktion zum reduzieren der Eingangsvariablen X um 1.
 *)
 DEC := iWert - iMinuend;
 END_FUNCTION

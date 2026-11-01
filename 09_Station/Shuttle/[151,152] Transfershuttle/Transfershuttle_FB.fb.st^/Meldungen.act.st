@@ -6,9 +6,9 @@
 }
 *)
 ACTION Meldungen
-(***************************************************************************************************)
-(* MELDUNGEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// MELDUNGEN
+//-------------------------------------------------------------------------------------------------
 (* Fehlerbehandlung:
    - Glastransport
 *)
@@ -28,9 +28,9 @@ END_IF
 
 
 
-(***************************************************************************************************)
-(* WTACHIO - MELDUNGEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// WTACHIO - MELDUNGEN
+//-------------------------------------------------------------------------------------------------
 
 wlWatchIONachrichtenNummer := BasisStationsParameter.stMKs.wMeldungsNummer;
 
@@ -38,9 +38,9 @@ wlWatchIONachrichtenNummer := BasisStationsParameter.stMKs.wMeldungsNummer;
 WatchIo( NOT in_bLeitungsschutz_Querfahrt_OK        ,wlWatchIONachrichtenNummer + 0 );
 WatchIoControl(T#5S, wlWatchIONachrichtenNummer + 1, ( NOT in_bDruckluftWartungseinheitOK));
 
-(* Querfahrt Meldungen *)
+// Querfahrt Meldungen
 WatchIoControl(T#5S, wlWatchIONachrichtenNummer + 3, ( Querfahrt.Antrieb.bpFreigabe AND NOT Querfahrt.Antrieb.bpReglerBereit));
-(* Glastransport Meldungen *)
+// Glastransport Meldungen
 IF NOT BasisStationsParameter.stMKs.stStationsOptionen.stTransfershuttle.bTransferShuttleMitUltraschallSensoren THEN
   WatchIoControl(T#5S, wlWatchIONachrichtenNummer + 4,( Glastransport.out_bScheibenKontrolleEinlaufSeiteEinschalten AND NOT Glastransport.blDruckluftEinlaufSeiteOK));
   WatchIoControl(T#5S, wlWatchIONachrichtenNummer + 5,( Glastransport.out_bScheibenKontrolleAuslaufSeiteEinschalten AND NOT Glastransport.blDruckluftAuslaufSeiteOK));
@@ -53,10 +53,10 @@ WatchIoControl(T#5S, wlWatchIONachrichtenNummer + 10, (Glastransport.out_bShuttl
 WatchIoControl(T#5S, wlWatchIONachrichtenNummer + 11, (NOT Glastransport.out_bShuttleAnheben AND NOT Glastransport.blSensorGlastransportUnten));
 WatchIo( Zentralschmierung.bpFehler OR Zentralschmierung.blFettLeer ,wlWatchIONachrichtenNummer + 12 );
 
-(* Querfahrt Meldungen *)
+// Querfahrt Meldungen
 WatchIo((Querfahrt.Antrieb.bpMinSchalterBelegt OR Querfahrt.Antrieb.bpMaxSchalterBelegt), wlWatchIONachrichtenNummer + 17);
 WatchIo(NOT Querfahrt.Antrieb.bpIstReferenziert, wlWatchIONachrichtenNummer + 18);
-(* Glastransport Meldungen *)
+// Glastransport Meldungen
 WatchIo( Glastransport.blMeldungAuslaufAbfrageBelegt, wlWatchIONachrichtenNummer + 19 );
 WatchIo( Glastransport.blMeldungEinlaufAbfrageBelegt, wlWatchIONachrichtenNummer + 20 );
 

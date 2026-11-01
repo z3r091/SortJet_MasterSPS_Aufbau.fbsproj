@@ -19,7 +19,7 @@ VAR_OUTPUT
   // BOOL
   bpAnforderungSKGestellt                    : BOOL;
   bpStationenBlocken                         : BOOL;
-  bpSicherheitskreisGeschlossen              : BOOL; (* Hinweis: [Zeitverzoegert 2 Sekunden] Variable gibt an ob der Sicherheitskreisgeschlossen ist *)
+  bpSicherheitskreisGeschlossen              : BOOL; // Hinweis: [Zeitverzoegert 2 Sekunden] Variable gibt an ob der Sicherheitskreisgeschlossen ist
   bpFreigabeZumBetretenDesSicherheitskreises : BOOL;
   bpFreigabeSafetyAusloesen                  : BOOL;
   bpFreigabeTuerenOeffnen                    : BOOL;
@@ -39,9 +39,9 @@ VAR
   tonlSKGeschlossen       : TON;
 
 END_VAR
-(***************************************************************************************************)
-(* BAUSTEIN: TIMER  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: TIMER
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Ueberwachung das der Sicherheitskreis wirklich geschlossen meldet
 *)
@@ -51,12 +51,12 @@ tonlSKFreigabe(IN := bpFreigabeZumBetretenDesSicherheitskreises, PT := T#2S);
 bpFreigabeTuerenOeffnen   := NOT bpSicherheitskreisGeschlossenSafety;//AND bpFreigabeZumBetretenDesSicherheitskreises;
 bpFreigabeSafetyAusloesen := tonlSKFreigabe.Q;
 
-(***************************************************************************************************)
-(* BAUSTEIN: STEUERUNG SICHERHEITSKREIS *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: STEUERUNG SICHERHEITSKREIS
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
-   - Anforderung zum betreten des SK  
+   - Anforderung zum betreten des SK
 *)
 bpAnforderungSKGestellt := bpAnforderungSicherheitkreisAusloesen;
 
@@ -75,7 +75,7 @@ IF ftlAnforderung.Q THEN
 END_IF
 
 (* Hinweis:
-   - Sicherheitskreis wieder schließen und zurücksetzen 
+   - Sicherheitskreis wieder schließen und zurücksetzen
 *)
 rtlSKGeschlossen(CLK := bpSicherheitskreisGeschlossenSafety );
 
@@ -84,12 +84,12 @@ IF ( rtlSKGeschlossen.Q ) THEN
   bpFreigabeZumBetretenDesSicherheitskreises := FALSE;
 END_IF
 
-(***************************************************************************************************)
-(* BAUSTEIN: AUSGAENGE *)
-(**************************** ***********************************************************************)
+// *************************************************************************************************
+// BAUSTEIN: AUSGAENGE
+// *************************** **********************************************************************
 (* Hinweis:
    - Ausgaenge
 *)
 bpStationenBlocken                  := ( bpAnforderungSKGestellt OR NOT bpSicherheitskreisGeschlossen );
-bpSicherheitskreisGeschlossen       := tonlSKGeschlossen.Q; (* Die Stationen dürfen erst aktiv werden, wenn alle Regler durchgeschaltet haben *)
+bpSicherheitskreisGeschlossen       := tonlSKGeschlossen.Q; // Die Stationen dürfen erst aktiv werden, wenn alle Regler durchgeschaltet haben
 END_FUNCTION_BLOCK

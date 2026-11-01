@@ -6,12 +6,12 @@
 }
 *)
 ACTION VerstellungSchliessen
-(******************************************************************************)
-(* AKTION: HEBEN [ HUB AUF] *)
-(******************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: HEBEN [ HUB AUF]
+//-------------------------------------------------------------------------------------------------
 IF ( bpVerstellungSchliessen AND NOT bpVerstellungOeffnen ) THEN
   CASE steplVerstellungSchliessen OF
-    (*AUFHub =================================*)
+    // AUFHub =================================
     STEP_0_E:
       IF ( in_bVerstellungGeschlossen ) THEN
         out_bVerstellungSchliessen := TRUE;
@@ -21,14 +21,14 @@ IF ( bpVerstellungSchliessen AND NOT bpVerstellungOeffnen ) THEN
         steplVerstellungSchliessen := STEP_1000_E;
       END_IF
 
-    (*AUFHub =================================*)
+    // AUFHub =================================
     STEP_10_E:
       IF ( NOT in_bVerstellungGeschlossen ) THEN
         out_bVerstellungSchliessen := FALSE;
         steplVerstellungSchliessen := STEP_1000_E;
       END_IF
 
-      (* Ausnahmefehler
+      (* Ausnahmefehler:
       *)
       IF ( tonlMaxWarteZeit.Q ) THEN
         wpFehlerNr := cMELDUNG_HUB_NICHT_GEHOBEN;
@@ -37,15 +37,15 @@ IF ( bpVerstellungSchliessen AND NOT bpVerstellungOeffnen ) THEN
         steplVerstellungSchliessen := STEP_900_E;
       END_IF
 
-    (*AUFHub =================================*)
+    // AUFHub =================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*AUFHub =================================*)
+    // AUFHub =================================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*AUFHub =================================*)
+  // AUFHub =================================
   END_CASE
 END_IF
 

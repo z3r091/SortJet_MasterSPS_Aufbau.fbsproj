@@ -6,11 +6,11 @@
 }
 *)
 ACTION AnzeigeIOs
-(***************************************************************************************************)
-(* AKTION: ANZEIGE DER SPS I/O  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: ANZEIGE DER SPS I/O
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   - Anzeige der IO´s im MMI Service  WORT 0: 1 = sichtbar / 0 = unsichtbar 
+   - Anzeige der IO´s im MMI Service  WORT 0: 1 = sichtbar / 0 = unsichtbar
 *)
 IF ( M_SB0_MMI_IOANZEIGE_AKTIVIEREN_DEAKTIVIEREN ) THEN
   M_SB0_MMI_IOANZEIGE_AKTIVIEREN_DEAKTIVIEREN := FALSE;

@@ -35,23 +35,23 @@ VAR_GLOBAL
   bgVISUAnschlaegeAuf                        : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
   bgVISUAnschlaegeAb                         : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
 
-(* Hicham Aenderung vom 25.05.2022: Neue Visu Variablen fuer Handfunktion*)
-  bgVISUHubrahmenAuf_Ebene1                  : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   (* Um die zylinder 1 zu steuern: Heben  Ebene 1*)
-  bgVISUHubrahmenAb_Ebene1                   : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   (* Um die zylinder 1 zu steuern: Senken Ebene 1*)
-  bgVISUHubrahmenAuf_Ebene2                  : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   (* Um die zylinder 2 zu steuern: Heben  Ebene 2*)
-  bgVISUHubrahmenAb_Ebene2                   : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   (* Um die zylinder 2 zu steuern: Senken Ebene 2*)
+// Hicham Aenderung vom 25.05.2022: Neue Visu Variablen fuer Handfunktion
+  bgVISUHubrahmenAuf_Ebene1                  : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   // Um die zylinder 1 zu steuern: Heben  Ebene 1
+  bgVISUHubrahmenAb_Ebene1                   : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   // Um die zylinder 1 zu steuern: Senken Ebene 1
+  bgVISUHubrahmenAuf_Ebene2                  : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   // Um die zylinder 2 zu steuern: Heben  Ebene 2
+  bgVISUHubrahmenAb_Ebene2                   : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   // Um die zylinder 2 zu steuern: Senken Ebene 2
 
   bgVISUTransportsperreRunter                : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
   bgVISUTransportsperreHoch                  : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
 
   bgVISUZentralschmierungStarten             : ARRAY[cERSTES_SHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
 
-  (* HANDFUNKTIONEN: HOEHENKONTROLLE *)
+  // HANDFUNKTIONEN: HOEHENKONTROLLE
   bgVISUHoehenkontrolleVor                   : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
   bgVISUHoehenkontrolleZurueck               : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
   bgVISUHoehenkontrolleReferenz              : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
 
-  (* HANDFUNKTIONEN: DREHEN *)
+  // HANDFUNKTIONEN: DREHEN
   bgVISUDrehen0Grad                          : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
   bgVISUDrehen90Grad                         : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
   bgVISUDrehen180Grad                        : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
@@ -59,7 +59,7 @@ VAR_GLOBAL
   bgVISUDrehenWechsel                        : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
   bgVISUDrehenReferenz                       : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
 
-  (* HANDFUNKTIONEN: KIPPEN *)
+  // HANDFUNKTIONEN: KIPPEN
   bgVISUKippen_0_Grad                        : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
   bgVISUKippen_1_5_Grad                      : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
   bgVISUKippen_90_Grad                       : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
@@ -80,7 +80,7 @@ VAR_GLOBAL
   bgVISUKippenUebergabePosition              : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
   bgVISUKippenReferenz                       : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
 
-  (* HANDFUNKTIONEN: HUB WAND 1 *)
+  // HANDFUNKTIONEN: HUB WAND 1
   bgVISUHubW1Auf                             : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
   bgVISUHubW1Ab                              : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
   bgVISUHubW1Referenz                        : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
@@ -90,7 +90,7 @@ VAR_GLOBAL
   bgVISUZylinder1Ausfahren                   : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
   bgVISUZylinder2Ausfahren                   : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
 
-  (* HANDFUNKTIONEN: HUB ALLGEMEIN *)
+  // HANDFUNKTIONEN: HUB ALLGEMEIN
   bgVISUHubPositionW1                        : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
   bgVISUHubPositionW2                        : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
   bgVISUHubPositionNachfolger                : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;
@@ -110,7 +110,7 @@ VAR_GLOBAL
   bgVISUZentrierbolzenEinfahren              : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
   bgVISUZentrierbolzenAusfahren              : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
 
-  (* Transfershuttle (TFS) *)
+  // Transfershuttle (TFS)
   wgVISUAuswahlTransferShuttle               : WORD := 151;
   bgVisuTFSRiemenAnheben                     : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
   bgVisuTFSRiemenSenken                      : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
@@ -129,7 +129,7 @@ VAR_GLOBAL
   bgVisuTFSQuerfahrtReferenz                 : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
   bgVisuTFSZentralschmierungStarten          : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
 
-  (* HANDFUNKTIONEN: FAECHERWAGEN *)
+  // HANDFUNKTIONEN: FAECHERWAGEN
   bgVISUFWEntriegelungEinfahren              : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
   bgVISUFWEntriegelungAusfahren              : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
   bgVISUFWGreiferEinfahren                   : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
@@ -166,7 +166,7 @@ VAR_GLOBAL
   bgVISU_EINLAUFSENSOR_STATION_2      : BOOL;
   bgVISU_AUSLAUFSENSOR_STATION_2      : BOOL;
 
-  (*Antriebsraddurchmesser berechenen*)
+  // Antriebsraddurchmesser berechenen
 
   biDurchmesserIst                    : REAL := 0;
   biDurchmesserSoll                   : REAL := 0;

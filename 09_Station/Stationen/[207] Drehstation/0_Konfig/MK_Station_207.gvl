@@ -9,9 +9,9 @@
 NAMESPACE MK_Station_207
 VAR_GLOBAL
 
-(***************************************************************************************************)
-(* MASCHINEPARAMETER: DREHSTATION *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// MASCHINEPARAMETER: DREHSTATION
+//-------------------------------------------------------------------------------------------------
 
   apgMKStation207 : Parameter_Station:=
     (
@@ -94,13 +94,13 @@ VAR_GLOBAL
                                               ),
       // stFremdanlage
       stGlasdaten                           := [(
-                                                 rlMinGlasLaenge                  := 350,  (* minimal zulässige GlasLänge *)
-                                                 rlMaxGlasLaenge                  := 2550, (* maximal zulässige GlasLänge *)
-                                                 rlMinGlasHoehe                   := 250,  (* minimal zulässige GlasHöhe *)
-                                                 rlMaxGlasHoehe                   := 1800, (* maximal zulässige GlasHöhe *)
-                                                 rlMinGlasDicke                  := 0.5,  (* minimal zulässige GlasDicke *)
+                                                 rlMinGlasLaenge                  := 350,  // minimal zulässige GlasLänge
+                                                 rlMaxGlasLaenge                  := 2550, // maximal zulässige GlasLänge
+                                                 rlMinGlasHoehe                   := 250,  // minimal zulässige GlasHöhe
+                                                 rlMaxGlasHoehe                   := 1800, // maximal zulässige GlasHöhe
+                                                 rlMinGlasDicke                  := 0.5,  // minimal zulässige GlasDicke
                                                  rlMaxGlasDicke                  := 13,
-                                                 rlLaengeMaxGlas                  := 0.0    (* maximal zulässige GlasDicke *) 
+                                                 rlLaengeMaxGlas                  := 0.0    // maximal zulässige GlasDicke 
                                                )]
       // astShuttleAnhaltenQuellen
     );

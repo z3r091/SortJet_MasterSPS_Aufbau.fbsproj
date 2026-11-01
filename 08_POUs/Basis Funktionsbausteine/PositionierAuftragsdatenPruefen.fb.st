@@ -8,16 +8,16 @@
 FUNCTION_BLOCK PositionierAuftragsdatenPruefen
 VAR_INPUT
 
-  (* STRUCT *)
-  pPositionierAuftragsdaten  : PositionierAuftrag_ST; (* Daten fur die Positionierung [Rampen / Soll- Position / Soll- Geschwindigkeit / Stromwerte *)
+  // STRUCT
+  pPositionierAuftragsdaten  : PositionierAuftrag_ST; // Daten fur die Positionierung [Rampen / Soll- Position / Soll- Geschwindigkeit / Stromwerte
   pAntriebsinformationen     : AntriebsInformationen;
 
 END_VAR
 
 VAR_OUTPUT
 
-  (* BOOLEAN *)
-  bpErgebnis  : BOOL; (* Rueckgabewert der Funktion *)
+  // BOOLEAN
+  bpErgebnis  : BOOL; // Rueckgabewert der Funktion
 
 END_VAR
 

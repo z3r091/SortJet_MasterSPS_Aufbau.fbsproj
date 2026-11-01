@@ -6,13 +6,13 @@
 }
 *)
 ACTION Abnehmen
-(***************************************************************************************************)
-(* ABNEHMEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// ABNEHMEN
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bAbnehmen
      AND blBetriebsartAutomatik )
 THEN
-  (* Fehlerbehandlung
+  (* Fehlerbehandlung:
      - Kippen
   *)
   IF ( Kippen.bpFehler ) THEN
@@ -22,7 +22,7 @@ THEN
   END_IF
   
   CASE steplAbnehmen OF
-    (* ABNEHMEN =====================*)
+    // ABNEHMEN =====================
     STEP_0_E:
       (* Hinweis:
          - Freigabe durch Quittierten Si-Kreis da ?
@@ -35,7 +35,7 @@ THEN
         steplAbnehmen := STEP_10_E;
       END_IF
 
-    (* ABNEHMEN =====================*)
+    // ABNEHMEN =====================
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob das Geblase aktiv ist
@@ -52,7 +52,7 @@ THEN
 
       END_IF
 
-    (* ABNEHMEN =====================*)
+    // ABNEHMEN =====================
     STEP_20_E:
       IF ( NOT Kippen.bpFehler ) THEN
         out_bDrosselklappeOeffnen := TRUE;
@@ -67,12 +67,11 @@ THEN
         steplAbnehmen := STEP_900_E;
       END_IF
 
-    (* ABNEHMEN =====================*)
+    // ABNEHMEN =====================
     STEP_30_E:
-      (* Zentrierleiste verfahren
-         - Nach einem Notaus bzw. Stop fehlen die Auftragsdaten somit wuerde die Leiste nur die Abstandverfahren.
-           Deshalb wird beim SystemCheck die Zentrierleiste ganz hoch gefahren 
-      *)
+      // Zentrierleiste verfahren
+      //   - Nach einem Notaus bzw. Stop fehlen die Auftragsdaten somit wuerde die Leiste nur die Abstandverfahren.
+      //     Deshalb wird beim SystemCheck die Zentrierleiste ganz hoch gefahren
       IF ( Kippen.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1]) THEN
         out_bDrosselklappeOeffnen := FALSE;
         Kippen.bpPositionieren := FALSE;
@@ -83,7 +82,7 @@ THEN
         steplAbnehmen := STEP_50_E;
       END_IF
 
-    (* ABNEHMEN =====================*)
+    // ABNEHMEN =====================
     STEP_50_E:
       out_bAmpelSignalGruen                  := gbFlashbit05sec;
       out_bSignalScheibeAbnehmen             := gbFlashbit05sec;
@@ -91,11 +90,11 @@ THEN
       (* Hinweis:
          - Erst die Lichtschranke unterbrechen und zur Station gehen
       *)
-      IF ( tonlFreigabeErhalten.Q ) THEN (* NOT *)
+      IF ( tonlFreigabeErhalten.Q ) THEN // NOT
         steplAbnehmen := STEP_60_E;
       END_IF
 
-    (* ABNEHMEN =====================*)
+    // ABNEHMEN =====================
     STEP_60_E:
       out_bAmpelSignalGruen                  := gbFlashbit05sec;
       out_bSignalScheibeAbnehmen             := gbFlashbit05sec;
@@ -119,7 +118,7 @@ THEN
         END_IF
       END_IF
 
-    (* ABNEHMEN =====================*)
+    // ABNEHMEN =====================
     STEP_70_E:
     
       out_bSignalScheibeGlasbruch := FALSE;
@@ -130,17 +129,17 @@ THEN
         steplAbnehmen := STEP_60_E;
       END_IF
 
-    (* ABNEHMEN =====================*)
+    // ABNEHMEN =====================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       Messachse.bpPositionierung     := FALSE;
       Kippen.bpPositionieren         := FALSE; 
 
-    (* ABNEHMEN =====================*)
+    // ABNEHMEN =====================
     STEP_1000_E:
       BasisStationsParameter.bAbnehmenAbgeschlossen := TRUE;
 
-  (* ABNEHMEN =====================*)
+  // ABNEHMEN =====================
   END_CASE
 ELSE
   IF (steplAbnehmen > STEP_0_E) THEN

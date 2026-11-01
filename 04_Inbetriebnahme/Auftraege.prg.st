@@ -9,7 +9,7 @@ PROGRAM Auftraege
 
 VAR_INPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bgInbetriebnahmeAblaeufe                   : BOOL;
   bgInbetriebnahmeAnlegeAuftrag              : BOOL;
   bgInbetriebnahmeStationsauftrag            : BOOL;
@@ -74,8 +74,8 @@ VAR_INPUT
   rlVortransportSollPosition_TS2                    : REAL := 0;
 
 
-  (* Hinweis
-     - Buttons \ Textfields Quittierung 
+  (* Hinweis:
+     - Buttons \ Textfields Quittierung
   *)
   wgGlasSender,
   wgGlasEmpfaenger,
@@ -118,45 +118,45 @@ VAR_INPUT
   bgShuttleAuswahl_158 : BOOL;
 
 END_VAR
-(***************************************************************************************************)
-(* AKTION: INBETRIEBNAHME *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: INBETRIEBNAHME
+//-------------------------------------------------------------------------------------------------
 IF ( bgInbetriebnahmeAblaeufe ) THEN
 
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   //  AKTION QUITTIERUNG VON SCHEIBEN
-  //         
+  //
   //  Hinweis:
-  // - Generieren einer Scheiben-Quittierung 
-  // ---------------------------------------------------------------------------------------*)
+  // - Generieren einer Scheiben-Quittierung
+  // ---------------------------------------------------------------------------------------
   Quittierung_Stationen();
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   //  AKTION STATIONSAUFTRAEGE
-  //         
+  //
   //  Hinweis:
   // - Generieren von Auftraegen fuer die Stationen
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
   Auftraege_Stationen_Generieren();
 
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   //  AKTION SHUTTLESAUFTRAEGE
-  //         
+  //
   //  Hinweis:
   // - Generieren von Auftraegen fuer die Shuttle
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
   Auftraege_Shuttle_Generieren();
 
 
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   //  ANLEGE AUFTRAG
-  //         
+  //
   //  Hinweis:
   // - Anlegeauftrag => M_SB0_MMI_SortierungInputInQueue
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
   IF ( bgInbetriebnahmeAnlegeAuftrag )  THEN
 
     bgInbetriebnahmeAnlegeAuftrag := FALSE;
@@ -179,20 +179,19 @@ IF ( bgInbetriebnahmeAblaeufe ) THEN
 
 
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   //  STATIONS AUFTRAG
-  //         
+  //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
 
   IF ( bgInbetriebnahmeStationsauftrag ) THEN
 
     bgInbetriebnahmeStationsauftrag := FALSE;
 
-    (* Variable
-       - Abnullen
-    *)
+    // Variable
+    //   - Abnullen
     tMmi2SpsInfo.wErsteLetzteScheibe := WORD#0;
 
     tMmi2SpsInfo.wStationsNr           := wlInbetriebnahmeStationsnummer;
@@ -216,7 +215,7 @@ IF ( bgInbetriebnahmeAblaeufe ) THEN
     tMmi2SpsInfo.wAuftragsTyp.1               := bgButtonStationLeer;
 
     (* Hinweis:
-       - Sender Wand | Ebene | etc.  entladen 
+       - Sender Wand | Ebene | etc.  entladen
          => Bezieht sich nicht auf die ganze Station
     *)
     tMmi2SpsInfo.wAuftragsTyp.7               := bgButtonSenderWandEntladen;
@@ -226,12 +225,12 @@ IF ( bgInbetriebnahmeAblaeufe ) THEN
   END_IF
 
 
-  (* ---------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------
   //  SHUTTLE AUFTRAG
-  //         
+  //
   //  Hinweis:
   // - n/c
-  // ---------------------------------------------------------------------------------------*)
+  // ---------------------------------------------------------------------------------------
   (* Hinweis:
      - Shuttle- Verfahren
   *)
@@ -257,9 +256,8 @@ IF ( bgInbetriebnahmeAblaeufe ) THEN
 
     bgInbetriebnahmeShuttelAuftrag := FALSE;
 
-    (* Variable
-       - Abnullen
-    *)
+    // Variable
+    //   - Abnullen
     tMmi2SpsInfo.wErsteLetzteScheibe := WORD#0;
 
     (* Hinweis:
@@ -303,7 +301,7 @@ IF ( bgInbetriebnahmeAblaeufe ) THEN
     tMmi2SpsInfo.wAuftragsTyp.1               := bgButtonStationLeer;
 
     (* Hinweis:
-       - Sender Wand | Ebene | etc.  entladen 
+       - Sender Wand | Ebene | etc.  entladen
          => Bezieht sich nicht auf die ganze Station
     *)
     tMmi2SpsInfo.wAuftragsTyp.7               := bgButtonSenderWandEntladen;

@@ -6,9 +6,9 @@
 }
 *)
 ACTION Betriebsart
-(***************************************************************************************************)
-(* S T A R T - Betriebsart festlegen *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// S T A R T - Betriebsart festlegen
+//-------------------------------------------------------------------------------------------------
 
 wlBetriebsart.0 := BasisStationsParameter.bReset;
 wlBetriebsart.1 := BasisStationsParameter.bCheck;
@@ -40,15 +40,13 @@ CASE wlBetriebsart OF
 
   ELSE
 
-    (*
-      Nicht unterstützte Betriebsart 
-    *)
+    //  Nicht unterstützte Betriebsart
     BasisStationsParameter.wFehlerNummer := cMELDUNG_UNGUELTIGE_BETRIEBSART;
     BasisStationsParameter.bFehler := TRUE;
 
 END_CASE
 
-(***************************************************************************************************)
-(* E N D E - Betriebsart festlegen *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// E N D E - Betriebsart festlegen
+//-------------------------------------------------------------------------------------------------
 END_ACTION

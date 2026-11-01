@@ -83,7 +83,7 @@ VAR
 END_VAR
 VAR
 
-  (* HARDWARE EINGAENGE *)
+  // HARDWARE EINGAENGE
   in_bMotorschutzschalter_OK           AT %I* : BOOL; 
   in_bLeitungsschutzschalterBremseOK   AT %I* : BOOL;
   in_bMotorstarter_OK           : BOOL;
@@ -91,16 +91,16 @@ VAR
   in_bSensorNicht84Grad         : BOOL;
                                       
                                       
-  (* HARDWARE AUSGAENGE *)            
+  // HARDWARE AUSGAENGE
   out_bKippenAbSetzen           : BOOL;
   out_bKippenAufSetzen          : BOOL;
   out_bBremseLoesen             : BOOL;
   out_bReset                    : BOOL;
 
 END_VAR
-(***************************************************************************************************)
-(* INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus ) THEN
 
   IF ( __ISVALIDREF(ppAntriebsInformationen) ) THEN
@@ -140,9 +140,9 @@ END_IF
 Antrieb.bpEndschalterMaxExtern := in_bSensorNicht90Grad;
 Antrieb.bpEndschalterMinExtern := in_bSensorNicht84Grad;
 
-(***************************************************************************************************)
-(* DEAKTIVIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEAKTIVIEREN
+//-------------------------------------------------------------------------------------------------
 
 IF ( NOT bpAktivieren ) THEN
   bpDone     := TRUE;
@@ -165,9 +165,9 @@ IF ( NOT bpAktivieren ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* TIMER *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// TIMER
+//-------------------------------------------------------------------------------------------------
 // Reset- Ueberwachung
 tonlMaxWarteAufResetErfolgreich(IN := bpReset, pt := tgMaxWartezeitReset-T#1S);
 tonlSensorEinlauf( IN := bpSensorEinlauf , pt := T#200MS );
@@ -180,9 +180,9 @@ tonlMaxWarteZeit(IN:=(    ( bpStartAbKippen AND out_bKippenAbSetzen )
                        OR ( bpStartAufKippen AND out_bKippenAufSetzen ) ),
                   PT:= ppParameterBaustein.tZeitlicheUeberwachungKippen );
 
-(***************************************************************************************************)
-(* AKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 Meldungen();
 Ausgaenge();
 Reset();

@@ -6,14 +6,14 @@
 }
 *)
 ACTION Start
-(***************************************************************************************************)
-(* AKTION: GEBLAESE STARTEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: GEBLAESE STARTEN
+//-------------------------------------------------------------------------------------------------
 IF (  bpStart
      AND NOT bpReset )
 THEN
   CASE steplStart OF
-    (*START =================================*)
+    // START =================================
     STEP_0_E:
       bpDone := FALSE;
 
@@ -21,27 +21,27 @@ THEN
         steplStart := STEP_10_E;
       END_IF
 
-    (*START =================================*)
+    // START =================================
     STEP_10_E:
       IF ( NOT toflWarteAufWiederAnlauf.Q ) THEN
         steplStart := STEP_20_E;
       END_IF
 
-    (*START =================================*)
+    // START =================================
     STEP_20_E:
       IF ( tonlStartGeblaese.Q ) THEN
         out_bStarteGeblaese := TRUE;
         steplStart := STEP_30_E;
       END_IF
 
-    (*START =================================*)
+    // START =================================
     STEP_30_E:
       (* Hinweis:
          - Geblaese gestartet
       *)
       bpDone := tonlWarteAufGeblaeseLaeuft.Q;
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Motorschutzschalter
       *)
       IF ( NOT toflMotorschutz.Q ) THEN
@@ -50,19 +50,19 @@ THEN
         steplStart := STEP_900_E;
       END_IF
 
-    (*START =================================*)
+    // START =================================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       bpFehler := TRUE;
 
-  (*START =================================*)
+  // START =================================
   END_CASE
 
 ELSE
 
   (* Hinweis:
-     - Reset wegen Abbruch der Schrittkette 
+     - Reset wegen Abbruch der Schrittkette
   *)
   IF ( steplStart > STEP_0_E ) THEN
     bpDone := FALSE;

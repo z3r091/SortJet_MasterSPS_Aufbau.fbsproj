@@ -7,38 +7,38 @@
 *)
 TYPE Fehlerkategorien_EN :
 (
-  (* KATEGORIE BETRIEBSARTEN *)
+  // KATEGORIE BETRIEBSARTEN
   eFehler_KeineKategorie         := 0,
 
-  (* KATEGORIE STATIONEN *)
+  // KATEGORIE STATIONEN
   eFehler_Station                := 10,
 
-  (* KATEGORIE SCHNITTELLE *)
+  // KATEGORIE SCHNITTELLE
   eFehler_Schnittstelle          := 20,
 
-  (* KATEGORIE ANTRIEB *)
+  // KATEGORIE ANTRIEB
   eFehler_Sew_MoviDrive          := 50,
   eFehler_Sew_MoviTrac           := 51,
   eFehler_Antrieb                := 54,
   eFehler_Rexroth_Fehler         := 60, // Benutzt 60, 62, 63, 64, 66, 67, 68, 100, 164, 191, 196
   eFehler_Rexroth_Warnung        := 70, // Benutzt 72, 73, 74, 78, 201
 
-  (* KATEGORIE SONDERFAELLE *)
+  // KATEGORIE SONDERFAELLE
   eFehler_Mmi                    := 101,
   eFehler_Debug                  := 110,
 
-  (* KATEGORIE ISO- LINIE *)
+  // KATEGORIE ISO- LINIE
   eFehler_ISOLINIE               := 200,
 
-  (* KATEGORIE VERFAHRÜBERWACHUNG *)
+  // KATEGORIE VERFAHRÜBERWACHUNG
   eFehler_Verfahrueberwachung    := 250,
 
-  (* KATEGORIE Safety *)
+  // KATEGORIE Safety
   eFehler_Safety_Allgemein       := 150,
   eFehler_Safety_Phoenix_Devices := 151,
   eFehler_Safety_Schmersal       := 152,
 
-  (* KATEGORIE SBT *)
+  // KATEGORIE SBT
   eFehler_SBT_Allgemein         := 300,
   eFehler_SBT_Devices           := 301
 

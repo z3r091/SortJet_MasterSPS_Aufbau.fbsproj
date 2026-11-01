@@ -19,10 +19,10 @@ wlByteIndex := wpControlIndex / 8;
 wlBitIndex  := wpControlIndex MOD 8;
 
 
-(* Überwachung deaktivieren *)
+// Überwachung deaktivieren
 aicgIoControl[ wpControlIndex ].tWatchStart := T#0ms;
 
-(* Meldungsbit zurücksetzen *)
+// Meldungsbit zurücksetzen
 ucValue := TCPMain.l_fb_SortjetHMI.SpsToMmi.aucControlSystem[ wlByteIndex ];
 ucValue := SetBitStatus( ucValue, wlBitIndex, FALSE );
 TCPMain.l_fb_SortjetHMI.SpsToMmi.aucControlSystem[ wlByteIndex ] := ucValue;

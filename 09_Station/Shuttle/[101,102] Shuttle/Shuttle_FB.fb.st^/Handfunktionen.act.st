@@ -6,17 +6,16 @@
 }
 *)
 ACTION Handfunktionen
-(***************************************************************************************************)
-(* AKTION HANDBETRIEB *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION HANDBETRIEB
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Bitverteilung aus der Oberfläche:
 *)
 IF ( blBetriebsartHand ) THEN
 
-  (* Handfunktion:
-     - Gebläse an / aus 
-  *)
+  // Handfunktion:
+  //   - Gebläse an / aus
   FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
 
     toflGeblaeseHandfahren[wlIndex]( IN := (    Glastransport[wlIndex].bpHandfahrenPlus
@@ -36,9 +35,8 @@ IF ( blBetriebsartHand ) THEN
 
   END_FOR
 
-  (* Handfunktion:
-     - Glastransport vor / zurück
-  *)
+  // Handfunktion:
+  //   - Glastransport vor / zurück
   FOR i := 0 TO 31 DO
     aHand[i] := (dwlHandfunktionen AND SHL(DWORD#1, i)) <> 0;
   END_FOR
@@ -59,7 +57,7 @@ IF ( blBetriebsartHand ) THEN
                                                (    aHand[(wlIndex - 1) * 2 + 1]
                                                  OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, wlIndex] );
 
-    (* Arrays müssen existieren: bgVISUGlastransportWOeffnungMinimal[], Mittel[], Maximal[] *)
+    // Arrays müssen existieren: bgVISUGlastransportWOeffnungMinimal[], Mittel[], Maximal[]
   
     IF (     ( aHand[21 + (wlIndex - 1) * 2]
                OR bgVISUGlastransportOeffnungMinimal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, wlIndex] )
@@ -86,9 +84,8 @@ IF ( blBetriebsartHand ) THEN
 
   END_FOR
 
-  (* Handfunktion:
-     - Kippen 
-  *)
+  // Handfunktion:
+  //   - Kippen
   
   IF (( dwlHandfunktionen.5
         OR bgVISUKippen_90_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
@@ -127,74 +124,70 @@ IF ( blBetriebsartHand ) THEN
   END_IF
 
 
-  (* Handfunktionen [Kippen]:
-     - Positionieren auf Uebergabepositionen [Senkrecht 90 Grad / Waagerecht 0 Grad]
-     - Referenzieren
-  *)
-  (*
-  IF ((  dwlHandfunktionen.6
-      OR bgVISUKippenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-      AND NOT (   dwlHandfunktionen.4
-               OR dwlHandfunktionen.5
-                 OR dwlHandfunktionen.3
-                 OR bgVISUKippen_84_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-                 OR bgVISUKippen_90_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-                 OR bgVISUKippen_0_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-               OR bgVISUKippenUebergabePosition[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-               OR bgVISUKippenGrundstellung[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )))
-  THEN
-  
-    Kippen.bpReferenz := TRUE;
-  
-  ELSIF (( dwlHandfunktionen.5
-        OR bgVISUKippen_84_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-        AND NOT (   dwlHandfunktionen.4
-                 OR dwlHandfunktionen.6
-                 OR dwlHandfunktionen.3
-                 OR bgVISUKippen_0_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-                 OR bgVISUKippen_90_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-                 OR bgVISUKippenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]))
-  THEN
-  
-    Kippen.epZielPosition := eKippen_Position_84Grad;
-    Kippen.bpPositionieren := TRUE;
-  
-  ELSIF (( dwlHandfunktionen.4
-        OR bgVISUKippen_90_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-        AND NOT (   dwlHandfunktionen.5
-                 OR dwlHandfunktionen.6
-                 OR dwlHandfunktionen.3
-                 OR bgVISUKippen_84_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-                 OR bgVISUKippen_0_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-                 OR bgVISUKippenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]))
-  THEN
-  
-    Kippen.epZielPosition := eKippen_Position_90Grad;
-    Kippen.bpPositionieren := TRUE;
-  
-  ELSIF (( dwlHandfunktionen.3
-        OR bgVISUKippen_84_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-        AND NOT (   dwlHandfunktionen.5
-                 OR dwlHandfunktionen.6
-                 OR dwlHandfunktionen.4
-                 OR bgVISUKippen_90_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-                 OR bgVISUKippen_0_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-                 OR bgVISUKippenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]))
-  THEN
-  
-    Kippen.epZielPosition := eKippen_Position_84Grad;
-    Kippen.bpPositionieren := TRUE;
-  
-  ELSE
-    Kippen.bpPositionieren := FALSE;
-    Kippen.bpReferenz := FALSE;
-  END_IF
-*)
+  // Handfunktionen [Kippen]:
+  //   - Positionieren auf Uebergabepositionen [Senkrecht 90 Grad / Waagerecht 0 Grad]
+  //   - Referenzieren
+  //IF ((  dwlHandfunktionen.6
+  //    OR bgVISUKippenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+  //    AND NOT (   dwlHandfunktionen.4
+  //             OR dwlHandfunktionen.5
+  //               OR dwlHandfunktionen.3
+  //               OR bgVISUKippen_84_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+  //               OR bgVISUKippen_90_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+  //               OR bgVISUKippen_0_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+  //             OR bgVISUKippenUebergabePosition[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+  //             OR bgVISUKippenGrundstellung[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )))
+  //THEN
+  //
+  //  Kippen.bpReferenz := TRUE;
+  //
+  //ELSIF (( dwlHandfunktionen.5
+  //      OR bgVISUKippen_84_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+  //      AND NOT (   dwlHandfunktionen.4
+  //               OR dwlHandfunktionen.6
+  //               OR dwlHandfunktionen.3
+  //               OR bgVISUKippen_0_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+  //               OR bgVISUKippen_90_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+  //               OR bgVISUKippenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]))
+  //THEN
+  //
+  //  Kippen.epZielPosition := eKippen_Position_84Grad;
+  //  Kippen.bpPositionieren := TRUE;
+  //
+  //ELSIF (( dwlHandfunktionen.4
+  //      OR bgVISUKippen_90_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+  //      AND NOT (   dwlHandfunktionen.5
+  //               OR dwlHandfunktionen.6
+  //               OR dwlHandfunktionen.3
+  //               OR bgVISUKippen_84_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+  //               OR bgVISUKippen_0_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+  //               OR bgVISUKippenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]))
+  //THEN
+  //
+  //  Kippen.epZielPosition := eKippen_Position_90Grad;
+  //  Kippen.bpPositionieren := TRUE;
+  //
+  //ELSIF (( dwlHandfunktionen.3
+  //      OR bgVISUKippen_84_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+  //      AND NOT (   dwlHandfunktionen.5
+  //               OR dwlHandfunktionen.6
+  //               OR dwlHandfunktionen.4
+  //               OR bgVISUKippen_90_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+  //               OR bgVISUKippen_0_Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+  //               OR bgVISUKippenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]))
+  //THEN
+  //
+  //  Kippen.epZielPosition := eKippen_Position_84Grad;
+  //  Kippen.bpPositionieren := TRUE;
+  //
+  //ELSE
+  //  Kippen.bpPositionieren := FALSE;
+  //  Kippen.bpReferenz := FALSE;
+  //END_IF
 
-  (* Handfunktion [Querfahrt]:
-     - Referenz
-     - Handplus / Handminus 
-  *)
+  // Handfunktion [Querfahrt]:
+  //   - Referenz
+  //   - Handplus / Handminus
   Querfahrt.bpStartReferenz := ((  dwlHandfunktionen.9
                                   OR bgVISUQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                                  AND NOT (   dwlHandfunktionen.7

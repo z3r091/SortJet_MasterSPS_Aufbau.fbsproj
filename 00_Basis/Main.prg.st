@@ -39,11 +39,11 @@ VAR_OUTPUT
   // TRIGGER 
   rtlEtherCatOK              : R_TRIG;
 END_VAR
-(* ------------------------------------------------------------------------- *)
-(* -----!!! Vor dem Befehl <MsgBegin> sollte keine Anweisung stehen !!!----- *)
+// -------------------------------------------------------------------------
+// -----!!! Vor dem Befehl <MsgBegin> sollte keine Anweisung stehen !!!-----
 TCPMain.l_fb_SortjetHMI.MsgBegin();
-(* -----!!! Vor dem Befehl <MsgBegin> sollte keine Anweisung stehen !!!----- *)
-(* ------------------------------------------------------------------------- *)
+// -----!!! Vor dem Befehl <MsgBegin> sollte keine Anweisung stehen !!!-----
+// -------------------------------------------------------------------------
 
 TCPMain();
 
@@ -94,9 +94,9 @@ Schrittketten_Logger();
 AntriebeVerfahren();
 
 bgMMIOK := TCPMain.l_fb_SortjetHMI.o_b_WatchdogOk;
-(* ------------------------------------------------------------------------- *)
-(* -!!! Nach dem Befehl <MsgEnd> sollte keine weitere Anweisung folgen !!!-- *)
+// -------------------------------------------------------------------------
+// -!!! Nach dem Befehl <MsgEnd> sollte keine weitere Anweisung folgen !!!--
 TCPMain.l_fb_SortjetHMI.MsgEnd();
-(* -!!! Nach dem Befehl <MsgEnd> sollte keine weitere Anweisung folgen !!!-- *)
-(* ------------------------------------------------------------------------- *)
+// -!!! Nach dem Befehl <MsgEnd> sollte keine weitere Anweisung folgen !!!--
+// -------------------------------------------------------------------------
 END_PROGRAM

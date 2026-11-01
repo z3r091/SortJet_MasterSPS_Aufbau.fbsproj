@@ -6,14 +6,14 @@
 }
 *)
 ACTION Reset
-(***************************************************************************************************)
-(* AKTION RESET *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION RESET
+//-------------------------------------------------------------------------------------------------
 tonlMaxWarteAufResetErfolgreich(IN:=(BasisStationsParameter.bReset AND (steplReset < STEP_900_E)),pt:=tgMaxWartezeitReset);
 
 IF ( BasisStationsParameter.bReset ) THEN
   CASE steplReset OF
-    (*RESET ==============================*)
+    // RESET ==============================
     STEP_0_E:
       Glastransport.bpAustransport := FALSE;
       Glastransport.bpEintransport := FALSE;
@@ -27,7 +27,7 @@ IF ( BasisStationsParameter.bReset ) THEN
 
       steplReset := STEP_10_E;
 
-    (*RESET ==============================*)
+    // RESET ==============================
     STEP_10_E:
       (* Hinweis:
          - Baustein- Betriebsarten zuruecksetzen
@@ -38,18 +38,17 @@ IF ( BasisStationsParameter.bReset ) THEN
 
       steplReset := STEP_20_E;
 
-    (*RESET ==============================*)
+    // RESET ==============================
     STEP_20_E:
-      (* Hinwies:
-         - Bausteine zuruecksetzen
-      *)
+      // Hinwies:
+      //   - Bausteine zuruecksetzen
       Glastransport.bpReset     := TRUE;
       Querfahrt.bpReset  := TRUE;
       Zentralschmierung.bpReset := TRUE;
 
       steplReset := STEP_30_E;
 
-    (*RESET ==============================*)
+    // RESET ==============================
     STEP_30_E:
       (* Hinweis:
          - Bausteinreset abgeschlossen
@@ -90,24 +89,23 @@ IF ( BasisStationsParameter.bReset ) THEN
 
       END_IF
 
-    (*RESET ==============================*)
+    // RESET ==============================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       BasisStationsParameter.bFehler := TRUE;
       BasisStationsParameter.bReset := FALSE;
 
-    (*RESET ==============================*)
+    // RESET ==============================
     STEP_1000_E:
       BasisStationsParameter.wFehlerNummer := cMELDUNG_NULL;
       BasisStationsParameter.bFehler := FALSE;
       BasisStationsParameter.bReset := FALSE;
 
-  (*RESET ==============================*)
+  // RESET ==============================
   END_CASE
 ELSE
-  (* Reset wegen Abbruch der Schrittkette
-  *)
+  // Reset wegen Abbruch der Schrittkette
   IF( steplReset > STEP_0_E )THEN
 
     Glastransport.bpReset     := FALSE;

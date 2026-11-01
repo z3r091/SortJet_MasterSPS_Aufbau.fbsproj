@@ -6,12 +6,12 @@
 }
 *)
 ACTION LiveCounter
-(***************************************************************************************************)
-(* AKTION: PRUEFEN DER SCHNITTSTELLE [LIVECOUNTER] *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: PRUEFEN DER SCHNITTSTELLE [LIVECOUNTER]
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
-   - Live Counter an den Glas-Sender zurueck schicken 
+   - Live Counter an den Glas-Sender zurueck schicken
 *)
 out_wEmpfaengerLiveCounter := in_wSenderLiveCounter;
 

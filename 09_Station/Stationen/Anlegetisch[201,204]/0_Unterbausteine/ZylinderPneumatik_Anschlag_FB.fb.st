@@ -43,8 +43,8 @@ VAR
   steplEinfahren   : Steps_TE;
 
   // TIMER 
-  tonZylinderEingefahren  : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben *)
-  tonZylinderAusgefahren  : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder ausgefahren wurde. Sonst wird ein Fehlerausgegeben *)
+  tonZylinderEingefahren  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben
+  tonZylinderAusgefahren  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder ausgefahren wurde. Sonst wird ein Fehlerausgegeben
 
 END_VAR
 
@@ -54,9 +54,9 @@ VAR CONSTANT
   cZEITLICHE_UEBERWACHUNG_BEWEGUNG_ZYLINDER : TIME := T#15s;
 
 END_VAR
-(***************************************************************************************************)
-(* BNAUSTEIN: STEUERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BNAUSTEIN: STEUERUNG
+//-------------------------------------------------------------------------------------------------
 
 IF ( bpReset ) THEN
 
@@ -83,9 +83,8 @@ ELSE
     Ausfahren();
     Einfahren();
 
-    (* Ausgang:
-       - Status des Zylinders
-    *)  
+    // Ausgang:
+    //   - Status des Zylinders
     IF (      in_bStatusZylinderAusgefahren
          AND NOT in_bStatusZylinderEingefahren )
     THEN

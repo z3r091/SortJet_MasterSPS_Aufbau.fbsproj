@@ -37,9 +37,9 @@ END_VAR
 // der VSG gesetzt wenn Glas bereit liegt und die Riemen in SlaveMode sind. Wir starten dann denn Eintransport.
 // Der SlaveMode bleibt so lange aktiv, bis wir das Signal "out_bBereitZumEintrasport" wegnehmen.
 
-(***************************************************************************************************)
-(* INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 // Master aufrufen
 SUPER^(BasisStationsParameter := BasisStationsParameter);
 
@@ -47,23 +47,23 @@ IF BasisStationsParameter.stMKs.stFremdanlage.bSignaleLoggen THEN
   Signal_Logger();
 END_IF
 
-(***************************************************************************************************)
-(* SCHNITTSTELLE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// SCHNITTSTELLE
+//-------------------------------------------------------------------------------------------------
 // Signale von der VSG
 blBereitZumAustransport := in_bGlasBereit OR bgVisu_Schnittstelle_Einlauf_Force_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern];
 blAutomatikBetriebAktiv := in_bAutomatikBetrieb OR bgVisu_Schnittstelle_Force_AutomatikBetrieb[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern];;
 
-(***************************************************************************************************)
-(* AUSGAENGE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUSGAENGE
+//-------------------------------------------------------------------------------------------------
 // Signale zur VSG
 out_bEinlaufsensor        := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1].bEinlaufsensor;
 out_bBereitZumEintrasport := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1].bBereitZumEintransport;
 
-(***************************************************************************************************)
-(* VISU *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// VISU
+//-------------------------------------------------------------------------------------------------
 bgVisu_Schnittstelle_Einlauf_Status_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern]   := BasisStationsParameter.OutGlasTransport[cWAND_1].bBereitZumAustransport;
 bgVisu_Schnittstelle_Status_AutomatikBetrieb[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern]     := BasisStationsParameter.OutGlasTransport[cWAND_1].bAutomatikBetriebAktiv;
 bgVisu_Schnittstelle_Status_Einlaufsensor[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern]        := out_bEinlaufsensor;

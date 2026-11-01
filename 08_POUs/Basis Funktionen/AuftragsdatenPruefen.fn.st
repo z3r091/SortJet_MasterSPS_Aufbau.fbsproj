@@ -8,11 +8,11 @@
 FUNCTION AuftragsdatenPruefen : BOOL
 VAR_INPUT
 
-  (* WORD *)
-  wpMmiNummer  : WORD; (* Stationsnummer von der die Auftraege geprueft werden sollen *)
-  wpWandNr     : WORD; (* Wandnummer von der die Auftraege geprueft werden sollen *)
+  // WORD
+  wpMmiNummer  : WORD; // Stationsnummer von der die Auftraege geprueft werden sollen
+  wpWandNr     : WORD; // Wandnummer von der die Auftraege geprueft werden sollen
 
-  (* STRUKT *)
+  // STRUKT
   pData   : Auftragsdaten_ST;
 
 END_VAR

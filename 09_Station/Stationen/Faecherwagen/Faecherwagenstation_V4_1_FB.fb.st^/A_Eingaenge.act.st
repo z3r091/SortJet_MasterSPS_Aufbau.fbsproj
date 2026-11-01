@@ -6,7 +6,7 @@
 }
 *)
 ACTION A_Eingaenge
-(* HARDWARE EINGAENGE *)
+// HARDWARE EINGAENGE
 
   
 blLinearEinheitVorne   :=  in_bLinearEinheit1Vorne AND in_bLinearEinheit2Vorne;

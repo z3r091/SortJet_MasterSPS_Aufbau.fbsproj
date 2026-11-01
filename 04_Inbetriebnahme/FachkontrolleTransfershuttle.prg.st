@@ -8,45 +8,45 @@
 PROGRAM FachkontrolleTransfershuttle
 VAR_INPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset               : BOOL;
   bpAktiv               : BOOL := FALSE;
   bpStarteFachkontrolle : BOOL;
   bpPositionKorrigieren : BOOL := FALSE; 
 
-  (* WORD *)
+  // WORD
   wpStationNumber : WORD := 0;
   wpSpeicherNr    : WORD;
   wpFachNr        : WORD;
 
-  (* REAL *)
+  // REAL
   rpPosition : REAL := 0;
   ipGerundetePosition : INT := 0;
 END_VAR
 VAR
 
-  (* ENUM *)
+  // ENUM
   steplKontrolle : STEPS_TE;
 
-  (* TIMER *)
-  tonlWartezeit    : TON; (* EINSCHALTVERZOEGERUNG:  *)
-  tonlUeberwachung : TON; (* EINSCHALTVERZOEGERUNG:  *)
+  // TIMER
+  tonlWartezeit    : TON; // EINSCHALTVERZOEGERUNG:
+  tonlUeberwachung : TON; // EINSCHALTVERZOEGERUNG:
 
-  (* REAL *)
+  // REAL
   rpErmitteltePosition : REAL;
 
 END_VAR
 VAR CONSTANT
 
-  (* TIME *)
+  // TIME
   tZeitRiemenBewegung : TIME := T#3500ms;
   tZeitUeberwachung   : TIME := T#5s;
 
 END_VAR
 
-(***************************************************************************************************)
-(* FACHKONTROLLE MITTELS TRANSFERSHUTTLE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// FACHKONTROLLE MITTELS TRANSFERSHUTTLE
+//-------------------------------------------------------------------------------------------------
 IF ( bpReset ) THEN
   wpStationNumber := WORD#0;
   rpPosition      := REAL#0;
@@ -64,7 +64,7 @@ ELSE
   IF ( bpAktiv ) THEN
 
     (* Hinweis:
-      - Starten der Fachkontrolle mittels Transfershuttle
+       - Starten der Fachkontrolle mittels Transfershuttle
     *)
     IF ( bpStarteFachkontrolle ) THEN
 
@@ -90,9 +90,9 @@ ELSE
 
       (* Hinweis:
          - Starten der Fachkontrolle
-     *)
+      *)
       CASE steplKontrolle OF
-        (*----------------------------------------------------------*)
+        // ----------------------------------------------------------
         STEP_0_E:
           IF ( NOT ( M_Automatik_Aktiv[cAUTOMATIKKREIS_1] ) )
           THEN
@@ -102,7 +102,7 @@ ELSE
             steplKontrolle := STEP_5_E;
           END_IF
 
-        (*----------------------------------------------------------*)
+        // ----------------------------------------------------------
         STEP_5_E:
           tonlWartezeit(IN := NOT aTransfershuttles[wpStationNumber].Querfahrt.Antrieb.bpReglerBereit 
                          AND NOT aTransfershuttles[wpStationNumber].Querfahrt.Antrieb.bpFreigabe, 
@@ -112,7 +112,7 @@ ELSE
             steplKontrolle := STEP_10_E;
           END_IF
 
-        (*----------------------------------------------------------*)
+        // ----------------------------------------------------------
         STEP_10_E:
           tonlUeberwachung( IN := TRUE,
                             PT := tZeitUeberwachung  );
@@ -126,9 +126,8 @@ ELSE
             steplKontrolle := STEP_20_E;
           END_IF
 
-          (* Fehler:
-             - Riemen nicht angehoben
-          *)
+          // Fehler:
+          //   - Riemen nicht angehoben
           IF ( tonlUeberwachung.Q ) THEN
             bpReset := TRUE;
             bgVisuTFSRiemenAnheben[wpStationNumber] := FALSE;
@@ -143,14 +142,14 @@ ELSE
           END_IF
 
 
-        (*----------------------------------------------------------*)
+        // ----------------------------------------------------------
         STEP_20_E:
           tonlWartezeit(IN := FALSE);
           bgVISUGlastransportVor[wpStationNumber, cWAND_1] := TRUE;
 
           steplKontrolle := STEP_30_E;
 
-        (*----------------------------------------------------------*)
+        // ----------------------------------------------------------
         STEP_30_E:
           tonlWartezeit(IN := TRUE, PT := tZeitRiemenBewegung );
 
@@ -159,19 +158,19 @@ ELSE
             steplKontrolle := STEP_40_E;
           END_IF
 
-        (*----------------------------------------------------------*)
+        // ----------------------------------------------------------
         STEP_40_E:
           tonlWartezeit(IN := FALSE);
           IF ( NOT aTransfershuttles[wpStationNumber].Glastransport.Antrieb.bpAntrieblaeuft ) THEN
             steplKontrolle := STEP_50_E;
           END_IF
 
-        (*----------------------------------------------------------*)
+        // ----------------------------------------------------------
         STEP_50_E:
           bgVISUGlastransportZurueck[wpStationNumber, cWAND_1] := TRUE;
           steplKontrolle := STEP_60_E;
 
-        (*----------------------------------------------------------*)
+        // ----------------------------------------------------------
         STEP_60_E:
           tonlWartezeit( IN := TRUE,
                          PT := tZeitRiemenBewegung);
@@ -181,14 +180,14 @@ ELSE
             steplKontrolle := STEP_70_E;
           END_IF
 
-        (*----------------------------------------------------------*)
+        // ----------------------------------------------------------
         STEP_70_E:
           tonlWartezeit(IN := FALSE);
           IF ( NOT aTransfershuttles[wpStationNumber].Glastransport.Antrieb.bpAntrieblaeuft ) THEN
             steplKontrolle := STEP_80_E;
           END_IF
 
-        (*----------------------------------------------------------*)
+        // ----------------------------------------------------------
         STEP_80_E:
           (* Hinweis:
              - Position des Antriebs abfragen
@@ -202,23 +201,23 @@ ELSE
 
           steplKontrolle := STEP_90_E;
 
-        (*----------------------------------------------------------*)
+        // ----------------------------------------------------------
         STEP_90_E:
           IF ( aTransfershuttles[wpStationNumber].in_bSensorShuttleUnten ) THEN
             steplKontrolle := STEP_1000_E;
           END_IF
 
-        (*----------------------------------------------------------*)
+        // ----------------------------------------------------------
         STEP_1000_E:
           (* Hinweis:
              - Nachricht ans HMI absetzen
           *)
           wgSps2MmiShuttleNr           := wpStationNumber;
           IF bpPositionKorrigieren THEN
-            ipGerundetePosition := REAL_TO_INT(rpErmitteltePosition); (* Runden damit keine Nachkommastellen zum MMI geschickt werden *)
-            wSps2MmiValidierungsPosition := INT_TO_REAL(ipGerundetePosition); (* Die aktuelle Antriebsposition hochmelden, damit diese im MMI korrigiert wird *)
+            ipGerundetePosition := REAL_TO_INT(rpErmitteltePosition); // Runden damit keine Nachkommastellen zum MMI geschickt werden
+            wSps2MmiValidierungsPosition := INT_TO_REAL(ipGerundetePosition); // Die aktuelle Antriebsposition hochmelden, damit diese im MMI korrigiert wird
           ELSE
-            wSps2MmiValidierungsPosition := rpPosition; (* Die geschickte Position vom MMI zurückmelden, damit nichts geändert wird *)
+            wSps2MmiValidierungsPosition := rpPosition; // Die geschickte Position vom MMI zurückmelden, damit nichts geändert wird
           END_IF
           wSps2MmiValidierungsSpeicher := wpSpeicherNr;
           wSps2MmiValidierungsFach := wpFachNr;

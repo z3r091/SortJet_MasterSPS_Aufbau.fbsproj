@@ -23,13 +23,13 @@ IF bInit THEN
 ELSE
   tonlOpenForClient(IN := TRUE,PT := T#5000MS);
 
-  (*Server Socket öffnen*)
+  // Server Socket öffnen
   IF  hSocket = RTS_INVALID_HANDLE
       AND tonlOpenForClient.Q
   THEN
     hSocket := TcpServerOpenSocket(4444, 1);
   ELSIF tonlOpenForClient.Q THEN
-    (*Auf Client verbindung warten*)
+    // Auf Client verbindung warten
     IF Client.hSocket = RTS_INVALID_HANDLE
     THEN
       bgTcpConnected := FALSE;
@@ -52,7 +52,7 @@ tnlVerbindungReset(IN := blVerbindungReset, PT := WORD_TO_TIME(wlVerbindungReset
 rtlVerbindungReset(CLK := tnlVerbindungReset.Q);
 
 IF (rtlVerbindungReset.Q) THEN
-  (* SendMsg.berror := FALSE;*)
+  // SendMsg.berror := FALSE;
   CloseSocket(ADR(Client.hSocket));
   Client.stIPAddress := '';
 END_IF;

@@ -36,8 +36,8 @@ VAR
 END_VAR
 
 (* Hinweis:
-   - Um nicht beim Starten der Anlage in einem Fehler zustehen (HubAntrieb Fehler ist Zeitgesteuert), 
-     wird der Fehler erst nach einigen Sekunden nach dem ersten Durchlaufen dieses Bausteins ausgewertet 
+   - Um nicht beim Starten der Anlage in einem Fehler zustehen (HubAntrieb Fehler ist Zeitgesteuert),
+     wird der Fehler erst nach einigen Sekunden nach dem ersten Durchlaufen dieses Bausteins ausgewertet
 *)
 tonlFehlermeldungUnterdrueckenAntriebOK( IN := NOT blErsterZyklus,
                                          PT := T#4s );

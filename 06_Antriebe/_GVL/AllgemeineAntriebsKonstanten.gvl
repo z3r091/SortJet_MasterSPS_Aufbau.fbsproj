@@ -10,23 +10,23 @@ NAMESPACE AllgemeineAntriebsKonstanten
 VAR_GLOBAL CONSTANT
 
   (* Hinweis:
-     - Lenze / SEW Funktionen 
+     - Lenze / SEW Funktionen
   *)
-                           (* 5432109876543210 *)
-  cIDLE           : WORD := 2#0000000000000000; (* Leerlauf *)
-  cREFERENZ       : WORD := 2#0000000000000001; (* Referenzfahrt *)
-  cPOSABS         : WORD := 2#0000000000000010; (* absolut Positionieren *)
-  cHANDPLUS       : WORD := 2#0000000000000100; (* Handfahren positiv *)
-  cHANDMINUS      : WORD := 2#0000000000001000; (* Handfahren negativ *)
-  cPOSREL         : WORD := 2#0000000000010000; (* relativ Positionieren *)
-  cPOSREST        : WORD := 2#0000000000100000; (* Restweg Positionieren / Touchprobe erreichen eines Sensors und zu fahrenden Weg weiter *)
-  cSYNC           : WORD := 2#0000000001000000; (* Achse in den Slavebetrieb des vorgegebenen Master schalten / Aufsynchronisieren *)
-  cSYNCINVERT     : WORD := 2#0000000010000000; (* Achse in den Slavebetrieb des vorgegebenen Master schalten / Aufsynchronisieren *)
-  cRESET          : WORD := 2#0000000100000000; (* Reset Regler *)
-  cMESSEN         : WORD := 2#0000001000000000; (* Wegmessung zwischen der fallenden Flanke von Sensor 1 und der steigenden Flanke von Sensor 2 *)
-  cPOSMEASUREMODE : WORD := 2#0000010000000000; (* Messen mit Restwegpositionieren / TouchProbe *)
+                           // 5432109876543210
+  cIDLE           : WORD := 2#0000000000000000; // Leerlauf
+  cREFERENZ       : WORD := 2#0000000000000001; // Referenzfahrt
+  cPOSABS         : WORD := 2#0000000000000010; // absolut Positionieren
+  cHANDPLUS       : WORD := 2#0000000000000100; // Handfahren positiv
+  cHANDMINUS      : WORD := 2#0000000000001000; // Handfahren negativ
+  cPOSREL         : WORD := 2#0000000000010000; // relativ Positionieren
+  cPOSREST        : WORD := 2#0000000000100000; // Restweg Positionieren / Touchprobe erreichen eines Sensors und zu fahrenden Weg weiter
+  cSYNC           : WORD := 2#0000000001000000; // Achse in den Slavebetrieb des vorgegebenen Master schalten / Aufsynchronisieren
+  cSYNCINVERT     : WORD := 2#0000000010000000; // Achse in den Slavebetrieb des vorgegebenen Master schalten / Aufsynchronisieren
+  cRESET          : WORD := 2#0000000100000000; // Reset Regler
+  cMESSEN         : WORD := 2#0000001000000000; // Wegmessung zwischen der fallenden Flanke von Sensor 1 und der steigenden Flanke von Sensor 2
+  cPOSMEASUREMODE : WORD := 2#0000010000000000; // Messen mit Restwegpositionieren / TouchProbe
 
-  (******************************** Fieldbus Control Word*************************************************)
+  // ******************************* Fieldbus Control Word************************************************
   bAntriebsFreigabe              :INT:=0 ;
   bAntriebsQSP                   :INT:=1 ;
   bAntriebsReset                 :INT:=2 ;
@@ -45,7 +45,7 @@ VAR_GLOBAL CONSTANT
   bReferenzSetzen                :INT:=15;
 
 
-  (********************************* Fieldbus Status Word **************************************************)
+  // ******************************** Fieldbus Status Word *************************************************
   bReglerVersorgung              :INT:=0 ;
   bLastVersorgung                :INT:=1 ;
   bReglerBereit                  :INT:=2 ;
@@ -61,7 +61,7 @@ VAR_GLOBAL CONSTANT
   bEndschalterNeg                :INT:=12;
 
   (* Hinweis:
-     - Interne Fehler aus den SEW-Bausteinen 
+     - Interne Fehler aus den SEW-Bausteinen
   *)
   cBetriebsartNichtUnterstuetzt                 : WORD := 101;
   cBetriebsartUnbekannt                         : WORD := 102;
@@ -74,7 +74,7 @@ VAR_GLOBAL CONSTANT
   cLMC_Home_Error                               : WORD := 109;
   cMotionMinimumSoftwareEndschalterAusgeloest   : WORD := 110;
   cMotionMaximumSoftwareEndschalterAusgeloest   : WORD := 111;
-  cKeineFreigabeZumBremseLoesen                 : WORD := 112; (* Keine Freigabe zum Loesen der Bremse *)
+  cKeineFreigabeZumBremseLoesen                 : WORD := 112; // Keine Freigabe zum Loesen der Bremse
 
 END_VAR
 

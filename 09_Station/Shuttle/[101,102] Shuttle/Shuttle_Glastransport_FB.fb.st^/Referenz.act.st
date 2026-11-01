@@ -6,9 +6,9 @@
 }
 *)
 ACTION Referenz
-(***************************************************************************************************)
-(* AKTION REFERENZ *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION REFERENZ
+//-------------------------------------------------------------------------------------------------
 IF( bpFahreReferenz )THEN
 
   // Fehlerbehandlung
@@ -25,14 +25,14 @@ IF( bpFahreReferenz )THEN
   END_IF
 
   CASE steplReferenz OF
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_0_E:
       bpDone := FALSE;
       tonlSlaveKopplungDeaktiviert( IN := FALSE );
 
       steplReferenz := STEP_10_E;
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob der Regler bereit meldet
@@ -46,12 +46,12 @@ IF( bpFahreReferenz )THEN
         steplReferenz := STEP_20_E;
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_20_E:
       (* Hinweis:
          - Starten der Referenzierung
-         WICHTIG
-         - Zeitliche Verzoegerung damit der Slave komplett abgekoppelt ist und nicht in 
+           WICHTIG
+         - Zeitliche Verzoegerung damit der Slave komplett abgekoppelt ist und nicht in
            einen Schleppfehler kommt.
       *)
       tonlSlaveKopplungDeaktiviert( IN := ( NOT blAntriebsKopplungAktiv OR NOT bpSlaveAntriebVorhanden ),
@@ -79,7 +79,7 @@ IF( bpFahreReferenz )THEN
 
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_30_E:
       (* Hinweis:
          - Antrieb wurde referenziert
@@ -93,18 +93,18 @@ IF( bpFahreReferenz )THEN
       END_IF
 
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_900_E:
       // Fehlerbehandlung
       Antrieb.wpBetriebsart       := KEINE_FUNKTION;
       Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
       bpFehler := TRUE;
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*REFERENZ =============================*)
+  // REFERENZ =============================
   END_CASE
 
 ELSE

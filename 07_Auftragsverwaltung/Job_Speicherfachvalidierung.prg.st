@@ -16,11 +16,11 @@ VAR
   wlStationsNummer : WORD;
 
 END_VAR
-(***************************************************************************************************)
-(* BAUSTEIN: VALIDIERUNGSDATEN FUER DAS TRANSFERSHUTTLE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: VALIDIERUNGSDATEN FUER DAS TRANSFERSHUTTLE
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-    - Gesondertere Pruefung mittels Transfershuttles da der Einlauf- Auslauf- Sensor (oder beide) belegt 
+   - Gesondertere Pruefung mittels Transfershuttles da der Einlauf- Auslauf- Sensor (oder beide) belegt
       wurden und dies zu einem Stopp der Anlage gefuehrt hat. Das Fach wird nochmal ueberprüft bevor
       die Anlage wieder in den Automatikmodus versetzt werden kann.
 *)
@@ -44,13 +44,13 @@ IF ( M_SB0_MMI_TRANSFERSHUTTLECHECK ) THEN
                   AutomatikkreisBestimmen(tMmi2SpsInfo.wTransfershuttle_Nummer1),
                   wpgFehlerdaten );
     ELSE
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  PRUEFEN TRANSFERSHUTTLE VERBUND
-      //         
+      //
       //  Hinweis:
       //  - wTransfershuttle_Nummer2 = 0   => Vortransport mit nur einem Transfershuttle
       //  - wTransfershuttle_Nummer2 <> 0  => Vortransport im Transfershuttle-Verbund
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
      
       IF ( tMmi2SpsInfo.wTransfershuttle_Nummer2 <> 0 ) THEN
         VailiderenTransfershuttleVerbund ( wTransferstation1 := tMmi2SpsInfo.wTransfershuttle_Nummer1 ,

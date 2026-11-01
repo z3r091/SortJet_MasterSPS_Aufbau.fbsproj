@@ -6,12 +6,12 @@
 }
 *)
 ACTION Meldungen
-(***************************************************************************************************)
-(* MELDUNGEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// MELDUNGEN
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
-   - Fehlermeldung ausgeben 
+   - Fehlermeldung ausgeben
      => Kommunikations- Probleme
 *)
 rtlFehlermeldungGenerierenKommunikation( CLK := blFehlermeldungGenerierenKommunikation );
@@ -30,7 +30,7 @@ END_IF
 
 
 (* Hinweis:
-   - Fehlermeldung ausgeben 
+   - Fehlermeldung ausgeben
      => Gespiegelte Auftragsdaten sind nicht gleich
 *)
 rtlFehlermeldungGenerierenAuftragsdaten( CLK := blFehlermeldungGenerierenAuftragsdaten );

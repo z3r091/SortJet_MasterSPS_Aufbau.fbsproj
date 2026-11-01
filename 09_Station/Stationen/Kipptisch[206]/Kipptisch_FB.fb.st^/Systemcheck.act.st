@@ -6,9 +6,9 @@
 }
 *)
 ACTION Systemcheck
-(***************************************************************************************************)
-(* AKTION SYTEMCHECK *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION SYTEMCHECK
+//-------------------------------------------------------------------------------------------------
 IF( blBetriebartCheck )THEN
 
   // Ausnahmesituation
@@ -29,7 +29,7 @@ IF( blBetriebartCheck )THEN
  
 
   CASE ( steplCheck ) OF
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_0_E:
       (* Hinweis:
          - Riemen aufkoppeln [Master- Slave Betrieb]
@@ -38,14 +38,14 @@ IF( blBetriebartCheck )THEN
       BasisStationsParameter.bStationBelegt[cWAND_1]  := FALSE;
 
       (* Hinweis:
-         - Sollte es sich z.B. um eine Station handeln die in einen anderen SK transportiert 
+         - Sollte es sich z.B. um eine Station handeln die in einen anderen SK transportiert
            kann die <<Freigabe>> [Hardware-] entzogen sein wenn dieser geoeffnet ist.
       *)
       IF ( BasisStationsParameter.bFreigabe ) THEN
         steplCheck := STEP_10_E;
       END_IF
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_10_E:
       (* Hinweis:
          - Referenzieren der Antriebe ( Position auf 0 (NULL) setzen )
@@ -59,7 +59,7 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_20_E;
       END_IF
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_20_E:
       (* Hinweis:
          - Starten des SystemCheck
@@ -94,7 +94,7 @@ IF( blBetriebartCheck )THEN
 
       steplCheck := STEP_30_E;
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_30_E:
 
       (* Hinweis:
@@ -115,19 +115,19 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_40_E;
       END_IF
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_40_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  BELADUNGSSTATUS PRUEFEN
-      //         
+      //
       //  Hinweis:
       //  - Belegt: Station auf die Uebergabe- Position kippen
       //  - Leer  : Station auf die Uebernahme- Position kippen
       //  WICHTIG
-      //  - Es kann sein das der RKT nicht in die Austransport-Position kippen darf. 
-      //    [Bsp. RKT befindet sich hinter einem Shuttle] Darum hier nochmal das 
-      //    Bit "Letzte Scheibe" abfragen. 
-      // ---------------------------------------------------------------------------------------*)
+      //  - Es kann sein das der RKT nicht in die Austransport-Position kippen darf.
+      //    [Bsp. RKT befindet sich hinter einem Shuttle] Darum hier nochmal das
+      //    Bit "Letzte Scheibe" abfragen.
+      // ---------------------------------------------------------------------------------------
 
       IF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
         steplCheck := STEP_100_E;
@@ -135,14 +135,14 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_300_E;
       END_IF
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  UEBERGABEPOSITION KIPPEN
-      //         
+      //
       //  Hinweis:
-      // - Station belegt 
-      // ---------------------------------------------------------------------------------------*)
+      // - Station belegt
+      // ---------------------------------------------------------------------------------------
 
       IF ( blOption_Austransport_Aufgekippt ) THEN
         Kippen.bpStartKippenAuf := TRUE;
@@ -156,7 +156,7 @@ IF( blBetriebartCheck )THEN
 
       steplCheck := STEP_110_E;
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_110_E:
       IF ( Kippen.bpDone ) THEN
         Kippen.bpStartKippenAuf := FALSE;
@@ -166,14 +166,14 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_800_E;
       END_IF
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_300_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  UEBERNAHMEPOSITION KIPPEN
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF ( blOption_Eintransport_Aufgekippt ) THEN
 
@@ -199,7 +199,7 @@ IF( blBetriebartCheck )THEN
 
       END_IF
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_310_E:
       IF ( Kippen.bpDone  ) THEN
         Kippen.bpStartKippenAuf := FALSE;
@@ -208,14 +208,14 @@ IF( blBetriebartCheck )THEN
         steplCheck := STEP_800_E;
       END_IF
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_800_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  AUSWERTEN DES BELADUNGSSTATUS MIT DEN MMI DATEN
-      //         
+      //
       //  Hinweis:
       // - Nachricht an den Bediener senden wenn die Daten nicht passen
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       steplCheck := STEP_1000_E;
 
@@ -237,11 +237,11 @@ IF( blBetriebartCheck )THEN
                     wpgFehlerdaten );
       END_IF
    
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*SYSTEM CHECK =========================*)
+    // SYSTEM CHECK =========================
     STEP_1000_E:
       // Auftrag für erneuten Automatikbetrieb setzen
       IF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
@@ -252,7 +252,7 @@ IF( blBetriebartCheck )THEN
 
       BasisStationsParameter.bCheckAbgeschlossen := TRUE;
 
-  (*SYSTEM CHECK =========================*)
+  // SYSTEM CHECK =========================
   END_CASE
 
 ELSE

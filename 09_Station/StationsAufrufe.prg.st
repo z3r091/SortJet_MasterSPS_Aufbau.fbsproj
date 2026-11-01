@@ -10,9 +10,9 @@ VAR
   wlIndex : WORD;
 END_VAR
 
-(***************************************************************************************************)
-(* BAUSTEIN: AUFRUF BAUSTEINE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AUFRUF BAUSTEINE
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Bausteine
 *)
@@ -28,9 +28,9 @@ FOR wlIndex := cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR
   aFaecherwagenstation[wlIndex]( BasisStationsParameter := starrFaecherwagenBasisParameter[wlIndex] );
 END_FOR
 
-(***************************************************************************************************)
-(* BAUSTEIN: BAUSTEINAUFRUF *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: BAUSTEINAUFRUF
+//-------------------------------------------------------------------------------------------------
 
 // STATIONEN
 Anlegetisch201                   (BasisStationsParameter := starrStationBasisParameter[cSTATION_201]);
@@ -42,9 +42,9 @@ Kipptisch206                     (BasisStationsParameter := starrStationBasisPar
 Drehstation207                   (BasisStationsParameter := starrStationBasisParameter[cSTATION_207]);
 Combiwand208                     (BasisStationsParameter := starrStationBasisParameter[cSTATION_208]);
 
-(***************************************************************************************************)
-(* BAUSTEIN: SCHNITTSTELLEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: SCHNITTSTELLEN
+//-------------------------------------------------------------------------------------------------
 
 aSchnittstelleAuslauf[cSTATION_401] ( BasisStationsParameter := starrFremdanlageAuslaufStationBasisParameter[cSTATION_401],
                                       bpEmpfaengerSensorEinlauf := FALSE );  

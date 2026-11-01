@@ -6,13 +6,11 @@
 }
 *)
 FUNCTION SocketIsReadable : UDINT
-(*
-  Function to detect if data for reading is available on socket.
-  Return: Availability of data
-  *)
+//  Function to detect if data for reading is available on socket.
+//  Return: Availability of data
 VAR_INPUT
-  hSocket: RTS_IEC_HANDLE; (* Socket-ID *)
-  diTimeout : DINT; (* Timeout in ms *)
+  hSocket: RTS_IEC_HANDLE; // Socket-ID
+  diTimeout : DINT; // Timeout in ms
 END_VAR
 VAR
   fdRead: SysSocket.SOCKET_FD_SET;

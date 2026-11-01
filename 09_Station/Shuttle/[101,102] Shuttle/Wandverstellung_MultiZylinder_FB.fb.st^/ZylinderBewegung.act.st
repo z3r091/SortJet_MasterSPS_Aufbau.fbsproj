@@ -6,18 +6,18 @@
 }
 *)
 ACTION ZylinderBewegung
-(***************************************************************************************************)
-(* BNAUSTEIN: STEUERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BNAUSTEIN: STEUERUNG
+//-------------------------------------------------------------------------------------------------
 
 IF ( bpStartZylinderBewegung ) THEN
 
   CASE steplZylinderStellung OF
-    (* ZYLINDER STELLUNG =======================================================*)
+    // ZYLINDER STELLUNG =======================================================
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
-         - Zylinder ausfahren starten 
+         - Zylinder ausfahren starten
       *)
       bpDone := FALSE;
 
@@ -29,14 +29,14 @@ IF ( bpStartZylinderBewegung ) THEN
 
       steplZylinderStellung := STEP_10_E;
 
-    (* ZYLINDER STELLUNG =======================================================*)
+    // ZYLINDER STELLUNG =======================================================
     STEP_10_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  ZYLINDER ALLE EINFAHREN
-      //         
+      //
       //  Hinweis:
       //  - Es muessen erst alle Zylinder eingefahren sein bevor sie ausgefahren werden koennen
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF ( epStatusZylinderStellung <> eZylinderStellung16mm ) THEN
         out_bZylinder_1_Einfahren := TRUE;
@@ -54,7 +54,7 @@ IF ( bpStartZylinderBewegung ) THEN
 
       END_IF
 
-    (* ZYLINDER STELLUNG =======================================================*)
+    // ZYLINDER STELLUNG =======================================================
     STEP_20_E:
       tonlWartezeitZylinderStellung( IN := TRUE, PT := T#5S );
 
@@ -79,14 +79,14 @@ IF ( bpStartZylinderBewegung ) THEN
         steplZylinderStellung := STEP_900_E;
       END_IF
 
-    (* ZYLINDER STELLUNG =======================================================*)
+    // ZYLINDER STELLUNG =======================================================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  ZYLINDER AUF SOLL-POSITION BEWEGEN
-      //         
+      //
       //  Hinweis:
       //  - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       tonlWartezeitZylinderStellung( IN := FALSE );
 
@@ -128,7 +128,7 @@ IF ( bpStartZylinderBewegung ) THEN
 
       END_CASE
 
-    (* ZYLINDER STELLUNG =======================================================*)
+    // ZYLINDER STELLUNG =======================================================
     STEP_110_E:
       (* Hinweis:
          - wenn keine Abfragen verbaut sind, pauschal die Schaltung der Ventile zurücksetzen
@@ -154,14 +154,14 @@ IF ( bpStartZylinderBewegung ) THEN
 
       END_IF
 
-    (* ZYLINDER STELLUNG =======================================================*)
+    // ZYLINDER STELLUNG =======================================================
     STEP_200_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  SENSOREN PRUEFEN (ZYLINDERSTELLUNG)
-      //         
+      //
       //  Hinweis:
       //  - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       tonlStellung13mm(IN := NOT ( epStatusZylinderStellung = eZylinderStellung16mm ) , PT := T#5S);
       tonlStellung23mm(IN := NOT ( epStatusZylinderStellung = eZylinderStellung23mm ) , PT := T#5S);
@@ -203,7 +203,7 @@ IF ( bpStartZylinderBewegung ) THEN
 
       END_CASE
 
-    (* ZYLINDER STELLUNG =======================================================*)
+    // ZYLINDER STELLUNG =======================================================
     STEP_210_E:
       (* Hinweis:
          - Ausgaenge im zuruecksetzen
@@ -216,7 +216,7 @@ IF ( bpStartZylinderBewegung ) THEN
 
       steplZylinderStellung := STEP_1000_E;
 
-    (* ZYLINDER STELLUNG =======================================================*)
+    // ZYLINDER STELLUNG =======================================================
     STEP_900_E:
       (* Hinweis:
          - Ausgaenge im Fehlerfall zuruecksetzen
@@ -229,11 +229,11 @@ IF ( bpStartZylinderBewegung ) THEN
 
       bpFehler := TRUE;
 
-    (* ZYLINDER STELLUNG =======================================================*)
+    // ZYLINDER STELLUNG =======================================================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (* ZYLINDER STELLUNG =======================================================*)
+  // ZYLINDER STELLUNG =======================================================
   END_CASE
 
 END_IF

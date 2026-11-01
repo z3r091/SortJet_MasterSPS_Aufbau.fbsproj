@@ -25,7 +25,7 @@ END_VAR
 VAR_OUTPUT
 
   // BOOLEAN
-  bpAnforderungMessergebnis  : BOOL; (* STATUS: Riemen wartet auf das Scann- Ergebnis aus dem Uebergeordneteten Baustein *)
+  bpAnforderungMessergebnis  : BOOL; // STATUS: Riemen wartet auf das Scann- Ergebnis aus dem Uebergeordneteten Baustein
     
 END_VAR 
 
@@ -38,9 +38,9 @@ END_VAR
 *)
 SUPER^();
 
-(***************************************************************************************************)
-(*  AUFRUFE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFRUFE
+//-------------------------------------------------------------------------------------------------
 // Die fehlenden Aktionen werden im Master aufgerufen
 Laengenmessung();
 END_FUNCTION_BLOCK

@@ -6,11 +6,11 @@
 }
 *)
 ACTION SendBetriebsart
-(***************************************************************************************************)
-(* BETRIEBSART SENDEN  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BETRIEBSART SENDEN
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   - Meldung bei Anfrage  
+   - Meldung bei Anfrage
 *)
 IF ( M_Send_MaschineStatus ) THEN
   blSendJobStatus := TRUE;
@@ -18,7 +18,7 @@ IF ( M_Send_MaschineStatus ) THEN
 END_IF
 
 (* Hinweis:
-   - Status an MMI schicken 
+   - Status an MMI schicken
 *)
 IF( blSendJobStatus )THEN
   MsgToMmi( auftragsnr_w := SB0_SPS_SETBETRIEBSART );

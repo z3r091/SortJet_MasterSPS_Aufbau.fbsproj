@@ -6,9 +6,9 @@
 }
 *)
 ACTION Positionieren
-(***************************************************************************************************)
-(* POSITIONIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// POSITIONIEREN
+//-------------------------------------------------------------------------------------------------
 IF (  bpPositionieren ) THEN
 
   // Ausnahmesituation
@@ -19,7 +19,7 @@ IF (  bpPositionieren ) THEN
   END_IF
 
   CASE steplPositionieren OF
-    (*POSITIONIERUNG ====================*)
+    // POSITIONIERUNG ====================
     STEP_0_E:
       (* Hinweis:
          - Timer zuruecksetzen
@@ -47,7 +47,7 @@ IF (  bpPositionieren ) THEN
 
       END_IF
 
-    (*POSITIONIERUNG ====================*)
+    // POSITIONIERUNG ====================
     STEP_10_E:
       (* Hinweis:
          - Sicherstellen das der Antrieb referenziert ist
@@ -72,11 +72,11 @@ IF (  bpPositionieren ) THEN
                   wpgFehlerdaten );
       END_IF
 
-    (*POSITIONIERUNG ====================*)
+    // POSITIONIERUNG ====================
     STEP_20_E:
       (* Hinweis:
          - Vor dem Verfahren pruefen ob der Antrieb in einem Endschalter steht
-          => Nach einer Stop- Situation
+           => Nach einer Stop- Situation
       *)
       IF (  NOT Antrieb.bpMinSchalterBelegt
            AND NOT Antrieb.bpMaxSchalterBelegt )
@@ -86,7 +86,7 @@ IF (  bpPositionieren ) THEN
         steplPositionieren := STEP_30_E;
       END_IF
 
-    (*POSITIONIERUNG ====================*)
+    // POSITIONIERUNG ====================
     STEP_30_E:
       (* Hinweis:
          - Versuchen den Endschalter frei zufahren
@@ -118,7 +118,7 @@ IF (  bpPositionieren ) THEN
       END_IF
 
       (* Fehlerbehandlung:
-          - Endschalter wird nicht frei !
+         - Endschalter wird nicht frei !
       *)
       IF ( tonlEndschalterFreifahren.Q
            AND (  Antrieb.bpMinSchalterBelegt
@@ -129,7 +129,7 @@ IF (  bpPositionieren ) THEN
         steplPositionieren := STEP_900_E;
       END_IF
 
-    (*POSITIONIERUNG ====================*)
+    // POSITIONIERUNG ====================
     STEP_40_E:
       (* Hinweis:
          - Warten bis ANtrieb steht
@@ -138,13 +138,12 @@ IF (  bpPositionieren ) THEN
         steplPositionieren := STEP_100_E;
       END_IF
 
-    (*POSITIONIERUNG ====================*)
+    // POSITIONIERUNG ====================
     STEP_100_E:
-      (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< STARTEN DER POSITIONIERUNG >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        Hinweis:
-        - Position vorgeben
-      *)
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< STARTEN DER POSITIONIERUNG >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      //
+      //  Hinweis:
+      //  - Position vorgeben
       IF bpAutomatikAktiv THEN
         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
       ELSE
@@ -158,7 +157,7 @@ IF (  bpPositionieren ) THEN
       steplPositionieren := STEP_120_E;
 
 
-    (*POSITIONIERUNG ====================*)
+    // POSITIONIERUNG ====================
     STEP_120_E:
       (* Hinweis:
          - die Verfahrfreigabe wird waehrend des verfahrens genommen
@@ -210,7 +209,7 @@ IF (  bpPositionieren ) THEN
         steplPositionieren := STEP_1000_E;
       END_IF
 
-    (*POSITIONIERUNG ====================*)
+    // POSITIONIERUNG ====================
     STEP_130_E:
       (* Hinweis:
          - Verfahrauftrag wurde abgebrochen und wird neu gestartet
@@ -228,7 +227,7 @@ IF (  bpPositionieren ) THEN
         steplPositionieren := STEP_140_E;
       END_IF
 
-    (*POSITIONIERUNG ====================*)
+    // POSITIONIERUNG ====================
     STEP_140_E:
       (* Hinweis:
          - Verfahrauftrag wird abgebrochen und von der Oberflaeche neu angestossen
@@ -238,15 +237,15 @@ IF (  bpPositionieren ) THEN
       blAbbruchPositionierung       := TRUE;
       bpAuftragsstatusZuruecksetzen := TRUE;
 
-    (*POSITIONIERUNG ====================*)
+    // POSITIONIERUNG ====================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*POSITIONIERUNG ====================*)
+    // POSITIONIERUNG ====================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*POSITIONIERUNG ====================*)
+  // POSITIONIERUNG ====================
   END_CASE
 ELSE
   IF ( steplPositionieren > STEP_0_E ) THEN

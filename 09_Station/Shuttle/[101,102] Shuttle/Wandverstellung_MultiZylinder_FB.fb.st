@@ -8,64 +8,64 @@
 FUNCTION_BLOCK Wandverstellung_MultiZylinder_FB
 VAR_INPUT 
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset                     : BOOL;
   bpAktivieren                : BOOL;
-  bpStartZylinderBewegung     : BOOL; (* BETRIEBTYP: Zylinder wird ausgefahren *)
-  bpZylinderAbfragenVorhanden : BOOL := FALSE; (* Hinweis: Manche Zylinder haben keine Abfragen *)
+  bpStartZylinderBewegung     : BOOL; // BETRIEBTYP: Zylinder wird ausgefahren
+  bpZylinderAbfragenVorhanden : BOOL := FALSE; // Hinweis: Manche Zylinder haben keine Abfragen
 
-  (* ENUM *)
+  // ENUM
   epSollZylinderStellung  : PneumatikZylinderStatus_EN;
 
 END_VAR
 
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpFehler                       : BOOL;
   bpDone                         : BOOL;
 
-  (* WORD *)
+  // WORD
   wpFehlerNr       : WORD;
 
-  (* ENUM *)
+  // ENUM
   epStatusZylinderStellung : PneumatikZylinderStatus_EN;
 
 END_VAR
 
 VAR
 
-  (* STEPS *)
+  // STEPS
   steplZylinderStellung   : Steps_TE;
 
-  (* TIMER *)
-  tonlStellung13mm               : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben *)
-  tonlStellung23mm               : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder ausgefahren wurde. Sonst wird ein Fehlerausgegeben *)
-  tonlStellung29mm               : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben *)
-  tonlWartezeitZylinderStellung  : TON; (* EINSCHALTVERZOEGERUNG: wenn keine Abfragen verbaut sind, pauschal die Schaltung der Ventile zurücksetzen *)
+  // TIMER
+  tonlStellung13mm               : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben
+  tonlStellung23mm               : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder ausgefahren wurde. Sonst wird ein Fehlerausgegeben
+  tonlStellung29mm               : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben
+  tonlWartezeitZylinderStellung  : TON; // EINSCHALTVERZOEGERUNG: wenn keine Abfragen verbaut sind, pauschal die Schaltung der Ventile zurücksetzen
 
 
 END_VAR
 
 VAR
 
-  (* HARDWAREEINGAENGE *)
+  // HARDWAREEINGAENGE
   in_bStatusZylinder_1_Ausgefahren     AT %I* : BOOL; // STATUS: Zylinderabfrage [Ausgefahren] 
   in_bStatusZylinder_2_Ausgefahren     AT %I* : BOOL; // STATUS: Zylinderabfrage [Ausgefahren] 
   in_bStatusZylinder_Alle_Eingefahren  AT %I* : BOOL; // STATUS: Zylinderabfrage [Eingefahren] 
 
 
 
-  (* HARDWAREAUSGAENGE *)
-  out_bZylinder_1_Einfahren    AT %Q* : BOOL; (* Impuls Zylinder: x mm Hub *)
-  out_bZylinder_2_Einfahren    AT %Q* : BOOL; (* Impuls Zylinder: X mm Hub *)
-  out_bZylinder_1_Ausfahren    AT %Q* : BOOL; (* Impuls Zylinder: x mm Hub *)
-  out_bZylinder_2_Ausfahren    AT %Q* : BOOL; (* Impuls Zylinder: x mm Hub *)
+  // HARDWAREAUSGAENGE
+  out_bZylinder_1_Einfahren    AT %Q* : BOOL; // Impuls Zylinder: x mm Hub
+  out_bZylinder_2_Einfahren    AT %Q* : BOOL; // Impuls Zylinder: X mm Hub
+  out_bZylinder_1_Ausfahren    AT %Q* : BOOL; // Impuls Zylinder: x mm Hub
+  out_bZylinder_2_Ausfahren    AT %Q* : BOOL; // Impuls Zylinder: x mm Hub
 
 END_VAR
-(***************************************************************************************************)
-(* BNAUSTEIN: STEUERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BNAUSTEIN: STEUERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( bpReset ) THEN
 
   bpFehler := FALSE;

@@ -12,7 +12,7 @@ END_VAR
 VAR
 END_VAR
 (* Hinweis:
-   Diese Funktion tauscht das LOW-WORD und das HIGH- WORD;
+   - Diese Funktion tauscht das LOW-WORD und das HIGH- WORD;
 *)
 SWAP_LOW_HIGH_WORD := ROL(IN, 16);
 END_FUNCTION

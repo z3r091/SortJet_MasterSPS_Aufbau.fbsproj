@@ -6,9 +6,9 @@
 }
 *)
 ACTION Vortransport
-(***************************************************************************************************)
-(* AKTION VORTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION VORTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bVortransport[cWAND_1]
      AND blBetriebsartAutomatik )
 THEN
@@ -28,7 +28,7 @@ THEN
 
 
   CASE steplVortransport OF
-    (*VORTRANSPORT =====================*)
+    // VORTRANSPORT =====================
     STEP_0_E:
       (* Hinweis:
          - Ist der Modellversatz unter 350mm dann wird der Vortransport gestartet, ansonsten nur das Kippen !!!
@@ -43,7 +43,7 @@ THEN
 
       END_IF
 
-    (*VORTRANSPORT =====================*)
+    // VORTRANSPORT =====================
     STEP_10_E:
       (* Hinweis:
          - Starten des Vortransports
@@ -53,7 +53,7 @@ THEN
 
       steplVortransport := STEP_20_E;
 
-    (*VORTRANSPORT =====================*)
+    // VORTRANSPORT =====================
     STEP_20_E:
 
       IF NOT Glastransport.bpSensorEinlauf THEN
@@ -71,7 +71,7 @@ THEN
 
 
 
-    (*VORTRANSPORT =====================*)
+    // VORTRANSPORT =====================
     STEP_30_E:
 
       IF ( Glastransport.bpDone ) THEN
@@ -80,15 +80,15 @@ THEN
       END_IF
 
 
-    (*VORTRANSPORT =====================*)
+    // VORTRANSPORT =====================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*VORTRANSPORT =====================*)
+    // VORTRANSPORT =====================
     STEP_1000_E:
       BasisStationsParameter.bVortransportAbgeschlossen[cWAND_1] := TRUE;
 
-  (*VORTRANSPORT =====================*)
+  // VORTRANSPORT =====================
   END_CASE
 ELSE
   IF (steplVortransport > STEP_0_E) THEN

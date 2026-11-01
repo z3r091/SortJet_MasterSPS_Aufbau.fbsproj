@@ -8,45 +8,45 @@
 FUNCTION_BLOCK TS_Eintransport
 VAR_INPUT
     
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset                : BOOL;
   
-  (* WORD *)
+  // WORD
   wStation               : WORD;
   
-  (* STRUKTUR *)
+  // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN*)
+  // BOOLEAN
   bpDone                 : BOOL;
   bpFehler               : BOOL;
 
 END_VAR
 VAR
-  (* BOOLEAN *)
+  // BOOLEAN
   blStationQuittiertScheiben : BOOL;
   
-  (* WORD *)
+  // WORD
   wlEintransportstation  : WORD;
 
-  (* INT *)
+  // INT
   ilScheibenZuQuittieren : INT;
 
-  (* STEPS *)
+  // STEPS
   steplSchritt           : STEPS_TE;
 
 END_VAR
 
 
-(***************************************************************************************************)
-(* STEUERUNG: EINTRANSPORT  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG: EINTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
   CASE steplSchritt OF
-    (*EINTRANSPORT  =============================== ============*)
+    // EINTRANSPORT  =============================== ============
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefen des Sicherheitskreises
@@ -57,10 +57,10 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
         steplSchritt := STEP_100_E;
       END_IF
 
-    (*EINTRANSPORT  ===========================================*)
+    // EINTRANSPORT  ===========================================
     STEP_100_E:
-      (* Anmerkung
-         - Zielstation abfragen ob diese bereit ist zum Austransport         
+      (* Anmerkung:
+         - Zielstation abfragen ob diese bereit ist zum Austransport
       *)
       wlEintransportstation := Auftragsdaten.wTransferstationsNr1;
       ilScheibenZuQuittieren := WORD_TO_INT( Auftragsdaten.wAnzahlScheiben);
@@ -117,7 +117,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT  ===========================================*)
+    // EINTRANSPORT  ===========================================
     STEP_110_E:
 
       (* Hinweis:
@@ -135,14 +135,14 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       steplSchritt := STEP_400_E;
 
-    (*EINTRANSPORT  ===========================================*)
+    // EINTRANSPORT  ===========================================
     STEP_400_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  QUITTIERUNGEN UND EINTRANSPORT- ABSCHLUSS
-      //         
+      //
       //  Hinweis:
       //  - Scheibenquittieren: Message zur MMI
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF ( starrTransfershuttleBasisParameter[wStation].OutGlasTransport[cWAND_1].bQuittScheibe ) THEN
 
@@ -172,7 +172,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Transfershuttle
       *)
       IF ( starrTransfershuttleBasisParameter[wStation].bFehler ) THEN
@@ -183,7 +183,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
             wgSps2MmiShuttleNr                 := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
             rgSPS2MMIExtractionShuttlePosition := starrTransfershuttleBasisParameter[wStation].rAktuellePositionQuerfahrt;
             wSps2MmiFehlertyp                  := aTransfershuttles[wStation].wpAusnahmefehlerTyp;
-            MsgToMmi(auftragsnr_w := SB0_SPS_TRANSFERSHUTTLEFEHLER );(* Fehlermeldung ans MMI für den folgenden Systemcheck *)
+            MsgToMmi(auftragsnr_w := SB0_SPS_TRANSFERSHUTTLEFEHLER );// Fehlermeldung ans MMI für den folgenden Systemcheck
           END_IF
 
         END_IF
@@ -200,7 +200,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       END_IF
 
-    (*AUSTRANSPORT ==============================================*)
+    // AUSTRANSPORT ==============================================
     STEP_410_E:
       (* Anmerkung:
          - Gueltige Anzahl von Scheiben wurden quittiert
@@ -242,7 +242,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
         steplSchritt := STEP_900_E;
       END_IF
   
-    (*EINTRANSPORT  ===========================================*)
+    // EINTRANSPORT  ===========================================
     STEP_900_E:
       (* Hinweis:
          - Berücksichtigung wie Transportiert wurde
@@ -250,7 +250,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       *)
       bpFehler := TRUE;
 
-    (*EINTRANSPORT  ===========================================*)
+    // EINTRANSPORT  ===========================================
     STEP_1000_E:
       bpDone := TRUE;
 
@@ -270,7 +270,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       END_IF
 
-  (*EINTRANSPORT  ===========================================*)
+  // EINTRANSPORT  ===========================================
   END_CASE
 END_IF
 

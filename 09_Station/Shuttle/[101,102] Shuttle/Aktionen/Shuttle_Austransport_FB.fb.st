@@ -8,9 +8,9 @@
 FUNCTION_BLOCK Shuttle_Austransport_FB EXTENDS Basic_Shuttle_Aktion_FB
 VAR
 END_VAR
-(***************************************************************************************************)
-(* AKTION AUSTRANSPORT WAND 1 *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION AUSTRANSPORT WAND 1
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Es handelt sich hier um einen Austransport in einen Faecherwagen
 *)
@@ -43,10 +43,10 @@ THEN
   END_IF
 
   CASE steplAktion OF
-    (* AUSTRANSPORT =====================================*)
+    // AUSTRANSPORT =====================================
     STEP_0_E:
       (* Hinweis:
-         - Variablen zuruecksetzen          
+         - Variablen zuruecksetzen
       *)
       BasisStationsParameter.bAustransportAbgeschlossen[wWand]    := FALSE;
 
@@ -54,7 +54,7 @@ THEN
 
       steplAktion := STEP_10_E;
 
-    (* AUSTRANSPORT =====================================*)
+    // AUSTRANSPORT =====================================
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob die Zielposition erreicht wurde
@@ -71,27 +71,27 @@ THEN
 
       END_IF
 
-    (* AUSTRANSPORT =====================================*)
+    // AUSTRANSPORT =====================================
     STEP_20_E:
-      (* ---------------------------------------------------------------------------------------
-      //  ANSTEUERUNG KOMPONENTEN 
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  ANSTEUERUNG KOMPONENTEN
+      //
       //  Hinweis:
-      //  - Sicherstellen dass das Geblaese aktiv  und keine Vorab- Auftrag aktiv sind 
-      // ---------------------------------------------------------------------------------------*)
+      //  - Sicherstellen dass das Geblaese aktiv  und keine Vorab- Auftrag aktiv sind
+      // ---------------------------------------------------------------------------------------
 
       IF (  bpGeblaeseAktiv
            AND NOT bpVorAbAuftragAktiv )
       THEN
 
         (* Hinweis:
-           - Anstellen der Dicken-/ Wandverstellung in Abhängigkeit der Glasdicke 
+           - Anstellen der Dicken-/ Wandverstellung in Abhängigkeit der Glasdicke
         *)
         Wandverstellung.epSollStellung         := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDickenverstellung;
         Wandverstellung.bpStartePositionierung := FALSE;
 
         (* Hinweis:
-           - Shuttle in die passende Position kippen       
+           - Shuttle in die passende Position kippen
         *)
         Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition;
         Kippen.bpPositionieren := TRUE;
@@ -108,10 +108,10 @@ THEN
         steplAktion := STEP_900_E;
       END_IF
 
-    (* AUSTRANSPORT =====================================*)
+    // AUSTRANSPORT =====================================
     STEP_30_E:
       (* Hinweis:
-         - Wandverstellung gefahren ? 
+         - Wandverstellung gefahren ?
       *)
       IF ( (  Wandverstellung.bpDone OR  NOT Wandverstellung.bpStartePositionierung )
            AND (  Kippen.bpDone OR NOT Kippen.bpPositionieren ) )
@@ -120,26 +120,25 @@ THEN
 
         Wandverstellung.bpStartePositionierung := FALSE;
 
-        steplAktion := STEP_100_E; (* STEP_40_E; *)
+        steplAktion := STEP_100_E; // STEP_40_E;
       END_IF
 
-      (* Ausnahmesituation
-         - Komponenten
-      *)
+      // Ausnahmesituation
+      //   - Komponenten
       IF ( Wandverstellung.bpFehler ) THEN
         Wandverstellung.bpStartePositionierung := FALSE;
         BasisStationsParameter.wFehlerNummer :=  Wandverstellung.wpFehlerNr;
         steplAktion := STEP_900_E;
       END_IF
 
-    (* AUSTRANSPORT =====================================*)
+    // AUSTRANSPORT =====================================
     STEP_50_E:
       (* Hinweis:
          - Kippvorgang beendet
          - Vortransport beendet
-        WICHTIG:
-        - Wenn der Empfaenger eine Station ist kann der Vortransport abgebrochen werden
-      *) 
+           WICHTIG:
+         - Wenn der Empfaenger eine Station ist kann der Vortransport abgebrochen werden
+      *)
       IF ( Glastransport.bpDone
            OR BasisStationsParameter.InGlasTransportNachfolger[wWand].bBereitZumEintransport )
       THEN
@@ -150,14 +149,14 @@ THEN
         steplAktion := STEP_100_E;
       END_IF
 
-    (* AUSTRANSPORT =====================================*)
+    // AUSTRANSPORT =====================================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
-      //  STARTEN DES AUSTRANSPORTS 
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  STARTEN DES AUSTRANSPORTS
+      //
       //  Hinweis:
-      //  - Unterscheidung ob Rueckwertiger- Transport 
-      // ---------------------------------------------------------------------------------------*)
+      //  - Unterscheidung ob Rueckwertiger- Transport
+      // ---------------------------------------------------------------------------------------
       Glastransport.pAuftrag := BasisStationsParameter.pAuftrag[wWand];
 
       Glastransport.bpAustransport                 := NOT BasisStationsParameter.bRueckwaertsTransportieren[wWand];
@@ -165,12 +164,12 @@ THEN
 
       steplAktion := STEP_110_E;
 
-    (*AUSTRANSPORT ==============================*)
+    // AUSTRANSPORT ==============================
     STEP_110_E:
       (* Hinweis:
-          - Scheibenzaehlen waerend der Glastransport arbeitet.
+         - Scheibenzaehlen waerend der Glastransport arbeitet.
             Verarbeitung im ShuttleJobs Baustein
-       *)
+      *)
       bprtScheibe := Glastransport.bprtScheibe;
 
       (* Hinweis [Glastransport]:
@@ -182,7 +181,7 @@ THEN
         steplAktion := STEP_1000_E;
       END_IF
 
-    (*AUSTRANSPORT ==============================*)
+    // AUSTRANSPORT ==============================
     STEP_900_E:
       Glastransport.bpAustransport                 := FALSE;
       Glastransport.bpRueckwaertsAustransportieren := FALSE;
@@ -192,18 +191,18 @@ THEN
 
       BasisStationsParameter.bFehler := TRUE;
 
-    (*AUSTRANSPORT ==============================*)
+    // AUSTRANSPORT ==============================
     STEP_1000_E:
       BasisStationsParameter.bAustransportAbgeschlossen[wWand] := TRUE;
 
-  (*AUSTRANSPORT ==============================*)
+  // AUSTRANSPORT ==============================
   END_CASE
 ELSE
 
   IF ( steplAktion > STEP_0_E ) THEN
 
     (* Hinweis:
-       - Zuruecksetzen 
+       - Zuruecksetzen
     *)
     IF ( NOT BasisStationsParameter.bAustransportAbgeschlossen[wWand] ) THEN
       Kippen.bpPositionieren := FALSE;

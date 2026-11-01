@@ -10,9 +10,8 @@ VAR
   i : INT := 0;
 END_VAR
 
-(* Aufruf:
-    - Antrieb
-*)
+// Aufruf:
+//    - Antrieb
 IF NOT Main.blErsterZyklus THEN
   FOR i := 0 TO 64 DO
     pgAntriebe[i]( rpOverride := rgMaschinenGeschwindigkeitsOverride );

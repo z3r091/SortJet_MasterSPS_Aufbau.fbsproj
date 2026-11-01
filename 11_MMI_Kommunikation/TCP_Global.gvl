@@ -17,7 +17,7 @@ VAR_GLOBAL
   bgSteuerung_Eckelmann : BOOL := TRUE;
 END_VAR
 VAR_GLOBAL CONSTANT
-  (*Nachrichtenkonstanten der TCP Schnitstelle*)
+  // Nachrichtenkonstanten der TCP Schnitstelle
   cMsg_Watchdog      : WORD := 16#0001;
   cMsg_MsgBlock      : WORD := 16#0002;
   cMsg_ControlSystem : WORD := 16#0003;

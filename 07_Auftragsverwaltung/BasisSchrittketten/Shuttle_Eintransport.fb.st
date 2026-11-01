@@ -8,49 +8,49 @@
 FUNCTION_BLOCK Shuttle_Eintransport
 VAR_INPUT
     
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset                : BOOL;
   
-  (* WORD *)
+  // WORD
   wStation               : WORD;
   wWand                  : WORD;
   
-  (* STRUKTUR *)
+  // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN*)
+  // BOOLEAN
   bpDone                 : BOOL;
   bpFehler               : BOOL;
 
 END_VAR
 VAR
     
-  (* BOOLEAN *)  
+  // BOOLEAN
   blStationQuittiertScheiben : BOOL;
   
-  (* WORD *)
+  // WORD
   wlEintransportstation  : WORD;
 
-  (* INT *)
+  // INT
   ilScheibenZuQuittieren : INT;
 
-  (* STEPS *)
+  // STEPS
   steplSchritt           : STEPS_TE;
 
 END_VAR
 
 
-(***************************************************************************************************)
-(* STEUERUNG EINTRANSPORT  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG EINTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
   CASE steplSchritt OF
 
-    (*EINTRANSPORT ==============================================*)
+    // EINTRANSPORT ==============================================
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -59,22 +59,21 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
         steplSchritt := STEP_10_E;
       END_IF
 
-    (*EINTRANSPORT ==============================================*)
+    // EINTRANSPORT ==============================================
     STEP_10_E:
-      (* Auftragsdaten pruefen:
-         - Sollte es fehler in der Auftragsdatenstruktur geben wird in den Fehlerschritt 900
-         - gesprungen. Die Fehlerauswertung findet in der Funktion Shuttledaten_Pruefen statt.
-      *)
+      // Auftragsdaten pruefen:
+      //   - Sollte es fehler in der Auftragsdatenstruktur geben wird in den Fehlerschritt 900
+      //   - gesprungen. Die Fehlerauswertung findet in der Funktion Shuttledaten_Pruefen statt.
       steplSchritt := STEP_20_E;
 
       IF NOT AuftragsdatenPruefen( wStation, wWand, Auftragsdaten) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT ==============================================*)
+    // EINTRANSPORT ==============================================
     STEP_20_E:
-      (* Hinweis
-         - Uebergabe der Quellstation [Sender] fuer den Austransport [Zum ueberpruefen des Zustandes der Station]       
+      (* Hinweis:
+         - Uebergabe der Quellstation [Sender] fuer den Austransport [Zum ueberpruefen des Zustandes der Station]
       *)
       wlEintransportstation := Auftragsdaten.wTransferstationsNr1;
       
@@ -92,7 +91,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       starrShuttleBasisParameter[wStation].pAuftrag[wWand] := Auftragsdaten;
 
       (* Hinweis:
-         - Scheibenführung / Wandverstellung anstellen 
+         - Scheibenführung / Wandverstellung anstellen
          - Aus dem Speicher: Speicherslot dicke nehmen ; von einer Station die Scheibendicke nehmen
       *)
       IF ( starrShuttleBasisParameter[wStation].pAuftrag[wWand].rAuftragsDicke <= wgMKScheibenDicke13mm ) THEN
@@ -117,9 +116,9 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
         starrShuttleBasisParameter[wStation].wGlasTyp[wWand] := eScheibe_Maximal;
       END_IF
 
-      (* Anmerkung
-         - Zielstation abfragen ob diese bereit sind zum Austransport    
-           => Status der Glas-Sender Station pruefen   
+      (* Anmerkung:
+         - Zielstation abfragen ob diese bereit sind zum Austransport
+           => Status der Glas-Sender Station pruefen
       *)
       CASE wlEintransportstation OF
 
@@ -158,17 +157,17 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       END_CASE
 
-    (*EINTRANSPORT ==============================================*)
+    // EINTRANSPORT ==============================================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  EINTRANSPORT MITTELS STATIONEN [RKT, SF, ETC.]
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
-      (* Anmerkung
-         - Starten des Eintransports [Glas-Empfaenger]       
+      (* Anmerkung:
+         - Starten des Eintransports [Glas-Empfaenger]
          - Initiieren des  des Austransports [Glas-Empfaenger]
       *)
       CASE wlEintransportstation OF
@@ -190,7 +189,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
             starrShuttleBasisParameter[wStation].InGlasTransportNachfolger[wWand] := starrStationBasisParameter[wlEintransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
 
             (* Hinweis:
-               - Starten des Eintransports 
+               - Starten des Eintransports
             *)
             starrShuttleBasisParameter[wStation].bScheibentrennen[wWand] := NOT Auftragsdaten.stAuftragsInformationen.cBIT_SRC_WALL_1_EMPTY;
             starrShuttleBasisParameter[wStation].bRueckwaertsTransportieren[wWand] := ( starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Station[wlEintransportstation] = Rueckwaertig );
@@ -208,15 +207,15 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       END_CASE
 
-    (*EINTRANSPORT ==============================================*)
+    // EINTRANSPORT ==============================================
     STEP_200_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  EINTRANSPORT MITTELS TRANSFERSHUTTLE
-      //         
+      //
       //  Hinweis:
       //  - Transferstation2 = 0   => Eintransport mit nur einem Transfershuttle
       //  - Transferstation2 <> 0  => Eintransport im Transfershuttle-Verbund
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF ( Auftragsdaten.wTransferstationsNr2 = 0 OR starrTransfershuttleBasisParameter[wlEintransportstation].stMKs.stStationsOptionen.stTransfershuttle.bTransferShuttleFuerFaecherwagen ) THEN
 
@@ -236,14 +235,14 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       END_IF
 
-    (*EINTRANSPORT ==============================================*)
+    // EINTRANSPORT ==============================================
     STEP_210_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  EINTRANSPORT TRANSFERSHUTTLE [DEFAULT]
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       (* Hinweis:
          - Kopplung
@@ -284,14 +283,14 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       steplSchritt := STEP_400_E;
 
-    (*EINTRANSPORT ==============================================*)
+    // EINTRANSPORT ==============================================
     STEP_220_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  EINTRANSPORT TRANSFERSHUTTLE [VERBUND]
-      //         
+      //
       //  Hinweis:
       //  - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       (* Hinweis:
          - Kopplung
@@ -329,11 +328,11 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       steplSchritt := STEP_400_E;
 
-    (*EINTRANSPORT ==============================================*)
+    // EINTRANSPORT ==============================================
     STEP_400_E:
       (* Hinweis:
-         - Scheibenquittieren [pro Wand] -> Nachricht an die Oberflaeche 
-           =>( Oberflaeche prueft nicht die Wandnr. die quittiert werden nur bei einem multiplen  Ein-/Austransport- Auftrag wird die WandNr. geprueft )  
+         - Scheibenquittieren [pro Wand] -> Nachricht an die Oberflaeche
+           =>( Oberflaeche prueft nicht die Wandnr. die quittiert werden nur bei einem multiplen  Ein-/Austransport- Auftrag wird die WandNr. geprueft )
       *)
       blStationQuittiertScheiben := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[wlEintransportstation];
 
@@ -356,7 +355,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       END_IF
 
       (* Anmerkung:
-         - Transport abgeschlossen 
+         - Transport abgeschlossen
       *)
       IF ( starrShuttleBasisParameter[wStation].bEintransportAbgeschlossen[wWand] ) THEN
         starrShuttleBasisParameter[wStation].bEintransport[wWand] := FALSE;
@@ -364,7 +363,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
         steplSchritt := STEP_410_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Shuttle
       *)
       IF ( starrShuttleBasisParameter[wStation].bFehler ) THEN
@@ -381,7 +380,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       END_IF
 
-    (*EINTRANSPORT ==============================================*)
+    // EINTRANSPORT ==============================================
     STEP_410_E:
       (* Anmerkung:
          - Gueltige Anzahl von Scheiben wurden quittiert
@@ -422,14 +421,14 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
       END_IF
 
-    (*EINTRANSPORT ==============================================*)
+    // EINTRANSPORT ==============================================
     STEP_900_E:
       starrShuttleBasisParameter[wStation].bEintransport[wWand] := FALSE;
       starrShuttleBasisParameter[wStation].bRueckwaertsTransportieren[wWand] := FALSE;
 
       bpFehler := TRUE;
 
-    (*EINTRANSPORT ==============================================*)
+    // EINTRANSPORT ==============================================
     STEP_1000_E:
       (* Hinweis:
          - Beenden des Eintransports [Bereit fuer den naechsten Auftrag]
@@ -437,7 +436,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       bpDone := TRUE;
       Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
 
-  (*EINTRANSPORT ==============================================*)
+  // EINTRANSPORT ==============================================
   END_CASE
 END_IF
 

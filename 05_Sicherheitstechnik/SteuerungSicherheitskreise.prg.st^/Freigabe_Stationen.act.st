@@ -6,27 +6,27 @@
 }
 *)
 ACTION Freigabe_Stationen
-(***************************************************************************************************)
-(* BAUSTEIN: FREIGABEN SHUTTLE [SICHERHEITSKREIS] *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: FREIGABEN SHUTTLE [SICHERHEITSKREIS]
+//-------------------------------------------------------------------------------------------------
 // Freigaben Shuttle 
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
   ablSicherheitskreisFreigabeShuttle[wlIndex] := NOT starrShuttleBasisParameter[wlIndex].bAuftragAktiv
                                                  OR starrShuttleBasisParameter[wlIndex].bFehler;
 END_FOR
 
-(***************************************************************************************************)
-(* BAUSTEIN: FREIGABEN TRANSFERSHUTTLE [SICHERHEITSKREIS] *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: FREIGABEN TRANSFERSHUTTLE [SICHERHEITSKREIS]
+//-------------------------------------------------------------------------------------------------
 // Freigaben Transfershuttle
 FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
   ablSicherheitskreisFreigabeTransferShuttle[wlIndex] := NOT starrTransfershuttleBasisParameter[wlIndex].bAuftragAktiv
                                                          OR starrTransfershuttleBasisParameter[wlIndex].bFehler;
 END_FOR
 
-(***************************************************************************************************)
-(* BAUSTEIN: FREIGABEN STATIONEN [SICHERHEITSKREIS] *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: FREIGABEN STATIONEN [SICHERHEITSKREIS]
+//-------------------------------------------------------------------------------------------------
 // Freigabe für den Sicherheitskreis setzen
 FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
   ablSicherheitskreisFreigabeStation[wlIndex] := ( NOT starrStationBasisParameter[wlIndex].bAuftragAktiv                                                 // Es d arf kein Auftrag aktiv sein
@@ -37,48 +37,46 @@ FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
 
 END_FOR
 
-(***************************************************************************************************)
-(* BAUSTEIN: SICHERHEITSKREIS FREIGABE SETZEN *)
-(***************************************************************************************************)
-(*
-  Start
-  │
-  ▼
-Sicherheitskreis[SK2].bpFreigabeStationen := TRUE
-  │
-  ▼
-Gehört Station zu SK2?
- ┌───────────────┐
- │    NEIN       │
- │   (überspringen) 
- └───────┬───────┘
-         │ JA
-         ▼
- Gehört Durchgang zur Station?
- ┌───────────────┐
- │     NEIN      │
- │ (nur Station-Check)
- └───────┬───────┘
-         │ JA
-         ▼
-   Prüfen:
-   - ablSicherheitskreisFreigabeStation[wlIndex] ?
-   - bSKOeffnenBlockierenDurchgang ?
-         │
-   ┌─────┴───────────────┐
-   │ irgendeine Bedingung │
-   │    = FALSE ?         │
-   └─────┬───────────────┘
-         │ JA
-         ▼
-Sicherheitskreis[SK2].bpFreigabeStationen := FALSE
-         │
-         └────────► Ende
-         │ NEIN
-         ▼
-(alles ok → bleibt TRUE)
-
-*)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: SICHERHEITSKREIS FREIGABE SETZEN
+//-------------------------------------------------------------------------------------------------
+//  Start
+//  │
+//  ▼
+//Sicherheitskreis[SK2].bpFreigabeStationen := TRUE
+//  │
+//  ▼
+//Gehört Station zu SK2?
+// ┌───────────────┐
+// │    NEIN       │
+// │   (überspringen)
+// └───────┬───────┘
+//         │ JA
+//         ▼
+// Gehört Durchgang zur Station?
+// ┌───────────────┐
+// │     NEIN      │
+// │ (nur Station-Check)
+// └───────┬───────┘
+//         │ JA
+//         ▼
+//   Prüfen:
+//   - ablSicherheitskreisFreigabeStation[wlIndex] ?
+//   - bSKOeffnenBlockierenDurchgang ?
+//         │
+//   ┌─────┴───────────────┐
+//   │ irgendeine Bedingung │
+//   │    = FALSE ?         │
+//   └─────┬───────────────┘
+//         │ JA
+//         ▼
+//Sicherheitskreis[SK2].bpFreigabeStationen := FALSE
+//         │
+//         └────────► Ende
+//         │ NEIN
+//         ▼
+//(alles ok → bleibt TRUE)
+//
 // Freigabe für den Sicherheitskreis anhand der Stationskonfig setzen
 FOR wlIndexSK := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO
   Sicherheitskreis[wlIndexSK].bpFreigabeStationen := TRUE;

@@ -6,12 +6,12 @@
 }
 *)
 ACTION Systemcheck
-(***************************************************************************************************)
-(* AKTION SYSTEMCHECK *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION SYSTEMCHECK
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bCheck AND NOT BasisStationsParameter.bReset ) THEN
   CASE steplCheck OF
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_0_E:
 
       BasisStationsParameter.bCheckAbgeschlossen := FALSE;
@@ -23,10 +23,10 @@ IF ( BasisStationsParameter.bCheck AND NOT BasisStationsParameter.bReset ) THEN
         steplCheck := STEP_900_E;
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_5_E:
       (* Hinweis:
-         - Prüfen ob der Antrieb bereit für den Systemcheck ist      
+         - Prüfen ob der Antrieb bereit für den Systemcheck ist
       *)
       IF Glastransport.Antrieb.bpReglerBereit THEN
 
@@ -40,17 +40,17 @@ IF ( BasisStationsParameter.bCheck AND NOT BasisStationsParameter.bReset ) THEN
 
       END_IF
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_10_E:
       (* Anmerkung:
          - Starten des SystemChecks [Glastransport]
       *)
       Glastransport.pAuftrag                := BasisStationsParameter.pAuftrag[cWAND_1];
-      Glastransport.wpSystemCheckMitStation := 0; (* wpSystemCheckMitStation;*)
-      Glastransport.wpSystemCheckMitWand    := 0; (* wpSystemCheckMitWand;*)
+      Glastransport.wpSystemCheckMitStation := 0; // wpSystemCheckMitStation;
+      Glastransport.wpSystemCheckMitWand    := 0; // wpSystemCheckMitWand;
 
-      Glastransport.bpCheckMitVorgaenger    := FALSE; (* bpCheckMitVorgaenger;*)
-      Glastransport.bpCheckMitNachfolger    := FALSE; (* bpCheckMitNachfolger; *)
+      Glastransport.bpCheckMitVorgaenger    := FALSE; // bpCheckMitVorgaenger;
+      Glastransport.bpCheckMitNachfolger    := FALSE; // bpCheckMitNachfolger;
       Glastransport.InGlasTransportVorgaenger  := BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1];
       Glastransport.InGlasTransportNachfolger  := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1];
 
@@ -58,7 +58,7 @@ IF ( BasisStationsParameter.bCheck AND NOT BasisStationsParameter.bReset ) THEN
 
       steplCheck := STEP_20_E;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_20_E:
       (* Hinweis:
          - SystemCheck erfolgreich
@@ -69,7 +69,7 @@ IF ( BasisStationsParameter.bCheck AND NOT BasisStationsParameter.bReset ) THEN
         steplCheck := STEP_1000_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Glastransport
       *)
       IF ( Glastransport.bpFehler ) THEN
@@ -79,17 +79,16 @@ IF ( BasisStationsParameter.bCheck AND NOT BasisStationsParameter.bReset ) THEN
       END_IF
 
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_900_E:
-      (* Fehlerschritt
-      *)
+      // Fehlerschritt
       BasisStationsParameter.bFehler := TRUE;
 
-    (*SYSTEM CHECK=========================*)
+    // SYSTEM CHECK=========================
     STEP_1000_E:
       BasisStationsParameter.bCheckAbgeschlossen := TRUE;
 
-  (*SYSTEM CHECK=========================*)
+  // SYSTEM CHECK=========================
   END_CASE
 ELSE
   IF ( steplCheck > STEP_0_E ) THEN
@@ -101,7 +100,7 @@ ELSE
   END_IF
 END_IF
 
-(***************************************************************************************************)
-(*E N D E - SystemCheck *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// E N D E - SystemCheck
+//-------------------------------------------------------------------------------------------------
 END_ACTION

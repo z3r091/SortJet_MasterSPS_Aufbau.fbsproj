@@ -9,26 +9,26 @@
 NAMESPACE MK_Verfahrparameter
 VAR_GLOBAL
 
-(***************************************************************************************************)
-(* VERFAHRKONTROLLE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// VERFAHRKONTROLLE
+//-------------------------------------------------------------------------------------------------
 
  (* Hinweis:
     - Variablen fuer die Verfahrkontrolle
       => Diese muessen bei jeder Inbetriebnahme ueberprueft werden
-         - Messen des Abstandes von Wand 1 zu Wand 1 ~ 0,5 m - 1 m Abstand der Shuttlepuffer
+    - Messen des Abstandes von Wand 1 zu Wand 1 ~ 0,5 m - 1 m Abstand der Shuttlepuffer
            [Wenn sich zwei Shuttle auf einer Bahn befinden]
  *)
- rgMkMinSecureDistanceShuttles                         : REAL := 4000;    (* Absoluter Abstand zwischen den Shuttlen (Input- und Outputshuttle) *)
- rgMkMinSecureDistanceTransfer                         : REAL := 429;     (* Absoluter Abstand zwischen den Transfershuttlen *)
+ rgMkMinSecureDistanceShuttles                         : REAL := 4000;    // Absoluter Abstand zwischen den Shuttlen (Input- und Outputshuttle)
+ rgMkMinSecureDistanceTransfer                         : REAL := 429;     // Absoluter Abstand zwischen den Transfershuttlen
 
- rgMkMinSecureDistanceShuttlesAtParkPos                : REAL := 2500;    (* Absoluter Abstand zwischen den Shuttlen wenn eines der Shuttle in Parkposition ist *)
- rgMkMinSecureDistanceTransferAtParkPos                : REAL := 240;     (* Absoluter Abstand zwischen den Transfershuttlen wenn eines der Shuttle in Parkposition ist *)
+ rgMkMinSecureDistanceShuttlesAtParkPos                : REAL := 2500;    // Absoluter Abstand zwischen den Shuttlen wenn eines der Shuttle in Parkposition ist
+ rgMkMinSecureDistanceTransferAtParkPos                : REAL := 240;     // Absoluter Abstand zwischen den Transfershuttlen wenn eines der Shuttle in Parkposition ist
 
  
-(***************************************************************************************************)
-(* VERFAHREN - SHUTTLE BASIS PARAMETER  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// VERFAHREN - SHUTTLE BASIS PARAMETER
+//-------------------------------------------------------------------------------------------------
 
  apgShuttleVerfahrparameter : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Parameter_Querfahrt_Shuttle :=[
   // Shuttle 101
@@ -58,30 +58,28 @@ VAR_GLOBAL
    rParkpositionMaximum                                := 15170
   )];
 
-  (* PARAMETER
-     - Verfahrueberwachung
-       => Einstellen der Geschwindigkeiten
-  *)
+  // PARAMETER
+  //   - Verfahrueberwachung
+  //     => Einstellen der Geschwindigkeiten
   apgVerfahrueberwachung : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Parameter_Verfahrueberwachung :=[
     (
-      rMaxVerzoegerungsRampeUeberwachung  := 2500  (* Maximale muss in mm/s^2 angegeben werden *)
+      rMaxVerzoegerungsRampeUeberwachung  := 2500  // Maximale muss in mm/s^2 angegeben werden
     ),
     (
-      rMaxVerzoegerungsRampeUeberwachung  := 2500  (* Maximale muss in mm/s^2 angegeben werden *)
+      rMaxVerzoegerungsRampeUeberwachung  := 2500  // Maximale muss in mm/s^2 angegeben werden
     )];
 
-  (* PARAMETER
-     - Verfahrueberwachung
-       => Einstellen der Geschwindigkeiten
-  *)
+  // PARAMETER
+  //   - Verfahrueberwachung
+  //     => Einstellen der Geschwindigkeiten
   apgVerfahrueberwachungTransfershuttle : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Parameter_Verfahrueberwachung :=[
   // Shuttle 151
     (
-      rMaxVerzoegerungsRampeUeberwachung  := 5000  (* Maximale muss in mm/s^2 angegeben werden *)
+      rMaxVerzoegerungsRampeUeberwachung  := 5000  // Maximale muss in mm/s^2 angegeben werden
     ),
   // Shuttle 152
     (
-      rMaxVerzoegerungsRampeUeberwachung  := 5000  (* Maximale muss in mm/s^2 angegeben werden *)
+      rMaxVerzoegerungsRampeUeberwachung  := 5000  // Maximale muss in mm/s^2 angegeben werden
     )];
 
 END_VAR

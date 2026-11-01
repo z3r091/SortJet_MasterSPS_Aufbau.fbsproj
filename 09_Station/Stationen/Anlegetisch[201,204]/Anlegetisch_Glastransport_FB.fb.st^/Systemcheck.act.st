@@ -6,16 +6,15 @@
 }
 *)
 ACTION Systemcheck
-(***************************************************************************************************)
-(* AKTION: SYSTEMCHECK  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: SYSTEMCHECK
+//-------------------------------------------------------------------------------------------------
 
 CASE ( steplCheck ) OF
-  (*SYSTEM CHECK=========================*)
+  // SYSTEM CHECK=========================
   STEP_100_E:
-    (* Pruefen ob es sich um einen SystemCheck mit einer Vorganger- Nachfolge- Station handelt oder ob der
-       default SystemCheck abgehandelt werden soll.
-    *) 
+    // Pruefen ob es sich um einen SystemCheck mit einer Vorganger- Nachfolge- Station handelt oder ob der
+    //   default SystemCheck abgehandelt werden soll.
     IF ( NOT ( bpCheckMitVorgaenger
                OR bpCheckMitNachfolger) )
     THEN
@@ -25,7 +24,7 @@ CASE ( steplCheck ) OF
     END_IF
 
   STEP_4000_E:
-    (*   Hinweis:
+    (* Hinweis:
        - Pruefen ob die Station belegt ist
     *)
     bpStationBelegt :=  toflAuslaufsensor.Q;

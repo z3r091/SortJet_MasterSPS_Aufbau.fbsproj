@@ -6,9 +6,9 @@
 }
 *)
 ACTION Eintransport
-(***************************************************************************************************)
-(* AKTION: EINTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: EINTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF( BasisStationsParameter.bEintransport[cWAND_1]
     AND blBetriebsartAutomatik )
 THEN
@@ -34,7 +34,7 @@ THEN
 
   
   CASE steplEintransport OF
-    (* EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_0_E:
 
       tlZeitBereitAnzulegen := TIME();
@@ -51,13 +51,13 @@ THEN
 
       END_IF
 
-    (* EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_10_E:
 
       (* Anmerkung:
-          - Glastransport Ausfahren
-          - Anschläge einfahren
-          - Messachse positionieren
+         - Glastransport Ausfahren
+         - Anschläge einfahren
+         - Messachse positionieren
       *)
       Hubrahmen.bpStartAusfahren := TRUE;
       Anschlag.bpStartEinfahren  := TRUE;
@@ -71,13 +71,13 @@ THEN
 
       steplEintransport := STEP_20_E;
 
-    (* EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_20_E:
 
       (* Anmerkung:
-          - Glastransport Ausfahren
-          - Anschläge einfahren
-          - Messachse.positionieren
+         - Glastransport Ausfahren
+         - Anschläge einfahren
+         - Messachse.positionieren
       *)
       IF Hubrahmen.bpDone AND Messachse.bpDone AND Anschlag.bpDone THEN
         Anschlag.bpStartEinfahren        := FALSE;
@@ -86,16 +86,16 @@ THEN
         steplEintransport := STEP_30_E;
       END_IF
 
-    (* EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_30_E:
 
       (* Anmerkung:
-          - Drosselklappe öffnen, damit auch sehr schweres Glas transportiert werden kann, indem die Luft das Glas leicht anhebt
+         - Drosselklappe öffnen, damit auch sehr schweres Glas transportiert werden kann, indem die Luft das Glas leicht anhebt
       *)
       blMerkerDrosselklappeAuf := TRUE;
 
       (* Anmerkung:
-          - Glastransport Eintransport starten
+         - Glastransport Eintransport starten
       *)
       Glastransport.eGlastyp := BasisStationsParameter.wGlastyp[cWAND_1];
       Glastransport.pAuftrag := BasisStationsParameter.pAuftrag[cWAND_1];
@@ -112,12 +112,12 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-    (* EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_40_E:
 
       out_bAmpelSignalGruenScheibeAnlegen  := TRUE;
 
-      (* Scheibe wird nicht Eintransportiert sondern soll angelegt werden *)
+      // Scheibe wird nicht Eintransportiert sondern soll angelegt werden
       IF rtlFussleisteStart.Q OR ftlVSGAutomatikBetriebBeendet.Q THEN
         out_bAmpelSignalGruenScheibeAnlegen := FALSE;
         BasisStationsParameter.bAnlegen := TRUE;
@@ -125,7 +125,7 @@ THEN
       END_IF
 
       (* Anmerkung:
-          - Auf den Glastransport warten
+         - Auf den Glastransport warten
       *)
       IF Glastransport.bpDone THEN
 
@@ -151,18 +151,18 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-    (* EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_900_E:
       BasisStationsParameter.eStatusAuftrag   := eAuftragFehler;
       BasisStationsParameter.bFehler := TRUE;
 
-    (* EINTRANSPORT ==================================*)
+    // EINTRANSPORT ==================================
     STEP_1000_E:
       BasisStationsParameter.dwWartezeit[cWAND_1] := 0;
       epTypeHoehenmessung := Modus_Vermessen_OberUndUnterkante_2_Sensoren;
       BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] := TRUE;
 
-  (* EINTRANSPORT ==================================*)
+  // EINTRANSPORT ==================================
   END_CASE
 ELSE
 

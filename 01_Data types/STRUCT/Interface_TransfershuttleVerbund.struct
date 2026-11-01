@@ -10,10 +10,10 @@
 *)
 TYPE Interface_TransfershuttleVerbund :
   STRUCT
-    wpMmiNummer                  : WORD; (* Stationsnummer mit der gekoppelt wurde *)
-    bEinlaufsensor               : REFERENCE TO BOOL REF= bgFALSE; (* Sensoren der Station[Einlauf] *)
-    bAuslaufsensor               : REFERENCE TO BOOL REF= bgFALSE; (* Sensoren der Station[Auslauf] *)
-    bMasterSlaveVerbundAktiv     : REFERENCE TO BOOL REF= bgFALSE; (* Slave ist mit dem Master gekoppelt *)
+    wpMmiNummer                  : WORD; // Stationsnummer mit der gekoppelt wurde
+    bEinlaufsensor               : REFERENCE TO BOOL REF= bgFALSE; // Sensoren der Station[Einlauf]
+    bAuslaufsensor               : REFERENCE TO BOOL REF= bgFALSE; // Sensoren der Station[Auslauf]
+    bMasterSlaveVerbundAktiv     : REFERENCE TO BOOL REF= bgFALSE; // Slave ist mit dem Master gekoppelt
     bBereitZumTransportVerbund   : REFERENCE TO BOOL REF= bgFALSE;
     bAnforderungTransportVerbund : REFERENCE TO BOOL REF= bgFALSE;
     rGeschwindigkeit             : REFERENCE TO REAL REF= rgNULL;

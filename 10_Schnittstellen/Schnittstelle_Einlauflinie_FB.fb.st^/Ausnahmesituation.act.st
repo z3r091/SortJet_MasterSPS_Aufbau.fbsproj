@@ -6,12 +6,12 @@
 }
 *)
 ACTION Ausnahmesituation
-(***************************************************************************************************)
-(* AKTION: AUSNAHMESITUATIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: AUSNAHMESITUATIONEN
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
-   - Fehlermeldung ausgeben 
+   - Fehlermeldung ausgeben
      => Kommunikations- Probleme
 *)
 rtlFehlermeldungGenerierenKommunikation( CLK := blFehlermeldungGenerierenKommunikation );

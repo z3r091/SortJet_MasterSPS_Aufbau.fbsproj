@@ -6,9 +6,9 @@
 }
 *)
 ACTION Eintransport
-(***************************************************************************************************)
-(* EINTRANSPORT  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// EINTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bEintransport[cWAND_1]
      AND blBetriebsartAutomatik )
 THEN
@@ -53,16 +53,16 @@ THEN
 
 
   CASE steplEintransport OF
-    (* EINTRANSPORT ===============================*)
+    // EINTRANSPORT ===============================
     STEP_0_E:
       (* Hinweis:
-         - Variablen zuruecksetzen 
+         - Variablen zuruecksetzen
       *)
       atonlUeberwachungEintransport( IN := FALSE);
 
       steplEintransport := STEP_10_E;
 
-    (* EINTRANSPORT ===============================*)
+    // EINTRANSPORT ===============================
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob die Geblase aktiv sind
@@ -84,7 +84,7 @@ THEN
 
       END_IF
 
-    (* EINTRANSPORT ===============================*)
+    // EINTRANSPORT ===============================
     STEP_20_E:
       IF ( ( Kippen.bpDone ) 
            AND ( Roellchenleiste.bpDone )
@@ -108,19 +108,19 @@ THEN
 
         IF ( NOT ( Kippen.epKippStatus = eKippen_Position_90Grad )) THEN
           ;
-        (* TO DO: ggf nochmal kippen oder eine Meldung generieren das hier was nicht stimmt *)
+        // TO DO: ggf nochmal kippen oder eine Meldung generieren das hier was nicht stimmt
         END_IF
 
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  STARTEN DES EINTRANSPORTS
-      //         
+      //
       //  Hinweis:
       //  - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       Glastransport.bpScheibentrennen          := BasisStationsParameter.bScheibentrennen[cWAND_1];
       Glastransport.pAuftrag                   := BasisStationsParameter.pAuftrag[cWAND_1];
@@ -129,7 +129,7 @@ THEN
 
       steplEintransport := STEP_110_E;
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_110_E:
       IF  ( Glastransport.bpFreigabeFremdprozess
             AND BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe )
@@ -156,14 +156,14 @@ THEN
 
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_200_E:
-      (* ---------------------------------------------------------------------------------------
-      //  OPTIONAL - KOMPONENTEN STEUERUNG 
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  OPTIONAL - KOMPONENTEN STEUERUNG
+      //
       //  Hinweis:
       //  - Ausrichtung der Station fuer den Austransport
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       (* Hinweis:
          - Richtung ist Invertiert zur Eintransport- Position
@@ -173,7 +173,7 @@ THEN
 
       steplEintransport := STEP_210_E;
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_210_E:
       IF Kippen.bpDone OR NOT Kippen.bpPositionieren THEN
 
@@ -182,15 +182,15 @@ THEN
         steplEintransport := STEP_1000_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_1000_E:
       BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] := TRUE;
 
-  (*EINTRANSPORT =====================*)
+  // EINTRANSPORT =====================
   END_CASE
 ELSE
 

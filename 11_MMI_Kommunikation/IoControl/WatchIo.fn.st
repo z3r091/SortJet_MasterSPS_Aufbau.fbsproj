@@ -19,7 +19,7 @@ IF NOT bgDeaktiviereWatchIOs THEN
   IF bpStatus <> GetBitStatus(wpControlIndex) THEN
     wlByteIndex := wpControlIndex / 8;
     wlBitIndex  := wpControlIndex MOD 8;
-    (* Meldungsbit zurücksetzen *)
+    // Meldungsbit zurücksetzen
     ucValue := TCPMain.l_fb_SortjetHMI.SpsToMmi.aucControlSystem[ wlByteIndex ];
     IF bpStatus THEN
       ucValue := SetBitStatus( ucValue, wlBitIndex, TRUE );

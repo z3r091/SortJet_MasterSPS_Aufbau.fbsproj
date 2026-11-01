@@ -6,9 +6,9 @@
 }
 *)
 ACTION Tueren
-(***************************************************************************************************)
-(* Zuweisungen/ Schnittstelle zu den Bausteinen[ Tuer/Durchgang <-> Sicherheitskreis ] *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Zuweisungen/ Schnittstelle zu den Bausteinen[ Tuer/Durchgang <-> Sicherheitskreis ]
+//-------------------------------------------------------------------------------------------------
 
 // Anfordern Sicherheitskreis auslösen
 FOR wlIndexSK := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO

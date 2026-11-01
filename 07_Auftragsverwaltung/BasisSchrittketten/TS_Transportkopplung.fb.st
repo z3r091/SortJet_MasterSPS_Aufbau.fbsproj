@@ -8,35 +8,35 @@
 FUNCTION_BLOCK TS_Transportkopplung
 VAR_INPUT
     
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset                : BOOL;
   
-  (* WORD *)
+  // WORD
   wStation               : WORD;
   
-  (* STRUKTUR *)
+  // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN*)
+  // BOOLEAN
   bpDone                 : BOOL;
   bpFehler               : BOOL;
 
 END_VAR
 VAR
 
-  (* STEPS *)
+  // STEPS
   steplSchritt           : STEPS_TE;
 
 END_VAR
-(***************************************************************************************************)
-(* STEUERUNG: TRANSPORTKOPPLUNG  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG: TRANSPORTKOPPLUNG
+//-------------------------------------------------------------------------------------------------
 IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
   CASE steplSchritt OF
-    (*TRANSPORTKOPPLUNG ===========================================*)
+    // TRANSPORTKOPPLUNG ===========================================
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefen des Sicherheitskreises
@@ -47,7 +47,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
         steplSchritt := STEP_100_E;
       END_IF
 
-    (*TRANSPORTKOPPLUNG ===========================================*)
+    // TRANSPORTKOPPLUNG ===========================================
     STEP_100_E:
 
       starrTransfershuttleBasisParameter[wStation].pAuftrag[cWAND_1] := Auftragsdaten;
@@ -55,9 +55,9 @@ IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
 
       steplSchritt := STEP_110_E;
 
-    (*TRANSPORTKOPPLUNG ===========================================*)
+    // TRANSPORTKOPPLUNG ===========================================
     STEP_110_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Transfershuttle
       *)
       IF ( starrTransfershuttleBasisParameter[wStation].bFehler ) THEN
@@ -74,15 +74,15 @@ IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
 
       END_IF
 
-    (*TRANSPORTKOPPLUNG ===========================================*)
+    // TRANSPORTKOPPLUNG ===========================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*TRANSPORTKOPPLUNG ===========================================*)
+    // TRANSPORTKOPPLUNG ===========================================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*TRANSPORTKOPPLUNG ===========================================*)
+  // TRANSPORTKOPPLUNG ===========================================
   END_CASE
 END_IF
 

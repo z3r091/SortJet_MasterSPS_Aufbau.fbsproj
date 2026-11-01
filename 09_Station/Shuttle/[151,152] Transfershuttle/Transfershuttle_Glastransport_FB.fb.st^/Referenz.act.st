@@ -6,19 +6,19 @@
 }
 *)
 ACTION Referenz
-(* @TEXT_IMPLEMENTATION := 'ST' *)
-(***************************************************************************************************)
-(* S T A R T - Referenzpunktfahrt *)
-(***************************************************************************************************)
+// @TEXT_IMPLEMENTATION := 'ST'
+//-------------------------------------------------------------------------------------------------
+// S T A R T - Referenzpunktfahrt
+//-------------------------------------------------------------------------------------------------
 
 IF( bpFahreReferenz )THEN
   CASE steplReferenz OF
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_0_E:
 
       steplReferenz := STEP_10_E;
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_10_E:
       Antrieb.rpZielPosition := 0;
 
@@ -30,14 +30,14 @@ IF( bpFahreReferenz )THEN
         steplReferenz := STEP_20_E;
       END_IF
 
-    (*REFERENZ ===========================*)
+    // REFERENZ ===========================
     STEP_20_E:
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplReferenz := STEP_1000_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       IF ( Antrieb.bpFehler ) THEN
         wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
@@ -45,17 +45,17 @@ IF( bpFahreReferenz )THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       bpFehler :=TRUE;
 
-    (*REFERENZ =============================*)
+    // REFERENZ =============================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*REFERENZ =============================*)
+  // REFERENZ =============================
   END_CASE
 
 ELSE
@@ -65,7 +65,7 @@ ELSE
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
   END_IF
 END_IF
-(***************************************************************************************************)
-(* E N D E - Referenzpunktfahrt *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// E N D E - Referenzpunktfahrt
+//-------------------------------------------------------------------------------------------------
 END_ACTION

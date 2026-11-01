@@ -34,13 +34,13 @@ VAR
   PositionierAuftragsdatenPruefen : PositionierAuftragsdatenPruefen;
   
 END_VAR
-(*****************************************************9**********************************************)
-(* STEUERUNG: POSITIONIEREN *)
-(***************************************************************************************************)
+// ****************************************************9*********************************************
+// STEUERUNG: POSITIONIEREN
+// *************************************************************************************************
 
 IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
   CASE steplSchritt OF
-    (* POSITIONIERUNG ===========================================*)
+    // POSITIONIERUNG ===========================================
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -57,10 +57,10 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
 
       END_IF
 
-    (* POSITIONIERUNG ===========================================*)
+    // POSITIONIERUNG ===========================================
     STEP_5_E:
       (* Hinweis:
-         - Auftragsdaten pruefen 
+         - Auftragsdaten pruefen
            => Version der Verfahrlogik beachten
       *)
       steplSchritt := STEP_10_E;
@@ -74,7 +74,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (* POSITIONIERUNG ===========================================*)
+    // POSITIONIERUNG ===========================================
     STEP_10_E:
       (* Hinweis:
          - Uebergabe der Auftragsdaten
@@ -84,7 +84,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
         
       steplSchritt := STEP_20_E;
 
-    (* POSITIONIERUNG ===========================================*)
+    // POSITIONIERUNG ===========================================
     STEP_20_E:
       (* Hinweis:
          - Nachricht absetzen
@@ -93,7 +93,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
 
         wSps2MmiQuittVorabShuttleNr := starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
         rgSPS2MMIExtractionShuttlePosition := starrShuttleBasisParameter[wStation].rAktuellePositionQuerfahrt;
-        MsgToMmi(auftragsnr_w := SB0_SPS_SHUTTLEVORABPOSITIONIERUNGUPDATE );(* Quit 2 MMI Scheibe vorne*)
+        MsgToMmi(auftragsnr_w := SB0_SPS_SHUTTLEVORABPOSITIONIERUNGUPDATE );// Quit 2 MMI Scheibe vorne
 
         starrShuttleBasisParameter[wStation].bUpdateVorabPositionieren := FALSE;
 
@@ -102,7 +102,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
       END_IF
 
       (* Fehlerbehandlung:
-        - Inputshuttle
+         - Inputshuttle
       *)
       IF ( starrShuttleBasisParameter[wStation].bFehler ) THEN
 
@@ -117,7 +117,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (* POSITIONIERUNG ===========================================*)
+    // POSITIONIERUNG ===========================================
     STEP_100_E:
       (* Hinweis:
          - Positionierung abgeschlossen
@@ -136,7 +136,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
       END_IF
 
       (* Fehlerbehandlung:
-        - Inputshuttle
+         - Inputshuttle
       *)
       IF ( starrShuttleBasisParameter[wStation].bFehler ) THEN
         starrShuttleBasisParameter[wStation].bVorabpositionieren := FALSE;
@@ -150,44 +150,44 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (* POSITIONIERUNG ===========================================*)
+    // POSITIONIERUNG ===========================================
     STEP_500_E:
       wSps2MmiQuittVorabShuttleNr := starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
       rgSPS2MMIExtractionShuttlePosition := starrShuttleBasisParameter[wStation].rAktuellePositionQuerfahrt;
       MsgToMmi(auftragsnr_w := SB0_SPS_SHUTTLEVORABPOSITIONIERUNGUPDATE );
       steplSchritt := STEP_510_E;
 
-    (* POSITIONIERUNG ===========================================*)
+    // POSITIONIERUNG ===========================================
     STEP_510_E:
       wSps2MmiQuittVorabShuttleNr        := starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
       rgSPS2MMIExtractionShuttlePosition := starrShuttleBasisParameter[wStation].rAktuellePositionQuerfahrt;
       MsgToMmi(auftragsnr_w := SB0_SPS_QUITTSHUTTLEVORABPOSITIONIERUNG );
       steplSchritt := STEP_1000_E;
 
-    (* POSITIONIERUNG ===========================================*)
+    // POSITIONIERUNG ===========================================
     STEP_600_E:
       wSps2MmiQuittVorabShuttleNr := starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
       rgSPS2MMIExtractionShuttlePosition := Auftragsdaten.rVorabPosition;
       MsgToMmi(auftragsnr_w := SB0_SPS_SHUTTLEVORABPOSITIONIERUNGUPDATE );
       steplSchritt := STEP_610_E;
 
-    (* POSITIONIERUNG ===========================================*)
+    // POSITIONIERUNG ===========================================
     STEP_610_E:
       wSps2MmiQuittVorabShuttleNr        := starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
       rgSPS2MMIExtractionShuttlePosition := Auftragsdaten.rVorabPosition;
       MsgToMmi(auftragsnr_w := SB0_SPS_QUITTSHUTTLEVORABPOSITIONIERUNG );
       steplSchritt := STEP_1000_E;
 
-    (* POSITIONIERUNG ===========================================*)
+    // POSITIONIERUNG ===========================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* POSITIONIERUNG ===========================================*)
+    // POSITIONIERUNG ===========================================
     STEP_1000_E:
       bpDone := TRUE;
       Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
 
-  (* POSITIONIERUNG ===========================================*)
+  // POSITIONIERUNG ===========================================
   END_CASE
 END_IF
 

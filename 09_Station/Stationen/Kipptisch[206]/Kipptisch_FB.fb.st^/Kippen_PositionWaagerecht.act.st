@@ -6,9 +6,9 @@
 }
 *)
 ACTION Kippen_PositionWaagerecht
-(***************************************************************************************************)
-(* AKTION KIPPEN WAAGERECHT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION KIPPEN WAAGERECHT
+//-------------------------------------------------------------------------------------------------
 IF ( blStartePositionWaagerecht ) THEN
 
   // Ausnahmesituation
@@ -20,29 +20,29 @@ IF ( blStartePositionWaagerecht ) THEN
 
   CASE steplKippenWaagerecht OF
 
-    (* KIPPEN WAAGERECHT =========================== *)
+    // KIPPEN WAAGERECHT ===========================
     STEP_0_E:
       blBewegungAbgeschlossen := FALSE;
       Kippen.bpStartKippenAb := TRUE;
 
       steplKippenWaagerecht := STEP_10_E;
 
-    (* KIPPEN WAAGERECHT =========================== *)
+    // KIPPEN WAAGERECHT ===========================
     STEP_10_E:
       IF ( Kippen.bpDone ) THEN
         Kippen.bpStartKippenAb := FALSE;
         steplKippenWaagerecht := STEP_1000_E;
       END_IF
 
-    (* KIPPEN WAAGERECHT =========================== *)
+    // KIPPEN WAAGERECHT ===========================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (* KIPPEN WAAGERECHT =========================== *)
+    // KIPPEN WAAGERECHT ===========================
     STEP_1000_E:
       blBewegungAbgeschlossen := TRUE;
 
-  (* KIPPEN WAAGERECHT =========================== *)
+  // KIPPEN WAAGERECHT ===========================
   END_CASE
 ELSE
   IF ( steplKippenWaagerecht > STEP_0_E ) THEN

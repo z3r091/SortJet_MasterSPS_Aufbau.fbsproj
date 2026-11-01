@@ -8,26 +8,24 @@
 FUNCTION SWAP_REAL : REAL
 VAR_INPUT
 
-  (* REAL *)
+  // REAL
   rpWert : REAL;
 
 END_VAR
 
 VAR
 
-  (* BYTE *)
+  // BYTE
   aInByte  : ARRAY [0..3] OF BYTE ;
   aOutByte : ARRAY [0..3] OF BYTE ;
 
 END_VAR
 SysMemCpy( ADR(aInByte), ADR(rpWert),4 );
 
-(*
-aOutByte[0] := aInByte[3];
-aOutByte[1] := aInByte[2];
-aOutByte[2] := aInByte[1];
-aOutByte[3] := aInByte[0];
-*)
+//aOutByte[0] := aInByte[3];
+//aOutByte[1] := aInByte[2];
+//aOutByte[2] := aInByte[1];
+//aOutByte[3] := aInByte[0];
 
 aOutByte[0] := aInByte[1];
 aOutByte[1] := aInByte[0];

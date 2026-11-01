@@ -6,9 +6,9 @@
 }
 *)
 ACTION Meldungen
-(***************************************************************************************************)
-(* NACHRICHTEN, MELDUNGEN  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// NACHRICHTEN, MELDUNGEN
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
    - Erkennung des 0,5Herz Signals bei bald leerer Fettkartusche
@@ -18,12 +18,12 @@ blSchmierhubOkBaldLeer := ( Taktberechnung.Herz > 0.45 AND Taktberechnung.Herz <
 
 (* Hinweis:
    - Erkennung des 1 Herz Signals bei leerer Fettkartusche
-*) 
+*)
 //Taktberechnung( Signal := in_bStatus );//MW müsste auch mit vorherigem Taktberechnung noch klappen
 blKeineOderLeereKartusche := ( Taktberechnung.Herz > 0.95 AND Taktberechnung.Herz < 1.05 );
 
 
-(* Erkennung der Funktionskontrolle und unterscheideung zur Takterkennung des blKeineOderLeereKartusche Signals*)
+// Erkennung der Funktionskontrolle und unterscheideung zur Takterkennung des blKeineOderLeereKartusche Signals
 tonlFunktionskontrolle (IN:= in_bStatus, PT:=T#1100MS);
 
 rtlFunktionskontrolle (CLK:=tonlFunktionskontrolle.Q);
@@ -31,7 +31,7 @@ IF rtlFunktionskontrolle.Q THEN
   blSchmierhubOk:= TRUE;
 END_IF
 
-(* Hinweis :
+(* Hinweis:
    - Fehlerbit setzen damit WatchIO im Stationsbaustein angezeigt wird
 *)
 blGeraeteFehler := tonlSchmierungNichtBetriebsbereit.Q OR bpInternerFehler;

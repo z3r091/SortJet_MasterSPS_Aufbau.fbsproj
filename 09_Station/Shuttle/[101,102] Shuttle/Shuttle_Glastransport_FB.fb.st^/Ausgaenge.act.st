@@ -6,14 +6,13 @@
 }
 *)
 ACTION Ausgaenge
-(***************************************************************************************************)
-(* AKTION AUSGAENGE *)
-(***************************************************************************************************)
-(* Ausgaeng:
-   - Aktuelle Geschwindigkeit des Antriebs
-     -> Soll- Wertkopplung ( Soll-Geschwindigkeit des Antriebs)
-     -> Ist- Wertkopplung ( Soll-Geschwindigkeit des Antriebs)
-*)
+//-------------------------------------------------------------------------------------------------
+// AKTION AUSGAENGE
+//-------------------------------------------------------------------------------------------------
+// Ausgaeng:
+//   - Aktuelle Geschwindigkeit des Antriebs
+//     -> Soll- Wertkopplung ( Soll-Geschwindigkeit des Antriebs)
+//     -> Ist- Wertkopplung ( Soll-Geschwindigkeit des Antriebs)
 IF  ((  bpEintransport AND bpOutBereitZumEintransport )
       OR ( bpCheck         AND bpOutBereitZumEintransport ))
 THEN
@@ -22,9 +21,8 @@ ELSE
   rpOutGeschwindigkeit := ABS(Antrieb.rpIstGeschwindigkeit);
 END_IF
 
-(* Ausgaeng:
-   - Verfahrfreigabe
-*)
+// Ausgaeng:
+//   - Verfahrfreigabe
 bpVerfahrFreigabe :=     NOT bpSensorEinlauf
                          AND NOT bpSensorAuslaufStopp
                          AND NOT bpAustransport

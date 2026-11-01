@@ -6,22 +6,21 @@
 }
 *)
 ACTION Ausgaenge
-(***************************************************************************************************)
-(* BAUSTEIN: AUSGAENGE *)
-(***************************************************************************************************)
-(* Ausgang:
-   - Status ob der Baustein angesteuert wird 
-*)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AUSGAENGE
+//-------------------------------------------------------------------------------------------------
+// Ausgang:
+//   - Status ob der Baustein angesteuert wird
 bpResourceAktiv := ( bpStartePositionierung );
 
 
-(* Ausgang:
-   - Ache in Referenz *)
+// Ausgang:
+//   - Ache in Referenz
 bpInReferenz    := Antrieb.bpIstReferenziert;
 
 
 (* Anmerkung:
-  - Realisierung durch ein ENUM
+   - Realisierung durch ein ENUM
 *)
 IF (ABS (Antrieb.rpIstPosition - ppParameterBaustein.rPosition_Minimal ) <= ppParameterBaustein.rToleranz ) THEN
   eStatusStellung := eZylinderStellung16mm;

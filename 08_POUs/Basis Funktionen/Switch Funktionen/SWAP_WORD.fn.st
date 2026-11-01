@@ -8,13 +8,13 @@
 FUNCTION SWAP_WORD : WORD
 VAR_INPUT
 
-  (* BOOELAN *)
+  // BOOELAN
   wpWert : WORD;
 
 END_VAR
 VAR
 
-  (* BYTE *)
+  // BYTE
   aInByte  : ARRAY [0..1] OF BYTE ;
   aOutByte : ARRAY [0..1] OF BYTE ;
 

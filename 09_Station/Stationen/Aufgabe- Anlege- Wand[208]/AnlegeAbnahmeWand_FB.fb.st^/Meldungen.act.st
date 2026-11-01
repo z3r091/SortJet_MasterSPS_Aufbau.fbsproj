@@ -6,17 +6,17 @@
 }
 *)
 ACTION Meldungen
-(***************************************************************************************************)
-(* AKTION MELDUNGEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION MELDUNGEN
+//-------------------------------------------------------------------------------------------------
 // Master aufrufen
 SUPER^.Meldungen();
 
 (* Hinweis:
    - Diese Fehlerbehandlung sollte nur dann aufgerufen werden wenn in den Schrittketten der
      Fehler nicht abgefangen wurde.
-   Fehlerbehandlung:
-   - Glastransport 
+     Fehlerbehandlung:
+   - Glastransport
 *)
 IF ( NOT ((steplAnlegen = STEP_900_E)
            OR (steplAustransport = STEP_900_E)

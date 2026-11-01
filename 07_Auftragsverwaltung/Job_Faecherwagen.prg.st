@@ -14,7 +14,7 @@ VAR_INPUT
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   abpFehler : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
 
 END_VAR
@@ -56,16 +56,16 @@ VAR CONSTANT
   
 END_VAR
 
-(***************************************************************************************************)
-(* INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus ) THEN
   blErsterZyklus := FALSE;
 END_IF
 
-(***************************************************************************************************)
-(* BELADUNGS STATUS *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BELADUNGS STATUS
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Abfrage des Status der Faecherwagenstation
      => 0 = frei
@@ -91,13 +91,13 @@ IF ( M_SB0_MMI_REQUESTSTATUSLOADINGSTATIONS OR SlowTask.rtrigECatOK.Q OR Job.rtl
   END_FOR
 
   (* Hinweis:
-     - Status der Stationen wird Bit-Codiert uebergeben 
+     - Status der Stationen wird Bit-Codiert uebergeben
        => z.B.: Bit 0 = 301 | Bit 15 = 316
-  *) 
+  *)
   FOR wlIndexFaecherwagenStation := cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR DO
 
     (* Hinweis:
-       - Ein Bit kann gesetzt als auch zurueck gesetzt werden 
+       - Ein Bit kann gesetzt als auch zurueck gesetzt werden
     *)
     IF ( aFaecherwagenStation[wlIndexFaecherwagenStation].bpStatusStationInBeladePosition ) THEN
       awSps2MmiStatusFaecherwagenstationen[wlIndex] := BitToggleWord( IN := awSps2MmiStatusFaecherwagenstationen[wlIndex], POS := ilBitPosition );
@@ -118,7 +118,7 @@ END_IF
 
 (* Hinweis:
    - Status der Stationen erstellen
-*) 
+*)
 wlIndex       := WORD#0;
 ilBitPosition := INT#0;
 
@@ -145,9 +145,9 @@ IF( dwDifference <> 0 AND bgEtherCatOK ) THEN
   MsgToMmi(auftragsnr_w := SB0_SPS_SETSTATUSLOADINGSTATIONS );
 END_IF
 
-(***************************************************************************************************)
-(* AKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 FWAuftraege();
 Reset();
 END_PROGRAM

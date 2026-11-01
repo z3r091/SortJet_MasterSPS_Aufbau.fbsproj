@@ -6,19 +6,19 @@
 }
 *)
 ACTION ScheibenNeuAusrichten
-(***************************************************************************************************)
-(* SCHEIBEN IM SPEICHER NEU AUSRICHTEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// SCHEIBEN IM SPEICHER NEU AUSRICHTEN
+//-------------------------------------------------------------------------------------------------
 IF (  bpScheibenNeuAusrichten )
 THEN
 
   wpgFehlerdaten[0] := stStationsNummern.NummerExtern;
 
   (* Hinweis:
-     - Starten der Schrittkette 
+     - Starten der Schrittkette
   *)
   CASE steplScheibenNeuAusrichten OF
-    (*SCHEIBEN NEU AUSRICHTEN ==============================*)
+    // SCHEIBEN NEU AUSRICHTEN ==============================
     STEP_0_E:
       bpDone:= FALSE;
       blSchnittstelle_bAnforderungTransportVerbund := FALSE;
@@ -26,14 +26,14 @@ THEN
 
       steplScheibenNeuAusrichten := STEP_20_E;
 
-    (*EINTRANSPORT ==============================*)
+    // EINTRANSPORT ==============================
     STEP_20_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  EINTRANSPORT IM TRANSFERSHUTTLE VERBUND
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF ( bpTransfershuttleVerbundAktiv ) THEN
 
@@ -48,7 +48,7 @@ THEN
 
       END_IF
 
-    (*SCHEIBEN NEU AUSRICHTEN ==============================*)
+    // SCHEIBEN NEU AUSRICHTEN ==============================
     STEP_30_E:
       (* Anmerkung:
          - Pneumatik ansteuern
@@ -73,19 +73,19 @@ THEN
       *)
       IF ( tonlWartenAufAnheben.Q ) THEN
 
-        (* Glastransport oben *)
+        // Glastransport oben
         IF ( NOT blSensorGlastransportOben ) THEN
           wpFehlerNr := cMELDUNG_TS_MELDET_NICHT_OBEN;
-        (* Luftsensoren oben *)
+        // Luftsensoren oben
         ELSIF ( NOT bpSensorScheibenKontrolleEinlaufSeiteOben ) THEN
           wpFehlerNr := cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_OBEN;
-        (* Luftsensoren oben *)
+        // Luftsensoren oben
         ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteOben ) THEN
           wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_OBEN;
-        (* Druckluft Ok *)
+        // Druckluft Ok
         ELSIF NOT blDruckluftEinlaufSeiteOK THEN
           wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_EINLAUF_NICHT_OK;
-        (* Druckluft Ok *)
+        // Druckluft Ok
         ELSIF ( NOT blDruckluftAuslaufSeiteOK ) THEN
           wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_AUSLAUF_NICHT_OK;
         ELSE
@@ -102,14 +102,14 @@ THEN
  
       END_IF
 
-    (*SCHEIBEN NEU AUSRICHTEN ==============================*)
+    // SCHEIBEN NEU AUSRICHTEN ==============================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
-      //  STARTEN DER NEU AUSRICHTUNG [POSITIONIERUNG] 
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  STARTEN DER NEU AUSRICHTUNG [POSITIONIERUNG]
+      //
       //  Hinweis:
       // - Transport in "Positive" Richtung
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
 
@@ -141,7 +141,7 @@ THEN
 
       steplScheibenNeuAusrichten := STEP_110_E;
 
-    (*SCHEIBEN NEU AUSRICHTEN ==============================*)
+    // SCHEIBEN NEU AUSRICHTEN ==============================
     STEP_110_E:
       (* Hinweis:
          - Antrieb verfahren
@@ -167,7 +167,7 @@ THEN
         steplScheibenNeuAusrichten := STEP_800_E;
       END_IF
 
-    (*SCHEIBEN NEU AUSRICHTEN ==============================*)
+    // SCHEIBEN NEU AUSRICHTEN ==============================
     STEP_800_E:
       (* Hinweis:
          - Ausgaenge zuruecksetzeb
@@ -182,16 +182,16 @@ THEN
 
       steplScheibenNeuAusrichten := STEP_1000_E;
 
-    (*SCHEIBEN NEU AUSRICHTEN ==============================*)
+    // SCHEIBEN NEU AUSRICHTEN ==============================
     STEP_900_E:
       blSchnittstelle_bAnforderungTransportVerbund := FALSE;
       bpFehler := TRUE;
 
-    (*SCHEIBEN NEU AUSRICHTEN ==============================*)
+    // SCHEIBEN NEU AUSRICHTEN ==============================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*SCHEIBEN NEU AUSRICHTEN ==============================*)
+  // SCHEIBEN NEU AUSRICHTEN ==============================
   END_CASE
 ELSE
 

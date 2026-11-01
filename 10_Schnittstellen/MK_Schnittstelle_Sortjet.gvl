@@ -8,13 +8,13 @@
 {attribute 'allow_unqualified_access'}
 NAMESPACE MK_Schnittstelle_Sortjet
 VAR_GLOBAL
-(***************************************************************************************************)
-(* MASCHINEPARAMETER: SCHNITTSTELLE SORTJET *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// MASCHINEPARAMETER: SCHNITTSTELLE SORTJET
+//-------------------------------------------------------------------------------------------------
 
   (* Hinweis:
-     Das MMI entscheidet wer Master und wer Slave ist. 
-     Das MMI, das den Status der Verbundstrecke verwaltet ist der Master!
+     - Das MMI entscheidet wer Master und wer Slave ist.
+       Das MMI, das den Status der Verbundstrecke verwaltet ist der Master!
   *)
   apgMKSchnittstelle_SortJet_Remnant : Schnittstelle_SortJet_ST :=
   (

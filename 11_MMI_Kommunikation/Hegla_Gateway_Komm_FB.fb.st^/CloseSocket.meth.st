@@ -6,12 +6,10 @@
 }
 *)
 METHOD CloseSocket : BOOL
-(*
-  Closes a socket and sets it invalid.
-  Return: Success of operation
-*)
+//  Closes a socket and sets it invalid.
+//  Return: Success of operation
 VAR_INPUT
-  hSocket: POINTER TO RTS_IEC_HANDLE; (* Address of Socket-ID *)  
+  hSocket: POINTER TO RTS_IEC_HANDLE; // Address of Socket-ID  
 END_VAR
 VAR
   uiResult : UDINT;

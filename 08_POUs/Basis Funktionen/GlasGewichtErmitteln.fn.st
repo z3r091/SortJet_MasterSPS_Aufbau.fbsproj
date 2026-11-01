@@ -8,28 +8,28 @@
 FUNCTION GlasGewichtErmitteln : REAL
 VAR_INPUT
 
-  (* REAL *)
-  rpGlaslaenge  : REAL := REAL#0; (* [mm] -> Wert in mm *)
-  rpGlasbreite  : REAL := REAL#0; (* [mm] -> Wert in mm *)
-  rpGlasstaerke : REAL := REAL#0; (* [mm] -> Wert in mm *)
+  // REAL
+  rpGlaslaenge  : REAL := REAL#0; // [mm] -> Wert in mm
+  rpGlasbreite  : REAL := REAL#0; // [mm] -> Wert in mm
+  rpGlasstaerke : REAL := REAL#0; // [mm] -> Wert in mm
 
 END_VAR
 VAR
 
-  (* REAL *)
+  // REAL
   rlErgebnis : REAL := REAL#0;
-  rlLaenge   : REAL := REAL#0; (* [mm] -> Wert in dm [UMRECHNUNG] *)
-  rlBreite   : REAL := REAL#0; (* [mm] -> Wert in dm [UMRECHNUNG] *)
-  rlStaerke  : REAL := REAL#0; (* [mm] -> Wert in dm [UMRECHNUNG] *)
+  rlLaenge   : REAL := REAL#0; // [mm] -> Wert in dm [UMRECHNUNG]
+  rlBreite   : REAL := REAL#0; // [mm] -> Wert in dm [UMRECHNUNG]
+  rlStaerke  : REAL := REAL#0; // [mm] -> Wert in dm [UMRECHNUNG]
 
 END_VAR
 
 VAR CONSTANT
 
-  (* WORD *)
+  // WORD
   cUMRECHNUNG_MM_IN_DM      : REAL := 100.0;
 
-  (* REAL *)
+  // REAL
   cSPEZIFISCHES_GLASGEWICHT : REAL := REAL#2.5; //IN kg/dm³
 
 END_VAR

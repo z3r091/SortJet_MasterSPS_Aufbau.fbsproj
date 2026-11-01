@@ -6,9 +6,9 @@
 }
 *)
 ACTION Lisec_Schnittstelle
-(***************************************************************************************************)
-(* STEUERUNG: AUSGAENGE ZUR VORGAENGERSTATION *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG: AUSGAENGE ZUR VORGAENGERSTATION
+//-------------------------------------------------------------------------------------------------
 blBereitZumEintransport := in_bGlasAbruf OR ( in_bTasterGlasbruch AND in_bTasterSpezial ) OR VISU_VARS.abgVISUFreigabeFremdanlage[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS];
 
 IF ( in_bTasterGlasbruch AND in_bTasterSpezial ) OR VISU_VARS.abgVISUFreigabeFremdanlage[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] THEN
@@ -34,9 +34,9 @@ ELSE
   rpGeschwindigkeit := 0;
 END_IF
 
-(***************************************************************************************************)
-(* STEUERUNG: HARDWARESCHNITTSTELLE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG: HARDWARESCHNITTSTELLE
+//-------------------------------------------------------------------------------------------------
 blSenderGlasBereit := ( ( BasisStationsParameter.bAutomatik )
                         AND NOT BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1].bFehler ) 
                       AND ( BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1].bBereitZumAustransport 

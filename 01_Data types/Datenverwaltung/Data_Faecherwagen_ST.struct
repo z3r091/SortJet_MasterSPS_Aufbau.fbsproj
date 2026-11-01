@@ -7,7 +7,7 @@
 *)
 TYPE Data_Faecherwagen_ST :
   STRUCT
-    eAuftrag                             : Auftraege_Faecherwagen_EN; (* Hinweis: 1 Einschleusen | 2 Ausschleusen | 3 Positionskorrektur *)
+    eAuftrag                             : Auftraege_Faecherwagen_EN; // Hinweis: 1 Einschleusen | 2 Ausschleusen | 3 Positionskorrektur
     wFaecherwagenStationsNr              : WORD;
   END_STRUCT
 END_TYPE

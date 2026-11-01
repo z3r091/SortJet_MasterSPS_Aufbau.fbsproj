@@ -6,9 +6,9 @@
 }
 *)
 ACTION Status_ISO_Linie
-(***************************************************************************************************)
-(* AKTION: STATUS DER ISO-LINIE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: STATUS DER ISO-LINIE
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Anzeige ob ISO Linie in Automatik ist
 *)
@@ -26,14 +26,14 @@ END_IF
 
 IF ( blStartISOLinie ) THEN
   CASE steplStartIsolinie OF
-    (*START ISO-LINIE ==================*)
+    // START ISO-LINIE ==================
     STEP_0_E:
-      (*  Anmerkung:
-          - Wort 0: Stationsnr
-          - Wort 1: 0 = Iso Linie nicht bereit; 1 Iso Bereit
-          - Wort 2: 1 = Output-Shuttle-Nr 
-          - Wort 3: 0 = nichts , 1 = Auftrag wurde abgebrochen
-          - Wort 4: 0 = Senkrechtförderer frei  / 1 = Senkrechtförderer belegt
+      (* Anmerkung:
+         - Wort 0: Stationsnr
+         - Wort 1: 0 = Iso Linie nicht bereit; 1 Iso Bereit
+         - Wort 2: 1 = Output-Shuttle-Nr
+         - Wort 3: 0 = nichts , 1 = Auftrag wurde abgebrochen
+         - Wort 4: 0 = Senkrechtförderer frei  / 1 = Senkrechtförderer belegt
       *)
       wSps2MmiStationsNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
       wSPS2MMIStationsStatusWord1.0 := in_bEmpfaengerStationFrei;
@@ -41,12 +41,12 @@ IF ( blStartISOLinie ) THEN
 
       steplStartIsolinie:=STEP_50_E;
 
-    (*START ISO-LINIE ==================*)
+    // START ISO-LINIE ==================
     STEP_50_E:
       blStartISOLinie := FALSE;
       steplStartIsolinie:=STEP_0_E;
 
-  (*START ISO-LINIE ==================*)
+  // START ISO-LINIE ==================
   END_CASE
 END_IF
 IF NOT blStartISOLinie THEN

@@ -6,9 +6,9 @@
 }
 *)
 ACTION Positionieren
-(****************************************************************************************)
-(* POSITIONIEREN *)
-(****************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// POSITIONIEREN
+//-------------------------------------------------------------------------------------------------
 
 IF ( bpPositionieren ) THEN
 
@@ -44,7 +44,7 @@ IF ( bpPositionieren ) THEN
 
   
   CASE steplPositionieren OF
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_0_E:
       (* Hinweis:
          - Variablen zurueck setzen
@@ -63,7 +63,7 @@ IF ( bpPositionieren ) THEN
         steplPositionieren := STEP_10_E;
       END_IF
 
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_10_E:
       (* Hinweis:
          - Es darf weder der Einlauf noch der Auslauf- Sensor während der Dreh-Bewegung belegt sein
@@ -102,14 +102,14 @@ IF ( bpPositionieren ) THEN
 
       END_IF
 
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_40_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  ENDSCHALTER PRUEFEN
-      //         
+      //
       //  Hinweis:
       // - Vor dem Verfahren pruefen ob der Antrieb in einem Endschalter steht
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       IF (  NOT Antrieb.bpMinSchalterBelegt
            AND NOT Antrieb.bpMaxSchalterBelegt )
@@ -119,11 +119,11 @@ IF ( bpPositionieren ) THEN
         steplPositionieren := STEP_50_E;
       END_IF
 
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_50_E:
       (* Hinweis:
-         - Versuchen den Endschalter frei zufahren 
-         WICHTIG [PROJEKT INTERPANE HOERDT]
+         - Versuchen den Endschalter frei zufahren
+           WICHTIG [PROJEKT INTERPANE HOERDT]
          - Geschwindigkeit sehrlangsam
       *)
       tonlEndschalterFreifahren( IN := TRUE, PT:= T#10s);
@@ -165,7 +165,7 @@ IF ( bpPositionieren ) THEN
         steplPositionieren := STEP_900_E;
       END_IF
 
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_60_E:
       (* Hinweis:
          - Erzwungene Pause, damit der Antrieb wieder ordnungsgemaeß schaltet
@@ -177,14 +177,14 @@ IF ( bpPositionieren ) THEN
         steplPositionieren := STEP_100_E;
       END_IF
 
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  STARTEN DER ABSOLUT- POSITIONIERUNG
-      //         
+      //
       //  Hinweis:
       // - Uebergabe der Zielposition fuer den Antrieb
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       steplPositionieren := STEP_110_E;
 
@@ -208,7 +208,7 @@ IF ( bpPositionieren ) THEN
 
       END_CASE
 
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_110_E:
       Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -219,7 +219,7 @@ IF ( bpPositionieren ) THEN
 
       steplPositionieren := STEP_120_E;
 
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_120_E:
       (* Hinweis:
          - Bewegung abgeschlossen
@@ -229,16 +229,16 @@ IF ( bpPositionieren ) THEN
         steplPositionieren := STEP_1000_E;
       END_IF
 
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*POSITIONIEREN =================================== *)
+    // POSITIONIEREN ===================================
     STEP_1000_E:
       bpDone := TRUE;
       bpPositionierenAbgeschlossen := TRUE;
 
-  (*POSITIONIEREN =================================== *)
+  // POSITIONIEREN ===================================
   END_CASE
 
 END_IF

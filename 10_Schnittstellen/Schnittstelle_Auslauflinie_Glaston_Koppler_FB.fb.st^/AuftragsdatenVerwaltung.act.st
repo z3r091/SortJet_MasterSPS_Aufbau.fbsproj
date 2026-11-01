@@ -6,11 +6,11 @@
 }
 *)
 ACTION AuftragsdatenVerwaltung
-(***************************************************************************************************)
-(* AUFTRAGSDATENVERWALTUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFTRAGSDATENVERWALTUNG
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   - Auftragsdaten wurden verarbeitet - Bereit für einen weiteren Auftrag       
+   - Auftragsdaten wurden verarbeitet - Bereit für einen weiteren Auftrag
 *)
 ftlGlasBereit( CLK := BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1].bBereitZumAustransport );
 
@@ -19,7 +19,7 @@ IF ( ftlGlasBereit.Q ) THEN
 END_IF
 
 (* Hinweis:
-    - Auslesen des naechsten Wertes aus dem FIFO (Warteschlange)
+   - Auslesen des naechsten Wertes aus dem FIFO (Warteschlange)
       => Schreiben auf die IO- Schnittstelle bzw. DP\DP - Schnittstelle
 *)
 IF (  NOT AuftragsSpeicher.bpWarteschlangeLeer
@@ -34,9 +34,9 @@ THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* AUFTRAGSDATEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AUFTRAGSDATEN
+//-------------------------------------------------------------------------------------------------
 IF ( bpAuftragsdatenVorhanden ) THEN
 
   (* Hinweis:
@@ -77,8 +77,8 @@ IF ( bpAuftragsdatenVorhanden ) THEN
   (* Hinweis:
      - Warten das die Daten von der Fremdanlage quittiert werden
        => <blFremdanlageAuftragsdatenErhalten> Signal muss von FALSE auf TRUE und dann wieder auf FALSE wechseln
-         - TRUE  : Daten werden gelesen 
-         - FALSE : Daten wurden verarbeitet
+     - TRUE  : Daten werden gelesen
+     - FALSE : Daten wurden verarbeitet
   *)
   ftlFremdanlageDatenVerarbeitet(CLK:= in_bEmpfaengerAuftragsdatenErhalten );
 

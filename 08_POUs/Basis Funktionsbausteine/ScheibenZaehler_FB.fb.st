@@ -7,21 +7,21 @@
 *)
 FUNCTION_BLOCK ScheibenZaehler_FB
 
-(* SET - PROPERTIES *)
+// SET - PROPERTIES
 VAR_INPUT
 
-  (* BOOLEAN *)
-  bpReset    : BOOL; (* Hinweis: Ruecksetzen des Bausteins *)
-  bpAktiv    : BOOL; (* Hinweis: AKtivieren des Bausteins *)
-  bpStart    : BOOL; (* Hinweis: AKtivieren des Bausteins *)
-  bpSensor   : BOOL; (* Hinweis: Sensor mittels dem die Scheiben gezaehlt werden sollen *)
+  // BOOLEAN
+  bpReset    : BOOL; // Hinweis: Ruecksetzen des Bausteins
+  bpAktiv    : BOOL; // Hinweis: AKtivieren des Bausteins
+  bpStart    : BOOL; // Hinweis: AKtivieren des Bausteins
+  bpSensor   : BOOL; // Hinweis: Sensor mittels dem die Scheiben gezaehlt werden sollen
 
 END_VAR
 
-(* GET - PROPERTIES *)
+// GET - PROPERTIES
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpFehler            : BOOL := FALSE;
   bpScheibeQuittieren : BOOL;
 
@@ -29,24 +29,24 @@ END_VAR
 
 VAR_IN_OUT
 
-  (* INT *)
+  // INT
   ipScheibenAnzahl : INT;
 
 END_VAR
 
-(* PRIVATE MEMBER *)
+// PRIVATE MEMBER
 VAR
 
-  (* BOOLEAN *)
+  // BOOLEAN
   blScheibenAnfangErkannt : BOOL;
 
-  (* TRIGGER *)
+  // TRIGGER
   rtlScheibenAnfangErkannt : R_TRIG;
   rtlScheibenEndeErkannt   : R_TRIG;
 
-  (* TIMER *)
-  tonlSensor : TON; (* Einschalverzoegerung *)
-  toflSensor : TOF; (* Ausschalverzoegerung *)
+  // TIMER
+  tonlSensor : TON; // Einschalverzoegerung
+  toflSensor : TOF; // Ausschalverzoegerung
 
 END_VAR
 
@@ -81,7 +81,7 @@ ELSE
     IF ( bpStart ) THEN
 
       (* Hinweis:
-         - Scheibenquittierung zuruecksetzen 
+         - Scheibenquittierung zuruecksetzen
       *)
       bpScheibeQuittieren := FALSE;
 
@@ -97,7 +97,7 @@ ELSE
       END_IF
 
       (* Hinweis:
-         - Es wurde eine Scheibenanfang erkannt es muss nun ein Scheibenende kommen 
+         - Es wurde eine Scheibenanfang erkannt es muss nun ein Scheibenende kommen
       *)
       rtlScheibenEndeErkannt( CLK := ( NOT toflSensor.Q
                                        AND blScheibenAnfangErkannt) );
@@ -113,9 +113,9 @@ ELSE
     ELSE
       blScheibenAnfangErkannt := FALSE;
 
-    END_IF (* Ende bpStart *)
+    END_IF // Ende bpStart
 
-  END_IF (* Ende bpAktiv *)
+  END_IF // Ende bpAktiv
 
-END_IF (* Ende bpReset *)
+END_IF // Ende bpReset
 END_FUNCTION_BLOCK

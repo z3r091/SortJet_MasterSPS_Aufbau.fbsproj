@@ -6,9 +6,9 @@
 }
 *)
 ACTION Status_Automatikkreis_Start
-(***************************************************************************************************)
-(* AKTION: AUFTRAGSSTATUS SETZEN BEIM STARTEN DAS AUTOMATIKMODUS  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: AUFTRAGSSTATUS SETZEN BEIM STARTEN DAS AUTOMATIKMODUS
+//-------------------------------------------------------------------------------------------------
 
 FOR wlIndexAutoStart := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
 

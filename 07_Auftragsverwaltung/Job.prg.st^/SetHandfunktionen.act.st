@@ -6,39 +6,39 @@
 }
 *)
 ACTION SetHandfunktionen
-(***************************************************************************************************)
-(* HANDFUNKTIONEN SETZEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// HANDFUNKTIONEN SETZEN
+//-------------------------------------------------------------------------------------------------
 
-(* STATIONEN *)
+// STATIONEN
 FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
   starrStationBasisParameter[wlIndex].dwHandfunktionen := adwgHandfunktionenStationen[wlIndex];
 END_FOR
 
-(* SHUTTLE *)
+// SHUTTLE
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
   starrShuttleBasisParameter[wlIndex].dwHandfunktionen := adwgHandfunktionenShuttle[wlIndex];
 END_FOR
 
-(* TRANSFERSHUTTLE *)
+// TRANSFERSHUTTLE
 FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
   starrTransfershuttleBasisParameter[wlIndex].dwHandfunktionen := adwgHandfunktionenTransfershuttle[wlIndex];
 END_FOR
 
-(* FW *)
+// FW
 FOR wlIndex := cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR DO
   starrFaecherwagenBasisParameter[wlIndex].dwHandfunktionen := adwgHandfunktionenFaecherwagenStationen[wlIndex];
 END_FOR
 
 
-(***************************************************************************************************)
-(* HANDFUNKTIONEN ZURUECKSETZEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// HANDFUNKTIONEN ZURUECKSETZEN
+//-------------------------------------------------------------------------------------------------
 
-(* ---------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------
 //  Hinweis:
 //  -Zuruecksetzen der Handfunktionen
-// ---------------------------------------------------------------------------------------*)
+// ---------------------------------------------------------------------------------------
 
 FOR wIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
 
@@ -46,7 +46,7 @@ FOR wIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
        OR NOT NotHalt.bpNotHaltOK )
   THEN
 
-    (* STATIONEN *)
+    // STATIONEN
     FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
 
       IF StationInAutomatikkreis(starrStationBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wIndexReset) THEN
@@ -55,7 +55,7 @@ FOR wIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
 
     END_FOR
 
-    (* SHUTTLE *)
+    // SHUTTLE
     FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
 
       IF StationInAutomatikkreis(starrShuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wIndexReset) THEN
@@ -64,7 +64,7 @@ FOR wIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
 
     END_FOR
 
-    (* TRANSFERSHUTTLE *)
+    // TRANSFERSHUTTLE
     FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
 
       IF StationInAutomatikkreis(starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wIndexReset) THEN
@@ -73,7 +73,7 @@ FOR wIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
 
     END_FOR
 
-    (* FAECHERWAGEN *)
+    // FAECHERWAGEN
     FOR wlIndex := cERSTE_FAECHERWAGENSTATIONS_NR  TO cLETZTE_FAECHERWAGENSTATIONS_NR DO
 
       IF StationInAutomatikkreis(starrFaecherwagenBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wIndexReset) THEN
@@ -86,12 +86,12 @@ FOR wIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
 
 END_FOR
 
-(* ---------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------
 //  SPEICHER ALLGEMEIN [TRANSFERSHUTTLE]
-//         
+//
 //  Hinweis:
 //  -Zuruecksetzen der Handfunktionen
-// ---------------------------------------------------------------------------------------*)
+// ---------------------------------------------------------------------------------------
 
 FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
   IF AutomatikAktiv(wlIndex) OR NOT Nothalt.bpNotHaltOK THEN

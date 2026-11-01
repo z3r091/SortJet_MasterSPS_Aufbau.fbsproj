@@ -6,14 +6,14 @@
 }
 *)
 ACTION Reset
-(***************************************************************************************************)
-(* AKTION: RESET *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: RESET
+//-------------------------------------------------------------------------------------------------
 tonlMaxWarteAufResetErfolgreich(IN:=bpReset,pt:=tgMaxWartezeitReset-t#1s);
 
 IF( bpReset )THEN
   CASE steplReset OF
-    (*RESET ===========================*)
+    // RESET ===========================
     STEP_0_E:
       bprtScheibe := FALSE;
       bpDone := FALSE;
@@ -24,13 +24,13 @@ IF( bpReset )THEN
         steplReset := STEP_10_E;
       END_IF
 
-    (*RESET ===========================*)
+    // RESET ===========================
     STEP_10_E:
       Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.RESET;
 
       steplReset := STEP_20_E;
 
-    (*RESET ===========================*)
+    // RESET ===========================
     STEP_20_E:
       (* Hinweis:
          - Antrieb wurde zurueckgesetzt
@@ -41,7 +41,7 @@ IF( bpReset )THEN
         tonlMaxWarteAufResetErfolgreich.IN :=FALSE;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Antrieb / Timer
       *)
       IF ( Antrieb.bpFehler AND tonlMaxWarteAufResetErfolgreich.Q ) THEN
@@ -50,17 +50,17 @@ IF( bpReset )THEN
         steplReset := STEP_900_E;
       END_IF
 
-    (*RESET ===========================*)
+    // RESET ===========================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*RESET ===========================*)
+    // RESET ===========================
     STEP_1000_E:
       wpFehlerNr := cMELDUNG_NULL;
       bpFehler := FALSE;
       bpDone := TRUE;
 
-  (*RESET ===========================*)
+  // RESET ===========================
   END_CASE
 END_IF
 

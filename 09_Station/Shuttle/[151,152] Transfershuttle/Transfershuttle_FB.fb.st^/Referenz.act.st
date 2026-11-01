@@ -6,22 +6,22 @@
 }
 *)
 ACTION Referenz
-(***************************************************************************************************)
-(* AKTION REFERENZ *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION REFERENZ
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bReferenz ) THEN
   CASE steplReferenz OF
-    (*REFERENZ ==============================*)
+    // REFERENZ ==============================
     STEP_0_E:
       steplReferenz := STEP_10_E;
 
-    (*REFERENZ ==============================*)
+    // REFERENZ ==============================
     STEP_10_E:
       Querfahrt.bpStartReferenz := NOT Querfahrt.bpInReference;
       Glastransport.bpFahreReferenz := TRUE;
       steplReferenz := STEP_20_E;
 
-    (*REFERENZ ==============================*)
+    // REFERENZ ==============================
     STEP_20_E:;
       IF ( Querfahrt.bpDone OR NOT Querfahrt.bpStartReferenz ) AND ( Glastransport.bpDone ) THEN
         Querfahrt.bpStartReferenz := FALSE;
@@ -41,15 +41,15 @@ IF ( BasisStationsParameter.bReferenz ) THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-    (*REFERENZ ==============================*)
+    // REFERENZ ==============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*REFERENZ ==============================*)
+    // REFERENZ ==============================
     STEP_1000_E:
       BasisStationsParameter.bReferenzAbgeschlossen := TRUE;
 
-  (*REFERENZ ==============================*)
+  // REFERENZ ==============================
   END_CASE
 ELSE
   IF ( steplReferenz > STEP_0_E ) THEN

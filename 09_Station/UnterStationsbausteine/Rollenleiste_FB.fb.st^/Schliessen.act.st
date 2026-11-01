@@ -6,15 +6,15 @@
 }
 *)
 ACTION Schliessen
-(***************************************************************************************************)
-(* AKTION - Rollenleiste schließen *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION - Rollenleiste schließen
+//-------------------------------------------------------------------------------------------------
 IF ( bpStarteSchliessen
      AND NOT bpStarteOeffnen )
 THEN
 
   CASE steplSchrittketteSchliessen OF
-    (* SCHLIESSEN ========================================*)
+    // SCHLIESSEN ========================================
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
@@ -31,7 +31,7 @@ THEN
 
       END_IF
 
-    (* SCHLIESSEN ========================================*)
+    // SCHLIESSEN ========================================
     STEP_10_E:
       (* Hinweis:
          - Initialisieren der Timer
@@ -55,18 +55,18 @@ THEN
         steplSchrittketteSchliessen := STEP_900_E;
       END_IF
 
-    (* SCHLIESSEN ========================================*)
+    // SCHLIESSEN ========================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* SCHLIESSEN ========================================*)
+    // SCHLIESSEN ========================================
     STEP_1000_E:
       bpDone := TRUE;
 
   END_CASE
 END_IF
 
-(* SCHLIESSEN ========================================*)
+// SCHLIESSEN ========================================
 IF ( NOT bpStarteSchliessen ) THEN
 
   IF (steplSchrittketteSchliessen > STEP_0_E) THEN

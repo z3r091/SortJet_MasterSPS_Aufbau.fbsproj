@@ -6,13 +6,13 @@
 }
 *)
 ACTION Reset
-(***************************************************************************************************)
-(* BAUSTEIN: AUSGAENGE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AUSGAENGE
+//-------------------------------------------------------------------------------------------------
 
 CASE steplReset OF
 
-  (* ----------------------------------------------- *)
+  // -----------------------------------------------
   STEP_0_E:
     bpStartePositionierung := FALSE;
     bpResourceAktiv        := FALSE;
@@ -26,20 +26,20 @@ CASE steplReset OF
 
     steplReset := STEP_10_E;
 
-  (* ----------------------------------------------- *)
+  // -----------------------------------------------
   STEP_10_E:
     Antrieb.wpBetriebsart :=  AntriebsBetriebsart_EN.RESET;
 
     steplReset := STEP_20_E;
 
-  (* ----------------------------------------------- *)
+  // -----------------------------------------------
   STEP_20_E:
     IF ( Antrieb.bpDone ) THEN
       Antrieb.wpBetriebsart := KEINE_FUNKTION;
       steplReset := STEP_1000_E;
     END_IF
 
-    (* Fehlerbehandlung
+    (* Fehlerbehandlung:
        - Ueberwachung
     *)
     tonlMaxWarteAufResetErfolgreich( IN := TRUE,
@@ -53,13 +53,13 @@ CASE steplReset OF
       steplReset := STEP_900_E;
     END_IF
 
-  (* ----------------------------------------------- *)
+  // -----------------------------------------------
   STEP_900_E:
     bpFehler        := TRUE;
     bpReset         := FALSE;
     steplReset      := STEP_0_E;
 
-  (* ----------------------------------------------- *)
+  // -----------------------------------------------
   STEP_1000_E:
     bpFehler        := FALSE;
     bpDone          := FALSE;

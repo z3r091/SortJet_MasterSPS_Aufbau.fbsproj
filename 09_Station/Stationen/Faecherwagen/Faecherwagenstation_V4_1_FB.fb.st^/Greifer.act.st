@@ -6,9 +6,9 @@
 }
 *)
 ACTION Greifer
-(***************************************************************************************************)
-(*  Greifer ÖFFNEN => FUER MULTIBELADUNG  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Greifer ÖFFNEN => FUER MULTIBELADUNG
+//-------------------------------------------------------------------------------------------------
 
 IF ( blGreiferOeffnen 
      //  AND blUntergestellErkannt //safety eingang
@@ -18,7 +18,7 @@ IF ( blGreiferOeffnen
 THEN
   CASE steplGreiferOeffnen OF
 
-    (* Greifer ÖFFNEN  ============================*)
+    // Greifer ÖFFNEN  ============================
     STEP_0_E:
       blGreiferOeffnenDone := FALSE;
 
@@ -36,7 +36,7 @@ THEN
         END_IF
       END_IF
 
-    (* Greifer ÖFFNEN  ============================*)
+    // Greifer ÖFFNEN  ============================
     STEP_10_E:
       tonlGreiferAufZu( IN := blGreiferOffen, PT := T#0.5S );
       tonlTimeoutGreiferAufZu(IN := NOT blGreiferOffen, PT := TIMEOUT_SENSOR);
@@ -46,9 +46,8 @@ THEN
         steplGreiferOeffnen := STEP_1000_E;
       END_IF
 
-      (* FEHLER:
-         - Sensor
-      *)
+      // FEHLER:
+      //   - Sensor
 
       IF tonlTimeoutGreiferAufZu.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_GREIFER_NICHT_OFFEN;
@@ -62,13 +61,13 @@ THEN
       END_IF
 
 
-    (* Greifer ÖFFNEN  ============================*)
+    // Greifer ÖFFNEN  ============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       out_bGreiferEinfahren := FALSE;
 
 
-    (* Greifer ÖFFNEN  ============================*)
+    // Greifer ÖFFNEN  ============================
     STEP_1000_E:
       blGreiferOeffnenDone:=TRUE;
 
@@ -93,18 +92,18 @@ END_IF
 
 
 
-(***************************************************************************************************)
-(*  Greifer SCHLIESSEN => FUER MULTIBELADUNG  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Greifer SCHLIESSEN => FUER MULTIBELADUNG
+//-------------------------------------------------------------------------------------------------
 
 IF blGreiferSchliessen 
-(*AND BasisStationsParameter.bFreigabe*)
+// AND BasisStationsParameter.bFreigabe
 //  AND blUntergestellErkannt //safety eingang
 // AND NOT in_bFaecherwagenNichtInPos // Gestell ist auf dem Wagen
 THEN
   CASE steplGreiferSchliessen OF
 
-    (* Greifer SCHLIESSEN ============================*)
+    // Greifer SCHLIESSEN ============================
     STEP_0_E:
       blGreiferSchliessenDone := FALSE;
 
@@ -122,7 +121,7 @@ THEN
         END_IF
       END_IF
 
-    (* Greifer SCHLIESSEN  ============================*)
+    // Greifer SCHLIESSEN  ============================
     STEP_10_E:
       tonlGreiferAufZu( IN := blGreiferZu, PT := T#0.5S );
       tonlTimeoutGreiferAufZu(IN := NOT blGreiferZu, PT := TIMEOUT_SENSOR);
@@ -132,9 +131,8 @@ THEN
         steplGreiferSchliessen := STEP_1000_E;
       END_IF
 
-      (* FEHLER:
-         - Sensor
-      *)
+      // FEHLER:
+      //   - Sensor
 
       IF tonlTimeoutGreiferAufZu.Q THEN
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_GREIFER_NICHT_GESCHLOSSEN;
@@ -148,17 +146,17 @@ THEN
       END_IF
 
 
-    (* Greifer SCHLIESSEN  ============================*)
+    // Greifer SCHLIESSEN  ============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       out_bGreiferAusfahren := FALSE;
 
 
-    (* Greifer SCHLIESSEN ============================*)
+    // Greifer SCHLIESSEN ============================
     STEP_1000_E:
       blGreiferSchliessenDone:=TRUE;
 
-  (* Greifer AUF ============================*)
+  // Greifer AUF ============================
   END_CASE
 END_IF
 

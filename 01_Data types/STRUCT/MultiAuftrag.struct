@@ -10,14 +10,14 @@
 *)
 TYPE MultiAuftrag :
   STRUCT
-    rLaenge              : REAL; (* Scheiben- Laenge *)
-    rHoehe               : REAL; (* Scheiben- Hoehe  *)
-    rBreite              : REAL; (* Scheiben- Breite *)
-    rModellVersatzVorne  : REAL; (* Scheiben- Modelversatz *)
-    rModellVersatzHinten : REAL; (* Scheiben- Modelversatz *)
-    wScheibenAnzahl      : WORD; (* Scheiben- Anzahl der Scheiben *)
-    wQuellStation        : WORD; (* Quell - Station: Von dieser Station kommt das Glas *)
-    wZielStation         : WORD; (* Ziel- Station: Auf diese Station soll das Glas gefahren werden *)
-    bModell              : BOOL; (* Scheibe ist ein Modell *)
+    rLaenge              : REAL; // Scheiben- Laenge
+    rHoehe               : REAL; // Scheiben- Hoehe
+    rBreite              : REAL; // Scheiben- Breite
+    rModellVersatzVorne  : REAL; // Scheiben- Modelversatz
+    rModellVersatzHinten : REAL; // Scheiben- Modelversatz
+    wScheibenAnzahl      : WORD; // Scheiben- Anzahl der Scheiben
+    wQuellStation        : WORD; // Quell - Station: Von dieser Station kommt das Glas
+    wZielStation         : WORD; // Ziel- Station: Auf diese Station soll das Glas gefahren werden
+    bModell              : BOOL; // Scheibe ist ein Modell
   END_STRUCT
 END_TYPE

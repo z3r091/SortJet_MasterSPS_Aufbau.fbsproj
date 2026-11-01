@@ -19,13 +19,13 @@ FOR i := 0 TO 3 DO RemoveETX[i] := DWORD#0; END_FOR;
 FOR i := 0 TO 15 DO
   dwIn := i / 4; sh := (i MOD 4) * 8;
 
-  tmp := SHR(SheetID[dwIn], sh);     (* byte runter schieben *)
-  tmp := tmp MOD DWORD#256;          (* entspricht AND 16#FF *)
+  tmp := SHR(SheetID[dwIn], sh);     // byte runter schieben
+  tmp := tmp MOD DWORD#256;          // entspricht AND 16#FF
   b := DWORD_TO_BYTE(tmp);
 
   IF b = BYTE#16#03 THEN b := BYTE#0; END_IF;
 
   dwOut := i / 4; sh := (i MOD 4) * 8;
-  RemoveETX[dwOut] := RemoveETX[dwOut] + SHL(BYTE_TO_DWORD(b), sh);  (* + statt OR *)
+  RemoveETX[dwOut] := RemoveETX[dwOut] + SHL(BYTE_TO_DWORD(b), sh);  // + statt OR
 END_FOR;
 END_FUNCTION

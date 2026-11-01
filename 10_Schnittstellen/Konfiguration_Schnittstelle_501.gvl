@@ -9,35 +9,35 @@
 NAMESPACE Konfiguration_Schnittstelle_501
 VAR_CONFIG
 
-(***************************************************************************************************)
-(* KONFIGURATION: SCHNITTSTELLE 501 Brechanlage *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// KONFIGURATION: SCHNITTSTELLE 501 Brechanlage
+//-------------------------------------------------------------------------------------------------
 
-  (*------------------------------------ HARDWARE EINGAENGE --------------------------------------- *)
+  // ------------------------------------ HARDWARE EINGAENGE ---------------------------------------
   // Standart Eingänge
-  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bTasterGlasbruch                 AT %MX1.0    : BOOL; (* OPTION *)
-  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bTasterSpezial                   AT %MX1.0    : BOOL; (* OPTION *)  
-  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bEmpfaengerSensorEinlauf         AT %MX1.0    : BOOL; (* OPTION *)
+  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bTasterGlasbruch                 AT %MX1.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bTasterSpezial                   AT %MX1.0    : BOOL; // OPTION  
+  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bEmpfaengerSensorEinlauf         AT %MX1.0    : BOOL; // OPTION
   
   // Buskoppler Eingänge
   
   // Portale Eingänge
-  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bGlasAufgestellt                 AT %MX1.0    : BOOL; (* OPTION *)
+  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bGlasAufgestellt                 AT %MX1.0    : BOOL; // OPTION
 
-  (*------------------------------------ HARDWARE AUSGAENGE --------------------------------------- *)
+  // ------------------------------------ HARDWARE AUSGAENGE ---------------------------------------
   // Standart Ausgänge
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderBereit                   AT %MX2.0    : BOOL; (* OPTION *)
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderGlasBereit               AT %MX2.0    : BOOL; (* OPTION *)
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderBereit                   AT %MX2.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderGlasBereit               AT %MX2.0    : BOOL; // OPTION
                                          
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteGlasbruch               AT %MX2.0    : BOOL; (* OPTION *)
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteSpezial                 AT %MX2.0    : BOOL; (* OPTION *)
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bAmpelEventAktiv                AT %MX2.0    : BOOL; (* OPTION *)
-  Globale_Bausteine.aSchnittstelleEinlauf[501].Horn.out_bHorn                      AT %MX2.0    : BOOL; (* OPTION *)
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteGlasbruch               AT %MX2.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteSpezial                 AT %MX2.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bAmpelEventAktiv                AT %MX2.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].Horn.out_bHorn                      AT %MX2.0    : BOOL; // OPTION
   
   // Buskoppler Ausgänge
   
   // Portale Ausgänge
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bBereitZumAufstellen            AT %MX2.0    : BOOL; (* OPTION *)
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bBereitZumAufstellen            AT %MX2.0    : BOOL; // OPTION
   
 END_VAR
 END_NAMESPACE

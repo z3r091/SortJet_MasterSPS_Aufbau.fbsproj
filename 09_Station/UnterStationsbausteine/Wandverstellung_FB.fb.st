@@ -9,7 +9,7 @@
 FUNCTION_BLOCK Wandverstellung_FB
 VAR_INPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpWandverstellungOeffnen    : BOOL;
   bpWandverstellungSchliessen : BOOL;
   bpReset                     : BOOL;
@@ -18,50 +18,50 @@ VAR_INPUT
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpDone    : BOOL;
   bpFehler  : BOOL;
 
-  (* WORD *)
+  // WORD
   wpFehlerNr  : WORD;
 
-  (* ENUM *)
-  epWandStatus  : WandOeffnung_EN;(* Status: Gibt die Aktuelle Position des Antriebs aus *)
+  // ENUM
+  epWandStatus  : WandOeffnung_EN;// Status: Gibt die Aktuelle Position des Antriebs aus
 
 END_VAR
 VAR
 
-  (* STEPS *)
+  // STEPS
   steplWandverstellungOeffnen    : Steps_TE;
   steplWandverstellungSchliessen : Steps_TE;
 
-  (* TIMER *)
-  tonlEingefahrenWandEinlaufseite  : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben *)
-  tonlAusgefahrenWandEinlaufseite  : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben *)
-  tonlEingefahrenWandAuslaufseite  : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben *)
-  tonlAusgefahrenWandAuslaufseite  : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben *)
+  // TIMER
+  tonlEingefahrenWandEinlaufseite  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
+  tonlAusgefahrenWandEinlaufseite  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
+  tonlEingefahrenWandAuslaufseite  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
+  tonlAusgefahrenWandAuslaufseite  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
 
-  (* TRIGGER *)
+  // TRIGGER
   ftlDeaktivieren : F_TRIG;
 
 END_VAR
 VAR
 
-  (* HARDWARE EINGAENGE *)
-  in_bWandEinlaufseiteGeoeffnet    AT %I* : BOOL; (* STATUS: Sensor meldet geöffnet *)
-  in_bWandEinlaufseiteGeschlossen  AT %I* : BOOL; (* STATUS: Sensor meldet geschlossen *)
-  in_bWandAuslaufseiteGeoeffnet    AT %I* : BOOL; (* STATUS: Sensor meldet geöffnet *)
-  in_bWandAuslaufseiteGeschlossen  AT %I* : BOOL; (* STATUS: Sensor meldet geschlossen *)
+  // HARDWARE EINGAENGE
+  in_bWandEinlaufseiteGeoeffnet    AT %I* : BOOL; // STATUS: Sensor meldet geöffnet
+  in_bWandEinlaufseiteGeschlossen  AT %I* : BOOL; // STATUS: Sensor meldet geschlossen
+  in_bWandAuslaufseiteGeoeffnet    AT %I* : BOOL; // STATUS: Sensor meldet geöffnet
+  in_bWandAuslaufseiteGeschlossen  AT %I* : BOOL; // STATUS: Sensor meldet geschlossen
 
-  (* HARDWARE AUSGAENGE *)
-  out_bWandverstellungOeffnen      AT %Q* : BOOL; (* AKTION: Verstellen der Wandoeffnung -> Maximal Geoeffnet *)
-  out_bWandverstellungSchliessen   AT %Q* : BOOL; (* AKTION: Verstellen der Wandoeffnung -> Minimal Geoeffnet *)
+  // HARDWARE AUSGAENGE
+  out_bWandverstellungOeffnen      AT %Q* : BOOL; // AKTION: Verstellen der Wandoeffnung -> Maximal Geoeffnet
+  out_bWandverstellungSchliessen   AT %Q* : BOOL; // AKTION: Verstellen der Wandoeffnung -> Minimal Geoeffnet
 
 END_VAR
 
-(***************************************************************************************************)
-(* BAUSTEIN: ABLAUF *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: ABLAUF
+//-------------------------------------------------------------------------------------------------
 
 IF ( bpReset ) THEN
 
@@ -98,7 +98,7 @@ ELSE
 END_IF
 
 (* Anmerkung:
-  - Realisierung durch ein ENUM   ACHTUNG! Erweiterbar auf mehrerer Stufen nötig!!
+   - Realisierung durch ein ENUM   ACHTUNG! Erweiterbar auf mehrerer Stufen nötig!!
 *)
 IF ( NOT in_bWandEinlaufseiteGeoeffnet AND in_bWandEinlaufseiteGeschlossen ) THEN
   epWandStatus := eWandOeffnung_Geschlossen;

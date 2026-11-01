@@ -10,21 +10,19 @@ NAMESPACE Konfiguration_FW_Basis
 VAR_CONFIG
 
 
-(***************************************************************************************************)
-(* KONFIGURATION: BASISKOMPONENTEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// KONFIGURATION: BASISKOMPONENTEN
+//-------------------------------------------------------------------------------------------------
 
-  (*------------------------------------ HARDWARE EINGAENGE --------------------------------------- *)
-  (* EINGAENGE:
-  *)
-  Globale_Bausteine.aHydraulikStation[501].in_bMotorschuetz_Hydraulikkreislauf_OK            AT %MX1.1    : BOOL; (* OPTION *)
+  // ------------------------------------ HARDWARE EINGAENGE ---------------------------------------
+  // EINGAENGE:
+  Globale_Bausteine.aHydraulikStation[501].in_bMotorschuetz_Hydraulikkreislauf_OK            AT %MX1.1    : BOOL; // OPTION
 
 
-  (*------------------------------------ HARDWARE AUSGAENGE --------------------------------------- *)
-  (* AUSGAENGE:
-  *)
-  Globale_Bausteine.aHydraulikStation[501].out_bHydraulikkreislauf_MotorEin                  AT %MX2.0   : BOOL; (* OPTION *)
-  Globale_Bausteine.aHydraulikStation[501].out_bHydraulikkreislauf_UmlaufventilAuf           AT %MX2.0   : BOOL; (* OPTION *)
+  // ------------------------------------ HARDWARE AUSGAENGE ---------------------------------------
+  // AUSGAENGE:
+  Globale_Bausteine.aHydraulikStation[501].out_bHydraulikkreislauf_MotorEin                  AT %MX2.0   : BOOL; // OPTION
+  Globale_Bausteine.aHydraulikStation[501].out_bHydraulikkreislauf_UmlaufventilAuf           AT %MX2.0   : BOOL; // OPTION
   
 Globale_Bausteine.aFaecherwagenstation[301].out_bRolltorAb                                   AT %QX4.0   : BOOL; //Rolltor 301 ab  4.0
 Globale_Bausteine.aFaecherwagenstation[301].out_bRolltorAuf                                  AT %QX4.1   : BOOL;//Rolltor 301 auf 4.1

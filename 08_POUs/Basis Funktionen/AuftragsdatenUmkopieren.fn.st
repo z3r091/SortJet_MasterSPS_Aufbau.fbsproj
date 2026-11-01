@@ -8,26 +8,26 @@
 FUNCTION AuftragsdatenUmkopieren : Auftragsdaten_ST
 VAR_INPUT
 
-  (* BOOL *)
+  // BOOL
   bpAuswahlTransferstation_2  : BOOL := FALSE;
   bpAnwahlDurchtransport : BOOL := FALSE;
 
-  (* STRUCT *)
+  // STRUCT
   stpAuftrag : Auftragsdaten_ST;
 
 END_VAR
 VAR
 
-  (* STRUCT *)
+  // STRUCT
   stMerkerAuftrag  : Auftragsdaten_ST;
 
 END_VAR
-(***************************************************************************************************)
-(* BAUSTEIN: LOGIK  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: LOGIK
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
-   - Auftrag zwischenspeichern 
+   - Auftrag zwischenspeichern
 *)
 stMerkerAuftrag := stpAuftrag;
 

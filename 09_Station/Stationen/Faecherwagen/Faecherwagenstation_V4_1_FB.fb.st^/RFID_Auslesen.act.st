@@ -6,10 +6,10 @@
 }
 *)
 ACTION RFID_Auslesen
-(* RFID Auslesen *)
+// RFID Auslesen
 IF blRFID_Auslesen THEN
   CASE steplRFID_Auslesen OF
-    (* RFID Auslesen *)
+    // RFID Auslesen
     STEP_0_E:
       wlRFID_Nummer := 000;
       slRFID_Validierung := '';
@@ -22,14 +22,14 @@ IF blRFID_Auslesen THEN
         steplRFID_Auslesen := STEP_1000_E;
       END_IF
 
-    (* RFID Auslesen *)
+    // RFID Auslesen
     STEP_10_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - Die einzelnen Bits der Benötigten Bytes werden in einem Byte zusammen gefasst
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       FOR wlIndexByte := ERSTES_ZEICHEN TO (ERSTE_ZIFFER_RFID + ANZAHL_ZIFFERN_RFID - 1) DO//in den Bytes 16-23 stehen die relevanten Daten des RFID-Chips
         abylBytesRFID[wlIndexByte].0:= ablRFID[wlIndexByte,0]; 
@@ -45,14 +45,14 @@ IF blRFID_Auslesen THEN
 
       steplRFID_Auslesen := STEP_100_E;
 
-    (* RFID Auslesen *)
+    // RFID Auslesen
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - Die ersten Bytes werden überprüft ob diese den Wert "Rack " ergeben
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       FOR wlIndexByte := ERSTES_ZEICHEN TO (ERSTE_ZIFFER_RFID - 1) DO
         slRFID_Validierung := CONCAT(slRFID_Validierung, ascii[abylBytesRFID[wlIndexByte]] );
@@ -64,15 +64,15 @@ IF blRFID_Auslesen THEN
         slRFID_Validierung := '';
       END_IF
 
-    (* RFID Auslesen *)
+    // RFID Auslesen
     STEP_150_E:
-      (* ---------------------------------------------------------------------------------------
-      // OPTION - DEFAULT FAECHERWAGENSTATION 
-      //         
+      // ---------------------------------------------------------------------------------------
+      // OPTION - DEFAULT FAECHERWAGENSTATION
+      //
       // Hinweis:
       // - Umwandeln der Bytes in welchen die Ziffern stehen in einen String(hier 21-23)
-    // - Umwandeln des Strings in ein WORD
-      // ---------------------------------------------------------------------------------------*)
+      // - Umwandeln des Strings in ein WORD
+      // ---------------------------------------------------------------------------------------
 
       FOR wlIndexZiffer := ERSTE_ZIFFER_RFID TO (ERSTE_ZIFFER_RFID + ANZAHL_ZIFFERN_RFID - 1) DO//zusammenfügen aller Ziffernbytes in einen String
         slRFID_Nummer := CONCAT(slRFID_Nummer, ascii[abylBytesRFID[wlIndexZiffer]] );

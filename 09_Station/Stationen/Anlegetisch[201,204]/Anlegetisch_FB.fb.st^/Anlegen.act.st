@@ -6,9 +6,9 @@
 }
 *)
 ACTION Anlegen
-(***************************************************************************************************)
-(* AKTION ANLEGEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION ANLEGEN
+//-------------------------------------------------------------------------------------------------
 
 blVSG_Automatik_Eintransport := BasisStationsParameter.stMKs.stStationsOptionen.stAnlegetisch.bAnlegetischMitEintransportVorgaenger 
                                 AND NOT blAnlegenErzwingen 
@@ -42,7 +42,7 @@ THEN
   END_IF
 
   CASE steplAnlegen OF
-    (*ANLEGEN ==================================*)
+    // ANLEGEN ==================================
     STEP_0_E:
       (* Hinweis:
          - Variablen initalisieren
@@ -75,7 +75,7 @@ THEN
 
       END_IF
 
-    (*ANLEGEN ==============================*)
+    // ANLEGEN ==============================
     STEP_10_E:
       (* Hinweis:
          - Hubrahmen einfahren sofern er es nicht ist
@@ -98,7 +98,7 @@ THEN
 
       steplAnlegen := STEP_20_E;
 
-    (*ANLEGEN ==============================*)
+    // ANLEGEN ==============================
     STEP_20_E:
       (* Anmerkung:
          - Korrekte Stati der Zylinder und Achsen abfragen
@@ -125,7 +125,7 @@ THEN
 
       END_IF
 
-    (*ANLEGEN ==============================*)
+    // ANLEGEN ==============================
     STEP_30_E:
       (* Anmerkung:
          - Anschläge ausfahren
@@ -184,7 +184,7 @@ THEN
       END_IF
 
 
-    (*ANLEGEN ==============================*)
+    // ANLEGEN ==============================
     STEP_40_E:
       (* Anmerkung:
          - Anschläge ausfahren
@@ -204,7 +204,7 @@ THEN
 
       END_IF
 
-    (*ANLEGEN ==============================*)
+    // ANLEGEN ==============================
     STEP_100_E:
       (* Anmerkung:
          - Warten bis der Bediener die Scheibe angelegt und quittierthat
@@ -261,8 +261,8 @@ THEN
 
       END_IF
 
-      (* HINWEIS:
-        - Der Auslauf- Sensor am Anlegetisch muss frei sein, um mit dem Einschleusen des Glases zu beginnen
+      (* Hinweis:
+         - Der Auslauf- Sensor am Anlegetisch muss frei sein, um mit dem Einschleusen des Glases zu beginnen
       *)
       IF (  Glastransport.bpSensorAuslauf
            AND rtlFussleisteStart.Q ) AND ( BasisStationsParameter.wGlastyp[cWAND_1] <> eScheibe_Modell )
@@ -275,8 +275,8 @@ THEN
                     wpgFehlerdaten );
       END_IF
 
-      (* HINWEIS:
-        - Der Einlaufsensor am Anlegetisch muss belegt sein
+      (* Hinweis:
+         - Der Einlaufsensor am Anlegetisch muss belegt sein
       *)
       IF ( NOT Glastransport.bpSensorEinlauf
            AND rtlFussleisteStart.Q ) AND ( BasisStationsParameter.wGlastyp[cWAND_1] <> eScheibe_Modell )
@@ -324,18 +324,18 @@ THEN
         steplAnlegen := STEP_900_E;
       END_IF
 
-    (* ANLEGEN ==================================*)
+    // ANLEGEN ==================================
     STEP_200_E:
       (* Anmerkung:
-          - Glastransport Ausfahren
-          - Anschläge einfahren
-          - Hoehenkontrolle auf Min Pos positionieren
+         - Glastransport Ausfahren
+         - Anschläge einfahren
+         - Hoehenkontrolle auf Min Pos positionieren
       *)
       Hubrahmen.bpStartAusfahren := TRUE;
       Anschlag.bpStartEinfahren  := TRUE;
 
       (* Anmerkung:
-          - Drosselklappe öffnen, damit auch sehr schweres Glas transportiert werden kann, indem die Luft das Glas leicht anhebt
+         - Drosselklappe öffnen, damit auch sehr schweres Glas transportiert werden kann, indem die Luft das Glas leicht anhebt
       *)
       blMerkerDrosselklappeAuf := TRUE;
 
@@ -352,12 +352,12 @@ THEN
 
       steplAnlegen := STEP_210_E;
 
-    (* ANLEGEN ==================================*)
+    // ANLEGEN ==================================
     STEP_210_E:
       (* Anmerkung:
-          - Glastransport Ausfahren
-          - Anschläge einfahren
-          - Messachse.positionieren
+         - Glastransport Ausfahren
+         - Anschläge einfahren
+         - Messachse.positionieren
       *)
       IF Hubrahmen.bpDone 
          AND Messachse.bpDone 
@@ -370,7 +370,7 @@ THEN
         steplAnlegen := STEP_220_E;
       END_IF
 
-    (* ANLEGEN ==================================*)
+    // ANLEGEN ==================================
     STEP_220_E:
       // Glastransport Eintransport starten
       Glastransport.eGlastyp := BasisStationsParameter.wGlastyp[cWAND_1];
@@ -388,7 +388,7 @@ THEN
         steplAnlegen := STEP_900_E;
       END_IF
 
-    (* ANLEGEN ==================================*)
+    // ANLEGEN ==================================
     STEP_230_E:
 
       out_bAmpelSignalGruenScheibeAnlegen  := TRUE;
@@ -418,7 +418,7 @@ THEN
         steplAnlegen := STEP_900_E;
       END_IF
 
-    (* ANLEGEN ==================================*)
+    // ANLEGEN ==================================
     STEP_300_E:      
       (* Anmerkung:
          - Anschlaege gesenkt
@@ -429,21 +429,21 @@ THEN
         steplAnlegen := STEP_1000_E;
       END_IF
 
-    (*ANLEGEN ==================================*)
+    // ANLEGEN ==================================
     STEP_900_E:
       BasisStationsParameter.eStatusAuftrag := eAuftragFehler;
 
       BasisStationsParameter.bFehler := TRUE;
       Glastransport.bpAnforderungHandfunktion := FALSE;
 
-    (*ANLEGEN ==================================*)
+    // ANLEGEN ==================================
     STEP_1000_E:
       epTypeHoehenmessung := Modus_Positionieren_Auf_Oberkante_2_Sensoren;
 
       BasisStationsParameter.bAnlegenAbgeschlossen := TRUE;
       Glastransport. bpAnforderungHandfunktion := FALSE;
 
-    (*ANLEGEN ==================================*)
+    // ANLEGEN ==================================
     STEP_1010_E:
       // Scheibe wurde von der VSG Eintransportiert und muss vermessen werden
       epTypeHoehenmessung := Modus_Vermessen_OberUndUnterkante_2_Sensoren;
@@ -451,7 +451,7 @@ THEN
       BasisStationsParameter.bAnlegenAbgeschlossen := TRUE;
       Glastransport.bpAnforderungHandfunktion := FALSE;
 
-  (*ANLEGEN ==================================*)
+  // ANLEGEN ==================================
   END_CASE
 ELSE
 

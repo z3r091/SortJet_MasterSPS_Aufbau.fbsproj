@@ -6,9 +6,9 @@
 }
 *)
 ACTION IGLineEvent
-(***************************************************************************************************)
-(* IG LINE EVENT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// IG LINE EVENT
+//-------------------------------------------------------------------------------------------------
 bpISOLineEventAktiv := blUebergabeGlas;
 (* Hinweis:
    - Ausgaenge setzen
@@ -18,9 +18,9 @@ out_bLeuchteSpezial   :=( blUebergabeGlas AND ((wpAuftragsTyp = 2) OR ((wpAuftra
 
 out_bAmpelEventAktiv := (blUebergabeGlas);
 
-(***************************************************************************************************)
-(* STEUERUNG:  ISO Line EVENT abhandeln *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG:  ISO Line EVENT abhandeln
+//-------------------------------------------------------------------------------------------------
 IF ( bpStarteIGEvent
      AND NOT blUebergabeGlas )
 THEN
@@ -30,7 +30,7 @@ THEN
 END_IF
 
 (* Hinweis:
-   wpAuftragsTyp:
+   - wpAuftragsTyp:
    - case 0: //Kein Ereignis
    - case 1: //Scheibe von Isolinie abnehmen!
    - case 2: //Einschleusen von Sonderscheibe!
@@ -40,12 +40,12 @@ END_IF
 *)
 IF ( blUebergabeGlas ) THEN
   CASE steplUebergabeGlas OF
-    (*GLASUEBERGABE ========================*)
+    // GLASUEBERGABE ========================
     STEP_0_E:
 
       dwpWartezeit := 0;
 
-      tlWarteZeiteAufnahme := TIME(); (* Starten der Wartezeitenermittlung *)
+      tlWarteZeiteAufnahme := TIME(); // Starten der Wartezeitenermittlung
 
       CASE wpAuftragsTyp OF
         0:
@@ -62,7 +62,7 @@ IF ( blUebergabeGlas ) THEN
           steplUebergabeGlas:=STEP_1000_E;
       END_CASE
 
-    (*GLASUEBERGABE ========================*)
+    // GLASUEBERGABE ========================
     STEP_10_E:
       rtlTasterSpezial( CLK := in_bTasterSpezial );
       rtlTasterGlasbruch( CLK := in_bTasterGlasbruch );
@@ -80,7 +80,7 @@ IF ( blUebergabeGlas ) THEN
         steplUebergabeGlas:=STEP_100_E;
       END_IF
 
-    (*GLASUEBERGABE ========================*)
+    // GLASUEBERGABE ========================
     STEP_100_E:
       (* Hinweis:
          - Nachrichtabsetzen
@@ -92,20 +92,20 @@ IF ( blUebergabeGlas ) THEN
 
       steplUebergabeGlas:=STEP_1000_E;
 
-    (*GLASUEBERGABE ========================*)
+    // GLASUEBERGABE ========================
     STEP_1000_E:
       steplUebergabeGlas:=STEP_0_E;
       blUebergabeGlas:=FALSE;
       dwpWartezeit := 0;
 
-  (*GLASUEBERGABE ========================*)
+  // GLASUEBERGABE ========================
   END_CASE
 END_IF
 
 
-(***************************************************************************************************)
-(* STEUERUNG: Abbruch eines ISO Line Events *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG: Abbruch eines ISO Line Events
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Abbruch des ISO-Linie Event per MMI Nachricht [Cancel- Event]
    - Abbruch nach einem Stopp da das ISO-Linie Event nochmal geschickt wird

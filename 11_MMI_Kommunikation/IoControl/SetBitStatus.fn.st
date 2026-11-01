@@ -14,7 +14,7 @@ END_VAR
 VAR
   uclRet : BYTE;
 END_VAR
-(* Bit in eine Word setzen *)
+// Bit in eine Word setzen
 uclRet := ucpValue;
 
 CASE wpBitPos OF

@@ -28,13 +28,13 @@ VAR
   
   bgTcpConnected : BOOL;
   
-  (*MMI->SPS*)
+  // MMI->SPS
   MmiToSpsMem : MMITOSPS;
 
-  (*SPS->MMI*)
+  // SPS->MMI
   SpsToMmiMem : SPSTOMMI;
   
-  (* Datentabelle für die CRC32-Prüfsummenberechnung *)
+  // Datentabelle für die CRC32-Prüfsummenberechnung
   adwgCrcTable : ARRAY[0..255] OF DWORD := [16#00000000, 16#77073096, 16#EE0E612C, 16#990951BA,
                                              16#076DC419, 16#706AF48F, 16#E963A535, 16#9E6495A3,
                                              16#0EDB8832, 16#79DCB8A4, 16#E0D5E91E, 16#97D2D988,
@@ -138,7 +138,7 @@ VAR
   tnlVerbindungReset: TON;
   wlVerbindungReset: WORD := 5000;
   
-  (* ReadMsg *)
+  // ReadMsg
   diReceived   : LINT;
   bBuffer_Read : ARRAY[0..1023] OF BYTE;
   diLenght     : DINT;
@@ -148,7 +148,7 @@ VAR
   j            : WORD;
   pbCurPos_Read     : POINTER TO BYTE;
   
-  (*SendMsg*)
+  // SendMsg
   diSent        : LINT;
   bBuffer_Send  : ARRAY[0..1023] OF BYTE;
   bSendWatchDog : BOOL;

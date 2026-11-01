@@ -9,38 +9,38 @@
 FUNCTION_BLOCK Transportsperre_Foerderbaender_FB
 VAR_INPUT
 
-  (* HARDWARE EINGAENGE *)
-  in_bOben            : BOOL; (* STATUS: Sensor meldt ausgfahren  [Oben] *)
+  // HARDWARE EINGAENGE
+  in_bOben            : BOOL; // STATUS: Sensor meldt ausgfahren  [Oben]
 
-  (* BOOLEAN *)
-  bpStartRunter       : BOOL; (* BETRIEBTYP: Zylinder wird ausgefahren *)
-  bpStartHoch         : BOOL; (* BETRIEBTYP: Zylinder wird eingefahren *)
-  bpReset             : BOOL; (* BETRIEBTYP: Zylinderbaustein wird zurueckgesetzt *)
+  // BOOLEAN
+  bpStartRunter       : BOOL; // BETRIEBTYP: Zylinder wird ausgefahren
+  bpStartHoch         : BOOL; // BETRIEBTYP: Zylinder wird eingefahren
+  bpReset             : BOOL; // BETRIEBTYP: Zylinderbaustein wird zurueckgesetzt
   bpFreigabe          : BOOL;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpFehler            : BOOL;
   bpDone              : BOOL;
 
-  (* WORD *)
+  // WORD
   wpFehlerNr          : WORD;
 
-  (* ENUM *)
+  // ENUM
   wpStatus            : TransportsperrenStatus_EN;
 
 END_VAR
 VAR
-  (* STEPS *)
+  // STEPS
   steplHoch         : Steps_TE;
   steplRunter       : Steps_TE;
   steplReset        : Steps_TE;
 
-  (* TIMER *)
-  tonlOben                 : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben *)
-  tonlUnten                : TON; (* EINSCHALTVERZOEGERUNG: Warten bis der Zylinder ausgefahren wurde. Sonst wird ein Fehlerausgegeben *)
+  // TIMER
+  tonlOben                 : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben
+  tonlUnten                : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder ausgefahren wurde. Sonst wird ein Fehlerausgegeben
   tofHoch                  : TOF;
   tofRunter                : TOF;
 
@@ -48,37 +48,36 @@ END_VAR
 
 VAR
 
-  (* HARDWARE EINGAENGE *)
-  in_bUnten     AT %I* : BOOL; (* STATUS: Sensor meldt eingefahren [Unten] *)
+  // HARDWARE EINGAENGE
+  in_bUnten     AT %I* : BOOL; // STATUS: Sensor meldt eingefahren [Unten]
 
-  (* HARDWARE AUSGAENGE *)
-  out_bRunter   AT %Q* : BOOL; (* AKTION: Zylinder einfahren *)
+  // HARDWARE AUSGAENGE
+  out_bRunter   AT %Q* : BOOL; // AKTION: Zylinder einfahren
 
 END_VAR
-(***************************************************************************************************)
-(*  Aktionen *)
+// *************************************************************************************************
+// Aktionen
 HochFahren();
 
 RunterFahren();
 
 Reset();
 
-(***************************************************************************************************)
-(*  Timer *)
+// *************************************************************************************************
+// Timer
 
 tofHoch(IN:=bpStartHoch,pt:=t#1s);
 tofRunter(IN:=bpStartRunter,pt:=t#1s);
 
 
-(***************************************************************************************************)
-(*  Ausgaenge *)
+// *************************************************************************************************
+// Ausgaenge
 
-(* Ausgang:
-   - Status des Zylinders
-     => Ausgefahren
-     => Eingefahren
-     => Undefiniert
-*)
+// Ausgang:
+//   - Status des Zylinders
+//     => Ausgefahren
+//     => Eingefahren
+//     => Undefiniert
 IF (     in_bOben
      AND NOT in_bUnten )
 THEN

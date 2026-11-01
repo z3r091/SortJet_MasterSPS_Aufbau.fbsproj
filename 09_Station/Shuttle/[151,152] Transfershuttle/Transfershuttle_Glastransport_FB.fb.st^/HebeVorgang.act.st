@@ -6,13 +6,13 @@
 }
 *)
 ACTION HebeVorgang
-(***************************************************************************************************)
-(* AKTION: TRANSFERSHUTTLE HEBEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: TRANSFERSHUTTLE HEBEN
+//-------------------------------------------------------------------------------------------------
 IF (  bpStarteHebeVorgang )
 THEN
   CASE steplHebeVorgang OF
-    (* HEBE VORGANG ==============================*)
+    // HEBE VORGANG ==============================
     STEP_0_E:
       (* Hinweis:
          - Timer zuruecksetzen
@@ -31,7 +31,7 @@ THEN
         steplHebeVorgang := STEP_10_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Antrieb [Glastransport]
       *)
       IF ( Antrieb.bpFehler )THEN
@@ -40,7 +40,7 @@ THEN
         steplHebeVorgang := STEP_900_E;
       END_IF
 
-    (* HEBE VORGANG ==============================*)
+    // HEBE VORGANG ==============================
     STEP_10_E:
       (* Hinweis:
          - Referenzieren [ Geber- Abnullen]
@@ -53,7 +53,7 @@ THEN
 
       steplHebeVorgang := STEP_20_E;
 
-    (* HEBE VORGANG ==============================*)
+    // HEBE VORGANG ==============================
     STEP_20_E:
       (* Hinweis:
          - Geberposition wurde zurueck gesetzt
@@ -63,7 +63,7 @@ THEN
         steplHebeVorgang := STEP_100_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Antrieb [Glastransport]
       *)
       IF ( Antrieb.bpFehler )THEN
@@ -72,17 +72,16 @@ THEN
         steplHebeVorgang := STEP_900_E;
       END_IF
 
-    (* HEBE VORGANG ==============================*)
+    // HEBE VORGANG ==============================
     STEP_100_E:
-      (* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ABLAUF:  LUFTABFRAGEN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-         Anmerkung:
-         - Transfershuttle heben
-         - Einlauf- Auslauf- Sensoren heben
-         Die Variable  << blGlastransportUndAbfragenGehoben >> wird gebildet durch:
-         - tonlGlastransportOben.Q  | tonlKontrolleEinlaufOben.Q  | blDruckluftAuslaufSeiteOK
-           tonlKontrolleAuslaufOben.Q | blDruckluftEinlaufSeiteOK 
-      *)
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ABLAUF:  LUFTABFRAGEN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      //
+      //   Anmerkung:
+      //   - Transfershuttle heben
+      //   - Einlauf- Auslauf- Sensoren heben
+      //   Die Variable  << blGlastransportUndAbfragenGehoben >> wird gebildet durch:
+      //   - tonlGlastransportOben.Q  | tonlKontrolleEinlaufOben.Q  | blDruckluftAuslaufSeiteOK
+      //     tonlKontrolleAuslaufOben.Q | blDruckluftEinlaufSeiteOK
       out_bShuttleAnheben := TRUE;
       out_bScheibenKontrolleAuslaufseiteAuf := bpOptionSensorAuslauf;
       out_bScheibenKontrolleEinlaufseiteAuf := bpOptionSensorEinlauf;
@@ -103,13 +102,13 @@ THEN
       *)
       IF ( tonlWartenAufAnheben.Q ) THEN
 
-        (* Glastransport oben *)
+        // Glastransport oben
         IF ( NOT blSensorGlastransportOben ) THEN
           wpFehlerNr := cMELDUNG_TS_MELDET_NICHT_OBEN;
-        (* Luftsensoren oben *)
+        // Luftsensoren oben
         ELSIF ( NOT bpSensorScheibenKontrolleEinlaufSeiteOben AND bpOptionSensorEinlauf ) THEN
           wpFehlerNr := cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_OBEN;
-        (* Luftsensoren oben *)
+        // Luftsensoren oben
         ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteOben AND bpOptionSensorAuslauf ) THEN
           wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_OBEN;
         ELSE
@@ -119,15 +118,15 @@ THEN
         steplHebeVorgang := STEP_900_E;
       END_IF
 
-    (* HEBE VORGANG ==============================*)
+    // HEBE VORGANG ==============================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* HEBE VORGANG ==============================*)
+    // HEBE VORGANG ==============================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (* HEBE VORGANG ==============================*)
+  // HEBE VORGANG ==============================
   END_CASE
 ELSE
   IF ( steplHebeVorgang > STEP_0_E ) THEN

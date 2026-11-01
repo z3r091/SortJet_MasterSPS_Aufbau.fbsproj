@@ -6,9 +6,9 @@
 }
 *)
 ACTION Eintransport
-(***************************************************************************************************)
-(* AKTION: EINTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: EINTRANSPORT
+//-------------------------------------------------------------------------------------------------
 
 rtlMessungOK( CLK := Antrieb.bpMessungOk );
 
@@ -39,7 +39,7 @@ THEN
 
 
   CASE steplEintransport OF
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_0_E:
       (* Hinweis:
          - Variablen setzen
@@ -88,7 +88,7 @@ THEN
         END_IF
       END_IF
 
-    (*EINTRANSPORT ====================*)
+    // EINTRANSPORT ====================
     STEP_10_E:
       (* Hinweis:
          - Antrieb ist referenziert
@@ -98,14 +98,14 @@ THEN
         steplEintransport := STEP_20_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_20_E:
-      (* ---------------------------------------------------------------------------------------
-      //  KOPPLUNG ZWISCHEN DEN STATIONEN 
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  KOPPLUNG ZWISCHEN DEN STATIONEN
+      //
       //  Hinweis:
-      // - Warten bis die Vorgaengerstation breit zum Austransport ist         
-      // ---------------------------------------------------------------------------------------*)
+      // - Warten bis die Vorgaengerstation breit zum Austransport ist
+      // ---------------------------------------------------------------------------------------
 
       bpOutBereitZumEintransport := TRUE;
       Antrieb.rpGeschwindigkeit  := ppAntriebsInformationen.rpMaxGeschwindigkeit;
@@ -117,14 +117,14 @@ THEN
         steplEintransport := STEP_100_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
-      //  EINTRANSPORT UEBER DEN EINLAUFSENSOR 
-      //         
+      // ---------------------------------------------------------------------------------------
+      //  EINTRANSPORT UEBER DEN EINLAUFSENSOR
+      //
       //  Hinweis:
       // - Transport in "Positive" Richtung
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       (* Hinweis:
          - Wird die Scheibenbeladung getrennt, berechnen ab welcher Strecke der Antrieb seine
@@ -187,7 +187,7 @@ THEN
       END_IF
 
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_110_E:
       IF ( bpSensorAuslaufVorAb ) THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
@@ -200,10 +200,9 @@ THEN
         steplEintransport := STEP_120_E;
       END_IF
 
-      (* Ausnahmesituation
-         - Einlaufsensor schaltet nicht
-         - Auslaufsensor wird belegt
-      *)
+      // Ausnahmesituation
+      //   - Einlaufsensor schaltet nicht
+      //   - Auslaufsensor wird belegt
       IF ( pAuftrag.bErsteScheibe ) THEN
 
         IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition)
@@ -225,7 +224,7 @@ THEN
 
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Auslaufsensor
          - Einlaufsensor schaltet nicht
       *)
@@ -241,7 +240,7 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_120_E:
       (* Hinweis:
          - Reduzieren der Geschwindigkeit wenn die Scheibenbeladung getrennt werden muss
@@ -285,7 +284,7 @@ THEN
 
       (* Hinweis:
          - Es kann passieren aufgrund von falschen Scheibendaten das Glas auf dem Einlaufsensor stehen bleibt nach dem Positionieren.
-           Merken das sich noch eine Scheibe auf dem Sensor zum quittieren der Scheibe befindet.                                 
+           Merken das sich noch eine Scheibe auf dem Sensor zum quittieren der Scheibe befindet.
       *)
       IF ( Antrieb.bpDone
            AND toflEinlaufsensor.Q ) OR ( Antrieb.wpBetriebsart = HANDPLUS AND bpSensorAuslaufVorAb )  
@@ -296,7 +295,7 @@ THEN
         steplEintransport := STEP_140_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Auslaufsensor
       *)
       IF ( bpSensorAuslauf ) THEN
@@ -305,7 +304,7 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_130_E:
       (* Hinweis:
          - Reduzieren der Geschwindigkeit wenn die Scheibenbeladung getrennt werden muss
@@ -364,22 +363,22 @@ THEN
         steplEintransport := STEP_140_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Auslaufsensor
-      *) 
+      *)
       IF ( bpSensorAuslauf ) THEN
         bpScheibeFaehrtUeberAuslauf := TRUE;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT;
         steplEintransport := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_140_E:
       (* Hinweis:
          - Sicherstellen das der Antrieb steht
          - Auslaufsensor Freifahren
-         - Einlaufsensor Freifahren 
-   *)
+         - Einlaufsensor Freifahren
+      *)
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
         IF ( bpSensorAuslauf ) THEN
           tonlMaximaleZeitAuslaufsensorFreiFahren ( IN:= FALSE);
@@ -402,14 +401,14 @@ THEN
         END_IF
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_200_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  EINLAUFLAUFSENSOR FREI FAHREN
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       tonlMaximaleZeitEinlaufsensorFreiFahren ( IN:= bpSensorEinlauf, PT :=T#10s );
 
@@ -461,12 +460,12 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_210_E:
       (* Anmerkung:
-         - Pruefen ob nicht noch eine Scheibe auf dem Einlaufsensor liegt. 
-           Sonst versuchen den Sensor frei zufahren  
-         - Merken der Eintransportstrecke         
+         - Pruefen ob nicht noch eine Scheibe auf dem Einlaufsensor liegt.
+           Sonst versuchen den Sensor frei zufahren
+         - Merken der Eintransportstrecke
       *)
       bprtScheibe := FALSE;
 
@@ -479,7 +478,7 @@ THEN
       END_IF
 
       (* Hinweis:
-         - Uberwachung 
+         - Uberwachung
       *)
       tonlSchrittueberwachung( IN := TRUE,
                                PT := T#5s );
@@ -489,10 +488,10 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_300_E:
       (* Anmerkung:
-         -Auslaufsensor freifahren           
+         - -Auslaufsensor freifahren
       *)
       tonlMaximaleZeitAuslaufsensorFreiFahren ( IN:= bpSensorEinlauf, PT :=T#10s );
 
@@ -544,9 +543,9 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       bpFehler    := TRUE;
       bprtScheibe := FALSE;
@@ -557,7 +556,7 @@ THEN
       bpOutBereitZumEintransport := FALSE;
 
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_1000_E:
       bpStationBelegt := pAuftrag.bLetzteScheibe;
 
@@ -565,7 +564,7 @@ THEN
       bprtScheibe := FALSE;
       bpDone := TRUE;
 
-  (*EINTRANSPORT =====================*)
+  // EINTRANSPORT =====================
   END_CASE
 ELSE
 

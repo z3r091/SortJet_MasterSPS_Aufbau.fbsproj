@@ -6,7 +6,7 @@
 }
 *)
 ACTION ReadMsg
-(*Receive Data*)
+// Receive Data
 
 IF ( bgTcpConnected AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
 
@@ -28,7 +28,7 @@ IF ( bgTcpConnected AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
 
     diReceived := TcpReceiveData( Client.hSocket, pbCunrrent, diLenght, 0, ADR(tcpLastError) );
 
-    IF ( diReceived >= 0 ) THEN (*Daten empfangen*)
+    IF ( diReceived >= 0 ) THEN // Daten empfangen
       pbCunrrent := pbCunrrent + LINT_TO_DWORD(diReceived);
     ELSE
       CloseSocket( ADR( Client.hSocket ) );
@@ -38,7 +38,7 @@ IF ( bgTcpConnected AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
 
     IF ( diRemaining = 0 )
     THEN
-      (*Header Komplett, next step read the body*)
+      // Header Komplett, next step read the body
       mhHeader.wType   := HMI_GetWORD( ADR( bBuffer_Read[0] ) );
       mhHeader.wLenght := HMI_GetWORD( ADR( bBuffer_Read[2] ) );
       IF ( mhHeader.wLenght <= SIZEOF( bBuffer_Read ) - SIZEOF( mhHeader ) ) THEN
@@ -48,7 +48,7 @@ IF ( bgTcpConnected AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
       END_IF
     ELSIF (diRemaining < 0)
     THEN
-      (*Fehler in der Datenverabeitung*)
+      // Fehler in der Datenverabeitung
       CloseSocket( ADR( Client.hSocket ) );
     END_IF
   END_IF
@@ -61,7 +61,7 @@ IF ( bgTcpConnected AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
 
     diReceived := TcpReceiveData( Client.hSocket, pbCunrrent, diLenght, 0, ADR(tcpLastError) );
 
-    IF ( diReceived >= 0 ) THEN (*Daten empfangen*)
+    IF ( diReceived >= 0 ) THEN // Daten empfangen
       pbCunrrent := pbCunrrent + LINT_TO_DWORD(diReceived);
     ELSE;
       CloseSocket( ADR( Client.hSocket ) );
@@ -70,7 +70,7 @@ IF ( bgTcpConnected AND (Client.hSocket <> RTS_INVALID_HANDLE) ) THEN
     diRemaining := DWORD_TO_DINT(ADR( bBuffer_Read[SIZEOF( mhHeader )] ) + mhHeader.wLenght - pbCunrrent);
 
     IF (diRemaining = 0 ) THEN
-      (*Daten Komplett*)
+      // Daten Komplett
       IF M_ReadMsg_InterpretMsg()
       THEN
         l_b_ReadMsg_NewMsg := TRUE;

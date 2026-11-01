@@ -6,9 +6,9 @@
 }
 *)
 ACTION Steuerung_Kippen
-(***************************************************************************************************)
-(* AKTION: STEUERUNG KIPPEN [DURCHGANG] *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: STEUERUNG KIPPEN [DURCHGANG]
+//-------------------------------------------------------------------------------------------------
 blFreigabeTischKippen := ( NOT BasisStationsParameter.bAuftragAktiv
                            OR ( BasisStationsParameter.bAnlegen AND ( steplAnlegen <= STEP_100_E ) ) )
                          AND NOT Messachse.bpPositionierung

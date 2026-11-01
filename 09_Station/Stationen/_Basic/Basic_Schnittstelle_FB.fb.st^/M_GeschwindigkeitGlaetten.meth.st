@@ -14,9 +14,9 @@ VAR
   rlGeschwindigkeitSoll              : REAL; // Ungeglaettete Geschwindigkeit aus der Schnittstelle
   rlMindestGeschwindigkeitsAenderung : REAL;
 END_VAR
-(***************************************************************************************************)
-(* GLAETTUNG: GESCHWINDIGKEIT ZUR SORTIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// GLAETTUNG: GESCHWINDIGKEIT ZUR SORTIERUNG
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Aufruf in der abgeleiteten Schnittstelle, nachdem rpGeschwindigkeit berechnet wurde
    - Eine neue Geschwindigkeit wird nur uebernommen, wenn sie sich um mindestens

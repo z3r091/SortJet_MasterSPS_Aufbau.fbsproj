@@ -14,7 +14,7 @@ VAR
   bInit : BOOL := TRUE;
 END_VAR
 
-(*MAIN PRG*)
+// MAIN PRG
 IF bInit
 THEN
   RegisterCallbacks();

@@ -5,22 +5,22 @@
   }
 }
 *)
-(* Struktur fuer die Input-/Output- Shuttle *)
+// Struktur fuer die Input-/Output- Shuttle
 TYPE Parameter_ShuttleGlastransport :
   STRUCT
-    rLaengeStation                                   : REAL; (* Länge der Station *)
-    rScheibenabstand                                 : REAL; (* Der Abstand zwischen zwei Scheiben auf der Station *)
-    rWegUeberEinlauf                                 : REAL; (* So weit soll ueber den Einlaufsensor gefahren werden *)
-    rWegUeberEinlaufRueck                            : REAL; (* So weit soll ueber den Einlaufsensor gefahren werden *)
-    rUeberwachungEinlaufsensor                       : REAL; (* Der Abstand vom Auslaufsensor der Vorgängerstation zum Einlaufsensor *)
-    rWegUeberAuslauf                                 : REAL; (* So weit soll über den Stopsensore hinaus gefahren werden *)
-    rWegUeberAuslaufRueck                            : REAL; (* So weit soll über den Stopsensore hinaus gefahren werden *)
-    rUeberwachungAuslaufsensor                       : REAL; (* Beim Vorpositionieren muss der spätestens nach diesem Weg der Auslaufsensor belegt sein *)
+    rLaengeStation                                   : REAL; // Länge der Station
+    rScheibenabstand                                 : REAL; // Der Abstand zwischen zwei Scheiben auf der Station
+    rWegUeberEinlauf                                 : REAL; // So weit soll ueber den Einlaufsensor gefahren werden
+    rWegUeberEinlaufRueck                            : REAL; // So weit soll ueber den Einlaufsensor gefahren werden
+    rUeberwachungEinlaufsensor                       : REAL; // Der Abstand vom Auslaufsensor der Vorgängerstation zum Einlaufsensor
+    rWegUeberAuslauf                                 : REAL; // So weit soll über den Stopsensore hinaus gefahren werden
+    rWegUeberAuslaufRueck                            : REAL; // So weit soll über den Stopsensore hinaus gefahren werden
+    rUeberwachungAuslaufsensor                       : REAL; // Beim Vorpositionieren muss der spätestens nach diesem Weg der Auslaufsensor belegt sein
     rWegUeberSensorLetzteScheibe                     : REAL;
-    rWegUeberSensorSystemCheck                       : REAL; (* Der Weg der Ueber ein die Sensoren zum vermessen der Scheiben  *)
-    rWegUeberwachungSensor                           : REAL; (* Beschreibt die Wegstrecke die der Ein- Auslaufsensor frei gefahren werden darf bevor ein Fehler gemeldet wird *)
-    rMesstoleranz                                    : REAL; (* Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt *)
-    rMessstrecke                                     : REAL; (* Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt *)
-    rWegstreckeBisZurVerzoegerung                    : REAL; (* Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll *)
+    rWegUeberSensorSystemCheck                       : REAL; // Der Weg der Ueber ein die Sensoren zum vermessen der Scheiben
+    rWegUeberwachungSensor                           : REAL; // Beschreibt die Wegstrecke die der Ein- Auslaufsensor frei gefahren werden darf bevor ein Fehler gemeldet wird
+    rMesstoleranz                                    : REAL; // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
+    rMessstrecke                                     : REAL; // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
+    rWegstreckeBisZurVerzoegerung                    : REAL; // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll
   END_STRUCT
 END_TYPE

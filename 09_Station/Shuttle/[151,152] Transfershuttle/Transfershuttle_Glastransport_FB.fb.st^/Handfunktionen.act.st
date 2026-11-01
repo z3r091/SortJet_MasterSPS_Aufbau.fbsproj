@@ -6,9 +6,9 @@
 }
 *)
 ACTION Handfunktionen
-(***************************************************************************************************)
-(* HANDBETRIEB *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// HANDBETRIEB
+//-------------------------------------------------------------------------------------------------
 IF (  bpHand
      AND NOT bpScheibenNeuAusrichten
      AND NOT bpGlastransportTest
@@ -19,9 +19,8 @@ THEN
   bpOutBereitZumEintransport := FALSE;
   bpOutBereitZumAustransport := FALSE;
 
-  (* Glastransport verfahren
-     - Plus - Minus 
-  *)
+  // Glastransport verfahren
+  //   - Plus - Minus
   Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
   Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
   
@@ -41,18 +40,16 @@ THEN
     END_IF
   END_IF
 
-  (* Glastransport anheben
-     - Transfershuttle hebt
-  *)
+  // Glastransport anheben
+  //   - Transfershuttle hebt
   IF ( bpHandGlastransportAnheben ) THEN
     out_bShuttleAnheben := TRUE;
   ELSE
     out_bShuttleAnheben := FALSE;
   END_IF
 
-  (* Handfunktion:
-     - (default Luftabfragen) ScheibenKontrolle anheben
-  *)
+  // Handfunktion:
+  //   - (default Luftabfragen) ScheibenKontrolle anheben
   IF ( bpHandScheibenKontrolleEinlaufseiteAnheben ) THEN
     out_bScheibenKontrolleEinlaufSeiteAuf := TRUE;
   ELSE
@@ -65,9 +62,8 @@ THEN
     out_bScheibenKontrolleAuslaufSeiteAuf := FALSE;
   END_IF
 
-  (* Handfunktion:
-     - ScheibenKontrolle Luftsensoren aktivieren
-  *)
+  // Handfunktion:
+  //   - ScheibenKontrolle Luftsensoren aktivieren
   blScheibenKontrolleEinlaufseiteEin := bpHandScheibenKontrolleEinlaufseiteEin;
   blScheibenKontrolleAuslaufseiteEin := bpHandScheibenKontrolleAuslaufseiteEin;
 

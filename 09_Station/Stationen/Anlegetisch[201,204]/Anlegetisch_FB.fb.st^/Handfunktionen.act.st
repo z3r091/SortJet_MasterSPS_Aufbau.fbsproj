@@ -6,40 +6,36 @@
 }
 *)
 ACTION Handfunktionen
-(***************************************************************************************************)
-(* AKTION: HANDFUNKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: HANDFUNKTIONEN
+//-------------------------------------------------------------------------------------------------
 IF( blBetriebsartHand )THEN
 
-  (* Handfunktionen
-     - Riemen vor
-     - Riemen zurück
-     - Anschlaege auf/ab
-     - Hubpalette heben / senken
-     - Geblaese
-  *)
+  // Handfunktionen
+  //   - Riemen vor
+  //   - Riemen zurück
+  //   - Anschlaege auf/ab
+  //   - Hubpalette heben / senken
+  //   - Geblaese
 
-  (* Handfunktion:
-     - Handplus
-  *)
+  // Handfunktion:
+  //   - Handplus
   IF (      ( dwlHandfunktionen.1 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] OR in_bKnebelRiemenVor )
        AND NOT ( dwlHandfunktionen.2 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] )
        AND ( Hubrahmen.epStatusZylinder = eZylinderAusgefahren ) )
   THEN
     Glastransport.bpHandfahrenPlus := TRUE;
 
-  (* Handfunktion:
-     - Handminus
-  *)
+  // Handfunktion:
+  //   - Handminus
   ELSIF (   ( dwlHandfunktionen.2 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] OR in_bKnebelRiemenZurueck )
           AND NOT ( dwlHandfunktionen.1 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] )
           AND ( Hubrahmen.epStatusZylinder = eZylinderAusgefahren ) )
   THEN
     Glastransport.bpHandfahrenMinus := TRUE;
 
-  (* Handfunktion:
-     - Handminus / Handplus zuruecksetzen
-  *)
+  // Handfunktion:
+  //   - Handminus / Handplus zuruecksetzen
   ELSE
     Glastransport.bpHandfahrenPlus := FALSE;
     Glastransport.bpHandfahrenMinus:= FALSE;
@@ -65,21 +61,19 @@ IF( blBetriebsartHand )THEN
   *)
   ftlHubrahmenAbsenken( CLK := in_bKnebelRiemenZurueck OR in_bKnebelRiemenVor );
 
-  (* Handfunktion:
-     - Hoehenkontrolle 
-       => Handplus / Handminus
-       => Referenz
-  *)
+  // Handfunktion:
+  //   - Hoehenkontrolle
+  //     => Handplus / Handminus
+  //     => Referenz
 
-  (* Neue Version ab dem 25.05.2022 mit neuen angelegten Visu globalen Variablen: EBENE 1 und EBENE 2*)
+  // Neue Version ab dem 25.05.2022 mit neuen angelegten Visu globalen Variablen: EBENE 1 und EBENE 2
 
-  (**********************  EBENE 1    ******************************************************)
-  (* Korrektur 18.10.2026:
-     - Klammerung: Die Verriegelungen (AND NOT ...) galten wegen der Operator-Rangfolge (AND vor OR)
-       nur fuer das jeweils letzte ODER-Glied. Jetzt gelten sie fuer alle Heben- bzw. Senken-Befehle.
-     - Senken: Verriegelung auf Riemen vor (Bit 1) statt Anschlag auf (Bit 3), Knebel "Riemen vor" ergaenzt
-       -> symmetrisch zu den Heben-Befehlen
-  *)
+  // *********************  EBENE 1    *****************************************************
+  // Korrektur 18.10.2026:
+  //   - Klammerung: Die Verriegelungen (AND NOT ...) galten wegen der Operator-Rangfolge (AND vor OR)
+  //     nur fuer das jeweils letzte ODER-Glied. Jetzt gelten sie fuer alle Heben- bzw. Senken-Befehle.
+  //   - Senken: Verriegelung auf Riemen vor (Bit 1) statt Anschlag auf (Bit 3), Knebel "Riemen vor" ergaenzt
+  //     -> symmetrisch zu den Heben-Befehlen
   Hubrahmen.bpStartAusfahren := (    dwlHandfunktionen.5
                                   OR dwlHandfunktionen.1
                                   OR dwlHandfunktionen.2
@@ -104,7 +98,7 @@ IF( blBetriebsartHand )THEN
                                           OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]
                                           OR ( Hubrahmen.epStatusZylinder = eZylinderEingefahren ) );
 
-  (*Hoehenkontrolle*)
+  // Hoehenkontrolle
   Messachse.bpHandplus := ( (  dwlHandfunktionen.7
                               OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                             AND NOT(  dwlHandfunktionen.8

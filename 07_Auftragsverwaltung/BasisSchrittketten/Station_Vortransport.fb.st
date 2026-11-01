@@ -8,37 +8,37 @@
 FUNCTION_BLOCK Station_Vortransport
 VAR_INPUT
     
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset                : BOOL;
   
-  (* WORD *)
+  // WORD
   wStation               : WORD;
   wWand                  : WORD;
   
-  (* STRUKTUR *)
+  // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN*)
+  // BOOLEAN
   bpDone                 : BOOL;
   bpFehler               : BOOL;
 
 END_VAR
 VAR
     
-  (* STEPS *)
+  // STEPS
   steplSchritt           : STEPS_TE;
 
 END_VAR
 
-(***************************************************************************************************)
-(* STEUERUNG: EINTRANSPORT  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG: EINTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
   CASE steplSchritt OF
-    (* EINTRANSPORT ================================================== *)
+    // EINTRANSPORT ==================================================
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -48,13 +48,13 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
         steplSchritt := STEP_10_E;
       END_IF
 
-    (* EINTRANSPORT ================================================== *)
+    // EINTRANSPORT ==================================================
     STEP_10_E:  
       (* Hinweis:
          - Vortransport starten
       *)
       (* Hinweis:
-         Auftragsdaten zuweisen
+         - Auftragsdaten zuweisen
       *)
       starrStationBasisParameter[wStation].pAuftrag[wWand] := Auftragsdaten;
 
@@ -62,7 +62,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
 
       steplSchritt := STEP_20_E;
 
-    (* EINTRANSPORT ================================================== *)
+    // EINTRANSPORT ==================================================
     STEP_20_E:
       (* Hinweis:
          - Abschliessen des Eintransports
@@ -86,16 +86,16 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
       END_IF
 
 
-    (* EINTRANSPORT ================================================== *)
+    // EINTRANSPORT ==================================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* EINTRANSPORT ================================================== *)
+    // EINTRANSPORT ==================================================
     STEP_1000_E:
       bpDone := TRUE;
       Auftragsdaten.wAuftrag := eStation_Warte_Auf_Austransport;
 
-  (* EINTRANSPORT ================================================== *)
+  // EINTRANSPORT ==================================================
   END_CASE
 END_IF
 

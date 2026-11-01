@@ -6,9 +6,9 @@
 }
 *)
 ACTION Handfunktionen
-(***************************************************************************************************)
-(* HANDFUNKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// HANDFUNKTIONEN
+//-------------------------------------------------------------------------------------------------
 
 IF (  NOT bpAutomatikAktiv
      AND NOT bpVerfahreShuttle
@@ -56,7 +56,7 @@ THEN
 
   ELSIF ( NOT bpHandminus AND NOT bpHandplus ) THEN
     blFreigabeGesetzt := FALSE;
-    Antrieb.bpFreigabe := tofAntriebFreigabe.Q; (* Zeitverzögert abschalten *)
+    Antrieb.bpFreigabe := tofAntriebFreigabe.Q; // Zeitverzögert abschalten
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
   END_IF

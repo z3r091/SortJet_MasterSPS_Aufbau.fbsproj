@@ -6,13 +6,13 @@
 }
 *)
 ACTION Reset
-(***************************************************************************************************)
-(* AKTION RESET *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION RESET
+//-------------------------------------------------------------------------------------------------
 
 IF( blBetriebsartReset )THEN
   CASE steplReset OF
-    (*RESET ===============================*)
+    // RESET ===============================
     STEP_0_E:
       out_bGeblaeseEin              := FALSE;
       out_bSignalScheibeAbnehmen    := FALSE;
@@ -42,7 +42,7 @@ IF( blBetriebsartReset )THEN
 
       steplReset := STEP_10_E;
 
-    (*RESET ===============================*)
+    // RESET ===============================
     STEP_10_E:
       (* Hinweis:
          - Zuruecksetzen der Unterbausteine die sich in einem Fehlerzustand befinden.
@@ -53,7 +53,7 @@ IF( blBetriebsartReset )THEN
 
       steplReset := STEP_20_E;
 
-    (*RESET ===============================*)
+    // RESET ===============================
     STEP_20_E:
       (* Hinweis:
          - Warten bis die Antriebe ihren Reset durchgefuehrt haben
@@ -68,7 +68,7 @@ IF( blBetriebsartReset )THEN
         steplReset := STEP_1000_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Reset-Schrittkette zuruecksetzen (Timer abgelaufen)
          - Pruefen welcher Baustein seinen Reset nicht beenden konnte
       *)
@@ -99,21 +99,21 @@ IF( blBetriebsartReset )THEN
 
       END_IF
 
-    (*RESET ===============================*)
+    // RESET ===============================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       BasisStationsParameter.bFehler := TRUE;
       BasisStationsParameter.bReset := FALSE;
 
-    (*RESET ===============================*)
+    // RESET ===============================
     STEP_1000_E:
       BasisStationsParameter.wFehlerNummer := cMELDUNG_NULL;
       BasisStationsParameter.bFehler := FALSE;
 
       BasisStationsParameter.bReset := FALSE;
 
-  (*RESET ===============================*)
+  // RESET ===============================
   END_CASE
 ELSE
   IF( steplReset > STEP_0_E )THEN

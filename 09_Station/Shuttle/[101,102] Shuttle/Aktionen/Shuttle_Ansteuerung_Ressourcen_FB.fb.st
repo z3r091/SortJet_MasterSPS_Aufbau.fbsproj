@@ -9,14 +9,14 @@ FUNCTION_BLOCK Shuttle_Ansteuerung_Ressourcen_FB EXTENDS Basic_Shuttle_Aktion_FB
 VAR
   tonlTimeout : TON;
 END_VAR
-(***************************************************************************************************)
-(* AKTION ANSTEUERUNG RESOURCEN WAEHREND DER QUERFAHRT *)
-(***************************************************************************************************)
-(* WICHTIG:
+//-------------------------------------------------------------------------------------------------
+// AKTION ANSTEUERUNG RESOURCEN WAEHREND DER QUERFAHRT
+//-------------------------------------------------------------------------------------------------
+(* Wichtig:
    - Es handelt isch hier um eine Aktion die waehrend der Shuttlequerfahrt [Verfahrauftrag] abgearbeitet wird.
    - Zu beachten ist das:
      => Wenn der Riemen verfahrern werden soll pruefen ob der autarke Vortransport aktiv ist
-     => Aktion laeuft parallel zum Verfahrauftrag der Oberflaeche   
+     => Aktion laeuft parallel zum Verfahrauftrag der Oberflaeche
 *)
 IF (  BasisStationsParameter.bVorabKomponentenAnsteuerung[wWand]
      AND bpAutomatikAktiv )
@@ -53,7 +53,7 @@ THEN
      - Starten der Schrittkette
   *)
   CASE steplAktion OF
-    (* VORAB KOMPONENTEN ANSTEUERUNG ======================== *)
+    // VORAB KOMPONENTEN ANSTEUERUNG ========================
     STEP_0_E:
       BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wWand] := FALSE;
       tonlTimeout( IN := FALSE );
@@ -65,11 +65,11 @@ THEN
       END_IF
 
 
-    (* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
+    // VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ========================
     STEP_10_E:
       (* Hinweis:
-       - Wandverstellung ansteuern
-        - Kippen ansteuern
+         - Wandverstellung ansteuern
+         - Kippen ansteuern
       *)
       Wandverstellung.epSollStellung         := BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eDickenverstellung;
       Wandverstellung.bpStartePositionierung := TRUE;
@@ -81,10 +81,10 @@ THEN
 
       steplAktion := STEP_20_E;
 
-    (* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
+    // VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ========================
     STEP_20_E:  
       (* Hinweis:
-        - Glastransport ansteuern
+         - Glastransport ansteuern
       *)
       tonlTimeout(IN := TRUE, PT := T#30S);
 
@@ -117,10 +117,10 @@ THEN
 
       END_IF
 
-    (* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
+    // VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ========================
     STEP_100_E:
       (* Hinweis:
-        - Einsammeln aller ausgelösten Ereignisse auf bpDone 
+         - Einsammeln aller ausgelösten Ereignisse auf bpDone
       *)
       // Nach 60s Fehler melden, dass die Komponenten nicht fertig werden
       tonlTimeout(IN := TRUE, PT := T#60S);
@@ -147,11 +147,11 @@ THEN
         steplAktion := STEP_900_E;
       END_IF
 
-    (* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
+    // VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ========================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
+    // VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ========================
     STEP_1000_E:
 
       Glastransport.bpVortransport                    := FALSE;
@@ -163,7 +163,7 @@ THEN
        
       BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wWand] := TRUE;
 
-  (* VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ======================== *)
+  // VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ========================
   END_CASE
 
 END_IF

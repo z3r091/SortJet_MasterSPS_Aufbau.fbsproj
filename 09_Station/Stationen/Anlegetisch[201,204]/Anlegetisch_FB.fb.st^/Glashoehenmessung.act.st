@@ -6,9 +6,9 @@
 }
 *)
 ACTION Glashoehenmessung
-(***************************************************************************************************)
-(* AKTION HÖHENMESSUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION HÖHENMESSUNG
+//-------------------------------------------------------------------------------------------------
 IF( BasisStationsParameter.bGlashoehenmessung )THEN
 
   // Ausnahmesituation
@@ -42,7 +42,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
   
 
   CASE steplGlashoehenmessung OF
-    (*HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_0_E:
       (* Hinweis:
          - Variablen initalisieren
@@ -60,7 +60,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         steplGlashoehenmessung := STEP_20_E;
       END_IF
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_10_E:
       (* Hinweis:
       *)
@@ -69,7 +69,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         steplGlashoehenmessung := STEP_20_E;
       END_IF
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_20_E:
       (* Hinweis:
          - Für die Steuerschrittkette müssen wir einmal kurz in eAuftragAktiv wechseln bevor
@@ -81,7 +81,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         steplGlashoehenmessung := STEP_800_E;
       END_IF
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_100_E:
 
       (* Hinweis:
@@ -100,7 +100,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
 
       END_CASE
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_200_E:
       (* Hinweis:
          - Messachse nochmal auf Position fahren
@@ -114,7 +114,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
 
       steplGlashoehenmessung := STEP_210_E;
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_210_E:
       (* Hinweis:
          - Messachse nochmal auf Position fahren
@@ -129,7 +129,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
       END_IF
 
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_300_E:
 
       (* Hinweis:
@@ -169,7 +169,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
       END_IF
 
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_310_E:
 
       (* Hinweis:
@@ -207,17 +207,16 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
       END_IF
 
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_320_E:
-      (*
-          Anmerkung:
-          - Ampel
-          - Moeglichkeit Fehlmessung quittieren --> Scheibe freigegeben zum Austransport
-          - Knebelschalter Glas zurueck auf die Station fahren 
-          - Quittiern
+      (* Anmerkung:
+         - Ampel
+         - Moeglichkeit Fehlmessung quittieren --> Scheibe freigegeben zum Austransport
+         - Knebelschalter Glas zurueck auf die Station fahren
+         - Quittiern
             => Nachricht an die Oberflaeche
-              wSPS2MMITRANSPORTSTATE := 1 ==  Scheibe OK und eingefahren 
-       *)
+              wSPS2MMITRANSPORTSTATE := 1 ==  Scheibe OK und eingefahren
+      *)
       out_bSignalTasterScheibeQuittieren := gbFlashbit05sec;
       out_bAmpelSignalGruenScheibeAnlegen    := gbFlashbit05sec;
 
@@ -235,7 +234,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         steplGlashoehenmessung := STEP_330_E;
       END_IF
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_330_E:
       out_bAmpelSignalGruenScheibeAnlegen := FALSE;
 
@@ -290,7 +289,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
       END_IF
 
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_400_E:
       (* Hinweis:
          - Messachse auf Position fahren
@@ -300,7 +299,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
 
       steplGlashoehenmessung := STEP_410_E;
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_410_E:
       (* Hinweis:
          - Messachse nochmal auf Position fahren
@@ -310,7 +309,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         steplGlashoehenmessung := STEP_420_E;
       END_IF
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_420_E:
       (* Hinweis:
          - Messung starten
@@ -320,7 +319,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
 
       steplGlashoehenmessung := STEP_430_E;
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_430_E:
       (* Hinweis:
          - Messende abwarten
@@ -330,7 +329,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         steplGlashoehenmessung := STEP_500_E;
       END_IF
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_500_E:
 
       (* Hinweis:
@@ -369,7 +368,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         steplGlashoehenmessung := STEP_800_E;
       END_IF
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_600_E:
       (* Hinweis:
          - Messachse verfahren lassen um Scheibenkanten zu suchen
@@ -379,10 +378,10 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
 
       steplGlashoehenmessung := STEP_610_E;
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_610_E:
       (* Hinweis:
-         - Scheibenkantensuche abgeschlossen 
+         - Scheibenkantensuche abgeschlossen
       *)
       IF Messachse.bpVermessenAbgeschlossen THEN
         Messachse.bpVermessen_OberUndUnterkante_2_Sensoren := FALSE;
@@ -395,7 +394,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
       //steplGlashoehenmessung := STEP_800_E;
       END_IF
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_700_E:
       (* Hinweis:
          - Auswertung der Scheibenkantensuche
@@ -446,7 +445,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
         steplGlashoehenmessung := STEP_800_E;
       END_IF
 
-    (* HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_800_E:
 
       (* Hinweis:
@@ -456,7 +455,7 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
 
       steplGlashoehenmessung := STEP_1000_E;
 
-    (*HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_900_E:
       Glastransport.bpScheibeZurueckFahren    := FALSE;
       Glastransport.bpAnforderungHandfunktion := FALSE;
@@ -464,11 +463,11 @@ IF( BasisStationsParameter.bGlashoehenmessung )THEN
 
       BasisStationsParameter.bFehler := TRUE;
 
-    (*HÖHENMESSUNG ==================================*)
+    // HÖHENMESSUNG ==================================
     STEP_1000_E:
       BasisStationsParameter.bGlashoehenmessungAbgeschlossen := TRUE;
 
-  (*HÖHENMESSUNG ==================================*)
+  // HÖHENMESSUNG ==================================
   END_CASE
 ELSE
 

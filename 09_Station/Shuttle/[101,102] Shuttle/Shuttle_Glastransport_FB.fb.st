@@ -8,34 +8,34 @@
 FUNCTION_BLOCK Shuttle_Glastransport_FB
 VAR_INPUT
 
-  bpDurchtransport                 : BOOL; (* BETRIEBSMODUS[AUTOMATIK]: Eintransport-Schrittkette starten *)
-  bpEintransport                   : BOOL; (* BETRIEBSMODUS[AUTOMATIK]: Eintransport-Schrittkette starten *)
-  bpRueckwaertsEintransportieren   : BOOL; (* BETRIEBSMODUS[AUTOMATIK]: Eintransport Richtung -Rueckwaerts ueber den Auslaufsensor *)
-  bpAustransport                   : BOOL; (* BETRIEBSMODUS[AUTOMATIK]: Autransport-Schrittkette starten *)
-  bpRueckwaertsAustransportieren   : BOOL; (* BETRIEBSMODUS[AUTOMATIK]: Austransport Richtung -Rueckwaerts ueber den Einlaufsensor *)
+  bpDurchtransport                 : BOOL; // BETRIEBSMODUS[AUTOMATIK]: Eintransport-Schrittkette starten
+  bpEintransport                   : BOOL; // BETRIEBSMODUS[AUTOMATIK]: Eintransport-Schrittkette starten
+  bpRueckwaertsEintransportieren   : BOOL; // BETRIEBSMODUS[AUTOMATIK]: Eintransport Richtung -Rueckwaerts ueber den Auslaufsensor
+  bpAustransport                   : BOOL; // BETRIEBSMODUS[AUTOMATIK]: Autransport-Schrittkette starten
+  bpRueckwaertsAustransportieren   : BOOL; // BETRIEBSMODUS[AUTOMATIK]: Austransport Richtung -Rueckwaerts ueber den Einlaufsensor
   bpRueckwaertsSystemcheck         : BOOL;
-  bpVortransport                   : BOOL; (* BETRIEBSMODUS[AUTOMATIK]: Vortransport-Schrittkette starten *)
-  bpVortransportRueck              : BOOL; (* BETRIEBSMODUS[AUTOMATIK]: Vortransport-Schrittkette starten *)
-  bpStarteSensorFreiFahren         : BOOL := FALSE; (* BETRIEBSMODUS[AUTOMATIK]: *)
-  bpHandfahrenPlus                 : BOOL; (* BETRIEBSMODUS HANDBETRIEB: Im Handbetrieb den Riemen in positive Glasflussrichtung bewegen *)
-  bpHandfahrenMinus                : BOOL; (* BETRIEBSMODUS HANDBETRIEB: Im Handbetrieb den Riemen in negative Glasflussrichtung bewegen *)
-  bpFahreReferenz                  : BOOL; (* BETRIEBSMODUS: Antrieb referenzieren *)
-  bpStarteVorabPositionierung      : BOOL; (* BETRIEBSMODUS Positionieren der Scheibe fuer den Austransport *)
+  bpVortransport                   : BOOL; // BETRIEBSMODUS[AUTOMATIK]: Vortransport-Schrittkette starten
+  bpVortransportRueck              : BOOL; // BETRIEBSMODUS[AUTOMATIK]: Vortransport-Schrittkette starten
+  bpStarteSensorFreiFahren         : BOOL := FALSE; // BETRIEBSMODUS[AUTOMATIK]:
+  bpHandfahrenPlus                 : BOOL; // BETRIEBSMODUS HANDBETRIEB: Im Handbetrieb den Riemen in positive Glasflussrichtung bewegen
+  bpHandfahrenMinus                : BOOL; // BETRIEBSMODUS HANDBETRIEB: Im Handbetrieb den Riemen in negative Glasflussrichtung bewegen
+  bpFahreReferenz                  : BOOL; // BETRIEBSMODUS: Antrieb referenzieren
+  bpStarteVorabPositionierung      : BOOL; // BETRIEBSMODUS Positionieren der Scheibe fuer den Austransport
   bpCheck                          : BOOL;
   bpReset                          : BOOL;
-  bpCheckMitVorgaenger             : BOOL; (* Status: SystemCheck mit der Vorgaenger- Station *)
-  bpCheckMitNachfolger             : BOOL; (* Status: SystemCheck mit der Nachfolger- Station *)
+  bpCheckMitVorgaenger             : BOOL; // Status: SystemCheck mit der Vorgaenger- Station
+  bpCheckMitNachfolger             : BOOL; // Status: SystemCheck mit der Nachfolger- Station
   bpAutomatikAktiv                 : BOOL;
-  bpFreigabe                       : BOOL; (* Status: Der Riemen ist Freigegeben und kann Prozesse abarbeiten *)
-  bpMessrichtungNegativ            : BOOL := FALSE; (* HINWEIS: TRUE = Messrichtung negativ, FALSE = Messrichtung positiv *)
-  bpAktivieren                     : BOOL := TRUE; (* WICHTIG: Aktivieren des Bausteins *)
+  bpFreigabe                       : BOOL; // Status: Der Riemen ist Freigegeben und kann Prozesse abarbeiten
+  bpMessrichtungNegativ            : BOOL := FALSE; // HINWEIS: TRUE = Messrichtung negativ, FALSE = Messrichtung positiv
+  bpAktivieren                     : BOOL := TRUE; // WICHTIG: Aktivieren des Bausteins
   bpScheibentrennung               : BOOL := FALSE;
   bpTransferstationTransfershuttle : BOOL := FALSE;
-  bpSensorEinlauf                  : BOOL; (* Sensoren von links nach rechts Sensor 1 *)
-  bpSensorEinlaufVorab             : BOOL; (* Sensoren von links nach rechts Sensor 2 *)
-  bpSensorAuslaufVorab             : BOOL; (* Sensoren von links nach rechts Sensor 3 *)
-  bpSensorAuslauf                  : BOOL; (* Sensoren von links nach rechts Sensor 4 *)
-  bpSensorAuslaufStopp             : BOOL; (* Sensoren von links nach rechts Sensor 5 *)
+  bpSensorEinlauf                  : BOOL; // Sensoren von links nach rechts Sensor 1
+  bpSensorEinlaufVorab             : BOOL; // Sensoren von links nach rechts Sensor 2
+  bpSensorAuslaufVorab             : BOOL; // Sensoren von links nach rechts Sensor 3
+  bpSensorAuslauf                  : BOOL; // Sensoren von links nach rechts Sensor 4
+  bpSensorAuslaufStopp             : BOOL; // Sensoren von links nach rechts Sensor 5
   bpScheibeNachSystemcheckAufAuslaufsensor : BOOL;
   bpTeilnehmerErreichbar           : BOOL;
   bpMessungSystemCheckAktiv        : BOOL;
@@ -44,21 +44,21 @@ VAR_INPUT
   // OPTIONEN
   bpOptionMasterSlaveTransport     : BOOL;
 
-  (* WORD *)
+  // WORD
   wpWandNr                    : WORD;
   
-  (* ENUM *)
-  eStationsTyp                 : StationsTyp_EN; (* Typ der Station [ Shuttle \ Station \ Faecherwagen \ etc. ] *)
-  wpGlastyp                   : GlasTyp_EN; (* AUFTRAGSDATEN : Unterscheidung fuer den Eintransports -> Grosse Scheiben *)
+  // ENUM
+  eStationsTyp                 : StationsTyp_EN; // Typ der Station [ Shuttle \ Station \ Faecherwagen \ etc. ]
+  wpGlastyp                   : GlasTyp_EN; // AUFTRAGSDATEN : Unterscheidung fuer den Eintransports -> Grosse Scheiben
 
-  (* STRUCT *)
-  InGlasTransportNachfolger   : Interface_GlasTransport; (* STRUKTUR: Informationen ueber den Aus- Ein- Transport WAND 2 *)
-  InGlasTransportVorgaenger   : Interface_GlasTransport; (* STRUKTUR: Informationen ueber den Aus- Ein- Transport WAND 2 *)
-  pAuftrag                    : Auftragsdaten_ST;        (* AUFTRAG: Aktuelle daten zum Auftrag [Laenge, Hoehe, Modelle] *)
+  // STRUCT
+  InGlasTransportNachfolger   : Interface_GlasTransport; // STRUKTUR: Informationen ueber den Aus- Ein- Transport WAND 2
+  InGlasTransportVorgaenger   : Interface_GlasTransport; // STRUKTUR: Informationen ueber den Aus- Ein- Transport WAND 2
+  pAuftrag                    : Auftragsdaten_ST;        // AUFTRAG: Aktuelle daten zum Auftrag [Laenge, Hoehe, Modelle]
   stStationsNummern           : Station_ST;
   stMasterSlaveConfig         : MasterSlaveConfig_ST;
 
-  (* POINTER *)
+  // POINTER
   ppParameterBaustein           : REFERENCE TO Parameter_ShuttleGlastransport;
   ppAntriebsInformationen       : REFERENCE TO AntriebsInformationen;
   ppAntriebsInformationenSlave  : REFERENCE TO AntriebsInformationen;
@@ -66,53 +66,53 @@ VAR_INPUT
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpDone                                      : BOOL;
   bpFehler                                    : BOOL;
   bprtScheibe                                 : BOOL;
   bpStationBelegt                             : BOOL;
   bpVerfahrFreigabe                           : BOOL;
-  bpVortransportAktiv                         : BOOL; (* STATUS: Merker ob der Vortransport (Autark gesteuert) aktiv ist -> Wichtig für den Austransport zum sicherstellen das erst dann Transportiert werden kann *)
-  bpPositionierungAbgeschlossen               : BOOL; (* HINWEIS:  *)
+  bpVortransportAktiv                         : BOOL; // STATUS: Merker ob der Vortransport (Autark gesteuert) aktiv ist -> Wichtig für den Austransport zum sicherstellen das erst dann Transportiert werden kann
+  bpPositionierungAbgeschlossen               : BOOL; // HINWEIS:
   bpOutBereitZumAustransport                  : BOOL;
   bpOutBereitZumEintransport                  : BOOL;
-  bpSlaveAktiv                                : BOOL; (* STATUS: dem Baustein melden das der Slavebetrieb aktiv ist *)
-  bpFreigabeQuerfahrt                         : BOOL; (* HINWEIS: Freigabe setzen das die Querfahrt verfahren kann *)
+  bpSlaveAktiv                                : BOOL; // STATUS: dem Baustein melden das der Slavebetrieb aktiv ist
+  bpFreigabeQuerfahrt                         : BOOL; // HINWEIS: Freigabe setzen das die Querfahrt verfahren kann
   bpAuftragAktiv                              : BOOL;
 
-  (* WORD *)
+  // WORD
   wpFehlerNr             : WORD;
 
-  (* DWORD *)
-  dwpWartezeit              : DWORD :=0 ;(* STATISTIK: Beschreibt die Zeit zwischen Anlegeauftrag und betaetigen des Tasters zum Eintransport *)
+  // DWORD
+  dwpWartezeit              : DWORD :=0 ;// STATISTIK: Beschreibt die Zeit zwischen Anlegeauftrag und betaetigen des Tasters zum Eintransport
 
-  (* REAL *)
+  // REAL
   rpOutGeschwindigkeit        : REAL;
   rlGlasgewicht               : REAL;
 
 END_VAR
 VAR
 
-  (* BOOLEAN *)
+  // BOOLEAN
   blErsterZyklus                              : BOOL := TRUE;
   blSensorFreifahren                          : BOOL;
-  blScheibenMerker                            : BOOL; (* Merken da eien Scheibe den Auslaufsensor / Einlaufsensor beim Eintransport weiter *)
+  blScheibenMerker                            : BOOL; // Merken da eien Scheibe den Auslaufsensor / Einlaufsensor beim Eintransport weiter
   blReduzierteGeschwindigkeit                 : BOOL;
   blAntriebsKopplungAktiv                     : BOOL;
   blStarteSlaveKopplung                       : BOOL;
 
-  (* INT *)
+  // INT
   ilScheibenZaehler  : INT;
 
-  (* REAL *)
-  rlScheibenMessungErgebnis         : REAL; (* SystemCheck *)
+  // REAL
+  rlScheibenMessungErgebnis         : REAL; // SystemCheck
   rlAntriebIstPositionBeiStart      : REAL;
   rlStreckeBisZurVerzoegerung       : REAL;
   rlPositionScheibenAnfangErkannt   : REAL;
   rlGeschwindigkeitEintransport     : REAL;
-  rlGefahreneStreckeEintransport    : REAL; (* Weg-Merker fuer die Strecke die beim Eintransport zurueck gelegt werden muss laut Auftrag *)
+  rlGefahreneStreckeEintransport    : REAL; // Weg-Merker fuer die Strecke die beim Eintransport zurueck gelegt werden muss laut Auftrag
 
-  (* STEPS *)
+  // STEPS
   steplDurchtransport           : Steps_TE;
   steplEintransport             : Steps_TE;
   steplEintransportRueckwaertig : Steps_TE;
@@ -122,33 +122,33 @@ VAR
   steplCheck                    : Steps_TE;
   steplReset                    : Steps_TE;
   steplReferenz                 : Steps_TE;
-  steplVorabpositionieren       : STEPS_TE; (* Hinweis: Positionierung ueber den Auslaufsensor *)
+  steplVorabpositionieren       : STEPS_TE; // Hinweis: Positionierung ueber den Auslaufsensor
   steplSensorFreiFahren         : Steps_TE;
   steplVortransport             : Steps_TE;
   steplVortransportRueckwertig  : Steps_TE;
   
   steplCheckMerker : Steps_TE;
 
-  (* TIMER *)
-  toflAutoAbschaltung                : TOF; (* AUSSCHALTVERZOEGERUNG: *)
-  toflEinlaufsensor                  : TOF; (* AUSSCHALTVERZOEGERUNG: Entprellen der Sensoren *)
-  toflAuslaufsensor                  : TOF; (* AUSSCHALTVERZOEGERUNG: Entprellen der Sensoren *)
-  toflAuslaufsensorSTOP              : TOF; (* AUSSCHALTVERZOEGERUNG: Entprellen der Sensoren *)
-  toflEinlaufsensorFrei              : TOF; (* AUSSCHALTVERZOEGERUNG: Haelt die positive Flanke des Auslaufsensor eine gewissen Zeit aufrecht ( Freifahren des Sensors ) *)
-  toflAuslaufsensorFrei              : TOF; (* AUSSCHALTVERZOEGERUNG: Haelt die positive Flanke des Auslaufsensor eine gewissen Zeit aufrecht ( Freifahren des Sensors ) *)
-  tonlMaxWarteAufResetErfolgreich    : TON; (* EINSCHALTVERZOEGERUNG: *)
-  tonlWarteSchritt                   : TON; (* EINSCHALTVERZOEGERUNG: *)
-  tonlAntriebNichtFreigegeben        : TON; (* EINSCHALTVERZOEGERUNG: *)
-  tonlUberwachungSlaveAktiv          : TON; (* EINSCHALTVERZOEGERUNG: *)  
+  // TIMER
+  toflAutoAbschaltung                : TOF; // AUSSCHALTVERZOEGERUNG:
+  toflEinlaufsensor                  : TOF; // AUSSCHALTVERZOEGERUNG: Entprellen der Sensoren
+  toflAuslaufsensor                  : TOF; // AUSSCHALTVERZOEGERUNG: Entprellen der Sensoren
+  toflAuslaufsensorSTOP              : TOF; // AUSSCHALTVERZOEGERUNG: Entprellen der Sensoren
+  toflEinlaufsensorFrei              : TOF; // AUSSCHALTVERZOEGERUNG: Haelt die positive Flanke des Auslaufsensor eine gewissen Zeit aufrecht ( Freifahren des Sensors )
+  toflAuslaufsensorFrei              : TOF; // AUSSCHALTVERZOEGERUNG: Haelt die positive Flanke des Auslaufsensor eine gewissen Zeit aufrecht ( Freifahren des Sensors )
+  tonlMaxWarteAufResetErfolgreich    : TON; // EINSCHALTVERZOEGERUNG:
+  tonlWarteSchritt                   : TON; // EINSCHALTVERZOEGERUNG:
+  tonlAntriebNichtFreigegeben        : TON; // EINSCHALTVERZOEGERUNG:
+  tonlUberwachungSlaveAktiv          : TON; // EINSCHALTVERZOEGERUNG:  
   tonlSlaveKopplungDeaktiviert       : TON;
   
-  (* TIME *)
-  tlWarteZeiteAufnahme               : TIME; (* STATISTIK: Zeit Ermittlung von evtl. Wartezeiten *)
+  // TIME
+  tlWarteZeiteAufnahme               : TIME; // STATISTIK: Zeit Ermittlung von evtl. Wartezeiten
 
-  (* STRING *)
+  // STRING
   stlLogString    : STRING;
 
-  (* Antrieb *)
+  // Antrieb
   Scheibenmessung  : Scheibenmessung_FB;
 
   // Antrieb
@@ -158,15 +158,15 @@ VAR
 END_VAR
 VAR CONSTANT
 
-  (* TIME *)
+  // TIME
   cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE : TIME := T#5S;  
   cUEBERWACHUNG_SLAVE_AKTIV           : TIME :=T#1S;
 
 END_VAR
 
-(***************************************************************************************************)
-(* INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus ) THEN
 
   IF ( __ISVALIDREF(ppAntriebsInformationen) ) THEN
@@ -206,10 +206,9 @@ IF ( blErsterZyklus ) THEN
       Antrieb_Slave.rpRuckzeit        := ppAntriebsInformationenSlave.rpMaxRuckzeit;
     END_IF
 
-    (* Pointer
-       - Initialisierung zur vermeidung von null Pointerexceptions
-         => Scheibenmessung
-    *)
+    // Pointer
+    //   - Initialisierung zur vermeidung von null Pointerexceptions
+    //     => Scheibenmessung
     Scheibenmessung.ppAntriebsInformationen REF= ppAntriebsInformationen;
     Scheibenmessung.ppAntrieb               REF= Antrieb;
     Scheibenmessung.pbpVorstopSensor        REF= bgFALSE;
@@ -221,16 +220,16 @@ IF ( blErsterZyklus ) THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* DEAKTIVIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEAKTIVIEREN
+//-------------------------------------------------------------------------------------------------
 IF ( NOT bpAktivieren ) THEN
 
   bpVerfahrFreigabe := TRUE;
   bpDone := TRUE;
 
   (* Hinweis:
-     - Ausnahmesituationen 
+     - Ausnahmesituationen
   *)
   bpFehler   := FALSE;
   wpFehlerNr := WORD#0;
@@ -240,9 +239,9 @@ IF ( NOT bpAktivieren ) THEN
 END_IF
 
 
-(***************************************************************************************************)
-(* TIMER, EINSTELLUNGEN, ETC. *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// TIMER, EINSTELLUNGEN, ETC.
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Sensorenflackern
 *)
@@ -251,10 +250,9 @@ toflAuslaufsensor(IN := bpSensorAuslauf, PT := t#50ms);
 toflAuslaufsensorSTOP(IN := bpSensorAuslaufStopp, PT := t#50ms);
 
 
-(* TIMER:
-   - Sensorenflackern 
-     => Haelt die positive Flanke des Auslaufsensor eine gewissen Zeit aufrecht ( Freifahren des Sensors )
-*)
+// TIMER:
+//   - Sensorenflackern
+//     => Haelt die positive Flanke des Auslaufsensor eine gewissen Zeit aufrecht ( Freifahren des Sensors )
 toflAuslaufsensorFrei(IN := bpSensorAuslauf, PT := t#300ms);
 toflEinlaufsensorFrei(IN := bpSensorEinlauf, PT := t#100ms);
 
@@ -263,9 +261,9 @@ toflEinlaufsensorFrei(IN := bpSensorEinlauf, PT := t#100ms);
 
 
 
-(***************************************************************************************************)
-(* AKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 
 (* Hinweis:
    - SystemCheck - Aktion
@@ -313,9 +311,9 @@ Meldungen();
 Handfunktionen();
 Ausgaenge();
 
-(***************************************************************************************************)
-(* FREIGABEN UND BAUSTEINAUFRUFE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// FREIGABEN UND BAUSTEINAUFRUFE
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Freigaben des ANtriebs
 *)

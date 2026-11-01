@@ -6,15 +6,14 @@
 }
 *)
 ACTION Referenz
-(***************************************************************************************************)
-(* AKTION REFERENZ *)
-(***************************************************************************************************)
-(* Referenzieren:
-   - Die Station besitzt keinen Antrieb der Referenzieren muesste
-*)
+//-------------------------------------------------------------------------------------------------
+// AKTION REFERENZ
+//-------------------------------------------------------------------------------------------------
+// Referenzieren:
+//   - Die Station besitzt keinen Antrieb der Referenzieren muesste
 IF ( blBetriebsartReferenz OR BasisStationsParameter.dwHandfunktionen.5 )THEN
   CASE steplReferenz OF
-    (*REFERENZ ============================*)
+    // REFERENZ ============================
     STEP_0_E:
       BasisStationsParameter.bReferenzAbgeschlossen := FALSE;
 
@@ -22,14 +21,14 @@ IF ( blBetriebsartReferenz OR BasisStationsParameter.dwHandfunktionen.5 )THEN
         steplReferenz := STEP_5_E;
       END_IF
 
-    (*REFERENZ ============================*)
+    // REFERENZ ============================
     STEP_5_E:
 
       Messachse.bpReferenz     := TRUE;
       Glastransport.bpReferenz := TRUE;
       steplReferenz := STEP_10_E;
 
-    (*REFERENZ ============================*)
+    // REFERENZ ============================
     STEP_10_E:
       (* Hinweis:
          - Referenzierung Abgeschlossen
@@ -41,7 +40,7 @@ IF ( blBetriebsartReferenz OR BasisStationsParameter.dwHandfunktionen.5 )THEN
         steplReferenz := STEP_100_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Hoehenkontrolle
       *)
       IF ( Messachse.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bMessachse) THEN
@@ -51,7 +50,7 @@ IF ( blBetriebsartReferenz OR BasisStationsParameter.dwHandfunktionen.5 )THEN
       END_IF
 
 
-    (*REFERENZ ============================*)
+    // REFERENZ ============================
     STEP_100_E:
       IF ( Glastransport.bpDone ) THEN
         Glastransport.bpReferenz := FALSE;
@@ -59,7 +58,7 @@ IF ( blBetriebsartReferenz OR BasisStationsParameter.dwHandfunktionen.5 )THEN
       END_IF
 
       (* Fehlerbehandlung:
-         - Glastransport 
+         - Glastransport
       *)
       IF ( Glastransport.bpFehler ) THEN
         Glastransport.bpReferenz := FALSE;
@@ -68,15 +67,15 @@ IF ( blBetriebsartReferenz OR BasisStationsParameter.dwHandfunktionen.5 )THEN
       END_IF
 
 
-    (*REFERENZ ============================*)
+    // REFERENZ ============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*REFERENZ ============================*)
+    // REFERENZ ============================
     STEP_1000_E:
       BasisStationsParameter.bReferenzAbgeschlossen := TRUE;
 
-  (*REFERENZ ============================*)
+  // REFERENZ ============================
   END_CASE
 ELSE
   IF ( steplReferenz > STEP_0_E ) THEN

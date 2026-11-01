@@ -6,9 +6,9 @@
 }
 *)
 ACTION Eintransport
-(***************************************************************************************************)
-(* AKTION EINTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION EINTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bEintransport[cWAND_1]
      AND blBetriebsartAutomatik )
 THEN
@@ -37,7 +37,7 @@ THEN
 
 
   CASE steplEintransport OF
-    (* EINTRANSPORT =========================*)
+    // EINTRANSPORT =========================
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen
@@ -52,11 +52,11 @@ THEN
         steplEintransport := STEP_10_E;   
       END_IF
    
-    (* EINTRANSPORT =========================*)
+    // EINTRANSPORT =========================
     STEP_10_E:
       (* Hinweis:
          - Rollenleiste
-     - Kippen
+         - Kippen
       *)
       IF ( BasisStationsParameter.pAuftrag[cWAND_1].rAuftragsDicke <= wgMKScheibenDicke13mm )THEN
         Rollenleiste.bpStarteOeffnen    := FALSE;
@@ -91,7 +91,7 @@ THEN
 
       END_CASE
 
-    (* EINTRANSPORT =========================*)
+    // EINTRANSPORT =========================
     STEP_20_E:
       (* Hinweis:
          - Kippen abgeschlossen 0Grad
@@ -105,7 +105,7 @@ THEN
         steplEintransport := STEP_100_E;
       END_IF
 
-    (* EINTRANSPORT =========================*)
+    // EINTRANSPORT =========================
     STEP_30_E:
       (* Hinweis:
          - Kippen abgeschlossen 90Grad
@@ -119,7 +119,7 @@ THEN
         steplEintransport := STEP_100_E;
       END_IF
 
-    (* EINTRANSPORT =========================*)
+    // EINTRANSPORT =========================
     STEP_100_E:
       (* Hinweis:
          - Eintransport starten
@@ -142,14 +142,14 @@ THEN
 
       END_IF
 
-    (* EINTRANSPORT =========================*)
+    // EINTRANSPORT =========================
     STEP_200_E:
       IF ( Glastransport.bpDone ) THEN
         Glastransport.bpEintransport := FALSE;
         steplEintransport := STEP_1000_E;
       END_IF
 
-    (* EINTRANSPORT =========================*)
+    // EINTRANSPORT =========================
     STEP_300_E:
       (* Hinweis:
          - Eintransport "Letzte Scheibe"
@@ -173,7 +173,7 @@ THEN
         steplEintransport := STEP_310_E;
       END_IF
 
-    (* EINTRANSPORT =========================*)
+    // EINTRANSPORT =========================
     STEP_310_E:
       (* Hinweis:
          - Kipp- Bewegung abgeschlossen
@@ -185,7 +185,7 @@ THEN
         steplEintransport := STEP_320_E;
       END_IF
 
-    (* EINTRANSPORT =========================*)
+    // EINTRANSPORT =========================
     STEP_320_E:
       IF ( Glastransport.bpDone ) THEN
         Glastransport.bpEintransport := FALSE;
@@ -193,15 +193,15 @@ THEN
       END_IF
 
 
-    (* EINTRANSPORT =========================*)
+    // EINTRANSPORT =========================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*EINTRANSPORT =========================*)
+    // EINTRANSPORT =========================
     STEP_1000_E:
       BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] := TRUE;
 
-  (*EINTRANSPORT =========================*)
+  // EINTRANSPORT =========================
   END_CASE
 ELSE
 

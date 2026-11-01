@@ -6,9 +6,9 @@
 }
 *)
 ACTION A_Schnittstelle
-(***************************************************************************************************)
-(* AKTION SCHNITTSTELLE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION SCHNITTSTELLE
+//-------------------------------------------------------------------------------------------------
 
 BasisStationsParameter.OutGlasTransport[cWAND_1].stStationsNummern          := BasisStationsParameter.stMKs.stStationsNummern;
 BasisStationsParameter.OutGlasTransport[cWAND_1].wStationsTyp               := BasisStationsParameter.stMKs.eStationsTyp;
@@ -39,8 +39,8 @@ out_bSenderGlasBereit := blSenderGlasBereit (*OR bgVisu_Schnittstelle_GlasBereit
 bEmpfaengerSensorEinlauf := bpEmpfaengerSensorEinlauf OR in_bEmpfaengerSensorEinlauf;
 
 
-(***************************************************************************************************)
-(* VISU *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// VISU
+//-------------------------------------------------------------------------------------------------
 bgVisu_Schnittstelle_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]    := out_bSenderGlasBereit;
 END_ACTION

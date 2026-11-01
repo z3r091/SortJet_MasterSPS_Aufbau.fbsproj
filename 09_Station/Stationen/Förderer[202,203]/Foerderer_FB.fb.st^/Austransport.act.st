@@ -6,9 +6,9 @@
 }
 *)
 ACTION Austransport
-(***************************************************************************************************)
-(* AKTION AUSTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION AUSTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bAustransport[cWAND_1]
      AND blBetriebsartAutomatik )
 THEN
@@ -34,24 +34,24 @@ THEN
 
   
   CASE steplAustransport OF
-    (*AUSTRANSPORT =====================*)
+    // AUSTRANSPORT =====================
     STEP_0_E:
       IF ( blGeblaeseAktiv ) THEN
         Kippen.bpPositionieren := FALSE;
         steplAustransport := STEP_10_E;
       END_IF
 
-    (*AUSTRANSPORT =====================*)
+    // AUSTRANSPORT =====================
     STEP_10_E:
       (* Hinweis:
-         -  Ansteuerung Kippen 
+         -  Ansteuerung Kippen
       *)
       Kippen.epZielPosition  := BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition;
       Kippen.bpPositionieren := TRUE;
 
       steplAustransport := STEP_20_E;
 
-    (*AUSTRANSPORT =====================*)
+    // AUSTRANSPORT =====================
     STEP_20_E:
       IF ( Kippen.bpDone OR NOT Kippen.bpPositionieren ) THEN
 
@@ -60,11 +60,11 @@ THEN
         steplAustransport := STEP_100_E;
       END_IF
 
-    (*AUSTRANSPORT =====================*)
+    // AUSTRANSPORT =====================
     STEP_100_E:
       (* Hinweis:
-        - Austransport starten
-     *)
+         - Austransport starten
+      *)
       Glastransport.pAuftrag := BasisStationsParameter.pAuftrag[cWAND_1];
 
       Glastransport.bpAustransport             := BasisStationsParameter.bAustransport[cWAND_1] AND NOT BasisStationsParameter.bRueckwaertsTransportieren[cWAND_1];
@@ -72,7 +72,7 @@ THEN
 
       steplAustransport := STEP_110_E;
 
-    (*AUSTRANSPORT =====================*)
+    // AUSTRANSPORT =====================
     STEP_110_E:
       (* Hinweis:
          - Bei letzter Scheibe und Station leer -> Kippen
@@ -89,7 +89,7 @@ THEN
 
       (* Hinweis:
          - Austransport abgeschlossen
-      *) 
+      *)
       IF ( Glastransport.bpDone ) THEN
         Glastransport.bpAustransport             := FALSE;
         Glastransport.bpAustransportRueckwaertig := FALSE;
@@ -102,11 +102,11 @@ THEN
 
       END_IF
 
-    (*AUSTRANSPORT =====================*)
+    // AUSTRANSPORT =====================
     STEP_200_E: 
       (* Hinweis:
          - Bei letzter Scheibe und Station leer -> Kippen
-      *) 
+      *)
       IF BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe  
          AND BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBIT_SRC_WALL_1_EMPTY
       THEN
@@ -119,7 +119,7 @@ THEN
       END_IF
 
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_210_E:
       IF Kippen.bpDone OR NOT Kippen.bpPositionieren THEN
         Kippen.bpPositionieren  := FALSE;
@@ -127,15 +127,15 @@ THEN
         steplAustransport := STEP_1000_E;
       END_IF
 
-    (*AUSTRANSPORT =====================*)
+    // AUSTRANSPORT =====================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*AUSTRANSPORT =====================*)
+    // AUSTRANSPORT =====================
     STEP_1000_E:
       BasisStationsParameter.bAustransportAbgeschlossen[cWAND_1] := TRUE;
 
-  (*AUSTRANSPORT =====================*)
+  // AUSTRANSPORT =====================
   END_CASE
 ELSE
 

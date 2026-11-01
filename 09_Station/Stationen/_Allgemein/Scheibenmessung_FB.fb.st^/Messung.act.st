@@ -6,21 +6,20 @@
 }
 *)
 ACTION Messung
-(***************************************************************************************************)
-(* AKTION: MESSUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: MESSUNG
+//-------------------------------------------------------------------------------------------------
 IF ( bpGlasvermessung ) THEN
 
-  (* Ausnahmesituation:
-     - ANTRIEB
-  *)
+  // Ausnahmesituation:
+  //   - ANTRIEB
   IF ( ppAntrieb.bpFehler) THEN
     ppAntrieb.wpBetriebsart  := KEINE_FUNKTION;
     steplGlasvermessung := STEP_900_E;
   END_IF
 
   CASE steplGlasvermessung OF
-    (* GLASVERMESSUNG ================================ *)
+    // GLASVERMESSUNG ================================
     STEP_0_E:
       (* Hinweis:
          - Pruefen des Antriebs vor der Scheibenmessung
@@ -37,7 +36,7 @@ IF ( bpGlasvermessung ) THEN
         steplGlasvermessung := STEP_10_E;
       END_IF
 
-    (* GLASVERMESSUNG ================================ *)
+    // GLASVERMESSUNG ================================
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob der Sensor belegt ist
@@ -50,10 +49,10 @@ IF ( bpGlasvermessung ) THEN
         steplGlasvermessung := STEP_900_E;
       END_IF
 
-    (* GLASVERMESSUNG ================================ *)
+    // GLASVERMESSUNG ================================
     STEP_20_E:
       (* Anmerkung:
-         - Starten der Glaslaengenvermessung 
+         - Starten der Glaslaengenvermessung
       *)
       rlPositionAntriebBeiStart := ppAntrieb.rpIstPosition;
 
@@ -71,11 +70,11 @@ IF ( bpGlasvermessung ) THEN
 
       steplGlasvermessung := STEP_30_E;
 
-    (* GLASVERMESSUNG ================================ *)
+    // GLASVERMESSUNG ================================
     STEP_30_E:
       (* Hinweis:
-          - Damit der Auslaufsensoren mit dem Glas nicht zu weit überfahren werden, vorher schon die Geschwindigkeit verringern.
-            Dazu den Abstand der beiden Sensoren minus min. Scheibenlänge (z.B. 350) das sollte reichen um die Max. Geschwindigkeit zu verringeren          
+         - Damit der Auslaufsensoren mit dem Glas nicht zu weit überfahren werden, vorher schon die Geschwindigkeit verringern.
+            Dazu den Abstand der beiden Sensoren minus min. Scheibenlänge (z.B. 350) das sollte reichen um die Max. Geschwindigkeit zu verringeren
       *)
       rlBremsWeg := ( ( ppAntrieb.rpIstGeschwindigkeit * ppAntrieb.rpIstGeschwindigkeit ) / 2 / ppAntrieb.rpVerzoegerung );
 
@@ -150,10 +149,10 @@ IF ( bpGlasvermessung ) THEN
        
       END_IF
 
-    (* GLASVERMESSUNG ================================ *)
+    // GLASVERMESSUNG ================================
     STEP_50_E:
       (* Hinweis:
-          - Messrgbnis prüfen
+         - Messrgbnis prüfen
       *)
       IF  (rlMessergebnisMerker <> 0 ) THEN
         rpGemesseneGlaslaenge := ABS( rpMessstrecke + rlMessergebnisMerker );
@@ -163,15 +162,15 @@ IF ( bpGlasvermessung ) THEN
         steplGlasvermessung := STEP_900_E;
       END_IF
 
-    (* GLASVERMESSUNG ================================ *)
+    // GLASVERMESSUNG ================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* GLASVERMESSUNG ================================ *)
+    // GLASVERMESSUNG ================================
     STEP_1000_E:
       bpGlasmessungAbgeschlossen := TRUE;
 
-  (* GLASVERMESSUNG ================================ *)
+  // GLASVERMESSUNG ================================
   END_CASE
 
 ELSE

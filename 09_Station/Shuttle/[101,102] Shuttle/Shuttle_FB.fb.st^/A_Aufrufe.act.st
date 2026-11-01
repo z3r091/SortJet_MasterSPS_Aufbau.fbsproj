@@ -6,17 +6,15 @@
 }
 *)
 ACTION A_Aufrufe
-(***************************************************************************************************)
-(* AKTION AUFRUFE *)
-(***************************************************************************************************)
-(* Aufruf
-   - Glastransport - Wand 1
-*)
+//-------------------------------------------------------------------------------------------------
+// AKTION AUFRUFE
+//-------------------------------------------------------------------------------------------------
+// Aufruf
+//   - Glastransport - Wand 1
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
 
-  (* Aufruf:
-     - Glastransport Zuweisung:
-  *)
+  // Aufruf:
+  //   - Glastransport Zuweisung:
   Glastransport[wlIndex]( stStationsNummern                        := BasisStationsParameter.stMKs.stStationsNummern,
                           wpWandNr                                 := wlIndex,
                           bpAutomatikAktiv                         := BasisStationsParameter.bAutomatik,
@@ -35,25 +33,22 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                           bpSlaveAntriebVorhanden                    := BasisStationsParameter.stMKs.stStationsAufbau.bGlastransportSlaveVorhanden,
                           bpOptionMasterSlaveTransport               := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bTransportMasterSlaveAustransport);
 
-  (* Aufruf:
-     - Glas-Dickenverstellung [Wand | Scheibenfuehrung]
-  *)
+  // Aufruf:
+  //   - Glas-Dickenverstellung [Wand | Scheibenfuehrung]
   Wandverstellung[wlIndex]( bpFreigabe                                     := BasisStationsParameter.bFreigabe,
                             stStationsNummern                              := BasisStationsParameter.stMKs.stStationsNummern,
                             bpOptionMotorischAktivieren                    := BasisStationsParameter.stMKs.stStationsAufbau.bWandverstellungMotorisch );
 
-  (* Aufruf:
-     - Geblaese Zuweisung:
-  *)
+  // Aufruf:
+  //   - Geblaese Zuweisung:
   Geblaese[wlIndex]( bpFreigabe := BasisStationsParameter.bFreigabe,
                      stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern,
                      bpTeilnehmerErreichbar := blShuttleErreichbar );
 
 END_FOR
 
-(* Aufruf [Verfahrauftraege]:
-   - Querfahrt
-*)
+// Aufruf [Verfahrauftraege]:
+//   - Querfahrt
 Querfahrt( stStationsNummern              := BasisStationsParameter.stMKs.stStationsNummern,
            bpAutomatikAktiv               := BasisStationsParameter.bAutomatik,
            bpLangsamfahrtNockenAktivieren := BasisStationsParameter.stMKs.stStationsOptionen.bLangsamfahrtNockenQuerfahrtAktivieren,
@@ -64,9 +59,8 @@ Querfahrt( stStationsNummern              := BasisStationsParameter.stMKs.stStat
            bpVerfahrfreigabe              :=(    blAlleVerfahrfreigaben
                                               AND NOT bpShuttleAnhalten ) );
 
-(* Aufruf:
-   - Kippen
-*)
+// Aufruf:
+//   - Kippen
 Kippen( bpKippenSchuetz        := BasisStationsParameter.stMKs.stStationsAufbau.bKippenSchuetz,
         bpTeilnehmerErreichbar := blShuttleErreichbar,
         stStationsNummern      := BasisStationsParameter.stMKs.stStationsNummern,

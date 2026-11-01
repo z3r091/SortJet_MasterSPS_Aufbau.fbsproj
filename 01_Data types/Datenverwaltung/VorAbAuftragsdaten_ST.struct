@@ -7,7 +7,7 @@
 *)
 TYPE VorAbAuftragsdaten_ST:
   STRUCT
-    wAuftrag                : Auftraege_Station_EN; (* Hinweis: Auftragsart -> Ein- Aus- Transport etc.*)
+    wAuftrag                : Auftraege_Station_EN; // Hinweis: Auftragsart -> Ein- Aus- Transport etc.
     wShuttleNummer          : WORD;
     wShuttleWandNummer      : WORD;
     wTransferStation        : WORD;

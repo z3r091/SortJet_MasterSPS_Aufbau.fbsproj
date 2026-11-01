@@ -12,148 +12,148 @@ TYPE Mmi2SpsInfo :
     rInsertInputShuttleDataLaenge            : REAL;
     rInsertInputShuttleDataBreite            : REAL;
     rInsertInputShuttleDataDicke             : REAL;
-    wInsertExtractionShuttleDataSourcePosition : WORD;   (* Transfershuttel alleine mit einem Auftrag versehen*)
+    wInsertExtractionShuttleDataSourcePosition : WORD;   // Transfershuttel alleine mit einem Auftrag versehen
     dwInsertInputShuttleDataJobId            : DWORD;
     wCancelInputShuttleData                  : WORD;
     wInsertInputShuttleDataCoatedSide        : WORD;
-    wInsertExtractionShuttleDataTrayNr       : WORD; (*NEUER Parameter für neue Nachricht Austransportschlitten*)
-    wPauseOutputshuttle                      : WORD; (*0 Pause inaktiv ,1Pause aktiv*)
+    wInsertExtractionShuttleDataTrayNr       : WORD; // NEUER Parameter für neue Nachricht Austransportschlitten
+    wPauseOutputshuttle                      : WORD; // 0 Pause inaktiv ,1Pause aktiv
     wAuftragsId                              : WORD; (* 0 = normaler Auftrag Scheibe an ISO,
                                                         1 = aktutelle Scheibe auf Iso Line ausschleusen ,
                                                         2 = Kein Shuttle Transport Warten bis Scheibe Scheibe ausgeschleust wurde
                                                         3 = Kein Shuttle Transport Warten bis Scheibe in die ISO Linie geschleust werden*)
-    (* Messen 2008*)
-    wModellStatus                            : WORD; (* Modelkennung 0 = kein Modell, 1 = Modell*)
-    rModellversatzHinten                     : REAL; (* bei Modellen Weg von Rechteckkante bis Modelrand auf Höhe der Sensorik berechnet auf höher angebrachte Sensoren (30mm von Nulllinie)*)
-    rModellVersatzVorne                      : REAL; (* bei Modellen Weg von Rechteckkante bis Modelrand auf Höhe der Sensorik berechnet auf höher angebrachte Sensoren (30mm von Nulllinie)*)
-    (* Sonderlösung*)
-    rModellversatzHinten2                    : REAL; (* bei Modellen Weg von Rechteckkante bis Modelrand auf Höhe der Sensorik berechnet auf höher angebrachte Sensoren (120mm von Nulllinie)*)
-    rModellVersatzVorne2                     : REAL; (* bei Modellen Weg von Rechteckkante bis Modelrand auf Höhe der Sensorik berechnet auf höher angebrachte Sensoren (120mm von Nulllinie)*)
-    wPrintStatus                             : WORD; (* 0 = nicht warten auf Drucker; 1 = warten auf Drucker *)
-    wSourceTable                             : WORD; (* 0 = normaler anlegeauftrag; 13 = von links *)
+    // Messen 2008
+    wModellStatus                            : WORD; // Modelkennung 0 = kein Modell, 1 = Modell
+    rModellversatzHinten                     : REAL; // bei Modellen Weg von Rechteckkante bis Modelrand auf Höhe der Sensorik berechnet auf höher angebrachte Sensoren (30mm von Nulllinie)
+    rModellVersatzVorne                      : REAL; // bei Modellen Weg von Rechteckkante bis Modelrand auf Höhe der Sensorik berechnet auf höher angebrachte Sensoren (30mm von Nulllinie)
+    // Sonderlösung
+    rModellversatzHinten2                    : REAL; // bei Modellen Weg von Rechteckkante bis Modelrand auf Höhe der Sensorik berechnet auf höher angebrachte Sensoren (120mm von Nulllinie)
+    rModellVersatzVorne2                     : REAL; // bei Modellen Weg von Rechteckkante bis Modelrand auf Höhe der Sensorik berechnet auf höher angebrachte Sensoren (120mm von Nulllinie)
+    wPrintStatus                             : WORD; // 0 = nicht warten auf Drucker; 1 = warten auf Drucker
+    wSourceTable                             : WORD; // 0 = normaler anlegeauftrag; 13 = von links
 
-   (* SB0_MMI_SortierungInputInQueue *)
-    wSlotZielStation                         : WORD; (*Zielslot an der Folgestation nach dem Anlegen *)
+   // SB0_MMI_SortierungInputInQueue
+    wSlotZielStation                         : WORD; // Zielslot an der Folgestation nach dem Anlegen
     wSortierungsInQueueSheetOut              : WORD;
-    wSortierungsInQueueLineNr                : WORD; (* Glaseintransportlinie / max. 3 Stück laut Array Konfiguration*)
-    wSortierungsInputInQueueStationNr        : WORD; (* Linientisch Nr. der jeweiligen Linie / max. 16 Stück laut Array*)
+    wSortierungsInQueueLineNr                : WORD; // Glaseintransportlinie / max. 3 Stück laut Array Konfiguration
+    wSortierungsInputInQueueStationNr        : WORD; // Linientisch Nr. der jeweiligen Linie / max. 16 Stück laut Array
     rSourcePosition                          : REAL;
-    wInsertShuttleNr                         : WORD; (*aktuell ausgewähltes Shuttle (Input/Extraction/Output)*)
+    wInsertShuttleNr                         : WORD; // aktuell ausgewähltes Shuttle (Input/Extraction/Output)
     wExtractionShuttleNr                     : WORD;
     wDeleteStationNr                         : WORD;
     wDeleteStationSlot                       : WORD;
     rDestinationPosition                     : REAL;
-    wAuftragsArt                             : WORD; (* 0 = Glastransport auf das Shuttle / 1 = Glastransport vom Shuttle Runter*)
-    wModellStatusShutle                      : WORD; (* Modelkennung 0 = kein Modell, 1 = Modell*)
-    wShuttlePalette                          : WORD; (* (Output-)Shuttle Glastransportwand 0 = vordere Wand / 1 = hintere Wand / in der 2 Wändeausführung *)
-    rModellversatzHintenShuttle              : REAL; (* bei Modellen Weg von Rechteckkante bis Modelrand auf Höhe der Sensorik *)
-    rModellVersatzVorneShuttle               : REAL; (* bei Modellen Weg von Rechteckkante bis Modelrand auf Höhe der Sensorik *)
+    wAuftragsArt                             : WORD; // 0 = Glastransport auf das Shuttle / 1 = Glastransport vom Shuttle Runter
+    wModellStatusShutle                      : WORD; // Modelkennung 0 = kein Modell, 1 = Modell
+    wShuttlePalette                          : WORD; // (Output-)Shuttle Glastransportwand 0 = vordere Wand / 1 = hintere Wand / in der 2 Wändeausführung
+    rModellversatzHintenShuttle              : REAL; // bei Modellen Weg von Rechteckkante bis Modelrand auf Höhe der Sensorik
+    rModellVersatzVorneShuttle               : REAL; // bei Modellen Weg von Rechteckkante bis Modelrand auf Höhe der Sensorik
     wLastSheetForTable                       : WORD;
     wTurnCoatedSide                          : WORD;
     wSheibennummer                           : WORD;
     wGrundstellungMmiNummer                  : WORD;
     rGundstellungZielposition                : REAL;
 
-    (* SB0_MMI_SortierungDelete *)
+    // SB0_MMI_SortierungDelete
     M_SB0_MMI_SortierungDelete               : WORD;
     
 
-    (* SB0_MMI_SORTIERUNGAUTOMATIKSTART *)
-    wAutomatikStartTransportLineNr           : WORD; (* AutomatikStart Liniennr 1-X (3) *)
+    // SB0_MMI_SORTIERUNGAUTOMATIKSTART
+    wAutomatikStartTransportLineNr           : WORD; // AutomatikStart Liniennr 1-X (3)
 
-    (* SB0_MMI_RELEASERACKLOGIN *)
-    wSps2FaecherwagenStationNr               : WORD; (* Stationsnummer wo der Wagen eingeschleust werden soll *)
-    wlFreigabeEinschleuseJaNein              : WORD; (* Freigabe zum Einschleusen = 1 / Freigegebenen Wagen wieder löschen = 0 *)
+    // SB0_MMI_RELEASERACKLOGIN
+    wSps2FaecherwagenStationNr               : WORD; // Stationsnummer wo der Wagen eingeschleust werden soll
+    wlFreigabeEinschleuseJaNein              : WORD; // Freigabe zum Einschleusen = 1 / Freigegebenen Wagen wieder löschen = 0
     wlStationNr                              : WORD;
 
-    (* SB0_MMI_SortierungAutomatik_Stop *)
-    wAutomatikStopArea                      : WORD; (* AutomatikStop Area ( Betriebstop aus dem MMI)  *)
-    wAutomatikStoppedAreas                  : WORD; (* AutomatikStop Area ( Betriebstop aus dem MMI)  *)
+    // SB0_MMI_SortierungAutomatik_Stop
+    wAutomatikStopArea                      : WORD; // AutomatikStop Area ( Betriebstop aus dem MMI)
+    wAutomatikStoppedAreas                  : WORD; // AutomatikStop Area ( Betriebstop aus dem MMI)
 
-    (* SB0_MMI_SortierungCheckInputQueue *)
-    (* Sortierungsbereich je nachdem was gecheckt werden soll *)
-    wCheckArea                              : WORD; (* Systemcheckbereich 1-x  *)
-    wCheckRelease                           : WORD; (* zB 1= Freigabe Transportschlitten1, 2= Freigabe Transportschlitten2, ... *)
+    // SB0_MMI_SortierungCheckInputQueue
+    // Sortierungsbereich je nachdem was gecheckt werden soll
+    wCheckArea                              : WORD; // Systemcheckbereich 1-x
+    wCheckRelease                           : WORD; // zB 1= Freigabe Transportschlitten1, 2= Freigabe Transportschlitten2, ...
 
-    (* SB0_MMI_SortierungInsertShuttleData *)
-    wInsertShuttleDataShuttleNr             : WORD; (* Shuttlenr. FR den Auftrag 1-x (6)  *)
-    rInsertShuttleDataDestinationPosition   : REAL; (* ABS. Zielposition des Shuttles (Fachnr FW)  *)
-    rInsertShuttleDataSourcePosition        : REAL; (* ABS. Quellposition des Shuttles (Fachnr Speicher)  *)
+    // SB0_MMI_SortierungInsertShuttleData
+    wInsertShuttleDataShuttleNr             : WORD; // Shuttlenr. FR den Auftrag 1-x (6)
+    rInsertShuttleDataDestinationPosition   : REAL; // ABS. Zielposition des Shuttles (Fachnr FW)
+    rInsertShuttleDataSourcePosition        : REAL; // ABS. Quellposition des Shuttles (Fachnr Speicher)
     rInsertShuttleDataLaenge                : REAL;
     rInsertShuttleDataBreite                : REAL;
     rInsertShuttleDataDicke                 : REAL;
     wInsertShuttleDataCoatedSide            : WORD;
-    wInsertShuttleDataLastSheetForRack      : WORD; (* 1= Faecherwagen 1, 2 = Faecherwagenpos 2, .....  *)
-    rInsertExtractionShuttleDataDestinationPosition : REAL;  (* ABS. ZielPosition des Transportshuttle *)
-    wInsertShuttleDataExtractionShuttleNr   : WORD; (* Transportschlittennr fR den Auftrag (1-x (4) *)
-    rInsertShuttleAcceleration              : REAL; (* Beschleunigung und Bremsrampe des Shuttles *)
-    rInsertExtractionShuttleAcceleration    : REAL; (* Beschleunigung und Bremsrampe des Transportschlittens *)
-    rInsertShuttleVelocity                  : REAL;  (* Geschwindigkeit des Shuttles; *)
-    rInsertExtraction_ShuttleVelocity       : REAL; (* Geschwindigkeit des Transportshlittens *)
+    wInsertShuttleDataLastSheetForRack      : WORD; // 1= Faecherwagen 1, 2 = Faecherwagenpos 2, .....
+    rInsertExtractionShuttleDataDestinationPosition : REAL;  // ABS. ZielPosition des Transportshuttle
+    wInsertShuttleDataExtractionShuttleNr   : WORD; // Transportschlittennr fR den Auftrag (1-x (4)
+    rInsertShuttleAcceleration              : REAL; // Beschleunigung und Bremsrampe des Shuttles
+    rInsertExtractionShuttleAcceleration    : REAL; // Beschleunigung und Bremsrampe des Transportschlittens
+    rInsertShuttleVelocity                  : REAL;  // Geschwindigkeit des Shuttles;
+    rInsertExtraction_ShuttleVelocity       : REAL; // Geschwindigkeit des Transportshlittens
     wGlasEinlaufStation                     : WORD;
     wGlasAuslaufStation                     : WORD;
-    wlScheibeDrehen                         : WORD; (* dient zur Info z.B.: Drehstation, das wenn die Scheibe eingelaufen ist diese gedreht werden muss*)
+    wlScheibeDrehen                         : WORD; // dient zur Info z.B.: Drehstation, das wenn die Scheibe eingelaufen ist diese gedreht werden muss
     wAnzahlScheibenMultiEvent               : WORD;
     wlInfoWord19                            : WORD;
 
 
-    (* SB0_MMI_SortierungInputInQueue *)
+    // SB0_MMI_SortierungInputInQueue
     rInputInQueueLaenge                      : REAL;
     rInputInQueueHoehe                       : REAL;
     rInputInQueueDicke                       : REAL;
 
-    (* wInputInQueue                           : WORD; *)
-    wSortierungInQueueJobID                  : WORD; (* IDNr Der Scheibe *)
-    wSortierungInQueueSheetOut               : WORD; (* Scheibe soll nicht in den Speicher *)
+    // wInputInQueue                           : WORD;
+    wSortierungInQueueJobID                  : WORD; // IDNr Der Scheibe
+    wSortierungInQueueSheetOut               : WORD; // Scheibe soll nicht in den Speicher
 
-    (* SB0_MMI_SortierungManualInputInQueue *)
+    // SB0_MMI_SortierungManualInputInQueue
     rManualInputInQueueBreite                : REAL;
     rManualInputInQueueHoehe                 : REAL;
     rManualInputInQueueDicke                 : REAL;
     wManualInputInQueueLage                  : WORD;
-    wManualInputInQueueStationNr             : WORD; (* Shuttle1 =1, Shuttle2 =2, Station31 =31 ...... *)
+    wManualInputInQueueStationNr             : WORD; // Shuttle1 =1, Shuttle2 =2, Station31 =31 ......
 
-    (* SB0_MMI_SortierungCancelShuttleData: *)
+    // SB0_MMI_SortierungCancelShuttleData:
     wCancelShuttleData                       : WORD;
-    wCancelShuttleDataShuttleNr              : WORD; (* ShuttleNr 1...x *)
+    wCancelShuttleDataShuttleNr              : WORD; // ShuttleNr 1...x
 
-    (* SB0_MMI_Pause_Shuttle: *)
-    wPauseshuttle                            : WORD; (* 0 = Pause nicht aktiv  1= Pause aktiv*)
-    wShuttlenr                               : WORD; (* Shuttlenr. 1-x*)
+    // SB0_MMI_Pause_Shuttle:
+    wPauseshuttle                            : WORD; // 0 = Pause nicht aktiv  1= Pause aktiv
+    wShuttlenr                               : WORD; // Shuttlenr. 1-x
 
-    (* SB0_MMI_SortierungFaecherwagenwechsel: *)
-    wFaecherwagenwechsel                     : WORD; (* F„cherwagenwechsel 1= Ja *)
-    wFaecherwagenPositionNr                  : WORD; (* F„cherwagenposition welche gewechselt werden soll*)
+    // SB0_MMI_SortierungFaecherwagenwechsel:
+    wFaecherwagenwechsel                     : WORD; // F„cherwagenwechsel 1= Ja
+    wFaecherwagenPositionNr                  : WORD; // F„cherwagenposition welche gewechselt werden soll
 
-    (* SB0_MMI_OrderNoforDisplay *)
+    // SB0_MMI_OrderNoforDisplay
     wAbnahmeStation                          : WORD;
     wAbnahmeStatus                           : WORD;
-    wLED_Anzeige_Brechtischnr                : WORD; (* 7 Segment Auftragsanzeige an einem Brechtisch mit Nr. ? *)
-    wLED_Anzeigetext_neu                     : WORD; (* Anforderungsword an das HMI*)
-    w1LED_Anzeigetext                        : WORD; (* Anzeigeinhaltstext WORD 1 *)
-    w2LED_Anzeigetext                        : WORD; (* Anzeigeinhaltstext WORD 2 *)
-    w3LED_Anzeigetext                        : WORD; (* Anzeigeinhaltstext WORD 3 *)
-    w4LED_Anzeigetext                        : WORD; (* Anzeigeinhaltstext WORD 4 *)
+    wLED_Anzeige_Brechtischnr                : WORD; // 7 Segment Auftragsanzeige an einem Brechtisch mit Nr. ?
+    wLED_Anzeigetext_neu                     : WORD; // Anforderungsword an das HMI
+    w1LED_Anzeigetext                        : WORD; // Anzeigeinhaltstext WORD 1
+    w2LED_Anzeigetext                        : WORD; // Anzeigeinhaltstext WORD 2
+    w3LED_Anzeigetext                        : WORD; // Anzeigeinhaltstext WORD 3
+    w4LED_Anzeigetext                        : WORD; // Anzeigeinhaltstext WORD 4
     rScheibenLaenge                          : REAL;
     rScheibenHoehe                           : REAL;
 
-    (* SB0_MMI_SENDBOCKORDER *)
-    wLinienNummer                            : WORD; (* anzusteuernde Linie 1 = Float / 0 = VSG *)
-    wBockNummer                              : WORD; (* Bocknummer *)
+    // SB0_MMI_SENDBOCKORDER
+    wLinienNummer                            : WORD; // anzusteuernde Linie 1 = Float / 0 = VSG
+    wBockNummer                              : WORD; // Bocknummer
 
-    (* SB0_MMI_MESSURERESULT *)
-    wFreigabe                                : WORD;  (* Freigabe Nummer 0 = / 1 = *)
-    wFreigabeStation                         : WORD; (* Nummer der Anlegestation *)
-    wMmiNummerAnlegeStation                  : WORD; (* Nummer der Anlegestation *)
+    // SB0_MMI_MESSURERESULT
+    wFreigabe                                : WORD;  // Freigabe Nummer 0 = / 1 =
+    wFreigabeStation                         : WORD; // Nummer der Anlegestation
+    wMmiNummerAnlegeStation                  : WORD; // Nummer der Anlegestation
 
-    (* SB0_MMI_RELEASEINPUTSHEET *)
-    wFreigabeBrechanlage                     : WORD;  (* Freigabe der VSG Scheiben/Traveren über die Eckübergabe der Brechanlage *)
+    // SB0_MMI_RELEASEINPUTSHEET
+    wFreigabeBrechanlage                     : WORD;  // Freigabe der VSG Scheiben/Traveren über die Eckübergabe der Brechanlage
 
-    (* SB0_ISOQUITTUNG *)
-    wISOStation                              : WORD;  (* ISO Linien Nummer *)
-    wISOAuftragsID                           : WORD;  (* Auftrags ID Nummer *)
+    // SB0_ISOQUITTUNG
+    wISOStation                              : WORD;  // ISO Linien Nummer
+    wISOAuftragsID                           : WORD;  // Auftrags ID Nummer
 
-    (* M_SB0_MMI_REQUESTSTATUSLOADINGSTATIONS *)
+    // M_SB0_MMI_REQUESTSTATUSLOADINGSTATIONS
     awAnfrageStatusDerFaecherwagenstation    : ARRAY [cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF WORD;
     wlRequestStation01                       : WORD;
     wlRequestStation02                       : WORD;
@@ -162,8 +162,8 @@ TYPE Mmi2SpsInfo :
     wlRequestStation05                       : WORD;
 
 
-    (* M_SB0_MMI_SETNEXTSHEETFORSWINGASIDETABLE *)
-    wSortierungsInputSwingStationNr          : WORD; (*Stationsnummer des Schwenkförderers *)
+    // M_SB0_MMI_SETNEXTSHEETFORSWINGASIDETABLE
+    wSortierungsInputSwingStationNr          : WORD; // Stationsnummer des Schwenkförderers
     rSwingStationSheetLength                 : REAL;
     rSwingStationSheetHigh                   : REAL;
     rSwingStationSheetThickness              : REAL;
@@ -176,7 +176,7 @@ TYPE Mmi2SpsInfo :
     wSwingStationTransferSection             : WORD;
     wSwingStationTransferPosition            : WORD;
 
-    (* M_SB0_MMI_SETNEXTSHEETFORLIFTTABLE *)
+    // M_SB0_MMI_SETNEXTSHEETFORLIFTTABLE
     wSortierungsInputLiftStationNr           : WORD;
     wLiftStationSheetCoatedSide              : WORD;
     rLiftStationSheetLength                  : REAL;
@@ -189,7 +189,7 @@ TYPE Mmi2SpsInfo :
     wLiftStationTransferPosition             : WORD;
 
 
-    (* SB0_MMI_REQUESTTILTISOLINE *)
+    // SB0_MMI_REQUESTTILTISOLINE
     wlRequestShuttleNr                       : WORD;
     wlShuttleWand1Station                    : WORD;
     wlShuttleWand1Slot                       : WORD;
@@ -197,11 +197,11 @@ TYPE Mmi2SpsInfo :
     wlShuttleWand2Slot                       : WORD;
 
 
-    (* SB0_MMI_REQUESTTILTISOLINE *)
+    // SB0_MMI_REQUESTTILTISOLINE
     wTiltStationNummer                       : WORD;
 
 
-    (* SB0_MMI_SETNEXTSHEETFORTURNSTATION *)
+    // SB0_MMI_SETNEXTSHEETFORTURNSTATION
     wTurnstationNummer                       : WORD;
     wTurnstationInputSlot                    : WORD;
     wTurnstationOutputSlot                   : WORD;
@@ -210,63 +210,61 @@ TYPE Mmi2SpsInfo :
     wTunrstationSheetCount                   : WORD;
 
 
-    (* SB0_MMI_SORTIERUNGCANCELISOLINEEVENT *)
+    // SB0_MMI_SORTIERUNGCANCELISOLINEEVENT
     wDeleteISOLinienStationNr                : WORD;
 
 
-    (*  SB0_MMI_SHUTTLEVORABPOSITIONIERUNG: *)
+    // SB0_MMI_SHUTTLEVORABPOSITIONIERUNG:
     wShuttleVorpositionierNummer             : WORD;
     rShuttleVorpositionierPositionion        : REAL;
 
 
-    (* SB0_MMI_REQUESTTILTSTATION *)
+    // SB0_MMI_REQUESTTILTSTATION
     wStationErwirkterAustransportSlot        : WORD;
 
 
-    (* SB0_MMI_STATIONSTATUS *)
+    // SB0_MMI_STATIONSTATUS
     wStationsNummer                          : WORD;
-    wStationsStatusWord1                     : WORD; (* Manueller Modus *)
-    wStationsStatusWord2                     : WORD; (* Schleifen *)
-    wStationsStatusWord3                     : WORD; (* Model *)
-    wStationsStatusWord4                     : WORD; (* Wand *)
-    wStationsStatusWord5                     : WORD; (* Dreh-Position *)
-    wStationsStatusWord6                     : WORD; (* Blockiert *)
-    wStationsStatusWord7                     : WORD; (* 0 = inaktiv | 1 = aktiv *)
+    wStationsStatusWord1                     : WORD; // Manueller Modus
+    wStationsStatusWord2                     : WORD; // Schleifen
+    wStationsStatusWord3                     : WORD; // Model
+    wStationsStatusWord4                     : WORD; // Wand
+    wStationsStatusWord5                     : WORD; // Dreh-Position
+    wStationsStatusWord6                     : WORD; // Blockiert
+    wStationsStatusWord7                     : WORD; // 0 = inaktiv | 1 = aktiv
     wStationsStatusWord8                     : WORD;
 
 
-    (* SB0_MMI_REQUESTSWINGSTATION *)
+    // SB0_MMI_REQUESTSWINGSTATION
     wSchwenkfoerdererNummer   : WORD;
     wScheibenanzahl           : WORD;
     wBeschichtungsSeite       : WORD;
 
-    (* SB0_MMI_SYSTEMCHECKSTATION *)
-    wSystemCheckStationMmiNummer          : WORD; (* HINWEIS: Stationsnummer *)
-    wSystemCheckStationScheibenanzahl     : WORD; (* HINWEIS: Scheibenanzahl [Gibt an wieviele Scheiben auf der Station sind] *)
-    wSystemCheckStationBeschichtungsSeite : WORD; (* HINWEIS: Beschichtungsseite *)
-    wSystemCheckStationLetzteScheibe      : WORD; (* HINWEIS: Die Station ist bei gesetztem Bit- voll beladen *)
-    wSystemCheckStationTyp                : WORD; (* HINWEIS: Kann benutzt werden fuer spezielle Bedingungen -> TeutoGlas Ausrichttypen fuer die Station 211 [Ausrichtfoerderer] *)
-    wSystemCheckStationSlot               : WORD; (* HINWEIS: Ebene / Wand etc. *)
+    // SB0_MMI_SYSTEMCHECKSTATION
+    wSystemCheckStationMmiNummer          : WORD; // HINWEIS: Stationsnummer
+    wSystemCheckStationScheibenanzahl     : WORD; // HINWEIS: Scheibenanzahl [Gibt an wieviele Scheiben auf der Station sind]
+    wSystemCheckStationBeschichtungsSeite : WORD; // HINWEIS: Beschichtungsseite
+    wSystemCheckStationLetzteScheibe      : WORD; // HINWEIS: Die Station ist bei gesetztem Bit- voll beladen
+    wSystemCheckStationTyp                : WORD; // HINWEIS: Kann benutzt werden fuer spezielle Bedingungen -> TeutoGlas Ausrichttypen fuer die Station 211 [Ausrichtfoerderer]
+    wSystemCheckStationSlot               : WORD; // HINWEIS: Ebene / Wand etc.
     wSystemCheckStationZielstation        : WORD;
-    rSystemCheckStationSollPosition       : REAL; (* HINWEIS: Gibt Auskunft ueber die Position an der z.B. ein Antrieb gestanden hat nach dem Melden der Glasposition [Glasposition nachricht wurde erweitert um eine Ist- Position] *)
+    rSystemCheckStationSollPosition       : REAL; // HINWEIS: Gibt Auskunft ueber die Position an der z.B. ein Antrieb gestanden hat nach dem Melden der Glasposition [Glasposition nachricht wurde erweitert um eine Ist- Position]
     rSystemCheckStationScheibenlaenge     : REAL;
-    wSytstemCheckStationModellaktiv       : WORD; (* Hinweis: die evtl. auf der Station/Shuttle befindliche Scheibe ist ein Modell *)
+    wSytstemCheckStationModellaktiv       : WORD; // Hinweis: die evtl. auf der Station/Shuttle befindliche Scheibe ist ein Modell
     rSystemCheckModellVersatzVorne        : REAL;
     rSystemCheckModellVersatzHinten       : REAL;
     wSystemCheckScheibenDicke             : WORD;
     rSystemcheckGlasGewicht               : REAL;
 
 
-    (* SB0_MMI_REQUESTSLOTFOROUTPUT *)
+    // SB0_MMI_REQUESTSLOTFOROUTPUT
     wTurnstationOutputNummer : WORD;
-    (*
-    WORD[0] =  Stationsnummer
-    WORD[1] =  Slot 
-    *)
+    //WORD[0] =  Stationsnummer
+    //WORD[1] =  Slot
 
 
-    (*Verfahrlogik_Neu*)
-    (*SB0_MMI_SHUTTLEVORABPOSITIONIERUNG*)
+    // Verfahrlogik_Neu
+    // SB0_MMI_SHUTTLEVORABPOSITIONIERUNG
     wVorabStationsNr                  : WORD;
     rVorabPositionierung              : REAL;
     rVorabUpdateZeit                  : REAL;
@@ -277,28 +275,26 @@ TYPE Mmi2SpsInfo :
     rNennstromKonstantfahrt           : REAL;
     rZeitintervalBeschleunigungsphase : REAL;
     wVorabAuftragstyp                 : WORD;
-    (* Anzeige der IO´s im MMI Service  WORT 0: 1 = sichtbar / 0 = unsichtbar *)
-    (* SBO_MMI_IOANZEIGESICHTBAR *)
+    // Anzeige der IO´s im MMI Service  WORT 0: 1 = sichtbar / 0 = unsichtbar
+    // SBO_MMI_IOANZEIGESICHTBAR
     wlIOsAnzeigeAktivierenDeaktivieren : WORD;
 
 
-    (* Speicherfachvalidierung -> Check der Transfershuttles ob Glas über steht am Speicher *)
-    wTransfershuttle_Nummer1        : WORD; (* HINWEIS: Transfer - Shuttlenummer *)
-    wTransfershuttle_Nummer2        : WORD; (* HINWEIS: Transfer - Shuttlenummer *)
-    wTransfershuttle_GlasDicke      : WORD; (* HINWEIS: Unterteilung welche Luftabfrage genommen werden muss *)
-    rTransfershuttle_SollPosition1  : REAL; (* HINWEIS: Soll-Position wo der Speicher geprueft werden soll *)
-    rTransfershuttle_SollPosition2  : REAL; (* HINWEIS: Soll-Position wo der Speicher geprueft werden soll *)
+    // Speicherfachvalidierung -> Check der Transfershuttles ob Glas über steht am Speicher
+    wTransfershuttle_Nummer1        : WORD; // HINWEIS: Transfer - Shuttlenummer
+    wTransfershuttle_Nummer2        : WORD; // HINWEIS: Transfer - Shuttlenummer
+    wTransfershuttle_GlasDicke      : WORD; // HINWEIS: Unterteilung welche Luftabfrage genommen werden muss
+    rTransfershuttle_SollPosition1  : REAL; // HINWEIS: Soll-Position wo der Speicher geprueft werden soll
+    rTransfershuttle_SollPosition2  : REAL; // HINWEIS: Soll-Position wo der Speicher geprueft werden soll
 
-    (*
-    wSystemCheckShuttleAktiv              : WORD; (* HINWEIS: mit dem aktuellen Transfershuttle muss geprüft werden. d.h.: 0 = Shuttle kein Check erforderlich / 1 = Check mit Shuttle *)
-    wSystemCheckShuttleScheibenanzahl     : WORD; (* HINWEIS: Scheibenanzahl [Gibt an wieviele Scheiben im Speicherfach sind] *)
-    *)
+    //wSystemCheckShuttleAktiv              : WORD; (* HINWEIS: mit dem aktuellen Transfershuttle muss geprüft werden. d.h.: 0 = Shuttle kein Check erforderlich / 1 = Check mit Shuttle *)
+    //wSystemCheckShuttleScheibenanzahl     : WORD; (* HINWEIS: Scheibenanzahl [Gibt an wieviele Scheiben im Speicherfach sind] *)
 
-    (* Auftragsdaten fuer eine Fremdanlage [Senden ueber den ProfiBus] *)
-    (* SBO_MMI_AUFTRAGSDATEN_FREMDANLAGE *)
+    // Auftragsdaten fuer eine Fremdanlage [Senden ueber den ProfiBus]
+    // SBO_MMI_AUFTRAGSDATEN_FREMDANLAGE
     adwScheibenID              : ARRAY [0..4] OF WORD;
     adwAuftragsID              : ARRAY [0..1] OF DWORD;
-    wAuftragsTypFremdanlage    : WORD; (* HINWEIS: Unterteilung => 0 = Scheibe vom Sortjet , 1 = Scheibe soll Manuell angelegt werden *)
+    wAuftragsTypFremdanlage    : WORD; // HINWEIS: Unterteilung => 0 = Scheibe vom Sortjet , 1 = Scheibe soll Manuell angelegt werden
     wFremdanlageNr             : WORD;
     wNachrichtenAnzahl         : WORD;
     wNachrichtenIndex          : WORD;
@@ -308,8 +304,8 @@ TYPE Mmi2SpsInfo :
     adwScheibenID_4            : ARRAY [0..3] OF DWORD;
     bSaeumen                   : BOOL;
 
-    (* Auftragsinformationen waehrend der Querfahrt an die SPS weiter geben*)
-    (* SB0_MMI_SHUTTLE_INFORMATION *)
+    // Auftragsinformationen waehrend der Querfahrt an die SPS weiter geben
+    // SB0_MMI_SHUTTLE_INFORMATION
     wAuftrag_ShuttleNummer     : WORD;
     wAuftrag_ShuttleWand       : WORD;
     rAuftrag_Laenge            : REAL;
@@ -319,7 +315,7 @@ TYPE Mmi2SpsInfo :
     wAuftrag_TransferWand      : WORD;
 
 
-    (* SB0_MMI_DURCHTRANSPORT *)
+    // SB0_MMI_DURCHTRANSPORT
     wDurchtransportStartStation                : WORD;
     wDurchtransportStartStationWand            : WORD;
     wDurchtransportInputShuttle                : WORD;
@@ -339,7 +335,7 @@ TYPE Mmi2SpsInfo :
     rDurchtransportDicke                       : REAL;
 
 
-    (* SB0_MMI_SHEET_ORDER *)
+    // SB0_MMI_SHEET_ORDER
     wStationsNr                                : WORD;
     rStationsPosition                          : REAL;
     rAuftragsLaenge                            : REAL;
@@ -357,7 +353,7 @@ TYPE Mmi2SpsInfo :
     rTransferstationModellversatzVorne         : WORD;
     rTransferstationModellversatzHinten        : WORD;
 
-    (* SB0_MMI_SORTIERUNGINSERTEXTRACTIONSHUTTLEDATA *)
+    // SB0_MMI_SORTIERUNGINSERTEXTRACTIONSHUTTLEDATA
     wExtractionShuttlePosNr                    : WORD;
     rExtractionShuttleDestinationPosition1     : REAL;
     rExtractionShuttlePositionierWeg           : REAL;
@@ -369,12 +365,12 @@ TYPE Mmi2SpsInfo :
     rVortransportSollPosition_TS2              : REAL;
     rVortransportStrecke                       : REAL;
 
-    (* SB0_MMI_POSITIONMEASUREONOFF  Faecherwagensuche *)
+    // SB0_MMI_POSITIONMEASUREONOFF  Faecherwagensuche
     wShuttleNummerFWSuche      : WORD;
     wShuttleFWSucheAN_AUS      : WORD;
     rShuttleFWSucheWeg         : REAL := 0.0;
     
-    (* SB0_MMI_DRIVEOVERRIDE *)
+    // SB0_MMI_DRIVEOVERRIDE
     wMmi2SpsOverrideStation                    : WORD;
     wMmi2SpsOverrideValue                      : WORD;
 

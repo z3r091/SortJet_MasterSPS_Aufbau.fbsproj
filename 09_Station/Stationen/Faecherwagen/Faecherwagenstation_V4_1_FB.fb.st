@@ -23,7 +23,7 @@ VAR_INPUT
   bpLichtschrankeWartetAufQuittierungAmOP : BOOL;
 
   // DWORD 
-  dwpHandfunktionen : DWORD;  (* Handfunktionen: 0..31 Bit *)
+  dwpHandfunktionen : DWORD;  // Handfunktionen: 0..31 Bit
   
   // WORD
   wlRFID_Nummer_Schreiben : WORD;
@@ -43,23 +43,23 @@ VAR_OUTPUT
   bpErzwingeAusschleusen            : BOOL;
   bpErzwingeEinschleusen            : BOOL;
   bpBoxInHomePosition               : BOOL;
-  bpOutBereitZumAustransport        : BOOL; (* OUT STATUS: Bereit zum Austransport [Eintransport auf die Nachfolgerstation] *)
-  bpOutBereitZumEintransport        : BOOL; (* OUT STATUS: Bereit zum Eintransport [Austransport auf die Vorgaengerstation] *)
+  bpOutBereitZumAustransport        : BOOL; // OUT STATUS: Bereit zum Austransport [Eintransport auf die Nachfolgerstation]
+  bpOutBereitZumEintransport        : BOOL; // OUT STATUS: Bereit zum Eintransport [Austransport auf die Vorgaengerstation]
   bpStatusStationInBeladePosition   : BOOL; (* Hinweis: Zyklische Abfrage ob der Faecherwagen noch in der Beladeposition ist *);
   
   // WORD
-  wpFehlerNr                        : WORD; (* FEHLER-AUSWERTUNG: Fehlernummer[Const] *)
+  wpFehlerNr                        : WORD; // FEHLER-AUSWERTUNG: Fehlernummer[Const]
   
 END_VAR
 VAR
 
   // BOOLEAN 
-  blErsterZyklus                   : BOOL := TRUE; (* Init *)
-  blBetriebsartHand                : BOOL; (* Betriebsart *)
-  blBetriebsartReset               : BOOL; (* Betriebsart *)
-  blBetriebsartCheck               : BOOL; (* Betriebsart *)
-  blBetriebsartAutomatik           : BOOL; (* Betriebsart *)
-  blBetriebsartReferenz            : BOOL; (* Betriebsart *)
+  blErsterZyklus                   : BOOL := TRUE; // Init
+  blBetriebsartHand                : BOOL; // Betriebsart
+  blBetriebsartReset               : BOOL; // Betriebsart
+  blBetriebsartCheck               : BOOL; // Betriebsart
+  blBetriebsartAutomatik           : BOOL; // Betriebsart
+  blBetriebsartReferenz            : BOOL; // Betriebsart
   
   //Startet eine Bewegung
   blLineareinheitVor               : BOOL;
@@ -153,7 +153,7 @@ VAR
   tlZeitHochfahren   : TIME;
   tlZeitRunterfahren : TIME;
   
-  (* STEPS *)
+  // STEPS
   steplStationReset           : Steps_TE;
   stepStationCheck            : Steps_TE;
   steplEinschleusen           : Steps_TE;
@@ -184,8 +184,8 @@ VAR
   tonlUeberwachungRolltor            : TON;
   tonlRolltorOeffnenSchliesen        : TON;
   tonlFreigabeZumAusschleusen        : TON;
-  tonlZeitRunterfahren               : TON; (* Zum ermitteln wie lange das Rolltor runterfährt *)
-  tonlZeitHochfahren                 : TON; (* Zum ermitteln wie lange das Rolltor hochfährt *)
+  tonlZeitRunterfahren               : TON; // Zum ermitteln wie lange das Rolltor runterfährt
+  tonlZeitHochfahren                 : TON; // Zum ermitteln wie lange das Rolltor hochfährt
   tonlWagenInShuttleTransferposition : TON;
   tonlTimeoutSensorVorne             : TON;
   tonlTimeoutSensorHinten            : TON;
@@ -305,9 +305,9 @@ VAR CONSTANT
 END_VAR
 
 
-(***************************************************************************************************)
-(* INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus ) THEN
   
   BasisStationsParameter.awFehlerInformationen[0] := BasisStationsParameter.stMKs.stStationsNummern.NummerExtern;
@@ -337,9 +337,9 @@ IF NOT __ISVALIDREF(BasisStationsParameter.stMKs) THEN
   RETURN;
 END_IF
 
-(***************************************************************************************************)
-(* SAFETY ERROR *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// SAFETY ERROR
+//-------------------------------------------------------------------------------------------------
 rtlSafetyError( CLK := usilErrorSafety <> 0 );
 IF rtlSafetyError.Q THEN
 
@@ -351,9 +351,9 @@ IF rtlSafetyError.Q THEN
 
 END_IF
 
-(***************************************************************************************************)
-(* DEAKTIVIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEAKTIVIEREN
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Werte wieder passend abloeschen, wenn der Baustein wieder aktiviert wird
 *)
@@ -412,9 +412,9 @@ END_IF
 
 
 
-(***************************************************************************************************)
-(* BETRIEBSART *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BETRIEBSART
+//-------------------------------------------------------------------------------------------------
 wlBetriebsart.0 := BasisStationsParameter.bReset;
 wlBetriebsart.1 := BasisStationsParameter.bCheck;
 wlBetriebsart.2 := BasisStationsParameter.bAutomatik;
@@ -443,23 +443,21 @@ CASE wlBetriebsart OF
     blBetriebsartReferenz := TRUE;
 
   ELSE
-    (*
-      Nicht unterstützte Betriebsart 
-    *)
+    //  Nicht unterstützte Betriebsart
     BasisStationsParameter.wFehlerNummer := cMELDUNG_UNGUELTIGE_BETRIEBSART;
     BasisStationsParameter.bFehler := TRUE;
 
 END_CASE
 
 
-(***************************************************************************************************)
-(* Timer *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Timer
+//-------------------------------------------------------------------------------------------------
 tonlFreigabe( IN := BasisStationsParameter.bFreigabe, PT:=t#1s );
 
-(***************************************************************************************************)
-(* AKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 A_Schnittstelle();
 A_Eingaenge();
 Entriegelung();
@@ -480,13 +478,12 @@ Handfunktionen();
 
 Ausgaenge();
 
-(***************************************************************************************************)
-(* TASTER *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// TASTER
+//-------------------------------------------------------------------------------------------------
 
-(* Hiwneis:
-    - Auftrag aktiv
-*)
+// Hiwneis:
+//    - Auftrag aktiv
 IF BasisStationsParameter.bEintransport[1] THEN
 
   IF steplEinschleusen = STEP_105_E THEN
@@ -517,15 +514,15 @@ END_IF
 
 out_bFreigabeSchleusen := blTasterLeuchteAnforderung;
 
-(***************************************************************************************************)
-(* TIMER *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// TIMER
+//-------------------------------------------------------------------------------------------------
 // Reset
 tonlMaxWarteAufResetErfolgreich( IN := BasisStationsParameter.bReset, PT := tgMaxWartezeitReset);
 
-(***************************************************************************************************)
-(* GESONDERTE LOGIK *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// GESONDERTE LOGIK
+//-------------------------------------------------------------------------------------------------
 
 // Globale Eingänge mappen
 in_bDruckluftOK := bgDruckluftFaecherwagenstationenOK; 
@@ -539,7 +536,7 @@ bpErzwingeAusschleusen := tonlErzwungenesAuschleusen.Q;
 
 (* Hinweis:
    - FW einschleusen
-*) 
+*)
 tonlFWInBox(IN := blTagPresent, PT := T#2S);
 tofTagPresent(IN := blTagPresent, PT := T#2S);
 
@@ -560,9 +557,9 @@ IF ( rtlLogIn.Q ) THEN
 END_IF
 
 
-(***************************************************************************************************)
-(* RFID Chip beschreiben *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// RFID Chip beschreiben
+//-------------------------------------------------------------------------------------------------
 rtlRFID_Schreiben(CLK :=wlRFID_Nummer_Schreiben > 0);
 IF rtlRFID_Schreiben.Q THEN
   blRFID_Schreiben    := TRUE;
@@ -570,13 +567,11 @@ IF rtlRFID_Schreiben.Q THEN
 END_IF
 
 
-(***************************************************************************************************)
-(* Kollision mit Rolltor verhindern *)
-(***************************************************************************************************)
-(*
- Ventil für die Lineareinheiten auf Home Pos schlaten falls das Ventiel Lineareinheit in Richtung geschlossenes Rolltor fährt
- - Wenn kein Unterwagen vorhanden ist und das Rolltor geschlossen ist sollte auch kein Oberwagen in der Anlage sein
-*)
+//-------------------------------------------------------------------------------------------------
+// Kollision mit Rolltor verhindern
+//-------------------------------------------------------------------------------------------------
+// Ventil für die Lineareinheiten auf Home Pos schlaten falls das Ventiel Lineareinheit in Richtung geschlossenes Rolltor fährt
+// - Wenn kein Unterwagen vorhanden ist und das Rolltor geschlossen ist sollte auch kein Oberwagen in der Anlage sein
  
 tonUntergestellErkannt (IN:= NOT bpUntergestellErkannt, PT:= T#2S);
    

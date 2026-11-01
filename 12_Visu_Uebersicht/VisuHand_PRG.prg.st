@@ -22,22 +22,22 @@ VAR
   // Rolltor-Schalter (Toggle) gegenseitig ausschliessen
   artlRolltorHoch, artlRolltorRunter : ARRAY[301..302] OF R_TRIG;
 END_VAR
-(***************************************************************************************************)
-(* DATENAUFBEREITUNG FUER DIE VISU "Handbetrieb"                                                    *)
-(* - Taster schreiben direkt auf die vorhandenen VISU_VARS-Bits                                     *)
-(* - hier nur: Sperre je Station + Rueckmeldetexte/-farben                                          *)
-(***************************************************************************************************)
+// *************************************************************************************************
+// DATENAUFBEREITUNG FUER DIE VISU "Handbetrieb"
+// - Taster schreiben direkt auf die vorhandenen VISU_VARS-Bits
+// - hier nur: Sperre je Station + Rueckmeldetexte/-farben
+// *************************************************************************************************
 dwG  := VISU_UEBERSICHT.cFARBE_GRUEN;
 dwO  := VISU_UEBERSICHT.cFARBE_ORANGE;
 dwR  := VISU_UEBERSICHT.cFARBE_ROT;
 dwGR := VISU_UEBERSICHT.cFARBE_GRAU;
 dwB  := VISU_UEBERSICHT.cFARBE_BLAU;
 
-(* ------------------------------------------------------------------------------------------- *)
-(* RESET                                                                                       *)
-(* - Anlage: wie "Stopp" vom MMI (alle Automatikkreise stoppen + Reset aller Stationen)        *)
-(* - Station: BasisStationsParameter.bReset (nur ausserhalb der Automatik)                     *)
-(* ------------------------------------------------------------------------------------------- *)
+// -------------------------------------------------------------------------------------------
+// RESET
+// - Anlage: wie "Stopp" vom MMI (alle Automatikkreise stoppen + Reset aller Stationen)
+// - Station: BasisStationsParameter.bReset (nur ausserhalb der Automatik)
+// -------------------------------------------------------------------------------------------
 rtlAnlageReset(CLK := VISU_HAND.bAnlageResetTaster);
 IF rtlAnlageReset.Q THEN
   MMI_Vars.tMmi2SpsInfo.wAutomatikStopArea   := Stations_Konfig.cSTOPP_ALLE_AUTOMATIKKREIS;
@@ -68,9 +68,9 @@ FOR i := 301 TO 302 DO
   afbResetFW[i](stBP := StationBasisParameter.starrFaecherwagenBasisParameter[i], stH := VISU_HAND.astFW[i]);
 END_FOR
 
-(* ------------------------------------------------------------------------------------------- *)
-(* FUNKTIONSZEILEN LAUT MK-STATIONSAUFBAU                                                      *)
-(* ------------------------------------------------------------------------------------------- *)
+// -------------------------------------------------------------------------------------------
+// FUNKTIONSZEILEN LAUT MK-STATIONSAUFBAU
+// -------------------------------------------------------------------------------------------
 IF __ISVALIDREF(StationBasisParameter.starrStationBasisParameter[201].stMKs) THEN
   VISU_HAND.st201.abZeileVorhanden[1] := StationBasisParameter.starrStationBasisParameter[201].stMKs.stStationsAufbau.bGlastransport[cWAND_1];
   VISU_HAND.st201.abZeileVorhanden[2] := StationBasisParameter.starrStationBasisParameter[201].stMKs.stStationsAufbau.bAnschlag;
@@ -101,9 +101,9 @@ IF __ISVALIDREF(StationBasisParameter.starrTransfershuttleBasisParameter[151].st
   VISU_HAND.st151.abZeileVorhanden[6] := StationBasisParameter.starrTransfershuttleBasisParameter[151].stMKs.stStationsAufbau.bDLSSchmiersystem;
 END_IF
 
-(* ------------------------------------------------------------------------------------------- *)
-(* SCHALTER (TOGGLE) - ausserhalb des Handbetriebs immer zuruecksetzen                         *)
-(* ------------------------------------------------------------------------------------------- *)
+// -------------------------------------------------------------------------------------------
+// SCHALTER (TOGGLE) - ausserhalb des Handbetriebs immer zuruecksetzen
+// -------------------------------------------------------------------------------------------
 IF VISU_HAND.st201.bGesperrt THEN
   VISU_VARS.bgVISUGeblaese[201, cWAND_1] := FALSE;
   VISU_VARS.bgVISUDrosselklappeAUF[201]  := FALSE;
@@ -129,9 +129,9 @@ FOR i := 301 TO 302 DO
   END_IF
 END_FOR
 
-(* ------------------------------------------------------------------------------------------- *)
-(* [201] ANLEGETISCH                                                                           *)
-(* ------------------------------------------------------------------------------------------- *)
+// -------------------------------------------------------------------------------------------
+// [201] ANLEGETISCH
+// -------------------------------------------------------------------------------------------
 b := VisuHand_Sperre(stBP := StationBasisParameter.starrStationBasisParameter[201], stH := VISU_HAND.st201, bFaecherwagen := FALSE);
 // 1 Riemen (laeuft nur bei ausgefahrenem Hubrahmen)
 b := VisuHand_Set(stH := VISU_HAND.st201, wZeile := 1,
@@ -158,9 +158,9 @@ b := VisuHand_Set(stH := VISU_HAND.st201, wZeile := 5, sText := SEL(abgStationss
 // 6 Drosselklappe
 b := VisuHand_Set(stH := VISU_HAND.st201, wZeile := 6, sText := SEL(abgStationsstatusVisu[201].bDrosselklappeOffen[1], 'zu', 'auf'), dwFarbe := SEL(abgStationsstatusVisu[201].bDrosselklappeOffen[1], dwGR, dwB));
 
-(* ------------------------------------------------------------------------------------------- *)
-(* [202] KIPPTISCH                                                                             *)
-(* ------------------------------------------------------------------------------------------- *)
+// -------------------------------------------------------------------------------------------
+// [202] KIPPTISCH
+// -------------------------------------------------------------------------------------------
 b := VisuHand_Sperre(stBP := StationBasisParameter.starrStationBasisParameter[202], stH := VISU_HAND.st202, bFaecherwagen := FALSE);
 b := VisuHand_Set(stH := VISU_HAND.st202, wZeile := 1,
                    sText   := SEL(abgStationsstatusVisu[202].bSensorEinlauf[1] OR abgStationsstatusVisu[202].bSensorAuslauf[1], 'frei', 'Glas'),
@@ -180,9 +180,9 @@ b := VisuHand_Set(stH := VISU_HAND.st202, wZeile := 3,
                    sText   := VisuUeb_MmText(sPrefix := '', rWert := abgStationsstatusVisu[202].rQuerfahrtIstPos, sEinheit := ' mm'),
                    dwFarbe := SEL(abgStationsstatusVisu[202].bQuerfahrtFehler, SEL(abgStationsstatusVisu[202].bQuerfahrtAntriebReferenziert, dwO, dwG), dwR));
 
-(* ------------------------------------------------------------------------------------------- *)
-(* [101] SHUTTLE                                                                               *)
-(* ------------------------------------------------------------------------------------------- *)
+// -------------------------------------------------------------------------------------------
+// [101] SHUTTLE
+// -------------------------------------------------------------------------------------------
 b := VisuHand_Sperre(stBP := StationBasisParameter.starrShuttleBasisParameter[101], stH := VISU_HAND.st101, bFaecherwagen := FALSE);
 b := VisuHand_Set(stH := VISU_HAND.st101, wZeile := 1,
                    sText   := SEL(abgStationsstatusVisu[101].bSensorEinlauf[1] OR abgStationsstatusVisu[101].bSensorAuslauf[1] OR abgStationsstatusVisu[101].bSensorAuslaufStopp[1], 'frei', 'Glas'),
@@ -210,9 +210,9 @@ b := VisuHand_Set(stH := VISU_HAND.st101, wZeile := 5,
                    dwFarbe := SEL(abgStationsstatusVisu[101].bQuerfahrtFehler, SEL(abgStationsstatusVisu[101].bQuerfahrtAntriebReferenziert, dwO, dwG), dwR));
 b := VisuHand_Set(stH := VISU_HAND.st101, wZeile := 6, sText := '', dwFarbe := dwGR);
 
-(* ------------------------------------------------------------------------------------------- *)
-(* [151] TRANSFERSHUTTLE                                                                       *)
-(* ------------------------------------------------------------------------------------------- *)
+// -------------------------------------------------------------------------------------------
+// [151] TRANSFERSHUTTLE
+// -------------------------------------------------------------------------------------------
 b := VisuHand_Sperre(stBP := StationBasisParameter.starrTransfershuttleBasisParameter[151], stH := VISU_HAND.st151, bFaecherwagen := FALSE);
 b := VisuHand_Set(stH := VISU_HAND.st151, wZeile := 1,
                    sText   := SEL(abgStationsstatusVisu[151].bSensorEinlauf[1] OR abgStationsstatusVisu[151].bSensorAuslauf[1], 'frei', 'Glas'),
@@ -232,9 +232,9 @@ b := VisuHand_Set(stH := VISU_HAND.st151, wZeile := 5,
                    dwFarbe := SEL(abgStationsstatusVisu[151].bQuerfahrtFehler, SEL(abgStationsstatusVisu[151].bQuerfahrtAntriebReferenziert, dwO, dwG), dwR));
 b := VisuHand_Set(stH := VISU_HAND.st151, wZeile := 6, sText := '', dwFarbe := dwGR);
 
-(* ------------------------------------------------------------------------------------------- *)
-(* [301] / [302] FAECHERWAGEN                                                                  *)
-(* ------------------------------------------------------------------------------------------- *)
+// -------------------------------------------------------------------------------------------
+// [301] / [302] FAECHERWAGEN
+// -------------------------------------------------------------------------------------------
 FOR i := 301 TO 302 DO
   b := VisuHand_Sperre(stBP := StationBasisParameter.starrFaecherwagenBasisParameter[i], stH := VISU_HAND.astFW[i], bFaecherwagen := TRUE);
   // 1 Rolltor

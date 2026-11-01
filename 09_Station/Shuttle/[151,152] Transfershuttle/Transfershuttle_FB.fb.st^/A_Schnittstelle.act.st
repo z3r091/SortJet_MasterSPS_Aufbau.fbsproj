@@ -6,9 +6,9 @@
 }
 *)
 ACTION A_Schnittstelle
-(***************************************************************************************************)
-(* SCHNITTSTELLE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// SCHNITTSTELLE
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Abhandlung des Ein-Aus- Transports [Setzen der Variablen das man bereit ist zum Glastransport]
 *)
@@ -34,8 +34,8 @@ BasisStationsParameter.OutGlasTransport[cWAND_1].bTransportRueckwaertig     REF=
 stpOutTransportVerbund := Glastransport.stpOutTransportVerbund;
 
 
-(* --------------------------------------------------------------------------------------- *)
-(* BAUSTEIN BASISPARAMETER *)
+// ---------------------------------------------------------------------------------------
+// BAUSTEIN BASISPARAMETER
 BasisStationsParameter.bIstReferenziert        := Querfahrt.Antrieb.bpIstReferenziert;
 BasisStationsParameter.bAuftragAktiv           := (   BasisStationsParameter.bAnlegen
                                                     OR BasisStationsParameter.bAbnehmen

@@ -18,19 +18,19 @@ TYPE Stations_Aufbau_ST:
     bHubrahmen                              : BOOL;
     bDrehen                                 : BOOL;
     bQuerachse                              : BOOL;
-    bMessachse                              : BOOL; (* seperate Messachse je Wand z.b: Anlegewand / LTR / etc...*)
+    bMessachse                              : BOOL; // seperate Messachse je Wand z.b: Anlegewand / LTR / etc...
     bDruckluft                              : BOOL;
     bAnschlag                               : BOOL;
     bSensorAuslauf                          : BOOL;
     bSensorEinlauf                          : BOOL;
-    bDurchlaufSperreZumNachfolger           : BOOL; (* bei LTR wenn die Nachfolgestation zum B. ein RKT ist *)
+    bDurchlaufSperreZumNachfolger           : BOOL; // bei LTR wenn die Nachfolgestation zum B. ein RKT ist
     bKippenSchuetz                          : BOOL;
     bQuerfahrt                              : BOOL;
     bDurchgang                              : BOOL;
     bSlaveAntrieb                           : BOOL;
-    bRolltor                                : BOOL; (* z.B.: FW - Rolltor *)
-    bRFID                                   : BOOL; (* z.B.: FW - Rolltor *)
-    bAGV                                    : BOOL; (* Hinweis: AGV Betrieb *)
+    bRolltor                                : BOOL; // z.B.: FW - Rolltor
+    bRFID                                   : BOOL; // z.B.: FW - Rolltor
+    bAGV                                    : BOOL; // Hinweis: AGV Betrieb
     bKipparme                               : BOOL;
     bMessachseAmEndeVomTisch                : BOOL;
     bDLSSchmiersystem                       : BOOL;

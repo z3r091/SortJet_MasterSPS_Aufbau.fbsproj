@@ -7,6 +7,6 @@
 *)
 TYPE Parameter_Verfahrueberwachung :
   STRUCT
-    rMaxVerzoegerungsRampeUeberwachung  : REAL; (* Maximale muss in mm/s^2 angegeben werden *)
+    rMaxVerzoegerungsRampeUeberwachung  : REAL; // Maximale muss in mm/s^2 angegeben werden
   END_STRUCT
 END_TYPE

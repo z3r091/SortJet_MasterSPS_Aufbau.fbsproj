@@ -6,9 +6,9 @@
 }
 *)
 ACTION Eintransport
-(***************************************************************************************************)
-(* AKTION: EINTRANSPORT ANLEGETISCH *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: EINTRANSPORT ANLEGETISCH
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Ablauf wie Basic_Glastransport_FB.Eintransport, Abweichungen:
      => Die Scheibe bleibt fuer die Hoehenmessung auf dem Einlaufsensor liegen (kein Einlaufsensor freifahren)
@@ -28,7 +28,7 @@ THEN
   END_IF
 
   CASE steplEintransport OF
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_0_E:
       (* Hinweis:
          - Variablen setzen
@@ -44,7 +44,7 @@ THEN
         steplEintransport := STEP_20_E;
       END_IF
 
-    (*EINTRANSPORT ====================*)
+    // EINTRANSPORT ====================
     STEP_10_E:
       (* Hinweis:
          - Antrieb ist referenziert
@@ -54,14 +54,14 @@ THEN
         steplEintransport := STEP_20_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_20_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  KOPPLUNG ZWISCHEN DEN STATIONEN
       //
       //  Hinweis:
       // - Warten bis die Vorgaengerstation bereit zum Austransport ist [Soll-Geschwindigkeits- Kopplung]
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
       Antrieb.rpGeschwindigkeit  := 0.0;
 
       bpOutBereitZumEintransport := TRUE; // Analogkopplung der Brechanlage; die Folgen uns solange, bis wir das GlasAbruf wegnehmen
@@ -70,14 +70,14 @@ THEN
         steplEintransport := STEP_100_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  EINTRANSPORT UEBER DEN EINLAUFSENSOR
       //
       //  Hinweis:
       // - Transport in "Positive" Richtung, die Scheibe bleibt auf dem Einlaufsensor stehen
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
       IF ( NOT bpSensorEinlauf ) THEN
 
         // Antriebsposition merken
@@ -104,14 +104,14 @@ THEN
 
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_110_E:
       // Sicherstellen das der Einlaufsensor auch überfahren wurde
       IF ( bpSensorEinlauf ) THEN
         steplEintransport := STEP_120_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Auslaufsensor
          - Einlaufsensor schaltet nicht
       *)
@@ -121,13 +121,13 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation * 3 ) THEN (* so viel da die ProLam sehr lang ist *)
+      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation * 3 ) THEN // so viel da die ProLam sehr lang ist
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
         steplEintransport := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_120_E:
       (* Hinweis:
          - Positionierung abwarten
@@ -143,7 +143,7 @@ THEN
         steplEintransport := STEP_140_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_140_E:
       (* Hinweis:
          - Sicherstellen das der Antrieb steht
@@ -164,7 +164,7 @@ THEN
 
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_150_E:
       (* Hinweis:
          - Scheibenquittung nach abgeschlossener Positionierung
@@ -174,14 +174,14 @@ THEN
       bprtScheibe := TRUE;
       steplEintransport := STEP_1000_E;
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_200_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  EINLAUFSENSOR ANFAHREN
       //
       //  Hinweis:
       // - Scheibe zurueck auf den Einlaufsensor fahren
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
       Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSlow;
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
       Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -192,7 +192,7 @@ THEN
       Antrieb.wpBetriebsart     := RESTWEG;
       steplEintransport := STEP_210_E;
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_210_E:
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -215,7 +215,7 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_300_E:
       (* Anmerkung:
          - Auslaufsensor freifahren
@@ -230,7 +230,7 @@ THEN
       Antrieb.wpBetriebsart     := RESTWEG;
       steplEintransport := STEP_310_E;
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_310_E:
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -253,21 +253,21 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       bpFehler    := TRUE;
       bprtScheibe := FALSE;
 
       Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
-    (*EINTRANSPORT =====================*)
+    // EINTRANSPORT =====================
     STEP_1000_E:
       bprtScheibe := FALSE;
       bpDone := TRUE;
 
-  (*EINTRANSPORT =====================*)
+  // EINTRANSPORT =====================
   END_CASE
 ELSE
 

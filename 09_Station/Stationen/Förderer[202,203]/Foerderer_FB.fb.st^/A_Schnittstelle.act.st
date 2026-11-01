@@ -6,13 +6,13 @@
 }
 *)
 ACTION A_Schnittstelle
-(***************************************************************************************************)
-(* AKTION SCHNITTSTELLE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION SCHNITTSTELLE
+//-------------------------------------------------------------------------------------------------
 
 SUPER^.A_Schnittstelle();
 
-(* --------------------------------------------------------------------------------------- *)
+// ---------------------------------------------------------------------------------------
 
 (* Hinweis:
    - Abhandlung des Ein-Aus- Transports [Setzen der Variablen das man bereit ist zum Glastransport]
@@ -26,7 +26,7 @@ BasisStationsParameter.OutGlasTransport[cWAND_1].rGeschwindigkeit           REF=
 BasisStationsParameter.OutGlasTransport[cWAND_1].bQuittScheibe              REF= Glastransport.bprtScheibe;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberEinlauf REF= Glastransport.bpScheibeFaehrtUeberEinlauf;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberAuslauf REF= Glastransport.bpScheibeFaehrtUeberAuslauf;
-(* --------------------------------------------------------------------------------------- *)
+// ---------------------------------------------------------------------------------------
 
 BasisStationsParameter.bIstReferenziert := Querfahrt.bpInReferenz;
 

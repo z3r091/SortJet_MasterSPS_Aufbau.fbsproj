@@ -8,8 +8,8 @@
 FUNCTION_BLOCK Dickenverstellung_FB
 VAR_INPUT
 
-  (* BOOLEAN *)
-  bpAktivieren                                   : BOOL; (* Hinweis: Baustein aktivieren *)
+  // BOOLEAN
+  bpAktivieren                                   : BOOL; // Hinweis: Baustein aktivieren
   bpReset                                        : BOOL;
   bpStartePositionierung                         : BOOL;
   bpReferenz                                     : BOOL;
@@ -20,48 +20,48 @@ VAR_INPUT
   bpOptionRollenleisteSchuetzSchaltungAktivieren : BOOL;
   bpOptionGegenhalterSchuetzSchaltungAktivieren  : BOOL;
   
-  (* ENUM *)
+  // ENUM
   epSollStellung : PneumatikZylinderStatus_EN;
 
-  (* STRUCT *)
+  // STRUCT
   stStationsNummern  : Station_ST;
 
-  (* POINTER *)
+  // POINTER
   ppAntriebsInformationen : REFERENCE TO AntriebsInformationen;
-  ppParameterBaustein     : REFERENCE TO Parameter_Dickenverstellung;  (* Zeiger auf Parameterfeld *)
+  ppParameterBaustein     : REFERENCE TO Parameter_Dickenverstellung;  // Zeiger auf Parameterfeld
   
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpFehler                  : BOOL;
   bpDone                    : BOOL;
   bpResourceAktiv           : BOOL;
-  bpInReferenz              : BOOL; (* Status: Baustein/Antrieb ist referenziert *)
+  bpInReferenz              : BOOL; // Status: Baustein/Antrieb ist referenziert
 
-  (* WORD *)
+  // WORD
   wpFehlerNr : WORD;
 
-  (* ENUM *)
+  // ENUM
   eStatusStellung : PneumatikZylinderStatus_EN;
 
 END_VAR
 VAR
 
-  (* BOOLEAN *)
+  // BOOLEAN
   blErsterZyklus   : BOOL := TRUE;
 
-  (* REAL *)
+  // REAL
   rlZielPosition   : REAL;
 
-  (* TIMER *)
-  tonlEndschalterFreifahren              : TON; (* EINSCHALTVERZOEGERUNG: *)
-  tonlWarteSchrittEndschalterFreifahren  : TON; (* EINSCHALTVERZOEGERUNG: *)
-  tonlMaxWarteAufResetErfolgreich        : TON; (* EINSCHALTVERZOEGERUNG: *)
-  tofHardwareEndschalterFrei             : TOF; (* AUSSCHALTVERZOEGERUNG: *)
-  toflAutoAbschaltung                    : TOF; (* AUSSCHALTVERZOEGERUNG: *)
+  // TIMER
+  tonlEndschalterFreifahren              : TON; // EINSCHALTVERZOEGERUNG:
+  tonlWarteSchrittEndschalterFreifahren  : TON; // EINSCHALTVERZOEGERUNG:
+  tonlMaxWarteAufResetErfolgreich        : TON; // EINSCHALTVERZOEGERUNG:
+  tofHardwareEndschalterFrei             : TOF; // AUSSCHALTVERZOEGERUNG:
+  toflAutoAbschaltung                    : TOF; // AUSSCHALTVERZOEGERUNG:
 
-  (* STEPS *)
+  // STEPS
   steplPositionieren    : Steps_TE;
   steplReferenz         : Steps_TE;
   steplReset            : Steps_TE;
@@ -72,13 +72,13 @@ VAR
 END_VAR
 VAR_INPUT
 
-  (* HARDWARE EINGAENGE *)
+  // HARDWARE EINGAENGE
   in_bEndschalterMax : BOOL; // Oeffner (TRUE = frei), gemappt; zum Umrichter ueber Signal-Steuerwort Bit 9, wirkt nur bei Endschalterquelle SPS
 
 END_VAR
-(***************************************************************************************************)
-(* INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus ) THEN
 
   IF ( __ISVALIDREF(ppAntriebsInformationen) ) THEN
@@ -114,9 +114,9 @@ END_IF
 // Endschalter zyklisch an den Antrieb geben, auch bei deaktivierter Bewegung
 Antrieb.bpEndschalterMaxExtern := in_bEndschalterMax;
 
-(***************************************************************************************************)
-(* BAUSTEIN: AUSFUEHRUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AUSFUEHRUNG
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Aktionen
 *)
@@ -155,7 +155,7 @@ ELSE
 
     wpFehlerNr := 0;
 
-  END_IF (* => bpAktiv *)
+  END_IF // => bpAktiv
 
-END_IF(* => bpReset *)
+END_IF// => bpReset
 END_FUNCTION_BLOCK

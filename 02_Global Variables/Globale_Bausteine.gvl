@@ -8,9 +8,9 @@
 {attribute 'allow_unqualified_access'}
 NAMESPACE Globale_Bausteine
 VAR_GLOBAL
-(***************************************************************************************************)
-(* DEKLARATION STATIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEKLARATION STATIONEN
+//-------------------------------------------------------------------------------------------------
   // Stationen           
   aFaecherwagenstation  : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF Faecherwagenstation_V4_1_FB;
   
@@ -31,9 +31,9 @@ VAR_GLOBAL
   aSchnittstelleAuslauf           : ARRAY[cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF] OF Schnittstelle_Auslauf_Schneidanlage;
   aSchnittstelleEinlauf           : ARRAY[cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF Schnittstelle_Einlauf_Portale;
   
-(***************************************************************************************************)
-(* DEKLARATION BASIS-BAUSTEINE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEKLARATION BASIS-BAUSTEINE
+//-------------------------------------------------------------------------------------------------
 
   //Sicherheitskreis 
   Sicherheitskreis : ARRAY[cERSTER_SICHERHEITSKREIS..cLETZTER_SICHERHEITSKREIS] OF Sicherheitskreis_FB;

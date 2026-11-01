@@ -6,9 +6,9 @@
 }
 *)
 ACTION Handfunktion
-(***************************************************************************************************)
-(* Handfunktionen *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Handfunktionen
+//-------------------------------------------------------------------------------------------------
 // Aufruf Basic_Station Aktion
 SUPER^.Handfunktionen();
 
@@ -19,7 +19,7 @@ IF ( (  bpScheibeZurueckFahren )
      AND bpAnforderungHandfunktion )
 THEN
   (* Anmerkung:
-   - Knebel Glastransport zurueck 
+     - Knebel Glastransport zurueck
   *)
   IF NOT bpSensorEinlauf THEN
     Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;
@@ -40,7 +40,7 @@ ELSIF ( (  bpScheibeVorFahren )
         AND bpAnforderungHandfunktion )
 THEN
   (* Anmerkung:
-   - Knebel Glastransport vor 
+     - Knebel Glastransport vor
   *)
   IF NOT bpSensorAuslauf THEN
     Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;

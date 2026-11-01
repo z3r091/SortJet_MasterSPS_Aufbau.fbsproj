@@ -8,7 +8,7 @@
 {attribute 'allow_unqualified_access'}
 NAMESPACE MKs
 VAR_GLOBAL
-  bgHardwareSimulation : BOOL;             (* Hardware-Simulation *)
+  bgHardwareSimulation : BOOL;             // Hardware-Simulation
   bgMkParameterOk      : BOOL := FALSE;
 END_VAR
 END_NAMESPACE

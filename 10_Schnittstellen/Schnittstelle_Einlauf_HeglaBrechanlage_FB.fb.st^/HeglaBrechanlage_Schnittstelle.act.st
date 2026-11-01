@@ -6,25 +6,22 @@
 }
 *)
 ACTION HeglaBrechanlage_Schnittstelle
-(***************************************************************************************************)
-(* HARDWARESIGNALE: AUSGAENGE *)
-(***************************************************************************************************)
-(* Ausgaenge:
-   - Transport-Signale 
-*)
+//-------------------------------------------------------------------------------------------------
+// HARDWARESIGNALE: AUSGAENGE
+//-------------------------------------------------------------------------------------------------
+// Ausgaenge:
+//   - Transport-Signale
 out_bGlasAbruf     := InGlasTransportNachfolger.bBereitZumEintransport;
 
-(* Sensor:
-   - Einlaufsensor
-*)
+// Sensor:
+//   - Einlaufsensor
 out_bSensorEinlauf := InGlasTransportNachfolger.bEinlaufsensor;
 
 
-(* Anforderung:
-   - Sicherheitskreis
-*)
+// Anforderung:
+//   - Sicherheitskreis
 out_bAnforderungSK := bpAnforderungSK;
 
-(* Geschwindigkeit übergeben *)
+// Geschwindigkeit übergeben
 out_wSpeed := 32767 / 1166 * REAL_TO_WORD(InGlasTransportNachfolger.rGeschwindigkeit);
 END_ACTION

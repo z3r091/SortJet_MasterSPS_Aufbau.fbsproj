@@ -6,9 +6,9 @@
 }
 *)
 ACTION QuerfahrtPositionieren
-(***************************************************************************************************)
-(* POSITIONIEREN [QUERFAHRT] *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// POSITIONIEREN [QUERFAHRT]
+//-------------------------------------------------------------------------------------------------
 //Der Auftragsstatus [cSHUTTLE_VORABPOSITIONIEREN] muss zurueck gesetzt werden
 BasisStationsParameter.bPositionierAuftragZuruecksetzen := Querfahrt.bpAuftragsstatusZuruecksetzen;
 
@@ -32,11 +32,11 @@ IF (  BasisStationsParameter.bVorabpositionieren
 THEN
 
   CASE steplPositionierungQuerfahrt OF
-    (*POSITIONIEREN ==============================*)
+    // POSITIONIEREN ==============================
     STEP_0_E:
       steplPositionierungQuerfahrt := STEP_10_E;
  
-    (*POSITIONIEREN ==============================*)
+    // POSITIONIEREN ==============================
     STEP_10_E:
       (* Hinweis:
          - Station auf eine definierte Position verfahren
@@ -46,7 +46,7 @@ THEN
 
       steplPositionierungQuerfahrt := STEP_20_E;
 
-    (*POSITIONIEREN ==============================*)
+    // POSITIONIEREN ==============================
     STEP_20_E:
       IF ( Querfahrt.Antrieb.bpAntrieblaeuft
            OR Querfahrt.bpDone )
@@ -55,7 +55,7 @@ THEN
         steplPositionierungQuerfahrt := STEP_30_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Querfahrt [VERFAHRLOGIK]
       *)
       IF ( Querfahrt.bpFehler ) THEN
@@ -64,7 +64,7 @@ THEN
         steplPositionierungQuerfahrt := STEP_900_E;
       END_IF
 
-    (*POSITIONIEREN ==============================*)
+    // POSITIONIEREN ==============================
     STEP_30_E:
       (* Anmerkung:
          - Sollte das Verfahren frueher abgeschlossen werden als der Zeitwert des Timers "tonlUpdateTimer"
@@ -105,15 +105,15 @@ THEN
         steplPositionierungQuerfahrt := STEP_900_E;
       END_IF
 
-    (*POSITIONIEREN ==============================*)
+    // POSITIONIEREN ==============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (*POSITIONIEREN ==============================*)
+    // POSITIONIEREN ==============================
     STEP_1000_E:
       BasisStationsParameter.bVorabpositionierenAbgeschlossen := TRUE;
 
-  (*POSITIONIEREN ==============================*)
+  // POSITIONIEREN ==============================
   END_CASE
 END_IF
 

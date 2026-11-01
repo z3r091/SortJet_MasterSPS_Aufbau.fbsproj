@@ -6,9 +6,9 @@
 }
 *)
 ACTION Abkippen
-(***************************************************************************************************)
-(* AKTION ABKIPPEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION ABKIPPEN
+//-------------------------------------------------------------------------------------------------
 
 IF ( bpStartKippenAb
      AND NOT bpStartKippenAuf
@@ -24,7 +24,7 @@ THEN
 
 
   CASE steplKippenAb OF
-    (* KIPPEN AB  ================*)
+    // KIPPEN AB  ================
     STEP_0_E:
       bpDone := FALSE;
 
@@ -36,12 +36,12 @@ THEN
         END_IF
       END_IF
 
-    (* KIPPEN AB ================*)
+    // KIPPEN AB ================
     STEP_10_E:
-      (* Anmerkung[Sensoren]
-         - Einlauf- Auslauf- Sensoren duerfen nicht belegt 
-         Anmerkung [Antrieb]:
-         - Geschwindigkeit wird in U/min angegeben werden         
+      (* Anmerkung [Sensoren]:
+         - Einlauf- Auslauf- Sensoren duerfen nicht belegt
+           Anmerkung [Antrieb]:
+         - Geschwindigkeit wird in U/min angegeben werden
       *)
       IF (  NOT bpSensorEinlauf
            AND NOT bpSensorAuslauf )
@@ -83,7 +83,7 @@ THEN
         steplKippenAb := STEP_900_E;
       END_IF
 
-    (* KIPPEN AB  ================*)
+    // KIPPEN AB  ================
     STEP_20_E:
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart:= KEINE_FUNKTION;
@@ -107,21 +107,21 @@ THEN
 
       END_IF
 
-    (* KIPPEN AB ================*)
+    // KIPPEN AB ================
     STEP_900_E:
       IF NOT Antrieb.bpAntrieblaeuft THEN
         steplKippenAb := STEP_910_E;
       END_IF
 
-    (* KIPPEN AB ================*)
+    // KIPPEN AB ================
     STEP_910_E:
       bpFehler := TRUE;
 
-    (* KIPPEN AB  ================*)
+    // KIPPEN AB  ================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (* KIPPEN AB  ================*)
+  // KIPPEN AB  ================
   END_CASE
 ELSE
   IF ( steplKippenAb > STEP_0_E ) THEN

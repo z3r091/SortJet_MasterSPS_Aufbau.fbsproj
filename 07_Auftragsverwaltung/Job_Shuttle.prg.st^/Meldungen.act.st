@@ -6,15 +6,14 @@
 }
 *)
 ACTION Meldungen
-(***************************************************************************************************)
-(* AKTION: MELDUNGEN *)
-(***************************************************************************************************)
-(* WatchIO:
-   - Ueberwachung der Verfahrfreigabe der Shuttle
-     -> Inputshuttle
-     -> Outputshuttle
-     -> Transfershuttle
-*)
+//-------------------------------------------------------------------------------------------------
+// AKTION: MELDUNGEN
+//-------------------------------------------------------------------------------------------------
+// WatchIO:
+//   - Ueberwachung der Verfahrfreigabe der Shuttle
+//     -> Inputshuttle
+//     -> Outputshuttle
+//     -> Transfershuttle
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
   WatchIo( NOT abgVerfahrfreigabeShuttle[wlIndex], ioccShuttle1VerfahrfreigabeFehlt + (wlIndex - 101) );
 END_FOR;

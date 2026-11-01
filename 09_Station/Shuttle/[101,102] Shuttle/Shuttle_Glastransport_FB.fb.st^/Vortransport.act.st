@@ -6,9 +6,9 @@
 }
 *)
 ACTION Vortransport
-(***************************************************************************************************)
-(* AKTION: VORTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: VORTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( bpVortransport
      AND NOT bpEintransport
      AND NOT bpRueckwaertsEintransportieren
@@ -23,7 +23,7 @@ THEN
 
   CASE steplVortransport OF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_0_E:
 
       (* Hinweis:
@@ -34,7 +34,7 @@ THEN
         steplVortransport := STEP_5_E;
       END_IF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_5_E:
 
       IF (  NOT bpSensorAuslaufVorab
@@ -58,7 +58,7 @@ THEN
 
       END_IF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_10_E:
       (* Hinweis:
          - Glas auf den VorStop- Sensor vorpositionieren
@@ -84,10 +84,10 @@ THEN
         steplVortransport := STEP_900_E;
       END_IF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_20_E:
       (* Hinweis:
-          - Pruefen ob das Glas zuweit gefahren wurde und den Auslaufsensor nun belegt ist.
+         - Pruefen ob das Glas zuweit gefahren wurde und den Auslaufsensor nun belegt ist.
             ggf. das Glas wider zurueck fahren
       *)
       IF (  NOT Antrieb.bpAntrieblaeuft
@@ -115,17 +115,17 @@ THEN
         steplVortransport := STEP_900_E;
       END_IF
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       bpFehler := TRUE;
 
-    (*VORTRANSPORT ==============================*)
+    // VORTRANSPORT ==============================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*VORTRANSPORT ==============================*)
+  // VORTRANSPORT ==============================
   END_CASE
 ELSE
   IF (steplVortransport > STEP_0_E) THEN

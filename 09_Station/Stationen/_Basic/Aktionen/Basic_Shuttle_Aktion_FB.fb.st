@@ -8,7 +8,7 @@
 FUNCTION_BLOCK Basic_Shuttle_Aktion_FB
 VAR_IN_OUT
 
-  (* STRUKT *)
+  // STRUKT
   BasisStationsParameter : StationBasisParameter_ST;
 
 END_VAR

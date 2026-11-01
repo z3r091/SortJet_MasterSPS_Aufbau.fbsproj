@@ -6,9 +6,9 @@
 }
 *)
 ACTION A_Aufrufe
-(***************************************************************************************************)
-(* FUNKTIONSBAUSTEINE ZUWEISUNGEN UND AUFRUFE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// FUNKTIONSBAUSTEINE ZUWEISUNGEN UND AUFRUFE
+//-------------------------------------------------------------------------------------------------
 // Glastransport
 Glastransport( stStationsNummern                              := BasisStationsParameter.stMKs.stStationsNummern,
                bpAutomatikAktiv                               := BasisStationsParameter.bAutomatik,
@@ -49,8 +49,8 @@ Glastransport.bpTransfershuttleVerbundAktiv                    := bpTransfershut
 Glastransport.bpOptionTransfershuttleMitUltraschallSensoren := BasisStationsParameter.stMKs.stStationsOptionen.stTransfershuttle.bTransferShuttleMitUltraschallSensoren;
 
 (* Hinweis:
-   - Die Hardware- Eingaenge werden zurueck gehalten wenn die Luftabfrage nicht verbaut wurde. 
-     => Die Werte werden werden je nach Zustand im Unterbaustein (Glastransport) simuliert und duerfen aus diesem Grund hier nicht 
+   - Die Hardware- Eingaenge werden zurueck gehalten wenn die Luftabfrage nicht verbaut wurde.
+     => Die Werte werden werden je nach Zustand im Unterbaustein (Glastransport) simuliert und duerfen aus diesem Grund hier nicht
         ueberschrieben werden.
 *)
 IF ( BasisStationsParameter.stMKs.stStationsAufbau.bSensorAuslauf ) THEN

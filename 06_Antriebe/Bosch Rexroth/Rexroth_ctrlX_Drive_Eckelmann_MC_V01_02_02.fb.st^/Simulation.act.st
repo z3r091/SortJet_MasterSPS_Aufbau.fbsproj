@@ -6,15 +6,15 @@
 }
 *)
 ACTION Simulation
-(***************************************************************************************************)
-(* AKTION: SIMULATION                                                                              *)
-(*                                                                                                 *)
-(* Simulationsmodus fuer den Rexroth-Antriebsbaustein (inkl. Scheibenmessung mit virtueller Laenge rgSimScheibenlaenge, Bremse loesen, Absolut setzen, Langsamfahrnocken).                                             *)
-(* - Simuliert Achsbewegung (Istposition / Istgeschwindigkeit)                                     *)
-(* - Simuliert Sensoren (Eingaenge Umrichter) inkl. Flankenerkennung                               *)
-(* - Simuliert Statusbits (Done, laeuft, Richtungen, Sync, Limits)                                 *)
-(* - Simuliert Restweg-Flankenlogik inkl. Suchfahrt und Zielpunkt                                  *)
-(***************************************************************************************************)
+// *************************************************************************************************
+// AKTION: SIMULATION
+//
+// Simulationsmodus fuer den Rexroth-Antriebsbaustein (inkl. Scheibenmessung mit virtueller Laenge rgSimScheibenlaenge, Bremse loesen, Absolut setzen, Langsamfahrnocken).
+// - Simuliert Achsbewegung (Istposition / Istgeschwindigkeit)
+// - Simuliert Sensoren (Eingaenge Umrichter) inkl. Flankenerkennung
+// - Simuliert Statusbits (Done, laeuft, Richtungen, Sync, Limits)
+// - Simuliert Restweg-Flankenlogik inkl. Suchfahrt und Zielpunkt
+// *************************************************************************************************
 
 IF NOT blSimulationAktivVorzyklus THEN
   blSimulationAktivVorzyklus := TRUE;

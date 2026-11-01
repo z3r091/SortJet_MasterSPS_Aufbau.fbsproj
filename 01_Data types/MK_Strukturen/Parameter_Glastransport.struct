@@ -6,24 +6,24 @@
 }
 *)
 (* Hinweis:
-   - Glasauflage [Rollen / Riemen etc. ] 
+   - Glasauflage [Rollen / Riemen etc. ]
 *)
 TYPE Parameter_Glastransport :
   STRUCT
-    rLaengeStation                        : REAL; (* Länge der Station *)
-    rScheibenabstand                      : REAL; (* Der Abstand zwischen zwei Scheiben auf der Station *)
-    rWegUeberEinlauf                      : REAL; (* [LastSheet] Der Weg der Ueber ein den EinlaufSensor gefahren wird so das er gerade nicht mehr belegt ist *)
-    rWegUeberAuslauf                      : REAL; (* [LastSheet] Der Weg der Ueber ein den AuslaufSensor gefahren wird so das er gerade nicht mehr belegt ist *)
-    rWegUeberSensorenSystemCheck          : REAL; (* Der Weg der Ueber ein die Sensoren zum vermessen der Scheiben  *)
-    rUeberwachungAuslaufsensor            : REAL; (* Ueberwachung des Auslaufsensors [Strecke in der der Auslaufsensor Frei / ueberfahren werden soll] *)
-    rUeberwachungEinlaufsensor            : REAL; (* Ueberwachung des Einlaufsensors [Strecke in der der Einlaufsensor Frei / ueberfahren werden soll] *)
-    rWegUeberEinlaufEintransport          : REAL; (* [KEIN_LastSheet] So weit soll der Einlaufsensor im Eintransport überfahren werden *)
-    rWegUeberEinlaufAustransport          : REAL; (* [KEIN_LastSheet] So weit soll der Einlaufsensor im Austransport überfahren werden *)
-    rWegUeberAuslaufEintransport          : REAL; (* [KEIN_LastSheet] So weit soll der Auslaufsensor im Eintransport überfahren werden *)
-    rWegUeberAuslaufAustransport          : REAL; (* [KEIN_LastSheet] So weit soll der Azslaufsensor im Austransport überfahren werden *)
-    rWegEinlaufsensorZuVorStopSensor      : REAL; (* Beschreibt den Weg vum eine Scheibe beim EIntransport vom Einlaufsensor bis ueberden Vorabstopsensor zu verfahren *)
-    rMesstoleranz                         : REAL; (* Toleranz-Mass fuer die Scheibenlaengenmessung *)
-    rMessstrecke                          : REAL; (* Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt *)
-    rWegstreckeBisZurVerzoegerung         : REAL; (* Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll, dies gilt fuer Eintransportauftraege die das Bit "Letzte Scheibe" gesetzt haben *)
+    rLaengeStation                        : REAL; // Länge der Station
+    rScheibenabstand                      : REAL; // Der Abstand zwischen zwei Scheiben auf der Station
+    rWegUeberEinlauf                      : REAL; // [LastSheet] Der Weg der Ueber ein den EinlaufSensor gefahren wird so das er gerade nicht mehr belegt ist
+    rWegUeberAuslauf                      : REAL; // [LastSheet] Der Weg der Ueber ein den AuslaufSensor gefahren wird so das er gerade nicht mehr belegt ist
+    rWegUeberSensorenSystemCheck          : REAL; // Der Weg der Ueber ein die Sensoren zum vermessen der Scheiben
+    rUeberwachungAuslaufsensor            : REAL; // Ueberwachung des Auslaufsensors [Strecke in der der Auslaufsensor Frei / ueberfahren werden soll]
+    rUeberwachungEinlaufsensor            : REAL; // Ueberwachung des Einlaufsensors [Strecke in der der Einlaufsensor Frei / ueberfahren werden soll]
+    rWegUeberEinlaufEintransport          : REAL; // [KEIN_LastSheet] So weit soll der Einlaufsensor im Eintransport überfahren werden
+    rWegUeberEinlaufAustransport          : REAL; // [KEIN_LastSheet] So weit soll der Einlaufsensor im Austransport überfahren werden
+    rWegUeberAuslaufEintransport          : REAL; // [KEIN_LastSheet] So weit soll der Auslaufsensor im Eintransport überfahren werden
+    rWegUeberAuslaufAustransport          : REAL; // [KEIN_LastSheet] So weit soll der Azslaufsensor im Austransport überfahren werden
+    rWegEinlaufsensorZuVorStopSensor      : REAL; // Beschreibt den Weg vum eine Scheibe beim EIntransport vom Einlaufsensor bis ueberden Vorabstopsensor zu verfahren
+    rMesstoleranz                         : REAL; // Toleranz-Mass fuer die Scheibenlaengenmessung
+    rMessstrecke                          : REAL; // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
+    rWegstreckeBisZurVerzoegerung         : REAL; // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll, dies gilt fuer Eintransportauftraege die das Bit "Letzte Scheibe" gesetzt haben
   END_STRUCT
 END_TYPE

@@ -8,37 +8,37 @@
 FUNCTION_BLOCK Station_Glashoehenmessung
 VAR_INPUT
     
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset                : BOOL;
   bpAbbruchAnlegeauftrag : BOOL;
   
-  (* WORD *)
+  // WORD
   wStation               : WORD;
   
-  (* STRUKTUR *)
+  // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN*)
+  // BOOLEAN
   bpDone                 : BOOL;
   bpFehler               : BOOL;
 
 END_VAR
 VAR
     
-  (* STEPS *)
+  // STEPS
   steplSchritt           : STEPS_TE;
 
 END_VAR
 
-(***************************************************************************************************)
-(* STEUERUNG ANLEGEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// STEUERUNG ANLEGEN
+//-------------------------------------------------------------------------------------------------
 IF ( Auftragsdaten.wAuftrag = eStation_Hoehenmessung ) THEN
   CASE steplSchritt OF
-    (* HÖHENMESSUNG ================================================== *)
+    // HÖHENMESSUNG ==================================================
     STEP_0_E:
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
@@ -56,7 +56,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Hoehenmessung ) THEN
         Auftragsdaten.wAuftrag := eStation_Kein_Auftrag;
       END_IF
 
-    (* HÖHENMESSUNG ================================================== *)
+    // HÖHENMESSUNG ==================================================
     STEP_10_E:
       (* Hinweis:
          - Starten des Messvorgangs
@@ -66,7 +66,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Hoehenmessung ) THEN
 
       steplSchritt := STEP_20_E;
 
-    (* HÖHENMESSUNG ================================================== *)
+    // HÖHENMESSUNG ==================================================
     STEP_20_E:
       (* Hinweis:
          - Prüfen dass der Auftragsstatus sich geändert hat
@@ -88,7 +88,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Hoehenmessung ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (* HÖHENMESSUNG ================================================== *)
+    // HÖHENMESSUNG ==================================================
     STEP_100_E:
       (* Hinweis:
          - Starten des Messvorgangs
@@ -113,11 +113,11 @@ IF ( Auftragsdaten.wAuftrag = eStation_Hoehenmessung ) THEN
         steplSchritt := STEP_900_E;
       END_IF
 
-    (* HÖHENMESSUNG ================================================== *)
+    // HÖHENMESSUNG ==================================================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (* HÖHENMESSUNG ================================================== *)
+    // HÖHENMESSUNG ==================================================
     STEP_1000_E:
       (* Hinweis:
          - Entsprechend dem Auftragsergebnis den Folgeauftrag zuweisen
@@ -132,7 +132,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Hoehenmessung ) THEN
 
       END_IF
 
-  (* HÖHENMESSUNG ================================================== *)
+  // HÖHENMESSUNG ==================================================
   END_CASE
 END_IF
 

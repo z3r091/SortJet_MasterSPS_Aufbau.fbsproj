@@ -6,9 +6,9 @@
 }
 *)
 ACTION Referenz
-(***************************************************************************************************)
-(* REFERENZ *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// REFERENZ
+//-------------------------------------------------------------------------------------------------
 IF ( bpReferenz ) THEN
 
   IF ( Antrieb.bpFehler ) THEN
@@ -21,7 +21,7 @@ IF ( bpReferenz ) THEN
      - Starten der Schrittkette
   *)
   CASE steplReferenz OF
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_0_E:
       (* Hinweis:
          - Variablen zuruecksetzen
@@ -36,7 +36,7 @@ IF ( bpReferenz ) THEN
         steplReferenz := STEP_10_E;
       END_IF
 
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob der Antrieb keinen fehler hat nach dem Reset
@@ -57,7 +57,7 @@ IF ( bpReferenz ) THEN
 
       END_IF
 
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_20_E:
       (* Hinweis:
          - Endschalter freifahren
@@ -91,7 +91,7 @@ IF ( bpReferenz ) THEN
       (* Fehlerbehandlung:
          - Endschalter wird nicht frei !
          - Antrieb
-       *)
+      *)
       IF ( tonlEndschalterFreifahren.Q
            AND NOT Antrieb.bpMinSchalterBelegt )
       THEN
@@ -100,7 +100,7 @@ IF ( bpReferenz ) THEN
         steplReferenz := STEP_900_E;
       END_IF
 
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_30_E:
       (* Hinweis:
          - Erzwungene Pause, damit der Lenze Antrieb wieder ordnungsgemäß schaltet
@@ -111,14 +111,14 @@ IF ( bpReferenz ) THEN
         steplReferenz := STEP_100_E;
       END_IF
 
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_100_E:
-      (* ---------------------------------------------------------------------------------------
+      // ---------------------------------------------------------------------------------------
       //  STARTEN DER REFERENZ
-      //         
+      //
       //  Hinweis:
       // - n/c
-      // ---------------------------------------------------------------------------------------*)
+      // ---------------------------------------------------------------------------------------
 
       Antrieb.rpGeschwindigkeit  := ppAntriebsInformationen.rpMaxGeschwindigkeit;
       Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -128,7 +128,7 @@ IF ( bpReferenz ) THEN
 
       steplReferenz := STEP_110_E;
 
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_110_E:
       (* Hinweis:
          - Referenzieren abgeschlossen
@@ -139,15 +139,15 @@ IF ( bpReferenz ) THEN
         steplReferenz := STEP_1000_E;
       END_IF
 
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_900_E:
       bpFehler := TRUE;
 
-    (*REFERENZ =========================*)
+    // REFERENZ =========================
     STEP_1000_E:
       bpDone := TRUE;
 
-  (*REFERENZ =========================*)
+  // REFERENZ =========================
   END_CASE
 ELSE
 

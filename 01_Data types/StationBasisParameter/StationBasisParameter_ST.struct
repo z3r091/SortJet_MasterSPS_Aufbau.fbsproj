@@ -7,15 +7,15 @@
 *)
 TYPE StationBasisParameter_ST :
   STRUCT
-    bFreigabe                                 : BOOL; (* Freigabe  *)
-    bAutomatik                                : BOOL; (* Betriebsart Hand \ Automatik *)
-    bIstReferenziert                          : BOOL; (* Station ist referenziert *)
+    bFreigabe                                 : BOOL; // Freigabe
+    bAutomatik                                : BOOL; // Betriebsart Hand \ Automatik
+    bIstReferenziert                          : BOOL; // Station ist referenziert
    
-    bReset                                    : BOOL; (* Betriebsmodus *)
-    bCheck                                    : BOOL; (* Betriebsmodus *)
-    bCheckAbgeschlossen                       : BOOL; (* Betriebsmodus *)
-    bReferenz                                 : BOOL; (* Betriebsmodus *)
-    bReferenzAbgeschlossen                    : BOOL; (* Betriebsmodus *)
+    bReset                                    : BOOL; // Betriebsmodus
+    bCheck                                    : BOOL; // Betriebsmodus
+    bCheckAbgeschlossen                       : BOOL; // Betriebsmodus
+    bReferenz                                 : BOOL; // Betriebsmodus
+    bReferenzAbgeschlossen                    : BOOL; // Betriebsmodus
     bStationBelegt                            : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Station belegt nach Systemcheck
                                               
     pAuftrag                                  : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Auftragsdaten_ST;

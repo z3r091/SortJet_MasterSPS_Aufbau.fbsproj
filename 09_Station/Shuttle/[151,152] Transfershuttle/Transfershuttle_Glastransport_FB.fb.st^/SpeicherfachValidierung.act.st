@@ -6,17 +6,16 @@
 }
 *)
 ACTION SpeicherfachValidierung
-(* @TEXT_IMPLEMENTATION := 'ST' *)
-(***************************************************************************************************)
-(* S T A R T - Validierung eines Speicherfachs *)
-(***************************************************************************************************)
+// @TEXT_IMPLEMENTATION := 'ST'
+//-------------------------------------------------------------------------------------------------
+// S T A R T - Validierung eines Speicherfachs
+//-------------------------------------------------------------------------------------------------
 
-(* Betriebsmodus:
-   - Speicherfach wird ueberprueft ob beide Luftabfragen frei und somit kein Glas uebersteht
-*)
+// Betriebsmodus:
+//   - Speicherfach wird ueberprueft ob beide Luftabfragen frei und somit kein Glas uebersteht
 IF (  bpSpeicherfachValidierung ) THEN
 
-  (* Fehlerbehandlung
+  (* Fehlerbehandlung:
      - Antrieb [Glastransport]
   *)
   IF ( Antrieb.bpFehler ) THEN
@@ -27,19 +26,17 @@ IF (  bpSpeicherfachValidierung ) THEN
 
 
   CASE steplSpeicherfachValidierung OF
-    (* SPEICHERFACH VALIDIERUNG ==================================================*)
+    // SPEICHERFACH VALIDIERUNG ==================================================
     STEP_0_E:
 
-      (* Initialisierung:
-         - Variablen
-      *)
+      // Initialisierung:
+      //   - Variablen
 
       blSchnittstelle_bAnforderungTransportVerbund := FALSE;
       bpSpeicherfachValidierungAbgeschlossen := FALSE;
 
-      (* Antrieb:
-         - Antrieb ist bereit zum verfahren
-      *)
+      // Antrieb:
+      //   - Antrieb ist bereit zum verfahren
       IF ( Antrieb.bpReglerBereit )THEN
         rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
 
@@ -51,7 +48,7 @@ IF (  bpSpeicherfachValidierung ) THEN
       END_IF
 
 
-    (* SPEICHERFACH VALIDIERUNG ==================================================*)
+    // SPEICHERFACH VALIDIERUNG ==================================================
     STEP_20_E:
 
       IF ( bpTransfershuttleVerbundAktiv ) THEN
@@ -67,7 +64,7 @@ IF (  bpSpeicherfachValidierung ) THEN
 
       END_IF
 
-    (* SPEICHERFACH VALIDIERUNG ==================================================*)
+    // SPEICHERFACH VALIDIERUNG ==================================================
     STEP_30_E:
       (* Hinweis:
          - Timer zuruecksetzen
@@ -80,11 +77,10 @@ IF (  bpSpeicherfachValidierung ) THEN
 
       steplSpeicherfachValidierung := STEP_100_E;
 
-    (* SPEICHERFACH VALIDIERUNG ==================================================*)
+    // SPEICHERFACH VALIDIERUNG ==================================================
     STEP_100_E:
-      (* Pruefung:
-         - Luftsensoren frei und schalten 
-      *)
+      // Pruefung:
+      //   - Luftsensoren frei und schalten
       blScheibenKontrolleAuslaufseiteEin := TRUE;
       blScheibenKontrolleEinlaufseiteEin := TRUE;
       tonlEinlaufsensorTesten(IN := NOT bpSensorScheibenKontrolleEinlaufseiteFrei, PT := t#5s);
@@ -96,7 +92,7 @@ IF (  bpSpeicherfachValidierung ) THEN
         steplSpeicherfachValidierung := STEP_110_E;
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Einlaufseite frei
          - Auslaufseite frei
       *)
@@ -110,11 +106,11 @@ IF (  bpSpeicherfachValidierung ) THEN
         steplSpeicherfachValidierung := STEP_110_E;
       END_IF
 
-    (* SPEICHERFACH VALIDIERUNG ==================================================*)
+    // SPEICHERFACH VALIDIERUNG ==================================================
     STEP_110_E:
       (* Anmerkung:
-         - Prüfen ob Glas über den Einlauf oder Ausluaf steht, 
-           falls ja Systemcheck als nicht erfolgreich beenden        
+         - Prüfen ob Glas über den Einlauf oder Ausluaf steht,
+           falls ja Systemcheck als nicht erfolgreich beenden
       *)
       out_bShuttleAnheben := TRUE;
       out_bScheibenKontrolleAuslaufseiteAuf := TRUE;
@@ -132,19 +128,19 @@ IF (  bpSpeicherfachValidierung ) THEN
          - Ein- Aus- Laufsensoren
       *)
       IF ( tonlWartenAufAnheben.Q ) THEN
-        (* Glastransport oben *)
+        // Glastransport oben
         IF ( NOT blSensorGlastransportOben ) THEN
           wpFehlerNr := cMELDUNG_TS_MELDET_NICHT_OBEN;
-        (* Luftsensoren oben *)
+        // Luftsensoren oben
         ELSIF ( NOT bpSensorScheibenKontrolleEinlaufSeiteOben ) THEN
           wpFehlerNr := cMELDUNG_TS_EINLAUFSENSOR_MELDET_NICHT_OBEN;
-        (* Luftsensoren oben *)
+        // Luftsensoren oben
         ELSIF ( NOT bpSensorScheibenKontrolleAuslaufSeiteOben ) THEN
           wpFehlerNr := cMELDUNG_TS_AUSLAUFSENSOR_MELDET_NICHT_OBEN;
-        (* Druckluft Ok *)
+        // Druckluft Ok
         ELSIF NOT blDruckluftEinlaufSeiteOK THEN
           wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_EINLAUF_NICHT_OK;
-        (* Druckluft Ok *)
+        // Druckluft Ok
         ELSIF ( NOT blDruckluftAuslaufSeiteOK ) THEN
           wpFehlerNr := cMELDUNG_TS_DRUCKLUFT_AUSLAUF_NICHT_OK;
         ELSE
@@ -155,10 +151,10 @@ IF (  bpSpeicherfachValidierung ) THEN
 
       END_IF
 
-    (* SPEICHERFACH VALIDIERUNG ==================================================*)
+    // SPEICHERFACH VALIDIERUNG ==================================================
     STEP_120_E:
       (* Anmerkung:
-         - Prüfen ob Glas ueber den Einlauf- bzw. Auslauf- Sensor steht       
+         - Prüfen ob Glas ueber den Einlauf- bzw. Auslauf- Sensor steht
       *)
       IF (      blAuslaufSensor
            AND NOT blEinlaufSensor )
@@ -197,11 +193,10 @@ IF (  bpSpeicherfachValidierung ) THEN
 
       END_IF
 
-    (* SPEICHERFACH VALIDIERUNG ==================================================*)
+    // SPEICHERFACH VALIDIERUNG ==================================================
     STEP_130_E:
-      (* Uberwachung:
-         - Zeitliche Ueberwachung bis wann der Sensor frei sein muss
-      *)
+      // Uberwachung:
+      //   - Zeitliche Ueberwachung bis wann der Sensor frei sein muss
       tonlUeberwachungSensorFreifahren( IN := TRUE,
                                         PT := cZEIT_SENSORIK_FREIFAHREN );
 
@@ -230,7 +225,7 @@ IF (  bpSpeicherfachValidierung ) THEN
 
       END_IF
 
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
          - Wegüberwachung
          - Einlaufsensor angefahren
       *)
@@ -246,11 +241,10 @@ IF (  bpSpeicherfachValidierung ) THEN
         steplSpeicherfachValidierung := STEP_900_E;
       END_IF
 
-    (* SPEICHERFACH VALIDIERUNG ==================================================*)
+    // SPEICHERFACH VALIDIERUNG ==================================================
     STEP_140_E:
-      (* Uberwachung:
-         - Zeitliche Ueberwachung bis wann der Sensor frei sein muss
-      *)
+      // Uberwachung:
+      //   - Zeitliche Ueberwachung bis wann der Sensor frei sein muss
       tonlUeberwachungSensorFreifahren( IN := TRUE,
                                         PT := cZEIT_SENSORIK_FREIFAHREN );
 
@@ -280,9 +274,9 @@ IF (  bpSpeicherfachValidierung ) THEN
 
       END_IF
 
-      (* Fehlerbehandlung
-          - Wegüberwachung
-          - Auslaufsensor angefahren
+      (* Fehlerbehandlung:
+         - Wegüberwachung
+         - Auslaufsensor angefahren
       *)
       IF ( tonlUeberwachungSensorFreifahren.Q ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -296,11 +290,11 @@ IF (  bpSpeicherfachValidierung ) THEN
         steplSpeicherfachValidierung := STEP_900_E;
       END_IF
 
-    (* SPEICHERFACH VALIDIERUNG ==================================================*)
+    // SPEICHERFACH VALIDIERUNG ==================================================
     STEP_800_E:
       (* Anmerkung:
          - alles beenden und Shuttle absenken
-     *)
+      *)
       out_bShuttleAnheben := FALSE;
 
       out_bScheibenKontrolleAuslaufseiteAuf       := FALSE;
@@ -311,9 +305,9 @@ IF (  bpSpeicherfachValidierung ) THEN
 
       steplSpeicherfachValidierung := STEP_1000_E;
 
-    (* SPEICHERFACH VALIDIERUNG ==================================================*)
+    // SPEICHERFACH VALIDIERUNG ==================================================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
 
       blSchnittstelle_bAnforderungTransportVerbund := FALSE;
@@ -328,12 +322,12 @@ IF (  bpSpeicherfachValidierung ) THEN
       bpFehler := TRUE;
 
 
-    (* SPEICHERFACH VALIDIERUNG ==================================================*)
+    // SPEICHERFACH VALIDIERUNG ==================================================
     STEP_1000_E:
       bpSpeicherfachValidierungAbgeschlossen := TRUE;
 
 
-  (* SPEICHERFACH VALIDIERUNG ==================================================*)
+  // SPEICHERFACH VALIDIERUNG ==================================================
 
   END_CASE
 
@@ -358,7 +352,7 @@ ELSE
   END_IF
 END_IF
 
-(***************************************************************************************************)
-(* E N D E - Validierung eines Speicherfachs *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// E N D E - Validierung eines Speicherfachs
+//-------------------------------------------------------------------------------------------------
 END_ACTION

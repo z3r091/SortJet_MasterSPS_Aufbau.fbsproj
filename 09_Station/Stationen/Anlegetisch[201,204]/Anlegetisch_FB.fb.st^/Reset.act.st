@@ -6,13 +6,13 @@
 }
 *)
 ACTION Reset
-(***************************************************************************************************)
-(* AKTION RESET *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION RESET
+//-------------------------------------------------------------------------------------------------
 
 IF( blBetriebsartReset )THEN
   CASE steplReset OF
-    (*RESET ==========================*)
+    // RESET ==========================
     STEP_0_E:
       out_bAmpelSignalGruenScheibeAnlegen    := FALSE;
       out_bAmpelSignalRot                    := FALSE;
@@ -36,25 +36,25 @@ IF( blBetriebsartReset )THEN
 
       steplReset := STEP_10_E;
 
-    (*RESET ==========================*)
+    // RESET ==========================
     STEP_10_E:
       (* Hinweis:
          - Zurecksetzen der Bausteine
-         Wichtig
+           Wichtig
          - Hubrahmen / Anschlag setzen ihren reset selbst zurueck
       *)
       Glastransport.bpReset := TRUE;
       Messachse.bpReset     := TRUE;
       Hubrahmen.bpReset     := TRUE;
 
-      (* WICHTIG:
+      (* Wichtig:
          - Reset setzt sich selbststaendig zurueck
       *)
       Anschlag.bpReset      := TRUE;
 
       steplReset := STEP_20_E;
 
-    (*RESET ==========================*)
+    // RESET ==========================
     STEP_20_E:
       (* Hinweis:
          - Pruefen ob alle Antriebe zurueckgesetzt worden sind
@@ -70,10 +70,9 @@ IF( blBetriebsartReset )THEN
         steplReset := STEP_1000_E;
       END_IF
 
-      (* Fehlverhalten:
-        - Ausertung welcher Baustein einen Fehlermeldet
-          => Pneumatik Bauteile brauchen nicht ueberwacht zu werden
-      *)
+      // Fehlverhalten:
+      //  - Ausertung welcher Baustein einen Fehlermeldet
+      //    => Pneumatik Bauteile brauchen nicht ueberwacht zu werden
       IF ( tonlMaxWarteAufResetErfolgreich.Q ) THEN
         Glastransport.bpReset := FALSE;
         Hubrahmen.bpReset     := FALSE;
@@ -100,21 +99,21 @@ IF( blBetriebsartReset )THEN
         steplReset := STEP_900_E;
       END_IF
 
-    (*RESET ==========================*)
+    // RESET ==========================
     STEP_900_E:
-      (* Fehlerbehandlung
+      (* Fehlerbehandlung:
       *)
       BasisStationsParameter.bFehler := TRUE;
       BasisStationsParameter.bReset := FALSE;
 
-    (*RESET ==========================*)
+    // RESET ==========================
     STEP_1000_E:
       BasisStationsParameter.bFehler := FALSE;
       BasisStationsParameter.wFehlerNummer := cMELDUNG_NULL;
 
       BasisStationsParameter.bReset := FALSE;
 
-  (*RESET ==========================*)
+  // RESET ==========================
   END_CASE
 ELSE
   IF ( steplReset > STEP_0_E ) THEN

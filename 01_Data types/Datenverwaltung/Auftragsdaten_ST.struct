@@ -10,7 +10,7 @@ TYPE Auftragsdaten_ST :
     wStationsNr                          : WORD;
     wStationsWand                        : WORD;
     rStationsZielposition                : REAL;
-    wAuftrag                             : Auftraege_Station_EN; (* Hinweis: Auftragsart -> Ein- Aus- Transport etc.*)
+    wAuftrag                             : Auftraege_Station_EN; // Hinweis: Auftragsart -> Ein- Aus- Transport etc.
     rAuftragsLaenge                      : REAL;
     rAuftragsHoehe                       : REAL;
     rAuftragsDicke                       : REAL;
@@ -35,8 +35,8 @@ TYPE Auftragsdaten_ST :
 
     stAuftragsOptionen                   : Auftrags_Optionen_ST;
 
-    (*Verfahrlogik_Neu*)
-    pPositionierAuftrag                  : PositionierAuftrag_ST; (* Wichtig: Struktur fuer die neue Verfahrlogik - Ersetzt normal die folgenden Variablen *)
+    // Verfahrlogik_Neu
+    pPositionierAuftrag                  : PositionierAuftrag_ST; // Wichtig: Struktur fuer die neue Verfahrlogik - Ersetzt normal die folgenden Variablen
     rVorabPosition                       : REAL;
     rVorabUpdateZeit                     : REAL;
     rVorabBeschleunigung                 : REAL;

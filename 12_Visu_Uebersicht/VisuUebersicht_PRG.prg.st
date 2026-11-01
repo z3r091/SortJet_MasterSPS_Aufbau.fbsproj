@@ -17,17 +17,17 @@ VAR
   wIdx          : WORD;
   sNr           : STRING(5);
 END_VAR
-(***************************************************************************************************)
-(* DATENAUFBEREITUNG FUER DIE VISU "Anlagenuebersicht"                                             *)
-(* - Visu verwendet ausschliesslich die Variablen aus VISU_UEBERSICHT (Texte, Farben, Pixel)       *)
-(***************************************************************************************************)
+// *************************************************************************************************
+// DATENAUFBEREITUNG FUER DIE VISU "Anlagenuebersicht"
+// - Visu verwendet ausschliesslich die Variablen aus VISU_UEBERSICHT (Texte, Farben, Pixel)
+// *************************************************************************************************
 bBlink  := Global_Vars.gbFlashbit05sec;
 bLernen := VISU_UEBERSICHT.bSkalierungNeuLernen;
 VISU_UEBERSICHT.bSkalierungNeuLernen := FALSE;
 
-(* ------------------------------------------------------------------------------------------- *)
-(* KOPFZEILE                                                                                   *)
-(* ------------------------------------------------------------------------------------------- *)
+// -------------------------------------------------------------------------------------------
+// KOPFZEILE
+// -------------------------------------------------------------------------------------------
 bSK1 := Globale_Bausteine.Sicherheitskreis[1].bpSicherheitskreisGeschlossen;
 bSK2 := Globale_Bausteine.Sicherheitskreis[2].bpSicherheitskreisGeschlossen;
 
@@ -78,9 +78,9 @@ bDummy := VisuUeb_Lampe(stLampe := VISU_UEBERSICHT.stBetriebsstop,   sText := SE
 bDummy := VisuUeb_Lampe(stLampe := VISU_UEBERSICHT.stInbetriebnahme, sText := 'IBN-Modus',     bOK := FALSE, bWarnung := TRUE, bNeutral := NOT Global_Vars.bgInbetriebnahmeBit);
 bDummy := VisuUeb_Lampe(stLampe := VISU_UEBERSICHT.stSimulation,     sText := 'Simulation',    bOK := FALSE, bWarnung := TRUE, bNeutral := NOT Global_Vars.bgSimAktiv);
 
-(* ------------------------------------------------------------------------------------------- *)
-(* STATIONEN                                                                                   *)
-(* ------------------------------------------------------------------------------------------- *)
+// -------------------------------------------------------------------------------------------
+// STATIONEN
+// -------------------------------------------------------------------------------------------
 wAnzStoerung := 0;
 
 // [501] Einlauf Fremdanlage (VSG)
@@ -232,9 +232,9 @@ VISU_UEBERSICHT.st401.sInfo1 := SEL(VISU_VARS.abgVISUFreigabeFremdanlage[401], '
 VISU_UEBERSICHT.st401.sInfo2 := '';
 VISU_UEBERSICHT.st401.sInfo3 := '';
 
-(* ------------------------------------------------------------------------------------------- *)
-(* SAMMELMELDUNG                                                                               *)
-(* ------------------------------------------------------------------------------------------- *)
+// -------------------------------------------------------------------------------------------
+// SAMMELMELDUNG
+// -------------------------------------------------------------------------------------------
 bStoerung := wAnzStoerung > 0;
 IF bStoerung THEN
   VISU_UEBERSICHT.sStoerungen       := CONCAT(WORD_TO_STRING(wAnzStoerung), SEL(wAnzStoerung = 1, ' Stationen in Störung', ' Station in Störung'));

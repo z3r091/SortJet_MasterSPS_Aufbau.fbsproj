@@ -6,10 +6,8 @@
 }
 *)
 PROGRAM RegisterCallbacks
-(*
-  Import function to register a callback which closes open socket handles.
-  Return: None
-*)
+//  Import function to register a callback which closes open socket handles.
+//  Return: None
 VAR_OUTPUT
   Callback : DWORD;
 END_VAR
@@ -29,8 +27,8 @@ END_VAR
 
 IF NOT TCP_Global.g_bCallbackRegistered THEN
   
-  (* Fill Callback-Structures and register Callbacks *)
-  (* START *)
+  // Fill Callback-Structures and register Callbacks
+  // START
   sCallbackStart.pPOUFunc := ADR(Callback_Shutdown);
   sCallbackStart.eEvent   := CB.EVENT.START;
   sCallbackStart.eSource  := CB.EVENT_SOURCE.ALL_SOURCES;
@@ -40,7 +38,7 @@ IF NOT TCP_Global.g_bCallbackRegistered THEN
   END_IF
   
   
-  (* STOP *)
+  // STOP
   sCallbackStop.pPOUFunc := ADR(Callback_Shutdown);
   sCallbackStop.eEvent   := CB.EVENT.STOP;
   sCallbackStop.eSource  := CB.EVENT_SOURCE.ALL_SOURCES;
@@ -49,7 +47,7 @@ IF NOT TCP_Global.g_bCallbackRegistered THEN
     Callback.1 := TRUE;  
   END_IF
   
-  (* BEFORE RESET *)
+  // BEFORE RESET
   sCallbackBeforeReset.pPOUFunc := ADR(Callback_BEFORE_RESET);
   sCallbackBeforeReset.eEvent   := CB.EVENT.BEFORE_RESET;
   sCallbackBeforeReset.eSource  := CB.EVENT_SOURCE.ALL_SOURCES;
@@ -58,7 +56,7 @@ IF NOT TCP_Global.g_bCallbackRegistered THEN
     Callback.2 := TRUE;  
   END_IF
   
-  (* AFTER RESET *)
+  // AFTER RESET
   sCallbackAfterReset.pPOUFunc := ADR(Callback_Shutdown);
   sCallbackAfterReset.eEvent   := CB.EVENT.AFTER_RESET;
   sCallbackAfterReset.eSource  := CB.EVENT_SOURCE.ALL_SOURCES;
@@ -67,7 +65,7 @@ IF NOT TCP_Global.g_bCallbackRegistered THEN
     Callback.3 := TRUE;  
   END_IF
   
-  (* BEFORE DOWNLOAD *)
+  // BEFORE DOWNLOAD
   sCallbackBeforeDownload.pPOUFunc := ADR(CallBack_BEFORE_DOWNLOAD);
   sCallbackBeforeDownload.eEvent   := CB.EVENT.BEFORE_DOWNLOAD;
   sCallbackBeforeDownload.eSource  := CB.EVENT_SOURCE.ALL_SOURCES;

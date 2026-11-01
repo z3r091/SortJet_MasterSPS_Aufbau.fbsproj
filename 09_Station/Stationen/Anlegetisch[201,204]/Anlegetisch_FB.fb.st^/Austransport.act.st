@@ -6,9 +6,9 @@
 }
 *)
 ACTION Austransport
-(***************************************************************************************************)
-(* AKTION: AUSTRANSPORT *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION: AUSTRANSPORT
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bAustransport[cWAND_1]
      AND blBetriebsartAutomatik )
 THEN
@@ -29,28 +29,28 @@ THEN
   
   
   CASE steplAustransport OF
-    (*AUSTRANSPORT ==============================*)
+    // AUSTRANSPORT ==============================
     STEP_0_E:
       (* Hinweis:
-         - 
+         - -
       *)
       blMerkerDrosselklappeAuf := FALSE;
       Hubrahmen.bpStartAusfahren := NOT ( Hubrahmen.epStatusZylinder = eZylinderAusgefahren );
 
       steplAustransport := STEP_10_E;
 
-    (*AUSTRANSPORT ==============================*)
+    // AUSTRANSPORT ==============================
     STEP_10_E:
       (* Anmerkung:
          - Hubpalette heben
-      *) 
+      *)
       IF (  Hubrahmen.bpDone OR NOT Hubrahmen.bpStartAusfahren ) THEN
         Hubrahmen.bpStartAusfahren   := FALSE;
         Glastransport.bpAustransport := TRUE;
         steplAustransport := STEP_30_E;
       END_IF
 
-    (*AUSTRANSPORT ==============================*)
+    // AUSTRANSPORT ==============================
     STEP_30_E:
       (* Hinweis:
          - Hubrahmen absenken wenn die Sensorik frei geworden ist
@@ -65,7 +65,7 @@ THEN
         steplAustransport := STEP_1000_E;
       END_IF
 
-    (*AUSTRANSPORT ==============================*)
+    // AUSTRANSPORT ==============================
     STEP_40_E:
       (* Hinweis:
          - Hubrahmen absenken wenn die Sensorik frei geworden ist
@@ -82,7 +82,7 @@ THEN
         steplAustransport := STEP_1000_E;
       END_IF
 
-    (*AUSTRANSPORT ==============================*)
+    // AUSTRANSPORT ==============================
     STEP_100_E:
       (* Anmerkung:
          - Hubpalette senken
@@ -92,16 +92,16 @@ THEN
         steplAustransport := STEP_1000_E;
       END_IF
 
-    (*AUSTRANSPORT ==============================*)
+    // AUSTRANSPORT ==============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
       BasisStationsParameter.bAustransportAbgeschlossen[cWAND_1] := FALSE;
 
-    (*AUSTRANSPORT ==============================*)
+    // AUSTRANSPORT ==============================
     STEP_1000_E:
       BasisStationsParameter.bAustransportAbgeschlossen[cWAND_1] := TRUE;
 
-  (*AUSTRANSPORT ==============================*)
+  // AUSTRANSPORT ==============================
   END_CASE
 ELSE
 

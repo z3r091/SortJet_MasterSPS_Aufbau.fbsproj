@@ -9,7 +9,7 @@ FUNCTION_BLOCK AnlegeAbnahmeWand_FB EXTENDS Basic_Station_FB
 
 VAR_INPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpFreigabeBereichsScanner : BOOL := TRUE; 
 
 END_VAR
@@ -17,11 +17,11 @@ END_VAR
 VAR
 
   // BOOLEAN
-  (* REAL *)
+  // REAL
   rlScheibenHoehe            : REAL;
   rlAbstandZurNulllinie      : REAL;
     
-  (* INT *)
+  // INT
   ilScheibenZaehler          : INT;
 
   
@@ -72,43 +72,43 @@ VAR
   in_bLichtschrankeFehler                  AT %I* : BOOL;
   in_bMotorschutzGeblaese_Ok               AT %I* : BOOL; 
 
-  (* HARDWARE AUSGAENGE *)
-  out_bDrosselklappeOeffnen                       : BOOL; (* Drosselklappe oeffnen / schliessen *)
-  out_bAmpelSignalRot                             : BOOL; (* rote Ampel an der Station *)
+  // HARDWARE AUSGAENGE
+  out_bDrosselklappeOeffnen                       : BOOL; // Drosselklappe oeffnen / schliessen
+  out_bAmpelSignalRot                             : BOOL; // rote Ampel an der Station
   out_bAmpelSignalGruen                           : BOOL; (* grüne Ampel an der Station *)//evtl mit GruenScheibeAnlegen zusammen führen
-  out_bSignalScheibeAufgegeben             AT %Q* : BOOL; (* grüner Leuchdrucktaster *)
-  out_bSignalScheibeAbnehmen               AT %Q* : BOOL; (* grüner Leuchdrucktaster *)
-  out_bSignalScheibeFehlmessung            AT %Q* : BOOL; (* gelber Leuchdrucktaster *)
-  out_bSignalScheibeGlasbruch              AT %Q* : BOOL; (* gelber Leuchdrucktaster *)
-  out_bGeblaeseEin                         AT %Q* : BOOL; (* Geblaese starten (Schuetz) *)
-  out_bLichtschrankeAusgeloest             AT %Q* : BOOL; (* Signal im OP das die Lichtschranke ausgelöst hat und nicht quittiert ist *)
+  out_bSignalScheibeAufgegeben             AT %Q* : BOOL; // grüner Leuchdrucktaster
+  out_bSignalScheibeAbnehmen               AT %Q* : BOOL; // grüner Leuchdrucktaster
+  out_bSignalScheibeFehlmessung            AT %Q* : BOOL; // gelber Leuchdrucktaster
+  out_bSignalScheibeGlasbruch              AT %Q* : BOOL; // gelber Leuchdrucktaster
+  out_bGeblaeseEin                         AT %Q* : BOOL; // Geblaese starten (Schuetz)
+  out_bLichtschrankeAusgeloest             AT %Q* : BOOL; // Signal im OP das die Lichtschranke ausgelöst hat und nicht quittiert ist
   
     
 END_VAR
-(***************************************************************************************************)
-(* MASTER AUFRUFEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// MASTER AUFRUFEN
+//-------------------------------------------------------------------------------------------------
 SUPER^(BasisStationsParameter := BasisStationsParameter);
 
-(***************************************************************************************************)
-(* DEAKTIVIEREN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// DEAKTIVIEREN
+//-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
   RETURN;
 END_IF
 
-(***************************************************************************************************)
-(* IO ZUWEISUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// IO ZUWEISUNG
+//-------------------------------------------------------------------------------------------------
 in_bFussTaster := pgAntriebe[Glastransport.ppAntriebsInformationen.wAchsID].udipEingaengeUmrichter.cXG37_2_IO_2;
 
 Glastransport.Antrieb.wpAusgaengeUmrichter.cXG37_IO_3  := out_bAmpelSignalRot;
 Glastransport.Antrieb.wpAusgaengeUmrichter.cXG37_IO_4  := out_bAmpelSignalGruen;
 Glastransport.Antrieb.wpAusgaengeUmrichter.cXG37_O_6   := out_bDrosselklappeOeffnen;
 
-(***************************************************************************************************)
-(* AKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 // Die fehlenden Aktionen werden im Master aufgerufen
 A_Aufrufe();
 A_Timer();

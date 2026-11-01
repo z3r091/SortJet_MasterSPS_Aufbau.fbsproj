@@ -6,9 +6,9 @@
 }
 *)
 ACTION Kippen_PositionSenkrecht
-(***************************************************************************************************)
-(* AKTION KIPPEN SENKRECHT [84-90 GRAD] *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION KIPPEN SENKRECHT [84-90 GRAD]
+//-------------------------------------------------------------------------------------------------
 IF ( blStartePositionSenkrecht ) THEN
 
   // Ausnahmesituation
@@ -20,28 +20,28 @@ IF ( blStartePositionSenkrecht ) THEN
 
   CASE steplKippenSenkrecht OF
 
-    (* KIPPEN SENKRECHT =========================== *)
+    // KIPPEN SENKRECHT ===========================
     STEP_0_E:
       blBewegungAbgeschlossen := FALSE;
       Kippen.bpStartKippenAuf := TRUE;
       steplKippenSenkrecht := STEP_10_E;
 
-    (* KIPPEN SENKRECHT =========================== *)
+    // KIPPEN SENKRECHT ===========================
     STEP_10_E:
       IF ( Kippen.bpDone ) THEN
         Kippen.bpStartKippenAuf := FALSE;
         steplKippenSenkrecht := STEP_1000_E;
       END_IF
 
-    (* KIPPEN SENKRECHT =========================== *)
+    // KIPPEN SENKRECHT ===========================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
 
-    (* KIPPEN SENKRECHT =========================== *)
+    // KIPPEN SENKRECHT ===========================
     STEP_1000_E: 
       blBewegungAbgeschlossen := TRUE;
 
-  (* KIPPEN SENKRECHT =========================== *)
+  // KIPPEN SENKRECHT ===========================
   END_CASE
 ELSE
   IF ( steplKippenSenkrecht > STEP_0_E ) THEN

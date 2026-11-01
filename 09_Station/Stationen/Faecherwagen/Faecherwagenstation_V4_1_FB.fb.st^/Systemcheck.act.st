@@ -6,17 +6,17 @@
 }
 *)
 ACTION Systemcheck
-(***************************************************************************************************)
-(*  SYSTEMCHECK                                                                                   *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// SYSTEMCHECK
+//-------------------------------------------------------------------------------------------------
 
 IF blBetriebsartCheck THEN
 
   CASE stepStationCheck OF
 
-    (* SYSTEMCHECK ============================================================================ *)
+    // SYSTEMCHECK ============================================================================
     STEP_0_E:
-      (* Initialisieren und auf Freigabe warten *)
+      // Initialisieren und auf Freigabe warten
       bpDone := FALSE;
 
       IF ( eLetzterStatus = eLetzter_FW_Status.eKeine_Info ) OR 
@@ -172,40 +172,40 @@ IF blBetriebsartCheck THEN
         stepStationCheck := STEP_900_E;
       END_IF
 
-    (* SYSTEMCHECK ============================================================================ *)
+    // SYSTEMCHECK ============================================================================
     STEP_100_E:
       IF bpEinschleusenAbgeschlossen THEN
         BasisStationsParameter.bEintransport[1] := FALSE;
         stepStationCheck := STEP_1000_E;
       END_IF
 
-    (* SYSTEMCHECK ============================================================================ *)
+    // SYSTEMCHECK ============================================================================
     STEP_200_E:
       IF bpAusschleusenAbgeschlossen THEN
         BasisStationsParameter.bAustransport[1] := FALSE;
         stepStationCheck := STEP_1000_E;
       END_IF
 
-    (* SYSTEMCHECK ============================================================================ *)
+    // SYSTEMCHECK ============================================================================
     STEP_900_E:
-      (* Fehlerzustand setzen und Fehlerdaten bereitstellen *)
+      // Fehlerzustand setzen und Fehlerdaten bereitstellen
 
       BasisStationsParameter.bFehler := TRUE;
 
       wpgFehlerdaten[0] := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
       wpgFehlerdaten[1] := 0;
 
-      (* Fehlerauswertung extern *)
+      // Fehlerauswertung extern
       stepStationCheck := STEP_910_E;
 
-    (* SYSTEMCHECK ============================================================================ *)
+    // SYSTEMCHECK ============================================================================
     STEP_910_E:
-      (* Fehler bleibt aktiv bis Reset *)
+      // Fehler bleibt aktiv bis Reset
       ; 
 
-    (* SYSTEMCHECK ============================================================================ *)
+    // SYSTEMCHECK ============================================================================
     STEP_1000_E:
-      (* Check abgeschlossen melden *)
+      // Check abgeschlossen melden
       BasisStationsParameter.bCheckAbgeschlossen := TRUE;
       bpDone := TRUE;
 
@@ -214,7 +214,7 @@ IF blBetriebsartCheck THEN
 ELSE
 
   IF stepStationCheck > STEP_0_E THEN
-    (* Ablauf stoppen und Aktoren zurücksetzen *)
+    // Ablauf stoppen und Aktoren zurücksetzen
 
     stepStationCheck := STEP_0_E;
     BasisStationsParameter.bCheckAbgeschlossen := FALSE;

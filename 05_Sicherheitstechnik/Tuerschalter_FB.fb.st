@@ -51,19 +51,19 @@ VAR
   
 END_VAR
 (* Hinweis:
-   - Dieser Baustein ist für Türschalter des Herstellers Euchner 
-   Anmerkung:
+   - Dieser Baustein ist für Türschalter des Herstellers Euchner
+     Anmerkung:
    - Sollte Nothalt ausgeloest werden, muss die Tür mittels Not-Entriegelung [Mechanisch] geoeffnet werden
 *)
-(***************************************************************************************************)
-(* BAUSTEIN: EINSTELLUNGEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: EINSTELLUNGEN
+//-------------------------------------------------------------------------------------------------
 // Timer
 tonlNotEinlass(IN := in_bTasterAnforderungTuerOeffnen, PT := T#7S);
 
-(***************************************************************************************************)
-(* BAUSTEIN: VERWALTUNG DER TÜREN  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: VERWALTUNG DER TÜREN
+//-------------------------------------------------------------------------------------------------
 //Anforderung zum betreten des Sicherheitskreises durch die entsprechende Tür
 IF( in_bTasterAnforderungTuerOeffnen ) THEN
   bpAnforderungZumTuerOffnenGestellt := TRUE;
@@ -107,9 +107,9 @@ IF ( rtlTuerGeschlossen.Q  ) THEN
   bpAnforderungZumTuerOffnenGestellt := FALSE;
 END_IF
 
-(***************************************************************************************************)
-(* BAUSTEIN: AUSGAENGE  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AUSGAENGE
+//-------------------------------------------------------------------------------------------------
 // Meldung ob die Tuer geschlossen und verschlossen ist
 bpStatusTuerNichtGeschlossen     := NOT bpTuerGeschlossen OR NOT bpTuerRelaisQuittiert;
 

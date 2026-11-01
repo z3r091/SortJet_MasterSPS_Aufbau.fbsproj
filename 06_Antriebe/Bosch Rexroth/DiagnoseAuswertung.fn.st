@@ -85,7 +85,7 @@ IF ( DiagnoseAuswertung.eType = eRexroth_Fehler_Error ) THEN // Type = 16#F
   END_IF
 END_IF
 
-(* Type F -> Bit 20 = 1 -> Fehler löschbar, Bit 20 = 0 -> Fehler nicht löschbar *)
+// Type F -> Bit 20 = 1 -> Fehler löschbar, Bit 20 = 0 -> Fehler nicht löschbar
 DiagnoseAuswertung.bDeleteable    := FALSE; // Status zurücksetzen
 IF ( DiagnoseAuswertung.eType = eRexroth_Fehler_Error ) THEN // Type = 16#F
   IF wFehlernummer.20 THEN
@@ -95,7 +95,7 @@ IF ( DiagnoseAuswertung.eType = eRexroth_Fehler_Error ) THEN // Type = 16#F
   END_IF
 END_IF
  
-(* Type C -> Bit 20 = 1 -> Kommando beendet, Bit 20 = 0 -> Kommando in Bearbeitung *)
+// Type C -> Bit 20 = 1 -> Kommando beendet, Bit 20 = 0 -> Kommando in Bearbeitung
 DiagnoseAuswertung.bCommandActive := FALSE; // Status zurücksetzen
 IF ( DiagnoseAuswertung.eType = eRexroth_Fehler_Command ) THEN // Type = 16#CXXXX (und nicht 16#CXXX0)
   IF wFehlernummer.20 THEN

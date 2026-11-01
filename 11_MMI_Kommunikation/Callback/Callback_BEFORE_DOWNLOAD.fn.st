@@ -6,10 +6,8 @@
 }
 *)
 FUNCTION Callback_BEFORE_DOWNLOAD : BOOL
-(*
-  Import function to close open sockets from the application.
-  Return: None
-*)
+//  Import function to close open sockets from the application.
+//  Return: None
 VAR_INPUT
 END_VAR
 VAR

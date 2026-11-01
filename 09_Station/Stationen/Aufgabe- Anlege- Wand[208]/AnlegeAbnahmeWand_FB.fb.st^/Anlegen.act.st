@@ -6,15 +6,15 @@
 }
 *)
 ACTION Anlegen
-(***************************************************************************************************)
-(* AKTION ANLEGEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTION ANLEGEN
+//-------------------------------------------------------------------------------------------------
 IF( BasisStationsParameter.bAnlegen
     AND blBetriebsartAutomatik )
 THEN
 
   CASE steplAnlegen OF
-    (*ANLEGEN ==================================*)
+    // ANLEGEN ==================================
     STEP_0_E:
       (* Hinweis:
          - Variablen initalisieren
@@ -35,7 +35,7 @@ THEN
 
       END_IF
 
-    (*ANLEGEN ==============================*)
+    // ANLEGEN ==============================
     STEP_10_E:
       (* Hinweis:
          - Höhenkontrolle auf Position fahren
@@ -49,7 +49,7 @@ THEN
 
       steplAnlegen := STEP_20_E;
 
-    (*ANLEGEN ==============================*)
+    // ANLEGEN ==============================
     STEP_20_E:
       (* Anmerkung:
          - Korrekte Stati der Zylinder und Achsen abfragen
@@ -64,7 +64,7 @@ THEN
       END_IF
   
       
-    (*ANLEGEN ==============================*)
+    // ANLEGEN ==============================
     STEP_100_E:
       (* Anmerkung:
          - Warten bis der Bediener die Scheibe angelegt und quittierthat
@@ -94,24 +94,22 @@ THEN
         steplAnlegen := STEP_1000_E;
 
       END_IF
-      (*
-            IF ( rtlFussleisteStart.Q AND ( ( Glastransport.bpSensorEinlauf AND NOT Glastransport.bpSensorAuslauf ) ) ) THEN
-      
-              out_bAmpelSignalGruen  := FALSE;
-              out_bSignalScheibeAufgegeben := FALSE;
-      
-              BasisStationsParameter.dwWartezeit[cWAND_1] := TIME_TO_DWORD(TIME()- tlZeitBereitAnzulegen);
-      
-              out_bDrosselklappeOeffnen := FALSE;
-      
-              BasisStationsParameter.eStatusAuftrag := eAuftragErfolgreich;
-      
-              steplAnlegen := STEP_1000_E;
-      
-            END_IF
-      *)
-      (* HINWEIS:
-        - Der Auslauf- Sensor am Anlegetisch muss frei sein, um mit dem Einschleusen des Glases zu beginnen
+      //      IF ( rtlFussleisteStart.Q AND ( ( Glastransport.bpSensorEinlauf AND NOT Glastransport.bpSensorAuslauf ) ) ) THEN
+      //
+      //        out_bAmpelSignalGruen  := FALSE;
+      //        out_bSignalScheibeAufgegeben := FALSE;
+      //
+      //        BasisStationsParameter.dwWartezeit[cWAND_1] := TIME_TO_DWORD(TIME()- tlZeitBereitAnzulegen);
+      //
+      //        out_bDrosselklappeOeffnen := FALSE;
+      //
+      //        BasisStationsParameter.eStatusAuftrag := eAuftragErfolgreich;
+      //
+      //        steplAnlegen := STEP_1000_E;
+      //
+      //      END_IF
+      (* Hinweis:
+         - Der Auslauf- Sensor am Anlegetisch muss frei sein, um mit dem Einschleusen des Glases zu beginnen
       *)
       IF (  Glastransport.bpSensorAuslauf
            AND rtlFussleisteStart.Q )
@@ -125,8 +123,8 @@ THEN
                   );
       END_IF
 
-      (* HINWEIS:
-        - Der Einlaufsensor am Anlegetisch muss belegt sein
+      (* Hinweis:
+         - Der Einlaufsensor am Anlegetisch muss belegt sein
       *)
       IF ( NOT Glastransport.bpSensorEinlauf
            AND rtlFussleisteStart.Q )
@@ -158,19 +156,19 @@ THEN
         Glastransport.bpScheibeVorFahren     := FALSE;
       END_IF
       
-    (*ANLEGEN ==================================*)
+    // ANLEGEN ==================================
     STEP_900_E:
       BasisStationsParameter.eStatusAuftrag := eAuftragFehler;
 
       BasisStationsParameter.bFehler := TRUE;
 
-    (*ANLEGEN ==================================*)
+    // ANLEGEN ==================================
     STEP_1000_E:
       epTypeHoehenmessung := Modus_Positionieren_Auf_Oberkante_2_Sensoren;
 
       BasisStationsParameter.bAnlegenAbgeschlossen := TRUE;
 
-  (*ANLEGEN ==================================*)
+  // ANLEGEN ==================================
   END_CASE
 ELSE
 

@@ -9,42 +9,42 @@
 FUNCTION_BLOCK Schnittstelle_Einlauflinie_FB
 VAR_INPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpReset                         : BOOL;
   bpAktivieren                    : BOOL := TRUE;
-  bpSortierungInAutomatik         : BOOL; (* [STATUS] Status der Sortierung -> Automatikbetrieb *)
+  bpSortierungInAutomatik         : BOOL; // [STATUS] Status der Sortierung -> Automatikbetrieb
   bpNotHaltAusgeloest              : BOOL := FALSE;
   bpDatenformatASCII              : BOOL := TRUE;
 
-  (* STRUCT *)
-  InGlasTransport    : Interface_GlasTransport;        (* STRUKTUR: Informationen ueber den Aus- Ein- Transport WAND 1 *)
-  Auftragsdaten      : Schnittstelle_Auftragsdaten_ST; (* STRUKTUR: Auftragsdaten fuer die Fremdanlage [ScheibenID , Auftragsnummer , etc. ]*)
+  // STRUCT
+  InGlasTransport    : Interface_GlasTransport;        // STRUKTUR: Informationen ueber den Aus- Ein- Transport WAND 1
+  Auftragsdaten      : Schnittstelle_Auftragsdaten_ST; // STRUKTUR: Auftragsdaten fuer die Fremdanlage [ScheibenID , Auftragsnummer , etc. ]
   stStationsNummern  : Station_ST;
 
-  (* POINTER *)
+  // POINTER
   ppParameterBaustein : REFERENCE TO Parameter_Schnittstelle;
 
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpFehler      : BOOL;
 
-  (* STRUCT *)
-  OutGlasTransport   : Interface_GlasTransport; (* STRUKTUR: Informationen ueber den Aus- Ein- Transport WAND 1 *)
+  // STRUCT
+  OutGlasTransport   : Interface_GlasTransport; // STRUKTUR: Informationen ueber den Aus- Ein- Transport WAND 1
 
 
 END_VAR
 VAR
 
-  (* BOOLEAN *)
-  blErsterZyklus                          : BOOL := TRUE;  (* Initialisierung *)
+  // BOOLEAN
+  blErsterZyklus                          : BOOL := TRUE;  // Initialisierung
   blAuftragAktiv                          : BOOL := FALSE;
   blFehlermeldungGenerierenKommunikation  : BOOL;
   blFremdanlageBereitZumTransport         : BOOL := FALSE;
   blAuftragsdatenNachrichtGenerieren      : BOOL;
 
-  (* BYTE *)
+  // BYTE
   aInByteAuftragsdatenScheibenID_1_0     : ARRAY [0..3] OF BYTE;
   aInByteAuftragsdatenScheibenID_1_1     : ARRAY [0..3] OF BYTE;
   aInByteAuftragsdatenScheibenID_1_2     : ARRAY [0..3] OF BYTE;
@@ -54,46 +54,46 @@ VAR
   aInByteSwapAuftragsdatenScheibenID_1_2 : ARRAY [0..3] OF BYTE;
   aInByteSwapAuftragsdatenScheibenID_1_3 : ARRAY [0..3] OF BYTE;
 
-  (* WORD *)
+  // WORD
   wlMerkerLiveCounterSender             : WORD;
   wlLiveCounterSender                   : WORD;
 
-  (* INT *)
+  // INT
   ilIndex  : INT;
 
-  (* DWORD *)
+  // DWORD
   aInDWordAuftragsdatenScheibenID : ARRAY [0..3] OF DWORD;
 
-  (* STRING *)
+  // STRING
   strScheibenID : STRING;
 
-  (* TRIGGER *)
+  // TRIGGER
   rtlAutomatikActiv                       : R_TRIG; 
   rtlFehlermeldungGenerierenKommunikation : R_TRIG;
   rtlAuftragsdatenPlausibel               : R_TRIG;
   ftlAuftragsdatenVorhanden               : F_TRIG;
 
-  (* TIMER *)
-  tonlUeberwachungLiveCounter            : TON; (* EINSCHALTVERZOEGERUNG *)
+  // TIMER
+  tonlUeberwachungLiveCounter            : TON; // EINSCHALTVERZOEGERUNG
 
 END_VAR
 VAR
 
-  (* HARDWARE EINGAENGE *)
-  in_stSenderAuftragsdaten                      AT %I* : Schnittstelle_ScheibenIDs;  (* HINWEIS: PROFIBUS- Schnittstelle *)
+  // HARDWARE EINGAENGE
+  in_stSenderAuftragsdaten                      AT %I* : Schnittstelle_ScheibenIDs;  // HINWEIS: PROFIBUS- Schnittstelle
   in_wSenderLiveCounter                         AT %I* : WORD;
-  in_bSenderAuftragdatenVorhanden               AT %I* : BOOL; (* HINWEIS: PROFIBUS- Schnittstelle *)
-  in_bsenderAuftragdatenPlausibel               AT %I* : BOOL; (* HINWEIS: PROFIBUS- Schnittstelle *)
-  in_bSenderBereit                              AT %I* : BOOL; (* HINWEIS: PROFIBUS- Schnittstelle *)
-  in_bSenderGlasBereit                          AT %I* : BOOL; (* HINWEIS: PROFIBUS- Schnittstelle -> Glas bereit zum Eintransport [Sortierung zur Fremdanlage] *)
-  in_bSenderSensorAuslauf                       AT %I* : BOOL; (* HINWEIS: SPS- Eingang des Sensors auf die PROFIBUS- Schnittstelle schreiben [Sortierung zur Fremdanlage] *)
-  in_bSenderScheibeManuellAnlegen               AT %I* : BOOL; (* HINWEIS: PROFIBUS- Schnittstelle *)
+  in_bSenderAuftragdatenVorhanden               AT %I* : BOOL; // HINWEIS: PROFIBUS- Schnittstelle
+  in_bsenderAuftragdatenPlausibel               AT %I* : BOOL; // HINWEIS: PROFIBUS- Schnittstelle
+  in_bSenderBereit                              AT %I* : BOOL; // HINWEIS: PROFIBUS- Schnittstelle
+  in_bSenderGlasBereit                          AT %I* : BOOL; // HINWEIS: PROFIBUS- Schnittstelle -> Glas bereit zum Eintransport [Sortierung zur Fremdanlage]
+  in_bSenderSensorAuslauf                       AT %I* : BOOL; // HINWEIS: SPS- Eingang des Sensors auf die PROFIBUS- Schnittstelle schreiben [Sortierung zur Fremdanlage]
+  in_bSenderScheibeManuellAnlegen               AT %I* : BOOL; // HINWEIS: PROFIBUS- Schnittstelle
   in_wSenderAnzahlScheiben                      AT %I* : WORD := 0;
 
-  (* HARDWARE AUSGAENGE *)
-  out_wEmpfaengerLiveCounter                    AT %Q* : WORD; (* HINWEIS: ANYBUS - Schnittstelle *)
-  out_stEmpfaengerAuftragsdatenGespiegelt       AT %Q* : Schnittstelle_ScheibenIDs; (* HINWEIS: PROFIBUS- Schnittstelle *)
-  out_bEmpfaengerAuftragsdatenErhalten          AT %Q* : BOOL; (* HINWEIS: PROFIBUS- Schnittstelle *)
+  // HARDWARE AUSGAENGE
+  out_wEmpfaengerLiveCounter                    AT %Q* : WORD; // HINWEIS: ANYBUS - Schnittstelle
+  out_stEmpfaengerAuftragsdatenGespiegelt       AT %Q* : Schnittstelle_ScheibenIDs; // HINWEIS: PROFIBUS- Schnittstelle
+  out_bEmpfaengerAuftragsdatenErhalten          AT %Q* : BOOL; // HINWEIS: PROFIBUS- Schnittstelle
   out_bEmpfaengerGlasAbruf                      AT %Q* : BOOL;
   out_bEmpfaengerSensorEinlauf                  AT %Q* : BOOL;
   out_bEmpfaengerNotHaltAusgeloest               AT %Q* : BOOL;
@@ -104,29 +104,28 @@ VAR
 END_VAR
 VAR CONSTANT
 
-  (* TIME *)
-  cZEIT_UEBERWACHUNG_LIVECOUNTER    : TIME :=T#5s; (* WICHTIG: Aenderung an diesem Wert aendert die Zeit ab wann ein Fehlergeneriert wird [s] *)
+  // TIME
+  cZEIT_UEBERWACHUNG_LIVECOUNTER    : TIME :=T#5s; // WICHTIG: Aenderung an diesem Wert aendert die Zeit ab wann ein Fehlergeneriert wird [s]
 
 END_VAR
-(* HINWEIS:
+(* Hinweis:
    - Dieser Baustein bildet das Interface zu einer Fremdanlage
-     => Verarbeitung der Signale [ Bereit zum Eintransport | Bereit zum Austransport ] 
-        
+     => Verarbeitung der Signale [ Bereit zum Eintransport | Bereit zum Austransport ]
 *)
 
-(***************************************************************************************************)
-(* BAUSTEIN: INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus  ) THEN
   blErsterZyklus := FALSE;
 
-  (* Hinweis[OPTIONAL]:
+  (* Hinweis [OPTIONAL]:
      - Auftragsdaten nullen
   *)
   out_stEmpfaengerAuftragsdatenGespiegelt := NullReferenzAuftragsdatenFremdanlage.stScheibenID;
 
-  (* WICHTIG:
-     - Pointer Initialisieren [Null-Pointer-Exception] 
+  (* Wichtig:
+     - Pointer Initialisieren [Null-Pointer-Exception]
   *)
   InGlasTransport := NullReferenzGlasTransport;
 
@@ -140,9 +139,9 @@ END_IF
 
 
 
-(***************************************************************************************************)
-(* SCHNITTSTELLE *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// SCHNITTSTELLE
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Abhandlung des Ein-Aus- Transports [Setzen der Variablen das man bereit ist zum Glastransport]
 *)
@@ -158,9 +157,9 @@ OutGlasTransport.bFehler                := ADR( bpFehler );
 
 
 
-(***************************************************************************************************)
-(* Deaktivierung *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// Deaktivierung
+//-------------------------------------------------------------------------------------------------
 IF ( NOT bpAktivieren ) THEN
   RETURN;
 END_IF
@@ -168,11 +167,11 @@ END_IF
 
 
 
-(***************************************************************************************************)
-(* SIGNALVERARBEITUNG [HARDWARE EIN- AUS- GAENGE | ETC. ] *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// SIGNALVERARBEITUNG [HARDWARE EIN- AUS- GAENGE | ETC. ]
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   - Signal das der Sender bereit fuer den Transport ist 
+   - Signal das der Sender bereit fuer den Transport ist
 *)
 blFremdanlageBereitZumTransport := (     in_bSenderBereit
                                      AND in_bSenderGlasBereit );
@@ -187,7 +186,7 @@ out_bEmpfaengerGlasAbruf := (         InGlasTransport.bBereitZumEintransport^
 
 
 (* Hinweis:
-   - Geschwindigkeit 
+   - Geschwindigkeit
 *)
 out_rEmpfaengerGeschwindigkeit := InGlasTransport.rGeschwindigkeit;
 
@@ -201,15 +200,15 @@ out_bEmpfaengerSensorEinlauf := InGlasTransport.bEinlaufsensor;
 
 
 (* Hinweis:
-   - NotAus 
+   - NotAus
 *)
 out_bEmpfaengerNotHaltAusgeloest := bpNotHaltAusgeloest;
 
 
 
-(***************************************************************************************************)
-(* AKTIONEN *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Baustein-Aktionen
 *)
@@ -220,12 +219,11 @@ Auswertung();
 
 
 
-(***************************************************************************************************)
-(*  RESET *)
-(***************************************************************************************************)
-(* Fehlverhalten:
-   - Anstehenden Fehler zuruecksetzen
-*)
+//-------------------------------------------------------------------------------------------------
+// RESET
+//-------------------------------------------------------------------------------------------------
+// Fehlverhalten:
+//   - Anstehenden Fehler zuruecksetzen
 IF ( bpReset ) THEN
 
   bpFehler       := FALSE;

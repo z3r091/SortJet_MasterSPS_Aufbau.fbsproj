@@ -48,13 +48,13 @@ END_VAR
 
 VAR CONSTANT
 
-  (* TIME*)
+  // TIME
   cZEITLICHE_UEBERWACHUNG_BEWEGUNG_ZYLINDER : TIME := T#15s;
 
 END_VAR
-(***************************************************************************************************)
-(* BNAUSTEIN: STEUERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BNAUSTEIN: STEUERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( bpReset ) THEN
 
   bpFehler := FALSE;
@@ -80,9 +80,8 @@ ELSE
     Ausfahren();
     Einfahren();
 
-    (* Ausgang:
-       - Status des Zylinders
-    *)  
+    // Ausgang:
+    //   - Status des Zylinders
     IF (      in_bStatusZylinderAusgefahren
          AND NOT in_bStatusZylinderEingefahren )
     THEN

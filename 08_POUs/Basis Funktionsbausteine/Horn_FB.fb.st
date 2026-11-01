@@ -8,16 +8,16 @@
 FUNCTION_BLOCK Horn_FB
 VAR_INPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   bpAktiv          : BOOL;
   bpReset          : BOOL;
-  bpHornAktivieren : BOOL;  (* Horn / Hupe vom Shuttle aus aktiviert*)
+  bpHornAktivieren : BOOL;  // Horn / Hupe vom Shuttle aus aktiviert
 
-  (* WORD *)
-  wpStatusArt   : WORD; (* Art des Hupsignales: 1=Dauerton 1; 2= Blinker 1/ 3= Blinker 2*)
+  // WORD
+  wpStatusArt   : WORD; // Art des Hupsignales: 1=Dauerton 1; 2= Blinker 1/ 3= Blinker 2
 
-  (* TIME *)
-  tpHornZeit   : TIME; (* Zeit wie lange das Horn arbeitet *)
+  // TIME
+  tpHornZeit   : TIME; // Zeit wie lange das Horn arbeitet
 
 END_VAR
 VAR_OUTPUT
@@ -39,14 +39,14 @@ END_VAR
 VAR
 
   // HARDWAREAUSGAENGE
-  out_bHorn       AT %Q* : BOOL; (* akustische Anzeige, dass Checkroutine läuft *)
+  out_bHorn       AT %Q* : BOOL; // akustische Anzeige, dass Checkroutine läuft
 
 END_VAR
 
 
-(***************************************************************************************************)
-(* BAUSTEIN: ABLAUF HORNSIGNAL *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: ABLAUF HORNSIGNAL
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Baustein zuruecksetzen
 *)

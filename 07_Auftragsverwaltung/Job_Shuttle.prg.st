@@ -8,21 +8,21 @@
 PROGRAM Job_Shuttle
 VAR_INPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   abpReset                              : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS]    OF BOOL;
   abpStarteParalleleBausteinAnsteuerung : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
   abpSpeicherfachValidierung            : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
   abpResetTransportkopplung             : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
 
-  (* BAUSTEINE *)
+  // BAUSTEINE
   AuftragsSpeicherTransfershuttle  : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE]          OF AuftragsSpeicher;
   AuftragsSpeicherShuttle          : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE]                          OF AuftragsSpeicher;
   AuftragsSpeicherWand             : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF AuftragsSpeicher;
   
-  (* STRUCT *)
+  // STRUCT
   AuftragsdatenStation                       : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE]                                  OF Auftragsdaten_ST;
   AuftragsdatenWand                          : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE]         OF Auftragsdaten_ST;
-  VorAbAuftragsDaten                         : ARRAY [cERSTES_SHUTTLE..cLETZTES_TRANSFERSHUTTLE, cWAND_1..cANZAHL_WAENDE] OF VorAbAuftragsdaten_ST; (* Ermoeglicht ein paralleles abarbeiten von bestimmten Auftraegen *)
+  VorAbAuftragsDaten                         : ARRAY [cERSTES_SHUTTLE..cLETZTES_TRANSFERSHUTTLE, cWAND_1..cANZAHL_WAENDE] OF VorAbAuftragsdaten_ST; // Ermoeglicht ein paralleles abarbeiten von bestimmten Auftraegen
   VisuAuftragsdaten                          : ARRAY [cERSTES_SHUTTLE..cLETZTES_TRANSFERSHUTTLE]                          OF Visu_Auftraege_ST;
   AuftragsdatenTransfershuttle               : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE]                  OF Auftragsdaten_ST;
   starrAuftragsdatenSpeicherfachValidierung  : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE]                  OF Auftragsdaten_ST;  
@@ -32,19 +32,19 @@ VAR_INPUT
 END_VAR
 VAR_OUTPUT
 
-  (* BOOLEAN *)
+  // BOOLEAN
   abpFehler : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
 
 END_VAR
 VAR
 
-  (* BOOLEAN *)
+  // BOOLEAN
   blErsterZyklus         : BOOL := TRUE;
   blFehler               : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF BOOL;
   blFehlerTS             : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
   ablEintransportGewesen : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF BOOL;
 
-  (* WORD *)
+  // WORD
   wlIndex,
   wlIndexWand,
   wlIndexQuelle,
@@ -55,18 +55,18 @@ VAR
   awlVerbundTransfershuttle       : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF WORD;
   awlStatusSpeichervalidierung    : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF WORD;
 
-  (* TRIGGER *)
+  // TRIGGER
   rtlFehler   : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF R_TRIG;
   rtlFehlerTS : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF R_TRIG;
 
-  (* STEPS *)
+  // STEPS
   asteplSpeicherfachValidierung   : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Steps_TE;
   asteplFaecherwagenSuche         : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Steps_TE;
 
   // TON 
   atonlWarteAufMasterAuftrag      : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF TON;
 
-  (* SH - BAUSTEINE *)
+  // SH - BAUSTEINE
   Querfahrt                       : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Shuttle_Querfahrt;
   Racksuche                       : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Shuttle_RackSuche;
   Eintransport                    : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF Shuttle_Eintransport;
@@ -88,9 +88,9 @@ VAR
 END_VAR
 
 
-(***************************************************************************************************)
-(*  BAUSTEIN: INITIALISIERUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: INITIALISIERUNG
+//-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus ) THEN
   blErsterZyklus := FALSE;
 
@@ -122,9 +122,9 @@ FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
   END_IF
 END_FOR
 
-(***************************************************************************************************)
-(* BAUSTEIN: AKTIONEN  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AKTIONEN
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
    - Aufruf der Baustein-Aktionen
 *)
@@ -154,14 +154,14 @@ Reset();
 Meldungen();
 Verfahrfreigabe();
 
-(***************************************************************************************************)
-(* BAUSTEIN: AUFTRAGSVERWALTUNG *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AUFTRAGSVERWALTUNG
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   - Die Auftraege mussen vor dem Aufruf der Steuerung abgehandelt werden [Grund: z.B: Vermeidung von Fehlern nach dem SystemCheck] 
+   - Die Auftraege mussen vor dem Aufruf der Steuerung abgehandelt werden [Grund: z.B: Vermeidung von Fehlern nach dem SystemCheck]
 *)
 
-(* Auftragsdaten für das Shuttle, z.B. Querfahrt *)
+// Auftragsdaten für das Shuttle, z.B. Querfahrt
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
 
   AuftragsSpeicherShuttle[wlIndex]();
@@ -177,7 +177,7 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
 
 END_FOR
 
-(* Auftragsdaten für die Shuttlewand, z.B. Eintransport *)
+// Auftragsdaten für die Shuttlewand, z.B. Eintransport
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
 
   FOR wlIndexWand := cWAND_1 TO cANZAHL_WAENDE DO
@@ -196,7 +196,7 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
 
 END_FOR
 
-(* Auftragsdaten für das Transfershuttle *)
+// Auftragsdaten für das Transfershuttle
 FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
 
   AuftragsSpeicherTransfershuttle[wlIndex]();

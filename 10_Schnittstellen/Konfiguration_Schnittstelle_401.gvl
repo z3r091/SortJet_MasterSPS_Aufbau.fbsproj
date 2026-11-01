@@ -9,23 +9,23 @@
 NAMESPACE Konfiguration_Schnittstelle_401
 VAR_CONFIG
 
-(***************************************************************************************************)
-(* KONFIGURATION: SCHNITTSTELLE 401   *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// KONFIGURATION: SCHNITTSTELLE 401
+//-------------------------------------------------------------------------------------------------
 
-  (*------------------------------------ HARDWARE EINGAENGE --------------------------------------- *)
+  // ------------------------------------ HARDWARE EINGAENGE ---------------------------------------
   // Standart Eingänge
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bTasterGlasbruch                      AT %IX4.2    : BOOL; (* OPTION *)
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bTasterSpezial                        AT %IX4.3    : BOOL; (* OPTION *)
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bEmpfaengerSensorEinlauf              AT %MX1.0    : BOOL; (* OPTION *)
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bTasterGlasbruch                      AT %IX4.2    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bTasterSpezial                        AT %IX4.3    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bEmpfaengerSensorEinlauf              AT %MX1.0    : BOOL; // OPTION
                                                                                               
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bGlasAbruf                            AT %MX1.0    : BOOL; (* OK*) 
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bTransportRueckwaerts                 AT %MX1.0    : BOOL; (* OK *)
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_wAnalogwertISOLinie                   AT %MW100    : WORD; (* OPTION *)
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bGlasAbruf                            AT %MX1.0    : BOOL; // OK 
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bTransportRueckwaerts                 AT %MX1.0    : BOOL; // OK
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_wAnalogwertISOLinie                   AT %MW100    : WORD; // OPTION
   
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bRiemenVor                            AT %MX1.0    : BOOL; (* OK*)   
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bRiemenZurueck                        AT %MX1.0    : BOOL; (* OK*) 
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bAnforderungSK                        AT %MX1.0    : BOOL; (* OK*) 
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bRiemenVor                            AT %MX1.0    : BOOL; // OK   
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bRiemenZurueck                        AT %MX1.0    : BOOL; // OK 
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bAnforderungSK                        AT %MX1.0    : BOOL; // OK 
   
   // Buskoppler Eingänge
   Globale_Bausteine.aSchnittstelleAuslauf[401].in_wEmpfaengerLiveCounter                AT %MW100     : WORD;                      // Buskoppler Signale
@@ -34,16 +34,16 @@ VAR_CONFIG
   Globale_Bausteine.aSchnittstelleAuslauf[401].in_rEmpfaengerGeschwindigkeit            AT %MW100     : REAL;                      // Buskoppler Signale
   
 
-  (*------------------------------------ HARDWARE AUSGAENGE --------------------------------------- *)
+  // ------------------------------------ HARDWARE AUSGAENGE ---------------------------------------
   // Standart Ausgänge
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bSenderBereit                        AT %MX2.0    : BOOL; (* OPTION *)
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bSenderGlasBereit                    AT %QX4.0    : BOOL; (* OK *)
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bFreigabeSK                          AT %QX4.1    : BOOL; (* OK *)
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bSenderBereit                        AT %MX2.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bSenderGlasBereit                    AT %QX4.0    : BOOL; // OK
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bFreigabeSK                          AT %QX4.1    : BOOL; // OK
                                                                                         
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bLeuchteGlasbruch                    AT %QX3.2    : BOOL; (* OPTION *)
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bLeuchteSpezial                      AT %QX3.3    : BOOL; (* OPTION *)
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bAmpelEventAktiv                     AT %QX2.0    : BOOL; (* OPTION *)
-  Globale_Bausteine.aSchnittstelleAuslauf[401].Horn.out_bHorn                           AT %MX2.0    : BOOL; (* OPTION *)
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bLeuchteGlasbruch                    AT %QX3.2    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bLeuchteSpezial                      AT %QX3.3    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bAmpelEventAktiv                     AT %QX2.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].Horn.out_bHorn                           AT %MX2.0    : BOOL; // OPTION
                                                                                         
   // Buskoppler Ausgänge                                                                
   Globale_Bausteine.aSchnittstelleAuslauf[401].out_wSenderLiveCounter                   AT %MW100    : WORD;                      // Buskoppler Signale

@@ -6,23 +6,22 @@
 }
 *)
 ACTION Ausgaenge
-(***************************************************************************************************)
-(* BAUSTEIN: AUSGAENGE  *)
-(***************************************************************************************************)
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AUSGAENGE
+//-------------------------------------------------------------------------------------------------
 (* Hinweis:
-  - Bremse lösen
-  - Phoenix Contact Schuetz resetten 
+   - Bremse lösen
+   - Phoenix Contact Schuetz resetten
 *)
 out_bBremseLoesen := out_bKippen84Grad OR out_bKippen90Grad;
 out_bReset := toflReset.Q;
 
-(* Ausgang:
-   - Status- Referenz
-*)
+// Ausgang:
+//   - Status- Referenz
 bpInReferenz := Antrieb.bpIstReferenziert OR ppParameterBaustein.bKippenMitSchuetz;
 
 (* Anmerkung:
-  - Realisierung durch ein ENUM
+   - Realisierung durch ein ENUM
 *)
 IF ppParameterBaustein.bKippenMitSchuetz THEN
 
