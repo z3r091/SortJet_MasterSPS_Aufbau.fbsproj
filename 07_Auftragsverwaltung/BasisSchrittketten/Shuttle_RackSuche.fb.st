@@ -79,7 +79,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_RackSuche ) THEN
       IF ( aShuttle[wStation].bpFaecherwagenGefunden ) THEN
 
         wSps2MmiStationsNummer     := starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
-        rSps2MmiShuttlePosition[0] := aShuttle[wStation].rpAktuelleFaecherwagenPosition;
+        rSps2MmiPosition           := aShuttle[wStation].rpAktuelleFaecherwagenPosition;
         MsgToMmi(auftragsnr_w := SB0_SPS_POSITIONMEASUREDATA );
 
         steplSchritt := STEP_1000_E;
@@ -107,7 +107,7 @@ IF bpReset THEN
   aShuttle[wStation].bpStarteFaecherwagensuche := FALSE;
   IF (aShuttle[wStation].rpAktuelleFaecherwagenPosition = -100000)  THEN // ungültige Rackposition von -10000 angeben da kein Rack gefunden
     wSps2MmiStationsNummer     := starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern;
-    rSps2MmiShuttlePosition[0] := aShuttle[wStation].rpAktuelleFaecherwagenPosition;
+    rSps2MmiPosition           := aShuttle[wStation].rpAktuelleFaecherwagenPosition;
     MsgToMmi(auftragsnr_w := SB0_SPS_POSITIONMEASUREDATA );
   END_IF
   steplSchritt := STEP_0_E;

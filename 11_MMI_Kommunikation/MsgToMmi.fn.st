@@ -227,7 +227,7 @@ CASE( auftragsnr_w ) OF
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 4;
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ), wVal  := wgSps2MmiShuttleNr );
-    HMI_PutREAL( pbyAddr := ADR( msg_st.awDaten[1] ),  rVal := rSps2MmiShuttlePosition[0] );
+    HMI_PutREAL( pbyAddr := ADR( msg_st.awDaten[1] ),  rVal := rSps2MmiPosition );
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[3] ), wVal  := wSps2ShuttleStopped[wgSps2MmiShuttleNr] );
     
     SB0_SPS_TRANSFERSHUTTLEBUFFERSLOTPOS,
@@ -244,9 +244,9 @@ CASE( auftragsnr_w ) OF
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 3;
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ), wVal  := wSps2MmiStationsNummer );
-    HMI_PutREAL(  pbyAddr := ADR( msg_st.awDaten[1] ), rVal  := rSps2MmiShuttlePosition[0] );
+    HMI_PutREAL(  pbyAddr := ADR( msg_st.awDaten[1] ), rVal  := rSps2MmiPosition );
     
-    argZuletztQuittiertePositionShuttle[wSps2MmiStationsNummer] := rSps2MmiShuttlePosition[0];
+    argZuletztQuittiertePositionShuttle[wSps2MmiStationsNummer] := rSps2MmiPosition;
     
     
   SB0_SPS_TRANSFERSHUTTLEFEHLER:
@@ -313,7 +313,7 @@ CASE( auftragsnr_w ) OF
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 5;
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ),  wVal  := wSps2MmiStationsNummer );
-    HMI_PutREAL(  pbyAddr := ADR( msg_st.awDaten[1] ),  rVal  := rSps2MmiShuttlePosition[0] );
+    HMI_PutREAL(  pbyAddr := ADR( msg_st.awDaten[1] ),  rVal  := rSps2MmiPosition );
    
  
     

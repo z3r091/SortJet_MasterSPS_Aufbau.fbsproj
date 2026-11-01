@@ -115,7 +115,8 @@ VAR_GLOBAL
   wSps2MmiQuittVorabShuttleNr                     : WORD;
   rgSPS2MMIExtractionShuttlePosition              : REAL;
   rgSPS2MMIExtractionShuttlePositionHub           : REAL;
-  rSps2MmiShuttlePosition                         : ARRAY [0..30] OF REAL;
+  rSps2MmiShuttlePosition                         : ARRAY [0..30] OF REAL; // Liste fuer SB0_SPS_SORTIERUNGSHUTTLEPOS [SendShuttlePosition]
+  rSps2MmiPosition                                : REAL;  // Position fuer Einzelnachrichten [VORABPOSITIONIERUNG ABBRUCH/READY, POSITIONMEASUREDATA]
   wSps2ShuttleStopped                             : ARRAY [cERSTES_SHUTTLE..cLETZTE_STATION] OF WORD;
 
   rgSPS2MMIExtractionShuttleGefahrenerWeg         : REAL;

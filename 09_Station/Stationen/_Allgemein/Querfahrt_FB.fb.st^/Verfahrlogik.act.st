@@ -18,7 +18,7 @@ THEN
   bpQuittungAuftragsstatusZurueckgesetzt := FALSE;
 
   wSps2MmiStationsNummer := stStationsNummern.NummerSPS;
-  rSps2MmiShuttlePosition[0] := Antrieb.rpIstPosition;
+  rSps2MmiPosition           := Antrieb.rpIstPosition;
   MsgToMmi(SB0_SPS_SHUTTLEVORABPOSITIONIERUNGREADY);
 
 END_IF

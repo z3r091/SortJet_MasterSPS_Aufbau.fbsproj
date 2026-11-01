@@ -9,6 +9,11 @@ FUNCTION SendShuttlePosition : BOOL
 VAR_INPUT
 END_VAR
 VAR
+  wlNummer : WORD;
+  wlSlot   : WORD;
+END_VAR
+VAR CONSTANT
+  cANZAHL_SLOTS_TELEGRAMM : WORD := 12; // Positionen die SB0_SPS_SORTIERUNGSHUTTLEPOS transportiert
 END_VAR
 
 //########################################## Changelog ################################################
@@ -18,25 +23,50 @@ END_VAR
 //
 //########################################## Changelog ################################################
 
+(* Hinweis:
+   - Die Position steht im MMI-Telegramm an einer festen Stelle (Slot), die Reihenfolge ist fest:
+     1. Shuttles, 2. Transfershuttles, 3. Stationen die ein Shuttle sind [bStationIstShuttle]
+   - Jede MK belegt einen Slot, auch wenn sie deaktiviert ist
+   - Gleichzeitig wird die zuletzt quittierte Position gemerkt
+   - Was nicht mehr ins Telegramm passt, wird nicht gesendet
+*)
+FOR wlSlot := 0 TO cANZAHL_SLOTS_TELEGRAMM - 1 DO
+  rSps2MmiShuttlePosition[wlSlot] := 0.0;
+END_FOR
+
+wlSlot := 0;
+
 // SHUTTLE
-rSps2MmiShuttlePosition[0]  := starrShuttleBasisParameter[cSHUTTLE_101].rAktuellePositionQuerfahrt;
-rSps2MmiShuttlePosition[1]  := starrShuttleBasisParameter[cSHUTTLE_102].rAktuellePositionQuerfahrt;
+FOR wlNummer := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
+  IF wlSlot < cANZAHL_SLOTS_TELEGRAMM THEN
+    rSps2MmiShuttlePosition[wlSlot] := starrShuttleBasisParameter[wlNummer].rAktuellePositionQuerfahrt;
+    wlSlot := wlSlot + 1;
+  END_IF
+
+  argZuletztQuittiertePositionShuttle[wlNummer] := starrShuttleBasisParameter[wlNummer].rAktuellePositionQuerfahrt;
+END_FOR
 
 // TRANSFERSHUTTLE
-rSps2MmiShuttlePosition[2]  := starrTransferShuttleBasisParameter[cSHUTTLE_151].rAktuellePositionQuerfahrt;
-rSps2MmiShuttlePosition[3]  := starrTransferShuttleBasisParameter[cSHUTTLE_152].rAktuellePositionQuerfahrt;
+FOR wlNummer := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
+  IF wlSlot < cANZAHL_SLOTS_TELEGRAMM THEN
+    rSps2MmiShuttlePosition[wlSlot] := starrTransferShuttleBasisParameter[wlNummer].rAktuellePositionQuerfahrt;
+    wlSlot := wlSlot + 1;
+  END_IF
 
-// STATIONEN
-; // keine stationen vorhanden die Positionen melden müssen
+  argZuletztQuittiertePositionShuttle[wlNummer] := starrTransferShuttleBasisParameter[wlNummer].rAktuellePositionQuerfahrt;
+END_FOR
 
-(* Hinweis:
-   - Merken der zuletzt quittierten Position
-*)
-argZuletztQuittiertePositionShuttle[cSHUTTLE_101]  := starrShuttleBasisParameter[cSHUTTLE_101].rAktuellePositionQuerfahrt;
-argZuletztQuittiertePositionShuttle[cSHUTTLE_102]  := starrShuttleBasisParameter[cSHUTTLE_102].rAktuellePositionQuerfahrt;
+// STATIONEN die ein Shuttle sind
+FOR wlNummer := cERSTE_STATION TO cLETZTE_STATION DO
+  IF starrStationBasisParameter[wlNummer].stMKs.stSchnittstellendaten.bStationIstShuttle THEN
+    IF wlSlot < cANZAHL_SLOTS_TELEGRAMM THEN
+      rSps2MmiShuttlePosition[wlSlot] := starrStationBasisParameter[wlNummer].rAktuellePositionQuerfahrt;
+      wlSlot := wlSlot + 1;
+    END_IF
 
-argZuletztQuittiertePositionShuttle[cSHUTTLE_151]  := starrTransferShuttleBasisParameter[cSHUTTLE_151].rAktuellePositionQuerfahrt;
-argZuletztQuittiertePositionShuttle[cSHUTTLE_152]  := starrTransferShuttleBasisParameter[cSHUTTLE_152].rAktuellePositionQuerfahrt;
+    argZuletztQuittiertePositionShuttle[wlNummer] := starrStationBasisParameter[wlNummer].rAktuellePositionQuerfahrt;
+  END_IF
+END_FOR
 
 MsgToMmi(auftragsnr_w := SB0_SPS_SORTIERUNGSHUTTLEPOS);
 

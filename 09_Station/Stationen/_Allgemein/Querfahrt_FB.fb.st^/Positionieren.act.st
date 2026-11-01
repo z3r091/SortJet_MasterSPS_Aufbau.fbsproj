@@ -170,7 +170,7 @@ IF (  bpPositionieren ) THEN
 
         // wSps2MmiMeasureSlotNummer := 0; 0 = Shuttle bremst noch / 1 = Shuttle gestoppt und steht
         wgSps2MmiShuttleNr                                  := stStationsNummern.NummerIntern;
-        rSps2MmiShuttlePosition[0]                          := Antrieb.rpIstPosition;
+        rSps2MmiPosition                                    := Antrieb.rpIstPosition;
         wSps2ShuttleStopped[stStationsNummern.NummerIntern] := 0;
         MsgToMmi(SB0_SPS_SHUTTLEVORABPOSITIONIERUNGABBRUCH);
 
@@ -220,7 +220,7 @@ IF (  bpPositionieren ) THEN
         Antrieb.rpZielPosition := Antrieb.rpIstPosition;
 
         wgSps2MmiShuttleNr                                  := stStationsNummern.NummerIntern;
-        rSps2MmiShuttlePosition[0]                          := Antrieb.rpIstPosition;
+        rSps2MmiPosition                                    := Antrieb.rpIstPosition;
         wSps2ShuttleStopped[stStationsNummern.NummerIntern] := 1;
         MsgToMmi(SB0_SPS_SHUTTLEVORABPOSITIONIERUNGABBRUCH);
 
