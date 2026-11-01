@@ -31,7 +31,7 @@ VAR_GLOBAL
       rpReduzierteBeschleunigung              :=    500,  // [mm/s^2] Reduzierte Beschleunigung                                    
       rpReduzierteVerzoegerung                :=    500,  // [mm/s^2] Reduzierte Verzoegerung                                      
       rpBeschleunigungFremdanlage             :=   1000,  // [mm/s^2] Beschleunigung zu einer Fremdanlage                          
-      rpGeschwindigkeitMessen                 :=    667,  // [mm/s^2] Geschwindigkeit beim Scheiben messen                         
+      rpGeschwindigkeitMessen                 :=    667,  // [mm/s] Geschwindigkeit beim Scheiben messen                         
       rpGeschwindigkeitSystemcheck            :=  500.0,  // [mm/s]   Geschwindigkeit im Systemcheck (nur Glastransport)
       rpGeschwindigkeitSystemcheckReduzierung :=  167.0,  // [mm/s]   Geschwindigkeit im Systemcheck bei belegtem Vorstop-Sensor (nur Glastransport)
       stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.KEINE,     // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
@@ -57,7 +57,7 @@ VAR_GLOBAL
       rpReduzierteBeschleunigung              :=      0,  // [mm/s^2] Reduzierte Beschleunigung                                 
       rpReduzierteVerzoegerung                :=      0,  // [mm/s^2] Reduzierte Verzoegerung                                   
       rpBeschleunigungFremdanlage             :=      0,  // [mm/s^2] Beschleunigung zu einer Fremdanlage                       
-      rpGeschwindigkeitMessen                 :=      0,  // [mm/s^2] Geschwindigkeit beim Scheiben messen                      
+      rpGeschwindigkeitMessen                 :=      0,  // [mm/s] Geschwindigkeit beim Scheiben messen                      
       rpGeschwindigkeitSystemcheck            :=  500.0,  // [mm/s]   Geschwindigkeit im Systemcheck (nur Glastransport)
       rpGeschwindigkeitSystemcheckReduzierung :=  167.0,  // [mm/s]   Geschwindigkeit im Systemcheck bei belegtem Vorstop-Sensor (nur Glastransport)
       stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.KEINE,     // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
@@ -72,18 +72,18 @@ VAR_GLOBAL
       wpSchaltschrank                         :=      2042,  // Daten aus dem Schaltplan                                             
       wpSchaltplanreihe                       :=        02,  // Daten aus dem Schaltplan                                             
       wpSchaltplanseite                       :=        65,  // Daten aus dem Schaltplan                                             
-      rpMaxGeschwindigkeit                    :=        55,  // [rad/s] MAX- Geschwindigkeit für die der Antrieb ausgelegt ist in mm/S
-      rpHandGeschwindigkeit                   :=        30,  // [rad/s] Hand- Geschwindigkeit                                         
-      rpReduzierteGeschwindigkeit             :=        20,  // [rad/s] Reduzierte Geschwindigkeit für die bestimmte Situationen      
-      rpReferenzGeschwindigkeit               :=      0.05,  // [rad/s] Geschwindigkeit für die Referenzfahrt                         
-      rpEinrichtGeschwindigkeit               :=        10,  // [rad/s] Max Geschwindigkeit während der Einrichtung der Anlage        
-      rpMaxBeschleunigung                     :=      45.0,  // [rad/s^2] max Beschleunigung für die der Antrieb ausgelegt ist        
-      rpMaxVerzoegerung                       :=      35.0,  // [rad/s^2] max Verzoegerung für die der Antrieb ausgelegt ist          
+      rpMaxGeschwindigkeit                    :=        55,  // [Grad/s] MAX- Geschwindigkeit für die der Antrieb ausgelegt ist
+      rpHandGeschwindigkeit                   :=        30,  // [Grad/s] Hand- Geschwindigkeit                                         
+      rpReduzierteGeschwindigkeit             :=        20,  // [Grad/s] Reduzierte Geschwindigkeit für die bestimmte Situationen      
+      rpReferenzGeschwindigkeit               :=      0.05,  // [Grad/s] Geschwindigkeit für die Referenzfahrt                         
+      rpEinrichtGeschwindigkeit               :=        10,  // [Grad/s] Max Geschwindigkeit während der Einrichtung der Anlage        
+      rpMaxBeschleunigung                     :=      45.0,  // [Grad/s^2] max Beschleunigung für die der Antrieb ausgelegt ist        
+      rpMaxVerzoegerung                       :=      35.0,  // [Grad/s^2] max Verzoegerung für die der Antrieb ausgelegt ist          
       rpMaxRuckzeit                           :=      500,   // [ms]     Ruckzeit des Antriebs                                       
-      rpReduzierteBeschleunigung              :=       0.5,  // [rad/s^2] Reduzierte Beschleunigung                                   
-      rpReduzierteVerzoegerung                :=       0.5,  // [rad/s^2] Reduzierte Verzoegerung                                     
-      rpBeschleunigungFremdanlage             :=       0.5,  // [rad/s^2] Beschleunigung zu einer Fremd-Anlage                        
-      rpGeschwindigkeitMessen                 :=         0,  // [rad/s] Geschwindigkeit für die Messfahrt                             
+      rpReduzierteBeschleunigung              :=       0.5,  // [Grad/s^2] Reduzierte Beschleunigung                                   
+      rpReduzierteVerzoegerung                :=       0.5,  // [Grad/s^2] Reduzierte Verzoegerung                                     
+      rpBeschleunigungFremdanlage             :=       0.5,  // [Grad/s^2] Beschleunigung zu einer Fremd-Anlage                        
+      rpGeschwindigkeitMessen                 :=         0,  // [Grad/s] Geschwindigkeit für die Messfahrt                             
       rpGeschwindigkeitSystemcheck            :=  500.0,  // [mm/s]   Geschwindigkeit im Systemcheck (nur Glastransport)
       rpGeschwindigkeitSystemcheckReduzierung :=  167.0,  // [mm/s]   Geschwindigkeit im Systemcheck bei belegtem Vorstop-Sensor (nur Glastransport)
       stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.UMRICHTER, // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
@@ -98,18 +98,18 @@ VAR_GLOBAL
       wpSchaltschrank                         :=      2043,  // Daten aus dem Schaltplan                                                 
       wpSchaltplanreihe                       :=         2,  // Daten aus dem Schaltplan                                                 
       wpSchaltplanseite                       :=       100,  // Daten aus dem Schaltplan                                                 
-      rpMaxGeschwindigkeit                    :=      1400,  // [u/min]  Max- Geschwindigkeit für die der Antrieb ausgelegt ist in mm/s  
-      rpHandGeschwindigkeit                   :=      1400,  // [u/min]  Hand- Geschwindigkeit                                           
-      rpReduzierteGeschwindigkeit             :=       800,  // [u/min]  Reduzierte Geschwindigkeit für die bestimmte Situationen        
-      rpReferenzGeschwindigkeit               :=       100,  // [u/min]  Geschwindigkeit für die Referenzfahrt                           
-      rpEinrichtGeschwindigkeit               :=       100,  // [u/min]   Max Geschwindigkeit während der Einrichtung der Anlage         
-      rpMaxBeschleunigung                     :=       250,  // [rad/s^2] Max Beschleunigung für die der Antrieb ausgelegt ist           
-      rpMaxVerzoegerung                       :=       250,  // [rad/s^2] Max Verzoegerung für die der Antrieb ausgelegt ist             
-      rpMaxRuckzeit                           :=        50,  // [rad/s^3] Ruckzeit des Antriebs                                          
-      rpReduzierteBeschleunigung              :=       100,  // [rad/s^2] Reduzierte Beschleunigung                                      
-      rpReduzierteVerzoegerung                :=       100,  // [rad/s^2] Reduzierte Verzoegerung                                        
-      rpBeschleunigungFremdanlage             :=         1,  // [rad/s^2] Beschleunigung zu einer Fremd-Anlage                           
-      rpGeschwindigkeitMessen                 :=         0,  // Geschwindigkeit für die Messfahrt                                        
+      rpMaxGeschwindigkeit                    :=      1400,  // [Grad/s] Max- Geschwindigkeit für die der Antrieb ausgelegt ist
+      rpHandGeschwindigkeit                   :=      1400,  // [Grad/s] Hand- Geschwindigkeit                                           
+      rpReduzierteGeschwindigkeit             :=       800,  // [Grad/s] Reduzierte Geschwindigkeit für die bestimmte Situationen        
+      rpReferenzGeschwindigkeit               :=       100,  // [Grad/s] Geschwindigkeit für die Referenzfahrt                           
+      rpEinrichtGeschwindigkeit               :=       100,  // [Grad/s] Max Geschwindigkeit während der Einrichtung der Anlage         
+      rpMaxBeschleunigung                     :=       250,  // [Grad/s^2] Max Beschleunigung für die der Antrieb ausgelegt ist           
+      rpMaxVerzoegerung                       :=       250,  // [Grad/s^2] Max Verzoegerung für die der Antrieb ausgelegt ist             
+      rpMaxRuckzeit                           :=        50,  // [ms] Ruckzeit des Antriebs                                          
+      rpReduzierteBeschleunigung              :=       100,  // [Grad/s^2] Reduzierte Beschleunigung                                      
+      rpReduzierteVerzoegerung                :=       100,  // [Grad/s^2] Reduzierte Verzoegerung                                        
+      rpBeschleunigungFremdanlage             :=         1,  // [Grad/s^2] Beschleunigung zu einer Fremd-Anlage                           
+      rpGeschwindigkeitMessen                 :=         0,  // [Grad/s] Geschwindigkeit für die Messfahrt                                        
       rpGeschwindigkeitSystemcheck            := 500.0,  // [mm/s]   Geschwindigkeit im Systemcheck (nur Glastransport)
       rpGeschwindigkeitSystemcheckReduzierung := 167.0,  // [mm/s]   Geschwindigkeit im Systemcheck bei belegtem Vorstop-Sensor (nur Glastransport)
       stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.UMRICHTER, // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
@@ -124,7 +124,7 @@ VAR_GLOBAL
       wpSchaltschrank                         :=       2044,  // Daten aus dem Schaltplan                                             
       wpSchaltplanreihe                       :=         02,  // Daten aus dem Schaltplan                                             
       wpSchaltplanseite                       :=        100,  // Daten aus dem Schaltplan                                             
-      rpMaxGeschwindigkeit                    :=        250,  // [mm/s] MAX- Geschwindigkeit für die der Antrieb ausgelegt ist in mm/s
+      rpMaxGeschwindigkeit                    :=        250,  // [mm/s] MAX- Geschwindigkeit für die der Antrieb ausgelegt ist
       rpHandGeschwindigkeit                   :=        100,  // [mm/s] Hand- Geschwindigkeit                                         
       rpReduzierteGeschwindigkeit             :=         50,  // [mm/s] Reduzierte Geschwindigkeit für die bestimmte Situationen      
       rpReferenzGeschwindigkeit               :=         20,  // [mm/s] Geschwindigkeit für die Referenzfahrt                         

@@ -227,7 +227,7 @@ IF ( bpStarteDrehBewegung ) THEN
       //
       //   Hinweis:
       //   - Antriebsparameter initialisieren
-      //     => Die Geschwindigkeit beim Drehkreuz wird in U/min uebergeben
+      //     => Die Geschwindigkeit beim Drehkreuz wird in Grad/s uebergeben
       Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
       Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;

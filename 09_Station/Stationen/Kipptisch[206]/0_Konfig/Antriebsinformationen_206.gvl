@@ -31,7 +31,7 @@ VAR_GLOBAL
       rpReduzierteBeschleunigung              :=   1000,  // [mm/s^2] Reduzierte Beschleunigung                                    
       rpReduzierteVerzoegerung                :=   1000,  // [mm/s^2] Reduzierte Verzoegerung                                      
       rpBeschleunigungFremdanlage             :=   1000,  // [mm/s^2] Beschleunigung zu einer Fremdanlage                          
-      rpGeschwindigkeitMessen                 :=    667,  // [mm/s^2] Geschwindigkeit beim Scheiben messen                         
+      rpGeschwindigkeitMessen                 :=    667,  // [mm/s] Geschwindigkeit beim Scheiben messen                         
       rpGeschwindigkeitSystemcheck            :=  500.0,  // [mm/s]   Geschwindigkeit im Systemcheck (nur Glastransport)
       rpGeschwindigkeitSystemcheckReduzierung :=  167.0,  // [mm/s]   Geschwindigkeit im Systemcheck bei belegtem Vorstop-Sensor (nur Glastransport)
       stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.KEINE,     // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
@@ -57,7 +57,7 @@ VAR_GLOBAL
       rpReduzierteBeschleunigung              :=   1000,  // [mm/s^2] Reduzierte Beschleunigung                                    
       rpReduzierteVerzoegerung                :=   1000,  // [mm/s^2] Reduzierte Verzoegerung                                      
       rpBeschleunigungFremdanlage             :=   1000,  // [mm/s^2] Beschleunigung zu einer Fremdanlage                          
-      rpGeschwindigkeitMessen                 :=    667,  // [mm/s^2] Geschwindigkeit beim Scheiben messen                         
+      rpGeschwindigkeitMessen                 :=    667,  // [mm/s] Geschwindigkeit beim Scheiben messen                         
       rpGeschwindigkeitSystemcheck            :=  500.0,  // [mm/s]   Geschwindigkeit im Systemcheck (nur Glastransport)
       rpGeschwindigkeitSystemcheckReduzierung :=  167.0,  // [mm/s]   Geschwindigkeit im Systemcheck bei belegtem Vorstop-Sensor (nur Glastransport)
       stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.KEINE,     // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
@@ -79,11 +79,11 @@ VAR_GLOBAL
       rpEinrichtGeschwindigkeit               :=      1,  // [Grad/s]   Max Geschwindigkeit während der Einrichtung der Anlage    
       rpMaxBeschleunigung                     :=     80,  // [Grad/s^2] Max Beschleunigung                                        
       rpMaxVerzoegerung                       :=     80,  // [Grad/s^2] Max Verzoegerung                                          
-      rpMaxRuckzeit                           :=    100,  // [msec] Ruckzeit des Antriebs                                     
+      rpMaxRuckzeit                           :=    100,  // [ms] Ruckzeit des Antriebs                                     
       rpReduzierteBeschleunigung              :=     25,  // [Grad/s^2] Reduzierte Beschleunigung                                 
       rpReduzierteVerzoegerung                :=     25,  // [Grad/s^2] Reduzierte Verzoegerung                                   
       rpBeschleunigungFremdanlage             :=      2,  // [Grad/s^2] Beschleunigung zu einer Fremdanlage                       
-      rpGeschwindigkeitMessen                 := 0.0,
+      rpGeschwindigkeitMessen                 := 0.0,  // [Grad/s] Geschwindigkeit für die Messfahrt
       rpGeschwindigkeitSystemcheck            :=  500.0,  // [mm/s]   Geschwindigkeit im Systemcheck (nur Glastransport)
       rpGeschwindigkeitSystemcheckReduzierung :=  167.0,  // [mm/s]   Geschwindigkeit im Systemcheck bei belegtem Vorstop-Sensor (nur Glastransport)
       stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.UMRICHTER, // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
@@ -110,7 +110,7 @@ VAR_GLOBAL
       rpReduzierteBeschleunigung              :=        10,  // [mm/s^2] Reduzierte Beschleunigung                                  
       rpReduzierteVerzoegerung                :=        10,  // [mm/s^2] Reduzierte Verzoegerung                                    
       rpBeschleunigungFremdanlage             :=         0,  // [mm/s^2] Beschleunigung zu einer Fremdanlage                        
-      rpGeschwindigkeitMessen                 :=         0,  // [mm/s^2] Geschwindigkeit beim Scheiben messen                       
+      rpGeschwindigkeitMessen                 :=         0,  // [mm/s] Geschwindigkeit beim Scheiben messen                       
       rpGeschwindigkeitSystemcheck            :=     500.0,  // [mm/s]   Geschwindigkeit im Systemcheck (nur Glastransport)
       rpGeschwindigkeitSystemcheckReduzierung :=     167.0,  // [mm/s]   Geschwindigkeit im Systemcheck bei belegtem Vorstop-Sensor (nur Glastransport)
       stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.UMRICHTER, // Hardware-Endschalter: KEINE, UMRICHTER oder SPS

@@ -40,7 +40,7 @@ THEN
       (* Anmerkung [Sensoren]:
          - Einlauf- Auslauf- Sensoren duerfen nicht belegt sein beim Kippen
            Anmerkung [Antrieb]:
-         - Geschwindigkeit muss in U/min angegeben werden
+         - Geschwindigkeit muss in Grad/s angegeben werden
          - Rampe 2s [2000 ms]
       *)
       IF (  NOT bpSensorEinlauf

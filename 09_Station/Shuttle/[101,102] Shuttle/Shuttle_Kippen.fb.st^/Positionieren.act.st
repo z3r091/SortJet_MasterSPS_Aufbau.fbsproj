@@ -38,7 +38,7 @@ IF ( bpPositionieren )THEN
     STEP_10_E:
       (* Anmerkung:
          - Einlauf- Auslauf- Sensoren duerfen nicht belegt sein beim Kippen
-         - Geschwindigkeit muss in U/min angegeben werden
+         - Geschwindigkeit muss in Grad/s angegeben werden
       *)
       IF bpLangsamKippen THEN
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;

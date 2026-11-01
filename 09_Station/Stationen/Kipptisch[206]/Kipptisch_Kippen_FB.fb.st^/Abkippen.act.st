@@ -41,7 +41,7 @@ THEN
       (* Anmerkung [Sensoren]:
          - Einlauf- Auslauf- Sensoren duerfen nicht belegt
            Anmerkung [Antrieb]:
-         - Geschwindigkeit wird in U/min angegeben werden
+         - Geschwindigkeit wird in Grad/s angegeben werden
       *)
       IF (  NOT bpSensorEinlauf
            AND NOT bpSensorAuslauf )
