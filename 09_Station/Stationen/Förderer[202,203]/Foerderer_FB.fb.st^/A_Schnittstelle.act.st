@@ -40,7 +40,7 @@ BasisStationsParameter.bSKFreigabeBeiAktivemAuftrag := ( BasisStationsParameter.
 BasisStationsParameter.bSKOeffnenBlockierenDurchgang    := BasisStationsParameter.stMKs.stStationsAufbau.bDurchgang AND 
                                                            ( Glastransport.bpSensorEinlauf
                                                              OR Glastransport.bpSensorAuslauf 
-                                                             OR bDurchgangBelegt
+                                                             OR in_bDurchgangBelegt
                                                              OR ( ( Glastransport.bpSensorEinlaufVorab 
                                                                     OR Glastransport.bpSensorAuslaufVorab ) AND BasisStationsParameter.stMKs.stStationsOptionen.bSKBlockierenDurchVorabSensoren ) );
 

@@ -17,11 +17,15 @@ CASE BasisStationsParameter.stMKs.stStationsNummern.NummerSPS OF
     // Gebläse
     in_bMotorstarter_Geblaese_OK := Glastransport.Antrieb.udipEingaengeUmrichter.cXG37_6_I_8;
 
-    Glastransport.Antrieb.wpAusgaengeUmrichter.cXG37_O_5 := %MX218.1; // Start Gebläse 1
-    Glastransport.Antrieb.wpAusgaengeUmrichter.cXG37_O_6 := %MX218.1; // Start Gebläse 2
+    Glastransport.Antrieb.wpAusgaengeUmrichter.cXG37_O_5 := Geblaese.bpStarteGeblaese; // Start Gebläse 1
+    Glastransport.Antrieb.wpAusgaengeUmrichter.cXG37_O_6 := Geblaese.bpStarteGeblaese; // Start Gebläse 2
 
-    Kippen.bpSensorNicht84Grad := Glastransport.Antrieb.udipEingaengeUmrichter.cXG37_3_I_5;
-    Kippen.bpSensorNicht90Grad := Glastransport.Antrieb.udipEingaengeUmrichter.cXG37_4_I_6;
+    // Kippen
+    in_bSensorNicht84Grad := Glastransport.Antrieb.udipEingaengeUmrichter.cXG37_3_I_5;
+    in_bSensorNicht90Grad := Glastransport.Antrieb.udipEingaengeUmrichter.cXG37_4_I_6;
+
+    Kippen.bpSensorNicht84Grad := in_bSensorNicht84Grad;
+    Kippen.bpSensorNicht90Grad := in_bSensorNicht90Grad;
 
 END_CASE
 END_ACTION

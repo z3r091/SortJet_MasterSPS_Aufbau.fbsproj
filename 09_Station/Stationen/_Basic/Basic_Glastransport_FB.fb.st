@@ -105,6 +105,12 @@ END_VAR
 
 VAR
 
+  // HARDWARE EINGAENGE (vom Umrichter)
+  in_bSensorEinlauf             : BOOL;
+  in_bSensorEinlaufVorAb        : BOOL;
+  in_bSensorAuslaufVorab        : BOOL;
+  in_bSensorAuslauf             : BOOL;
+
   // BOOL 
   blErsterZyklus                : BOOL := TRUE;
   blScheibenMerker              : BOOL;
@@ -262,10 +268,15 @@ END_IF
 //-------------------------------------------------------------------------------------------------
 // IO ZUWEISUNG
 //-------------------------------------------------------------------------------------------------
-bpSensorEinlauf      := Antrieb.udipEingaengeUmrichter.cXG31_1_I_1;
-bpSensorEinlaufVorAb := Antrieb.udipEingaengeUmrichter.cXG31_6_I_4;
-bpSensorAuslaufVorab := Antrieb.udipEingaengeUmrichter.cXG31_7_I_5;
-bpSensorAuslauf      := Antrieb.udipEingaengeUmrichter.cXG31_2_I_2;
+in_bSensorEinlauf      := Antrieb.udipEingaengeUmrichter.cXG31_1_I_1;
+in_bSensorEinlaufVorAb := Antrieb.udipEingaengeUmrichter.cXG31_6_I_4;
+in_bSensorAuslaufVorab := Antrieb.udipEingaengeUmrichter.cXG31_7_I_5;
+in_bSensorAuslauf      := Antrieb.udipEingaengeUmrichter.cXG31_2_I_2;
+
+bpSensorEinlauf      := in_bSensorEinlauf;
+bpSensorEinlaufVorAb := in_bSensorEinlaufVorAb;
+bpSensorAuslaufVorab := in_bSensorAuslaufVorab;
+bpSensorAuslauf      := in_bSensorAuslauf;
 
 //-------------------------------------------------------------------------------------------------
 // TIMER, SETTINGS, ETC.

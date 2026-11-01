@@ -11,9 +11,13 @@ VAR
  
   // BOOLEAN 
   blGeblaeseAktiv                 : BOOL;
-  bDurchgangBelegt                : BOOL;
-  blUpdateTimer                   : BOOL; 
+  blUpdateTimer                   : BOOL;
   blZielPositionErreicht          : BOOL; // Ueberpruefung ob die Zielposition aus dem Auftrag mit der aktuellen Position uebereinstimmt [Abweichung + - 1mm]
+
+  // HARDWARE EINGAENGE
+  in_bSensorNicht84Grad           : BOOL;
+  in_bSensorNicht90Grad           : BOOL;
+  in_bDurchgangBelegt             : BOOL;
     
   // TRIGGER 
   rtlAutomatikActiv               : R_TRIG;

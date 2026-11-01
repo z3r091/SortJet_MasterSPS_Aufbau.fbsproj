@@ -50,6 +50,8 @@ VAR
 
   // HARDWARE EINGAENGE
   in_bMotorstarter_Geblaese_OK : BOOL;
+  in_bSensorNicht84Grad        : BOOL;
+  in_bSensorNicht90Grad        : BOOL;
 
 
 

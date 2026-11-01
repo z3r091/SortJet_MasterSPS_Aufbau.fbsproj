@@ -72,7 +72,7 @@ IF ( blErsterZyklus  ) THEN
   END_IF
 END_IF
   
-bpAbschrankung_Geschlossen:= BeweglicheAbschrankung.inStatusZylinderEingefahren;
+bpAbschrankung_Geschlossen:= BeweglicheAbschrankung.in_bStatusZylinderEingefahren;
   
  
 //-------------------------------------------------------------------------------------------------
@@ -165,7 +165,7 @@ bpStatusDurchgangNichtGeschlossen       := NOT bpSKGeschlossen;
 out_bLeuchteTasterQuittierungDurchgang1 := out_bLeuchteTasterQuittierungDurchgang2 := NOT bpDurchgangGeschlossen;
 
 // Aufruf der Unterbausteine
-BeweglicheAbschrankung(bpAktivieren:=ppParameterBaustein.bBeweglicheAbschrankung, bpReset := Job_Stationen.abpReset[apgMKSicherheiskreis[ppParameterBaustein.eZuBlockierenderSK].eaAutomatikkreis[1]],bpVariablen_Mappen := TRUE);
+BeweglicheAbschrankung(bpAktivieren:=ppParameterBaustein.bBeweglicheAbschrankung, bpReset := Job_Stationen.abpReset[apgMKSicherheiskreis[ppParameterBaustein.eZuBlockierenderSK].eaAutomatikkreis[1]]);
 
 
 // Meldungen für den Unterbaustein

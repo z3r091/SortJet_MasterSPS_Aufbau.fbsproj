@@ -16,15 +16,15 @@ rtlKipparmeAnschlaegeAb(CLK := in_bTasterKipparmeAb);
 IF rtlKipparmeAnschlaegeAuf.Q
    AND NOT in_bSensorKipparmeAnschlaegeOben
 THEN
-  outbKipparmeAnschlaegeAb  := FALSE;
-  outbKipparmeAnschlaegeAuf := TRUE;
+  out_bKipparmeAnschlaegeAb  := FALSE;
+  out_bKipparmeAnschlaegeAuf := TRUE;
 END_IF
 
 IF rtlKipparmeAnschlaegeAb.Q
    AND NOT in_bSensorKipparmeNichtUnten
 THEN
-  outbKipparmeAnschlaegeAb  := TRUE;
-  outbKipparmeAnschlaegeAuf := FALSE;
+  out_bKipparmeAnschlaegeAb  := TRUE;
+  out_bKipparmeAnschlaegeAuf := FALSE;
 END_IF
 
 // Kipparme auf fahren
@@ -33,10 +33,10 @@ IF in_bTasterKipparmeAuf
    AND in_bSensorKipparmeNichtOben
    AND NOT in_bTasterKipparmeAb
 THEN
-  outbKipparmeAuf := TRUE;
-  outbKipparmeAb  := FALSE;
+  out_bKipparmeAuf := TRUE;
+  out_bKipparmeAb  := FALSE;
 ELSE
-  outbKipparmeAuf := FALSE;
+  out_bKipparmeAuf := FALSE;
 END_IF
 
 // Kipparme ab fahren
@@ -44,9 +44,9 @@ IF in_bTasterKipparmeAb
    AND in_bSensorKipparmeNichtUnten
    AND NOT in_bTasterKipparmeAuf
 THEN
-  outbKipparmeAuf := FALSE;
-  outbKipparmeAb  := TRUE;
+  out_bKipparmeAuf := FALSE;
+  out_bKipparmeAb  := TRUE;
 ELSE
-  outbKipparmeAb := FALSE;
+  out_bKipparmeAb := FALSE;
 END_IF
 END_ACTION

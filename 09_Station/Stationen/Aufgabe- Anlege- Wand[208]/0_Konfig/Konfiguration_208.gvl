@@ -51,8 +51,6 @@ VAR_CONFIG
                                                                                                         
                                                                                                         
   // Kippen                                                                                             
-  Globale_Bausteine.Combiwand208.Kippen.in_bSensorNicht90Grad                             AT %MX1.0     : BOOL; // OPTION
-  Globale_Bausteine.Combiwand208.Kippen.in_bSensorNicht84Grad                             AT %MX1.0     : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Kippen.in_bMotorschutzschalter_OK                        AT %MX1.1     : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Kippen.in_bMotorstarter_OK                               AT %MX1.1     : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Kippen.in_bLSBremse_OK                                   AT %MX1.1     : BOOL; // OPTION

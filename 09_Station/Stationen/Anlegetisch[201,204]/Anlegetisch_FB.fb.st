@@ -149,10 +149,10 @@ VAR
   in_bSensorKipparmeAnschlaegeOben         AT %I* : BOOL;
   in_bSensorKipparmeAnschlaegeUnten        AT %I* : BOOL;
  
-  outbKipparmeAuf                          AT %Q* : BOOL;
-  outbKipparmeAb                           AT %Q* : BOOL;
-  outbKipparmeAnschlaegeAuf                AT %Q* : BOOL;
-  outbKipparmeAnschlaegeAb                 AT %Q* : BOOL;
+  out_bKipparmeAuf                         AT %Q* : BOOL;
+  out_bKipparmeAb                          AT %Q* : BOOL;
+  out_bKipparmeAnschlaegeAuf               AT %Q* : BOOL;
+  out_bKipparmeAnschlaegeAb                AT %Q* : BOOL;
   
 
   // HARDWARE AUSGAENGE

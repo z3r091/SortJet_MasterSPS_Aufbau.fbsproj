@@ -13,16 +13,10 @@ VAR_INPUT
   bpAktivieren       : BOOL;
   bpStartAusfahren   : BOOL; // BETRIEBTYP: Zylinder wird ausgefahren
   bpStartEinfahren   : BOOL; // BETRIEBTYP: Zylinder wird eingefahren
-  bpVariablen_Mappen : BOOL;
-  
-  
-  // HARDWARE EINGAENGE
-  inStatusZylinderAusgefahren          : BOOL; // STATUS: Sensor meldt ausgfahren  [Oben]
-  inStatusZylinderEingefahren          : BOOL; // STATUS: Sensor meldt eingefahren [Unten]
 
-  in_bStatusZylinderAusgefahren   : BOOL; // STATUS: Sensor meldt ausgfahren  [Oben]
+  // HARDWARE EINGAENGE
+  in_bStatusZylinderAusgefahren   : BOOL; // STATUS: Sensor meldt ausgefahren  [Oben]
   in_bStatusZylinderEingefahren   : BOOL; // STATUS: Sensor meldt eingefahren [Unten]
-  
 
 END_VAR
 VAR_OUTPUT
@@ -89,23 +83,18 @@ ELSE
     (* Hinweis:
        - Baustein- Aktionen
     *)
-    IF NOT bpVariablen_Mappen THEN
-      inStatusZylinderAusgefahren := in_bStatusZylinderAusgefahren;
-      inStatusZylinderEingefahren := in_bStatusZylinderEingefahren;
-    END_IF
-    
     Ausfahren();
     Einfahren();
 
     // Ausgang:
     //   - Status des Zylinders
-    IF (      inStatusZylinderAusgefahren
-         AND NOT inStatusZylinderEingefahren )
+    IF (      in_bStatusZylinderAusgefahren
+         AND NOT in_bStatusZylinderEingefahren )
     THEN
       epStatusZylinder := eZylinderAusgefahren;
 
-    ELSIF(    inStatusZylinderEingefahren
-           AND NOT inStatusZylinderAusgefahren )
+    ELSIF(    in_bStatusZylinderEingefahren
+           AND NOT in_bStatusZylinderAusgefahren )
     THEN
       epStatusZylinder := eZylinderEingefahren;
 

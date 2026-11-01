@@ -19,7 +19,7 @@ IF (  bpStartAusfahren ) THEN
       *)
       bpDone := FALSE;
 
-      IF ( NOT inStatusZylinderAusgefahren ) THEN
+      IF ( NOT in_bStatusZylinderAusgefahren ) THEN
         tonZylinderAusgefahren(IN := FALSE);
 
         steplAusfahren := STEP_10_E;
@@ -34,7 +34,7 @@ IF (  bpStartAusfahren ) THEN
       *)
       out_bZylinderAusfahren := TRUE;
 
-      IF ( inStatusZylinderAusgefahren ) THEN
+      IF ( in_bStatusZylinderAusgefahren ) THEN
         out_bZylinderAusfahren := FALSE;
         steplAusfahren := STEP_1000_E;
       END_IF
@@ -42,7 +42,7 @@ IF (  bpStartAusfahren ) THEN
       (* Fehlerbehandlung:
          - Zeitliche- Ueberwachung
       *)
-      tonZylinderAusgefahren( IN := NOT inStatusZylinderAusgefahren,
+      tonZylinderAusgefahren( IN := NOT in_bStatusZylinderAusgefahren,
                               PT := cZEITLICHE_UEBERWACHUNG_BEWEGUNG_ZYLINDER );
 
       IF ( tonZylinderAusgefahren.Q ) THEN

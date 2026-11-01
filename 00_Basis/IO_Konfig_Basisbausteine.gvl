@@ -14,8 +14,6 @@ VAR_CONFIG
 
 // *************************************************************************************************
 
- Globale_Bausteine.Linescanner.A_Start_230V_Linescanner                  AT %MX2.0      : BOOL; // OPTION
-
   // Druckluft Wartungseinheiten Shuttle (TODO: Eingaenge aus Schaltplan, Platzhalter %MX1.1 = TRUE = OK)
   StatusAnlage.in_bDruckluft_101_OK                                       AT %MX1.1      : BOOL; // OPTION
   StatusAnlage.in_bDruckluft_102_OK                                       AT %MX1.1      : BOOL; // OPTION

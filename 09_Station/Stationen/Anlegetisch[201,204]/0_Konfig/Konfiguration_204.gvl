@@ -71,10 +71,10 @@ VAR_CONFIG
   Globale_Bausteine.Anlegetisch204.in_bSensorKipparmeNichtOben                           AT %MX1.0    : BOOL; // OPTION
   Globale_Bausteine.Anlegetisch204.in_bSensorKipparmeNichtUnten                          AT %MX1.0    : BOOL; // OPTION
   
-  Globale_Bausteine.Anlegetisch204.outbKipparmeAuf                                       AT %MX2.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch204.outbKipparmeAb                                        AT %MX2.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch204.outbKipparmeAnschlaegeAuf                             AT %MX2.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch204.outbKipparmeAnschlaegeAb                              AT %MX2.0    : BOOL; // OPTION                                                                                                   
+  Globale_Bausteine.Anlegetisch204.out_bKipparmeAuf                                      AT %MX2.0    : BOOL; // OPTION
+  Globale_Bausteine.Anlegetisch204.out_bKipparmeAb                                       AT %MX2.0    : BOOL; // OPTION
+  Globale_Bausteine.Anlegetisch204.out_bKipparmeAnschlaegeAuf                            AT %MX2.0    : BOOL; // OPTION
+  Globale_Bausteine.Anlegetisch204.out_bKipparmeAnschlaegeAb                             AT %MX2.0    : BOOL; // OPTION                                                                                                   
 
 END_VAR
 
