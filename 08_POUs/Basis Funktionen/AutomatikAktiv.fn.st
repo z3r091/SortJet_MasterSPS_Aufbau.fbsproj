@@ -7,85 +7,40 @@
 *)
 FUNCTION AutomatikAktiv : BOOL
 VAR_INPUT
-  wpMmiNummer: WORD;
+  wpMmiNummer : WORD;
 END_VAR
 VAR
-  wlIndex: WORD;
+  wlIndex : WORD;
+  Basis   : REFERENCE TO StationBasisParameter_ST;
 END_VAR
 
+// Hinweis:
+// - Prueft ob einer der Automatikkreise der Station (Shuttle, TS, Station, Faecherwagen, Fremdanlage) aktiv ist
+// - Die Basis wird ueber getBasis bestimmt
+// - Unbekannte Nummer oder nicht zugewiesene MK => FALSE
+// - Ein nicht belegter Automatikkreis (0) beendet die Pruefung
 AutomatikAktiv := FALSE;
 
-CASE wpMmiNummer OF
+Basis REF= getBasis( wpMmiNummer );
 
-  cERSTE_STATION..cLETZTE_STATION:
-    FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cANZAHL_AUTOMATIKKREISE DO
-      IF starrStationBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex] <> 0 THEN
-        IF M_Automatik_Aktiv[starrStationBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex]] THEN
-          AutomatikAktiv := TRUE;
-        END_IF
-      ELSE
-        RETURN;
-      END_IF
-    END_FOR
+IF NOT __ISVALIDREF( Basis ) THEN
+  RETURN;
+END_IF
 
-  cERSTES_SHUTTLE..cLETZTES_SHUTTLE:
-    FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cANZAHL_AUTOMATIKKREISE DO
-      IF starrShuttleBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex] <> 0 THEN
-        IF M_Automatik_Aktiv[starrShuttleBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex]] THEN
-          AutomatikAktiv := TRUE;
-        END_IF
-      ELSE
-        RETURN;
-      END_IF
-    END_FOR
+IF NOT __ISVALIDREF( Basis.stMKs ) THEN
+  RETURN;
+END_IF
 
-  cERSTES_TRANSFERSHUTTLE..cLETZTEs_TRANSFERSHUTTLE:
-    FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cANZAHL_AUTOMATIKKREISE DO
-      IF starrTransferShuttleBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex] <> 0 THEN
-        IF M_Automatik_Aktiv[starrTransferShuttleBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex]] THEN
-          AutomatikAktiv := TRUE;
-        END_IF
-      ELSE
-        RETURN;
-      END_IF
-    END_FOR
+FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cANZAHL_AUTOMATIKKREISE DO
 
-  cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR:
-    FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cANZAHL_AUTOMATIKKREISE DO
-      IF starrFaecherwagenBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex] <> 0 THEN
-        IF M_Automatik_Aktiv[starrFaecherwagenBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex]] THEN
-          AutomatikAktiv := TRUE;
-        END_IF
-      ELSE
-        RETURN;
-      END_IF
-    END_FOR
+  IF Basis.stMKs.eaAutomatikkreis[wlIndex] = 0 THEN
+    RETURN;
+  END_IF
 
-  cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF:
-    FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cANZAHL_AUTOMATIKKREISE DO
-      IF starrFremdanlageAuslaufStationBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex] <> 0 THEN
-        IF M_Automatik_Aktiv[starrFremdanlageAuslaufStationBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex]] THEN
-          AutomatikAktiv := TRUE;
-        END_IF
-      ELSE
-        RETURN;
-      END_IF
-    END_FOR
+  IF M_Automatik_Aktiv[Basis.stMKs.eaAutomatikkreis[wlIndex]] THEN
+    AutomatikAktiv := TRUE;
+    RETURN;
+  END_IF
 
-  cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF:
-    FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cANZAHL_AUTOMATIKKREISE DO
-      IF starrFremdanlageEinlaufStationBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex] <> 0 THEN
-        IF M_Automatik_Aktiv[starrFremdanlageEinlaufStationBasisParameter[wpMmiNummer].stMKs.eaAutomatikkreis[wlIndex]] THEN
-          AutomatikAktiv := TRUE;
-        END_IF
-      ELSE
-        RETURN;
-      END_IF
-    END_FOR
-
-  ELSE
-
-    AutomatikAktiv := FALSE;
-
-END_CASE
+END_FOR
 END_FUNCTION

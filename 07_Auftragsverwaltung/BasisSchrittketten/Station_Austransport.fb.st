@@ -57,7 +57,7 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
       *)
-      IF checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation])  OR bgInbetriebnahmeBit  THEN
+      IF checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation]) THEN
         steplSchritt := STEP_10_E;
       END_IF
 
