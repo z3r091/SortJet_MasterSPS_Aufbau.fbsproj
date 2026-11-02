@@ -42,7 +42,12 @@ VAR
   wlIndexAutomatikkreis              : WORD;
   wlIndexStationsnummer              : WORD;
   wlIndexQuitt                       : WORD;
+  wlIndexQuittStation                : WORD;
+  wlIndexQuittPartner                : WORD;
   wlAktiverZyklus                    : WORD;
+
+  // REFERENCE
+  stlQuittStation                    : REFERENCE TO StationBasisParameter_ST;
 
   // INT
   ailAnzahlStationenCheckAktiv       : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF INT;

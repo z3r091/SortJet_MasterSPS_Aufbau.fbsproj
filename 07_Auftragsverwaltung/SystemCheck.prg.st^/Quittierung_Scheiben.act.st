@@ -10,67 +10,65 @@ ACTION Quittierung_Scheiben
 // QUITTIEREN DER SCHEIBEN IM SYSTEMCHECK [VERBUND]
 //-------------------------------------------------------------------------------------------------
 
-
+(* Hinweis:
+   - Meldet eine Station im Systemcheck eine Scheibe [bQuittScheibe], wird sie wie im Auftrag quittiert
+   - Die Richtung gibt das eigene Verbund- Flag der Station vor, der Partner steht in der Kopplung des Glasinterface
+     [fest aus dem MK oder dynamisch aus Steuerung_VerbundCheck]
+   - Check mit Vorgaenger: Die Station ist das Ziel, der Vorgaenger [aEintransporte] ist die Quelle
+   - Check mit Nachfolger: Die Station ist die Quelle, der Nachfolger [aAustransporte] ist das Ziel
+   - Quittiert wird nur, wenn die Station fuer den Partner quittiert [bStationQuittiertScheibe]
+*)
 FOR wlIndexQuitt := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
 
   IF ( abpCheck[wlIndexQuitt] ) THEN
 
-    IF ( starrStationBasisParameter[cSTATION_207].OutGlasTransport[cWAND_1].bQuittScheibe ) AND StationInAutomatikkreis(starrStationBasisParameter[cSTATION_207].stMKs.eaAutomatikkreis, wlIndexQuitt) THEN
+    FOR wlIndexQuittStation := cERSTE_STATION TO cLETZTE_STATION DO
 
-      wSps2MmiZielStation     := cSTATION_207;
-      wSps2MmiQuellStation    := cSTATION_206;
-      wSps2MmiZielWand        := cWAND_1;
-      wSps2MmiQuellWand       := cWAND_1;
-      dwSps2MmiWartezeit      := 0;
-      wSPS2MMIAuftragstyp     := 0;
-      dwSPS2MMIGenutzteSauger := 0;
-  
-      MsgToMmi(auftragsnr_w := SB0_SPS_QUIT_SHEET_ORDER );
-          
-    END_IF
-    
-    IF ( starrStationBasisParameter[cSTATION_206].OutGlasTransport[cWAND_1].bQuittScheibe ) AND StationInAutomatikkreis(starrStationBasisParameter[cSTATION_207].stMKs.eaAutomatikkreis, wlIndexQuitt) THEN
+      stlQuittStation REF= getBasis( wlIndexQuittStation );
 
-      wSps2MmiZielStation     := cSTATION_206;
-      wSps2MmiQuellStation    := cSTATION_205;
-      wSps2MmiZielWand        := cWAND_1;
-      wSps2MmiQuellWand       := cWAND_1;
-      dwSps2MmiWartezeit      := 0;
-      wSPS2MMIAuftragstyp     := 0;
-      dwSPS2MMIGenutzteSauger := 0;
-  
-      MsgToMmi(auftragsnr_w := SB0_SPS_QUIT_SHEET_ORDER );
-          
-    END_IF
+      IF    StationInAutomatikkreis( stlQuittStation.stMKs.eaAutomatikkreis, wlIndexQuitt )
+            AND stlQuittStation.OutGlasTransport[cWAND_1].bQuittScheibe
+      THEN
 
-    IF ( starrStationBasisParameter[cSTATION_205].OutGlasTransport[cWAND_1].bQuittScheibe ) AND StationInAutomatikkreis(starrStationBasisParameter[cSTATION_205].stMKs.eaAutomatikkreis, wlIndexQuitt) THEN
+        // Eintransport: Station = Ziel
+        IF stlQuittStation.bCheckMitVorgaenger[cWAND_1] THEN
 
-      wSps2MmiZielStation     := cSTATION_205;
-      wSps2MmiQuellStation    := cSTATION_204;
-      wSps2MmiZielWand        := cWAND_1;
-      wSps2MmiQuellWand       := cWAND_1;
-      dwSps2MmiWartezeit      := 0;
-      wSPS2MMIAuftragstyp     := 0;
-      dwSPS2MMIGenutzteSauger := 0;
-  
-      MsgToMmi(auftragsnr_w := SB0_SPS_QUIT_SHEET_ORDER );
-          
-    END_IF
+          wlIndexQuittPartner := stlQuittStation.InGlasTransportVorgaenger[cWAND_1].stStationsNummern.NummerIntern;
 
-    IF ( starrStationBasisParameter[cSTATION_202].OutGlasTransport[cWAND_1].bQuittScheibe ) AND StationInAutomatikkreis(starrStationBasisParameter[cSTATION_202].stMKs.eaAutomatikkreis, wlIndexQuitt) THEN
+          IF PruefungWertImIntervall( wlIndexQuittPartner, cERSTES_SHUTTLE, cLETZTE_FREMDANLAGE_EINLAUF ) THEN
+            IF    ( stlQuittStation.stMKs.stSchnittstellendaten.aEintransporte.Station[wlIndexQuittPartner] <> TransportRichtung_EN.Default )
+                  AND stlQuittStation.stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[wlIndexQuittPartner]
+            THEN
+              ScheibenQuittierung( wpQuellstation := wlIndexQuittPartner,
+                                   wpZielStation  := wlIndexQuittStation );
+            END_IF
+          END_IF
 
-      wSps2MmiZielStation     := cSTATION_202;
-      wSps2MmiQuellStation    := cSTATION_201;
-      wSps2MmiZielWand        := cWAND_1;
-      wSps2MmiQuellWand       := cWAND_1;
-      dwSps2MmiWartezeit      := 0;
-      wSPS2MMIAuftragstyp     := 0;
-      dwSPS2MMIGenutzteSauger := 0;
-  
-      MsgToMmi(auftragsnr_w := SB0_SPS_QUIT_SHEET_ORDER );
-          
-    END_IF
+        // Austransport: Station = Quelle
+        ELSIF stlQuittStation.bCheckMitNachfolger[cWAND_1] THEN
 
+          wlIndexQuittPartner := stlQuittStation.InGlasTransportNachfolger[cWAND_1].stStationsNummern.NummerIntern;
+
+          IF PruefungWertImIntervall( wlIndexQuittPartner, cERSTES_SHUTTLE, cLETZTE_FREMDANLAGE_EINLAUF ) THEN
+            IF    ( stlQuittStation.stMKs.stSchnittstellendaten.aAustransporte.Station[wlIndexQuittPartner] <> TransportRichtung_EN.Default )
+                  AND stlQuittStation.stMKs.stSchnittstellendaten.aAustransporte.bStationQuittiertScheibe[wlIndexQuittPartner]
+            THEN
+              IF stlQuittStation.stMKs.stSchnittstellendaten.bStationIstShuttle THEN
+                ScheibenQuittierung( wpQuellstation := wlIndexQuittStation,
+                                     wpZielStation  := wlIndexQuittPartner,
+                                     wpAuftragsTyp  := 1 );
+              ELSE
+                ScheibenQuittierung( wpQuellstation := wlIndexQuittStation,
+                                     wpZielStation  := wlIndexQuittPartner );
+              END_IF
+            END_IF
+          END_IF
+
+        END_IF
+
+      END_IF
+
+    END_FOR
 
   END_IF
 

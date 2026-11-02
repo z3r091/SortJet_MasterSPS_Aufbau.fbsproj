@@ -236,6 +236,7 @@ TYPE Fehlerkonstanten_EN :
   cMELDUNG_SYSTEMCHECK_NICHT_MOEGLICH_TS_BETRIEBSSTOP                              := 314,
   cMELDUNG_SYSTEMCHECK_NICHT_MOEGLICH_BEIDE_SAUGER_AUSGEFAHREN                     := 315,
   cMELDUNG_SYSTEMCHECK_HUB_UNDEFINIERT                                             := 316,
+  cMELDUNG_SYSTEMCHECK_VERBUND_ANDERER_AK_NOETIG                                   := 317,  // Wildcard: Station:%d | Automatikkreis: %d (muss zusaetzlich den Systemcheck machen)
 
   // ---------------------------------------------------------------------------------------
   // KATEGORIE: ANTRIEBE

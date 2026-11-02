@@ -46,7 +46,10 @@ VAR_GLOBAL
                                                                        bScheibenmessungEintransport              := FALSE,
                                                                        bScheibenmessungSensorVorabAuslauf        := FALSE
                                                                       ),
-                                                 // stAnlegetisch
+                                                 stAnlegetisch   :=  ( bIstAnlegestation                         := TRUE,
+                                                                       bAnschlagAutomatischAusfahren             := FALSE,
+                                                                       bAnlegetischMitEintransportVorgaenger     := FALSE
+                                                                      ),
                                                  // stEckuebergabe
                                                  bVorAbKomponentenAnsteuerung              := FALSE,
                                                  bVerstellungEinAusGefahrenLogikDrehen     := FALSE,

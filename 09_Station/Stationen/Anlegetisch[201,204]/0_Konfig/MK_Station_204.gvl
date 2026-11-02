@@ -35,6 +35,7 @@ VAR_GLOBAL
                                                                        bOptionSystemCheckScheibeMittigLegen        := FALSE
                                                                      ),  
                                                  stAnlegetisch   :=  ( 
+                                                                       bIstAnlegestation                         := TRUE,
                                                                        bAnschlagAutomatischAusfahren             := TRUE,
                                                                        bAnlegetischMitEintransportVorgaenger     := FALSE
                                                                      ),
