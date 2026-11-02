@@ -22,17 +22,11 @@ VAR_INPUT
 END_VAR
 VAR_OUTPUT
 
-  // DWORD
-  dwpHandfunktionenReturn : DWORD; // Aktive Handfunktionen, gleiche Bitbelegung wie dwlHandfunktionen
-
   // ENUM
   epTypeHoehenmessung         : ModusHoehenvermessung_EN;
 
 END_VAR
 VAR
-
-  // Rueckmeldung der Handfunktionen zum MMI
-  dwlHandfunktionenZuletztGesendet : DWORD;
 
   // BOOLEAN
   blFreigabeGeblaeseStartenSensor : BOOL := FALSE;  // Durch den Einlaufsensor wird das Gebläase gestartet

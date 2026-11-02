@@ -66,6 +66,7 @@ SUPER^(BasisStationsParameter := BasisStationsParameter);
 // DEAKTIVIEREN
 //-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
+  HandfunktionenStatus();
   RETURN;
 END_IF
 

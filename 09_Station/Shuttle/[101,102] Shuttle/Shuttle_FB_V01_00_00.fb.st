@@ -31,6 +31,9 @@ VAR_OUTPUT
   // REAL
   rpAktuelleFaecherwagenPosition         : REAL;
 
+  // DWORD
+  dwpHandfunktionenReturn                : DWORD; // Aktive Handfunktionen, gleiche Bitbelegung wie dwlHandfunktionen
+
 END_VAR
 VAR
 
@@ -59,7 +62,8 @@ VAR
   wlIndex                    : WORD;
 
   // DWORD
-  dwlHandfunktionen : DWORD;  // Handfunktionen: 0..31 Bit
+  dwlHandfunktionen                : DWORD;  // Handfunktionen: 0..31 Bit
+  dwlHandfunktionenZuletztGesendet : DWORD;  // Rueckmeldung der Handfunktionen zum MMI
 
   // REAL
   rlLetztePosition  : REAL;
@@ -251,6 +255,7 @@ IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
   BasisStationsParameter.bFehler       := FALSE;
   BasisStationsParameter.wFehlerNummer := 0;
 
+  HandfunktionenStatus();
   RETURN;
 
 END_IF

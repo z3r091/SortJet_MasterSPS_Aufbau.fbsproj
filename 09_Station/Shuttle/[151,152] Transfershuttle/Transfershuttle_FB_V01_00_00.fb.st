@@ -39,7 +39,8 @@ VAR_OUTPUT
   wpAusnahmefehlerTyp    : WORD := WORD#0; // Sensorfehlertyp: 0 = Allgemeiner Fehler / 1 = Einlauf / 2 = Auslauf / 3 = Ein- Aus- Lauf
 
   // DWORD 
-  dwlHandfunktionen      : DWORD;  // Handfunktionen: 0..31 Bit
+  dwlHandfunktionen       : DWORD;  // Handfunktionen: 0..31 Bit
+  dwpHandfunktionenReturn : DWORD;  // Aktive Handfunktionen, gleiche Bitbelegung wie dwlHandfunktionen
 
   // INT 
   iPhaseSpeichervalidierung : INT;
@@ -57,7 +58,10 @@ VAR_OUTPUT
 END_VAR
 VAR
 
-  // BOOLEAN 
+  // Rueckmeldung der Handfunktionen zum MMI
+  dwlHandfunktionenZuletztGesendet           : DWORD;
+
+  // BOOLEAN
   blErsterZyklus                             : BOOL := TRUE; // Initialisierung
   blZielPositionErreicht                     : BOOL;
   blShuttleKannSicherVerfahrenWerden         : BOOL := FALSE;
@@ -181,6 +185,7 @@ IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
   BasisStationsParameter.bFehler                := FALSE;
   BasisStationsParameter.wFehlerNummer          := 0;
 
+  HandfunktionenStatus();
   RETURN;
 
 END_IF

@@ -36,6 +36,7 @@ THEN
     STEP_10_E:
       // Shuttle auf Position fahren
       Querfahrt.rpDestinationPosition := BasisStationsParameter.pAuftragVorabPositionierung.rVorabPosition;
+      Querfahrt.wpAuftragsTyp         := BasisStationsParameter.pAuftragVorabPositionierung.pPositionierAuftrag.wAuftragstyp; // Bit 1 = Positionierauftrag mit Messgeschwindigkeit
 
       steplVorabpositionierung := STEP_20_E;
 

@@ -53,6 +53,7 @@ THEN
       // Shuttle auf Position fahren
       IF ( Glastransport.bpBereitZumVerfahren AND blShuttleKannSicherVerfahrenWerden ) THEN
         Querfahrt.rpDestinationPosition := BasisStationsParameter.pAuftragVorabPositionierung.rVorabPosition;
+        Querfahrt.wpAuftragsTyp         := BasisStationsParameter.pAuftragVorabPositionierung.pPositionierAuftrag.wAuftragstyp; // Bit 1 = Positionierauftrag mit Messgeschwindigkeit
         steplVorabpositionierung := STEP_20_E;
       END_IF
 

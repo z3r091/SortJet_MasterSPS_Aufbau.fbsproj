@@ -25,7 +25,7 @@ VAR_INPUT
   bpLangsamfahrtNockenAktivieren         : BOOL;
 
   // WORD
-  wpAuftragsTyp                          : WORD; // Bit 1 = Positionierauftrag mit Messgeschwindigkeit (RackSuche); Anbindung folgt mit P2.1
+  wpAuftragsTyp                          : WORD; // Bit 1 = Positionierauftrag mit Messgeschwindigkeit (RackSuche), aus dem Positionierauftrag (Vorabpositionierung)
 
   // REAL
   rpDestinationPosition                  : REAL; // ZielPosition  

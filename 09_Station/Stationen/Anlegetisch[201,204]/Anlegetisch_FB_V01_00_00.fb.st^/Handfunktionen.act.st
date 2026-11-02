@@ -11,12 +11,10 @@ ACTION Handfunktionen
 //-------------------------------------------------------------------------------------------------
 IF( blBetriebsartHand )THEN
 
-  // Handfunktionen
-  //   - Riemen vor
-  //   - Riemen zurück
-  //   - Anschlaege auf/ab
-  //   - Hubpalette heben / senken
-  //   - Geblaese
+  // Handfunktionen (Bitverteilung einheitlich fuer alle Stationen, 4 Seiten zu 7 Knoepfen)
+  //   - Seite 1:  0 Geblaese, 1/2 Riemen vor/zurueck, 5/6 Hubrahmen heben/senken
+  //   - Seite 3:  18/19/20 Messachse vor/zurueck/Referenz
+  //   - Seite 4:  21/22 Anschlaege auf/ab
 
   // Handfunktion:
   //   - Handplus
@@ -47,11 +45,11 @@ IF( blBetriebsartHand )THEN
        => Impuls Ventil
   *)
   IF NOT blMerkerAnschlagTasterFahren THEN
-    Anschlag.bpStartAusfahren := (        ( dwlHandfunktionen.3 OR bgVISUAnschlaegeAuf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
-                                   AND NOT ( dwlHandfunktionen.4 OR bgVISUAnschlaegeAb[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])  );
+    Anschlag.bpStartAusfahren := (        ( dwlHandfunktionen.21 OR bgVISUAnschlaegeAuf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
+                                   AND NOT ( dwlHandfunktionen.22 OR bgVISUAnschlaegeAb[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])  );
     
-    Anschlag.bpStartEinfahren := (        ( dwlHandfunktionen.4 OR bgVISUAnschlaegeAb[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
-                                   AND NOT ( dwlHandfunktionen.3 OR bgVISUAnschlaegeAuf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])  );
+    Anschlag.bpStartEinfahren := (        ( dwlHandfunktionen.22 OR bgVISUAnschlaegeAb[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
+                                   AND NOT ( dwlHandfunktionen.21 OR bgVISUAnschlaegeAuf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])  );
   END_IF
 
   (* Hinweis:
@@ -99,26 +97,26 @@ IF( blBetriebsartHand )THEN
                                           OR ( Hubrahmen.epStatusZylinder = eZylinderEingefahren ) );
 
   // Hoehenkontrolle
-  Messachse.bpHandplus := ( (  dwlHandfunktionen.7
+  Messachse.bpHandplus := ( (  dwlHandfunktionen.18
                               OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-                            AND NOT(  dwlHandfunktionen.8
-                                     OR dwlHandfunktionen.9
+                            AND NOT(  dwlHandfunktionen.19
+                                     OR dwlHandfunktionen.20
                                      OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
                                      OR bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
 
 
-  Messachse.bpHandminus := ( ( dwlHandfunktionen.8
+  Messachse.bpHandminus := ( ( dwlHandfunktionen.19
                                OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-                             AND NOT(  dwlHandfunktionen.7
-                                      OR dwlHandfunktionen.9
+                             AND NOT(  dwlHandfunktionen.18
+                                      OR dwlHandfunktionen.20
                                       OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
                                       OR bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
 
 
-  Messachse.bpReferenz  := ( ( dwlHandfunktionen.9
+  Messachse.bpReferenz  := ( ( dwlHandfunktionen.20
                                OR bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-                             AND NOT(  dwlHandfunktionen.7
-                                      OR dwlHandfunktionen.8
+                             AND NOT(  dwlHandfunktionen.18
+                                      OR dwlHandfunktionen.19
                                       OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
                                       OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
 

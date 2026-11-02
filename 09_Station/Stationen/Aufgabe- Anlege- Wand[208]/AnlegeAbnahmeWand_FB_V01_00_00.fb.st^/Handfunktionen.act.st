@@ -9,6 +9,12 @@ ACTION Handfunktionen
 //-------------------------------------------------------------------------------------------------
 // AKTION HANDFUNKTIONEN
 //-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Bitverteilung aus der Oberfläche (einheitlich fuer alle Stationen, 4 Seiten zu 7 Knoepfen):
+     Seite 1:  0 Geblaese (Aktion Geblaese), 1/2 Glastransport vor/zurueck
+     Seite 2:  7 Kippen 84 Grad, 8 Kippen 90 Grad
+     Seite 3:  18/19/20 Messachse vor/zurueck/Referenz
+*)
 IF ( blBetriebsartHand ) THEN
 
   // Handfunktion
@@ -26,13 +32,13 @@ IF ( blBetriebsartHand ) THEN
   //   - Kippen
   IF (BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1]) THEN
 
-    IF ( BasisStationsParameter.dwHandfunktionen.7 OR bgVISUKippenW1Hoch[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-       AND NOT ( BasisStationsParameter.dwHandfunktionen.8 OR bgVISUKippenW1Runter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+    IF ( BasisStationsParameter.dwHandfunktionen.8 OR bgVISUKippenW1Hoch[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+       AND NOT ( BasisStationsParameter.dwHandfunktionen.7 OR bgVISUKippenW1Runter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
     THEN
       Kippen.epZielPosition := eKippen_Position_90Grad;
       Kippen.bpPositionieren := TRUE;
-    ELSIF ( BasisStationsParameter.dwHandfunktionen.8 OR bgVISUKippenW1Runter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-          AND NOT ( BasisStationsParameter.dwHandfunktionen.7 OR bgVISUKippenW1Hoch[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+    ELSIF ( BasisStationsParameter.dwHandfunktionen.7 OR bgVISUKippenW1Runter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+          AND NOT ( BasisStationsParameter.dwHandfunktionen.8 OR bgVISUKippenW1Hoch[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
     THEN
       Kippen.epZielPosition := eKippen_Position_84Grad;
       Kippen.bpPositionieren := TRUE;
@@ -45,21 +51,21 @@ IF ( blBetriebsartHand ) THEN
 
   // Handfunktion:
   //   - Kippen
-  Messachse.bpHandplus     := (         ( BasisStationsParameter.dwHandfunktionen.3 OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-                                AND NOT (    BasisStationsParameter.dwHandfunktionen.4 
-                                          OR BasisStationsParameter.dwHandfunktionen.5 
+  Messachse.bpHandplus     := (         ( BasisStationsParameter.dwHandfunktionen.18 OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+                                AND NOT (    BasisStationsParameter.dwHandfunktionen.19 
+                                          OR BasisStationsParameter.dwHandfunktionen.20 
                                           OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] 
                                           OR  bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
                          
-  Messachse.bpHandminus    := (         ( BasisStationsParameter.dwHandfunktionen.4 OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-                                AND NOT (    BasisStationsParameter.dwHandfunktionen.3
-                                          OR BasisStationsParameter.dwHandfunktionen.5 
+  Messachse.bpHandminus    := (         ( BasisStationsParameter.dwHandfunktionen.19 OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+                                AND NOT (    BasisStationsParameter.dwHandfunktionen.18
+                                          OR BasisStationsParameter.dwHandfunktionen.20 
                                           OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]  
                                           OR bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
 
-  Messachse.bpHandReferenz := (         ( BasisStationsParameter.dwHandfunktionen.5 OR bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-                                AND NOT (    BasisStationsParameter.dwHandfunktionen.3
-                                          OR BasisStationsParameter.dwHandfunktionen.4
+  Messachse.bpHandReferenz := (         ( BasisStationsParameter.dwHandfunktionen.20 OR bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+                                AND NOT (    BasisStationsParameter.dwHandfunktionen.18
+                                          OR BasisStationsParameter.dwHandfunktionen.19
                                           OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] 
                                           OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
 
@@ -68,4 +74,6 @@ IF ( blBetriebsartHand ) THEN
   
   
 END_IF
+
+HandfunktionenStatus();
 END_ACTION

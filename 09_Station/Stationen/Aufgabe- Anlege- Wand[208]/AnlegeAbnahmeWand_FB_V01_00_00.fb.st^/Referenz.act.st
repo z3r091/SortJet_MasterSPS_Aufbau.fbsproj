@@ -11,7 +11,7 @@ ACTION Referenz
 //-------------------------------------------------------------------------------------------------
 // Referenzieren:
 //   - Die Station besitzt keinen Antrieb der Referenzieren muesste
-IF ( blBetriebsartReferenz OR BasisStationsParameter.dwHandfunktionen.5 )THEN
+IF ( blBetriebsartReferenz )THEN
   CASE steplReferenz OF
     // REFERENZ ============================
     STEP_0_E:

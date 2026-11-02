@@ -20,6 +20,9 @@ END_VAR
 
 VAR_OUTPUT
 
+  // DWORD
+  dwpHandfunktionenReturn    : DWORD; // Aktive Handfunktionen, gleiche Bitbelegung wie dwlHandfunktionen (Aktion HandfunktionenStatus der Station)
+
 END_VAR
 
 VAR
@@ -40,8 +43,9 @@ VAR
   wlIndex                    : WORD;
 
   // DWORD
-  dwlHandfunktionen          : DWORD;  // Handfunktionen: 0..31 Bit
-  
+  dwlHandfunktionen                : DWORD;  // Handfunktionen: 0..31 Bit
+  dwlHandfunktionenZuletztGesendet : DWORD;  // Rueckmeldung der Handfunktionen zum MMI
+
   // STEPS
   steplReset                 : Steps_TE;
   steplCheck                 : Steps_TE;
