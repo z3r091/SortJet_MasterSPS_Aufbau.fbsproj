@@ -38,6 +38,8 @@ POU-Seite. Die POU-Seite wird fuer ein neues Projekt nicht angefasst.
 
 5. Sicherheit
    - 05_Sicherheitstechnik/0_Konfig: Konfiguration_Sicherheit, MK_Sicherheitskreise
+   - 05_Sicherheitstechnik/Interface_SLC: Austausch mit der Sicherheitssteuerung (SLC) an das Safety-Projekt anpassen
+   - 05_Sicherheitstechnik/NotHalt: Not-Halt-Kreise und ihre Meldungen (Aktion Meldungen) anpassen
    - Safety Exchange (Austauschvariablen) und das Safety-Projekt passend dazu
 
 6. Schnittstellen zu Fremdanlagen
