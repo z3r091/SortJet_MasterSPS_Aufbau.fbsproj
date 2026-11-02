@@ -59,7 +59,7 @@ IF blBetriebsartReset THEN
       blRolltorAb                        := FALSE;
       BasisStationsParameter.bFehler     := FALSE;
 
-      Ampel_AK[1,1].bpHinweisFWEingriffErforderlich := FALSE;
+      M_AmpelHinweisEingriff( bpAktiv := FALSE );
     
       wpFehlerNr := 0;
       steplStationReset := STEP_1000_E;

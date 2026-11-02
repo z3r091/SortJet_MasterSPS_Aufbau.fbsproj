@@ -49,7 +49,10 @@ VAR_OUTPUT
   
   // WORD
   wpFehlerNr                        : WORD; // FEHLER-AUSWERTUNG: Fehlernummer[Const]
-  
+
+  // DWORD
+  dwpHandfunktionenReturn           : DWORD; // Aktive Handfunktionen, gleiche Bitbelegung wie dwpHandfunktionen
+
 END_VAR
 VAR
 
@@ -90,7 +93,11 @@ VAR
   blLuftAbschaltungS1              : BOOL;
   blLuftAbschaltungS2              : BOOL;
   blVentilReset                    : BOOL;
-  
+  blLinVorBeiRolltorFahrt          : BOOL; // Einschleusen: Lineareinheit darf vorfahren, waehrend das Rolltor hochfaehrt
+  blRolltorAbBeiLinZurueck         : BOOL; // Ausschleusen: Rolltor darf schliessen, waehrend die Lineareinheit zurueckfaehrt
+  blOberwagenBewegenGesperrt       : BOOL; // Rolltor nicht oben + Greifer haelt Oberwagen + Lineareinheit nicht hinten/SH -> Lineareinheit darf nicht fahren
+  blHandFreigabe                   : BOOL; // Handfunktionen nur im Handbetrieb zulassen
+
   // jeweils Zusammenfassung der beiden Eingänge
   blLinearEinheitVorne             : BOOL;  
   blLinearEinheitHinten            : BOOL;
@@ -211,8 +218,12 @@ VAR
   rtlSafetyError                     : R_TRIG;
   rtlRFID_Schreiben                  : R_TRIG;
 
+  // DWORD
+  dwlHandfunktionenZuletztGesendet   : DWORD; // Rueckmeldung der Handfunktionen zum MMI
+
   // ENUM
   eLetzterStatus                     : eLetzter_FW_Status;
+  elLetzterStatusGesendet            : eLetzter_FW_Status; // zuletzt ans MMI gemeldeter Status (STATION_UPDATE)
 
 END_VAR
 
@@ -334,6 +345,7 @@ IF ( blErsterZyklus ) THEN
 END_IF
 
 IF NOT __ISVALIDREF(BasisStationsParameter.stMKs) THEN
+  dwpHandfunktionenReturn := DWORD#0;
   RETURN;
 END_IF
 
@@ -406,6 +418,7 @@ IF (  BasisStationsParameter.stMKs.bDeaktivieren ) THEN
   blRolltorAuf                := FALSE;
   blRolltorAb                 := FALSE;
 
+  HandfunktionenStatus();
   RETURN;
 
 END_IF
@@ -477,6 +490,23 @@ Meldungen();
 Handfunktionen();
 
 Ausgaenge();
+
+//-------------------------------------------------------------------------------------------------
+// STATUS AN MMI MELDEN
+//-------------------------------------------------------------------------------------------------
+// Hinweis:
+//   - Der fuer den Systemcheck gemerkte Status (eLetzterStatus) wird bei jeder Aenderung und bei
+//     neuer MMI-Verbindung gemeldet; das MMI zeigt die Geraete der Station passend dazu an
+IF ( eLetzterStatus <> elLetzterStatusGesendet ) OR Job.rtlMmiOk.Q THEN
+  stStationUpdate.wStationsNummer       := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+  stStationUpdate.eUpdateTyp            := StationUpdateTyp_EN.FW_STATUS;
+  stStationUpdate.wAnzahlWerte          := 1;
+  stStationUpdate.astWerte[1].eDatenTyp := UpdateDatenTyp_EN.TYP_WORD;
+  stStationUpdate.astWerte[1].wWert     := TO_WORD( eLetzterStatus );
+  MsgToMmi( auftragsnr_w := SB0_SPS_STATION_UPDATE );
+
+  elLetzterStatusGesendet := eLetzterStatus;
+END_IF
 
 //-------------------------------------------------------------------------------------------------
 // TASTER
@@ -574,9 +604,25 @@ END_IF
 // - Wenn kein Unterwagen vorhanden ist und das Rolltor geschlossen ist sollte auch kein Oberwagen in der Anlage sein
  
 tonUntergestellErkannt (IN:= NOT bpUntergestellErkannt, PT:= T#2S);
-   
-IF (tonUntergestellErkannt.Q 
-     OR in_bNichtRolltorGeoeffnet ) THEN
+
+// Oberwagen nie bewegen (reinziehen / rausschieben), solange das Rolltor nicht oben ist und die Lineareinheit ihn haelt:
+//   - Greifer nicht offen und Lineareinheit nicht in Endlage hinten / SH -> Lineareinheit steht am Oberwagen
+//   - z.B. Abbruch Einschleusen (Rolltor-Timeout) nachdem die Lineareinheit am FW gegriffen hat
+//   - Hat Vorrang vor dem Zwangs-Zurueck unten, Ausgaenge bleiben aus bis Rolltor oben oder Greifer offen
+//   - Die mechanische Oberwagensperre schaltet gegenlaeufig zum Greifer und wird nicht eigens angesteuert
+blOberwagenBewegenGesperrt :=     BasisStationsParameter.stMKs.stStationsAufbau.bRolltor
+                              AND in_bNichtRolltorGeoeffnet
+                              AND NOT blGreiferOffen
+                              AND NOT blLinearEinheitHinten
+                              AND NOT blLinearEinheitSH;
+
+IF blOberwagenBewegenGesperrt THEN
+  out_bLinearEinheitZurueck := FALSE;
+  out_bLinearEinheitVor     := FALSE;
+  blVentilReset             := FALSE;
+
+ELSIF (    tonUntergestellErkannt.Q
+        OR ( in_bNichtRolltorGeoeffnet AND NOT blLinVorBeiRolltorFahrt ) ) THEN // Einschleusen: Vorfahren waehrend Rolltor hochfaehrt erlaubt
   
   blVentilReset := TRUE;
   

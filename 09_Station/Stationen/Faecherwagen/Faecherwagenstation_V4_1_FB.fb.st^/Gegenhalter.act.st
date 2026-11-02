@@ -71,9 +71,7 @@ THEN
       blGegenhalterOeffnenDone:=TRUE;
 
   END_CASE
-END_IF
-
-IF NOT blGegenhalterOeffnen THEN
+ELSE
 
   IF ( steplGegenhalterOeffnen > STEP_0_E ) THEN
     out_bGegenhalterAusfahren := FALSE;
@@ -157,9 +155,7 @@ THEN
 
   // Gegenhalter AUF ============================
   END_CASE
-END_IF
-
-IF NOT blGegenhalterSchliessen THEN
+ELSE
 
   IF ( steplGegenhalterSchliessen > STEP_0_E ) THEN
     out_bGegenhalterAusfahren := FALSE;

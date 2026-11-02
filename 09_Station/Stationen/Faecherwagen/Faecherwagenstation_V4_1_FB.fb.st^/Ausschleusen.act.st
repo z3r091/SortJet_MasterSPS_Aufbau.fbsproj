@@ -10,6 +10,13 @@ ACTION Ausschleusen
 // AUSSCHLEUSEN
 //-------------------------------------------------------------------------------------------------
 
+// Optimierung: Nach dem letzten Rausschieben (STEP_125) und Greifer offen (STEP_135) faehrt das Rolltor
+// schon runter, waehrend die Lineareinheit zurueckfaehrt (STEP_140).
+blRolltorAbBeiLinZurueck :=     BasisStationsParameter.bAustransport[1]
+                            AND ( steplAusschleusen = STEP_140_E )
+                            AND blLineareinheitZurueck
+                            AND blGreiferOffen;
+
 IF BasisStationsParameter.bAustransport[1] AND
    ( blBetriebsartAutomatik OR
      blBetriebsartHand OR
@@ -172,6 +179,7 @@ THEN
       IF blGreiferOeffnenDone THEN
         blGreiferOeffnen       := FALSE;
         blLineareinheitZurueck := TRUE;
+        blRolltorAb            := TRUE; // Rolltor schon runter, parallel zum Zurueckfahren der Lineareinheit
         steplAusschleusen      := STEP_140_E;
       ELSE
         blGreiferOeffnen := TRUE;
@@ -189,6 +197,7 @@ THEN
           blRolltorAb            := TRUE;
           steplAusschleusen      := STEP_145_E;
         ELSE
+          blRolltorAb            := FALSE; // Oberwagen evtl. nicht in Pos -> Rolltor stoppen bis Bediener quittiert (STEP_145 faehrt weiter)
           steplAusschleusen      := STEP_143_E;
         
           SpsWarnung( eFehler_Station,
@@ -206,7 +215,7 @@ THEN
     STEP_143_E:
       // Sonderfall Oberwagen womöglich nicht in Pos
       //   - Bedienereingriff erforderlich
-      Ampel_AK[1,1].bpHinweisFWEingriffErforderlich := TRUE;
+      M_AmpelHinweisEingriff( bpAktiv := TRUE );
 
     
       IF rtlQuittierungEinschleusen.Q  OR tonlFWInBox.Q THEN
@@ -217,7 +226,7 @@ THEN
     STEP_145_E:
       // Rolltor schließen
 
-      Ampel_AK[1,1].bpHinweisFWEingriffErforderlich := FALSE;
+      M_AmpelHinweisEingriff( bpAktiv := FALSE );
     
       eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Rolltor_Ab_145;
 
@@ -281,6 +290,9 @@ ELSE
     blGreiferSchliessen         := FALSE;
     blRolltorAuf                := FALSE;
     blRolltorAb                 := FALSE;
+
+    tonlFreigabeZumAusschleusen( IN := FALSE );
+    M_AmpelHinweisEingriff( bpAktiv := FALSE ); // Bedienereingriff (STEP_143) nur fuer diese Kette
 
     steplAusschleusen := STEP_0_E;
   END_IF

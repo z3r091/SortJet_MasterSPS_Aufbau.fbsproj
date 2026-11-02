@@ -72,9 +72,7 @@ THEN
       blGreiferOeffnenDone:=TRUE;
 
   END_CASE
-END_IF
-
-IF NOT blGreiferOeffnen THEN
+ELSE
 
   IF ( steplGreiferOeffnen > STEP_0_E ) THEN
     out_bGreiferAusfahren := FALSE;
@@ -158,9 +156,7 @@ THEN
 
   // Greifer AUF ============================
   END_CASE
-END_IF
-
-IF NOT blGreiferSchliessen THEN
+ELSE
 
   IF ( steplGreiferSchliessen > STEP_0_E ) THEN
     out_bGreiferAusfahren := FALSE;

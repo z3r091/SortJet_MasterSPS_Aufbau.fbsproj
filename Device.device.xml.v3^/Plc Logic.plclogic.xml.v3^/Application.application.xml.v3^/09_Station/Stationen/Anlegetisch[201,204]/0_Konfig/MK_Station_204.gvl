@@ -83,6 +83,7 @@ VAR_GLOBAL
                                                  bRoellchenleiste              := [ FALSE ],
                                                  bDurchgang                    := FALSE,
                                                  bRolltor                      := FALSE,
+                                                 bKlemmzylinder                := FALSE,
                                                  bRFID                         := FALSE,
                                                  bAGV                          := FALSE,
                                                  bDLSSchmiersystem             := FALSE,

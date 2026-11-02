@@ -29,6 +29,7 @@ TYPE Stations_Aufbau_ST:
     bDurchgang                              : BOOL;
     bSlaveAntrieb                           : BOOL;
     bRolltor                                : BOOL; // z.B.: FW - Rolltor
+    bKlemmzylinder                          : BOOL; // z.B.: FW - Klemmzylinder fixiert den Oberrahmen beim Ein- und Ausschleusen (Eingang in_bKlemmZylinderEingefahren)
     bRFID                                   : BOOL; // z.B.: FW - Rolltor
     bAGV                                    : BOOL; // Hinweis: AGV Betrieb
     bKipparme                               : BOOL;

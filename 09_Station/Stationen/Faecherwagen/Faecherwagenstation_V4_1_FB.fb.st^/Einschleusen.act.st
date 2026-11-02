@@ -22,6 +22,14 @@ ACTION Einschleusen
 
 rtlQuittierungEinschleusen( CLK := in_bStartSchleusen );
 
+// Optimierung: Lineareinheit faehrt schon zum FW vor, waehrend das Rolltor hochfaehrt (Sensor unten frei).
+// Reinziehen (STEP_140) erst, wenn Rolltor oben meldet.
+blLinVorBeiRolltorFahrt :=     BasisStationsParameter.bEintransport[1]
+                           AND ( steplEinschleusen >= STEP_125_E )
+                           AND ( steplEinschleusen <= STEP_140_E )
+                           AND blRolltorAuf
+                           AND NOT blRolltorUnten;
+
 IF BasisStationsParameter.bEintransport[1] AND
    ( blBetriebsartAutomatik OR
      blBetriebsartHand OR
@@ -187,15 +195,15 @@ THEN
       //
       // ---------------------------------------------------------------------------------------
 
-      IF ( blRolltorAufDone )
+      // Rolltor bleibt angesteuert bis STEP_140 (oben). Weiter, sobald der Sensor unten frei ist.
+      blRolltorAuf := TRUE;
+
+      IF ( blRolltorAufDone OR NOT blRolltorUnten )
       THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Greifer_Oeffnen_125;
 
         blGreiferOeffnen      := TRUE;
-        blRolltorAuf          := FALSE;
         steplEinschleusen     := STEP_125_E;
-      ELSE
-        blRolltorAuf          := TRUE;
       END_IF
 
     // EINSCHLEUSEN ==========================
@@ -208,6 +216,7 @@ THEN
       //
       // ---------------------------------------------------------------------------------------
 
+      blRolltorAuf := TRUE; // Rolltor bleibt angesteuert bis STEP_140 (sonst bricht Rolltor() ab und blRolltorAufDone wird nie TRUE)
       IF ( blGreiferOeffnenDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Lineareinheit_Vor_130;
 
@@ -228,6 +237,7 @@ THEN
       //
       // ---------------------------------------------------------------------------------------
 
+      blRolltorAuf := TRUE; // Rolltor bleibt angesteuert bis STEP_140
       IF ( blLineareinheitVorDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Greifer_Schliessen_135;
 
@@ -248,6 +258,7 @@ THEN
       //
       // ---------------------------------------------------------------------------------------
 
+      blRolltorAuf := TRUE; // Rolltor bleibt angesteuert bis STEP_140
       IF ( blGreiferSchliessenDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Entrieglung_Oeffnen_140;
 
@@ -268,9 +279,12 @@ THEN
       //
       // ---------------------------------------------------------------------------------------
 
-      IF ( blEntriegelungOeffnenDone ) THEN
+      // Reinziehen erst, wenn Rolltor oben meldet (Rolltor bleibt bis dahin angesteuert)
+      blRolltorAuf := TRUE;
+      IF ( blEntriegelungOeffnenDone ) AND ( blRolltorAufDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Lineareinheit_zurueck_145;
 
+        blRolltorAuf           := FALSE;
         blEntriegelungOeffnen  := FALSE;
         blLineareinheitZurueck := TRUE;
         steplEinschleusen      := STEP_145_E;
@@ -491,7 +505,6 @@ ELSE
     blRolltorAuf                  := FALSE;
     blRolltorAb                   := FALSE;
     blMerkerEinschleusenQuittiert := FALSE;
-    bpEinschleusenAbgeschlossen   := FALSE;
     blRFID_Auslesen               := FALSE;
 
     WatchIo( FALSE , wlioccFWStationAusrichtPositionNichtOK );

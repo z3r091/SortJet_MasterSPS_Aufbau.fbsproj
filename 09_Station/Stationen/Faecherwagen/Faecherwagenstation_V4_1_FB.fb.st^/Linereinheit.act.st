@@ -10,7 +10,9 @@ ACTION Linereinheit
 IF blLineareinheitVor
    AND NOT blLineareinheitZurueck
    AND NOT blLineareinheitShuttle
-   AND ( ( NOT in_bNichtRolltorGeoeffnet AND BasisStationsParameter.stMKs.stStationsAufbau.bRolltor ) OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bRolltor )
+   AND (    ( NOT in_bNichtRolltorGeoeffnet AND BasisStationsParameter.stMKs.stStationsAufbau.bRolltor )
+         OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bRolltor
+         OR blLinVorBeiRolltorFahrt ) // Einschleusen: Vorfahren waehrend das Rolltor hochfaehrt
    AND bpUntergestellErkannt
    AND BasisStationsParameter.bFreigabe
 THEN
@@ -34,7 +36,11 @@ THEN
      
       tonlTimeoutSensorShutle(IN := NOT in_bKlemmZylinderEingefahren, PT := TIMEOUT_SENSOR); //2min  WatchIO nach 10sec
 
-      IF in_bKlemmZylinderEingefahren OR NOT blGreiferZu THEN
+      // Klemmzylinder nur pruefen, wenn er laut MK vorhanden ist (stStationsAufbau.bKlemmzylinder)
+      IF    NOT BasisStationsParameter.stMKs.stStationsAufbau.bKlemmzylinder
+         OR in_bKlemmZylinderEingefahren
+         OR NOT blGreiferZu
+      THEN
         tonlTimeoutSensorShutle(IN := FALSE);
         steplLineareinheitVor := STEP_20_E;
       END_IF
@@ -92,15 +98,14 @@ THEN
       blLineareinheitVorDone:=TRUE;
 
   END_CASE
-END_IF
-
-IF NOT blLineareinheitVor THEN
+ELSE
 
   IF ( steplLineareinheitVor > STEP_0_E ) THEN
     out_bLinearEinheitVor  := FALSE;
     blLineareinheitVorDone := FALSE;
     tonlLineareinheitVorZurueck(IN := FALSE);
     tonlTimeoutSensorVorne(IN := FALSE);
+    tonlTimeoutSensorShutle(IN := FALSE);
     steplLineareinheitVor  := STEP_0_E;
   END_IF
 
@@ -134,7 +139,11 @@ THEN
      
       tonlTimeoutSensorShutle(IN := NOT in_bKlemmZylinderEingefahren, PT := TIMEOUT_SENSOR); //2min  WatchIO nach 10sec
 
-      IF in_bKlemmZylinderEingefahren OR NOT blGreiferZu THEN
+      // Klemmzylinder nur pruefen, wenn er laut MK vorhanden ist (stStationsAufbau.bKlemmzylinder)
+      IF    NOT BasisStationsParameter.stMKs.stStationsAufbau.bKlemmzylinder
+         OR in_bKlemmZylinderEingefahren
+         OR NOT blGreiferZu
+      THEN
         tonlTimeoutSensorShutle(IN := FALSE);
         steplLineareinheitZur := STEP_20_E;
       END_IF
@@ -194,15 +203,14 @@ THEN
       blLineareinheitZurueckDone:=TRUE;
 
   END_CASE
-END_IF
-
-IF NOT blLineareinheitZurueck THEN
+ELSE
 
   IF( steplLineareinheitZur > STEP_0_E )THEN
     steplLineareinheitZur := STEP_0_E;
     out_bLinearEinheitZurueck := FALSE;
     tonlLineareinheitVorZurueck(IN := FALSE);
     tonlTimeoutSensorHinten(IN := FALSE);
+    tonlTimeoutSensorShutle(IN := FALSE);
     blLineareinheitZurueckDone := FALSE;
   END_IF
 
@@ -237,7 +245,11 @@ THEN
      
       tonlTimeoutSensorShutle(IN := NOT in_bKlemmZylinderEingefahren, PT := TIMEOUT_SENSOR); //2min  WatchIO nach 10sec
 
-      IF in_bKlemmZylinderEingefahren OR NOT blGreiferZu THEN
+      // Klemmzylinder nur pruefen, wenn er laut MK vorhanden ist (stStationsAufbau.bKlemmzylinder)
+      IF    NOT BasisStationsParameter.stMKs.stStationsAufbau.bKlemmzylinder
+         OR in_bKlemmZylinderEingefahren
+         OR NOT blGreiferZu
+      THEN
         tonlTimeoutSensorShutle(IN := FALSE);
         steplLineareinheitShuttle := STEP_20_E;
       END_IF
@@ -297,9 +309,7 @@ THEN
       blLineareinheitShuttleDone:=TRUE;
 
   END_CASE
-END_IF
-
-IF NOT blLineareinheitShuttle THEN
+ELSE
 
   IF( steplLineareinheitShuttle > STEP_0_E )THEN
     steplLineareinheitShuttle := STEP_0_E;

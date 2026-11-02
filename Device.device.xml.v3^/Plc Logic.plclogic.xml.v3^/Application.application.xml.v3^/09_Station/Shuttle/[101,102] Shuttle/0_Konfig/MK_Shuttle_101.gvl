@@ -89,6 +89,7 @@ VAR_GLOBAL
                                             bDurchgang                    := FALSE,
                                             bSlaveAntrieb                 := FALSE,
                                             bRolltor                      := FALSE,
+                                            bKlemmzylinder                := FALSE,
                                             bRFID                         := FALSE,
                                             bAGV                          := FALSE,
                                             bKipparme                     := FALSE,

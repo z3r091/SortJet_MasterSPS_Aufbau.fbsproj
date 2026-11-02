@@ -71,9 +71,7 @@ THEN
       blEntriegelungOeffnenDone:=TRUE;
 
   END_CASE
-END_IF
-
-IF NOT blEntriegelungOeffnen THEN
+ELSE
 
   IF ( steplEntriegelungOeffnen > STEP_0_E ) THEN
     out_bEntriegelungAusfahren := FALSE;
@@ -157,9 +155,7 @@ THEN
 
   // ENTRIEGELUNG AB ============================
   END_CASE
-END_IF
-
-IF NOT blEntriegelungSchliessen THEN
+ELSE
 
   IF ( steplEntriegelungSchliessen > STEP_0_E ) THEN
     out_bEntriegelungAusfahren := FALSE;

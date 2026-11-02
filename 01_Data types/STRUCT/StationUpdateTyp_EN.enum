@@ -8,6 +8,7 @@
 {attribute 'qualified_only'}
 TYPE StationUpdateTyp_EN : (
   NONE := 0,
-  POSITIONSAENDERUNG := 1
+  POSITIONSAENDERUNG := 1,
+  FW_STATUS          := 2  // Faecherwagenstation: Wert 1 = eLetzter_FW_Status (WORD)
 ) WORD;
 END_TYPE

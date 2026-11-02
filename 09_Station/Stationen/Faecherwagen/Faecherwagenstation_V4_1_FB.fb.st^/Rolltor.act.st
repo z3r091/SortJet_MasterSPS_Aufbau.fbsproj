@@ -72,9 +72,7 @@ IF blRolltorAuf THEN
 
   // ROLLTOR HOCH  ============================
   END_CASE
-END_IF
-
-IF NOT blRolltorAuf THEN
+ELSE
 
   IF ( steplRolltorAuf > STEP_0_E ) THEN
     out_bRolltorAuf  := FALSE;
@@ -92,7 +90,8 @@ END_IF
 // ROLLTOR RUNTER
 
 IF blRolltorAb AND
-   (blLinearEinheitHinten OR blLineareinheitSH)
+   (    blLinearEinheitHinten OR blLineareinheitSH
+     OR blRolltorAbBeiLinZurueck ) // Ausschleusen: Rolltor ab schon waehrend Lineareinheit mit offenem Greifer zurueckfaehrt
 THEN
   CASE steplRolltorAb OF
     // ROLLTOR RUNTER ============================
@@ -159,9 +158,7 @@ THEN
 
   // ROLLTOR RUNTER ============================
   END_CASE
-END_IF
-
-IF NOT blRolltorAb THEN
+ELSE
 
   IF steplRolltorAb > STEP_0_E THEN
     out_bRolltorAb  := FALSE;

@@ -266,10 +266,8 @@ IF blRFID_Schreiben THEN
       blRFID_Schreiben := FALSE;
 
   END_CASE
-END_IF
+ELSE
 
-
-IF NOT blRFID_Schreiben THEN
   IF steplRFID_Schreiben <> 0 THEN
 
     tonlTimeoutReadRFID(IN := FALSE);

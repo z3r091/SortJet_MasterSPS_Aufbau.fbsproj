@@ -26,6 +26,7 @@ VAR_GLOBAL
      // stStationsOptionen
       stStationsAufbau          := ( bAnschlag                     := FALSE,
                                      bRolltor                      := TRUE,
+                                     bKlemmzylinder                := FALSE,
                                      bRFID                         := TRUE,
                                      bAGV                          := FALSE, 
                                      bGeblase                      := [ FALSE ],

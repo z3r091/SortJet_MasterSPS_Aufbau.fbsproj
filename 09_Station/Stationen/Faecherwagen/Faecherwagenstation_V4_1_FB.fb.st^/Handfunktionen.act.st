@@ -7,26 +7,35 @@
 *)
 ACTION Handfunktionen
 // HANDFUNKTIONEN
-IF    NOT BasisStationsParameter.bEintransport[1] 
-      AND NOT BasisStationsParameter.bAustransport[1] 
+(* Hinweis:
+   - Handbefehle (MMI-Bits und Visu-Bits) nur im Handbetrieb wirksam
+   - Ausserhalb des Handbetriebs werden die Befehle auf FALSE gehalten
+   - Bitverteilung aus der Oberfläche (4 Seiten zu 7 Knoepfen):
+     Seite 1:  0/1 Gegenhalter auf/zu, 2/3 Entriegelung zu/auf, 5/6 Rolltor auf/ab
+     Seite 2:  7/8/9 Lineareinheit vor/zurueck/Shuttle, 11/12 Greifer auf/zu
+*)
+blHandFreigabe := blBetriebsartHand;
+
+IF    NOT BasisStationsParameter.bEintransport[1]
+      AND NOT BasisStationsParameter.bAustransport[1]
       AND NOT blBetriebsartCheck
 THEN
-  blGreiferOeffnen            := ( dwpHandfunktionen.11 OR bgVISUFWGreiferEinfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blGreiferSchliessen;
-  blGreiferSchliessen         := ( dwpHandfunktionen.12 OR bgVISUFWGreiferAusfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blGreiferOeffnen;
-  blEntriegelungSchliessen    := ( dwpHandfunktionen.2 OR bgVISUFWEntriegelungEinfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blEntriegelungOeffnen;
-  blEntriegelungOeffnen       := ( dwpHandfunktionen.3 OR bgVISUFWEntriegelungAusfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blEntriegelungSchliessen;
-  blGegenhalterOeffnen        := ( dwpHandfunktionen.0 OR bgVISUFWGegenhalterEinfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blGegenhalterSchliessen;
-  blGegenhalterSchliessen     := ( dwpHandfunktionen.1 OR bgVISUFWGegenhalterAusfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blGegenhalterOeffnen;
-  blLineareinheitVor          := ( dwpHandfunktionen.7 OR bgVISUFWLinearEinheitVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )  AND NOT blLineareinheitZurueck AND NOT blLineareinheitShuttle;
-  blLineareinheitZurueck      := ( dwpHandfunktionen.8 OR bgVISUFWLinearEinheitZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )  AND NOT blLineareinheitVor AND NOT blLineareinheitShuttle;
-  blLineareinheitShuttle      := ( dwpHandfunktionen.9 OR bgVISUFWLinearEinheitShuttle [BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] AND NOT blLineareinheitZurueck AND NOT blLineareinheitVor);
-  blRolltorAuf                := ( dwpHandfunktionen.5  OR bgVISUFWRolltorHoch[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blRolltorAb;
-  blRolltorAb                 := ( dwpHandfunktionen.6 OR bgVISUFWRolltorRunter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blRolltorAuf;
-    
-  IF dwpHandfunktionen <> 0 THEN
+  blGreiferOeffnen            := blHandFreigabe AND ( dwpHandfunktionen.11 OR bgVISUFWGreiferEinfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blGreiferSchliessen;
+  blGreiferSchliessen         := blHandFreigabe AND ( dwpHandfunktionen.12 OR bgVISUFWGreiferAusfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blGreiferOeffnen;
+  blEntriegelungSchliessen    := blHandFreigabe AND ( dwpHandfunktionen.2 OR bgVISUFWEntriegelungEinfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blEntriegelungOeffnen;
+  blEntriegelungOeffnen       := blHandFreigabe AND ( dwpHandfunktionen.3 OR bgVISUFWEntriegelungAusfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blEntriegelungSchliessen;
+  blGegenhalterOeffnen        := blHandFreigabe AND ( dwpHandfunktionen.0 OR bgVISUFWGegenhalterEinfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blGegenhalterSchliessen;
+  blGegenhalterSchliessen     := blHandFreigabe AND ( dwpHandfunktionen.1 OR bgVISUFWGegenhalterAusfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blGegenhalterOeffnen;
+  blLineareinheitVor          := blHandFreigabe AND ( dwpHandfunktionen.7 OR bgVISUFWLinearEinheitVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )     AND NOT blLineareinheitZurueck AND NOT blLineareinheitShuttle;
+  blLineareinheitZurueck      := blHandFreigabe AND ( dwpHandfunktionen.8 OR bgVISUFWLinearEinheitZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blLineareinheitVor AND NOT blLineareinheitShuttle;
+  blLineareinheitShuttle      := blHandFreigabe AND ( dwpHandfunktionen.9 OR bgVISUFWLinearEinheitShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blLineareinheitZurueck AND NOT blLineareinheitVor;
+  blRolltorAuf                := blHandFreigabe AND ( dwpHandfunktionen.5 OR bgVISUFWRolltorHoch[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )   AND NOT blRolltorAb;
+  blRolltorAb                 := blHandFreigabe AND ( dwpHandfunktionen.6 OR bgVISUFWRolltorRunter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blRolltorAuf;
+
+  IF blHandFreigabe AND ( dwpHandfunktionen <> 0 ) THEN
     eLetzterStatus := eLetzter_FW_Status.eKeine_Info;
   END_IF
-  
+
 END_IF
 
 (* Hinweis:
@@ -58,4 +67,6 @@ THEN
   END_IF
 
 END_IF
+
+HandfunktionenStatus();
 END_ACTION

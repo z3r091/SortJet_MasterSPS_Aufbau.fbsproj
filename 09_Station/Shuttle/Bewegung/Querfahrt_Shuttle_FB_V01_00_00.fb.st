@@ -236,9 +236,12 @@ tonlStatusMelden(
                   PT := T#500MS
                 );
 
-IF tonlStatusMelden.Q
-   AND (  ( ABS( Antrieb.rpIstPosition - rlAlterStatus_Position ) > 1.0 )
-         OR ( Antrieb.bpAntrieblaeuft <> blAlterStatus_Bewegung ) OR Job.rtlMmiOk.Q ) THEN
+// Neue MMI-Verbindung (Flanke, nur ein Zyklus) sofort melden, nicht nur im 500-ms-Takt
+IF    (     tonlStatusMelden.Q
+        AND (    ( ABS( Antrieb.rpIstPosition - rlAlterStatus_Position ) > 1.0 )
+              OR ( Antrieb.bpAntrieblaeuft <> blAlterStatus_Bewegung ) ) )
+   OR Job.rtlMmiOk.Q
+THEN
   stStationUpdate.wStationsNummer       := stStationsNummern.NummerSPS;
   stStationUpdate.eUpdateTyp            := StationUpdateTyp_EN.POSITIONSAENDERUNG;
   stStationUpdate.wAnzahlWerte          := 2;

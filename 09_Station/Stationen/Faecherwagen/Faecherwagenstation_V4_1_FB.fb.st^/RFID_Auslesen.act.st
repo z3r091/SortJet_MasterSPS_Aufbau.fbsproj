@@ -89,9 +89,8 @@ IF blRFID_Auslesen THEN
 
 
   END_CASE
-END_IF
+ELSE
 
-IF NOT blRFID_Auslesen THEN
   IF steplRFID_Auslesen <> 0 THEN
     blRFID_DataValid := FALSE;
     steplRFID_Auslesen := STEP_0_E;
