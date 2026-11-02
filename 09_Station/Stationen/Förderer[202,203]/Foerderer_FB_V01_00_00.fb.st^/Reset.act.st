@@ -36,14 +36,14 @@ IF( blBetriebsartReset )THEN
       Glastransport.bpReset   := TRUE;
       Kippen.bpReset          := TRUE;
       Hub.bpReset             := TRUE;
-      Roellchenleiste.bpReset := TRUE;
-      Wandverstellung.bpReset := TRUE;
       Querfahrt.bpReset       := TRUE;
 
       (* Hinweis:
          - Bausteine welche sich selbst zurueck setzen
       *)
       Geblaese.bpReset        := TRUE;
+      Roellchenleiste.bpReset := TRUE;
+      Wandverstellung.bpReset := TRUE;
 
       steplReset := STEP_20_E;
 
@@ -55,16 +55,12 @@ IF( blBetriebsartReset )THEN
       IF ( Glastransport.bpDone
            AND Kippen.bpDone
            AND Hub.bpDone
-           AND Roellchenleiste.bpDone 
-           AND Wandverstellung.bpDone 
            AND Querfahrt.bpDone)
       THEN
         Glastransport.bpReset   := FALSE;
         Kippen.bpReset          := FALSE;
         Geblaese.bpReset        := FALSE;
         Hub.bpReset             := FALSE;
-        Roellchenleiste.bpReset := FALSE;
-        Wandverstellung.bpReset := FALSE;
         Querfahrt.bpReset       := FALSE;
 
         steplReset := STEP_1000_E;
@@ -79,8 +75,6 @@ IF( blBetriebsartReset )THEN
         Kippen.bpReset          := FALSE;
         Geblaese.bpReset        := FALSE;
         Hub.bpReset             := FALSE;
-        Roellchenleiste.bpReset := FALSE;      
-        Wandverstellung.bpReset := FALSE;
         Querfahrt.bpReset       := FALSE;
 
         steplReset := STEP_900_E;
@@ -112,24 +106,6 @@ IF( blBetriebsartReset )THEN
 
         IF ( NOT Geblaese.bpDone OR Geblaese.bpFehler ) THEN
           BasisStationsParameter.wFehlerNummer := Geblaese.wpFehlerNr;
-          SpsError( eFehler_Station,
-                    BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                    BasisStationsparameter.awFehlerInformationen );
-        END_IF
-
-        IF ( NOT Roellchenleiste.bpDone OR Roellchenleiste.bpFehler ) THEN
-          BasisStationsParameter.wFehlerNummer := Roellchenleiste.wpFehlerNr;
-          SpsError( eFehler_Station,
-                    BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                    BasisStationsparameter.awFehlerInformationen );
-        END_IF
-
-        IF ( NOT Wandverstellung.bpDone OR Wandverstellung.bpFehler ) THEN
-          BasisStationsParameter.wFehlerNummer := Wandverstellung.wpFehlerNr;
           SpsError( eFehler_Station,
                     BasisStationsParameter.wFehlerNummer,
                     BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,

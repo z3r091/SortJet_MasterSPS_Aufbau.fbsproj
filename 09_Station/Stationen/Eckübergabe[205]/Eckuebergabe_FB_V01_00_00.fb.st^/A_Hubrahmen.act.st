@@ -23,9 +23,11 @@ ELSIF ( NOT blBetriebsartHand ) THEN
 
 END_IF
 
-blHubrahmenInPosition := (     Hubrahmen.bpDone
-                           AND ( (     ( elHubrahmenZielAchse = elRiemenAchse )
-                                   AND ( Hubrahmen.epStatusZylinder = eZylinderAusgefahren ) )
-                                 OR (     ( elHubrahmenZielAchse <> elRiemenAchse )
-                                      AND ( Hubrahmen.epStatusZylinder = eZylinderEingefahren ) ) ) );
+// Ohne Hubrahmen (MK) meldet der Zylinder kein Done, die Ketten duerfen dann nicht warten
+blHubrahmenInPosition := (    (     Hubrahmen.bpDone
+                                AND ( (     ( elHubrahmenZielAchse = elRiemenAchse )
+                                        AND ( Hubrahmen.epStatusZylinder = eZylinderAusgefahren ) )
+                                      OR (     ( elHubrahmenZielAchse <> elRiemenAchse )
+                                           AND ( Hubrahmen.epStatusZylinder = eZylinderEingefahren ) ) ) )
+                           OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen );
 END_ACTION

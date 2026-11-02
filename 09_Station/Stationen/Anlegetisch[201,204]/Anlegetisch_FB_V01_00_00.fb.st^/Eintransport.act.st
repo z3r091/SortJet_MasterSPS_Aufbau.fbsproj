@@ -79,7 +79,10 @@ THEN
          - Anschläge einfahren
          - Messachse.positionieren
       *)
-      IF Hubrahmen.bpDone AND Messachse.bpDone AND Anschlag.bpDone THEN
+      IF (     ( Hubrahmen.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen )
+           AND Messachse.bpDone
+           AND ( Anschlag.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bAnschlag ) )
+      THEN
         Anschlag.bpStartEinfahren        := FALSE;
         Hubrahmen.bpStartAusfahren       := FALSE;
         Messachse.bpPositionierung := FALSE;

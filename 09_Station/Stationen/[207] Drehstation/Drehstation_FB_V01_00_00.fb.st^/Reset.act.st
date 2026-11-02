@@ -60,8 +60,7 @@ IF( blBetriebsartReset )THEN
          - Warten bis die Antriebe ihren Reset durchgefuehrt haben
       *)
       IF (  Glastransport.bpDone
-           AND Drehen.bpDone
-           AND Querachse.bpDone )
+           AND Drehen.bpDone )
       THEN
         Glastransport.bpReset := FALSE;
         Drehen.bpReset        := FALSE;

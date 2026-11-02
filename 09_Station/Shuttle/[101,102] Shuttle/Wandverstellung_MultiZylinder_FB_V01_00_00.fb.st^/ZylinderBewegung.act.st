@@ -47,6 +47,11 @@ IF ( bpStartZylinderBewegung ) THEN
 
         tonlWartezeitZylinderStellung( IN := FALSE );
 
+        // Ohne Abfragen ist die Stellung bis zum Ende der Bewegungszeit unbekannt
+        IF ( NOT bpZylinderAbfragenVorhanden ) THEN
+          epStatusZylinderStellung := eZylinderUndefiniert;
+        END_IF
+
         steplZylinderStellung := STEP_20_E;
 
       ELSE
@@ -56,9 +61,19 @@ IF ( bpStartZylinderBewegung ) THEN
 
     // ZYLINDER STELLUNG =======================================================
     STEP_20_E:
-      tonlWartezeitZylinderStellung( IN := TRUE, PT := T#5S );
+      (* Hinweis:
+         - Mit Abfragen: Ueberwachungszeit 5s
+         - Ohne Abfragen: Bewegungszeit abwarten, danach gilt die Stellung als eingefahren
+      *)
+      IF ( bpZylinderAbfragenVorhanden ) THEN
+        tonlWartezeitZylinderStellung( IN := TRUE, PT := T#5S );
+      ELSE
+        tonlWartezeitZylinderStellung( IN := TRUE, PT := tpBewegungszeit );
+      END_IF
 
-      IF ( epStatusZylinderStellung = eZylinderStellung16mm ) THEN
+      IF (    ( bpZylinderAbfragenVorhanden AND ( epStatusZylinderStellung = eZylinderStellung16mm ) )
+           OR ( NOT bpZylinderAbfragenVorhanden AND tonlWartezeitZylinderStellung.Q ) )
+      THEN
 
         out_bZylinder_1_Einfahren := FALSE;
         out_bZylinder_2_Einfahren := FALSE;
@@ -68,11 +83,15 @@ IF ( bpStartZylinderBewegung ) THEN
 
         tonlWartezeitZylinderStellung( IN := FALSE );
 
+        IF ( NOT bpZylinderAbfragenVorhanden ) THEN
+          epStatusZylinderStellung := eZylinderStellung16mm;
+        END_IF
+
         steplZylinderStellung := STEP_100_E;
 
       END_IF
-    
-      IF ( tonlWartezeitZylinderStellung.Q )THEN
+
+      IF ( bpZylinderAbfragenVorhanden AND tonlWartezeitZylinderStellung.Q ) THEN
         out_bZylinder_1_Einfahren := FALSE;
         out_bZylinder_2_Einfahren := FALSE;
         wpFehlerNr := cMELDUNG_ZYLINDER_NICHT_EINGEFAHREN;
@@ -89,6 +108,11 @@ IF ( bpStartZylinderBewegung ) THEN
       // ---------------------------------------------------------------------------------------
 
       tonlWartezeitZylinderStellung( IN := FALSE );
+
+      // Ohne Abfragen ist die Stellung bis zum Ende der Bewegungszeit unbekannt
+      IF ( NOT bpZylinderAbfragenVorhanden ) THEN
+        epStatusZylinderStellung := eZylinderUndefiniert;
+      END_IF
 
       steplZylinderStellung := STEP_110_E;
 
@@ -138,7 +162,7 @@ IF ( bpStartZylinderBewegung ) THEN
 
       ELSE
 
-        tonlWartezeitZylinderStellung( IN := TRUE, PT := T#1S );
+        tonlWartezeitZylinderStellung( IN := TRUE, PT := tpBewegungszeit );
 
         IF ( tonlWartezeitZylinderStellung.Q ) THEN
 
@@ -231,14 +255,16 @@ IF ( bpStartZylinderBewegung ) THEN
 
     // ZYLINDER STELLUNG =======================================================
     STEP_1000_E:
+      // Ohne Abfragen ist die Stellung zeitlich angenommen, nicht gemessen
+      IF ( NOT bpZylinderAbfragenVorhanden ) THEN
+        epStatusZylinderStellung := epSollZylinderStellung;
+      END_IF
       bpDone := TRUE;
 
   // ZYLINDER STELLUNG =======================================================
   END_CASE
 
-END_IF
-
-IF ( NOT bpStartZylinderBewegung ) THEN
+ELSE
 
   IF (steplZylinderStellung > STEP_0_E) THEN
     bpDone                   := FALSE;
@@ -250,6 +276,11 @@ IF ( NOT bpStartZylinderBewegung ) THEN
 
     out_bZylinder_1_Ausfahren := FALSE;
     out_bZylinder_2_Ausfahren := FALSE;
+
+    tonlStellung13mm( IN := FALSE );
+    tonlStellung23mm( IN := FALSE );
+    tonlStellung29mm( IN := FALSE );
+    tonlWartezeitZylinderStellung( IN := FALSE );
 
   END_IF
 

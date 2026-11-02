@@ -23,6 +23,12 @@ THEN
       tonlZylinder2Ausgefahren(IN := FALSE);
       tonlZylinder2Eingefahren(IN := FALSE);
       tonlWarteZeitAufVentile(IN := FALSE);
+
+      // Ohne Abfragen ist die Stellung bis zum Ende der Wartezeit unbekannt
+      IF NOT bpZylinderAbfragenVorhanden THEN
+        wpStatusZylinder := eZylinderUndefiniert;
+      END_IF
+
       steplAusfahren := STEP_10_E;
 
 
@@ -236,10 +242,18 @@ THEN
 
     // AUS - &  EINFAHREN =====================
     STEP_900_E:
+      out_bZylinder1Ausfahren := FALSE;
+      out_bZylinder1Einfahren := FALSE;
+      out_bZylinder2Ausfahren := FALSE;
+      out_bZylinder2Einfahren := FALSE;
       bpFehler := TRUE;
 
     // AUS - &  EINFAHREN =====================
     STEP_1000_E:
+      // Ohne Abfragen ist die Stellung zeitlich angenommen, nicht gemessen
+      IF NOT bpZylinderAbfragenVorhanden THEN
+        wpStatusZylinder := epOeffnungsStellung;
+      END_IF
       bpDone := TRUE;
 
   // AUS - &  EINFAHREN =====================

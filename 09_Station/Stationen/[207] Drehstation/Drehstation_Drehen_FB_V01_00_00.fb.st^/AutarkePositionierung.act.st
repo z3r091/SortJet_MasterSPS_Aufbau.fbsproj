@@ -83,7 +83,7 @@ IF ( bpStarteDrehBewegung ) THEN
       (* Hinweis:
          - Arretierung ist eingefahren
       *)
-      IF ( Arretierung.bpDone ) THEN
+      IF ( Arretierung.bpDone OR NOT ppParameterBaustein.bArretierung ) THEN
         Arretierung.bpStartEinfahren := FALSE;
         steplDrehBewegung := STEP_30_E;
       END_IF
@@ -293,7 +293,7 @@ IF ( bpStarteDrehBewegung ) THEN
       (* Hinweis:
          - Arretierung ist ausgefahren
       *)
-      IF ( Arretierung.bpDone ) THEN
+      IF ( Arretierung.bpDone OR NOT ppParameterBaustein.bArretierung ) THEN
         Arretierung.bpStartAusfahren := FALSE;
 
         (* Anmerkung:

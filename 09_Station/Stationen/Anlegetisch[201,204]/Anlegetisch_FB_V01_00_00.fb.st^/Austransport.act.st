@@ -87,7 +87,7 @@ THEN
       (* Anmerkung:
          - Hubpalette senken
       *)
-      IF (  Hubrahmen.bpDone ) THEN
+      IF (  Hubrahmen.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen ) THEN
         Hubrahmen.bpStartEinfahren := FALSE;
         steplAustransport := STEP_1000_E;
       END_IF

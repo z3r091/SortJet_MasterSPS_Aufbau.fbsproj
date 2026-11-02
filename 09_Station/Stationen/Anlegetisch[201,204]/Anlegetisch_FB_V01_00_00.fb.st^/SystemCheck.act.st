@@ -118,7 +118,7 @@ IF( blBetriebartCheck )THEN
       (* Anmerkung:
          - Hubpalette heben
       *)
-      IF ( Hubrahmen.bpDone ) THEN
+      IF ( Hubrahmen.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen ) THEN
         Hubrahmen.bpStartEinfahren := FALSE;
 
         steplCheck := STEP_890_E;
@@ -140,7 +140,7 @@ IF( blBetriebartCheck )THEN
       // <<<<<<<<<<<<<<<<<< Verbund
       //   Anmerkung:
       //   - Hubpalette heben
-      IF ( Hubrahmen.bpDone ) THEN
+      IF ( Hubrahmen.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen ) THEN
         Hubrahmen.bpStartAusfahren := FALSE;
 
         steplCheck := STEP_110_E;
@@ -206,7 +206,7 @@ IF( blBetriebartCheck )THEN
       (* Anmerkung:
          - Hubpalette heben
       *)
-      IF ( Hubrahmen.bpDone ) THEN
+      IF ( Hubrahmen.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen ) THEN
         Hubrahmen.bpStartEinfahren := FALSE;
 
         steplCheck := STEP_890_E;

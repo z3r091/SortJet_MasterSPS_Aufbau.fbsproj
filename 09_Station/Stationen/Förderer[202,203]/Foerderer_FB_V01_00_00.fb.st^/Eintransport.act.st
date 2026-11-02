@@ -86,9 +86,9 @@ THEN
 
     // EINTRANSPORT ===============================
     STEP_20_E:
-      IF ( ( Kippen.bpDone ) 
-           AND ( Roellchenleiste.bpDone )
-           AND ( Wandverstellung.bpDone ) ) 
+      IF ( ( Kippen.bpDone )
+           AND ( Roellchenleiste.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bRoellchenleiste[cWAND_1] )
+           AND ( Wandverstellung.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bWandverstellung[cWAND_1] ) )
       THEN
         Roellchenleiste.bpStartPneumatik := FALSE;
         Wandverstellung.bpStartPneumatik := FALSE;

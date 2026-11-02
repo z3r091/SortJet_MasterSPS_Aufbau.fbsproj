@@ -41,15 +41,15 @@ IF( blBetriebsartReset )THEN
       (* Hinweis:
          - Zurecksetzen der Bausteine
            Wichtig
-         - Hubrahmen / Anschlag setzen ihren reset selbst zurueck
+         - Hubrahmen / Anschlag setzen ihren Reset selbst zurueck
       *)
       Glastransport.bpReset := TRUE;
       Messachse.bpReset     := TRUE;
-      Hubrahmen.bpReset     := TRUE;
 
       (* Wichtig:
          - Reset setzt sich selbststaendig zurueck
       *)
+      Hubrahmen.bpReset     := TRUE;
       Anschlag.bpReset      := TRUE;
 
       steplReset := STEP_20_E;
@@ -60,11 +60,9 @@ IF( blBetriebsartReset )THEN
          - Pruefen ob alle Antriebe zurueckgesetzt worden sind
       *)
       IF (  Glastransport.bpDone
-           AND Messachse.bpDone
-           AND Hubrahmen.bpDone )
+           AND Messachse.bpDone )
       THEN
         Glastransport.bpReset := FALSE;
-        Hubrahmen.bpReset     := FALSE;
         Messachse.bpReset     := FALSE;
 
         steplReset := STEP_1000_E;
@@ -75,7 +73,6 @@ IF( blBetriebsartReset )THEN
       //    => Pneumatik Bauteile brauchen nicht ueberwacht zu werden
       IF ( tonlMaxWarteAufResetErfolgreich.Q ) THEN
         Glastransport.bpReset := FALSE;
-        Hubrahmen.bpReset     := FALSE;
         Messachse.bpReset     := FALSE;
 
         BasisStationsParameter.wFehlerNummer := cMELDUNG_STATION_NICHT_ZURUECKGESETZT;
@@ -96,15 +93,6 @@ IF( blBetriebsartReset )THEN
 
         IF ( NOT Messachse.bpDone OR Messachse.bpFehler ) THEN
           BasisStationsParameter.wFehlerNummer := Messachse.wpFehlerNr;
-          SpsError( eFehler_Station,
-                    BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                    BasisStationsparameter.awFehlerInformationen );
-        END_IF
-
-        IF ( NOT Hubrahmen.bpDone OR Hubrahmen.bpFehler ) THEN
-          BasisStationsParameter.wFehlerNummer := Hubrahmen.wpFehlerNr;
           SpsError( eFehler_Station,
                     BasisStationsParameter.wFehlerNummer,
                     BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,

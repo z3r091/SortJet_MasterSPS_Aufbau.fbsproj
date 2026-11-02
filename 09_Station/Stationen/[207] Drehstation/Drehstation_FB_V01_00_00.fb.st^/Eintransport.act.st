@@ -119,8 +119,8 @@ THEN
       *)
       IF ( ( Drehen.bpDone OR NOT Drehen.bpStarteAbsolutPositionierung )
            AND Kippen.bpDone
-           AND Querachse.bpDone
-           AND Dickenverstellung.bpDone )
+           AND ( Querachse.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerachse )
+           AND ( Dickenverstellung.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[cWAND_1] ) )
       THEN
         Dickenverstellung.bpStartPneumatik   := FALSE;
         Querachse.bpStartPneumatik           := FALSE;
@@ -322,7 +322,8 @@ THEN
 
       // => Betriebsart des Vortransport abloeschen
       IF ( Glastransport.bpDone
-           AND ( Glastransport.bpVortransport OR Glastransport.bpVortransportRueckwaertig ) ) AND Querachse.bpDone
+           AND ( Glastransport.bpVortransport OR Glastransport.bpVortransportRueckwaertig ) )
+           AND ( Querachse.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerachse )
       THEN
         Glastransport.bpVortransport             := FALSE;
         Glastransport.bpVortransportRueckwaertig := FALSE;

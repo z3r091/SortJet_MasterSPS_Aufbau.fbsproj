@@ -124,7 +124,7 @@ THEN
       (* Hinweis:
          - Eintransport starten
       *)
-      IF ( Rollenleiste.bpDone  )THEN
+      IF ( Rollenleiste.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bRoellchenleiste[cWAND_1] ) THEN
         Glastransport.eGlastyp        := BasisStationsParameter.wGlasTyp[cWAND_1];
         Glastransport.pAuftrag        := BasisStationsParameter.pAuftrag[cWAND_1];
 

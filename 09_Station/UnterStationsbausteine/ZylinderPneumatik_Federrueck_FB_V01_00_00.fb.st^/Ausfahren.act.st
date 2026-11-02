@@ -6,42 +6,51 @@
 }
 *)
 ACTION Ausfahren
-//_________________________________________________________________________
-// ************************ START Zylinder -Ausfahren ********************
-//_________________________________________________________________________
-IF (  bpStartAusfahren )
-THEN
+//-------------------------------------------------------------------------------------------------
+// AUSFAHREN
+//-------------------------------------------------------------------------------------------------
+IF ( bpStartAusfahren ) THEN
   CASE steplAusfahren OF
     // AUSFAHREN =====================
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
-         - Zylinder ausfahren starten
+         - Zylinder ausfahren starten (ohne Endlagensensor immer die volle Bewegungszeit abwarten)
       *)
-      IF ( NOT in_bStatusZylinderAusgefahren ) THEN
-        tonlZylinderAusgefahren(IN := FALSE);
-        out_bZylinderAusfahren := TRUE;
+      bpDone := FALSE;
+      tonlZylinderAusgefahren( IN := FALSE );
+      tonlBewegungszeitAusfahren( IN := FALSE );
 
-        steplAusfahren := STEP_10_E;
-      ELSE
+      IF ( bpAbfrageAusgefahrenVorhanden AND in_bStatusZylinderAusgefahren ) THEN
+        out_bZylinderAusfahren := TRUE;
         steplAusfahren := STEP_1000_E;
+      ELSE
+        epStatusZylinder := eZylinderUndefiniert;
+        steplAusfahren   := STEP_10_E;
       END_IF
 
     // AUSFAHREN =====================
     STEP_10_E:
       (* Hinweis:
-         - Pruefen ob die Zylinder ausgefahren sind
-           => Da es sich um ein Federrueckstell- Ventiel handelt Eingang aktiv geschaltet lassen
+         - Zylinder ausfahren
+           => Da es sich um ein Federrueckstell- Ventiel handelt Ausgang aktiv geschaltet lassen
+         - Ohne Endlagensensor nur die Bewegungszeit auswerten
       *)
-      tonlZylinderAusgefahren( IN := ( NOT in_bStatusZylinderAusgefahren ),
-                               PT := T#5s );
+      out_bZylinderAusfahren := TRUE;
 
-      IF ( in_bStatusZylinderAusgefahren ) THEN
+      tonlZylinderAusgefahren( IN := bpAbfrageAusgefahrenVorhanden AND NOT in_bStatusZylinderAusgefahren,
+                               PT := cZEITLICHE_UEBERWACHUNG_BEWEGUNG_ZYLINDER );
+      tonlBewegungszeitAusfahren( IN := NOT bpAbfrageAusgefahrenVorhanden,
+                                  PT := tpBewegungszeit );
+
+      IF (    ( bpAbfrageAusgefahrenVorhanden AND in_bStatusZylinderAusgefahren )
+           OR ( NOT bpAbfrageAusgefahrenVorhanden AND tonlBewegungszeitAusfahren.Q ) )
+      THEN
         steplAusfahren := STEP_1000_E;
       END_IF
 
       (* Fehlerbehandlung:
-         - Zylinder
+         - Zeitliche- Ueberwachung (nur mit Endlagensensor)
       *)
       IF ( tonlZylinderAusgefahren.Q ) THEN
         out_bZylinderAusfahren := FALSE;
@@ -51,22 +60,26 @@ THEN
 
     // AUSFAHREN =====================
     STEP_900_E:
+      out_bZylinderAusfahren := FALSE;
       bpFehler := TRUE;
 
     // AUSFAHREN =====================
     STEP_1000_E:
+      // Ohne Sensor ist die Stellung zeitlich angenommen, nicht gemessen
+      epStatusZylinder := eZylinderAusgefahren;
       bpDone := TRUE;
 
   // AUSFAHREN =====================
   END_CASE
 ELSE
-  IF (steplAusfahren > STEP_0_E) THEN
+
+  // Ausgang bleibt gesetzt (Federrueckstell- Ventiel), erst Einfahren nimmt ihn zurueck
+  IF ( steplAusfahren > STEP_0_E ) THEN
     bpDone := FALSE;
     tonlZylinderAusgefahren( IN := FALSE );
+    tonlBewegungszeitAusfahren( IN := FALSE );
     steplAusfahren := STEP_0_E;
   END_IF
+
 END_IF
-//_________________________________________________________________________
-// ************************ START Zylinder -Ausfahren ********************
-//_________________________________________________________________________
 END_ACTION

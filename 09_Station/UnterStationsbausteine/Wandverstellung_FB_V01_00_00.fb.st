@@ -15,6 +15,11 @@ VAR_INPUT
   bpReset                     : BOOL;
   bpAktivieren                : BOOL;
 
+  // OPTIONEN
+  bpAbfrageGeoeffnetVorhanden   : BOOL := TRUE;   // Endlagensensoren geoeffnet vorhanden, sonst gilt die Endlage nach tpBewegungszeit
+  bpAbfrageGeschlossenVorhanden : BOOL := TRUE;   // Endlagensensoren geschlossen vorhanden, sonst gilt die Endlage nach tpBewegungszeit
+  tpBewegungszeit               : TIME := T#800MS; // Bewegungszeit je Richtung ohne Endlagensensor
+
 END_VAR
 VAR_OUTPUT
 
@@ -40,9 +45,8 @@ VAR
   tonlAusgefahrenWandEinlaufseite  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
   tonlEingefahrenWandAuslaufseite  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
   tonlAusgefahrenWandAuslaufseite  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
-
-  // TRIGGER
-  ftlDeaktivieren : F_TRIG;
+  tonlBewegungszeitOeffnen         : TON; // Bewegungszeit ohne Endlagensensor geoeffnet
+  tonlBewegungszeitSchliessen      : TON; // Bewegungszeit ohne Endlagensensor geschlossen
 
 END_VAR
 VAR
@@ -60,14 +64,31 @@ VAR
 END_VAR
 
 //-------------------------------------------------------------------------------------------------
-// BAUSTEIN: ABLAUF
+// BAUSTEIN: RESET / DEAKTIVIERT
 //-------------------------------------------------------------------------------------------------
-
-IF ( bpReset ) THEN
+(* Hinweis:
+   - Reset oder deaktiviert: Ausgaenge aus, Ketten und Timer zuruecksetzen, Done und Fehler loeschen
+   - Der Baustein setzt bpReset selbst zurueck, der Aufrufer wartet nicht auf Done
+   - Ein deaktivierter Baustein meldet kein Done; der Aufrufer verknuepft das Warten auf Done
+     mit der Aktivierung aus der MK (z.B. Wandverstellung.bpDone OR NOT stStationsAufbau.bX)
+*)
+IF ( bpReset OR NOT bpAktivieren ) THEN
 
   out_bWandverstellungOeffnen    := FALSE;
   out_bWandverstellungSchliessen := FALSE;
 
+  bpWandverstellungOeffnen    := FALSE;
+  bpWandverstellungSchliessen := FALSE;
+
+  steplWandverstellungOeffnen    := STEP_0_E;
+  steplWandverstellungSchliessen := STEP_0_E;
+
+  tonlEingefahrenWandEinlaufseite( IN := FALSE );
+  tonlAusgefahrenWandEinlaufseite( IN := FALSE );
+  tonlEingefahrenWandAuslaufseite( IN := FALSE );
+  tonlAusgefahrenWandAuslaufseite( IN := FALSE );
+  tonlBewegungszeitOeffnen( IN := FALSE );
+  tonlBewegungszeitSchliessen( IN := FALSE );
 
   wpFehlerNr := cMELDUNG_NULL;
   bpFehler   := FALSE;
@@ -75,42 +96,52 @@ IF ( bpReset ) THEN
 
   bpReset := FALSE;
 
-ELSE
-
-  IF ( bpAktivieren ) THEN
-    WandverstellungOeffnen();
-    WandverstellungSchliessen();
-  ELSE
-    bpDone     := TRUE;
-    bpFehler   := FALSE;
-    wpFehlerNr := 0;
-  END_IF
-
-  (* Hinweis:
-     - Deaktiveren baustein zuruecksetzen
-  *)
-  ftlDeaktivieren( CLK := bpAktivieren );
-
-  IF ( ftlDeaktivieren.Q ) THEN
-    bpReset := TRUE;
-  END_IF
+  RETURN;
 
 END_IF
 
-(* Anmerkung:
-   - Realisierung durch ein ENUM   ACHTUNG! Erweiterbar auf mehrerer Stufen nötig!!
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AKTIONEN
+//-------------------------------------------------------------------------------------------------
+WandverstellungOeffnen();
+WandverstellungSchliessen();
+
+//-------------------------------------------------------------------------------------------------
+// STATUS DER WAND
+//-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Status aus der Sensorik, soweit Endlagensensoren vorhanden sind (beide Seiten)
+   - Ohne Sensor bleibt der Status, den die Schrittketten nach der Bewegungszeit setzen
 *)
-IF ( NOT in_bWandEinlaufseiteGeoeffnet AND in_bWandEinlaufseiteGeschlossen ) THEN
-  epWandStatus := eWandOeffnung_Geschlossen;
+IF ( bpAbfrageGeoeffnetVorhanden AND bpAbfrageGeschlossenVorhanden ) THEN
 
-ELSIF ( NOT in_bWandEinlaufseiteGeoeffnet AND in_bWandEinlaufseiteGeschlossen ) THEN
-  epWandStatus := eWandOeffnung_Offen;
+  IF (     in_bWandEinlaufseiteGeschlossen AND in_bWandAuslaufseiteGeschlossen
+       AND NOT in_bWandEinlaufseiteGeoeffnet AND NOT in_bWandAuslaufseiteGeoeffnet )
+  THEN
+    epWandStatus := eWandOeffnung_Geschlossen;
+  ELSIF (     in_bWandEinlaufseiteGeoeffnet AND in_bWandAuslaufseiteGeoeffnet
+          AND NOT in_bWandEinlaufseiteGeschlossen AND NOT in_bWandAuslaufseiteGeschlossen )
+  THEN
+    epWandStatus := eWandOeffnung_Offen;
+  ELSE
+    epWandStatus := eWandOeffnung_Undefiniert;
+  END_IF
 
-ELSIF ( NOT in_bWandEinlaufseiteGeoeffnet AND NOT in_bWandEinlaufseiteGeschlossen ) THEN
-  epWandStatus := eWandOeffnung_Undefiniert;
+ELSIF ( bpAbfrageGeoeffnetVorhanden ) THEN
 
-ELSE
-  epWandStatus := eWandOeffnung_Default;
+  IF ( in_bWandEinlaufseiteGeoeffnet AND in_bWandAuslaufseiteGeoeffnet ) THEN
+    epWandStatus := eWandOeffnung_Offen;
+  ELSIF ( epWandStatus = eWandOeffnung_Offen ) THEN
+    epWandStatus := eWandOeffnung_Undefiniert;
+  END_IF
+
+ELSIF ( bpAbfrageGeschlossenVorhanden ) THEN
+
+  IF ( in_bWandEinlaufseiteGeschlossen AND in_bWandAuslaufseiteGeschlossen ) THEN
+    epWandStatus := eWandOeffnung_Geschlossen;
+  ELSIF ( epWandStatus = eWandOeffnung_Geschlossen ) THEN
+    epWandStatus := eWandOeffnung_Undefiniert;
+  END_IF
 
 END_IF
 END_FUNCTION_BLOCK

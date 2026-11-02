@@ -86,7 +86,7 @@ IF  NOT (steplAnlegen < STEP_30_E) OR NOT BasisStationsParameter.bAnlegen THEN
     Anschlag.bpStartAusfahren    := blAnschlagAutomatischFahren;
     Anschlag.bpStartEinfahren    := NOT blAnschlagAutomatischFahren;
     blMerkerAnschlagTasterFahren := TRUE;
-  ELSIF (Anschlag.bpDone AND blMerkerAnschlagTasterFahren)THEN 
+  ELSIF ( ( Anschlag.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bAnschlag ) AND blMerkerAnschlagTasterFahren ) THEN
     Anschlag.bpStartEinfahren    := FALSE;
     Anschlag.bpStartAusfahren    := FALSE;
     blMerkerAnschlagTasterFahren := FALSE;

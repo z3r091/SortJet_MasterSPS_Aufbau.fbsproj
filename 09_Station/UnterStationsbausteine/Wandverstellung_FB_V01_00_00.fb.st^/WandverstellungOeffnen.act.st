@@ -10,61 +10,52 @@ ACTION WandverstellungOeffnen
 //-------------------------------------------------------------------------------------------------
 // AKTION - Wandverstellung öffnen
 //-------------------------------------------------------------------------------------------------
-
-IF ( bpWandverstellungOeffnen
-     AND NOT bpWandverstellungSchliessen )
-THEN
+IF ( bpWandverstellungOeffnen ) THEN
 
   CASE steplWandverstellungOeffnen OF
     // Wandverstellung öffnen =====================
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
-         - Pruefen der Pneumatik- Zylinderstellung
+         - Pruefen der Pneumatik- Zylinderstellung (ohne Endlagensensor immer die volle Bewegungszeit abwarten)
       *)
-      IF ( NOT in_bWandEinlaufseiteGeoeffnet
-           OR NOT in_bWandAuslaufseiteGeoeffnet )
-      THEN
-        tonlEingefahrenWandEinlaufseite(IN := FALSE);
-        tonlEingefahrenWandAuslaufseite(IN := FALSE);
+      bpDone := FALSE;
+      tonlEingefahrenWandEinlaufseite( IN := FALSE );
+      tonlEingefahrenWandAuslaufseite( IN := FALSE );
+      tonlBewegungszeitOeffnen( IN := FALSE );
 
-        out_bWandverstellungOeffnen:= TRUE;
-
-        steplWandverstellungOeffnen := STEP_10_E;
-
-      ELSE
+      IF ( bpAbfrageGeoeffnetVorhanden AND in_bWandEinlaufseiteGeoeffnet AND in_bWandAuslaufseiteGeoeffnet ) THEN
         steplWandverstellungOeffnen := STEP_1000_E;
-
+      ELSE
+        epWandStatus := eWandOeffnung_Undefiniert;
+        steplWandverstellungOeffnen := STEP_10_E;
       END_IF
 
     // Wandverstellung öffnen =====================
     STEP_10_E:
       (* Hinweis:
-         - Initialisieren der Timer
+         - Oeffnen, Gegenausgang aus
          - Pruefen ob die Zylinder ihre Bewegung abgeschlossen haben
+         - Ohne Endlagensensor nur die Bewegungszeit auswerten
       *)
-      tonlEingefahrenWandEinlaufseite(IN := NOT in_bWandEinlaufseiteGeoeffnet, PT:= T#5s );
-      tonlEingefahrenWandAuslaufseite(IN := NOT in_bWandAuslaufseiteGeoeffnet, PT:= T#5s );
+      out_bWandverstellungOeffnen    := TRUE;
+      out_bWandverstellungSchliessen := FALSE;
 
+      tonlEingefahrenWandEinlaufseite( IN := bpAbfrageGeoeffnetVorhanden AND NOT in_bWandEinlaufseiteGeoeffnet, PT := T#5s );
+      tonlEingefahrenWandAuslaufseite( IN := bpAbfrageGeoeffnetVorhanden AND NOT in_bWandAuslaufseiteGeoeffnet, PT := T#5s );
+      tonlBewegungszeitOeffnen( IN := NOT bpAbfrageGeoeffnetVorhanden, PT := tpBewegungszeit );
 
-      IF (  in_bWandEinlaufseiteGeoeffnet
-           AND in_bWandAuslaufseiteGeoeffnet )
+      IF (    ( bpAbfrageGeoeffnetVorhanden AND in_bWandEinlaufseiteGeoeffnet AND in_bWandAuslaufseiteGeoeffnet )
+           OR ( NOT bpAbfrageGeoeffnetVorhanden AND tonlBewegungszeitOeffnen.Q ) )
       THEN
         out_bWandverstellungOeffnen := FALSE;
         steplWandverstellungOeffnen := STEP_1000_E;
       END_IF
 
       (* Fehlerbehandlung:
-         - Zylinder Wand
-         - Zylinder Scheibenfuehrung
+         - Zylinder Wand Einlauf- / Auslaufseite (nur mit Endlagensensor)
       *)
-      IF ( tonlEingefahrenWandEinlaufseite.Q ) THEN
-        out_bWandverstellungOeffnen := FALSE;
-        wpFehlerNr := cMELDUNG_ZYLINDER_WAND_NICHT_EINGEFAHREN;
-        steplWandverstellungOeffnen := STEP_900_E;
-      END_IF
-
-      IF ( tonlEingefahrenWandAuslaufseite.Q ) THEN
+      IF ( tonlEingefahrenWandEinlaufseite.Q OR tonlEingefahrenWandAuslaufseite.Q ) THEN
         out_bWandverstellungOeffnen := FALSE;
         wpFehlerNr := cMELDUNG_ZYLINDER_WAND_NICHT_EINGEFAHREN;
         steplWandverstellungOeffnen := STEP_900_E;
@@ -72,22 +63,29 @@ THEN
 
     // Wandverstellung öffnen =====================
     STEP_900_E:
+      out_bWandverstellungOeffnen := FALSE;
       bpFehler := TRUE;
 
     // Wandverstellung öffnen =====================
     STEP_1000_E:
+      // Ohne Sensor ist die Stellung zeitlich angenommen, nicht gemessen
+      IF NOT bpAbfrageGeoeffnetVorhanden THEN
+        epWandStatus := eWandOeffnung_Offen;
+      END_IF
       bpDone := TRUE;
 
   // Wandverstellung öffnen =====================
   END_CASE
-END_IF
+ELSE
 
-IF ( NOT bpWandverstellungOeffnen ) THEN
-
-  IF (steplWandverstellungOeffnen > STEP_0_E) THEN
+  IF ( steplWandverstellungOeffnen > STEP_0_E ) THEN
     bpDone := FALSE;
     out_bWandverstellungOeffnen := FALSE;
+    tonlEingefahrenWandEinlaufseite( IN := FALSE );
+    tonlEingefahrenWandAuslaufseite( IN := FALSE );
+    tonlBewegungszeitOeffnen( IN := FALSE );
     steplWandverstellungOeffnen := STEP_0_E;
   END_IF
+
 END_IF
 END_ACTION

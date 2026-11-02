@@ -9,45 +9,49 @@ ACTION Oeffnen
 //-------------------------------------------------------------------------------------------------
 // AKTION - ROLLENLEISTE OEFFNEN
 //-------------------------------------------------------------------------------------------------
-
-IF ( bpStarteOeffnen
-     AND NOT bpStarteSchliessen )
-THEN
+IF ( bpStarteOeffnen ) THEN
 
   CASE steplSchrittketteOeffnen OF
     // OEFFNEN =================================================
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
-         - Pruefen der Pneumatik- Zylinderstellung
+         - Pruefen der Pneumatik- Zylinderstellung (ohne Endlagensensor immer die volle Bewegungszeit abwarten)
       *)
-      IF ( NOT in_bGeoeffnet ) THEN
-        tonlRollenleisteGeoeffnet(IN := FALSE);
+      bpDone := FALSE;
+      tonlRollenleisteGeoeffnet( IN := FALSE );
+      tonlBewegungszeitOeffnen( IN := FALSE );
 
-        out_bOeffnen:= TRUE;
-
-        steplSchrittketteOeffnen := STEP_10_E;
-      ELSE
+      IF ( bpAbfrageGeoeffnetVorhanden AND in_bGeoeffnet ) THEN
         steplSchrittketteOeffnen := STEP_1000_E;
-
+      ELSE
+        steplSchrittketteOeffnen := STEP_10_E;
       END_IF
 
     // OEFFNEN =================================================
     STEP_10_E:
       (* Hinweis:
-         - Initialisieren der Timer
+         - Oeffnen, Gegenausgang aus
          - Pruefen ob die Zylinder ihre Bewegung abgeschlossen haben
+         - Ohne Endlagensensor nur die Bewegungszeit auswerten
       *)
-      tonlRollenleisteGeoeffnet( IN := NOT in_bGeoeffnet,
-                                 PT := cZEITWERT_UEBERWACHUNG_BEWEGUNG );
+      out_bOeffnen    := TRUE;
+      out_bSchliessen := FALSE;
 
-      IF (  in_bGeoeffnet ) THEN
+      tonlRollenleisteGeoeffnet( IN := bpAbfrageGeoeffnetVorhanden AND NOT in_bGeoeffnet,
+                                 PT := cZEITWERT_UEBERWACHUNG_BEWEGUNG );
+      tonlBewegungszeitOeffnen( IN := NOT bpAbfrageGeoeffnetVorhanden,
+                                PT := tpBewegungszeit );
+
+      IF (    ( bpAbfrageGeoeffnetVorhanden AND in_bGeoeffnet )
+           OR ( NOT bpAbfrageGeoeffnetVorhanden AND tonlBewegungszeitOeffnen.Q ) )
+      THEN
         out_bOeffnen := FALSE;
         steplSchrittketteOeffnen := STEP_1000_E;
       END_IF
 
       (* Fehlerbehandlung:
-         - Timer Zylinder
+         - Timer Zylinder (nur mit Endlagensensor)
       *)
       IF ( tonlRollenleisteGeoeffnet.Q ) THEN
         out_bOeffnen := FALSE;
@@ -57,6 +61,7 @@ THEN
 
     // OEFFNEN =================================================
     STEP_900_E:
+      out_bOeffnen := FALSE;
       bpFehler := TRUE;
 
     // OEFFNEN =================================================
@@ -65,14 +70,15 @@ THEN
 
   // OEFFNEN =================================================
   END_CASE
-END_IF
+ELSE
 
-IF ( NOT bpStarteOeffnen ) THEN
-
-  IF (steplSchrittketteOeffnen > STEP_0_E) THEN
+  IF ( steplSchrittketteOeffnen > STEP_0_E ) THEN
     bpDone := FALSE;
     out_bOeffnen := FALSE;
+    tonlRollenleisteGeoeffnet( IN := FALSE );
+    tonlBewegungszeitOeffnen( IN := FALSE );
     steplSchrittketteOeffnen := STEP_0_E;
   END_IF
+
 END_IF
 END_ACTION

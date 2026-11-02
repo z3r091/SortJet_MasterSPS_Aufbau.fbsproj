@@ -103,8 +103,8 @@ THEN
       (* Anmerkung:
          - Korrekte Stati der Zylinder und Achsen abfragen
       *)
-      IF ( ( Hubrahmen.epStatusZylinder = eZylinderEingefahren )
-           AND ( ( Anschlag.epStatusZylinder = eZylinderAusgefahren ) OR NOT blAnschlagAutomatischFahren)
+      IF ( ( ( Hubrahmen.epStatusZylinder = eZylinderEingefahren ) OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen )
+           AND ( ( Anschlag.epStatusZylinder = eZylinderAusgefahren ) OR NOT blAnschlagAutomatischFahren OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bAnschlag )
            AND ( ( Messachse.bpDone ) OR NOT BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bScheibenVermessen ) )
       THEN
 
@@ -189,7 +189,9 @@ THEN
       (* Anmerkung:
          - Anschläge ausfahren
       *)
-      IF Anschlag.bpDone AND ( Anschlag.epStatusZylinder = eZylinderAusgefahren ) THEN
+      IF (    ( Anschlag.bpDone AND ( Anschlag.epStatusZylinder = eZylinderAusgefahren ) )
+           OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bAnschlag )
+      THEN
 
         tlZeitBereitAnzulegen := TIME();
 
@@ -359,9 +361,9 @@ THEN
          - Anschläge einfahren
          - Messachse.positionieren
       *)
-      IF Hubrahmen.bpDone 
-         AND Messachse.bpDone 
-         AND Anschlag.bpDone 
+      IF ( Hubrahmen.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen )
+         AND Messachse.bpDone
+         AND ( Anschlag.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bAnschlag )
       THEN
         Anschlag.bpStartEinfahren  := FALSE;
         Hubrahmen.bpStartAusfahren := FALSE;
@@ -423,7 +425,7 @@ THEN
       (* Anmerkung:
          - Anschlaege gesenkt
       *)
-      IF (  Anschlag.bpDone )  THEN
+      IF (  Anschlag.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bAnschlag )  THEN
         Anschlag.bpStartEinfahren  := FALSE;
 
         steplAnlegen := STEP_1000_E;

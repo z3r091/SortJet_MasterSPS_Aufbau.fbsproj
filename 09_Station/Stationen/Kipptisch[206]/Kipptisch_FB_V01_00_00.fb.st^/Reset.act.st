@@ -42,6 +42,11 @@ IF( blBetriebsartReset )THEN
       Kippen.bpReset        := TRUE;
       Querfahrt.bpReset     := TRUE;
 
+      (* Anmerkung:
+         - Bausteine welche sich selbst zurueck setzen
+      *)
+      Rollenleiste.bpReset  := TRUE;
+
       steplReset := STEP_20_E;
 
     // RESET ================================
@@ -128,6 +133,7 @@ ELSE
     Glastransport.bpReset := FALSE;
     Kippen.bpReset        := FALSE;
     Querfahrt.bpReset     := FALSE;
+    Rollenleiste.bpReset  := FALSE;
 
     steplReset := STEP_0_E;
   END_IF

@@ -61,8 +61,8 @@ THEN
       Anschlag.bpStartEinfahren  := TRUE;
       Glastransport.bpReferenz   := TRUE;
 
-      IF (  Anschlag.bpDone
-           AND Hubrahmen.bpDone
+      IF (  ( Anschlag.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bAnschlag )
+           AND ( Hubrahmen.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen )
            AND Glastransport.bpDone )
       THEN
         Hubrahmen.bpStartAusfahren := FALSE;

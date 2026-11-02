@@ -10,59 +10,52 @@ ACTION WandverstellungSchliessen
 //-------------------------------------------------------------------------------------------------
 // AKTION - WANDOEFFNUNG VERSTELLEN [Min- Max- Position]
 //-------------------------------------------------------------------------------------------------
-
-IF ( bpWandverstellungSchliessen
-     AND NOT bpWandverstellungOeffnen )
-THEN
+IF ( bpWandverstellungSchliessen ) THEN
 
   CASE steplWandverstellungSchliessen OF
     // Wandverstellung schließen =====================
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
-         - Pruefen der Pneumatik- Zylinderstellung
+         - Pruefen der Pneumatik- Zylinderstellung (ohne Endlagensensor immer die volle Bewegungszeit abwarten)
       *)
-      IF ( NOT in_bWandEinlaufseiteGeschlossen
-           OR NOT in_bWandAuslaufseiteGeschlossen )
-      THEN
-        tonlAusgefahrenWandEinlaufseite( IN := FALSE );
-        tonlAusgefahrenWandAuslaufseite( IN := FALSE );
+      bpDone := FALSE;
+      tonlAusgefahrenWandEinlaufseite( IN := FALSE );
+      tonlAusgefahrenWandAuslaufseite( IN := FALSE );
+      tonlBewegungszeitSchliessen( IN := FALSE );
 
-        out_bWandverstellungSchliessen := TRUE;
-
-        steplWandverstellungSchliessen := STEP_10_E;
-      ELSE
+      IF ( bpAbfrageGeschlossenVorhanden AND in_bWandEinlaufseiteGeschlossen AND in_bWandAuslaufseiteGeschlossen ) THEN
         steplWandverstellungSchliessen := STEP_1000_E;
-
+      ELSE
+        epWandStatus := eWandOeffnung_Undefiniert;
+        steplWandverstellungSchliessen := STEP_10_E;
       END_IF
 
     // Wandverstellung schließen =====================
     STEP_10_E:
       (* Hinweis:
-         - Initialisieren der Timer
+         - Schliessen, Gegenausgang aus
          - Pruefen ob die Zylinder ihre Bewegung abgeschlossen haben
+         - Ohne Endlagensensor nur die Bewegungszeit auswerten
       *)
-      tonlAusgefahrenWandEinlaufseite( IN := NOT in_bWandEinlaufseiteGeschlossen, PT:= T#5s );
-      tonlAusgefahrenWandAuslaufseite( IN := NOT in_bWandAuslaufseiteGeschlossen, PT:= T#5s );
+      out_bWandverstellungSchliessen := TRUE;
+      out_bWandverstellungOeffnen    := FALSE;
 
-      IF (  in_bWandEinlaufseiteGeschlossen
-           AND in_bWandAuslaufseiteGeschlossen )
+      tonlAusgefahrenWandEinlaufseite( IN := bpAbfrageGeschlossenVorhanden AND NOT in_bWandEinlaufseiteGeschlossen, PT := T#5s );
+      tonlAusgefahrenWandAuslaufseite( IN := bpAbfrageGeschlossenVorhanden AND NOT in_bWandAuslaufseiteGeschlossen, PT := T#5s );
+      tonlBewegungszeitSchliessen( IN := NOT bpAbfrageGeschlossenVorhanden, PT := tpBewegungszeit );
+
+      IF (    ( bpAbfrageGeschlossenVorhanden AND in_bWandEinlaufseiteGeschlossen AND in_bWandAuslaufseiteGeschlossen )
+           OR ( NOT bpAbfrageGeschlossenVorhanden AND tonlBewegungszeitSchliessen.Q ) )
       THEN
         out_bWandverstellungSchliessen := FALSE;
-
         steplWandverstellungSchliessen := STEP_1000_E;
       END_IF
 
       (* Fehlerbehandlung:
-         - Zylinder Wand
+         - Zylinder Wand Einlauf- / Auslaufseite (nur mit Endlagensensor)
       *)
-      IF ( tonlAusgefahrenWandEinlaufseite.Q ) THEN
-        out_bWandverstellungSchliessen := FALSE;
-        wpFehlerNr := cMELDUNG_ZYLINDER_WAND_NICHT_AUSGEFAHREN;
-        steplWandverstellungSchliessen := STEP_900_E;
-      END_IF
-
-      IF ( tonlAusgefahrenWandAuslaufseite.Q ) THEN
+      IF ( tonlAusgefahrenWandEinlaufseite.Q OR tonlAusgefahrenWandAuslaufseite.Q ) THEN
         out_bWandverstellungSchliessen := FALSE;
         wpFehlerNr := cMELDUNG_ZYLINDER_WAND_NICHT_AUSGEFAHREN;
         steplWandverstellungSchliessen := STEP_900_E;
@@ -70,21 +63,26 @@ THEN
 
     // Wandverstellung schließen =====================
     STEP_900_E:
+      out_bWandverstellungSchliessen := FALSE;
       bpFehler := TRUE;
 
     // Wandverstellung schließen =====================
     STEP_1000_E:
+      // Ohne Sensor ist die Stellung zeitlich angenommen, nicht gemessen
+      IF NOT bpAbfrageGeschlossenVorhanden THEN
+        epWandStatus := eWandOeffnung_Geschlossen;
+      END_IF
       bpDone := TRUE;
 
   END_CASE
-END_IF
+ELSE
 
-// Wandverstellung schließen =====================
-IF ( NOT bpWandverstellungSchliessen ) THEN
-
-  IF (steplWandverstellungSchliessen > STEP_0_E) THEN
+  IF ( steplWandverstellungSchliessen > STEP_0_E ) THEN
     bpDone := FALSE;
     out_bWandverstellungSchliessen := FALSE;
+    tonlAusgefahrenWandEinlaufseite( IN := FALSE );
+    tonlAusgefahrenWandAuslaufseite( IN := FALSE );
+    tonlBewegungszeitSchliessen( IN := FALSE );
     steplWandverstellungSchliessen := STEP_0_E;
   END_IF
 

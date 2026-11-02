@@ -49,7 +49,7 @@ IF( bpReferenz )THEN
       (* Hinweis:
          - Arretierung ist eingefahren
       *)
-      IF ( Arretierung.bpDone ) THEN
+      IF ( Arretierung.bpDone OR NOT ppParameterBaustein.bArretierung ) THEN
         Arretierung.bpStartEinfahren := FALSE;
         steplReferenz := STEP_30_E;
       END_IF
@@ -258,7 +258,7 @@ IF( bpReferenz )THEN
       (* Hinweis:
          - Arretierung ist ausgefahren
       *)
-      IF ( Arretierung.bpDone ) THEN
+      IF ( Arretierung.bpDone OR NOT ppParameterBaustein.bArretierung ) THEN
         Arretierung.bpStartAusfahren := FALSE;
         steplReferenz := STEP_1000_E;
       END_IF

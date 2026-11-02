@@ -14,6 +14,11 @@ VAR_INPUT
   bpReset            : BOOL;
   bpAktivieren       : BOOL;
 
+  // OPTIONEN
+  bpAbfrageGeoeffnetVorhanden   : BOOL := TRUE;   // Endlagensensor geoeffnet vorhanden, sonst gilt die Endlage nach tpBewegungszeit
+  bpAbfrageGeschlossenVorhanden : BOOL := TRUE;   // Endlagensensor geschlossen vorhanden, sonst gilt die Endlage nach tpBewegungszeit
+  tpBewegungszeit               : TIME := T#800MS; // Bewegungszeit je Richtung ohne Endlagensensor
+
 END_VAR
 VAR_OUTPUT
 
@@ -32,11 +37,10 @@ VAR
   steplSchrittketteSchliessen : Steps_TE;
 
   // TIMER
-  tonlRollenleisteGeoeffnet   : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
-  tonlRollenleisteGeschlossen : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
-
-  // TRIGGER
-  ftlDeaktivieren : F_TRIG;
+  tonlRollenleisteGeoeffnet    : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
+  tonlRollenleisteGeschlossen  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
+  tonlBewegungszeitOeffnen     : TON; // Bewegungszeit ohne Endlagensensor geoeffnet
+  tonlBewegungszeitSchliessen  : TON; // Bewegungszeit ohne Endlagensensor geschlossen
 
 END_VAR
 VAR
@@ -58,10 +62,15 @@ VAR CONSTANT
 END_VAR
 
 //-------------------------------------------------------------------------------------------------
-// BAUSTEIN: ABLAUF
+// BAUSTEIN: RESET / DEAKTIVIERT
 //-------------------------------------------------------------------------------------------------
-
-IF ( bpReset ) THEN
+(* Hinweis:
+   - Reset oder deaktiviert: Ausgaenge aus, Ketten und Timer zuruecksetzen, Done und Fehler loeschen
+   - Der Baustein setzt bpReset selbst zurueck, der Aufrufer wartet nicht auf Done
+   - Ein deaktivierter Baustein meldet kein Done; der Aufrufer verknuepft das Warten auf Done
+     mit der Aktivierung aus der MK (z.B. Rollenleiste.bpDone OR NOT stStationsAufbau.bX)
+*)
+IF ( bpReset OR NOT bpAktivieren ) THEN
 
   out_bOeffnen    := FALSE;
   out_bSchliessen := FALSE;
@@ -69,31 +78,27 @@ IF ( bpReset ) THEN
   bpStarteOeffnen    := FALSE;
   bpStarteSchliessen := FALSE;
 
+  steplSchrittketteOeffnen    := STEP_0_E;
+  steplSchrittketteSchliessen := STEP_0_E;
+
+  tonlRollenleisteGeoeffnet( IN := FALSE );
+  tonlRollenleisteGeschlossen( IN := FALSE );
+  tonlBewegungszeitOeffnen( IN := FALSE );
+  tonlBewegungszeitSchliessen( IN := FALSE );
+
   wpFehlerNr := cMELDUNG_NULL;
   bpFehler   := FALSE;
   bpDone     := FALSE;
 
   bpReset := FALSE;
 
-ELSE
-
-  IF ( bpAktivieren ) THEN
-    Oeffnen();
-    Schliessen();
-  ELSE
-    bpDone     := TRUE;
-    bpFehler   := FALSE;
-    wpFehlerNr := 0;
-  END_IF
-
-  (* Hinweis:
-     - Deaktiveren Baustein zuruecksetzen
-  *)
-  ftlDeaktivieren( CLK := bpAktivieren );
-
-  IF ( ftlDeaktivieren.Q ) THEN
-    bpReset := TRUE;
-  END_IF
+  RETURN;
 
 END_IF
+
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AKTIONEN
+//-------------------------------------------------------------------------------------------------
+Oeffnen();
+Schliessen();
 END_FUNCTION_BLOCK

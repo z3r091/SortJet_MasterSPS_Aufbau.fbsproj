@@ -6,11 +6,10 @@
 }
 *)
 ACTION Einfahren
-//_________________________________________________________________________
-// ************************ START Zylinder -Einfahren ********************
-//_________________________________________________________________________
-IF (  bpStartEinfahren )
-THEN
+//-------------------------------------------------------------------------------------------------
+// EINFAHREN
+//-------------------------------------------------------------------------------------------------
+IF ( bpStartEinfahren ) THEN
   CASE steplEinfahren OF
     // EINFAHREN =====================
     STEP_0_E:
@@ -19,57 +18,67 @@ THEN
          - Bit fuer das Zylinder ausfahren zuruecksetzen
            => Federrueckstell- Ventiel
       *)
-      IF (  NOT in_bStatusZylinderEingefahren ) THEN
-        tonlZylinderEingefahren(IN := FALSE);
-        out_bZylinderAusfahren := FALSE;
+      bpDone := FALSE;
+      tonlZylinderEingefahren( IN := FALSE );
+      tonlBewegungszeitEinfahren( IN := FALSE );
+      out_bZylinderAusfahren := FALSE;
 
-        steplEinfahren := STEP_10_E;
-      ELSE
+      IF ( bpAbfrageEingefahrenVorhanden AND in_bStatusZylinderEingefahren ) THEN
         steplEinfahren := STEP_1000_E;
-
+      ELSE
+        epStatusZylinder := eZylinderUndefiniert;
+        steplEinfahren   := STEP_10_E;
       END_IF
 
     // EINFAHREN =====================
     STEP_10_E:
       (* Hinweis:
          - Pruefen ob die Zylinder eingefahren sind
+         - Ohne Endlagensensor nur die Bewegungszeit auswerten
       *)
-      tonlZylinderEingefahren( IN := ( NOT in_bStatusZylinderEingefahren  ),
-                               PT := T#5s );
+      out_bZylinderAusfahren := FALSE;
 
-      IF (  in_bStatusZylinderEingefahren ) THEN
-        out_bZylinderAusfahren := FALSE;
+      tonlZylinderEingefahren( IN := bpAbfrageEingefahrenVorhanden AND NOT in_bStatusZylinderEingefahren,
+                               PT := cZEITLICHE_UEBERWACHUNG_BEWEGUNG_ZYLINDER );
+      tonlBewegungszeitEinfahren( IN := NOT bpAbfrageEingefahrenVorhanden,
+                                  PT := tpBewegungszeit );
+
+      IF (    ( bpAbfrageEingefahrenVorhanden AND in_bStatusZylinderEingefahren )
+           OR ( NOT bpAbfrageEingefahrenVorhanden AND tonlBewegungszeitEinfahren.Q ) )
+      THEN
         steplEinfahren := STEP_1000_E;
       END_IF
 
       (* Fehlerbehandlung:
-         - Zylinder
+         - Zeitliche- Ueberwachung (nur mit Endlagensensor)
       *)
       IF ( tonlZylinderEingefahren.Q ) THEN
-        out_bZylinderAusfahren := FALSE;
         wpFehlerNr := cMELDUNG_ZYLINDER_NICHT_EINGEFAHREN;
         steplEinfahren := STEP_900_E;
       END_IF
 
     // EINFAHREN =====================
     STEP_900_E:
+      out_bZylinderAusfahren := FALSE;
       bpFehler := TRUE;
 
     // EINFAHREN =====================
     STEP_1000_E:
+      // Ohne Sensor ist die Stellung zeitlich angenommen, nicht gemessen
+      epStatusZylinder := eZylinderEingefahren;
       bpDone := TRUE;
 
   // EINFAHREN =====================
   END_CASE
 ELSE
-  IF (steplEinfahren > STEP_0_E) THEN
+
+  IF ( steplEinfahren > STEP_0_E ) THEN
     bpDone := FALSE;
     out_bZylinderAusfahren := FALSE;
     tonlZylinderEingefahren( IN := FALSE );
+    tonlBewegungszeitEinfahren( IN := FALSE );
     steplEinfahren := STEP_0_E;
   END_IF
+
 END_IF
-//_________________________________________________________________________
-// ************************ ENDE Zylinder -Einfahren *********************
-//_________________________________________________________________________
 END_ACTION

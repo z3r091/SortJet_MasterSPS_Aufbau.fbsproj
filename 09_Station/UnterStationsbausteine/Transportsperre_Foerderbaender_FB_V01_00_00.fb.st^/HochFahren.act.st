@@ -9,58 +9,76 @@ ACTION HochFahren
 //_________________________________________________________________________
 // ************************ Aktion Zylinder -Hoch ********************
 //_________________________________________________________________________
-IF (  bpStartHoch
+IF (     bpStartHoch
      AND NOT tofRunter.Q
      AND bpFreigabe )
 THEN
   CASE steplHoch OF
-    // EINFAHREN =====================
+    // HOCH =====================
     STEP_0_E:
       (* Anmerkung:
          - Timer zuruecksetzen
-         - Zylinder ausfahren starten
+         - Ausgang zuruecknehmen (Federrueckstell- Ventil faehrt hoch)
+           => ohne Endlagensensor immer die volle Bewegungszeit abwarten
       *)
-      IF ( NOT in_bOben ) THEN
-        tonlOben(IN := FALSE);
-        out_bRunter := FALSE;
+      bpDone := FALSE;
+      tonlOben( IN := FALSE );
+      tonlBewegungszeitHoch( IN := FALSE );
+      out_bRunter := FALSE;
 
-        steplHoch := STEP_10_E;
-      ELSE
+      IF ( bpAbfrageObenVorhanden AND in_bOben ) THEN
         steplHoch := STEP_1000_E;
+      ELSE
+        wpStatus  := eTransportsperreUndefiniert;
+        steplHoch := STEP_10_E;
       END_IF
 
-    // EINFAHREN =====================
+    // HOCH =====================
     STEP_10_E:
-      tonlOben( IN := NOT in_bOben, PT := T#15s );
+      (* Hinweis:
+         - Ohne Endlagensensor nur die Bewegungszeit auswerten
+      *)
+      out_bRunter := FALSE;
 
-      IF ( in_bOben ) THEN
+      tonlOben( IN := bpAbfrageObenVorhanden AND NOT in_bOben,
+                PT := cZEITLICHE_UEBERWACHUNG_BEWEGUNG_ZYLINDER );
+      tonlBewegungszeitHoch( IN := NOT bpAbfrageObenVorhanden,
+                             PT := tpBewegungszeit );
+
+      IF (    ( bpAbfrageObenVorhanden AND in_bOben )
+           OR ( NOT bpAbfrageObenVorhanden AND tonlBewegungszeitHoch.Q ) )
+      THEN
         steplHoch := STEP_1000_E;
       END_IF
 
       (* Fehlerbehandlung:
-         - Zylinder
+         - Zeitliche- Ueberwachung (nur mit Endlagensensor)
       *)
       IF ( tonlOben.Q ) THEN
         wpFehlerNr := cMELDUNG_ZYLINDER_NICHT_EINGEFAHREN;
         steplHoch := STEP_900_E;
       END_IF
 
-    // EINFAHREN =====================
+    // HOCH =====================
     STEP_900_E:
       bpFehler := TRUE;
 
-    // EINFAHREN =====================
+    // HOCH =====================
     STEP_1000_E:
+      // Ohne Sensor ist die Stellung zeitlich angenommen, nicht gemessen
+      wpStatus := eTransportsperreOben;
       bpDone := TRUE;
 
-  // EINFAHREN =====================
+  // HOCH =====================
   END_CASE
 ELSE
-  IF (steplHoch > STEP_0_E) THEN
+
+  IF ( steplHoch > STEP_0_E ) THEN
     bpDone := FALSE;
-    steplHoch := STEP_0_E;
     tonlOben( IN := FALSE );
-    tonlUnten( IN := FALSE );
+    tonlBewegungszeitHoch( IN := FALSE );
+    steplHoch := STEP_0_E;
   END_IF
+
 END_IF
 END_ACTION

@@ -6,13 +6,16 @@
 }
 *)
 FUNCTION_BLOCK Wandverstellung_MultiZylinder_FB_V01_00_00
-VAR_INPUT 
+VAR_INPUT
 
   // BOOLEAN
   bpReset                     : BOOL;
   bpAktivieren                : BOOL;
   bpStartZylinderBewegung     : BOOL; // BETRIEBTYP: Zylinder wird ausgefahren
   bpZylinderAbfragenVorhanden : BOOL := FALSE; // Hinweis: Manche Zylinder haben keine Abfragen
+
+  // TIME
+  tpBewegungszeit             : TIME := T#1S; // Bewegungszeit je Richtung ohne Abfragen
 
   // ENUM
   epSollZylinderStellung  : PneumatikZylinderStatus_EN;
@@ -50,9 +53,9 @@ END_VAR
 VAR
 
   // HARDWAREEINGAENGE
-  in_bStatusZylinder_1_Ausgefahren     AT %I* : BOOL; // STATUS: Zylinderabfrage [Ausgefahren] 
-  in_bStatusZylinder_2_Ausgefahren     AT %I* : BOOL; // STATUS: Zylinderabfrage [Ausgefahren] 
-  in_bStatusZylinder_Alle_Eingefahren  AT %I* : BOOL; // STATUS: Zylinderabfrage [Eingefahren] 
+  in_bStatusZylinder_1_Ausgefahren     AT %I* : BOOL; // STATUS: Zylinderabfrage [Ausgefahren]
+  in_bStatusZylinder_2_Ausgefahren     AT %I* : BOOL; // STATUS: Zylinderabfrage [Ausgefahren]
+  in_bStatusZylinder_Alle_Eingefahren  AT %I* : BOOL; // STATUS: Zylinderabfrage [Eingefahren]
 
 
 
@@ -64,71 +67,75 @@ VAR
 
 END_VAR
 //-------------------------------------------------------------------------------------------------
-// BNAUSTEIN: STEUERUNG
+// BAUSTEIN: RESET / DEAKTIVIERT
 //-------------------------------------------------------------------------------------------------
-IF ( bpReset ) THEN
-
-  bpFehler := FALSE;
-  bpDone   := FALSE;
-
-  bpStartZylinderBewegung := FALSE;
+(* Hinweis:
+   - Reset oder deaktiviert: Ausgaenge aus, Kette und Timer zuruecksetzen, Done und Fehler loeschen
+   - Der Baustein setzt bpReset selbst zurueck, der Aufrufer wartet nicht auf Done
+   - Ein deaktivierter Baustein meldet kein Done; der Aufrufer verknuepft das Warten auf Done
+     mit der Aktivierung aus der MK (z.B. Wandverstellung.bpDone OR NOT stStationsAufbau.bX)
+*)
+IF ( bpReset OR NOT bpAktivieren ) THEN
 
   out_bZylinder_1_Einfahren := FALSE;
   out_bZylinder_2_Einfahren := FALSE;
   out_bZylinder_1_Ausfahren := FALSE;
   out_bZylinder_2_Ausfahren := FALSE;
 
-  tonlStellung13mm( IN := FALSE ); 
-  tonlStellung23mm( IN := FALSE ); 
-  tonlStellung29mm( IN := FALSE ); 
+  bpStartZylinderBewegung := FALSE;
+
+  steplZylinderStellung := STEP_0_E;
+
+  tonlStellung13mm( IN := FALSE );
+  tonlStellung23mm( IN := FALSE );
+  tonlStellung29mm( IN := FALSE );
   tonlWartezeitZylinderStellung( IN := FALSE );
 
+  bpDone     := FALSE;
+  bpFehler   := FALSE;
   wpFehlerNr := cMELDUNG_NULL;
 
   bpReset := FALSE;
 
-ELSE
+  RETURN;
 
-  IF ( bpAktivieren ) THEN
+END_IF
 
-    // Baustein- Aktionen
-    ZylinderBewegung();
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AKTIONEN
+//-------------------------------------------------------------------------------------------------
+ZylinderBewegung();
 
-    //Status der Zylinder
-    epStatusZylinderStellung := eZylinderUndefiniert;
+//-------------------------------------------------------------------------------------------------
+// STATUS DER ZYLINDER
+//-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Status aus der Sensorik, wenn Abfragen vorhanden sind
+   - Ohne Abfragen bleibt der Status, den die Schrittkette nach der Bewegungszeit setzt
+*)
+IF ( bpZylinderAbfragenVorhanden ) THEN
 
-    IF ( NOT bpZylinderAbfragenVorhanden ) THEN
-      epStatusZylinderStellung := epSollZylinderStellung;
+  // Stellung 29mm
+  IF (     in_bStatusZylinder_1_Ausgefahren
+       AND in_bStatusZylinder_2_Ausgefahren )
+  THEN
+    epStatusZylinderStellung := eZylinderStellung29mm;
 
-    ELSE
-      // Stellung 29mm
-      IF (  in_bStatusZylinder_1_Ausgefahren
-           AND NOT in_bStatusZylinder_2_Ausgefahren  ) 
-      THEN
-        epStatusZylinderStellung := eZylinderStellung29mm;
-      
-      // Stellung 23mm
-      ELSIF ( in_bStatusZylinder_1_Ausgefahren
-              AND NOT in_bStatusZylinder_2_Ausgefahren ) 
-      THEN
-        epStatusZylinderStellung := eZylinderStellung23mm;
+  // Stellung 23mm
+  ELSIF (     in_bStatusZylinder_1_Ausgefahren
+          AND NOT in_bStatusZylinder_2_Ausgefahren )
+  THEN
+    epStatusZylinderStellung := eZylinderStellung23mm;
 
-      // Stellung 13mm
-      ELSIF ( in_bStatusZylinder_Alle_Eingefahren
-              AND NOT in_bStatusZylinder_1_Ausgefahren
-              AND NOT in_bStatusZylinder_2_Ausgefahren ) 
-      THEN
-        epStatusZylinderStellung := eZylinderStellung16mm;
-
-      END_IF
-
-    END_IF
+  // Stellung 13mm
+  ELSIF (     in_bStatusZylinder_Alle_Eingefahren
+          AND NOT in_bStatusZylinder_1_Ausgefahren
+          AND NOT in_bStatusZylinder_2_Ausgefahren )
+  THEN
+    epStatusZylinderStellung := eZylinderStellung16mm;
 
   ELSE
-    bpDone   := TRUE;
-    bpFehler := FALSE;
-
-    epStatusZylinderStellung := epSollZylinderStellung;
+    epStatusZylinderStellung := eZylinderUndefiniert;
 
   END_IF
 

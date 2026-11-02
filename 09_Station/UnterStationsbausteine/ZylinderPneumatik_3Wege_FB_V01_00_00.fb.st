@@ -50,7 +50,6 @@ VAR
 
   // STEPS
   steplAusfahren   : Steps_TE;
-  steplReset       : Steps_TE;
 
   // TIMER
   tonlZylinder1Eingefahren  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben
@@ -68,77 +67,93 @@ IF ( blErsterZyklus  ) THEN
   epOeffnungsStellung := eZylinderStellung16mm;
 END_IF
 
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: RESET / DEAKTIVIERT
+//-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Reset oder deaktiviert: Ausgaenge aus, Kette und Timer zuruecksetzen, Done und Fehler loeschen
+   - Der Baustein setzt bpReset selbst zurueck, der Aufrufer wartet nicht auf Done
+   - Ein deaktivierter Zylinder meldet kein Done; der Aufrufer verknuepft das Warten auf Done
+     mit der Aktivierung aus der MK (z.B. Zylinder.bpDone OR NOT stStationsAufbau.bX)
+*)
+IF ( bpReset OR NOT bpAktivieren ) THEN
 
-IF bpReset THEN
-  
-  Reset();
+  out_bZylinder1Ausfahren := FALSE;
+  out_bZylinder1Einfahren := FALSE;
+  out_bZylinder2Ausfahren := FALSE;
+  out_bZylinder2Einfahren := FALSE;
 
-ELSE
+  bpStartPneumatik := FALSE;
 
-  IF ( bpAktivieren ) THEN
-    //-------------------------------------------------------------------------------------------------
-    // AKTIONEN
-    //-------------------------------------------------------------------------------------------------
-    AusEinFahren();
-    
-    //-------------------------------------------------------------------------------------------------
-    // AUSGAENGE
-    //-------------------------------------------------------------------------------------------------
-    
-    // Ausgang:
-    //   - Status der Zylinders
-    //     => Ausgefahren
-    //     => Eingefahren
-    //     => Undefiniert
-    wpStatusZylinder := eZylinderUndefiniert;
-    
-    
-    IF NOT bpZylinderAbfragenVorhanden THEN
-      // dies mit auch als DEMO Mode benutzen, wenn keine Abfargen verbaut sind, dann den Öffnungsstatus zurück spiegeln ..
-      wpStatusZylinder := epOeffnungsStellung;
-    
-    ELSIF NOT bpEinAusFahrenLogikDrehen THEN  // mit Zylinderabfragen
-    
-      IF ( in_bStatusZylinder1Ausgefahren ) THEN
-        IF (in_bStatusZylinder2Ausgefahren) THEN
-          wpStatusZylinder := eZylinderStellung29mm;
-        ELSE
-          wpStatusZylinder := eZylinderStellung23mm;
-        END_IF
-    
+  steplAusfahren := STEP_0_E;
+
+  tonlZylinder1Ausgefahren( IN := FALSE );
+  tonlZylinder1Eingefahren( IN := FALSE );
+  tonlZylinder2Ausgefahren( IN := FALSE );
+  tonlZylinder2Eingefahren( IN := FALSE );
+  tonlWarteZeitAufVentile( IN := FALSE );
+
+  bpDone     := FALSE;
+  bpFehler   := FALSE;
+  wpFehlerNr := cMELDUNG_NULL;
+
+  bpReset := FALSE;
+
+  RETURN;
+
+END_IF
+
+//-------------------------------------------------------------------------------------------------
+// AKTIONEN
+//-------------------------------------------------------------------------------------------------
+AusEinFahren();
+
+//-------------------------------------------------------------------------------------------------
+// STATUS DER ZYLINDER
+//-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Status aus der Sensorik, wenn Abfragen vorhanden sind
+   - Ohne Abfragen bleibt der Status, den die Schrittkette nach der Wartezeit setzt
+*)
+IF ( bpZylinderAbfragenVorhanden ) THEN
+
+  IF NOT bpEinAusFahrenLogikDrehen THEN
+
+    IF ( in_bStatusZylinder1Ausgefahren ) THEN
+      IF (in_bStatusZylinder2Ausgefahren) THEN
+        wpStatusZylinder := eZylinderStellung29mm;
       ELSE
-        IF (in_bStatusZylinder2Ausgefahren) THEN
-          wpStatusZylinder := eZylinderStellung23mm;
-        ELSE
-          wpStatusZylinder := eZylinderStellung16mm;
-        END_IF
+        wpStatusZylinder := eZylinderStellung23mm;
       END_IF
-    
+
     ELSE
-    
-      IF in_bStatusZylinder1Eingefahren THEN
-    
-        IF (in_bStatusZylinder2Eingefahren) THEN
-          wpStatusZylinder := eZylinderStellung29mm;
-        ELSE
-          wpStatusZylinder := eZylinderStellung23mm;
-        END_IF
-    
+      IF (in_bStatusZylinder2Ausgefahren) THEN
+        wpStatusZylinder := eZylinderStellung23mm;
       ELSE
-    
-        IF (in_bStatusZylinder2Eingefahren) THEN
-          wpStatusZylinder := eZylinderStellung23mm;
-        ELSE
-          wpStatusZylinder := eZylinderStellung16mm;
-        END_IF
-    
+        wpStatusZylinder := eZylinderStellung16mm;
       END_IF
-    
     END_IF
-  
+
   ELSE
-    bpDone   := TRUE;
-    bpFehler := FALSE;
+
+    IF in_bStatusZylinder1Eingefahren THEN
+
+      IF (in_bStatusZylinder2Eingefahren) THEN
+        wpStatusZylinder := eZylinderStellung29mm;
+      ELSE
+        wpStatusZylinder := eZylinderStellung23mm;
+      END_IF
+
+    ELSE
+
+      IF (in_bStatusZylinder2Eingefahren) THEN
+        wpStatusZylinder := eZylinderStellung23mm;
+      ELSE
+        wpStatusZylinder := eZylinderStellung16mm;
+      END_IF
+
+    END_IF
+
   END_IF
 
 END_IF

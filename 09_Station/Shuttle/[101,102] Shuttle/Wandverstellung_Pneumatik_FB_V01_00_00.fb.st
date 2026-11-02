@@ -14,6 +14,11 @@ VAR_INPUT
   bpReset                     : BOOL;
   bpAktivieren                : BOOL;
 
+  // OPTIONEN
+  bpAbfrageGeoeffnetVorhanden   : BOOL := TRUE;   // Endlagensensoren geoeffnet vorhanden, sonst gilt die Endlage nach tpBewegungszeit
+  bpAbfrageGeschlossenVorhanden : BOOL := TRUE;   // Endlagensensoren geschlossen vorhanden, sonst gilt die Endlage nach tpBewegungszeit
+  tpBewegungszeit               : TIME := T#800MS; // Bewegungszeit je Richtung ohne Endlagensensor
+
 END_VAR
 VAR_OUTPUT
 
@@ -23,8 +28,6 @@ VAR_OUTPUT
 
   // WORD
   wpFehlerNr  : WORD;
-
-// ENUM
 
 END_VAR
 VAR
@@ -38,9 +41,8 @@ VAR
   tonlAusgefahrenWandEinlaufseite  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
   tonlEingefahrenWandAuslaufseite  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
   tonlAusgefahrenWandAuslaufseite  : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder verfahren wurde. Sonst wird ein Fehlerausgegeben
-
-  // TRIGGER
-  ftlDeaktivieren : F_TRIG;
+  tonlBewegungszeitOeffnen         : TON; // Bewegungszeit ohne Endlagensensor geoeffnet
+  tonlBewegungszeitSchliessen      : TON; // Bewegungszeit ohne Endlagensensor geschlossen
 
 END_VAR
 VAR
@@ -58,14 +60,31 @@ VAR
 END_VAR
 
 //-------------------------------------------------------------------------------------------------
-// BAUSTEIN: ABLAUF
+// BAUSTEIN: RESET / DEAKTIVIERT
 //-------------------------------------------------------------------------------------------------
-
-IF ( bpReset ) THEN
+(* Hinweis:
+   - Reset oder deaktiviert: Ausgaenge aus, Ketten und Timer zuruecksetzen, Done und Fehler loeschen
+   - Der Baustein setzt bpReset selbst zurueck, der Aufrufer wartet nicht auf Done
+   - Ein deaktivierter Baustein meldet kein Done; der Aufrufer verknuepft das Warten auf Done
+     mit der Aktivierung aus der MK (z.B. Wandverstellung.bpDone OR NOT stStationsAufbau.bX)
+*)
+IF ( bpReset OR NOT bpAktivieren ) THEN
 
   out_bWandverstellungOeffnen    := FALSE;
   out_bWandverstellungSchliessen := FALSE;
 
+  bpWandverstellungOeffnen    := FALSE;
+  bpWandverstellungSchliessen := FALSE;
+
+  steplWandverstellungOeffnen    := STEP_0_E;
+  steplWandverstellungSchliessen := STEP_0_E;
+
+  tonlEingefahrenWandEinlaufseite( IN := FALSE );
+  tonlAusgefahrenWandEinlaufseite( IN := FALSE );
+  tonlEingefahrenWandAuslaufseite( IN := FALSE );
+  tonlAusgefahrenWandAuslaufseite( IN := FALSE );
+  tonlBewegungszeitOeffnen( IN := FALSE );
+  tonlBewegungszeitSchliessen( IN := FALSE );
 
   wpFehlerNr := cMELDUNG_NULL;
   bpFehler   := FALSE;
@@ -73,25 +92,13 @@ IF ( bpReset ) THEN
 
   bpReset := FALSE;
 
-ELSE
-
-  IF ( bpAktivieren ) THEN
-    WandverstellungOeffnen();
-    WandverstellungSchliessen();
-  ELSE
-    bpDone     := TRUE;
-    bpFehler   := FALSE;
-    wpFehlerNr := 0;
-  END_IF
-
-  (* Hinweis:
-     - Deaktiveren baustein zuruecksetzen
-  *)
-  ftlDeaktivieren( CLK := bpAktivieren );
-
-  IF ( ftlDeaktivieren.Q ) THEN
-    bpReset := TRUE;
-  END_IF
+  RETURN;
 
 END_IF
+
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AKTIONEN
+//-------------------------------------------------------------------------------------------------
+WandverstellungOeffnen();
+WandverstellungSchliessen();
 END_FUNCTION_BLOCK

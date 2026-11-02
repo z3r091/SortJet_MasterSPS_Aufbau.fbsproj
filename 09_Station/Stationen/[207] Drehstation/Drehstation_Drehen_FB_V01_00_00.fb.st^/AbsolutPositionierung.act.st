@@ -167,7 +167,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
       (* Hinweis:
          - Arretierung ist eingefahren
       *)
-      IF ( Arretierung.bpDone ) THEN
+      IF ( Arretierung.bpDone OR NOT ppParameterBaustein.bArretierung ) THEN
         Arretierung.bpStartEinfahren := FALSE;
         steplAbsolutPositionieren := STEP_35_E;
       END_IF
@@ -395,7 +395,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
           eDrehPosition0Grad,
             eDrehPosition90Grad:
 
-          IF ( Arretierung.bpDone ) THEN
+          IF ( Arretierung.bpDone OR NOT ppParameterBaustein.bArretierung ) THEN
             Arretierung.bpStartAusfahren := FALSE;
             (* Anmerkung:
                - melden der Drehposition ans MMI zur

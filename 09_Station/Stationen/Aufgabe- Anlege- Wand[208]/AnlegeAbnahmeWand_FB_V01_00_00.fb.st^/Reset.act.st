@@ -51,6 +51,11 @@ IF( blBetriebsartReset )THEN
       Messachse.bpReset     := TRUE;
       Kippen.bpReset        := TRUE;
 
+      (* Hinweis:
+         - Bausteine welche sich selbst zurueck setzen
+      *)
+      Dickenverstellung.bpReset := TRUE;
+
       steplReset := STEP_20_E;
 
     // RESET ===============================
@@ -137,6 +142,7 @@ ELSE
     Glastransport.bpReset := FALSE;
     Messachse.bpReset     := FALSE;
     Kippen.bpReset        := FALSE;
+    Dickenverstellung.bpReset := FALSE;
 
     steplReset := STEP_0_E;
   END_IF
