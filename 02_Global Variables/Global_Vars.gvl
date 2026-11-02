@@ -86,7 +86,7 @@ VAR_GLOBAL
   bgMMIBruecken                            : BOOL := FALSE;
   bgDeaktiviereWatchIOs                    : BOOL := FALSE;
   bgSPS_SIMULATION                         : BOOL := FALSE;
-bgSimFehlmessungErzwingen                : BOOL; // Simulation: TRUE = die NAECHSTE Scheibenlaengenmessung (Scheibenmessung_FB) liefert eine Fehlmessung; wird danach automatisch zurueckgesetzt
+bgSimFehlmessungErzwingen                : BOOL; // Simulation: TRUE = die NAECHSTE Scheibenlaengenmessung (Scheibenmessung_FB_V01_01_01) liefert eine Fehlmessung; wird danach automatisch zurueckgesetzt
 bgSimFehlmessungDauer                    : BOOL; // Simulation: TRUE = ALLE Scheibenlaengenmessungen liefern eine Fehlmessung, bis wieder FALSE
 rgSimFehlmessungAbweichung               : REAL := 100.0; // Simulation: Abweichung [mm], die bei einer Fehlmessung auf die Scheibenlaenge addiert wird (muss groesser als rMesstoleranz sein)
 rgSimScheibenlaenge                      : REAL := 1000.0; // Simulation (bgSPS_SIMULATION): virtuelle Scheibenlaenge [mm] fuer Scheibenmessung und Restwegmessung der simulierten Antriebe

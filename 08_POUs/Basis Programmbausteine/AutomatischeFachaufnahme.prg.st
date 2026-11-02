@@ -19,7 +19,7 @@ VAR_INPUT
   ptQuerfahrtShuttle : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
 
   // REF
-  Shuttle : REFERENCE TO Shuttle_FB;
+  Shuttle : REFERENCE TO Shuttle_FB_V01_00_00;
 
 END_VAR
 

@@ -528,7 +528,7 @@ IF blSimMessAktiv THEN
   rlSimMessWeg := rlSimMessWeg + ABS( rpIstPosition - rlLetzteIstPosition );
 
   IF wpBetriebsart = SCHEIBENMESSUNG THEN
-    // Ergebnis der Messfahrt: von der Station vorgegeben (rpSimMessErgebnis, z.B. Scheibenmessung_FB) oder virtuelle Scheibenlaenge
+    // Ergebnis der Messfahrt: von der Station vorgegeben (rpSimMessErgebnis, z.B. Scheibenmessung_FB_V01_01_01) oder virtuelle Scheibenlaenge
     IF rpSimMessErgebnis <> REAL#0.0 THEN
       rlSimMessErgebnisVirt := rpSimMessErgebnis;
     ELSIF bpDrehrichtungsumkehrMessung THEN

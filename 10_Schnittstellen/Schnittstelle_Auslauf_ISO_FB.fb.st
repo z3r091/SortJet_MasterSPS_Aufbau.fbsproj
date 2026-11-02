@@ -5,7 +5,7 @@
   }
 }
 *)
-FUNCTION_BLOCK Schnittstelle_Auslauf_ISO_FB EXTENDS Basic_Schnittstelle_FB
+FUNCTION_BLOCK Schnittstelle_Auslauf_ISO_FB EXTENDS Basic_Schnittstelle_FB_V01_00_00
 
 VAR_INPUT
 END_VAR

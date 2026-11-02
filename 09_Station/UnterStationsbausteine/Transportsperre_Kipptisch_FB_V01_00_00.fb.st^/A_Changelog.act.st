@@ -1,0 +1,16 @@
+(* METADATA
+{
+  "v3Meta": {
+    "objectGuid": "43d8b4c0-f77d-4d5b-ab6c-ba0e26de6b91"
+  }
+}
+*)
+{attribute 'excludefrombuild'}
+ACTION A_Changelog
+(* !!! VERSIONSÄNDERUNGEN WERDEN HIER DETAILLIERT DOKUMENTIERT !!!
+
+- 2026-11-02 - V01_00_00: Tobias Brekerbohm, Claude
+  - Übernahme in den Master; erste versionierte Version
+
+*)
+END_ACTION

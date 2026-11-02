@@ -12,7 +12,7 @@ VAR_CONFIG
 // KONFIGURATION: BAUSTEIN IO's
 //==================================================================================================
 // Hinweis:
-// - Sensoren der Achsen und Hubrahmen laufen ueber die Umrichter (Eckuebergabe_FB.IO_Zuweisung)
+// - Sensoren der Achsen und Hubrahmen laufen ueber die Umrichter (Eckuebergabe_FB_V01_00_00.IO_Zuweisung)
 // - Hier keine direkten IOs
 
 END_VAR

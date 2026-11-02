@@ -14,18 +14,18 @@ VAR_GLOBAL
   // Stationen           
   aFaecherwagenstation  : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF Faecherwagenstation_V4_1_FB;
   
-  Anlegetisch201                  : Anlegetisch_FB;
-  Foerderer202                    : Foerderer_FB;    
-  Foerderer203                    : Foerderer_FB;    
-  Anlegetisch204                  : Anlegetisch_FB;    
-  Eckuebergabe205                 : Eckuebergabe_FB;
-  Kipptisch206                    : Kipptisch_FB; 
-  Combiwand208                    : AnlegeAbnahmeWand_FB;   
-  Drehstation207                  : Drehstation_FB;
+  Anlegetisch201                  : Anlegetisch_FB_V01_00_00;
+  Foerderer202                    : Foerderer_FB_V01_00_00;    
+  Foerderer203                    : Foerderer_FB_V01_00_00;    
+  Anlegetisch204                  : Anlegetisch_FB_V01_00_00;    
+  Eckuebergabe205                 : Eckuebergabe_FB_V01_00_00;
+  Kipptisch206                    : Kipptisch_FB_V01_00_00; 
+  Combiwand208                    : AnlegeAbnahmeWand_FB_V01_00_00;   
+  Drehstation207                  : Drehstation_FB_V01_00_00;
 
   //  Shuttle
-  aShuttle                        : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Shuttle_FB; 
-  aTransfershuttles               : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Transfershuttle_FB;
+  aShuttle                        : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Shuttle_FB_V01_00_00; 
+  aTransfershuttles               : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Transfershuttle_FB_V01_00_00;
   
   // Schnittstelle
   aSchnittstelleAuslauf           : ARRAY[cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF] OF Schnittstelle_Auslauf_Schneidanlage;
@@ -40,7 +40,7 @@ VAR_GLOBAL
 
   // Türen
   aTuer      : ARRAY[cERSTE_TUER..cLETZTE_TUER] OF Tuerschalter_FB;  
-  aDurchgang : ARRAY[cERSTER_DURCHGANG..cLETZTER_DURCHGANG] OF Durchgang_FB;
+  aDurchgang : ARRAY[cERSTER_DURCHGANG..cLETZTER_DURCHGANG] OF Durchgang_FB_V01_00_00;
 
   // Ampel
   Ampel_AK : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS,1..cANZAHL_AMPELN] OF Ampel_FB;
