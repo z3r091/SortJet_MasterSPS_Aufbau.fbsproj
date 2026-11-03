@@ -40,6 +40,16 @@ THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplSensorFreiFahren := STEP_10_E;
       END_IF
+
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit AND blAntriebsKopplungAktiv ),
+                                   PT := cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE );
+
+      IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplSensorFreiFahren := STEP_900_E;
+      END_IF
     // SENSOR FREI FAHREN ==============================
     STEP_10_E:
       (* Hinweis:
@@ -145,6 +155,7 @@ ELSE
   IF ( steplSensorFreiFahren > STEP_0_E ) THEN
     bpStarteSensorFreiFahren := FALSE;
     Antrieb.wpBetriebsart    := KEINE_FUNKTION;
+    tonlAntriebNichtFreigegeben( IN := FALSE );
     steplSensorFreiFahren    := STEP_0_E;
   END_IF
 

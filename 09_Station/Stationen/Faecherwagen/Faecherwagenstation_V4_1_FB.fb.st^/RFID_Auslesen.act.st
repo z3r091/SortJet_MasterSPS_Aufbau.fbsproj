@@ -58,10 +58,11 @@ IF blRFID_Auslesen THEN
         slRFID_Validierung := CONCAT(slRFID_Validierung, ascii[abylBytesRFID[wlIndexByte]] );
       END_FOR
 
+      // Ungueltig: neu einlesen, die Daten des Lesekopfs koennen noch nachkommen
       IF ( slRFID_Validierung = VERGLEICH_RFID_VALID)THEN
         steplRFID_Auslesen := STEP_150_E;
       ELSE
-        slRFID_Validierung := '';
+        steplRFID_Auslesen := STEP_0_E;
       END_IF
 
     // RFID Auslesen
@@ -82,6 +83,8 @@ IF blRFID_Auslesen THEN
       // Sollte er dies tun, dann wird ein größerer Datentyp benötigt
       IF (wlRFID_Nummer > 0) AND (wlRFID_Nummer <= wlMaxRFIDNummer) THEN
         steplRFID_Auslesen := STEP_1000_E;
+      ELSE
+        steplRFID_Auslesen := STEP_0_E;
       END_IF
 
     STEP_1000_E:

@@ -73,6 +73,7 @@ VAR
   tonlEndschalterFreifahren              : TON;
   tonlWarteSchrittEndschalterFreifahren  : TON;
   tonlMaxWarteAufResetErfolgreich        : TON;
+  tonlAntriebNichtFreigegeben            : TON; // Ueberwachung: Antrieb nicht betriebsbereit
   tonlTimeoutUnterkante                  : TON;
   toflHardwareEndschalterFrei            : TOF;
   toflReglerFreigabeErhalten             : TOF;

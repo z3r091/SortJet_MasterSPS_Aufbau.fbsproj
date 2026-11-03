@@ -47,6 +47,16 @@ IF (  bpSpeicherfachValidierung ) THEN
         steplSpeicherfachValidierung := STEP_20_E;
       END_IF
 
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit ),
+                                   PT := cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE );
+
+      IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplSpeicherfachValidierung := STEP_900_E;
+      END_IF
+
 
     // SPEICHERFACH VALIDIERUNG ==================================================
     STEP_20_E:
@@ -348,6 +358,7 @@ ELSE
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
     tonlUeberwachungSensorFreifahren( IN := FALSE );
+    tonlAntriebNichtFreigegeben( IN := FALSE );
     steplSpeicherfachValidierung := STEP_0_E;
   END_IF
 END_IF

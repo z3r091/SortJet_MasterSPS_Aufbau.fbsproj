@@ -63,6 +63,16 @@ THEN
         END_IF
       END_IF
 
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlSlaveAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit AND Antrieb_Slave.bpReglerBereit ),
+                                        PT := cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE );
+
+      IF ( tonlSlaveAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplSlave := STEP_900_E;
+      END_IF
+
     // SLAVE BETRIEB ====================
     STEP_20_E:
       (* Hinweis:
@@ -125,6 +135,7 @@ ELSE
     blAntriebsKopplungAktiv := FALSE;
     Antrieb_Slave.wpBetriebsart:= KEINE_FUNKTION;
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    tonlSlaveAntriebNichtFreigegeben( IN := FALSE );
     steplSlave := STEP_0_E;
   END_IF
 

@@ -11,6 +11,33 @@ ACTION Systemcheck
 //-------------------------------------------------------------------------------------------------
 
 IF ( bpCheck ) THEN
+
+  (* Fehlerbehandlung:
+     - Antrieb
+     - Partner im Verbundcheck meldet Fehler
+  *)
+  IF ( Antrieb.bpFehler ) THEN
+    Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
+    steplCheck := STEP_900_E;
+  END_IF
+
+  IF ( InGlasTransportVorgaenger.bFehler
+       AND bpCheckMitVorgaenger )
+  THEN
+    Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    wpFehlerNr := cMELDUNG_GLASTRANSPORT_SENDER_NICHT_BEREIT;
+    steplCheck := STEP_900_E;
+  END_IF
+
+  IF ( InGlasTransportNachfolger.bFehler
+       AND bpCheckMitNachfolger )
+  THEN
+    Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    wpFehlerNr := cMELDUNG_GLASTRANSPORT_EMPFAENGER_NICHT_BEREIT;
+    steplCheck := STEP_900_E;
+  END_IF
+
   CASE ( steplCheck ) OF
     // SYSTEM CHECK=========================
     STEP_0_E:
@@ -18,6 +45,16 @@ IF ( bpCheck ) THEN
 
       IF ( Antrieb.bpReglerBereit ) THEN
         steplCheck := STEP_10_E;
+      END_IF
+
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtBetriebsBereit( IN := NOT ( Antrieb.bpReglerBereit ),
+                                      PT := T#5S );
+
+      IF ( tonlAntriebNichtBetriebsBereit.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplCheck := STEP_900_E;
       END_IF
 
       (* Fehlerbehandlung:
@@ -590,6 +627,7 @@ ELSE
     bpOutBereitZumEintransport := FALSE;
     bpOutBereitZumAustransport := FALSE;
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    tonlAntriebNichtBetriebsBereit( IN := FALSE );
     steplCheck:=STEP_0_E;
   END_IF
 END_IF

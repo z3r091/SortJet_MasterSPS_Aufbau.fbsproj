@@ -51,6 +51,7 @@ THEN
       ELSE
 
         IF ( bpSensorAuslauf ) THEN
+          rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
           steplVortransport := STEP_20_E;
         ELSE
           steplVortransport := STEP_1000_E;
@@ -65,6 +66,7 @@ THEN
       *)
       IF ( bpSensorAuslaufVorab ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
         steplVortransport := STEP_20_E;
       END_IF
 
@@ -107,11 +109,17 @@ THEN
 
       (* Fehlerbehandlung:
          - Sensor
-         - Antrieb
+         - Wegueberwachung: Auslaufsensor wird nicht frei
       *)
       IF ( bpSensorEinlauf ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_BELEGT;
+        steplVortransport := STEP_900_E;
+      END_IF
+
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI;
         steplVortransport := STEP_900_E;
       END_IF
 

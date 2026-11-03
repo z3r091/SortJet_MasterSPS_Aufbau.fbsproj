@@ -34,6 +34,16 @@ IF ( bpVermessen_Oberkante_1_Sensor ) THEN
         steplOberkante_1_Sensor := STEP_10_E;
       END_IF
 
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit ),
+                                   PT := T#5S );
+
+      IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplOberkante_1_Sensor := STEP_900_E;
+      END_IF
+
     // VERMESSEN OBER KANTE 1 SENSOR  ====================
     STEP_10_E:
       (* Hinweis:
@@ -178,6 +188,7 @@ ELSE
     bpDone := FALSE;
     Antrieb.rpGeschwindigkeit := REAL#0;
     Antrieb.wpBetriebsart     := KEINE_FUNKTION;
+    tonlAntriebNichtFreigegeben( IN := FALSE );
     steplOberkante_1_Sensor := STEP_0_E;
   END_IF
 

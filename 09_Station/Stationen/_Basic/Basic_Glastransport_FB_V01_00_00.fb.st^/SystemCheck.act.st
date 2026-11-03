@@ -20,7 +20,7 @@ IF ( bpCheck ) THEN
   
   IF ( Antrieb_Slave.bpFehler ) THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
-    wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
+    wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT_SLAVE;
     steplCheck := STEP_900_E;
   END_IF
 
@@ -62,6 +62,7 @@ IF ( bpCheck ) THEN
 
       tonlAntriebNichtBetriebsBereit( IN := FALSE);
       tonlMaxWartezeitFremdanlage( IN := FALSE);
+      tonlMaximaleZeitAuslaufsensorFreiFahren( IN := FALSE );
 
       blReduzierteGeschwindigkeit := ( pAuftrag.rAuftragsGewicht > rgReduzierteGeschwindigkeitGlasGewicht );
 
@@ -88,14 +89,14 @@ IF ( bpCheck ) THEN
         IF ( bpOptionSlaveAntrieb ) THEN
           IF ( blAntriebsKopplungAktiv ) THEN
             steplCheck := STEP_100_E; // VERERBTER SCHRITT - NICHT ABÄNDERN !!!
-          end_if
+          END_IF
         // Antrieb nur referenzieren wenn Schwellwert überschritten oder nicht referenziert
         ELSIF ( ABS(Antrieb.rpIstPosition) > rgSchwellwertReferenzieren ) OR NOT Antrieb.bpIstReferenziert THEN
           Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
           steplCheck := STEP_30_E;
         ELSE
           steplCheck := STEP_100_E; // VERERBTER SCHRITT - NICHT ABÄNDERN !!!
-        END_IF 
+        END_IF
         
       END_IF
 
@@ -1173,6 +1174,7 @@ ELSE
     Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
 
     tonlMaxWartezeitFremdanlage( IN := FALSE );
+    tonlMaximaleZeitAuslaufsensorFreiFahren( IN := FALSE );
     steplCheck:=STEP_0_E;
   END_IF
 

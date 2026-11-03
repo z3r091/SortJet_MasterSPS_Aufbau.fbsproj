@@ -36,6 +36,16 @@ IF ( bpGlasvermessung ) THEN
         steplGlasvermessung := STEP_10_E;
       END_IF
 
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtFreigegeben( IN := NOT ( ppAntrieb.bpReglerBereit ),
+                                   PT := T#5S );
+
+      IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplGlasvermessung := STEP_900_E;
+      END_IF
+
     // GLASVERMESSUNG ================================
     STEP_10_E:
       (* Hinweis:
@@ -178,6 +188,7 @@ ELSE
   IF ( steplGlasvermessung  > STEP_0_E ) THEN
     ppAntrieb.wpBetriebsart := KEINE_FUNKTION;
     bpGlasmessungAbgeschlossen := FALSE;
+    tonlAntriebNichtFreigegeben( IN := FALSE );
     steplGlasvermessung := STEP_0_E;
   END_IF
 

@@ -20,10 +20,27 @@ IF ( bpCheck ) THEN
 
   (* Fehlerbehandlung:
      - Antrieb
+     - Partner im Verbundcheck meldet Fehler
   *)
   IF (Antrieb.bpFehler ) THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
+    steplCheck := STEP_900_E;
+  END_IF
+
+  IF ( InGlasTransportVorgaenger.bFehler
+       AND bpCheckMitVorgaenger )
+  THEN
+    Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    wpFehlerNr := cMELDUNG_GLASTRANSPORT_SENDER_NICHT_BEREIT;
+    steplCheck := STEP_900_E;
+  END_IF
+
+  IF ( InGlasTransportNachfolger.bFehler
+       AND bpCheckMitNachfolger )
+  THEN
+    Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    wpFehlerNr := cMELDUNG_GLASTRANSPORT_EMPFAENGER_NICHT_BEREIT;
     steplCheck := STEP_900_E;
   END_IF
 
@@ -51,6 +68,16 @@ IF ( bpCheck ) THEN
         END_IF
       END_IF
 
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit AND blAntriebsKopplungAktiv ),
+                                   PT := cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE );
+
+      IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplCheck := STEP_900_E;
+      END_IF
+
     // SYSTEM CHECK========================= GEHT NICHT WEGEN MASTER SLAVE KOPPLUNG
     STEP_5_E:
       (* Hinweis:
@@ -63,6 +90,16 @@ IF ( bpCheck ) THEN
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
         Antrieb.wpBetriebsart     := AntriebsBetriebsart_EN.REFERENZ;
         steplCheck := STEP_10_E;
+      END_IF
+
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit ),
+                                   PT := cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE );
+
+      IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplCheck := STEP_900_E;
       END_IF
 
     // SYSTEM CHECK=========================
@@ -385,6 +422,8 @@ IF ( bpCheck ) THEN
     STEP_650_E:
       IF NOT Antrieb.bpAntrieblaeuft THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        // Startposition fuer die Wegueberwachung beim Freifahren
+        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
         steplCheck := STEP_660_E;
       END_IF
 
@@ -895,6 +934,7 @@ ELSE
 
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
+    tonlAntriebNichtFreigegeben( IN := FALSE );
     steplCheck:=STEP_0_E;
   END_IF
 END_IF

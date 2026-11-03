@@ -59,6 +59,7 @@ VAR
 
   // TIMER 
   tonlMaxWarteAufResetErfolgreich       : TON;
+  tonlAntriebNichtFreigegeben           : TON; // Ueberwachung: Antrieb nicht betriebsbereit
   tonlEndschalterFreifahren             : TON; 
   tonlWarteSchrittEndschalterFreifahren : TON; 
   tofHardwareEndschalterFrei            : TOF; 

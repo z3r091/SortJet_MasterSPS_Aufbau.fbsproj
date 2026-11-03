@@ -57,6 +57,9 @@ VAR
   // STEPS
   steplGlasvermessung               : Steps_TE;
 
+  // TIMER
+  tonlAntriebNichtFreigegeben       : TON; // Ueberwachung: Antrieb nicht betriebsbereit
+
   // TRIGGER
   rtlMessung_OK                     : R_TRIG;
 

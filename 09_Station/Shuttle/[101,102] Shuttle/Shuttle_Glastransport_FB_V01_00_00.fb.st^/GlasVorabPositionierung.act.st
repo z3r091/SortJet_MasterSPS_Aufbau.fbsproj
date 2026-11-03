@@ -39,6 +39,16 @@ THEN
         steplVorabpositionieren := STEP_10_E;
       END_IF
 
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit AND blAntriebsKopplungAktiv ),
+                                   PT := cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE );
+
+      IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplVorabpositionieren := STEP_900_E;
+      END_IF
+
     // GLAS VORPOSITIONIEREN ====================
     STEP_10_E:
       // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POSITIONIEREN UEBER DEN AUSLAUFSENSOR [AUSLAUFSEITE] >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -186,6 +196,7 @@ ELSE
 
     bpDone := FALSE;
 
+    tonlAntriebNichtFreigegeben( IN := FALSE );
     steplVorabpositionieren := STEP_0_E;
   END_IF
 END_IF

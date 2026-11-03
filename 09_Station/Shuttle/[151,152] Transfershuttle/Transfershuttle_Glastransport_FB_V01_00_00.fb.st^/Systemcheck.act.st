@@ -32,6 +32,16 @@ IF ( bpCheck ) THEN
         steplCheck := STEP_10_E;
       END_IF
 
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit ),
+                                   PT := cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE );
+
+      IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplCheck := STEP_900_E;
+      END_IF
+
     // SYSTEM CHECK=========================
     STEP_10_E:
       (* Hinweis:
@@ -274,6 +284,7 @@ ELSE
     out_bScheibenKontrolleEinlaufSeiteAuf := FALSE;
     blScheibenKontrolleEinlaufseiteEin    := FALSE;
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    tonlAntriebNichtFreigegeben( IN := FALSE );
     steplCheck := STEP_0_E;
   END_IF
 END_IF

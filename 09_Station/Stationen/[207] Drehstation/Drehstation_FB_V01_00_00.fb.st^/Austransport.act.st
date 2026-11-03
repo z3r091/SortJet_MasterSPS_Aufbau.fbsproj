@@ -211,7 +211,7 @@ THEN
          - Drehung abgeschlossen
       *)
       IF (  ( Drehen.bpDone OR NOT Drehen.bpStarteAbsolutPositionierung )
-           AND   Kippen.bpDone OR NOT Kippen.bpPositionieren )
+           AND ( Kippen.bpDone OR NOT Kippen.bpPositionieren ) )
       THEN
         Kippen.bpPositionieren := FALSE;
 

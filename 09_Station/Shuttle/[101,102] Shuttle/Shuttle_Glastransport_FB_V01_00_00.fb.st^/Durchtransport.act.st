@@ -61,6 +61,16 @@ IF (  bpDurchtransport ) THEN
         steplDurchtransport := STEP_15_E;
       END_IF
 
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit ),
+                                   PT := cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE );
+
+      IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplDurchtransport := STEP_900_E;
+      END_IF
+
     // EINTRANSPORT ==============================
     STEP_15_E:
       (* Hinweis:
@@ -180,6 +190,7 @@ ELSE
 
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
+    tonlAntriebNichtFreigegeben( IN := FALSE );
     steplDurchtransport := STEP_0_E;
   END_IF
 END_IF

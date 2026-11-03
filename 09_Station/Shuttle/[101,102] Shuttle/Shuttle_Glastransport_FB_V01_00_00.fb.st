@@ -141,6 +141,7 @@ VAR
   tonlAntriebNichtFreigegeben        : TON; // EINSCHALTVERZOEGERUNG:
   tonlUberwachungSlaveAktiv          : TON; // EINSCHALTVERZOEGERUNG:  
   tonlSlaveKopplungDeaktiviert       : TON;
+  tonlSlaveAntriebNichtFreigegeben   : TON; // Ueberwachung: Master/Slave nicht betriebsbereit
   
   // TIME
   tlWarteZeiteAufnahme               : TIME; // STATISTIK: Zeit Ermittlung von evtl. Wartezeiten

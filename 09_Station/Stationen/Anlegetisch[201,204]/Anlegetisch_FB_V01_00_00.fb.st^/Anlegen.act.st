@@ -41,6 +41,12 @@ THEN
     steplAnlegen := STEP_900_E;
   END_IF
 
+  IF ( Messachse.bpFehler ) THEN
+    Messachse.bpPositionierung := FALSE;
+    BasisStationsParameter.wFehlerNummer := Messachse.wpFehlerNr;
+    steplAnlegen := STEP_900_E;
+  END_IF
+
   CASE steplAnlegen OF
     // ANLEGEN ==================================
     STEP_0_E:

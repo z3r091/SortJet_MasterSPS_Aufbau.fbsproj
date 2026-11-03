@@ -301,7 +301,7 @@ tonlMaxWarteAufResetErfolgreich(IN:=bpReset,pt:=tgMaxWartezeitReset-T#1S);
 //-------------------------------------------------------------------------------------------------
 // 2. Riemen/Rollen vorhanden -> Kipptisch
 //   - Vor den Schrittketten, damit diese die Kopplung im selben Zyklus sehen
-//   - Kopplung gilt erst, wenn der Slave synchron ist UND seine Kette die Kopplung hergestellt hat
+//   - Kopplung gilt, wenn der Slave synchron ist und die Kopplung angefordert ist
 IF bpOptionSlaveAntrieb THEN
   SlaveAntrieb();
   blAntriebsKopplungAktiv := Antrieb_Slave.bpAchseSychron AND blStarteSlaveKopplung;

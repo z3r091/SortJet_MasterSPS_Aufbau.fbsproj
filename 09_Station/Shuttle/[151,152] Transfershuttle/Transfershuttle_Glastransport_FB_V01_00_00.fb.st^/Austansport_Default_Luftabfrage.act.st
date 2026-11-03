@@ -452,6 +452,8 @@ THEN
       IF ( toflAuslaufsensor.Q ) THEN
         bprtScheibe := TRUE;
         ilScheibenZaehler := ilScheibenZaehler - 1;
+        // Wegueberwachung fuer die naechste Scheibe starten
+        rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
         steplAustransportDefaultLuftabfrage := STEP_130_E;
       END_IF
 
@@ -483,6 +485,26 @@ THEN
           steplAustransportDefaultLuftabfrage := STEP_120_E;
         END_IF
 
+      END_IF
+
+      IF (  ( ilScheibenZaehler > 0 )
+           AND NOT InGlasTransportNachfolger.bBereitZumEintransport )
+      THEN
+        bpOutBereitZumAustransport := FALSE;
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplAustransportDefaultLuftabfrage := STEP_140_E;
+      END_IF
+
+      (* Fehlerbehandlung:
+         - Naechste Scheibe erreicht den Auslaufsensor nicht: mehr als die Stationslaenge gefahren
+         - Steht der Antrieb (Nachfolger mit Geschwindigkeit 0), laeuft die Ueberwachung nicht ab
+      *)
+      IF (  ( ilScheibenZaehler > 0 )
+           AND ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation ) )
+      THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
+        steplAustransportDefaultLuftabfrage := STEP_900_E;
       END_IF
 
     // AUSTRANSPORT [HANDPLUS - DEFAULT LUFTABFRAGE] ===========================================
@@ -790,6 +812,8 @@ THEN
       IF ( toflEinlaufsensor.Q ) THEN
         bprtScheibe := TRUE;
         ilScheibenZaehler := ilScheibenZaehler - 1 ;
+        // Wegueberwachung fuer die naechste Scheibe starten
+        rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
         steplAustransportDefaultLuftabfrage := STEP_490_E;
       END_IF
 
@@ -813,6 +837,18 @@ THEN
           steplAustransportDefaultLuftabfrage := STEP_480_E;
         END_IF
 
+      END_IF
+
+      (* Fehlerbehandlung:
+         - Naechste Scheibe erreicht den Einlaufsensor nicht: mehr als die Stationslaenge gefahren
+         - Steht der Antrieb (Vorgaenger mit Geschwindigkeit 0), laeuft die Ueberwachung nicht ab
+      *)
+      IF (  ( ilScheibenZaehler > 0 )
+           AND ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation ) )
+      THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
+        steplAustransportDefaultLuftabfrage := STEP_900_E;
       END_IF
 
     // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================

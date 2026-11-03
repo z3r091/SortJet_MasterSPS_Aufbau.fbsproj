@@ -186,7 +186,9 @@ THEN
       // - Transport "NEGATIVE" Richtung
       // ---------------------------------------------------------------------------------------
       ilScheibenZaehler := WORD_TO_INT( pAuftrag.wAnzahlScheiben );
-      
+
+      rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
+
       // Master-Slave Austransport
       IF bpOptionMasterSlaveTransport THEN
         
@@ -229,6 +231,16 @@ THEN
         steplAustransportRueckwaertig := STEP_220_E;
       END_IF
 
+      (* Fehlerbehandlung:
+         - Einlaufsensor schaltet nicht: mehr als die Stationslaenge gefahren (je Scheibe neu)
+         - Steht der Antrieb (Vorgaenger mit Geschwindigkeit 0), laeuft die Ueberwachung nicht ab
+      *)
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
+        steplAustransportRueckwaertig := STEP_900_E;
+      END_IF
+
     // AUSTRANSPORT ====================================
     STEP_220_E:
       (* Hinweis:
@@ -244,6 +256,8 @@ THEN
         IF ( ilScheibenZaehler > 0 ) THEN
           dwpWartezeit := 0;
 
+          // Wegueberwachung fuer die naechste Scheibe neu starten
+          rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
           steplAustransportRueckwaertig := STEP_210_E;
 
         ELSE
@@ -264,6 +278,15 @@ THEN
         steplAustransportRueckwaertig := STEP_250_E;
       END_IF
 
+      (* Fehlerbehandlung:
+         - Einlaufsensor schaltet nicht: mehr als die Stationslaenge gefahren
+      *)
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
+        steplAustransportRueckwaertig := STEP_900_E;
+      END_IF
+
     // AUSTRANSPORT ====================================
     STEP_250_E:      
       (* Hinweis:
@@ -279,6 +302,8 @@ THEN
         IF ( ilScheibenZaehler > 0 ) THEN
           dwpWartezeit := 0;
 
+          // Wegueberwachung fuer die naechste Scheibe neu starten
+          rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
           steplAustransportRueckwaertig := STEP_210_E;
 
         ELSE

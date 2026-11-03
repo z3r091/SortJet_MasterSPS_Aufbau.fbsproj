@@ -60,6 +60,16 @@ IF ( bpStarteDrehBewegung ) THEN
         steplDrehBewegung := STEP_10_E;
       END_IF
 
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit ),
+                                   PT := T#5S );
+
+      IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplDrehBewegung := STEP_900_E;
+      END_IF
+
       (* Fehlerbehandlung:
          - Antrieb
       *)
@@ -343,6 +353,7 @@ IF ( NOT bpStarteDrehBewegung ) THEN
 
     bpDrehStatusMelden := FALSE;
 
+    tonlAntriebNichtFreigegeben( IN := FALSE );
     steplDrehBewegung := STEP_0_E;
   END_IF
 

@@ -191,6 +191,16 @@ IF (  bpStarteAbsolutPositionierung ) THEN
         steplAbsolutPositionieren := STEP_40_E;
       END_IF
 
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit ),
+                                   PT := T#5S );
+
+      IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplAbsolutPositionieren := STEP_900_E;
+      END_IF
+
     // ABSOLUT POSITIONIEREN =========================
     STEP_40_E:
       // ---------------------------------------------------------------------------------------
@@ -446,6 +456,7 @@ IF ( NOT bpStarteAbsolutPositionierung ) THEN
 
     bpDrehStatusMelden := FALSE;
 
+    tonlAntriebNichtFreigegeben( IN := FALSE );
     steplAbsolutPositionieren := STEP_0_E;
   END_IF
 

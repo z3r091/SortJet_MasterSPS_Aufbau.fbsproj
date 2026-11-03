@@ -244,6 +244,8 @@ THEN
       // ---------------------------------------------------------------------------------------
       ilScheibenZaehler := WORD_TO_INT(pAuftrag.wAnzahlScheiben);
 
+      rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
+
       // Master-Slave Austransport
       IF bpOptionMasterSlaveTransport THEN
 
@@ -290,12 +292,31 @@ THEN
         steplAustransport :=  STEP_140_E;
       END_IF
 
+      (* Fehlerbehandlung:
+         - Auslaufsensor schaltet nicht: mehr als die Stationslaenge gefahren (je Scheibe neu)
+         - Steht der Antrieb (Nachfolger mit Geschwindigkeit 0), laeuft die Ueberwachung nicht ab
+      *)
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
+        steplAustransport := STEP_900_E;
+      END_IF
+
     // AUSTRANSPORT ====================================
-    STEP_215_E:      
+    STEP_215_E:
       bprtScheibe := FALSE;
-      
+
       IF ( bpSensorAuslaufStopp ) THEN
         steplAustransport := STEP_120_E;
+      END_IF
+
+      (* Fehlerbehandlung:
+         - Auslaufsensor schaltet nicht: mehr als die Stationslaenge gefahren
+      *)
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
+        steplAustransport := STEP_900_E;
       END_IF
 
     // AUSTRANSPORT ==============================
@@ -313,6 +334,8 @@ THEN
 
           dwpWartezeit := 0;
 
+          // Wegueberwachung fuer die naechste Scheibe neu starten
+          rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
           steplAustransport := STEP_110_E;
 
         ELSE

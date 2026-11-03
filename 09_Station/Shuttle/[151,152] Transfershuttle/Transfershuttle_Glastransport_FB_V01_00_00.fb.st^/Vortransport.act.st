@@ -38,6 +38,16 @@ THEN
         steplVortransport := STEP_5_E;
       END_IF
 
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit ),
+                                   PT := cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE );
+
+      IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplVortransport := STEP_900_E;
+      END_IF
+
     // EINTRANSPORT ==============================
     STEP_5_E:
       Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
@@ -248,6 +258,16 @@ THEN
         steplVortransport := STEP_220_E;
       END_IF
 
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit ),
+                                   PT := cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE );
+
+      IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplVortransport := STEP_900_E;
+      END_IF
+
     // VORTRANSPORT ==============================
     STEP_220_E:
       (* Anmerkung:
@@ -342,6 +362,7 @@ ELSE
     blScheibenKontrolleEinlaufseiteEin    := FALSE;
 
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    tonlAntriebNichtFreigegeben( IN := FALSE );
     steplVortransport := STEP_0_E;
   END_IF
 END_IF

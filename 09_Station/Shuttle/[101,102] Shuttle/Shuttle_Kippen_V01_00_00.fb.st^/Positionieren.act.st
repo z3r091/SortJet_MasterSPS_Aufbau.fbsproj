@@ -32,6 +32,16 @@ IF ( bpPositionieren )THEN
         THEN
           steplPositionieren := STEP_10_E;
         END_IF
+
+        // Ueberwachung:
+        //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+        tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit ),
+                                     PT := T#5S );
+
+        IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+          wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+          steplPositionieren := STEP_900_E;
+        END_IF
       END_IF  
 
     // AUFKIPPEN ================
@@ -140,6 +150,7 @@ ELSE
   IF ( steplPositionieren > STEP_0_E ) THEN
     bpDone := FALSE;
     Antrieb.wpBetriebsart:= KEINE_FUNKTION;
+    tonlAntriebNichtFreigegeben( IN := FALSE );
     steplPositionieren := STEP_0_E;
   END_IF
 end_if
