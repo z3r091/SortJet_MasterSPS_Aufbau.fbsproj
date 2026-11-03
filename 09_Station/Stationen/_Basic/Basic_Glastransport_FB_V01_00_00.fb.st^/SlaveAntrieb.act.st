@@ -43,6 +43,15 @@ THEN
     steplSlave := STEP_900_E;
   END_IF
 
+  // Ueberwachung:
+  //   - Kopplung muss in endlicher Zeit hergestellt sein, sonst warten die Ketten in STEP_0 ewig
+  tonlSlaveKopplungHerstellen( IN := ( steplSlave < STEP_200_E ),
+                               PT := cMAX_ZEIT_SLAVE_KOPPLUNG_HERSTELLEN );
+
+  IF ( tonlSlaveKopplungHerstellen.Q ) THEN
+    wpFehlerNr := cMELDUNG_ANTRIEB_SLAVE_NICHT_AKTIV;
+    steplSlave := STEP_900_E;
+  END_IF
 
   CASE steplSlave OF
     // SLAVE ANTRIEB ====================
@@ -115,6 +124,8 @@ THEN
   // SLAVE ANTRIEB ====================
   END_CASE
 ELSE
+
+  tonlSlaveKopplungHerstellen( IN := FALSE );
 
   IF (steplSlave > STEP_0_E) THEN
     tonlUberwachungSlaveAktiv( IN := FALSE );

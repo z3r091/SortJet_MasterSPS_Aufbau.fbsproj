@@ -149,6 +149,8 @@ VAR
   toflAutoAbschaltung                       : TOF;
   toflEinlaufsensor                         : TOF;
   toflAuslaufsensor                         : TOF;
+  tonlEinlaufsensor                         : TON; // Entprellung belegt (Flackern quittiert keine zweite Scheibe)
+  tonlAuslaufsensor                         : TON; // Entprellung belegt (Flackern quittiert keine zweite Scheibe)
   toflVorAbStopSensorAuslauf                : TOF;
   toflVorAbStopSensorEinlauf                : TOF;
   tonlMaximaleZeitAuslaufsensorFreiFahren   : TON;
@@ -160,6 +162,7 @@ VAR
   tonlSchrittueberwachung                   : TON;
   tonlUberwachungSlaveAktiv                 : TON;
   tonlSlaveKopplungDeaktiviert              : ton;
+  tonlSlaveKopplungHerstellen               : TON; // Ueberwachung: Kopplung nicht hergestellt
 
   rtlMessungOK                              : R_TRIG;
 
@@ -179,6 +182,7 @@ VAR CONSTANT
 
   // TIME 
   cUEBERWACHUNG_SLAVE_AKTIV           : TIME := T#1S;
+  cMAX_ZEIT_SLAVE_KOPPLUNG_HERSTELLEN : TIME := T#30S; // inkl. Referenzfahrt von Master und Slave
 
 END_VAR
 
@@ -284,6 +288,8 @@ bpSensorAuslauf      := in_bSensorAuslauf;
 // Sensorenflackern
 toflEinlaufsensor(IN := bpSensorEinlauf, PT := T#50MS);
 toflAuslaufsensor(IN := bpSensorAuslauf, PT := T#50MS);
+tonlEinlaufsensor(IN := bpSensorEinlauf, PT := T#50MS);
+tonlAuslaufsensor(IN := bpSensorAuslauf, PT := T#50MS);
 toflVorAbStopSensorEinlauf(IN := bpSensorEinlaufVorab, PT := t#50ms);
 toflVorAbStopSensorAuslauf(IN := bpSensorAuslaufVorAb, PT := t#50ms);
 
@@ -293,6 +299,16 @@ tonlMaxWarteAufResetErfolgreich(IN:=bpReset,pt:=tgMaxWartezeitReset-T#1S);
 //-------------------------------------------------------------------------------------------------
 // AUFRUFE
 //-------------------------------------------------------------------------------------------------
+// 2. Riemen/Rollen vorhanden -> Kipptisch
+//   - Vor den Schrittketten, damit diese die Kopplung im selben Zyklus sehen
+//   - Kopplung gilt erst, wenn der Slave synchron ist UND seine Kette die Kopplung hergestellt hat
+IF bpOptionSlaveAntrieb THEN
+  SlaveAntrieb();
+  blAntriebsKopplungAktiv := Antrieb_Slave.bpAchseSychron AND blStarteSlaveKopplung;
+ELSE
+  blAntriebsKopplungAktiv := TRUE;
+END_IF
+
 Eintransport();
 Eintransport_Rueckwaertig();
 Vortransport();
@@ -315,14 +331,6 @@ IF ( NOT bpOptionMasterSlaveTransport ) THEN
 ELSE
   Austransport_MasterSlave();
   Austransport_Rueckwaertig_MasterSlave();
-END_IF
-
-// 2. Riemen/Rollen vorhanden -> Kipptisch
-IF bpOptionSlaveAntrieb THEN
-  SlaveAntrieb();
-  blAntriebsKopplungAktiv := Antrieb_Slave.bpAchseSychron;
-ELSE
-  blAntriebsKopplungAktiv := TRUE;
 END_IF
 
 

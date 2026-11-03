@@ -89,7 +89,7 @@ THEN
       tonlTimeout(IN := TRUE, PT := T#30S);
 
       // Vorab-Glastransport ueberspringen, wenn der Eintransport vom Job schon angefordert ist
-      // (Bedingung aus GW1; GW1 wartete dann bis zum Timeout, hier direkt weiter)
+      //   - Dann direkt weiter, nicht bis zum Timeout warten
       IF ( BasisStationsParameter.bEintransport[wWand] ) THEN
 
         tonlTimeout( IN := FALSE );

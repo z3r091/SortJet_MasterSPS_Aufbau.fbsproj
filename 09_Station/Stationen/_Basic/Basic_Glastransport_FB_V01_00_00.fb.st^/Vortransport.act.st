@@ -25,6 +25,13 @@ THEN
   END_IF
 
 
+  // Ausnahmesituation:
+  //   - Slave-Kopplung waehrend der Kette verloren
+  IF ( NOT blAntriebsKopplungAktiv AND ( steplVortransport > STEP_0_E ) AND ( steplVortransport < STEP_900_E ) ) THEN
+    wpFehlerNr := cMELDUNG_VORTRANSPORT_SLAVE_KOPPLUNG_VERLOREN;
+    steplVortransport := STEP_900_E;
+  END_IF
+
   CASE steplVortransport OF
     // VORTRANSPORT ==============================
     STEP_0_E:
@@ -40,7 +47,10 @@ THEN
 
       blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
 
-      steplVortransport := STEP_5_E;
+      // Sicherstellen das die Slavekopplung aktiv ist
+      IF ( blAntriebsKopplungAktiv ) THEN
+        steplVortransport := STEP_5_E;
+      END_IF
 
     // VORTRANSPORT ==============================
     STEP_5_E:
@@ -60,6 +70,8 @@ THEN
         END_IF
 
         Antrieb.wpBetriebsart     := HANDPLUS;
+
+        rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
 
         steplVortransport := STEP_10_E;
 
@@ -89,7 +101,14 @@ THEN
 
       (* Fehlerbehandlung:
          - Sensorik
+         - Wegueberwachung: Stationslaenge gefahren ohne VorAb- Sensor (kein Glas oder Sensor defekt)
       *)
+      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_UND_AUSLAUFVORAB_SCHALTEN_NICHT;
+        steplVortransport := STEP_900_E;
+      END_IF
+
       IF ( bpSensorAuslauf ) THEN
         bpScheibeFaehrtUeberAuslauf := TRUE;
         wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_BELEGT;

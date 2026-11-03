@@ -25,6 +25,13 @@ THEN
   END_IF
 
 
+  // Ausnahmesituation:
+  //   - Slave-Kopplung waehrend der Kette verloren
+  IF ( NOT blAntriebsKopplungAktiv AND ( steplVortransportRueckwaertig > STEP_0_E ) AND ( steplVortransportRueckwaertig < STEP_900_E ) ) THEN
+    wpFehlerNr := cMELDUNG_VORTRANSPORT_SLAVE_KOPPLUNG_VERLOREN;
+    steplVortransportRueckwaertig := STEP_900_E;
+  END_IF
+
   CASE steplVortransportRueckwaertig OF
     // VORTRANSPORT RÜCKWÄRTIG ==============================
     STEP_0_E:
@@ -40,7 +47,10 @@ THEN
 
       blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
 
-      steplVortransportRueckwaertig := STEP_5_E;
+      // Sicherstellen das die Slavekopplung aktiv ist
+      IF ( blAntriebsKopplungAktiv ) THEN
+        steplVortransportRueckwaertig := STEP_5_E;
+      END_IF
 
     // VORTRANSPORT RÜCKWÄRTIG ==============================
     STEP_5_E:
@@ -61,6 +71,8 @@ THEN
 
         Antrieb.wpBetriebsart     := HANDMINUS;
 
+        rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
+
         steplVortransportRueckwaertig := STEP_10_E;
 
       ELSE
@@ -72,7 +84,7 @@ THEN
          - Sensorik
       *)
       IF ( bpSensorEinlauf ) THEN
-        bpScheibeFaehrtUeberAuslauf := TRUE;
+        bpScheibeFaehrtUeberEinlauf := TRUE;
         wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_BELEGT;
         steplVortransportRueckwaertig := STEP_900_E;
       END_IF
@@ -89,7 +101,14 @@ THEN
 
       (* Fehlerbehandlung:
          - Sensorik
+         - Wegueberwachung: Stationslaenge gefahren ohne VorAb- Sensor (kein Glas oder Sensor defekt)
       *)
+      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_UND_EINLAUFVORAB_SCHALTEN_NICHT;
+        steplVortransportRueckwaertig := STEP_900_E;
+      END_IF
+
       IF ( bpSensorEinlauf ) THEN
         bpScheibeFaehrtUeberEinlauf := TRUE;
         wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_EINLAUF_BELEGT;

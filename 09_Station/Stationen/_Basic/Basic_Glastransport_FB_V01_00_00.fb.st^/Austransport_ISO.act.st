@@ -33,6 +33,13 @@ THEN
   END_IF
 
 
+  // Ausnahmesituation:
+  //   - Slave-Kopplung waehrend der Kette verloren
+  IF ( NOT blAntriebsKopplungAktiv AND ( steplAustransport > STEP_0_E ) AND ( steplAustransport < STEP_900_E ) ) THEN
+    wpFehlerNr := cMELDUNG_AUSTRANSPORT_SLAVE_KOPPLUNG_VERLOREN;
+    steplAustransport := STEP_900_E;
+  END_IF
+
   CASE steplAustransport OF
     // AUSTRANSPORT ====================
     STEP_0_E:
@@ -201,18 +208,19 @@ THEN
     // AUSTRANSPORT ====================
     STEP_110_E:
       bprtScheibe := FALSE;
-      tonlMaximaleZeitSensorAnfahren( IN:= TRUE, PT :=T#60S );
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
 
-      IF ( toflAuslaufsensor.Q ) THEN
+      IF ( tonlAuslaufsensor.Q ) THEN
         steplAustransport := STEP_120_E;
       END_IF
 
       (* Fehlerbehandlung:
-         - Auslaufsensor schaltet nicht
+         - Auslaufsensor schaltet nicht: mehr als die Stationslaenge gefahren (je Scheibe neu)
+         - Steht der Antrieb (Nachfolger mit Geschwindigkeit 0), laeuft die Ueberwachung nicht ab
       *)
-      IF ( tonlMaximaleZeitSensorAnfahren.Q ) THEN
-        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
+      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
         steplAustransport := STEP_900_E;
       END_IF
 
@@ -236,6 +244,8 @@ THEN
           steplAustransport := STEP_130_E;
 
         ELSE
+          // Wegueberwachung fuer die naechste Scheibe neu starten
+          rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
           steplAustransport := STEP_110_E;
 
         END_IF

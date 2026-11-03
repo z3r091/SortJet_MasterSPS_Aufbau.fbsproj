@@ -30,6 +30,13 @@ THEN
     steplAustransportRueckwaertig := STEP_900_E;
   END_IF
 
+  // Ausnahmesituation:
+  //   - Slave-Kopplung waehrend der Kette verloren
+  IF ( NOT blAntriebsKopplungAktiv AND ( steplAustransportRueckwaertig > STEP_0_E ) AND ( steplAustransportRueckwaertig < STEP_900_E ) ) THEN
+    wpFehlerNr := cMELDUNG_AUSTRANSPORT_SLAVE_KOPPLUNG_VERLOREN;
+    steplAustransportRueckwaertig := STEP_900_E;
+  END_IF
+
   CASE steplAustransportRueckwaertig OF
     // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_0_E:
@@ -49,6 +56,15 @@ THEN
                                                rpGlasstaerke := pAuftrag.rAuftragsDicke ) );
 
       blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
+
+      (* Hinweis:
+         - Blieb die Scheibe beim Eintransport im Uebergang liegen und ist der Sensor des Vorgaengers
+           inzwischen frei, hat der Vorgaenger seinen Austransport schon beendet.
+           => Merker loeschen, sonst wird ewig auf dessen Bereit_Zum_Austransport gewartet
+      *)
+      IF ( bpUebergrosseScheibeUebergang AND NOT InGlasTransportNachfolger.bEinlaufsensor ) THEN
+        bpUebergrosseScheibeUebergang := FALSE;
+      END_IF
 
       // Sicherstellen das die Slavekopplung aktiv ist
       IF ( blAntriebsKopplungAktiv ) THEN
@@ -200,18 +216,19 @@ THEN
     // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_110_E:
       bprtScheibe := FALSE;
-      tonlMaximaleZeitSensorAnfahren( IN:= TRUE, PT :=T#60S );
       Antrieb.rpGeschwindigkeit := InGlasTransportVorgaenger.rGeschwindigkeit;
 
-      IF ( toflEInlaufsensor.Q ) THEN
+      IF ( tonlEinlaufsensor.Q ) THEN
         steplAustransportRueckwaertig := STEP_120_E;
       END_IF
 
       (* Fehlerbehandlung:
-         - Auslaufsensor schaltet nicht
+         - Einlaufsensor schaltet nicht: mehr als die Stationslaenge gefahren (je Scheibe neu)
+         - Steht der Antrieb (Nachfolger mit Geschwindigkeit 0), laeuft die Ueberwachung nicht ab
       *)
-      IF ( tonlMaximaleZeitSensorAnfahren.Q ) THEN
-        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
+      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
@@ -233,6 +250,8 @@ THEN
           steplAustransportRueckwaertig := STEP_130_E;
 
         ELSE
+          // Wegueberwachung fuer die naechste Scheibe neu starten
+          rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
           steplAustransportRueckwaertig := STEP_110_E;
 
         END_IF

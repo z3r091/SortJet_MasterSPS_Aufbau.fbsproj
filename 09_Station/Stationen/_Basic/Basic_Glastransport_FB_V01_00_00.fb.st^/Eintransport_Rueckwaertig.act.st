@@ -38,6 +38,13 @@ THEN
   END_IF
 
 
+  // Ausnahmesituation:
+  //   - Slave-Kopplung waehrend der Kette verloren
+  IF ( NOT blAntriebsKopplungAktiv AND ( steplEintransportRueckwaertig > STEP_0_E ) AND ( steplEintransportRueckwaertig < STEP_900_E ) ) THEN
+    wpFehlerNr := cMELDUNG_EINTRANSPORT_SLAVE_KOPPLUNG_VERLOREN;
+    steplEintransportRueckwaertig := STEP_900_E;
+  END_IF
+
   CASE steplEintransportRueckwaertig OF
     // EINTRANSPORT RÜCKWÄRTIG =====================
     STEP_0_E:
@@ -71,14 +78,19 @@ THEN
 
       // Keine Refernezfahrt bei Slave Antrieb
       // Sicherstellen das die Slavekopplung aktiv ist
-      IF ( bpOptionSlaveAntrieb AND blAntriebsKopplungAktiv ) THEN
-        steplEintransportRueckwaertig := STEP_20_E;
-      // Antrieb nur referenzieren wenn Schwellwert überschritten oder nicht referenziert
-      ELSIF ( ABS(Antrieb.rpIstPosition) > rgSchwellwertReferenzieren ) OR NOT Antrieb.bpIstReferenziert THEN
-        Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
-        steplEintransportRueckwaertig := STEP_10_E;
+      //   - Mit Slave auf die Kopplung warten, nicht den gekoppelten Master referenzieren (wie Eintransport)
+      IF ( bpOptionSlaveAntrieb ) THEN
+        IF ( blAntriebsKopplungAktiv ) THEN
+          steplEintransportRueckwaertig := STEP_20_E;
+        END_IF
       ELSE
-        steplEintransportRueckwaertig := STEP_20_E;
+        // Antrieb nur referenzieren wenn Schwellwert überschritten oder nicht referenziert
+        IF ( ABS(Antrieb.rpIstPosition) > rgSchwellwertReferenzieren ) OR NOT Antrieb.bpIstReferenziert THEN
+          Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
+          steplEintransportRueckwaertig := STEP_10_E;
+        ELSE
+          steplEintransportRueckwaertig := STEP_20_E;
+        END_IF
       END_IF
 
     // EINTRANSPORT ====================
@@ -217,15 +229,9 @@ THEN
       (* Fehlerbehandlung:
          - Einlaufsensor
       *)
-      IF ( bpSensorEinlauf ) THEN
+      IF ( tonlEinlaufsensor.Q ) THEN
         bpScheibeFaehrtUeberEinlauf := TRUE;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_BELEGT;
-        steplEintransportRueckwaertig := STEP_900_E;
-      END_IF
-
-      tonlMaximaleZeitSensorAnfahren( IN:= TRUE, PT :=T#60S );
-      IF ( tonlMaximaleZeitSensorAnfahren.Q ) THEN
-        wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
         steplEintransportRueckwaertig := STEP_900_E;
       END_IF
 
@@ -288,7 +294,7 @@ THEN
       (* Fehlerbehandlung:
          - Einlaufsensor
       *)
-      IF ( bpSensorEinlauf ) THEN
+      IF ( tonlEinlaufsensor.Q ) THEN
         bpScheibeFaehrtUeberEinlauf := TRUE;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_BELEGT;
         steplEintransportRueckwaertig := STEP_900_E;
@@ -334,7 +340,7 @@ THEN
 
       bprtScheibe := FALSE;
 
-      IF ( bpSensorAuslauf ) THEN
+      IF ( tonlAuslaufsensor.Q ) THEN // entprellt: Flackern quittiert keine zweite Scheibe
         steplEintransportRueckwaertig := STEP_120_E;
       END_IF
 
@@ -353,8 +359,8 @@ THEN
       (* Fehlerbehandlung:
          - Auslaufsensor
       *)
-      IF ( bpSensorEinlauf ) THEN
-        bpScheibeFaehrtUeberAuslauf := TRUE;
+      IF ( tonlEinlaufsensor.Q ) THEN
+        bpScheibeFaehrtUeberEinlauf := TRUE;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_BELEGT;
         steplEintransportRueckwaertig := STEP_900_E;
       END_IF
@@ -366,7 +372,7 @@ THEN
       *)
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
 
-        IF ( bpSensorEinlauf ) THEN
+        IF ( tonlEinlaufsensor.Q ) THEN
           tonlMaximaleZeitAuslaufsensorFreiFahren ( IN:= FALSE);
           steplEintransportRueckwaertig := STEP_300_E;
         ELSE
@@ -435,7 +441,7 @@ THEN
          - Einlaufsnesor belegt (Maximal Glas - Sensor auf der Fremdanlage)
          - Zeit- Ueberwachung
       *)
-      IF ( bpSensorEinlauf ) THEN
+      IF ( tonlEinlaufsensor.Q ) THEN
         bpScheibeFaehrtUeberEinlauf := TRUE;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_BELEGT;
         steplEintransportRueckwaertig := STEP_900_E;

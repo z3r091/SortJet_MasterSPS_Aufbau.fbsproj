@@ -38,6 +38,13 @@ THEN
   END_IF
 
 
+  // Ausnahmesituation:
+  //   - Slave-Kopplung waehrend der Kette verloren
+  IF ( NOT blAntriebsKopplungAktiv AND ( steplEintransport > STEP_0_E ) AND ( steplEintransport < STEP_900_E ) ) THEN
+    wpFehlerNr := cMELDUNG_EINTRANSPORT_SLAVE_KOPPLUNG_VERLOREN;
+    steplEintransport := STEP_900_E;
+  END_IF
+
   CASE steplEintransport OF
     // EINTRANSPORT =====================
     STEP_0_E:
@@ -228,15 +235,9 @@ THEN
          - Auslaufsensor
          - Einlaufsensor schaltet nicht
       *)
-      IF ( bpSensorAuslauf ) THEN
+      IF ( tonlAuslaufsensor.Q ) THEN
         bpScheibeFaehrtUeberAuslauf := TRUE;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT;
-        steplEintransport := STEP_900_E;
-      END_IF
-
-      tonlMaximaleZeitSensorAnfahren( IN:= TRUE, PT :=T#60S );
-      IF ( tonlMaximaleZeitSensorAnfahren.Q ) THEN
-        wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
         steplEintransport := STEP_900_E;
       END_IF
 
@@ -298,7 +299,7 @@ THEN
       (* Fehlerbehandlung:
          - Auslaufsensor
       *)
-      IF ( bpSensorAuslauf ) THEN
+      IF ( tonlAuslaufsensor.Q ) THEN
         bpScheibeFaehrtUeberAuslauf := TRUE;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT;
         steplEintransport := STEP_900_E;
@@ -344,7 +345,7 @@ THEN
 
       bprtScheibe := FALSE;
 
-      IF ( bpSensorEinlauf ) THEN
+      IF ( tonlEinlaufsensor.Q ) THEN // entprellt: Flackern quittiert keine zweite Scheibe
         steplEintransport := STEP_120_E;
       END_IF
 
@@ -366,7 +367,7 @@ THEN
       (* Fehlerbehandlung:
          - Auslaufsensor
       *)
-      IF ( bpSensorAuslauf ) THEN
+      IF ( tonlAuslaufsensor.Q ) THEN
         bpScheibeFaehrtUeberAuslauf := TRUE;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT;
         steplEintransport := STEP_900_E;
@@ -380,7 +381,7 @@ THEN
          - Einlaufsensor Freifahren
       *)
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
-        IF ( bpSensorAuslauf ) THEN
+        IF ( tonlAuslaufsensor.Q ) THEN
           tonlMaximaleZeitAuslaufsensorFreiFahren ( IN:= FALSE);
           steplEintransport := STEP_300_E;
         ELSE
@@ -449,7 +450,7 @@ THEN
          - Auslaufsnesor belegt (Maximal Glas - Sensor auf der Fremdanlage)
          - Zeit- Ueberwachung
       *)
-      IF ( bpSensorAuslauf ) THEN
+      IF ( tonlAuslaufsensor.Q ) THEN
         bpScheibeFaehrtUeberAuslauf := TRUE;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT;
         steplEintransport := STEP_900_E;

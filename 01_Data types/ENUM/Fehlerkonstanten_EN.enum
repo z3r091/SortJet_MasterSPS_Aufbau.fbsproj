@@ -130,6 +130,7 @@ TYPE Fehlerkonstanten_EN :
   cMELDUNG_EINTRANSPORT_SENSOR_EINLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 179,   // Wildcard: Station: %d
   cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 180,   // Wildcard: Station: %d
   cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 181,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_SLAVE_KOPPLUNG_VERLOREN                                    := 182,   // Wildcard: Station: %d
 
   // ---------------------------------------------------------------------------------------
   // KATEGORIE: SENSOREN AUSTRANSPORT
@@ -162,6 +163,7 @@ TYPE Fehlerkonstanten_EN :
   cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 221,   // Wildcard: Station: %d
   cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG             := 222,   // Wildcard: Station: %d
   cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG             := 223,   // Wildcard: Station: %d
+  cMELDUNG_AUSTRANSPORT_SLAVE_KOPPLUNG_VERLOREN                                    := 224,   // Wildcard: Station: %d
 
   // ---------------------------------------------------------------------------------------
   // KATEGORIE: SENSOR VORTRANSPORT
@@ -191,6 +193,13 @@ TYPE Fehlerkonstanten_EN :
   cMELDUNG_VORTRANSPORT_SENSOR_EINLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 258,   // Wildcard: Station: %d
   cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 259,   // Wildcard: Station: %d
   cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 260,   // Wildcard: Station: %d
+  cMELDUNG_VORTRANSPORT_SLAVE_KOPPLUNG_VERLOREN                                    := 261,   // Wildcard: Station: %d
+
+  // ---------------------------------------------------------------------------------------
+  // KATEGORIE: DURCHTRANSPORT
+  //
+
+  cMELDUNG_DURCHTRANSPORT_SLAVE_KOPPLUNG_VERLOREN                                  := 270,   // Wildcard: Station: %d
 
   // ---------------------------------------------------------------------------------------
   // KATEGORIE: SYSTEM CHECK
@@ -237,6 +246,7 @@ TYPE Fehlerkonstanten_EN :
   cMELDUNG_SYSTEMCHECK_NICHT_MOEGLICH_BEIDE_SAUGER_AUSGEFAHREN                     := 315,
   cMELDUNG_SYSTEMCHECK_HUB_UNDEFINIERT                                             := 316,
   cMELDUNG_SYSTEMCHECK_VERBUND_ANDERER_AK_NOETIG                                   := 317,  // Wildcard: Station:%d | Automatikkreis: %d (muss zusaetzlich den Systemcheck machen)
+  cMELDUNG_SYSTEMCHECK_SLAVE_KOPPLUNG_VERLOREN                                     := 318,  // Wildcard: Station:%d
 
   // ---------------------------------------------------------------------------------------
   // KATEGORIE: ANTRIEBE
@@ -467,6 +477,7 @@ TYPE Fehlerkonstanten_EN :
   cMELDUNG_MESSUNG_SCHEIBE_ZU_DUENN                                                := 664,  // Wildcard: Station:%d
   cMELDUNG_MESSUNG_ABSTAND_NULLLINIE_NICHT_OK                                      := 665,  // Wildcard: Station:%d | Abstand NullLinie: %d
   cMELDUNG_MESSUNG_FEHLMESSUNG                                                     := 666,  // Wildcard: Station:%d
+  cMELDUNG_MESSUNG_SLAVE_KOPPLUNG_VERLOREN                                         := 667,  // Wildcard: Station:%d
 
   // ---------------------------------------------------------------------------------------
   // KATEGORIE: ANLEGEN ALLGEMEIN

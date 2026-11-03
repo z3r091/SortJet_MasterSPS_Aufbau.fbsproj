@@ -38,6 +38,14 @@ IF ( bpCheck ) THEN
     steplCheck := STEP_900_E;
   END_IF
 
+  // Ausnahmesituation:
+  //   - Slave-Kopplung waehrend der Kette verloren
+  IF ( NOT blAntriebsKopplungAktiv AND ( steplCheck > STEP_0_E ) AND ( steplCheck < STEP_900_E ) ) THEN
+    Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    wpFehlerNr := cMELDUNG_SYSTEMCHECK_SLAVE_KOPPLUNG_VERLOREN;
+    steplCheck := STEP_900_E;
+  END_IF
+
   CASE ( steplCheck ) OF
     // SYSTEM CHECK=========================
     STEP_0_E:

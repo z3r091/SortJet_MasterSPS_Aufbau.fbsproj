@@ -31,6 +31,13 @@ THEN
   END_IF
 
 
+  // Ausnahmesituation:
+  //   - Slave-Kopplung waehrend der Kette verloren
+  IF ( NOT blAntriebsKopplungAktiv AND ( steplMesskopplung > STEP_0_E ) AND ( steplMesskopplung < STEP_900_E ) ) THEN
+    wpFehlerNr := cMELDUNG_MESSUNG_SLAVE_KOPPLUNG_VERLOREN;
+    steplMesskopplung := STEP_900_E;
+  END_IF
+
   CASE steplMesskopplung OF
 
     // MESSKOPPLUNG ================================================
@@ -44,8 +51,10 @@ THEN
       // Zeit für Statistik
       tlWarteZeitAufnahme := TIME();
 
-      steplMesskopplung := STEP_100_E;
-
+      // Sicherstellen das die Slavekopplung aktiv ist
+      IF ( blAntriebsKopplungAktiv ) THEN
+        steplMesskopplung := STEP_100_E;
+      END_IF
 
     // MESSKOPPLUNG ================================================
     STEP_100_E:

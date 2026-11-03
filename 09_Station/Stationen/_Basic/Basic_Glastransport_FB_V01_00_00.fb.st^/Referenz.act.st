@@ -48,7 +48,8 @@ IF ( bpReferenz )THEN
          - Zeitliche Verzoegerung damit der Slave komplett abgekoppelt ist und nicht in
            einen Schleppfehler kommt.
       *)
-      tonlSlaveKopplungDeaktiviert( IN := NOT blAntriebsKopplungAktiv,
+      // Direkt auf den Slave schauen: blAntriebsKopplungAktiv ist beim Referenzieren immer FALSE (Slave-Kette nicht aktiv)
+      tonlSlaveKopplungDeaktiviert( IN := NOT Antrieb_Slave.bpAchseSychron,
                                     PT := T#150MS );
 
       IF (  NOT Antrieb.bpAntrieblaeuft
