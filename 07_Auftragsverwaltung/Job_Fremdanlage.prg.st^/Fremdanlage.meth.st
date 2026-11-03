@@ -13,16 +13,19 @@ VAR_INPUT
   bDurchtransportierendeStation : BOOL;
 END_VAR
 VAR
-  bVorgaengerShuttle                   : BOOL;
-  ptAuftragsdatenSender                : REFERENCE TO Auftragsdaten_ST;
-  ptAuftragsdatenDurchtransportStation : REFERENCE TO Auftragsdaten_ST;
-  ptVorgaenger                         : REFERENCE TO StationBasisParameter_ST;
+  ptSender                    : REFERENCE TO StationBasisParameter_ST;
+  ptAuftragsdatenSender       : REFERENCE TO Auftragsdaten_ST;
+  ptAuftragsdatenVorgaenger   : REFERENCE TO Auftragsdaten_ST;
 END_VAR
 
 // Hinweis:
-// - Ob der Vorgaenger ein Shuttle ist, steht in seiner MK (bStationIstShuttle)
-ptVorgaenger REF= getBasis( wVorgaenger );
-bVorgaengerShuttle := __ISVALIDREF( ptVorgaenger ) AND_THEN __ISVALIDREF( ptVorgaenger.stMKs ) AND_THEN ptVorgaenger.stMKs.stSchnittstellendaten.bStationIstShuttle;
+// - Glas-Sender ist die Transferstation 1 des Fremdanlagen-Auftrags (Shuttle, Transfershuttle oder Station)
+// - Shuttle und Transfershuttle (MK bStationIstShuttle) legen den Auftrag der Fremdanlage selbst an
+// - Bei einer Station legt die Fremdanlage den Austransport-Auftrag ihres Vorgaengers an
+ptSender              REF= getBasis( AuftragsdatenFremdanlage[wFremdanlage].wTransferstationsNr1 );
+ptAuftragsdatenSender REF= getAuftragsdaten( AuftragsdatenFremdanlage[wFremdanlage].wTransferstationsNr1,
+                                             AuftragsdatenFremdanlage[wFremdanlage].wTransferwand );
+ptAuftragsdatenVorgaenger REF= getAuftragsdaten( wVorgaenger, cWAND_1 );
 
 //-------------------------------------------------------------------------------------------------
 // STEUERUNG EINTRANSPORT
@@ -48,8 +51,11 @@ IF ( AuftragsdatenFremdanlage[wFremdanlage].wAuftrag = eStation_Eintransport ) T
       (* Hinweis:
          - Glas- Sender bestimmen und merken
       *)
-      IF bVorgaengerShuttle THEN
-        starrFremdanlageAuslaufStationBasisParameter[AuftragsdatenFremdanlage[wFremdanlage].wStationsNr].InGlasTransportVorgaenger[cWAND_1] := starrShuttleBasisParameter[AuftragsdatenFremdanlage[wFremdanlage].wTransferstationsNr1].OutGlasTransport[AuftragsdatenFremdanlage[wFremdanlage].wTransferwand];
+      IF (     __ISVALIDREF( ptSender )
+           AND_THEN __ISVALIDREF( ptSender.stMKs )
+           AND_THEN ptSender.stMKs.stSchnittstellendaten.bStationIstShuttle )
+      THEN
+        starrFremdanlageAuslaufStationBasisParameter[AuftragsdatenFremdanlage[wFremdanlage].wStationsNr].InGlasTransportVorgaenger[cWAND_1] := ptSender.OutGlasTransport[AuftragsdatenFremdanlage[wFremdanlage].wTransferwand];
         astplEintransportFremdanlage[wFremdanlage] := STEP_40_E;
       ELSE
         astplEintransportFremdanlage[wFremdanlage] := STEP_30_E;
@@ -63,50 +69,39 @@ IF ( AuftragsdatenFremdanlage[wFremdanlage].wAuftrag = eStation_Eintransport ) T
       //  Hinweis:
       // - n/c
       // ---------------------------------------------------------------------------------------
-      IF bVorgaengerShuttle THEN
-        ptAuftragsdatenSender REF= Job_Shuttle.AuftragsdatenWand[wVorgaenger, cWAND_1];
-      ELSE
-        ptAuftragsdatenSender REF= Job_Stationen.AuftragsdatenWand[wVorgaenger, cWAND_1];
-      END_IF
+      IF ( __ISVALIDREF( ptAuftragsdatenVorgaenger ) ) THEN
 
-      IF ( ( ptAuftragsdatenSender.wAuftrag = eStation_Belegt )
-           OR ( ptAuftragsdatenSender.wAuftrag = eStation_Warte_Auf_Austransport ) )
-         OR ( ( ptAuftragsdatenSender.wAuftrag = eStation_Kein_Auftrag ) AND bDurchtransportierendeStation )
-      THEN
-    
-        IF bDurchtransportierendeStation THEN
-          ptAuftragsdatenSender := AuftragsdatenUmkopieren(FALSE, TRUE, AuftragsdatenFremdanlage[wFremdanlage]);
-          ptAuftragsdatenSender.wAuftrag := eStation_Durchtransport;
-        ELSE
-          ptAuftragsdatenSender := AuftragsdatenUmkopieren(FALSE, FALSE, AuftragsdatenFremdanlage[wFremdanlage]);
-          ptAuftragsdatenSender.wAuftrag := eStation_Austransport;
+        IF ( ( ptAuftragsdatenVorgaenger.wAuftrag = eStation_Belegt )
+             OR ( ptAuftragsdatenVorgaenger.wAuftrag = eStation_Warte_Auf_Austransport ) )
+           OR ( ( ptAuftragsdatenVorgaenger.wAuftrag = eStation_Kein_Auftrag ) AND bDurchtransportierendeStation )
+        THEN
+
+          IF bDurchtransportierendeStation THEN
+            ptAuftragsdatenVorgaenger := AuftragsdatenUmkopieren(FALSE, TRUE, AuftragsdatenFremdanlage[wFremdanlage]);
+            ptAuftragsdatenVorgaenger.wAuftrag := eStation_Durchtransport;
+          ELSE
+            ptAuftragsdatenVorgaenger := AuftragsdatenUmkopieren(FALSE, FALSE, AuftragsdatenFremdanlage[wFremdanlage]);
+            ptAuftragsdatenVorgaenger.wAuftrag := eStation_Austransport;
+          END_IF
+
+          astplEintransportFremdanlage[wFremdanlage] := STEP_40_E;
+
         END_IF
-
-        astplEintransportFremdanlage[wFremdanlage] := STEP_40_E;
 
       END_IF
 
     // EINTRANSPORT ===========================================
     STEP_40_E:
+      (* Hinweis:
+         - Abgeschlossen, sobald der Glas-Sender seinen Austransport (bzw. Durchtransport) beendet hat
+      *)
       IF bDurchtransportierendeStation THEN
-        IF ptAuftragsdatenSender.wAuftrag <> eStation_Durchtransport THEN
+        IF ( NOT __ISVALIDREF( ptAuftragsdatenVorgaenger ) ) OR_ELSE ( ptAuftragsdatenVorgaenger.wAuftrag <> eStation_Durchtransport ) THEN
           astplEintransportFremdanlage[wFremdanlage] := STEP_1000_E;
         END_IF
       ELSE
-        IF bVorgaengerShuttle THEN 
-          IF Job_Shuttle.AuftragsdatenWand[AuftragsdatenFremdanlage[wFremdanlage].wTransferstationsNr1, cWAND_1].wAuftrag <> eStation_Austransport THEN
-            astplEintransportFremdanlage[wFremdanlage] := STEP_1000_E;
-          END_IF
-        ELSE
-          IF AuftragsdatenFremdanlage[wFremdanlage].wTransferstationsNr1 <= cERSTE_STATION THEN
-            ptAuftragsdatenDurchtransportStation REF= Job_Shuttle.AuftragsdatenWand[AuftragsdatenFremdanlage[wFremdanlage].wTransferstationsNr1, cWAND_1];
-          ELSE
-            ptAuftragsdatenDurchtransportStation REF= Job_Stationen.AuftragsdatenWand[AuftragsdatenFremdanlage[wFremdanlage].wTransferstationsNr1, cWAND_1];
-          END_IF
-      
-          IF ptAuftragsdatenDurchtransportStation.wAuftrag <> eStation_Austransport THEN
-            astplEintransportFremdanlage[wFremdanlage] := STEP_1000_E;
-          END_IF
+        IF ( NOT __ISVALIDREF( ptAuftragsdatenSender ) ) OR_ELSE ( ptAuftragsdatenSender.wAuftrag <> eStation_Austransport ) THEN
+          astplEintransportFremdanlage[wFremdanlage] := STEP_1000_E;
         END_IF
       END_IF
 

@@ -71,40 +71,53 @@ IF ( Auftragsdaten.wAuftrag = eStation_Austransport ) THEN
         (* Hinweis:
            - Verfahrbahrer Speicher
         *)
+        // Fremdanlage Auslauf
+        //   - Wie beim Shuttle: Der TS legt den Auftrag der Fremdanlage an, sobald diese frei ist
         cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF:
-          starrTransfershuttleBasisParameter[wStation].InGlasTransportNachfolger[cWAND_1] := starrFremdanlageAuslaufStationBasisParameter[wlAustransportstation].OutGlasTransport[cWAND_1];
-          starrFremdanlageAuslaufStationBasisParameter[wlAustransportstation].InGlasTransportVorgaenger[cWAND_1] := starrTransfershuttleBasisParameter[wStation].OutGlasTransport[cWAND_1];
-          steplSchritt := STEP_20_E;
+          IF ( Job_Fremdanlage.AuftragsdatenFremdanlage[wlAustransportstation].wAuftrag = eStation_Kein_Auftrag ) THEN
 
+            // Kopplung zur Fremdanlage herstellen
+            starrTransfershuttleBasisParameter[wStation].InGlasTransportNachfolger[cWAND_1] := starrFremdanlageAuslaufStationBasisParameter[wlAustransportstation].OutGlasTransport[cWAND_1];
+            starrTransfershuttleBasisParameter[wStation].InGlasTransportVorgaenger[cWAND_1] := starrFremdanlageAuslaufStationBasisParameter[wlAustransportstation].OutGlasTransport[cWAND_1];
+            starrFremdanlageAuslaufStationBasisParameter[wlAustransportstation].InGlasTransportVorgaenger[cWAND_1] := starrTransfershuttleBasisParameter[wStation].OutGlasTransport[cWAND_1];
+
+            // Auftragsdaten in die Fremdanlage kopieren
+            Job_Fremdanlage.AuftragsdatenFremdanlage[wlAustransportstation]          := AuftragsdatenUmkopieren(FALSE, FALSE, Auftragsdaten);
+            Job_Fremdanlage.AuftragsdatenFremdanlage[wlAustransportstation].wAuftrag := eStation_Eintransport;
+
+            steplSchritt := STEP_20_E;
+          END_IF
+
+        // Stationen
+        //   - Wie beim Shuttle: Der TS legt den Eintransport-Auftrag der Station an
+        //   - Durchtransportierende Station behaelt ihren Auftrag
         cERSTE_STATION..cLETZTE_STATION:
-          IF ( Job_Stationen.AuftragsdatenWand[wlAustransportstation, Auftragsdaten.wTransferwand].wAuftrag  = eStation_Eintransport ) THEN
+          IF (    ( Job_Stationen.AuftragsdatenWand[wlAustransportstation, Auftragsdaten.wTransferwand].wAuftrag = eStation_Kein_Auftrag )
+               OR ( Job_Stationen.AuftragsdatenWand[wlAustransportstation, Auftragsdaten.wTransferwand].wAuftrag = eStation_Belegt )
+               OR ( Job_Stationen.AuftragsdatenWand[wlAustransportstation, Auftragsdaten.wTransferwand].wAuftrag = eStation_Durchtransport ) )
+             AND AutomatikAktiv(wlAustransportstation)
+          THEN
+
+            IF NOT ( Job_Stationen.AuftragsdatenWand[wlAustransportstation, Auftragsdaten.wTransferwand].wAuftrag = eStation_Durchtransport ) THEN
+              Job_Stationen.AuftragsdatenWand[wlAustransportstation, Auftragsdaten.wTransferwand]          := AuftragsdatenUmkopieren(FALSE, FALSE, Auftragsdaten);
+              Job_Stationen.AuftragsdatenWand[wlAustransportstation, Auftragsdaten.wTransferwand].wAuftrag := eStation_Eintransport;
+            END_IF
+
+            // Kopplung zur Station herstellen
             starrTransfershuttleBasisParameter[wStation].InGlasTransportNachfolger[cWAND_1] := starrStationBasisParameter[wlAustransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
+            starrTransfershuttleBasisParameter[wStation].InGlasTransportVorgaenger[cWAND_1] := starrStationBasisParameter[wlAustransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
+
             steplSchritt := STEP_20_E;
           END_IF
 
-          // Ausnahmesituation:
-          //   - Shuttle hat den falschen Auftragsstatus
-          IF ( Job_Stationen.AuftragsdatenWand[wlAustransportstation, Auftragsdaten.wTransferwand].wAuftrag  <> eStation_Eintransport ) THEN
-            wpgFehlerdaten[0] := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerExtern;
-            wpgFehlerdaten[1] := wlAustransportstation;
-            wpgFehlerdaten[2] := Job_Stationen.AuftragsdatenWand[wlAustransportstation, Auftragsdaten.wTransferwand].wAuftrag;
-
-            SpsError( eFehler_Station,
-                      cMELDUNG_AUFTRAGSDATEN_AUFTRAGSTATUS_GLAS_EMPFAENGER_UNGUELTIG,
-                      starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
-                      wpgFehlerdaten );
-            steplSchritt := STEP_900_E;
-          END_IF
-
-          (* Hinweis:
-             - Ruecktransport durch den Speicher beruecksichtigen
-          *)
-          cERSTES_INPUTSHUTTLE..cLETZTES_INPUTSHUTTLE,
-            cERSTES_OUTPUTSHUTTLE..cLETZTES_OUTPUTSHUTTLE:
-          IF ( Job_Shuttle.AuftragsdatenWand[wlAustransportstation, Auftragsdaten.wTransferwand].wAuftrag  = eStation_Eintransport ) THEN
-            steplSchritt := STEP_20_E;
-          END_IF
+        (* Hinweis:
+           - Ruecktransport durch den Speicher beruecksichtigen
+        *)
+        cERSTES_INPUTSHUTTLE..cLETZTES_INPUTSHUTTLE,
+        cERSTES_OUTPUTSHUTTLE..cLETZTES_OUTPUTSHUTTLE:
+            IF ( Job_Shuttle.AuftragsdatenWand[wlAustransportstation, Auftragsdaten.wTransferwand].wAuftrag  = eStation_Eintransport ) THEN
+              steplSchritt := STEP_20_E;
+            END_IF
 
           // Ausnahmesituation:
           //   - Shuttle hat den falschen Auftragsstatus

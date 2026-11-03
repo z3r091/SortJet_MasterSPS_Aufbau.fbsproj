@@ -89,6 +89,24 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
             steplSchritt := STEP_900_E;
           END_IF
 
+        // Stationen
+        //   - Wie beim Shuttle: Der TS legt den Austransport-Auftrag der Station an, sobald sie belegt ist
+        cERSTE_STATION..cLETZTE_STATION:
+          IF (    ( Job_Stationen.AuftragsdatenWand[wlEintransportstation, Auftragsdaten.wTransferwand].wAuftrag = eStation_Belegt )
+               OR ( Job_Stationen.AuftragsdatenWand[wlEintransportstation, Auftragsdaten.wTransferwand].wAuftrag = eStation_Warte_Auf_Austransport ) )
+             AND AutomatikAktiv(wlEintransportstation)
+          THEN
+
+            Job_Stationen.AuftragsdatenWand[wlEintransportstation, Auftragsdaten.wTransferwand]          := AuftragsdatenUmkopieren(FALSE, FALSE, Auftragsdaten);
+            Job_Stationen.AuftragsdatenWand[wlEintransportstation, Auftragsdaten.wTransferwand].wAuftrag := eStation_Austransport;
+
+            // Kopplung zur Station herstellen
+            starrTransfershuttleBasisParameter[wStation].InGlasTransportNachfolger[cWAND_1] := starrStationBasisParameter[wlEintransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
+            starrTransfershuttleBasisParameter[wStation].InGlasTransportVorgaenger[cWAND_1] := starrStationBasisParameter[wlEintransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
+
+            steplSchritt := STEP_110_E;
+          END_IF
+
         ELSE
           wpgFehlerdaten[0] := starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerExtern;
           wpgFehlerdaten[1] := wlEintransportstation;

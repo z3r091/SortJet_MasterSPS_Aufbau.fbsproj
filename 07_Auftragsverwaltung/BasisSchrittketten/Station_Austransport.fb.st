@@ -113,6 +113,17 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
 
           steplSchritt := STEP_30_E;
 
+        // Transfershuttles
+        //   - Der Auftrag kommt vom TS (TS_Eintransport), hier nur die Transportkopplung
+        cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE:
+          IF ( starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.Station[Auftragsdaten.wTransferstationsNr1] = Vorwaertig ) THEN
+            starrStationBasisParameter[wStation].InGlasTransportNachfolger[wWand] := starrTransfershuttleBasisParameter[Auftragsdaten.wTransferstationsNr1].OutGlasTransport[cWAND_1];
+          ELSE
+            starrStationBasisParameter[wStation].InGlasTransportVorgaenger[wWand] := starrTransfershuttleBasisParameter[Auftragsdaten.wTransferstationsNr1].OutGlasTransport[cWAND_1];
+          END_IF
+
+          steplSchritt := STEP_30_E;
+
         // Stationen
         cERSTE_STATION..cLETZTE_STATION:
 
