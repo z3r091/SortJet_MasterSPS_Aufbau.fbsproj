@@ -50,10 +50,16 @@ CASE BasisStationsParameter.stMKs.stFremdanlage.eTypSchnittstelle OF
   eLISEC:
     Lisec_Schnittstelle();
 
+  eFOREL:
+    Forel_Schnittstelle();
+
   eHEGLA_SJ:
     Hegla_SJ_Schnittstelle();
 
 END_CASE
+
+// Meldung: Glas bereit, aber kein Abruf durch die Fremdanlage
+Meldungen();
 
 // Glaettung der Geschwindigkeit zur Sortierung
 M_GeschwindigkeitGlaetten( rpMindestGeschwindigkeitsAenderung   := BasisStationsParameter.stMKs.stFremdanlage.rMindestGeschwindigkeitsAenderung,

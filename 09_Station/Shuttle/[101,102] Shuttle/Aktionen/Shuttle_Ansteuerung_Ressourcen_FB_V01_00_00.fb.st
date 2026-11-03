@@ -88,8 +88,15 @@ THEN
       *)
       tonlTimeout(IN := TRUE, PT := T#30S);
 
-      IF NOT Glastransport.bpEintransport
-         AND NOT Glastransport.bpRueckwaertsEintransportieren 
+      // Vorab-Glastransport ueberspringen, wenn der Eintransport vom Job schon angefordert ist
+      // (Bedingung aus GW1; GW1 wartete dann bis zum Timeout, hier direkt weiter)
+      IF ( BasisStationsParameter.bEintransport[wWand] ) THEN
+
+        tonlTimeout( IN := FALSE );
+        steplAktion := STEP_100_E;
+
+      ELSIF NOT Glastransport.bpEintransport
+            AND NOT Glastransport.bpRueckwaertsEintransportieren
       THEN
 
         CASE BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eGlastransport OF
