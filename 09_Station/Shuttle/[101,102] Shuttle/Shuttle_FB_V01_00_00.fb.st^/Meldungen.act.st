@@ -42,6 +42,10 @@ THEN
       BasisStationsParameter.bFehler := TRUE;
       BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_GEBLAESE;
     END_IF
+    IF ( Greifer[wlIndex].bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex] ) THEN
+      BasisStationsParameter.bFehler := TRUE;
+      BasisStationsParameter.wFehlerNummer := Greifer[wlIndex].wpFehlerNr;
+    END_IF
   END_FOR
 END_IF
 
@@ -69,7 +73,7 @@ THEN
   SpsHinweis( eFehler_Station,
               BasisStationsParameter.wFehlerNummer,
               BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-              AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+              AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
               BasisStationsParameter.awFehlerInformationen );
 END_IF
 
@@ -105,6 +109,22 @@ WatchIo( blShuttleErreichbar AND NOT Querfahrt.Antrieb.bpIstReferenziert        
 WatchIo( blShuttleErreichbar AND Querfahrt.Antrieb.bpMinSchalterBelegt                                                                      ,wlWatchIONachrichtenNummer + 20 );
 WatchIo( blShuttleErreichbar AND Querfahrt.Antrieb.bpMaxSchalterBelegt                                                                      ,wlWatchIONachrichtenNummer + 21 );
 
+// Greifer [Ausbaustufe]:
+//   - +22 Greiferachse nicht referenziert
+//   - +25 Glasrueckhalter nicht eingefahren, ohne dass er angesteuert ist
+//   - +30 Querfahrt angefordert und Greifer nicht in sicherer Position
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  IF ( BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex] ) THEN
+    WatchIo( blShuttleErreichbar AND NOT Greifer[wlIndex].bpIstInReferenz                                                                ,wlWatchIONachrichtenNummer + (22 + (wlIndex - cWAND_1)) );
+    WatchIoControl( T#5S, wlWatchIONachrichtenNummer + (25 + (wlIndex - cWAND_1)),
+                    (     blShuttleErreichbar
+                      AND NOT Greifer[wlIndex].bpGlasRueckhalterEingefahren
+                      AND NOT Greifer[wlIndex].out_bGlasRueckhalterEinlaufAusfahren
+                      AND NOT Greifer[wlIndex].out_bGlasRueckhalterAuslaufAusfahren ) );
+    WatchIo( blShuttleErreichbar AND Querfahrt.bpVerfahreShuttle AND NOT Greifer[wlIndex].bpSicherePosition                              ,wlWatchIONachrichtenNummer + (30 + (wlIndex - cWAND_1)) );
+  END_IF
+END_FOR
+
 WatchIo( blShuttleErreichbar AND NOT StatusAnlage.toflDruckluftShuttleOK[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].Q        ,wlWatchIONachrichtenNummer + 24 );
 
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
@@ -130,7 +150,7 @@ THEN
   SpsError( eFehler_Station,
             cMELDUNG_STATION_DATENLICHTSCHRANKE_UNTERBROCHEN,
             BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-            AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+            AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
             BasisStationsParameter.awFehlerInformationen );
 
   blDatenlichtschrankeUnterbrochenMelden := TRUE;
@@ -155,7 +175,7 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
       SpsHinweis( eFehler_Station,
                   cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_EINLAUF_WAND_BELEGT,
                   BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                   BasisStationsParameter.awFehlerInformationen );
     END_IF
     IF ( Glastransport[wlIndex].bpSensorAuslauf ) THEN
@@ -163,7 +183,7 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
       SpsHinweis( eFehler_Station,
                   cMELDUNG_QUERFAHRT_KANN_NICHT_VERFAHREN_SENSOR_AUSLAUF_WAND_BELEGT,
                   BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+                  AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                   BasisStationsParameter.awFehlerInformationen );
     END_IF
   END_IF

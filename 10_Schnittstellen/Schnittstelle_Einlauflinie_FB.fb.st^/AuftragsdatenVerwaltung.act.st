@@ -86,7 +86,7 @@ IF ( blAuftragsdatenNachrichtGenerieren ) THEN
 
   IF ( Auftragsdaten.wScheibenAnzahl <= 3 ) THEN
 
-    wSps2Mmi_SationsNummer      := stStationsNummern.NummerSPS;
+    wSps2Mmi_SationsNummer      := stStationsNummern.NummerIntern;
     wSps2Mmi_NachrichtenIndex   := 1;
     wSps2Mmi_NachrichtenAnzahl  := 1;
     wSps2Mmi_AnzahlScheiben     := Auftragsdaten.wScheibenAnzahl;
@@ -98,7 +98,7 @@ IF ( blAuftragsdatenNachrichtGenerieren ) THEN
 
   ELSE
 
-    wSps2Mmi_SationsNummer      := stStationsNummern.NummerSPS;
+    wSps2Mmi_SationsNummer      := stStationsNummern.NummerIntern;
     wSps2Mmi_NachrichtenIndex   := 1;
     wSps2Mmi_NachrichtenAnzahl  := 2;
     wSps2Mmi_AnzahlScheiben     := Auftragsdaten.wScheibenAnzahl;
@@ -109,7 +109,7 @@ IF ( blAuftragsdatenNachrichtGenerieren ) THEN
     MsgToMmi(auftragsnr_w := SB0_SPS_SCHNITTSTELLENDATENFREMDANLAGE );
 
 
-    wSps2Mmi_SationsNummer      := stStationsNummern.NummerSPS;
+    wSps2Mmi_SationsNummer      := stStationsNummern.NummerIntern;
     wSps2Mmi_NachrichtenIndex   := 2;
     wSps2Mmi_NachrichtenAnzahl  := 2;
     wSps2Mmi_AnzahlScheiben     := Auftragsdaten.wScheibenAnzahl;

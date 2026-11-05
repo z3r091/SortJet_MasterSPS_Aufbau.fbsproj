@@ -109,6 +109,13 @@ CASE( tSpsMessage.wAuftrag )OF
     M_SB0_MMI_SortierungInsertExtractionShuttleData := TRUE;
 
 
+  // MSG 10
+  // Faecherwagen in der Station bald voll: Anzeige an der Station
+  SB0_MMI_SORTIERUNGFAECHERWAGENBALDVOLL:
+    tMmi2SpsInfo.wSps2FaecherwagenStationNr  := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));   // Stationsnummer
+    M_SB0_MMI_SORTIERUNGFAECHERWAGENBALDVOLL := TRUE;
+
+
   // MSG 15  
   // Fächerwagenwechsel auch von verschiedenen Stationen möglich 
   SB0_MMI_SORTIERUNGFAECHERWAGENWECHSEL:

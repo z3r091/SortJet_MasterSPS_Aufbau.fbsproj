@@ -20,7 +20,8 @@ POU-Seite. Die POU-Seite wird fuer ein neues Projekt nicht angefasst.
 
 2. Instanzen und Aufrufe
    - 02_Global Variables/Globale_Bausteine: eine Instanz je Station mit dem versionierten Baustein
-     (z. B. Foerderer_FB_V01_00_00), Arrays fuer Shuttle, Transfershuttle, Faecherwagen, Schnittstellen
+     (z. B. Foerderer_FB_V01_00_00), Arrays fuer Shuttle, Transfershuttle, Schnittstellen;
+     Faecherwagenstationen als Array aFaecherwagenstation, Typ = Variante der Maschine
    - 09_Station/StationsAufrufe: Aufruf je Station mit starrStationBasisParameter[cSTATION_xxx]
    - 00_Basis/StationBasisZuweisungen: Aktion Zuweisung_xxx je Station (MKs, Antriebsinformationen,
      Ein- und Austransporte) und Aufruf in M_AufrufeZuweisungen

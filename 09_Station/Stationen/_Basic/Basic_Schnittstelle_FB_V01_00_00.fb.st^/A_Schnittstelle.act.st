@@ -12,6 +12,7 @@ ACTION A_Schnittstelle
 
 BasisStationsParameter.OutGlasTransport[cWAND_1].stStationsNummern          := BasisStationsParameter.stMKs.stStationsNummern;
 BasisStationsParameter.OutGlasTransport[cWAND_1].wStationsTyp               := BasisStationsParameter.stMKs.eStationsTyp;
+BasisStationsParameter.OutGlasTransport[cWAND_1].rLaengeStation             := BasisStationsParameter.stMKs.stFremdanlage.rLaengeStation;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bEinlaufsensor             REF= bEmpfaengerSensorEinlauf;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bAuslaufsensor             REF= bgFALSE;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bBereitZumAustransport     REF= blBereitZumAustransport;

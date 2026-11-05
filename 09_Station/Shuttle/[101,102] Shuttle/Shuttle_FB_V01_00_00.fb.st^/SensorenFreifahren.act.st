@@ -13,7 +13,7 @@ ACTION SensorenFreifahren
    - Kommt es zu einem Verfahrabbruch aufgrund des Einlauf- bzw. Auslauf- Sensors muss dieser
      frei gefahren werden, damit der Verfahrbefehl neu gesendet werden kann
 *)
-artlVerfahrabbruchSensorik[cWAND_1]( CLK := ( Querfahrt.bpAbbruchPositionierung AND (atoflSensorEinlauf[cWAND_1].Q OR atoflSensorAUslaufStopp[cWAND_1].Q ) ));
+artlVerfahrabbruchSensorik[cWAND_1]( CLK := ( Querfahrt.bpAbbruchPositionierung AND (atoflSensorEinlaufStopp[cWAND_1].Q OR atoflSensorAUslaufStopp[cWAND_1].Q ) ));
 
 IF ( artlVerfahrabbruchSensorik[cWAND_1].Q ) THEN
   Glastransport[cWAND_1].bpStarteSensorFreiFahren := NOT Glastransport[cWAND_1].bpStarteSensorFreiFahren;

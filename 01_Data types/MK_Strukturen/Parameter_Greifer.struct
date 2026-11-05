@@ -1,0 +1,56 @@
+(* METADATA
+{
+  "v3Meta": {
+    "objectGuid": "26a974e9-cd22-45f6-b03b-2df68f08f348"
+  }
+}
+*)
+// Struktur fuer den Shuttle-Greifer [Greiferachse mit optionaler Greiferzange und optionalem Glasrueckhalter je Seite]
+// Positionen in [mm] bezogen auf den Referenzpunkt der Greiferachse
+TYPE Parameter_Greifer :
+  STRUCT
+    eGreiferTyp                                   : Greifertyp_EN; // Greiferseite, wenn der Auftrag keine Seite vorgibt (Systemcheck, Grundstellung)
+    tZeitAntriebsfreigabeErhalten                 : TIME; // Energieeinsparung: Zeit nach der die Antriebsfreigabe entzogen wird, wenn keine Aktion ansteht
+    tUeberwachungZylinder                         : TIME; // Zeitueberwachung Greifer aus-/einfahren, Greiferzange und Glasrueckhalter
+    tUeberwachungBewegung                         : TIME; // Zeitueberwachung einer Fahrt der Greiferachse
+    tUeberwachungKopplung                         : TIME; // Zeitueberwachung Kopplung / Entkopplung des Glastransports auf die Greiferachse
+    bZangeAbfragenVorhanden                       : BOOL; // Endlagenabfragen der Greiferzange vorhanden (sonst nur Bewegungszeit)
+    bZangeEinlaufVorhanden                        : BOOL; // Greiferzange Einlaufseite vorhanden (Ablaeufe ueber die Einlaufseite nur damit)
+    bZangeAuslaufVorhanden                        : BOOL; // Greiferzange Auslaufseite vorhanden (Ablaeufe ueber die Auslaufseite nur damit)
+    bGlasRueckhalterEinlaufVorhanden              : BOOL; // Glasrueckhalter Einlaufseite vorhanden (sonst Ausgang aus, gilt als eingefahren)
+    bGlasRueckhalterAuslaufVorhanden              : BOOL; // Glasrueckhalter Auslaufseite vorhanden (sonst Ausgang aus, gilt als eingefahren)
+    rGrundstellungsPosition_Einlauf               : REAL; // Grundstellung [Home-Position] Greiferseite Einlauf
+    rGrundstellungsPosition_Auslauf               : REAL; // Grundstellung [Home-Position] Greiferseite Auslauf
+    rGrundstellungsPosition_EinlaufEintransport   : REAL; // Vorabposition vor einem Eintransport ueber die Einlaufseite
+    rGrundstellungsPosition_AuslaufEintransport   : REAL; // Vorabposition vor einem Eintransport ueber die Auslaufseite
+    rUebergabePosition_Einlauf                    : REAL; // Position, bis zu der die Scheibe in den Faecherwagen geschoben wird [Einlaufseite]
+    rUebernahmePosition_Einlauf                   : REAL; // Position, an der die Scheibe im Faecherwagen gegriffen wird [Einlaufseite]
+    rUebergabePosition_Auslauf                    : REAL; // Position, bis zu der die Scheibe in den Faecherwagen geschoben wird [Auslaufseite]
+    rUebernahmePosition_Auslauf                   : REAL; // Position, an der die Scheibe im Faecherwagen gegriffen wird [Auslaufseite]
+    rOffsetPosition                               : REAL; // Abstand der Greiferzange hinter der Glaskante beim Positionieren (Sicherheitsmass gegen Glasbeschaedigung)
+    rWegBisZumEinlaufsensor                       : REAL; // Weg vom Referenzpunkt bis zum Einlaufsensor
+    rWegBisZumAuslaufsensor                       : REAL; // Weg vom Referenzpunkt bis zum Auslaufsensor
+    rSicherPositionMinimal                        : REAL; // Zwischen Minimal und Maximal ragt der Greifer nicht ueber das Shuttle (Querfahrt erlaubt)
+    rSicherPositionMaximal                        : REAL; // Zwischen Minimal und Maximal ragt der Greifer nicht ueber das Shuttle (Querfahrt erlaubt)
+    rWegBisZumSicherenEinklappen                  : REAL; // Weg nach dem Austransport, ab dem der Greifer eingefahren wird [10 - 100 mm]
+    rGlasEintransportOffset_Einlauf               : REAL; // Eintransport letzte Scheibe: Weg ueber den Einlaufsensor [Auftragslaenge + Offset]
+    rGlasEintransportOffset_Auslauf               : REAL; // Eintransport letzte Scheibe: Weg ueber den Auslaufsensor [Auftragslaenge + Offset]
+    rGlasEintransportOffset_EinlaufSammeln        : REAL; // Eintransport weiterer Scheiben: Weg ueber den Einlaufsensor [Auftragslaenge + Offset]
+    rGlasEintransportOffset_AuslaufSammeln        : REAL; // Eintransport weiterer Scheiben: Weg ueber den Auslaufsensor [Auftragslaenge + Offset]
+    rLaengeUebergroesseScheibe                    : REAL; // Ab dieser Scheibenlaenge zieht der Greifer nur bis rPositionUebergrosseScheibe, den Rest zieht der Glastransport
+    rPositionUebergrosseScheibe_Einlauf           : REAL; // Maximale Position mit uebergrosser Scheibe [Einlaufseite]
+    rPositionUebergrosseScheibe_Auslauf           : REAL; // Maximale Position mit uebergrosser Scheibe [Auslaufseite]
+    rGreiferAusDemGlasFahrPosition                : REAL; // Weg, um die geoeffnete Greiferzange vom Glas zu befreien
+    rMaximalerWegSensorFreiFahren                 : REAL; // Maximaler Weg der Korrekturfahrt, bis der Sensor frei sein muss
+    rWegSensorUeberwachungEintransport            : REAL; // Nach diesem Weg im Eintransport muss die Scheibe den Sensor belegen, sonst hat der Greifer keine Scheibe
+    rKorrekturOffset_Einlauf                      : REAL; // Weg der Greiferzange in das Glas vor dem Greifen beim Austransport [Einlaufseite]
+    rKorrekturOffset_Auslauf                      : REAL; // Weg der Greiferzange in das Glas vor dem Greifen beim Austransport [Auslaufseite]
+    rWegGlasUebergabeposition                     : REAL; // Weg der Scheibe ueber den Sensor der Greiferseite vor dem Austransport
+    rWegGlasUebergabepositionLang                 : REAL; // Wie rWegGlasUebergabeposition, fuer uebergrosse Scheiben
+    rLaengeReduzierteGeschwindigkeit              : REAL; // Austransport: Scheiben ab dieser Laenge komplett mit reduzierter Geschwindigkeit in den Faecherwagen
+    rLaengeReduzierteGeschwindigkeitEintransport  : REAL; // Eintransport: Weg mit reduzierter Geschwindigkeit bei schweren Scheiben
+    rLaengeReduzierteGeschwindigkeitAustransport  : REAL; // Austransport: erster Weg mit reduzierter Geschwindigkeit in den Faecherwagen
+    rMinimalPosition                              : REAL; // Minimale Zielposition der Greiferachse (Plausibilitaet)
+    rMaximalPosition                              : REAL; // Maximale Zielposition der Greiferachse (Plausibilitaet)
+  END_STRUCT
+END_TYPE

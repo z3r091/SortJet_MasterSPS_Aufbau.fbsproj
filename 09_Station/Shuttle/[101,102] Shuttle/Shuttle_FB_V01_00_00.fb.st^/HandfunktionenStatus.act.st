@@ -35,12 +35,26 @@ THEN
   dwpHandfunktionenReturn.14 := Wandverstellung[cWAND_1].bpStartePositionierung AND ( Wandverstellung[cWAND_1].epSollStellung = eZylinderStellung16mm );
   dwpHandfunktionenReturn.15 := Wandverstellung[cWAND_1].bpStartePositionierung AND ( Wandverstellung[cWAND_1].epSollStellung = eZylinderStellung23mm );
   dwpHandfunktionenReturn.17 := Zentralschmierung.bpStartSchmierungHand;
+
+  // Greifer [Ausbaustufe]: Bit 18..27
+  IF ( BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[cWAND_1] ) THEN
+    dwpHandfunktionenReturn.18 := Greifer[cWAND_1].bpHandfahrenPlus;
+    dwpHandfunktionenReturn.19 := Greifer[cWAND_1].bpHandfahrenMinus;
+    dwpHandfunktionenReturn.20 := Greifer[cWAND_1].bpFahreReferenz;
+    dwpHandfunktionenReturn.21 := Greifer[cWAND_1].bpHandGreiferAusfahren;
+    dwpHandfunktionenReturn.22 := Greifer[cWAND_1].bpHandGreiferEinfahren;
+    dwpHandfunktionenReturn.23 := Greifer[cWAND_1].bpHandZangeSchliessen;
+    dwpHandfunktionenReturn.24 := Greifer[cWAND_1].bpHandZangeOeffnen16mm;
+    dwpHandfunktionenReturn.25 := Greifer[cWAND_1].bpHandZangeOeffnen23mm;
+    dwpHandfunktionenReturn.26 := Greifer[cWAND_1].bpHandZangeOeffnen29mm;
+    dwpHandfunktionenReturn.27 := Greifer[cWAND_1].bpHandGlasRueckhalterAusfahren;
+  END_IF
 ELSE
   dwpHandfunktionenReturn := 0;
 END_IF
 
 IF ( dwpHandfunktionenReturn <> dwlHandfunktionenZuletztGesendet ) THEN
-  wSps2MmiStationsNummer        := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+  wSps2MmiStationsNummer        := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
   dwSps2MmiHandfunktionenStatus := dwpHandfunktionenReturn;
   MsgToMmi( auftragsnr_w := SB0_SPS_SHUTTLEHANDFUNKTION_STATUS );
 

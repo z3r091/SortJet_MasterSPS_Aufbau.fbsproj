@@ -7,11 +7,8 @@
 *)
 ACTION Austransport_ISO
 //-------------------------------------------------------------------------------------------------
-// AKTION: AUSTRANSPORT ISO]
+// AKTION: AUSTRANSPORT ISO
 //-------------------------------------------------------------------------------------------------
-(* Hinweis:
-     => Beim Austransport ISO wird erst das Bereit zum Austransport gesetzt
-*)
 IF ( bpAustransport
      AND bpAutomatikAktiv )
 THEN
@@ -32,7 +29,7 @@ THEN
     steplAustransport := STEP_900_E;
   END_IF
 
-
+  
   // Ausnahmesituation:
   //   - Slave-Kopplung waehrend der Kette verloren
   IF ( NOT blAntriebsKopplungAktiv AND ( steplAustransport > STEP_0_E ) AND ( steplAustransport < STEP_900_E ) ) THEN
@@ -50,6 +47,7 @@ THEN
       bprtScheibe                := FALSE;
       bpStationBelegt            := FALSE;
       bpOutBereitZumAustransport := FALSE;
+      bpFreigabeFremdprozess     := FALSE;
 
       tonlAntriebNichtBetriebsBereit( IN := FALSE );
       tonlMaximaleZeitSensorAnfahren( IN := FALSE );
@@ -59,7 +57,16 @@ THEN
                                                rpGlasstaerke := pAuftrag.rAuftragsDicke ) );
 
       blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
-      
+
+      (* Hinweis:
+         - Blieb die Scheibe beim Eintransport im Uebergang liegen und ist der Sensor des Vorgaengers
+           inzwischen frei, hat der Vorgaenger seinen Austransport schon beendet.
+           => Merker loeschen, sonst wird ewig auf dessen Bereit_Zum_Austransport gewartet
+      *)
+      IF ( bpUebergrosseScheibeUebergang AND NOT InGlasTransportVorgaenger.bAuslaufsensor ) THEN
+        bpUebergrosseScheibeUebergang := FALSE;
+      END_IF
+
       // Sicherstellen das die Slavekopplung aktiv ist
       IF ( blAntriebsKopplungAktiv ) THEN
         // Zeit für Statistik
@@ -78,9 +85,14 @@ THEN
 
       Antrieb.rpGeschwindigkeit  := REAL#0 ;
 
+      // ISO-Linie: sofort bereit zum Austransport melden (nicht erst wenn der Partner bereit zum Eintransport ist)
       bpOutBereitZumAustransport := TRUE;
+      bpOutBereitZumEintransport := bpUebergrosseScheibeUebergang;
 
-      IF ( InGlasTransportNachfolger.bBereitZumEintransport  ) THEN
+      IF ( InGlasTransportNachfolger.bBereitZumEintransport ) 
+         AND ( NOT bpUebergrosseScheibeUebergang OR InGlasTransportVorgaenger.bBereitZumAustransport )
+      THEN
+
         dwpWartezeit := TIME_TO_DWORD(TIME()- tlWarteZeitAufnahme);
 
         IF ( NOT pAuftrag.bErsteScheibe ) THEN
@@ -99,25 +111,25 @@ THEN
            => Auslaufsesnor belegt, Glas bereit zum Austransport
       *)
       IF ( NOT bpSensorAuslauf ) THEN
-        rlPositionAntriebBeiStart      := Antrieb.rpIstPosition;
+        rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
 
         IF blReduzierteGeschwindigkeit THEN
           Antrieb.rpGeschwindigkeit := rgGeschwindigkeit20;
-          Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpReduzierteBeschleunigung;
-          Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
         ELSE
           Antrieb.rpGeschwindigkeit := rgGeschwindigkeitVorpositionieren;
-          Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
-          Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
         END_IF
 
         IF ( bpSensorAuslaufVorAb ) THEN
           Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
         END_IF
 
-        Antrieb.rpZielposition    := ppParameterBaustein.rWegUeberAuslaufAustransport - pAuftrag.rModellVersatzVorne;
-        Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor2;
-        Antrieb.wpBetriebsart     := RESTWEG;
+        Antrieb.rpZielposition := ppParameterBaustein.rWegUeberAuslaufAustransport - pAuftrag.rModellVersatzVorne;
+        Antrieb.wpRestwegMode  := Positiv_Steigend_Sensor2;
+        Antrieb.wpBetriebsart  := RESTWEG;
 
         steplAustransport := STEP_30_E;
 
@@ -143,7 +155,8 @@ THEN
          - Auslaufsensor wurde belegt
       *)
       IF (ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
-        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_UND_AUSLAUFVORAB_SCHALTEN_NICHT;
         steplAustransport := STEP_900_E;
       END_IF
 
@@ -172,6 +185,15 @@ THEN
            bzw. nicht angefahren wird (Stationslaemge abfahren)
       *)
       IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rUeberwachungAuslaufsensor ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
+        steplAustransport := STEP_900_E;
+      END_IF
+
+      IF (  Antrieb.bpDone
+           AND NOT bpSensorAuslauf )
+      THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
         steplAustransport := STEP_900_E;
       END_IF
@@ -231,9 +253,7 @@ THEN
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
 
-      IF ( NOT toflAuslaufsensor.Q 
-           AND NOT InGlasTransportNachfolger.bEinlaufsensor)
-      THEN
+      IF ( NOT toflAuslaufsensor.Q ) THEN
         bprtScheibe := TRUE;
         ilScheibenZaehler := ilScheibenZaehler -1;
 
@@ -256,7 +276,7 @@ THEN
     STEP_130_E:
       (* Hinweis:
          - Scheibentrigger ( Scheibenzaehler ) zurueck setzen
-         - Warten bis der Antrieb steht und der Einlaufsensor der Folgestation nicht mehr belegt ist
+         - Warten bis der Antrieb steht, danach immer pruefen ob die Sensoren frei sind (STEP_140)
       *)
       bprtScheibe := FALSE;
       Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -269,12 +289,23 @@ THEN
     // AUSTRANSPORT ====================
     STEP_140_E:
       (* Anmerkung:
-         - Pruefen ob der Auslaufsensor angefahren wurde
+         - Freigabe Fremdprozess: Scheibenzaehler abgearbeitet und die Sensoren der Station frei
+         - Pruefen ob die Sensoren frei sind
+           => Auslaufsensor der Station belegt: freifahren
+           => nur der Einlaufsensor der Folgestation belegt: warten, nicht freifahren
       *)
+      IF (  ( ilScheibenZaehler <= 0 )
+           AND NOT bpSensorEinlauf
+           AND NOT toflAuslaufsensor.Q )
+      THEN
+        bpFreigabeFremdprozess := TRUE;
+      END_IF
+
       IF (  NOT toflAuslaufsensor.Q
            AND NOT InGlasTransportNachfolger.bEinlaufsensor )
       THEN
         bpOutBereitZumAustransport := FALSE;
+        bpOutBereitZumEintransport := FALSE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
         steplAustransport := STEP_1000_E;
@@ -291,7 +322,7 @@ THEN
           Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
         END_IF
 
-        Antrieb.wpBetriebsart     := HANDMINUS;
+        Antrieb.wpBetriebsart := HANDMINUS;
 
       ELSE
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -323,12 +354,13 @@ THEN
       Antrieb.wpBetriebsart       := KEINE_FUNKTION;
       Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
 
-      bpOutBereitZumEintransport := FALSE;
       bpOutBereitZumAustransport := FALSE;
+      bpOutBereitZumEintransport := FALSE;
 
     // AUSTRANSPORT ====================
     STEP_1000_E:
       bprtScheibe := FALSE;
+      bpUebergrosseScheibeUebergang := FALSE;
       bpDone := TRUE;
 
   // AUSTRANSPORT ====================
@@ -340,10 +372,13 @@ ELSE
     bprtScheibe := FALSE;
     rlGefahreneStreckeEintransport := 0.0;
 
+    bpOutBereitZumEintransport := FALSE;
     bpOutBereitZumAustransport := FALSE;
-    Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    bpFreigabeFremdprozess     := FALSE;
 
+    Antrieb.wpBetriebsart       := KEINE_FUNKTION;
     Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
+
     steplAustransport := STEP_0_E;
   END_IF
 

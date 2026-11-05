@@ -22,7 +22,7 @@ IF ( rtlFehlermeldungGenerierenKommunikation.Q ) THEN
     SpsError( eFehler_Schnittstelle,
               cMELDUNG_SCHNITTSTELLE_KOMUNIKATION_TIMEOUT,
               BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-              AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+              AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
               wpgFehlerdaten );
   END_IF
 
@@ -44,7 +44,7 @@ IF ( rtlFehlermeldungGenerierenAuftragsdaten.Q ) THEN
     SpsError( eFehler_Schnittstelle,
               cMELDUNG_SCHNITTSTELLE_DATEN_NICHT_AEQUIVALENT,
               BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-              AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+              AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
               wpgFehlerdaten );
   END_IF
 

@@ -175,7 +175,7 @@ IF ( bpCheck ) THEN
           SpsWarnung( eFehler_Station,
                       cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN,
                       stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+                      AutomatikkreisBestimmen(stStationsNummern.NummerSPS),
                       starrTransfershuttleBasisParameter[stStationsNummern.NummerIntern].awFehlerInformationen );
         END_IF
         steplCheck := STEP_800_E;
@@ -216,7 +216,7 @@ IF ( bpCheck ) THEN
           SpsWarnung( eFehler_Station,
                       cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN,
                       stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+                      AutomatikkreisBestimmen(stStationsNummern.NummerSPS),
                       starrTransfershuttleBasisParameter[stStationsNummern.NummerIntern].awFehlerInformationen );
         END_IF
         steplCheck := STEP_800_E;

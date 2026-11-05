@@ -7,7 +7,7 @@
 *)
 ACTION Austransport_Rueckwaertig_MasterSlave
 //-------------------------------------------------------------------------------------------------
-// AKTION: AUSTRANSPORT RÜCKWÄRTIG
+// AKTION: AUSTRANSPORT RÜCKWÄRTIG MASTER SLAVE
 //-------------------------------------------------------------------------------------------------
 
 IF ( bpAustransportRueckwaertig
@@ -47,6 +47,7 @@ THEN
       bprtScheibe                := FALSE;
       bpStationBelegt            := FALSE;
       bpOutBereitZumAustransport := FALSE;
+      bpFreigabeFremdprozess     := FALSE;
 
       tonlAntriebNichtBetriebsBereit( IN := FALSE );
       tonlMaximaleZeitSensorAnfahren( IN := FALSE );
@@ -86,7 +87,7 @@ THEN
 
       bpOutBereitZumEintransport := bpUebergrosseScheibeUebergang;
 
-      IF ( InGlasTransportVorgaenger.bBereitZumEintransport )
+      IF ( InGlasTransportVorgaenger.bBereitZumEintransport ) 
          AND ( NOT bpUebergrosseScheibeUebergang OR InGlasTransportNachfolger.bBereitZumAustransport )
       THEN
         dwpWartezeit := TIME_TO_DWORD(TIME()- tlWarteZeitAufnahme);
@@ -151,6 +152,7 @@ THEN
          - Auslaufsensor wurde belegt
       *)
       IF (ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_UND_EINLAUFVORAB_SCHALTEN_NICHT;
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
@@ -180,6 +182,15 @@ THEN
            bzw. nicht angefahren wird (Stationslaemge abfahren)
       *)
       IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rUeberwachungAuslaufsensor ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
+        steplAustransportRueckwaertig := STEP_900_E;
+      END_IF
+
+      IF (  Antrieb.bpDone
+           AND NOT bpSensorEinlauf )
+      THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
@@ -190,33 +201,30 @@ THEN
       //  STARTEN DES AUSTRANSPORTS
       //
       //  Hinweis:
-      // - Betriebsart: Handplus
+      // - Der Antrieb koppelt synchron auf den Antrieb der Vorgaengerstation
       // ---------------------------------------------------------------------------------------
 
       ilScheibenZaehler := WORD_TO_INT(pAuftrag.wAnzahlScheiben);
 
-      rlPositionAntriebBeiStart   := Antrieb.rpIstPosition;
+      Antrieb.wpMaster := InGlasTransportVorgaenger.wAchsID;
 
-      Antrieb.rpGeschwindigkeit  := InGlasTransportVorgaenger.rGeschwindigkeit;
-
-      IF blReduzierteGeschwindigkeit THEN
-        Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpReduzierteBeschleunigung;
-        Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+      // Wenn der Vorgänger (Master) "Rückwärtig" fährt, muss der Antrieb "invertiert" gekoppelt werden, da es sonst in der falschen Richtung fährt
+      IF InGlasTransportVorgaenger.bTransportRueckwaertig THEN
+        Antrieb.wpBetriebsart := INVERTIERTER_SYNC_AUF_MASTER;
       ELSE
-        Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.wpBetriebsart := SYNC_AUF_MASTER;
       END_IF
 
-      Antrieb.wpBetriebsart      := HANDMINUS;
-
-      bpOutBereitZumAustransport := TRUE;
-
-      steplAustransportRueckwaertig := STEP_110_E;
+      IF ( Antrieb.bpDone ) THEN
+        bpSlaveAktiv := TRUE;
+        bpOutBereitZumAustransport := TRUE;
+        rlPositionAntriebBeiStart := Antrieb.rpIstPosition; // Start der Wegueberwachung
+        steplAustransportRueckwaertig := STEP_110_E;
+      END_IF
 
     // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_110_E:
       bprtScheibe := FALSE;
-      Antrieb.rpGeschwindigkeit := InGlasTransportVorgaenger.rGeschwindigkeit;
 
       IF ( tonlEinlaufsensor.Q ) THEN
         steplAustransportRueckwaertig := STEP_120_E;
@@ -237,8 +245,6 @@ THEN
       (* Hinweis:
          - Scheibenzaehlen
       *)
-      Antrieb.rpGeschwindigkeit := InGlasTransportVorgaenger.rGeschwindigkeit;
-
       IF ( NOT toflEinlaufsensor.Q ) THEN
         bprtScheibe := TRUE;
         ilScheibenZaehler := ilScheibenZaehler -1;
@@ -275,8 +281,18 @@ THEN
     // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_140_E:
       (* Anmerkung:
-         - Pruefen ob der Einlaufsensor angefahren wurde
+         - Freigabe Fremdprozess: Scheibenzaehler abgearbeitet und die Sensoren der Station frei
+         - Pruefen ob die Sensoren frei sind
+           => Einlaufsensor der Station belegt: freifahren
+           => nur der Auslaufsensor der Vorgaengerstation belegt: warten, nicht freifahren
       *)
+      IF (  ( ilScheibenZaehler <= 0 )
+           AND NOT bpSensorAuslauf
+           AND NOT toflEinlaufsensor.Q )
+      THEN
+        bpFreigabeFremdprozess := TRUE;
+      END_IF
+
       IF (  NOT toflEinlaufsensor.Q
            AND NOT InGlasTransportVorgaenger.bAuslaufsensor )
       THEN
@@ -350,6 +366,7 @@ ELSE
 
     bpOutBereitZumEintransport := FALSE;
     bpOutBereitZumAustransport := FALSE;
+    bpFreigabeFremdprozess     := FALSE;
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
     Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;

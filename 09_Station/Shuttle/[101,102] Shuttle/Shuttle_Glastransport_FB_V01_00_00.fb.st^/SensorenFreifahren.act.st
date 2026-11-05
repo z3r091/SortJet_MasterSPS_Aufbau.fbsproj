@@ -54,14 +54,16 @@ THEN
     STEP_10_E:
       (* Hinweis:
          - Pruefen welcher Sensor freigefahren werden muss
+         - Freigefahren werden die Sensoren, die die Querfahrt sperren: die Stopp-Sensoren
+           (ohne Stopp-Sensor liefert das Shuttle dort den Einlauf- bzw. Auslaufsensor)
       *)
-      IF ( NOT toflEinlaufsensor.Q AND NOT toflAuslaufsensor.Q ) THEN
+      IF ( NOT toflEinlaufsensorSTOP.Q AND NOT toflAuslaufsensorSTOP.Q ) THEN
         steplSensorFreiFahren := STEP_1000_E;
 
-      ELSIF ( toflAuslaufsensor.Q AND NOT toflEinlaufsensor.Q ) THEN
+      ELSIF ( toflAuslaufsensorSTOP.Q AND NOT toflEinlaufsensorSTOP.Q ) THEN
         steplSensorFreiFahren := STEP_100_E;
 
-      ELSIF ( toflEinlaufsensor.Q AND NOT toflAuslaufsensor.Q  ) THEN
+      ELSIF ( toflEinlaufsensorSTOP.Q AND NOT toflAuslaufsensorSTOP.Q  ) THEN
         steplSensorFreiFahren := STEP_200_E;
 
       ELSE
@@ -80,7 +82,10 @@ THEN
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
       Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
 
+      // Rueckwaerts bis der Auslaufsensor frei wird (fallende Flanke), dann die Freifahrstrecke weiter
+      //   => der weiter aussen liegende Auslauf-Stopp-Sensor ist damit ebenfalls frei
       Antrieb.rpZielPosition    := rgMKWegSensorFreiFahrenVerfahrabbruch * -1;
+      Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor2;
       Antrieb.wpBetriebsart     := RESTWEG;
 
       steplSensorFreiFahren := STEP_110_E;
@@ -96,9 +101,9 @@ THEN
       END_IF
 
       (* Fehlerbehandlung:
-         - Einlaufsensor
+         - Einlauf- Stopp- Sensor
       *)
-      IF ( bpSensorEinlauf ) THEN
+      IF ( bpSensorEinlaufStopp ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_BELEGT;
         steplSensorFreiFahren := STEP_900_E;
@@ -114,7 +119,10 @@ THEN
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
       Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
 
+      // Vorwaerts bis der Einlaufsensor frei wird (fallende Flanke), dann die Freifahrstrecke weiter
+      //   => der weiter aussen liegende Einlauf-Stopp-Sensor ist damit ebenfalls frei
       Antrieb.rpZielPosition    := rgMKWegSensorFreiFahrenVerfahrabbruch;
+      Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor1;
       Antrieb.wpBetriebsart     := RESTWEG;
 
       steplSensorFreiFahren := STEP_210_E;
@@ -130,9 +138,9 @@ THEN
       END_IF
 
       (* Fehlerbehandlung:
-         - Auslaufsensor
+         - Auslauf- Stopp- Sensor
       *)
-      IF ( bpSensorAuslauf ) THEN
+      IF ( bpSensorAuslaufStopp ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_BELEGT;
         steplSensorFreiFahren := STEP_900_E;

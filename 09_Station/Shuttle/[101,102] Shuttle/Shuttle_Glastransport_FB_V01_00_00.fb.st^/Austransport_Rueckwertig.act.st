@@ -10,6 +10,8 @@ ACTION Austransport_Rueckwertig
 // AUSTRANSPORT [NEGATIVE- RICHTUNG]
 //-------------------------------------------------------------------------------------------------
 IF (  bpRueckwaertsAustransportieren
+     AND NOT bpEintransport
+     AND NOT bpRueckwaertsEintransportieren
      AND bpAutomatikAktiv )
 THEN
 
@@ -227,7 +229,7 @@ THEN
       bprtScheibe := FALSE;
       Antrieb.rpGeschwindigkeit := InGlasTransportVorgaenger.rGeschwindigkeit;
 
-      IF ( bpSensorEinlauf ) THEN
+      IF ( bpSensorEinlaufStopp ) THEN
         steplAustransportRueckwaertig := STEP_220_E;
       END_IF
 
@@ -249,7 +251,7 @@ THEN
       bprtScheibe := FALSE;
       Antrieb.rpGeschwindigkeit := InGlasTransportVorgaenger.rGeschwindigkeit;
 
-      IF ( NOT bpSensorEinlauf ) THEN
+      IF ( NOT bpSensorEinlaufStopp ) THEN
         bprtScheibe := TRUE;
         ilScheibenZaehler := ilScheibenZaehler - 1;
 
@@ -274,7 +276,7 @@ THEN
     STEP_240_E:      
       bprtScheibe := FALSE;
       
-      IF ( bpSensorEinlauf ) THEN
+      IF ( bpSensorEinlaufStopp ) THEN
         steplAustransportRueckwaertig := STEP_250_E;
       END_IF
 
@@ -295,7 +297,7 @@ THEN
       bprtScheibe := FALSE;
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
 
-      IF ( NOT bpSensorEinlauf ) THEN
+      IF ( NOT bpSensorEinlaufStopp ) THEN
         bprtScheibe := TRUE;
         ilScheibenZaehler := ilScheibenZaehler - 1;
 
@@ -325,7 +327,7 @@ THEN
         rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
-        IF ( NOT bpSensorEinlauf ) THEN
+        IF ( NOT bpSensorEinlaufStopp ) THEN
           steplAustransportRueckwaertig := STEP_400_E;
         ELSE
           steplAustransportRueckwaertig := STEP_300_E;

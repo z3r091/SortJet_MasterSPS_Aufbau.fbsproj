@@ -25,10 +25,12 @@ starrStationBasisParameter[cSTATION_205].stParameterStationskomponenten.stGlastr
 
 // Eintransport
 starrStationBasisParameter[cSTATION_205].stMKs.stSchnittstellendaten.aEintransporte.Station[cSTATION_203]                  := Vorwaertig;
+starrStationBasisParameter[cSTATION_205].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[cSTATION_203]            := eGlastransport_AufAuslaufVorab;
 starrStationBasisParameter[cSTATION_205].stMKs.stSchnittstellendaten.aEintransporte.Achsrichtung[cSTATION_203]             := eAchsrichtung_X;
 starrStationBasisParameter[cSTATION_205].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_203] := TRUE;
 
 starrStationBasisParameter[cSTATION_205].stMKs.stSchnittstellendaten.aEintransporte.Station[cSTATION_204]                  := Vorwaertig;
+starrStationBasisParameter[cSTATION_205].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[cSTATION_204]            := eGlastransport_AufAuslaufVorab;
 starrStationBasisParameter[cSTATION_205].stMKs.stSchnittstellendaten.aEintransporte.Achsrichtung[cSTATION_204]             := eAchsrichtung_Y;
 starrStationBasisParameter[cSTATION_205].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_204] := TRUE;
 

@@ -538,7 +538,7 @@ IF ( bpCheck ) THEN
          - Es sind keine Scheiben auf dem Shuttle
       *)
       IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition)
-           > ppParameterBaustein.rLaengeStation * 2 )
+           > ppParameterBaustein.rLaengeStation )
       THEN
         bpStationBelegt := FALSE;
         Antrieb.rpGeschwindigkeit := 0.0;
@@ -869,7 +869,7 @@ IF ( bpCheck ) THEN
         IF ( bpStationBelegt ) THEN
           rlGefahreneStreckeEintransport := rlScheibenMessungErgebnis;
 
-          wSps2MmiMessungStationNummer    := stStationsNummern.NummerSPS;
+          wSps2MmiMessungStationNummer    := stStationsNummern.NummerIntern;
           wSps2MmiMessungSlotNummer       := wpWandNr;
           iSps2MmiMessungScheibenanzahl   := 1;
           rSps2MmiMessungScheibenlaenge   := rlScheibenMessungErgebnis;
@@ -877,7 +877,7 @@ IF ( bpCheck ) THEN
           MsgToMmi( auftragsnr_w := SB0_SPS_SETSHEETSONSTATION );
         ELSE
 
-          wSps2MmiMessungStationNummer    := stStationsNummern.NummerSPS;
+          wSps2MmiMessungStationNummer    := stStationsNummern.NummerIntern;
           wSps2MmiMessungSlotNummer       := wpWandNr;
           iSps2MmiMessungScheibenanzahl   := 0;
           rSps2MmiMessungScheibenlaenge   := 0;
@@ -899,7 +899,7 @@ IF ( bpCheck ) THEN
       *)
       bpFehler := TRUE;
 
-      wSps2MmiMessungStationNummer    := stStationsNummern.NummerSPS;
+      wSps2MmiMessungStationNummer    := stStationsNummern.NummerIntern;
       wSps2MmiMessungSlotNummer       := wpWandNr;
       iSps2MmiMessungScheibenanzahl   := -1;
       rSps2MmiMessungScheibenlaenge   := 0;

@@ -24,7 +24,7 @@ IF (  rtlTasterGlasbruch.Q
 THEN
   blGlasBruchMeldungSperren := TRUE;
 
-  wSps2MmiStationsNummer      := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+  wSps2MmiStationsNummer      := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
   wSPS2MMIStationEventStatus := cEVENT_STATUS_GLASBRUCH;
   MsgToMmi(auftragsnr_w       := SBO_SPS_STATIONSEVENT);
 
@@ -58,7 +58,7 @@ rtlTasterGlasAbgenommen(CLK := tonlTasterGlasAbgenommen.Q );
 *)
 IF (  rtlTasterGlasAbgenommen.Q ) THEN
 
-  wSps2MmiStationsNummer      := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+  wSps2MmiStationsNummer      := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
   wSPS2MMIStationsStatusWord1 := cEVENT_STATUS_GLASABGENOMMEN;
   MsgToMmi(auftragsnr_w := SB0_SPS_STATIONSTATUS);
 
@@ -74,7 +74,7 @@ END_IF
 *)
 rtlAnschlaegeAufAb(CLK := in_bTasterAnschlaege);
 
-IF  NOT (steplAnlegen < STEP_30_E) OR NOT BasisStationsParameter.bAnlegen THEN
+IF  NOT Anlegen.bpAnlegenInVorbereitung THEN
   IF rtlAnschlaegeAufAb.Q AND NOT blMerkerAnschlagTasterFahren THEN
     IF ( Anschlag.epStatusZylinder = eZylinderAusgefahren ) THEN
       blAnschlagAutomatischFahren := FALSE;
@@ -90,7 +90,7 @@ IF  NOT (steplAnlegen < STEP_30_E) OR NOT BasisStationsParameter.bAnlegen THEN
     Anschlag.bpStartEinfahren    := FALSE;
     Anschlag.bpStartAusfahren    := FALSE;
     blMerkerAnschlagTasterFahren := FALSE;
-    steplAnlegen :=STEP_0_E; 
+    blNeustartAnschlag           := TRUE;
   ELSIF (blMerkerAnschlagTasterFahren AND Anschlag.bpFehler AND blBetriebsartHand) THEN
     Anschlag.bpStartEinfahren    := FALSE;
     Anschlag.bpStartAusfahren    := FALSE;

@@ -1,0 +1,9 @@
+(* METADATA
+{
+  "v3Meta": {
+    "objectGuid": "03e38843-2da5-4b21-8acb-320ccd699887"
+  }
+}
+*)
+INTERFACE I_Faecherwagenstation EXTENDS __System.IQueryInterface
+END_INTERFACE

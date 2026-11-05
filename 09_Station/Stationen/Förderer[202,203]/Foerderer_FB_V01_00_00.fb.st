@@ -12,6 +12,7 @@ VAR
   // BOOLEAN 
   blGeblaeseAktiv                 : BOOL;
   blUpdateTimer                   : BOOL;
+  blAktionImFehler                : BOOL; // Eine der wandweisen Aktionen steht im Fehler
   blZielPositionErreicht          : BOOL; // Ueberpruefung ob die Zielposition aus dem Auftrag mit der aktuellen Position uebereinstimmt [Abweichung + - 1mm]
 
   // HARDWARE EINGAENGE
@@ -23,9 +24,7 @@ VAR
   rtlAutomatikActiv               : R_TRIG;
 
   // TIMER 
-  toflGeblaeseEnergiesparModus    : TOF;
-  atonlUeberwachungEintransport   : TON; 
-  tonlUpdateTimer                 : TON; // Verfahrlogik     
+  tonlUpdateTimer                 : TON; // Verfahrlogik
 
   // BAUSTEINE
   Glastransport                   : Foerderer_Glastransport_FB_V01_00_00;
@@ -36,12 +35,12 @@ VAR
   Wandverstellung                 : ZylinderPneumatik_3Wege_FB_V01_00_00;
   Querfahrt                       : Querfahrt_FB_V01_00_00;
 
-END_VAR
-
-VAR CONSTANT
-
-  // TIME
-  ZEIT_UEBERWACHUNG_EINZELSCHRITT  : TIME := T#15s;
+  // AKTIONEN (WANDWEISE)
+  Eintransport                    : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Basic_Station_Eintransport_FB_V01_00_00;
+  Austransport                    : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Basic_Station_Austransport_FB_V01_00_00;
+  Durchtransport                  : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Basic_Station_Durchtransport_FB_V01_00_00;
+  Vortransport                    : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Basic_Station_Vortransport_FB_V01_00_00;
+  Messkopplung                    : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Basic_Station_Messkopplung_FB_V01_00_00;
 
 END_VAR
 
@@ -70,11 +69,60 @@ A_Geblaese();
 IO_Zuweisung();
 
 SystemCheck();
-Eintransport();
-Vortransport();
-Austransport();
-Durchtransport();
-Messkopplung();
+
+(* Hinweis:
+   - Automatik-Aktionen je Wand
+*)
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  Eintransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                         wWand                  := wlIndex,
+                         bpAutomatikAktiv       := blBetriebsartAutomatik,
+                         bpGeblaeseAktiv        := blGeblaeseAktiv,
+                         bpZielPositionErreicht := blZielPositionErreicht,
+                         Glastransport          := Glastransport,
+                         Kippen                 := Kippen,
+                         Hub                    := Hub,
+                         Roellchenleiste        := Roellchenleiste,
+                         Wandverstellung        := Wandverstellung,
+                         Geblaese               := Geblaese );
+
+  Vortransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                         wWand                  := wlIndex,
+                         bpAutomatikAktiv       := blBetriebsartAutomatik,
+                         bpGeblaeseAktiv        := blGeblaeseAktiv,
+                         bpZielPositionErreicht := blZielPositionErreicht,
+                         Glastransport          := Glastransport );
+
+  Austransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                         wWand                  := wlIndex,
+                         bpAutomatikAktiv       := blBetriebsartAutomatik,
+                         bpGeblaeseAktiv        := blGeblaeseAktiv,
+                         bpZielPositionErreicht := blZielPositionErreicht,
+                         Glastransport          := Glastransport,
+                         Kippen                 := Kippen,
+                         Hub                    := Hub,
+                         Geblaese               := Geblaese );
+
+  Durchtransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                           wWand                  := wlIndex,
+                           bpAutomatikAktiv       := blBetriebsartAutomatik,
+                           bpGeblaeseAktiv        := blGeblaeseAktiv,
+                           bpZielPositionErreicht := blZielPositionErreicht,
+                           Glastransport          := Glastransport,
+                           Hub                    := Hub );
+
+  Messkopplung[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                         wWand                  := wlIndex,
+                         bpAutomatikAktiv       := blBetriebsartAutomatik,
+                         bpGeblaeseAktiv        := blGeblaeseAktiv,
+                         bpZielPositionErreicht := blZielPositionErreicht,
+                         Glastransport          := Glastransport,
+                         Kippen                 := Kippen,
+                         Hub                    := Hub,
+                         Roellchenleiste        := Roellchenleiste,
+                         Wandverstellung        := Wandverstellung );
+END_FOR
+
 Reset();
 Handfunktionen();
 Positionieren();

@@ -60,7 +60,7 @@ VAR_GLOBAL
 
 
   // ALLGEMEIN
-  rgMKWegSensorFreiFahrenVerfahrabbruch                 : REAL := 250; // WICHTIG:[mm] Strecke in Millimetern die der Sensor frei gefahren werden soll wenn es zu einem Verfahrabbruch gekommen ist
+  rgMKWegSensorFreiFahrenVerfahrabbruch                 : REAL := 50;  // WICHTIG:[mm] Strecke, die nach dem Freiwerden des Sensors weitergefahren wird, wenn es zu einem Verfahrabbruch gekommen ist
   rgMKWegSensorFreiFahrenStationVerfahrabbruch          : REAL := 50;  // WICHTIG:[mm] Strecke in Millimetern die der Sensor frei gefahren werden soll wenn es zu einem Positionierungsabbruch gekommen ist
   rgMKWegAnlegetischUebergroesseScheibeBerechnen        : REAL := 20;  // Weg der von der Messstrecke am Anlegetisch abgezogen wird, um Max Glas zu berechnen
 

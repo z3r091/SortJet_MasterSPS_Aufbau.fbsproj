@@ -30,4 +30,9 @@ Anschlag.bpAktivieren      := BasisStationsParameter.stMKs.stStationsAufbau.bAns
 *)
 Glastransport( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
 Messachse( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
+
+(* Hinweis:
+   - Geblaese
+*)
+Geblaese.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[cWAND_1];
 END_ACTION

@@ -1,0 +1,14 @@
+(* METADATA
+{
+  "v3Meta": {
+    "objectGuid": "bd02603c-e265-4b81-a7dd-63489694ebbc",
+    "subObjects": {
+      "get": {
+        "objectGuid": "a29949f0-bcff-4c64-9a11-3b2a3f903184"
+      }
+    }
+  }
+}
+*)
+PROPERTY_Get bStatusStationInBeladePosition : BOOL
+END_PROPERTY

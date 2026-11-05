@@ -34,10 +34,10 @@ VAR_CONFIG
   Globale_Bausteine.aDurchgang[1].in_bTasterQuittierungSchliessen_2        AT %MX1.0  : BOOL; // OK
 
   Globale_Bausteine.aDurchgang[1].out_bLeuchteTasterAnforderungDurchgang1  AT %QX4.0   : BOOL; (* OK *)  // DURCHGANG: Leuchtdrucktaster GN                           
-  Globale_Bausteine.aDurchgang[1].out_bLeuchteTasterAnforderungDurchgang2  AT %MX2.0   : BOOL; (* OK *)  // DURCHGANG: Leuchtdrucktaster GN                           
+  Globale_Bausteine.aDurchgang[1].out_bLeuchteTasterAnforderungDurchgang2  AT %MX910.0 : BOOL; (* OK *)  // DURCHGANG: Leuchtdrucktaster GN                           
   Globale_Bausteine.aDurchgang[1].out_bLeuchteTasterQuittierungDurchgang1  AT %QX4.1   : BOOL; (* OK *)  // DURCHGANG: Leuchtdrucktaster BL                           
-  Globale_Bausteine.aDurchgang[1].out_bLeuchteTasterQuittierungDurchgang2  AT %MX2.0   : BOOL; (* OK *)  // DURCHGANG: Leuchtdrucktaster BL                           
-  Globale_Bausteine.aDurchgang[1].out_bDurchgangSperren                    AT %MX2.0   : BOOL; (* OK *)  // DURCHGANG: Ventil                                         
+  Globale_Bausteine.aDurchgang[1].out_bLeuchteTasterQuittierungDurchgang2  AT %MX910.1 : BOOL; (* OK *)  // DURCHGANG: Leuchtdrucktaster BL                           
+  Globale_Bausteine.aDurchgang[1].out_bDurchgangSperren                    AT %MX910.2 : BOOL; (* OK *)  // DURCHGANG: Ventil                                         
   Globale_Bausteine.aDurchgang[1].out_bVerriegelungOeffnen                 AT %QX6.0   : BOOL; // OPTION                                                               
   Globale_Bausteine.aDurchgang[1].out_bVerriegelungSchliessen              AT %QX6.1   : BOOL; // OPTION                                                             
   
@@ -47,14 +47,14 @@ VAR_CONFIG
 // KONFIGURATION:  Puffer
 //-------------------------------------------------------------------------------------------------
                                                          
-  SteuerungSicherheitskreise.out_bPuffer_101_Ausfahren             AT %MX2.0   : BOOL; // OK   
-  SteuerungSicherheitskreise.out_bPuffer_101_Einfahren             AT %MX2.0   : BOOL; // OK    
-  SteuerungSicherheitskreise.out_bPuffer_102_Ausfahren             AT %MX2.0   : BOOL; // OK   
-  SteuerungSicherheitskreise.out_bPuffer_102_Einfahren             AT %MX2.0   : BOOL; // OK    
-  SteuerungSicherheitskreise.out_bPuffer_103_Ausfahren             AT %MX2.0   : BOOL; // OK   
-  SteuerungSicherheitskreise.out_bPuffer_103_Einfahren             AT %MX2.0   : BOOL; // OK   
-  SteuerungSicherheitskreise.out_bPuffer_104_Ausfahren             AT %MX2.0   : BOOL; // OK   
-  SteuerungSicherheitskreise.out_bPuffer_104_Einfahren             AT %MX2.0   : BOOL; // OK    
+  SteuerungSicherheitskreise.out_bPuffer_101_Ausfahren             AT %MX910.3 : BOOL; // OK   
+  SteuerungSicherheitskreise.out_bPuffer_101_Einfahren             AT %MX910.4 : BOOL; // OK    
+  SteuerungSicherheitskreise.out_bPuffer_102_Ausfahren             AT %MX910.5 : BOOL; // OK   
+  SteuerungSicherheitskreise.out_bPuffer_102_Einfahren             AT %MX910.6 : BOOL; // OK    
+  SteuerungSicherheitskreise.out_bPuffer_103_Ausfahren             AT %MX910.7 : BOOL; // OK   
+  SteuerungSicherheitskreise.out_bPuffer_103_Einfahren             AT %MX911.0 : BOOL; // OK   
+  SteuerungSicherheitskreise.out_bPuffer_104_Ausfahren             AT %MX911.1 : BOOL; // OK   
+  SteuerungSicherheitskreise.out_bPuffer_104_Einfahren             AT %MX911.2 : BOOL; // OK    
   
 END_VAR
 END_NAMESPACE

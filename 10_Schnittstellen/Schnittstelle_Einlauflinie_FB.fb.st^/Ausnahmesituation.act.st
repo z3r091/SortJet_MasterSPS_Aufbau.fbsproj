@@ -21,7 +21,7 @@ IF ( rtlFehlermeldungGenerierenKommunikation.Q ) THEN
   wpgFehlerdaten[0] := stStationsNummern.NummerExtern;
   SpsError( eFehler_Schnittstelle,
             cMELDUNG_SCHNITTSTELLE_KOMUNIKATION_TIMEOUT,
-            stStationsNummern.NummerSPS,
+            stStationsNummern.NummerIntern,
             1,
             wpgFehlerdaten );
 

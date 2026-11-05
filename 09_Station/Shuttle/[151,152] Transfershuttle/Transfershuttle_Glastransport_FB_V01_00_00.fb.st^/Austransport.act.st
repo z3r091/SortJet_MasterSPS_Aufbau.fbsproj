@@ -24,8 +24,18 @@ THEN
       tonlWartenAufSenken(IN:=FALSE);
       blAustransportDefaultLuftabfrage := FALSE;
 
-      IF Antrieb.bpReglerBereit THEN
+      IF ( Antrieb.bpReglerBereit ) THEN
         steplAustransport := STEP_5_E;
+      END_IF
+
+      // Ueberwachung:
+      //   - Antrieb muss in endlicher Zeit betriebsbereit sein
+      tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit ),
+                                   PT := cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE );
+
+      IF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplAustransport := STEP_900_E;
       END_IF
 
     // AUSTRANSPORT ==============================
@@ -103,6 +113,7 @@ ELSE
     blSchnittstelle_bAnforderungTransportVerbund := FALSE;
 
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    tonlAntriebNichtFreigegeben( IN := FALSE );
 
     blAustransportDefaultLuftabfrage := FALSE;
 

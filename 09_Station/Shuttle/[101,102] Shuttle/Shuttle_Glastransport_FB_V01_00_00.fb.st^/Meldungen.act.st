@@ -16,6 +16,7 @@ IF( Antrieb.bpFehler
               OR steplAustransport            = STEP_900_E
               OR steplAustransportRueckwaertig = STEP_900_E
               OR steplVorabpositionieren      = STEP_900_E
+              OR steplVorabpositionierenRueckwaertig = STEP_900_E
               OR steplSensorFreiFahren        = STEP_900_E
               OR steplVortransport            = STEP_900_E
               OR steplVortransportRueckwertig = STEP_900_E

@@ -14,10 +14,14 @@ STRUCT
   eDrehen_Sollposition_NachEintransport  : Drehen_EN;
   eDrehen_Sollposition_NachAustransport  : Drehen_EN;
   eHub                                   : Hub_EN;
+  eHub_NachEintransport                  : Hub_EN;
+  eHub_NachAustransport                  : Hub_EN;
   eDickenverstellung                     : PneumatikZylinderStatus_EN;
   eGlastransport                         : Glastransport_EN;
   eQuerachse                             : PneumatikZylinderStatus_EN;
   eAchsrichtung                          : Achsrichtung_EN;
+  eGreiferTyp                            : Greifertyp_EN;              // Shuttle-Greifer: Seite des Transports, eGreiferDefault = Transport ohne Greifer
+  eGreiferZangeStellung                  : PneumatikZylinderStatus_EN; // Shuttle-Greifer: Oeffnung der Greiferzange nach Glasdicke
   wMaxTransportGeschwindigkeit           : WORD;
 END_STRUCT
 END_TYPE

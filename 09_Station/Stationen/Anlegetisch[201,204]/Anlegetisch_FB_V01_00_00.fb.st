@@ -29,10 +29,16 @@ END_VAR
 VAR
 
   // BOOLEAN
-  blFreigabeGeblaeseStartenSensor : BOOL := FALSE;  // Durch den Einlaufsensor wird das Gebläase gestartet
   blGlasBruchMeldungSperren       : BOOL := FALSE;
   blMerkerDrosselklappeAuf        : BOOL;
   blAnlegenErzwingen              : BOOL;
+  blVSGUebernahme                 : BOOL; // VSG-Schnittstelle: der Eintransport der Schneidlinie hat das Anlegen uebernommen
+  blNeustartAnschlag              : BOOL; // Anlegen von vorne beginnen: Anschlaege wurden umgeschaltet
+  blNeustartSchneidlinie          : BOOL; // Anlegen von vorne beginnen: Eintransport der Schneidlinie wurde abgebrochen
+  blLampeSchneidlinie             : BOOL; // Lampe Scheibe anlegen im Eintransport der Schneidlinie
+  blDrosselklappeAnforderung      : BOOL; // Anlegen verlangt die offene Drosselklappe
+  blBedienerEingriff              : BOOL; // Eine Aktion wartet auf den Bediener (Anlegen, Glaslaengenmessung)
+  blAktionImFehler                : BOOL; // Eine der wandweisen Aktionen steht im Fehler
   blFreigabeTischKippen           : BOOL;
   blVSG_Automatik_Eintransport    : BOOL;
   blAnschlagAutomatischFahren     : BOOL;
@@ -41,28 +47,35 @@ VAR
   // TIME 
   tlZeitBereitAnzulegen                 : TIME; // STATISTIK: Zeiteinheit zum Vergleichen
   toflEinlaufsensor                     : TOF; 
-  toflGeblaeseEnergiesparModus          : TOF;  // Timer um das Geblaese bei langen Stillstandszeiten abzuschalten *)
   toflZeitlicheSperrungGlasbruch        : TOF;
   tonlTasterGlasbruch                   : TON; 
   tonlTasterGlasAbgenommen              : TON; 
   tonlStatusKippstatusUnten             : TON; 
   tonlStatusKippenOben                  : TON; 
-  tofGeblaeseFreigabeAusschalten        : TOF;
   toflDruckluftOK                       : TOF;
   tonlKnebelZurueck                     : TON;
 
   // TRIGGER
   rtlFussleisteStart                    : R_TRIG;
+  rtlAnlegenFertig                      : R_TRIG;
+  rtlEintransportDrosselklappe          : R_TRIG;
+  rtlEintransportAbgeschlossen          : R_TRIG;
+  rtlAustransportStart                  : R_TRIG;
+  ftlEintransportAktiv                  : F_TRIG;
+  rtlGeblaeseLaeuft                     : R_TRIG;
+  ftlGeblaeseLaeuft                     : F_TRIG;
+  rtlGlaslaengenmessungStart            : R_TRIG;
+  ftlGlaslaengenmessungAktiv            : F_TRIG;
+  ftlGlashoehenmessungAktiv             : F_TRIG;
+  rtlDrosselklappeAnforderung           : R_TRIG;
+  ftlDrosselklappeAnforderung           : F_TRIG;
+  ftlAnlegenAktiv                       : F_TRIG;
+  ftlAnlegenBedienerEingriff            : F_TRIG;
   rtlTasterQuittierung                  : R_TRIG;
-  rtlGeblaese                           : R_TRIG;
-  rtlTasterGeblaese                     : R_TRIG;
   rtlTasterGlasAbgenommen               : R_TRIG;
   rtlTasterGlasbruch                    : R_TRIG;
   rtlGlasBruchSperren                   : R_TRIG;
-  ftTonGeblaesePowerSaving              : F_TRIG;
   ftlHubrahmenAbsenken                  : F_TRIG;
-  ftlGeblaese                           : F_TRIG;
-  rtlAnlegen                            : R_TRIG;
   ftlVSGAutomatikBetriebBeendet         : F_TRIG;
   ftlGlastransportCheckMitNachfolger    : F_TRIG;
   rtlKipparmeAnschlaegeAuf              : R_TRIG;
@@ -72,6 +85,21 @@ VAR
   // REAL
   rlScheibenHoehe       : REAL;
   rlAbstandZurNulllinie : REAL;
+
+  // STEPS
+  steplEintransportSchneidlinie : Steps_TE;
+
+  // AKTION (STATION)
+  Anlegen : Basic_Station_Anlegen_FB_V01_00_00;
+  Glaslaengenmessung : Basic_Station_Glaslaengenmessung_FB_V01_00_00;
+
+  // AKTIONEN (WANDWEISE)
+  Eintransport       : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Anlegetisch_Eintransport_FB_V01_00_00;
+  Austransport       : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Anlegetisch_Austransport_FB_V01_00_00;
+  Glashoehenmessung  : Basic_Station_Glashoehenmessung_FB_V01_00_00;
+
+  // BAUSTEINE
+  Geblaese : Geblaese_Schuetz_FB_V01_00_00; // Geblaese 1 und 2 (Ausgang und Motorschutz kommen von der Station)
 
 END_VAR
 
@@ -242,7 +270,7 @@ IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
 
   IF ( BasisStationsParameter.bCheck ) THEN
     rSps2MmiMessungScheibenlaenge   := 0;
-    wSps2MmiMessungStationNummer    := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+    wSps2MmiMessungStationNummer    := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
     wSps2MmiMessungSlotNummer       := 1;
     iSps2MmiMessungScheibenanzahl   := 0;
 
@@ -281,11 +309,158 @@ A_Timer();
 SystemCheck();
 
 // Automatik
-Anlegen();
-Eintransport();
-Glashoehenmessung();
-Glaslaengenmessung();
-Austransport();
+(* Hinweis:
+   - VSG-Schnittstelle mit Selbstentscheidung der Station: Eintransport der Schneidlinie
+   - Sonst entscheidet das MMI ueber die Transferstation, ob angelegt oder eingetragen wird
+*)
+IF BasisStationsParameter.stMKs.stStationsOptionen.stAnlegetisch.bAnlegetischMitEintransportVorgaenger THEN
+  Eintransport_Schneidlinie();
+END_IF
+
+Anlegen( BasisStationsParameter     := BasisStationsParameter,
+         bpAutomatikAktiv           := blBetriebsartAutomatik,
+         bpAnlegenQuittiert         := rtlFussleisteStart.Q,
+         bpVoraussetzungErfuellt    := ( NOT in_bSensorKipparmeNichtUnten AND NOT in_bSensorKipparmeAnschlaegeOben ),
+         bpAnschlagAutomatischFahren := blAnschlagAutomatischFahren,
+         bpNeustart                 := ( blNeustartAnschlag OR blNeustartSchneidlinie ),
+         bpUebernahmeEintransport   := blVSGUebernahme,
+         bpBetriebBeendet           := ftlVSGAutomatikBetriebBeendet.Q,
+         Glastransport              := Glastransport,
+         Messachse                  := Messachse,
+         Anschlag                   := Anschlag,
+         Hubrahmen                  := Hubrahmen,
+         blAnlegenErzwingen         := blAnlegenErzwingen );
+
+blNeustartAnschlag     := FALSE;
+blNeustartSchneidlinie := FALSE;
+
+(* Hinweis:
+   - Ausgaenge der Aktion Anlegen auf die Hardware der Station legen
+   - Solange das Anlegen laeuft (und einen Zyklus danach) gehoert die Lampe dem Anlegen, danach den anderen Aktionen
+*)
+rtlAnlegenFertig( CLK := Anlegen.bpAnlegenFertig );
+IF ( rtlAnlegenFertig.Q ) THEN
+  epTypeHoehenmessung := Anlegen.epTypeHoehenmessung;
+END_IF
+
+ftlAnlegenAktiv( CLK := BasisStationsParameter.bAnlegen );
+IF ( BasisStationsParameter.bAnlegen OR ftlAnlegenAktiv.Q ) THEN
+  out_bAmpelSignalGruenScheibeAnlegen := ( Anlegen.bpAnlegenLampe OR blLampeSchneidlinie );
+END_IF
+
+// Drosselklappe: oeffnet bei steigender, schliesst bei fallender Flanke der Anforderung des Anlegens
+blDrosselklappeAnforderung := Anlegen.bpDrosselklappeOeffnen;
+rtlDrosselklappeAnforderung( CLK := blDrosselklappeAnforderung );
+ftlDrosselklappeAnforderung( CLK := blDrosselklappeAnforderung );
+IF ( rtlDrosselklappeAnforderung.Q ) THEN
+  blMerkerDrosselklappeAuf := TRUE;
+ELSIF ( ftlDrosselklappeAnforderung.Q ) THEN
+  blMerkerDrosselklappeAuf := FALSE;
+END_IF
+
+// Anlegen ist Automatikbetrieb: Handfunktionen (Knebel Riemen, Hubrahmen) greifen, solange das Anlegen auf den Bediener wartet
+blBedienerEingriff := (     Anlegen.bpBedienerEingriff
+                           OR Glaslaengenmessung.bpBedienerEingriff
+                           OR Glashoehenmessung.bpBedienerEingriff );
+ftlAnlegenBedienerEingriff( CLK := blBedienerEingriff );
+IF ( blBedienerEingriff ) THEN
+  Glastransport.bpAnforderungHandfunktion := TRUE;
+ELSIF ( ftlAnlegenBedienerEingriff.Q ) THEN
+  Glastransport.bpAnforderungHandfunktion := FALSE;
+END_IF
+
+(* Hinweis:
+   - Automatik-Aktion Eintransport je Wand
+*)
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  Eintransport[wlIndex]( BasisStationsParameter  := BasisStationsParameter,
+                         wWand                   := wlIndex,
+                         bpAutomatikAktiv        := blBetriebsartAutomatik,
+                         bpGeblaeseFehler        := NOT in_bMotorschutzGeblaese_Ok,
+                         bpAnlegenUmschalten     := ( rtlFussleisteStart.Q OR ftlVSGAutomatikBetriebBeendet.Q ),
+                         Glastransport           := Glastransport,
+                         Messachse               := Messachse,
+                         Anschlag                := Anschlag,
+                         Hubrahmen               := Hubrahmen );
+END_FOR
+
+(* Hinweis:
+   - Lampe, Drosselklappe und Modus der Hoehenmessung des Eintransports auf die Station legen
+   - Die Drosselklappe oeffnet im Eintransport und schliesst die Station wie bisher (Anlegen, Messungen, Geblaese)
+*)
+ftlEintransportAktiv( CLK := BasisStationsParameter.bEintransport[cWAND_1] );
+IF ( BasisStationsParameter.bEintransport[cWAND_1] OR ftlEintransportAktiv.Q ) THEN
+  out_bAmpelSignalGruenScheibeAnlegen := Eintransport[cWAND_1].bpAnlegenLampe;
+END_IF
+
+rtlEintransportDrosselklappe( CLK := Eintransport[cWAND_1].bpDrosselklappeOeffnen );
+IF ( rtlEintransportDrosselklappe.Q ) THEN
+  blMerkerDrosselklappeAuf := TRUE;
+END_IF
+
+rtlEintransportAbgeschlossen( CLK := BasisStationsParameter.bEintransportAbgeschlossen[cWAND_1] );
+IF ( rtlEintransportAbgeschlossen.Q ) THEN
+  epTypeHoehenmessung := Modus_Vermessen_OberUndUnterkante_2_Sensoren;
+END_IF
+Glashoehenmessung( BasisStationsParameter  := BasisStationsParameter,
+                   bpAutomatikAktiv        := blBetriebsartAutomatik,
+                   bpTasterQuittierung     := rtlTasterQuittierung.Q,
+                   bpKnebelZurueck         := in_bKnebelRiemenZurueck,
+                   epTypeHoehenmessung     := epTypeHoehenmessung,
+                   Glastransport           := Glastransport,
+                   Messachse               := Messachse,
+                   Anschlag                := Anschlag,
+                   Hubrahmen               := Hubrahmen,
+                   blAnlegenErzwingen      := blAnlegenErzwingen );
+
+rlScheibenHoehe       := Glashoehenmessung.rpScheibenHoehe;
+rlAbstandZurNulllinie := Glashoehenmessung.rpAbstandZurNulllinie;
+
+ftlGlashoehenmessungAktiv( CLK := BasisStationsParameter.bGlashoehenmessung );
+IF ( BasisStationsParameter.bGlashoehenmessung OR ftlGlashoehenmessungAktiv.Q ) THEN
+  out_bAmpelSignalGruenScheibeAnlegen := Glashoehenmessung.bpAnlegenLampe;
+  out_bSignalTasterScheibeQuittieren  := Glashoehenmessung.bpSignalFehlmessung;
+END_IF
+Glaslaengenmessung( BasisStationsParameter  := BasisStationsParameter,
+                    bpAutomatikAktiv        := blBetriebsartAutomatik,
+                    bpTasterQuittierung     := rtlTasterQuittierung.Q,
+                    bpKnebelZurueck         := in_bKnebelRiemenZurueck,
+                    Glastransport           := Glastransport,
+                    Anschlag                := Anschlag,
+                    Hubrahmen               := Hubrahmen,
+                    blAnlegenErzwingen      := blAnlegenErzwingen,
+                    bpFreigabeScheibe       := bpFreigabeScheibe,
+                    bpKeineFreigabeScheibe  := bpKeineFreigabeScheibe );
+
+(* Hinweis:
+   - Beim Start der Messung ist die Drosselklappe zu, danach gehoert die Lampe der Messung
+*)
+rtlGlaslaengenmessungStart( CLK := BasisStationsParameter.bGlaslaengenmessung );
+IF ( rtlGlaslaengenmessungStart.Q ) THEN
+  blMerkerDrosselklappeAuf := FALSE;
+END_IF
+
+ftlGlaslaengenmessungAktiv( CLK := BasisStationsParameter.bGlaslaengenmessung );
+IF ( BasisStationsParameter.bGlaslaengenmessung OR ftlGlaslaengenmessungAktiv.Q ) THEN
+  out_bAmpelSignalGruenScheibeAnlegen := Glaslaengenmessung.bpAnlegenLampe;
+  out_bSignalTasterScheibeQuittieren  := Glaslaengenmessung.bpSignalFehlmessung;
+END_IF
+(* Hinweis:
+   - Automatik-Aktion Austransport je Wand
+   - Beim Start des Austransports ist die Drosselklappe zu
+*)
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  Austransport[wlIndex]( BasisStationsParameter  := BasisStationsParameter,
+                         wWand                   := wlIndex,
+                         bpAutomatikAktiv        := blBetriebsartAutomatik,
+                         Glastransport           := Glastransport,
+                         Hubrahmen               := Hubrahmen );
+END_FOR
+
+rtlAustransportStart( CLK := BasisStationsParameter.bAustransport[cWAND_1] );
+IF ( rtlAustransportStart.Q ) THEN
+  blMerkerDrosselklappeAuf := FALSE;
+END_IF
 
 // Gesonderte Funktionalitaet 
 Steuerung_Kippen();

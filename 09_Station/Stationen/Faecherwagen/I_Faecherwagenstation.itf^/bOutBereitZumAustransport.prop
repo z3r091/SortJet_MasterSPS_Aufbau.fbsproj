@@ -1,0 +1,14 @@
+(* METADATA
+{
+  "v3Meta": {
+    "objectGuid": "c57edaa1-8e87-48e3-9296-ab642cffd68d",
+    "subObjects": {
+      "get": {
+        "objectGuid": "ae6018af-557e-4d77-9598-8a73d8dd07a4"
+      }
+    }
+  }
+}
+*)
+PROPERTY_Get bOutBereitZumAustransport : BOOL
+END_PROPERTY

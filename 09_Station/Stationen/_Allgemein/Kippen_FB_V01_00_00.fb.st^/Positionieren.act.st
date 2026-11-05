@@ -206,6 +206,9 @@ IF ( bpPositionieren ) THEN
         eKippen_Position_84Grad:
           rlAntriebsZielPosition := ppParameterBaustein.rPosition84Grad;
 
+        eKippen_Position_88_5Grad:
+          rlAntriebsZielPosition := ppParameterBaustein.rPosition88_5Grad;
+
         eKippen_Position_90Grad:
           rlAntriebsZielPosition := ppParameterBaustein.rPosition90Grad;
 
@@ -220,9 +223,17 @@ IF ( bpPositionieren ) THEN
 
     // POSITIONIEREN ===================================
     STEP_110_E:
-      Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
-      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      IF ( bpLangsamKippen ) THEN
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+        Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit * 10;
+      ELSE
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
+      END_IF
 
       Antrieb.rpZielposition    := rlAntriebsZielPosition;
       Antrieb.wpBetriebsart     := ABSOLUT;

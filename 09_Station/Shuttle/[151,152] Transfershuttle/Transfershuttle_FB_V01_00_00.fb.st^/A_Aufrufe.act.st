@@ -21,32 +21,31 @@ Glastransport( stStationsNummern                              := BasisStationsPa
                                                                     AND NOT BasisStationsParameter.bCheck
                                                                     AND NOT BasisStationsParameter.bReferenz
                                                                     AND NOT bpStarteSpeicherfachValidierung ),
-               bpShuttleDeaktivieren                            := BasisStationsParameter.stMKs.bDeaktivieren,
                blSensorGlastransportOben                        := in_bSensorShuttleOben,
                blSensorGlastransportUnten                       := in_bSensorShuttleUnten,
                bpOptionMasterSlaveAustransport                  := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bTransportMasterSlaveAustransport );
 
-// Default Abfragen
-Glastransport.blDruckluftEinlaufSeiteOK                        := in_bDruckluftEinlaufSeiteOK;
-Glastransport.blDruckluftAuslaufSeiteOK                        := in_bDruckluftAuslaufSeiteOK;
-
-
-// Default Abfragen
-IF BasisStationsParameter.stMKs.stStationsOptionen.stTransfershuttle.bTransferShuttleMitUltraschallSensoren THEN // Ultraschallsensoren sind keine Öffner sondern schließer - Logik negieren!
-  Glastransport.bpSensorScheibenKontrolleAuslaufSeiteFrei        := NOT in_bSensorScheibenKontrolleAuslaufSeiteFrei OR NOT in_bSensorScheibenKontrolleAuslaufSeiteOben;
-  Glastransport.bpSensorScheibenKontrolleEinlaufSeiteFrei        := NOT in_bSensorScheibenKontrolleEinlaufSeiteFrei OR NOT in_bSensorScheibenKontrolleEinlaufSeiteOben;
-ELSE
-  Glastransport.bpSensorScheibenKontrolleAuslaufSeiteFrei        := in_bSensorScheibenKontrolleAuslaufSeiteFrei;
-  Glastransport.bpSensorScheibenKontrolleEinlaufSeiteFrei        := in_bSensorScheibenKontrolleEinlaufSeiteFrei;
-END_IF
-
-Glastransport.bpOptionTransfershuttleMitFaecherwagen           := BasisStationsParameter.stMKs.stStationsOptionen.stTransfershuttle.bTransferShuttleFuerFaecherwagen;
-
-Glastransport.bpOptionSensorEinlauf                            := BasisStationsParameter.stMKs.stStationsAufbau.bSensorEinlauf;
-Glastransport.bpOptionSensorAuslauf                            := BasisStationsParameter.stMKs.stStationsAufbau.bSensorAuslauf;
-Glastransport.bpTransfershuttleVerbundAktiv                    := bpTransfershuttleVerbundAktiv;
-
+// Optionen aus der MK
+Glastransport.bpOptionTransfershuttleMitFaecherwagen        := BasisStationsParameter.stMKs.stStationsOptionen.stTransfershuttle.bTransferShuttleFuerFaecherwagen;
 Glastransport.bpOptionTransfershuttleMitUltraschallSensoren := BasisStationsParameter.stMKs.stStationsOptionen.stTransfershuttle.bTransferShuttleMitUltraschallSensoren;
+Glastransport.bpOptionSensorEinlauf                         := BasisStationsParameter.stMKs.stStationsAufbau.bSensorEinlauf;
+Glastransport.bpOptionSensorAuslauf                         := BasisStationsParameter.stMKs.stStationsAufbau.bSensorAuslauf;
+
+// Transportverbund zwischen zwei Transfershuttles
+Glastransport.bpTransfershuttleVerbundAktiv                 := bpTransfershuttleVerbundAktiv;
+
+// Druckluft der Luftabfragen
+Glastransport.blDruckluftEinlaufSeiteOK                     := in_bDruckluftEinlaufSeiteOK;
+Glastransport.blDruckluftAuslaufSeiteOK                     := in_bDruckluftAuslaufSeiteOK;
+
+// Abfragen frei
+IF BasisStationsParameter.stMKs.stStationsOptionen.stTransfershuttle.bTransferShuttleMitUltraschallSensoren THEN // Ultraschallsensoren sind keine Öffner sondern schließer - Logik negieren!
+  Glastransport.bpSensorScheibenKontrolleAuslaufSeiteFrei   := NOT in_bSensorScheibenKontrolleAuslaufSeiteFrei OR NOT in_bSensorScheibenKontrolleAuslaufSeiteOben;
+  Glastransport.bpSensorScheibenKontrolleEinlaufSeiteFrei   := NOT in_bSensorScheibenKontrolleEinlaufSeiteFrei OR NOT in_bSensorScheibenKontrolleEinlaufSeiteOben;
+ELSE
+  Glastransport.bpSensorScheibenKontrolleAuslaufSeiteFrei   := in_bSensorScheibenKontrolleAuslaufSeiteFrei;
+  Glastransport.bpSensorScheibenKontrolleEinlaufSeiteFrei   := in_bSensorScheibenKontrolleEinlaufSeiteFrei;
+END_IF
 
 (* Hinweis:
    - Die Hardware- Eingaenge werden zurueck gehalten wenn die Luftabfrage nicht verbaut wurde.
@@ -65,18 +64,17 @@ IF ( BasisStationsParameter.stMKs.stStationsAufbau.bSensorEinlauf ) THEN
 
 END_IF
 
-
-
 // Querfahrt
-Querfahrt(        stStationsNummern   := BasisStationsParameter.stMKs.stStationsNummern,
+Querfahrt( stStationsNummern   := BasisStationsParameter.stMKs.stStationsNummern,
            bpAutomatikAktiv    := BasisStationsParameter.bAutomatik,
-           bpFreigabe          :=   ( BasisStationsParameter.bFreigabe
-                                      AND abgVerfahrfreigabeShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
-                                      AND blShuttleKannSicherVerfahrenWerden ),
-           bpVerfahrFreigabe   :=  blShuttleKannSicherVerfahrenWerden
-           AND Glastransport.bpBereitZumVerfahren 
-           AND ( NOT BasisStationsParameter.stMKs.stStationsOptionen.stTransfershuttle.bTransfershuttleIstVerfahrbarerSpeicher
-                 OR  ( NOT Glastransport.InGlasTransportNachfolger.bEinlaufsensor AND NOT Glastransport.InGlasTransportVorgaenger.bAuslaufsensor)));
+           bpFreigabe          := (     BasisStationsParameter.bFreigabe
+                                    AND abgVerfahrfreigabeShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+                                    AND blShuttleKannSicherVerfahrenWerden ),
+           bpVerfahrFreigabe   := (     blShuttleKannSicherVerfahrenWerden
+                                    AND Glastransport.bpBereitZumVerfahren
+                                    AND (    NOT BasisStationsParameter.stMKs.stStationsOptionen.stTransfershuttle.bTransfershuttleIstVerfahrbarerSpeicher
+                                          OR (     NOT Glastransport.InGlasTransportNachfolger.bEinlaufsensor
+                                               AND NOT Glastransport.InGlasTransportVorgaenger.bAuslaufsensor ) ) ) );
 
 //Zentralschmierung
 Zentralschmierung( stStationsNummern           := BasisStationsParameter.stMKs.stStationsNummern,

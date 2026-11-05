@@ -25,25 +25,19 @@ IF ( blBetriebsartHand and not BasisStationsParameter.bVorabpositionieren ) THEN
                                   OR Glastransport.bpHandfahrenMinus ),
                           PT := t#15s );
 
-  IF ( dwlHandfunktionen.0
-       OR bgVISUGeblaese[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, cWAND_1] OR toflGeblaeseHandfahren.Q )
-  THEN
-    Geblaese.bpStart := TRUE;
-  ELSIF NOT blNachSystemcheckMerker THEN
-    Geblaese.bpStart := FALSE;
-  END_IF
+  // Geblaese: Handfunktion im Geblaese-Baustein (bpHandEin, Aktion A_Geblaese)
 
   // Handfunktionen:
   //   - Glastransport vor / zurück
   Glastransport.bpHandfahrenPlus  := (  ( dwlHandfunktionen.1 AND NOT dwlHandfunktionen.2 )
-                                       OR ( bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, cWAND_1] AND NOT bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, cWAND_1]));
+                                       OR ( bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] AND NOT bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]));
 
   Glastransport.bpHandfahrenMinus := (  ( dwlHandfunktionen.2 AND NOT dwlHandfunktionen.1 )
-                                       OR ( bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, cWAND_1] AND NOT bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern, cWAND_1]));  // Bit 2 = Glastransport / Glastransport zurück
+                                       OR ( bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] AND NOT bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]));  // Bit 2 = Glastransport / Glastransport zurück
 
   // Handfunktionen:
   //   - Drehbewegung zwischen 0 - 270 Grad
-  IF ( bgVISUDrehen0Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern] OR dwlHandfunktionen.21 )
+  IF ( bgVISUDrehen0Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] OR dwlHandfunktionen.21 )
      AND NOT (    dwlHandfunktionen.22
                OR dwlHandfunktionen.23
                OR dwlHandfunktionen.24 )
@@ -51,7 +45,7 @@ IF ( blBetriebsartHand and not BasisStationsParameter.bVorabpositionieren ) THEN
     Drehen.epZielPosition := eDrehPosition0Grad;
     Drehen.bpStarteAbsolutPositionierung := TRUE;
 
-  ELSIF ( bgVISUDrehen90Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern] OR dwlHandfunktionen.22 )
+  ELSIF ( bgVISUDrehen90Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] OR dwlHandfunktionen.22 )
         AND NOT (    dwlHandfunktionen.21
                   OR dwlHandfunktionen.23
                   OR dwlHandfunktionen.24 )
@@ -59,7 +53,7 @@ IF ( blBetriebsartHand and not BasisStationsParameter.bVorabpositionieren ) THEN
     Drehen.epZielPosition := eDrehPosition90Grad;
     Drehen.bpStarteAbsolutPositionierung := TRUE;
 
-  ELSIF ( bgVISUDrehen180Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern] OR dwlHandfunktionen.23 )
+  ELSIF ( bgVISUDrehen180Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] OR dwlHandfunktionen.23 )
         AND NOT (    dwlHandfunktionen.21
                   OR dwlHandfunktionen.22
                   OR dwlHandfunktionen.24 )
@@ -67,7 +61,7 @@ IF ( blBetriebsartHand and not BasisStationsParameter.bVorabpositionieren ) THEN
     Drehen.epZielPosition := eDrehPosition180Grad;
     Drehen.bpStarteAbsolutPositionierung := TRUE;
 
-  ELSIF ( bgVISUDrehen270Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern] OR dwlHandfunktionen.24 )
+  ELSIF ( bgVISUDrehen270Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] OR dwlHandfunktionen.24 )
         AND NOT (    dwlHandfunktionen.21
                   OR dwlHandfunktionen.22
                   OR dwlHandfunktionen.23 )
@@ -82,18 +76,18 @@ IF ( blBetriebsartHand and not BasisStationsParameter.bVorabpositionieren ) THEN
 
   // Handfunktion:
   //   - Referentahrt Drehkreuz
-  Drehen.bpReferenz := (         ( dwlHandfunktionen.25 OR  bgVISUDrehenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern])
+  Drehen.bpReferenz := (         ( dwlHandfunktionen.25 OR  bgVISUDrehenReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
                          AND NOT (    dwlHandfunktionen.21
                                    OR dwlHandfunktionen.22
                                    OR dwlHandfunktionen.23
                                    OR dwlHandfunktionen.24
-                                   OR bgVISUDrehen0Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern]
-                                   OR bgVISUDrehen90Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern]
-                                   OR bgVISUDrehen180Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern]
-                                   OR bgVISUDrehen270Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern] ));
+                                   OR bgVISUDrehen0Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+                                   OR bgVISUDrehen90Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+                                   OR bgVISUDrehen180Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
+                                   OR bgVISUDrehen270Grad[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
 
-  Drehen.bpHandZentrierungEinfahren := ( bgVISUZentrierbolzenEinfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern] OR dwlHandfunktionen.26 ) AND NOT dwlHandfunktionen.27;
-  Drehen.bpHandZentrierungAusfahren := ( bgVISUZentrierbolzenAusfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern] OR dwlHandfunktionen.27 ) AND NOT dwlHandfunktionen.26;
+  Drehen.bpHandZentrierungEinfahren := ( bgVISUZentrierbolzenEinfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] OR dwlHandfunktionen.26 ) AND NOT dwlHandfunktionen.27;
+  Drehen.bpHandZentrierungAusfahren := ( bgVISUZentrierbolzenAusfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] OR dwlHandfunktionen.27 ) AND NOT dwlHandfunktionen.26;
 
   // Handfunktionen:
   //   - Drehen ( Hand plus und minus  )

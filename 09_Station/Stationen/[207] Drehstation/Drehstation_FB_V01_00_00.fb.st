@@ -22,13 +22,13 @@ VAR
   // BOOLEAN 
   blGeblaeseAktiv                    : BOOL; 
   blUpdateTimer                      : BOOL;
+  blAktionImFehler                   : BOOL; // Eine der wandweisen Aktionen steht im Fehler
  
   // TRIGGER
   rtlAutomatikActiv                  : R_TRIG;
   ftlGlastransportCheckMitNachfolger : F_TRIG;
 
   // TIMER
-  toflGeblaeseEnergiesparModus       : TOF; 
   toflGeblaeseHandfahren             : TOF;
   tonlUpdateTimer                    : TON;
 
@@ -44,6 +44,11 @@ VAR
   Geblaese                           : Geblaese_Schuetz_FB_V01_00_00;
   Dickenverstellung                  : ZylinderPneumatik_3Wege_FB_V01_00_00;
   Querachse                          : ZylinderPneumatik_3Wege_FB_V01_00_00;
+
+  // AKTIONEN (WANDWEISE)
+  Eintransport                       : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Drehstation_Eintransport_FB_V01_00_00;
+  Austransport                       : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Drehstation_Austransport_FB_V01_00_00;
+  Vortransport                       : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Drehstation_Vortransport_FB_V01_00_00;
 
 END_VAR
 VAR
@@ -84,10 +89,45 @@ IO_Zuweisung();
 (* Hinweis:
    - -Automatik- Aktionen
 *)
-Eintransport();
-Austransport();
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  Eintransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                         wWand                  := wlIndex,
+                         bpAutomatikAktiv       := blBetriebsartAutomatik,
+                         bpGeblaeseAktiv        := blGeblaeseAktiv,
+                         bpVorabDrehenAktiv     := bpVorabDrehenAktiv,
+                         Glastransport          := Glastransport,
+                         Drehen                 := Drehen,
+                         Kippen                 := Kippen,
+                         Querfahrt              := Querfahrt,
+                         Geblaese               := Geblaese,
+                         Dickenverstellung      := Dickenverstellung,
+                         Querachse              := Querachse );
+
+  Austransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                         wWand                  := wlIndex,
+                         bpAutomatikAktiv       := blBetriebsartAutomatik,
+                         bpGeblaeseAktiv        := blGeblaeseAktiv,
+                         bpVorabDrehenAktiv     := bpVorabDrehenAktiv,
+                         Glastransport          := Glastransport,
+                         Drehen                 := Drehen,
+                         Kippen                 := Kippen,
+                         Querfahrt              := Querfahrt,
+                         Geblaese               := Geblaese,
+                         Dickenverstellung      := Dickenverstellung,
+                         Querachse              := Querachse );
+END_FOR
+
 VorabDrehen();
-Vortransport();
+
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  Vortransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                         wWand                  := wlIndex,
+                         bpAutomatikAktiv       := blBetriebsartAutomatik,
+                         bpGeblaeseAktiv        := blGeblaeseAktiv,
+                         Glastransport          := Glastransport,
+                         Drehen                 := Drehen );
+END_FOR
+
 QuerfahrtPositionieren();
 
 (* Hinweis:

@@ -27,7 +27,7 @@ Glastransport( stStationsNummern                         := BasisStationsParamet
 
 Kippen( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern,
         bpFreigabe        := BasisStationsParameter.bFreigabe,  
-        bpBetriebsartHand := blBetriebsartHand,
+        bpAutomatikAktiv := NOT blBetriebsartHand,
         bpSensorEinlauf   := Glastransport.bpSensorEinlauf,
         bpSensorAuslauf   := Glastransport.bpSensorAuslauf );
 
@@ -38,5 +38,6 @@ Querfahrt( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern,
            bpSensorAuslauf   := Glastransport.bpSensorAuslauf );
 
 // Rollenleiste
-Rollenleiste();
+Rollenleiste( bpZweiterZylinderVorhanden := FALSE,
+              tpWartezeitOhneAbfrage     := T#1S );
 END_ACTION

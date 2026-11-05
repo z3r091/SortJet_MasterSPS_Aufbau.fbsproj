@@ -27,6 +27,11 @@ IF ( blBetriebartCheck ) THEN
       steplCheck:=STEP_900_E;
     END_IF
 
+    IF ( Greifer[wlIndex].bpFehler AND Greifer[wlIndex].bpCheck ) THEN
+      BasisStationsParameter.wFehlerNummer := Greifer[wlIndex].wpFehlerNr;
+      steplCheck:=STEP_900_E;
+    END_IF
+
   END_FOR
 
   IF ( Kippen.bpFehler ) THEN
@@ -45,6 +50,35 @@ IF ( blBetriebartCheck ) THEN
          - Wenn die Geblaese gestartet sind kann mit dem SystemCheck begonnen werden.
       *)
       IF ( blGeblaeseAktiv  ) THEN
+        steplCheck:=STEP_20_E;
+      END_IF
+
+    // SYSTEM CHECK=========================
+    STEP_20_E:
+      (* Hinweis:
+         - Greifer [Ausbaustufe] zuerst in den Grundzustand bringen (eingefahren, Grundstellung),
+           damit der Glastransport die Scheiben frei bewegen kann
+      *)
+      FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+        Greifer[wlIndex].bpCheck := BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex];
+      END_FOR
+
+      steplCheck:=STEP_30_E;
+
+    // SYSTEM CHECK=========================
+    STEP_30_E:
+      (* Hinweis:
+         - Systemcheck der Greifer abgeschlossen (Wartestellen werden im Greifer zeitlich ueberwacht)
+      *)
+      blDone := TRUE;
+      FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+        blDone := blDone AND ( Greifer[wlIndex].bpSystemCheckAbgeschlossen OR NOT Greifer[wlIndex].bpCheck );
+      END_FOR
+
+      IF ( blDone ) THEN
+        FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+          Greifer[wlIndex].bpCheck := FALSE;
+        END_FOR
         steplCheck:=STEP_50_E;
       END_IF
 
@@ -123,6 +157,7 @@ IF ( blBetriebartCheck ) THEN
     STEP_900_E:
       FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
         Glastransport[wlIndex].bpCheck := FALSE;
+        Greifer[wlIndex].bpCheck := FALSE;
       END_FOR
 
       Kippen.bpPositionieren := FALSE;
@@ -144,6 +179,7 @@ ELSE
 
     FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
       Glastransport[wlIndex].bpCheck := FALSE;
+      Greifer[wlIndex].bpCheck := FALSE;
     END_FOR
 
     Kippen.bpPositionieren := FALSE;

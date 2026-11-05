@@ -187,6 +187,61 @@ __V3_CONTENT__
 				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
 			</Single>
 			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Arretierung_Schliessen_110</Single>
+				<Single Name="TextDefault" Type="string">36</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Arretierung_Oeffnen_110</Single>
+				<Single Name="TextDefault" Type="string">37</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Hubrahmen_Heben_110</Single>
+				<Single Name="TextDefault" Type="string">38</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Anschlag_Auf_140</Single>
+				<Single Name="TextDefault" Type="string">39</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Faecherwagen_Vor_150</Single>
+				<Single Name="TextDefault" Type="string">40</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Anschlag_Ab_160</Single>
+				<Single Name="TextDefault" Type="string">41</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eEinschleusen_Zentrierung_Schliessen_170</Single>
+				<Single Name="TextDefault" Type="string">42</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Anschlag_Ab_100</Single>
+				<Single Name="TextDefault" Type="string">43</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Zentrierung_Oeffnen_110</Single>
+				<Single Name="TextDefault" Type="string">44</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Faecherwagen_Zurueck_120</Single>
+				<Single Name="TextDefault" Type="string">45</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
+				<Single Name="TextID" Type="string">eAusschleusen_Hubrahmen_Senken_140</Single>
+				<Single Name="TextDefault" Type="string">46</Single>
+				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
+			</Single>
+			<Single Type="{53da1be7-ad25-47c3-b0e8-e26286dad2e0}" Method="IArchivable">
 				<Single Name="TextID" Type="string"></Single>
 				<Single Name="TextDefault" Type="string"></Single>
 				<List Name="LanguageTexts" Type="System.Collections.ArrayList" />
@@ -237,7 +292,18 @@ TYPE eLetzter_FW_Status :
   eAusschleusen_Rolltor_Ab_145                               := 32,
   eAusschleusen_Abgeschlossen_150                            := 33,
   eAusschleusen_Abgeschlossen_InGrundstellung                := 34,
-  eAusschleusen_Fehler                                       := 35
+  eAusschleusen_Fehler                                       := 35,
+  eEinschleusen_Arretierung_Schliessen_110                   := 36,
+  eAusschleusen_Arretierung_Oeffnen_110                      := 37,
+  eEinschleusen_Hubrahmen_Heben_110                          := 38,
+  eEinschleusen_Anschlag_Auf_140                             := 39,
+  eEinschleusen_Faecherwagen_Vor_150                         := 40,
+  eEinschleusen_Anschlag_Ab_160                              := 41,
+  eEinschleusen_Zentrierung_Schliessen_170                   := 42,
+  eAusschleusen_Anschlag_Ab_100                              := 43,
+  eAusschleusen_Zentrierung_Oeffnen_110                      := 44,
+  eAusschleusen_Faecherwagen_Zurueck_120                     := 45,
+  eAusschleusen_Hubrahmen_Senken_140                         := 46
 ) WORD;
 END_TYPE
 </Single>

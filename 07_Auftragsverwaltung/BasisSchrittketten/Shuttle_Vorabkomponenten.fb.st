@@ -98,6 +98,16 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
         starrShuttleBasisParameter[wStation].pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eKippen_SollPosition := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Kippen[wlNextTransferstation];
       END_IF
 
+      // Greifer [Ausbaustufe stStationsAufbau.bGreifer]: Greiferseite je Partnerstation fuer die Vorabpositionierung
+      starrShuttleBasisParameter[wStation].pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eGreiferTyp := eGreiferDefault;
+      IF ( starrShuttleBasisParameter[wStation].stMKs.stStationsAufbau.bGreifer[wWand] ) THEN
+        IF ( Auftragsdaten.wAuftragstyp.0 ) THEN
+          starrShuttleBasisParameter[wStation].pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eGreiferTyp := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.Greifer[wlNextTransferstation];
+        ELSE
+          starrShuttleBasisParameter[wStation].pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eGreiferTyp := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Greifer[wlNextTransferstation];
+        END_IF
+      END_IF
+
       (* Hinweis:
          - Scheibenführung / Wandverstellung anstellen
          - Aus dem Speicher: Speicherslotdicke nehmen ; von einer Station die Scheibendicke nehmen
@@ -132,7 +142,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
         SpsError( eFehler_Station,
                   starrShuttleBasisParameter[wStation].wFehlerNummer,
                   starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                  AutomatikkreisBestimmen(starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                  AutomatikkreisBestimmen(starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                   starrShuttleBasisParameter[wStation].awFehlerInformationen );
 
         steplSchritt := STEP_900_E;

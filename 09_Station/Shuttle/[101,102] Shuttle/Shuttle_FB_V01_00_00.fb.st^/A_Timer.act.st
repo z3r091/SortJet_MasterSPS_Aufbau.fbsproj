@@ -15,6 +15,7 @@ ACTION A_Timer
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   atoflSensorEinlauf[wlIndex](IN := in_bSensorEinlauf[wlIndex] ,         PT := ZEIT_SENSOR_ENTPRELLEN);
   atoflSensorAuslauf[wlIndex](IN := in_bSensorAuslauf[wlIndex] ,         PT := ZEIT_SENSOR_ENTPRELLEN);
-  atoflSensorAUslaufStopp[wlIndex](IN:= in_bSensorAuslaufStopp[wlIndex], PT := ZEIT_SENSOR_ENTPRELLEN);
+  atoflSensorAUslaufStopp[wlIndex](IN:= ablSensorAuslaufStopp[wlIndex], PT := ZEIT_SENSOR_ENTPRELLEN);
+  atoflSensorEinlaufStopp[wlIndex](IN:= ablSensorEinlaufStopp[wlIndex], PT := ZEIT_SENSOR_ENTPRELLEN);
 END_FOR
 END_ACTION

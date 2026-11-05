@@ -20,5 +20,6 @@ TYPE ParameterStationskomponenten_ST :
     stHub                           : REFERENCE TO Parameter_Hub;
     stZentralSchmierung             : REFERENCE TO Parameter_Zentralschmierung_DLS_4xxi;
     stWandverstellung               : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Dickenverstellung;
+    stGreifer                       : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Greifer;
   END_STRUCT
 END_TYPE

@@ -47,6 +47,7 @@ THEN
       bprtScheibe                := FALSE;
       bpStationBelegt            := FALSE;
       bpOutBereitZumAustransport := FALSE;
+      bpFreigabeFremdprozess     := FALSE;
 
       tonlAntriebNichtBetriebsBereit( IN := FALSE );
       tonlMaximaleZeitSensorAnfahren( IN := FALSE );
@@ -151,6 +152,7 @@ THEN
          - Auslaufsensor wurde belegt
       *)
       IF (ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_UND_EINLAUFVORAB_SCHALTEN_NICHT;
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
@@ -180,6 +182,15 @@ THEN
            bzw. nicht angefahren wird (Stationslaemge abfahren)
       *)
       IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rUeberwachungAuslaufsensor ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
+        steplAustransportRueckwaertig := STEP_900_E;
+      END_IF
+
+      IF (  Antrieb.bpDone
+           AND NOT bpSensorEinlauf )
+      THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
@@ -275,8 +286,18 @@ THEN
     // AUSTRANSPORT RÜCKWÄRTIG ====================
     STEP_140_E:
       (* Anmerkung:
-         - Pruefen ob der Einlaufsensor angefahren wurde
+         - Freigabe Fremdprozess: Scheibenzaehler abgearbeitet und die Sensoren der Station frei
+         - Pruefen ob die Sensoren frei sind
+           => Einlaufsensor der Station belegt: freifahren
+           => nur der Auslaufsensor der Vorgaengerstation belegt: warten, nicht freifahren
       *)
+      IF (  ( ilScheibenZaehler <= 0 )
+           AND NOT bpSensorAuslauf
+           AND NOT toflEinlaufsensor.Q )
+      THEN
+        bpFreigabeFremdprozess := TRUE;
+      END_IF
+
       IF (  NOT toflEinlaufsensor.Q
            AND NOT InGlasTransportVorgaenger.bAuslaufsensor )
       THEN
@@ -350,6 +371,7 @@ ELSE
 
     bpOutBereitZumEintransport := FALSE;
     bpOutBereitZumAustransport := FALSE;
+    bpFreigabeFremdprozess     := FALSE;
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
     Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;

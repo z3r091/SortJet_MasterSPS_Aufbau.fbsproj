@@ -23,7 +23,7 @@ THEN
   SpsError( eFehler_Station,
             wpFehlerNr,
             stStationsNummern.NummerIntern,
-            AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+            AutomatikkreisBestimmen(stStationsNummern.NummerSPS),
             awlErrorAdditional );
 
   bpFehler := TRUE;

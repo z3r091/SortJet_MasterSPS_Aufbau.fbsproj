@@ -17,8 +17,7 @@ IF( blBetriebsartReset )THEN
       out_bAmpelSignalGruenScheibeAnlegen    := FALSE;
       out_bAmpelSignalRot                    := FALSE;
       out_bSignalTasterScheibeQuittieren     := FALSE;
-      out_bGeblaese1Ein                      := FALSE;
-      out_bGeblaese2Ein                      := FALSE;
+      Geblaese.bpReset := TRUE;
       out_bDrosselklappeOeffnen              := FALSE;
 
       blMerkerDrosselklappeAuf    := FALSE;
@@ -78,7 +77,7 @@ IF( blBetriebsartReset )THEN
         BasisStationsParameter.wFehlerNummer := cMELDUNG_STATION_NICHT_ZURUECKGESETZT;
         SpsError( eFehler_Station,
                   cMELDUNG_STATION_NICHT_ZURUECKGESETZT,
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                   BasisStationsparameter.awFehlerInformationen );
 
@@ -86,7 +85,7 @@ IF( blBetriebsartReset )THEN
           BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
           SpsError( eFehler_Station,
                     BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     BasisStationsparameter.awFehlerInformationen );
         END_IF
@@ -95,7 +94,7 @@ IF( blBetriebsartReset )THEN
           BasisStationsParameter.wFehlerNummer := Messachse.wpFehlerNr;
           SpsError( eFehler_Station,
                     BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     BasisStationsparameter.awFehlerInformationen );
         END_IF

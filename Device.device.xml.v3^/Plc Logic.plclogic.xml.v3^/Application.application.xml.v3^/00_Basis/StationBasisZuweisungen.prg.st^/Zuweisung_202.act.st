@@ -25,6 +25,7 @@ starrStationBasisParameter[cSTATION_202].stParameterStationskomponenten.stKippen
 
 // Eintransport
 starrStationBasisParameter[cSTATION_202].stMKs.stSchnittstellendaten.aEintransporte.Station[cSTATION_201]                  := Vorwaertig;
+starrStationBasisParameter[cSTATION_202].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[cSTATION_201]            := eGlastransport_AufAuslaufVorab;
 starrStationBasisParameter[cSTATION_202].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_201] := TRUE;
 
 // Austransport

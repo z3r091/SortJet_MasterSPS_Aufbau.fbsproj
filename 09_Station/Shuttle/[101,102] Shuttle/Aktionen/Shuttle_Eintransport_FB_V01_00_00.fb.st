@@ -6,7 +6,27 @@
 }
 *)
 FUNCTION_BLOCK Shuttle_Eintransport_FB_V01_00_00 EXTENDS Basic_Shuttle_Aktion_FB_V01_00_00
+VAR_INPUT
+
+  // GREIFER [Ausbaustufe stStationsAufbau.bGreifer]
+  bpGreiferAktiv : BOOL;
+  Greifer        : REFERENCE TO Shuttle_Greifer_FB_V01_00_00;
+
+END_VAR
 VAR
+
+  // BOOL
+  blMitGreifer : BOOL; // Eintransport mit dem Greifer (Greifer vorhanden und Greiferseite im Auftrag)
+
+  // TIMER
+  tonlUeberwachungGreifer : TON;
+
+END_VAR
+VAR CONSTANT
+
+  // TIME
+  cZEIT_UEBERWACHUNG_GREIFER : TIME := T#120S; // Gesamtueberwachung je Greifer-Schritt (die Wartestellen ueberwacht der Greifer selbst)
+
 END_VAR
 //-------------------------------------------------------------------------------------------------
 // EINTRANSPORT WAND 1
@@ -39,6 +59,15 @@ THEN
     steplAktion:=STEP_900_E;
   END_IF
 
+  IF ( blMitGreifer AND Greifer.bpFehler ) THEN
+    Greifer.bpStarteVorabPositionierungEintransport := FALSE;
+    Greifer.bpStarteEintransport                    := FALSE;
+    Glastransport.bpStarteKorrekturfahrt            := FALSE;
+    BasisStationsParameter.awFehlerInformationen    := Greifer.awpFehlerInformationen;
+    BasisStationsParameter.wFehlerNummer            := Greifer.wpFehlerNr;
+    steplAktion := STEP_900_E;
+  END_IF
+
   CASE steplAktion OF
     // EINTRANSPORT ==============================
     STEP_0_E:
@@ -46,6 +75,9 @@ THEN
          - Variablen zuruecksetzen
       *)
       BasisStationsParameter.bEintransportAbgeschlossen[wWand] := FALSE;
+
+      blMitGreifer :=     bpGreiferAktiv
+                      AND ( BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eGreiferTyp <> eGreiferDefault );
 
       steplAktion := STEP_10_E;
 
@@ -113,7 +145,11 @@ THEN
       THEN
         Kippen.bpPositionieren  := FALSE;
 
-        steplAktion := STEP_100_E;
+        IF ( blMitGreifer ) THEN
+          steplAktion := STEP_200_E;
+        ELSE
+          steplAktion := STEP_100_E;
+        END_IF
       END_IF
 
     // EINTRANSPORT ==============================
@@ -160,6 +196,76 @@ THEN
         steplAktion := STEP_1000_E;
       END_IF
 
+    // EINTRANSPORT GREIFER ======================
+    STEP_200_E:
+      // ---------------------------------------------------------------------------------------
+      //  EINTRANSPORT MIT DEM GREIFER [AUSBAUSTUFE]
+      //
+      //  Hinweis:
+      //  - Greifer an die Wandseite stellen, sofern er nicht schon vorpositioniert ist
+      // ---------------------------------------------------------------------------------------
+      Greifer.epGreiferTyp := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eGreiferTyp;
+      Greifer.pAuftrag     := BasisStationsParameter.pAuftrag[wWand];
+
+      Greifer.bpStarteVorabPositionierungEintransport := NOT Greifer.bpVorpositioniertEintransport;
+
+      steplAktion := STEP_210_E;
+
+    // EINTRANSPORT GREIFER ======================
+    STEP_210_E:
+      (* Hinweis:
+         - Greifer vorpositioniert, Eintransport mit dem Greifer starten
+      *)
+      tonlUeberwachungGreifer( IN := TRUE, PT := cZEIT_UEBERWACHUNG_GREIFER );
+
+      IF (    Greifer.bpVorabPositionierungEintransportAbgeschlossen
+           OR Greifer.bpVorpositioniertEintransport )
+      THEN
+        tonlUeberwachungGreifer( IN := FALSE );
+        Greifer.bpStarteVorabPositionierungEintransport := FALSE;
+        Greifer.bpStarteEintransport := TRUE;
+        steplAktion := STEP_220_E;
+      END_IF
+
+      IF ( tonlUeberwachungGreifer.Q ) THEN
+        tonlUeberwachungGreifer( IN := FALSE );
+        Greifer.bpStarteVorabPositionierungEintransport := FALSE;
+        BasisStationsParameter.wFehlerNummer := cMELDUNG_GREIFER_STOESSEL_ABLAUF_ZEITUEBERSCHREITUNG;
+        steplAktion := STEP_900_E;
+      END_IF
+
+    // EINTRANSPORT GREIFER ======================
+    STEP_220_E:
+      (* Hinweis:
+         - Quittierung der Scheibe
+         - Uebergrosse Scheibe: Korrekturfahrt des Glastransports auf Anforderung des Greifers
+      *)
+      bprtScheibe := Greifer.bprtScheibe;
+
+      tonlUeberwachungGreifer( IN := TRUE, PT := cZEIT_UEBERWACHUNG_GREIFER );
+
+      IF ( Greifer.bpKorrekturfahrtAnfordern ) THEN
+        Glastransport.bpKorrekturfahrtRueckwaerts := Greifer.bpKorrekturfahrtRueckwaerts;
+        Glastransport.bpStarteKorrekturfahrt      := TRUE;
+      ELSE
+        Glastransport.bpStarteKorrekturfahrt      := FALSE;
+      END_IF
+
+      IF ( Greifer.bpEintransportAbgeschlossen ) THEN
+        tonlUeberwachungGreifer( IN := FALSE );
+        Greifer.bpStarteEintransport         := FALSE;
+        Glastransport.bpStarteKorrekturfahrt := FALSE;
+        steplAktion := STEP_1000_E;
+      END_IF
+
+      IF ( tonlUeberwachungGreifer.Q ) THEN
+        tonlUeberwachungGreifer( IN := FALSE );
+        Greifer.bpStarteEintransport         := FALSE;
+        Glastransport.bpStarteKorrekturfahrt := FALSE;
+        BasisStationsParameter.wFehlerNummer := cMELDUNG_GREIFER_STOESSEL_ABLAUF_ZEITUEBERSCHREITUNG;
+        steplAktion := STEP_900_E;
+      END_IF
+
     // EINTRANSPORT ==============================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;
@@ -180,6 +286,14 @@ ELSE
 
     Kippen.bpPositionieren := FALSE;
     Wandverstellung.bpStartePositionierung := FALSE;
+
+    IF ( blMitGreifer ) THEN
+      Greifer.bpStarteVorabPositionierungEintransport := FALSE;
+      Greifer.bpStarteEintransport                    := FALSE;
+      Glastransport.bpStarteKorrekturfahrt            := FALSE;
+      tonlUeberwachungGreifer( IN := FALSE );
+      blMitGreifer := FALSE;
+    END_IF
 
     steplAktion := STEP_0_E;
   END_IF

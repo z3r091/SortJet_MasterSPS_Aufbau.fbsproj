@@ -7,7 +7,7 @@
 *)
 PROGRAM StationsAufrufe
 VAR
-  wlIndex : WORD;
+  wlIndex      : WORD;
 END_VAR
 
 //-------------------------------------------------------------------------------------------------
@@ -24,8 +24,13 @@ FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE  DO
   aTransfershuttles[wlIndex]( BasisStationsParameter := starrTransfershuttleBasisParameter[wlIndex] );
 END_FOR
 
-FOR wlIndex := cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR  DO
+// Faecherwagenstationen (Variante ueber den Typ von aFaecherwagenstation)
+FOR wlIndex := cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR DO
   aFaecherwagenstation[wlIndex]( BasisStationsParameter := starrFaecherwagenBasisParameter[wlIndex] );
+END_FOR
+// Hydraulikstationen nach den Faecherwagenstationen aufrufen (Anforderungen der Stationen aus diesem Zyklus)
+FOR wlIndex := cERSTE_HYDRAULIKSTATIONS_NR TO cLETZTE_HYDRAULIKSTATIONS_NR DO
+  aHydraulikstation[wlIndex]( wpHydraulikstationNr := wlIndex );
 END_FOR
 
 //-------------------------------------------------------------------------------------------------

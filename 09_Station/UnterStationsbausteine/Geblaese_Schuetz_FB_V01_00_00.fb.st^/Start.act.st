@@ -39,7 +39,7 @@ THEN
       (* Hinweis:
          - Geblaese gestartet
       *)
-      bpDone := tonlWarteAufGeblaeseLaeuft.Q;
+      bpDone := tonlWarteAufGeblaeseLaeuft.Q AND bpDrehzahlErreicht;
 
       (* Fehlerbehandlung:
          - Motorschutzschalter

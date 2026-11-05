@@ -31,7 +31,7 @@ IF ( rtlFehlerMeldungGenerierenHandbetrieb.Q ) THEN
   SpsHinweis( eFehler_Station,
               BasisStationsParameter.wFehlerNummer,
               BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-              AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+              AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
               BasisStationsParameter.awFehlerInformationen );
 END_IF
 END_ACTION

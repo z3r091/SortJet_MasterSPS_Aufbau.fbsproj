@@ -23,46 +23,46 @@ VAR_CONFIG
 //-------------------------------------------------------------------------------------------------
 
    // Ampel AK1
-  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; // OK 
+  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteBlau                     AT %MX900.0  : BOOL; // OK 
   Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteRot                      AT %QX0.6    : BOOL; // OK 
   Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteGelb                     AT %QX0.5    : BOOL; // OK 
   Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteGruen                    AT %QX0.4    : BOOL; // OK 
   Globale_Bausteine.Horn_AK[1,1].out_bHorn                                  AT %QX0.3    : BOOL; // OK   
 
    // Ampel AK1
-  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; // Option       
-  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteRot                      AT %MX2.0    : BOOL; // Option       
-  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteGelb                     AT %MX2.0    : BOOL; // Option       
-  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteGruen                    AT %MX2.0    : BOOL; // Option       
-  Globale_Bausteine.Horn_AK[1,2].out_bHorn                                  AT %MX2.0    : BOOL; // Option         
+  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteBlau                     AT %MX900.1  : BOOL; // Option       
+  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteRot                      AT %MX900.2  : BOOL; // Option       
+  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteGelb                     AT %MX900.3  : BOOL; // Option       
+  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteGruen                    AT %MX900.4  : BOOL; // Option       
+  Globale_Bausteine.Horn_AK[1,2].out_bHorn                                  AT %MX900.5  : BOOL; // Option         
 
    // Ampe2 AK1
-  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; // OK 
+  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteBlau                     AT %MX900.6  : BOOL; // OK 
   Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteRot                      AT %QX1.3    : BOOL; // OK 
   Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteGelb                     AT %QX1.2    : BOOL; // OK 
   Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteGruen                    AT %QX1.1    : BOOL; // OK 
   Globale_Bausteine.Horn_AK[2,1].out_bHorn                                  AT %QX1.0    : BOOL; // OK   
 
    // Ampe2 AK1
-  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; // Option 
-  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteRot                      AT %MX2.0    : BOOL; // Option 
-  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteGelb                     AT %MX2.0    : BOOL; // Option 
-  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteGruen                    AT %MX2.0    : BOOL; // Option 
-  Globale_Bausteine.Horn_AK[2,2].out_bHorn                                  AT %MX2.0    : BOOL; // Option           
+  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteBlau                     AT %MX900.7  : BOOL; // Option 
+  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteRot                      AT %MX901.0  : BOOL; // Option 
+  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteGelb                     AT %MX901.1  : BOOL; // Option 
+  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteGruen                    AT %MX901.2  : BOOL; // Option 
+  Globale_Bausteine.Horn_AK[2,2].out_bHorn                                  AT %MX901.3  : BOOL; // Option           
 
    // Ampe3 AK1
-  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; // OK 
+  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteBlau                     AT %MX901.4  : BOOL; // OK 
   Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteRot                      AT %QX5.1    : BOOL; // OK 
   Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteGelb                     AT %QX5.0    : BOOL; // OK 
   Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteGruen                    AT %QX4.7    : BOOL; // OK 
   Globale_Bausteine.Horn_AK[3,1].out_bHorn                                  AT %QX4.6    : BOOL; // OK   
 
    // Ampe3 AK1
-  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteBlau                     AT %MX2.0    : BOOL; // Option 
-  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteRot                      AT %MX2.0    : BOOL; // Option 
-  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteGelb                     AT %MX2.0    : BOOL; // Option 
-  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteGruen                    AT %MX2.0    : BOOL; // Option 
-  Globale_Bausteine.Horn_AK[3,2].out_bHorn                                  AT %MX2.0    : BOOL; // Option                 
+  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteBlau                     AT %MX901.5  : BOOL; // Option 
+  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteRot                      AT %MX901.6  : BOOL; // Option 
+  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteGelb                     AT %MX901.7  : BOOL; // Option 
+  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteGruen                    AT %MX902.0  : BOOL; // Option 
+  Globale_Bausteine.Horn_AK[3,2].out_bHorn                                  AT %MX902.1  : BOOL; // Option                 
 
 
 //-------------------------------------------------------------------------------------------------

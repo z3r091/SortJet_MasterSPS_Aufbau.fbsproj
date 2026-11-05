@@ -13,7 +13,7 @@ IF ( blStartePositionSenkrecht ) THEN
 
   // Ausnahmesituation
   IF ( Kippen.bpFehler ) THEN
-    Kippen.bpStartKippenAuf := FALSE;
+    Kippen.bpPositionieren := FALSE;
     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
     steplKippenSenkrecht := STEP_900_E;
   END_IF
@@ -23,13 +23,14 @@ IF ( blStartePositionSenkrecht ) THEN
     // KIPPEN SENKRECHT ===========================
     STEP_0_E:
       blBewegungAbgeschlossen := FALSE;
-      Kippen.bpStartKippenAuf := TRUE;
+      Kippen.epZielPosition := eKippen_Position_90Grad;
+      Kippen.bpPositionieren := TRUE;
       steplKippenSenkrecht := STEP_10_E;
 
     // KIPPEN SENKRECHT ===========================
     STEP_10_E:
       IF ( Kippen.bpDone ) THEN
-        Kippen.bpStartKippenAuf := FALSE;
+        Kippen.bpPositionieren := FALSE;
         steplKippenSenkrecht := STEP_1000_E;
       END_IF
 
@@ -45,7 +46,7 @@ IF ( blStartePositionSenkrecht ) THEN
   END_CASE
 ELSE
   IF ( steplKippenSenkrecht > STEP_0_E ) THEN
-    Kippen.bpStartKippenAuf := FALSE;
+    Kippen.bpPositionieren := FALSE;
     blBewegungAbgeschlossen := FALSE;
     steplKippenSenkrecht := STEP_0_E;
   END_IF

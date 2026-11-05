@@ -99,7 +99,7 @@ IF ( M_SB0_MMI_REQUESTSTATUSLOADINGSTATIONS OR SlowTask.rtrigECatOK.Q OR Job.rtl
     (* Hinweis:
        - Ein Bit kann gesetzt als auch zurueck gesetzt werden
     *)
-    IF ( aFaecherwagenStation[wlIndexFaecherwagenStation].bpStatusStationInBeladePosition ) THEN
+    IF aFaecherwagenstation[wlIndexFaecherwagenStation].bStatusStationInBeladePosition THEN
       awSps2MmiStatusFaecherwagenstationen[wlIndex] := BitToggleWord( IN := awSps2MmiStatusFaecherwagenstationen[wlIndex], POS := ilBitPosition );
     END_IF
 
@@ -127,7 +127,7 @@ FOR ilIndexWordArray := 0 TO 29 DO
 END_FOR
 FOR wlIndexFaecherwagenStation := cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR DO
 
-  IF ( aFaecherwagenStation[wlIndexFaecherwagenStation].bpStatusStationInBeladePosition ) THEN
+  IF aFaecherwagenstation[wlIndexFaecherwagenStation].bStatusStationInBeladePosition THEN
     awMerkerStatusFaecherwagenstationen[wlIndex] := BitToggleWord( IN := awMerkerStatusFaecherwagenstationen[wlIndex], POS := ilBitPosition );
   END_IF
 

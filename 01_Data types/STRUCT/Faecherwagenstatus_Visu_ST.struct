@@ -1,0 +1,31 @@
+(* METADATA
+{
+  "v3Meta": {
+    "objectGuid": "a887b2c8-0baa-44ef-9373-44ce59329354"
+  }
+}
+*)
+TYPE Faecherwagenstatus_Visu_ST :
+  STRUCT
+
+    // Allgemein (alle Varianten)
+    bBoxInHomePosition              : BOOL;
+    bStatusStationInBeladePosition  : BOOL;
+    bAuftragAktiv                   : BOOL;
+    bFehler                         : BOOL;
+    eStatus                         : eLetzter_FW_Status;
+
+    // Rolltor
+    bRolltorOben                    : BOOL;
+    bRolltorUnten                   : BOOL;
+
+    // Faecherwagen
+    bWagenErkannt                   : BOOL; // Faecherwagen in der Station erkannt (RFID-Tag bzw. Sensor)
+    bLichtschrankeOK                : BOOL; // Lichtschranke bzw. Sicherheitskreis der Station in Ordnung
+    wRFID_Nummer                    : WORD;
+
+    // Endlagen
+    abEndlage                       : ARRAY[0..31] OF BOOL; // Erreichte Endlage, Index = Bit der zugehoerigen Handfunktion der Variante
+
+  END_STRUCT
+END_TYPE

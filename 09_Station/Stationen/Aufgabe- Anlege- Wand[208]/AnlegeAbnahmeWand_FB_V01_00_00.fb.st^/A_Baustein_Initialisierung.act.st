@@ -48,6 +48,11 @@ Kippen.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWA
 Dickenverstellung.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[cWAND_1];
 
 (* Hinweis:
+   - Geblaese
+*)
+Geblaese.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[cWAND_1];
+
+(* Hinweis:
    - Einige Bausteine einmalig aufrufen damit die Referenz auf Antriebe geschrieben wird
 *)
 Glastransport( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );

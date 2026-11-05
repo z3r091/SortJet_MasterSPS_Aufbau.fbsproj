@@ -44,7 +44,7 @@ VAR_GLOBAL
                                                                        bScheibenVermessen                        := FALSE,
                                                                        bMessrichtungNegativ                      := FALSE,
                                                                        bScheibenmessungEintransport              := FALSE,
-                                                                       bScheibenmessungSensorVorabAuslauf        := FALSE
+                                                                       bScheibenmessungSensorVorabAuslauf        := TRUE 
                                                                       ),
                                                  stAnlegetisch   :=  ( bIstAnlegestation                         := TRUE,
                                                                        bAnschlagAutomatischAusfahren             := FALSE,
@@ -73,6 +73,8 @@ VAR_GLOBAL
                                                  bAnschlag                     := FALSE,
                                                  bSensorAuslauf                := TRUE,
                                                  bSensorEinlauf                := TRUE,
+                                                 bSensorEinlaufStopp           := FALSE,
+                                                 bSensorAuslaufStopp           := FALSE,
                                                  bDurchlaufSperreZumNachfolger := FALSE,
                                                  bQuerfahrt                    := FALSE,
                                                  bWandverstellung              := [ FALSE ],
@@ -82,12 +84,14 @@ VAR_GLOBAL
                                                  bSlaveAntrieb                 := FALSE,
                                                  bRolltor                      := FALSE,
                                                  bKlemmzylinder                := FALSE,
+                                                 bGreifer                      := [cANZAHL_WAENDE(FALSE)],
                                                  bRFID                         := FALSE,
                                                  bAGV                          := FALSE,
                                                  bKipparme                     := FALSE,
                                                  bMessachseAmEndeVomTisch      := FALSE,
                                                  bDLSSchmiersystem             := FALSE,
-                                                 bGlastransportSlaveVorhanden  := FALSE
+                                                 bGlastransportSlaveVorhanden  := FALSE,
+                                                 wHydraulikstation             := 0
                                                ),
       stStationsParameter                   := ( rLaengeUebergroesseScheibe              := 6000,
                                                  rMinGlasHoeheAutomatischenEintransport  := 0.0,

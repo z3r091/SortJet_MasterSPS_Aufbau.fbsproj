@@ -48,7 +48,7 @@ IF bpReset THEN
       IF tonlSchmierungNichtBetriebsbereit.Q OR bpFehler THEN
 
         wSps2MmiErrorNumber           := 100;
-        wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerSPS;
+        wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerIntern;
         wSps2MmiErrorShuttleSchritt   := STEP_0_E;
         wSps2MmiErrorShuttlePosition4 := 0;
         wSps2MmiErrorShuttlePosition5 := 0;

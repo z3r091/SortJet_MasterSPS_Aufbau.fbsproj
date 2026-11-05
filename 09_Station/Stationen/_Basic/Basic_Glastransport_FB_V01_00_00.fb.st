@@ -23,6 +23,9 @@ VAR_INPUT
   bpHandfahrenMinus                : BOOL;
   bpScheibeZurueckFahren           : BOOL;
   bpScheibeVorFahren               : BOOL;
+  bpAnforderungHandfunktion        : BOOL; // Handfunktionen greifen auch im Automatikbetrieb (z.B. waehrend der Bediener anlegt)
+  bpScheibeQuittiert               : BOOL; // Bediener hat die Scheibe quittiert (Fehlmessung / Messergebnis)
+  bpScheibeFreigegeben             : BOOL; // Scheibe ist nach der Messung freigegeben
   bpReferenz                       : BOOL;
   bpCheck                          : BOOL;
   bpReset                          : BOOL;
@@ -85,6 +88,7 @@ VAR_OUTPUT
   bpScheibeFaehrtUeberEinlauf   : BOOL;
   bpResetAbgeschlossen          : BOOL; // STATUS: Reset wurde abgeschlossen TRUE / FALSE
   bpOutBereitZumAustransport    : BOOL; // OUT STATUS: Bereit zum Austransport [Eintransport auf die Nachfolgerstation]
+  bpAnforderungMessergebnis     : BOOL; // STATUS: Riemen wartet auf das Scann- Ergebnis aus dem Uebergeordneteten Baustein
   bpOutBereitZumEintransport    : BOOL; // OUT STATUS: Bereit zum Eintransport [Austransport auf die Vorgaengerstation]
   bpFreigabeFremdprozess        : BOOL;
   bpSlaveAktiv                  : BOOL;
@@ -125,6 +129,7 @@ VAR
   // REAL 
   rlGefahreneStreckeEintransport    : REAL; // HINWEIS: Weg-Merker fuer die Strecke die beim Eintransport zurueck gelegt werden muss laut Auftrag
   rlPositionAntriebBeiStart         : REAL;
+  rlMaxStreckeErsteScheibe          : REAL; // Max. Weg bis zur ersten Scheibe: Laenge der abgebenden Station, ohne bekannte Laenge die eigene Stationslaenge
   rlGlasgewicht                     : REAL;
   rlPositionScheibenAnfangErkannt   : REAL;
   rlStreckeBisZurVerzoegerung       : REAL;
@@ -169,6 +174,9 @@ VAR
   // TIME 
   tlWarteZeitAufnahme    : TIME; // STATISTIK
 
+
+  // TRIGGER
+  ftlScheibeZurueckFahren : F_TRIG;
 END_VAR
 
 VAR_INPUT
@@ -315,22 +323,22 @@ Vortransport();
 Vortransport_Rueck();
 Durchtransport();
 Messkopplung();
+Laengenmessung();
 SystemCheck();
 Referenz();
 Handfunktionen();
 Meldungen();
 Reset();
 
-IF ( NOT bpOptionMasterSlaveTransport ) THEN
-  IF bpOptionAustransportISOLinie THEN
-    Austransport_ISO();
-  ELSE
-    Austransport();
-    Austransport_Rueckwaertig();
-  END_IF
-ELSE
+IF ( bpOptionAustransportISOLinie ) THEN
+  Austransport_ISO();
+  Austransport_Rueckwaertig_ISO();
+ELSIF ( bpOptionMasterSlaveTransport ) THEN
   Austransport_MasterSlave();
   Austransport_Rueckwaertig_MasterSlave();
+ELSE
+  Austransport();
+  Austransport_Rueckwaertig();
 END_IF
 
 

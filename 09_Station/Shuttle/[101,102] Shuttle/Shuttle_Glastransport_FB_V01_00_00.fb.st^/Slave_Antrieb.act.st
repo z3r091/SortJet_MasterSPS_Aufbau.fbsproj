@@ -21,6 +21,7 @@ blStarteSlaveKopplung := ( (    bpEintransport
                              OR bpDurchtransport
                              OR bpStarteSensorFreiFahren
                              OR bpStarteVorabPositionierung
+                             OR bpStarteVorabPositionierungRueckwaertig
                              OR bpHandfahrenPlus
                              OR bpHandfahrenMinus
                              OR bpCheck )

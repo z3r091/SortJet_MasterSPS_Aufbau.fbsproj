@@ -41,7 +41,7 @@ IF blCoeS277ReadGestartet AND l_fb_CoeS277Lesen.o_b_Done THEN
     SpsError( eFehler_Antrieb,
               999,
               stStationsNummern.NummerIntern,
-              AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+              AutomatikkreisBestimmen(stStationsNummern.NummerSPS),
               awlFehlerinformationen );
   END_IF
 END_IF

@@ -1100,7 +1100,7 @@ IF ( bpCheck ) THEN
           rlGefahreneStreckeEintransport := rpGemesseneGlaslaenge;
 
           rSps2MmiMessungScheibenlaenge   := rpGemesseneGlaslaenge;
-          wSps2MmiMessungStationNummer    := stStationsNummern.NummerSPS;
+          wSps2MmiMessungStationNummer    := stStationsNummern.NummerIntern;
           wSps2MmiMessungSlotNummer       := 1;
           iSps2MmiMessungScheibenanzahl   := 1;
 
@@ -1108,7 +1108,7 @@ IF ( bpCheck ) THEN
 
         ELSE
           rSps2MmiMessungScheibenlaenge   := 0.0;
-          wSps2MmiMessungStationNummer    := stStationsNummern.NummerSPS;
+          wSps2MmiMessungStationNummer    := stStationsNummern.NummerIntern;
           wSps2MmiMessungSlotNummer       := 1;
           iSps2MmiMessungScheibenanzahl   := 0;
 
@@ -1132,7 +1132,7 @@ IF ( bpCheck ) THEN
       Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
 
       rSps2MmiMessungScheibenlaenge   := 0.0;
-      wSps2MmiMessungStationNummer    := stStationsNummern.NummerSPS;
+      wSps2MmiMessungStationNummer    := stStationsNummern.NummerIntern;
       wSps2MmiMessungSlotNummer       := 1;
       iSps2MmiMessungScheibenanzahl   := -1;
 

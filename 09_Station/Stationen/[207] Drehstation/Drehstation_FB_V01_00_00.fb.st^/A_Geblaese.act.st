@@ -7,41 +7,29 @@
 *)
 ACTION A_Geblaese
 //-------------------------------------------------------------------------------------------------
-// STEUERUNG GEBLAESE
+// AKTION GEBLAESE
 //-------------------------------------------------------------------------------------------------
-// Energiesparrmodus:
-//   -  Geblaese bei laengerer Inaktivitaet ausschalten
-rtlAutomatikActiv(CLK := blBetriebsartAutomatik );
+(* Hinweis:
+   - Die Steuerung des Geblaeses liegt im Geblaese-Baustein (Aktion Steuerung), die Station gibt nur die Signale vor
+*)
+rtlAutomatikActiv( CLK := blBetriebsartAutomatik );
 
-IF rtlAutomatikActiv.Q THEN
+IF ( rtlAutomatikActiv.Q ) THEN
   blNachSystemcheckMerker := FALSE;
 END_IF
 
-IF ( blBetriebsartAutomatik OR blBetriebartCheck OR blNachSystemcheckMerker ) THEN
+Geblaese.bpAutomatik        := ( blBetriebsartAutomatik OR blBetriebartCheck OR blNachSystemcheckMerker );
+Geblaese.bpAktivitaet       := BasisStationsParameter.bAuftragAktiv;
+Geblaese.bpAktivitaetFlanke := BasisStationsParameter.stMKs.stStationsOptionen.stAnlegetisch.bIstAnlegestation;
+Geblaese.bpHandEin          := (     blBetriebsartHand
+                                 AND NOT BasisStationsParameter.bVorabpositionieren
+                                 AND ( dwlHandfunktionen.0 OR bgVISUGeblaese[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] OR toflGeblaeseHandfahren.Q ) );
+Geblaese.bpSperre           := BasisStationsParameter.bReset;
 
-  // Energiesparmodus:
-  //   - Gebläse bei längerer Inaktivität ausschalten
-  toflGeblaeseEnergiesparModus( IN := (    BasisStationsParameter.bAuftragAktiv
-                                        OR rtlAutomatikActiv.Q) ,
-                                PT := tgZeitAutoabschaltungEnergiesparModus );
-
-  IF (  toflGeblaeseEnergiesparModus.Q
-       AND BasisStationsParameter.bFreigabe )
-  THEN
-    Geblaese.bpStart := TRUE;
-
-  ELSE
-    Geblaese.bpStart := FALSE;
-
-    blNachSystemcheckMerker := FALSE;
-
-  END_IF
-
+// Nach dem Systemcheck laeuft das Geblaese bis zum Ende des Energiesparmodus
+IF ( blNachSystemcheckMerker AND NOT Geblaese.bpStart ) THEN
+  blNachSystemcheckMerker := FALSE;
 END_IF
 
-(* Hinweis:
-   - Geblaese aktiv
-     => Interne Variable ob das Geblaese angelaufen ist
-*)
 blGeblaeseAktiv := Geblaese.bpDone;
 END_ACTION

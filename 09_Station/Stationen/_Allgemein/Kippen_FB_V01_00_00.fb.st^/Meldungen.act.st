@@ -9,6 +9,17 @@ ACTION Meldungen
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: AUSNAHMESITUATION
 //-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Antriebsfehler werden immer gemeldet
+*)
+IF (     NOT ppParameterBaustein.bKippenMitSchuetz
+     AND NOT bpFehler
+     AND Antrieb.bpFehler )
+THEN
+  wpFehlerNr := cMELDUNG_ANTRIEB_KIPPEN;
+  bpFehler := TRUE;
+END_IF
+
 IF ( bpPositionieren ) THEN
 
   IF ( bpSensorAuslaufVorgaenger ) THEN

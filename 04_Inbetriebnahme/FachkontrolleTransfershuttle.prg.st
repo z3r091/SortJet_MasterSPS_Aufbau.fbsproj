@@ -136,7 +136,7 @@ ELSE
             SpsError( eFehler_Station,
                       cMELDUNG_TS_MELDET_NICHT_OBEN,
                       wpStationNumber,
-                      AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wpStationNumber].stMKs.stStationsNummern.NummerIntern),
+                      AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wpStationNumber].stMKs.stStationsNummern.NummerSPS),
                       wpgFehlerdaten );
           END_IF
 
@@ -231,7 +231,7 @@ ELSE
               SpsHinweis( eFehler_Station,
                           999,
                           wpStationNumber,
-                          AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wpStationNumber].stMKs.stStationsNummern.NummerIntern),
+                          AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wpStationNumber].stMKs.stStationsNummern.NummerSPS),
                           wpgFehlerdaten );
             END_IF
           END_IF  

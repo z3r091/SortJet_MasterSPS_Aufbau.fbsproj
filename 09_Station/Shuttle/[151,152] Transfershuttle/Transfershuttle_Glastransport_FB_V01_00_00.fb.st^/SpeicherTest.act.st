@@ -16,11 +16,14 @@ THEN
 
   (* Fehlerbehandlung:
      - Antrieb [Glastransport]
+     - Abbruch der Testkette ueber STEP_900_E (Meldung und Hupe nur einmal), danach Warten in STEP_910_E
   *)
-  IF ( Antrieb.bpFehler )THEN
+  IF ( Antrieb.bpFehler
+       AND ( steplGlastransporttest < STEP_900_E ) )
+  THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
-    steplScheibeZueruck := STEP_900_E;
+    steplGlastransporttest := STEP_900_E;
   END_IF
 
   CASE steplGlastransporttest OF
@@ -35,12 +38,21 @@ THEN
       tonlWartenAufAnheben(IN:=FALSE);
       tonlWartenAufSenken(IN:=FALSE);
 
+      tonlAntriebNichtFreigegeben( IN := NOT ( Antrieb.bpReglerBereit ),
+                                   PT := cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE );
+
       IF ( Antrieb.bpReglerBereit )THEN
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        tonlAntriebNichtFreigegeben( IN := FALSE );
 
         steplGlastransporttest := STEP_30_E;
+
+      ELSIF ( tonlAntriebNichtFreigegeben.Q ) THEN
+        tonlAntriebNichtFreigegeben( IN := FALSE );
+        wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
+        steplGlastransporttest := STEP_900_E;
       END_IF
 
     // GlastransportTest ==============================
@@ -274,7 +286,6 @@ THEN
     STEP_500_E:
       // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Glastransport UND ABFRAGEN SENKEN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
       //
-      // IF ( NOT bpLetzteScheibe ) THEN
       out_bShuttleAnheben := FALSE;
 
       out_bScheibenKontrolleAuslaufSeiteAuf := FALSE;
@@ -318,7 +329,7 @@ THEN
       SpsError( eFehler_Station,
                 wpFehlerNr,
                 stStationsNummern.NummerIntern,
-                AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+                AutomatikkreisBestimmen(stStationsNummern.NummerSPS),
                 wpgFehlerdaten );
 
       FOR wlSubIndex := 1 TO cANZAHL_HUPEN DO
@@ -349,13 +360,12 @@ ELSE
     bpDone:=FALSE;
     bpOutBereitZumEintransport := FALSE;
 
-    IF ( NOT bpLetzteScheibe ) THEN
-      out_bScheibenKontrolleAuslaufSeiteAuf := FALSE;
-      blScheibenKontrolleAuslaufseiteEin    := FALSE;
-      out_bScheibenKontrolleEinlaufSeiteAuf := FALSE;
-      blScheibenKontrolleEinlaufseiteEin    := FALSE;
-      out_bShuttleAnheben := FALSE;
-    END_IF
+    out_bScheibenKontrolleAuslaufSeiteAuf := FALSE;
+    blScheibenKontrolleAuslaufseiteEin    := FALSE;
+    out_bScheibenKontrolleEinlaufSeiteAuf := FALSE;
+    blScheibenKontrolleEinlaufseiteEin    := FALSE;
+    out_bShuttleAnheben := FALSE;
+    tonlAntriebNichtFreigegeben( IN := FALSE );
 
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     steplGlastransporttest := STEP_0_E;

@@ -68,7 +68,7 @@ THEN
     SpsHinweis( eFehler_Station,
                 cMELDUNG_TS_KONNTE_KEIN_MASTER_TS_ERMITTELT_WERDEN,
                 wTransferstation1,
-                AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wTransferstation1].stMKs.stStationsNummern.NummerIntern),
+                AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wTransferstation1].stMKs.stStationsNummern.NummerSPS),
                 wpgFehlerdaten );
 
   (* Anmerkung:

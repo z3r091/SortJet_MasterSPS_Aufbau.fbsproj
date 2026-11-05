@@ -13,7 +13,7 @@ IF ( blStartePositionWaagerecht ) THEN
 
   // Ausnahmesituation
   IF ( Kippen.bpFehler ) THEN
-    Kippen.bpStartKippenAb := FALSE;
+    Kippen.bpPositionieren := FALSE;
     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
     steplKippenWaagerecht := STEP_900_E;
   END_IF
@@ -23,14 +23,15 @@ IF ( blStartePositionWaagerecht ) THEN
     // KIPPEN WAAGERECHT ===========================
     STEP_0_E:
       blBewegungAbgeschlossen := FALSE;
-      Kippen.bpStartKippenAb := TRUE;
+      Kippen.epZielPosition := eKippen_Position_0Grad;
+      Kippen.bpPositionieren := TRUE;
 
       steplKippenWaagerecht := STEP_10_E;
 
     // KIPPEN WAAGERECHT ===========================
     STEP_10_E:
       IF ( Kippen.bpDone ) THEN
-        Kippen.bpStartKippenAb := FALSE;
+        Kippen.bpPositionieren := FALSE;
         steplKippenWaagerecht := STEP_1000_E;
       END_IF
 
@@ -46,7 +47,7 @@ IF ( blStartePositionWaagerecht ) THEN
   END_CASE
 ELSE
   IF ( steplKippenWaagerecht > STEP_0_E ) THEN
-    Kippen.bpStartKippenAb  := FALSE;
+    Kippen.bpPositionieren := FALSE;
     blBewegungAbgeschlossen := FALSE;
     steplKippenWaagerecht := STEP_0_E;
   END_IF

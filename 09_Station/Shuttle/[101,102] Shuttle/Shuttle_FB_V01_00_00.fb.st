@@ -69,7 +69,6 @@ VAR
   rlLetztePosition  : REAL;
 
   // TIMER
-  toflGeblaeseEnergiesparModus          : TOF; //Timer um das Geblaese bei langen Stillstandszeiten abzuschalten 
   tonlMaxWarteAufResetErfolgreich       : TON; 
   tonlUpdateTimer                       : TON; // Verfahrlogik 
   tonWaitTimerAnsteuerungResourcen      : ARRAY[cWAND_1..cANZAHL_WAENDE] OF TON;
@@ -79,6 +78,7 @@ VAR
   atoflSensorEinlauf                    : ARRAY[cWAND_1..cANZAHL_WAENDE] OF TOF;
   atoflSensorAuslauf                    : ARRAY[cWAND_1..cANZAHL_WAENDE] OF TOF;
   atoflSensorAUslaufStopp               : ARRAY[cWAND_1..cANZAHL_WAENDE] OF TOF;
+  atoflSensorEinlaufStopp               : ARRAY[cWAND_1..cANZAHL_WAENDE] OF TOF;
 
   // TRIGGER
   rtlAutomatikActiv                     : R_TRIG;
@@ -110,16 +110,21 @@ VAR
   Austransport                    : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Shuttle_Austransport_FB_V01_00_00;
   Durchtransport                  : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Shuttle_Durchtransport_FB_V01_00_00;
   AnsteuerungRessourcen           : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Shuttle_Ansteuerung_Ressourcen_FB_V01_00_00;
+  Greifer                         : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Shuttle_Greifer_FB_V01_00_00; // Ausbaustufe stStationsAufbau.bGreifer
 
 END_VAR
 VAR
   // Alle Sensoren
-  blAlleEinlaufSensoren      : BOOL;
+  blAlleEinlaufStoppSensoren : BOOL; // wirksame Einlauf-Stopp-Sensoren (ohne MK: Einlaufsensor)
   blAlleAuslaufSensoren      : BOOL;
   blAlleEinlaufVorabSensoren : BOOL;
   blAlleAuslaufVorabSensoren : BOOL;
   blAlleAuslaufStoppSensoren : BOOL;
+  ablSensorEinlaufStopp      : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // wirksamer Einlauf-Stopp-Sensor (ohne MK: Einlaufsensor)
+  ablSensorAuslaufStopp      : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // wirksamer Auslauf-Stopp-Sensor (ohne MK: Auslaufsensor)
   blAlleVerfahrfreigaben     : BOOL;
+  blAlleGreiferSicher        : BOOL; // Alle Greifer in sicherer Position mit eingefahrenen Glasrueckhaltern (oder nicht vorhanden)
+  ablQuittScheibe            : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Scheibenquittierung Glastransport bzw. Greifer
   blDone                     : BOOL;
   blFehlerAktiv              : BOOL;
 
@@ -128,7 +133,8 @@ VAR
   in_bSensorAuslauf                                   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle Sensoren von links nach rechts Sensor 4
   in_bSensorEinlaufVorab                              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle Sensoren von links nach rechts Sensor 2
   in_bSensorAuslaufVorab                              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle Sensoren von links nach rechts Sensor 3
-  in_bSensorAuslaufStopp                              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle Sensoren von links nach rechts Sensor 5
+  in_bSensorEinlaufStopp                              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle Sensoren von links nach rechts Sensor 0 (nur mit MK bSensorEinlaufStopp)
+  in_bSensorAuslaufStopp                              : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle Sensoren von links nach rechts Sensor 5 (nur mit MK bSensorAuslaufStopp)
   in_bDatenlichtschrankeShuttlebahnOK          AT %I* : BOOL; // Bauteil an der Shuttlebahn => Sender / Empfaenger
   in_bDatenlichtschrankeShuttleOK              AT %I* : BOOL; // Bauteil auf dem Shuttle => Sender / Empfaenger
   in_bNetzteil_24V_OK                          AT %I* : BOOL;
@@ -175,21 +181,28 @@ END_IF
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   in_bSensorEinlauf[wlIndex] := Glastransport[wlIndex].Antrieb.udipEingaengeUmrichter.cXG31_1_I_1;
   in_bSensorAuslauf[wlIndex] := Glastransport[wlIndex].Antrieb.udipEingaengeUmrichter.cXG31_2_I_2;
+
+  ablSensorEinlaufStopp[wlIndex] := SEL( BasisStationsParameter.stMKs.stStationsAufbau.bSensorEinlaufStopp, in_bSensorEinlauf[wlIndex], in_bSensorEinlaufStopp[wlIndex] );
+  ablSensorAuslaufStopp[wlIndex] := SEL( BasisStationsParameter.stMKs.stStationsAufbau.bSensorAuslaufStopp, in_bSensorAuslauf[wlIndex], in_bSensorAuslaufStopp[wlIndex] );
 END_FOR
 
-blAlleEinlaufSensoren      := FALSE;
+blAlleEinlaufStoppSensoren := FALSE;
 blAlleAuslaufSensoren      := FALSE;
 blAlleEinlaufVorabSensoren := FALSE;
 blAlleAuslaufVorabSensoren := FALSE;
 blAlleAuslaufStoppSensoren := FALSE;
 blAlleVerfahrfreigaben     := TRUE;
+blAlleGreiferSicher        := TRUE;
 
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
-  blAlleEinlaufSensoren      := blAlleEinlaufSensoren OR in_bSensorEinlauf[wlIndex];
+  blAlleGreiferSicher        := blAlleGreiferSicher
+                                AND (    ( Greifer[wlIndex].bpSicherePosition AND Greifer[wlIndex].bpGlasRueckhalterEingefahren )
+                                      OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex] );
+  blAlleEinlaufStoppSensoren := blAlleEinlaufStoppSensoren OR ablSensorEinlaufStopp[wlIndex];
   blAlleAuslaufSensoren      := blAlleAuslaufSensoren OR in_bSensorAuslauf[wlIndex];
   blAlleEinlaufVorabSensoren := blAlleEinlaufVorabSensoren OR in_bSensorEinlaufVorab[wlIndex];
   blAlleAuslaufVorabSensoren := blAlleAuslaufVorabSensoren OR in_bSensorAuslaufVorab[wlIndex];
-  blAlleAuslaufStoppSensoren := blAlleAuslaufStoppSensoren OR in_bSensorAuslaufStopp[wlIndex];
+  blAlleAuslaufStoppSensoren := blAlleAuslaufStoppSensoren OR ablSensorAuslaufStopp[wlIndex];
   blAlleVerfahrfreigaben     := blAlleVerfahrfreigaben AND Glastransport[wlIndex].bpVerfahrFreigabe;
 END_FOR
 
@@ -237,7 +250,7 @@ IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
       
       IF BasisStationsParameter.stMKs.stStationsAufbau.bGlastransport[wlIndex] THEN
         rSps2MmiMessungScheibenlaenge   := 0;
-        wSps2MmiMessungStationNummer    := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+        wSps2MmiMessungStationNummer    := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
         wSps2MmiMessungSlotNummer       := wlIndex;
         iSps2MmiMessungScheibenanzahl   := 0;
         
@@ -280,7 +293,9 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                          Glastransport := Glastransport[wlIndex],
                          Kippen := Kippen,
                          Wandverstellung := Wandverstellung[wlIndex],
-                         Geblaese := Geblaese[wlIndex]
+                         Geblaese := Geblaese[wlIndex],
+                         bpGreiferAktiv := BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex],
+                         Greifer := Greifer[wlIndex]
                        );
   Austransport[wlIndex]( BasisStationsParameter := BasisStationsParameter, 
                          wWand := wlIndex,
@@ -291,7 +306,9 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                          Glastransport := Glastransport[wlIndex],
                          Kippen := Kippen,
                          Wandverstellung := Wandverstellung[wlIndex],
-                         Geblaese := Geblaese[wlIndex]
+                         Geblaese := Geblaese[wlIndex],
+                         bpGreiferAktiv := BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex],
+                         Greifer := Greifer[wlIndex]
                        );
                          
   Durchtransport[wlIndex]( BasisStationsParameter := BasisStationsParameter, 
@@ -314,7 +331,9 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                                   Glastransport := Glastransport[wlIndex],
                                   Kippen := Kippen,
                                   Wandverstellung := Wandverstellung[wlIndex],
-                                  Geblaese := Geblaese[wlIndex]
+                                  Geblaese := Geblaese[wlIndex],
+                                  bpGreiferAktiv := BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex],
+                                  Greifer := Greifer[wlIndex]
                                 );
 END_FOR
 

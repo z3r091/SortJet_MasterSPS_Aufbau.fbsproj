@@ -48,12 +48,12 @@ THEN
         steplVortransport := STEP_900_E;
       END_IF
 
-    // EINTRANSPORT ==============================
+    // VORTRANSPORT ==============================
     STEP_5_E:
       Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.REFERENZ;
       steplVortransport := STEP_6_E;
 
-    // EINTRANSPORT ==============================
+    // VORTRANSPORT ==============================
     STEP_6_E:
       IF Antrieb.bpDone THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -184,6 +184,7 @@ THEN
       // ---------------------------------------------------------------------------------------
       rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
       rlAntriebsPositionStartVortransport := Antrieb.rpIstPosition;
+      rpVorpositionierterWeg := REAL#0;
 
       Antrieb.rpGeschwindigkeit := rgGeschwindigkeitVorpositionieren;
       Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -276,6 +277,8 @@ THEN
          - Einlaufsensor belegt sofoert mit einem Fehlerbeenden
       *)
       IF ( NOT blAuslaufsensor ) THEN
+        // Tatsaechlich vorpositionierter Weg nach dem Freifahren des Auslaufsensors
+        rpVorpositionierterWeg := ABS(Antrieb.rpIstPosition - rlAntriebsPositionStartVortransport);
         bpScheibeFaehrtUeberAuslauf := FALSE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplVortransport := STEP_300_E;

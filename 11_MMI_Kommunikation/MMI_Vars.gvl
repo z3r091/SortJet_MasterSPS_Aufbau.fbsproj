@@ -160,6 +160,7 @@ VAR_GLOBAL
   M_SB0_MMI_SortierungInsertExtractionShuttleData : BOOL;// NEU
   M_SB0_MMI_TS_REPOSITIONING_LITES                : BOOL;
   M_SB0_MMI_SortierungFaecherwagenwechsel         : BOOL;
+  M_SB0_MMI_SORTIERUNGFAECHERWAGENBALDVOLL        : BOOL;
   M_SB0_MMI_SortierungCancelShuttleData           : BOOL;
   M_SB0_MMI_SORTIERUNGCANCELQUEUEDATA             : BOOL;
   M_SB0_MMI_SortierungAutomatik_Stop              : BOOL;

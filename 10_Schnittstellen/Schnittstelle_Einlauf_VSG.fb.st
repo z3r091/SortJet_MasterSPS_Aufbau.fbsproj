@@ -51,8 +51,8 @@ END_IF
 // SCHNITTSTELLE
 //-------------------------------------------------------------------------------------------------
 // Signale von der VSG
-blBereitZumAustransport := in_bGlasBereit OR bgVisu_Schnittstelle_Einlauf_Force_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern];
-blAutomatikBetriebAktiv := in_bAutomatikBetrieb OR bgVisu_Schnittstelle_Force_AutomatikBetrieb[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern];;
+blBereitZumAustransport := in_bGlasBereit OR bgVisu_Schnittstelle_Einlauf_Force_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS];
+blAutomatikBetriebAktiv := in_bAutomatikBetrieb OR bgVisu_Schnittstelle_Force_AutomatikBetrieb[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS];;
 
 //-------------------------------------------------------------------------------------------------
 // AUSGAENGE
@@ -64,8 +64,8 @@ out_bBereitZumEintrasport := BasisStationsParameter.InGlasTransportNachfolger[cW
 //-------------------------------------------------------------------------------------------------
 // VISU
 //-------------------------------------------------------------------------------------------------
-bgVisu_Schnittstelle_Einlauf_Status_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern]   := BasisStationsParameter.OutGlasTransport[cWAND_1].bBereitZumAustransport;
-bgVisu_Schnittstelle_Status_AutomatikBetrieb[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern]     := BasisStationsParameter.OutGlasTransport[cWAND_1].bAutomatikBetriebAktiv;
-bgVisu_Schnittstelle_Status_Einlaufsensor[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern]        := out_bEinlaufsensor;
-bgVisu_Schnittstelle_Status_BereitZumEintrasport[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern] := out_bBereitZumEintrasport;
+bgVisu_Schnittstelle_Einlauf_Status_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]   := BasisStationsParameter.OutGlasTransport[cWAND_1].bBereitZumAustransport;
+bgVisu_Schnittstelle_Status_AutomatikBetrieb[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]     := BasisStationsParameter.OutGlasTransport[cWAND_1].bAutomatikBetriebAktiv;
+bgVisu_Schnittstelle_Status_Einlaufsensor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]        := out_bEinlaufsensor;
+bgVisu_Schnittstelle_Status_BereitZumEintrasport[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] := out_bBereitZumEintrasport;
 END_FUNCTION_BLOCK

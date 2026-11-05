@@ -1,0 +1,232 @@
+(* METADATA
+{
+  "v3Meta": {
+    "objectGuid": "402b1ef0-d461-45b4-8faf-9d71f219f2c1"
+  }
+}
+*)
+{attribute 'excludefrombuild'}
+{attribute 'allow_unqualified_access'}
+NAMESPACE Konfiguration_FW_Hydraulik
+VAR_CONFIG
+
+//-------------------------------------------------------------------------------------------------
+// KONFIGURATION: FAECHERWAGENSTATIONEN VARIANTE HYDRAULIK
+// Nur verwenden, wenn aFaecherwagenstation (Globale_Bausteine) vom Typ Faecherwagenstation_Hydraulik_FB_V01_00_00 ist:
+// dann Attribut excludefrombuild entfernen. Es darf immer nur eine Variante im Build sein.
+// Platzhalter: Eingaenge %MX1.0 (FALSE) / %MX1.1 (TRUE), Ausgaenge je Station ab %MX<Station*10>.0
+//-------------------------------------------------------------------------------------------------
+
+  // ------------------------------------ STATION 301 ------------------------------------------------
+  // EINGAENGE
+  Globale_Bausteine.aFaecherwagenstation[301].in_bHubrahmenOben                                 AT %MX1.0    : BOOL; // TODO: Hubrahmen oben 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bHubrahmenUnten                                AT %MX1.0    : BOOL; // TODO: Hubrahmen unten 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bFaecherwagenVorne                             AT %MX1.0    : BOOL; // TODO: Faecherwagen vorne 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bFaecherwagenHinten                            AT %MX1.0    : BOOL; // TODO: Faecherwagen hinten 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bZentrierungOffen                              AT %MX1.0    : BOOL; // TODO: Zentrierung offen 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bZentrierungGeschlossen                        AT %MX1.0    : BOOL; // TODO: Zentrierung geschlossen 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bAnschlagOben                                  AT %MX1.0    : BOOL; // TODO: Anschlag oben 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bAnschlagUnten                                 AT %MX1.0    : BOOL; // TODO: Anschlag unten 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bAnschlagVorne                                 AT %MX1.0    : BOOL; // TODO: OPTION AGV: Anschlag vorne 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bAnschlagHinten                                AT %MX1.0    : BOOL; // TODO: OPTION AGV: Anschlag hinten 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bFWInAusrichtPosition                          AT %MX1.0    : BOOL; // TODO: Faecherwagen in Ausrichtposition 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bMutingSensorLinks                             AT %MX1.0    : BOOL; // TODO: Muting-Sensor links 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bMutingSensorRechts                            AT %MX1.0    : BOOL; // TODO: Muting-Sensor rechts 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bStartSchleusen                                AT %MX1.0    : BOOL; // TODO: Taster Ein-/Ausschleusen 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bSicherheitsrelaisOK                           AT %MX1.1    : BOOL; // TODO: Sicherheitsrelais in Ordnung 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // TODO: Abrollsicherung des Rolltors nicht ausgeloest 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bRFID_DataValid                                AT %MX1.0    : BOOL; // TODO: RFID Daten gueltig 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bRFID_NR1                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 1 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bRFID_NR2                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 2 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bRFID_NR3                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 3 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bRFID_NR4                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 4 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bRFID_NR5                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 5 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bRFID_NR6                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 6 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bRFID_NR7                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 7 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bRFID_NR8                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 8 301, aus Schaltplan
+  // AUSGAENGE
+  Globale_Bausteine.aFaecherwagenstation[301].out_bHubrahmenHeben                               AT %MX3010.0 : BOOL; // TODO: Hubrahmen heben 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bHubrahmenSenken                              AT %MX3010.1 : BOOL; // TODO: Hubrahmen senken 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bFaecherwagenVor                              AT %MX3010.2 : BOOL; // TODO: Faecherwagen vor 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bFaecherwagenZurueck                          AT %MX3010.3 : BOOL; // TODO: Faecherwagen zurueck 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bZentrierungOeffnen                           AT %MX3010.4 : BOOL; // TODO: Zentrierung oeffnen 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bZentrierungSchliessen                        AT %MX3010.5 : BOOL; // TODO: Zentrierung schliessen 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bAnschlagAuf                                  AT %MX3010.6 : BOOL; // TODO: Anschlag auf 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bAnschlagAb                                   AT %MX3010.7 : BOOL; // TODO: Anschlag ab 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bAnschlagVor                                  AT %MX3011.0 : BOOL; // TODO: OPTION AGV: Anschlag vor 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bAnschlagZurueck                              AT %MX3011.1 : BOOL; // TODO: OPTION AGV: Anschlag zurueck 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bFreigabeSchleusen                            AT %MX3011.2 : BOOL; // TODO: Leuchte im Taster Ein-/Ausschleusen 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bMutingSensorReset                            AT %MX3011.3 : BOOL; // TODO: Reset Muting-Sensoren 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bResetSicherheitsrelais                       AT %MX3011.4 : BOOL; // TODO: Reset Sicherheitsrelais 301, aus Schaltplan
+
+  // ------------------------------------ STATION 302 ------------------------------------------------
+  // EINGAENGE
+  Globale_Bausteine.aFaecherwagenstation[302].in_bHubrahmenOben                                 AT %MX1.0    : BOOL; // TODO: Hubrahmen oben 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bHubrahmenUnten                                AT %MX1.0    : BOOL; // TODO: Hubrahmen unten 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bFaecherwagenVorne                             AT %MX1.0    : BOOL; // TODO: Faecherwagen vorne 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bFaecherwagenHinten                            AT %MX1.0    : BOOL; // TODO: Faecherwagen hinten 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bZentrierungOffen                              AT %MX1.0    : BOOL; // TODO: Zentrierung offen 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bZentrierungGeschlossen                        AT %MX1.0    : BOOL; // TODO: Zentrierung geschlossen 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bAnschlagOben                                  AT %MX1.0    : BOOL; // TODO: Anschlag oben 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bAnschlagUnten                                 AT %MX1.0    : BOOL; // TODO: Anschlag unten 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bAnschlagVorne                                 AT %MX1.0    : BOOL; // TODO: OPTION AGV: Anschlag vorne 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bAnschlagHinten                                AT %MX1.0    : BOOL; // TODO: OPTION AGV: Anschlag hinten 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bFWInAusrichtPosition                          AT %MX1.0    : BOOL; // TODO: Faecherwagen in Ausrichtposition 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bMutingSensorLinks                             AT %MX1.0    : BOOL; // TODO: Muting-Sensor links 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bMutingSensorRechts                            AT %MX1.0    : BOOL; // TODO: Muting-Sensor rechts 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bStartSchleusen                                AT %MX1.0    : BOOL; // TODO: Taster Ein-/Ausschleusen 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bSicherheitsrelaisOK                           AT %MX1.1    : BOOL; // TODO: Sicherheitsrelais in Ordnung 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // TODO: Abrollsicherung des Rolltors nicht ausgeloest 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bRFID_DataValid                                AT %MX1.0    : BOOL; // TODO: RFID Daten gueltig 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bRFID_NR1                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 1 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bRFID_NR2                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 2 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bRFID_NR3                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 3 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bRFID_NR4                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 4 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bRFID_NR5                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 5 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bRFID_NR6                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 6 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bRFID_NR7                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 7 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bRFID_NR8                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 8 302, aus Schaltplan
+  // AUSGAENGE
+  Globale_Bausteine.aFaecherwagenstation[302].out_bHubrahmenHeben                               AT %MX3020.0 : BOOL; // TODO: Hubrahmen heben 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bHubrahmenSenken                              AT %MX3020.1 : BOOL; // TODO: Hubrahmen senken 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bFaecherwagenVor                              AT %MX3020.2 : BOOL; // TODO: Faecherwagen vor 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bFaecherwagenZurueck                          AT %MX3020.3 : BOOL; // TODO: Faecherwagen zurueck 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bZentrierungOeffnen                           AT %MX3020.4 : BOOL; // TODO: Zentrierung oeffnen 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bZentrierungSchliessen                        AT %MX3020.5 : BOOL; // TODO: Zentrierung schliessen 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bAnschlagAuf                                  AT %MX3020.6 : BOOL; // TODO: Anschlag auf 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bAnschlagAb                                   AT %MX3020.7 : BOOL; // TODO: Anschlag ab 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bAnschlagVor                                  AT %MX3021.0 : BOOL; // TODO: OPTION AGV: Anschlag vor 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bAnschlagZurueck                              AT %MX3021.1 : BOOL; // TODO: OPTION AGV: Anschlag zurueck 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bFreigabeSchleusen                            AT %MX3021.2 : BOOL; // TODO: Leuchte im Taster Ein-/Ausschleusen 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bMutingSensorReset                            AT %MX3021.3 : BOOL; // TODO: Reset Muting-Sensoren 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bResetSicherheitsrelais                       AT %MX3021.4 : BOOL; // TODO: Reset Sicherheitsrelais 302, aus Schaltplan
+
+  // ------------------------------------ STATION 303 ------------------------------------------------
+  // EINGAENGE
+  Globale_Bausteine.aFaecherwagenstation[303].in_bHubrahmenOben                                 AT %MX1.0    : BOOL; // TODO: Hubrahmen oben 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bHubrahmenUnten                                AT %MX1.0    : BOOL; // TODO: Hubrahmen unten 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bFaecherwagenVorne                             AT %MX1.0    : BOOL; // TODO: Faecherwagen vorne 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bFaecherwagenHinten                            AT %MX1.0    : BOOL; // TODO: Faecherwagen hinten 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bZentrierungOffen                              AT %MX1.0    : BOOL; // TODO: Zentrierung offen 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bZentrierungGeschlossen                        AT %MX1.0    : BOOL; // TODO: Zentrierung geschlossen 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bAnschlagOben                                  AT %MX1.0    : BOOL; // TODO: Anschlag oben 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bAnschlagUnten                                 AT %MX1.0    : BOOL; // TODO: Anschlag unten 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bAnschlagVorne                                 AT %MX1.0    : BOOL; // TODO: OPTION AGV: Anschlag vorne 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bAnschlagHinten                                AT %MX1.0    : BOOL; // TODO: OPTION AGV: Anschlag hinten 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bFWInAusrichtPosition                          AT %MX1.0    : BOOL; // TODO: Faecherwagen in Ausrichtposition 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bMutingSensorLinks                             AT %MX1.0    : BOOL; // TODO: Muting-Sensor links 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bMutingSensorRechts                            AT %MX1.0    : BOOL; // TODO: Muting-Sensor rechts 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bStartSchleusen                                AT %MX1.0    : BOOL; // TODO: Taster Ein-/Ausschleusen 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bSicherheitsrelaisOK                           AT %MX1.1    : BOOL; // TODO: Sicherheitsrelais in Ordnung 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // TODO: Abrollsicherung des Rolltors nicht ausgeloest 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bRFID_DataValid                                AT %MX1.0    : BOOL; // TODO: RFID Daten gueltig 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bRFID_NR1                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 1 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bRFID_NR2                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 2 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bRFID_NR3                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 3 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bRFID_NR4                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 4 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bRFID_NR5                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 5 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bRFID_NR6                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 6 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bRFID_NR7                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 7 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bRFID_NR8                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 8 303, aus Schaltplan
+  // AUSGAENGE
+  Globale_Bausteine.aFaecherwagenstation[303].out_bHubrahmenHeben                               AT %MX3030.0 : BOOL; // TODO: Hubrahmen heben 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bHubrahmenSenken                              AT %MX3030.1 : BOOL; // TODO: Hubrahmen senken 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bFaecherwagenVor                              AT %MX3030.2 : BOOL; // TODO: Faecherwagen vor 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bFaecherwagenZurueck                          AT %MX3030.3 : BOOL; // TODO: Faecherwagen zurueck 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bZentrierungOeffnen                           AT %MX3030.4 : BOOL; // TODO: Zentrierung oeffnen 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bZentrierungSchliessen                        AT %MX3030.5 : BOOL; // TODO: Zentrierung schliessen 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bAnschlagAuf                                  AT %MX3030.6 : BOOL; // TODO: Anschlag auf 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bAnschlagAb                                   AT %MX3030.7 : BOOL; // TODO: Anschlag ab 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bAnschlagVor                                  AT %MX3031.0 : BOOL; // TODO: OPTION AGV: Anschlag vor 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bAnschlagZurueck                              AT %MX3031.1 : BOOL; // TODO: OPTION AGV: Anschlag zurueck 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bFreigabeSchleusen                            AT %MX3031.2 : BOOL; // TODO: Leuchte im Taster Ein-/Ausschleusen 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bMutingSensorReset                            AT %MX3031.3 : BOOL; // TODO: Reset Muting-Sensoren 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bResetSicherheitsrelais                       AT %MX3031.4 : BOOL; // TODO: Reset Sicherheitsrelais 303, aus Schaltplan
+
+  // ------------------------------------ STATION 304 ------------------------------------------------
+  // EINGAENGE
+  Globale_Bausteine.aFaecherwagenstation[304].in_bHubrahmenOben                                 AT %MX1.0    : BOOL; // TODO: Hubrahmen oben 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bHubrahmenUnten                                AT %MX1.0    : BOOL; // TODO: Hubrahmen unten 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bFaecherwagenVorne                             AT %MX1.0    : BOOL; // TODO: Faecherwagen vorne 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bFaecherwagenHinten                            AT %MX1.0    : BOOL; // TODO: Faecherwagen hinten 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bZentrierungOffen                              AT %MX1.0    : BOOL; // TODO: Zentrierung offen 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bZentrierungGeschlossen                        AT %MX1.0    : BOOL; // TODO: Zentrierung geschlossen 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bAnschlagOben                                  AT %MX1.0    : BOOL; // TODO: Anschlag oben 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bAnschlagUnten                                 AT %MX1.0    : BOOL; // TODO: Anschlag unten 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bAnschlagVorne                                 AT %MX1.0    : BOOL; // TODO: OPTION AGV: Anschlag vorne 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bAnschlagHinten                                AT %MX1.0    : BOOL; // TODO: OPTION AGV: Anschlag hinten 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bFWInAusrichtPosition                          AT %MX1.0    : BOOL; // TODO: Faecherwagen in Ausrichtposition 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bMutingSensorLinks                             AT %MX1.0    : BOOL; // TODO: Muting-Sensor links 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bMutingSensorRechts                            AT %MX1.0    : BOOL; // TODO: Muting-Sensor rechts 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bStartSchleusen                                AT %MX1.0    : BOOL; // TODO: Taster Ein-/Ausschleusen 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bSicherheitsrelaisOK                           AT %MX1.1    : BOOL; // TODO: Sicherheitsrelais in Ordnung 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // TODO: Abrollsicherung des Rolltors nicht ausgeloest 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bRFID_DataValid                                AT %MX1.0    : BOOL; // TODO: RFID Daten gueltig 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bRFID_NR1                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 1 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bRFID_NR2                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 2 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bRFID_NR3                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 3 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bRFID_NR4                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 4 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bRFID_NR5                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 5 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bRFID_NR6                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 6 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bRFID_NR7                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 7 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bRFID_NR8                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 8 304, aus Schaltplan
+  // AUSGAENGE
+  Globale_Bausteine.aFaecherwagenstation[304].out_bHubrahmenHeben                               AT %MX3040.0 : BOOL; // TODO: Hubrahmen heben 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bHubrahmenSenken                              AT %MX3040.1 : BOOL; // TODO: Hubrahmen senken 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bFaecherwagenVor                              AT %MX3040.2 : BOOL; // TODO: Faecherwagen vor 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bFaecherwagenZurueck                          AT %MX3040.3 : BOOL; // TODO: Faecherwagen zurueck 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bZentrierungOeffnen                           AT %MX3040.4 : BOOL; // TODO: Zentrierung oeffnen 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bZentrierungSchliessen                        AT %MX3040.5 : BOOL; // TODO: Zentrierung schliessen 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bAnschlagAuf                                  AT %MX3040.6 : BOOL; // TODO: Anschlag auf 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bAnschlagAb                                   AT %MX3040.7 : BOOL; // TODO: Anschlag ab 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bAnschlagVor                                  AT %MX3041.0 : BOOL; // TODO: OPTION AGV: Anschlag vor 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bAnschlagZurueck                              AT %MX3041.1 : BOOL; // TODO: OPTION AGV: Anschlag zurueck 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bFreigabeSchleusen                            AT %MX3041.2 : BOOL; // TODO: Leuchte im Taster Ein-/Ausschleusen 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bMutingSensorReset                            AT %MX3041.3 : BOOL; // TODO: Reset Muting-Sensoren 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bResetSicherheitsrelais                       AT %MX3041.4 : BOOL; // TODO: Reset Sicherheitsrelais 304, aus Schaltplan
+
+  // ------------------------------------ STATION 305 ------------------------------------------------
+  // EINGAENGE
+  Globale_Bausteine.aFaecherwagenstation[305].in_bHubrahmenOben                                 AT %MX1.0    : BOOL; // TODO: Hubrahmen oben 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bHubrahmenUnten                                AT %MX1.0    : BOOL; // TODO: Hubrahmen unten 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bFaecherwagenVorne                             AT %MX1.0    : BOOL; // TODO: Faecherwagen vorne 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bFaecherwagenHinten                            AT %MX1.0    : BOOL; // TODO: Faecherwagen hinten 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bZentrierungOffen                              AT %MX1.0    : BOOL; // TODO: Zentrierung offen 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bZentrierungGeschlossen                        AT %MX1.0    : BOOL; // TODO: Zentrierung geschlossen 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bAnschlagOben                                  AT %MX1.0    : BOOL; // TODO: Anschlag oben 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bAnschlagUnten                                 AT %MX1.0    : BOOL; // TODO: Anschlag unten 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bAnschlagVorne                                 AT %MX1.0    : BOOL; // TODO: OPTION AGV: Anschlag vorne 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bAnschlagHinten                                AT %MX1.0    : BOOL; // TODO: OPTION AGV: Anschlag hinten 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bFWInAusrichtPosition                          AT %MX1.0    : BOOL; // TODO: Faecherwagen in Ausrichtposition 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bMutingSensorLinks                             AT %MX1.0    : BOOL; // TODO: Muting-Sensor links 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bMutingSensorRechts                            AT %MX1.0    : BOOL; // TODO: Muting-Sensor rechts 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bStartSchleusen                                AT %MX1.0    : BOOL; // TODO: Taster Ein-/Ausschleusen 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bSicherheitsrelaisOK                           AT %MX1.1    : BOOL; // TODO: Sicherheitsrelais in Ordnung 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // TODO: Abrollsicherung des Rolltors nicht ausgeloest 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bRFID_DataValid                                AT %MX1.0    : BOOL; // TODO: RFID Daten gueltig 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bRFID_NR1                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 1 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bRFID_NR2                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 2 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bRFID_NR3                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 3 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bRFID_NR4                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 4 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bRFID_NR5                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 5 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bRFID_NR6                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 6 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bRFID_NR7                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 7 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bRFID_NR8                                      AT %MX1.0    : BOOL; // TODO: RFID Bit 8 305, aus Schaltplan
+  // AUSGAENGE
+  Globale_Bausteine.aFaecherwagenstation[305].out_bHubrahmenHeben                               AT %MX3050.0 : BOOL; // TODO: Hubrahmen heben 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bHubrahmenSenken                              AT %MX3050.1 : BOOL; // TODO: Hubrahmen senken 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bFaecherwagenVor                              AT %MX3050.2 : BOOL; // TODO: Faecherwagen vor 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bFaecherwagenZurueck                          AT %MX3050.3 : BOOL; // TODO: Faecherwagen zurueck 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bZentrierungOeffnen                           AT %MX3050.4 : BOOL; // TODO: Zentrierung oeffnen 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bZentrierungSchliessen                        AT %MX3050.5 : BOOL; // TODO: Zentrierung schliessen 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bAnschlagAuf                                  AT %MX3050.6 : BOOL; // TODO: Anschlag auf 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bAnschlagAb                                   AT %MX3050.7 : BOOL; // TODO: Anschlag ab 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bAnschlagVor                                  AT %MX3051.0 : BOOL; // TODO: OPTION AGV: Anschlag vor 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bAnschlagZurueck                              AT %MX3051.1 : BOOL; // TODO: OPTION AGV: Anschlag zurueck 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bFreigabeSchleusen                            AT %MX3051.2 : BOOL; // TODO: Leuchte im Taster Ein-/Ausschleusen 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bMutingSensorReset                            AT %MX3051.3 : BOOL; // TODO: Reset Muting-Sensoren 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bResetSicherheitsrelais                       AT %MX3051.4 : BOOL; // TODO: Reset Sicherheitsrelais 305, aus Schaltplan
+
+END_VAR
+
+END_NAMESPACE

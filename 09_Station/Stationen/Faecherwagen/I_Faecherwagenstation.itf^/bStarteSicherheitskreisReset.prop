@@ -1,0 +1,20 @@
+(* METADATA
+{
+  "v3Meta": {
+    "objectGuid": "cdcb97d0-f5d1-4c8c-b369-6fafb150e145",
+    "subObjects": {
+      "set": {
+        "objectGuid": "ab3b4c67-bc17-4895-84fd-a846684074ed"
+      },
+      "get": {
+        "objectGuid": "33ff813f-5712-4347-abb6-c2c8c2910d09"
+      }
+    }
+  }
+}
+*)
+PROPERTY_Set bStarteSicherheitskreisReset : BOOL
+
+END_PROPERTY
+PROPERTY_Get bStarteSicherheitskreisReset : BOOL
+END_PROPERTY

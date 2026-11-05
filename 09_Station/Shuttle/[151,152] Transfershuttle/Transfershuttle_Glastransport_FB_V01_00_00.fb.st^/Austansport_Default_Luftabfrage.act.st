@@ -51,9 +51,7 @@ THEN
       tonlEinlaufsensorTesten(IN:= FALSE);
       tonlAuslaufsensorTesten(IN:= FALSE);
 
-
       rlAntriebspositionBeiAuslaufSensorBelegung := REAL#0;
-      rlAntriebspositionBeiEinlaufSensorBelegung := REAL#0;
 
       IF ( Antrieb.bpReglerBereit ) THEN
         Antrieb.rpGeschwindigkeit := REAL#0;
@@ -512,13 +510,15 @@ THEN
       (* Hinweis:
          - Antrieb steht
          - Pruefen des Auslaufsensors
+         - Master-Slave- Kopplung ist beendet (Antrieb nicht mehr synchron)
       *)
+      bpSlaveAktiv := FALSE;
+
       IF ( NOT toflAntriebLaeuft.Q ) THEN
 
         IF ( NOT bpSensorScheibenKontrolleAuslaufseiteFrei ) THEN
           bpScheibeFaehrtUeberAuslauf := TRUE;
           rlAntriebsPositionBeiStart:= Antrieb.rpIstPosition;
-          tonlSensorScheibenKontrolleAuslaufSeiteFrei(IN := FALSE);
           steplAustransportDefaultLuftabfrage := STEP_150_E;
 
         ELSE
@@ -856,14 +856,15 @@ THEN
       (* Hinweis:
          - Antrieb steht
          - Pruefen des Auslaufsensors
+         - Master-Slave- Kopplung ist beendet (Antrieb nicht mehr synchron)
       *)
+      bpSlaveAktiv := FALSE;
+
       IF ( NOT toflAntriebLaeuft.Q ) THEN
 
         rlAntriebsPositionBeiStart:= Antrieb.rpIstPosition;
 
         IF ( NOT bpSensorScheibenKontrolleEinlaufSeiteFrei ) THEN
-
-          tonlSensorScheibenKontrolleEinlaufSeiteFrei(IN := FALSE);
           steplAustransportDefaultLuftabfrage := STEP_510_E;
 
         ELSE
@@ -1070,6 +1071,7 @@ THEN
     STEP_900_E:
       bpOutBereitZumEintransport := FALSE;
       bpOutBereitZumAustransport := FALSE;
+      bpSlaveAktiv               := FALSE;
 
       bpFehler := TRUE;
 
@@ -1085,6 +1087,7 @@ ELSE
     blAbgeschlossenAustransport := FALSE;
     bpOutBereitZumEintransport  := FALSE;
     bpOutBereitZumAustransport  := FALSE;
+    bpSlaveAktiv                := FALSE;
 
     out_bShuttleAnheben := FALSE;
 
@@ -1094,8 +1097,6 @@ ELSE
     blScheibenKontrolleEinlaufseiteEin    := FALSE;
 
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
-    tonlSensorScheibenKontrolleAuslaufSeiteFrei( IN := FALSE );
-    tonlSensorScheibenKontrolleEinlaufSeiteFrei( IN := FALSE );
     steplAustransportDefaultLuftabfrage := STEP_0_E;
   END_IF
 

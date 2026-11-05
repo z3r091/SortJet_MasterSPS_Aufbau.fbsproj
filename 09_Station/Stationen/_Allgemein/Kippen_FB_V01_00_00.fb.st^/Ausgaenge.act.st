@@ -41,6 +41,8 @@ ELSE
     epKippStatus := eKippen_Position_0Grad;
   ELSIF ( ABS(Antrieb.rpIstPosition - ppParameterBaustein.rPosition84Grad) < ppParameterBaustein.rToleranz ) THEN
     epKippStatus := eKippen_Position_84Grad;
+  ELSIF ( ABS(Antrieb.rpIstPosition - ppParameterBaustein.rPosition88_5Grad) < ppParameterBaustein.rToleranz ) THEN
+    epKippStatus := eKippen_Position_88_5Grad;
   ELSIF ( ABS(Antrieb.rpIstPosition - ppParameterBaustein.rPosition90Grad) < ppParameterBaustein.rToleranz ) THEN
     epKippStatus := eKippen_Position_90Grad;
   ELSIF ( ABS(Antrieb.rpIstPosition - ppParameterBaustein.rPosition96Grad) < ppParameterBaustein.rToleranz ) THEN
@@ -48,6 +50,6 @@ ELSE
   ELSE
     epKippStatus := eKippen_Fehler;
   END_IF
- 
+
 END_IF
 END_ACTION

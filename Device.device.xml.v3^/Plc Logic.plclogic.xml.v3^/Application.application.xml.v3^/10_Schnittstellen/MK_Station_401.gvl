@@ -35,6 +35,7 @@ VAR_GLOBAL
                                                  bRemoveETX                             := TRUE,
                                                  tZeitHornAktiv                         := T#5S,     
                                                  rAnalogWertVerhaeltniss                := 32.768,   
+                                                 rLaengeStation                         := 0.0,
                                                  wMindestAnalogWert                     := 100,      
                                                  bAnzeigeISOLinieEventAktiv             := FALSE,     
                                                  bAnalogwertAktiv                       := FALSE,    

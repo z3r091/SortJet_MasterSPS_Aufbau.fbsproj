@@ -23,7 +23,8 @@ END_IF
 
 // Ausgaeng:
 //   - Verfahrfreigabe
-bpVerfahrFreigabe :=     NOT bpSensorEinlauf
+//   - Nur die Stopp-Sensoren (ohne Stopp-Sensor liefert das Shuttle dort den Einlauf- bzw. Auslaufsensor)
+bpVerfahrFreigabe :=     NOT bpSensorEinlaufStopp
                          AND NOT bpSensorAuslaufStopp
                          AND NOT bpAustransport
                          AND ( NOT bpEintransport OR bpFreigabeQuerfahrt );

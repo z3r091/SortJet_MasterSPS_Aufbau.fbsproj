@@ -28,10 +28,18 @@ IF ( bpReset ) THEN
 
       bpSlaveAktiv := FALSE;
       blAntriebsKopplungAktiv := false;
+
+      // Greifer
+      bpStarteSlaveKopplungGreifer             := FALSE;
+      bpStarteKorrekturfahrt                   := FALSE;
+      bpStarteGlasPositionierungGreifer        := FALSE;
+      bpGreiferSlaveAktiv                      := FALSE;
+      bpKorrekturfahrtAbgeschlossen            := FALSE;
+      bpGlasPositionierungGreiferAbgeschlossen := FALSE;
       rlGefahreneStreckeEintransport := 0.0;
-      Antrieb.wpBetriebsart := KEINE_FUNKTION;
-      Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
-      Scheibenmessung.bpReset := TRUE;
+      Antrieb.wpBetriebsart          := KEINE_FUNKTION;
+      Antrieb_Slave.wpBetriebsart    := KEINE_FUNKTION;
+      Scheibenmessung.bpReset        := TRUE;
 
       IF NOT Antrieb.bpAntrieblaeuft AND NOT Antrieb_Slave.bpAntrieblaeuft THEN
         steplReset := STEP_10_E;

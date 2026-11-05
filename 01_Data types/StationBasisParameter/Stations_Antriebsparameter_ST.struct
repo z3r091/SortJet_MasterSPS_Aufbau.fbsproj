@@ -13,6 +13,7 @@ TYPE Stations_Antriebsparameter_ST :
     stGlastransportY       : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen;
     stGlastransportYSlave  : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen;
     stWandverstellung      : REFERENCE TO ARRAY[1..cANZAHL_WAENDE] OF AntriebsInformationen;
+    stGreifer              : REFERENCE TO ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen;
     stHub                  : REFERENCE TO AntriebsInformationen;
     stMessachse            : REFERENCE TO AntriebsInformationen;
     stKippen               : REFERENCE TO AntriebsInformationen;

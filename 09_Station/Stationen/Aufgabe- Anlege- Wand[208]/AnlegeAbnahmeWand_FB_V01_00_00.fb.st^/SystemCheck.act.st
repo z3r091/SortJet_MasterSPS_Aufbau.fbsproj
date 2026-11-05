@@ -58,7 +58,7 @@ IF ( blBetriebartCheck ) THEN
 
         SpsHinweis( eFehler_Station,
                     cMELDUNG_ANLEGEN_SICHERHEITSKREIS,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerExtern,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     BasisStationsParameter.awFehlerInformationen );
 
@@ -87,12 +87,11 @@ IF ( blBetriebartCheck ) THEN
       IF ( tonlFreigabeErhalten.Q ) THEN
 
         IF ( in_bMotorschutzGeblaese_Ok ) THEN
-          //      out_bGeblaeseEin      := TRUE;
+          // blGeblaeseAnforderung     := TRUE;
           out_bDrosselklappeOeffnen := TRUE;
           steplCheck := STEP_20_E;
         ELSE
           out_bDrosselklappeOeffnen := FALSE;
-          out_bGeblaeseEin := FALSE;
           BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_GEBLAESE;
           steplCheck := STEP_900_E;
         END_IF
@@ -234,7 +233,7 @@ IF ( blBetriebartCheck ) THEN
         (* Hinweis:
            - Meldung generieren das die Scheibe abgenommen wurde
         *)
-        //          wSps2MmiApprovaltableNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+        //          wSps2MmiApprovaltableNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
         //        MsgToMmi(auftragsnr_w := SB0_SPS_SHEETREMOVEDAPPROVALWALL);
 
         END_IF
@@ -247,8 +246,8 @@ IF ( blBetriebartCheck ) THEN
               
             SpsHinweis( eFehler_Station,
                         cMELDUNG_SYSTEMCHECK_SCHEIBE_NEU_ANLEGEN,
-                        BasisStationsParameter.stMKs.stStationsNummern.NummerExtern,
-                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+                        BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                         BasisStationsParameter.awFehlerInformationen );
           END_IF
 
@@ -258,8 +257,8 @@ IF ( blBetriebartCheck ) THEN
 
             SpsHinweis( eFehler_Station,
                         cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN,
-                        BasisStationsParameter.stMKs.stStationsNummern.NummerExtern,
-                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+                        BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                         BasisStationsParameter.awFehlerInformationen );
 
           END_IF
@@ -303,7 +302,6 @@ ELSE
     steplCheck := STEP_0_E;
     BasisStationsParameter.bCheckAbgeschlossen := FALSE;
     out_bDrosselklappeOeffnen := FALSE;
-    out_bGeblaeseEin := FALSE;
     Kippen.bpPositionieren := FALSE;
     Glastransport.bpCheck := FALSE;
   END_IF

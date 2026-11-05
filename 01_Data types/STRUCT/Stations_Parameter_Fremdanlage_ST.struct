@@ -14,6 +14,7 @@ TYPE Stations_Parameter_Fremdanlage_ST :
     bRemoveETX                             : BOOL := TRUE; // ETX aus den Scheiben-IDs des MMI entfernen (Auftragsdaten Fremdanlage)
     tZeitHornAktiv                         : TIME;  // Signal bei ISO-Line Event 
     rAnalogWertVerhaeltniss                : REAL;  // Umrechnungsfaktor für den Analogwert
+    rLaengeStation                         : REAL;  // Laenge der Fremdanlage (Wegueberwachung der ersten Scheibe in der Nachbarstation), 0 = unbekannt
     wMindestAnalogWert                     : WORD;  // Mindestwert welche der Analohgwert haben muss um gültig zu sein
     bAnzeigeISOLinieEventAktiv             : BOOL;  // ISO Line Events sollen angezeigt werden
     bAnalogwertAktiv                       : BOOL;  // Geschwindigkeit - Analog | Statische 

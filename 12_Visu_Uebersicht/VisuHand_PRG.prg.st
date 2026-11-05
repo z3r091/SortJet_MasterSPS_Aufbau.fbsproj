@@ -234,54 +234,56 @@ b := VisuHand_Set(stH := VISU_HAND.st151, wZeile := 6, sText := '', dwFarbe := d
 
 // -------------------------------------------------------------------------------------------
 // [301] / [302] FAECHERWAGEN
+// - Status aus VISU_VARS.astgFaecherwagenstatusVisu; Zeilen 2-5 zeigen die Endlagen der Variante
+//   Lineareinheit (abEndlage, Index = Bit der Handfunktion)
 // -------------------------------------------------------------------------------------------
 FOR i := 301 TO 302 DO
   b := VisuHand_Sperre(stBP := StationBasisParameter.starrFaecherwagenBasisParameter[i], stH := VISU_HAND.astFW[i], bFaecherwagen := TRUE);
   // 1 Rolltor
-  IF NOT Globale_Bausteine.aFaecherwagenstation[i].in_bNichtRolltorGeoeffnet THEN
+  IF VISU_VARS.astgFaecherwagenstatusVisu[i].bRolltorOben THEN
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 1, sText := 'oben',  dwFarbe := dwG);
-  ELSIF Globale_Bausteine.aFaecherwagenstation[i].blRolltorUnten THEN
+  ELSIF VISU_VARS.astgFaecherwagenstatusVisu[i].bRolltorUnten THEN
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 1, sText := 'unten', dwFarbe := dwG);
   ELSE
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 1, sText := '?',     dwFarbe := dwO);
   END_IF
   // 2 Lineareinheit
-  IF Globale_Bausteine.aFaecherwagenstation[i].blLinearEinheitVorne THEN
+  IF VISU_VARS.astgFaecherwagenstatusVisu[i].abEndlage[7] THEN
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 2, sText := 'vorne',   dwFarbe := dwG);
-  ELSIF Globale_Bausteine.aFaecherwagenstation[i].blLinearEinheitHinten THEN
+  ELSIF VISU_VARS.astgFaecherwagenstatusVisu[i].abEndlage[8] THEN
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 2, sText := 'hinten',  dwFarbe := dwG);
-  ELSIF Globale_Bausteine.aFaecherwagenstation[i].blLinearEinheitSH THEN
+  ELSIF VISU_VARS.astgFaecherwagenstatusVisu[i].abEndlage[9] THEN
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 2, sText := 'Shuttle', dwFarbe := dwG);
   ELSE
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 2, sText := '?',       dwFarbe := dwO);
   END_IF
   // 3 Greifer
-  IF Globale_Bausteine.aFaecherwagenstation[i].blGreiferOffen THEN
+  IF VISU_VARS.astgFaecherwagenstatusVisu[i].abEndlage[11] THEN
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 3, sText := 'offen', dwFarbe := dwG);
-  ELSIF Globale_Bausteine.aFaecherwagenstation[i].blGreiferZu THEN
+  ELSIF VISU_VARS.astgFaecherwagenstatusVisu[i].abEndlage[12] THEN
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 3, sText := 'zu',    dwFarbe := dwG);
   ELSE
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 3, sText := '?',     dwFarbe := dwO);
   END_IF
   // 4 Entriegelung
-  IF Globale_Bausteine.aFaecherwagenstation[i].in_bEntriegelungOffen THEN
+  IF VISU_VARS.astgFaecherwagenstatusVisu[i].abEndlage[3] THEN
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 4, sText := 'offen', dwFarbe := dwG);
-  ELSIF Globale_Bausteine.aFaecherwagenstation[i].in_bEntriegelungGeschlossen THEN
+  ELSIF VISU_VARS.astgFaecherwagenstatusVisu[i].abEndlage[2] THEN
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 4, sText := 'zu',    dwFarbe := dwG);
   ELSE
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 4, sText := '?',     dwFarbe := dwO);
   END_IF
   // 5 Gegenhalter
-  IF Globale_Bausteine.aFaecherwagenstation[i].in_bGegenhalterOffen THEN
+  IF VISU_VARS.astgFaecherwagenstatusVisu[i].abEndlage[0] THEN
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 5, sText := 'offen', dwFarbe := dwG);
-  ELSIF Globale_Bausteine.aFaecherwagenstation[i].in_bGegenhalterZu THEN
+  ELSIF VISU_VARS.astgFaecherwagenstatusVisu[i].abEndlage[1] THEN
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 5, sText := 'zu',    dwFarbe := dwG);
   ELSE
     b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 5, sText := '?',     dwFarbe := dwO);
   END_IF
   // 6 Lichtschranke
   b := VisuHand_Set(stH := VISU_HAND.astFW[i], wZeile := 6,
-                     sText   := SEL(Globale_Bausteine.aFaecherwagenstation[i].out_bSafetyLichtschrankeAusgeloest, 'ok', 'ausgelöst'),
-                     dwFarbe := SEL(Globale_Bausteine.aFaecherwagenstation[i].out_bSafetyLichtschrankeAusgeloest, dwG, dwR));
+                     sText   := SEL(VISU_VARS.astgFaecherwagenstatusVisu[i].bLichtschrankeOK, 'ausgelöst', 'ok'),
+                     dwFarbe := SEL(VISU_VARS.astgFaecherwagenstatusVisu[i].bLichtschrankeOK, dwR, dwG));
 END_FOR
 END_PROGRAM

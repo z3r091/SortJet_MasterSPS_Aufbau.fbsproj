@@ -6,28 +6,6 @@
 }
 *)
 FUNCTION_BLOCK AnlegeAbnahmeWand_Glastransport_FB_V01_00_00 EXTENDS Basic_Glastransport_FB_V01_00_00
-VAR_INPUT
-
-  // BOOLEAN
-  bpAnforderungHandfunktion      : BOOL;  
-  bpScheibeQuittiert             : BOOL;
-  bpScheibeFreigegeben           : BOOL;
-  
-END_VAR
-VAR
-
-  // TRIGGER
-  ftlScheibeZurueckFahren     : F_TRIG;
-
-END_VAR
-
-VAR_OUTPUT
-
-  // BOOLEAN
-  bpAnforderungMessergebnis  : BOOL; // STATUS: Riemen wartet auf das Scann- Ergebnis aus dem Uebergeordneteten Baustein
- 
-  
-END_VAR 
 (* Hinweis:
    - Master aufrufen
 *)
@@ -36,6 +14,6 @@ SUPER^();
 //-------------------------------------------------------------------------------------------------
 // AUFRUFE
 //-------------------------------------------------------------------------------------------------
-// Die fehlenden Aktionen werden im Master aufgerufen
-Laengenmessung();
+// Die Aktionen werden im Master aufgerufen (auch die Laengenmessung)
+;
 END_FUNCTION_BLOCK

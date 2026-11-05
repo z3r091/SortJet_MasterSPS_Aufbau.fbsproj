@@ -82,6 +82,8 @@ VAR_GLOBAL
                                             bAnschlag                     := FALSE,
                                             bSensorAuslauf                := TRUE,
                                             bSensorEinlauf                := TRUE,
+                                            bSensorEinlaufStopp           := FALSE,
+                                            bSensorAuslaufStopp           := FALSE,
                                             bDurchlaufSperreZumNachfolger := FALSE,
                                             bQuerfahrt                    := TRUE,
                                             bDLSSchmiersystem             := TRUE,
@@ -92,11 +94,13 @@ VAR_GLOBAL
                                             bSlaveAntrieb                 := FALSE,
                                             bRolltor                      := FALSE,
                                             bKlemmzylinder                := FALSE,
+                                            bGreifer                      := [cANZAHL_WAENDE(FALSE)],
                                             bRFID                         := FALSE,
                                             bAGV                          := FALSE,
                                             bKipparme                     := FALSE,
                                             bMessachseAmEndeVomTisch      := FALSE,
-                                            bGlastransportSlaveVorhanden  := FALSE
+                                            bGlastransportSlaveVorhanden  := FALSE,
+                                            wHydraulikstation             := 0
                                           ),
 
       stStationsParameter               := (

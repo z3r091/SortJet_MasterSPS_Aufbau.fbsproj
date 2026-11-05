@@ -67,7 +67,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
         SpsError( eFehler_Station,
                   starrTransfershuttleBasisParameter[wStation].wFehlerNummer,
                   starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                  AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                  AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                   starrTransfershuttleBasisParameter[wStation].awFehlerInformationen );
 
         steplSchritt := STEP_900_E;

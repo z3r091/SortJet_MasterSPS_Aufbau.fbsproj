@@ -14,6 +14,7 @@ TYPE Interface_GlasTransport :
     stStationsNummern          : Station_ST;
     wStationsTyp               : StationsTyp_EN;
     wAchsID                    : WORD;
+    rLaengeStation             : REAL; // Laenge der Station (Wegueberwachung der Nachbarstation bei der ersten Scheibe im Eintransport)
     bEinlaufsensor             : REFERENCE TO BOOL REF= bgFALSE;
     bAuslaufsensor             : REFERENCE TO BOOL REF= bgFALSE; 
     bBereitZumAustransport     : REFERENCE TO BOOL REF= bgFALSE;

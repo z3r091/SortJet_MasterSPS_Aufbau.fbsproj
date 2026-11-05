@@ -20,6 +20,10 @@ starrShuttleBasisParameter[cSHUTTLE_101].stParameterStationskomponenten.stWandve
 starrShuttleBasisParameter[cSHUTTLE_101].stAntriebsparameter.stQuerfahrt REF= apgInfoShuttle101Querfahrt;
 starrShuttleBasisParameter[cSHUTTLE_101].stAntriebsparameter.stKippen    REF= apgInfoShuttle101Kippen;
 
+// Greifer [Ausbaustufe stStationsAufbau.bGreifer]
+starrShuttleBasisParameter[cSHUTTLE_101].stParameterStationskomponenten.stGreifer REF= apgMKShuttle101Greifer;
+starrShuttleBasisParameter[cSHUTTLE_101].stAntriebsparameter.stGreifer            REF= apgInfoShuttle101Greifer;
+
 starrShuttleBasisParameter[cSHUTTLE_101].stParameterStationskomponenten.stZentralSchmierung REF= apgMKShuttleZentralschmierung[cSHUTTLE_101];
 
 (* Hinweis:
@@ -44,7 +48,7 @@ END_FOR
 
 // Station 203
 starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Station[cSTATION_202]                  := Vorwaertig;
-starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[cSTATION_202]            := eGlastransport_AufAuslauf;
+starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[cSTATION_202]            := eGlastransport_AufEinlaufVorab;
 starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Kippen[cSTATION_202]                   := eKippen_Position_84Grad;
 starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.KippenNachEintransport[cSTATION_202]   := eKippen_Default;
 starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_202] := TRUE;

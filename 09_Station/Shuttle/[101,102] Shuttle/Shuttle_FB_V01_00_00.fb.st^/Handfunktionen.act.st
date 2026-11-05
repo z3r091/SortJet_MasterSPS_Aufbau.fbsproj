@@ -14,7 +14,9 @@ ACTION Handfunktionen
      Seite 1:  0 Geblaese, 1/2 Glastransport Wand 1 vor/zurueck, 3/4 Glastransport Wand 2 vor/zurueck
      Seite 2:  7 Kippen 84 Grad, 8 Kippen 90 Grad, 9 Kippen 88,5 Grad, 10 Kippen Referenz,
                11/12/13 Querfahrt vor/zurueck/Referenz
-     Seite 3:  14/15 Oeffnung 16/23 mm, 17 Zentralschmierung
+     Seite 3:  14/15 Oeffnung 16/23 mm, 17 Zentralschmierung, 18/19/20 Greiferachse vor/zurueck/Referenz
+     Seite 4:  21/22 Greifer ausfahren/einfahren, 23 Greiferzange schliessen, 24/25/26 Greiferzange oeffnen
+               16/23/29 mm, 27 Glasrueckhalter ausfahren (Greifer nur mit stStationsAufbau.bGreifer)
 *)
 IF ( blBetriebsartHand ) THEN
 
@@ -26,16 +28,7 @@ IF ( blBetriebsartHand ) THEN
                                              OR Glastransport[wlIndex].bpHandfahrenMinus ),
                                      PT := T#15S );
 
-    IF ( dwlHandfunktionen.0
-         OR bgVISUGeblaese[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, wlIndex]
-         OR toflGeblaeseHandfahren[wlIndex].Q)
-    THEN
-      Geblaese[wlIndex].bpStart := TRUE;
-
-    ELSIF ( NOT blNachSystemcheckMerker ) THEN
-      Geblaese[wlIndex].bpStart := FALSE;
-
-    END_IF
+  // Geblaese: Handfunktion im Geblaese-Baustein (bpHandEin, Aktion A_Geblaese)
 
   END_FOR
 
@@ -174,8 +167,48 @@ IF ( blBetriebsartHand ) THEN
   // Starten der Zentralschmierung
   Zentralschmierung.bpStartSchmierungHand := (dwlHandfunktionen.17 OR bgVISUZentralschmierungStarten[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]);
 
+  // Handfunktion [Greifer]:
+  //   - Greiferachse vor / zurueck / Referenz
+  //   - Greifer aus- / einfahren
+  //   - Greiferzange schliessen / oeffnen 16 / 23 / 29 mm
+  //   - Glasrueckhalter ausfahren
+  FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+    IF ( BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex] ) THEN
+      Greifer[wlIndex].bpHandfahrenPlus  := dwlHandfunktionen.18 AND NOT ( dwlHandfunktionen.19 OR dwlHandfunktionen.20 );
+      Greifer[wlIndex].bpHandfahrenMinus := dwlHandfunktionen.19 AND NOT ( dwlHandfunktionen.18 OR dwlHandfunktionen.20 );
+      Greifer[wlIndex].bpFahreReferenz   := dwlHandfunktionen.20 AND NOT ( dwlHandfunktionen.18 OR dwlHandfunktionen.19 );
+
+      Greifer[wlIndex].bpHandGreiferAusfahren := dwlHandfunktionen.21 AND NOT dwlHandfunktionen.22;
+      Greifer[wlIndex].bpHandGreiferEinfahren := dwlHandfunktionen.22 AND NOT dwlHandfunktionen.21;
+
+      Greifer[wlIndex].bpHandZangeSchliessen  := dwlHandfunktionen.23;
+      Greifer[wlIndex].bpHandZangeOeffnen16mm := dwlHandfunktionen.24;
+      Greifer[wlIndex].bpHandZangeOeffnen23mm := dwlHandfunktionen.25;
+      Greifer[wlIndex].bpHandZangeOeffnen29mm := dwlHandfunktionen.26;
+
+      Greifer[wlIndex].bpHandGlasRueckhalterAusfahren := dwlHandfunktionen.27;
+    END_IF
+  END_FOR
+
 ELSE
   Zentralschmierung.bpStartSchmierungHand := FALSE;
+
+  FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+    Greifer[wlIndex].bpHandfahrenPlus               := FALSE;
+    Greifer[wlIndex].bpHandfahrenMinus              := FALSE;
+    Greifer[wlIndex].bpHandGreiferAusfahren         := FALSE;
+    Greifer[wlIndex].bpHandGreiferEinfahren         := FALSE;
+    Greifer[wlIndex].bpHandZangeSchliessen          := FALSE;
+    Greifer[wlIndex].bpHandZangeOeffnen16mm         := FALSE;
+    Greifer[wlIndex].bpHandZangeOeffnen23mm         := FALSE;
+    Greifer[wlIndex].bpHandZangeOeffnen29mm         := FALSE;
+    Greifer[wlIndex].bpHandGlasRueckhalterAusfahren := FALSE;
+
+    // Referenzfahrt von Hand beenden (in der Betriebsart Referenz steuert die Aktion Referenz)
+    IF ( NOT blBetriebsartReferenz ) THEN
+      Greifer[wlIndex].bpFahreReferenz := FALSE;
+    END_IF
+  END_FOR
 
 END_IF
 

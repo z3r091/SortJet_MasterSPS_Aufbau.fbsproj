@@ -127,8 +127,6 @@ IF ( blErsterZyklus ) THEN
 
 END_IF
 
-BasisStationsParameter.stMKs.bDeaktivieren := BasisStationsParameter.stMKs.bDeaktivieren;
-
 in_bSensorScheibenKontrolleEinlaufSeiteFrei := Glastransport.Antrieb.blSensoren[1];
 in_bSensorScheibenKontrolleAuslaufSeiteFrei := Glastransport.Antrieb.blSensoren[2];
 

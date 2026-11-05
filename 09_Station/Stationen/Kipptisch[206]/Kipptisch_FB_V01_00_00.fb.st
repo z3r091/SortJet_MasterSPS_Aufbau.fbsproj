@@ -15,6 +15,7 @@ VAR
   blBewegungAbgeschlossen              : BOOL; 
   blUpdateTimer                        : BOOL; 
   blZielPositionErreicht               : BOOL; // Ueberpruefung ob die Zielposition aus dem Auftrag mit der aktuellen Position uebereinstimmt [Abweichung + - 1mm]
+  blAktionImFehler                     : BOOL; // Eine der wandweisen Aktionen steht im Fehler
 
   blOption_Eintransport_Aufgekippt     : BOOL;
   blOption_Austransport_Aufgekippt     : BOOL;
@@ -31,10 +32,25 @@ VAR
   
   // BAUSTEINE
   Glastransport  : Kipptisch_Glastransport_FB_V01_00_00;
-  Rollenleiste   : Rollenleiste_FB_V01_00_00;
+  Rollenleiste   : ZylinderPneumatik_3Wege_FB_V01_00_00;
   Querfahrt      : Querfahrt_FB_V01_00_00;
-  Kippen         : Kipptisch_Kippen_FB_V01_00_00;
-  
+  Kippen         : Kippen_FB_V01_00_00;
+
+  (* Hinweis:
+     - Der Kipptisch hat keinen Hub, keine Wandverstellung und kein Geblaese, der Eintransport erwartet
+       die Bausteine aber. Die Instanzen bleiben deaktiviert (bpAktivieren wird nie gesetzt)
+  *)
+  HubUnbenutzt             : Hub_FB_V01_00_00;
+  WandverstellungUnbenutzt : ZylinderPneumatik_3Wege_FB_V01_00_00;
+  GeblaeseUnbenutzt        : Geblaese_Schuetz_FB_V01_00_00;
+
+  // AKTIONEN (WANDWEISE)
+  Vortransport   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Basic_Station_Vortransport_FB_V01_00_00;
+  Eintransport   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Basic_Station_Eintransport_FB_V01_00_00;
+  Austransport   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Basic_Station_Austransport_FB_V01_00_00;
+  Durchtransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Basic_Station_Durchtransport_FB_V01_00_00;
+  Messkopplung   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Basic_Station_Messkopplung_FB_V01_00_00;
+
 END_VAR
 
 //-------------------------------------------------------------------------------------------------
@@ -54,11 +70,62 @@ END_IF
 //-------------------------------------------------------------------------------------------------
 // AUFRUFE
 //-------------------------------------------------------------------------------------------------
-Vortransport();
-Eintransport();
-Austransport();
+(* Hinweis:
+   - Automatik-Aktionen je Wand
+*)
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  Vortransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                         wWand                  := wlIndex,
+                         bpAutomatikAktiv       := blBetriebsartAutomatik,
+                         bpZielPositionErreicht := blZielPositionErreicht,
+                         Glastransport          := Glastransport );
+
+  Eintransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                         wWand                  := wlIndex,
+                         bpAutomatikAktiv       := blBetriebsartAutomatik,
+                         bpGeblaeseAktiv        := TRUE,
+                         bpZielPositionErreicht := blZielPositionErreicht,
+                         Glastransport          := Glastransport,
+                         Kippen                 := Kippen,
+                         Hub                    := HubUnbenutzt,
+                         Roellchenleiste        := Rollenleiste,
+                         Wandverstellung        := WandverstellungUnbenutzt,
+                         Geblaese               := GeblaeseUnbenutzt );
+
+  Austransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                         wWand                  := wlIndex,
+                         bpAutomatikAktiv       := blBetriebsartAutomatik,
+                         bpGeblaeseAktiv        := TRUE,
+                         bpZielPositionErreicht := blZielPositionErreicht,
+                         Glastransport          := Glastransport,
+                         Kippen                 := Kippen,
+                         Hub                    := HubUnbenutzt,
+                         Geblaese               := GeblaeseUnbenutzt );
+
+  Durchtransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                           wWand                  := wlIndex,
+                           bpAutomatikAktiv       := blBetriebsartAutomatik,
+                           bpGeblaeseAktiv        := TRUE,
+                           bpZielPositionErreicht := blZielPositionErreicht,
+                           Glastransport          := Glastransport,
+                           Hub                    := HubUnbenutzt );
+END_FOR
+
 Systemcheck();
-Messkopplung();
+
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  Messkopplung[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                         wWand                  := wlIndex,
+                         bpAutomatikAktiv       := blBetriebsartAutomatik,
+                         bpGeblaeseAktiv        := TRUE,
+                         bpZielPositionErreicht := blZielPositionErreicht,
+                         Glastransport          := Glastransport,
+                         Kippen                 := Kippen,
+                         Hub                    := HubUnbenutzt,
+                         Roellchenleiste        := Rollenleiste,
+                         Wandverstellung        := WandverstellungUnbenutzt );
+END_FOR
+
 Reset();
 Referenz();
 Handfunktionen();

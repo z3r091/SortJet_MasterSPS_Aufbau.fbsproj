@@ -56,9 +56,6 @@ THEN
       blMeldungEinlaufAbfrageBelegt       := FALSE;
       blSensorPruefungEinlaufsensorBelegt := FALSE;
 
-      Scheibenzaehler.bpAktiv  := FALSE;
-      Scheibenzaehler.bpStart  := FALSE;
-
       tonlWartenAufAnheben(IN:=FALSE);
       tonlWartenAufSenken(IN:=FALSE);
       tonlEinlaufsensorTesten(IN:= FALSE);
@@ -202,24 +199,10 @@ THEN
       *)
       IF IsBetweenWORD(pAuftrag.wTransferstationsNr2, cERSTE_FAECHERWAGENSTATIONS_NR, cLETZTE_FAECHERWAGENSTATIONS_NR) THEN
         IF ( InGlasTransportVorgaenger.bBereitZumAustransport AND InGlasTransportNachfolger.bBereitZumAustransport ) THEN
-          (* Hinweis:
-             - Scheibenzaehler (Dekrementieren des Zaehlers)
-          *)
-          IF ( bpScheibentrennung ) THEN
-            Scheibenzaehler.bpAktiv  := TRUE;
-            Scheibenzaehler.bpStart  := TRUE;
-          END_IF
           steplEintransportDefaultLuftabfrage := STEP_110_E;
         END_IF
       ELSE
         IF ( InGlasTransportVorgaenger.bBereitZumAustransport ) THEN
-          (* Hinweis:
-             - Scheibenzaehler (Dekrementieren des Zaehlers)
-          *)
-          IF ( bpScheibentrennung ) THEN
-            Scheibenzaehler.bpAktiv  := TRUE;
-            Scheibenzaehler.bpStart  := TRUE;
-          END_IF
           steplEintransportDefaultLuftabfrage := STEP_110_E;
         END_IF
       END_IF
@@ -240,7 +223,7 @@ THEN
         rlStreckeBisZurVerzoegerung := WegZumScheibenTrennenBestimmen( rpAuftragsLaenge       := pAuftrag.rAuftragsLaenge,
                                                                        rpRampe                := ppAntriebsInformationen.rpMaxVerzoegerung,
                                                                        rpGeschwindigkeit      := ppAntriebsInformationen.rpMaxGeschwindigkeit,
-                                                                       rpTrennGeschwindigkeit := rgGeschwindigkeit20 );
+                                                                       rpTrennGeschwindigkeit := rgGeschwindigkeit15 );
       END_IF
 
       (* Hinweis:
@@ -251,7 +234,6 @@ THEN
       // Antrieb verfahren
       //   - Restweg Positionierung
       rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
-      rlAntriebIstPosition1      := Antrieb.rpIstPosition;
 
       IF ( blReduzierteGeschwindigkeit ) THEN
         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
@@ -287,7 +269,7 @@ THEN
       bprtScheibe := FALSE;
 
       IF ( blEinlaufsensor ) THEN
-        rlPositionScheibenAnfangErkannt := rlAntriebIstPosition2 := Antrieb.rpIstPosition;
+        rlPositionScheibenAnfangErkannt := Antrieb.rpIstPosition;
         steplEintransportDefaultLuftabfrage := STEP_150_E;
       END_IF
 
@@ -313,7 +295,12 @@ THEN
       (* Fehlerbehandlung:
          - Weg- Ueberwachung
       *)
-      IF (ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation * 2 ) THEN
+      // Die Scheibe kann irgendwo auf der Vorgaengerstation stehen (ohne bekannte Vorgaengerlaenge: eigene Stationslaenge)
+      rlMaxStreckeErsteScheibe := InGlasTransportVorgaenger.rLaengeStation;
+      IF ( rlMaxStreckeErsteScheibe <= 0.0 ) THEN
+        rlMaxStreckeErsteScheibe := ppParameterBaustein.rlLaengeStation;
+      END_IF
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > rlMaxStreckeErsteScheibe ) THEN
         bpOutBereitZumEintransport := FALSE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
@@ -360,7 +347,6 @@ THEN
          - Antrieb verfahren
       *)
       IF ( Antrieb.bpDone ) THEN
-        rlAntriebIstPosition3  := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
         blScheibenMerker       := NOT toflEinlaufsensor.Q;
         steplEintransportDefaultLuftabfrage := STEP_190_E;
@@ -413,7 +399,6 @@ THEN
       END_IF
 
       IF ( Antrieb.bpDone ) THEN
-        rlAntriebIstPosition3  := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
         blScheibenMerker       := NOT toflEinlaufsensor.Q;
         steplEintransportDefaultLuftabfrage := STEP_190_E;
@@ -561,7 +546,6 @@ THEN
          - Antrieb verfahren
       *)
       IF ( Antrieb.bpDone ) THEN
-        rlAntriebIstPosition3  := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
         steplEintransportDefaultLuftabfrage := STEP_200_E;
       END_IF
@@ -636,7 +620,7 @@ THEN
           SpsWarnung( eFehler_Station,
                       cMELDUNG_SENSOR_EINLAUF_ODER_AUSLAUF_WURDE_BELEGT,
                       stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+                      AutomatikkreisBestimmen(stStationsNummern.NummerSPS),
                       starrTransfershuttleBasisParameter[stStationsNummern.NummerIntern].awFehlerInformationen );
         END_IF
 
@@ -710,13 +694,6 @@ THEN
         steplEintransportDefaultLuftabfrage := STEP_900_E;
       ELSE
         IF ( InGlasTransportNachfolger.bBereitZumAustransport ) THEN
-          (* Hinweis:
-             - Scheibenzaehler (Dekrementieren des Zaehlers)
-          *)
-          IF ( bpScheibentrennung ) THEN
-            Scheibenzaehler.bpAktiv  := TRUE;
-            Scheibenzaehler.bpStart  := TRUE;
-          END_IF
           steplEintransportDefaultLuftabfrage := STEP_410_E;
         END_IF
       END_IF
@@ -739,10 +716,14 @@ THEN
                                                                        rpTrennGeschwindigkeit := rgGeschwindigkeit15 );
       END_IF
 
+      (* Hinweis:
+         - Anzahl Scheiben
+      *)
+      ilScheibenZaehler := WORD_TO_INT(pAuftrag.wAnzahlScheiben);
+
       // Antrieb verfahren
       //   - Restweg Positionierung
       rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
-      rlAntriebIstPosition1      := Antrieb.rpIstPosition;
 
       IF ( blReduzierteGeschwindigkeit ) THEN
         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
@@ -753,12 +734,6 @@ THEN
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
       END_IF
-
-      //IF ( NOT blGrosseScheibe ) THEN
-      //  rlZielPosition := (( pAuftrag.rLaenge + ppParameterBaustein.rWegUeberAuslaufEintransport ) - pAuftrag.rModellVersatzVorne);
-      //ELSE
-      //  rlZielPosition := (( pAuftrag.rLaenge + ppParameterBaustein.rWegUeberSensorGrosseScheibe ) - pAuftrag.rModellVersatzVorne);
-      //END_IF
 
       rlZielPosition            := - (( pAuftrag.rAuftragsLaenge + ppParameterBaustein.rWegUeberAuslaufEintransport ) - pAuftrag.rModellVersatzVorne);
       Antrieb.rpZielPosition    := rlZielPosition;
@@ -783,7 +758,7 @@ THEN
     // EINTRANSPORT ==============================
     STEP_430_E:
       IF ( blAuslaufsensor ) THEN
-        rlPositionScheibenAnfangErkannt := rlAntriebIstPosition2  := Antrieb.rpIstPosition;
+        rlPositionScheibenAnfangErkannt := Antrieb.rpIstPosition;
         steplEintransportDefaultLuftabfrage := STEP_440_E;
       END_IF
 
@@ -819,7 +794,7 @@ THEN
       *)
       IF ( bpScheibentrennung  ) THEN
 
-        IF ( ilScheibenZaehler = 1 ) THEN
+        IF ( ilScheibenZaehler <= 1 ) THEN
           IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition) >= rlStreckeBisZurVerzoegerung ) THEN
             IF blReduzierteGeschwindigkeit THEN
               Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
@@ -850,7 +825,6 @@ THEN
          - Antrieb verfahren
       *)
       IF ( Antrieb.bpDone ) THEN
-        rlAntriebIstPosition3  := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
         blScheibenMerker       := NOT toflAuslaufsensor.Q;
         steplEintransportDefaultLuftabfrage := STEP_450_E;
@@ -876,7 +850,7 @@ THEN
       // Geschwindigkeit reduzieren, wenn die Scheibenbeladung getrennt werden muss
       IF ( bpScheibentrennung ) THEN
 
-        IF ( ilScheibenZaehler = 1 ) THEN
+        IF ( ilScheibenZaehler <= 1 ) THEN
           IF ( ABS( rlPositionScheibenAnfangErkannt - Antrieb.rpIstPosition ) >= rlStreckeBisZurVerzoegerung ) THEN
             IF blReduzierteGeschwindigkeit THEN
               Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
@@ -901,7 +875,6 @@ THEN
       END_IF
 
       IF ( Antrieb.bpDone ) THEN
-        rlAntriebIstPosition3  := Antrieb.rpIstPosition;
         Antrieb.wpBetriebsart  := KEINE_FUNKTION;
         blScheibenMerker       := NOT toflAuslaufsensor.Q;
         steplEintransportDefaultLuftabfrage := STEP_450_E;
@@ -1016,34 +989,6 @@ THEN
       END_IF
 
     // EINTRANSPORT ==============================
-    STEP_510_E:
-      IF ( Antrieb.bpDone ) THEN
-        Antrieb.wpBetriebsart :=KEINE_FUNKTION;
-        steplEintransportDefaultLuftabfrage := STEP_800_E;
-      END_IF
-
-      (* Fehlerbehandlung:
-         - Auslaufsensor
-         - Maximaler Verfahrweg
-         - Antrieb
-      *)
-      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren ) THEN
-        Antrieb.wpBetriebsart :=KEINE_FUNKTION;
-        wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI;
-        steplEintransportDefaultLuftabfrage := STEP_900_E;
-      END_IF
-
-      IF ( blEinlaufSensor ) THEN
-        bpScheibeFaehrtUeberEinlauf := TRUE;
-
-        Antrieb.rpGeschwindigkeit := REAL#0;
-        Antrieb.wpBetriebsart     := KEINE_FUNKTION;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-
-        steplEintransportDefaultLuftabfrage := STEP_300_E;
-      END_IF
-
-    // EINTRANSPORT ==============================
     STEP_600_E:
       // ---------------------------------------------------------------------------------------
       //  EINLAUFSENSOR FREIFAHREN
@@ -1098,7 +1043,7 @@ THEN
           SpsWarnung( eFehler_Station,
                       cMELDUNG_SENSOR_EINLAUF_ODER_AUSLAUF_WURDE_BELEGT,
                       stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+                      AutomatikkreisBestimmen(stStationsNummern.NummerSPS),
                       starrTransfershuttleBasisParameter[stStationsNummern.NummerIntern].awFehlerInformationen );
         END_IF
 
@@ -1255,9 +1200,6 @@ ELSE
     blAbgeschlossenEintransport := FALSE;
     bprtScheibe                 := FALSE;
     bpOutBereitZumEintransport  := FALSE;
-
-    Scheibenzaehler.bpAktiv  := FALSE;
-    Scheibenzaehler.bpStart  := FALSE;
 
     out_bScheibenKontrolleAuslaufSeiteAuf := FALSE;
     blScheibenKontrolleAuslaufseiteEin    := FALSE;

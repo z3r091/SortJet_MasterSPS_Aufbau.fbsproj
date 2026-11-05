@@ -18,5 +18,6 @@ STRUCT
     HubNachAustransport      : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Hub_EN;
     Achsrichtung             : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Achsrichtung_EN;
     bStationQuittiertScheibe : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF BOOL;
+    Greifer                  : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Greifertyp_EN; // Shuttle-Greifer: Seite je Partnerstation, eGreiferDefault = ohne Greifer
 END_STRUCT
 END_TYPE

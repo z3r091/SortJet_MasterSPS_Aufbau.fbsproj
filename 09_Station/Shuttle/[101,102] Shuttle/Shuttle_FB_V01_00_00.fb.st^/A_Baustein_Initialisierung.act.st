@@ -22,6 +22,7 @@ ACTION A_Baustein_Initialisierung
 *)
 Zentralschmierung.ppParameterBaustein                 REF= BasisStationsParameter.stParameterStationskomponenten.stZentralSchmierung;
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  Greifer[wlIndex].ppParameterGreifer                 REF= BasisStationsParameter.stParameterStationskomponenten.stGreifer[wlIndex];
   Glastransport[wlIndex].ppParameterBaustein          REF= BasisStationsParameter.stParameterStationskomponenten.stGlastransportShuttle[wlIndex];
   Kippen.ppParameterBaustein                          REF= BasisStationsParameter.stParameterStationskomponenten.stKippen[wlIndex];
   Wandverstellung[wlIndex].ppParameterBaustein        REF= BasisStationsParameter.stParameterStationskomponenten.stWandverstellung[wlIndex];
@@ -33,6 +34,7 @@ END_FOR
 Querfahrt.ppAntriebsInformationen                      REF= BasisStationsParameter.stAntriebsparameter.stQuerfahrt;
 Kippen.ppAntriebsInformationen                         REF= BasisStationsParameter.stAntriebsparameter.stKippen;
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  Greifer[wlIndex].ppAntriebsInformationen             REF= BasisStationsParameter.stAntriebsparameter.stGreifer[wlIndex];
   Glastransport[wlIndex].ppAntriebsInformationen       REF= BasisStationsParameter.stAntriebsparameter.stGlastransport[wlIndex];
   Glastransport[wlIndex].ppAntriebsInformationenSlave  REF= BasisStationsParameter.stAntriebsparameter.stGlastransportSlave[wlIndex];
   Wandverstellung[wlIndex].ppAntriebsInformationen     REF= BasisStationsParameter.stAntriebsparameter.stWandverstellung[wlIndex];
@@ -80,9 +82,17 @@ Kippen.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWA
 Zentralschmierung.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bDLSSchmiersystem;
 
 (* Hinweis:
+   - Greifer [Ausbaustufe]: Parameter und Antriebsinformationen nur zuweisen, wenn der Greifer vorhanden ist
+*)
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  Greifer[wlIndex].bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex];
+END_FOR
+
+(* Hinweis:
    - Einige Bausteine einmalig aufrufen damit die Referenz auf Antriebe geschrieben wird
 *)
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  Greifer[wlIndex]( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
   Glastransport[wlIndex]( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
   Wandverstellung[wlIndex]( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern );
 END_FOR

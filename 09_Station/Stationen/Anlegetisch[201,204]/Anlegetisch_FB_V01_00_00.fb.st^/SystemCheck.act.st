@@ -80,7 +80,7 @@ IF( blBetriebartCheck )THEN
             SpsHinweis( eFehler_Station,
                         cMELDUNG_SYSTEMCHECK_SCHEIBE_NEU_ANLEGEN,
                         BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+                        AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                         BasisStationsParameter.awFehlerInformationen );
 
             Hubrahmen.bpStartEinfahren:= TRUE;
@@ -233,14 +233,14 @@ IF( blBetriebartCheck )THEN
 
       IF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
         rSps2MmiMessungScheibenlaenge       := 0;
-        wSps2MmiMessungStationNummer        := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+        wSps2MmiMessungStationNummer        := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
         wSps2MmiMessungSlotNummer           := 1;
         iSps2MmiMessungScheibenanzahl       := 1;
         MsgToMmi( auftragsnr_w := SB0_SPS_SETSHEETSONSTATION );
 
       ELSE
         rSps2MmiMessungScheibenlaenge       := 0;
-        wSps2MmiMessungStationNummer        := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+        wSps2MmiMessungStationNummer        := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
         wSps2MmiMessungSlotNummer           := 1;
         iSps2MmiMessungScheibenanzahl       := 0;
         MsgToMmi( auftragsnr_w := SB0_SPS_SETSHEETSONSTATION );

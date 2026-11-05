@@ -13,11 +13,49 @@ VAR_CONFIG
 // KONFIGURATION: BAUSTEIN IO´s
 //-------------------------------------------------------------------------------------------------
   
-  // Rollenleiste
-  Globale_Bausteine.Kipptisch206.Rollenleiste.in_bGeoeffnet                      AT %MX1.0  : BOOL; // OPTION
-  Globale_Bausteine.Kipptisch206.Rollenleiste.in_bGeschlossen                    AT %MX1.0  : BOOL; // OPTION
-  Globale_Bausteine.Kipptisch206.Rollenleiste.out_bOeffnen                       AT %MX2.0  : BOOL; // OPTION 
-  Globale_Bausteine.Kipptisch206.Rollenleiste.out_bSchliessen                    AT %MX2.0  : BOOL; // OPTION
+  // Rollenleiste (Zylinder 1: Geoeffnet = ausgefahren, Geschlossen = eingefahren; Zylinder 2 ohne Funktion)
+  Globale_Bausteine.Kipptisch206.Rollenleiste.in_bStatusZylinder1Ausgefahren                      AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.Rollenleiste.in_bStatusZylinder1Eingefahren                      AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.Rollenleiste.in_bStatusZylinder2Ausgefahren                      AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.Rollenleiste.in_bStatusZylinder2Eingefahren                      AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.Rollenleiste.out_bZylinder1Ausfahren                             AT %MX2060.0 : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.Rollenleiste.out_bZylinder1Einfahren                             AT %MX2060.1 : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.Rollenleiste.out_bZylinder2Ausfahren                             AT %MX2060.2 : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.Rollenleiste.out_bZylinder2Einfahren                             AT %MX2060.3 : BOOL; // OPTION
+
+  // Kippen
+  Globale_Bausteine.Kipptisch206.Kippen.in_bMotorstarter_OK                                       AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.Kippen.in_bLS400V_OK                                             AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.Kippen.in_bLSBremse_OK                                           AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.Kippen.out_bKippen84Grad                                         AT %MX2060.4 : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.Kippen.out_bKippen90Grad                                         AT %MX2060.5 : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.Kippen.out_bBremseLoesen                                         AT %MX2060.6 : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.Kippen.out_bReset                                                AT %MX2060.7 : BOOL; // OPTION
+
+  // Hub (unbenutzt)
+  Globale_Bausteine.Kipptisch206.HubUnbenutzt.in_bSensorNichtUnten                                AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.HubUnbenutzt.in_bSensorNichtOben                                 AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.HubUnbenutzt.in_bMotorstarter_OK                                 AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.HubUnbenutzt.in_bLSBremse_OK                                     AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.HubUnbenutzt.in_bLS400V_OK                                       AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.HubUnbenutzt.out_bHubAbSetzen                                    AT %MX2061.0 : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.HubUnbenutzt.out_bHubAufSetzen                                   AT %MX2061.1 : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.HubUnbenutzt.out_bReset                                          AT %MX2061.2 : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.HubUnbenutzt.out_bBremseLoesen                                   AT %MX2061.3 : BOOL; // OPTION
+
+  // Wandverstellung (unbenutzt)
+  Globale_Bausteine.Kipptisch206.WandverstellungUnbenutzt.in_bStatusZylinder1Ausgefahren          AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.WandverstellungUnbenutzt.in_bStatusZylinder1Eingefahren          AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.WandverstellungUnbenutzt.in_bStatusZylinder2Ausgefahren          AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.WandverstellungUnbenutzt.in_bStatusZylinder2Eingefahren          AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.WandverstellungUnbenutzt.out_bZylinder1Ausfahren                 AT %MX2061.4 : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.WandverstellungUnbenutzt.out_bZylinder1Einfahren                 AT %MX2061.5 : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.WandverstellungUnbenutzt.out_bZylinder2Ausfahren                 AT %MX2061.6 : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.WandverstellungUnbenutzt.out_bZylinder2Einfahren                 AT %MX2061.7 : BOOL; // OPTION
+
+  // Geblaese-Baustein (unbenutzt)
+  Globale_Bausteine.Kipptisch206.GeblaeseUnbenutzt.in_bMotorschutzschalter_OK                     AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.Kipptisch206.GeblaeseUnbenutzt.out_bStarteGeblaese                            AT %MX2062.0 : BOOL; // OPTION
 
 
 END_VAR

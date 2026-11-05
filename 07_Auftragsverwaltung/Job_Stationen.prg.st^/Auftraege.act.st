@@ -277,7 +277,13 @@ IF ( M_SB0_MMI_STATIONSTATUS ) THEN
          - Aktivieren / Deaktivieren der Station
       *)
       starrFaecherwagenBasisParameter[tMmi2SpsInfo.wStationsNummer].stMKs.bDeaktivieren := ( NOT tMmi2SpsInfo.wStationsStatusWord7.0 );
-      aFaecherwagenstation[tMmi2SpsInfo.wStationsNummer].wlRFID_Nummer_Schreiben := tMmi2SpsInfo.wStationsStatusWord8;
+      aFaecherwagenstation[tMmi2SpsInfo.wStationsNummer].wRFID_Nummer_Schreiben := tMmi2SpsInfo.wStationsStatusWord8;
+
+      // Statuswort 1 Bit 0: bei Faecherwagenstationen loest es den Sicherheitskreis-Reset der Station aus
+      // (Sicherheitsrelais der Station quittieren)
+      IF ( tMmi2SpsInfo.wStationsStatusWord1.0 ) THEN
+        aFaecherwagenstation[tMmi2SpsInfo.wStationsNummer].bStarteSicherheitskreisReset := TRUE;
+      END_IF
 
 
     // -------------------------------------------------------------------

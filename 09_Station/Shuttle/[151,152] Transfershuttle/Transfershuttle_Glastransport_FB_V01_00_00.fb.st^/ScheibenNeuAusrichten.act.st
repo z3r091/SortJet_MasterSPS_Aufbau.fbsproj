@@ -26,10 +26,10 @@ THEN
 
       steplScheibenNeuAusrichten := STEP_20_E;
 
-    // EINTRANSPORT ==============================
+    // SCHEIBEN NEU AUSRICHTEN ==============================
     STEP_20_E:
       // ---------------------------------------------------------------------------------------
-      //  EINTRANSPORT IM TRANSFERSHUTTLE VERBUND
+      //  NEU AUSRICHTEN IM TRANSFERSHUTTLE VERBUND
       //
       //  Hinweis:
       // - n/c
@@ -95,7 +95,7 @@ THEN
         SpsHinweis( eFehler_Station,
                     wpFehlerNr,
                     stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+                    AutomatikkreisBestimmen(stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
 
         steplScheibenNeuAusrichten := STEP_800_E;
@@ -154,12 +154,12 @@ THEN
       (* Hinweis:
          - Keine Scheibe im Fach
       *)
-      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation * 1.5 ) THEN
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation ) THEN
         wpgFehlerdaten[0] := stStationsNummern.NummerExtern;
         SpsHinweis( eFehler_Station,
                     cMELDUNG_STATION_KEINE_SCHEIBE_GEFUNDEN,
                     stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+                    AutomatikkreisBestimmen(stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
 
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -170,7 +170,7 @@ THEN
     // SCHEIBEN NEU AUSRICHTEN ==============================
     STEP_800_E:
       (* Hinweis:
-         - Ausgaenge zuruecksetzeb
+         - Ausgaenge zuruecksetzen
       *)
       out_bShuttleAnheben := FALSE;
 

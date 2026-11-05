@@ -49,7 +49,7 @@ IF ( blBetriebartCheck ) THEN
           END_IF
           
           rSps2MmiMessungScheibenlaenge   := -1;
-          wSps2MmiMessungStationNummer    := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+          wSps2MmiMessungStationNummer    := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
           wSps2MmiMessungSlotNummer       := 1;
           iSps2MmiMessungScheibenanzahl   := BOOL_TO_INT(BasisStationsParameter.bStationBelegt[cWAND_1]);
          
@@ -125,7 +125,7 @@ IF ( blBetriebartCheck ) THEN
         SpsHinweis( eFehler_Station,
                     cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN,
                     BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
       END_IF
 
@@ -134,7 +134,7 @@ IF ( blBetriebartCheck ) THEN
         SpsHinweis( eFehler_Station,
                     cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN,
                     BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
       END_IF
 

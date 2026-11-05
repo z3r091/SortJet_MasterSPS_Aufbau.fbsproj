@@ -50,7 +50,7 @@ FOR wlIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
       
           blFehler[wlIndex, wlIndexWand] := FALSE;    
     
-          ablEintransportGewesen[wlIndex, wlIndexWand] := FALSE;
+          starrShuttleBasisParameter[wlIndex].bEintransportGewesen[wlIndexWand] := FALSE;
         END_FOR
 
       END_IF

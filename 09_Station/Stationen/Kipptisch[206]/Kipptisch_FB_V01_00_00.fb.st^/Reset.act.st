@@ -19,8 +19,7 @@ IF( blBetriebsartReset )THEN
       *)
       blStartePositionWaagerecht := FALSE;
       blStartePositionSenkrecht  := FALSE;
-      Kippen.bpStartKippenAuf    := FALSE;
-      Kippen.bpStartKippenAb     := FALSE;
+      Kippen.bpPositionieren := FALSE;
 
       BasisStationsParameter.eStatusAuftrag := eKeinStatus;   
    
@@ -76,7 +75,7 @@ IF( blBetriebsartReset )THEN
         BasisStationsParameter.wFehlerNummer := cMELDUNG_STATION_NICHT_ZURUECKGESETZT;
         SpsError( eFehler_Station,
                   cMELDUNG_STATION_NICHT_ZURUECKGESETZT,
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                   BasisStationsparameter.awFehlerInformationen );
 
@@ -86,7 +85,7 @@ IF( blBetriebsartReset )THEN
           BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
           SpsError( eFehler_Station,
                     BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     BasisStationsparameter.awFehlerInformationen );
         END_IF
@@ -95,7 +94,7 @@ IF( blBetriebsartReset )THEN
           BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
           SpsError( eFehler_Station,
                     BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     BasisStationsparameter.awFehlerInformationen );
         END_IF
@@ -104,7 +103,7 @@ IF( blBetriebsartReset )THEN
           BasisStationsParameter.wFehlerNummer := Querfahrt.wpFehlerNr;
           SpsError( eFehler_Station,
                     BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     BasisStationsparameter.awFehlerInformationen );
         END_IF

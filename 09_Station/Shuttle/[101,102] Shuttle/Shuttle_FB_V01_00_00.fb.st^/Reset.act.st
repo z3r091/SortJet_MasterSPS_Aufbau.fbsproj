@@ -19,16 +19,11 @@ IF( blBetriebsartReset )THEN
       (* Hinweis:
          - Geblaese stoppen
       *)
-      FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
-        Geblaese[wlIndex].bpStart := FALSE;
-      END_FOR
 
       blNachSystemcheckMerker                := FALSE;
       blDatenlichtschrankeUnterbrochenMelden := FALSE;
       
       BasisStationsParameter.bQuittungPositionierungZurueckgesetzt := FALSE;
-
-      toflGeblaeseEnergiesparModus(PT := T#0S);
 
       BasisStationsParameter.bCheck := FALSE;
 
@@ -45,6 +40,7 @@ IF( blBetriebsartReset )THEN
         Geblaese[wlIndex].bpReset        := TRUE;
         Wandverstellung[wlIndex].bpReset := TRUE;
         Glastransport[wlIndex].bpReset   := TRUE;
+        Greifer[wlIndex].bpReset         := BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex];
       END_FOR
 
       Kippen.bpReset            := TRUE;
@@ -62,7 +58,8 @@ IF( blBetriebsartReset )THEN
 
       FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
         blDone := blDone
-                  AND Glastransport[wlIndex].bpDone;
+                  AND Glastransport[wlIndex].bpDone
+                  AND ( Greifer[wlIndex].bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex] );
       END_FOR
 
       IF( ( blDone
@@ -73,6 +70,7 @@ IF( blBetriebsartReset )THEN
         FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
           Geblaese[wlIndex].bpReset := FALSE;
           Wandverstellung[wlIndex].bpReset := FALSE;
+          Greifer[wlIndex].bpReset := FALSE;
           Glastransport[wlIndex].bpReset := FALSE;
         END_FOR
 
@@ -93,6 +91,7 @@ IF( blBetriebsartReset )THEN
           Geblaese[wlIndex].bpReset := FALSE;
           Wandverstellung[wlIndex].bpReset := FALSE;
           Glastransport[wlIndex].bpReset := FALSE;
+          Greifer[wlIndex].bpReset := FALSE;
         END_FOR
 
         Kippen.bpReset    := FALSE;
@@ -103,7 +102,7 @@ IF( blBetriebsartReset )THEN
         BasisStationsParameter.wFehlerNummer := cMELDUNG_STATION_NICHT_ZURUECKGESETZT;
         SpsError( eFehler_Station,
                   cMELDUNG_STATION_NICHT_ZURUECKGESETZT,
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                   BasisStationsparameter.awFehlerInformationen );
 
@@ -123,7 +122,7 @@ IF( blBetriebsartReset )THEN
             BasisStationsParameter.wFehlerNummer := Glastransport[wlIndex].wpFehlerNr;
             SpsError( eFehler_Station,
                       BasisStationsParameter.wFehlerNummer,
-                      BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                       AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                       BasisStationsparameter.awFehlerInformationen );
           END_IF
@@ -132,7 +131,17 @@ IF( blBetriebsartReset )THEN
             BasisStationsParameter.wFehlerNummer := Wandverstellung[wlIndex].wpFehlerNr;
             SpsError( eFehler_Station,
                       BasisStationsParameter.wFehlerNummer,
-                      BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                      BasisStationsparameter.awFehlerInformationen );
+          END_IF
+          IF (     BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex]
+               AND ( NOT Greifer[wlIndex].bpDone OR Greifer[wlIndex].bpFehler ) )
+          THEN
+            BasisStationsParameter.wFehlerNummer := Greifer[wlIndex].wpFehlerNr;
+            SpsError( eFehler_Station,
+                      BasisStationsParameter.wFehlerNummer,
+                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                       AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                       BasisStationsparameter.awFehlerInformationen );
           END_IF
@@ -146,7 +155,7 @@ IF( blBetriebsartReset )THEN
           BasisStationsParameter.wFehlerNummer := Querfahrt.wpFehlerNr;
           SpsError( eFehler_Station,
                     BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     BasisStationsparameter.awFehlerInformationen );
         END_IF
@@ -156,7 +165,7 @@ IF( blBetriebsartReset )THEN
           BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
           SpsError( eFehler_Station,
                     BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     BasisStationsparameter.awFehlerInformationen );
         END_IF
@@ -186,6 +195,7 @@ ELSE
       Geblaese[wlIndex].bpReset := FALSE;
       Glastransport[wlIndex].bpReset := FALSE;
       Wandverstellung[wlIndex].bpReset := FALSE;
+      Greifer[wlIndex].bpReset := FALSE;
     END_FOR
 
     Querfahrt.bpReset         := FALSE;

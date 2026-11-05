@@ -131,6 +131,7 @@ TYPE Fehlerkonstanten_EN :
   cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUFVORAB_BELEGT_RESTWEGPOSITIONIERUNG           := 180,   // Wildcard: Station: %d
   cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT_RESTWEGPOSITIONIERUNG                := 181,   // Wildcard: Station: %d
   cMELDUNG_EINTRANSPORT_SLAVE_KOPPLUNG_VERLOREN                                    := 182,   // Wildcard: Station: %d
+  cMELDUNG_EINTRANSPORT_GLASTRANSPORT_OPTION_NICHT_KONFIGURIERT                    := 183,   // Wildcard: Station: %d
 
   // ---------------------------------------------------------------------------------------
   // KATEGORIE: SENSOREN AUSTRANSPORT
@@ -269,6 +270,7 @@ TYPE Fehlerkonstanten_EN :
   cMELDUNG_ANTRIEB_SCHWENKEN                                                       := 351,   // Wildcard: Station: %d
   cMELDUNG_ANTRIEB_QUERFAHRT                                                       := 352,   // Wildcard: Station: %d
   cMELDUNG_ANTRIEB_DREHEN                                                          := 353,   // Wildcard: Station: %d
+  cMELDUNG_ANTRIEB_GREIFER_STOESSEL                                                := 354,   // Wildcard: Station: %d
   cMELDUNG_ANTRIEB_MESSACHSE                                                       := 355,   // Wildcard: Station: %d
   cMELDUNG_ANTRIEB_GLASTRANSPORT                                                   := 356,   // Wildcard: Station: %d
   cMELDUNG_ANTRIEB_GLASTRANSPORT_MASTER                                            := 357,   // Wildcard: Station: %d
@@ -502,6 +504,32 @@ TYPE Fehlerkonstanten_EN :
   cMELDUNG_ANLEGEN_SICHERHEITSKREIS                                                := 693,  // Wildcard: Station:%d
 
   // ---------------------------------------------------------------------------------------
+  // KATEGORIE: GREIFER / STOESSEL ALLGEMEIN
+  //
+  //  Hinweis:
+  // - n/c
+  // ---------------------------------------------------------------------------------------
+
+  cMELDUNG_GREIFER_STOESSEL_VERFAHRBEREICH                                         := 710,  // Wildcard: Station:%d | SollPos: %d | paramMinPos: %d | paramMaxPos: %d
+  cMELDUNG_GREIFER_STOESSEL_NICHT_AUSGEFAHREN                                      := 711,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_NICHT_EINGEFAHREN                                      := 712,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_GREIFERZANGE_NICHT_GEOEFFNET                           := 713,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_GREIFERZANGE_NICHT_GESCHLOSSEN                         := 714,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_KEINE_GLAS_EINTRANSPORT                                := 715,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_ENDSCHALTER_NICHT_FREI                                 := 716,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_SENSOR_WIRD_NICHT_FREI                                 := 717,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_MINIMUM_ENDSCHALTER_NICHT_FREI                         := 718,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_MAXIMUM_ENDSCHALTER_NICHT_FREI                         := 719,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_SLAVEANTRIEB_NICHT_BEREIT                              := 720,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_REFERENZ_NICHT_MOEGLICH                                := 722,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_EINTRANSPORT_SENSOR_AUSLAUF_BELEGT                     := 723,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_EINTRANSPORT_SENSOR_EINLAUF_BELEGT                     := 724,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_GLASRUECKHALTER_NICHT_EINGEFAHREN                      := 726,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_POSITION_NICHT_ERREICHT                                := 727,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_ABLAUF_ZEITUEBERSCHREITUNG                             := 728,  // Wildcard: Station:%d
+  cMELDUNG_GREIFER_STOESSEL_ANTRIEB_NICHT_BEREIT                                   := 729,  // Wildcard: Station:%d
+
+  // ---------------------------------------------------------------------------------------
   // KATEGORIE: STATION ALLGEMEIN
   //
   //  Hinweis:
@@ -595,6 +623,7 @@ TYPE Fehlerkonstanten_EN :
   cMELDUNG_FAECHERWAGEN_SYSTEMCHECK_NICHT_MOEGLICH                                 := 830,  // Wildcard: Station:%d
   cMELDUNG_FAECHERWAGEN_OBERWAGEN_INPOS_VERLOREN                                   := 831,  // Wildcard: Station:%d
   cMELDUNG_FAECHERWAGEN_KLEMMZYLINDER_NICHT_EINGEFAHREN                            := 832,  // Wildcard: Station:%d
+  cMELDUNG_FAECHERWAGEN_HYDRAULIK_LAEUFT_NICHT                                     := 833,  // Wildcard: Station:%d
 
   // ---------------------------------------------------------------------------------------
   // KATEGORIE: AUFTRAGSDATEN

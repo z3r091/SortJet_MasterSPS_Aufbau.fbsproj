@@ -143,6 +143,9 @@ VAR_GLOBAL
   bgVISUFWRolltorRunter                      : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
   bgVISUFWQuittierungLichtschranke           : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF BOOL;
 
+  // STATUS: FAECHERWAGEN (alle Varianten; die Visu liest den Status hier statt aus den IOs der Station)
+  astgFaecherwagenstatusVisu                 : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF Faecherwagenstatus_Visu_ST;
+
   bgVISUSetWatchIO                           : BOOL;
   wgVISUWatchIONr                            : WORD;
   bgVISUWatchIOAktiv                         : BOOL;

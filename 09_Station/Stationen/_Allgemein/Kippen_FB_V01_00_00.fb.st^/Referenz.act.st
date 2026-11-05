@@ -32,19 +32,11 @@ IF ( bpReferenz ) THEN
       tofHardwareEndschalterFrei(IN:=FALSE);
 
       IF ( Antrieb.bpReglerBereit ) THEN
-        Antrieb.wpBetriebsart := AntriebsBetriebsart_EN.RESET;
-        steplReferenz := STEP_10_E;
-      END_IF
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
-    // REFERENZ =========================
-    STEP_10_E:
-      (* Hinweis:
-         - Pruefen ob der Antrieb keinen fehler hat nach dem Reset
-         - Pruefen ob ein Endschalter belegt ist [Oeffner- Kontakt]
-      *)
-      IF ( NOT Antrieb.bpFehler ) THEN
-        Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
-
+        (* Hinweis:
+           - Pruefen ob ein Endschalter belegt ist [Oeffner- Kontakt]
+        *)
         IF ( Antrieb.bpMinSchalterBelegt
              OR Antrieb.bpMaxSchalterBelegt )
         THEN
@@ -54,7 +46,6 @@ IF ( bpReferenz ) THEN
           steplReferenz := STEP_100_E;
 
         END_IF
-
       END_IF
 
     // REFERENZ =========================
@@ -93,7 +84,8 @@ IF ( bpReferenz ) THEN
          - Antrieb
       *)
       IF ( tonlEndschalterFreifahren.Q
-           AND NOT Antrieb.bpMinSchalterBelegt )
+           AND ( Antrieb.bpMinSchalterBelegt
+                 OR Antrieb.bpMaxSchalterBelegt ))
       THEN
         Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_KIPPEN_ENDSCHALTER_NICHT_FREI;
@@ -117,16 +109,22 @@ IF ( bpReferenz ) THEN
       //  STARTEN DER REFERENZ
       //
       //  Hinweis:
-      // - n/c
+      // - Einlauf- und Auslaufsensor muessen frei sein
+      // - Referenzgeschwindigkeit
       // ---------------------------------------------------------------------------------------
-
-      Antrieb.rpGeschwindigkeit  := ppAntriebsInformationen.rpMaxGeschwindigkeit;
-      Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
-      Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
-
-      Antrieb.wpBetriebsart :=  AntriebsBetriebsart_EN.REFERENZ;
-
-      steplReferenz := STEP_110_E;
+      IF (  NOT bpSensorEinlauf
+           AND NOT bpSensorAuslauf )
+      THEN
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReferenzGeschwindigkeit;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.rpZielPosition    := 0.01;
+        Antrieb.wpBetriebsart     := AntriebsBetriebsart_EN.REFERENZ;
+        steplReferenz := STEP_110_E;
+      ELSE
+        wpFehlerNr := cMELDUNG_KIPPEN_EINLAUF_AUSLAUF_SENSOR_BELEGT;
+        steplReferenz := STEP_900_E;
+      END_IF
 
     // REFERENZ =========================
     STEP_110_E:

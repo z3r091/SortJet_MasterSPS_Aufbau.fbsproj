@@ -15,6 +15,7 @@ ACTION A_Schnittstelle
 BasisStationsParameter.OutGlasTransport[cWAND_1].stStationsNummern          := BasisStationsParameter.stMKs.stStationsNummern;
 BasisStationsParameter.OutGlasTransport[cWAND_1].wStationsTyp               := BasisStationsParameter.stMKs.eStationsTyp;
 BasisStationsParameter.OutGlasTransport[cWAND_1].wAchsID                    := Glastransport.ppAntriebsInformationen.wAchsID;
+BasisStationsParameter.OutGlasTransport[cWAND_1].rLaengeStation             := Glastransport.ppParameterBaustein.rlLaengeStation;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bEinlaufsensor             REF= Glastransport.bpSensorEinlauf;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bAuslaufsensor             REF= Glastransport.bpSensorAuslauf;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bBereitZumAustransport     REF= Glastransport.bpOutBereitZumAustransport;

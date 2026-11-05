@@ -118,14 +118,7 @@ END_IF
 *)
 IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
 
-  IF ( BasisStationsParameter.bCheck ) THEN
-    rSps2MmiMessungScheibenlaenge   := 0;
-    wSps2MmiMessungStationNummer    := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
-    wSps2MmiMessungSlotNummer       := 1;
-    iSps2MmiMessungScheibenanzahl   := 0;
-
-    MsgToMmi( auftragsnr_w := SB0_SPS_SETSHEETSONSTATION );
-  END_IF
+  A_ScheibenDeaktivierteStationMelden();
 
   FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
     BasisStationsParameter.bAustransportAbgeschlossen[wlIndex]   := FALSE;

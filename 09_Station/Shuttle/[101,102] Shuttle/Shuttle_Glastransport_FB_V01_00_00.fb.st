@@ -21,6 +21,7 @@ VAR_INPUT
   bpHandfahrenMinus                : BOOL; // BETRIEBSMODUS HANDBETRIEB: Im Handbetrieb den Riemen in negative Glasflussrichtung bewegen
   bpFahreReferenz                  : BOOL; // BETRIEBSMODUS: Antrieb referenzieren
   bpStarteVorabPositionierung      : BOOL; // BETRIEBSMODUS Positionieren der Scheibe fuer den Austransport
+  bpStarteVorabPositionierungRueckwaertig : BOOL; // BETRIEBSMODUS Positionieren der Scheibe fuer den Austransport rueckwaerts (ueber den Einlaufsensor)
   bpCheck                          : BOOL;
   bpReset                          : BOOL;
   bpCheckMitVorgaenger             : BOOL; // Status: SystemCheck mit der Vorgaenger- Station
@@ -35,6 +36,7 @@ VAR_INPUT
   bpSensorEinlaufVorab             : BOOL; // Sensoren von links nach rechts Sensor 2
   bpSensorAuslaufVorab             : BOOL; // Sensoren von links nach rechts Sensor 3
   bpSensorAuslauf                  : BOOL; // Sensoren von links nach rechts Sensor 4
+  bpSensorEinlaufStopp             : BOOL; // Sensoren von links nach rechts Sensor 0 (Verfahrfreigabe, Notbremse und Scheibe hat Shuttle verlassen im Rueckwaertstransport)
   bpSensorAuslaufStopp             : BOOL; // Sensoren von links nach rechts Sensor 5
   bpScheibeNachSystemcheckAufAuslaufsensor : BOOL;
   bpTeilnehmerErreichbar           : BOOL;
@@ -43,6 +45,15 @@ VAR_INPUT
   
   // OPTIONEN
   bpOptionMasterSlaveTransport     : BOOL;
+
+  // GREIFER
+  bpStarteSlaveKopplungGreifer      : BOOL; // BETRIEBSMODUS GREIFER: Glastransport als Slave auf die Greiferachse koppeln
+  bpStarteKorrekturfahrt            : BOOL; // BETRIEBSMODUS GREIFER: Sensor der Greiferseite frei fahren (uebergrosse Scheibe / nach dem Austransport)
+  bpKorrekturfahrtRueckwaerts       : BOOL; // BETRIEBSMODUS GREIFER: TRUE = Auslaufsensor frei fahren, FALSE = Einlaufsensor frei fahren
+  bpStarteGlasPositionierungGreifer : BOOL; // BETRIEBSMODUS GREIFER: Scheibe fuer den Austransport mit dem Greifer positionieren
+  bpGlasPositionierungEinlaufseite  : BOOL; // BETRIEBSMODUS GREIFER: TRUE = ueber den Einlaufsensor positionieren, FALSE = ueber den Auslaufsensor
+  wpAchsIDGreifer                   : WORD; // Achs-ID der Greiferachse (Master der Kopplung)
+  rpWegGlasUebergabeposition        : REAL; // Weg der Scheibe ueber den Sensor der Greiferseite
 
   // WORD
   wpWandNr                    : WORD;
@@ -79,6 +90,9 @@ VAR_OUTPUT
   bpSlaveAktiv                                : BOOL; // STATUS: dem Baustein melden das der Slavebetrieb aktiv ist
   bpFreigabeQuerfahrt                         : BOOL; // HINWEIS: Freigabe setzen das die Querfahrt verfahren kann
   bpAuftragAktiv                              : BOOL;
+  bpGreiferSlaveAktiv                         : BOOL; // STATUS: Glastransport ist auf die Greiferachse gekoppelt
+  bpKorrekturfahrtAbgeschlossen               : BOOL; // STATUS: Korrekturfahrt fuer den Greifer abgeschlossen
+  bpGlasPositionierungGreiferAbgeschlossen    : BOOL; // STATUS: Scheibe fuer den Greifer positioniert
 
   // WORD
   wpFehlerNr             : WORD;
@@ -107,6 +121,7 @@ VAR
   // REAL
   rlScheibenMessungErgebnis         : REAL; // SystemCheck
   rlAntriebIstPositionBeiStart      : REAL;
+  rlMaxStreckeErsteScheibe          : REAL; // Max. Weg bis zur ersten Scheibe: Laenge der abgebenden Station, ohne bekannte Laenge die eigene Stationslaenge
   rlStreckeBisZurVerzoegerung       : REAL;
   rlPositionScheibenAnfangErkannt   : REAL;
   rlGeschwindigkeitEintransport     : REAL;
@@ -123,10 +138,14 @@ VAR
   steplReset                    : Steps_TE;
   steplReferenz                 : Steps_TE;
   steplVorabpositionieren       : STEPS_TE; // Hinweis: Positionierung ueber den Auslaufsensor
+  steplVorabpositionierenRueckwaertig : STEPS_TE; // Hinweis: Positionierung ueber den Einlaufsensor
   steplSensorFreiFahren         : Steps_TE;
   steplVortransport             : Steps_TE;
   steplVortransportRueckwertig  : Steps_TE;
-  
+  steplSlaveGreifer             : Steps_TE;
+  steplKorrekturfahrt           : Steps_TE;
+  steplGlasPositionierungGreifer : Steps_TE;
+
   steplCheckMerker : Steps_TE;
 
   // TIMER
@@ -134,6 +153,7 @@ VAR
   toflEinlaufsensor                  : TOF; // AUSSCHALTVERZOEGERUNG: Entprellen der Sensoren
   toflAuslaufsensor                  : TOF; // AUSSCHALTVERZOEGERUNG: Entprellen der Sensoren
   toflAuslaufsensorSTOP              : TOF; // AUSSCHALTVERZOEGERUNG: Entprellen der Sensoren
+  toflEinlaufsensorSTOP              : TOF; // AUSSCHALTVERZOEGERUNG: Entprellen der Sensoren
   toflEinlaufsensorFrei              : TOF; // AUSSCHALTVERZOEGERUNG: Haelt die positive Flanke des Auslaufsensor eine gewissen Zeit aufrecht ( Freifahren des Sensors )
   toflAuslaufsensorFrei              : TOF; // AUSSCHALTVERZOEGERUNG: Haelt die positive Flanke des Auslaufsensor eine gewissen Zeit aufrecht ( Freifahren des Sensors )
   tonlMaxWarteAufResetErfolgreich    : TON; // EINSCHALTVERZOEGERUNG:
@@ -142,6 +162,8 @@ VAR
   tonlUberwachungSlaveAktiv          : TON; // EINSCHALTVERZOEGERUNG:  
   tonlSlaveKopplungDeaktiviert       : TON;
   tonlSlaveAntriebNichtFreigegeben   : TON; // Ueberwachung: Master/Slave nicht betriebsbereit
+  tonlUeberwachungSlaveGreifer       : TON; // Ueberwachung: Kopplung auf die Greiferachse
+  tonlUeberwachungGreiferBetrieb      : TON; // Ueberwachung: Antrieb bereit fuer Korrekturfahrt / Positionierung fuer den Greifer
   
   // TIME
   tlWarteZeiteAufnahme               : TIME; // STATISTIK: Zeit Ermittlung von evtl. Wartezeiten
@@ -249,6 +271,7 @@ END_IF
 toflEinlaufsensor(IN := bpSensorEinlauf, PT := t#50ms);
 toflAuslaufsensor(IN := bpSensorAuslauf, PT := t#50ms);
 toflAuslaufsensorSTOP(IN := bpSensorAuslaufStopp, PT := t#50ms);
+toflEinlaufsensorSTOP(IN := bpSensorEinlaufStopp, PT := t#50ms);
 
 
 // TIMER:
@@ -283,6 +306,7 @@ Austransport();
 Austransport_Rueckwertig();
 
 GlasVorabPositionierung();
+GlasVorabPositionierung_Rueckwaertig();
 
 CASE eStationsTyp OF
 
@@ -297,6 +321,13 @@ CASE eStationsTyp OF
 END_CASE
 
 SensorenFreifahren();
+
+(* Hinweis:
+   - Zusammenspiel mit dem Shuttle-Greifer (nur mit stStationsAufbau.bGreifer angefordert)
+*)
+GlasPositionierungGreifer();
+Korrekturfahrt();
+SlaveBetriebGreifer();
 
 IF ( bpSlaveAntriebVorhanden ) THEN
   Slave_Antrieb();
@@ -326,8 +357,12 @@ toflAutoAbschaltung( IN := (  bpAutomatikAktiv
                                    OR bpVortransportRueck
                                    OR bpAustransport
                                    OR bpRueckwaertsAustransportieren
-                                   OR bpStarteSensorFreiFahren 
-                                   OR bpStarteVorabPositionierung ) )
+                                   OR bpStarteSensorFreiFahren
+                                   OR bpStarteVorabPositionierung
+                                   OR bpStarteVorabPositionierungRueckwaertig
+                                   OR bpStarteSlaveKopplungGreifer
+                                   OR bpStarteKorrekturfahrt
+                                   OR bpStarteGlasPositionierungGreifer ) )
                      OR bpCheck
                      OR bpHandfahrenMinus
                      OR bpHandfahrenPlus

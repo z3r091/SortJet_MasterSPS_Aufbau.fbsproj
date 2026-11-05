@@ -1,0 +1,24 @@
+(* METADATA
+{
+  "v3Meta": {
+    "objectGuid": "ffb6da21-2d1f-4f73-afc8-e550ef19dd3a"
+  }
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE MK_Hydraulikstation
+VAR_GLOBAL
+  // Hydraulikaggregate der Faecherwagenstationen (Variante Hydraulik)
+  // Zuordnung Faecherwagenstation -> Hydraulikstation: MK stStationsAufbau.wHydraulikstation der Faecherwagenstation
+  apgMKHydraulikstation : ARRAY[cERSTE_HYDRAULIKSTATIONS_NR..cLETZTE_HYDRAULIKSTATIONS_NR] OF Parameter_Hydraulikstation :=[
+    (
+      bDeaktivieren                   := TRUE,
+      wMeldungsNummer                 := 2000, // ioccHydraulikkreis_1_Motorschuetz
+      wMaximaleAnzahlAktiverAuftraege := 1     // Leistung des Aggregats reicht fuer einen Auftrag
+    )];
+
+
+END_VAR
+
+
+END_NAMESPACE

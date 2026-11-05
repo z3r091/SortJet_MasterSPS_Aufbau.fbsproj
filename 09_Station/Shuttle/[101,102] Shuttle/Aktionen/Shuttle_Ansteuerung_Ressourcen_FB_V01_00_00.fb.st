@@ -6,8 +6,19 @@
 }
 *)
 FUNCTION_BLOCK Shuttle_Ansteuerung_Ressourcen_FB_V01_00_00 EXTENDS Basic_Shuttle_Aktion_FB_V01_00_00
+VAR_INPUT
+
+  // GREIFER [Ausbaustufe stStationsAufbau.bGreifer]
+  bpGreiferAktiv : BOOL;
+  Greifer        : REFERENCE TO Shuttle_Greifer_FB_V01_00_00;
+
+END_VAR
 VAR
   tonlTimeout : TON;
+
+  // BOOL
+  blMitGreifer : BOOL; // Vorab-Auftrag mit Greiferseite und Greifer vorhanden
+  blGlasUeberspringen : BOOL; // Vorab ohne Glasaktion: Eintransport aktiv oder gerade gewesen
 END_VAR
 //-------------------------------------------------------------------------------------------------
 // AKTION ANSTEUERUNG RESOURCEN WAEHREND DER QUERFAHRT
@@ -27,6 +38,7 @@ THEN
     Glastransport.bpVortransport              := FALSE;
     Glastransport.bpVortransportRueck         := FALSE;
     Glastransport.bpStarteVorabPositionierung := FALSE;
+    Glastransport.bpStarteVorabPositionierungRueckwaertig := FALSE;
     BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
@@ -49,6 +61,14 @@ THEN
     steplAktion := STEP_900_E;
   END_IF
 
+  IF ( blMitGreifer AND Greifer.bpFehler ) THEN
+    Greifer.bpPositionieren                         := FALSE;
+    Greifer.bpStarteVorabPositionierungEintransport := FALSE;
+    BasisStationsParameter.awFehlerInformationen    := Greifer.awpFehlerInformationen;
+    BasisStationsParameter.wFehlerNummer            := Greifer.wpFehlerNr;
+    steplAktion := STEP_900_E;
+  END_IF
+
   (* Hinweis:
      - Starten der Schrittkette
   *)
@@ -57,6 +77,9 @@ THEN
     STEP_0_E:
       BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wWand] := FALSE;
       tonlTimeout( IN := FALSE );
+
+      blMitGreifer :=     bpGreiferAktiv
+                      AND ( BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eGreiferTyp <> eGreiferDefault );
 
       IF ( BasisStationsParameter.stMKs.stStationsOptionen.bVorAbKomponentenAnsteuerung ) THEN
         steplAktion := STEP_10_E;
@@ -85,44 +108,60 @@ THEN
     STEP_20_E:  
       (* Hinweis:
          - Glastransport ansteuern
+         - Laeuft der Eintransport noch (bEintransport) oder ist er gerade abgeschlossen (Eintransport gewesen),
+           liegt die Scheibe definiert: die Glasaktion der Vorab entfaellt, es wird nicht gewartet
+         - Jede weitere Vorab positioniert die Scheibe neu (Sensor erst freifahren, dann neu anfahren)
       *)
-      tonlTimeout(IN := TRUE, PT := T#30S);
+      blGlasUeberspringen := BasisStationsParameter.bEintransport[wWand]
+                             OR BasisStationsParameter.bEintransportGewesen[wWand];
+      BasisStationsParameter.bEintransportGewesen[wWand] := FALSE;
 
-      // Vorab-Glastransport ueberspringen, wenn der Eintransport vom Job schon angefordert ist
-      //   - Dann direkt weiter, nicht bis zum Timeout warten
-      IF ( BasisStationsParameter.bEintransport[wWand] ) THEN
-
-        tonlTimeout( IN := FALSE );
-        steplAktion := STEP_100_E;
-
-      ELSIF NOT Glastransport.bpEintransport
-            AND NOT Glastransport.bpRueckwaertsEintransportieren
+      IF ( NOT blGlasUeberspringen
+           AND NOT Glastransport.bpEintransport
+           AND NOT Glastransport.bpRueckwaertsEintransportieren )
       THEN
 
         CASE BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eGlastransport OF
-        
-            eGlastransport_Default,
-              eGlastransport_AufEinlauf:
+
+          eGlastransport_Default:
             ;
+
+          eGlastransport_AufEinlauf:
+            Glastransport.bpStarteVorabPositionierungRueckwaertig := NOT Glastransport.bpAuftragAktiv;
 
           eGlastransport_AufEinlaufVorab:
             Glastransport.bpVortransportRueck := TRUE;
-        
-            eGlastransport_AufAuslauf,
-              eGlastransport_AufAuslaufVorab:
+
+          eGlastransport_AufAuslauf,
+            eGlastransport_AufAuslaufVorab:
             Glastransport.bpStarteVorabPositionierung := NOT Glastransport.bpAuftragAktiv;
-        
+
         END_CASE
-        
-        tonlTimeout( IN := FALSE );
-        steplAktion := STEP_100_E;
-
-      ELSIF tonlTimeout.Q THEN
-
-        tonlTimeout( IN := FALSE );
-        steplAktion := STEP_100_E;
 
       END_IF
+
+      (* Hinweis:
+         - Greifer [Ausbaustufe] waehrend der Querfahrt vorpositionieren
+           => Austransport: Greifer hinter die Glaskante stellen
+           => Eintransport: Greifer an die Wandseite stellen und ausfahren
+         - Entfaellt solange der Eintransport noch aktiv ist
+      *)
+      IF (     blMitGreifer
+           AND NOT Greifer.bpAuftragAktiv
+           AND NOT BasisStationsParameter.bEintransport[wWand] )
+      THEN
+        Greifer.epGreiferTyp := BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eGreiferTyp;
+
+        IF ( BasisStationsParameter.pVorAbAuftragsdaten[wWand].wAuftragstyp.0 ) THEN
+          Greifer.rpGlaslaenge    := BasisStationsParameter.pVorAbAuftragsdaten[wWand].rLaenge;
+          Greifer.bpPositionieren := TRUE;
+        ELSE
+          Greifer.bpStarteVorabPositionierungEintransport := NOT Greifer.bpVorpositioniertEintransport;
+        END_IF
+      END_IF
+
+      tonlTimeout( IN := FALSE );
+      steplAktion := STEP_100_E;
 
     // VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ========================
     STEP_100_E:
@@ -136,16 +175,26 @@ THEN
            AND (( Glastransport.bpVortransport AND Glastransport.bpDone) OR NOT Glastransport.bpVortransport)
            AND (( Glastransport.bpVortransportRueck AND Glastransport.bpDone) OR NOT Glastransport.bpVortransportRueck)
            AND (( Glastransport.bpStarteVorabPositionierung AND Glastransport.bpDone) OR NOT Glastransport.bpStarteVorabPositionierung)
-           AND (( Wandverstellung.bpStartePositionierung AND Wandverstellung.bpDone) OR NOT Wandverstellung.bpStartePositionierung) )
+           AND (( Glastransport.bpStarteVorabPositionierungRueckwaertig AND Glastransport.bpDone) OR NOT Glastransport.bpStarteVorabPositionierungRueckwaertig)
+           AND (( Wandverstellung.bpStartePositionierung AND Wandverstellung.bpDone) OR NOT Wandverstellung.bpStartePositionierung)
+           AND (    NOT blMitGreifer
+                 OR (     (( Greifer.bpPositionieren AND Greifer.bpPositionierungAbgeschlossen ) OR NOT Greifer.bpPositionieren )
+                      AND (( Greifer.bpStarteVorabPositionierungEintransport AND Greifer.bpVorabPositionierungEintransportAbgeschlossen ) OR NOT Greifer.bpStarteVorabPositionierungEintransport ) ) ) )
       THEN
 
         Glastransport.bpVortransport                    := FALSE;
         Glastransport.bpVortransportRueck               := FALSE;
         Glastransport.bpStarteVorabPositionierung       := FALSE;
+        Glastransport.bpStarteVorabPositionierungRueckwaertig := FALSE;
 
         Wandverstellung.bpStartePositionierung          := FALSE;
         Kippen.bpPositionieren                          := FALSE;
-       
+
+        IF ( blMitGreifer ) THEN
+          Greifer.bpPositionieren                         := FALSE;
+          Greifer.bpStarteVorabPositionierungEintransport := FALSE;
+        END_IF
+
         steplAktion := STEP_1000_E;
       END_IF
 
@@ -164,6 +213,7 @@ THEN
       Glastransport.bpVortransport                    := FALSE;
       Glastransport.bpVortransportRueck               := FALSE;
       Glastransport.bpStarteVorabPositionierung       := FALSE;
+      Glastransport.bpStarteVorabPositionierungRueckwaertig := FALSE;
 
       Wandverstellung.bpStartePositionierung          := FALSE;
       Kippen.bpPositionieren                          := FALSE;
@@ -184,9 +234,16 @@ IF ( NOT BasisStationsParameter.bVorabKomponentenAnsteuerung[wWand] ) THEN
       Glastransport.bpVortransport                    := FALSE;
       Glastransport.bpVortransportRueck               := FALSE;
       Glastransport.bpStarteVorabPositionierung       := FALSE;
+      Glastransport.bpStarteVorabPositionierungRueckwaertig := FALSE;
 
       Wandverstellung.bpStartePositionierung          := FALSE;
       Kippen.bpPositionieren                                   := FALSE;
+    END_IF
+
+    IF ( blMitGreifer ) THEN
+      Greifer.bpPositionieren                         := FALSE;
+      Greifer.bpStarteVorabPositionierungEintransport := FALSE;
+      blMitGreifer := FALSE;
     END_IF
    
     BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wWand] := FALSE;

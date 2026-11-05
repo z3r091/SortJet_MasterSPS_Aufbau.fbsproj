@@ -79,7 +79,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
         SpsError( eFehler_Station,
                   starrStationBasisParameter[wStation].wFehlerNummer,
                   starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                  AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                  AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                   starrStationBasisParameter[wStation].awFehlerInformationen );
         starrStationBasisParameter[wStation].bVortransport[wWand] := FALSE;
         steplSchritt := STEP_900_E;

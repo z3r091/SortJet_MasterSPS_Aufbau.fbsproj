@@ -20,6 +20,9 @@ VAR
   wlMilliSekundenMmiNichtOk : WORD;
   wlIndex                   : WORD := 0;
   wlSubIndex                : WORD := 0;
+  wlFaecherwagen            : WORD := 0; // Ampel blau: Faecherwagenstation
+  wlIndexAK                 : WORD := 0; // Ampel blau: Automatikkreis der Station (Index)
+  wlAK                      : WORD := 0; // Ampel blau: Automatikkreis der Station
   wlIndexStationen          : WORD := 0;
   wIndexReset               : WORD := 0;
   wIndexCheck               : WORD := 0;

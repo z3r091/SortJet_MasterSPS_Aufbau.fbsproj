@@ -64,6 +64,7 @@ THEN
       *)
       Glastransport.pAuftrag := BasisStationsParameter.pAuftrag[cWAND_1];
       Glastransport.bpRueckwaertsEintransportieren := BasisStationsParameter.bRueckwaertsTransportieren[cWAND_1];
+      Glastransport.bpScheibentrennung             := BasisStationsParameter.bScheibentrennen[cWAND_1];
       Glastransport.bpEintransport := TRUE;
 
       steplEintransport := STEP_50_E;

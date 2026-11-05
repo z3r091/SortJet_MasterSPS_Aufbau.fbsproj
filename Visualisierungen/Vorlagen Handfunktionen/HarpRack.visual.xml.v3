@@ -2651,7 +2651,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">2477733581</Single>
-							<Single Name="Value" Type="string">Globale_Bausteine.aFaecherwagenstation[wStationsnummer].wlRFID_Nummer</Single>
+							<Single Name="Value" Type="string">VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].wRFID_Nummer</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">3719097617</Single>
@@ -3069,7 +3069,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1999528970</Single>
-							<Single Name="Value" Type="string">Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bLinearEinheit1Vorne AND Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bLinearEinheit2Vorne</Single>
+							<Single Name="Value" Type="string">VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].abEndlage[7]</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">3719097617</Single>
@@ -3201,7 +3201,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1999528970</Single>
-							<Single Name="Value" Type="string">Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bLineareinheit1Umgreifposition AND Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bLineareinheit2Umgreifposition</Single>
+							<Single Name="Value" Type="string">VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].abEndlage[9]</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">3719097617</Single>
@@ -3333,7 +3333,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1999528970</Single>
-							<Single Name="Value" Type="string">Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bLinearEinheit1Hinten AND Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bLinearEinheit2Hinten</Single>
+							<Single Name="Value" Type="string">VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].abEndlage[8]</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">3719097617</Single>
@@ -3609,7 +3609,7 @@ Einheit</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1999528970</Single>
-							<Single Name="Value" Type="string">Globale_Bausteine.aFaecherwagenstation[wStationsnummer].bpFehler</Single>
+							<Single Name="Value" Type="string">VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].bFehler</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">3719097617</Single>
@@ -3745,7 +3745,7 @@ Einheit</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1999528970</Single>
-							<Single Name="Value" Type="string">Globale_Bausteine.aFaecherwagenstation[wStationsnummer].blTagPresent</Single>
+							<Single Name="Value" Type="string">VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].bWagenErkannt</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">3719097617</Single>
@@ -3877,7 +3877,7 @@ Einheit</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1999528970</Single>
-							<Single Name="Value" Type="string">Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bEntriegelungOffen</Single>
+							<Single Name="Value" Type="string">VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].abEndlage[3]</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">3719097617</Single>
@@ -4009,7 +4009,7 @@ Einheit</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1999528970</Single>
-							<Single Name="Value" Type="string">Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bEntriegelungGeschlossen</Single>
+							<Single Name="Value" Type="string">VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].abEndlage[2]</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">3719097617</Single>
@@ -4269,7 +4269,7 @@ Einheit</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1999528970</Single>
-							<Single Name="Value" Type="string">Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bGreifer1Offen AND Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bGreifer2Offen</Single>
+							<Single Name="Value" Type="string">VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].abEndlage[11]</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">3719097617</Single>
@@ -4401,7 +4401,7 @@ Einheit</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1999528970</Single>
-							<Single Name="Value" Type="string">Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bGreifer1Zu AND Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bGreifer2Zu</Single>
+							<Single Name="Value" Type="string">VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].abEndlage[12]</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">3719097617</Single>
@@ -4661,7 +4661,7 @@ Einheit</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1999528970</Single>
-							<Single Name="Value" Type="string">NOT Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bNichtRolltorGeoeffnet</Single>
+							<Single Name="Value" Type="string">VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].bRolltorOben</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">3719097617</Single>
@@ -4793,7 +4793,7 @@ Einheit</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1999528970</Single>
-							<Single Name="Value" Type="string">Globale_Bausteine.aFaecherwagenstation[wStationsnummer].blRolltorUnten</Single>
+							<Single Name="Value" Type="string">VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].bRolltorUnten</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">3719097617</Single>
@@ -5053,7 +5053,7 @@ Einheit</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1999528970</Single>
-							<Single Name="Value" Type="string">Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bGegenhalterOffen</Single>
+							<Single Name="Value" Type="string">VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].abEndlage[0]</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">3719097617</Single>
@@ -5185,7 +5185,7 @@ Einheit</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1999528970</Single>
-							<Single Name="Value" Type="string">Globale_Bausteine.aFaecherwagenstation[wStationsnummer].in_bGegenhalterZu</Single>
+							<Single Name="Value" Type="string">VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].abEndlage[1]</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">3719097617</Single>
@@ -5344,7 +5344,7 @@ Einheit</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1999528970</Single>
-							<Single Name="Value" Type="string">NOT aFaecherwagenstation[wStationsnummer].bpLichtschranke_OK</Single>
+							<Single Name="Value" Type="string">NOT VISU_VARS.astgFaecherwagenstatusVisu[wStationsnummer].bLichtschrankeOK</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">823443203</Single>

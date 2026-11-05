@@ -15,14 +15,14 @@ VAR_CONFIG
 //-------------------------------------------------------------------------------------------------
 
   // ------------------------------------ HARDWARE EINGAENGE ---------------------------------------
-  // EINGAENGE:
-  Globale_Bausteine.aHydraulikStation[501].in_bMotorschuetz_Hydraulikkreislauf_OK            AT %MX1.1    : BOOL; // OPTION
+  // EINGAENGE: Hydraulikstation 1 (cHYDRAULIKSTATION_1)
+  Globale_Bausteine.aHydraulikstation[1].in_bMotorschuetz_Hydraulikkreislauf_OK              AT %MX1.1    : BOOL; // OPTION
 
 
   // ------------------------------------ HARDWARE AUSGAENGE ---------------------------------------
-  // AUSGAENGE:
-  Globale_Bausteine.aHydraulikStation[501].out_bHydraulikkreislauf_MotorEin                  AT %MX2.0   : BOOL; // OPTION
-  Globale_Bausteine.aHydraulikStation[501].out_bHydraulikkreislauf_UmlaufventilAuf           AT %MX2.0   : BOOL; // OPTION
+  // AUSGAENGE: Hydraulikstation 1 (cHYDRAULIKSTATION_1)
+  Globale_Bausteine.aHydraulikstation[1].out_bHydraulikkreislauf_MotorEin                    AT %MX3000.0 : BOOL; // OPTION
+  Globale_Bausteine.aHydraulikstation[1].out_bHydraulikkreislauf_UmlaufventilAuf             AT %MX3000.1 : BOOL; // OPTION
   
 Globale_Bausteine.aFaecherwagenstation[301].out_bRolltorAb                                   AT %QX4.0   : BOOL; //Rolltor 301 ab  4.0
 Globale_Bausteine.aFaecherwagenstation[301].out_bRolltorAuf                                  AT %QX4.1   : BOOL;//Rolltor 301 auf 4.1
@@ -30,10 +30,19 @@ Globale_Bausteine.aFaecherwagenstation[302].out_bRolltorAb                      
 Globale_Bausteine.aFaecherwagenstation[302].out_bRolltorAuf                                  AT %QX4.3   : BOOL;//Rolltor 302 auf 4.3
 Globale_Bausteine.aFaecherwagenstation[303].out_bRolltorAb                                   AT %QX4.4   : BOOL;//Rolltor 303 ab  4.4
 Globale_Bausteine.aFaecherwagenstation[303].out_bRolltorAuf                                  AT %QX4.5   : BOOL;//Rolltor 303 auf 4.5
-Globale_Bausteine.aFaecherwagenstation[304].out_bRolltorAb                                   AT %MX2.0   : BOOL; // TODO: Rolltor 304 ab, Ausgang aus Schaltplan
-Globale_Bausteine.aFaecherwagenstation[304].out_bRolltorAuf                                  AT %MX2.0   : BOOL; // TODO: Rolltor 304 auf, Ausgang aus Schaltplan
-Globale_Bausteine.aFaecherwagenstation[305].out_bRolltorAb                                   AT %MX2.0   : BOOL; // TODO: Rolltor 305 ab, Ausgang aus Schaltplan
-Globale_Bausteine.aFaecherwagenstation[305].out_bRolltorAuf                                  AT %MX2.0   : BOOL; // TODO: Rolltor 305 auf, Ausgang aus Schaltplan
+Globale_Bausteine.aFaecherwagenstation[304].out_bRolltorAb                                   AT %MX3000.2 : BOOL; // TODO: Rolltor 304 ab, Ausgang aus Schaltplan
+Globale_Bausteine.aFaecherwagenstation[304].out_bRolltorAuf                                  AT %MX3000.3 : BOOL; // TODO: Rolltor 304 auf, Ausgang aus Schaltplan
+Globale_Bausteine.aFaecherwagenstation[305].out_bRolltorAb                                   AT %MX3000.4 : BOOL; // TODO: Rolltor 305 ab, Ausgang aus Schaltplan
+Globale_Bausteine.aFaecherwagenstation[305].out_bRolltorAuf                                  AT %MX3000.5 : BOOL; // TODO: Rolltor 305 auf, Ausgang aus Schaltplan
+
+  // Rolltor oben (alle Varianten): TRUE = Rolltor nicht oben
+Globale_Bausteine.aFaecherwagenstation[301].in_bNichtRolltorGeoeffnet                         AT %MX1.0   : BOOL; // TODO: Rolltor 301 nicht oben, Eingang aus Schaltplan
+Globale_Bausteine.aFaecherwagenstation[302].in_bNichtRolltorGeoeffnet                         AT %MX1.0   : BOOL; // TODO: Rolltor 302 nicht oben, Eingang aus Schaltplan
+Globale_Bausteine.aFaecherwagenstation[303].in_bNichtRolltorGeoeffnet                         AT %MX1.0   : BOOL; // TODO: Rolltor 303 nicht oben, Eingang aus Schaltplan
+Globale_Bausteine.aFaecherwagenstation[304].in_bNichtRolltorGeoeffnet                         AT %MX1.0   : BOOL; // TODO: Rolltor 304 nicht oben, Eingang aus Schaltplan
+Globale_Bausteine.aFaecherwagenstation[305].in_bNichtRolltorGeoeffnet                         AT %MX1.0   : BOOL; // TODO: Rolltor 305 nicht oben, Eingang aus Schaltplan
+
+  // Varianten Einfach und Hydraulik: IOs je Station in Konfiguration_FW_Einfach bzw. Konfiguration_FW_Hydraulik
 
 END_VAR
  

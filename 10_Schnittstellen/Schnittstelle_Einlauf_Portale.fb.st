@@ -44,7 +44,7 @@ Signal_Logger();
 // SCHNITTSTELLE
 //-------------------------------------------------------------------------------------------------
 // Signale von der VSG
-blBereitZumAustransport := in_bGlasAufgestellt OR bgVisu_Schnittstelle_Einlauf_Force_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern];
+blBereitZumAustransport := in_bGlasAufgestellt OR bgVisu_Schnittstelle_Einlauf_Force_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS];
 
 //-------------------------------------------------------------------------------------------------
 // AUSGAENGE
@@ -55,6 +55,6 @@ out_bBereitZumAufstellen := BasisStationsParameter.InGlasTransportNachfolger[cWA
 //-------------------------------------------------------------------------------------------------
 // VISU
 //-------------------------------------------------------------------------------------------------
-bgVisu_Schnittstelle_Einlauf_Status_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern]   := BasisStationsParameter.OutGlasTransport[cWAND_1].bBereitZumAustransport;
-bgVisu_Schnittstelle_Status_BereitZumEintrasport[BasisStationsParameter.stMKs.stStationsNummern.NummerIntern] := out_bBereitZumAufstellen;
+bgVisu_Schnittstelle_Einlauf_Status_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]   := BasisStationsParameter.OutGlasTransport[cWAND_1].bBereitZumAustransport;
+bgVisu_Schnittstelle_Status_BereitZumEintrasport[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] := out_bBereitZumAufstellen;
 END_FUNCTION_BLOCK

@@ -27,10 +27,12 @@ starrStationBasisParameter[cSTATION_206].stParameterStationskomponenten.stKippen
 
 // Eintransport
 starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aEintransporte.Station[cSHUTTLE_103]                  := Vorwaertig;
+starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[cSHUTTLE_103]            := eGlastransport_AufAuslaufVorab;
 starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSHUTTLE_103] := FALSE;
 
 
 // Austransport
 starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aAustransporte.Station[cSTATION_205]                  := Vorwaertig;
 starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aAustransporte.bStationQuittiertScheibe[cSTATION_205] := FALSE;
+
 END_ACTION

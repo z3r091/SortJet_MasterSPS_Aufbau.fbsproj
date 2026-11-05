@@ -40,10 +40,19 @@ THEN
 
     // VORTRANSPORT ==============================
     STEP_20_E:
+      (* Hinweis:
+         - Sicherstellen das der Sicherheitskreis geschlossen und nicht angefordert worden ist
+         - Solange gewartet wird, steht der Hinweis "Sicherheitskreis ausgeloest" an (WatchIo in Meldungen)
+      *)
       IF (  Sicherheitskreis[BasisStationsParameter.stMKs.eaSicherheitskreis[0]].bpSicherheitskreisGeschlossen
            AND NOT Sicherheitskreis[BasisStationsParameter.stMKs.eaSicherheitskreis[0]].bpAnforderungSKGestellt )
       THEN
+        blHinweisGenerierenSKAusgeloest := FALSE;
         steplVortransport := STEP_30_E;
+
+      ELSE
+        blHinweisGenerierenSKAusgeloest := TRUE;
+
       END_IF
 
     // VORTRANSPORT ==============================
@@ -55,12 +64,15 @@ THEN
       Glastransport.pAuftrag            := BasisStationsParameter.pAuftrag[cWAND_1];
       Glastransport.rpVorpositionierweg := rpVorpositionierweg;
       Glastransport.bpVortransport      := TRUE;
+      rpVorpositionierterWeg            := REAL#0;
 
       steplVortransport     := STEP_40_E;
 
     // VORTRANSPORT ==============================
     STEP_40_E:
       IF ( Glastransport.bpDone ) THEN
+        // Tatsaechlich vorpositionierter Weg fuer die Quittierung an das MMI
+        rpVorpositionierterWeg := Glastransport.rpVorpositionierterWeg;
         ReservierungsStatus := TS_KEINE_RESERVIERUNG;
         Glastransport.bpVortransport := FALSE;
         steplVortransport := STEP_1000_E;
@@ -70,6 +82,7 @@ THEN
          - Glastransport
       *)
       IF ( Glastransport.bpFehler ) THEN
+        rpVorpositionierterWeg := Glastransport.rpVorpositionierterWeg;
         Glastransport.bpVortransport := FALSE;
         BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
         steplVortransport := STEP_900_E;
@@ -89,6 +102,7 @@ ELSE
   IF ( steplVortransport > STEP_0_E ) THEN
     Glastransport.bpVortransport := FALSE;
     BasisStationsParameter.bVortransportAbgeschlossen[cWAND_1] := FALSE;
+    blHinweisGenerierenSKAusgeloest := FALSE;
     steplVortransport := STEP_0_E;
   END_IF
 END_IF

@@ -77,10 +77,56 @@ THEN
 
       ELSE
 
+        (* Hinweis:
+           - Die Scheibe steht undefiniert auf dem Auslaufsensor (es war kein Eintransport):
+             erst zurueck, den Sensor freifahren, dann neu anfahren
+        *)
         rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
-        steplVorabpositionieren := STEP_100_E;
+        steplVorabpositionieren := STEP_5_E;
 
+      END_IF
+
+    // GLAS VORPOSITIONIEREN ====================
+    STEP_5_E:
+      (* Hinweis:
+         - Auslaufsensor freifahren (zurueck), danach in STEP_10 neu anfahren
+      *)
+      IF ( NOT toflAuslaufsensorFrei.Q ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplVorabpositionieren := STEP_10_E;
+
+      ELSE
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeit05;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.wpBetriebsart     := HANDMINUS;
+
+      END_IF
+
+      (* Fehlerbehandlung:
+         - Einlaufsensor belegt
+         - Verfahrweg- Ueberwachung
+      *)
+      IF ( bpSensorEinlauf ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT;
+        steplVorabpositionieren := STEP_900_E;
+      END_IF
+
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_NICHT_FREI;
+        steplVorabpositionieren := STEP_900_E;
+      END_IF
+
+    // GLAS VORPOSITIONIEREN ====================
+    STEP_10_E:
+      (* Hinweis:
+         - Warten bis der Antrieb steht, dann den Sensor neu anfahren
+      *)
+      IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
+        steplVorabpositionieren := STEP_10_E;
       END_IF
 
     // GLAS VORPOSITIONIEREN ====================

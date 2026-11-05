@@ -17,13 +17,18 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   BasisStationsParameter.OutGlasTransport[wlIndex].stStationsNummern          := BasisStationsParameter.stMKs.stStationsNummern;
   BasisStationsParameter.OutGlasTransport[wlIndex].wStationsTyp               := BasisStationsParameter.stMKs.eStationsTyp;
   BasisStationsParameter.OutGlasTransport[wlIndex].wAchsID                    := Glastransport[wlIndex].ppAntriebsInformationen.wAchsID;
+  BasisStationsParameter.OutGlasTransport[wlIndex].rLaengeStation             := Glastransport[wlIndex].ppParameterBaustein.rLaengeStation;
   BasisStationsParameter.OutGlasTransport[wlIndex].bEinlaufsensor             REF= in_bSensorEinlauf[wlIndex];
   BasisStationsParameter.OutGlasTransport[wlIndex].bAuslaufsensor             REF= in_bSensorAuslauf[wlIndex];
   BasisStationsParameter.OutGlasTransport[wlIndex].bBereitZumAustransport     REF= Glastransport[wlIndex].bpOutBereitZumAustransport;
   BasisStationsParameter.OutGlasTransport[wlIndex].bBereitZumEintransport     REF= Glastransport[wlIndex].bpOutBereitZumEintransport;
   BasisStationsParameter.OutGlasTransport[wlIndex].rGeschwindigkeit           REF= Glastransport[wlIndex].rpOutGeschwindigkeit;
   BasisStationsParameter.OutGlasTransport[wlIndex].bFehler                    REF= BasisStationsParameter.bFehler;
-  BasisStationsParameter.OutGlasTransport[wlIndex].bQuittScheibe              REF= Glastransport[wlIndex].bprtScheibe;
+  // Scheibenquittierung: Glastransport bzw. Greifer [Ausbaustufe]
+  ablQuittScheibe[wlIndex] :=    Glastransport[wlIndex].bprtScheibe
+                              OR ( Greifer[wlIndex].bprtScheibe AND BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex] );
+
+  BasisStationsParameter.OutGlasTransport[wlIndex].bQuittScheibe              REF= ablQuittScheibe[wlIndex];
   BasisStationsParameter.OutGlasTransport[wlIndex].bFreigabe                  REF= BasisStationsParameter.bFreigabe;
   BasisStationsParameter.OutGlasTransport[wlIndex].bTransportAbgeschlossen    REF= bgFALSE;
   BasisStationsParameter.OutGlasTransport[wlIndex].bScheibeFaehrtUeberEinlauf REF= bgFALSE;
@@ -34,8 +39,14 @@ END_FOR
 
 // ---------------------------------------------------------------------------------------
 // BAUSTEIN BASISPARAMETER
-BasisStationsParameter.bIstReferenziert        :=     Querfahrt.Antrieb.bpIstReferenziert
-                                                      AND Kippen.bpInReferenz;
+BasisStationsParameter.bIstReferenziert        := Querfahrt.Antrieb.bpIstReferenziert
+                                              AND Kippen.bpInReferenz;
+
+// Greifer [Ausbaustufe]
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  BasisStationsParameter.bIstReferenziert := BasisStationsParameter.bIstReferenziert
+                                             AND ( Greifer[wlIndex].bpIstInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex] );
+END_FOR
 
 
 (* Hinweis:

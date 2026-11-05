@@ -17,8 +17,15 @@ SUPER^.Meldungen();
    - Diese Fehlerbehandlung sollte nur dann aufgerufen werden wenn in den Schrittketten der
      Fehler nicht abgefangen wurde.
 *)
-IF ( NOT ((steplEintransport       = STEP_900_E)
-           OR (steplAustransport            = STEP_900_E)
+blAktionImFehler := FALSE;
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  blAktionImFehler :=    blAktionImFehler
+                      OR Eintransport[wlIndex].bpFehler
+                      OR Austransport[wlIndex].bpFehler
+                      OR Vortransport[wlIndex].bpFehler;
+END_FOR
+
+IF ( NOT (    blAktionImFehler
            OR (steplPositionierungQuerfahrt = STEP_900_E)
            OR (steplCheck                   = STEP_900_E)
            OR (steplReset                   = STEP_900_E)
@@ -36,7 +43,6 @@ THEN
   END_IF
 
   IF ( Geblaese.bpFehler ) THEN
-    Geblaese.bpStart := FALSE;
     BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_GEBLAESE;
     BasisStationsParameter.bFehler := TRUE;
   END_IF

@@ -136,7 +136,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
         SpsError( eFehler_Station,
                   starrStationBasisParameter[wStation].wFehlerNummer,
                   starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                  AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                  AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                   starrStationBasisParameter[wStation].awFehlerInformationen );
 
         starrStationBasisParameter[wStation].bAnlegen := FALSE;

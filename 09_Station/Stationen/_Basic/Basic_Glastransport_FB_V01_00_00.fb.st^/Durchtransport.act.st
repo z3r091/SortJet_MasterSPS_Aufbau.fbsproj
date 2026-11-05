@@ -88,8 +88,6 @@ IF (  bpDurchtransport ) THEN
       *)
       bpDurchtransportWarAktiv := TRUE;
 
-      ilScheibenZaehler := WORD_TO_INT(pAuftrag.wAnzahlScheiben);
-
       rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
 
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
@@ -132,11 +130,13 @@ IF (  bpDurchtransport ) THEN
     // DURCHTRANSPORT ========================================
     STEP_120_E:
       (* Hinweis:
-         - Scheibe ist auf der Station, warten bis sie den Auslaufsensor erreicht
+         - Durchtransport ist immer eine Einzelscheibe
+         - Quittierung, sobald der Einlaufsensor frei ist (Scheibe liegt ganz auf der Station)
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
 
-      IF ( tonlAuslaufsensor.Q ) THEN
+      IF ( NOT toflEinlaufsensor.Q ) THEN
+        bprtScheibe := TRUE;
         steplDurchtransport := STEP_130_E;
       END_IF
 
@@ -146,34 +146,12 @@ IF (  bpDurchtransport ) THEN
 
     // DURCHTRANSPORT ========================================
     STEP_130_E:
-      (* Hinweis:
-         - Scheibenzaehlen ueber den Auslaufsensor: jede Scheibe, die die Station verlaesst, gibt einen Impuls
-      *)
-      Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
-
-      IF ( NOT toflAuslaufsensor.Q ) THEN
-        bprtScheibe := TRUE;
-        ilScheibenZaehler := ilScheibenZaehler - 1;
-        steplDurchtransport := STEP_140_E;
-      END_IF
-
-      IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) THEN
-        steplDurchtransport := STEP_1000_E;
-      END_IF
-
-    // DURCHTRANSPORT ========================================
-    STEP_140_E:
       (* Wichtig:
          - Kopplung wird solange aktiv gehalten bis der Nachfolger seinen Transport beendet hat
-         - Naechste Scheibe des Batches erreicht den Auslaufsensor => wieder zaehlen
       *)
       bprtScheibe := FALSE;
 
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
-
-      IF ( tonlAuslaufsensor.Q ) THEN
-        steplDurchtransport := STEP_130_E;
-      END_IF
 
       IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) THEN
         steplDurchtransport := STEP_1000_E;

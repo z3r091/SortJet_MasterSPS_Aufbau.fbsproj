@@ -26,18 +26,18 @@ VAR_CONFIG
 
   // ------------------------------------ HARDWARE AUSGAENGE ---------------------------------------
   // Standart Ausgänge
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderBereit                   AT %MX2.0    : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderGlasBereit               AT %MX2.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderBereit                   AT %MX5010.0 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderGlasBereit               AT %MX5010.1 : BOOL; // OPTION
                                          
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteGlasbruch               AT %MX2.0    : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteSpezial                 AT %MX2.0    : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bAmpelEventAktiv                AT %MX2.0    : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleEinlauf[501].Horn.out_bHorn                      AT %MX2.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteGlasbruch               AT %MX5010.2 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteSpezial                 AT %MX5010.3 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bAmpelEventAktiv                AT %MX5010.4 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].Horn.out_bHorn                      AT %MX5010.5 : BOOL; // OPTION
   
   // Buskoppler Ausgänge
   
   // Portale Ausgänge
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bBereitZumAufstellen            AT %MX2.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bBereitZumAufstellen            AT %MX5010.6 : BOOL; // OPTION
   
 END_VAR
 END_NAMESPACE

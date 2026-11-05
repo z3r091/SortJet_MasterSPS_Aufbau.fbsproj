@@ -25,6 +25,7 @@ IF ( blBetriebsartReferenz ) THEN
       *)
       FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
         Wandverstellung[wlIndex].bpReferenz := NOT Wandverstellung[wlIndex].bpInReferenz;
+        Greifer[wlIndex].bpFahreReferenz    := BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex] AND NOT Greifer[wlIndex].bpIstInReferenz;
       END_FOR
       Querfahrt.bpStartReferenz := NOT Querfahrt.bpInReference;
 
@@ -38,10 +39,14 @@ IF ( blBetriebsartReferenz ) THEN
       blDone := TRUE;
 
       FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
-        blDone := blDone AND ( Wandverstellung[wlIndex].bpDone OR NOT Wandverstellung[wlIndex].bpReferenz );
+        blDone := blDone AND ( Wandverstellung[wlIndex].bpDone OR NOT Wandverstellung[wlIndex].bpReferenz )
+                         AND ( Greifer[wlIndex].bpDone OR NOT Greifer[wlIndex].bpFahreReferenz );
       END_FOR
 
       IF blDone AND ( Querfahrt.bpDone OR Querfahrt.bpInReference ) THEN
+        FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+          Greifer[wlIndex].bpFahreReferenz := FALSE;
+        END_FOR
         steplReferenz := STEP_1000_E;
       END_IF
 
@@ -52,6 +57,11 @@ IF ( blBetriebsartReferenz ) THEN
         IF ( Wandverstellung[wlIndex].bpFehler ) THEN
           Wandverstellung[wlIndex].bpReferenz := FALSE;
           BasisStationsParameter.wFehlerNummer := Wandverstellung[wlIndex].wpFehlerNr;
+          steplReferenz := STEP_900_E;
+        END_IF
+        IF ( Greifer[wlIndex].bpFehler AND Greifer[wlIndex].bpFahreReferenz ) THEN
+          Greifer[wlIndex].bpFahreReferenz := FALSE;
+          BasisStationsParameter.wFehlerNummer := Greifer[wlIndex].wpFehlerNr;
           steplReferenz := STEP_900_E;
         END_IF
       END_FOR
@@ -69,6 +79,7 @@ IF ( blBetriebsartReferenz ) THEN
 ELSE
   IF ( steplReferenz > STEP_0_E ) THEN
     FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+      Greifer[wlIndex].bpFahreReferenz := FALSE;
       Wandverstellung[wlIndex].bpReferenz := FALSE;
     END_FOR
     BasisStationsParameter.bReferenzAbgeschlossen := FALSE;

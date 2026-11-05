@@ -20,8 +20,7 @@ IF( blBetriebartCheck )THEN
   END_IF
 
   IF ( Kippen.bpFehler ) THEN
-    Kippen.bpStartKippenAuf := FALSE;
-    Kippen.bpStartKippenAb  := FALSE;
+    Kippen.bpPositionieren := FALSE;
     Kippen.bpLangsamKippen  := FALSE;
     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
     steplCheck := STEP_900_E;
@@ -145,11 +144,13 @@ IF( blBetriebartCheck )THEN
       // ---------------------------------------------------------------------------------------
 
       IF ( blOption_Austransport_Aufgekippt ) THEN
-        Kippen.bpStartKippenAuf := TRUE;
+        Kippen.epZielPosition := eKippen_Position_90Grad;
+        Kippen.bpPositionieren := TRUE;
         Kippen.bpLangsamKippen  := TRUE;
 
       ELSE
-        Kippen.bpStartKippenAb := TRUE;
+        Kippen.epZielPosition := eKippen_Position_0Grad;
+        Kippen.bpPositionieren := TRUE;
         Kippen.bpLangsamKippen  := FALSE;
 
       END_IF
@@ -159,8 +160,7 @@ IF( blBetriebartCheck )THEN
     // SYSTEM CHECK =========================
     STEP_110_E:
       IF ( Kippen.bpDone ) THEN
-        Kippen.bpStartKippenAuf := FALSE;
-        Kippen.bpStartKippenAb  := FALSE;
+        Kippen.bpPositionieren := FALSE;
         Kippen.bpLangsamKippen  := FALSE;
 
         steplCheck := STEP_800_E;
@@ -180,7 +180,8 @@ IF( blBetriebartCheck )THEN
         IF ( Kippen.epKippStatus = eKippen_Position_90Grad ) THEN
           steplCheck := STEP_800_E;
         ELSE
-          Kippen.bpStartKippenAuf := TRUE;
+          Kippen.epZielPosition := eKippen_Position_90Grad;
+          Kippen.bpPositionieren := TRUE;
           Kippen.bpLangsamKippen  := TRUE;
 
           steplCheck := STEP_310_E;
@@ -191,7 +192,8 @@ IF( blBetriebartCheck )THEN
         IF (  Kippen.epKippStatus = eKippen_Position_0Grad ) THEN
           steplCheck := STEP_800_E;
         ELSE
-          Kippen.bpStartKippenAb := TRUE;
+          Kippen.epZielPosition := eKippen_Position_0Grad;
+          Kippen.bpPositionieren := TRUE;
           Kippen.bpLangsamKippen  := FALSE;
 
           steplCheck := STEP_310_E;
@@ -202,8 +204,7 @@ IF( blBetriebartCheck )THEN
     // SYSTEM CHECK =========================
     STEP_310_E:
       IF ( Kippen.bpDone  ) THEN
-        Kippen.bpStartKippenAuf := FALSE;
-        Kippen.bpStartKippenAb  := FALSE;
+        Kippen.bpPositionieren := FALSE;
         Kippen.bpLangsamKippen  := FALSE;
         steplCheck := STEP_800_E;
       END_IF
@@ -224,7 +225,7 @@ IF( blBetriebartCheck )THEN
         SpsHinweis( eFehler_Station,
                     cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN,
                     BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
       END_IF
 
@@ -233,7 +234,7 @@ IF( blBetriebartCheck )THEN
         SpsHinweis( eFehler_Station,
                     cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN,
                     BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
       END_IF
    
@@ -259,8 +260,7 @@ ELSE
 
   IF (steplCheck > STEP_0_E ) THEN
 
-    Kippen.bpStartKippenAb  := FALSE;
-    Kippen.bpStartKippenAuf := FALSE;
+    Kippen.bpPositionieren := FALSE;
     Kippen.bpLangsamKippen  := FALSE;
 
     BasisStationsParameter.bCheckMitVorgaenger[cWAND_1]   := FALSE;

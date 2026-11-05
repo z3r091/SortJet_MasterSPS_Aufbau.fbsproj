@@ -18,8 +18,18 @@ SUPER^.Meldungen();
      Fehlerbehandlung:
    - Glastransport
 *)
-IF ( NOT ((steplAnlegen = STEP_900_E)
-           OR (steplAustransport = STEP_900_E)
+blAktionImFehler := FALSE;
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  blAktionImFehler :=    blAktionImFehler
+                      OR Eintransport[wlIndex].bpFehler
+                      OR Austransport[wlIndex].bpFehler;
+END_FOR
+
+IF ( NOT (Anlegen.bpFehler
+           OR  Glaslaengenmessung.bpFehler
+           OR  Glashoehenmessung.bpFehler
+           OR  Abnehmen.bpFehler
+           OR  blAktionImFehler
            OR (steplCheck        = STEP_900_E)
            OR (steplReset        = STEP_900_E)
            OR  steplReferenz     = STEP_900_E))

@@ -55,7 +55,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
           SpsError( eFehler_Station,
                     cMELDUNG_AUFTRAGSDATEN_ZIELPOSITION_ZU_GROSS,
                     starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                    AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
 
           steplSchritt := STEP_900_E;
@@ -69,7 +69,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
           SpsError( eFehler_Station,
                     cMELDUNG_AUFTRAGSDATEN_ZIELPOSITION_ZU_KLEIN,
                     starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                    AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
           steplSchritt := STEP_900_E;
         END_IF
@@ -172,7 +172,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
         SpsError( eFehler_Station,
                   starrTransfershuttleBasisParameter[wStation].wFehlerNummer,
                   starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                  AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                  AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                   starrTransfershuttleBasisParameter[wStation].awFehlerInformationen );
 
         starrTransfershuttleBasisParameter[wStation].bVortransport[cWAND_1] := FALSE;

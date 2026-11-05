@@ -42,7 +42,6 @@ VAR
   blErsterZyklus         : BOOL := TRUE;
   blFehler               : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF BOOL;
   blFehlerTS             : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
-  ablEintransportGewesen : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF BOOL;
 
   // WORD
   wlIndex,

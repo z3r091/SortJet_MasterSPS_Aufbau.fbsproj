@@ -9,7 +9,11 @@ ACTION Handfunktionen
 //-------------------------------------------------------------------------------------------------
 // AKTION: HANDFUNKTIONEN
 //-------------------------------------------------------------------------------------------------
-IF( blBetriebsartHand )THEN
+(* Hinweis:
+   - Anlegen ist Automatikbetrieb: Waehrend das Anlegen auf den Bediener wartet, greifen die Handfunktionen
+     Riemen vor / zurueck (Knebel) und Hubrahmen. Anschlag und Hoehenkontrolle nur im Handbetrieb
+*)
+IF( blBetriebsartHand OR Anlegen.bpBedienerEingriff OR Glaslaengenmessung.bpBedienerEingriff OR Glashoehenmessung.bpBedienerEingriff )THEN
 
   // Handfunktionen (Bitverteilung einheitlich fuer alle Stationen, 4 Seiten zu 7 Knoepfen)
   //   - Seite 1:  0 Geblaese, 1/2 Riemen vor/zurueck, 5/6 Hubrahmen heben/senken
@@ -38,18 +42,6 @@ IF( blBetriebsartHand )THEN
     Glastransport.bpHandfahrenPlus := FALSE;
     Glastransport.bpHandfahrenMinus:= FALSE;
 
-  END_IF
-
-  (* Hinweis:
-     - Anschlaege heben / senken
-       => Impuls Ventil
-  *)
-  IF NOT blMerkerAnschlagTasterFahren THEN
-    Anschlag.bpStartAusfahren := (        ( dwlHandfunktionen.21 OR bgVISUAnschlaegeAuf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
-                                   AND NOT ( dwlHandfunktionen.22 OR bgVISUAnschlaegeAb[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])  );
-    
-    Anschlag.bpStartEinfahren := (        ( dwlHandfunktionen.22 OR bgVISUAnschlaegeAb[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
-                                   AND NOT ( dwlHandfunktionen.21 OR bgVISUAnschlaegeAuf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])  );
   END_IF
 
   (* Hinweis:
@@ -95,6 +87,22 @@ IF( blBetriebsartHand )THEN
                                           OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]
                                           OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]
                                           OR ( Hubrahmen.epStatusZylinder = eZylinderEingefahren ) );
+
+END_IF
+
+IF( blBetriebsartHand )THEN
+
+  (* Hinweis:
+     - Anschlaege heben / senken
+       => Impuls Ventil
+  *)
+  IF NOT blMerkerAnschlagTasterFahren THEN
+    Anschlag.bpStartAusfahren := (        ( dwlHandfunktionen.21 OR bgVISUAnschlaegeAuf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
+                                   AND NOT ( dwlHandfunktionen.22 OR bgVISUAnschlaegeAb[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])  );
+    
+    Anschlag.bpStartEinfahren := (        ( dwlHandfunktionen.22 OR bgVISUAnschlaegeAb[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
+                                   AND NOT ( dwlHandfunktionen.21 OR bgVISUAnschlaegeAuf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])  );
+  END_IF
 
   // Hoehenkontrolle
   Messachse.bpHandplus := ( (  dwlHandfunktionen.18

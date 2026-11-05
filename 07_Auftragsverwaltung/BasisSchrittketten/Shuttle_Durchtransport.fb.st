@@ -107,7 +107,7 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
           SpsError( eFehler_Station,
                     cMELDUNG_AUFTRAGSDATEN_FALSCHE_EINLAUFSTATION,
                     starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                    AutomatikkreisBestimmen(starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
 
           steplSchritt := STEP_900_E;
@@ -148,7 +148,7 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
           SpsError( eFehler_Station,
                     cMELDUNG_AUFTRAGSDATEN_FALSCHE_AUSLAUFSTATION,
                     starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                    AutomatikkreisBestimmen(starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
 
           steplSchritt := STEP_900_E;
@@ -181,7 +181,9 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
       Auftragsdaten.stAuftragsOptionen.eDrehen_Sollposition_NachAustransport := 0;
       Auftragsdaten.stAuftragsOptionen.eKippen_SollPosition_NachAustransport := 0;
       Auftragsdaten.stAuftragsOptionen.eGlastransport := 0;
-      Auftragsdaten.stAuftragsOptionen.eHub := 0;
+      Auftragsdaten.stAuftragsOptionen.eHub                  := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Hub[wlEintransportstation];
+      Auftragsdaten.stAuftragsOptionen.eHub_NachEintransport := 0;
+      Auftragsdaten.stAuftragsOptionen.eHub_NachAustransport := 0;
       Auftragsdaten.stAuftragsOptionen.eQuerachse := 0;
       Auftragsdaten.stAuftragsOptionen.eAchsrichtung := 0;
       Auftragsdaten.stAuftragsOptionen.wMaxTransportGeschwindigkeit:= 0;
@@ -244,7 +246,7 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
         SpsError( eFehler_Station,
                   starrShuttleBasisParameter[wStation].wFehlerNummer,
                   starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                  AutomatikkreisBestimmen(starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                  AutomatikkreisBestimmen(starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                   starrShuttleBasisParameter[wStation].awFehlerInformationen );
 
         starrShuttleBasisParameter[wStation].bDurchtransport[wWand] := FALSE;

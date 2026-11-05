@@ -9,6 +9,21 @@ ACTION Positionieren
 //-------------------------------------------------------------------------------------------------
 // POSITIONIEREN [QUERFAHRT]
 //-------------------------------------------------------------------------------------------------
+//Der Auftragsstatus [eStation_Vorabpositionierung] muss zurueck gesetzt werden, wenn die Querfahrt abgebrochen hat
+BasisStationsParameter.bPositionierAuftragZuruecksetzen := Querfahrt.bpAuftragsstatusZuruecksetzen;
+
+//Quittierungsmeldung das der Auftrag zurueck gesetzt worden ist
+IF ( BasisStationsParameter.bQuittungPositionierungZurueckgesetzt ) THEN
+  BasisStationsParameter.bQuittungPositionierungZurueckgesetzt := FALSE;
+  Querfahrt.bpQuittungAuftragsstatusZurueckgesetzt := TRUE;
+END_IF
+
+(* Hinweis:
+   - Gibt an wann sich der Antrieb melden muss
+     => rVorabUpdateZeit: Wird von der Oberflaeche gesendet und entspricht der Zeit wann der Antrieb sich zurueck melden soll [Status]
+*)
+tonlUpdateTimer(IN := blUpdateTimer, PT := REAL_TO_TIME(BasisStationsParameter.pAuftragVorabPositionierung.rVorabUpdateZeit) );
+
 IF (  BasisStationsParameter.bVorabpositionieren
      AND NOT BasisStationsParameter.bEintransport[cWAND_1]
      AND NOT BasisStationsParameter.bAustransport[cWAND_1] )

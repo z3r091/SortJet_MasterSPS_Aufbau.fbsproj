@@ -31,7 +31,7 @@ VAR_CONFIG
                                                                                                                                                                                                             
   //Geblaese Wand 1                                                                                         
   Globale_Bausteine.aShuttle[101].Geblaese[1].in_bMotorschutzschalter_OK                             AT %MX1.1   : BOOL; // OPTION 
-  Globale_Bausteine.aShuttle[101].Geblaese[1].out_bStarteGeblaese                                    AT %MX2.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Geblaese[1].out_bStarteGeblaese                                    AT %MX1010.0 : BOOL; // OPTION
                                                                                    
                                                 
   // Wandverstellung Wand 1                                                                              
@@ -44,27 +44,27 @@ VAR_CONFIG
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik.in_bWandAuslaufseiteGeoeffnet         AT %MX1.0   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik.in_bWandAuslaufseiteGeschlossen       AT %MX1.0   : BOOL; // OPTION
   
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik.out_bWandverstellungOeffnen           AT %MX2.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik.out_bWandverstellungSchliessen        AT %MX2.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik.out_bWandverstellungOeffnen           AT %MX1010.1 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik.out_bWandverstellungSchliessen        AT %MX1010.2 : BOOL; // OPTION
                                                                                                      
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik2.in_bStatusZylinder_Alle_Eingefahren  AT %MX1.0   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik2.in_bStatusZylinder_1_Ausgefahren     AT %MX1.0   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik2.in_bStatusZylinder_2_Ausgefahren     AT %MX1.0   : BOOL; // OPTION
   
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik2.out_bZylinder_1_Einfahren            AT %MX2.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik2.out_bZylinder_2_Einfahren            AT %MX2.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik2.out_bZylinder_1_Ausfahren            AT %MX2.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik2.out_bZylinder_2_Ausfahren            AT %MX2.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik2.out_bZylinder_1_Einfahren            AT %MX1010.3 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik2.out_bZylinder_2_Einfahren            AT %MX1010.4 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik2.out_bZylinder_1_Ausfahren            AT %MX1010.5 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Pneumatik2.out_bZylinder_2_Ausfahren            AT %MX1010.6 : BOOL; // OPTION
                                                                                                      
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste.in_bStatusZylinder1Ausgefahren     AT %MX1.0   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste.in_bStatusZylinder1Eingefahren     AT %MX1.0   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste.in_bStatusZylinder2Ausgefahren     AT %MX1.0   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste.in_bStatusZylinder2Eingefahren     AT %MX1.0   : BOOL; // OPTION
   
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste.out_bZylinder1Einfahren            AT %MX2.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste.out_bZylinder1Ausfahren            AT %MX2.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste.out_bZylinder2Einfahren            AT %MX2.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste.out_bZylinder2Ausfahren            AT %MX2.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste.out_bZylinder1Einfahren            AT %MX1010.7 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste.out_bZylinder1Ausfahren            AT %MX1011.0 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste.out_bZylinder2Einfahren            AT %MX1011.1 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste.out_bZylinder2Ausfahren            AT %MX1011.2 : BOOL; // OPTION
 
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste_Schuetz.in_bVerstellungGeoeffnet   AT %MX1.0   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste_Schuetz.in_bVerstellungGeschlossen AT %MX1.0   : BOOL; // OPTION
@@ -72,10 +72,10 @@ VAR_CONFIG
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste_Schuetz.in_bSicherungMotorOK       AT %MX1.1   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste_Schuetz.in_bBremseOK               AT %MX1.1   : BOOL; // OPTION
   
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste_Schuetz.out_bVerstellungSchliessen AT %MX2.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste_Schuetz.out_bVerstellungOeffnen    AT %MX2.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste_Schuetz.out_bBremseOeffnen         AT %MX2.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste_Schuetz.out_bMotorstarterReset     AT %MX2.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste_Schuetz.out_bVerstellungSchliessen AT %MX1011.3 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste_Schuetz.out_bVerstellungOeffnen    AT %MX1011.4 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste_Schuetz.out_bBremseOeffnen         AT %MX1011.5 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Rollenleiste_Schuetz.out_bMotorstarterReset     AT %MX1011.6 : BOOL; // OPTION
                                                                                                                            
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Gegenhalter_Schuetz.in_bVerstellungGeoeffnet    AT %MX1.0   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Gegenhalter_Schuetz.in_bVerstellungGeschlossen  AT %MX1.0   : BOOL; // OPTION
@@ -83,10 +83,10 @@ VAR_CONFIG
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Gegenhalter_Schuetz.in_bSicherungMotorOK        AT %MX1.1   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[101].Wandverstellung[1].Gegenhalter_Schuetz.in_bBremseOK                AT %MX1.1   : BOOL; // OPTION  
                                                                                                                            
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Gegenhalter_Schuetz.out_bVerstellungSchliessen  AT %MX2.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Gegenhalter_Schuetz.out_bVerstellungOeffnen     AT %MX2.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Gegenhalter_Schuetz.out_bBremseOeffnen          AT %MX2.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Gegenhalter_Schuetz.out_bMotorstarterReset      AT %MX2.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Gegenhalter_Schuetz.out_bVerstellungSchliessen  AT %MX1011.7 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Gegenhalter_Schuetz.out_bVerstellungOeffnen     AT %MX1012.0 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Gegenhalter_Schuetz.out_bBremseOeffnen          AT %MX1012.1 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Wandverstellung[1].Gegenhalter_Schuetz.out_bMotorstarterReset      AT %MX1012.2 : BOOL; // OPTION
 
   
 
@@ -96,6 +96,43 @@ VAR_CONFIG
   Globale_Bausteine.aShuttle[101].in_bSensorAuslaufStoppWand2                                        AT %MX1.0   : BOOL; // OPTION 
                                                                                                      
                                                                                                     
+  // Greifer Wand 1 [Ausbaustufe stStationsAufbau.bGreifer] (Kanaele laut Schaltplan eintragen, Glasrueckhalter laut Parameter_Greifer, ohne Bauteil Eingang auf %MX1.1)
+  Globale_Bausteine.aShuttle[101].Greifer[1].in_bGreiferAusgefahren                                     AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].in_bGreiferEingefahren                                     AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].in_bGlasRueckhalterEinlaufEingefahren                      AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].in_bGlasRueckhalterAuslaufEingefahren                      AT %MX1.1   : BOOL; // OPTION
+
+  Globale_Bausteine.aShuttle[101].Greifer[1].out_bGreiferAusfahren                                      AT %MX1012.3 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].out_bGreiferEinfahren                                      AT %MX1012.4 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].out_bGlasRueckhalterEinlaufAusfahren                       AT %MX1012.5 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].out_bGlasRueckhalterAuslaufAusfahren                       AT %MX1012.6 : BOOL; // OPTION
+
+  // Greiferzange Einlaufseite Wand 1 [nur mit Parameter_Greifer.bZangeEinlaufVorhanden]
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[1].in_bStatusZylinder_Alle_Eingefahren               AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[1].in_bStatusZylinder_1_Ausgefahren                  AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[1].in_bStatusZylinder_2_Ausgefahren                  AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[1].in_bStatusZylinder_3_Ausgefahren                  AT %MX1.0   : BOOL; // OPTION
+
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[1].out_bZylinder_1_Einfahren                         AT %MX1012.7 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[1].out_bZylinder_2_Einfahren                         AT %MX1013.0 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[1].out_bZylinder_3_Einfahren                         AT %MX1013.1 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[1].out_bZylinder_1_Ausfahren                         AT %MX1013.2 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[1].out_bZylinder_2_Ausfahren                         AT %MX1013.3 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[1].out_bZylinder_3_Ausfahren                         AT %MX1013.4 : BOOL; // OPTION
+
+  // Greiferzange Auslaufseite Wand 1 [nur mit Parameter_Greifer.bZangeAuslaufVorhanden]
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[2].in_bStatusZylinder_Alle_Eingefahren               AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[2].in_bStatusZylinder_1_Ausgefahren                  AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[2].in_bStatusZylinder_2_Ausgefahren                  AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[2].in_bStatusZylinder_3_Ausgefahren                  AT %MX1.0   : BOOL; // OPTION
+
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[2].out_bZylinder_1_Einfahren                         AT %MX1013.5 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[2].out_bZylinder_2_Einfahren                         AT %MX1013.6 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[2].out_bZylinder_3_Einfahren                         AT %MX1013.7 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[2].out_bZylinder_1_Ausfahren                         AT %MX1014.0 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[2].out_bZylinder_2_Ausfahren                         AT %MX1014.1 : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[101].Greifer[1].Zange[2].out_bZylinder_3_Ausfahren                         AT %MX1014.2 : BOOL; // OPTION
+
 END_VAR
 
 

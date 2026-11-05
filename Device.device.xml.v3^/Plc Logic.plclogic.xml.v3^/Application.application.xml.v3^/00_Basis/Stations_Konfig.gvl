@@ -46,6 +46,10 @@ VAR_GLOBAL CONSTANT
   cERSTE_FAECHERWAGENSTATIONS_NR       : WORD := 301;
   cLETZTE_FAECHERWAGENSTATIONS_NR      : WORD := 305;
 
+  // Hydraulikstationen (Hydraulikaggregate der Faecherwagenstationen Variante Hydraulik)
+  cERSTE_HYDRAULIKSTATIONS_NR          : WORD := 1;
+  cLETZTE_HYDRAULIKSTATIONS_NR         : WORD := 1;
+
   // Fremdanlagen
   cERSTE_FREMDANLAGE                   : WORD := 401;
   cLETZTE_FREMDANLAGE                  : WORD := 401;

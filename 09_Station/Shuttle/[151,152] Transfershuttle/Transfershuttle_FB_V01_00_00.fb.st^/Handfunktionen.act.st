@@ -23,8 +23,6 @@ IF ( NOT  BasisStationsParameter.bAutomatik
      AND NOT bpScheibenNeuAusrichten )
 THEN
 
-  dwlHandfunktionen := dwlHandfunktionen;
-
   (* Anmerkung:
      - Transfershuttle [Glastransport] heben / senken
   *)

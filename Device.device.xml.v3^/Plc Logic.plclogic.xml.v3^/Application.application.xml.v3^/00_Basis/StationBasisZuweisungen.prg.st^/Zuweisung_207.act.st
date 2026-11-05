@@ -29,11 +29,8 @@ starrStationBasisParameter[cSTATION_207].stParameterStationskomponenten.stQuerfa
 
 // Eintransport
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.Station[cSTATION_208]                  := Vorwaertig;
+starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[cSTATION_208]            := eGlastransport_AufAuslaufVorab;
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_208] := TRUE;
-starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.Station[cSTATION_206]                  := Vorwaertig;
-starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_206] := TRUE;
-starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.Station[cSTATION_207]                  := Vorwaertig;
-starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_207] := TRUE;
 
 // Austransport
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aAustransporte.Station[cERSTE_FREMDANLAGE_AUSLAUF]                  := Vorwaertig;

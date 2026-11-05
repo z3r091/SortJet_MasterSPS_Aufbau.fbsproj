@@ -34,7 +34,7 @@ IF ( BasisStationsParameter.bCheck AND NOT BasisStationsParameter.bReset ) THEN
 
       ELSE
 
-        BasisStationsParameter.awFehlerInformationen[0] := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+        BasisStationsParameter.awFehlerInformationen[0] := BasisStationsParameter.stMKs.stStationsNummern.NummerExtern;
         BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
         steplCheck := STEP_900_E;
 
@@ -45,12 +45,7 @@ IF ( BasisStationsParameter.bCheck AND NOT BasisStationsParameter.bReset ) THEN
       (* Anmerkung:
          - Starten des SystemChecks [Glastransport]
       *)
-      Glastransport.pAuftrag                := BasisStationsParameter.pAuftrag[cWAND_1];
-      Glastransport.wpSystemCheckMitStation := 0; // wpSystemCheckMitStation;
-      Glastransport.wpSystemCheckMitWand    := 0; // wpSystemCheckMitWand;
-
-      Glastransport.bpCheckMitVorgaenger    := FALSE; // bpCheckMitVorgaenger;
-      Glastransport.bpCheckMitNachfolger    := FALSE; // bpCheckMitNachfolger;
+      Glastransport.pAuftrag                   := BasisStationsParameter.pAuftrag[cWAND_1];
       Glastransport.InGlasTransportVorgaenger  := BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1];
       Glastransport.InGlasTransportNachfolger  := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1];
 
@@ -94,8 +89,6 @@ ELSE
   IF ( steplCheck > STEP_0_E ) THEN
     BasisStationsParameter.bCheckAbgeschlossen := FALSE;
     Glastransport.bpCheck := FALSE;
-    Glastransport.bpCheckMitVorgaenger    := FALSE;
-    Glastransport.bpCheckMitNachfolger    := FALSE;
     steplCheck := STEP_0_E;
   END_IF
 END_IF

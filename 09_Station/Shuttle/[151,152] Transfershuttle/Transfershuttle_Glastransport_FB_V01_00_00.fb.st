@@ -21,10 +21,7 @@ VAR_INPUT
   bpShuttleVerfaehrt                                 : BOOL;
   bpHand                                             : BOOL;
   bpFreigabe                                         : BOOL;
-  bpLetzteScheibe                                    : BOOL;
   bpShuttleAbsenken                                  : BOOL;
-  bpCheckMitVorgaenger                               : BOOL;
-  bpCheckMitNachfolger                               : BOOL;
   bpHandfahrenPositiv                                : BOOL;
   bpHandfahrenNegativ                                : BOOL;
   bpHandGlastransportAnheben                         : BOOL;
@@ -36,7 +33,6 @@ VAR_INPUT
   bpRueckwaertsEintransportieren                     : BOOL;
   bpRueckwaertsAustransportieren                     : BOOL;
   bpGlastransportTest                                : BOOL;
-  bpShuttleDeaktivieren                              : BOOL;
   bpSpeicherfachValidierung                          : BOOL; // Betriebsmodus: Speicherfach wird ueberprueft ob beide Luftabfragen frei und somit kein Glas uebersteht
   bpScheibentrennung                                 : BOOL := FALSE;
   bpAnforderungTransportkopplung                     : BOOL := FALSE;
@@ -57,12 +53,7 @@ VAR_INPUT
   bpOptionTransfershuttleMitFaecherwagen             : BOOL;
   bpOptionTransfershuttleMitUltraschallSensoren      : BOOL;
   bpOptionMasterSlaveAustransport                    : BOOL;
-  bpOptionTransfershuttleFaecherwagenKurzeScheibenTieferEintransportieren : BOOL;
-
-  // WORD 
-  wpSystemCheckMitStation : WORD;
-  wpSystemCheckMitWand    : WORD;
-
+  bpOptionTransfershuttleFaecherwagenKurzeScheibenTieferEintransportieren : BOOL; // Debug-Funktion: wird nur von Hand (Online) gesetzt, kurze Scheiben 150 mm tiefer eintransportieren
 
   // REAL 
   rpVorpositionierweg : REAL; // Auftragsdaten: Der Weg der Vorpositioniert werden soll
@@ -103,9 +94,6 @@ VAR_OUTPUT
   wpFehlerNr              : WORD;
   wpAusnahmefehlerTyp     : WORD := WORD#0; // Sensorfehlertyp: 0 = Allgemeiner Fehler / 1 = Einlauf / 2 = Auslauf / 3 = Ein- Aus- Lauf
   
-  // DWORD 
-  dwpWartezeit : DWORD;
-
   // REAL 
   rpOutGeschwindigkeit   : REAL; // OUT STATUS: Aktuelle Geschwindigkeit
   rpVorpositionierterWeg : REAL; // OUT STATUS: Beschreibt den Weg der Vorpositioniert wurde
@@ -136,7 +124,6 @@ VAR
   blScheibenKontrolleAuslaufseiteEin           : BOOL;
   blReduzierteGeschwindigkeit                  : BOOL;
 
-
   // WORD
   wlSubIndex : WORD;
 
@@ -145,13 +132,10 @@ VAR
 
   // REAL
   rlAntriebsPositionBeiStart                 : REAL;
+  rlMaxStreckeErsteScheibe                   : REAL; // Max. Weg bis zur ersten Scheibe: Laenge der abgebenden Station, ohne bekannte Laenge die eigene Stationslaenge
   rlAntriebsPositionStartVortransport        : REAL; // Ist-Position beim Start Vortransport fuer rpVorpositionierterWeg
   rlAntriebspositionBeiAuslaufSensorBelegung : REAL;
-  rlAntriebspositionBeiEinlaufSensorBelegung : REAL;
   rlWegDifferenzNachStopSensorBelegung       : REAL;
-  rlAntriebIstPosition1                      : REAL;
-  rlAntriebIstPosition2                      : REAL;
-  rlAntriebIstPosition3                      : REAL;
   rlPositionScheibenAnfangErkannt            : REAL;
   rlZielPosition                             : REAL;
   rlStreckeBisZurVerzoegerung                : REAL;
@@ -165,7 +149,6 @@ VAR
   steplReferenz                       : Steps_TE;
   steplCheck                          : Steps_TE;
   steplHebeVorgang                    : Steps_TE;
-  steplScheibeZueruck                 : Steps_TE;
   steplGlastransporttest              : Steps_TE;
   steplSpeicherfachValidierung        : Steps_TE;
   steplEintransportDefaultLuftabfrage : Steps_TE;
@@ -182,7 +165,6 @@ VAR
   tonlGlastransportOben                             : TON; 
   tonlAntriebNichtFreigegeben                       : TON; 
   tonlUeberwachungSensorFreifahren                  : TON; 
-  tonlGlastransportUnten                            : TON; 
   tonlKontrolleEinlaufOben                          : TON;
   tonlKontrolleEinlaufUnten                         : TON;
   tonlKontrolleAuslaufOben                          : TON;
@@ -193,19 +175,11 @@ VAR
   tonlEinlaufsensorTesten                           : TON; 
   tonlAuslaufsensorTesten                           : TON; 
   tonlMaxWarteAufResetErfolgreich                   : TON; 
-  tonlEinlaufsensor                                 : TON; 
-  tonlAuslaufsensor                                 : TON; 
   tonlUberwachungSlaveAktiv                         : TON; 
-  tonlSensorScheibenKontrolleAuslaufSeiteFrei       : TON; 
-  tonlSensorScheibenKontrolleEinlaufSeiteFrei       : TON; 
   toflEinlaufsensor                                 : TOF; 
   toflAuslaufsensor                                 : TOF; 
-  toflEinlaufsensorFreiFahren                       : TOF; 
   toflAutoAbschaltung                               : TOF; 
   toflAntriebLaeuft                                 : TOF;
-
-  // BAUSTEINE
-  Scheibenzaehler : ScheibenZaehler_FB;
 
   // Antrieb
   Antrieb : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
@@ -226,7 +200,6 @@ VAR CONSTANT
   // TIME
   cZEIT_SENSORIK_FREIFAHREN           : TIME := T#10s;
   cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE : TIME := T#5S;
-  cZEIT_SENSORIK_FREI                 : TIME := T#250ms;
   cZEIT_UEBERWACHUNG_SLAVE_AKTIV      : TIME := T#10s;
 
 END_VAR
@@ -292,7 +265,7 @@ END_IF
 stpOutTransportVerbund.wpMmiNummer                  := stStationsNummern.NummerSPS;
 stpOutTransportVerbund.bEinlaufsensor               REF= bgFALSE;
 stpOutTransportVerbund.bAuslaufsensor               REF= bgFALSE;
-stpOutTransportVerbund.bMasterSlaveVerbundAktiv     REF= bpSlaveAktiv; (* Slave ist mit dem Master gekoppelt *); // Slave ist mit dem Master gekoppelt
+stpOutTransportVerbund.bMasterSlaveVerbundAktiv     REF= bpSlaveAktiv; // Slave ist mit dem Master gekoppelt
 stpOutTransportVerbund.bBereitZumTransportVerbund   REF= blSchnittstelle_bBereitZumTransportVerbund;
 stpOutTransportVerbund.bAnforderungTransportVerbund REF= blSchnittstelle_bAnforderungTransportVerbund;
 stpOutTransportVerbund.rGeschwindigkeit             REF= rpOutGeschwindigkeit;
@@ -306,11 +279,8 @@ stpOutTransportVerbund.bFehler                      REF= bpFehler;
 toflAntriebLaeuft(IN:=Antrieb.bpAntrieblaeuft, PT := T#350MS);
 
 // [TIMER] Kontrolle Sensoren:
-//   - Glastransport Unten | Oben
+//   - Glastransport Oben
 tonlGlastransportOben(IN := blSensorGlastransportOben, PT := t#500ms);
-tonlGlastransportUnten(IN := blSensorGlastransportUnten , PT := t#500ms);
-
-
 
 // ---------------------------------------------------------------------------------------
 //  TRANSFERSHUTTLE MIT EINEM LUFTABFRAGEN TYP
@@ -324,10 +294,7 @@ tonlGlastransportUnten(IN := blSensorGlastransportUnten , PT := t#500ms);
 //     => Einlauf- Sensoren [ Luftsenoren] Frei | Belegt
 //     => Auslauf- Sensoren [ Luftsenoren] Frei | Belegt
 toflEinlaufsensor(IN:= bpSensorScheibenKontrolleEinlaufseiteFrei, PT := t#50ms);
-tonlEinlaufsensor(IN:= NOT bpSensorScheibenKontrolleEinlaufseiteFrei, PT := t#100ms);
-
 toflAuslaufsensor(IN:= bpSensorScheibenKontrolleAuslaufSeiteFrei, PT := t#50ms);
-tonlAuslaufsensor(IN:= NOT bpSensorScheibenKontrolleAuslaufSeiteFrei, PT := t#100ms);
 
 // LUFTABFRAGEN [3- 12 MM]
 //   - [TIMER] Kontrolle Sensoren:
@@ -341,9 +308,7 @@ tonlKontrolleAuslaufOben(IN := bpSensorScheibenKontrolleAuslaufseiteOben, PT := 
 
 // LUFTABFRAGEN [3- 12 MM]
 //   - Sensorik freifahren
-toflEinlaufsensorFreiFahren(IN:= bpSensorScheibenKontrolleEinlaufseiteFrei, PT := t#50ms);
 tonlEinlaufWirklichFrei(IN:= NOT blEinlaufsensor, PT := t#500ms);
-
 
 // LUFTABFRAGEN [3- 12 MM]
 //   - Sensoren:
@@ -446,10 +411,6 @@ toflAutoAbschaltung( IN := (  bpAutomatikAktiv
 Antrieb.bpFreigabe            := toflAutoAbschaltung.Q AND bpFreigabe;
 Antrieb.stStationsNummern     := stStationsNummern;
 Antrieb.rpRuckzeit            := ppAntriebsInformationen.rpMaxRuckzeit;
-
-// Scheibenzaehler [ Aufruf \ Zuweisung ]
-Scheibenzaehler( ipScheibenAnzahl := ilScheibenZaehler,
-                 bpSensor         := blEinlaufsensor );
 
 
 //-------------------------------------------------------------------------------------------------

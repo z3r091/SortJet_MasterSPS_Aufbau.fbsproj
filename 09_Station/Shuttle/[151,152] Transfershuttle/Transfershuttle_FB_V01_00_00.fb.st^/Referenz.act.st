@@ -22,7 +22,7 @@ IF ( BasisStationsParameter.bReferenz ) THEN
       steplReferenz := STEP_20_E;
 
     // REFERENZ ==============================
-    STEP_20_E:;
+    STEP_20_E:
       IF ( Querfahrt.bpDone OR NOT Querfahrt.bpStartReferenz ) AND ( Glastransport.bpDone ) THEN
         Querfahrt.bpStartReferenz := FALSE;
         Glastransport.bpFahreReferenz := FALSE;

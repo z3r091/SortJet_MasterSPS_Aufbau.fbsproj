@@ -178,23 +178,42 @@ THEN
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
 
         IF ( pAuftrag.bLetzteScheibe ) THEN
-          // Die Scheibe soll am Anfang vom Shuttle stehen bleiben
-          IF ( pAuftrag.stAuftragsOptionen.eGlastransport = eGlastransport_AufEinlauf ) THEN 
-            Antrieb.rpZielposition    := (( pAuftrag.rAuftragsLaenge + ppParameterBaustein.rWegUeberSensorLetzteScheibe ) - pAuftrag.rModellVersatzVorne);
-            Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
+          (* Hinweis:
+             - Lage der letzten Scheibe laut Konfiguration (eGlastransport), am Shuttle gelten nur
+               => Auf Einlauf: Scheibe bleibt um rWegUeberEinlauf auf dem Einlaufsensor liegen (Laenge - Weg)
+               => Auf Auslauf: Scheibe faehrt um rWegUeberAuslauf ueber den Auslaufsensor
+               => Auf Einlauf-Vorab: Scheibe wird am Eingang gesammelt (Laenge + rWegUeberEinlauf), die Vorab positioniert sie spaeter
+             - Auf Auslauf-Vorab gibt es vorwaerts am Shuttle nicht (Konfigurationsfehler)
+          *)
+          CASE pAuftrag.stAuftragsOptionen.eGlastransport OF
+
+            eGlastransport_AufAuslauf:
+              Antrieb.rpZielPosition    := (( ppParameterBaustein.rWegUeberAuslauf ) - pAuftrag.rModellVersatzVorne);
+              Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor2;
+
+            eGlastransport_AufEinlaufVorab:
+              Antrieb.rpZielposition    := (( pAuftrag.rAuftragsLaenge + ppParameterBaustein.rWegUeberEinlauf ) - pAuftrag.rModellVersatzVorne);
+              Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
+
+            eGlastransport_AufEinlauf:
+              Antrieb.rpZielposition    := (( pAuftrag.rAuftragsLaenge - ppParameterBaustein.rWegUeberEinlauf ) - pAuftrag.rModellVersatzVorne);
+              Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
+
           ELSE
-            Antrieb.rpZielPosition    := (( ppParameterBaustein.rWegUeberAuslauf ) - pAuftrag.rModellVersatzVorne);
-            Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor2;
-          END_IF
+            // Fehlende Konfiguration: Lage der letzten Scheibe (eGlastransport) ist nicht gesetzt
+            wpFehlerNr := cMELDUNG_EINTRANSPORT_GLASTRANSPORT_OPTION_NICHT_KONFIGURIERT;
+            steplEintransport := STEP_900_E;
+          END_CASE
         ELSE
           Antrieb.rpZielposition    := (( pAuftrag.rAuftragsLaenge + ppParameterBaustein.rWegUeberEinlauf ) - pAuftrag.rModellVersatzVorne);
           Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
         END_IF
 
-        Antrieb.wpBetriebsart := RESTWEG;
+        IF ( steplEintransport <> STEP_900_E ) THEN
+          Antrieb.wpBetriebsart := RESTWEG;
 
-
-        steplEintransport := STEP_110_E;
+          steplEintransport := STEP_110_E;
+        END_IF
 
       ELSE
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -243,7 +262,12 @@ THEN
       *)
       IF ( pAuftrag.bErsteScheibe ) THEN
 
-        IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition)>  ppParameterBaustein.rLaengeStation * 2 ) THEN
+        // Erste Scheibe: Laenge der Vorgaengerstation (ohne bekannte Vorgaengerlaenge: eigene Stationslaenge)
+        rlMaxStreckeErsteScheibe := InGlasTransportVorgaenger.rLaengeStation;
+        IF ( rlMaxStreckeErsteScheibe <= 0.0 ) THEN
+          rlMaxStreckeErsteScheibe := ppParameterBaustein.rLaengeStation;
+        END_IF
+        IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > rlMaxStreckeErsteScheibe ) THEN
           Antrieb.wpBetriebsart := KEINE_FUNKTION;
           wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
           steplEintransport := STEP_900_E;
@@ -569,7 +593,12 @@ THEN
       *)
       IF ( pAuftrag.bErsteScheibe ) THEN
 
-        IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition)>  ppParameterBaustein.rLaengeStation * 2 ) THEN
+        // Erste Scheibe: Laenge der Vorgaengerstation (ohne bekannte Vorgaengerlaenge: eigene Stationslaenge)
+        rlMaxStreckeErsteScheibe := InGlasTransportVorgaenger.rLaengeStation;
+        IF ( rlMaxStreckeErsteScheibe <= 0.0 ) THEN
+          rlMaxStreckeErsteScheibe := ppParameterBaustein.rLaengeStation;
+        END_IF
+        IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > rlMaxStreckeErsteScheibe ) THEN
           Antrieb.wpBetriebsart := KEINE_FUNKTION;
           wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
           steplEintransport := STEP_900_E;

@@ -55,6 +55,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
       starrStationBasisParameter[wStation].pAuftrag[wWand] := Auftragsdaten;
 
       starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition := starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Kippen[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wVorgaengerStation];
+      starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eHub                 := starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Hub[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wVorgaengerStation];
 
       IF ( Auftragsdaten.rAuftragsDicke < wgMKScheibenDicke13mm ) THEN
         starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eDickenverstellung := eZylinderStellung16mm;
@@ -77,7 +78,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
         SpsError( eFehler_Station,
                   starrStationBasisParameter[wStation].wFehlerNummer,
                   starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                  AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                  AutomatikkreisBestimmen(starrStationBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                   starrStationBasisParameter[wStation].awFehlerInformationen );
 
         starrStationBasisParameter[wStation].bTransportkopplung[wWand] := FALSE;

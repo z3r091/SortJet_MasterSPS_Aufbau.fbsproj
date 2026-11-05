@@ -46,11 +46,8 @@ IF (  bpScheibenNeuAusrichten ) THEN
       //  - Sicherstellen das der Sicherheitskreis geschlossen und nicht angefordert worden ist
       // ---------------------------------------------------------------------------------------
 
-      IF  ( Sicherheitskreis[1].bpSicherheitskreisGeschlossen
-            // AND Sicherheitskreis[2].bpSicherheitskreisGeschlossen
-            AND NOT Sicherheitskreis[1].bpAnforderungSKGestellt
-          // AND NOT Sicherheitskreis[2].bpAnforderungSKGestellt 
-          )
+      IF  ( Sicherheitskreis[BasisStationsParameter.stMKs.eaSicherheitskreis[0]].bpSicherheitskreisGeschlossen
+            AND NOT Sicherheitskreis[BasisStationsParameter.stMKs.eaSicherheitskreis[0]].bpAnforderungSKGestellt )
       THEN
         blHinweisGenerierenSKAusgeloest := FALSE;
         steplScheibenNeuAusrichten := STEP_100_E;

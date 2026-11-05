@@ -63,7 +63,6 @@ IF( blBetriebartCheck )THEN
          - Geblaese
       *)
       IF ( Geblaese.bpFehler )  THEN
-        Geblaese.bpStart := FALSE;
         BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_GEBLAESE;
         steplCheck := STEP_900_E;
       END_IF
@@ -235,7 +234,7 @@ IF( blBetriebartCheck )THEN
         SpsHinweis( eFehler_Station,
                     cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN,
                     BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
 
         BasisStationsParameter.wFehlerNummer := cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN;
@@ -248,7 +247,7 @@ IF( blBetriebartCheck )THEN
         SpsHinweis( eFehler_Station,
                     cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN,
                     BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerIntern),
+                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
 
         BasisStationsParameter.wFehlerNummer := cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN;

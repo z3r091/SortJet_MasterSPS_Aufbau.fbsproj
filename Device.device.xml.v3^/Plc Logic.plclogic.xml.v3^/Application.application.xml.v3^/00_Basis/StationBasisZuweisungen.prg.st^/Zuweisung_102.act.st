@@ -20,6 +20,10 @@ starrShuttleBasisParameter[cSHUTTLE_102].stParameterStationskomponenten.stWandve
 starrShuttleBasisParameter[cSHUTTLE_102].stAntriebsparameter.stQuerfahrt REF= apgInfoShuttle102Querfahrt;
 starrShuttleBasisParameter[cSHUTTLE_102].stAntriebsparameter.stKippen    REF= apgInfoShuttle102Kippen;
 
+// Greifer [Ausbaustufe stStationsAufbau.bGreifer]
+starrShuttleBasisParameter[cSHUTTLE_102].stParameterStationskomponenten.stGreifer REF= apgMKShuttle102Greifer;
+starrShuttleBasisParameter[cSHUTTLE_102].stAntriebsparameter.stGreifer            REF= apgInfoShuttle102Greifer;
+
 starrShuttleBasisParameter[cSHUTTLE_102].stParameterStationskomponenten.stZentralSchmierung REF= apgMKShuttleZentralschmierung[cSHUTTLE_102];
 
 (* Hinweis:

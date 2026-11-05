@@ -13,8 +13,10 @@ VAR_INPUT
   bpAktivieren                : BOOL;
   bpStartPneumatik            : BOOL; // Starten der Zylinder
   bpReset                     : BOOL; // BETRIEBTYP: Zylinderbaustein wird zurueckgesetzt
-  bpZylinderAbfragenVorhanden : BOOL := TRUE; // Hinweis: Manche Zylinder haben keine Abfragen
+  bpZylinderAbfragenVorhanden : BOOL := TRUE;  // Hinweis: Manche Zylinder haben keine Abfragen
   bpEinAusFahrenLogikDrehen   : BOOL := FALSE; // Hinweis: Manche Zylinder haben keine Abfragen
+  tpWartezeitOhneAbfrage      : TIME := T#1S;  // Hinweis: Ohne Abfragen gilt die Stellung nach dieser Zeit als erreicht
+  bpZweiterZylinderVorhanden  : BOOL := TRUE;  // Hinweis: Mit nur einem Zylinder (z.B. Rollenleiste) sind die Signale von Zylinder 2 ohne Funktion, es gibt nur Geschlossen (16 mm) und Geoeffnet (29 mm)
 
   // ENUM
   epOeffnungsStellung  : PneumatikZylinderStatus_EN;
@@ -47,6 +49,13 @@ VAR
   out_bZylinder1Einfahren   AT %Q* : BOOL; // AKTION: Zylinder 1 einfahren
   out_bZylinder2Ausfahren   AT %Q* : BOOL; // AKTION: Zylinder 2 ausfahren
   out_bZylinder2Einfahren   AT %Q* : BOOL; // AKTION: Zylinder 2 einfahren
+
+  // BOOLEAN
+  blZylinder2Ausgefahren : BOOL; // Zylinder 2 ausgefahren, bei nur einem Zylinder folgt das Signal Zylinder 1
+  blZylinder2Eingefahren : BOOL; // Zylinder 2 eingefahren, bei nur einem Zylinder folgt das Signal Zylinder 1
+
+  // ENUM
+  elStellung : PneumatikZylinderStatus_EN; // Wirksame Sollstellung (Geschlossen = 16 mm, Geoeffnet = 29 mm, ein Zylinder: 23 mm = 29 mm)
 
   // STEPS
   steplAusfahren   : Steps_TE;
@@ -106,6 +115,17 @@ END_IF
 //-------------------------------------------------------------------------------------------------
 // AKTIONEN
 //-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Mit nur einem Zylinder folgen die Signale von Zylinder 2 denen von Zylinder 1
+*)
+IF ( bpZweiterZylinderVorhanden ) THEN
+  blZylinder2Ausgefahren := in_bStatusZylinder2Ausgefahren;
+  blZylinder2Eingefahren := in_bStatusZylinder2Eingefahren;
+ELSE
+  blZylinder2Ausgefahren := in_bStatusZylinder1Ausgefahren;
+  blZylinder2Eingefahren := in_bStatusZylinder1Eingefahren;
+END_IF
+
 AusEinFahren();
 
 //-------------------------------------------------------------------------------------------------
@@ -120,14 +140,14 @@ IF ( bpZylinderAbfragenVorhanden ) THEN
   IF NOT bpEinAusFahrenLogikDrehen THEN
 
     IF ( in_bStatusZylinder1Ausgefahren ) THEN
-      IF (in_bStatusZylinder2Ausgefahren) THEN
+      IF (blZylinder2Ausgefahren) THEN
         wpStatusZylinder := eZylinderStellung29mm;
       ELSE
         wpStatusZylinder := eZylinderStellung23mm;
       END_IF
 
     ELSE
-      IF (in_bStatusZylinder2Ausgefahren) THEN
+      IF (blZylinder2Ausgefahren) THEN
         wpStatusZylinder := eZylinderStellung23mm;
       ELSE
         wpStatusZylinder := eZylinderStellung16mm;
@@ -138,7 +158,7 @@ IF ( bpZylinderAbfragenVorhanden ) THEN
 
     IF in_bStatusZylinder1Eingefahren THEN
 
-      IF (in_bStatusZylinder2Eingefahren) THEN
+      IF (blZylinder2Eingefahren) THEN
         wpStatusZylinder := eZylinderStellung29mm;
       ELSE
         wpStatusZylinder := eZylinderStellung23mm;
@@ -146,7 +166,7 @@ IF ( bpZylinderAbfragenVorhanden ) THEN
 
     ELSE
 
-      IF (in_bStatusZylinder2Eingefahren) THEN
+      IF (blZylinder2Eingefahren) THEN
         wpStatusZylinder := eZylinderStellung23mm;
       ELSE
         wpStatusZylinder := eZylinderStellung16mm;

@@ -11,6 +11,7 @@ ACTION Austransport
 //-------------------------------------------------------------------------------------------------
 IF ( bpAustransport
      AND NOT bpEintransport
+     AND NOT bpRueckwaertsEintransportieren
      AND bpAutomatikAktiv )
 THEN
 

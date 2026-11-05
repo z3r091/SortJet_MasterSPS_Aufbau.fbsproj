@@ -20,6 +20,7 @@ VAR
   // BOOLEAN
   blHubrahmenPositionieren : BOOL; // Anforderung aus den Schrittketten: Hubrahmen auf elHubrahmenZielAchse stellen
   blHubrahmenInPosition    : BOOL; // Hubrahmen steht auf elHubrahmenZielAchse
+  blAktionImFehler         : BOOL; // Eine der wandweisen Aktionen steht im Fehler
 
   // ENUM
   elRiemenAchse        : Achsrichtung_EN; // Achse der Riemen im Hubrahmen (MK)
@@ -32,6 +33,11 @@ VAR
   Glastransport_X : Eckuebergabe_Glastransport_FB_V01_00_00;
   Glastransport_Y : Eckuebergabe_Glastransport_FB_V01_00_00;
   Hubrahmen       : ZylinderPneumatik_FB_V01_00_00; // Ausgefahren = oben, eingefahren = unten
+
+  // AKTIONEN (WANDWEISE)
+  Eintransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Eckuebergabe_Eintransport_FB_V01_00_00;
+  Austransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Eckuebergabe_Austransport_FB_V01_00_00;
+  Vortransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Eckuebergabe_Vortransport_FB_V01_00_00;
 
   // REFERENZEN
   GlastransportEin           : REFERENCE TO Eckuebergabe_Glastransport_FB_V01_00_00; // Achse des aktuellen Eintransports
@@ -62,9 +68,53 @@ A_Aufrufe();
 IO_Zuweisung();
 
 SystemCheck();
-Eintransport();
-Vortransport();
-Austransport();
+
+(* Hinweis:
+   - Automatik-Aktionen je Wand
+*)
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  Eintransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                         wWand                  := wlIndex,
+                         bpAutomatikAktiv       := blBetriebsartAutomatik,
+                         Glastransport          := GlastransportSchnittstelle,
+                         bpHubrahmenInPosition  := blHubrahmenInPosition,
+                         elAchseEintransport    := elAchseEintransport,
+                         elAchseAustransport    := elAchseAustransport,
+                         Glastransport_X        := Glastransport_X,
+                         Glastransport_Y        := Glastransport_Y,
+                         GlastransportEin       := GlastransportEin,
+                         GlastransportAus       := GlastransportAus,
+                         Hubrahmen              := Hubrahmen,
+                         blHubrahmenPositionieren := blHubrahmenPositionieren,
+                         elHubrahmenZielAchse     := elHubrahmenZielAchse );
+
+  Vortransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                         wWand                  := wlIndex,
+                         bpAutomatikAktiv       := blBetriebsartAutomatik,
+                         Glastransport          := GlastransportSchnittstelle,
+                         bpHubrahmenInPosition  := blHubrahmenInPosition,
+                         elAchseAustransport    := elAchseAustransport,
+                         Glastransport_X        := Glastransport_X,
+                         Glastransport_Y        := Glastransport_Y,
+                         GlastransportAus       := GlastransportAus,
+                         Hubrahmen              := Hubrahmen,
+                         blHubrahmenPositionieren := blHubrahmenPositionieren,
+                         elHubrahmenZielAchse     := elHubrahmenZielAchse );
+
+  Austransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
+                         wWand                  := wlIndex,
+                         bpAutomatikAktiv       := blBetriebsartAutomatik,
+                         Glastransport          := GlastransportSchnittstelle,
+                         bpHubrahmenInPosition  := blHubrahmenInPosition,
+                         elAchseAustransport    := elAchseAustransport,
+                         Glastransport_X        := Glastransport_X,
+                         Glastransport_Y        := Glastransport_Y,
+                         GlastransportAus       := GlastransportAus,
+                         Hubrahmen              := Hubrahmen,
+                         blHubrahmenPositionieren := blHubrahmenPositionieren,
+                         elHubrahmenZielAchse     := elHubrahmenZielAchse );
+END_FOR
+
 Reset();
 Handfunktionen();
 

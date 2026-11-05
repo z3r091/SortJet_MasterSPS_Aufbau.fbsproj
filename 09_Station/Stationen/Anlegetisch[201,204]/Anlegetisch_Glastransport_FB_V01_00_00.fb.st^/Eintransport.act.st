@@ -121,7 +121,12 @@ THEN
         steplEintransport := STEP_900_E;
       END_IF
 
-      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation * 3 ) THEN // so viel da die ProLam sehr lang ist
+      // Laenge der Vorgaengerstation (ohne bekannte Vorgaengerlaenge: eigene Stationslaenge)
+      rlMaxStreckeErsteScheibe := InGlasTransportVorgaenger.rLaengeStation;
+      IF ( rlMaxStreckeErsteScheibe <= 0.0 ) THEN
+        rlMaxStreckeErsteScheibe := ppParameterBaustein.rLaengeStation;
+      END_IF
+      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > rlMaxStreckeErsteScheibe ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
         steplEintransport := STEP_900_E;

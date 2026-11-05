@@ -72,6 +72,7 @@ TYPE StationBasisParameter_ST :
     bScheibentrennen                          : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
                                               
     bTransferstationTransfershuttle           : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
+    bEintransportGewesen                      : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Der Eintransport ist gerade abgeschlossen, die Scheibe liegt definiert (erste Vorab danach ueberspringt die Glasaktion)
     
     // Abbruch Positionierauftrag
     bPositionierAuftragZuruecksetzen          : BOOL; // Wichtig für Stationen mit Querfahrt. Der abgebrochene Verfahrauftrag wird an das MMI gemeldet

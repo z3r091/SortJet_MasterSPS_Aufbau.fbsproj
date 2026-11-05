@@ -18,21 +18,21 @@ VAR_CONFIG
   Globale_Bausteine.Anlegetisch204.in_bTasterGlasAbgenommen                              AT %MX1.0    : BOOL; // OPTION 
   Globale_Bausteine.Anlegetisch204.in_bTasterAnschlaege                                  AT %MX1.0    : BOOL; // OPTION
 
-  Globale_Bausteine.Anlegetisch204.out_bSignalTasterScheibeAnlegen                       AT %MX2.0    : BOOL; (* OK *) // Weißer Leuchdrucktaster
+  Globale_Bausteine.Anlegetisch204.out_bSignalTasterScheibeAnlegen                       AT %MX2040.0 : BOOL; (* OK *) // Weißer Leuchdrucktaster
   Globale_Bausteine.Anlegetisch204.out_bSignalTasterScheibeQuittieren                    AT %QX6.3    : BOOL; (* OK *) // Gelber Leuchdrucktaster
-  Globale_Bausteine.Anlegetisch204.out_bAmpelSignalRot                                   AT %MX2.0    : BOOL; (* OK *) // Weißer Leuchdrucktaster
+  Globale_Bausteine.Anlegetisch204.out_bAmpelSignalRot                                   AT %MX2040.1 : BOOL; (* OK *) // Weißer Leuchdrucktaster
   Globale_Bausteine.Anlegetisch204.out_bAmpelSignalGruenScheibeAnlegen                   AT %QX11.2   : BOOL; (* OK *) // Gelber Leuchdrucktaster
-  Globale_Bausteine.Anlegetisch204.out_bAmpelSignalGlastransportAktiv                    AT %MX2.0    : BOOL; (* OK *) // Gelber Leuchdrucktaster
+  Globale_Bausteine.Anlegetisch204.out_bAmpelSignalGlastransportAktiv                    AT %MX2040.2 : BOOL; (* OK *) // Gelber Leuchdrucktaster
   //Glasbruch QX3.0
     
   // Gebläse
-  Globale_Bausteine.Anlegetisch204.in_bMotorschutzGeblaese_Ok                            AT %MX2.0    : BOOL; // OK 
+  Globale_Bausteine.Anlegetisch204.in_bMotorschutzGeblaese_Ok                            AT %MX1.1    : BOOL; // OK 
   Globale_Bausteine.Anlegetisch204.in_bDrehzahlErreicht                                  AT %IX4.1    : BOOL; // OK
   Globale_Bausteine.Anlegetisch204.in_bTasterGeblaese1Ein                                AT %IX9.4    : BOOL; // OK 
   Globale_Bausteine.Anlegetisch204.in_bTasterGeblaese2Ein                                AT %MX1.0    : BOOL; // OPTION 
   
   Globale_Bausteine.Anlegetisch204.out_bGeblaese1Ein                                     AT %QX0.7    : BOOL; // OK
-  Globale_Bausteine.Anlegetisch204.out_bGeblaese2Ein                                     AT %MX2.0    : BOOL; // OPTION
+  Globale_Bausteine.Anlegetisch204.out_bGeblaese2Ein                                     AT %MX2040.3 : BOOL; // OPTION
 
   // Kippen//SKquittieren_OP IX4.4
   // Kippen//SKquittieren_LTR IX6.0
@@ -56,10 +56,10 @@ VAR_CONFIG
   Globale_Bausteine.Anlegetisch204.out_bLeuchteKipptischOffen                            AT %QX9.3    : BOOL; // OK
   Globale_Bausteine.Anlegetisch204.out_bLeuchteKipptischOffen_OP                         AT %QX9.4    : BOOL; // OK
   Globale_Bausteine.Anlegetisch204.out_bHydraulikpumpeEin                                AT %QX1.0    : BOOL; // OK
-  Globale_Bausteine.Anlegetisch204.out_bHydraulikpumpeUmlaufVentil                       AT %MX2.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch204.out_bSchaltleisteAusgeloest                           AT %MX2.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch204.out_bKipptischHornWarnsignal                          AT %MX2.0    : BOOL; // OK
-  Globale_Bausteine.Anlegetisch204.out_bKipptischAmpelWarnsignal                         AT %MX2.0    : BOOL; // OK
+  Globale_Bausteine.Anlegetisch204.out_bHydraulikpumpeUmlaufVentil                       AT %MX2040.4 : BOOL; // OPTION
+  Globale_Bausteine.Anlegetisch204.out_bSchaltleisteAusgeloest                           AT %MX2040.5 : BOOL; // OPTION
+  Globale_Bausteine.Anlegetisch204.out_bKipptischHornWarnsignal                          AT %MX2040.6 : BOOL; // OK
+  Globale_Bausteine.Anlegetisch204.out_bKipptischAmpelWarnsignal                         AT %MX2040.7 : BOOL; // OK
 
 
   // Kipparme
@@ -71,10 +71,14 @@ VAR_CONFIG
   Globale_Bausteine.Anlegetisch204.in_bSensorKipparmeNichtOben                           AT %MX1.0    : BOOL; // OPTION
   Globale_Bausteine.Anlegetisch204.in_bSensorKipparmeNichtUnten                          AT %MX1.0    : BOOL; // OPTION
   
-  Globale_Bausteine.Anlegetisch204.out_bKipparmeAuf                                      AT %MX2.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch204.out_bKipparmeAb                                       AT %MX2.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch204.out_bKipparmeAnschlaegeAuf                            AT %MX2.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch204.out_bKipparmeAnschlaegeAb                             AT %MX2.0    : BOOL; // OPTION                                                                                                   
+  Globale_Bausteine.Anlegetisch204.out_bKipparmeAuf                                      AT %MX2041.0 : BOOL; // OPTION
+  Globale_Bausteine.Anlegetisch204.out_bKipparmeAb                                       AT %MX2041.1 : BOOL; // OPTION
+  Globale_Bausteine.Anlegetisch204.out_bKipparmeAnschlaegeAuf                            AT %MX2041.2 : BOOL; // OPTION
+  Globale_Bausteine.Anlegetisch204.out_bKipparmeAnschlaegeAb                             AT %MX2041.3 : BOOL; // OPTION                                                                                                   
+
+  // Geblaese-Baustein (Motorschutz und Ausgang kommen von der Station)
+  Globale_Bausteine.Anlegetisch204.Geblaese.in_bMotorschutzschalter_OK                            AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.Anlegetisch204.Geblaese.out_bStarteGeblaese                                   AT %MX2041.4 : BOOL; // OPTION
 
 END_VAR
 

@@ -111,7 +111,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
         SpsError( eFehler_Station,
                   starrShuttleBasisParameter[wStation].wFehlerNummer,
                   starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                  AutomatikkreisBestimmen(starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                  AutomatikkreisBestimmen(starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                   starrShuttleBasisParameter[wStation].awFehlerInformationen );
 
         steplSchritt := STEP_900_E;
@@ -144,7 +144,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
         SpsError( eFehler_Station,
                   starrShuttleBasisParameter[wStation].wFehlerNummer,
                   starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                  AutomatikkreisBestimmen(starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                  AutomatikkreisBestimmen(starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                   starrShuttleBasisParameter[wStation].awFehlerInformationen );
 
         steplSchritt := STEP_900_E;

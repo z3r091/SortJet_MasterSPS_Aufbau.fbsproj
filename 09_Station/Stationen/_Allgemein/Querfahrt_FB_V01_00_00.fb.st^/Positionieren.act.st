@@ -68,7 +68,7 @@ IF (  bpPositionieren ) THEN
         SpsError( eFehler_Station,
                   cMELDUNG_QUERFAHRT_KEINE_REFERENZ,
                   stStationsNummern.NummerIntern,
-                  AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+                  AutomatikkreisBestimmen(stStationsNummern.NummerSPS),
                   wpgFehlerdaten );
       END_IF
 
@@ -195,7 +195,7 @@ IF (  bpPositionieren ) THEN
         SpsHinweis( eFehler_Station,
                     wpFehlerNr,
                     stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+                    AutomatikkreisBestimmen(stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
 
         steplPositionieren := STEP_130_E;

@@ -24,6 +24,8 @@ VAR_INPUT
   bpTeilnehmerErreichbar    : BOOL;
 
   bpSensorNicht90Grad       : BOOL;
+
+  bpLangsamKippen           : BOOL; // Umrichter: mit reduzierter Geschwindigkeit und Beschleunigung positionieren
   bpSensorNicht84Grad       : BOOL;
 
   // POINTER
@@ -187,6 +189,8 @@ toflReglerFreigabeErhalten( IN := (   bpPositionieren
 
 
 Antrieb.bpFreigabe        := ( bpFreigabe AND toflReglerFreigabeErhalten.Q );
-Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
+IF ( NOT ( bpPositionieren AND bpLangsamKippen ) ) THEN
+  Antrieb.rpRuckzeit      := ppAntriebsInformationen.rpMaxRuckzeit;
+END_IF
 Antrieb.stStationsNummern := stStationsNummern;
 END_FUNCTION_BLOCK

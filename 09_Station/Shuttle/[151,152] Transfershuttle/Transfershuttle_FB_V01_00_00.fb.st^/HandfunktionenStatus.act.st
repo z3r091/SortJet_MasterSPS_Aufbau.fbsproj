@@ -31,7 +31,7 @@ ELSE
 END_IF
 
 IF ( dwpHandfunktionenReturn <> dwlHandfunktionenZuletztGesendet ) THEN
-  wSps2MmiStationsNummer        := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+  wSps2MmiStationsNummer        := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
   dwSps2MmiHandfunktionenStatus := dwpHandfunktionenReturn;
   MsgToMmi( auftragsnr_w := SB0_SPS_SHUTTLEHANDFUNKTION_STATUS );
 

@@ -1,0 +1,15 @@
+(* METADATA
+{
+  "v3Meta": {
+    "objectGuid": "bda97c3b-7fae-419e-984e-a85c27e66d8b"
+  }
+}
+*)
+// Seite, ueber die der Shuttle-Greifer die Scheibe ein- bzw. austransportiert
+TYPE Greifertyp_EN :
+  (
+    eGreiferDefault      := 0, // Kein Greifer: Transport ueber den Glastransport
+    eGreiferEinlaufseite := 1, // Greiferzange auf der Einlaufseite
+    eGreiferAuslaufseite := 2  // Greiferzange auf der Auslaufseite
+  ) WORD;
+END_TYPE

@@ -22,7 +22,7 @@ IF rtlStarteSchmierung.Q THEN
   blStarteSchmierung := TRUE;  
 
   wSps2MmiErrorNumber           := 110;
-  wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerSPS;
+  wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerIntern;
   wSps2MmiErrorShuttleSchritt   := STEP_999_E;
   wSps2MmiErrorShuttlePosition4 := 0;
   wSps2MmiErrorShuttlePosition5 := 0;
@@ -55,7 +55,7 @@ IF bpFreigabe THEN
         IF tonlSchmierungBetriebsbereit.Q AND (( ailAktiverHub[cSCHMIERKREIS_1] = 0 ) OR (ailAktiverHub[cSCHMIERKREIS_2] = 0)) THEN
 
           wSps2MmiErrorNumber           := 120;
-          wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerSPS;
+          wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerIntern;
           wSps2MmiErrorShuttleSchritt   := STEP_0_E;
           wSps2MmiErrorShuttlePosition4 := 0;
           wSps2MmiErrorShuttlePosition5 := 0;
@@ -139,7 +139,7 @@ IF bpFreigabe THEN
           SpsHinweis( eFehler_Station,
                       cMELDUNG_ZENTRALSCHMIERUNG_FETT_BALD_LEER,
                       stStationsNummern.NummerIntern,
-                      AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+                      AutomatikkreisBestimmen(stStationsNummern.NummerSPS),
                       wpgFehlerdaten );
 
           steplSchmierung := STEP_300_E;
@@ -151,11 +151,11 @@ IF bpFreigabe THEN
           SpsError( eFehler_Station,
                     cMELDUNG_ZENTRALSCHMIERUNG_GERAETEFEHLER,
                     stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+                    AutomatikkreisBestimmen(stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
 
           wSps2MmiErrorNumber           := 110;
-          wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerSPS;
+          wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerIntern;
           wSps2MmiErrorShuttleSchritt   := STEP_200_E;
           wSps2MmiErrorShuttlePosition4 := 0;
           wSps2MmiErrorShuttlePosition5 := 0;
@@ -190,7 +190,7 @@ IF bpFreigabe THEN
           steplSchmierung := STEP_450_E;
         ELSE
           wSps2MmiErrorNumber           := 110;
-          wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerSPS;
+          wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerIntern;
           wSps2MmiErrorShuttleSchritt   := STEP_400_E;
           wSps2MmiErrorShuttlePosition4 := 0;
           wSps2MmiErrorShuttlePosition5 := 0;
@@ -268,7 +268,7 @@ IF bpFreigabe THEN
              - Unerwartete Situation, hier sollte man eigentlich nie hinkommen!
           *)
           wSps2MmiErrorNumber           := 110;
-          wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerSPS;
+          wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerIntern;
           wSps2MmiErrorShuttleSchritt   := STEP_560_E;
           wSps2MmiErrorShuttlePosition4 := 0;
           wSps2MmiErrorShuttlePosition5 := 0;
@@ -294,7 +294,7 @@ IF bpFreigabe THEN
         tonSchmierkreisAnsteuerung(IN:= FALSE);
 
         wSps2MmiErrorNumber           := 130;
-        wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerSPS;
+        wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerIntern;
         wSps2MmiErrorShuttleSchritt   := STEP_1000_E;
         wSps2MmiErrorShuttlePosition4 := 0;
         wSps2MmiErrorShuttlePosition5 := 0;

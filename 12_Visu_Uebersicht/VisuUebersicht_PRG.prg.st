@@ -211,19 +211,19 @@ VISU_UEBERSICHT.sLblMax151 := VisuUeb_MmText(sPrefix := '', rWert := VISU_UEBERS
 
 // [301] / [302] Faecherwagen
 IF VisuUeb_Station(stBP := StationBasisParameter.starrFaecherwagenBasisParameter[301], stKarte := VISU_UEBERSICHT.st301, sTitel := '301  Fächerwagen', bBlink := bBlink, bReferenzRelevant := FALSE,
-                    bGlasZusatz := Globale_Bausteine.aFaecherwagenstation[301].bpStatusStationInBeladePosition) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
-VISU_UEBERSICHT.st301.sInfo1 := SEL(Globale_Bausteine.aFaecherwagenstation[301].bpStatusStationInBeladePosition, 'Wagen nicht in Beladeposition', 'Wagen in Beladeposition');
-VISU_UEBERSICHT.st301.dwInfo1Farbe := SEL(Globale_Bausteine.aFaecherwagenstation[301].bpStatusStationInBeladePosition, VISU_UEBERSICHT.cFARBE_TEXT, VISU_UEBERSICHT.cFARBE_GRUEN);
-VISU_UEBERSICHT.st301.sInfo2 := SEL(Globale_Bausteine.aFaecherwagenstation[301].bpBoxInHomePosition, 'Box nicht in Home', 'Box in Home');
-VISU_UEBERSICHT.st301.sInfo3 := SEL(Globale_Bausteine.aFaecherwagenstation[301].bpAuftragAktiv, '', 'Ein-/Ausschleusen aktiv');
+                    bGlasZusatz := VISU_VARS.astgFaecherwagenstatusVisu[301].bStatusStationInBeladePosition) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
+VISU_UEBERSICHT.st301.sInfo1 := SEL(VISU_VARS.astgFaecherwagenstatusVisu[301].bStatusStationInBeladePosition, 'Wagen nicht in Beladeposition', 'Wagen in Beladeposition');
+VISU_UEBERSICHT.st301.dwInfo1Farbe := SEL(VISU_VARS.astgFaecherwagenstatusVisu[301].bStatusStationInBeladePosition, VISU_UEBERSICHT.cFARBE_TEXT, VISU_UEBERSICHT.cFARBE_GRUEN);
+VISU_UEBERSICHT.st301.sInfo2 := SEL(VISU_VARS.astgFaecherwagenstatusVisu[301].bBoxInHomePosition, 'Box nicht in Home', 'Box in Home');
+VISU_UEBERSICHT.st301.sInfo3 := SEL(VISU_VARS.astgFaecherwagenstatusVisu[301].bAuftragAktiv, '', 'Ein-/Ausschleusen aktiv');
 VISU_UEBERSICHT.st301.dwInfo3Farbe := VISU_UEBERSICHT.cFARBE_BLAU;
 
 IF VisuUeb_Station(stBP := StationBasisParameter.starrFaecherwagenBasisParameter[302], stKarte := VISU_UEBERSICHT.st302, sTitel := '302  Fächerwagen', bBlink := bBlink, bReferenzRelevant := FALSE,
-                    bGlasZusatz := Globale_Bausteine.aFaecherwagenstation[302].bpStatusStationInBeladePosition) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
-VISU_UEBERSICHT.st302.sInfo1 := SEL(Globale_Bausteine.aFaecherwagenstation[302].bpStatusStationInBeladePosition, 'Wagen nicht in Beladeposition', 'Wagen in Beladeposition');
-VISU_UEBERSICHT.st302.dwInfo1Farbe := SEL(Globale_Bausteine.aFaecherwagenstation[302].bpStatusStationInBeladePosition, VISU_UEBERSICHT.cFARBE_TEXT, VISU_UEBERSICHT.cFARBE_GRUEN);
-VISU_UEBERSICHT.st302.sInfo2 := SEL(Globale_Bausteine.aFaecherwagenstation[302].bpBoxInHomePosition, 'Box nicht in Home', 'Box in Home');
-VISU_UEBERSICHT.st302.sInfo3 := SEL(Globale_Bausteine.aFaecherwagenstation[302].bpAuftragAktiv, '', 'Ein-/Ausschleusen aktiv');
+                    bGlasZusatz := VISU_VARS.astgFaecherwagenstatusVisu[302].bStatusStationInBeladePosition) THEN wAnzStoerung := wAnzStoerung + 1; END_IF
+VISU_UEBERSICHT.st302.sInfo1 := SEL(VISU_VARS.astgFaecherwagenstatusVisu[302].bStatusStationInBeladePosition, 'Wagen nicht in Beladeposition', 'Wagen in Beladeposition');
+VISU_UEBERSICHT.st302.dwInfo1Farbe := SEL(VISU_VARS.astgFaecherwagenstatusVisu[302].bStatusStationInBeladePosition, VISU_UEBERSICHT.cFARBE_TEXT, VISU_UEBERSICHT.cFARBE_GRUEN);
+VISU_UEBERSICHT.st302.sInfo2 := SEL(VISU_VARS.astgFaecherwagenstatusVisu[302].bBoxInHomePosition, 'Box nicht in Home', 'Box in Home');
+VISU_UEBERSICHT.st302.sInfo3 := SEL(VISU_VARS.astgFaecherwagenstatusVisu[302].bAuftragAktiv, '', 'Ein-/Ausschleusen aktiv');
 VISU_UEBERSICHT.st302.dwInfo3Farbe := VISU_UEBERSICHT.cFARBE_BLAU;
 
 // [401] Auslauf Fremdanlage

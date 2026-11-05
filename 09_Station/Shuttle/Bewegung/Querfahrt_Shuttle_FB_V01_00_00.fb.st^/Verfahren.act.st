@@ -244,8 +244,8 @@ THEN
         wpgFehlerdaten[0] := stStationsNummern.NummerExtern;
         SpsHinweis( eFehler_Station,
                     cMELDUNG_QUERFAHRT_VERFAHRABBRUCH,
-                    stStationsNummern.NummerExtern,
-                    AutomatikkreisBestimmen(stStationsNummern.NummerIntern),
+                    stStationsNummern.NummerIntern,
+                    AutomatikkreisBestimmen(stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
 
         STEP_Mov_Shuttle_W := STEP_130_E;

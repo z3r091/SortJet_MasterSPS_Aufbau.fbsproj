@@ -36,14 +36,14 @@ VAR_CONFIG
 
   // ------------------------------------ HARDWARE AUSGAENGE ---------------------------------------
   // Standart Ausgänge
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bSenderBereit                        AT %MX2.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bSenderBereit                        AT %MX4010.0 : BOOL; // OPTION
   Globale_Bausteine.aSchnittstelleAuslauf[401].out_bSenderGlasBereit                    AT %QX4.0    : BOOL; // OK
   Globale_Bausteine.aSchnittstelleAuslauf[401].out_bFreigabeSK                          AT %QX4.1    : BOOL; // OK
                                                                                         
   Globale_Bausteine.aSchnittstelleAuslauf[401].out_bLeuchteGlasbruch                    AT %QX3.2    : BOOL; // OPTION
   Globale_Bausteine.aSchnittstelleAuslauf[401].out_bLeuchteSpezial                      AT %QX3.3    : BOOL; // OPTION
   Globale_Bausteine.aSchnittstelleAuslauf[401].out_bAmpelEventAktiv                     AT %QX2.0    : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleAuslauf[401].Horn.out_bHorn                           AT %MX2.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].Horn.out_bHorn                           AT %MX4010.1 : BOOL; // OPTION
                                                                                         
   // Buskoppler Ausgänge                                                                
   Globale_Bausteine.aSchnittstelleAuslauf[401].out_wSenderLiveCounter                   AT %MW100    : WORD;                      // Buskoppler Signale

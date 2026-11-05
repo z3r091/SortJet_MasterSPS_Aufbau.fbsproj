@@ -14,6 +14,7 @@ VAR_INPUT
   bpBetriebsstoppAktiv            : BOOL;
   bpInternerBetriebsstopp         : BOOL;
   bpHinweisFWEingriffErforderlich : BOOL;
+  bpSignalExtern                  : BOOL; // Blau Dauerlicht (z. B. Faecherwagen bald voll); Eingriff erforderlich hat Vorrang (blinkt)
 
 END_VAR
 VAR_OUTPUT
@@ -58,7 +59,7 @@ END_VAR
 Flasher(ENABLE:= TRUE , TIMELOW:= t#0.2s, TIMEHIGH:= t#0.2s , OUT=> blFlashbit);
 rtlInitAmpel(CLK:= blFlashbit );
 
-out_bAmpelLeuchteBlau := bpHinweisFWEingriffErforderlich AND gbFlashbit02sec; // Neu 13.05.26 
+out_bAmpelLeuchteBlau := SEL( bpHinweisFWEingriffErforderlich, bpSignalExtern, gbFlashbit02sec );
 
 //  Zentral den OperatingMode bestimmen
 IF ( NOT NotHalt.bpNotHaltOK) THEN // NotAus nicht OK

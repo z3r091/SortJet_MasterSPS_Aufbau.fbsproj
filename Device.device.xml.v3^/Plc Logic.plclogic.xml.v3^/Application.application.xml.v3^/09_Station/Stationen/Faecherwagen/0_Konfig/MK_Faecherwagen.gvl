@@ -27,6 +27,7 @@ VAR_GLOBAL
       stStationsAufbau          := ( bAnschlag                     := FALSE,
                                      bRolltor                      := TRUE,
                                      bKlemmzylinder                := FALSE,
+                                     bGreifer                      := [cANZAHL_WAENDE(FALSE)],
                                      bRFID                         := TRUE,
                                      bAGV                          := FALSE, 
                                      bGeblase                      := [ FALSE ],
@@ -44,6 +45,8 @@ VAR_GLOBAL
                                      bDruckluft                    := FALSE,
                                      bSensorAuslauf                := FALSE,
                                      bSensorEinlauf                := FALSE,
+                                     bSensorEinlaufStopp           := FALSE,
+                                     bSensorAuslaufStopp           := FALSE,
                                      bDurchlaufSperreZumNachfolger := FALSE,
                                      bKippenSchuetz                := FALSE,
                                      bQuerfahrt                    := FALSE,
@@ -52,7 +55,8 @@ VAR_GLOBAL
                                      bKipparme                     := FALSE,
                                      bMessachseAmEndeVomTisch      := FALSE,
                                      bDLSSchmiersystem             := FALSE,
-                                     bGlastransportSlaveVorhanden  := FALSE
+                                     bGlastransportSlaveVorhanden  := FALSE,
+                                     wHydraulikstation             := cHYDRAULIKSTATION_1
                                     )
      // astShuttleAnhaltenQuellen
     )];

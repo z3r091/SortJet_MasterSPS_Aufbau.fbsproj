@@ -12,7 +12,15 @@ VAR_GLOBAL
 // DEKLARATION STATIONEN
 //-------------------------------------------------------------------------------------------------
   // Stationen           
-  aFaecherwagenstation  : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF Faecherwagenstation_V4_1_FB;
+  // Faecherwagenstationen: eine Variante je Maschine, Variante hier ueber den Typ des Arrays waehlen
+  //   - Faecherwagenstation_Lineareinheit_FB_V01_00_00 (Lineareinheit, Greifer, Gegenhalter, Entriegelung, RFID)
+  //   - Faecherwagenstation_Hydraulik_FB_V01_00_00     (Hubrahmen, Verfahren, Zentrierung, Anschlag)
+  //   - Faecherwagenstation_Einfach_FB_V01_00_00       (Arretierung des ganzen Faecherwagens, Rolltor)
+  //   IOs in Konfiguration_FW_Basis
+  aFaecherwagenstation            : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF Faecherwagenstation_Lineareinheit_FB_V01_00_00;
+
+  // Hydraulikaggregate der Faecherwagenstationen (Variante Hydraulik), Zuordnung ueber MK stStationsAufbau.wHydraulikstation
+  aHydraulikstation               : ARRAY[cERSTE_HYDRAULIKSTATIONS_NR..cLETZTE_HYDRAULIKSTATIONS_NR] OF Hydraulik_FB_V01_00_00;
   
   Anlegetisch201                  : Anlegetisch_FB_V01_00_00;
   Foerderer202                    : Foerderer_FB_V01_00_00;    

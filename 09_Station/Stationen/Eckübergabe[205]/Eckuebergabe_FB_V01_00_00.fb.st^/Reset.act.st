@@ -66,7 +66,7 @@ IF ( blBetriebsartReset ) THEN
         BasisStationsParameter.wFehlerNummer := cMELDUNG_STATION_NICHT_ZURUECKGESETZT;
         SpsError( eFehler_Station,
                   cMELDUNG_STATION_NICHT_ZURUECKGESETZT,
-                  BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                  BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                   AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                   BasisStationsParameter.awFehlerInformationen );
 
@@ -74,7 +74,7 @@ IF ( blBetriebsartReset ) THEN
           BasisStationsParameter.wFehlerNummer := Glastransport_X.wpFehlerNr;
           SpsError( eFehler_Station,
                     BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     BasisStationsParameter.awFehlerInformationen );
         END_IF
@@ -83,7 +83,7 @@ IF ( blBetriebsartReset ) THEN
           BasisStationsParameter.wFehlerNummer := Glastransport_Y.wpFehlerNr;
           SpsError( eFehler_Station,
                     BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerSPS,
+                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     BasisStationsParameter.awFehlerInformationen );
         END_IF

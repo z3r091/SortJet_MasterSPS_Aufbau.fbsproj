@@ -18,6 +18,19 @@ VAR_INPUT
 
   // EINGÄNGE
   bpMotorschutzschalter_OK  : BOOL; 
+  bpDrehzahlErreicht        : BOOL := TRUE; // Sanftanlauf: Drehzahl erreicht (ohne Sanftanlauf TRUE lassen)
+
+  // DROSSELKLAPPE
+  bpDrosselklappeAnforderung : BOOL; // Station: Drosselklappe soll offen sein (Transport, Anlegen, Geblaese gestartet)
+
+  // STEUERUNG (wann das Geblaese laufen soll, Aktion Steuerung)
+  bpAutomatik        : BOOL;            // Automatik / Check: Geblaese nach Aktivitaet mit Energiesparmodus
+  bpAktivitaet       : BOOL;            // Station braucht das Geblaese (z.B. Auftrag aktiv)
+  bpAktivitaetFlanke : BOOL;            // Anlegestation: nur die steigende Flanke der Aktivitaet startet, danach Abschaltzeit
+  bpTaster           : BOOL;            // Taster am Geblaese: umschalten
+  bpHandEin          : BOOL;            // Handbetrieb: Geblaese laeuft, solange gesetzt
+  bpSperre           : BOOL;            // Geblaese sofort aus (Reset, Verriegelung)
+  tpMindestlaufzeit  : TIME := T#500MS; // Der Taster schaltet erst nach dieser Laufzeit aus
 
   // STRUKT
   stStationsNummern       : Station_ST;
@@ -28,7 +41,8 @@ VAR_OUTPUT
   // BOOLEAN
   bpFehler                 : BOOL;
   bpDone                   : BOOL;
-  bpStarteGeblaese         : BOOL;
+  bpStarteGeblaese         : BOOL; // Geblaese wird angesteuert (Schuetz)
+  bpDrosselklappeOeffnen   : BOOL; // Drosselklappe oeffnen: angefordert und Geblaese laeuft
 
   // WORD 
   wpFehlerNr : WORD;
@@ -52,6 +66,17 @@ VAR
   tonlWarteAufGeblaeseLaeuft : TON; 
   toflWarteAufWiederAnlauf   : TOF; 
   toflMotorschutz            : TOF;
+  toflEnergiesparModus       : TOF; // Energiesparmodus: Geblaese nach der Abschaltzeit ohne Aktivitaet aus
+  tonlMindestlaufzeit        : TON;
+
+  // TRIGGER
+  rtlAutomatik               : R_TRIG;
+  rtlAktivitaet              : R_TRIG;
+  rtlTaster                  : R_TRIG;
+
+  // BOOLEAN (Steuerung)
+  blTasterAus                : BOOL; // Automatik: Geblaese per Taster ausgeschaltet (bis zur naechsten Aktivitaet)
+  blHandTaster               : BOOL; // Handbetrieb: Geblaese per Taster eingeschaltet
 
 END_VAR
 VAR
@@ -88,7 +113,6 @@ END_IF
 // IO Zuweisung
 IF ( bpIOsBoschDrive ) THEN
   blMotorschutzschalter_OK  := bpMotorschutzschalter_OK;
-  bpStarteGeblaese          := out_bStarteGeblaese;
 ELSE
   blMotorschutzschalter_OK  := in_bMotorschutzschalter_OK;
 END_IF
@@ -98,7 +122,9 @@ END_IF
 // BAUSTEIN: DEAKTIVIEREN
 //-------------------------------------------------------------------------------------------------
 IF ( NOT bpAktivieren ) THEN
-  bpDone     := TRUE;
+  bpDone                 := TRUE;
+  bpStarteGeblaese       := FALSE;
+  bpDrosselklappeOeffnen := FALSE;
   bpFehler   := FALSE;
   wpFehlerNr := 0;
 
@@ -106,6 +132,11 @@ IF ( NOT bpAktivieren ) THEN
 
 END_IF
 
+
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: STEUERUNG
+//-------------------------------------------------------------------------------------------------
+Steuerung();
 
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: TIMER
@@ -150,4 +181,14 @@ ELSE
   Meldungen();
 
 END_IF
+
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AUSGAENGE
+//-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Ansteuerung des Geblaeses fuer Stationen, die den Ausgang selbst schalten (z.B. zwei Geblaese oder Ausgang am Umrichter)
+   - Die Drosselklappe ist nur offen, wenn sie angefordert ist und das Geblaese laeuft (Drehzahl erreicht)
+*)
+bpStarteGeblaese       := out_bStarteGeblaese;
+bpDrosselklappeOeffnen := bpDrosselklappeAnforderung AND bpDone;
 END_FUNCTION_BLOCK

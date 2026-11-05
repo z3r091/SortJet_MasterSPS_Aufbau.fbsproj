@@ -18,6 +18,7 @@ SUPER^.A_Schnittstelle();
    - Abhandlung des Ein-Aus- Transports [Setzen der Variablen das man bereit ist zum Glastransport]
 *)
 BasisStationsParameter.OutGlasTransport[cWAND_1].wAchsID                    := Glastransport.ppAntriebsInformationen.wAchsID;
+BasisStationsParameter.OutGlasTransport[cWAND_1].rLaengeStation             := Glastransport.ppParameterBaustein.rLaengeStation;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bEinlaufsensor             REF= Glastransport.bpSensorEinlauf;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bAuslaufsensor             REF= Glastransport.bpSensorAuslauf;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bBereitZumAustransport     REF= Glastransport.bpOutBereitZumAustransport;
@@ -26,6 +27,7 @@ BasisStationsParameter.OutGlasTransport[cWAND_1].rGeschwindigkeit           REF=
 BasisStationsParameter.OutGlasTransport[cWAND_1].bQuittScheibe              REF= Glastransport.bprtScheibe;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberEinlauf REF= bgFALSE;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberAuslauf REF= bgFALSE;
+BasisStationsParameter.OutGlasTransport[cWAND_1].bTransportRueckwaertig     REF= BasisStationsParameter.bRueckwaertsTransportieren[cWAND_1];
 
 // ---------------------------------------------------------------------------------------
 // BAUSTEIN BASISPARAMETER

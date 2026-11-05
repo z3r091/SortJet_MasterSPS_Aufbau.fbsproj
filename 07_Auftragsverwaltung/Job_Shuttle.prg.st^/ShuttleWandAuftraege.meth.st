@@ -19,12 +19,13 @@ IF ( AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Eintransport ) THEN
   (* Hinweis:
      - Aufruf der Schrittkette
   *)
+  starrShuttleBasisParameter[wStation].bEintransportGewesen[wWand] := FALSE;
   Eintransport[wStation, wWand]( Auftragsdaten := AuftragsdatenWand[wStation, wWand], wStation := wStation, wWand := wWand);
   (* Hinweis:
      - Abschluss der Schrittkette
   *)
   IF Eintransport[wStation, wWand].bpDone THEN
-    ablEintransportGewesen[wStation, wWand] := TRUE;
+    starrShuttleBasisParameter[wStation].bEintransportGewesen[wWand] := TRUE;
     AuftragsdatenWand[wStation, wWand] := Eintransport[wStation, wWand].Auftragsdaten;
     Eintransport[wStation, wWand](bpReset := TRUE);
   END_IF
@@ -49,6 +50,7 @@ END_IF
 // *************************************************************************************************
 
 IF ( AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Austransport ) THEN
+  starrShuttleBasisParameter[wStation].bEintransportGewesen[wWand] := FALSE;
   (* Hinweis:
      - Aufruf der Schrittkette
   *)

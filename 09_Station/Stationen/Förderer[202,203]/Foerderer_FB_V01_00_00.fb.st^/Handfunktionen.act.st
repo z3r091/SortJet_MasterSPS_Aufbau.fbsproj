@@ -19,15 +19,7 @@ IF ( blBetriebsartHand ) THEN
 
   // Handfunktion:
   //   - Gebläse an / aus
-  IF ( dwlHandfunktionen.0
-       OR bgVISUGeblaese[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] )
-  THEN
-    Geblaese.bpStart := TRUE;
-
-  ELSIF NOT blNachSystemcheckMerker THEN
-    Geblaese.bpStart := FALSE;
-
-  END_IF
+  // Geblaese: Handfunktion im Geblaese-Baustein (bpHandEin, Aktion A_Geblaese)
   
   
   // Glastranspoert

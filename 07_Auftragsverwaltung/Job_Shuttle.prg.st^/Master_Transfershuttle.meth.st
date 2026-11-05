@@ -270,7 +270,7 @@ IF (  abpSpeicherfachValidierung[wStation] ) THEN
         SpsError( eFehler_Station,
                   starrTransfershuttleBasisParameter[wStation].wFehlerNummer,
                   starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
-                  AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern),
+                  AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                   starrTransfershuttleBasisParameter[wStation].awFehlerInformationen );
 
       END_IF

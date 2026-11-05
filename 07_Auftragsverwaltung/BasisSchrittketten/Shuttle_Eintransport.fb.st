@@ -105,10 +105,22 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       // Kippen
       starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition                  := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Kippen[Auftragsdaten.wTransferstationsNr1];
       starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachEintransport := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.KippenNachEintransport[Auftragsdaten.wTransferstationsNr1];
-      starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachAustransport := 0;  
+      starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachAustransport := 0;
+
+      // Hub
+      starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eHub                  := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Hub[Auftragsdaten.wTransferstationsNr1];
+      starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eHub_NachEintransport := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.HubNachEintransport[Auftragsdaten.wTransferstationsNr1];
+      starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eHub_NachAustransport := 0;
 
       // Glastransport
       starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eGlastransport := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[Auftragsdaten.wTransferstationsNr1];
+
+      // Greifer [Ausbaustufe stStationsAufbau.bGreifer]: Greiferseite je Partnerstation, Zangenoeffnung wie die Scheibenfuehrung
+      starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eGreiferTyp := eGreiferDefault;
+      IF ( starrShuttleBasisParameter[wStation].stMKs.stStationsAufbau.bGreifer[wWand] ) THEN
+        starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eGreiferTyp := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Greifer[Auftragsdaten.wTransferstationsNr1];
+      END_IF
+      starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eGreiferZangeStellung := starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eDickenverstellung;
 
       // Scheibentyp prüfen
       starrShuttleBasisParameter[wStation].wGlasTyp[wWand] := eScheibe_Default;
@@ -143,6 +155,25 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
         cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF:
           ;
+
+        // Faecherwagen direkt (Transferstation 1): nur mit dem Greifer. Ohne Greifer geht es aus dem Faecherwagen ueber ein
+        // Transfershuttle mit bTransferShuttleFuerFaecherwagen (Transferstation 1 = Transfershuttle, Transferstation 2 = Faecherwagen)
+        cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR:
+          IF ( starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eGreiferTyp <> eGreiferDefault ) THEN
+            IF ( starrFaecherwagenBasisParameter[wlEintransportstation].OutGlasTransport[cWAND_1].bBereitZumAustransport ) THEN
+              steplSchritt := STEP_100_E;
+            END_IF
+          ELSE
+            wpgFehlerdaten[0] := starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerExtern;
+            wpgFehlerdaten[1] := wlEintransportstation;
+            SpsError( eFehler_Station,
+                      cMELDUNG_AUFTRAGSDATEN_FALSCHE_EINLAUFSTATION,
+                      starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
+                      AutomatikkreisBestimmen(wStation),
+                      wpgFehlerdaten );
+
+            steplSchritt := STEP_900_E;
+          END_IF
 
         ELSE
           wpgFehlerdaten[0] := starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerExtern;
@@ -204,6 +235,16 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
 
         cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF:
           ;
+
+        cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR:
+          (* Hinweis:
+             - Eintransport aus dem Faecherwagen mit dem Greifer (Greiferseite im Auftrag)
+          *)
+          starrShuttleBasisParameter[wStation].bScheibentrennen[wWand]           := FALSE;
+          starrShuttleBasisParameter[wStation].bRueckwaertsTransportieren[wWand] := FALSE;
+          starrShuttleBasisParameter[wStation].bEintransport[wWand]              := TRUE;
+
+          steplSchritt := STEP_400_E;
 
       END_CASE
 

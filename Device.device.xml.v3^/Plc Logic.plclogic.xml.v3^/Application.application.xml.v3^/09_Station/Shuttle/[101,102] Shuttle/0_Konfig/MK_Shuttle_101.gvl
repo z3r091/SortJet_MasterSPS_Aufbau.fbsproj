@@ -80,16 +80,20 @@ VAR_GLOBAL
                                             bAnschlag                     := FALSE,
                                             bSensorAuslauf                := TRUE,
                                             bSensorEinlauf                := TRUE,
+                                            bSensorEinlaufStopp           := FALSE,
+                                            bSensorAuslaufStopp           := TRUE,
                                             bDurchlaufSperreZumNachfolger := FALSE,
                                             bQuerfahrt                    := TRUE,
                                             bDLSSchmiersystem             := TRUE,
                                             bGlastransportSlaveVorhanden  := FALSE,
+                                            wHydraulikstation             := 0,
                                             bWandverstellung              := [ FALSE ],
                                             bRoellchenleiste              := [ FALSE ],
                                             bDurchgang                    := FALSE,
                                             bSlaveAntrieb                 := FALSE,
                                             bRolltor                      := FALSE,
                                             bKlemmzylinder                := FALSE,
+                                            bGreifer                      := [cANZAHL_WAENDE(FALSE)],
                                             bRFID                         := FALSE,
                                             bAGV                          := FALSE,
                                             bKipparme                     := FALSE,
@@ -183,6 +187,59 @@ VAR_GLOBAL
       rPosition_Mittel                  := 180,
       rPosition_Maximal                 := 180,
       rToleranz                         := 1
+    )];
+
+//-------------------------------------------------------------------------------------------------
+// SHUTTLE GREIFER [Ausbaustufe stStationsAufbau.bGreifer]
+//   - Positionen und Wege aus der Inbetriebnahme eintragen (Platzhalter 0)
+//   - Aufbau: eine Greiferzange auf der Auslaufseite, Glasrueckhalter nur auf der Greiferseite
+//-------------------------------------------------------------------------------------------------
+
+  apgMKShuttle101Greifer : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Greifer := [
+    (
+      eGreiferTyp                                  := eGreiferAuslaufseite,
+      tZeitAntriebsfreigabeErhalten                := TIME#10s0ms,
+      tUeberwachungZylinder                        := TIME#5s0ms,
+      tUeberwachungBewegung                        := TIME#30s0ms,
+      tUeberwachungKopplung                        := TIME#10s0ms,
+      bZangeAbfragenVorhanden                      := FALSE,
+      bZangeEinlaufVorhanden                       := FALSE,
+      bZangeAuslaufVorhanden                       := TRUE,
+      bGlasRueckhalterEinlaufVorhanden             := FALSE,
+      bGlasRueckhalterAuslaufVorhanden             := TRUE,
+      rGrundstellungsPosition_Einlauf              := 0,
+      rGrundstellungsPosition_Auslauf              := 0,
+      rGrundstellungsPosition_EinlaufEintransport  := 0,
+      rGrundstellungsPosition_AuslaufEintransport  := 0,
+      rUebergabePosition_Einlauf                   := 0,
+      rUebernahmePosition_Einlauf                  := 0,
+      rUebergabePosition_Auslauf                   := 0,
+      rUebernahmePosition_Auslauf                  := 0,
+      rOffsetPosition                              := 0,
+      rWegBisZumEinlaufsensor                      := 0,
+      rWegBisZumAuslaufsensor                      := 0,
+      rSicherPositionMinimal                       := 0,
+      rSicherPositionMaximal                       := 0,
+      rWegBisZumSicherenEinklappen                 := 0,
+      rGlasEintransportOffset_Einlauf              := 0,
+      rGlasEintransportOffset_Auslauf              := 0,
+      rGlasEintransportOffset_EinlaufSammeln       := 0,
+      rGlasEintransportOffset_AuslaufSammeln       := 0,
+      rLaengeUebergroesseScheibe                   := 0,
+      rPositionUebergrosseScheibe_Einlauf          := 0,
+      rPositionUebergrosseScheibe_Auslauf          := 0,
+      rGreiferAusDemGlasFahrPosition               := 0,
+      rMaximalerWegSensorFreiFahren                := 0,
+      rWegSensorUeberwachungEintransport           := 0,
+      rKorrekturOffset_Einlauf                     := 0,
+      rKorrekturOffset_Auslauf                     := 0,
+      rWegGlasUebergabeposition                    := 0,
+      rWegGlasUebergabepositionLang                := 0,
+      rLaengeReduzierteGeschwindigkeit             := 0,
+      rLaengeReduzierteGeschwindigkeitEintransport := 0,
+      rLaengeReduzierteGeschwindigkeitAustransport := 0,
+      rMinimalPosition                             := 0,
+      rMaximalPosition                             := 0
     )];
 
 END_VAR

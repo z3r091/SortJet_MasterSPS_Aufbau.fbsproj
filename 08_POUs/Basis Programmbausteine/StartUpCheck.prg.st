@@ -37,6 +37,8 @@ FOR i := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
   CheckMeldungsnummer(starrShuttleBasisParameter[i]);
   // Konfigurierete Stationsnummern prüfen
   CheckStationsnummern(starrShuttleBasisParameter[i]);
+  // Konfigurierte Lage der letzten Scheibe prüfen
+  checkGlastransportOptionen(starrShuttleBasisParameter[i], TRUE);
 END_FOR
 
 FOR i := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
@@ -83,6 +85,8 @@ FOR i := cERSTE_STATION TO cLETZTE_STATION DO
   CheckMeldungsnummer(starrStationBasisParameter[i]);
   // Konfigurierete Stationsnummern prüfen
   CheckStationsnummern(starrStationBasisParameter[i]);
+  // Konfigurierte Lage der letzten Scheibe prüfen
+  checkGlastransportOptionen(starrStationBasisParameter[i], FALSE);
 END_FOR
 
 checkMKVerfahrparameter();

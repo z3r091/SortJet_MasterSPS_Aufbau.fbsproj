@@ -23,6 +23,8 @@ TYPE Stations_Aufbau_ST:
     bAnschlag                               : BOOL;
     bSensorAuslauf                          : BOOL;
     bSensorEinlauf                          : BOOL;
+    bSensorEinlaufStopp                     : BOOL; // Shuttle: zusaetzlicher Stopp-Sensor am Einlauf (ohne: Einlaufsensor), Gegenstueck zum Auslauf-Stopp im Rueckwaertstransport
+    bSensorAuslaufStopp                     : BOOL; // Shuttle: zusaetzlicher Stopp-Sensor am Auslauf (ohne: Auslaufsensor), Verfahrfreigabe und Scheibe hat Shuttle verlassen
     bDurchlaufSperreZumNachfolger           : BOOL; // bei LTR wenn die Nachfolgestation zum B. ein RKT ist
     bKippenSchuetz                          : BOOL;
     bQuerfahrt                              : BOOL;
@@ -30,12 +32,14 @@ TYPE Stations_Aufbau_ST:
     bSlaveAntrieb                           : BOOL;
     bRolltor                                : BOOL; // z.B.: FW - Rolltor
     bKlemmzylinder                          : BOOL; // z.B.: FW - Klemmzylinder fixiert den Oberrahmen beim Ein- und Ausschleusen (Eingang in_bKlemmZylinderEingefahren)
+    bGreifer                                : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle: Greifer je Wand (Scheibe aus dem Faecherwagen ziehen bzw. hineinschieben)
     bRFID                                   : BOOL; // z.B.: FW - Rolltor
     bAGV                                    : BOOL; // Hinweis: AGV Betrieb
     bKipparme                               : BOOL;
     bMessachseAmEndeVomTisch                : BOOL;
     bDLSSchmiersystem                       : BOOL;
     bGlastransportSlaveVorhanden            : BOOL;
+    wHydraulikstation                       : WORD; // FW Hydraulik: zugeordnete Hydraulikstation (cHYDRAULIKSTATION_x), 0 = keine
 
   END_STRUCT
 END_TYPE

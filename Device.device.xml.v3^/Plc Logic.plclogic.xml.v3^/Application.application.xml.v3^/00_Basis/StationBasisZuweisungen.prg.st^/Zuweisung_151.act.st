@@ -12,7 +12,6 @@ starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs REF= apgMKTransfershuttle
 // Antriebsparameter zuweisen  
 starrTransfershuttleBasisParameter[cSHUTTLE_151].stAntriebsparameter.stQuerfahrt             REF= apgInfoTransfershuttle151Querfahrt;
 starrTransfershuttleBasisParameter[cSHUTTLE_151].stAntriebsparameter.stGlastransport         REF= apgInfoTransfer151Glastransport;
-starrTransfershuttleBasisParameter[cSHUTTLE_151].stAntriebsparameter.stGlastransportSlave    REF= apgInfoTransfer151GlastransportSlave;
 
 // Parameter der Stationskomponenten zuweisen  
 starrTransfershuttleBasisParameter[cSHUTTLE_151].stParameterStationskomponenten.stGlastransportTransferShuttle    REF= apgTransfer151Glastransport;

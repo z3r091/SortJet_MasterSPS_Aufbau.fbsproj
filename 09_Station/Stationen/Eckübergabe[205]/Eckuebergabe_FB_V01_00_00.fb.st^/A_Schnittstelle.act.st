@@ -58,6 +58,7 @@ END_IF
 //  - Abhandlung des Ein-Aus- Transports [Setzen der Variablen das man bereit ist zum Glastransport]
 // ---------------------------------------------------------------------------------------
 BasisStationsParameter.OutGlasTransport[cWAND_1].wAchsID                    := GlastransportSchnittstelle.ppAntriebsInformationen.wAchsID;
+BasisStationsParameter.OutGlasTransport[cWAND_1].rLaengeStation             := GlastransportSchnittstelle.ppParameterBaustein.rLaengeStation;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bEinlaufsensor             REF= GlastransportSchnittstelle.bpSensorEinlauf;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bAuslaufsensor             REF= GlastransportSchnittstelle.bpSensorAuslauf;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bBereitZumAustransport     REF= GlastransportSchnittstelle.bpOutBereitZumAustransport;
@@ -66,6 +67,7 @@ BasisStationsParameter.OutGlasTransport[cWAND_1].rGeschwindigkeit           REF=
 BasisStationsParameter.OutGlasTransport[cWAND_1].bQuittScheibe              REF= GlastransportSchnittstelle.bprtScheibe;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberEinlauf REF= GlastransportSchnittstelle.bpScheibeFaehrtUeberEinlauf;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberAuslauf REF= GlastransportSchnittstelle.bpScheibeFaehrtUeberAuslauf;
+BasisStationsParameter.OutGlasTransport[cWAND_1].bTransportRueckwaertig     REF= BasisStationsParameter.bRueckwaertsTransportieren[cWAND_1];
 
 // Keine Querfahrt
 BasisStationsParameter.bIstReferenziert := TRUE;

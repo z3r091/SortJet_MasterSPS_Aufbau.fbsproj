@@ -35,7 +35,7 @@ IF ( blStartISOLinie ) THEN
          - Wort 3: 0 = nichts , 1 = Auftrag wurde abgebrochen
          - Wort 4: 0 = Senkrechtförderer frei  / 1 = Senkrechtförderer belegt
       *)
-      wSps2MmiStationsNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
+      wSps2MmiStationsNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
       wSPS2MMIStationsStatusWord1.0 := in_bGlasAbruf;
       MsgToMmi( auftragsnr_w := SB0_SPS_STATIONSTATUS );
 
