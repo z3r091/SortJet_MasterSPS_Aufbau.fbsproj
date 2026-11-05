@@ -94,7 +94,7 @@ THEN
       *)
       IF ( NOT toflAuslaufsensorFrei.Q ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        steplVorabpositionieren := STEP_10_E;
+        steplVorabpositionieren := STEP_6_E;
 
       ELSE
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit05;
@@ -121,7 +121,7 @@ THEN
       END_IF
 
     // GLAS VORPOSITIONIEREN ====================
-    STEP_10_E:
+    STEP_6_E:
       (* Hinweis:
          - Warten bis der Antrieb steht, dann den Sensor neu anfahren
       *)
