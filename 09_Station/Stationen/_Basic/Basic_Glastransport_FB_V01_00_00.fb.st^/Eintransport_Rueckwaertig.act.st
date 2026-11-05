@@ -176,7 +176,7 @@ THEN
             eGlastransport_AufEinlaufVorab:
               IF ( pAuftrag.bErsteScheibe ) THEN
                 // Einzelscheibe: vom Auslaufsensor (Eingang rueckwaerts) direkt auf den Vorab-Sensor am Einlauf
-                Antrieb.rpZielPosition := ( ppParameterBaustein.rWegEinlaufsensorZuVorStopSensor - pAuftrag.rModellVersatzVorne ) * -1;
+                Antrieb.rpZielPosition := - ( ppParameterBaustein.rWegEinlaufsensorZuVorStopSensor - pAuftrag.rModellVersatzVorne );
                 Antrieb.wpRestwegMode  := Negativ_Steigend_Sensor2;
               ELSE
                 Antrieb.rpZielPosition := - (( pAuftrag.rAuftragsLaenge + ppParameterBaustein.rWegUeberAuslaufEintransport ) - pAuftrag.rModellVersatzVorne);
@@ -188,11 +188,11 @@ THEN
               Antrieb.wpRestwegMode  := Negativ_Steigend_Sensor2;
 
             eGlastransport_AufAuslauf:
-              Antrieb.rpZielPosition := ( pAuftrag.rAuftragsLaenge - ppParameterBaustein.rWegUeberAuslaufAustransport - pAuftrag.rModellVersatzVorne ) * -1;
+              Antrieb.rpZielPosition := - ( pAuftrag.rAuftragsLaenge - ppParameterBaustein.rWegUeberAuslaufAustransport - pAuftrag.rModellVersatzVorne );
               Antrieb.wpRestwegMode  := Negativ_Steigend_Sensor2;
 
             eGlastransport_AufEinlauf:
-              Antrieb.rpZielPosition := ( ppParameterBaustein.rWegUeberEinlaufAustransport - pAuftrag.rModellVersatzVorne ) * -1;
+              Antrieb.rpZielPosition := - ( ppParameterBaustein.rWegUeberEinlaufAustransport - pAuftrag.rModellVersatzVorne );
               Antrieb.wpRestwegMode  := Negativ_Steigend_Sensor1;
 
           ELSE

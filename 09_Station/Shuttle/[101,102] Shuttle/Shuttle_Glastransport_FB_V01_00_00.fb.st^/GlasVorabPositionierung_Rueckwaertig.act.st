@@ -70,7 +70,7 @@ THEN
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
         // Ziel = Flankenposition + Zielwert, rueckwaerts deshalb negativ
-        Antrieb.rpZielposition    := ( ppParameterBaustein.rWegUeberEinlaufRueck - pAuftrag.rModellVersatzVorne ) * -1;
+        Antrieb.rpZielposition    := - ( ppParameterBaustein.rWegUeberEinlaufRueck - pAuftrag.rModellVersatzVorne );
         Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
         Antrieb.wpBetriebsart     := RESTWEG;
 

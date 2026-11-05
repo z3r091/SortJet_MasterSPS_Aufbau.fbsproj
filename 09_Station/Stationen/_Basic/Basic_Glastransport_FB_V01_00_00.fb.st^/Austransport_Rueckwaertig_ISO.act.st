@@ -126,7 +126,7 @@ THEN
           Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
         END_IF
 
-        Antrieb.rpZielposition    := ppParameterBaustein.rWegUeberAuslaufAustransport - pAuftrag.rModellVersatzVorne;
+        Antrieb.rpZielposition    := - ( ppParameterBaustein.rWegUeberAuslaufAustransport - pAuftrag.rModellVersatzVorne );
         Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
         Antrieb.wpBetriebsart     := RESTWEG;
 

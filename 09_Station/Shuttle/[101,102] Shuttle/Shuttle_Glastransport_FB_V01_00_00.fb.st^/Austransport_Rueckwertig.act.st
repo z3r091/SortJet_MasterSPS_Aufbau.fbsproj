@@ -110,7 +110,7 @@ THEN
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
 
-        Antrieb.rpZielposition    := ppParameterBaustein.rWegUeberAuslaufRueck - pAuftrag.rModellVersatzVorne;
+        Antrieb.rpZielposition    := - ( ppParameterBaustein.rWegUeberAuslaufRueck - pAuftrag.rModellVersatzVorne );
         Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
         Antrieb.wpBetriebsart     := RESTWEG;
 

@@ -117,7 +117,7 @@ THEN
       Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
 
       IF ( bpGlasPositionierungEinlaufseite ) THEN
-        Antrieb.rpZielposition := ( rpWegGlasUebergabeposition - pAuftrag.rModellVersatzVorne );
+        Antrieb.rpZielposition := - ( rpWegGlasUebergabeposition - pAuftrag.rModellVersatzVorne );
         Antrieb.wpRestwegMode  := Negativ_Steigend_Sensor1;
       ELSE
         Antrieb.rpZielposition := ( rpWegGlasUebergabeposition - pAuftrag.rModellVersatzHinten );

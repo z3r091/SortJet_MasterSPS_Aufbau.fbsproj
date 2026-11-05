@@ -178,15 +178,15 @@ THEN
           CASE pAuftrag.stAuftragsOptionen.eGlastransport OF
 
             eGlastransport_AufAuslaufVorab:
-              Antrieb.rpZielposition    := (pAuftrag.rAuftragsLaenge + ppParameterBaustein.rWegUeberEinlaufRueck) * -1;
+              Antrieb.rpZielposition    := - (pAuftrag.rAuftragsLaenge + ppParameterBaustein.rWegUeberEinlaufRueck);
               Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor2;
 
             eGlastransport_AufEinlauf:
-              Antrieb.rpZielposition    := ( ppParameterBaustein.rWegUeberEinlaufRueck - pAuftrag.rModellVersatzVorne ) * -1;
+              Antrieb.rpZielposition    := - ( ppParameterBaustein.rWegUeberEinlaufRueck - pAuftrag.rModellVersatzVorne );
               Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
 
             eGlastransport_AufAuslauf:
-              Antrieb.rpZielposition    := ( pAuftrag.rAuftragsLaenge - ppParameterBaustein.rWegUeberAuslaufRueck - pAuftrag.rModellVersatzVorne ) * -1;
+              Antrieb.rpZielposition    := - ( pAuftrag.rAuftragsLaenge - ppParameterBaustein.rWegUeberAuslaufRueck - pAuftrag.rModellVersatzVorne );
               Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor2;
 
           ELSE
@@ -195,7 +195,7 @@ THEN
             steplEintransportRueckwaertig := STEP_900_E;
           END_CASE
         ELSE
-          Antrieb.rpZielposition    := (pAuftrag.rAuftragsLaenge + ppParameterBaustein.rWegUeberEinlaufRueck) * -1;
+          Antrieb.rpZielposition    := - (pAuftrag.rAuftragsLaenge + ppParameterBaustein.rWegUeberEinlaufRueck);
           Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor2;
         END_IF
 

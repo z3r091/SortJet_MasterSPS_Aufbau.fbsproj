@@ -128,7 +128,7 @@ THEN
       ELSE        
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit20;
 
-        Antrieb.rpZielPosition    := (-1) * ppParameterBaustein.rWegUeberEinlaufEintransport;
+        Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberEinlaufEintransport;
         IF bpOptionTransfershuttleMitUltraschallSensoren THEN
           Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
         ELSE

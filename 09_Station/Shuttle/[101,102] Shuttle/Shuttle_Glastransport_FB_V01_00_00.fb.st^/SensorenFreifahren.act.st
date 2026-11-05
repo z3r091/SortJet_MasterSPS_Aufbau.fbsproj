@@ -84,7 +84,7 @@ THEN
 
       // Rueckwaerts bis der Auslaufsensor frei wird (fallende Flanke), dann die Freifahrstrecke weiter
       //   => der weiter aussen liegende Auslauf-Stopp-Sensor ist damit ebenfalls frei
-      Antrieb.rpZielPosition    := rgMKWegSensorFreiFahrenVerfahrabbruch * -1;
+      Antrieb.rpZielPosition    := - rgMKWegSensorFreiFahrenVerfahrabbruch;
       Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor2;
       Antrieb.wpBetriebsart     := RESTWEG;
 
