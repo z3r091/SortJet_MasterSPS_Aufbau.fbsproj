@@ -145,9 +145,9 @@ VAR_GLOBAL
       rOffsetNullLinie                      := 0.0
     );
     
-  apgMKStation208Kippen : Parameter_Kippen :=
+  apgMKStation208Kippen : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Kippen := [
     (
-      tZeitlicheUeberwachungKippen          := TIME#5000S, // [ms] Verwendet für Antriebe die über einen Schuetz angesteuert werden  
+      tZeitlicheUeberwachungKippen          := TIME#5000MS, // [ms] Verwendet für Antriebe die über einen Schuetz angesteuert werden  
       tZeitAntriebsfreigabeErhalten         :=  TIME#180S, // [s] Energieeinsparrung: Zeiteinheit nach der die Antriebsfreigabe entzogen werden soll wenn keine Aktion ansteht
       rToleranz                             :=          1, // Toleranz beim entscheiden der aktuellen Positionen 
       rPosition0Grad                        :=          0, // Senkrechte- Position 0 
@@ -156,7 +156,7 @@ VAR_GLOBAL
       rPosition84Grad                       := 0.0,
       rPosition88_5Grad                     := 0.0,
       rPosition96Grad                       := 0.0
-    );
+    )];
 
 
 
