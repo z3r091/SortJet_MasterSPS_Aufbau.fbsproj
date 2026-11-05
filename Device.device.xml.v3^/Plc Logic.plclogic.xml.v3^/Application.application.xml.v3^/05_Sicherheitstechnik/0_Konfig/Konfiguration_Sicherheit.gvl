@@ -27,7 +27,7 @@ VAR_CONFIG
 //-------------------------------------------------------------------------------------------------
 // KONFIGURATION:  DURCHGANG
 //-------------------------------------------------------------------------------------------------
- // DURCHGANG 1 201(* Durchgang am LTR wird weiterhin im LTR gemacht richtig *)
+  // DURCHGANG 1: Klappfoerderer 203 (eigener Sicherheitskreis, Zuordnung noch offen)
   Globale_Bausteine.aDurchgang[1].in_bTasterAnforderungOeffnen_1           AT %IX6.0  : BOOL; // OK
   Globale_Bausteine.aDurchgang[1].in_bTasterAnforderungOeffnen_2           AT %MX1.0  : BOOL; // OK
   Globale_Bausteine.aDurchgang[1].in_bTasterQuittierungSchliessen_1        AT %IX6.1  : BOOL; // OK

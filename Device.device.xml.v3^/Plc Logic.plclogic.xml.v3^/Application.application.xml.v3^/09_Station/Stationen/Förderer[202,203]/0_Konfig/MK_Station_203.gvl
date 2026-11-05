@@ -79,7 +79,7 @@ VAR_GLOBAL
                                                  bWandverstellung              := [ FALSE ],
                                                  bWandverstellungMotorisch     := FALSE,
                                                  bRoellchenleiste              := [ FALSE ],
-                                                 bDurchgang                    := FALSE,
+                                                 bDurchgang                    := TRUE,
                                                  bRolltor                      := FALSE,
                                                  bKlemmzylinder                := FALSE,
                                                  bGreifer                      := [cANZAHL_WAENDE(FALSE)],
