@@ -7,8 +7,8 @@
 *)
 TYPE Parameter_Zentralschmierung :
   STRUCT
-    iAnzahlHuebe                     : INT;           // Anzahl der Hübe die die Schmierung machen soll
-    diZuFahrenderWegBisSchmierung    : DINT;          // Zu fahrende Strecke nach der geschmiert werden muss in mm
-    eStationsTyp                     : StationsTyp_EN;
+    iAnzahlHuebe                     : INT;            // Anzahl der Hübe die die Schmierung machen soll
+    diZuFahrenderWegBisSchmierung    : DINT;           // Zu fahrende Strecke nach der geschmiert werden muss in mm
+    eStationsTyp                     : StationsTyp_EN; // Typ der Station
   END_STRUCT
 END_TYPE

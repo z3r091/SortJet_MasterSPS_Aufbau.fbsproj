@@ -7,7 +7,7 @@
 *)
 TYPE Parameter_Hydraulikstation :
   STRUCT
-    bDeaktivieren                   : BOOL;
+    bDeaktivieren                   : BOOL; // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
     wMeldungsNummer                 : WORD; // WatchIO-Meldung Motorschutz Hydraulikaggregat
     wMaximaleAnzahlAktiverAuftraege : WORD; // Max. gleichzeitige Ein-/Ausschleus-Auftraege der zugeordneten Stationen, 0 = unbegrenzt
   END_STRUCT

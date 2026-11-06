@@ -8,6 +8,6 @@
 TYPE Schnittstelle_SortJet_ST :
   STRUCT
     bDeaktivieren      : BOOL;
-    eSchnittstellenTyp : SchnittstellenTyp_SortJet;
+    eSchnittstellenTyp : SchnittstellenTyp_SortJet; // Rolle der SortJet-SortJet-Schnittstelle (Master/Slave)
   END_STRUCT
 END_TYPE

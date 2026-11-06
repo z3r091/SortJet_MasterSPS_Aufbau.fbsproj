@@ -6,7 +6,7 @@
 }
 *)
 {attribute 'allow_unqualified_access'}
-NAMESPACE Konfiguration_205
+NAMESPACE Konfiguration_204
 VAR_CONFIG
 //==================================================================================================
 // KONFIGURATION: BAUSTEIN IO's

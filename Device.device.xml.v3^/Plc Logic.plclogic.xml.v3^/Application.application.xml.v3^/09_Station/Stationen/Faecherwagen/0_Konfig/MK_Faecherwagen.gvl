@@ -10,53 +10,53 @@ NAMESPACE MK_Faecherwagen
 VAR_GLOBAL
   apgMKFaecherwagenstation : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF Parameter_Station :=[
     (
-     stStationsNummern         := (  NummerIntern    :=   301,
-                                     NummerExtern    := 13301,
-                                     NummerSPS       :=   301 ),
-      bDeaktivieren             := TRUE,
-      wMeldungsNummer           := 1400,
-      eStationsTyp              := eFaecherwagen,
-      eaAutomatikkreis          := [eAutomatikkreis_1],
+     stStationsNummern         := (  NummerIntern    :=   301,                                 // Stationsnummer fuer das MMI und die Stationsangabe der Meldungen
+                                     NummerExtern    := 13301,                                 // Stationsnummer fuer Bedienermeldungen
+                                     NummerSPS       :=   301 ),                               // Stationsnummer SPS-intern (Indizes)
+      bDeaktivieren             := TRUE,                                                       // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
+      wMeldungsNummer           := 1400,                                                       // Basis-Meldungsnummer (WatchIO)
+      eStationsTyp              := eFaecherwagen,                                              // Typ der Station
+      eaAutomatikkreis          := [eAutomatikkreis_1],                                        // Automatikkreise, zu denen die Station gehoert
      // stStationsParameter
      // stSchnittstellendaten
      // stFremdanlage
      // stGlasdaten
-      eaSicherheitskreis        := [eSicherheitskreis_1], //Alle Sk's eintragen in dem die Station eingebunden ist
-      eSystemcheckZyklus        := eSystemcheckZyklus_1,
+      eaSicherheitskreis        := [eSicherheitskreis_1],                                      // Sicherheitskreise, in die die Station eingebunden ist
+      eSystemcheckZyklus        := eSystemcheckZyklus_1,                                       // In welchem Zyklus des Systemchecks die Station geprueft wird
      // stStationsOptionen
-      stStationsAufbau          := ( bAnschlag                     := FALSE,
-                                     bRolltor                      := TRUE,
-                                     bKlemmzylinder                := FALSE,
-                                     bGreifer                      := [cANZAHL_WAENDE(FALSE)],
-                                     bRFID                         := TRUE,
-                                     bAGV                          := FALSE, 
-                                     bGeblase                      := [ FALSE ],
-                                     bGlastransport                := [ FALSE ],
-                                     bKippen                       := [ FALSE ],
-                                     bTransportVerstellung         := [ FALSE ],
-                                     bWandverstellung              := [ FALSE ],
-                                     bWandverstellungMotorisch     := FALSE,
-                                     bRoellchenleiste              := [ FALSE ],
-                                     bHub                          := FALSE,
-                                     bHubrahmen                    := FALSE,
-                                     bDrehen                       := FALSE,
-                                     bQuerachse                    := FALSE,
-                                     bMessachse                    := FALSE,
-                                     bDruckluft                    := FALSE,
-                                     bSensorAuslauf                := FALSE,
-                                     bSensorEinlauf                := FALSE,
-                                     bSensorEinlaufStopp           := FALSE,
-                                     bSensorAuslaufStopp           := FALSE,
-                                     bDurchlaufSperreZumNachfolger := FALSE,
-                                     bKippenSchuetz                := FALSE,
-                                     bQuerfahrt                    := FALSE,
-                                     bDurchgang                    := FALSE,
-                                     bSlaveAntrieb                 := FALSE,
-                                     bKipparme                     := FALSE,
-                                     bMessachseAmEndeVomTisch      := FALSE,
-                                     bDLSSchmiersystem             := FALSE,
-                                     bGlastransportSlaveVorhanden  := FALSE,
-                                     wHydraulikstation             := cHYDRAULIKSTATION_1
+      stStationsAufbau          := ( bAnschlag                     := FALSE,                   // Ausbaustufe: Ausrichtanschlaege
+                                     bRolltor                      := TRUE,                    // Ausbaustufe Faecherwagen: Rolltor
+                                     bKlemmzylinder                := FALSE,                   // Ausbaustufe Faecherwagen: Klemmzylinder fixiert den Oberrahmen beim Ein- und Ausschleusen
+                                     bGreifer                      := [cANZAHL_WAENDE(FALSE)], // Shuttle: Greifer je Wand (Scheibe aus dem Faecherwagen ziehen bzw. hineinschieben)
+                                     bRFID                         := TRUE,                    // RFID-Leser vorhanden
+                                     bAGV                          := FALSE,                   // Ausbaustufe Faecherwagen: Betrieb mit AGV
+                                     bGeblase                      := [ FALSE ],               // Ausbaustufe: Geblaese je Wand
+                                     bGlastransport                := [ FALSE ],               // Ausbaustufe: Glastransport je Wand
+                                     bKippen                       := [ FALSE ],               // Ausbaustufe: Kippen je Wand
+                                     bTransportVerstellung         := [ FALSE ],               // Ausbaustufe Shuttle: Transport-/Dickenverstellung je Wand
+                                     bWandverstellung              := [ FALSE ],               // Ausbaustufe Station: Wandverstellung je Wand
+                                     bWandverstellungMotorisch     := FALSE,                   // Shuttle: Transport-/Wandverstellung mit Antrieb statt pneumatisch
+                                     bRoellchenleiste              := [ FALSE ],               // Ausbaustufe Station: Roellchenleiste je Wand
+                                     bHub                          := FALSE,                   // Ausbaustufe: Hub der Station
+                                     bHubrahmen                    := FALSE,                   // Ausbaustufe: Hubrahmen (Riemen heben/senken)
+                                     bDrehen                       := FALSE,                   // Ausbaustufe: Drehen
+                                     bQuerachse                    := FALSE,                   // Ausbaustufe: Querachse
+                                     bMessachse                    := FALSE,                   // Ausbaustufe: Messachse (Anlegetisch, Anlegewand)
+                                     bDruckluft                    := FALSE,                   // Druckluftueberwachung vorhanden
+                                     bSensorAuslauf                := FALSE,                   // Auslaufsensor vorhanden
+                                     bSensorEinlauf                := FALSE,                   // Einlaufsensor vorhanden
+                                     bSensorEinlaufStopp           := FALSE,                   // Shuttle: zusaetzlicher Stopp-Sensor am Einlauf (ohne: Einlaufsensor), Gegenstueck zum Auslauf-Stopp im Rueckwaertstransport
+                                     bSensorAuslaufStopp           := FALSE,                   // Shuttle: zusaetzlicher Stopp-Sensor am Auslauf (ohne: Auslaufsensor), Verfahrfreigabe und Scheibe hat Shuttle verlassen
+                                     bDurchlaufSperreZumNachfolger := FALSE,                   // derzeit ohne Funktion
+                                     bKippenSchuetz                := FALSE,                   // Kippen ueber Schuetz statt Umrichter
+                                     bQuerfahrt                    := FALSE,                   // Ausbaustufe: Querfahrt
+                                     bDurchgang                    := FALSE,                   // Station ist Teil eines Durchgangs (belegt = Oeffnen blockiert)
+                                     bSlaveAntrieb                 := FALSE,                   // Glastransport mit Slave-Antrieb
+                                     bKipparme                     := FALSE,                   // Ausbaustufe: Kipparme
+                                     bMessachseAmEndeVomTisch      := FALSE,                   // Messachse am Ende des Tisches (Hoehenfehler fragt den Bediener)
+                                     bDLSSchmiersystem             := FALSE,                   // Zentralschmierung DLS vorhanden
+                                     bGlastransportSlaveVorhanden  := FALSE,                   // Glastransport mit Slave-Antrieb (Meldungen/Ueberwachung Slave)
+                                     wHydraulikstation             := cHYDRAULIKSTATION_1      // Faecherwagen Hydraulik: zugeordnete Hydraulikstation (cHYDRAULIKSTATION_x), 0 = keine
                                     )
      // astShuttleAnhaltenQuellen
     )];

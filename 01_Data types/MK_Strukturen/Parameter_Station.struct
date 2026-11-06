@@ -8,18 +8,18 @@
 TYPE Parameter_Station :
   STRUCT
     stStationsNummern     : Station_ST;
-    bDeaktivieren         : BOOL;
-    wMeldungsNummer       : WORD;
-    eStationsTyp          : StationsTyp_EN;
-    eaAutomatikkreis      : ARRAY[cERSTER_AUTOMATIKKREIS..cANZAHL_AUTOMATIKKREISE] OF Automatikkreis_EN;
+    bDeaktivieren         : BOOL;                                                                        // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
+    wMeldungsNummer       : WORD;                                                                        // Basis-Meldungsnummer (WatchIO)
+    eStationsTyp          : StationsTyp_EN;                                                              // Typ der Station
+    eaAutomatikkreis      : ARRAY[cERSTER_AUTOMATIKKREIS..cANZAHL_AUTOMATIKKREISE] OF Automatikkreis_EN; // Automatikkreise, zu denen die Station gehoert
     stStationsOptionen    : Stations_Optionen_ST;
     stStationsAufbau      : Stations_Aufbau_ST;
     stStationsParameter   : Stations_Parameter_ST;
     stSchnittstellendaten : Schnittstellendaten_ST;
     stFremdanlage         : Stations_Parameter_Fremdanlage_ST;
     stGlasdaten           : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Glas;
-    eaSicherheitskreis    : ARRAY[0..cANZAHL_SICHERHEITSKREISE] OF Sicherheitskreis_EN;
-    eSystemcheckZyklus    : SystemcheckZyklen_EN;
+    eaSicherheitskreis    : ARRAY[0..cANZAHL_SICHERHEITSKREISE] OF Sicherheitskreis_EN;                  // Sicherheitskreise, in die die Station eingebunden ist
+    eSystemcheckZyklus    : SystemcheckZyklen_EN;                                                        // In welchem Zyklus des Systemchecks die Station geprueft wird
     // Nicht benoetigte Eintraege: bAktiv := FALSE lassen.
     astShuttleAnhaltenQuellen : ARRAY[1..cMAX_SHUTTLE_ANHALTEN_QUELLEN] OF Parameter_ShuttleAnhaltenQuelle;
   END_STRUCT

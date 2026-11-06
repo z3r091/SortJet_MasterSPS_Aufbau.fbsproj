@@ -9,10 +9,10 @@ TYPE Stationsstatus_Visu_ST :
   STRUCT
   
     // Glastransport
-    bSensorEinlauf                  : ARRAY [1..3] OF BOOL;
+    bSensorEinlauf                  : ARRAY [1..3] OF BOOL; // Einlaufsensor vorhanden
     bSensorEinlaufVorab             : ARRAY [1..3] OF BOOL;
     bSensorAuslaufVorab             : ARRAY [1..3] OF BOOL;
-    bSensorAuslauf                  : ARRAY [1..3] OF BOOL;
+    bSensorAuslauf                  : ARRAY [1..3] OF BOOL; // Auslaufsensor vorhanden
     bSensorAuslaufStopp             : ARRAY [1..3] OF BOOL;
   
     // Gebläse

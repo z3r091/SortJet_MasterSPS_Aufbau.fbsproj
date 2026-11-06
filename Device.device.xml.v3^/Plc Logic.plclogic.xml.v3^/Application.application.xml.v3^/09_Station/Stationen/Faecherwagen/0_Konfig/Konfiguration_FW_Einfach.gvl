@@ -19,63 +19,63 @@ VAR_CONFIG
 
   // ------------------------------------ STATION 301 ------------------------------------------------
   // EINGAENGE
-  Globale_Bausteine.aFaecherwagenstation[301].in_bFaecherwagenVorhanden                         AT %MX1.0    : BOOL; // TODO: Faecherwagen vorhanden 301, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[301].in_bArretierungAusgefahren                        AT %MX1.0    : BOOL; // TODO: Faecherwagen arretiert 301, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[301].in_bArretierungEingefahren                        AT %MX1.0    : BOOL; // TODO: Faecherwagen freigegeben 301, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[301].in_bStartSchleusen                                AT %MX1.0    : BOOL; // TODO: Taster Ein-/Ausschleusen 301, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[301].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // TODO: Abrollsicherung am Rolltor in Ordnung (Oeffner) 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bFaecherwagenVorhanden                         AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen vorhanden 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bArretierungAusgefahren                        AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen arretiert 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bArretierungEingefahren                        AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen freigegeben 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bStartSchleusen                                AT %MX1.0    : BOOL; // OPTION - TODO: Taster Ein-/Ausschleusen 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // OPTION - TODO: Abrollsicherung am Rolltor in Ordnung (Oeffner) 301, aus Schaltplan
   // AUSGAENGE
-  Globale_Bausteine.aFaecherwagenstation[301].out_bArretierungAusfahren                         AT %MX3010.0 : BOOL; // TODO: Arretierung ausfahren 301, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[301].out_bArretierungEinfahren                         AT %MX3010.1 : BOOL; // TODO: Arretierung einfahren 301, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[301].out_bFreigabeSchleusen                            AT %MX3010.2 : BOOL; // TODO: Leuchte im Taster Ein-/Ausschleusen 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bArretierungAusfahren                         AT %MX3010.0 : BOOL; // OPTION - TODO: Arretierung ausfahren 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bArretierungEinfahren                         AT %MX3010.1 : BOOL; // OPTION - TODO: Arretierung einfahren 301, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[301].out_bFreigabeSchleusen                            AT %MX3010.2 : BOOL; // OPTION - TODO: Leuchte im Taster Ein-/Ausschleusen 301, aus Schaltplan
 
   // ------------------------------------ STATION 302 ------------------------------------------------
   // EINGAENGE
-  Globale_Bausteine.aFaecherwagenstation[302].in_bFaecherwagenVorhanden                         AT %MX1.0    : BOOL; // TODO: Faecherwagen vorhanden 302, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[302].in_bArretierungAusgefahren                        AT %MX1.0    : BOOL; // TODO: Faecherwagen arretiert 302, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[302].in_bArretierungEingefahren                        AT %MX1.0    : BOOL; // TODO: Faecherwagen freigegeben 302, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[302].in_bStartSchleusen                                AT %MX1.0    : BOOL; // TODO: Taster Ein-/Ausschleusen 302, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[302].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // TODO: Abrollsicherung am Rolltor in Ordnung (Oeffner) 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bFaecherwagenVorhanden                         AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen vorhanden 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bArretierungAusgefahren                        AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen arretiert 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bArretierungEingefahren                        AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen freigegeben 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bStartSchleusen                                AT %MX1.0    : BOOL; // OPTION - TODO: Taster Ein-/Ausschleusen 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // OPTION - TODO: Abrollsicherung am Rolltor in Ordnung (Oeffner) 302, aus Schaltplan
   // AUSGAENGE
-  Globale_Bausteine.aFaecherwagenstation[302].out_bArretierungAusfahren                         AT %MX3020.0 : BOOL; // TODO: Arretierung ausfahren 302, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[302].out_bArretierungEinfahren                         AT %MX3020.1 : BOOL; // TODO: Arretierung einfahren 302, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[302].out_bFreigabeSchleusen                            AT %MX3020.2 : BOOL; // TODO: Leuchte im Taster Ein-/Ausschleusen 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bArretierungAusfahren                         AT %MX3020.0 : BOOL; // OPTION - TODO: Arretierung ausfahren 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bArretierungEinfahren                         AT %MX3020.1 : BOOL; // OPTION - TODO: Arretierung einfahren 302, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[302].out_bFreigabeSchleusen                            AT %MX3020.2 : BOOL; // OPTION - TODO: Leuchte im Taster Ein-/Ausschleusen 302, aus Schaltplan
 
   // ------------------------------------ STATION 303 ------------------------------------------------
   // EINGAENGE
-  Globale_Bausteine.aFaecherwagenstation[303].in_bFaecherwagenVorhanden                         AT %MX1.0    : BOOL; // TODO: Faecherwagen vorhanden 303, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[303].in_bArretierungAusgefahren                        AT %MX1.0    : BOOL; // TODO: Faecherwagen arretiert 303, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[303].in_bArretierungEingefahren                        AT %MX1.0    : BOOL; // TODO: Faecherwagen freigegeben 303, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[303].in_bStartSchleusen                                AT %MX1.0    : BOOL; // TODO: Taster Ein-/Ausschleusen 303, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[303].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // TODO: Abrollsicherung am Rolltor in Ordnung (Oeffner) 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bFaecherwagenVorhanden                         AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen vorhanden 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bArretierungAusgefahren                        AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen arretiert 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bArretierungEingefahren                        AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen freigegeben 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bStartSchleusen                                AT %MX1.0    : BOOL; // OPTION - TODO: Taster Ein-/Ausschleusen 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // OPTION - TODO: Abrollsicherung am Rolltor in Ordnung (Oeffner) 303, aus Schaltplan
   // AUSGAENGE
-  Globale_Bausteine.aFaecherwagenstation[303].out_bArretierungAusfahren                         AT %MX3030.0 : BOOL; // TODO: Arretierung ausfahren 303, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[303].out_bArretierungEinfahren                         AT %MX3030.1 : BOOL; // TODO: Arretierung einfahren 303, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[303].out_bFreigabeSchleusen                            AT %MX3030.2 : BOOL; // TODO: Leuchte im Taster Ein-/Ausschleusen 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bArretierungAusfahren                         AT %MX3030.0 : BOOL; // OPTION - TODO: Arretierung ausfahren 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bArretierungEinfahren                         AT %MX3030.1 : BOOL; // OPTION - TODO: Arretierung einfahren 303, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[303].out_bFreigabeSchleusen                            AT %MX3030.2 : BOOL; // OPTION - TODO: Leuchte im Taster Ein-/Ausschleusen 303, aus Schaltplan
 
   // ------------------------------------ STATION 304 ------------------------------------------------
   // EINGAENGE
-  Globale_Bausteine.aFaecherwagenstation[304].in_bFaecherwagenVorhanden                         AT %MX1.0    : BOOL; // TODO: Faecherwagen vorhanden 304, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[304].in_bArretierungAusgefahren                        AT %MX1.0    : BOOL; // TODO: Faecherwagen arretiert 304, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[304].in_bArretierungEingefahren                        AT %MX1.0    : BOOL; // TODO: Faecherwagen freigegeben 304, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[304].in_bStartSchleusen                                AT %MX1.0    : BOOL; // TODO: Taster Ein-/Ausschleusen 304, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[304].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // TODO: Abrollsicherung am Rolltor in Ordnung (Oeffner) 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bFaecherwagenVorhanden                         AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen vorhanden 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bArretierungAusgefahren                        AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen arretiert 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bArretierungEingefahren                        AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen freigegeben 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bStartSchleusen                                AT %MX1.0    : BOOL; // OPTION - TODO: Taster Ein-/Ausschleusen 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // OPTION - TODO: Abrollsicherung am Rolltor in Ordnung (Oeffner) 304, aus Schaltplan
   // AUSGAENGE
-  Globale_Bausteine.aFaecherwagenstation[304].out_bArretierungAusfahren                         AT %MX3040.0 : BOOL; // TODO: Arretierung ausfahren 304, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[304].out_bArretierungEinfahren                         AT %MX3040.1 : BOOL; // TODO: Arretierung einfahren 304, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[304].out_bFreigabeSchleusen                            AT %MX3040.2 : BOOL; // TODO: Leuchte im Taster Ein-/Ausschleusen 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bArretierungAusfahren                         AT %MX3040.0 : BOOL; // OPTION - TODO: Arretierung ausfahren 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bArretierungEinfahren                         AT %MX3040.1 : BOOL; // OPTION - TODO: Arretierung einfahren 304, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[304].out_bFreigabeSchleusen                            AT %MX3040.2 : BOOL; // OPTION - TODO: Leuchte im Taster Ein-/Ausschleusen 304, aus Schaltplan
 
   // ------------------------------------ STATION 305 ------------------------------------------------
   // EINGAENGE
-  Globale_Bausteine.aFaecherwagenstation[305].in_bFaecherwagenVorhanden                         AT %MX1.0    : BOOL; // TODO: Faecherwagen vorhanden 305, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[305].in_bArretierungAusgefahren                        AT %MX1.0    : BOOL; // TODO: Faecherwagen arretiert 305, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[305].in_bArretierungEingefahren                        AT %MX1.0    : BOOL; // TODO: Faecherwagen freigegeben 305, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[305].in_bStartSchleusen                                AT %MX1.0    : BOOL; // TODO: Taster Ein-/Ausschleusen 305, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[305].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // TODO: Abrollsicherung am Rolltor in Ordnung (Oeffner) 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bFaecherwagenVorhanden                         AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen vorhanden 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bArretierungAusgefahren                        AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen arretiert 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bArretierungEingefahren                        AT %MX1.0    : BOOL; // OPTION - TODO: Faecherwagen freigegeben 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bStartSchleusen                                AT %MX1.0    : BOOL; // OPTION - TODO: Taster Ein-/Ausschleusen 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].in_bAbrollsicherungOK                             AT %MX1.1    : BOOL; // OPTION - TODO: Abrollsicherung am Rolltor in Ordnung (Oeffner) 305, aus Schaltplan
   // AUSGAENGE
-  Globale_Bausteine.aFaecherwagenstation[305].out_bArretierungAusfahren                         AT %MX3050.0 : BOOL; // TODO: Arretierung ausfahren 305, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[305].out_bArretierungEinfahren                         AT %MX3050.1 : BOOL; // TODO: Arretierung einfahren 305, aus Schaltplan
-  Globale_Bausteine.aFaecherwagenstation[305].out_bFreigabeSchleusen                            AT %MX3050.2 : BOOL; // TODO: Leuchte im Taster Ein-/Ausschleusen 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bArretierungAusfahren                         AT %MX3050.0 : BOOL; // OPTION - TODO: Arretierung ausfahren 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bArretierungEinfahren                         AT %MX3050.1 : BOOL; // OPTION - TODO: Arretierung einfahren 305, aus Schaltplan
+  Globale_Bausteine.aFaecherwagenstation[305].out_bFreigabeSchleusen                            AT %MX3050.2 : BOOL; // OPTION - TODO: Leuchte im Taster Ein-/Ausschleusen 305, aus Schaltplan
 
 END_VAR
 

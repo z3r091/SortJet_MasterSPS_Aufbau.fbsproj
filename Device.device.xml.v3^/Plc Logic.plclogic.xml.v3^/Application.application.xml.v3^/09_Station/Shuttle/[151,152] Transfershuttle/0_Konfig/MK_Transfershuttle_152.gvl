@@ -15,114 +15,114 @@ VAR_GLOBAL
 
   apgMKTransfershuttle152 : Parameter_Station :=
     (
-      stStationsNummern                 := ( NummerIntern := 152,
-                                             NummerExtern := 1152,
-                                             NummerSPS    := 152 ),
-      bDeaktivieren                     := TRUE,
-      wMeldungsNummer                   := 380,
-      eStationsTyp                      := eTransfershuttle,
-      eaAutomatikkreis                  := [eAutomatikkreis_1, eAutomatikkreis_2],
-      eaSicherheitskreis                := [eSicherheitskreis_1],
-      eSystemcheckZyklus                := eSystemcheckZyklus_1,
-      stSchnittstellendaten             := ( wVorgaengerStation := cSTATION_DEFAULT,
-                                             wNachfolgerStation := cSTATION_DEFAULT,
-                                             bStationIstShuttle := TRUE ),
+      stStationsNummern                 := ( NummerIntern := 152,                                     // Stationsnummer fuer das MMI und die Stationsangabe der Meldungen
+                                             NummerExtern := 1152,                                    // Stationsnummer fuer Bedienermeldungen
+                                             NummerSPS    := 152 ),                                   // Stationsnummer SPS-intern (Indizes)
+      bDeaktivieren                     := TRUE,                                                      // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
+      wMeldungsNummer                   := 380,                                                       // Basis-Meldungsnummer (WatchIO)
+      eStationsTyp                      := eTransfershuttle,                                          // Typ der Station
+      eaAutomatikkreis                  := [eAutomatikkreis_1, eAutomatikkreis_2],                    // Automatikkreise, zu denen die Station gehoert
+      eaSicherheitskreis                := [eSicherheitskreis_1],                                     // Sicherheitskreise, in die die Station eingebunden ist
+      eSystemcheckZyklus                := eSystemcheckZyklus_1,                                      // In welchem Zyklus des Systemchecks die Station geprueft wird
+      stSchnittstellendaten             := ( wVorgaengerStation := cSTATION_DEFAULT,                  // Station vor dieser Station (cSTATION_DYNAMISCH bei mehreren)
+                                             wNachfolgerStation := cSTATION_DEFAULT,                  // Station nach dieser Station (cSTATION_DYNAMISCH bei mehreren)
+                                             bStationIstShuttle := TRUE ),                            // Station ist ein Shuttle
 
       stStationsOptionen                := (
                                             stSystemcheck := (
-                                              bScheibenVermessenSystemCheck           := FALSE,
-                                              bScheibeNachSystemcheckAufAuslauf       := FALSE,
-                                              bSystemCheckMitVorgaengerBatchTransport := FALSE,
-                                              bSystemCheckMitNachfolgerBatchTransport := FALSE,
-                                              bOptionSystemCheckScheibeMittigLegen    := FALSE
+                                              bScheibenVermessenSystemCheck           := FALSE,       // Scheiben im Systemcheck vermessen
+                                              bScheibeNachSystemcheckAufAuslauf       := FALSE,       // Scheibe nach dem Systemcheck auf den Auslaufsensor fahren
+                                              bSystemCheckMitVorgaengerBatchTransport := FALSE,       // derzeit ohne Funktion
+                                              bSystemCheckMitNachfolgerBatchTransport := FALSE,       // derzeit ohne Funktion
+                                              bOptionSystemCheckScheibeMittigLegen    := FALSE        // derzeit ohne Funktion
                                             ),
 
                                             stTransfershuttle := (
-                                              bMasterStation                          := TRUE,
-                                              bTransferShuttleFuerFaecherwagen        := FALSE,
-                                              bTransferShuttleMitUltraschallSensoren  := FALSE,
-                                              bTransfershuttleIstVerfahrbarerSpeicher := FALSE
+                                              bMasterStation                          := TRUE,        // Ob es sich um ein Master (Master-Slave) - Station handelt. Aktuell gebraucht bei Transfershuttle- Verbund
+                                              bTransferShuttleFuerFaecherwagen        := FALSE,       // Transfershuttle beschickt Faecherwagen
+                                              bTransferShuttleMitUltraschallSensoren  := FALSE,       // Luftabfragen als Ultraschallsensoren (Schliesser)
+                                              bTransfershuttleIstVerfahrbarerSpeicher := FALSE        // Transfershuttle ist verfahrbarer Speicher
                                             ),
 
                                             stGlastransport := (
-                                              bVortransport                          := TRUE,
-                                              bTransportMasterSlaveEintransport      := FALSE,
-                                              bTransportMasterSlaveAustransport      := FALSE,
-                                              bGLasUebernahmeSenkrecht               := FALSE,
-                                              bAustransportISOLinie                  := FALSE,
-                                              bScheibenVermessen                     := FALSE,
-                                              bMessrichtungNegativ                   := FALSE,
-                                              bScheibenmessungEintransport           := FALSE,
-                                              bScheibenmessungSensorVorabAuslauf     := FALSE
+                                              bVortransport                          := TRUE,         // Vortransport aktivieren [Bsp.: Nach einem Eintransport mit gesetztem Bit <Letzte Scheibe>]
+                                              bTransportMasterSlaveEintransport      := FALSE,        // derzeit ohne Funktion
+                                              bTransportMasterSlaveAustransport      := FALSE,        // derzeit ohne Funktion
+                                              bGLasUebernahmeSenkrecht               := FALSE,        // RKT - Eintransport in Senkrechter-Position bzw. in Waagerechter- Position [default]
+                                              bAustransportISOLinie                  := FALSE,        // Austransport an eine ISO-Linie
+                                              bScheibenVermessen                     := FALSE,        // Scheibenmessung am Anlegetisch/Anlegewand
+                                              bMessrichtungNegativ                   := FALSE,        // Negative Fahrtrichtung beim Messen
+                                              bScheibenmessungEintransport           := FALSE,        // Scheibenmessung beim Eintransport
+                                              bScheibenmessungSensorVorabAuslauf     := FALSE         // Scheibenmessung mit SensorVorabAuslauf z.B. Anlegewand
                                             ),
 
                                             // stAnlegetisch
                                             // stEckuebergabe
-                                            bVorAbKomponentenAnsteuerung            := FALSE,
-                                            bVerstellungEinAusGefahrenLogikDrehen   := FALSE,
-                                            bLangsamfahrtNockenQuerfahrtAktivieren  := FALSE,
-                                            bSKBlockierenDurchVorabSensoren         := FALSE,
-                                            bStationLeerfahrenBeiSkAnforderung      := FALSE,
-                                            bGlasAbgenommenAutomatischQuittieren    := FALSE,
-                                            bScheibeAbnehmenNachEintransport        := FALSE
+                                            bVorAbKomponentenAnsteuerung            := FALSE,         // VorAbKomponentenAnsteuerung Auftraege werden bearbeitet
+                                            bVerstellungEinAusGefahrenLogikDrehen   := FALSE,         // Verstellung: Logik ein-/ausgefahren gedreht
+                                            bLangsamfahrtNockenQuerfahrtAktivieren  := FALSE,         // Querfahrt: Langsamfahrt-Nocken auswerten
+                                            bSKBlockierenDurchVorabSensoren         := FALSE,         // Vorab-Sensoren belegt blockieren das Oeffnen des Sicherheitskreises
+                                            bStationLeerfahrenBeiSkAnforderung      := FALSE,         // Station bei Anforderung Sicherheitskreis leerfahren
+                                            bGlasAbgenommenAutomatischQuittieren    := FALSE,         // derzeit ohne Funktion
+                                            bScheibeAbnehmenNachEintransport        := FALSE          // Scheibe nach dem Eintransport wieder abnehmen
                                           ),
 
       stStationsAufbau                  := (
-                                            bGeblase                      := [cANZAHL_WAENDE(FALSE)],
-                                            bGlastransport                := [cANZAHL_WAENDE(TRUE)],
-                                            bKippen                       := [cANZAHL_WAENDE(FALSE)],
-                                            bKippenSchuetz                := FALSE,
-                                            bTransportVerstellung         := [cANZAHL_WAENDE(FALSE)],
-                                            bHub                          := FALSE,
-                                            bHubrahmen                    := FALSE,
-                                            bDrehen                       := FALSE,
-                                            bQuerachse                    := FALSE,
-                                            bMessachse                    := FALSE,
-                                            bDruckluft                    := TRUE,
-                                            bAnschlag                     := FALSE,
-                                            bSensorAuslauf                := TRUE,
-                                            bSensorEinlauf                := TRUE,
-                                            bSensorEinlaufStopp           := FALSE,
-                                            bSensorAuslaufStopp           := FALSE,
-                                            bDurchlaufSperreZumNachfolger := FALSE,
-                                            bQuerfahrt                    := TRUE,
-                                            bDLSSchmiersystem             := TRUE,
-                                            bWandverstellung              := [ FALSE ],
-                                            bWandverstellungMotorisch     := FALSE,
-                                            bRoellchenleiste              := [ FALSE ],
-                                            bDurchgang                    := FALSE,
-                                            bSlaveAntrieb                 := FALSE,
-                                            bRolltor                      := FALSE,
-                                            bKlemmzylinder                := FALSE,
-                                            bGreifer                      := [cANZAHL_WAENDE(FALSE)],
-                                            bRFID                         := FALSE,
-                                            bAGV                          := FALSE,
-                                            bKipparme                     := FALSE,
-                                            bMessachseAmEndeVomTisch      := FALSE,
-                                            bGlastransportSlaveVorhanden  := FALSE,
-                                            wHydraulikstation             := 0
+                                            bGeblase                      := [cANZAHL_WAENDE(FALSE)], // Ausbaustufe: Geblaese je Wand
+                                            bGlastransport                := [cANZAHL_WAENDE(TRUE)],  // Ausbaustufe: Glastransport je Wand
+                                            bKippen                       := [cANZAHL_WAENDE(FALSE)], // Ausbaustufe: Kippen je Wand
+                                            bKippenSchuetz                := FALSE,                   // Kippen ueber Schuetz statt Umrichter
+                                            bTransportVerstellung         := [cANZAHL_WAENDE(FALSE)], // Ausbaustufe Shuttle: Transport-/Dickenverstellung je Wand
+                                            bHub                          := FALSE,                   // Ausbaustufe: Hub der Station
+                                            bHubrahmen                    := FALSE,                   // Ausbaustufe: Hubrahmen (Riemen heben/senken)
+                                            bDrehen                       := FALSE,                   // Ausbaustufe: Drehen
+                                            bQuerachse                    := FALSE,                   // Ausbaustufe: Querachse
+                                            bMessachse                    := FALSE,                   // Ausbaustufe: Messachse (Anlegetisch, Anlegewand)
+                                            bDruckluft                    := TRUE,                    // Druckluftueberwachung vorhanden
+                                            bAnschlag                     := FALSE,                   // Ausbaustufe: Ausrichtanschlaege
+                                            bSensorAuslauf                := TRUE,                    // Auslaufsensor vorhanden
+                                            bSensorEinlauf                := TRUE,                    // Einlaufsensor vorhanden
+                                            bSensorEinlaufStopp           := FALSE,                   // Shuttle: zusaetzlicher Stopp-Sensor am Einlauf (ohne: Einlaufsensor), Gegenstueck zum Auslauf-Stopp im Rueckwaertstransport
+                                            bSensorAuslaufStopp           := FALSE,                   // Shuttle: zusaetzlicher Stopp-Sensor am Auslauf (ohne: Auslaufsensor), Verfahrfreigabe und Scheibe hat Shuttle verlassen
+                                            bDurchlaufSperreZumNachfolger := FALSE,                   // derzeit ohne Funktion
+                                            bQuerfahrt                    := TRUE,                    // Ausbaustufe: Querfahrt
+                                            bDLSSchmiersystem             := TRUE,                    // Zentralschmierung DLS vorhanden
+                                            bWandverstellung              := [ FALSE ],               // Ausbaustufe Station: Wandverstellung je Wand
+                                            bWandverstellungMotorisch     := FALSE,                   // Shuttle: Transport-/Wandverstellung mit Antrieb statt pneumatisch
+                                            bRoellchenleiste              := [ FALSE ],               // Ausbaustufe Station: Roellchenleiste je Wand
+                                            bDurchgang                    := FALSE,                   // Station ist Teil eines Durchgangs (belegt = Oeffnen blockiert)
+                                            bSlaveAntrieb                 := FALSE,                   // Glastransport mit Slave-Antrieb
+                                            bRolltor                      := FALSE,                   // Ausbaustufe Faecherwagen: Rolltor
+                                            bKlemmzylinder                := FALSE,                   // Ausbaustufe Faecherwagen: Klemmzylinder fixiert den Oberrahmen beim Ein- und Ausschleusen
+                                            bGreifer                      := [cANZAHL_WAENDE(FALSE)], // Shuttle: Greifer je Wand (Scheibe aus dem Faecherwagen ziehen bzw. hineinschieben)
+                                            bRFID                         := FALSE,                   // RFID-Leser vorhanden
+                                            bAGV                          := FALSE,                   // Ausbaustufe Faecherwagen: Betrieb mit AGV
+                                            bKipparme                     := FALSE,                   // Ausbaustufe: Kipparme
+                                            bMessachseAmEndeVomTisch      := FALSE,                   // Messachse am Ende des Tisches (Hoehenfehler fragt den Bediener)
+                                            bGlastransportSlaveVorhanden  := FALSE,                   // Glastransport mit Slave-Antrieb (Meldungen/Ueberwachung Slave)
+                                            wHydraulikstation             := 0                        // Faecherwagen Hydraulik: zugeordnete Hydraulikstation (cHYDRAULIKSTATION_x), 0 = keine
                                           ),
 
       stStationsParameter               := (
-                                            rLaengeUebergroesseScheibe              := 4240,
-                                            rMinGlasHoeheAutomatischenEintransport  := 500,
-                                            rMinGlasLaengeAutomatischenEintransport := 500,
-                                            wMaximaleAnzahlAktiverAuftraege         := 1,
-                                            rMinPosSwEsEingrenzung                  := 0.0,
-                                            rMaxPosSwEsEingrenzung                  := 0.0,
-                                            rPosFreigabePufferAusfahren             := 0.0
+                                            rLaengeUebergroesseScheibe              := 4240,          // Shuttle: ab dieser Scheibenlaenge gilt die Scheibe als uebergross [mm]
+                                            rMinGlasHoeheAutomatischenEintransport  := 500,           // VSG: Mindesthoehe fuer automatischen Eintransport [mm]
+                                            rMinGlasLaengeAutomatischenEintransport := 500,           // VSG: Mindestlaenge fuer automatischen Eintransport [mm]
+                                            wMaximaleAnzahlAktiverAuftraege         := 1,             // derzeit ohne Funktion
+                                            rMinPosSwEsEingrenzung                  := 0.0,           // Externer zusaetzlicher Software-Endschalter MIN; 0 = inaktiv; darf den MK-MIN nur weiter eingrenzen
+                                            rMaxPosSwEsEingrenzung                  := 0.0,           // Externer zusaetzlicher Software-Endschalter MAX; 0 = inaktiv; darf den MK-MAX nur weiter eingrenzen
+                                            rPosFreigabePufferAusfahren             := 0.0            // derzeit ohne Funktion
                                           ),
 
       // stFremdanlage
       stGlasdaten                       := [
                                             (
-                                              rlMinGlasLaenge := 350,
-                                              rlMaxGlasLaenge := 5000,
-                                              rlMinGlasHoehe  := 250,
-                                              rlMaxGlasHoehe  := 2800,
-                                              rlMinGlasDicke  := 0.5,
-                                              rlMaxGlasDicke  := 19,
-                                              rlLaengeMaxGlas := 0.0
+                                              rlMinGlasLaenge := 350,                                 // minimal zulässige GlasLänge
+                                              rlMaxGlasLaenge := 5000,                                // maximale zulässige GlasLänge
+                                              rlMinGlasHoehe  := 250,                                 // minimal zulässige GlasHöhe
+                                              rlMaxGlasHoehe  := 2800,                                // maximale zulässige GlasHöhe
+                                              rlMinGlasDicke  := 0.5,                                 // minimal zulässige GlasDicke
+                                              rlMaxGlasDicke  := 19,                                  // maximal zulaessige Glasdicke [mm]
+                                              rlLaengeMaxGlas := 0.0                                  // maximal zulaessige Glaslaenge [mm]
                                             )]
       // astShuttleAnhaltenQuellen
     );
@@ -133,16 +133,16 @@ VAR_GLOBAL
 
   apgTransfer152Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_TransfershuttleGlastransport := [
     (
-      rlLaengeStation                    := 5100,
-      rStopFreiFahren                    := 300,
-      rWegUeberEinlaufEintransport       := 70,
-      rWegUeberEinlaufAustransport       := 50,
-      rWegUeberAuslaufEintransport       := 50,
-      rWegUeberAuslaufAustransport       := 50,
-      wEnergieSparZeit                   := 180,
-      rMaxPosAuslaufSensorFreiFahren     := 300,
-      rMaxPosEinlaufSensorFreiFahren     := 300,
-      rgAbstandLuftAbfrageAuslaufShuttle := 0
+      rlLaengeStation                    := 5100, // Länge der Station
+      rStopFreiFahren                    := 300,  // So weit soll die Scheibe beim Austransport länger fahren
+      rWegUeberEinlaufEintransport       := 70,   // Eintransport vorwaerts: Abstand Scheibenhinterkante zum Einlaufsensor [mm]
+      rWegUeberEinlaufAustransport       := 50,   // Lage Auf Einlauf: Scheibe liegt um diesen Weg auf dem Einlaufsensor [mm]
+      rWegUeberAuslaufEintransport       := 50,   // Eintransport rueckwaerts: Abstand Scheibenhinterkante zum Auslaufsensor [mm]
+      rWegUeberAuslaufAustransport       := 50,   // Lage Auf Auslauf: Weg ueber den Auslaufsensor hinaus [mm]
+      wEnergieSparZeit                   := 180,  // in Sec, Zeitspanne nach der, der Antrieb deaktiviert wird wenn er keinen Auftrag hat
+      rMaxPosAuslaufSensorFreiFahren     := 300,  // Bestimmt die Strecke die Maximal zurueck gefahren werden soll bis der Auslaufsensor  wieder frei ist
+      rMaxPosEinlaufSensorFreiFahren     := 300,  // So weit darf maximal der Einlaufsensor frei gefahren weirden
+      rgAbstandLuftAbfrageAuslaufShuttle := 0     // Abstand in mm von der Einlaufluftschranke zum Inputshuttle Auslaufsensor
     )];
 
 END_VAR

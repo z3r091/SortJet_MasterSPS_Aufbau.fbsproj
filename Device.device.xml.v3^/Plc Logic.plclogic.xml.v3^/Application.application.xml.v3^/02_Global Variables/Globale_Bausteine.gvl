@@ -23,12 +23,12 @@ VAR_GLOBAL
   aHydraulikstation               : ARRAY[cERSTE_HYDRAULIKSTATIONS_NR..cLETZTE_HYDRAULIKSTATIONS_NR] OF Hydraulik_FB_V01_00_00;
   
   Anlegetisch201                  : Anlegetisch_FB_V01_00_00;
-  Foerderer202                    : Foerderer_FB_V01_00_00;    
-  Foerderer203                    : Foerderer_FB_V01_00_00;    
-  Anlegetisch204                  : Anlegetisch_FB_V01_00_00;    
-  Eckuebergabe205                 : Eckuebergabe_FB_V01_00_00;
+  Foerderer202                    : Foerderer_FB_V01_00_00;
+  Foerderer203                    : Foerderer_FB_V01_00_00;
+  Eckuebergabe204                 : Eckuebergabe_FB_V01_00_00;
+  Anlegetisch205                  : Anlegetisch_FB_V01_00_00;
   Kipptisch206                    : Kipptisch_FB_V01_00_00; 
-  Combiwand208                    : AnlegeAbnahmeWand_FB_V01_00_00;   
+  Combiwand208                    : AnlegeAbnahmeWand_FB_V01_00_00;
   Drehstation207                  : Drehstation_FB_V01_00_00;
 
   //  Shuttle

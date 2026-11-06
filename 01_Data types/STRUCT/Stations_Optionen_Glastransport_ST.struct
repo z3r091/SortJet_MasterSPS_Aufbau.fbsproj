@@ -8,12 +8,12 @@
 {attribute 'strict'}
 TYPE Stations_Optionen_Glastransport_ST :
   STRUCT
-    bVortransport                                                 : BOOL; // Voratransport aktivieren [Bsp.: Nach einem Eintransport mit gesetztem Bit <Letzte Scheibe>] *)
-    bTransportMasterSlaveEintransport                             : BOOL; 
-    bTransportMasterSlaveAustransport                             : BOOL; 
-    bGLasUebernahmeSenkrecht                                      : BOOL; // RKT - Eintransport in Senkrechter-Position bzw. in Waagerechter- Position [default] 
-    bAustransportISOLinie                                         : BOOL;
-    bScheibenVermessen                                            : BOOL; // Scheibenmessung am Anlgetisch/Anlegewand
+    bVortransport                                                 : BOOL; // Vortransport aktivieren [Bsp.: Nach einem Eintransport mit gesetztem Bit <Letzte Scheibe>]
+    bTransportMasterSlaveEintransport                             : BOOL; // derzeit ohne Funktion
+    bTransportMasterSlaveAustransport                             : BOOL; // derzeit ohne Funktion
+    bGLasUebernahmeSenkrecht                                      : BOOL; // RKT - Eintransport in Senkrechter-Position bzw. in Waagerechter- Position [default]
+    bAustransportISOLinie                                         : BOOL; // Austransport an eine ISO-Linie
+    bScheibenVermessen                                            : BOOL; // Scheibenmessung am Anlegetisch/Anlegewand
     bScheibenmessungEintransport                                  : BOOL; // Scheibenmessung beim Eintransport
     bScheibenmessungSensorVorabAuslauf                            : BOOL; // Scheibenmessung mit SensorVorabAuslauf z.B. Anlegewand
     bMessrichtungNegativ                                          : BOOL; // Negative Fahrtrichtung beim Messen

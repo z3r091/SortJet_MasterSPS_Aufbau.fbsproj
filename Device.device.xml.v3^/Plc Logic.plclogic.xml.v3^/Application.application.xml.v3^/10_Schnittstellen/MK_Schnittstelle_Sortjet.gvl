@@ -18,8 +18,8 @@ VAR_GLOBAL
   *)
   apgMKSchnittstelle_SortJet_Remnant : Schnittstelle_SortJet_ST :=
   (
-    bDeaktivieren      := FALSE,
-    eSchnittstellenTyp := eSchnittstelle_Master
+    bDeaktivieren      := FALSE,                // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
+    eSchnittstellenTyp := eSchnittstelle_Master // Rolle der SortJet-SortJet-Schnittstelle (Master/Slave)
   );
 
 END_VAR

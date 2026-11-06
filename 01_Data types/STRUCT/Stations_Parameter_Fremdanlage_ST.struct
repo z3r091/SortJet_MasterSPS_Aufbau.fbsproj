@@ -7,23 +7,23 @@
 *)
 TYPE Stations_Parameter_Fremdanlage_ST :
   STRUCT
-    bWerteSwappen                          : BOOL;  // Bytes der Auftragsdaten (Lade-ID) und der Empfaenger- Geschwindigkeit swappen
-    bCounterSwappen                        : BOOL;  // Nur die bytes von Life Counter swappen
-    bSignaleSwappen                        : BOOL;  // Nur die bytes der Signale swappen
-    bAnzahlScheibenSwappen                 : BOOL;  // Nur die byts der Anzahl Scheiben swappen
-    bRemoveETX                             : BOOL := TRUE; // ETX aus den Scheiben-IDs des MMI entfernen (Auftragsdaten Fremdanlage)
-    tZeitHornAktiv                         : TIME;  // Signal bei ISO-Line Event 
-    rAnalogWertVerhaeltniss                : REAL;  // Umrechnungsfaktor für den Analogwert
-    rLaengeStation                         : REAL;  // Laenge der Fremdanlage (Wegueberwachung der ersten Scheibe in der Nachbarstation), 0 = unbekannt
-    wMindestAnalogWert                     : WORD;  // Mindestwert welche der Analohgwert haben muss um gültig zu sein
-    bAnzeigeISOLinieEventAktiv             : BOOL;  // ISO Line Events sollen angezeigt werden
-    bAnalogwertAktiv                       : BOOL;  // Geschwindigkeit - Analog | Statische 
-    bStationStatusZuGlasAbruf              : BOOL;
-    rGeschwindigkeit                       : REAL;  // HFeste Geschwindigkeit der Fremdanlage - (Fester Sollwert)
-    rMindestGeschwindigkeitsAenderung      : REAL := 5.0;     // Glaettung: Mindestaenderung [mm/s] bevor eine neue Geschwindigkeit uebernommen wird
-    tMindestZeitZwischenGeschwAenderung    : TIME := T#500MS; // Glaettung: Mindestzeit zwischen zwei Geschwindigkeitsaenderungen
-    rMaxAnalogGeschwindigkeit              : REAL := 1000.0;  // Analogwert: Begrenzung der Geschwindigkeit [mm/s]
-    bSignaleLoggen                         : BOOL;
-    eTypSchnittstelle                      : FremdanlagenTyp_EN;  
+    bWerteSwappen                          : BOOL;               // Bytes der Auftragsdaten (Lade-ID) und der Empfaenger- Geschwindigkeit swappen
+    bCounterSwappen                        : BOOL;               // Nur die bytes von Life Counter swappen
+    bSignaleSwappen                        : BOOL;               // Nur die bytes der Signale swappen
+    bAnzahlScheibenSwappen                 : BOOL;               // Nur die Bytes der Anzahl Scheiben swappen
+    bRemoveETX                             : BOOL := TRUE;       // ETX aus den Scheiben-IDs des MMI entfernen (Auftragsdaten Fremdanlage)
+    tZeitHornAktiv                         : TIME;               // Signal bei ISO-Line Event
+    rAnalogWertVerhaeltniss                : REAL;               // Umrechnungsfaktor für den Analogwert
+    rLaengeStation                         : REAL;               // Laenge der Fremdanlage (Wegueberwachung der ersten Scheibe in der Nachbarstation), 0 = unbekannt
+    wMindestAnalogWert                     : WORD;               // Mindestwert, den der Analogwert haben muss um gültig zu sein
+    bAnzeigeISOLinieEventAktiv             : BOOL;               // ISO Line Events sollen angezeigt werden
+    bAnalogwertAktiv                       : BOOL;               // Geschwindigkeit - Analog | Statische
+    bStationStatusZuGlasAbruf              : BOOL;               // Stationsstatus beim Glasabruf melden (ISO-Linie)
+    rGeschwindigkeit                       : REAL;               // Feste Geschwindigkeit der Fremdanlage - (Fester Sollwert)
+    rMindestGeschwindigkeitsAenderung      : REAL := 5.0;        // Glaettung: Mindestaenderung [mm/s] bevor eine neue Geschwindigkeit uebernommen wird
+    tMindestZeitZwischenGeschwAenderung    : TIME := T#500MS;    // Glaettung: Mindestzeit zwischen zwei Geschwindigkeitsaenderungen
+    rMaxAnalogGeschwindigkeit              : REAL := 1000.0;     // Analogwert: Begrenzung der Geschwindigkeit [mm/s]
+    bSignaleLoggen                         : BOOL;               // Schnittstellensignale loggen
+    eTypSchnittstelle                      : FremdanlagenTyp_EN; // Variante der Schnittstelle
   END_STRUCT
 END_TYPE

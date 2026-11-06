@@ -7,11 +7,11 @@
 *)
 TYPE Stations_Optionen_Systemcheck_ST :
   STRUCT
-    bScheibenVermessenSystemCheck                                 : BOOL;    
-    bScheibeNachSystemcheckAufAuslauf                             : BOOL;
-    bSystemCheckMitVorgaengerBatchTransport                       : BOOL; 
-    bSystemCheckMitNachfolgerBatchTransport                       : BOOL;   
-    bOptionSystemCheckScheibeMittigLegen                          : BOOL;
+    bScheibenVermessenSystemCheck                                 : BOOL; // Scheiben im Systemcheck vermessen
+    bScheibeNachSystemcheckAufAuslauf                             : BOOL; // Scheibe nach dem Systemcheck auf den Auslaufsensor fahren
+    bSystemCheckMitVorgaengerBatchTransport                       : BOOL; // derzeit ohne Funktion
+    bSystemCheckMitNachfolgerBatchTransport                       : BOOL; // derzeit ohne Funktion
+    bOptionSystemCheckScheibeMittigLegen                          : BOOL; // derzeit ohne Funktion
 
   END_STRUCT
 END_TYPE

@@ -14,8 +14,8 @@ VAR_GLOBAL
 //-------------------------------------------------------------------------------------------------
 
   apgMKAutomatikkreise : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF Parameter_Automatikkreis := [
-  ( // AK 1
-    epAutomatikkreis_Transfershuttle := eAutomatikkreis_Mit_Transfershuttle_Input_Output
+  (                                                                                      // AK 1
+    epAutomatikkreis_Transfershuttle := eAutomatikkreis_Mit_Transfershuttle_Input_Output // Automatikkreis des Transfershuttles
   )];
 
 END_VAR

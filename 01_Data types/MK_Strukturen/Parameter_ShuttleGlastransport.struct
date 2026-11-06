@@ -10,13 +10,13 @@ TYPE Parameter_ShuttleGlastransport :
   STRUCT
     rLaengeStation                                   : REAL; // Länge der Station
     rScheibenabstand                                 : REAL; // Der Abstand zwischen zwei Scheiben auf der Station
-    rWegUeberEinlauf                                 : REAL; // So weit soll ueber den Einlaufsensor gefahren werden
+    rWegUeberEinlauf                                 : REAL; // Weg ueber den Einlaufsensor hinaus [mm]
     rWegUeberEinlaufRueck                            : REAL; // So weit soll ueber den Einlaufsensor gefahren werden
     rUeberwachungEinlaufsensor                       : REAL; // Der Abstand vom Auslaufsensor der Vorgängerstation zum Einlaufsensor
-    rWegUeberAuslauf                                 : REAL; // So weit soll über den Stopsensore hinaus gefahren werden
+    rWegUeberAuslauf                                 : REAL; // Weg ueber den Auslaufsensor hinaus [mm]
     rWegUeberAuslaufRueck                            : REAL; // So weit soll über den Stopsensore hinaus gefahren werden
     rUeberwachungAuslaufsensor                       : REAL; // Beim Vorpositionieren muss der spätestens nach diesem Weg der Auslaufsensor belegt sein
-    rWegUeberSensorLetzteScheibe                     : REAL;
+    rWegUeberSensorLetzteScheibe                     : REAL; // Weg ueber den Sensor bei der letzten Scheibe [mm]
     rWegUeberSensorSystemCheck                       : REAL; // Der Weg der Ueber ein die Sensoren zum vermessen der Scheiben
     rWegUeberwachungSensor                           : REAL; // Beschreibt die Wegstrecke die der Ein- Auslaufsensor frei gefahren werden darf bevor ein Fehler gemeldet wird
     rMesstoleranz                                    : REAL; // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt

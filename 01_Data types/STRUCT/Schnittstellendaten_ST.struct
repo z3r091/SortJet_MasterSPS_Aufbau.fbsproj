@@ -7,9 +7,9 @@
 *)
 TYPE Schnittstellendaten_ST :
   STRUCT
-    wVorgaengerStation           : WORD;
-    wNachfolgerStation           : WORD;
-    bStationIstShuttle           : BOOL;
+    wVorgaengerStation           : WORD; // Station vor dieser Station (cSTATION_DYNAMISCH bei mehreren)
+    wNachfolgerStation           : WORD; // Station nach dieser Station (cSTATION_DYNAMISCH bei mehreren)
+    bStationIstShuttle           : BOOL; // Station ist ein Shuttle
     aEintransporte               : Transport;
     aAustransporte               : Transport;
   END_STRUCT

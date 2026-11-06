@@ -7,39 +7,39 @@
 *)
 TYPE Stations_Aufbau_ST:
   STRUCT
-    bGeblase                                : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
-    bGlastransport                          : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
-    bKippen                                 : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
-    bTransportVerstellung                   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle
-    bWandverstellung                        : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Stationen
-    bWandverstellungMotorisch               : BOOL; // Shuttle: Transport-/Wandverstellung mit Antrieb statt pneumatisch
-    bRoellchenleiste                        : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Stationen
-    bHub                                    : BOOL;
-    bHubrahmen                              : BOOL;
-    bDrehen                                 : BOOL;
-    bQuerachse                              : BOOL;
-    bMessachse                              : BOOL; // seperate Messachse je Wand z.b: Anlegewand / LTR / etc...
-    bDruckluft                              : BOOL;
-    bAnschlag                               : BOOL;
-    bSensorAuslauf                          : BOOL;
-    bSensorEinlauf                          : BOOL;
-    bSensorEinlaufStopp                     : BOOL; // Shuttle: zusaetzlicher Stopp-Sensor am Einlauf (ohne: Einlaufsensor), Gegenstueck zum Auslauf-Stopp im Rueckwaertstransport
-    bSensorAuslaufStopp                     : BOOL; // Shuttle: zusaetzlicher Stopp-Sensor am Auslauf (ohne: Auslaufsensor), Verfahrfreigabe und Scheibe hat Shuttle verlassen
-    bDurchlaufSperreZumNachfolger           : BOOL; // bei LTR wenn die Nachfolgestation zum B. ein RKT ist
-    bKippenSchuetz                          : BOOL;
-    bQuerfahrt                              : BOOL;
-    bDurchgang                              : BOOL;
-    bSlaveAntrieb                           : BOOL;
-    bRolltor                                : BOOL; // z.B.: FW - Rolltor
-    bKlemmzylinder                          : BOOL; // z.B.: FW - Klemmzylinder fixiert den Oberrahmen beim Ein- und Ausschleusen (Eingang in_bKlemmZylinderEingefahren)
+    bGeblase                                : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Ausbaustufe: Geblaese je Wand
+    bGlastransport                          : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Ausbaustufe: Glastransport je Wand
+    bKippen                                 : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Ausbaustufe: Kippen je Wand
+    bTransportVerstellung                   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Ausbaustufe Shuttle: Transport-/Dickenverstellung je Wand
+    bWandverstellung                        : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Ausbaustufe Station: Wandverstellung je Wand
+    bWandverstellungMotorisch               : BOOL;                                   // Shuttle: Transport-/Wandverstellung mit Antrieb statt pneumatisch
+    bRoellchenleiste                        : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Ausbaustufe Station: Roellchenleiste je Wand
+    bHub                                    : BOOL;                                   // Ausbaustufe: Hub der Station
+    bHubrahmen                              : BOOL;                                   // Ausbaustufe: Hubrahmen (Riemen heben/senken)
+    bDrehen                                 : BOOL;                                   // Ausbaustufe: Drehen
+    bQuerachse                              : BOOL;                                   // Ausbaustufe: Querachse
+    bMessachse                              : BOOL;                                   // Ausbaustufe: Messachse (Anlegetisch, Anlegewand)
+    bDruckluft                              : BOOL;                                   // Druckluftueberwachung vorhanden
+    bAnschlag                               : BOOL;                                   // Ausbaustufe: Ausrichtanschlaege
+    bSensorAuslauf                          : BOOL;                                   // Auslaufsensor vorhanden
+    bSensorEinlauf                          : BOOL;                                   // Einlaufsensor vorhanden
+    bSensorEinlaufStopp                     : BOOL;                                   // Shuttle: zusaetzlicher Stopp-Sensor am Einlauf (ohne: Einlaufsensor), Gegenstueck zum Auslauf-Stopp im Rueckwaertstransport
+    bSensorAuslaufStopp                     : BOOL;                                   // Shuttle: zusaetzlicher Stopp-Sensor am Auslauf (ohne: Auslaufsensor), Verfahrfreigabe und Scheibe hat Shuttle verlassen
+    bDurchlaufSperreZumNachfolger           : BOOL;                                   // derzeit ohne Funktion
+    bKippenSchuetz                          : BOOL;                                   // Kippen ueber Schuetz statt Umrichter
+    bQuerfahrt                              : BOOL;                                   // Ausbaustufe: Querfahrt
+    bDurchgang                              : BOOL;                                   // Station ist Teil eines Durchgangs (belegt = Oeffnen blockiert)
+    bSlaveAntrieb                           : BOOL;                                   // Glastransport mit Slave-Antrieb
+    bRolltor                                : BOOL;                                   // Ausbaustufe Faecherwagen: Rolltor
+    bKlemmzylinder                          : BOOL;                                   // Ausbaustufe Faecherwagen: Klemmzylinder fixiert den Oberrahmen beim Ein- und Ausschleusen
     bGreifer                                : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Shuttle: Greifer je Wand (Scheibe aus dem Faecherwagen ziehen bzw. hineinschieben)
-    bRFID                                   : BOOL; // z.B.: FW - Rolltor
-    bAGV                                    : BOOL; // Hinweis: AGV Betrieb
-    bKipparme                               : BOOL;
-    bMessachseAmEndeVomTisch                : BOOL;
-    bDLSSchmiersystem                       : BOOL;
-    bGlastransportSlaveVorhanden            : BOOL;
-    wHydraulikstation                       : WORD; // FW Hydraulik: zugeordnete Hydraulikstation (cHYDRAULIKSTATION_x), 0 = keine
+    bRFID                                   : BOOL;                                   // RFID-Leser vorhanden
+    bAGV                                    : BOOL;                                   // Ausbaustufe Faecherwagen: Betrieb mit AGV
+    bKipparme                               : BOOL;                                   // Ausbaustufe: Kipparme
+    bMessachseAmEndeVomTisch                : BOOL;                                   // Messachse am Ende des Tisches (Hoehenfehler fragt den Bediener)
+    bDLSSchmiersystem                       : BOOL;                                   // Zentralschmierung DLS vorhanden
+    bGlastransportSlaveVorhanden            : BOOL;                                   // Glastransport mit Slave-Antrieb (Meldungen/Ueberwachung Slave)
+    wHydraulikstation                       : WORD;                                   // Faecherwagen Hydraulik: zugeordnete Hydraulikstation (cHYDRAULIKSTATION_x), 0 = keine
 
   END_STRUCT
 END_TYPE

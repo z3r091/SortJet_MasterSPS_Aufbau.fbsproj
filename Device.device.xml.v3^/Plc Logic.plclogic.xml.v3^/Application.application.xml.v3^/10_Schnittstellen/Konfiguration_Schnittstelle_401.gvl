@@ -17,11 +17,11 @@ VAR_CONFIG
   Globale_Bausteine.aSchnittstelleAuslauf[401].in_bTasterGlasbruch                          AT %MX1.0    : BOOL; // OPTION
   Globale_Bausteine.aSchnittstelleAuslauf[401].in_bTasterSpezial                            AT %MX1.0    : BOOL; // OPTION
   // Koppler Eingaenge (Empfaenger -> Sender)
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_wEmpfaengerLiveCounter                    AT %MW100    : WORD; // Wort 0 LiveCounter gespiegelt
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_awEmpfaengerLadeIDGespiegelt              AT %MW100    : ARRAY [1..8] OF WORD; // Wort 1..8 Lade-ID gespiegelt
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_wEmpfaengerSignale                        AT %MW100    : WORD; // Wort 49 Signale
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_dwEmpfaengerGeschwindigkeit               AT %MD50     : DWORD; // Wort 50 Geschwindigkeit [mm/s]
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_wEmpfaengerRampe                          AT %MW100    : WORD; // Wort 52 Rampe [mm/s2], OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_wEmpfaengerLiveCounter                    AT %MW100    : WORD; // OPTION - Wort 0 LiveCounter gespiegelt
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_awEmpfaengerLadeIDGespiegelt              AT %MW100    : ARRAY [1..8] OF WORD; // OPTION - Wort 1..8 Lade-ID gespiegelt
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_wEmpfaengerSignale                        AT %MW100    : WORD; // OPTION - Wort 49 Signale
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_dwEmpfaengerGeschwindigkeit               AT %MD50     : DWORD; // OPTION - Wort 50 Geschwindigkeit [mm/s]
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_wEmpfaengerRampe                          AT %MW100    : WORD; // OPTION - Wort 52 Rampe [mm/s2]
 
   // ------------------------------------ HARDWARE AUSGAENGE ---------------------------------------
   // Standard Ausgaenge
@@ -32,9 +32,9 @@ VAR_CONFIG
   Globale_Bausteine.aSchnittstelleAuslauf[401].out_bAmpelEventAktiv                         AT %MX4010.4 : BOOL; // OPTION
   Globale_Bausteine.aSchnittstelleAuslauf[401].Horn.out_bHorn                               AT %MX4010.5 : BOOL; // OPTION
   // Koppler Ausgaenge (Sender -> Empfaenger)
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_wSenderLiveCounter                       AT %MW4010   : WORD; // Wort 0 LiveCounter
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_wSenderSignale                           AT %MW4011   : WORD; // Wort 50 Signale
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_awSenderLadeID                           AT %MW4012   : ARRAY [1..8] OF WORD; // Wort 1..8 Lade-ID (%MW4012..%MW4019)
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_wSenderLiveCounter                       AT %MW4010   : WORD; // OPTION - Wort 0 LiveCounter
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_wSenderSignale                           AT %MW4011   : WORD; // OPTION - Wort 50 Signale
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_awSenderLadeID                           AT %MW4012   : ARRAY [1..8] OF WORD; // OPTION - Wort 1..8 Lade-ID (%MW4012..%MW4019)
 
 END_VAR
 

@@ -14,42 +14,42 @@ VAR_GLOBAL
 
   apgMKStation501 : Parameter_Station :=
     (
-      stStationsNummern                     := ( NummerIntern    :=   501,
-                                                 NummerExtern    :=  1501,
-                                                 NummerSPS       :=   501 ),
-      bDeaktivieren                         := FALSE,
-      wMeldungsNummer                       := 1310,
-      eStationsTyp                          := eFremdanlage,
-      eaAutomatikkreis                      := [eAutomatikkreis_Undefiniert],
+      stStationsNummern                     := ( NummerIntern    :=   501,                           // Stationsnummer fuer das MMI und die Stationsangabe der Meldungen
+                                                 NummerExtern    :=  1501,                           // Stationsnummer fuer Bedienermeldungen
+                                                 NummerSPS       :=   501 ),                         // Stationsnummer SPS-intern (Indizes)
+      bDeaktivieren                         := FALSE,                                                // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
+      wMeldungsNummer                       := 1310,                                                 // Basis-Meldungsnummer (WatchIO)
+      eStationsTyp                          := eFremdanlage,                                         // Typ der Station
+      eaAutomatikkreis                      := [eAutomatikkreis_Undefiniert],                        // Automatikkreise, zu denen die Station gehoert
       // stStationsOptionen
       // stStationsAufbau
       // stStationsParameter
-      stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DEFAULT,
-                                                 wNachfolgerStation := cSTATION_204,
-                                                 bStationIstShuttle := FALSE
+      stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DEFAULT,             // Station vor dieser Station (cSTATION_DYNAMISCH bei mehreren)
+                                                 wNachfolgerStation := cSTATION_205,                 // Station nach dieser Station (cSTATION_DYNAMISCH bei mehreren)
+                                                 bStationIstShuttle := FALSE                         // Station ist ein Shuttle
                                                ),
-      stFremdanlage                         := ( bWerteSwappen                          := FALSE,
-                                                 bCounterSwappen                        := FALSE,
-                                                 bSignaleSwappen                        := FALSE,
-                                                 bAnzahlScheibenSwappen                 := FALSE,
-                                                 bRemoveETX                             := TRUE,
-                                                 tZeitHornAktiv                         := T#5S,     
-                                                 rAnalogWertVerhaeltniss                := 32.768,   
-                                                 rLaengeStation                         := 0.0,
-                                                 wMindestAnalogWert                     := 100,      
-                                                 bAnzeigeISOLinieEventAktiv             := FALSE,     
-                                                 bAnalogwertAktiv                       := FALSE,    
-                                                 rGeschwindigkeit                       := 350,      
-                                                 rMindestGeschwindigkeitsAenderung      := 5.0,
-                                                 tMindestZeitZwischenGeschwAenderung    := T#500MS,
-                                                 rMaxAnalogGeschwindigkeit              := 1000.0,
-                                                 eTypSchnittstelle                      := eDefault, 
-                                                 bStationStatusZuGlasAbruf              := FALSE,    
-                                                 bSignaleLoggen                         := TRUE
+      stFremdanlage                         := ( bWerteSwappen                          := FALSE,    // Bytes der Auftragsdaten (Lade-ID) und der Empfaenger- Geschwindigkeit swappen
+                                                 bCounterSwappen                        := FALSE,    // Nur die bytes von Life Counter swappen
+                                                 bSignaleSwappen                        := FALSE,    // Nur die bytes der Signale swappen
+                                                 bAnzahlScheibenSwappen                 := FALSE,    // Nur die Bytes der Anzahl Scheiben swappen
+                                                 bRemoveETX                             := TRUE,     // ETX aus den Scheiben-IDs des MMI entfernen (Auftragsdaten Fremdanlage)
+                                                 tZeitHornAktiv                         := T#5S,     // Signal bei ISO-Line Event
+                                                 rAnalogWertVerhaeltniss                := 32.768,   // Umrechnungsfaktor für den Analogwert
+                                                 rLaengeStation                         := 0.0,      // Laenge der Fremdanlage (Wegueberwachung der ersten Scheibe in der Nachbarstation), 0 = unbekannt
+                                                 wMindestAnalogWert                     := 100,      // Mindestwert, den der Analogwert haben muss um gültig zu sein
+                                                 bAnzeigeISOLinieEventAktiv             := FALSE,    // ISO Line Events sollen angezeigt werden
+                                                 bAnalogwertAktiv                       := FALSE,    // Geschwindigkeit - Analog | Statische
+                                                 rGeschwindigkeit                       := 350,      // Feste Geschwindigkeit der Fremdanlage - (Fester Sollwert)
+                                                 rMindestGeschwindigkeitsAenderung      := 5.0,      // Glaettung: Mindestaenderung [mm/s] bevor eine neue Geschwindigkeit uebernommen wird
+                                                 tMindestZeitZwischenGeschwAenderung    := T#500MS,  // Glaettung: Mindestzeit zwischen zwei Geschwindigkeitsaenderungen
+                                                 rMaxAnalogGeschwindigkeit              := 1000.0,   // Analogwert: Begrenzung der Geschwindigkeit [mm/s]
+                                                 eTypSchnittstelle                      := eDefault, // Variante der Schnittstelle
+                                                 bStationStatusZuGlasAbruf              := FALSE,    // Stationsstatus beim Glasabruf melden (ISO-Linie)
+                                                 bSignaleLoggen                         := TRUE      // Schnittstellensignale loggen
                                                ),
       // stGlasdaten
-      eaSicherheitskreis                    := [eSicherheitskreis_Undefiniert], //Alle Sk's eintragen in dem die Station eingebunden ist
-      eSystemcheckZyklus                    := eSystemcheckZyklus_Undefiniert
+      eaSicherheitskreis                    := [eSicherheitskreis_Undefiniert],                      // Sicherheitskreise, in die die Station eingebunden ist
+      eSystemcheckZyklus                    := eSystemcheckZyklus_Undefiniert                        // In welchem Zyklus des Systemchecks die Station geprueft wird
       // astShuttleAnhaltenQuellen
    );
  

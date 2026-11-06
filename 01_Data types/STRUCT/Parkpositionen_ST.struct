@@ -7,8 +7,8 @@
 *)
 TYPE Parkpositionen_ST :
  STRUCT
-    eParkposition        : ParkpositionTyp_EN;
-    rParkpositionMinimum : REAL;
-    rParkpositionMaximum : REAL;
+    eParkposition        : ParkpositionTyp_EN; // Art der Parkposition (Min / Max / Min-Max)
+    rParkpositionMinimum : REAL;               // Parkposition minimum (Richtung Handminus)
+    rParkpositionMaximum : REAL;               // Parkposition maximum (Richtung Handplus)
   END_STRUCT
 END_TYPE

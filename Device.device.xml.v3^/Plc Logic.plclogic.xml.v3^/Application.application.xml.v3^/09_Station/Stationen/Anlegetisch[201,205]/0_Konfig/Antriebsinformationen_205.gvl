@@ -6,14 +6,14 @@
 }
 *)
 {attribute 'allow_unqualified_access'}
-NAMESPACE Antriebsinformationen_204
+NAMESPACE Antriebsinformationen_205
 VAR_GLOBAL CONSTANT
   
 //-------------------------------------------------------------------------------------------------
 // ANTRIEBSINFORMATION
 //-------------------------------------------------------------------------------------------------
 
-  apgInfoStation204Glastransport : AntriebsInformationen :=
+  apgInfoStation205Glastransport : AntriebsInformationen :=
     (
       wAchsID                                 :=     20,  // Achs ID aus dem EConSet 
       stTyp                                   := 'Belt',  // Typ                           
@@ -39,7 +39,7 @@ VAR_GLOBAL CONSTANT
                                                    bBremseLoesenFreigabe := FALSE )                         // Der Antrieb darf über eine Betriebsart die Bremse lösen
     );
 
-  apgInfoStation204Glastransport_Slave : AntriebsInformationen :=
+  apgInfoStation205Glastransport_Slave : AntriebsInformationen :=
     (
       wAchsID                                 :=     65,  // Achs ID aus dem EConSet 
       stTyp                                   := 'BeltSl',  // Typ                           
@@ -66,7 +66,7 @@ VAR_GLOBAL CONSTANT
     );
 
 
-  apgInfoStation204Messachse : AntriebsInformationen :=
+  apgInfoStation205Messachse : AntriebsInformationen :=
     (     
       wAchsID                                 :=        21,  // Achs ID aus dem EConSet                                               
       stTyp                                   := 'Measure',  // Typ                                                                           

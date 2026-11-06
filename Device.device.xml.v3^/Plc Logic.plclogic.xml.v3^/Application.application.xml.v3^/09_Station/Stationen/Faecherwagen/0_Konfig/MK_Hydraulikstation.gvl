@@ -12,9 +12,9 @@ VAR_GLOBAL
   // Zuordnung Faecherwagenstation -> Hydraulikstation: MK stStationsAufbau.wHydraulikstation der Faecherwagenstation
   apgMKHydraulikstation : ARRAY[cERSTE_HYDRAULIKSTATIONS_NR..cLETZTE_HYDRAULIKSTATIONS_NR] OF Parameter_Hydraulikstation :=[
     (
-      bDeaktivieren                   := TRUE,
-      wMeldungsNummer                 := 2000, // ioccHydraulikkreis_1_Motorschuetz
-      wMaximaleAnzahlAktiverAuftraege := 1     // Leistung des Aggregats reicht fuer einen Auftrag
+      bDeaktivieren                   := TRUE, // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
+      wMeldungsNummer                 := 2000, // WatchIO-Meldung Motorschutz Hydraulikaggregat
+      wMaximaleAnzahlAktiverAuftraege := 1     // Max. gleichzeitige Ein-/Ausschleus-Auftraege der zugeordneten Stationen, 0 = unbegrenzt
     )];
 
 

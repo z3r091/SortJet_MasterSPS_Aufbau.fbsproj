@@ -7,9 +7,9 @@
 *)
 TYPE Parameter_Durchgang :
   STRUCT
-    eDurchgang              : Durchgang_EN;   
-    eZuBlockierenderSK      : Sicherheitskreis_EN;
-    bBeweglicheAbschrankung : BOOL;
-    wMeldungsNummer         : WORD;
+    eDurchgang              : Durchgang_EN;        // Nummer des Durchgangs
+    eZuBlockierenderSK      : Sicherheitskreis_EN; // Sicherheitskreis, der beim Oeffnen blockiert wird
+    bBeweglicheAbschrankung : BOOL;                // bewegliche Abschrankung am Durchgang vorhanden
+    wMeldungsNummer         : WORD;                // Basis-Meldungsnummer (WatchIO)
   END_STRUCT
 END_TYPE

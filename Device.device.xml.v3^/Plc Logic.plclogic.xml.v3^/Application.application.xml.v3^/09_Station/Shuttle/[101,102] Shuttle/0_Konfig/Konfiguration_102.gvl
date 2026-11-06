@@ -11,27 +11,27 @@ VAR_CONFIG
   // werden Variablen die gemappt werden hier ignoriert?
   // ------------------------------------------------- HARDWARE EINGAENGE -------------------------------------------------
   // Datenlichtschranke
-  Globale_Bausteine.aShuttle[102].in_bDatenlichtschrankeShuttlebahnOK                                AT %MX1.1  : BOOL; (* OPTION *) // Bauteil an der Shuttlebahn => Sender / Empfaenger
-  Globale_Bausteine.aShuttle[102].in_bDatenlichtschrankeShuttleOK                                    AT %MX1.1  : BOOL; (* OPTION *) // Bauteil auf dem Shuttle => Sender / Empfaenger
+  Globale_Bausteine.aShuttle[102].in_bDatenlichtschrankeShuttlebahnOK                                AT %MX1.1  : BOOL; // OPTION - Bauteil an der Shuttlebahn => Sender / Empfaenger
+  Globale_Bausteine.aShuttle[102].in_bDatenlichtschrankeShuttleOK                                    AT %MX1.1  : BOOL; // OPTION - Bauteil auf dem Shuttle => Sender / Empfaenger
                                                                                                                   
                                                                                                                            
   // Sicherungen \ Motorschutzschalter \ etc.  
-  Globale_Bausteine.aShuttle[102].in_bSicherungen230V_OK                                             AT %MX1.1   : BOOL; // OPTION                                                                                                      
-  Globale_Bausteine.aShuttle[102].in_bLSQuerfahrtBremseOK                                            AT %MX1.1   : BOOL; // OPTION                                                                                                
-  Globale_Bausteine.aShuttle[102].in_bNetzteil_24V_OK                                                AT %MX1.1   : BOOL; // OPTION             
+  Globale_Bausteine.aShuttle[102].in_bSicherungen230V_OK                                             AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[102].in_bLSQuerfahrtBremseOK                                            AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[102].in_bNetzteil_24V_OK                                                AT %MX1.1   : BOOL; // OPTION
 
   
-  Globale_Bausteine.aShuttle[102].Kippen.in_bMotorschutzschalter_OK                                  AT %MX1.1   : BOOL; // OPTION         
-  Globale_Bausteine.aShuttle[102].Kippen.in_bLeitungsschutzschalterBremseOK                          AT %MX1.1   : BOOL; // OPTION     
+  Globale_Bausteine.aShuttle[102].Kippen.in_bMotorschutzschalter_OK                                  AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[102].Kippen.in_bLeitungsschutzschalterBremseOK                          AT %MX1.1   : BOOL; // OPTION
   
   
   // Druckluft 
-  Globale_Bausteine.aShuttle[102].in_bSicherungKompressor_OK                                         AT %MX1.1  : BOOL; // OPTION                                                                                                 
+  Globale_Bausteine.aShuttle[102].in_bSicherungKompressor_OK                                         AT %MX1.1  : BOOL; // OPTION
   Globale_Bausteine.aShuttle[102].in_bDruckluft_OK                                                   AT %MX1.1  : BOOL; // OPTION
                                                                                                      
                                                                                                                                                                                                             
   //Geblaese Wand 1                                                                                         
-  Globale_Bausteine.aShuttle[102].Geblaese[1].in_bMotorschutzschalter_OK                             AT %MX1.1   : BOOL; // OPTION 
+  Globale_Bausteine.aShuttle[102].Geblaese[1].in_bMotorschutzschalter_OK                             AT %MX1.1   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[102].Geblaese[1].out_bStarteGeblaese                                    AT %MX1020.0 : BOOL; // OPTION
                                                 
   // Wandverstellung Wand 1                                                                              
@@ -81,7 +81,7 @@ VAR_CONFIG
   Globale_Bausteine.aShuttle[102].Wandverstellung[1].Gegenhalter_Schuetz.in_bVerstellungGeschlossen  AT %MX1.0   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[102].Wandverstellung[1].Gegenhalter_Schuetz.in_bMotorstarter_OK         AT %MX1.1   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[102].Wandverstellung[1].Gegenhalter_Schuetz.in_bSicherungMotorOK        AT %MX1.1   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[102].Wandverstellung[1].Gegenhalter_Schuetz.in_bBremseOK                AT %MX1.1   : BOOL; // OPTION  
+  Globale_Bausteine.aShuttle[102].Wandverstellung[1].Gegenhalter_Schuetz.in_bBremseOK                AT %MX1.1   : BOOL; // OPTION
                                                                                                                            
   Globale_Bausteine.aShuttle[102].Wandverstellung[1].Gegenhalter_Schuetz.out_bVerstellungSchliessen  AT %MX1021.7 : BOOL; // OPTION
   Globale_Bausteine.aShuttle[102].Wandverstellung[1].Gegenhalter_Schuetz.out_bVerstellungOeffnen     AT %MX1022.0 : BOOL; // OPTION
@@ -91,14 +91,14 @@ VAR_CONFIG
   
 
   // Sensoren  Wand 2    
-  Globale_Bausteine.aShuttle[102].in_bSensorEinlaufVorabWand2                                        AT %MX1.0   : BOOL; // OPTION 
-  Globale_Bausteine.aShuttle[102].in_bSensorAuslaufVorabWand2                                        AT %MX1.0   : BOOL; // OPTION 
-  Globale_Bausteine.aShuttle[102].in_bSensorAuslaufStoppWand2                                        AT %MX1.0   : BOOL; // OPTION 
+  Globale_Bausteine.aShuttle[102].in_bSensorEinlaufVorabWand2                                        AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[102].in_bSensorAuslaufVorabWand2                                        AT %MX1.0   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[102].in_bSensorAuslaufStoppWand2                                        AT %MX1.0   : BOOL; // OPTION
                                                                                                      
                                                                                                      
   //Geblaese Wand 2                                                                                         
-  Globale_Bausteine.aShuttle[102].Geblaese[2].in_bMotorschutzschalter_OK                             AT %MX1.1    : BOOL; // OPTION 
-  Globale_Bausteine.aShuttle[102].Geblaese[2].out_bStarteGeblaese                                    AT %MX1022.3 : BOOL; // OPTION 
+  Globale_Bausteine.aShuttle[102].Geblaese[2].in_bMotorschutzschalter_OK                             AT %MX1.1    : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[102].Geblaese[2].out_bStarteGeblaese                                    AT %MX1022.3 : BOOL; // OPTION
 
   // Wandverstellung Wand 2                                                                                                                                                                                  
   Globale_Bausteine.aShuttle[102].Wandverstellung[2].Pneumatik.in_bWandEinlaufseiteGeoeffnet         AT %MX1.0   : BOOL; // OPTION
@@ -143,7 +143,7 @@ VAR_CONFIG
   Globale_Bausteine.aShuttle[102].Wandverstellung[2].Gegenhalter_Schuetz.in_bVerstellungGeschlossen  AT %MX1.0   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[102].Wandverstellung[2].Gegenhalter_Schuetz.in_bMotorstarter_OK         AT %MX1.1   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[102].Wandverstellung[2].Gegenhalter_Schuetz.in_bSicherungMotorOK        AT %MX1.1   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[102].Wandverstellung[2].Gegenhalter_Schuetz.in_bBremseOK                AT %MX1.1   : BOOL; // OPTION  
+  Globale_Bausteine.aShuttle[102].Wandverstellung[2].Gegenhalter_Schuetz.in_bBremseOK                AT %MX1.1   : BOOL; // OPTION
                                                                                                                            
   Globale_Bausteine.aShuttle[102].Wandverstellung[2].Gegenhalter_Schuetz.out_bVerstellungSchliessen  AT %MX1024.2 : BOOL; // OPTION
   Globale_Bausteine.aShuttle[102].Wandverstellung[2].Gegenhalter_Schuetz.out_bVerstellungOeffnen     AT %MX1024.3 : BOOL; // OPTION

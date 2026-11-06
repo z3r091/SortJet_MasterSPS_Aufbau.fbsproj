@@ -41,27 +41,27 @@ VAR_CONFIG
 
   
   // IO's RÖLLCHENLEISTE
-  Globale_Bausteine.Foerderer202.Roellchenleiste.in_bStatusZylinder1Ausgefahren      AT %MX1.0    : BOOL; // OPTION   
-  Globale_Bausteine.Foerderer202.Roellchenleiste.in_bStatusZylinder1Eingefahren      AT %MX1.0    : BOOL; // OPTION   
-  Globale_Bausteine.Foerderer202.Roellchenleiste.in_bStatusZylinder2Ausgefahren      AT %MX1.0    : BOOL; // OPTION   
-  Globale_Bausteine.Foerderer202.Roellchenleiste.in_bStatusZylinder2Eingefahren      AT %MX1.0    : BOOL; // OPTION   
+  Globale_Bausteine.Foerderer202.Roellchenleiste.in_bStatusZylinder1Ausgefahren      AT %MX1.0    : BOOL; // OPTION
+  Globale_Bausteine.Foerderer202.Roellchenleiste.in_bStatusZylinder1Eingefahren      AT %MX1.0    : BOOL; // OPTION
+  Globale_Bausteine.Foerderer202.Roellchenleiste.in_bStatusZylinder2Ausgefahren      AT %MX1.0    : BOOL; // OPTION
+  Globale_Bausteine.Foerderer202.Roellchenleiste.in_bStatusZylinder2Eingefahren      AT %MX1.0    : BOOL; // OPTION
                                                                                                                          
-  Globale_Bausteine.Foerderer202.Roellchenleiste.out_bZylinder1Ausfahren             AT %MX2021.1 : BOOL; // OPTION   
-  Globale_Bausteine.Foerderer202.Roellchenleiste.out_bZylinder1Einfahren             AT %MX2021.2 : BOOL; // OPTION   
-  Globale_Bausteine.Foerderer202.Roellchenleiste.out_bZylinder2Ausfahren             AT %MX2021.3 : BOOL; // OPTION   
-  Globale_Bausteine.Foerderer202.Roellchenleiste.out_bZylinder2Einfahren             AT %MX2021.4 : BOOL; // OPTION   
+  Globale_Bausteine.Foerderer202.Roellchenleiste.out_bZylinder1Ausfahren             AT %MX2021.1 : BOOL; // OPTION
+  Globale_Bausteine.Foerderer202.Roellchenleiste.out_bZylinder1Einfahren             AT %MX2021.2 : BOOL; // OPTION
+  Globale_Bausteine.Foerderer202.Roellchenleiste.out_bZylinder2Ausfahren             AT %MX2021.3 : BOOL; // OPTION
+  Globale_Bausteine.Foerderer202.Roellchenleiste.out_bZylinder2Einfahren             AT %MX2021.4 : BOOL; // OPTION
                                                                                                                          
                                                                                                                          
   // IO's WANDVERSTELLUNG                                                                                                
-  Globale_Bausteine.Foerderer202.Wandverstellung.in_bStatusZylinder1Ausgefahren      AT %MX1.0    : BOOL; // OPTION   
-  Globale_Bausteine.Foerderer202.Wandverstellung.in_bStatusZylinder1Eingefahren      AT %MX1.0    : BOOL; // OPTION   
-  Globale_Bausteine.Foerderer202.Wandverstellung.in_bStatusZylinder2Ausgefahren      AT %MX1.0    : BOOL; // OPTION   
-  Globale_Bausteine.Foerderer202.Wandverstellung.in_bStatusZylinder2Eingefahren      AT %MX1.0    : BOOL; // OPTION   
+  Globale_Bausteine.Foerderer202.Wandverstellung.in_bStatusZylinder1Ausgefahren      AT %MX1.0    : BOOL; // OPTION
+  Globale_Bausteine.Foerderer202.Wandverstellung.in_bStatusZylinder1Eingefahren      AT %MX1.0    : BOOL; // OPTION
+  Globale_Bausteine.Foerderer202.Wandverstellung.in_bStatusZylinder2Ausgefahren      AT %MX1.0    : BOOL; // OPTION
+  Globale_Bausteine.Foerderer202.Wandverstellung.in_bStatusZylinder2Eingefahren      AT %MX1.0    : BOOL; // OPTION
                                                                                                                          
-  Globale_Bausteine.Foerderer202.Wandverstellung.out_bZylinder1Ausfahren             AT %MX2021.5 : BOOL; // OPTION   
-  Globale_Bausteine.Foerderer202.Wandverstellung.out_bZylinder1Einfahren             AT %MX2021.6 : BOOL; // OPTION   
-  Globale_Bausteine.Foerderer202.Wandverstellung.out_bZylinder2Ausfahren             AT %MX2021.7 : BOOL; // OPTION   
-  Globale_Bausteine.Foerderer202.Wandverstellung.out_bZylinder2Einfahren             AT %MX2022.0 : BOOL; // OPTION   
+  Globale_Bausteine.Foerderer202.Wandverstellung.out_bZylinder1Ausfahren             AT %MX2021.5 : BOOL; // OPTION
+  Globale_Bausteine.Foerderer202.Wandverstellung.out_bZylinder1Einfahren             AT %MX2021.6 : BOOL; // OPTION
+  Globale_Bausteine.Foerderer202.Wandverstellung.out_bZylinder2Ausfahren             AT %MX2021.7 : BOOL; // OPTION
+  Globale_Bausteine.Foerderer202.Wandverstellung.out_bZylinder2Einfahren             AT %MX2022.0 : BOOL; // OPTION
 
 END_VAR
 

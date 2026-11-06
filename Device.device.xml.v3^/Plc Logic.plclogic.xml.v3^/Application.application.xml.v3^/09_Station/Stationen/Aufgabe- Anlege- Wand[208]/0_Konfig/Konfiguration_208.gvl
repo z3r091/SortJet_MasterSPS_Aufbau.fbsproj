@@ -10,32 +10,32 @@ NAMESPACE Konfiguration_208
 VAR_CONFIG
 
   // Taster
-  Globale_Bausteine.Combiwand208.in_bFussTasterGlasAngelegt                               AT %MX1.0    : BOOL; (* OPTION *) // Signal Scheibe ist angelegt Fusstaster
-  Globale_Bausteine.Combiwand208.in_bTasterGlasAngelegt                                   AT %IX3.0    : BOOL; (* OK *) // Signal Scheibe ist angelegt weißer Leuchtdrucktaster 
-  Globale_Bausteine.Combiwand208.in_bTasterFehlmessungQuittiern                           AT %IX3.1    : BOOL; (* OPTION *) // Gelber Leuchtdrucktaster 
-  Globale_Bausteine.Combiwand208.in_bKnebelGlastransportZurueck                           AT %IX3.3    : BOOL; (* OPTION *) // Knebelschalter: Glastransport zurück 
-  Globale_Bausteine.Combiwand208.in_bKnebelGlastransportVor                               AT %IX3.2    : BOOL; (* OPTION *) // Knebelschalter: Glastransport vor 
-  Globale_Bausteine.Combiwand208.in_bTasterGlasbruch                                      AT %IX3.4    : BOOL; // OPTION
-  Globale_Bausteine.Combiwand208.in_bTasterQuittierungGlasAbgenommen                      AT %IX3.0    : BOOL; (* OPTION *) // Doppelbelegung gewollt Abyat AREA 2 SJ1
+  Globale_Bausteine.Combiwand208.in_bFussTasterGlasAngelegt                               AT %MX1.0    : BOOL; // OPTION - Signal Scheibe ist angelegt Fusstaster
+  Globale_Bausteine.Combiwand208.in_bTasterGlasAngelegt                                   AT %IX3.0    : BOOL; // IO-L - Signal Scheibe ist angelegt weißer Leuchtdrucktaster
+  Globale_Bausteine.Combiwand208.in_bTasterFehlmessungQuittiern                           AT %IX3.1    : BOOL; // IO-L - gelber Leuchtdrucktaster Fehlmessung quittieren
+  Globale_Bausteine.Combiwand208.in_bKnebelGlastransportZurueck                           AT %IX3.3    : BOOL; // IO-L - Knebelschalter: Glastransport zurück
+  Globale_Bausteine.Combiwand208.in_bKnebelGlastransportVor                               AT %IX3.2    : BOOL; // IO-L - Knebelschalter: Glastransport vor
+  Globale_Bausteine.Combiwand208.in_bTasterGlasbruch                                      AT %IX3.4    : BOOL; // IO-L
+  Globale_Bausteine.Combiwand208.in_bTasterQuittierungGlasAbgenommen                      AT %IX3.0    : BOOL; // IO-L - gleicher Taster wie Glas angelegt (Doppelbelegung gewollt)
                                                                                           
   // Lampen/Ampel                                                                         
-  Globale_Bausteine.Combiwand208.out_bAmpelSignalGruen                                    AT %QX2.4    : BOOL; (* OPTION *) // Grüne Ampel an der Station
-  Globale_Bausteine.Combiwand208.out_bSignalScheibeAufgegeben                             AT %MX2080.0 : BOOL; (* OPTION *) // Weißer Leuchdrucktaster
-  Globale_Bausteine.Combiwand208.out_bSignalScheibeFehlmessung                            AT %QX2.5    : BOOL; (* OPTION *) // Gelber Leuchdrucktaster *)
-  Globale_Bausteine.Combiwand208.out_bSignalScheibeGlasbruch                              AT %QX2.6    : BOOL; // OPTION
-  Globale_Bausteine.Combiwand208.out_bSignalScheibeAbnehmen                               AT %MX2080.1 : BOOL; // OPTION 
+  Globale_Bausteine.Combiwand208.out_bAmpelSignalGruen                                    AT %QX2.4    : BOOL; // IO-L - Grüne Ampel an der Station
+  Globale_Bausteine.Combiwand208.out_bSignalScheibeAufgegeben                             AT %MX2080.0 : BOOL; // OPTION - Leuchte im weißen Taster Scheibe aufgegeben
+  Globale_Bausteine.Combiwand208.out_bSignalScheibeFehlmessung                            AT %QX2.5    : BOOL; // IO-L - Leuchte im gelben Taster Fehlmessung
+  Globale_Bausteine.Combiwand208.out_bSignalScheibeGlasbruch                              AT %QX2.6    : BOOL; // IO-L
+  Globale_Bausteine.Combiwand208.out_bSignalScheibeAbnehmen                               AT %MX2080.1 : BOOL; // OPTION
   
                                                                                                         
   // Lichtschranke                                                                                      
   Globale_Bausteine.Combiwand208.in_bLichtschrankeQuittiert                               AT %MX1.1    : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.in_bLichtschrankeFehler                                  AT %MX1.1    : BOOL; // OPTION
-  Globale_Bausteine.Combiwand208.out_bLichtschrankeAusgeloest                             AT %MX2080.2 : BOOL; (* OPTION *) // Lichtschranke an der Station ausgelöst und nicht quittiert
+  Globale_Bausteine.Combiwand208.out_bLichtschrankeAusgeloest                             AT %MX2080.2 : BOOL; // OPTION - Lichtschranke an der Station ausgelöst und nicht quittiert
                                                                                                         
                                                                                                         
   // Gebläse                                                                                            
-  Globale_Bausteine.Combiwand208.in_bTasterGeblaeseEin                                    AT %MX1.0     : BOOL; (* OPTION *) // Geblaese starten (Schuetz)
-  Globale_Bausteine.Combiwand208.in_bMotorschutzGeblaese_Ok                               AT %MX1.1     : BOOL; (* OPTION *) // Motorschutzschalter / Sicherung des Antriebs
-  Globale_Bausteine.Combiwand208.out_bGeblaeseEin                                         AT %MX2080.3  : BOOL; (* OPTION *) // Geblaese starten (Schuetz)
+  Globale_Bausteine.Combiwand208.in_bTasterGeblaeseEin                                    AT %MX1.0     : BOOL; // OPTION - Taster Geblaese ein
+  Globale_Bausteine.Combiwand208.in_bMotorschutzGeblaese_Ok                               AT %MX1.1     : BOOL; // OPTION - Motorschutzschalter / Sicherung des Antriebs
+  Globale_Bausteine.Combiwand208.out_bGeblaeseEin                                         AT %MX2080.3  : BOOL; // OPTION - Geblaese starten (Schuetz)
                                                                                                         
                                                                                                         
   // Dickenverstellung                                                                                  

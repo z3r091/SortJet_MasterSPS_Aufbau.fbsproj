@@ -7,12 +7,12 @@
 *)
 TYPE Stations_Parameter_ST :
   STRUCT
-    rLaengeUebergroesseScheibe              : REAL;
-    rMinGlasHoeheAutomatischenEintransport  : REAL;
-    rMinGlasLaengeAutomatischenEintransport : REAL;   
-    wMaximaleAnzahlAktiverAuftraege         : WORD;
-    rMinPosSwEsEingrenzung                  : REAL; // Externer zusaetzlicher Software-Endschalter MIN; 0 = inaktiv; darf den MK-MIN nur weiter eingrenzen 
-    rMaxPosSwEsEingrenzung                  : REAL; // Externer zusaetzlicher Software-Endschalter MAX; 0 = inaktiv; darf den MK-MAX nur weiter eingrenzen 
-    rPosFreigabePufferAusfahren             : REAL;
+    rLaengeUebergroesseScheibe              : REAL; // Shuttle: ab dieser Scheibenlaenge gilt die Scheibe als uebergross [mm]
+    rMinGlasHoeheAutomatischenEintransport  : REAL; // VSG: Mindesthoehe fuer automatischen Eintransport [mm]
+    rMinGlasLaengeAutomatischenEintransport : REAL; // VSG: Mindestlaenge fuer automatischen Eintransport [mm]
+    wMaximaleAnzahlAktiverAuftraege         : WORD; // derzeit ohne Funktion
+    rMinPosSwEsEingrenzung                  : REAL; // Externer zusaetzlicher Software-Endschalter MIN; 0 = inaktiv; darf den MK-MIN nur weiter eingrenzen
+    rMaxPosSwEsEingrenzung                  : REAL; // Externer zusaetzlicher Software-Endschalter MAX; 0 = inaktiv; darf den MK-MAX nur weiter eingrenzen
+    rPosFreigabePufferAusfahren             : REAL; // derzeit ohne Funktion
   END_STRUCT
 END_TYPE

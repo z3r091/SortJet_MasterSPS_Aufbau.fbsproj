@@ -6,7 +6,7 @@
 }
 *)
 {attribute 'allow_unqualified_access'}
-NAMESPACE Antriebsinformationen_205
+NAMESPACE Antriebsinformationen_204
 VAR_GLOBAL
 
 //==================================================================================================
@@ -14,7 +14,7 @@ VAR_GLOBAL
 //==================================================================================================
 
   // X-Achse
-  apgInfoStation205Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
+  apgInfoStation204Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
       wAchsID                                 :=     22,  // Achs ID aus dem EConSet - TODO: vorlaeufig freie ID, aus EConSet uebernehmen
       stTyp                                   := 'Belt',  // Typ
@@ -40,7 +40,7 @@ VAR_GLOBAL
                                                    bBremseLoesenFreigabe := FALSE )                         // Der Antrieb darf über eine Betriebsart die Bremse lösen
     )];
 
-  apgInfoStation205Glastransport_Slave : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
+  apgInfoStation204Glastransport_Slave : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
       wAchsID                                 :=     65,  // Achs ID aus dem EConSet
       stTyp                                   := 'BeltSl',  // Typ
@@ -67,7 +67,7 @@ VAR_GLOBAL
     )];
 
   // Y-Achse (Riemen im Hubrahmen)
-  apgInfoStation205GlastransportY : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
+  apgInfoStation204GlastransportY : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
       wAchsID                                 :=     23,  // Achs ID aus dem EConSet - TODO: vorlaeufig freie ID, aus EConSet uebernehmen
       stTyp                                   := 'Belt',  // Typ
@@ -93,7 +93,7 @@ VAR_GLOBAL
                                                    bBremseLoesenFreigabe := FALSE )                         // Der Antrieb darf über eine Betriebsart die Bremse lösen
     )];
 
-  apgInfoStation205GlastransportY_Slave : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
+  apgInfoStation204GlastransportY_Slave : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
       wAchsID                                 :=     65,  // Achs ID aus dem EConSet
       stTyp                                   := 'BeltSl',  // Typ

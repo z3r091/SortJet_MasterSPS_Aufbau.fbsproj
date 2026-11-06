@@ -7,9 +7,9 @@
 *)
 TYPE Parameter_Dickenverstellung_1 :
   STRUCT
-    rPosition_Minimal   : REAL;
-    rPosition_Mittel    : REAL;
-    rPosition_Maximal   : REAL;
-    rToleranz           : REAL;
+    rPosition_Minimal   : REAL; // Position minimal
+    rPosition_Mittel    : REAL; // Position mittel
+    rPosition_Maximal   : REAL; // Position maximal
+    rToleranz           : REAL; // Toleranz beim Positionsvergleich
   END_STRUCT
 END_TYPE

@@ -8,7 +8,7 @@
 TYPE Station_ST :
   STRUCT
     NummerIntern : WORD;
-    NummerExtern : WORD;
-    NummerSPS    : WORD;
+    NummerExtern : WORD; // Stationsnummer fuer Bedienermeldungen
+    NummerSPS    : WORD; // Stationsnummer SPS-intern (Indizes)
   END_STRUCT
 END_TYPE

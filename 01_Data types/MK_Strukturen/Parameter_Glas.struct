@@ -12,7 +12,7 @@ TYPE Parameter_Glas :
     rlMinGlasHoehe                   : REAL; // minimal zulässige GlasHöhe
     rlMaxGlasHoehe                   : REAL; // maximale zulässige GlasHöhe
     rlMinGlasDicke                   : REAL; // minimal zulässige GlasDicke
-    rlMaxGlasDicke                   : REAL; // maximale zulässige GlasDicke
-    rlLaengeMaxGlas                  : REAL; // Scheibenlänge ab der die Scheibe als Max Glas gilt. Wichtig bei Anlegetischen
+    rlMaxGlasDicke                   : REAL; // maximal zulaessige Glasdicke [mm]
+    rlLaengeMaxGlas                  : REAL; // maximal zulaessige Glaslaenge [mm]
   END_STRUCT
 END_TYPE

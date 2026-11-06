@@ -7,6 +7,6 @@
 *)
 TYPE Parameter_Querfahrt :
 STRUCT
-  tZeitAntriebsfreigabeErhalten  : TIME;
+  tZeitAntriebsfreigabeErhalten  : TIME; // Energieeinsparung: Zeit nach der die Antriebsfreigabe entzogen wird, wenn keine Aktion ansteht
 END_STRUCT
 END_TYPE
