@@ -41,6 +41,9 @@ ELSE
     
   ELSIF ( ABS(Antrieb.rpIstPosition - ppParameterBaustein.rPosition90Grad) <= ppParameterBaustein.rToleranz) THEN
     epKippStatus := eKippen_Position_90Grad;
+
+  ELSIF ( ABS(Antrieb.rpIstPosition - ppParameterBaustein.rPosition96Grad) <= ppParameterBaustein.rToleranz) THEN
+    epKippStatus := eKippen_Position_96Grad;
  
   ELSE
     epKippStatus := eKippen_Fehler;

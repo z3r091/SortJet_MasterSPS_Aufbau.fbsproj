@@ -158,6 +158,8 @@ IF ( NOT bpAktivieren ) THEN
     epKippStatus := eKippen_Position_88_5Grad;
   ELSIF ( bpPositionieren AND ( epZielPosition = eKippen_Position_90Grad ) ) THEN
     epKippStatus := eKippen_Position_90Grad;
+  ELSIF ( bpPositionieren AND ( epZielPosition = eKippen_Position_96Grad ) ) THEN
+    epKippStatus := eKippen_Position_96Grad;
   ELSE
     epKippStatus := eKippen_Default;
   END_IF

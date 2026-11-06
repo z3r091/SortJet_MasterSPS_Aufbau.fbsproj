@@ -78,6 +78,9 @@ IF ( bpPositionieren )THEN
         eKippen_Position_90Grad:
           Antrieb.rpZielPosition  := ppParameterBaustein.rPosition90Grad;
 
+        eKippen_Position_96Grad:
+          Antrieb.rpZielPosition  := ppParameterBaustein.rPosition96Grad;
+
 
       END_CASE
 
