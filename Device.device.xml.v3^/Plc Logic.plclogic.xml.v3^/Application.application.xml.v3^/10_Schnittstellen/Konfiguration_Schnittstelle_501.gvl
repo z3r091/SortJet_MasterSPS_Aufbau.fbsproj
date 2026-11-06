@@ -10,34 +10,28 @@ NAMESPACE Konfiguration_Schnittstelle_501
 VAR_CONFIG
 
 //-------------------------------------------------------------------------------------------------
-// KONFIGURATION: SCHNITTSTELLE 501 Brechanlage
+// KONFIGURATION: SCHNITTSTELLE 501 Einlauf VSG (Station 204)
 //-------------------------------------------------------------------------------------------------
-
   // ------------------------------------ HARDWARE EINGAENGE ---------------------------------------
-  // Standart Eingänge
-  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bTasterGlasbruch                 AT %MX1.0    : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bTasterSpezial                   AT %MX1.0    : BOOL; // OPTION  
-  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bEmpfaengerSensorEinlauf         AT %MX1.0    : BOOL; // OPTION
-  
-  // Buskoppler Eingänge
-  
-  // Portale Eingänge
-  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bGlasAufgestellt                 AT %MX1.0    : BOOL; // OPTION
+  // Standard Eingaenge
+  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bTasterGlasbruch                          AT %MX1.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bTasterSpezial                            AT %MX1.0    : BOOL; // OPTION
+  // VSG Eingaenge
+  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bAutomatikBetrieb                         AT %MX1.0    : BOOL; // VSG im Automatikbetrieb
+  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bGlasBereit                               AT %MX1.0    : BOOL; // VSG Glas bereit
 
   // ------------------------------------ HARDWARE AUSGAENGE ---------------------------------------
-  // Standart Ausgänge
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderBereit                   AT %MX5010.0 : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderGlasBereit               AT %MX5010.1 : BOOL; // OPTION
-                                         
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteGlasbruch               AT %MX5010.2 : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteSpezial                 AT %MX5010.3 : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bAmpelEventAktiv                AT %MX5010.4 : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleEinlauf[501].Horn.out_bHorn                      AT %MX5010.5 : BOOL; // OPTION
-  
-  // Buskoppler Ausgänge
-  
-  // Portale Ausgänge
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bBereitZumAufstellen            AT %MX5010.6 : BOOL; // OPTION
-  
+  // Standard Ausgaenge
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderBereit                            AT %MX5010.0 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderGlasBereit                        AT %MX5010.1 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteGlasbruch                        AT %MX5010.2 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteSpezial                          AT %MX5010.3 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bAmpelEventAktiv                         AT %MX5010.4 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].Horn.out_bHorn                               AT %MX5010.5 : BOOL; // OPTION
+  // VSG Ausgaenge
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bEinlaufsensor                           AT %MX5010.6 : BOOL; // Einlaufsensor an VSG
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bBereitZumEintrasport                    AT %MX5010.7 : BOOL; // bereit zum Eintransport
+
 END_VAR
+
 END_NAMESPACE

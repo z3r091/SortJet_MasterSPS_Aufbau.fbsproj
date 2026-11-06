@@ -26,9 +26,7 @@ starrStationBasisParameter[cSTATION_203].stParameterStationskomponenten.stQuerfa
    - Zuweisungen der Kipp-Stati für die Übernahme/Übergabe an/von der jeweiligen Station
 *)
 // Eintransport
-starrStationBasisParameter[cSTATION_203].stMKs.stSchnittstellendaten.aEintransporte.Station[cFREMDANLAGE_EINLAUF_1]                  := Vorwaertig;
-starrStationBasisParameter[cSTATION_203].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[cFREMDANLAGE_EINLAUF_1]            := eGlastransport_AufAuslaufVorab;
-starrStationBasisParameter[cSTATION_203].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cFREMDANLAGE_EINLAUF_1] := TRUE;
+// Nicht vorhanden
 
 // Austransport
 starrStationBasisParameter[cSTATION_203].stMKs.stSchnittstellendaten.aAustransporte.Station[cSTATION_202]                  := Vorwaertig;

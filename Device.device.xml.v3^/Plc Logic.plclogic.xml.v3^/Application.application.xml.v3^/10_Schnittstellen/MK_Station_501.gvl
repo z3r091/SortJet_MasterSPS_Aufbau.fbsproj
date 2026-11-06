@@ -25,7 +25,7 @@ VAR_GLOBAL
       // stStationsAufbau
       // stStationsParameter
       stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DEFAULT,
-                                                 wNachfolgerStation := cSTATION_201,
+                                                 wNachfolgerStation := cSTATION_204,
                                                  bStationIstShuttle := FALSE
                                                ),
       stFremdanlage                         := ( bWerteSwappen                          := FALSE,

@@ -10,47 +10,31 @@ NAMESPACE Konfiguration_Schnittstelle_401
 VAR_CONFIG
 
 //-------------------------------------------------------------------------------------------------
-// KONFIGURATION: SCHNITTSTELLE 401
+// KONFIGURATION: SCHNITTSTELLE 401 Auslauf Glaston mit Koppler
 //-------------------------------------------------------------------------------------------------
-
   // ------------------------------------ HARDWARE EINGAENGE ---------------------------------------
-  // Standart Eingänge
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bTasterGlasbruch                      AT %IX4.2    : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bTasterSpezial                        AT %IX4.3    : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bEmpfaengerSensorEinlauf              AT %MX1.0    : BOOL; // OPTION
-                                                                                              
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bGlasAbruf                            AT %MX1.0    : BOOL; // OK 
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bTransportRueckwaerts                 AT %MX1.0    : BOOL; // OK
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_wAnalogwertISOLinie                   AT %MW100    : WORD; // OPTION
-  
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bRiemenVor                            AT %MX1.0    : BOOL; // OK   
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bRiemenZurueck                        AT %MX1.0    : BOOL; // OK 
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bAnforderungSK                        AT %MX1.0    : BOOL; // OK 
-  
-  // Buskoppler Eingänge
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_wEmpfaengerLiveCounter                AT %MW100     : WORD;                      // Buskoppler Signale
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_stEmpfaengerAuftragsdatenGespiegelt   AT %MW100     : Schnittstelle_ScheibenIDs; // Buskoppler Signale
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_wEmpfaengerSignale                    AT %MW100     : WORD;                      // Buskoppler Signale
-  Globale_Bausteine.aSchnittstelleAuslauf[401].in_rEmpfaengerGeschwindigkeit            AT %MW100     : REAL;                      // Buskoppler Signale
-  
+  // Standard Eingaenge
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bTasterGlasbruch                          AT %MX1.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_bTasterSpezial                            AT %MX1.0    : BOOL; // OPTION
+  // Koppler Eingaenge (Empfaenger -> Sender)
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_wEmpfaengerLiveCounter                    AT %MW100    : WORD; // Wort 0 LiveCounter gespiegelt
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_awEmpfaengerLadeIDGespiegelt              AT %MW100    : ARRAY [1..8] OF WORD; // Wort 1..8 Lade-ID gespiegelt
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_wEmpfaengerSignale                        AT %MW100    : WORD; // Wort 49 Signale
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_dwEmpfaengerGeschwindigkeit               AT %MD50     : DWORD; // Wort 50 Geschwindigkeit [mm/s]
+  Globale_Bausteine.aSchnittstelleAuslauf[401].in_wEmpfaengerRampe                          AT %MW100    : WORD; // Wort 52 Rampe [mm/s2], OPTION
 
   // ------------------------------------ HARDWARE AUSGAENGE ---------------------------------------
-  // Standart Ausgänge
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bSenderBereit                        AT %MX4010.0 : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bSenderGlasBereit                    AT %QX4.0    : BOOL; // OK
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bFreigabeSK                          AT %QX4.1    : BOOL; // OK
-                                                                                        
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bLeuchteGlasbruch                    AT %QX3.2    : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bLeuchteSpezial                      AT %QX3.3    : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bAmpelEventAktiv                     AT %QX2.0    : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleAuslauf[401].Horn.out_bHorn                           AT %MX4010.1 : BOOL; // OPTION
-                                                                                        
-  // Buskoppler Ausgänge                                                                
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_wSenderLiveCounter                   AT %MW100    : WORD;                      // Buskoppler Signale
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_stSenderAuftragsdaten                AT %MW100    : Schnittstelle_ScheibenIDs; // Buskoppler Signale
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_wSenderAnzahlScheiben                AT %MW100    : WORD;                      // Buskoppler Signale                                                                                         
-  Globale_Bausteine.aSchnittstelleAuslauf[401].out_wSenderSignale                       AT %MW100    : WORD;                      // Buskoppler Signale
-
+  // Standard Ausgaenge
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bSenderBereit                            AT %MX4010.0 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bSenderGlasBereit                        AT %MX4010.1 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bLeuchteGlasbruch                        AT %MX4010.2 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bLeuchteSpezial                          AT %MX4010.3 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_bAmpelEventAktiv                         AT %MX4010.4 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleAuslauf[401].Horn.out_bHorn                               AT %MX4010.5 : BOOL; // OPTION
+  // Koppler Ausgaenge (Sender -> Empfaenger)
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_wSenderLiveCounter                       AT %MW4010   : WORD; // Wort 0 LiveCounter
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_wSenderSignale                           AT %MW4011   : WORD; // Wort 50 Signale
+  Globale_Bausteine.aSchnittstelleAuslauf[401].out_awSenderLadeID                           AT %MW4012   : ARRAY [1..8] OF WORD; // Wort 1..8 Lade-ID (%MW4012..%MW4019)
 
 END_VAR
 

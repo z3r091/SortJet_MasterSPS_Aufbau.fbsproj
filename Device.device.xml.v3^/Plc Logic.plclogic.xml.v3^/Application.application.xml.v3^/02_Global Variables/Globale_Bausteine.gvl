@@ -36,8 +36,8 @@ VAR_GLOBAL
   aTransfershuttles               : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Transfershuttle_FB_V01_00_00;
   
   // Schnittstelle
-  aSchnittstelleAuslauf           : ARRAY[cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF] OF Schnittstelle_Auslauf_Schneidanlage;
-  aSchnittstelleEinlauf           : ARRAY[cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF Schnittstelle_Einlauf_Portale;
+  aSchnittstelleAuslauf           : ARRAY[cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF] OF Schnittstelle_Auslauflinie_Glaston_Koppler_FB;
+  aSchnittstelleEinlauf           : ARRAY[cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF Schnittstelle_Einlauf_VSG;
   
 //-------------------------------------------------------------------------------------------------
 // DEKLARATION BASIS-BAUSTEINE
