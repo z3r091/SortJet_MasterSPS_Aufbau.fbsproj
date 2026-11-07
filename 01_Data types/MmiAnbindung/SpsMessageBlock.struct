@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "825d9501-06da-455c-bd81-ab05916cebf2"
-  }
+	"v3Meta": {
+		"objectGuid": "825d9501-06da-455c-bd81-ab05916cebf2"
+	}
 }
 *)
 TYPE SpsMessageBlock :

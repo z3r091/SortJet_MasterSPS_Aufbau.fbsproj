@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "6e9ad026-023d-4c36-963c-571344833198"
-  }
+	"v3Meta": {
+		"objectGuid": "6e9ad026-023d-4c36-963c-571344833198"
+	}
 }
 *)
 ACTION BETRIEBSART_Handminus

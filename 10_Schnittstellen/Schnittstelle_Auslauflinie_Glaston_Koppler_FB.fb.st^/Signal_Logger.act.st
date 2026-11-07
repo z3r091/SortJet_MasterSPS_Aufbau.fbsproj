@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ff5f9f2b-b260-4559-82ff-659fa60e9f74"
-  }
+	"v3Meta": {
+		"objectGuid": "ff5f9f2b-b260-4559-82ff-659fa60e9f74"
+	}
 }
 *)
 ACTION Signal_Logger

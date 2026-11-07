@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "0b2e66de-e2de-4ed3-849b-e96a185ab44d"
-  }
+	"v3Meta": {
+		"objectGuid": "0b2e66de-e2de-4ed3-849b-e96a185ab44d"
+	}
 }
 *)
 PROGRAM SystemCheck

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "c072031a-76c2-44a8-94fd-df0eea8cf4c6"
-  }
+	"v3Meta": {
+		"objectGuid": "c072031a-76c2-44a8-94fd-df0eea8cf4c6"
+	}
 }
 *)
 FUNCTION_BLOCK Hydraulik_FB_V01_00_00

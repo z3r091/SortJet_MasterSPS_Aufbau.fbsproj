@@ -1,13 +1,13 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "b4700291-72e9-4764-9056-4eb794f5b601",
-    "subObjects": {
-      "get": {
-        "objectGuid": "e79ace12-5d18-40b6-b8f3-80ee2bd17f67"
-      }
-    }
-  }
+	"v3Meta": {
+		"objectGuid": "b4700291-72e9-4764-9056-4eb794f5b601",
+		"subObjects": {
+			"get": {
+				"objectGuid": "e79ace12-5d18-40b6-b8f3-80ee2bd17f67"
+			}
+		}
+	}
 }
 *)
 PROPERTY_Get bBoxInHomePosition : BOOL

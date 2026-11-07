@@ -397,7 +397,7 @@ __V3_CONTENT__
 					</Single>
 					<Single Name="Name" Type="string">Diagramm 1</Single>
 					<Single Name="Visible" Type="bool">True</Single>
-					<Single Name="DiagramGuid" Type="System.Guid">bbc0216c-785f-4072-bb89-c48ae1822144</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">6e56f3ed-313c-444e-aaa9-8dbccfca755c</Single>
 				</Single>
 				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
 					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
@@ -435,7 +435,7 @@ __V3_CONTENT__
 					</Single>
 					<Single Name="Name" Type="string">Diagramm 2</Single>
 					<Single Name="Visible" Type="bool">True</Single>
-					<Single Name="DiagramGuid" Type="System.Guid">45f6ef5e-aa43-45c4-acd9-d50b697f5b9d</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">e613ccb4-e973-43a3-a665-5e0cdd219fa9</Single>
 				</Single>
 				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
 					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
@@ -473,7 +473,7 @@ __V3_CONTENT__
 					</Single>
 					<Single Name="Name" Type="string">Diagramm 3</Single>
 					<Single Name="Visible" Type="bool">True</Single>
-					<Single Name="DiagramGuid" Type="System.Guid">1fc26d2d-f4eb-4a32-bf54-730972dacabe</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">2779a5df-0b07-436c-9656-07a9f5e751ed</Single>
 				</Single>
 				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
 					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
@@ -511,7 +511,7 @@ __V3_CONTENT__
 					</Single>
 					<Single Name="Name" Type="string">Diagramm 4</Single>
 					<Single Name="Visible" Type="bool">True</Single>
-					<Single Name="DiagramGuid" Type="System.Guid">41f70098-fe37-4d82-9f91-7d9e1901c5d2</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">d0cd68ae-68f8-427f-9d09-e03bb4961a71</Single>
 				</Single>
 				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
 					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
@@ -549,7 +549,7 @@ __V3_CONTENT__
 					</Single>
 					<Single Name="Name" Type="string">Diagramm 5</Single>
 					<Single Name="Visible" Type="bool">True</Single>
-					<Single Name="DiagramGuid" Type="System.Guid">f26371ea-287b-4816-b200-5c7cce361677</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">3eed05a3-6ab8-49d5-b977-0ce2bceebc00</Single>
 				</Single>
 				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
 					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
@@ -587,7 +587,7 @@ __V3_CONTENT__
 					</Single>
 					<Single Name="Name" Type="string">Diagramm 6</Single>
 					<Single Name="Visible" Type="bool">True</Single>
-					<Single Name="DiagramGuid" Type="System.Guid">fd13b11b-53d3-430b-aa51-57e42de83dc7</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">e200604b-a894-4b91-8b31-b4dace306303</Single>
 				</Single>
 				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
 					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
@@ -625,7 +625,7 @@ __V3_CONTENT__
 					</Single>
 					<Single Name="Name" Type="string">Diagramm 7</Single>
 					<Single Name="Visible" Type="bool">True</Single>
-					<Single Name="DiagramGuid" Type="System.Guid">0b953755-1fb1-46b1-be7d-0ee03840014c</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">39ec10dd-f218-4c90-80f5-b38b0020a25e</Single>
 				</Single>
 			</List2>
 		</Single>

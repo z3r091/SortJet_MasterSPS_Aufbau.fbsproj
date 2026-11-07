@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "db133b7b-c5ef-4a5f-a67a-e8a200ede397"
-  }
+	"v3Meta": {
+		"objectGuid": "db133b7b-c5ef-4a5f-a67a-e8a200ede397"
+	}
 }
 *)
 ACTION Zentrierung

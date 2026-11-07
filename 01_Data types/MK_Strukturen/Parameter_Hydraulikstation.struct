@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "0053b35c-9a27-4c28-8082-f9b13fc3c021"
-  }
+	"v3Meta": {
+		"objectGuid": "0053b35c-9a27-4c28-8082-f9b13fc3c021"
+	}
 }
 *)
 TYPE Parameter_Hydraulikstation :

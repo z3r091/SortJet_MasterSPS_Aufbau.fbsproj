@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "44ad1bc3-096e-465b-b4ec-28e3c17631d4"
-  }
+	"v3Meta": {
+		"objectGuid": "44ad1bc3-096e-465b-b4ec-28e3c17631d4"
+	}
 }
 *)
 TYPE Stations_Optionen_Transfershuttle_ST :

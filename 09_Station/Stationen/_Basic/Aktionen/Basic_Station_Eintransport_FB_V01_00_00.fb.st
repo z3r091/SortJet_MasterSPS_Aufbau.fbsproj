@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "0e6ffebb-2f8e-4d3e-883f-b07758de8e3e"
-  }
+	"v3Meta": {
+		"objectGuid": "0e6ffebb-2f8e-4d3e-883f-b07758de8e3e"
+	}
 }
 *)
 FUNCTION_BLOCK Basic_Station_Eintransport_FB_V01_00_00 EXTENDS Basic_Station_Aktion_FB_V01_00_00
@@ -344,3 +344,4 @@ ELSE
   END_IF
 
 END_IF
+END_FUNCTION_BLOCK

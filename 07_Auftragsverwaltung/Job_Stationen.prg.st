@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "9b3e7ff2-3a2c-4bce-8ea4-25f3e47febe0"
-  }
+	"v3Meta": {
+		"objectGuid": "9b3e7ff2-3a2c-4bce-8ea4-25f3e47febe0"
+	}
 }
 *)
 PROGRAM Job_Stationen

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "008eb84c-ed0d-4cb0-9376-462b0a38bc1c"
-  }
+	"v3Meta": {
+		"objectGuid": "008eb84c-ed0d-4cb0-9376-462b0a38bc1c"
+	}
 }
 *)
 PROGRAM StatusAnlage

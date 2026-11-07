@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ab555bd9-071e-43b1-a092-e5b06e599395"
-  }
+	"v3Meta": {
+		"objectGuid": "ab555bd9-071e-43b1-a092-e5b06e599395"
+	}
 }
 *)
 TYPE Parameter_Automatikkreis :

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "64fb0dc5-1160-4980-b132-1d54e53c3073"
-  }
+	"v3Meta": {
+		"objectGuid": "64fb0dc5-1160-4980-b132-1d54e53c3073"
+	}
 }
 *)
 FUNCTION_BLOCK Drehstation_Vortransport_FB_V01_00_00 EXTENDS Basic_Station_Vortransport_FB_V01_00_00

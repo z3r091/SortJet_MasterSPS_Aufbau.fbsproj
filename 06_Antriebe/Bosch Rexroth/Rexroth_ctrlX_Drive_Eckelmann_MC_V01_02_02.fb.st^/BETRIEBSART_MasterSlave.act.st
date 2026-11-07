@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "6d2aa95c-c8c9-48d0-a651-a62b0cc396bc"
-  }
+	"v3Meta": {
+		"objectGuid": "6d2aa95c-c8c9-48d0-a651-a62b0cc396bc"
+	}
 }
 *)
 ACTION BETRIEBSART_MasterSlave

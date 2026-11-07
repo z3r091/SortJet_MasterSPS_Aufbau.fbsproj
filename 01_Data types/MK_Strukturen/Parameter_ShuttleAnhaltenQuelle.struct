@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ecf30170-1aa7-4ab8-bb6b-aadbf5f2ca9d"
-  }
+	"v3Meta": {
+		"objectGuid": "ecf30170-1aa7-4ab8-bb6b-aadbf5f2ca9d"
+	}
 }
 *)
 // Beschreibt eine einzelne Ueberwachungsquelle fuer bpShuttleAnhalten.

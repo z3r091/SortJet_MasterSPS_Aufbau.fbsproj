@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "bb2ac76d-e136-43b9-91b5-1f4b010b201a"
-  }
+	"v3Meta": {
+		"objectGuid": "bb2ac76d-e136-43b9-91b5-1f4b010b201a"
+	}
 }
 *)
 FUNCTION_BLOCK Shuttle_Greifer_FB_V01_00_00

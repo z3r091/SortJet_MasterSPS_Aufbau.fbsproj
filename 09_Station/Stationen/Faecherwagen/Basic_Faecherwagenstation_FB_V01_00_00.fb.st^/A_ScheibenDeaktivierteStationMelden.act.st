@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "9787c6c4-89ac-4e67-aebe-436ca2600e9a"
-  }
+	"v3Meta": {
+		"objectGuid": "9787c6c4-89ac-4e67-aebe-436ca2600e9a"
+	}
 }
 *)
 ACTION A_ScheibenDeaktivierteStationMelden

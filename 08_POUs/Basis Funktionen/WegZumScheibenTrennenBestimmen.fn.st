@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "975fc77d-048f-43ed-b0dc-a9d95a26ef34"
-  }
+	"v3Meta": {
+		"objectGuid": "975fc77d-048f-43ed-b0dc-a9d95a26ef34"
+	}
 }
 *)
 FUNCTION WegZumScheibenTrennenBestimmen : REAL

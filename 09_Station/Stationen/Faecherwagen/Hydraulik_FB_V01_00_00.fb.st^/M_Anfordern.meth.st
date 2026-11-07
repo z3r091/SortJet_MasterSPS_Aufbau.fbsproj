@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "a1f16c92-caf1-4fb2-b3e1-8749538944e0"
-  }
+	"v3Meta": {
+		"objectGuid": "a1f16c92-caf1-4fb2-b3e1-8749538944e0"
+	}
 }
 *)
 METHOD M_Anfordern

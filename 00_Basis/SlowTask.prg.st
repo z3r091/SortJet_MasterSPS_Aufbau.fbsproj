@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "14e1f1f9-a11c-4000-82c5-ba9f94dc3c1b"
-  }
+	"v3Meta": {
+		"objectGuid": "14e1f1f9-a11c-4000-82c5-ba9f94dc3c1b"
+	}
 }
 *)
 PROGRAM SlowTask

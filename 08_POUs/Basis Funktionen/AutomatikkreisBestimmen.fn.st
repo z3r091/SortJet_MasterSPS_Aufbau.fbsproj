@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "9ed7362d-6e8b-45fc-aaf5-a3cbb726335b"
-  }
+	"v3Meta": {
+		"objectGuid": "9ed7362d-6e8b-45fc-aaf5-a3cbb726335b"
+	}
 }
 *)
 FUNCTION AutomatikkreisBestimmen : Automatikkreis_EN

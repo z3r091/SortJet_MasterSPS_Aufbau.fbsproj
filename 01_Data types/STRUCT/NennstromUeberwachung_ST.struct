@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "21bd527b-a14c-43ed-9324-211f1af32365"
-  }
+	"v3Meta": {
+		"objectGuid": "21bd527b-a14c-43ed-9324-211f1af32365"
+	}
 }
 *)
 TYPE NennstromUeberwachung_ST :

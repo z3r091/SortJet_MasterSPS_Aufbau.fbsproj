@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "b642c49f-6ffa-4fce-b10f-dd7fb5dad387"
-  }
+	"v3Meta": {
+		"objectGuid": "b642c49f-6ffa-4fce-b10f-dd7fb5dad387"
+	}
 }
 *)
 METHOD checkMeldungsnummer

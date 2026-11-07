@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ab37f234-5c30-423e-82fd-562034963c76"
-  }
+	"v3Meta": {
+		"objectGuid": "ab37f234-5c30-423e-82fd-562034963c76"
+	}
 }
 *)
 ACTION Auftragsverwaltung

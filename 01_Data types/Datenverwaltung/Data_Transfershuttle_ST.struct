@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "4d909b48-e22e-4f84-b366-ece770ef0306"
-  }
+	"v3Meta": {
+		"objectGuid": "4d909b48-e22e-4f84-b366-ece770ef0306"
+	}
 }
 *)
 TYPE Data_Transfershuttle_ST :

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "281ccc1c-3965-40cf-8682-0228b96383da"
-  }
+	"v3Meta": {
+		"objectGuid": "281ccc1c-3965-40cf-8682-0228b96383da"
+	}
 }
 *)
 FUNCTION_BLOCK Basic_Station_Austransport_FB_V01_00_00 EXTENDS Basic_Station_Aktion_FB_V01_00_00
@@ -282,3 +282,4 @@ ELSE
   END_IF
 
 END_IF
+END_FUNCTION_BLOCK

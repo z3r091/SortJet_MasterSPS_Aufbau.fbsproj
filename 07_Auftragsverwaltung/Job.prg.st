@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "d795aefc-c30c-4a59-9340-fdd22ca20f71"
-  }
+	"v3Meta": {
+		"objectGuid": "d795aefc-c30c-4a59-9340-fdd22ca20f71"
+	}
 }
 *)
 PROGRAM Job

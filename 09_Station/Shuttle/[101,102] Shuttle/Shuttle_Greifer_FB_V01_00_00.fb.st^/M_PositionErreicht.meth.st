@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "1edc7426-caec-4d96-a98e-0fd4c2f89ae2"
-  }
+	"v3Meta": {
+		"objectGuid": "1edc7426-caec-4d96-a98e-0fd4c2f89ae2"
+	}
 }
 *)
 METHOD PRIVATE M_PositionErreicht : BOOL

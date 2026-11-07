@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2705adee-87c7-49e7-9fc6-baba39eb4987"
-  }
+	"v3Meta": {
+		"objectGuid": "2705adee-87c7-49e7-9fc6-baba39eb4987"
+	}
 }
 *)
 ACTION Durchtransport

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "0d6757e1-53e1-48aa-88ce-f4bfba7d69cc"
-  }
+	"v3Meta": {
+		"objectGuid": "0d6757e1-53e1-48aa-88ce-f4bfba7d69cc"
+	}
 }
 *)
 ACTION Zuweisung_201

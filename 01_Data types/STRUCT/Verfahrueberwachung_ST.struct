@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "aced2795-3242-4b4e-a506-39e3edc05a60"
-  }
+	"v3Meta": {
+		"objectGuid": "aced2795-3242-4b4e-a506-39e3edc05a60"
+	}
 }
 *)
 TYPE Verfahrueberwachung_ST :

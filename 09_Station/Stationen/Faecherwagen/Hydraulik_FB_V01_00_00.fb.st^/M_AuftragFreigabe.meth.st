@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2275e5b1-b203-4bf0-b30f-688441afb91b"
-  }
+	"v3Meta": {
+		"objectGuid": "2275e5b1-b203-4bf0-b30f-688441afb91b"
+	}
 }
 *)
 METHOD M_AuftragFreigabe : BOOL

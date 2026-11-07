@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "12c9ac0e-b17a-4793-9910-dd4830696017"
-  }
+	"v3Meta": {
+		"objectGuid": "12c9ac0e-b17a-4793-9910-dd4830696017"
+	}
 }
 *)
 FUNCTION_BLOCK Basic_Station_Aktion_FB_V01_00_00

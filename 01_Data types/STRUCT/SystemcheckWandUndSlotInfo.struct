@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ee3d6a03-5198-4061-b1f2-19afd166df0e"
-  }
+	"v3Meta": {
+		"objectGuid": "ee3d6a03-5198-4061-b1f2-19afd166df0e"
+	}
 }
 *)
 TYPE SystemcheckWandUndSlotInfo :

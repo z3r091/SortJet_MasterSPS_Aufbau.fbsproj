@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "577e9539-3133-4f06-80f9-5ab9a23fcb59"
-  }
+	"v3Meta": {
+		"objectGuid": "577e9539-3133-4f06-80f9-5ab9a23fcb59"
+	}
 }
 *)
 METHOD checkStationsnummern

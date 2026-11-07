@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "c56eadd1-6a03-441b-92cd-92ef44470b75"
-  }
+	"v3Meta": {
+		"objectGuid": "c56eadd1-6a03-441b-92cd-92ef44470b75"
+	}
 }
 *)
 TYPE Parameter_Schicherheitskreise :

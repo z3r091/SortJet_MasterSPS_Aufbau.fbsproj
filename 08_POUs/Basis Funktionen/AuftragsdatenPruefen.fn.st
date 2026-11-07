@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "657d7773-50f6-4a46-b86f-6fc5131c38e4"
-  }
+	"v3Meta": {
+		"objectGuid": "657d7773-50f6-4a46-b86f-6fc5131c38e4"
+	}
 }
 *)
 FUNCTION AuftragsdatenPruefen : BOOL

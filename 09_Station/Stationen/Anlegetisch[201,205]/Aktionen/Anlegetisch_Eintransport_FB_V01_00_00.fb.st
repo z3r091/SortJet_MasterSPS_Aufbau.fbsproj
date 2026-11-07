@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "acd5983d-167d-4071-a6a9-aefc553f060d"
-  }
+	"v3Meta": {
+		"objectGuid": "acd5983d-167d-4071-a6a9-aefc553f060d"
+	}
 }
 *)
 FUNCTION_BLOCK Anlegetisch_Eintransport_FB_V01_00_00 EXTENDS Basic_Station_Eintransport_FB_V01_00_00
@@ -206,3 +206,4 @@ ELSE
   END_IF
 
 END_IF
+END_FUNCTION_BLOCK

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "466fafaa-eb0c-4cc2-9ac3-d488ea338d40"
-  }
+	"v3Meta": {
+		"objectGuid": "466fafaa-eb0c-4cc2-9ac3-d488ea338d40"
+	}
 }
 *)
 FUNCTION_BLOCK Basic_Schnittstelle_FB_V01_00_00

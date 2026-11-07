@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "41f5393d-bf68-4ef4-aca8-1dae62f52119"
-  }
+	"v3Meta": {
+		"objectGuid": "41f5393d-bf68-4ef4-aca8-1dae62f52119"
+	}
 }
 *)
 ACTION Zuweisung_152

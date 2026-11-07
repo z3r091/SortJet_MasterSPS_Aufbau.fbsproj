@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "bd102b56-7bf2-4c3e-9f9f-20c2f6214e54"
-  }
+	"v3Meta": {
+		"objectGuid": "bd102b56-7bf2-4c3e-9f9f-20c2f6214e54"
+	}
 }
 *)
 TYPE Antrieb_Optionen_ST :

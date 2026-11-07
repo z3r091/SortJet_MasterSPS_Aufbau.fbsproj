@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "982aba90-0acc-40e8-a264-02942c4eba65"
-  }
+	"v3Meta": {
+		"objectGuid": "982aba90-0acc-40e8-a264-02942c4eba65"
+	}
 }
 *)
 ACTION VerstellungOeffnen

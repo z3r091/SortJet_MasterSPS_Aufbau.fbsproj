@@ -1,13 +1,13 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2352fb78-04c9-475f-831f-a04795369c32",
-    "subObjects": {
-      "get": {
-        "objectGuid": "da493ef4-54be-4346-9f12-972f6d8ad0ee"
-      }
-    }
-  }
+	"v3Meta": {
+		"objectGuid": "2352fb78-04c9-475f-831f-a04795369c32",
+		"subObjects": {
+			"get": {
+				"objectGuid": "da493ef4-54be-4346-9f12-972f6d8ad0ee"
+			}
+		}
+	}
 }
 *)
 PROPERTY_Get wFehlerNr : WORD

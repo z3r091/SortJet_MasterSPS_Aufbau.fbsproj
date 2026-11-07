@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "49e61962-d159-4127-bd8a-15e72a9d6a46"
-  }
+	"v3Meta": {
+		"objectGuid": "49e61962-d159-4127-bd8a-15e72a9d6a46"
+	}
 }
 *)
 ACTION Handfunktionen

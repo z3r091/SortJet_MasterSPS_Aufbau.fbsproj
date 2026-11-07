@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ad382906-41ff-48e9-a081-ed27d36bc901"
-  }
+	"v3Meta": {
+		"objectGuid": "ad382906-41ff-48e9-a081-ed27d36bc901"
+	}
 }
 *)
 FUNCTION_BLOCK Drehstation_Eintransport_FB_V01_00_00 EXTENDS Basic_Station_Eintransport_FB_V01_00_00

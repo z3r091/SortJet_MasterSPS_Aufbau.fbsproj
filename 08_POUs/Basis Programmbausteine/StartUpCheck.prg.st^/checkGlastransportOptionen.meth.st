@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "9d81c253-8159-4cb9-9043-a22c56ba0597"
-  }
+	"v3Meta": {
+		"objectGuid": "9d81c253-8159-4cb9-9043-a22c56ba0597"
+	}
 }
 *)
 METHOD checkGlastransportOptionen

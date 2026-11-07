@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "28c2f51d-961b-43ef-bdfa-172c994fc6b7"
-  }
+	"v3Meta": {
+		"objectGuid": "28c2f51d-961b-43ef-bdfa-172c994fc6b7"
+	}
 }
 *)
 TYPE Steps_TE : (

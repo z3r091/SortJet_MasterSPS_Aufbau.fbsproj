@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2f1f2564-8eff-43f7-8c8f-4a939be6a082"
-  }
+	"v3Meta": {
+		"objectGuid": "2f1f2564-8eff-43f7-8c8f-4a939be6a082"
+	}
 }
 *)
 FUNCTION VisuUeb_Sensor : DWORD

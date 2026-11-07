@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "729fe2ea-084a-4a7e-9ac5-2a2b782fb230"
-  }
+	"v3Meta": {
+		"objectGuid": "729fe2ea-084a-4a7e-9ac5-2a2b782fb230"
+	}
 }
 *)
 ACTION Austransport_MasterSlave

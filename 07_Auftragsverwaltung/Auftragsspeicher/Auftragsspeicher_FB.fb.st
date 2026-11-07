@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "23ce62b1-5b0b-40f5-8f51-012d540e19cc"
-  }
+	"v3Meta": {
+		"objectGuid": "23ce62b1-5b0b-40f5-8f51-012d540e19cc"
+	}
 }
 *)
 FUNCTION_BLOCK Auftragsspeicher_FB

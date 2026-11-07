@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2fba16dc-56bd-4c56-9768-dbe33d4a7ec0"
-  }
+	"v3Meta": {
+		"objectGuid": "2fba16dc-56bd-4c56-9768-dbe33d4a7ec0"
+	}
 }
 *)
 FUNCTION_BLOCK AuftragsSpeicherStationen

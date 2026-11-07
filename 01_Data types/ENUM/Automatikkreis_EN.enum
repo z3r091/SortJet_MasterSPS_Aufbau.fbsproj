@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "c4a2862a-7dc9-4090-a07e-a2128bb2ebbd"
-  }
+	"v3Meta": {
+		"objectGuid": "c4a2862a-7dc9-4090-a07e-a2128bb2ebbd"
+	}
 }
 *)
 TYPE Automatikkreis_EN :

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "1d0ebe0f-be57-4ced-a649-54fad2d51936"
-  }
+	"v3Meta": {
+		"objectGuid": "1d0ebe0f-be57-4ced-a649-54fad2d51936"
+	}
 }
 *)
 ACTION SendMsg

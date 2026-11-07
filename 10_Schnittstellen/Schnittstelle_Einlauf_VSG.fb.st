@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "fbbba330-556c-41e3-bb2c-ea5fa1aaa6e1"
-  }
+	"v3Meta": {
+		"objectGuid": "fbbba330-556c-41e3-bb2c-ea5fa1aaa6e1"
+	}
 }
 *)
 FUNCTION_BLOCK Schnittstelle_Einlauf_VSG EXTENDS Basic_Schnittstelle_FB_V01_00_00

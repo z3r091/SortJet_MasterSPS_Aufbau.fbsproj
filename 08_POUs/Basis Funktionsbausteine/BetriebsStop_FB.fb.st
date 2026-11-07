@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "07d57a24-f3c0-4742-8d44-44a8d21cf93a"
-  }
+	"v3Meta": {
+		"objectGuid": "07d57a24-f3c0-4742-8d44-44a8d21cf93a"
+	}
 }
 *)
 FUNCTION_BLOCK BetriebsStop_FB

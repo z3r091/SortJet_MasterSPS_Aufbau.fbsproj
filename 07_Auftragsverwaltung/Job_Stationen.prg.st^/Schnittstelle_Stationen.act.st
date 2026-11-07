@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2f0e1e2b-c489-43f6-919f-1d41b03fa1f2"
-  }
+	"v3Meta": {
+		"objectGuid": "2f0e1e2b-c489-43f6-919f-1d41b03fa1f2"
+	}
 }
 *)
 ACTION Schnittstelle_Stationen

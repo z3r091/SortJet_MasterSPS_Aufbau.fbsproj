@@ -1,13 +1,13 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "40a5a310-f00f-405b-be90-3a4b6b890551",
-    "subObjects": {
-      "get": {
-        "objectGuid": "d3282f9a-56d5-4136-98cc-31e252b7aa68"
-      }
-    }
-  }
+	"v3Meta": {
+		"objectGuid": "40a5a310-f00f-405b-be90-3a4b6b890551",
+		"subObjects": {
+			"get": {
+				"objectGuid": "d3282f9a-56d5-4136-98cc-31e252b7aa68"
+			}
+		}
+	}
 }
 *)
 PROPERTY_Get eStatus : eLetzter_FW_Status

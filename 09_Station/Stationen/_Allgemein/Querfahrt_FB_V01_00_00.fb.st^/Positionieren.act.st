@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "76371902-e2b0-44ff-9558-a645788a677a"
-  }
+	"v3Meta": {
+		"objectGuid": "76371902-e2b0-44ff-9558-a645788a677a"
+	}
 }
 *)
 ACTION Positionieren

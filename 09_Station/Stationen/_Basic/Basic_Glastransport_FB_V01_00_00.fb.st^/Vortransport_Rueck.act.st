@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2a669734-5300-48d4-88ee-f5d086977bb5"
-  }
+	"v3Meta": {
+		"objectGuid": "2a669734-5300-48d4-88ee-f5d086977bb5"
+	}
 }
 *)
 ACTION Vortransport_Rueck

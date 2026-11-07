@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2b51cd18-a11d-48d6-a685-bb5f301afb70"
-  }
+	"v3Meta": {
+		"objectGuid": "2b51cd18-a11d-48d6-a685-bb5f301afb70"
+	}
 }
 *)
 FUNCTION_BLOCK Station_Durchtransport

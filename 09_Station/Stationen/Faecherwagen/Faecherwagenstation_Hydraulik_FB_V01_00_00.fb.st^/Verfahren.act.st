@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "1a90b67d-eadb-42b7-b00d-35bfd6d27b92"
-  }
+	"v3Meta": {
+		"objectGuid": "1a90b67d-eadb-42b7-b00d-35bfd6d27b92"
+	}
 }
 *)
 ACTION Verfahren

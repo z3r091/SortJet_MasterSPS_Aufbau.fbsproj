@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2dfa9b46-65fe-42f1-b72f-b251bddaa00a"
-  }
+	"v3Meta": {
+		"objectGuid": "2dfa9b46-65fe-42f1-b72f-b251bddaa00a"
+	}
 }
 *)
 PROGRAM ErsteUndLetzteScheibeBits

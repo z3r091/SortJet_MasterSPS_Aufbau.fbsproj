@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "b52f7e1b-0895-4108-81cf-cdcbe2d8ee2c"
-  }
+	"v3Meta": {
+		"objectGuid": "b52f7e1b-0895-4108-81cf-cdcbe2d8ee2c"
+	}
 }
 *)
 TYPE Auftraege_Faecherwagen_EN :

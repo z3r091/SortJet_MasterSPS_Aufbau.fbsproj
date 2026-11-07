@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "212c3c69-b3ee-4d9d-ac64-7450de5fc49f"
-  }
+	"v3Meta": {
+		"objectGuid": "212c3c69-b3ee-4d9d-ac64-7450de5fc49f"
+	}
 }
 *)
 ACTION RFID_Auslesen

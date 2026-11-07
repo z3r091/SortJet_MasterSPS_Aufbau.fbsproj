@@ -1,13 +1,13 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "3df7df1f-c504-4c81-b2ac-a9739022df9c",
-    "subObjects": {
-      "get": {
-        "objectGuid": "7aa36f87-e779-465c-8963-ac786decd70c"
-      }
-    }
-  }
+	"v3Meta": {
+		"objectGuid": "3df7df1f-c504-4c81-b2ac-a9739022df9c",
+		"subObjects": {
+			"get": {
+				"objectGuid": "7aa36f87-e779-465c-8963-ac786decd70c"
+			}
+		}
+	}
 }
 *)
 PROPERTY_Get bMerkerEinschleusenQuittiert : BOOL

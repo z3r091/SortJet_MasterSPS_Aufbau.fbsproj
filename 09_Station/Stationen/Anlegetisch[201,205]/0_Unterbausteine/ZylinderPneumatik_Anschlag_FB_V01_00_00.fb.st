@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "73b344ea-77d6-4df9-8490-b74a4c5cebf9"
-  }
+	"v3Meta": {
+		"objectGuid": "73b344ea-77d6-4df9-8490-b74a4c5cebf9"
+	}
 }
 *)
 FUNCTION_BLOCK ZylinderPneumatik_Anschlag_FB_V01_00_00

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2254a377-1dbb-47e5-a6cb-497511b1e2ee"
-  }
+	"v3Meta": {
+		"objectGuid": "2254a377-1dbb-47e5-a6cb-497511b1e2ee"
+	}
 }
 *)
 FUNCTION_BLOCK Transfershuttle_Glastransport_FB_V01_00_00

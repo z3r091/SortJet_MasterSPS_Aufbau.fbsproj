@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "9344cd08-074d-4d9b-8f38-9deed52e1a06"
-  }
+	"v3Meta": {
+		"objectGuid": "9344cd08-074d-4d9b-8f38-9deed52e1a06"
+	}
 }
 *)
 ACTION Stillstandsposition

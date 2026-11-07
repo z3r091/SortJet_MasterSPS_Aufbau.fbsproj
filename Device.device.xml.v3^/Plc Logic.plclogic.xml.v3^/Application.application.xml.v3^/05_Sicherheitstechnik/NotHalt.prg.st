@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "69a82f5e-5606-42e6-b3a3-559b5ec715fe"
-  }
+	"v3Meta": {
+		"objectGuid": "69a82f5e-5606-42e6-b3a3-559b5ec715fe"
+	}
 }
 *)
 PROGRAM NotHalt

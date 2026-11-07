@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "0f541bc3-a05b-4efd-b035-d22dfd3bf15e"
-  }
+	"v3Meta": {
+		"objectGuid": "0f541bc3-a05b-4efd-b035-d22dfd3bf15e"
+	}
 }
 *)
 {attribute 'excludefrombuild'}

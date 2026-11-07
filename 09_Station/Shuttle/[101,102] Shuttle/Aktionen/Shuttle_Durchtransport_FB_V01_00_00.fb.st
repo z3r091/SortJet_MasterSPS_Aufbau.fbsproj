@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "fde90b53-97e1-44a2-93b0-a69a2d65f26b"
-  }
+	"v3Meta": {
+		"objectGuid": "fde90b53-97e1-44a2-93b0-a69a2d65f26b"
+	}
 }
 *)
 FUNCTION_BLOCK Shuttle_Durchtransport_FB_V01_00_00 EXTENDS Basic_Shuttle_Aktion_FB_V01_00_00

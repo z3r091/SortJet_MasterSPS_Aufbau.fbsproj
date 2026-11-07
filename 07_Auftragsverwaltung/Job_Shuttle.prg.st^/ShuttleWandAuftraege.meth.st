@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "a4d875f2-deb1-4181-ad49-6660bcb8c981"
-  }
+	"v3Meta": {
+		"objectGuid": "a4d875f2-deb1-4181-ad49-6660bcb8c981"
+	}
 }
 *)
 METHOD ShuttleWandAuftraege

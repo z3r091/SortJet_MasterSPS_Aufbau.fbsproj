@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "9163b753-2f53-45a5-ad65-dca0ef5cf594"
-  }
+	"v3Meta": {
+		"objectGuid": "9163b753-2f53-45a5-ad65-dca0ef5cf594"
+	}
 }
 *)
 TYPE Stations_Parameter_Fremdanlage_ST :

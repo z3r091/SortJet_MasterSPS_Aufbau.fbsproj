@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "679129d7-748c-405f-80fb-fdc1b01c2175"
-  }
+	"v3Meta": {
+		"objectGuid": "679129d7-748c-405f-80fb-fdc1b01c2175"
+	}
 }
 *)
 ACTION Betriebsart

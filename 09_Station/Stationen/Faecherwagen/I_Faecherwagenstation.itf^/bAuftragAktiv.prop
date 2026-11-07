@@ -1,13 +1,13 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "6895df87-acaa-4341-b660-0486025b4ec1",
-    "subObjects": {
-      "get": {
-        "objectGuid": "04b57815-91eb-49bc-9ec1-6922c1e208a9"
-      }
-    }
-  }
+	"v3Meta": {
+		"objectGuid": "6895df87-acaa-4341-b660-0486025b4ec1",
+		"subObjects": {
+			"get": {
+				"objectGuid": "04b57815-91eb-49bc-9ec1-6922c1e208a9"
+			}
+		}
+	}
 }
 *)
 PROPERTY_Get bAuftragAktiv : BOOL

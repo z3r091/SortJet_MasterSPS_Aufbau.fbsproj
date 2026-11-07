@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "1190007f-e857-4ecd-9ce5-2fcdfdbf097c"
-  }
+	"v3Meta": {
+		"objectGuid": "1190007f-e857-4ecd-9ce5-2fcdfdbf097c"
+	}
 }
 *)
 FUNCTION_BLOCK Hegla_Gateway_Komm_FB

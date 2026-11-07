@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "339b2ef9-3f23-482c-98f4-06c495d9a955"
-  }
+	"v3Meta": {
+		"objectGuid": "339b2ef9-3f23-482c-98f4-06c495d9a955"
+	}
 }
 *)
 FUNCTION AutomatikAktiv : BOOL

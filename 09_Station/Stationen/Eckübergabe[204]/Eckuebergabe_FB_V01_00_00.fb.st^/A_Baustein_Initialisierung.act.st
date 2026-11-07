@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "67868d6b-541a-45ac-89e3-ed05617015a3"
-  }
+	"v3Meta": {
+		"objectGuid": "67868d6b-541a-45ac-89e3-ed05617015a3"
+	}
 }
 *)
 ACTION A_Baustein_Initialisierung

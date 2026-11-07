@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "04449e84-691b-4e69-833a-86a17a5f4911"
-  }
+	"v3Meta": {
+		"objectGuid": "04449e84-691b-4e69-833a-86a17a5f4911"
+	}
 }
 *)
 FUNCTION_BLOCK Basic_Station_Messkopplung_FB_V01_00_00 EXTENDS Basic_Station_Aktion_FB_V01_00_00
@@ -139,3 +139,4 @@ ELSE
   END_IF
 
 END_IF
+END_FUNCTION_BLOCK

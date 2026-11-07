@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "03cf6ff6-d378-4ff5-8445-541e648ef0b8"
-  }
+	"v3Meta": {
+		"objectGuid": "03cf6ff6-d378-4ff5-8445-541e648ef0b8"
+	}
 }
 *)
 FUNCTION_BLOCK Hub_FB_V01_00_00

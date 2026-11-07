@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "172e920b-29d9-426f-accd-100b114f0ac1"
-  }
+	"v3Meta": {
+		"objectGuid": "172e920b-29d9-426f-accd-100b114f0ac1"
+	}
 }
 *)
 ACTION AutarkePositionierung

@@ -6,6 +6,7 @@
 		"subObjects": {}
 	},
 	"customProperties": {
+		"IsStorageFormatPinned": false,
 		"Project": ""
 	}
 }

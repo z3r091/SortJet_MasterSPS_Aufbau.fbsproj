@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "13f78e6e-ca3a-4dd4-bc80-ae0752972bf6"
-  }
+	"v3Meta": {
+		"objectGuid": "13f78e6e-ca3a-4dd4-bc80-ae0752972bf6"
+	}
 }
 *)
 ACTION StarteTouchprobeFunktion

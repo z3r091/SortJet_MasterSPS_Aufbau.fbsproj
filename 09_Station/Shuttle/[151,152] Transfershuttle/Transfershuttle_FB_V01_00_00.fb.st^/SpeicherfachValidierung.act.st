@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "74a6612c-c54e-4353-b111-97703b6d8bd7"
-  }
+	"v3Meta": {
+		"objectGuid": "74a6612c-c54e-4353-b111-97703b6d8bd7"
+	}
 }
 *)
 ACTION SpeicherfachValidierung

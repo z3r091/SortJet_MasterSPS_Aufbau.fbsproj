@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "a476ff61-aec7-4f12-8d88-b01865ebe224"
-  }
+	"v3Meta": {
+		"objectGuid": "a476ff61-aec7-4f12-8d88-b01865ebe224"
+	}
 }
 *)
 TYPE MsgHeader :

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "3cf7151a-d1e7-411b-8787-2152828f9434"
-  }
+	"v3Meta": {
+		"objectGuid": "3cf7151a-d1e7-411b-8787-2152828f9434"
+	}
 }
 *)
 FUNCTION_BLOCK Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02

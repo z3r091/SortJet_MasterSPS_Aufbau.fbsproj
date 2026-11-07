@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2c6643f2-e17f-4649-8f5f-9e9d8f38f605"
-  }
+	"v3Meta": {
+		"objectGuid": "2c6643f2-e17f-4649-8f5f-9e9d8f38f605"
+	}
 }
 *)
 FUNCTION_BLOCK Basic_Station_Glaslaengenmessung_FB_V01_00_00 EXTENDS Basic_Station_Aktion_FB_V01_00_00
@@ -398,3 +398,4 @@ ELSE
   END_IF
 
 END_IF
+END_FUNCTION_BLOCK

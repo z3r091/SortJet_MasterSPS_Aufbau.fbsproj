@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "9748a137-ad7c-4c4d-81da-72983eb37826"
-  }
+	"v3Meta": {
+		"objectGuid": "9748a137-ad7c-4c4d-81da-72983eb37826"
+	}
 }
 *)
 ACTION Simulation

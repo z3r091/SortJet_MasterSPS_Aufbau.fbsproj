@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "e6b932d4-8a54-4c3d-8040-3da46ee1267a"
-  }
+	"v3Meta": {
+		"objectGuid": "e6b932d4-8a54-4c3d-8040-3da46ee1267a"
+	}
 }
 *)
 // Struktur fuer die Input-/Output- Shuttle

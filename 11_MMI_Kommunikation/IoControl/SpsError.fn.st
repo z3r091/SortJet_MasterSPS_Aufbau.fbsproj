@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "8b5c3fca-ed53-4ab3-83d7-c24b940f4322"
-  }
+	"v3Meta": {
+		"objectGuid": "8b5c3fca-ed53-4ab3-83d7-c24b940f4322"
+	}
 }
 *)
 FUNCTION SpsError : BOOL

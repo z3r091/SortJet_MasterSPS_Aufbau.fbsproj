@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "8cc859a4-3853-4716-ad69-f1a04cff8809"
-  }
+	"v3Meta": {
+		"objectGuid": "8cc859a4-3853-4716-ad69-f1a04cff8809"
+	}
 }
 *)
 FUNCTION_BLOCK Basic_Glastransport_FB_V01_00_00

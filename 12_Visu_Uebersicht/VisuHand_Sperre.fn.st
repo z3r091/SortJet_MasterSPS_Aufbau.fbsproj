@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "d31da620-9df0-4563-ab06-3d7039f98cd3"
-  }
+	"v3Meta": {
+		"objectGuid": "d31da620-9df0-4563-ab06-3d7039f98cd3"
+	}
 }
 *)
 FUNCTION VisuHand_Sperre : BOOL

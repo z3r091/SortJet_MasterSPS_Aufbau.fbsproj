@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "0474b6fd-4043-4228-8e53-82e27dbe01a7"
-  }
+	"v3Meta": {
+		"objectGuid": "0474b6fd-4043-4228-8e53-82e27dbe01a7"
+	}
 }
 *)
 METHOD M_GeschwindigkeitGlaetten

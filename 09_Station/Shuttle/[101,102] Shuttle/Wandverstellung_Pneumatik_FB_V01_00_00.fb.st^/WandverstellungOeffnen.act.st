@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "31057f9d-b869-482c-81a2-d4879fd66c4e"
-  }
+	"v3Meta": {
+		"objectGuid": "31057f9d-b869-482c-81a2-d4879fd66c4e"
+	}
 }
 *)
 ACTION WandverstellungOeffnen

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "24e44f33-0a00-4274-9468-a98b666d255a"
-  }
+	"v3Meta": {
+		"objectGuid": "24e44f33-0a00-4274-9468-a98b666d255a"
+	}
 }
 *)
 ACTION ScheibenNeuAusrichten

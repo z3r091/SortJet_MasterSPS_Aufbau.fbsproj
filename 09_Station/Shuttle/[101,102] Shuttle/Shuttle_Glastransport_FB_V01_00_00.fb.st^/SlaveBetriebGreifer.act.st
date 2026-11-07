@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "55863f74-01aa-4af3-a904-fb5ee81aa524"
-  }
+	"v3Meta": {
+		"objectGuid": "55863f74-01aa-4af3-a904-fb5ee81aa524"
+	}
 }
 *)
 ACTION SlaveBetriebGreifer

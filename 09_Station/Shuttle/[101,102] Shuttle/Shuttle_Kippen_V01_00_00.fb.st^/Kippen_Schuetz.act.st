@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "661b0014-2353-4746-8e31-b09b650916e4"
-  }
+	"v3Meta": {
+		"objectGuid": "661b0014-2353-4746-8e31-b09b650916e4"
+	}
 }
 *)
 ACTION Kippen_Schuetz

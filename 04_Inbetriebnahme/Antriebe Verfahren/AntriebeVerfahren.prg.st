@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "a5762ed9-3fa6-4730-8f16-2864171dd370"
-  }
+	"v3Meta": {
+		"objectGuid": "a5762ed9-3fa6-4730-8f16-2864171dd370"
+	}
 }
 *)
 PROGRAM AntriebeVerfahren

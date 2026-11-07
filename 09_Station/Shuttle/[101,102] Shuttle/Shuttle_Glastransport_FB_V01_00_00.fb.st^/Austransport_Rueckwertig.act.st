@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "0d0cddc4-f0a8-4ab0-b778-9f5f7bbe2973"
-  }
+	"v3Meta": {
+		"objectGuid": "0d0cddc4-f0a8-4ab0-b778-9f5f7bbe2973"
+	}
 }
 *)
 ACTION Austransport_Rueckwertig

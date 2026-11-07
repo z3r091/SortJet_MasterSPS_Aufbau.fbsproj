@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "b0e3764e-5034-4602-ba0e-4069f5952f33"
-  }
+	"v3Meta": {
+		"objectGuid": "b0e3764e-5034-4602-ba0e-4069f5952f33"
+	}
 }
 *)
 ACTION SpeicherTest

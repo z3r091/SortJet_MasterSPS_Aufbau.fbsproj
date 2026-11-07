@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "1a562a31-6670-4c27-9ca3-75f83477db53"
-  }
+	"v3Meta": {
+		"objectGuid": "1a562a31-6670-4c27-9ca3-75f83477db53"
+	}
 }
 *)
 ACTION Kippen_PositionWaagerecht

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "72dffa9c-0dea-4fd7-9820-5307a69ebe3d"
-  }
+	"v3Meta": {
+		"objectGuid": "72dffa9c-0dea-4fd7-9820-5307a69ebe3d"
+	}
 }
 *)
 FUNCTION_BLOCK Querfahrt_Shuttle_FB_V01_00_00

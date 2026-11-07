@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "6eb3a978-58c6-42ff-94c5-7df5c97bfde5"
-  }
+	"v3Meta": {
+		"objectGuid": "6eb3a978-58c6-42ff-94c5-7df5c97bfde5"
+	}
 }
 *)
 FUNCTION_BLOCK Basic_Station_Glashoehenmessung_FB_V01_00_00 EXTENDS Basic_Station_Aktion_FB_V01_00_00
@@ -527,3 +527,4 @@ ELSE
   END_IF
 
 END_IF
+END_FUNCTION_BLOCK

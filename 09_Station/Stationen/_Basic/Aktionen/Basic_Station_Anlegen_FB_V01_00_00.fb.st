@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "7cf149bd-d1d2-4190-82d5-7daf21613ba4"
-  }
+	"v3Meta": {
+		"objectGuid": "7cf149bd-d1d2-4190-82d5-7daf21613ba4"
+	}
 }
 *)
 FUNCTION_BLOCK Basic_Station_Anlegen_FB_V01_00_00 EXTENDS Basic_Station_Aktion_FB_V01_00_00
@@ -457,3 +457,4 @@ ELSE
   END_IF
 
 END_IF
+END_FUNCTION_BLOCK

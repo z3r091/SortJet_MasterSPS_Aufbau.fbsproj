@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "d65baa10-5143-49f5-b44e-477f273ce654"
-  }
+	"v3Meta": {
+		"objectGuid": "d65baa10-5143-49f5-b44e-477f273ce654"
+	}
 }
 *)
 ACTION EtherCAT_Restart

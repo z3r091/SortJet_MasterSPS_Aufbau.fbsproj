@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "8322b154-6dc3-4711-91d1-5f49e074f305"
-  }
+	"v3Meta": {
+		"objectGuid": "8322b154-6dc3-4711-91d1-5f49e074f305"
+	}
 }
 *)
 TYPE Sicherheitskreis_EN :

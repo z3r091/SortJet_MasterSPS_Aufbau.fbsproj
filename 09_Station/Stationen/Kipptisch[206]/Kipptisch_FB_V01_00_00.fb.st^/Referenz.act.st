@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "5ac2a813-d3de-47c3-bb02-33db481fa75c"
-  }
+	"v3Meta": {
+		"objectGuid": "5ac2a813-d3de-47c3-bb02-33db481fa75c"
+	}
 }
 *)
 ACTION Referenz

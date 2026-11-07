@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "be39eb48-ac5d-4e79-a100-3dbd5e88fbc1"
-  }
+	"v3Meta": {
+		"objectGuid": "be39eb48-ac5d-4e79-a100-3dbd5e88fbc1"
+	}
 }
 *)
 ACTION Positionskorrektur

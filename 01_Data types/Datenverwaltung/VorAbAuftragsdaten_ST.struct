@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "9acd1e0c-1610-4893-adc1-bba1af2305a2"
-  }
+	"v3Meta": {
+		"objectGuid": "9acd1e0c-1610-4893-adc1-bba1af2305a2"
+	}
 }
 *)
 TYPE VorAbAuftragsdaten_ST:

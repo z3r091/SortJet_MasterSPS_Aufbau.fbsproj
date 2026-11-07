@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "bd1005cf-b7b7-46c1-b7fa-bef1b59d38c8"
-  }
+	"v3Meta": {
+		"objectGuid": "bd1005cf-b7b7-46c1-b7fa-bef1b59d38c8"
+	}
 }
 *)
 TYPE SpsMessageQueue:

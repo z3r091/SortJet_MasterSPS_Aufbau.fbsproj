@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "d6b11d7c-fbd5-4eee-93cf-7ea9aca4b11c"
-  }
+	"v3Meta": {
+		"objectGuid": "d6b11d7c-fbd5-4eee-93cf-7ea9aca4b11c"
+	}
 }
 *)
 ACTION Korrekturfahrt

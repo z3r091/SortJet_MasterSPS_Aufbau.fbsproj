@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "acd285c0-5968-45ed-a443-a47253079003"
-  }
+	"v3Meta": {
+		"objectGuid": "acd285c0-5968-45ed-a443-a47253079003"
+	}
 }
 *)
 ACTION Kippen_PositionSenkrecht

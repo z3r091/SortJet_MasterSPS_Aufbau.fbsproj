@@ -1,11 +1,11 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "1a45708a-46ce-48f5-a3b2-b0c20261c8e1",
-    "properties": {
-      "_3S.CoDeSys.CFCObject.CFCProperty": "<?xml version=\"1.0\" encoding=\"utf-8\"?><Single xml:space=\"preserve\" Type=\"{97c1f2ea-5995-48b9-abd5-a3ab983c5def}\" Method=\"IArchivable\"><Single Name=\"UseExplicitExecutionOrder\" Type=\"bool\">False</Single></Single>"
-    }
-  }
+	"v3Meta": {
+		"objectGuid": "1a45708a-46ce-48f5-a3b2-b0c20261c8e1",
+		"properties": {
+			"_3S.CoDeSys.CFCObject.CFCProperty": "<?xml version=\"1.0\" encoding=\"utf-8\"?><Single xml:space=\"preserve\" Type=\"{97c1f2ea-5995-48b9-abd5-a3ab983c5def}\" Method=\"IArchivable\"><Single Name=\"UseExplicitExecutionOrder\" Type=\"bool\">False</Single></Single>"
+		}
+	}
 }
 *)
 FUNCTION checkSafetyCircuitsClosed : BOOL

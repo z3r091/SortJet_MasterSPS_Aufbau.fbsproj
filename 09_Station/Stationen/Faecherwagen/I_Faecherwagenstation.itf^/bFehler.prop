@@ -1,13 +1,13 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "fa25a5b8-2e94-4571-9200-1e10d58c9214",
-    "subObjects": {
-      "get": {
-        "objectGuid": "42e967b4-dce9-4983-9b28-4599f386789d"
-      }
-    }
-  }
+	"v3Meta": {
+		"objectGuid": "fa25a5b8-2e94-4571-9200-1e10d58c9214",
+		"subObjects": {
+			"get": {
+				"objectGuid": "42e967b4-dce9-4983-9b28-4599f386789d"
+			}
+		}
+	}
 }
 *)
 PROPERTY_Get bFehler : BOOL

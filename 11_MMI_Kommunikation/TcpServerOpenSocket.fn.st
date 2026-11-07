@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "36dfe783-e7c1-434c-babf-2b0976501267"
-  }
+	"v3Meta": {
+		"objectGuid": "36dfe783-e7c1-434c-babf-2b0976501267"
+	}
 }
 *)
 FUNCTION TcpServerOpenSocket : RTS_IEC_HANDLE

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "f983f638-d974-42a1-b082-3f78b9808976"
-  }
+	"v3Meta": {
+		"objectGuid": "f983f638-d974-42a1-b082-3f78b9808976"
+	}
 }
 *)
 ACTION A_Eingaenge

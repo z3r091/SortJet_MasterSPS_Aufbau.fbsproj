@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "f0bc2723-b4fe-47ac-9eaf-c9d7cf8ddb9e"
-  }
+	"v3Meta": {
+		"objectGuid": "f0bc2723-b4fe-47ac-9eaf-c9d7cf8ddb9e"
+	}
 }
 *)
 ACTION VorabPositionierungEintransport

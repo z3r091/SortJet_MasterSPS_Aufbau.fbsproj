@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "f2160e3c-bcdb-4633-bb52-3b387053d2ab"
-  }
+	"v3Meta": {
+		"objectGuid": "f2160e3c-bcdb-4633-bb52-3b387053d2ab"
+	}
 }
 *)
 TYPE AuftragsdatenFremdanlage_ST :

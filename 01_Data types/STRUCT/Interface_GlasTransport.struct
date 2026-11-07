@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "f907b0a0-679d-4111-9289-1c980d1c55c2"
-  }
+	"v3Meta": {
+		"objectGuid": "f907b0a0-679d-4111-9289-1c980d1c55c2"
+	}
 }
 *)
 {attribute 'global_init_slot' := '300'}

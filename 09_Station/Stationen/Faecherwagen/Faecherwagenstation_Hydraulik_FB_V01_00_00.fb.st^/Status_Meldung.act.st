@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "65e65a36-f904-4182-a427-08abe435d94c"
-  }
+	"v3Meta": {
+		"objectGuid": "65e65a36-f904-4182-a427-08abe435d94c"
+	}
 }
 *)
 ACTION Status_Meldung

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "26a974e9-cd22-45f6-b03b-2df68f08f348"
-  }
+	"v3Meta": {
+		"objectGuid": "26a974e9-cd22-45f6-b03b-2df68f08f348"
+	}
 }
 *)
 // Struktur fuer den Shuttle-Greifer [Greiferachse mit optionaler Greiferzange und optionalem Glasrueckhalter je Seite]

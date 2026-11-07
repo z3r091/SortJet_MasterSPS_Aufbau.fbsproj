@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ba53d487-b3e7-4729-ab5c-8ab03e7357e2"
-  }
+	"v3Meta": {
+		"objectGuid": "ba53d487-b3e7-4729-ab5c-8ab03e7357e2"
+	}
 }
 *)
 PROGRAM VisuUebersicht_PRG

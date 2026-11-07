@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "c7964ec2-357c-46cb-95df-ee4bc270f3f8"
-  }
+	"v3Meta": {
+		"objectGuid": "c7964ec2-357c-46cb-95df-ee4bc270f3f8"
+	}
 }
 *)
 METHOD checkMKVerfahrparameter

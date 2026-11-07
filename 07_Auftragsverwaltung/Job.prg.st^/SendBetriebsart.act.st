@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "f30ecbf4-dfb4-425a-a000-c82fc611506a"
-  }
+	"v3Meta": {
+		"objectGuid": "f30ecbf4-dfb4-425a-a000-c82fc611506a"
+	}
 }
 *)
 ACTION SendBetriebsart

@@ -1,11 +1,11 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "a5602391-f145-45a7-88a7-cf2977d4c874",
-    "properties": {
-      "_3S.CoDeSys.CFCObject.CFCProperty": "<?xml version=\"1.0\" encoding=\"utf-8\"?><Single xml:space=\"preserve\" Type=\"{97c1f2ea-5995-48b9-abd5-a3ab983c5def}\" Method=\"IArchivable\"><Single Name=\"UseExplicitExecutionOrder\" Type=\"bool\">False</Single></Single>"
-    }
-  }
+	"v3Meta": {
+		"objectGuid": "a5602391-f145-45a7-88a7-cf2977d4c874",
+		"properties": {
+			"_3S.CoDeSys.CFCObject.CFCProperty": "<?xml version=\"1.0\" encoding=\"utf-8\"?><Single xml:space=\"preserve\" Type=\"{97c1f2ea-5995-48b9-abd5-a3ab983c5def}\" Method=\"IArchivable\"><Single Name=\"UseExplicitExecutionOrder\" Type=\"bool\">False</Single></Single>"
+		}
+	}
 }
 *)
 FUNCTION checkSafetyCircuits : BOOL

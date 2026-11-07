@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "f063b21c-ee9e-4ece-bc3c-2deffdcf07f3"
-  }
+	"v3Meta": {
+		"objectGuid": "f063b21c-ee9e-4ece-bc3c-2deffdcf07f3"
+	}
 }
 *)
 FUNCTION_BLOCK Basic_Shuttle_Aktion_FB_V01_00_00

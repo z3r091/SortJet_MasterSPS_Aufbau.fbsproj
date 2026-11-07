@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "f24bca42-101c-4726-904f-63b36c6b8d1a"
-  }
+	"v3Meta": {
+		"objectGuid": "f24bca42-101c-4726-904f-63b36c6b8d1a"
+	}
 }
 *)
 ACTION ReadMsg

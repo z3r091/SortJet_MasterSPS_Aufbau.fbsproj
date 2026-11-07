@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "e8d29946-42cb-4086-9005-bb6393195211"
-  }
+	"v3Meta": {
+		"objectGuid": "e8d29946-42cb-4086-9005-bb6393195211"
+	}
 }
 *)
 ACTION Forel_Schnittstelle

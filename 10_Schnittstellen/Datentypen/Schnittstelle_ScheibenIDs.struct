@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "7a869de3-c576-4771-b1d7-2950917302f9"
-  }
+	"v3Meta": {
+		"objectGuid": "7a869de3-c576-4771-b1d7-2950917302f9"
+	}
 }
 *)
 TYPE Schnittstelle_ScheibenIDs :

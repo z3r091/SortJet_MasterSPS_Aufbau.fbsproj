@@ -1,13 +1,12 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "27064ae7-2a3c-4a30-8168-a3ab5c131298"
-  }
+	"v3Meta": {
+		"objectGuid": "27064ae7-2a3c-4a30-8168-a3ab5c131298"
+	}
 }
 *)
 {attribute 'allow_unqualified_access'}
 NAMESPACE Global_Vars
-
 // Vor StationBasisParameter (Slot 310) initialisieren, dort werden bgFALSE/rgNULL verwendet
 {attribute 'global_init_slot' := '295'}
 VAR_GLOBAL

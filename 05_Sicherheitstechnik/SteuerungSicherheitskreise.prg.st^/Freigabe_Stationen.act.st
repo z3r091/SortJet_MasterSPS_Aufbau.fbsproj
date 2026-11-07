@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "6a266cdc-7ac6-4c35-838d-01904d46f31d"
-  }
+	"v3Meta": {
+		"objectGuid": "6a266cdc-7ac6-4c35-838d-01904d46f31d"
+	}
 }
 *)
 ACTION Freigabe_Stationen

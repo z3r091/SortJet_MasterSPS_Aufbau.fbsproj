@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "c29c4d6f-14de-4fcd-9304-9129c3305729"
-  }
+	"v3Meta": {
+		"objectGuid": "c29c4d6f-14de-4fcd-9304-9129c3305729"
+	}
 }
 *)
 ACTION Ampelsignal

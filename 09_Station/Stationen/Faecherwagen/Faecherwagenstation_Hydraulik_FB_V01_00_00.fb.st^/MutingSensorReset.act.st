@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "37a26a85-68d5-4775-b05c-ebd4ad8948b2"
-  }
+	"v3Meta": {
+		"objectGuid": "37a26a85-68d5-4775-b05c-ebd4ad8948b2"
+	}
 }
 *)
 ACTION MutingSensorReset

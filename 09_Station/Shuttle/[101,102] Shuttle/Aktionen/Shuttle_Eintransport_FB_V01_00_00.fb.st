@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "658aa591-8bd2-427d-a42c-c4e6e57fe5c7"
-  }
+	"v3Meta": {
+		"objectGuid": "658aa591-8bd2-427d-a42c-c4e6e57fe5c7"
+	}
 }
 *)
 FUNCTION_BLOCK Shuttle_Eintransport_FB_V01_00_00 EXTENDS Basic_Shuttle_Aktion_FB_V01_00_00

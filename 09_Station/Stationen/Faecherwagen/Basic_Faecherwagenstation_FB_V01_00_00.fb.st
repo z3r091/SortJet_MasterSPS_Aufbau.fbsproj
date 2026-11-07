@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "908407cd-758c-45db-8a2d-c326aeb0e347"
-  }
+	"v3Meta": {
+		"objectGuid": "908407cd-758c-45db-8a2d-c326aeb0e347"
+	}
 }
 *)
 FUNCTION_BLOCK ABSTRACT Basic_Faecherwagenstation_FB_V01_00_00 EXTENDS Basic_Station_FB_V01_00_00 IMPLEMENTS I_Faecherwagenstation

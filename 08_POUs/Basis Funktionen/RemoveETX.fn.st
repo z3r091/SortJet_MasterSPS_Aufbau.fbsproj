@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "6a30dc93-6cfb-42ec-8e94-53fcaf08507e"
-  }
+	"v3Meta": {
+		"objectGuid": "6a30dc93-6cfb-42ec-8e94-53fcaf08507e"
+	}
 }
 *)
 FUNCTION RemoveETX : ARRAY [0..3] OF DWORD

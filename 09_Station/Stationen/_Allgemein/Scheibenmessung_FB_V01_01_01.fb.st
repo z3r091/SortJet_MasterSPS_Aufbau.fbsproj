@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "c97c67c9-5e06-4086-aebd-8e091471f135"
-  }
+	"v3Meta": {
+		"objectGuid": "c97c67c9-5e06-4086-aebd-8e091471f135"
+	}
 }
 *)
 FUNCTION_BLOCK Scheibenmessung_FB_V01_01_01

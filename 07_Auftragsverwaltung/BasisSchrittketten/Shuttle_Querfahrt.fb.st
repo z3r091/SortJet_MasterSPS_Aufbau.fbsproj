@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "b8d8b63a-039c-49d7-ab0c-8520bb128b08"
-  }
+	"v3Meta": {
+		"objectGuid": "b8d8b63a-039c-49d7-ab0c-8520bb128b08"
+	}
 }
 *)
 FUNCTION_BLOCK Shuttle_Querfahrt

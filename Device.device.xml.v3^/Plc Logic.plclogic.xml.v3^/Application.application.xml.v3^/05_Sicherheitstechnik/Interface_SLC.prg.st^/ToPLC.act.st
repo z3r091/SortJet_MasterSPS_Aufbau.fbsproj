@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2230cbd9-0764-4dd0-8a6d-fa77d75d3bc5"
-  }
+	"v3Meta": {
+		"objectGuid": "2230cbd9-0764-4dd0-8a6d-fa77d75d3bc5"
+	}
 }
 *)
 ACTION ToPLC

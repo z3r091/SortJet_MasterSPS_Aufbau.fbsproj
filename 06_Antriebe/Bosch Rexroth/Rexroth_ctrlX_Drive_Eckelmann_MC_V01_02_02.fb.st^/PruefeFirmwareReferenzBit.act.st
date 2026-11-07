@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "a1883415-9f03-4c87-8f27-9f4d98a23649"
-  }
+	"v3Meta": {
+		"objectGuid": "a1883415-9f03-4c87-8f27-9f4d98a23649"
+	}
 }
 *)
 ACTION PruefeFirmwareReferenzBit

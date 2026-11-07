@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "5e7f3be3-98a2-4beb-b625-b580500a4088"
-  }
+	"v3Meta": {
+		"objectGuid": "5e7f3be3-98a2-4beb-b625-b580500a4088"
+	}
 }
 *)
 ACTION BETRIEBSART_Handplus

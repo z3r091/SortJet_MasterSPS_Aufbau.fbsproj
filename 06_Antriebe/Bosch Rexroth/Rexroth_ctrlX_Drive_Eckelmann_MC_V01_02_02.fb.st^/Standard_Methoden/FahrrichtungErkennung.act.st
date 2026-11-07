@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "09c7eecd-c04d-4e36-bb54-bd65882750d8"
-  }
+	"v3Meta": {
+		"objectGuid": "09c7eecd-c04d-4e36-bb54-bd65882750d8"
+	}
 }
 *)
 ACTION FahrrichtungErkennung

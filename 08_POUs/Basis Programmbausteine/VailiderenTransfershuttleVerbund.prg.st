@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "53cd760f-4cde-42f5-90aa-7a00051f7bed"
-  }
+	"v3Meta": {
+		"objectGuid": "53cd760f-4cde-42f5-90aa-7a00051f7bed"
+	}
 }
 *)
 PROGRAM VailiderenTransfershuttleVerbund

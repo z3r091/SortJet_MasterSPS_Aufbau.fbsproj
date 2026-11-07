@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "f15f2cc4-272f-4f01-bc83-471005cc2455"
-  }
+	"v3Meta": {
+		"objectGuid": "f15f2cc4-272f-4f01-bc83-471005cc2455"
+	}
 }
 *)
 TYPE TransfershuttleReservierungsTyp_EN :

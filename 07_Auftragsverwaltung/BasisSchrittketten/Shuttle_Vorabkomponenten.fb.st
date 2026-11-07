@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "19fcb8bb-2bd9-4575-a4db-49bc1e849a70"
-  }
+	"v3Meta": {
+		"objectGuid": "19fcb8bb-2bd9-4575-a4db-49bc1e849a70"
+	}
 }
 *)
 FUNCTION_BLOCK Shuttle_Vorabkomponenten

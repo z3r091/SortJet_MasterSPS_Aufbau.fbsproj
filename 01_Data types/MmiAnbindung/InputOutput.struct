@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2370c7b4-6774-4b2d-aef1-65cc27a6bfee"
-  }
+	"v3Meta": {
+		"objectGuid": "2370c7b4-6774-4b2d-aef1-65cc27a6bfee"
+	}
 }
 *)
 TYPE InputOutput :

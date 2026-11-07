@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "57b43017-bb28-437d-982e-b60f799a1ca9"
-  }
+	"v3Meta": {
+		"objectGuid": "57b43017-bb28-437d-982e-b60f799a1ca9"
+	}
 }
 *)
 FUNCTION ResetIoControl : BOOL

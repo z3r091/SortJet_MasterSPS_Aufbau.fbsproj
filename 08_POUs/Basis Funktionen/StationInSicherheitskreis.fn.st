@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "28064981-b681-426a-a86e-e794fcbf1911"
-  }
+	"v3Meta": {
+		"objectGuid": "28064981-b681-426a-a86e-e794fcbf1911"
+	}
 }
 *)
 FUNCTION StationInSicherheitskreis : BOOL

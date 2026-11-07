@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "aea75a09-065c-4155-9284-9233b13eb99a"
-  }
+	"v3Meta": {
+		"objectGuid": "aea75a09-065c-4155-9284-9233b13eb99a"
+	}
 }
 *)
 FUNCTION_BLOCK Shuttle_Austransport_FB_V01_00_00 EXTENDS Basic_Shuttle_Aktion_FB_V01_00_00

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "1787c9d8-e07d-471d-967c-af403122e309"
-  }
+	"v3Meta": {
+		"objectGuid": "1787c9d8-e07d-471d-967c-af403122e309"
+	}
 }
 *)
 METHOD checkStationsTyp

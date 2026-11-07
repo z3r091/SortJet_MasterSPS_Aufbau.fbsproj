@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "3b6ea6e4-8fcd-474b-9f1e-9c8a8e0a159e"
-  }
+	"v3Meta": {
+		"objectGuid": "3b6ea6e4-8fcd-474b-9f1e-9c8a8e0a159e"
+	}
 }
 *)
 FUNCTION GetBitStatus : BOOL

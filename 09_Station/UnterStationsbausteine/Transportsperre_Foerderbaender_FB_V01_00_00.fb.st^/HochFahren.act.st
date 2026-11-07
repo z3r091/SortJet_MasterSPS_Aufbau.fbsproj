@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "9c49712f-5a95-4ffc-acc8-cb6e66235aae"
-  }
+	"v3Meta": {
+		"objectGuid": "9c49712f-5a95-4ffc-acc8-cb6e66235aae"
+	}
 }
 *)
 ACTION HochFahren

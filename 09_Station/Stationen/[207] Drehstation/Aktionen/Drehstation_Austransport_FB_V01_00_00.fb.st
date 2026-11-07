@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "a2a92850-d1dd-4edb-909d-b8b6897beb5d"
-  }
+	"v3Meta": {
+		"objectGuid": "a2a92850-d1dd-4edb-909d-b8b6897beb5d"
+	}
 }
 *)
 FUNCTION_BLOCK Drehstation_Austransport_FB_V01_00_00 EXTENDS Basic_Station_Austransport_FB_V01_00_00

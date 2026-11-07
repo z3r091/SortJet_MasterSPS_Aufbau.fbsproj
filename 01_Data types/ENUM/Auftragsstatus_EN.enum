@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ebd9648d-873a-4cae-bc51-02e7035e4a55"
-  }
+	"v3Meta": {
+		"objectGuid": "ebd9648d-873a-4cae-bc51-02e7035e4a55"
+	}
 }
 *)
 TYPE Auftragsstatus_EN :

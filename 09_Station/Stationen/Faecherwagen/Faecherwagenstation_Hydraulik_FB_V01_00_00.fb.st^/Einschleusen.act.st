@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "b655c4c0-053a-4bce-b00c-e16bb21c9a61"
-  }
+	"v3Meta": {
+		"objectGuid": "b655c4c0-053a-4bce-b00c-e16bb21c9a61"
+	}
 }
 *)
 ACTION Einschleusen

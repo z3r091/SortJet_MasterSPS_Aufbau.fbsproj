@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2a9c4065-11ba-4ec5-a5c1-2bac7310293a"
-  }
+	"v3Meta": {
+		"objectGuid": "2a9c4065-11ba-4ec5-a5c1-2bac7310293a"
+	}
 }
 *)
 FUNCTION SWAP_DWORD_SIEMENS : DWORD

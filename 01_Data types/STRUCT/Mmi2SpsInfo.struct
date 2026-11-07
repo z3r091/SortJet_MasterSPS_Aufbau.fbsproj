@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "c021b666-375b-4371-b8f1-bd92ec150213"
-  }
+	"v3Meta": {
+		"objectGuid": "c021b666-375b-4371-b8f1-bd92ec150213"
+	}
 }
 *)
 TYPE Mmi2SpsInfo :

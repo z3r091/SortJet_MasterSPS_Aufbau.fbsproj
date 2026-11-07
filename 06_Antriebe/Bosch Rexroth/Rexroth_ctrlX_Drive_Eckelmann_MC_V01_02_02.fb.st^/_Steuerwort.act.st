@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2cb5236d-2c9d-4e67-a004-d0a59f43b200"
-  }
+	"v3Meta": {
+		"objectGuid": "2cb5236d-2c9d-4e67-a004-d0a59f43b200"
+	}
 }
 *)
 ACTION _Steuerwort

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "f075b551-e071-4bf5-ac95-2cac71043e2d"
-  }
+	"v3Meta": {
+		"objectGuid": "f075b551-e071-4bf5-ac95-2cac71043e2d"
+	}
 }
 *)
 FUNCTION_BLOCK Shuttle_RackSuche

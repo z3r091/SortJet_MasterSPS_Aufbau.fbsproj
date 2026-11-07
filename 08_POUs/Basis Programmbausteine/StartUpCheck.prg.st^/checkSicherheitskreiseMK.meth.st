@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "1e7d8eb1-23f2-478f-a0da-97a7b6d734ce"
-  }
+	"v3Meta": {
+		"objectGuid": "1e7d8eb1-23f2-478f-a0da-97a7b6d734ce"
+	}
 }
 *)
 METHOD checkSicherheitskreiseMK

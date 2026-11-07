@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "d947f7e3-36ae-4f51-bc45-a36dc679eb63"
-  }
+	"v3Meta": {
+		"objectGuid": "d947f7e3-36ae-4f51-bc45-a36dc679eb63"
+	}
 }
 *)
 ACTION A_VisuVariante

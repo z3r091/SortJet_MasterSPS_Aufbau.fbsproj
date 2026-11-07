@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "29c6a30c-ea89-4d6e-bcb0-e2d154ff9fe9"
-  }
+	"v3Meta": {
+		"objectGuid": "29c6a30c-ea89-4d6e-bcb0-e2d154ff9fe9"
+	}
 }
 *)
 FUNCTION_BLOCK Anlegetisch_Austransport_FB_V01_00_00 EXTENDS Basic_Station_Austransport_FB_V01_00_00
@@ -150,3 +150,4 @@ ELSE
   END_IF
 
 END_IF
+END_FUNCTION_BLOCK

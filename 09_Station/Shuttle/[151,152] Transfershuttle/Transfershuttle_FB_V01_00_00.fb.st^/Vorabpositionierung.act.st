@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "19ab5345-d42d-4dbb-b212-acd789e3a5f4"
-  }
+	"v3Meta": {
+		"objectGuid": "19ab5345-d42d-4dbb-b212-acd789e3a5f4"
+	}
 }
 *)
 ACTION Vorabpositionierung

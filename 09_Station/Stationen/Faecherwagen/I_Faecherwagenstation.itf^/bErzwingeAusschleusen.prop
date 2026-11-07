@@ -1,13 +1,13 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "e3b76d50-1f52-4e4b-9b3b-f1b468f04c30",
-    "subObjects": {
-      "get": {
-        "objectGuid": "6b25111f-9e63-49ce-b799-6434f2d6c624"
-      }
-    }
-  }
+	"v3Meta": {
+		"objectGuid": "e3b76d50-1f52-4e4b-9b3b-f1b468f04c30",
+		"subObjects": {
+			"get": {
+				"objectGuid": "6b25111f-9e63-49ce-b799-6434f2d6c624"
+			}
+		}
+	}
 }
 *)
 PROPERTY_Get bErzwingeAusschleusen : BOOL

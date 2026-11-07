@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "3b447e4d-6caa-4c98-ad2d-e4c3e81f2c59"
-  }
+	"v3Meta": {
+		"objectGuid": "3b447e4d-6caa-4c98-ad2d-e4c3e81f2c59"
+	}
 }
 *)
 FUNCTION_BLOCK Ampel_FB

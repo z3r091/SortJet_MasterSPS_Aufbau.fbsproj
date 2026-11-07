@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ee188bc7-676d-468b-af81-8afc58a85f62"
-  }
+	"v3Meta": {
+		"objectGuid": "ee188bc7-676d-468b-af81-8afc58a85f62"
+	}
 }
 *)
 ACTION Flasher

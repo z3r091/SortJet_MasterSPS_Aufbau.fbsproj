@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "5b2b3b3a-0378-4a76-86aa-19573502ed03"
-  }
+	"v3Meta": {
+		"objectGuid": "5b2b3b3a-0378-4a76-86aa-19573502ed03"
+	}
 }
 *)
 ACTION Sicherheitskreis_Reset

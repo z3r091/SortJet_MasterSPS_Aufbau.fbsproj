@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "3a48ce3d-a496-4a41-9121-773908032d1d"
-  }
+	"v3Meta": {
+		"objectGuid": "3a48ce3d-a496-4a41-9121-773908032d1d"
+	}
 }
 *)
 ACTION HebeVorgang

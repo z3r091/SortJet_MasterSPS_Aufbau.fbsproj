@@ -1,13 +1,12 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "d056a025-7346-4412-a27e-a3ba4851b2d6"
-  }
+	"v3Meta": {
+		"objectGuid": "d056a025-7346-4412-a27e-a3ba4851b2d6"
+	}
 }
 *)
 {attribute 'allow_unqualified_access'}
 NAMESPACE MK_Station_206
-
 VAR_GLOBAL
 
 //-------------------------------------------------------------------------------------------------

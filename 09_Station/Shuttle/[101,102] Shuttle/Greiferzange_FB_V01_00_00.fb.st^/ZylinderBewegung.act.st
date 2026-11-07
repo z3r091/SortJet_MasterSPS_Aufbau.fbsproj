@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "31ddb79b-bc55-40d4-9ada-545629857e9d"
-  }
+	"v3Meta": {
+		"objectGuid": "31ddb79b-bc55-40d4-9ada-545629857e9d"
+	}
 }
 *)
 ACTION ZylinderBewegung

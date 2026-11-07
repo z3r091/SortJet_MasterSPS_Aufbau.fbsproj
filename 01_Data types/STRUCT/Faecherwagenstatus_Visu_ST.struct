@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "a887b2c8-0baa-44ef-9373-44ce59329354"
-  }
+	"v3Meta": {
+		"objectGuid": "a887b2c8-0baa-44ef-9373-44ce59329354"
+	}
 }
 *)
 TYPE Faecherwagenstatus_Visu_ST :

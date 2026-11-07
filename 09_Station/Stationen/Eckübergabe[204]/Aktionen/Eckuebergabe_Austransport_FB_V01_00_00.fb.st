@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "aec4a2b9-e42d-4dc6-88d8-ed1075e37aed"
-  }
+	"v3Meta": {
+		"objectGuid": "aec4a2b9-e42d-4dc6-88d8-ed1075e37aed"
+	}
 }
 *)
 FUNCTION_BLOCK Eckuebergabe_Austransport_FB_V01_00_00 EXTENDS Basic_Station_Austransport_FB_V01_00_00

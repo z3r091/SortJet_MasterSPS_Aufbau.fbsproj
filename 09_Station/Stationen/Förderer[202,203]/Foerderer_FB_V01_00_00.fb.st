@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "e6df45be-9420-4e9c-b3d7-0cda7a835d19"
-  }
+	"v3Meta": {
+		"objectGuid": "e6df45be-9420-4e9c-b3d7-0cda7a835d19"
+	}
 }
 *)
 FUNCTION_BLOCK Foerderer_FB_V01_00_00  EXTENDS Basic_Station_FB_V01_00_00

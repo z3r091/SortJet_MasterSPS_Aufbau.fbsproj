@@ -1,16 +1,16 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "53f1293a-b31d-453f-b99f-1c31541f4175",
-    "subObjects": {
-      "set": {
-        "objectGuid": "02acdb3c-bbe8-456f-b5ac-2f3a806c0d1f"
-      },
-      "get": {
-        "objectGuid": "d6c5de20-84a8-4de9-ae18-970c66a4fdab"
-      }
-    }
-  }
+	"v3Meta": {
+		"objectGuid": "53f1293a-b31d-453f-b99f-1c31541f4175",
+		"subObjects": {
+			"set": {
+				"objectGuid": "02acdb3c-bbe8-456f-b5ac-2f3a806c0d1f"
+			},
+			"get": {
+				"objectGuid": "d6c5de20-84a8-4de9-ae18-970c66a4fdab"
+			}
+		}
+	}
 }
 *)
 PROPERTY_Set wRFID_Nummer_Schreiben : WORD

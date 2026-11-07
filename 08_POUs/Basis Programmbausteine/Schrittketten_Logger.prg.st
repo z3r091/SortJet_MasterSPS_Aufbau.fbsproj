@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "cb3b1eb5-1dc3-4d16-abd2-ade96f8e42d9"
-  }
+	"v3Meta": {
+		"objectGuid": "cb3b1eb5-1dc3-4d16-abd2-ade96f8e42d9"
+	}
 }
 *)
 PROGRAM Schrittketten_Logger

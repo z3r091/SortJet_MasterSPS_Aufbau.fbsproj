@@ -1,13 +1,13 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "1b336283-ab8a-4432-a228-90db15c3dd7e",
-    "subObjects": {
-      "get": {
-        "objectGuid": "1db796ea-763b-49d6-a29d-ad7d1696b610"
-      }
-    }
-  }
+	"v3Meta": {
+		"objectGuid": "1b336283-ab8a-4432-a228-90db15c3dd7e",
+		"subObjects": {
+			"get": {
+				"objectGuid": "1db796ea-763b-49d6-a29d-ad7d1696b610"
+			}
+		}
+	}
 }
 *)
 PROPERTY_Get bErzwingeEinschleusen : BOOL

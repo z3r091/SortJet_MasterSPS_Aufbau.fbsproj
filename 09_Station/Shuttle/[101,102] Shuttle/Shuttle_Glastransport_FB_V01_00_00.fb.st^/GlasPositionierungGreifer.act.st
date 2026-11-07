@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "58c82cd7-6b73-4ba5-a034-1c0e45575beb"
-  }
+	"v3Meta": {
+		"objectGuid": "58c82cd7-6b73-4ba5-a034-1c0e45575beb"
+	}
 }
 *)
 ACTION GlasPositionierungGreifer

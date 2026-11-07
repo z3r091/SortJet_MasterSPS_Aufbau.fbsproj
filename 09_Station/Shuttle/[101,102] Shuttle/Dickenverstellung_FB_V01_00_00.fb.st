@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "d815e3f2-dcd5-4a25-9c13-c3ee247e2cce"
-  }
+	"v3Meta": {
+		"objectGuid": "d815e3f2-dcd5-4a25-9c13-c3ee247e2cce"
+	}
 }
 *)
 FUNCTION_BLOCK Dickenverstellung_FB_V01_00_00

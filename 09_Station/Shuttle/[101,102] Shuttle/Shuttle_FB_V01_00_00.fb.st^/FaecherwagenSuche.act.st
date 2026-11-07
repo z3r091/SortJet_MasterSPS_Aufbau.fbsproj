@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ece63cde-c6ef-4e39-82d7-9ffb2b26b3fc"
-  }
+	"v3Meta": {
+		"objectGuid": "ece63cde-c6ef-4e39-82d7-9ffb2b26b3fc"
+	}
 }
 *)
 ACTION FaecherwagenSuche

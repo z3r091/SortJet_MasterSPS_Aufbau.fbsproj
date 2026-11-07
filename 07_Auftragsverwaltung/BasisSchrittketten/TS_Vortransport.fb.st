@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "82a7ab83-6d97-4992-8583-d2407cc9730b"
-  }
+	"v3Meta": {
+		"objectGuid": "82a7ab83-6d97-4992-8583-d2407cc9730b"
+	}
 }
 *)
 FUNCTION_BLOCK TS_Vortransport

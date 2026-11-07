@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ea05f2f9-b5af-46e3-bd29-192be094b3c3"
-  }
+	"v3Meta": {
+		"objectGuid": "ea05f2f9-b5af-46e3-bd29-192be094b3c3"
+	}
 }
 *)
 PROGRAM FachkontrolleTransfershuttle

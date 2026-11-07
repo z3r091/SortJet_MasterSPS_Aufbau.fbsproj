@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "c4c0d694-747f-463e-8b4c-1bee289d6be3"
-  }
+	"v3Meta": {
+		"objectGuid": "c4c0d694-747f-463e-8b4c-1bee289d6be3"
+	}
 }
 *)
 FUNCTION_BLOCK Kipptisch_FB_V01_00_00 EXTENDS Basic_Station_FB_V01_00_00

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "33e76168-bed7-472e-856d-00c3c96ee9ee"
-  }
+	"v3Meta": {
+		"objectGuid": "33e76168-bed7-472e-856d-00c3c96ee9ee"
+	}
 }
 *)
 ACTION Auftraege_Stationen_Generieren

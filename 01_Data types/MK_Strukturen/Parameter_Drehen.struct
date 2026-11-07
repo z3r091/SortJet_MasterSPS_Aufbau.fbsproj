@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "e349b325-a04d-4c58-85cc-36ff0e3dd852"
-  }
+	"v3Meta": {
+		"objectGuid": "e349b325-a04d-4c58-85cc-36ff0e3dd852"
+	}
 }
 *)
 TYPE Parameter_Drehen :

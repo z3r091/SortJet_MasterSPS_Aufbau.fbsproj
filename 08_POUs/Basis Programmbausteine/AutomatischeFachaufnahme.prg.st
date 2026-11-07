@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "2dd67d59-9d65-422a-a9a5-a54784296135"
-  }
+	"v3Meta": {
+		"objectGuid": "2dd67d59-9d65-422a-a9a5-a54784296135"
+	}
 }
 *)
 PROGRAM AutomatischeFachaufnahme

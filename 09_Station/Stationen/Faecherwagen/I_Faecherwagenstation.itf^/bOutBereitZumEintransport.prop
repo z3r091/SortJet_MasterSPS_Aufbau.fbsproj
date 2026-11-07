@@ -1,13 +1,13 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "d6566c66-a050-42d1-b969-623fdf15b27c",
-    "subObjects": {
-      "get": {
-        "objectGuid": "33fa57fa-9f0a-41ac-8ea2-6bc8b5219274"
-      }
-    }
-  }
+	"v3Meta": {
+		"objectGuid": "d6566c66-a050-42d1-b969-623fdf15b27c",
+		"subObjects": {
+			"get": {
+				"objectGuid": "33fa57fa-9f0a-41ac-8ea2-6bc8b5219274"
+			}
+		}
+	}
 }
 *)
 PROPERTY_Get bOutBereitZumEintransport : BOOL

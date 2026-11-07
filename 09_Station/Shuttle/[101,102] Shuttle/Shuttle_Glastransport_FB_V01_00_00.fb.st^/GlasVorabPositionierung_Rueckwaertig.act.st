@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "5639b462-9059-4633-88bd-eface16bcdf3"
-  }
+	"v3Meta": {
+		"objectGuid": "5639b462-9059-4633-88bd-eface16bcdf3"
+	}
 }
 *)
 ACTION GlasVorabPositionierung_Rueckwaertig

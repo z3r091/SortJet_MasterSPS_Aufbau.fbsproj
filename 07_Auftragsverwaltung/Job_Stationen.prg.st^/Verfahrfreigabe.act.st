@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "947d4714-9a33-4aa6-8a4d-61239e97d0f5"
-  }
+	"v3Meta": {
+		"objectGuid": "947d4714-9a33-4aa6-8a4d-61239e97d0f5"
+	}
 }
 *)
 ACTION Verfahrfreigabe

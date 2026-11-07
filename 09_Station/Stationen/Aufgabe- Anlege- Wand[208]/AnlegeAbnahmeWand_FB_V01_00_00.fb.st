@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "4412b2e8-80e3-4d41-9c3d-84963f94e3c1"
-  }
+	"v3Meta": {
+		"objectGuid": "4412b2e8-80e3-4d41-9c3d-84963f94e3c1"
+	}
 }
 *)
 FUNCTION_BLOCK AnlegeAbnahmeWand_FB_V01_00_00 EXTENDS Basic_Station_FB_V01_00_00

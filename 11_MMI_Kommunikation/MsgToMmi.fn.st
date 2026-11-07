@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "db865b54-9f7d-484b-b18c-e3bd89594534"
-  }
+	"v3Meta": {
+		"objectGuid": "db865b54-9f7d-484b-b18c-e3bd89594534"
+	}
 }
 *)
 FUNCTION MsgToMmi : BOOL

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ac996fe1-9bce-4d65-b8a5-db1a5457671f"
-  }
+	"v3Meta": {
+		"objectGuid": "ac996fe1-9bce-4d65-b8a5-db1a5457671f"
+	}
 }
 *)
 FUNCTION_BLOCK Eckuebergabe_FB_V01_00_00 EXTENDS Basic_Station_FB_V01_00_00

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "cf66fcf2-cc11-47d6-b197-d71c762428b0"
-  }
+	"v3Meta": {
+		"objectGuid": "cf66fcf2-cc11-47d6-b197-d71c762428b0"
+	}
 }
 *)
 METHOD INTERNAL Fremdanlage

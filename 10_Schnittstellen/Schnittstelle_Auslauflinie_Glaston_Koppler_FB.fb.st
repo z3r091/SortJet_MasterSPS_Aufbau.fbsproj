@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "1b8cd41b-c6ec-4747-8cfe-b17b04789a14"
-  }
+	"v3Meta": {
+		"objectGuid": "1b8cd41b-c6ec-4747-8cfe-b17b04789a14"
+	}
 }
 *)
 FUNCTION_BLOCK Schnittstelle_Auslauflinie_Glaston_Koppler_FB  EXTENDS Basic_Schnittstelle_FB_V01_00_00

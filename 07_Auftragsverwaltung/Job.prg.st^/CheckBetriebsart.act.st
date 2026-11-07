@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "753f5c5d-6a5a-4872-b6fd-48516db59d96"
-  }
+	"v3Meta": {
+		"objectGuid": "753f5c5d-6a5a-4872-b6fd-48516db59d96"
+	}
 }
 *)
 ACTION CheckBetriebsart

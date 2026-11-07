@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "3f16307b-cece-4c90-b369-f99b34f7eaac"
-  }
+	"v3Meta": {
+		"objectGuid": "3f16307b-cece-4c90-b369-f99b34f7eaac"
+	}
 }
 *)
 TYPE PositionierAuftrag_ST :

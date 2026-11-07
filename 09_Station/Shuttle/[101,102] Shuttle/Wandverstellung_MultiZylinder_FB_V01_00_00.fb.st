@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "57ebb36f-f22e-4632-9b59-8f205a70f04c"
-  }
+	"v3Meta": {
+		"objectGuid": "57ebb36f-f22e-4632-9b59-8f205a70f04c"
+	}
 }
 *)
 FUNCTION_BLOCK Wandverstellung_MultiZylinder_FB_V01_00_00

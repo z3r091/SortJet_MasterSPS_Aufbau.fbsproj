@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "e09c3e56-23fc-432f-9a18-960dccfa6275"
-  }
+	"v3Meta": {
+		"objectGuid": "e09c3e56-23fc-432f-9a18-960dccfa6275"
+	}
 }
 *)
 FUNCTION getAuftragsdaten : REFERENCE TO Auftragsdaten_ST

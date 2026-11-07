@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "3e444047-0bbc-4115-8663-bc85922a54df"
-  }
+	"v3Meta": {
+		"objectGuid": "3e444047-0bbc-4115-8663-bc85922a54df"
+	}
 }
 *)
 FUNCTION Tueren_Freigeben : WORD

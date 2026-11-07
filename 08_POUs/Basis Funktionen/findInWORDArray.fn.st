@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "27266190-4c13-454c-9114-87648310c4ec"
-  }
+	"v3Meta": {
+		"objectGuid": "27266190-4c13-454c-9114-87648310c4ec"
+	}
 }
 *)
 FUNCTION findInWORDArray : BOOL

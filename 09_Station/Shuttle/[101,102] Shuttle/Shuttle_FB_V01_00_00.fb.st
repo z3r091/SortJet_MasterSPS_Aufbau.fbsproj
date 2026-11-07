@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "a8175c8a-0e5e-42c5-a90c-c5e1a843dc34"
-  }
+	"v3Meta": {
+		"objectGuid": "a8175c8a-0e5e-42c5-a90c-c5e1a843dc34"
+	}
 }
 *)
 FUNCTION_BLOCK Shuttle_FB_V01_00_00

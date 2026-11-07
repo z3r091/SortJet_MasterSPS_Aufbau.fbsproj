@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "dbe974c3-5aa4-42b4-add7-2c28280dcaca"
-  }
+	"v3Meta": {
+		"objectGuid": "dbe974c3-5aa4-42b4-add7-2c28280dcaca"
+	}
 }
 *)
 ACTION Meldungen

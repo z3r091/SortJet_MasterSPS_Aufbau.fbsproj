@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ed448837-b746-4b1a-b2e7-236797e04e0f"
-  }
+	"v3Meta": {
+		"objectGuid": "ed448837-b746-4b1a-b2e7-236797e04e0f"
+	}
 }
 *)
 PROGRAM CheckReset

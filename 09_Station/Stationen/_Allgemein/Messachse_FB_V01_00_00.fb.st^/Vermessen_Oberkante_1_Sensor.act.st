@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "c5d2779d-1e0a-46ba-8928-f7dce1a1f66f"
-  }
+	"v3Meta": {
+		"objectGuid": "c5d2779d-1e0a-46ba-8928-f7dce1a1f66f"
+	}
 }
 *)
 ACTION Vermessen_Oberkante_1_Sensor

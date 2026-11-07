@@ -1,13 +1,12 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "42ae5482-243e-48a3-a681-16c36dcef6f3"
-  }
+	"v3Meta": {
+		"objectGuid": "42ae5482-243e-48a3-a681-16c36dcef6f3"
+	}
 }
 *)
 {attribute 'allow_unqualified_access'}
 NAMESPACE Konfiguration_206
-
 VAR_CONFIG
 //-------------------------------------------------------------------------------------------------
 // KONFIGURATION: BAUSTEIN IO´s

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "c3dbd95e-5dea-49b1-8dfe-8fb06aba27f0"
-  }
+	"v3Meta": {
+		"objectGuid": "c3dbd95e-5dea-49b1-8dfe-8fb06aba27f0"
+	}
 }
 *)
 ACTION Grundstellung

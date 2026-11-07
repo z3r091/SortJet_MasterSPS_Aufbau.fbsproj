@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "4af98741-4e9d-4c0b-ae92-ac6a6c18f571"
-  }
+	"v3Meta": {
+		"objectGuid": "4af98741-4e9d-4c0b-ae92-ac6a6c18f571"
+	}
 }
 *)
 ACTION BETRIEBSART_Absolut

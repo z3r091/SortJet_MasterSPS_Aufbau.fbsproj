@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "cfc81180-2ca7-4dd6-ae2b-44694cd50cb5"
-  }
+	"v3Meta": {
+		"objectGuid": "cfc81180-2ca7-4dd6-ae2b-44694cd50cb5"
+	}
 }
 *)
 ACTION Positionen

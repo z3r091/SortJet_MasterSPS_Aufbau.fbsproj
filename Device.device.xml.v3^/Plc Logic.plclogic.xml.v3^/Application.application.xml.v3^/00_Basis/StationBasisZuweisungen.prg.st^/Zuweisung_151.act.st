@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "626f2663-471d-49fb-b0f4-9d1f3bb0bf7f"
-  }
+	"v3Meta": {
+		"objectGuid": "626f2663-471d-49fb-b0f4-9d1f3bb0bf7f"
+	}
 }
 *)
 ACTION Zuweisung_151

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "c0c5d446-5c0c-4964-91ed-f4edd34c4197"
-  }
+	"v3Meta": {
+		"objectGuid": "c0c5d446-5c0c-4964-91ed-f4edd34c4197"
+	}
 }
 *)
 FUNCTION AuftragsdatenUmkopieren : Auftragsdaten_ST

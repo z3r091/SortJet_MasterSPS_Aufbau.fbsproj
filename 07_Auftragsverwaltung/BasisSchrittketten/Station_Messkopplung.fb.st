@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "d07d57e1-6a50-4547-ad5d-dd99acc1a5ad"
-  }
+	"v3Meta": {
+		"objectGuid": "d07d57e1-6a50-4547-ad5d-dd99acc1a5ad"
+	}
 }
 *)
 FUNCTION_BLOCK Station_Messkopplung

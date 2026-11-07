@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "d1a8c055-e553-4ad3-b9fd-e854b6194fb2"
-  }
+	"v3Meta": {
+		"objectGuid": "d1a8c055-e553-4ad3-b9fd-e854b6194fb2"
+	}
 }
 *)
 ACTION Signalverarbeitung

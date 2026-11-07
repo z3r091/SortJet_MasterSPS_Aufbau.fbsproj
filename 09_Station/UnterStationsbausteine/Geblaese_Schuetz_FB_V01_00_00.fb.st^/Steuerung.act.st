@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "f5d38f69-142e-4a4e-b92a-456c5a95c061"
-  }
+	"v3Meta": {
+		"objectGuid": "f5d38f69-142e-4a4e-b92a-456c5a95c061"
+	}
 }
 *)
 ACTION Steuerung

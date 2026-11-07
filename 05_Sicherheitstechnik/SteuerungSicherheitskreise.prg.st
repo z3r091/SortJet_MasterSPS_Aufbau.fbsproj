@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "0713858d-73c1-43e2-8e34-fbe80fbf8cab"
-  }
+	"v3Meta": {
+		"objectGuid": "0713858d-73c1-43e2-8e34-fbe80fbf8cab"
+	}
 }
 *)
 PROGRAM SteuerungSicherheitskreise

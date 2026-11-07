@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "cea505f7-1a84-4065-b281-2c700363fb8a"
-  }
+	"v3Meta": {
+		"objectGuid": "cea505f7-1a84-4065-b281-2c700363fb8a"
+	}
 }
 *)
 {attribute 'allow_unqualified_access'}

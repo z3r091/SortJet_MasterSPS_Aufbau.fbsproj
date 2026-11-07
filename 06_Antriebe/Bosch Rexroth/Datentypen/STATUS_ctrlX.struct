@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "48cd00e8-ec1d-483b-bc72-0f916467d76d"
-  }
+	"v3Meta": {
+		"objectGuid": "48cd00e8-ec1d-483b-bc72-0f916467d76d"
+	}
 }
 *)
 TYPE STATUS_ctrlX :

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "b3b83d22-15dc-44d1-82f1-6860a5f4b14c"
-  }
+	"v3Meta": {
+		"objectGuid": "b3b83d22-15dc-44d1-82f1-6860a5f4b14c"
+	}
 }
 *)
 FUNCTION_BLOCK Eckuebergabe_Eintransport_FB_V01_00_00 EXTENDS Basic_Station_Eintransport_FB_V01_00_00

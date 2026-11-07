@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "178671fb-35b0-4259-a5a5-bd66eca69a26"
-  }
+	"v3Meta": {
+		"objectGuid": "178671fb-35b0-4259-a5a5-bd66eca69a26"
+	}
 }
 *)
 ACTION OperatorAcknowledge

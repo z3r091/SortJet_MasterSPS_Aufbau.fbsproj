@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ec549a81-8212-4c0f-885a-b7f66d397584"
-  }
+	"v3Meta": {
+		"objectGuid": "ec549a81-8212-4c0f-885a-b7f66d397584"
+	}
 }
 *)
 ACTION Zuweisung_206
@@ -34,5 +34,4 @@ starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aEintranspo
 // Austransport
 starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aAustransporte.Station[cSTATION_204]                  := Vorwaertig;
 starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aAustransporte.bStationQuittiertScheibe[cSTATION_204] := FALSE;
-
 END_ACTION

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "fa5f8a33-e206-4f1c-8f52-9ec08cda9b33"
-  }
+	"v3Meta": {
+		"objectGuid": "fa5f8a33-e206-4f1c-8f52-9ec08cda9b33"
+	}
 }
 *)
 ACTION Auftraege_Shuttle_Generieren

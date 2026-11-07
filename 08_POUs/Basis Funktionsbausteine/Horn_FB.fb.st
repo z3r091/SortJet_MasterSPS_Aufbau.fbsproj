@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "6f7ed93d-1901-4e95-8818-3caa484a7623"
-  }
+	"v3Meta": {
+		"objectGuid": "6f7ed93d-1901-4e95-8818-3caa484a7623"
+	}
 }
 *)
 FUNCTION_BLOCK Horn_FB

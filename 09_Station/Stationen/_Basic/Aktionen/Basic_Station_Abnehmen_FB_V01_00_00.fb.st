@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "660d4460-1ddc-44b5-9e6a-0f9c596d74b5"
-  }
+	"v3Meta": {
+		"objectGuid": "660d4460-1ddc-44b5-9e6a-0f9c596d74b5"
+	}
 }
 *)
 FUNCTION_BLOCK Basic_Station_Abnehmen_FB_V01_00_00 EXTENDS Basic_Station_Aktion_FB_V01_00_00
@@ -176,3 +176,4 @@ ELSE
     steplAktion := STEP_0_E;
   END_IF
 END_IF
+END_FUNCTION_BLOCK

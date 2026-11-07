@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "247362d8-d524-4c63-bf59-99545bc6b88f"
-  }
+	"v3Meta": {
+		"objectGuid": "247362d8-d524-4c63-bf59-99545bc6b88f"
+	}
 }
 *)
 TYPE Visu_Auftraege_ST :

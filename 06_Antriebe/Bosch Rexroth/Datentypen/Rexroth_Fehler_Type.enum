@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "a279a7a0-de04-472a-acbc-5dd5e8bc81ba"
-  }
+	"v3Meta": {
+		"objectGuid": "a279a7a0-de04-472a-acbc-5dd5e8bc81ba"
+	}
 }
 *)
 TYPE Rexroth_Fehler_Type :

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "b9f6b86d-7a91-4709-a115-3d1bc5da6f67"
-  }
+	"v3Meta": {
+		"objectGuid": "b9f6b86d-7a91-4709-a115-3d1bc5da6f67"
+	}
 }
 *)
 METHOD M_ReadMsg_InterpretMsg : BOOL

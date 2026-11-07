@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "88539335-6d2a-4efd-8213-a5feda61f359"
-  }
+	"v3Meta": {
+		"objectGuid": "88539335-6d2a-4efd-8213-a5feda61f359"
+	}
 }
 *)
 PROGRAM Verfahrueberwachung_PRG

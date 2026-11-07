@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "c00b8cb2-a40a-4694-b5ab-03ed31d3b1b7"
-  }
+	"v3Meta": {
+		"objectGuid": "c00b8cb2-a40a-4694-b5ab-03ed31d3b1b7"
+	}
 }
 *)
 TYPE VisuHand_Station_ST :

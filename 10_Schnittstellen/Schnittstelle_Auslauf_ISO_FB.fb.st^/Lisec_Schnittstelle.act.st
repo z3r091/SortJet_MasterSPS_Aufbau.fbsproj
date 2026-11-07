@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "3bbd0527-1e76-46f0-a897-fe331d220a8d"
-  }
+	"v3Meta": {
+		"objectGuid": "3bbd0527-1e76-46f0-a897-fe331d220a8d"
+	}
 }
 *)
 ACTION Lisec_Schnittstelle

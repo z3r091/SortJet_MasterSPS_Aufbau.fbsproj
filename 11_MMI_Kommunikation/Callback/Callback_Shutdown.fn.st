@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "b602f436-2d06-46cb-9d80-1c5ce9f0f7bc"
-  }
+	"v3Meta": {
+		"objectGuid": "b602f436-2d06-46cb-9d80-1c5ce9f0f7bc"
+	}
 }
 *)
 FUNCTION Callback_Shutdown : DWORD

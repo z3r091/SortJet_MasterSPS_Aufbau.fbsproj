@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "50b45b59-5893-4c9c-b524-1732205d1fb3"
-  }
+	"v3Meta": {
+		"objectGuid": "50b45b59-5893-4c9c-b524-1732205d1fb3"
+	}
 }
 *)
 FUNCTION_BLOCK Greiferzange_FB_V01_00_00

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ac7cd821-755f-477f-9445-f7486c53354c"
-  }
+	"v3Meta": {
+		"objectGuid": "ac7cd821-755f-477f-9445-f7486c53354c"
+	}
 }
 *)
 PROGRAM Job_Fremdanlage

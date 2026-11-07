@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "1983d120-77fe-4da5-a5d1-bf513123edf7"
-  }
+	"v3Meta": {
+		"objectGuid": "1983d120-77fe-4da5-a5d1-bf513123edf7"
+	}
 }
 *)
 FUNCTION_BLOCK Schnittstelle_Einlauf_Portale EXTENDS Basic_Schnittstelle_FB_V01_00_00

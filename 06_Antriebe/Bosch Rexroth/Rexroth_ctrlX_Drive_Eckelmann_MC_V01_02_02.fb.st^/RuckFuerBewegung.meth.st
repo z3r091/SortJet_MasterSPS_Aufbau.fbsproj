@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "22a6795c-24d0-485d-84ce-ae7862297fab"
-  }
+	"v3Meta": {
+		"objectGuid": "22a6795c-24d0-485d-84ce-ae7862297fab"
+	}
 }
 *)
 METHOD PRIVATE RuckFuerBewegung : REAL

@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "baa483a7-b8f2-435a-ba70-78330d4d9eae"
-  }
+	"v3Meta": {
+		"objectGuid": "baa483a7-b8f2-435a-ba70-78330d4d9eae"
+	}
 }
 *)
 TYPE GlasTyp_EN :

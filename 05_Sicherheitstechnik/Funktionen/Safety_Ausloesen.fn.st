@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "8440d4b2-0d12-462a-874f-5dd80fe8d64c"
-  }
+	"v3Meta": {
+		"objectGuid": "8440d4b2-0d12-462a-874f-5dd80fe8d64c"
+	}
 }
 *)
 FUNCTION Safety_Ausloesen : WORD

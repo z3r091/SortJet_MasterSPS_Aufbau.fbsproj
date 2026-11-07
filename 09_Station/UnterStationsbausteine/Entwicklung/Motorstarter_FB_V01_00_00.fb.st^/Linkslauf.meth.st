@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "901ae501-1a81-4a6e-8340-32118915e16c"
-  }
+	"v3Meta": {
+		"objectGuid": "901ae501-1a81-4a6e-8340-32118915e16c"
+	}
 }
 *)
 METHOD Linkslauf : BOOL

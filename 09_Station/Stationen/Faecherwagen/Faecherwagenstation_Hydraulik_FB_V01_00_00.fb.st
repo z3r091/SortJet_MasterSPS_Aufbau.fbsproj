@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "e6879d41-371d-40de-a0ee-fe2898e6d6d8"
-  }
+	"v3Meta": {
+		"objectGuid": "e6879d41-371d-40de-a0ee-fe2898e6d6d8"
+	}
 }
 *)
 FUNCTION_BLOCK Faecherwagenstation_Hydraulik_FB_V01_00_00 EXTENDS Basic_Faecherwagenstation_FB_V01_00_00

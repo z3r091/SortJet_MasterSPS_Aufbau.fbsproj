@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "516e6825-2e78-467d-914f-94fc332667ab"
-  }
+	"v3Meta": {
+		"objectGuid": "516e6825-2e78-467d-914f-94fc332667ab"
+	}
 }
 *)
 FUNCTION_BLOCK Eckuebergabe_Vortransport_FB_V01_00_00 EXTENDS Basic_Station_Vortransport_FB_V01_00_00

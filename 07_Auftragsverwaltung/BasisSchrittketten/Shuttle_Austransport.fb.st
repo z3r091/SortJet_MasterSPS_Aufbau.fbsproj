@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "ac2be6b1-afec-449b-a8c9-7faca61891b0"
-  }
+	"v3Meta": {
+		"objectGuid": "ac2be6b1-afec-449b-a8c9-7faca61891b0"
+	}
 }
 *)
 FUNCTION_BLOCK Shuttle_Austransport

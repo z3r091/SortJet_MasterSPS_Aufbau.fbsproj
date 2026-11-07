@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "e658493f-ee55-49d1-b74f-ae85f8ce4fd2"
-  }
+	"v3Meta": {
+		"objectGuid": "e658493f-ee55-49d1-b74f-ae85f8ce4fd2"
+	}
 }
 *)
 METHOD PRIVATE ScheibenID : ARRAY [0..3] OF DWORD

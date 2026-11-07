@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "b8318e71-33b4-4378-bb26-1a25eb83808f"
-  }
+	"v3Meta": {
+		"objectGuid": "b8318e71-33b4-4378-bb26-1a25eb83808f"
+	}
 }
 *)
 ACTION Ausschleusen

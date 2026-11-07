@@ -1,8 +1,8 @@
 (* METADATA
 {
-  "v3Meta": {
-    "objectGuid": "8a9e4c0e-fdd1-4ecd-91eb-faaae42ab969"
-  }
+	"v3Meta": {
+		"objectGuid": "8a9e4c0e-fdd1-4ecd-91eb-faaae42ab969"
+	}
 }
 *)
 ACTION AbsolutPositionierung
