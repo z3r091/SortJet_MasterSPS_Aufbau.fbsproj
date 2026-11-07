@@ -424,7 +424,7 @@ __V3_CONTENT__
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6365</Single>
-												<Single Name="Variable" Type="string">Application.pgAntriebe[13].SignalSteuerWort</Single>
+												<Single Name="Variable" Type="string">Application.pgAntriebe[9].SignalSteuerWort</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -837,7 +837,7 @@ __V3_CONTENT__
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6707</Single>
-												<Single Name="Variable" Type="string">Application.pgAntriebe[13].i_ui_Cia402_StatusWord</Single>
+												<Single Name="Variable" Type="string">Application.pgAntriebe[9].i_ui_Cia402_StatusWord</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1237,7 +1237,7 @@ __V3_CONTENT__
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6741</Single>
-												<Single Name="Variable" Type="string">Application.pgAntriebe[13].i_ui_Signal_StatusWord</Single>
+												<Single Name="Variable" Type="string">Application.pgAntriebe[9].i_ui_Signal_StatusWord</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2101,7 +2101,7 @@ __V3_CONTENT__
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6775</Single>
-												<Single Name="Variable" Type="string">Application.pgAntriebe[13].udipEingaengeUmrichter</Single>
+												<Single Name="Variable" Type="string">Application.pgAntriebe[9].udipEingaengeUmrichter</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2549,7 +2549,7 @@ __V3_CONTENT__
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6841</Single>
-												<Single Name="Variable" Type="string">Application.pgAntriebe[13].PowerSupplyStatus</Single>
+												<Single Name="Variable" Type="string">Application.pgAntriebe[9].PowerSupplyStatus</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -3413,7 +3413,7 @@ __V3_CONTENT__
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6899</Single>
-												<Single Name="Variable" Type="string">Application.pgAntriebe[13].diTouchProbe1Pos</Single>
+												<Single Name="Variable" Type="string">Application.pgAntriebe[9].diTouchProbe1Pos</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -4277,7 +4277,7 @@ __V3_CONTENT__
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6989</Single>
-												<Single Name="Variable" Type="string">Application.pgAntriebe[13].diTouchProbe1Neg</Single>
+												<Single Name="Variable" Type="string">Application.pgAntriebe[9].diTouchProbe1Neg</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -5141,7 +5141,7 @@ __V3_CONTENT__
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">7103</Single>
-												<Single Name="Variable" Type="string">Application.pgAntriebe[13].diTouchProbe2Pos</Single>
+												<Single Name="Variable" Type="string">Application.pgAntriebe[9].diTouchProbe2Pos</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -6005,7 +6005,7 @@ __V3_CONTENT__
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">7193</Single>
-												<Single Name="Variable" Type="string">Application.pgAntriebe[13].diTouchProbe2Neg</Single>
+												<Single Name="Variable" Type="string">Application.pgAntriebe[9].diTouchProbe2Neg</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -6869,7 +6869,7 @@ __V3_CONTENT__
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">7283</Single>
-												<Single Name="Variable" Type="string">Application.pgAntriebe[13].udiErrorFromECat</Single>
+												<Single Name="Variable" Type="string">Application.pgAntriebe[9].udiErrorFromECat</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -7317,7 +7317,7 @@ __V3_CONTENT__
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">7373</Single>
-												<Single Name="Variable" Type="string">Application.pgAntriebe[13].uiTouchProbeStatus</Single>
+												<Single Name="Variable" Type="string">Application.pgAntriebe[9].uiTouchProbeStatus</Single>
 											</Single>
 										</List2>
 									</Single>

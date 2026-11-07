@@ -419,7 +419,6 @@ __V3_CONTENT__
 								<Single Name="PositionId" Type="long">4261</Single>
 								<Single Name="EditorPositionId" Type="long">4262</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
-									<Single Name="AutomaticAddress" Type="bool">False</Single>
 									<Single Name="IecAddress" Type="string">%IW63</Single>
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">

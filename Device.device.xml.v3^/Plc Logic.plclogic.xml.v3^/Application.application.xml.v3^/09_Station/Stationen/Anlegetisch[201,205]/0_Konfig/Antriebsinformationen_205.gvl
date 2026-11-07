@@ -15,7 +15,7 @@ VAR_GLOBAL CONSTANT
 
   apgInfoStation205Glastransport : AntriebsInformationen :=
     (
-      wAchsID                                 :=     20,  // Achs ID aus dem EConSet 
+      wAchsID                                 :=     9,  // Achs ID aus dem EConSet 
       stTyp                                   := 'Belt',  // Typ                           
       wpSchaltschrank                         :=   2050,  // Daten aus dem Schaltplan                                       
       wpSchaltplanreihe                       :=      2,  // Daten aus dem Schaltplan                                       
@@ -68,7 +68,7 @@ VAR_GLOBAL CONSTANT
 
   apgInfoStation205Messachse : AntriebsInformationen :=
     (     
-      wAchsID                                 :=        21,  // Achs ID aus dem EConSet                                               
+      wAchsID                                 :=        10,  // Achs ID aus dem EConSet                                               
       stTyp                                   := 'Measure',  // Typ                                                                           
       wpSchaltschrank                         :=      2051,  // Daten aus dem Schaltplan                                                                             
       wpSchaltplanreihe                       :=         2,  // Daten aus dem Schaltplan                                                                             

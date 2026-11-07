@@ -15,7 +15,7 @@ VAR_GLOBAL
 
   apgInfoStation208Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
-      wAchsID                                 :=     8,   // Achs ID aus dem EConSet                                               
+      wAchsID                                 :=     15,   // Achs ID aus dem EConSet                                               
       stTyp                                   := 'Belt',  // Typ                                                                   
       wpSchaltschrank                         :=   2080,  // Daten aus dem Schaltplan                                              
       wpSchaltplanreihe                       :=      2,  // Daten aus dem Schaltplan                                              
@@ -41,7 +41,7 @@ VAR_GLOBAL
 
   apgInfoStation208Messachse :  AntriebsInformationen := 
     (       
-      wAchsID                                 :=        9,   // Achs ID aus dem EConSet                                               
+      wAchsID                                 :=        16,   // Achs ID aus dem EConSet                                               
       stTyp                                   := 'Measure',  // Typ                                                                            
       wpSchaltschrank                         :=      2081,  // Daten aus dem Schaltplan                                                                           
       wpSchaltplanreihe                       :=         2,  // Daten aus dem Schaltplan                                                                           

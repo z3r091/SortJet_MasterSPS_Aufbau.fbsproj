@@ -15,7 +15,7 @@ VAR_GLOBAL
 
   apgInfoShuttle102Querfahrt : AntriebsInformationen :=
     (
-      wAchsID                                 :=        10,  // Achs ID aus dem EConSet
+      wAchsID                                 :=        21,  // Achs ID aus dem EConSet
       stTyp                                   := 'Lateral',  // Typ
       wpSchaltschrank                         :=      3102,  // Daten aus dem Schaltplan
       wpSchaltplanreihe                       :=         2,  // Daten aus dem Schaltplan
@@ -41,7 +41,7 @@ VAR_GLOBAL
 
   apgInfoShuttle102Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
-      wAchsID                                 :=        11,  // Achs ID aus dem EConSet
+      wAchsID                                 :=        22,  // Achs ID aus dem EConSet
       stTyp                                   :=    'Belt',  // Typ
       wpSchaltschrank                         :=      3102,  // Daten aus dem Schaltplan
       wpSchaltplanreihe                       :=         2,  // Daten aus dem Schaltplan
@@ -143,10 +143,10 @@ VAR_GLOBAL
                                                    bBremseLoesenFreigabe := FALSE )                         // Der Antrieb darf über eine Betriebsart die Bremse lösen
     )];
 
-  // Greifer [Ausbaustufe stStationsAufbau.bGreifer]: Achs-ID 65 = nicht vorhanden, Werte aus Schaltplan / Inbetriebnahme eintragen
+  // Greifer [Ausbaustufe stStationsAufbau.bGreifer]: zweite Achse des Doppelachsgeraets -90U02
   apgInfoShuttle102Greifer : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
-      wAchsID                                 :=        65,  // Achs ID aus dem EConSet
+      wAchsID                                 :=        23,  // Achs ID aus dem EConSet
       stTyp                                   := 'Gripper',  // Typ
       wpSchaltschrank                         :=      3102,  // Daten aus dem Schaltplan
       wpSchaltplanreihe                       :=         0,  // Daten aus dem Schaltplan

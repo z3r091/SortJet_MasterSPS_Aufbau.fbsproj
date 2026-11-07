@@ -15,7 +15,7 @@ VAR_GLOBAL
 
   apgInfoShuttle101Querfahrt : AntriebsInformationen :=
     (
-      wAchsID                                 :=        10,  // Achs ID aus dem EConSet
+      wAchsID                                 :=        19,  // Achs ID aus dem EConSet
       stTyp                                   := 'Lateral',  // Typ
       wpSchaltschrank                         :=      3101,  // Daten aus dem Schaltplan
       wpSchaltplanreihe                       :=         2,  // Daten aus dem Schaltplan
@@ -41,7 +41,7 @@ VAR_GLOBAL
 
   apgInfoShuttle101Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
-      wAchsID                                 :=        11,  // Achs ID aus dem EConSet
+      wAchsID                                 :=        20,  // Achs ID aus dem EConSet
       stTyp                                   :=    'Belt',  // Typ
       wpSchaltschrank                         :=      3101,  // Daten aus dem Schaltplan
       wpSchaltplanreihe                       :=         2,  // Daten aus dem Schaltplan
@@ -119,7 +119,7 @@ VAR_GLOBAL
 
   apgInfoShuttle101Dickenverstellung : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
-      wAchsID                                 :=        12,  // Achs ID aus dem EConSet
+      wAchsID                                 :=        65,  // Achs ID aus dem EConSet
       stTyp                                   :=    'Wall',  // Typ
       wpSchaltschrank                         :=      3101,  // Daten aus dem Schaltplan
       wpSchaltplanreihe                       :=         2,  // Daten aus dem Schaltplan

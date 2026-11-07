@@ -94,10 +94,6 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="PositionId" Type="long">4549</Single>
 								<Single Name="EditorPositionId" Type="long">4550</Single>
-								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
-									<Single Name="AutomaticAddress" Type="bool">False</Single>
-									<Single Name="IecAddress" Type="string">%IX163.0</Single>
-								</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DI1</Single>
 								</Single>

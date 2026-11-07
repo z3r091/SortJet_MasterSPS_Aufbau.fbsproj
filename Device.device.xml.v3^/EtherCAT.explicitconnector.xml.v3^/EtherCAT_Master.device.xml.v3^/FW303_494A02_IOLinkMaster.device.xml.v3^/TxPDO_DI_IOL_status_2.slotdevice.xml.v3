@@ -135,6 +135,7 @@ __V3_CONTENT__
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4241</Single>
 													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].in_bLinearEinheit1Vorne</Single>
 												</Single>
 											</List2>
@@ -162,6 +163,7 @@ __V3_CONTENT__
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4243</Single>
 													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].in_bLinearEinheit1Hinten</Single>
 												</Single>
 											</List2>
@@ -189,6 +191,7 @@ __V3_CONTENT__
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4245</Single>
 													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].in_bLinearEinheit2Vorne</Single>
 												</Single>
 											</List2>
@@ -216,6 +219,7 @@ __V3_CONTENT__
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4247</Single>
 													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].in_bLinearEinheit2Hinten</Single>
 												</Single>
 											</List2>
@@ -261,6 +265,7 @@ __V3_CONTENT__
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4251</Single>
 													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].in_bFaecherwagenNichtInPos</Single>
 												</Single>
 											</List2>
@@ -284,15 +289,6 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4253</Single>
 									<Single Name="EditorPositionId" Type="long">4254</Single>
-									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
-										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
-											<List2 Name="Mappings">
-												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].in_bNichtRolltorGeoeffnet</Single>
-												</Single>
-											</List2>
-										</Single>
-									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">&gt;Digital Inputs X5-X8</Single>
 									</Single>
@@ -315,6 +311,7 @@ __V3_CONTENT__
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4255</Single>
 													<Single Name="Variable" Type="string">Application.StationBasisZuweisungen.in_bDruckluftFaecherwagenOK</Single>
 												</Single>
 											</List2>
@@ -342,6 +339,7 @@ __V3_CONTENT__
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4257</Single>
 													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].in_bEntriegelungOffen</Single>
 												</Single>
 											</List2>
@@ -369,6 +367,7 @@ __V3_CONTENT__
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4259</Single>
 													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].in_bEntriegelungGeschlossen</Single>
 												</Single>
 											</List2>
@@ -396,6 +395,7 @@ __V3_CONTENT__
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4261</Single>
 													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].in_bGegenhalterOffen</Single>
 												</Single>
 											</List2>
@@ -423,6 +423,7 @@ __V3_CONTENT__
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4263</Single>
 													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].in_bGegenhalterZu</Single>
 												</Single>
 											</List2>
@@ -450,6 +451,7 @@ __V3_CONTENT__
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4265</Single>
 													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].in_bGreifer1Offen</Single>
 												</Single>
 											</List2>
@@ -477,6 +479,7 @@ __V3_CONTENT__
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4267</Single>
 													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].in_bGreifer1Zu</Single>
 												</Single>
 											</List2>

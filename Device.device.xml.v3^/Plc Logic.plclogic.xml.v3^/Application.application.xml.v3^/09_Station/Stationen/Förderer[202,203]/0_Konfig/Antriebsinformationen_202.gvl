@@ -15,7 +15,7 @@ VAR_GLOBAL
 
   apgInfoStation202Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
-      wAchsID                                 :=      6,  // Achs ID aus dem EConSet                                               
+      wAchsID                                 :=      12,  // Achs ID aus dem EConSet                                               
       stTyp                                   := 'Belt',  // Typ                                                                   
       wpSchaltschrank                         :=   2020,  // Daten aus dem Schaltplan                                              
       wpSchaltplanreihe                       :=      2,  // Daten aus dem Schaltplan                                              
