@@ -10,7 +10,7 @@ __V3_META__
 __V3_CONTENT__
 <?xml version="1.0" encoding="utf-8"?>
 <Single xml:space="preserve" Type="{225bfe47-7336-4dbc-9419-4105a7c831fa}" Method="IArchivable">
-	<Single Name="UniqueIdGenerator" Type="string">5625</Single>
+	<Single Name="UniqueIdGenerator" Type="string">5829</Single>
 	<Null Name="TypeList" />
 	<Single Name="NeedsBusCycle" Type="bool">False</Single>
 	<Single Name="Id" Type="{05ee0b98-6639-4276-bc32-b75578b819ef}" Method="IArchivable">
@@ -99,8 +99,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5416</Single>
-											<Single Name="EditorPositionId" Type="long">5417</Single>
+											<Single Name="PositionId" Type="long">5628</Single>
+											<Single Name="EditorPositionId" Type="long">5629</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Command</Single>
 											</Single>
@@ -129,8 +129,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5418</Single>
-											<Single Name="EditorPositionId" Type="long">5419</Single>
+											<Single Name="PositionId" Type="long">5630</Single>
+											<Single Name="EditorPositionId" Type="long">5631</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Command</Single>
 											</Single>
@@ -159,8 +159,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5420</Single>
-											<Single Name="EditorPositionId" Type="long">5421</Single>
+											<Single Name="PositionId" Type="long">5632</Single>
+											<Single Name="EditorPositionId" Type="long">5633</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Command</Single>
 											</Single>
@@ -189,8 +189,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5422</Single>
-											<Single Name="EditorPositionId" Type="long">5423</Single>
+											<Single Name="PositionId" Type="long">5634</Single>
+											<Single Name="EditorPositionId" Type="long">5635</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Command</Single>
 											</Single>
@@ -219,8 +219,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5424</Single>
-											<Single Name="EditorPositionId" Type="long">5425</Single>
+											<Single Name="PositionId" Type="long">5636</Single>
+											<Single Name="EditorPositionId" Type="long">5637</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Command</Single>
 											</Single>
@@ -249,8 +249,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5426</Single>
-											<Single Name="EditorPositionId" Type="long">5427</Single>
+											<Single Name="PositionId" Type="long">5638</Single>
+											<Single Name="EditorPositionId" Type="long">5639</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Command</Single>
 											</Single>
@@ -279,8 +279,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5428</Single>
-											<Single Name="EditorPositionId" Type="long">5429</Single>
+											<Single Name="PositionId" Type="long">5640</Single>
+											<Single Name="EditorPositionId" Type="long">5641</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Command</Single>
 											</Single>
@@ -309,8 +309,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5430</Single>
-											<Single Name="EditorPositionId" Type="long">5431</Single>
+											<Single Name="PositionId" Type="long">5642</Single>
+											<Single Name="EditorPositionId" Type="long">5643</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Command</Single>
 											</Single>
@@ -340,8 +340,8 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5414</Single>
-								<Single Name="EditorPositionId" Type="long">5415</Single>
+								<Single Name="PositionId" Type="long">5626</Single>
+								<Single Name="EditorPositionId" Type="long">5627</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">FSoE Master Command</Single>
 								</Single>
@@ -351,9 +351,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">16777218</Single>
 								<Single Name="BaseType" Type="string">USINT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">25</Single>
+							<Single Name="SectionId" Type="int">27</Single>
 							<Single Name="ParamType" Type="string">std:USINT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777219</Single>
@@ -363,8 +362,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5432</Single>
-								<Single Name="EditorPositionId" Type="long">5433</Single>
+								<Single Name="PositionId" Type="long">5644</Single>
+								<Single Name="EditorPositionId" Type="long">5645</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DO1</Single>
 								</Single>
@@ -374,9 +373,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">16777219</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">25</Single>
+							<Single Name="SectionId" Type="int">27</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777220</Single>
@@ -386,8 +384,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5434</Single>
-								<Single Name="EditorPositionId" Type="long">5435</Single>
+								<Single Name="PositionId" Type="long">5646</Single>
+								<Single Name="EditorPositionId" Type="long">5647</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DO2</Single>
 								</Single>
@@ -397,9 +395,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">16777220</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">25</Single>
+							<Single Name="SectionId" Type="int">27</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777221</Single>
@@ -409,8 +406,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5436</Single>
-								<Single Name="EditorPositionId" Type="long">5437</Single>
+								<Single Name="PositionId" Type="long">5648</Single>
+								<Single Name="EditorPositionId" Type="long">5649</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DO3</Single>
 								</Single>
@@ -420,9 +417,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">16777221</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">25</Single>
+							<Single Name="SectionId" Type="int">27</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777222</Single>
@@ -432,8 +428,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5438</Single>
-								<Single Name="EditorPositionId" Type="long">5439</Single>
+								<Single Name="PositionId" Type="long">5650</Single>
+								<Single Name="EditorPositionId" Type="long">5651</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DO4</Single>
 								</Single>
@@ -443,9 +439,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">16777222</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">25</Single>
+							<Single Name="SectionId" Type="int">27</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777223</Single>
@@ -455,8 +450,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5440</Single>
-								<Single Name="EditorPositionId" Type="long">5441</Single>
+								<Single Name="PositionId" Type="long">5652</Single>
+								<Single Name="EditorPositionId" Type="long">5653</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">---</Single>
 								</Single>
@@ -466,9 +461,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">16777223</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">25</Single>
+							<Single Name="SectionId" Type="int">27</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777224</Single>
@@ -478,8 +472,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5442</Single>
-								<Single Name="EditorPositionId" Type="long">5443</Single>
+								<Single Name="PositionId" Type="long">5654</Single>
+								<Single Name="EditorPositionId" Type="long">5655</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">---</Single>
 								</Single>
@@ -489,9 +483,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">16777224</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">25</Single>
+							<Single Name="SectionId" Type="int">27</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777225</Single>
@@ -501,8 +494,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5444</Single>
-								<Single Name="EditorPositionId" Type="long">5445</Single>
+								<Single Name="PositionId" Type="long">5656</Single>
+								<Single Name="EditorPositionId" Type="long">5657</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">---</Single>
 								</Single>
@@ -512,9 +505,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">16777225</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">25</Single>
+							<Single Name="SectionId" Type="int">27</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777226</Single>
@@ -524,8 +516,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5446</Single>
-								<Single Name="EditorPositionId" Type="long">5447</Single>
+								<Single Name="PositionId" Type="long">5658</Single>
+								<Single Name="EditorPositionId" Type="long">5659</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">---</Single>
 								</Single>
@@ -535,9 +527,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">16777226</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">25</Single>
+							<Single Name="SectionId" Type="int">27</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777227</Single>
@@ -550,8 +541,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5450</Single>
-											<Single Name="EditorPositionId" Type="long">5451</Single>
+											<Single Name="PositionId" Type="long">5662</Single>
+											<Single Name="EditorPositionId" Type="long">5663</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -580,8 +571,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5452</Single>
-											<Single Name="EditorPositionId" Type="long">5453</Single>
+											<Single Name="PositionId" Type="long">5664</Single>
+											<Single Name="EditorPositionId" Type="long">5665</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -610,8 +601,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5454</Single>
-											<Single Name="EditorPositionId" Type="long">5455</Single>
+											<Single Name="PositionId" Type="long">5666</Single>
+											<Single Name="EditorPositionId" Type="long">5667</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -640,8 +631,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5456</Single>
-											<Single Name="EditorPositionId" Type="long">5457</Single>
+											<Single Name="PositionId" Type="long">5668</Single>
+											<Single Name="EditorPositionId" Type="long">5669</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -670,8 +661,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5458</Single>
-											<Single Name="EditorPositionId" Type="long">5459</Single>
+											<Single Name="PositionId" Type="long">5670</Single>
+											<Single Name="EditorPositionId" Type="long">5671</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -700,8 +691,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5460</Single>
-											<Single Name="EditorPositionId" Type="long">5461</Single>
+											<Single Name="PositionId" Type="long">5672</Single>
+											<Single Name="EditorPositionId" Type="long">5673</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -730,8 +721,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5462</Single>
-											<Single Name="EditorPositionId" Type="long">5463</Single>
+											<Single Name="PositionId" Type="long">5674</Single>
+											<Single Name="EditorPositionId" Type="long">5675</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -760,8 +751,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5464</Single>
-											<Single Name="EditorPositionId" Type="long">5465</Single>
+											<Single Name="PositionId" Type="long">5676</Single>
+											<Single Name="EditorPositionId" Type="long">5677</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -790,8 +781,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5466</Single>
-											<Single Name="EditorPositionId" Type="long">5467</Single>
+											<Single Name="PositionId" Type="long">5678</Single>
+											<Single Name="EditorPositionId" Type="long">5679</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -820,8 +811,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5468</Single>
-											<Single Name="EditorPositionId" Type="long">5469</Single>
+											<Single Name="PositionId" Type="long">5680</Single>
+											<Single Name="EditorPositionId" Type="long">5681</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -850,8 +841,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5470</Single>
-											<Single Name="EditorPositionId" Type="long">5471</Single>
+											<Single Name="PositionId" Type="long">5682</Single>
+											<Single Name="EditorPositionId" Type="long">5683</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -880,8 +871,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5472</Single>
-											<Single Name="EditorPositionId" Type="long">5473</Single>
+											<Single Name="PositionId" Type="long">5684</Single>
+											<Single Name="EditorPositionId" Type="long">5685</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -910,8 +901,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5474</Single>
-											<Single Name="EditorPositionId" Type="long">5475</Single>
+											<Single Name="PositionId" Type="long">5686</Single>
+											<Single Name="EditorPositionId" Type="long">5687</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -940,8 +931,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5476</Single>
-											<Single Name="EditorPositionId" Type="long">5477</Single>
+											<Single Name="PositionId" Type="long">5688</Single>
+											<Single Name="EditorPositionId" Type="long">5689</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -970,8 +961,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5478</Single>
-											<Single Name="EditorPositionId" Type="long">5479</Single>
+											<Single Name="PositionId" Type="long">5690</Single>
+											<Single Name="EditorPositionId" Type="long">5691</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -1000,8 +991,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5480</Single>
-											<Single Name="EditorPositionId" Type="long">5481</Single>
+											<Single Name="PositionId" Type="long">5692</Single>
+											<Single Name="EditorPositionId" Type="long">5693</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 											</Single>
@@ -1031,8 +1022,8 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5448</Single>
-								<Single Name="EditorPositionId" Type="long">5449</Single>
+								<Single Name="PositionId" Type="long">5660</Single>
+								<Single Name="EditorPositionId" Type="long">5661</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">FSoE Master CRC 0</Single>
 								</Single>
@@ -1042,9 +1033,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">16777227</Single>
 								<Single Name="BaseType" Type="string">UINT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">25</Single>
+							<Single Name="SectionId" Type="int">27</Single>
 							<Single Name="ParamType" Type="string">std:UINT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777228</Single>
@@ -1057,8 +1047,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5484</Single>
-											<Single Name="EditorPositionId" Type="long">5485</Single>
+											<Single Name="PositionId" Type="long">5696</Single>
+											<Single Name="EditorPositionId" Type="long">5697</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1087,8 +1077,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5486</Single>
-											<Single Name="EditorPositionId" Type="long">5487</Single>
+											<Single Name="PositionId" Type="long">5698</Single>
+											<Single Name="EditorPositionId" Type="long">5699</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1117,8 +1107,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5488</Single>
-											<Single Name="EditorPositionId" Type="long">5489</Single>
+											<Single Name="PositionId" Type="long">5700</Single>
+											<Single Name="EditorPositionId" Type="long">5701</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1147,8 +1137,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5490</Single>
-											<Single Name="EditorPositionId" Type="long">5491</Single>
+											<Single Name="PositionId" Type="long">5702</Single>
+											<Single Name="EditorPositionId" Type="long">5703</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1177,8 +1167,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5492</Single>
-											<Single Name="EditorPositionId" Type="long">5493</Single>
+											<Single Name="PositionId" Type="long">5704</Single>
+											<Single Name="EditorPositionId" Type="long">5705</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1207,8 +1197,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5494</Single>
-											<Single Name="EditorPositionId" Type="long">5495</Single>
+											<Single Name="PositionId" Type="long">5706</Single>
+											<Single Name="EditorPositionId" Type="long">5707</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1237,8 +1227,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5496</Single>
-											<Single Name="EditorPositionId" Type="long">5497</Single>
+											<Single Name="PositionId" Type="long">5708</Single>
+											<Single Name="EditorPositionId" Type="long">5709</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1267,8 +1257,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5498</Single>
-											<Single Name="EditorPositionId" Type="long">5499</Single>
+											<Single Name="PositionId" Type="long">5710</Single>
+											<Single Name="EditorPositionId" Type="long">5711</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1297,8 +1287,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5500</Single>
-											<Single Name="EditorPositionId" Type="long">5501</Single>
+											<Single Name="PositionId" Type="long">5712</Single>
+											<Single Name="EditorPositionId" Type="long">5713</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1327,8 +1317,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5502</Single>
-											<Single Name="EditorPositionId" Type="long">5503</Single>
+											<Single Name="PositionId" Type="long">5714</Single>
+											<Single Name="EditorPositionId" Type="long">5715</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1357,8 +1347,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5504</Single>
-											<Single Name="EditorPositionId" Type="long">5505</Single>
+											<Single Name="PositionId" Type="long">5716</Single>
+											<Single Name="EditorPositionId" Type="long">5717</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1387,8 +1377,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5506</Single>
-											<Single Name="EditorPositionId" Type="long">5507</Single>
+											<Single Name="PositionId" Type="long">5718</Single>
+											<Single Name="EditorPositionId" Type="long">5719</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1417,8 +1407,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5508</Single>
-											<Single Name="EditorPositionId" Type="long">5509</Single>
+											<Single Name="PositionId" Type="long">5720</Single>
+											<Single Name="EditorPositionId" Type="long">5721</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1447,8 +1437,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5510</Single>
-											<Single Name="EditorPositionId" Type="long">5511</Single>
+											<Single Name="PositionId" Type="long">5722</Single>
+											<Single Name="EditorPositionId" Type="long">5723</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1477,8 +1467,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5512</Single>
-											<Single Name="EditorPositionId" Type="long">5513</Single>
+											<Single Name="PositionId" Type="long">5724</Single>
+											<Single Name="EditorPositionId" Type="long">5725</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1507,8 +1497,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5514</Single>
-											<Single Name="EditorPositionId" Type="long">5515</Single>
+											<Single Name="PositionId" Type="long">5726</Single>
+											<Single Name="EditorPositionId" Type="long">5727</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 											</Single>
@@ -1538,8 +1528,8 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5482</Single>
-								<Single Name="EditorPositionId" Type="long">5483</Single>
+								<Single Name="PositionId" Type="long">5694</Single>
+								<Single Name="EditorPositionId" Type="long">5695</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">FSoE Master Connection ID</Single>
 								</Single>
@@ -1549,9 +1539,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">16777228</Single>
 								<Single Name="BaseType" Type="string">UINT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">25</Single>
+							<Single Name="SectionId" Type="int">27</Single>
 							<Single Name="ParamType" Type="string">std:UINT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554432</Single>
@@ -1578,8 +1567,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5522</Single>
-											<Single Name="EditorPositionId" Type="long">5523</Single>
+											<Single Name="PositionId" Type="long">5730</Single>
+											<Single Name="EditorPositionId" Type="long">5731</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave Command</Single>
 											</Single>
@@ -1608,8 +1597,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5524</Single>
-											<Single Name="EditorPositionId" Type="long">5525</Single>
+											<Single Name="PositionId" Type="long">5732</Single>
+											<Single Name="EditorPositionId" Type="long">5733</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave Command</Single>
 											</Single>
@@ -1638,8 +1627,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5526</Single>
-											<Single Name="EditorPositionId" Type="long">5527</Single>
+											<Single Name="PositionId" Type="long">5734</Single>
+											<Single Name="EditorPositionId" Type="long">5735</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave Command</Single>
 											</Single>
@@ -1668,8 +1657,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5528</Single>
-											<Single Name="EditorPositionId" Type="long">5529</Single>
+											<Single Name="PositionId" Type="long">5736</Single>
+											<Single Name="EditorPositionId" Type="long">5737</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave Command</Single>
 											</Single>
@@ -1698,8 +1687,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5530</Single>
-											<Single Name="EditorPositionId" Type="long">5531</Single>
+											<Single Name="PositionId" Type="long">5738</Single>
+											<Single Name="EditorPositionId" Type="long">5739</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave Command</Single>
 											</Single>
@@ -1728,8 +1717,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5532</Single>
-											<Single Name="EditorPositionId" Type="long">5533</Single>
+											<Single Name="PositionId" Type="long">5740</Single>
+											<Single Name="EditorPositionId" Type="long">5741</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave Command</Single>
 											</Single>
@@ -1758,8 +1747,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5534</Single>
-											<Single Name="EditorPositionId" Type="long">5535</Single>
+											<Single Name="PositionId" Type="long">5742</Single>
+											<Single Name="EditorPositionId" Type="long">5743</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave Command</Single>
 											</Single>
@@ -1788,8 +1777,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5536</Single>
-											<Single Name="EditorPositionId" Type="long">5537</Single>
+											<Single Name="PositionId" Type="long">5744</Single>
+											<Single Name="EditorPositionId" Type="long">5745</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave Command</Single>
 											</Single>
@@ -1819,8 +1808,8 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5520</Single>
-								<Single Name="EditorPositionId" Type="long">5521</Single>
+								<Single Name="PositionId" Type="long">5728</Single>
+								<Single Name="EditorPositionId" Type="long">5729</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">FSoE Slave Command</Single>
 								</Single>
@@ -1830,9 +1819,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">33554434</Single>
 								<Single Name="BaseType" Type="string">USINT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">26</Single>
+							<Single Name="SectionId" Type="int">28</Single>
 							<Single Name="ParamType" Type="string">std:USINT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554435</Single>
@@ -1842,8 +1830,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5538</Single>
-								<Single Name="EditorPositionId" Type="long">5539</Single>
+								<Single Name="PositionId" Type="long">5746</Single>
+								<Single Name="EditorPositionId" Type="long">5747</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DI1</Single>
 								</Single>
@@ -1853,9 +1841,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">33554435</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">26</Single>
+							<Single Name="SectionId" Type="int">28</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554436</Single>
@@ -1865,8 +1852,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5540</Single>
-								<Single Name="EditorPositionId" Type="long">5541</Single>
+								<Single Name="PositionId" Type="long">5748</Single>
+								<Single Name="EditorPositionId" Type="long">5749</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DI2</Single>
 								</Single>
@@ -1876,9 +1863,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">33554436</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">26</Single>
+							<Single Name="SectionId" Type="int">28</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554437</Single>
@@ -1888,8 +1874,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5542</Single>
-								<Single Name="EditorPositionId" Type="long">5543</Single>
+								<Single Name="PositionId" Type="long">5750</Single>
+								<Single Name="EditorPositionId" Type="long">5751</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DI3</Single>
 								</Single>
@@ -1899,9 +1885,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">33554437</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">26</Single>
+							<Single Name="SectionId" Type="int">28</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554438</Single>
@@ -1911,8 +1896,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5544</Single>
-								<Single Name="EditorPositionId" Type="long">5545</Single>
+								<Single Name="PositionId" Type="long">5752</Single>
+								<Single Name="EditorPositionId" Type="long">5753</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DI4</Single>
 								</Single>
@@ -1922,9 +1907,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">33554438</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">26</Single>
+							<Single Name="SectionId" Type="int">28</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554439</Single>
@@ -1934,8 +1918,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5546</Single>
-								<Single Name="EditorPositionId" Type="long">5547</Single>
+								<Single Name="PositionId" Type="long">5754</Single>
+								<Single Name="EditorPositionId" Type="long">5755</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DO1: Output State</Single>
 								</Single>
@@ -1945,9 +1929,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">33554439</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">26</Single>
+							<Single Name="SectionId" Type="int">28</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554440</Single>
@@ -1957,8 +1940,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5548</Single>
-								<Single Name="EditorPositionId" Type="long">5549</Single>
+								<Single Name="PositionId" Type="long">5756</Single>
+								<Single Name="EditorPositionId" Type="long">5757</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DO2: Output State</Single>
 								</Single>
@@ -1968,9 +1951,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">33554440</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">26</Single>
+							<Single Name="SectionId" Type="int">28</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554441</Single>
@@ -1980,8 +1962,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5550</Single>
-								<Single Name="EditorPositionId" Type="long">5551</Single>
+								<Single Name="PositionId" Type="long">5758</Single>
+								<Single Name="EditorPositionId" Type="long">5759</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DO3: Output State</Single>
 								</Single>
@@ -1991,9 +1973,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">33554441</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">26</Single>
+							<Single Name="SectionId" Type="int">28</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554442</Single>
@@ -2003,8 +1984,8 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5552</Single>
-								<Single Name="EditorPositionId" Type="long">5553</Single>
+								<Single Name="PositionId" Type="long">5760</Single>
+								<Single Name="EditorPositionId" Type="long">5761</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DO4: Output State</Single>
 								</Single>
@@ -2014,9 +1995,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">33554442</Single>
 								<Single Name="Type" Type="string">BIT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">26</Single>
+							<Single Name="SectionId" Type="int">28</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554443</Single>
@@ -2029,8 +2009,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5556</Single>
-											<Single Name="EditorPositionId" Type="long">5557</Single>
+											<Single Name="PositionId" Type="long">5764</Single>
+											<Single Name="EditorPositionId" Type="long">5765</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2059,8 +2039,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5558</Single>
-											<Single Name="EditorPositionId" Type="long">5559</Single>
+											<Single Name="PositionId" Type="long">5766</Single>
+											<Single Name="EditorPositionId" Type="long">5767</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2089,8 +2069,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5560</Single>
-											<Single Name="EditorPositionId" Type="long">5561</Single>
+											<Single Name="PositionId" Type="long">5768</Single>
+											<Single Name="EditorPositionId" Type="long">5769</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2119,8 +2099,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5562</Single>
-											<Single Name="EditorPositionId" Type="long">5563</Single>
+											<Single Name="PositionId" Type="long">5770</Single>
+											<Single Name="EditorPositionId" Type="long">5771</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2149,8 +2129,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5564</Single>
-											<Single Name="EditorPositionId" Type="long">5565</Single>
+											<Single Name="PositionId" Type="long">5772</Single>
+											<Single Name="EditorPositionId" Type="long">5773</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2179,8 +2159,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5566</Single>
-											<Single Name="EditorPositionId" Type="long">5567</Single>
+											<Single Name="PositionId" Type="long">5774</Single>
+											<Single Name="EditorPositionId" Type="long">5775</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2209,8 +2189,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5568</Single>
-											<Single Name="EditorPositionId" Type="long">5569</Single>
+											<Single Name="PositionId" Type="long">5776</Single>
+											<Single Name="EditorPositionId" Type="long">5777</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2239,8 +2219,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5570</Single>
-											<Single Name="EditorPositionId" Type="long">5571</Single>
+											<Single Name="PositionId" Type="long">5778</Single>
+											<Single Name="EditorPositionId" Type="long">5779</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2269,8 +2249,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5572</Single>
-											<Single Name="EditorPositionId" Type="long">5573</Single>
+											<Single Name="PositionId" Type="long">5780</Single>
+											<Single Name="EditorPositionId" Type="long">5781</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2299,8 +2279,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5574</Single>
-											<Single Name="EditorPositionId" Type="long">5575</Single>
+											<Single Name="PositionId" Type="long">5782</Single>
+											<Single Name="EditorPositionId" Type="long">5783</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2329,8 +2309,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5576</Single>
-											<Single Name="EditorPositionId" Type="long">5577</Single>
+											<Single Name="PositionId" Type="long">5784</Single>
+											<Single Name="EditorPositionId" Type="long">5785</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2359,8 +2339,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5578</Single>
-											<Single Name="EditorPositionId" Type="long">5579</Single>
+											<Single Name="PositionId" Type="long">5786</Single>
+											<Single Name="EditorPositionId" Type="long">5787</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2389,8 +2369,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5580</Single>
-											<Single Name="EditorPositionId" Type="long">5581</Single>
+											<Single Name="PositionId" Type="long">5788</Single>
+											<Single Name="EditorPositionId" Type="long">5789</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2419,8 +2399,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5582</Single>
-											<Single Name="EditorPositionId" Type="long">5583</Single>
+											<Single Name="PositionId" Type="long">5790</Single>
+											<Single Name="EditorPositionId" Type="long">5791</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2449,8 +2429,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5584</Single>
-											<Single Name="EditorPositionId" Type="long">5585</Single>
+											<Single Name="PositionId" Type="long">5792</Single>
+											<Single Name="EditorPositionId" Type="long">5793</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2479,8 +2459,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5586</Single>
-											<Single Name="EditorPositionId" Type="long">5587</Single>
+											<Single Name="PositionId" Type="long">5794</Single>
+											<Single Name="EditorPositionId" Type="long">5795</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 											</Single>
@@ -2510,8 +2490,8 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5554</Single>
-								<Single Name="EditorPositionId" Type="long">5555</Single>
+								<Single Name="PositionId" Type="long">5762</Single>
+								<Single Name="EditorPositionId" Type="long">5763</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">FSoE Slave CRC 0</Single>
 								</Single>
@@ -2521,9 +2501,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">33554443</Single>
 								<Single Name="BaseType" Type="string">UINT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">26</Single>
+							<Single Name="SectionId" Type="int">28</Single>
 							<Single Name="ParamType" Type="string">std:UINT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554444</Single>
@@ -2536,8 +2515,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5590</Single>
-											<Single Name="EditorPositionId" Type="long">5591</Single>
+											<Single Name="PositionId" Type="long">5798</Single>
+											<Single Name="EditorPositionId" Type="long">5799</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2566,8 +2545,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5592</Single>
-											<Single Name="EditorPositionId" Type="long">5593</Single>
+											<Single Name="PositionId" Type="long">5800</Single>
+											<Single Name="EditorPositionId" Type="long">5801</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2596,8 +2575,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5594</Single>
-											<Single Name="EditorPositionId" Type="long">5595</Single>
+											<Single Name="PositionId" Type="long">5802</Single>
+											<Single Name="EditorPositionId" Type="long">5803</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2626,8 +2605,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5596</Single>
-											<Single Name="EditorPositionId" Type="long">5597</Single>
+											<Single Name="PositionId" Type="long">5804</Single>
+											<Single Name="EditorPositionId" Type="long">5805</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2656,8 +2635,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5598</Single>
-											<Single Name="EditorPositionId" Type="long">5599</Single>
+											<Single Name="PositionId" Type="long">5806</Single>
+											<Single Name="EditorPositionId" Type="long">5807</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2686,8 +2665,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5600</Single>
-											<Single Name="EditorPositionId" Type="long">5601</Single>
+											<Single Name="PositionId" Type="long">5808</Single>
+											<Single Name="EditorPositionId" Type="long">5809</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2716,8 +2695,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5602</Single>
-											<Single Name="EditorPositionId" Type="long">5603</Single>
+											<Single Name="PositionId" Type="long">5810</Single>
+											<Single Name="EditorPositionId" Type="long">5811</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2746,8 +2725,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5604</Single>
-											<Single Name="EditorPositionId" Type="long">5605</Single>
+											<Single Name="PositionId" Type="long">5812</Single>
+											<Single Name="EditorPositionId" Type="long">5813</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2776,8 +2755,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5606</Single>
-											<Single Name="EditorPositionId" Type="long">5607</Single>
+											<Single Name="PositionId" Type="long">5814</Single>
+											<Single Name="EditorPositionId" Type="long">5815</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2806,8 +2785,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5608</Single>
-											<Single Name="EditorPositionId" Type="long">5609</Single>
+											<Single Name="PositionId" Type="long">5816</Single>
+											<Single Name="EditorPositionId" Type="long">5817</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2836,8 +2815,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5610</Single>
-											<Single Name="EditorPositionId" Type="long">5611</Single>
+											<Single Name="PositionId" Type="long">5818</Single>
+											<Single Name="EditorPositionId" Type="long">5819</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2866,8 +2845,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5612</Single>
-											<Single Name="EditorPositionId" Type="long">5613</Single>
+											<Single Name="PositionId" Type="long">5820</Single>
+											<Single Name="EditorPositionId" Type="long">5821</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2896,8 +2875,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5614</Single>
-											<Single Name="EditorPositionId" Type="long">5615</Single>
+											<Single Name="PositionId" Type="long">5822</Single>
+											<Single Name="EditorPositionId" Type="long">5823</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2926,8 +2905,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5616</Single>
-											<Single Name="EditorPositionId" Type="long">5617</Single>
+											<Single Name="PositionId" Type="long">5824</Single>
+											<Single Name="EditorPositionId" Type="long">5825</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2956,8 +2935,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5618</Single>
-											<Single Name="EditorPositionId" Type="long">5619</Single>
+											<Single Name="PositionId" Type="long">5826</Single>
+											<Single Name="EditorPositionId" Type="long">5827</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -2986,8 +2965,8 @@ __V3_CONTENT__
 										<Single Type="{1944b378-8867-41f4-b1f4-6e5b1e6547ba}" Method="IArchivable">
 											<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 											<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-											<Single Name="PositionId" Type="long">5620</Single>
-											<Single Name="EditorPositionId" Type="long">5621</Single>
+											<Single Name="PositionId" Type="long">5828</Single>
+											<Single Name="EditorPositionId" Type="long">5829</Single>
 											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 											</Single>
@@ -3017,8 +2996,8 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
-								<Single Name="PositionId" Type="long">5588</Single>
-								<Single Name="EditorPositionId" Type="long">5589</Single>
+								<Single Name="PositionId" Type="long">5796</Single>
+								<Single Name="EditorPositionId" Type="long">5797</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">FSoE Connection Slave ID</Single>
 								</Single>
@@ -3028,9 +3007,8 @@ __V3_CONTENT__
 								<Single Name="Identifier" Type="string">33554444</Single>
 								<Single Name="BaseType" Type="string">UINT</Single>
 							</Single>
-							<Single Name="SectionId" Type="int">26</Single>
+							<Single Name="SectionId" Type="int">28</Single>
 							<Single Name="ParamType" Type="string">std:UINT</Single>
-							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">268435456</Single>
@@ -3173,6 +3151,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048192</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -3208,6 +3187,9 @@ __V3_CONTENT__
 											<Null Name="FilterFlags" />
 											<Single Name="PositionId" Type="long">4880</Single>
 											<Single Name="EditorPositionId" Type="long">4881</Single>
+											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+												<Single Name="Default" Type="string">9b3cfcd9-6dff-43cd-93f9-6e584d49f69c</Single>
+											</Single>
 											<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Namespace" Type="string">local</Single>
 												<Single Name="Identifier" Type="string">Index</Single>
@@ -3386,6 +3368,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048194</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -3521,6 +3504,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048195</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -3656,6 +3640,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048196</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -3791,6 +3776,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048197</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -3926,6 +3912,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048198</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -4061,6 +4048,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048199</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -4182,6 +4170,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048200</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -4317,6 +4306,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048201</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -4452,6 +4442,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375872</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -4487,6 +4478,9 @@ __V3_CONTENT__
 											<Null Name="FilterFlags" />
 											<Single Name="PositionId" Type="long">5022</Single>
 											<Single Name="EditorPositionId" Type="long">5023</Single>
+											<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+												<Single Name="Default" Type="string">9b3cfcd9-6dff-43cd-93f9-6e584d49f69c</Single>
+											</Single>
 											<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 												<Single Name="Namespace" Type="string">local</Single>
 												<Single Name="Identifier" Type="string">Index</Single>
@@ -4665,6 +4659,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375874</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -4800,6 +4795,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375875</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -4935,6 +4931,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375876</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -5070,6 +5067,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375877</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -5205,6 +5203,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375878</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -5340,6 +5339,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375879</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -5475,6 +5475,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375880</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -5610,6 +5611,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375881</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -5745,6 +5747,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375882</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -5880,6 +5883,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375883</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -6015,6 +6019,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375884</Single>
+							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -8342,6 +8347,26 @@ __V3_CONTENT__
 							<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable" />
 							<Single Name="ParentId" Type="int">-1</Single>
 							<Single Name="SectionId" Type="int">26</Single>
+							<Null Name="SubSections" />
+							<Null Name="CustomItems" />
+						</Single>
+						<Single Type="{33f58abf-62ae-4277-a80b-74c57ea00c50}" Method="IArchivable">
+							<Single Name="Name" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+								<Single Name="Default" Type="string">16#1603 Output</Single>
+							</Single>
+							<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable" />
+							<Single Name="ParentId" Type="int">-1</Single>
+							<Single Name="SectionId" Type="int">27</Single>
+							<Null Name="SubSections" />
+							<Null Name="CustomItems" />
+						</Single>
+						<Single Type="{33f58abf-62ae-4277-a80b-74c57ea00c50}" Method="IArchivable">
+							<Single Name="Name" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+								<Single Name="Default" Type="string">16#1A03 Input</Single>
+							</Single>
+							<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable" />
+							<Single Name="ParentId" Type="int">-1</Single>
+							<Single Name="SectionId" Type="int">28</Single>
 							<Null Name="SubSections" />
 							<Null Name="CustomItems" />
 						</Single>
