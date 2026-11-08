@@ -18,7 +18,7 @@ VAR_GLOBAL
       stStationsNummern                 := ( NummerIntern := 152,                                     // Stationsnummer fuer das MMI und die Stationsangabe der Meldungen
                                              NummerExtern := 1152,                                    // Stationsnummer fuer Bedienermeldungen
                                              NummerSPS    := 152 ),                                   // Stationsnummer SPS-intern (Indizes)
-      bDeaktivieren                     := TRUE,                                                      // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
+      bDeaktivieren                     := FALSE,                                                      // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer                   := 380,                                                       // Basis-Meldungsnummer (WatchIO)
       eStationsTyp                      := eTransfershuttle,                                          // Typ der Station
       eaAutomatikkreis                  := [eAutomatikkreis_1],                                       // Automatikkreise, zu denen die Station gehoert
