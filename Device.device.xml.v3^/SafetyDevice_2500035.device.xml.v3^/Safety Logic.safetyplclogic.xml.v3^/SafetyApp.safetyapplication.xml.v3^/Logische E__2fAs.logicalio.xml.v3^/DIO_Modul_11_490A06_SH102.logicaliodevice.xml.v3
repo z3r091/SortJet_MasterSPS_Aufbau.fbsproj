@@ -98,7 +98,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6360</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO16_4_SH101_Nothalt_unverzoegert</Single>
+												<Single Name="Variable" Type="string">SO17_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -126,7 +126,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6362</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO16_5_SH101_SK_verzoegert</Single>
+												<Single Name="Variable" Type="string">SO17_5_SH102_SK_verzoegert</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -154,7 +154,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6364</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO16_6_SH101_SK_unverzoegert</Single>
+												<Single Name="Variable" Type="string">SO17_6_SH102_SK_Schnellstop</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -182,7 +182,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6366</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO16_7</Single>
+												<Single Name="Variable" Type="string">SO17_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -207,7 +207,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6344</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI16_0_SH101_Nothalt_Rueckmeldung_unverzoegert</Single>
+												<Single Name="Variable" Type="string">SI17_0</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -235,7 +235,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6346</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI16_1_SH101_SK_Rueckmeldung_verzoegert</Single>
+												<Single Name="Variable" Type="string">SI17_1_SH102_SK_Rueckmeldung_verzoegert</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -263,7 +263,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6348</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI16_2</Single>
+												<Single Name="Variable" Type="string">SI17_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -288,7 +288,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6350</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI16_3</Single>
+												<Single Name="Variable" Type="string">SI17_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -313,7 +313,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6352</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">DO1_Output_State_16</Single>
+												<Single Name="Variable" Type="string">DO1_Output_State_17</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -338,7 +338,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6354</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">DO2_Output_State_16</Single>
+												<Single Name="Variable" Type="string">DO2_Output_State_17</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -363,7 +363,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6356</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">DO3_Output_State_16</Single>
+												<Single Name="Variable" Type="string">DO3_Output_State_17</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -388,7 +388,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6358</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">DO4_Output_State_16</Single>
+												<Single Name="Variable" Type="string">DO4_Output_State_17</Single>
 											</Single>
 										</List2>
 									</Single>

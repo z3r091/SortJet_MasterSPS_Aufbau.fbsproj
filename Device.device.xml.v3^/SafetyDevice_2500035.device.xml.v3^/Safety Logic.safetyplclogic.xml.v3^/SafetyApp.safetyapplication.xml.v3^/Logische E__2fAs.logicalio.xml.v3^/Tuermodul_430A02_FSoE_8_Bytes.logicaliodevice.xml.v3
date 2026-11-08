@@ -98,7 +98,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88208</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Tuer_1_Entriegeln</Single>
+												<Single Name="Variable" Type="string">SO_15_Tuer_1_Entriegeln</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -126,7 +126,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88210</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Tuer_2_Entriegeln</Single>
+												<Single Name="Variable" Type="string">SO_15_Tuer_2_Entriegeln</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -154,7 +154,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88212</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_1_3</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_1_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -179,7 +179,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88214</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_1_4</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_1_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -204,7 +204,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88216</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_1_5</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_1_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -229,7 +229,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88218</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_1_6</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_1_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -254,7 +254,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88220</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_1_7</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_1_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -279,7 +279,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88222</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_1_8</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_1_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -304,7 +304,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88224</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_2_1</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_2_1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -329,7 +329,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88226</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_2_2</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_2_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -354,7 +354,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88228</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_2_3</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_2_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -379,7 +379,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88230</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_2_4</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_2_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -404,7 +404,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88232</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_2_5</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_2_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -429,7 +429,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88234</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_2_6</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -454,7 +454,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88236</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_2_7</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_2_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -479,7 +479,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88238</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_2_8</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_2_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -504,7 +504,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88240</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_3_1</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_3_1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -529,7 +529,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88242</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_3_2</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_3_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -554,7 +554,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88244</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_3_3</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_3_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -579,7 +579,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88246</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_3_4</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_3_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -604,7 +604,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88248</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_3_5</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_3_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -629,7 +629,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88250</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_3_6</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_3_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -654,7 +654,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88252</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_3_7</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_3_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -679,7 +679,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88254</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_3_8</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_3_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -704,7 +704,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88256</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_4_1</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_4_1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -729,7 +729,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88258</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_4_2</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_4_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -754,7 +754,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88260</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_4_3</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_4_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -779,7 +779,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88262</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_4_5</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_4_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -804,7 +804,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88264</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_4_6</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_4_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -829,7 +829,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88266</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_4_7</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_4_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -854,7 +854,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88268</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_4_8</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_4_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -893,7 +893,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88272</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_5_1</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_5_1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -918,7 +918,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88274</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_5_2</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_5_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -943,7 +943,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88276</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_5_3</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_5_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -968,7 +968,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88278</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_5_4</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_5_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -993,7 +993,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88280</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_5_5</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_5_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1018,7 +1018,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88282</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_5_6</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_5_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1043,7 +1043,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88284</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_5_7</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_5_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1068,7 +1068,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88286</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_5_8</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_5_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1093,7 +1093,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88288</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_6_1</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_6_1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1118,7 +1118,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88290</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_6_2</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_6_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1143,7 +1143,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88292</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_6_3</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_6_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1168,7 +1168,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88294</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_6_4</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_6_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1193,7 +1193,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88296</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_6_5</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_6_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1218,7 +1218,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88298</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_6_6</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_6_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1243,7 +1243,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88300</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_6_7</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_6_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1268,7 +1268,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88302</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_6_8</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_6_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1293,7 +1293,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88304</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_7_1</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_7_1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1318,7 +1318,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88306</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_7_2</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_7_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1343,7 +1343,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88308</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_7_3</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_7_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1368,7 +1368,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88310</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_7_4</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_7_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1393,7 +1393,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88312</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_7_5</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_7_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1418,7 +1418,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88314</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_7_6</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_7_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1443,7 +1443,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88316</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_7_7</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_7_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1468,7 +1468,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88318</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_7_8</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_7_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1493,7 +1493,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88320</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_8_1</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_8_1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1518,7 +1518,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88322</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_8_2</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_8_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1543,7 +1543,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88324</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_8_3</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_8_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1568,7 +1568,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88326</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_8_4</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_8_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1593,7 +1593,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88328</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_8_5</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_8_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1618,7 +1618,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88330</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_8_6</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_8_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1643,7 +1643,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88332</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_8_7</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_8_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1668,7 +1668,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88334</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_20_Output_Bit_8_8</Single>
+												<Single Name="Variable" Type="string">SO_15_Output_Bit_8_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1693,7 +1693,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88080</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Tuer_1_geschlossen</Single>
+												<Single Name="Variable" Type="string">SI_15_Tuer_1_geschlossen</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1721,7 +1721,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88082</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Tuer_1_verriegelt</Single>
+												<Single Name="Variable" Type="string">SI_15_Tuer_1_verriegelt</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1749,7 +1749,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88084</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Tuer_1_Nothalt_OK</Single>
+												<Single Name="Variable" Type="string">SI_15_Tuer_1_Nothalt_OK</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1777,7 +1777,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88086</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Tuer_2_geschlossen</Single>
+												<Single Name="Variable" Type="string">SI_15_Tuer_2_geschlossen</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1805,7 +1805,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88088</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Tuer_2_verriegelt</Single>
+												<Single Name="Variable" Type="string">SI_15_Tuer_2_verriegelt</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1833,7 +1833,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88090</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Tuer_2_Nothalt_OK</Single>
+												<Single Name="Variable" Type="string">SI_15_Tuer_2_Nothalt_OK</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1861,7 +1861,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88092</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Input_Bit_1_7</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_1_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1886,7 +1886,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88094</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Input_Bit_1_8</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_1_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1911,7 +1911,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88096</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Input_Bit_2_1</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_2_1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1936,7 +1936,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88098</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Input_Bit_2_2</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_2_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1961,7 +1961,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88100</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Input_Bit_2_3</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_2_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1986,7 +1986,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88102</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Input_Bit_2_4</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_2_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2011,7 +2011,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88104</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_2_5</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_2_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2036,7 +2036,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88106</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_2_6</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2061,7 +2061,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88108</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_2_7</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_2_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2086,7 +2086,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88110</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_2_8</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_2_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2111,7 +2111,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88112</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_3_1</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_3_1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2136,7 +2136,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88114</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_3_2</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_3_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2161,7 +2161,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88116</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_3_3</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_3_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2186,7 +2186,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88118</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_3_4</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_3_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2211,7 +2211,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88120</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_3_5</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_3_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2236,7 +2236,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88122</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_3_6</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_3_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2261,7 +2261,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88124</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_3_7</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_3_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2286,7 +2286,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88126</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_3_8</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_3_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2311,7 +2311,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88128</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_4_1</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_4_1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2336,7 +2336,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88130</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_4_2</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_4_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2361,7 +2361,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88132</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_4_3</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_4_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2386,7 +2386,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88134</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_4_4</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_4_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2411,7 +2411,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88136</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_4_5</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_4_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2436,7 +2436,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88138</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_4_6</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_4_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2461,7 +2461,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88140</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_4_7</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_4_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2486,7 +2486,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88142</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_4_8</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_4_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2511,7 +2511,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88144</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_5_1</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_5_1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2536,7 +2536,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88146</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_5_2</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_5_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2561,7 +2561,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88148</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_5_3</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_5_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2586,7 +2586,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88150</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_5_4</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_5_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2611,7 +2611,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88152</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_5_5</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_5_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2636,7 +2636,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88154</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_5_6</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_5_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2661,7 +2661,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88156</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_5_7</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_5_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2686,7 +2686,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88158</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_5_8</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_5_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2711,7 +2711,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88160</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_6_1</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_6_1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2736,7 +2736,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88162</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_6_2</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_6_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2761,7 +2761,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88164</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_6_3</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_6_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2786,7 +2786,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88166</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_6_4</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_6_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2811,7 +2811,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88168</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_6_5</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_6_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2836,7 +2836,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88170</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_6_6</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_6_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2861,7 +2861,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88172</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_6_7</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_6_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2886,7 +2886,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88174</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_6_8</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_6_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2911,7 +2911,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88176</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_7_1</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_7_1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2936,7 +2936,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88178</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_7_2</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_7_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2961,7 +2961,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88180</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_7_3</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_7_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -2986,7 +2986,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88182</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_7_4</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_7_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -3011,7 +3011,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88184</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_7_5</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_7_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -3036,7 +3036,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88186</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_7_6</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_7_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -3061,7 +3061,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88188</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_7_7</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_7_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -3086,7 +3086,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88190</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_7_8</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_7_8</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -3111,7 +3111,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88192</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_8_1</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_8_1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -3136,7 +3136,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88194</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_8_2</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_8_2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -3161,7 +3161,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88196</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_8_3</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_8_3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -3186,7 +3186,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88198</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_8_4</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_8_4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -3211,7 +3211,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88200</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_8_5</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_8_5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -3236,7 +3236,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88202</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_8_6</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_8_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -3261,7 +3261,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88204</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_8_7</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_8_7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -3286,7 +3286,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">88206</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_20_Input_Bit_8_8</Single>
+												<Single Name="Variable" Type="string">SI_15_Input_Bit_8_8</Single>
 											</Single>
 										</List2>
 									</Single>

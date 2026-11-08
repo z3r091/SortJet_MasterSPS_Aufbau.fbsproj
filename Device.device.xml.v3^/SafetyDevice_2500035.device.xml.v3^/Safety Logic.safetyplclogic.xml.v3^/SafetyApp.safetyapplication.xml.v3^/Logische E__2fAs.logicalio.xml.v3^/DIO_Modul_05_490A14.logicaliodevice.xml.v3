@@ -98,7 +98,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6456</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_8_4_SK2_201_202_verzoegert</Single>
+												<Single Name="Variable" Type="string">SO8_4_SK_201_verzoegert</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -126,7 +126,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6458</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_8_5_SK3_203_verzoegert</Single>
+												<Single Name="Variable" Type="string">SO8_5_SK_202_verzoegert</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -154,7 +154,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6460</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_8_6_SK4_204_205_verzoegert</Single>
+												<Single Name="Variable" Type="string">SO8_6_SK_203_verzoegert</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -182,7 +182,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6462</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_8_7_SK1_SK4_206_verzoegert</Single>
+												<Single Name="Variable" Type="string">SO8_7_SK_204_verzoegert</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -210,7 +210,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6440</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI8_0_SK2_201_202_Rueckmeldung_verzoegert</Single>
+												<Single Name="Variable" Type="string">SI8_0_SK_201_Rueckmeldung_verzoegert</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -238,7 +238,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6442</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI8_1_SK3_203_Rueckmeldung_verzoegert</Single>
+												<Single Name="Variable" Type="string">SI8_1_SK_202_Rueckmeldung_verzoegert</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -266,7 +266,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6444</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI8_2_SK4_204_205_Rueckmeldung_verzoegert</Single>
+												<Single Name="Variable" Type="string">SI8_2_SK_203_Rueckmeldung_verzoegert</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -294,7 +294,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">6446</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI8_3_SK4_206_Rueckmeldung_verzoegert</Single>
+												<Single Name="Variable" Type="string">SI8_3_SK_204_Rueckmeldung_verzoegert</Single>
 											</Single>
 										</List2>
 									</Single>

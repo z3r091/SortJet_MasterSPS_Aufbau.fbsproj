@@ -98,7 +98,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4162</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X0_Output_DO_6</Single>
+												<Single Name="Variable" Type="string">SO_32_FW305_Port_X0</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -123,7 +123,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4164</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X1_Output_DO_6</Single>
+												<Single Name="Variable" Type="string">SO_32_FW305_Port_X1</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -148,7 +148,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4166</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X2_Output_DO_6</Single>
+												<Single Name="Variable" Type="string">SO_32_FW305_Port_X2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -173,7 +173,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4168</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X3_Output_DO_6</Single>
+												<Single Name="Variable" Type="string">SO_32_FW305_Port_X3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -198,7 +198,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4170</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X4_Output_DO_6</Single>
+												<Single Name="Variable" Type="string">SO_32_FW305_Port_X4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -223,7 +223,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4172</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X5_Output_DO_6</Single>
+												<Single Name="Variable" Type="string">SO_32_FW305_Port_X5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -248,7 +248,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4174</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X6_Output_DO_6</Single>
+												<Single Name="Variable" Type="string">SO_32_FW305_Port_X6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -273,7 +273,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4176</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X7_Output_DO_6</Single>
+												<Single Name="Variable" Type="string">SO_32_FW305_Port_X7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -298,7 +298,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4178</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Reserved_13</Single>
+												<Single Name="Variable" Type="string">SO_32_Reserved</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -323,7 +323,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4112</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X0_Input_X1_AND_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Rolltor_geschlossen</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -348,7 +348,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4114</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X1_Input_X1_AND_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Nothalt</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -373,7 +373,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4116</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X2_Input_X1_AND_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Faechergestell_vorhanden</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -398,7 +398,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4118</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X3_Input_X1_AND_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X3</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -423,7 +423,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4120</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X4_Input_X1_AND_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X4</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -448,7 +448,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4122</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X5_Input_X1_AND_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X5</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -473,7 +473,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4124</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X6_Input_X1_AND_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -498,7 +498,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4126</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X7_Input_X1_AND_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X7</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -523,7 +523,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4128</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X0_Input_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Rolltor_geschlossen_X2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -548,7 +548,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4130</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X1_Input_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Nothalt_X2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -573,7 +573,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4132</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X2_Input_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Faechergestell_vorhanden_X2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -598,7 +598,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4134</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X3_Input_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X3_X2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -623,7 +623,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4136</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X4_Input_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X4_X2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -648,7 +648,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4138</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X5_Input_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X5_X2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -673,7 +673,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4140</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X6_Input_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X6_X2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -698,7 +698,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4142</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X7_Input_X2_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X7_X2</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -723,7 +723,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4144</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X0_Qualifier_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Rolltor_geschlossen_Qualifier</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -748,7 +748,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4146</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X1_Qualifier_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Nothalt_Qualifier</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -773,7 +773,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4148</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X2_Qualifier_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Faechergestell_vorhanden_Qualifier</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -798,7 +798,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4150</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X3_Qualifier_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X3_Qualifier</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -823,7 +823,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4152</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X4_Qualifier_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X4_Qualifier</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -848,7 +848,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4154</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X5_Qualifier_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X5_Qualifier</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -873,7 +873,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4156</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X6_Qualifier_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X6_Qualifier</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -898,7 +898,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4158</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Port_X7_Qualifier_6</Single>
+												<Single Name="Variable" Type="string">SI_32_FW305_Port_X7_Qualifier</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -923,7 +923,7 @@ __V3_CONTENT__
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 												<Single Name="Id" Type="long">4160</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">Reserved_12</Single>
+												<Single Name="Variable" Type="string">SI_32_Reserved</Single>
 											</Single>
 										</List2>
 									</Single>
