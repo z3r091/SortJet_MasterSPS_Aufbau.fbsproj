@@ -61,7 +61,7 @@ IF blBetriebsartReset THEN
 
       bpHinweisEingriffErforderlich := FALSE;
     
-      wpFehlerNr := 0;
+      wpFehlerNr := cMELDUNG_NULL;
       steplReset := STEP_1000_E;
 
     // RESET =====================================

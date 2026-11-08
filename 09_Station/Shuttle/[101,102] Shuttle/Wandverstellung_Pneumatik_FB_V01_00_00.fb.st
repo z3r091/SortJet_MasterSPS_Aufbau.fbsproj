@@ -27,7 +27,7 @@ VAR_OUTPUT
   bpFehler  : BOOL;
 
   // WORD
-  wpFehlerNr  : WORD;
+  wpFehlerNr  : Fehlerkonstanten_EN;
 
 END_VAR
 VAR

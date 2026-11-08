@@ -32,7 +32,7 @@ VAR_OUTPUT
   bpFreigabeTransport : BOOL;
 
   // WORD
-  wpFehlerNr       : WORD;
+  wpFehlerNr       : Fehlerkonstanten_EN;
 
   // ENUM
   wpStatusZylinder : PneumatikZylinderStatus_EN;

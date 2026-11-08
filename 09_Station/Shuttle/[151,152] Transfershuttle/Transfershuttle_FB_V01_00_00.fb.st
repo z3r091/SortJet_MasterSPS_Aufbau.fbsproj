@@ -181,7 +181,7 @@ IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
   BasisStationsParameter.bReferenzAbgeschlossen := TRUE;
 
   BasisStationsParameter.bFehler                := FALSE;
-  BasisStationsParameter.wFehlerNummer          := 0;
+  BasisStationsParameter.wFehlerNummer          := cMELDUNG_NULL;
 
   HandfunktionenStatus();
   RETURN;

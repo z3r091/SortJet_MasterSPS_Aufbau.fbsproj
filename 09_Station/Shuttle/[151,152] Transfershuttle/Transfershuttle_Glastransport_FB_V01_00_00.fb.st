@@ -250,7 +250,7 @@ IF ( NOT bpAktivieren ) THEN
      - Ausnahmesituationen
   *)
   bpFehler   := FALSE;
-  wpFehlerNr := WORD#0;
+  wpFehlerNr := cMELDUNG_NULL;
 
   RETURN;
 

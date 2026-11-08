@@ -153,7 +153,7 @@ ELSE
 
     eStatusStellung := epSollStellung;
 
-    wpFehlerNr := 0;
+    wpFehlerNr := cMELDUNG_NULL;
 
   END_IF // => bpAktiv
 

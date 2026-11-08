@@ -126,7 +126,7 @@ IF ( NOT bpAktivieren ) THEN
   bpStarteGeblaese       := FALSE;
   bpDrosselklappeOeffnen := FALSE;
   bpFehler   := FALSE;
-  wpFehlerNr := 0;
+  wpFehlerNr := cMELDUNG_NULL;
 
   RETURN;
 

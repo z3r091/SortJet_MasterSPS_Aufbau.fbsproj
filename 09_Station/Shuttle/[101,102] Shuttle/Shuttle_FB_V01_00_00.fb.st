@@ -266,7 +266,7 @@ IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
   BasisStationsParameter.bReset                 := FALSE;
 
   BasisStationsParameter.bFehler       := FALSE;
-  BasisStationsParameter.wFehlerNummer := 0;
+  BasisStationsParameter.wFehlerNummer := cMELDUNG_NULL;
 
   HandfunktionenStatus();
   RETURN;

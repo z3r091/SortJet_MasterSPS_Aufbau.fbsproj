@@ -23,7 +23,7 @@ VAR_OUTPUT
   bpResourceAktiv : BOOL;
 
   // WORD 
-  wpFehlerNr      : WORD;
+  wpFehlerNr      : Fehlerkonstanten_EN;
 
 END_VAR
 
@@ -94,7 +94,7 @@ IF ( bpReset ) THEN
   bpDone          := FALSE;
   bpResourceAktiv := FALSE;
 
-  wpFehlerNr := 0;
+  wpFehlerNr := cMELDUNG_NULL;
 
   out_bVerstellungSchliessen  := FALSE;
   out_bVerstellungOeffnen := FALSE;

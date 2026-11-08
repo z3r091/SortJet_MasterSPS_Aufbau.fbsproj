@@ -64,7 +64,7 @@ ELSIF ( NOT BasisStationsParameter.bFehler ) THEN
 END_IF
 
 rtlFehlerMeldungGenerierenHandbetrieb( CLK :=       BasisStationsParameter.bFehler
-                                       AND ( BasisStationsParameter.wFehlerNummer <> 0) );
+                                       AND ( BasisStationsParameter.wFehlerNummer <> cMELDUNG_NULL) );
 
 IF  ( rtlFehlerMeldungGenerierenHandbetrieb.Q
       AND blBetriebsartHand

@@ -28,7 +28,7 @@ VAR_OUTPUT
   bpFehler  : BOOL;
 
   // WORD
-  wpFehlerNr  : WORD;
+  wpFehlerNr  : Fehlerkonstanten_EN;
 
   // ENUM
   epWandStatus  : WandOeffnung_EN;// Status: Gibt die Aktuelle Position des Antriebs aus

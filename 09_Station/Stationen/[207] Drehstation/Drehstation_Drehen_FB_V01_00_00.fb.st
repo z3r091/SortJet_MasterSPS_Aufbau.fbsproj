@@ -147,7 +147,7 @@ IF ( NOT bpAktivieren ) THEN
   bpAbsolutPositionierungAbgeschlossen := TRUE;
 
   bpFehler   := FALSE;
-  wpFehlerNr := 0;
+  wpFehlerNr := cMELDUNG_NULL;
 
   RETURN;
 

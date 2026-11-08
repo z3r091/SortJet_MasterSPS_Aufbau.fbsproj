@@ -153,7 +153,7 @@ IF ( NOT bpAktivieren ) THEN
   *)
   bpInReferenz := TRUE;
   bpFehler   := FALSE;
-  wpFehlerNr := WORD#0;
+  wpFehlerNr := cMELDUNG_NULL;
 
   RETURN;
 

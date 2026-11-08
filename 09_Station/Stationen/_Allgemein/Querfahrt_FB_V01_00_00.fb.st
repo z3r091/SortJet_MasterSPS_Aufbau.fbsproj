@@ -125,7 +125,7 @@ IF ( NOT bpAktivieren ) THEN
   bpAuftragsstatusZuruecksetzen := FALSE;
 
   bpFehler   := FALSE;
-  wpFehlerNr := 0;
+  wpFehlerNr := cMELDUNG_NULL;
 
   RETURN;
 

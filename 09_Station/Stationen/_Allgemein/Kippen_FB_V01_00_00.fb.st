@@ -145,7 +145,7 @@ IF ( NOT bpAktivieren ) THEN
   epKippStatus := epZielPosition;
 
   bpFehler   := FALSE;
-  wpFehlerNr := 0;
+  wpFehlerNr := cMELDUNG_NULL;
 
   RETURN;
 

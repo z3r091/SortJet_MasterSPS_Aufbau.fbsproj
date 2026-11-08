@@ -148,7 +148,7 @@ Antrieb.bpEndschalterMinExtern := in_bSensorNicht84Grad;
 IF ( NOT bpAktivieren ) THEN
   bpDone     := TRUE;
   bpFehler   := FALSE;
-  wpFehlerNr := 0;
+  wpFehlerNr := cMELDUNG_NULL;
 
   IF ( bpPositionieren AND ( epZielPosition = eKippen_Position_0Grad ) ) THEN
     epKippStatus := eKippen_Position_0Grad;

@@ -56,7 +56,7 @@ IF blBetriebsartReset THEN
       blMerkerEinschleusenQuittiert  := FALSE;
       BasisStationsParameter.bFehler := FALSE;
 
-      wpFehlerNr := 0;
+      wpFehlerNr := cMELDUNG_NULL;
       steplReset := STEP_1000_E;
 
     // RESET =====================================

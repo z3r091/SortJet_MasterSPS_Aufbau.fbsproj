@@ -77,7 +77,7 @@ IF ( bpReset ) THEN
   bpGlasvermessung := FALSE;
   bpReset          := FALSE;
 
-  wpFehlerNr := 0;
+  wpFehlerNr := cMELDUNG_NULL;
   bpFehler   := FALSE;
 
   bpGlasmessungAbgeschlossen := FALSE;

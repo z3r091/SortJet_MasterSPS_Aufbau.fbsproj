@@ -64,7 +64,7 @@ CASE steplReset OF
     bpFehler        := FALSE;
     bpDone          := FALSE;
     bpReset         := FALSE;
-    wpFehlerNr      := 0;
+    wpFehlerNr      := cMELDUNG_NULL;
 
     steplReset      := STEP_0_E;
 

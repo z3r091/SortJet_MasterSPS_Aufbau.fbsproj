@@ -152,7 +152,7 @@ IF ( NOT bpAktivieren ) THEN
   bpAbbruchPositionierung       := FALSE;
 
   bpFehler   := FALSE;
-  wpFehlerNr := WORD#0;
+  wpFehlerNr := cMELDUNG_NULL;
 
   Antrieb.bpFreigabe := FALSE;
 
