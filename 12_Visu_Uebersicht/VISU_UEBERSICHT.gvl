@@ -9,11 +9,13 @@
 NAMESPACE VISU_UEBERSICHT
 VAR_GLOBAL
   // Kopfzeile / Anlagenstatus
-  sTitel            : STRING(80) := 'SortJet Area 22  -  Anlagenübersicht';
-  sUntertitel       : STRING(109) := 'Anlegetisch 201  >  Kipptisch 202  >  Shuttle 101  >  Sortierspeicher  >  Transfershuttle 151  >  Fächerwagen';
+  sTitel            : STRING(80) := 'SortJet Glas Dreisbusch  -  Anlagenübersicht';
+  sUntertitel       : STRING(120) := 'Anlegetisch 201/205 > Eckübergabe 204 > Drehstation 207 > Shuttle 101 > Speicher > Shuttle 102 > Fächerwagen';
   stAutomatik       : VisuUeb_Lampe_ST;
   stSK1             : VisuUeb_Lampe_ST;
   stSK2             : VisuUeb_Lampe_ST;
+  stSK3             : VisuUeb_Lampe_ST;
+  stSK4             : VisuUeb_Lampe_ST;
   astTuer               : ARRAY[1..cMAX_TUEREN] OF VisuUeb_Lampe_ST;      // je Tuer eine Anzeige
   abTuerVorhanden       : ARRAY[1..cMAX_TUEREN] OF BOOL;
   astDurchgang          : ARRAY[1..cMAX_DURCHGAENGE] OF VisuUeb_Lampe_ST;
@@ -35,21 +37,27 @@ VAR_GLOBAL
   st501             : VisuUeb_Station_ST;
   st201             : VisuUeb_Station_ST;
   st202             : VisuUeb_Station_ST;
+  st203             : VisuUeb_Station_ST;
+  st204             : VisuUeb_Station_ST;
+  st205             : VisuUeb_Station_ST;
+  st206             : VisuUeb_Station_ST;
+  st207             : VisuUeb_Station_ST;
+  st208             : VisuUeb_Station_ST;
   st101             : VisuUeb_Station_ST;
+  st102             : VisuUeb_Station_ST;
   st151             : VisuUeb_Station_ST;
+  st152             : VisuUeb_Station_ST;
   st301             : VisuUeb_Station_ST;
   st302             : VisuUeb_Station_ST;
-  st401             : VisuUeb_Station_ST;
+  st303             : VisuUeb_Station_ST;
+  st304             : VisuUeb_Station_ST;
+  st305             : VisuUeb_Station_ST;
 
   // Achsen (Querfahrt)
   stAchse101        : VisuUeb_Achse_ST;
+  stAchse102        : VisuUeb_Achse_ST;
   stAchse151        : VisuUeb_Achse_ST;
-
-  // Beschriftungen Achsen
-  sLblMin101        : STRING(40);
-  sLblMax101        : STRING(40);
-  sLblMin151        : STRING(40);
-  sLblMax151        : STRING(40);
+  stAchse152        : VisuUeb_Achse_ST;
 
   // feste Beschriftungen (Visu nutzt ausschließlich Textvariablen)
   sLblSensoren      : STRING(40) := 'E       EV      AV       A';
@@ -61,8 +69,6 @@ VAR_GLOBAL
   sLblNotHaltOK     : STRING(40) := 'NOT-HALT OK';
   sLblNotHaltAus    : STRING(40) := 'NOT-HALT AUSGELÖST';
   sLblStatus        : STRING(40) := 'ANLAGENSTATUS';
-  sLblZufuehrung    : STRING(40) := 'ZUFÜHRUNG';
-  sLblAbfuehrung    : STRING(40) := 'ABFÜHRUNG';
   sLblQuerfahrt     : STRING(40) := 'QUERFAHRT';
   sLblIst           : STRING(20) := 'Ist';
   sLblZiel          : STRING(20) := 'Ziel';
@@ -71,10 +77,10 @@ VAR_GLOBAL
   sLblEV            : STRING(4)  := 'EV';
   sLblAV            : STRING(4)  := 'AV';
   sLblA             : STRING(4)  := 'A';
-  sLblQuer101       : STRING(60) := 'SHUTTLE 101   -   QUERFAHRT';
-  sLblQuer151       : STRING(60) := 'TRANSFERSHUTTLE 151   -   QUERFAHRT';
+  sLblQuer101       : STRING(60) := 'QUERFAHRT SHUTTLE 101';
+  sLblQuer102       : STRING(60) := 'QUERFAHRT SHUTTLE 102';
   sLblWagen101      : STRING(20) := '101';
-  sLblWagen151      : STRING(20) := '151';
+  sLblWagen102      : STRING(20) := '102';
   sLblZielMarke     : STRING(10) := 'ZIEL';
 
   // Bedienung
@@ -86,16 +92,22 @@ VAR_GLOBAL RETAIN
   bSkalierung101Init : BOOL;
   rMin101            : REAL;
   rMax101            : REAL;
+  bSkalierung102Init : BOOL;
+  rMin102            : REAL;
+  rMax102            : REAL;
   bSkalierung151Init : BOOL;
   rMin151            : REAL;
   rMax151            : REAL;
+  bSkalierung152Init : BOOL;
+  rMin152            : REAL;
+  rMax152            : REAL;
 END_VAR
 
 VAR_GLOBAL CONSTANT
   cMAX_TUEREN          : WORD := 8;     // Anzahl Tueranzeigen in der Visu
   cMAX_DURCHGAENGE     : WORD := 3;     // Anzahl Durchganganzeigen in der Visu
-  cBAHN_BREITE_PX      : INT  := 1120;  // nutzbare Breite der Fahrbahn (muss zur Visu passen)
-  cWAGEN_BREITE_PX     : INT  := 140;   // Breite Fahrwagen (muss zur Visu passen)
+  cBAHN_LAENGE_PX      : INT  := 266;   // nutzbare Laenge der senkrechten Fahrbahn (muss zur Visu passen)
+  cWAGEN_LAENGE_PX     : INT  := 34;    // Hoehe Fahrwagen (muss zur Visu passen)
   cMIN_SPANNE_MM       : REAL := 500;   // minimale Skalierungsspanne
 
   cFARBE_GRUEN         : DWORD := 16#FF2EAD5B;

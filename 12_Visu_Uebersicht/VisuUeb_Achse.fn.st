@@ -48,7 +48,7 @@ IF bReferenziert THEN
 END_IF
 
 rSpanne := MAX(rMax - rMin, VISU_UEBERSICHT.cMIN_SPANNE_MM);
-iWeg    := VISU_UEBERSICHT.cBAHN_BREITE_PX - VISU_UEBERSICHT.cWAGEN_BREITE_PX;
+iWeg    := VISU_UEBERSICHT.cBAHN_LAENGE_PX - VISU_UEBERSICHT.cWAGEN_LAENGE_PX;
 
 rFaktor := LIMIT(0.0, (rIst - rMin) / rSpanne, 1.0);
 stAchse.iPixel := REAL_TO_INT(rFaktor * INT_TO_REAL(iWeg));
