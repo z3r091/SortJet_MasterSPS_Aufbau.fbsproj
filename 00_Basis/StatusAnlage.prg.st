@@ -44,6 +44,7 @@ VAR
   in_bCAB2_LS_400V_OK                         AT %I* : BOOL;
   in_bCAB2_LS_Netzfilter_400V_OK              AT %I* : BOOL;
   in_bCAB2_LS_230V_OK                         AT %I* : BOOL;
+  in_bCAB2_Sicherheitsrelais_201_Kippen_OK    AT %I* : BOOL; // Sicherheitsrelais 201 Hydraulik / kippen OK
 
 END_VAR
 
@@ -105,6 +106,7 @@ WatchIo(NOT in_bCAB2_LS_24V_Schaltschrank_OK,                     ioccCAB2_LS_24
 WatchIo(NOT in_bCAB2_LS_24V_Boxen_OK,                             ioccCAB2_LS_24V_Boxen_Nicht_OK);
 WatchIo(NOT in_bCAB2_LS_400V_OK,                                  ioccCAB2_LS_400V_Nicht_OK_);
 WatchIo(NOT in_bCAB2_LS_Netzfilter_400V_OK,                       ioccCAB2_LS_Netzfilter_400V_Nicht_OK);
+WatchIo(NOT in_bCAB2_Sicherheitsrelais_201_Kippen_OK,             ioccCAB2_Sicherheitsrelais_201_Kippen_Nicht_OK);
 
 WatchIo(NOT bgInbetriebnahmeBit AND NOT toflDruckluft101_OK.Q,  ioccDruckluft1);
 WatchIo(NOT bgInbetriebnahmeBit AND NOT toflDruckluft102_OK.Q,  ioccDruckluft2);

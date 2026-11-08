@@ -16,6 +16,9 @@ VAR_INPUT
   // WORD
   wlRFID_Nummer_Schreiben           : WORD; // Neue Nummer fuer den RFID-Chip des Faecherwagens (vom MMI)
 
+  // USINT
+  usilErrorSafety                   : USINT; // Fehlercode der sicheren Feldbox (Schmersal), im Geraetebaum gemappt
+
 END_VAR
 VAR_OUTPUT
 
@@ -48,6 +51,8 @@ VAR
   blRolltorAbBlockiert              : BOOL; // Variante: Schliessen sofort mit Fehler abbrechen (z.B. Abrollsicherung ausgeloest)
   blStationsposUndefiniert          : BOOL; // Station weder in Grundstellung noch in Beladeposition und kein Auftrag aktiv
   blStarteSicherheitskreisReset     : BOOL; // Anforderung Sicherheitsrelais der Station quittieren (MMI, Variante setzt nach Ausfuehrung zurueck)
+  blAckRequested                    : BOOL; // Sichere Feldbox fordert Quittierung an, im Geraetebaum gemappt
+  blResetSchmersal                  : BOOL; // Quittierimpuls an die sichere Feldbox, im Geraetebaum gemappt
 
   // WORD
   wlZeitHochfahren                  : WORD;
@@ -68,15 +73,23 @@ VAR
   tonlRolltorOeffnenSchliesen       : TON;
   tonlZeitRunterfahren              : TON; // Zum ermitteln wie lange das Rolltor runterfaehrt
   tonlZeitHochfahren                : TON; // Zum ermitteln wie lange das Rolltor hochfaehrt
+  tplResetSchmersal                 : TP;
+
+  // TRIGGER
+  rtlSafetyError                    : R_TRIG;
 
   // ENUM
   eLetzterStatus                    : eLetzter_FW_Status; // Zuletzt erreichter Schritt fuer Systemcheck und MMI
   elLetzterStatusGesendet           : eLetzter_FW_Status; // Zuletzt ans MMI gemeldeter Status (STATION_UPDATE)
 
   // HARDWARE: ROLLTOR
-  in_bNichtRolltorGeoeffnet         AT %I* : BOOL; // TRUE = Rolltor nicht oben
+  in_bNichtRolltorGeoeffnet         : BOOL; // TRUE = Rolltor nicht oben (Oeffner), im Geraetebaum gemappt
   out_bRolltorAb                    AT %Q* : BOOL;
   out_bRolltorAuf                   AT %Q* : BOOL;
+
+  // HARDWARE: SICHERHEITSKREIS DER STATION (im Geraetebaum gemappt)
+  in_bResetSicherheitskreis         : BOOL; // Taster Sicherheitskreis quittieren an der Station
+  out_bSicherheitskreisAusgeloest   : BOOL; // Leuchte Sicherheitskreis ausgeloest (Variante darf ueberschreiben)
 
 END_VAR
 VAR CONSTANT
@@ -136,6 +149,26 @@ END_IF
 tonlFreigabe( IN := BasisStationsParameter.bFreigabe, PT := T#1S );
 
 bpFehler := BasisStationsParameter.bFehler;
+
+//-------------------------------------------------------------------------------------------------
+// SICHERE FELDBOX / SICHERHEITSKREIS
+//-------------------------------------------------------------------------------------------------
+rtlSafetyError( CLK := usilErrorSafety <> 0 );
+IF rtlSafetyError.Q THEN
+
+  SpsError( eFehler_Safety_Schmersal,
+            usilErrorSafety,
+            BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+            AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+            BasisStationsParameter.awFehlerInformationen );
+
+END_IF
+
+tplResetSchmersal( IN := blAckRequested OR NotHalt.in_bTasterNothaltQuittieren OR in_bResetSicherheitskreis,
+                   PT := T#500MS,
+                   Q  => blResetSchmersal );
+
+out_bSicherheitskreisAusgeloest := blAckRequested OR ( usilErrorSafety <> 0 );
 
 // Meldung "Faecherwagen bald voll" gilt nur fuer den Faecherwagen in der Beladeposition
 IF NOT bpStatusStationInBeladePosition THEN

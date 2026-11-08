@@ -6,6 +6,12 @@
 }
 *)
 FUNCTION_BLOCK Faecherwagenstation_Einfach_FB_V01_00_00 EXTENDS Basic_Faecherwagenstation_FB_V01_00_00
+VAR_INPUT
+
+  // BOOL
+  bpFaecherwagenVorhanden          : BOOL; // Faecherwagen vorhanden, Sicherheitssensor ueber die SLC (Interface_SLC)
+
+END_VAR
 VAR
 
   // BOOL
@@ -39,17 +45,18 @@ VAR
   // BAUSTEINE
   Arretierung                      : Arretierung_FB_V01_00_00; // Arretierung (Zentrierung/Klemmung) des ganzen Faecherwagens
 
-  // HARDWARE EINGAENGE
-  in_bFaecherwagenVorhanden        AT %I* : BOOL;
-  in_bArretierungAusgefahren       AT %I* : BOOL; // Faecherwagen arretiert
-  in_bArretierungEingefahren       AT %I* : BOOL; // Faecherwagen freigegeben
-  in_bStartSchleusen               AT %I* : BOOL; // Taster Ein-/Ausschleusen an der Station
+  // HARDWARE EINGAENGE (Konfiguration_FW_Einfach)
   in_bAbrollsicherungOK            AT %I* : BOOL; // Abrollsicherung am Rolltor in Ordnung (Oeffner: TRUE = frei)
 
-  // HARDWARE AUSGAENGE
-  out_bArretierungAusfahren        AT %Q* : BOOL;
-  out_bArretierungEinfahren        AT %Q* : BOOL;
-  out_bFreigabeSchleusen           AT %Q* : BOOL; // Leuchte im Taster Ein-/Ausschleusen
+  // HARDWARE EINGAENGE (IO-Link, im Geraetebaum gemappt)
+  in_bArretierungAusgefahren       : BOOL; // Faecherwagen arretiert
+  in_bArretierungEingefahren       : BOOL; // Faecherwagen freigegeben
+  in_bStartSchleusen               : BOOL; // Taster Ein-/Ausschleusen an der Station
+
+  // HARDWARE AUSGAENGE (IO-Link, im Geraetebaum gemappt)
+  out_bArretierungAusfahren        : BOOL;
+  out_bArretierungEinfahren        : BOOL;
+  out_bFreigabeSchleusen           : BOOL; // Leuchte im Taster Ein-/Ausschleusen
 
 END_VAR
 VAR CONSTANT

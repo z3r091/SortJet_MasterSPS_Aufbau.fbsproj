@@ -32,7 +32,8 @@ NotHalt.bpEingangNotHaltOK     := EV_ToPLC_bNothalt_OK;
 // Faecherwagenstationen von SLC
 (* Hinweis:
    - Rolltor unten: alle Varianten mit Rolltor
-   - Lichtschranke und Unterwagen: nur Variante Lineareinheit (Eingaenge bpLichtschranke_OK, bpUntergestellErkannt)
+   - Faecherwagen vorhanden: Variante Einfach (bpFaecherwagenVorhanden), Variante Lineareinheit
+     nutzt stattdessen bpLichtschranke_OK und bpUntergestellErkannt
    - Bei Wechsel der Variante einer Instanz die Zuweisungen hier anpassen
    - Fuer 304 und 305 gibt es noch keine Signale in EV_ToPLC_HarpRack
 *)
@@ -40,11 +41,8 @@ aFaecherwagenstation[301].bpRolltorUnten        := EV_ToPLC_HarpRack.EV_ToPLC_bR
 aFaecherwagenstation[302].bpRolltorUnten        := EV_ToPLC_HarpRack.EV_ToPLC_bRolltor_Station302_Geschlossen;
 aFaecherwagenstation[303].bpRolltorUnten        := EV_ToPLC_HarpRack.EV_ToPLC_bRolltor_Station303_Geschlossen;
 
-aFaecherwagenstation[301].bpLichtschranke_OK    := EV_ToPLC_HarpRack.EV_ToPLC_bLichtschranke_Station301_OK;
-aFaecherwagenstation[302].bpLichtschranke_OK    := EV_ToPLC_HarpRack.EV_ToPLC_bLichtschranke_Station302_OK;
-aFaecherwagenstation[303].bpLichtschranke_OK    := EV_ToPLC_HarpRack.EV_ToPLC_bLichtschranke_Station303_OK;
-
-aFaecherwagenstation[301].bpUntergestellErkannt := EV_ToPLC_HarpRack.EV_ToPLC_bUnterwagen_Station301_Vorhanden;
-aFaecherwagenstation[302].bpUntergestellErkannt := EV_ToPLC_HarpRack.EV_ToPLC_bUnterwagen_Station302_Vorhanden;
-aFaecherwagenstation[303].bpUntergestellErkannt := EV_ToPLC_HarpRack.EV_ToPLC_bUnterwagen_Station303_Vorhanden;
+aFaecherwagenstation[301].bpFaecherwagenVorhanden := EV_ToPLC_HarpRack.EV_ToPLC_bUnterwagen_Station301_Vorhanden;
+aFaecherwagenstation[302].bpFaecherwagenVorhanden := EV_ToPLC_HarpRack.EV_ToPLC_bUnterwagen_Station302_Vorhanden;
+aFaecherwagenstation[303].bpFaecherwagenVorhanden := EV_ToPLC_HarpRack.EV_ToPLC_bUnterwagen_Station303_Vorhanden;
+// TODO: 304 und 305 (Faecherwagen vorhanden, Rolltor geschlossen) in EV_ToPLC_HarpRack ergaenzen und hier zuweisen
 END_ACTION

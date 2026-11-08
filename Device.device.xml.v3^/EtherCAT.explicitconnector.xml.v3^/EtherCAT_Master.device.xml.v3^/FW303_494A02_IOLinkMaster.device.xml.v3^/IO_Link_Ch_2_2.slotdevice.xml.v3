@@ -185,6 +185,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4665</Single>
 									<Single Name="EditorPositionId" Type="long">4666</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4665</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[303].out_bFreigabeSchleusen</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">output byte 0</Single>
 									</Single>
@@ -221,6 +231,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4669</Single>
 									<Single Name="EditorPositionId" Type="long">4670</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4669</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[303].out_bSicherheitskreisAusgeloest</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">output byte 0</Single>
 									</Single>
@@ -329,6 +349,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4681</Single>
 									<Single Name="EditorPositionId" Type="long">4682</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4681</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[304].out_bFreigabeSchleusen</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">output byte 1</Single>
 									</Single>
@@ -365,6 +395,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4685</Single>
 									<Single Name="EditorPositionId" Type="long">4686</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4685</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[304].out_bSicherheitskreisAusgeloest</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">output byte 1</Single>
 									</Single>
@@ -397,6 +437,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4691</Single>
 									<Single Name="EditorPositionId" Type="long">4692</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4691</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[303].in_bNichtRolltorGeoeffnet</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">input byte 0</Single>
 									</Single>
@@ -433,6 +483,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4695</Single>
 									<Single Name="EditorPositionId" Type="long">4696</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4695</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[303].in_bArretierungEingefahren</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">input byte 0</Single>
 									</Single>
@@ -451,6 +511,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4697</Single>
 									<Single Name="EditorPositionId" Type="long">4698</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4697</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[303].in_bArretierungAusgefahren</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">input byte 0</Single>
 									</Single>
@@ -469,6 +539,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4699</Single>
 									<Single Name="EditorPositionId" Type="long">4700</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4699</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[303].in_bStartSchleusen</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">input byte 0</Single>
 									</Single>
@@ -505,6 +585,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4703</Single>
 									<Single Name="EditorPositionId" Type="long">4704</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4703</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[303].in_bResetSicherheitskreis</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">input byte 0</Single>
 									</Single>
@@ -541,6 +631,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4707</Single>
 									<Single Name="EditorPositionId" Type="long">4708</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4707</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[304].in_bNichtRolltorGeoeffnet</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">input byte 1</Single>
 									</Single>
@@ -577,6 +677,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4711</Single>
 									<Single Name="EditorPositionId" Type="long">4712</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4711</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[304].in_bArretierungEingefahren</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">input byte 1</Single>
 									</Single>
@@ -595,6 +705,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4713</Single>
 									<Single Name="EditorPositionId" Type="long">4714</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4713</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[304].in_bArretierungAusgefahren</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">input byte 1</Single>
 									</Single>
@@ -613,6 +733,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4715</Single>
 									<Single Name="EditorPositionId" Type="long">4716</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4715</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[304].in_bStartSchleusen</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">input byte 1</Single>
 									</Single>
@@ -649,6 +779,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4719</Single>
 									<Single Name="EditorPositionId" Type="long">4720</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4719</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[304].in_bResetSicherheitskreis</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">input byte 1</Single>
 									</Single>

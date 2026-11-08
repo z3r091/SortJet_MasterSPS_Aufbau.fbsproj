@@ -14,9 +14,6 @@ VAR_INPUT
   in_bDruckluftOK                         : BOOL;
   bpLichtschrankeWartetAufQuittierungAmOP : BOOL;
 
-  // USINT
-  usilErrorSafety : USINT;
-
 END_VAR
 VAR
 
@@ -70,8 +67,6 @@ VAR
   blRFID_Sensor_ModusBit_6         : BOOL;
   blRFID_Sensor_ModusBit_7         : BOOL;
   blRFID_Sensor_Write_Done         : BOOL;
-  blResetSchmersal                 : BOOL;
-  blAckRequested                   : BOOL;
 
   blErr1, blErr2, blErr3, blErr4, blErr5 : BOOL;
 
@@ -139,7 +134,6 @@ VAR
   tonlSetzeSIRealisReset             : TON;
   tonlWarteSchritt                   : TON;
   tonUntergestellErkannt             : TON;
-  tplResetSchmersal                  : TP;
   tofTagPresent                      : TOF;
 
   // TRIGGER
@@ -147,7 +141,6 @@ VAR
   rtlBetriebsartHand                 : R_TRIG;
   ftlBetriebsartAutomatik            : F_TRIG;
   rtlQuittierungEinschleusen         : R_TRIG;
-  rtlSafetyError                     : R_TRIG;
   rtlRFID_Schreiben                  : R_TRIG;
 
 END_VAR
@@ -177,8 +170,6 @@ VAR
   out_bEntriegelungAusfahren         : BOOL;
   in_bStartSchleusen                 : BOOL;
   out_bFreigabeSchleusen             : BOOL;
-  in_bResetSafetyLichtschranke       : BOOL;
-  out_bSafetyLichtschrankeAusgeloest : BOOL;
   in_bLineareinheit1Umgreifposition  : BOOL;
   in_bLineareinheit2Umgreifposition  : BOOL;
   out_bGegenhalterEinfahren          : BOOL;
@@ -244,20 +235,6 @@ IF NOT __ISVALIDREF(BasisStationsParameter.stMKs) THEN
 END_IF
 
 SUPER^(BasisStationsParameter := BasisStationsParameter);
-
-//-------------------------------------------------------------------------------------------------
-// SAFETY ERROR
-//-------------------------------------------------------------------------------------------------
-rtlSafetyError( CLK := usilErrorSafety <> 0 );
-IF rtlSafetyError.Q THEN
-
-  SpsError( eFehler_Safety_Schmersal,
-            usilErrorSafety,
-            BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-            AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-            BasisStationsParameter.awFehlerInformationen );
-
-END_IF
 
 //-------------------------------------------------------------------------------------------------
 // DEAKTIVIEREN

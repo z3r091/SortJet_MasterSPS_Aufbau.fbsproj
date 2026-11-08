@@ -75,6 +75,7 @@ VAR_GLOBAL CONSTANT
   ioccCAB2_LS_Netzfilter_400V_Nicht_OK               : WORD := 105;
   ioccCAB2_LS_Freigabe_Stromschiene_Nicht_OK         : WORD := 106;
   ioccCAB2_FW_Abrollsicherung_Nicht_OK               : WORD := 107;// todo Text ergänzen
+  ioccCAB2_Sicherheitsrelais_201_Kippen_Nicht_OK     : WORD := 108;// todo Text ergänzen
 
 
 // ================================================= DRUCKLUFT =========================================================

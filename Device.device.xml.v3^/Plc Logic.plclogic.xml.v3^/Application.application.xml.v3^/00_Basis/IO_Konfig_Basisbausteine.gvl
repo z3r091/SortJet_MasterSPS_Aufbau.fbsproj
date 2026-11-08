@@ -24,10 +24,10 @@ VAR_CONFIG
 
    // Ampel AK1
   Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteBlau                     AT %MX900.0  : BOOL; // OPTION
-  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteRot                      AT %QX0.6    : BOOL; // IO-L
-  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteGelb                     AT %QX0.5    : BOOL; // IO-L
-  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteGruen                    AT %QX0.4    : BOOL; // IO-L
-  Globale_Bausteine.Horn_AK[1,1].out_bHorn                                  AT %QX0.3    : BOOL; // IO-L
+  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteRot                      AT %MX902.2  : BOOL; // OPTION - TODO: Ampel Automatikkreis 1, Zuordnung zu den Ampeln im E-Plan offen
+  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteGelb                     AT %MX902.3  : BOOL; // OPTION - TODO: Ampel Automatikkreis 1, Zuordnung zu den Ampeln im E-Plan offen
+  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteGruen                    AT %MX902.4  : BOOL; // OPTION - TODO: Ampel Automatikkreis 1, Zuordnung zu den Ampeln im E-Plan offen
+  Globale_Bausteine.Horn_AK[1,1].out_bHorn                                  AT %MX902.5  : BOOL; // OPTION - TODO: Ampel Automatikkreis 1, Zuordnung zu den Ampeln im E-Plan offen
 
    // Ampel AK1
   Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteBlau                     AT %MX900.1  : BOOL; // Option       
@@ -38,10 +38,10 @@ VAR_CONFIG
 
    // Ampe2 AK1
   Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteBlau                     AT %MX900.6  : BOOL; // OPTION
-  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteRot                      AT %QX1.3    : BOOL; // IO-L
-  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteGelb                     AT %QX1.2    : BOOL; // IO-L
-  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteGruen                    AT %QX1.1    : BOOL; // IO-L
-  Globale_Bausteine.Horn_AK[2,1].out_bHorn                                  AT %QX1.0    : BOOL; // IO-L
+  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteRot                      AT %MX902.6  : BOOL; // OPTION - TODO: Ampel Automatikkreis 2, Zuordnung zu den Ampeln im E-Plan offen
+  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteGelb                     AT %MX902.7  : BOOL; // OPTION - TODO: Ampel Automatikkreis 2, Zuordnung zu den Ampeln im E-Plan offen
+  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteGruen                    AT %MX903.0  : BOOL; // OPTION - TODO: Ampel Automatikkreis 2, Zuordnung zu den Ampeln im E-Plan offen
+  Globale_Bausteine.Horn_AK[2,1].out_bHorn                                  AT %MX903.1  : BOOL; // OPTION - TODO: Ampel Automatikkreis 2, Zuordnung zu den Ampeln im E-Plan offen
 
    // Ampe2 AK1
   Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteBlau                     AT %MX900.7  : BOOL; // Option 
@@ -52,10 +52,10 @@ VAR_CONFIG
 
    // Ampe3 AK1
   Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteBlau                     AT %MX901.4  : BOOL; // OPTION
-  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteRot                      AT %QX5.1    : BOOL; // IO-L
-  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteGelb                     AT %QX5.0    : BOOL; // IO-L
-  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteGruen                    AT %QX4.7    : BOOL; // IO-L
-  Globale_Bausteine.Horn_AK[3,1].out_bHorn                                  AT %QX4.6    : BOOL; // IO-L
+  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteRot                      AT %MX903.2  : BOOL; // OPTION - TODO: Ampel Automatikkreis 3, Zuordnung zu den Ampeln im E-Plan offen
+  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteGelb                     AT %MX903.3  : BOOL; // OPTION - TODO: Ampel Automatikkreis 3, Zuordnung zu den Ampeln im E-Plan offen
+  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteGruen                    AT %MX903.4  : BOOL; // OPTION - TODO: Ampel Automatikkreis 3, Zuordnung zu den Ampeln im E-Plan offen
+  Globale_Bausteine.Horn_AK[3,1].out_bHorn                                  AT %MX903.5  : BOOL; // OPTION - TODO: Ampel Automatikkreis 3, Zuordnung zu den Ampeln im E-Plan offen
 
    // Ampe3 AK1
   Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteBlau                     AT %MX901.5  : BOOL; // Option 
@@ -74,13 +74,14 @@ VAR_CONFIG
   StatusAnlage.in_bDruckluft_Puffer101_103_OK              AT %MX1.1   : BOOL; // OPTION
   StatusAnlage.in_bDruckluft_Puffer102_104_OK              AT %MX1.1   : BOOL; // OPTION
   
-  StatusAnlage.in_bCAB2_LS_Netzteil_24V_OK                 AT %IX0.4   : BOOL; // IO-L
-  StatusAnlage.in_bCAB2_KlimaGeraet_OK                     AT %IX0.2   : BOOL; // IO-L
-  StatusAnlage.in_bCAB2_LS_Netzfilter_400V_OK              AT %IX0.0   : BOOL; // IO-L
+  StatusAnlage.in_bCAB2_LS_Netzteil_24V_OK                 AT %IX0.4   : BOOL; // IO-L - Netzteil 24V OK
+  StatusAnlage.in_bCAB2_KlimaGeraet_OK                     AT %IX0.2   : BOOL; // IO-L - Kuehlgeraet OK
+  StatusAnlage.in_bCAB2_LS_Netzfilter_400V_OK              AT %IX0.0   : BOOL; // IO-L - Versorgung 400V Anlage OK
   StatusAnlage.in_bCAB2_LS_400V_OK                         AT %MX1.1   : BOOL; // OPTION
-  StatusAnlage.in_bCAB2_LS_24V_Schaltschrank_OK            AT %IX0.5   : BOOL; // IO-L
-  StatusAnlage.in_bCAB2_LS_24V_Boxen_OK                    AT %IX0.6   : BOOL; // IO-L
-  StatusAnlage.in_bCAB2_LS_230V_OK                         AT %IX0.3   : BOOL; // IO-L
+  StatusAnlage.in_bCAB2_LS_24V_Schaltschrank_OK            AT %IX0.5   : BOOL; // IO-L - Sicherungen 24V OK Sammelmeldung Steuerstromkreise Schaltschrank
+  StatusAnlage.in_bCAB2_LS_24V_Boxen_OK                    AT %IX0.6   : BOOL; // IO-L - Sicherungen 24V OK Sammelmeldung Steuerstromkreise Anlage
+  StatusAnlage.in_bCAB2_LS_230V_OK                         AT %IX0.3   : BOOL; // IO-L - Versorgung OP/PC OK
+  StatusAnlage.in_bCAB2_Sicherheitsrelais_201_Kippen_OK    AT %IX3.0   : BOOL; // IO-L - Sicherheitsrelais 201 Hydraulik / kippen OK
   
 
 

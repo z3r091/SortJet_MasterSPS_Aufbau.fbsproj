@@ -140,16 +140,6 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="PositionId" Type="long">4579</Single>
 								<Single Name="EditorPositionId" Type="long">4580</Single>
-								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
-									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
-										<List2 Name="Mappings">
-											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4579</Single>
-												<Single Name="Variable" Type="string">Application.Globale_Bausteine.aShuttle[102].Kippen.out_bReset</Single>
-											</Single>
-										</List2>
-									</Single>
-								</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DO3</Single>
 								</Single>
@@ -167,16 +157,6 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="PositionId" Type="long">4581</Single>
 								<Single Name="EditorPositionId" Type="long">4582</Single>
-								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
-									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
-										<List2 Name="Mappings">
-											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4581</Single>
-												<Single Name="Variable" Type="string">Application.Globale_Bausteine.aShuttle[102].Kippen.out_bKippenAufSetzen</Single>
-											</Single>
-										</List2>
-									</Single>
-								</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DO4</Single>
 								</Single>
@@ -194,16 +174,6 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="PositionId" Type="long">4583</Single>
 								<Single Name="EditorPositionId" Type="long">4584</Single>
-								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
-									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
-										<List2 Name="Mappings">
-											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4583</Single>
-												<Single Name="Variable" Type="string">Application.Globale_Bausteine.aShuttle[102].Kippen.out_bKippenAbSetzen</Single>
-											</Single>
-										</List2>
-									</Single>
-								</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DO5</Single>
 								</Single>
@@ -221,16 +191,6 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="PositionId" Type="long">4585</Single>
 								<Single Name="EditorPositionId" Type="long">4586</Single>
-								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
-									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
-										<List2 Name="Mappings">
-											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4585</Single>
-												<Single Name="Variable" Type="string">Application.Globale_Bausteine.aShuttle[102].Kippen.out_bBremseLoesen</Single>
-											</Single>
-										</List2>
-									</Single>
-								</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DO6</Single>
 								</Single>

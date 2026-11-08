@@ -10,56 +10,56 @@ NAMESPACE Konfiguration_201
 VAR_CONFIG
   
   // Taster
-  Globale_Bausteine.Anlegetisch201.in_bKnebelRiemenVor                                   AT %IX7.7    : BOOL; // IO-L - Knebelschalter
-  Globale_Bausteine.Anlegetisch201.in_bKnebelRiemenZurueck                               AT %IX9.0    : BOOL; // IO-L - Knebelschalter
-  Globale_Bausteine.Anlegetisch201.in_bTasterQuittierungScheibenmessung                  AT %IX9.1    : BOOL; // IO-L - gelber Leuchtdrucktaster, Quittierung Fehlmessung
-  Globale_Bausteine.Anlegetisch201.in_bTasterGlasAngelegt                                AT %MX1.0  : BOOL; // OPTION - Taster Quittierung Glas angelegt (vorher %MX9.2, E-Plan pruefen)
-  Globale_Bausteine.Anlegetisch201.in_bTasterGlasBruch                                   AT %MX1.1    : BOOL; // OPTION
+  Globale_Bausteine.Anlegetisch201.in_bKnebelRiemenVor                                   AT %IX6.1    : BOOL; // IO-L - 201 Riemen vor
+  Globale_Bausteine.Anlegetisch201.in_bKnebelRiemenZurueck                               AT %IX6.2    : BOOL; // IO-L - 201 Riemen zurueck
+  Globale_Bausteine.Anlegetisch201.in_bTasterQuittierungScheibenmessung                  AT %IX6.0    : BOOL; // IO-L - 201 quittieren Fehlmessung
+  Globale_Bausteine.Anlegetisch201.in_bTasterGlasAngelegt                                AT %IX6.4  : BOOL; // IO-L - 201 Austransport Start
+  Globale_Bausteine.Anlegetisch201.in_bTasterGlasBruch                                   AT %IX6.3    : BOOL; // IO-L - 201 Glasbruch
   Globale_Bausteine.Anlegetisch201.in_bTasterGlasAbgenommen                              AT %MX1.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.in_bTasterAnschlaege                                  AT %IX9.2    : BOOL; // IO-L
+  Globale_Bausteine.Anlegetisch201.in_bTasterAnschlaege                                  AT %MX1.0    : BOOL; // OPTION - Taster Anschlaege
 
-  Globale_Bausteine.Anlegetisch201.out_bSignalTasterScheibeAnlegen                       AT %MX2010.0 : BOOL; // OPTION - Leuchte im weißen Taster Scheibe anlegen
-  Globale_Bausteine.Anlegetisch201.out_bSignalTasterScheibeQuittieren                    AT %QX6.1    : BOOL; // IO-L - Leuchte im gelben Taster Scheibe quittieren
-  Globale_Bausteine.Anlegetisch201.out_bAmpelSignalRot                                   AT %MX2010.1 : BOOL; // OPTION - Ampel rot
-  Globale_Bausteine.Anlegetisch201.out_bAmpelSignalGruenScheibeAnlegen                   AT %QX11.0   : BOOL; // IO-L - Ampel grün, Scheibe anlegen
+  Globale_Bausteine.Anlegetisch201.out_bSignalTasterScheibeAnlegen                       AT %QX6.0    : BOOL; // IO-L - 201 Austransport Start Meldung
+  Globale_Bausteine.Anlegetisch201.out_bSignalTasterScheibeQuittieren                    AT %QX5.6    : BOOL; // IO-L - 201 Fehlmessung Scheibe ausgeloest
+  Globale_Bausteine.Anlegetisch201.out_bAmpelSignalRot                                   AT %QX5.5    : BOOL; // IO-L - 201 Stoerung im Betriebsablauf Ampel rot
+  Globale_Bausteine.Anlegetisch201.out_bAmpelSignalGruenScheibeAnlegen                   AT %QX5.3    : BOOL; // IO-L - 201 Freigabe Scheibe anlegen Ampel gruen
   Globale_Bausteine.Anlegetisch201.out_bAmpelSignalGlastransportAktiv                    AT %MX2010.2 : BOOL; // OPTION - Ampel Glastransport aktiv
   //Glasbruch QX3.0
     
   // Gebläse
-  Globale_Bausteine.Anlegetisch201.in_bMotorschutzGeblaese_Ok                            AT %IX4.0    : BOOL; // IO-L
-  Globale_Bausteine.Anlegetisch201.in_bDrehzahlErreicht                                  AT %IX3.7    : BOOL; // IO-L
-  Globale_Bausteine.Anlegetisch201.in_bTasterGeblaese1Ein                                AT %IX7.6    : BOOL; // IO-L
+  Globale_Bausteine.Anlegetisch201.in_bMotorschutzGeblaese_Ok                            AT %IX1.1    : BOOL; // IO-L - 201 Geblaese Sanftstarter / Sicherung OK
+  Globale_Bausteine.Anlegetisch201.in_bDrehzahlErreicht                                  AT %IX1.4    : BOOL; // IO-L - 201 Geblaese BY-PASSED
+  Globale_Bausteine.Anlegetisch201.in_bTasterGeblaese1Ein                                AT %IX4.7    : BOOL; // IO-L - 201 Taster Geblaese ein
   Globale_Bausteine.Anlegetisch201.in_bTasterGeblaese2Ein                                AT %MX1.0    : BOOL; // OPTION
   
-  Globale_Bausteine.Anlegetisch201.out_bGeblaese1Ein                                     AT %QX0.6    : BOOL; // IO-L
+  Globale_Bausteine.Anlegetisch201.out_bGeblaese1Ein                                     AT %QX0.6    : BOOL; // IO-L - 201 Geblaese einschalten
   Globale_Bausteine.Anlegetisch201.out_bGeblaese2Ein                                     AT %MX2010.3 : BOOL; // OPTION
 
   // Kippen//SKquittieren_OP IX4.4
   // Kippen//SKquittieren_LTR IX6.0
-  Globale_Bausteine.Anlegetisch201.in_bTasterAnforderungKippen                           AT %MX1.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.in_bTasterAnforderungKippen_OP                        AT %MX1.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.in_bTasterKippenAuf                                   AT %MX1.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.in_bTasterKippenAb                                    AT %MX1.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.in_bTasterKippenAuf_OP                                AT %MX1.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.in_bTasterKippenAb_OP                                 AT %MX1.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.in_bSensorKipptischOben                               AT %MX1.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.in_bSensorKippsicherungGeschlossen                    AT %MX1.1    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.in_bSensorKippsicherungOffen                          AT %MX1.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.in_bSchaltleisteAusgeloest                            AT %MX1.0    : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.in_bMotorschutzHydraulik                              AT %MX1.1    : BOOL; // OPTION
+  Globale_Bausteine.Anlegetisch201.in_bTasterAnforderungKippen                           AT %IX6.5    : BOOL; // IO-L - 201 Anforderung Durchgang nicht Bedienseite
+  Globale_Bausteine.Anlegetisch201.in_bTasterAnforderungKippen_OP                        AT %IX3.2    : BOOL; // IO-L - 201 Anforderung Durchgang (OP1)
+  Globale_Bausteine.Anlegetisch201.in_bTasterKippenAuf                                   AT %IX6.6    : BOOL; // IO-L - 201 auf nicht Bedienseite
+  Globale_Bausteine.Anlegetisch201.in_bTasterKippenAb                                    AT %IX6.7    : BOOL; // IO-L - 201 ab nicht Bedienseite
+  Globale_Bausteine.Anlegetisch201.in_bTasterKippenAuf_OP                                AT %IX3.3    : BOOL; // IO-L - 201 auf (OP1)
+  Globale_Bausteine.Anlegetisch201.in_bTasterKippenAb_OP                                 AT %IX3.4    : BOOL; // IO-L - 201 ab (OP1)
+  Globale_Bausteine.Anlegetisch201.in_bSensorKipptischOben                               AT %IX4.6    : BOOL; // IO-L - 201 Kipptisch oben
+  Globale_Bausteine.Anlegetisch201.in_bSensorKippsicherungGeschlossen                    AT %IX4.5    : BOOL; // IO-L - 201 Kippsicherung geschlossen
+  Globale_Bausteine.Anlegetisch201.in_bSensorKippsicherungOffen                          AT %IX4.4    : BOOL; // IO-L - 201 Kippsicherung offen
+  Globale_Bausteine.Anlegetisch201.in_bSchaltleisteAusgeloest                            AT %IX10.7   : BOOL; // IO-L - 201 Schaltleiste ausgeloest
+  Globale_Bausteine.Anlegetisch201.in_bMotorschutzHydraulik                              AT %IX1.6    : BOOL; // IO-L - 201 Hydraulik Motorstarter / Sicherung OK
   
   //Kippen angefordert_OP  QX1.6
   //Kippen angefordert_LTR QX2.0
-  Globale_Bausteine.Anlegetisch201.out_bKipptischAuf                                     AT %MX2010.4 : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.out_bKipptischAb                                      AT %MX2010.5 : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.out_bKippsicherungoeffnen                             AT %MX2010.6 : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.out_bLeuchteKipptischOffen                            AT %MX2010.7 : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.out_bLeuchteKipptischOffen_OP                         AT %MX2011.0 : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.out_bHydraulikpumpeEin                                AT %MX2011.1 : BOOL; // OPTION
+  Globale_Bausteine.Anlegetisch201.out_bKipptischAuf                                     AT %QX10.0   : BOOL; // IO-L - 201 kippen auf
+  Globale_Bausteine.Anlegetisch201.out_bKipptischAb                                      AT %QX10.1   : BOOL; // IO-L - 201 kippen ab
+  Globale_Bausteine.Anlegetisch201.out_bKippsicherungoeffnen                             AT %QX10.2   : BOOL; // IO-L - 201 Kippsicherung oeffnen
+  Globale_Bausteine.Anlegetisch201.out_bLeuchteKipptischOffen                            AT %QX6.1    : BOOL; // IO-L - 201 nicht geschlossen nicht Bedienseite
+  Globale_Bausteine.Anlegetisch201.out_bLeuchteKipptischOffen_OP                         AT %QX3.2    : BOOL; // IO-L - 201 nicht geschlossen (OP1)
+  Globale_Bausteine.Anlegetisch201.out_bHydraulikpumpeEin                                AT %QX1.0    : BOOL; // IO-L - 201 Start Motor Hydraulikpumpe
   Globale_Bausteine.Anlegetisch201.out_bHydraulikpumpeUmlaufVentil                       AT %MX2011.2 : BOOL; // OPTION
   Globale_Bausteine.Anlegetisch201.out_bSchaltleisteAusgeloest                           AT %MX2011.3 : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.out_bKipptischHornWarnsignal                          AT %MX2011.4 : BOOL; // OPTION
-  Globale_Bausteine.Anlegetisch201.out_bKipptischAmpelWarnsignal                         AT %MX2011.5 : BOOL; // OPTION
+  Globale_Bausteine.Anlegetisch201.out_bKipptischHornWarnsignal                          AT %QX5.2    : BOOL; // IO-L - 201 Kipptisch auf / ab Akustisch
+  Globale_Bausteine.Anlegetisch201.out_bKipptischAmpelWarnsignal                         AT %QX5.4    : BOOL; // IO-L - 201 Kipptisch auf / ab Ampel gelb
 
 
   // Kipparme

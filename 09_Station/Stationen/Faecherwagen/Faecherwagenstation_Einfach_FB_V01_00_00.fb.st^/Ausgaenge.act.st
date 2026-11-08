@@ -21,7 +21,7 @@ bpBoxInHomePosition :=     blArretierungOffen
                              OR bpRolltorUnten );
 
 // Beladeposition: Faecherwagen vorhanden und arretiert, Rolltor oben
-bpStatusStationInBeladePosition :=     in_bFaecherwagenVorhanden
+bpStatusStationInBeladePosition :=     bpFaecherwagenVorhanden
                                    AND blArretierungGeschlossen
                                    AND (    NOT BasisStationsParameter.stMKs.stStationsAufbau.bRolltor
                                          OR ( NOT in_bNichtRolltorGeoeffnet AND NOT bpRolltorUnten ) );

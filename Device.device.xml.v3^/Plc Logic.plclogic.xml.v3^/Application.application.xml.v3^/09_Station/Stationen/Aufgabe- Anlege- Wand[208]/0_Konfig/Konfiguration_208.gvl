@@ -11,18 +11,18 @@ VAR_CONFIG
 
   // Taster
   Globale_Bausteine.Combiwand208.in_bFussTasterGlasAngelegt                               AT %MX1.0    : BOOL; // OPTION - Signal Scheibe ist angelegt Fusstaster
-  Globale_Bausteine.Combiwand208.in_bTasterGlasAngelegt                                   AT %IX3.0    : BOOL; // IO-L - Signal Scheibe ist angelegt weißer Leuchtdrucktaster
-  Globale_Bausteine.Combiwand208.in_bTasterFehlmessungQuittiern                           AT %IX3.1    : BOOL; // IO-L - gelber Leuchtdrucktaster Fehlmessung quittieren
-  Globale_Bausteine.Combiwand208.in_bKnebelGlastransportZurueck                           AT %IX3.3    : BOOL; // IO-L - Knebelschalter: Glastransport zurück
-  Globale_Bausteine.Combiwand208.in_bKnebelGlastransportVor                               AT %IX3.2    : BOOL; // IO-L - Knebelschalter: Glastransport vor
-  Globale_Bausteine.Combiwand208.in_bTasterGlasbruch                                      AT %IX3.4    : BOOL; // IO-L
-  Globale_Bausteine.Combiwand208.in_bTasterQuittierungGlasAbgenommen                      AT %IX3.0    : BOOL; // IO-L - gleicher Taster wie Glas angelegt (Doppelbelegung gewollt)
+  Globale_Bausteine.Combiwand208.in_bTasterGlasAngelegt                                   AT %IX3.7    : BOOL; // IO-L - 208 quittieren Scheibe aufgelegt
+  Globale_Bausteine.Combiwand208.in_bTasterFehlmessungQuittiern                           AT %IX4.0    : BOOL; // IO-L - 208 Fehlmessung quittieren
+  Globale_Bausteine.Combiwand208.in_bKnebelGlastransportZurueck                           AT %IX4.2    : BOOL; // IO-L - 208 Riemen zurueck
+  Globale_Bausteine.Combiwand208.in_bKnebelGlastransportVor                               AT %IX4.1    : BOOL; // IO-L - 208 Riemen vor
+  Globale_Bausteine.Combiwand208.in_bTasterGlasbruch                                      AT %IX4.3    : BOOL; // IO-L - 208 Glasbruch
+  Globale_Bausteine.Combiwand208.in_bTasterQuittierungGlasAbgenommen                      AT %IX3.7    : BOOL; // IO-L - 208 quittieren Scheibe aufgelegt (gleicher Taster wie Glas angelegt)
                                                                                           
   // Lampen/Ampel                                                                         
-  Globale_Bausteine.Combiwand208.out_bAmpelSignalGruen                                    AT %QX2.4    : BOOL; // IO-L - Grüne Ampel an der Station
-  Globale_Bausteine.Combiwand208.out_bSignalScheibeAufgegeben                             AT %MX2080.0 : BOOL; // OPTION - Leuchte im weißen Taster Scheibe aufgegeben
-  Globale_Bausteine.Combiwand208.out_bSignalScheibeFehlmessung                            AT %QX2.5    : BOOL; // IO-L - Leuchte im gelben Taster Fehlmessung
-  Globale_Bausteine.Combiwand208.out_bSignalScheibeGlasbruch                              AT %QX2.6    : BOOL; // IO-L
+  Globale_Bausteine.Combiwand208.out_bAmpelSignalGruen                                    AT %QX5.0    : BOOL; // IO-L - 208 Freigabe Scheibe anlegen Ampel gruen
+  Globale_Bausteine.Combiwand208.out_bSignalScheibeAufgegeben                             AT %QX4.5    : BOOL; // IO-L - 208 quittieren Scheibe aufgelegt
+  Globale_Bausteine.Combiwand208.out_bSignalScheibeFehlmessung                            AT %QX4.6    : BOOL; // IO-L - 208 Scheibe Fehlmessung
+  Globale_Bausteine.Combiwand208.out_bSignalScheibeGlasbruch                              AT %QX4.7    : BOOL; // IO-L - 208 Glasbruch Meldung
   Globale_Bausteine.Combiwand208.out_bSignalScheibeAbnehmen                               AT %MX2080.1 : BOOL; // OPTION
   
                                                                                                         

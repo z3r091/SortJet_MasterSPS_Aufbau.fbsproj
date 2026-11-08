@@ -24,7 +24,7 @@ IF blBetriebartCheck THEN
       CASE eLetzterStatus OF
 
         eLetzter_FW_Status.eEinschleusen_Arretierung_Schliessen_110:
-          IF in_bFaecherwagenVorhanden AND BasisStationsParameter.bFreigabe THEN
+          IF bpFaecherwagenVorhanden AND BasisStationsParameter.bFreigabe THEN
             steplEinschleusen := STEP_110_E;
             BasisStationsParameter.bEintransport[cWAND_1] := TRUE;
             steplCheck := STEP_100_E;
@@ -34,7 +34,7 @@ IF blBetriebartCheck THEN
           END_IF
 
         eLetzter_FW_Status.eEinschleusen_Rolltor_Oeffnen_120:
-          IF in_bFaecherwagenVorhanden AND BasisStationsParameter.bFreigabe THEN
+          IF bpFaecherwagenVorhanden AND BasisStationsParameter.bFreigabe THEN
             steplEinschleusen := STEP_120_E;
             BasisStationsParameter.bEintransport[cWAND_1] := TRUE;
             steplCheck := STEP_100_E;
@@ -44,7 +44,7 @@ IF blBetriebartCheck THEN
           END_IF
 
         eLetzter_FW_Status.eEinschleusen_Auswertung_180:
-          IF in_bFaecherwagenVorhanden AND BasisStationsParameter.bFreigabe THEN
+          IF bpFaecherwagenVorhanden AND BasisStationsParameter.bFreigabe THEN
             steplEinschleusen := STEP_180_E;
             BasisStationsParameter.bEintransport[cWAND_1] := TRUE;
             steplCheck := STEP_100_E;

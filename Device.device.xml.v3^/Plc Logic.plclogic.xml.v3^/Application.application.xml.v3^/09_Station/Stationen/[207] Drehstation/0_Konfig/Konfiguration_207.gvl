@@ -15,13 +15,13 @@ VAR_CONFIG
   
   
   // KIPPEN  
-  Globale_Bausteine.Drehstation207.Kippen.in_bMotorschutzschalter_OK                        AT %IX1.4   : BOOL; // IO-L
+  Globale_Bausteine.Drehstation207.Kippen.in_bMotorschutzschalter_OK                        AT %IX1.7   : BOOL; // IO-L - 207 kippen Motorstarter / Sicherung OK
   Globale_Bausteine.Drehstation207.Kippen.in_bMotorstarter_OK                               AT %MX1.1   : BOOL; // OPTION
   Globale_Bausteine.Drehstation207.Kippen.in_bLSBremse_OK                                   AT %MX1.1   : BOOL; // OPTION
   Globale_Bausteine.Drehstation207.Kippen.in_bLS400V_OK                                     AT %MX1.1   : BOOL; // OPTION
   
-  Globale_Bausteine.Drehstation207.Kippen.out_bKippen84Grad                                 AT %QX3.3   : BOOL; // IO-L
-  Globale_Bausteine.Drehstation207.Kippen.out_bKippen90Grad                                 AT %QX3.2   : BOOL; // IO-L
+  Globale_Bausteine.Drehstation207.Kippen.out_bKippen84Grad                                 AT %QX1.2   : BOOL; // IO-L - 207 kippen 1 nach 84 Grad
+  Globale_Bausteine.Drehstation207.Kippen.out_bKippen90Grad                                 AT %QX1.1   : BOOL; // IO-L - 207 kippen 1 nach 90 Grad
   Globale_Bausteine.Drehstation207.Kippen.out_bBremseLoesen                                 AT %MX2070.0 : BOOL; // OPTION
   Globale_Bausteine.Drehstation207.Kippen.out_bReset                                        AT %MX2070.1 : BOOL; // OPTION
   

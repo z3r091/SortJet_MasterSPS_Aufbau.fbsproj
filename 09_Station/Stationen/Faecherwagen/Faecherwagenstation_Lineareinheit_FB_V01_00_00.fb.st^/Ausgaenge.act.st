@@ -25,10 +25,11 @@ bpAuftragAktiv := (  blBetriebartCheck
                     OR BasisStationsParameter.bEintransport[1] 
                     OR BasisStationsParameter.bAustransport[1] );
 
+// Leuchte Sicherheitskreis: Variante zeigt den Zustand der Lichtschranke
 IF bpLichtschrankeWartetAufQuittierungAmOP THEN
-  out_bSafetyLichtschrankeAusgeloest := gbFlashbit05sec;
+  out_bSicherheitskreisAusgeloest := gbFlashbit05sec;
 ELSE
-  out_bSafetyLichtschrankeAusgeloest := NOT bpLichtschranke_OK;
+  out_bSicherheitskreisAusgeloest := NOT bpLichtschranke_OK;
 END_IF
 
 (* Hinweis:
@@ -38,7 +39,6 @@ bpOutBereitZumEintransport := bpStatusStationInBeladePosition;
 bpOutBereitZumAustransport := bpStatusStationInBeladePosition;
 tonlWagenInShuttleTransferposition(IN:=blLinearEinheitSH,PT:=t#1s);
 
-ResetSchmersal();
 
 // ---------------------------------------------------------------------------------------
 // OPTION - DEFAULT FAECHERWAGENSTATION

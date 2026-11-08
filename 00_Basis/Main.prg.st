@@ -49,7 +49,8 @@ TCPMain();
 
 EtherCAT_Master.StartConfigWithLessDevice := TRUE;
 
-%QX0.0 := %QX0.1 := %QX1.6 := bgEtherCatOK; // OP-Einschalten workaround weil FB rausgeflogen ist
+// OP1 bis OP5 einschalten, sobald EtherCAT laeuft
+%QX0.0 := %QX0.1 := %QX0.3 := %QX0.4 := %QX0.5 := bgEtherCatOK;
 
 IF ( Auftraege.bgInbetriebnahmeAblaeufe ) THEN
   Auftraege();

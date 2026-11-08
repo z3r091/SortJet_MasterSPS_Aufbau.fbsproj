@@ -13,7 +13,7 @@ ACTION A_Eingaenge
 blArretierungGeschlossen := in_bArretierungAusgefahren AND NOT in_bArretierungEingefahren;
 blArretierungOffen       := in_bArretierungEingefahren AND NOT in_bArretierungAusgefahren;
 
-tonlFWInBox( IN := in_bFaecherwagenVorhanden, PT := ZEIT_FW_IN_BOX );
+tonlFWInBox( IN := bpFaecherwagenVorhanden, PT := ZEIT_FW_IN_BOX );
 
 rtlQuittierungEinschleusen( CLK := in_bStartSchleusen );
 

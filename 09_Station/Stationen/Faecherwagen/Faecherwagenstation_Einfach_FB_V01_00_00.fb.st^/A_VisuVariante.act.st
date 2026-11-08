@@ -14,7 +14,7 @@ IF PruefungWertImIntervall( BasisStationsParameter.stMKs.stStationsNummern.Numme
                             cERSTE_FAECHERWAGENSTATIONS_NR,
                             cLETZTE_FAECHERWAGENSTATIONS_NR )
 THEN
-  astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bWagenErkannt    := in_bFaecherwagenVorhanden;
+  astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bWagenErkannt    := bpFaecherwagenVorhanden;
   astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bLichtschrankeOK := TRUE; // keine Lichtschranke an der Station
   astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].abEndlage[1]     := blArretierungOffen;
   astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].abEndlage[2]     := blArretierungGeschlossen;

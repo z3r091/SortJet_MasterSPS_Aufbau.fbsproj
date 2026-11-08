@@ -203,6 +203,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4249</Single>
 									<Single Name="EditorPositionId" Type="long">4250</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4249</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].out_bArretierungAusfahren</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">Digital Outputs X1-X4</Single>
 									</Single>
@@ -221,6 +231,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4251</Single>
 									<Single Name="EditorPositionId" Type="long">4252</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4251</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].out_bArretierungEinfahren</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">Digital Outputs X1-X4</Single>
 									</Single>
@@ -239,6 +259,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4253</Single>
 									<Single Name="EditorPositionId" Type="long">4254</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4253</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[302].out_bArretierungAusfahren</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">Digital Outputs X5-X8</Single>
 									</Single>
@@ -257,6 +287,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4255</Single>
 									<Single Name="EditorPositionId" Type="long">4256</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4255</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[302].out_bArretierungEinfahren</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">Digital Outputs X5-X8</Single>
 									</Single>
@@ -275,6 +315,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4257</Single>
 									<Single Name="EditorPositionId" Type="long">4258</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4257</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[303].out_bArretierungAusfahren</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">Digital Outputs X5-X8</Single>
 									</Single>
@@ -293,6 +343,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4259</Single>
 									<Single Name="EditorPositionId" Type="long">4260</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4259</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[303].out_bArretierungEinfahren</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">Digital Outputs X5-X8</Single>
 									</Single>
@@ -311,6 +371,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4261</Single>
 									<Single Name="EditorPositionId" Type="long">4262</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4261</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[304].out_bArretierungAusfahren</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">Digital Outputs X5-X8</Single>
 									</Single>
@@ -329,6 +399,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4263</Single>
 									<Single Name="EditorPositionId" Type="long">4264</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4263</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[304].out_bArretierungEinfahren</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">Digital Outputs X5-X8</Single>
 									</Single>
@@ -347,6 +427,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4265</Single>
 									<Single Name="EditorPositionId" Type="long">4266</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4265</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[305].out_bArretierungAusfahren</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">Digital Outputs X5-X8</Single>
 									</Single>
@@ -365,6 +455,16 @@ __V3_CONTENT__
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 									<Single Name="PositionId" Type="long">4267</Single>
 									<Single Name="EditorPositionId" Type="long">4268</Single>
+									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
+											<List2 Name="Mappings">
+												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
+													<Single Name="Id" Type="long">4267</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[305].out_bArretierungEinfahren</Single>
+												</Single>
+											</List2>
+										</Single>
+									</Single>
 									<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">Digital Outputs X5-X8</Single>
 									</Single>

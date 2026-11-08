@@ -83,7 +83,7 @@ THEN
          - Arretierung ausfahren, der Faecherwagen wird festgehalten
          - Ueberwachung der Endlage im Arretierung_FB
       *)
-      IF NOT in_bFaecherwagenVorhanden THEN
+      IF NOT bpFaecherwagenVorhanden THEN
         blArretierungSchliessen := FALSE;
 
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Fehler;
