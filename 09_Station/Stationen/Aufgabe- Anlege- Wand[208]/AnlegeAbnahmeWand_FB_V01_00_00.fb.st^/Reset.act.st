@@ -90,30 +90,39 @@ IF( blBetriebsartReset )THEN
                   BasisStationsparameter.awFehlerInformationen );
 
         IF Glastransport.bpFehler THEN
-          BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
-          SpsError( eFehler_Station,
-                    BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                    BasisStationsparameter.awFehlerInformationen );
+          // Nummer des Bausteins nur uebernehmen, wenn er selbst schon einen Fehler meldet
+          IF ( Glastransport.wpFehlerNr <> cMELDUNG_NULL ) THEN
+            BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
+            SpsError( eFehler_Station,
+                      BasisStationsParameter.wFehlerNummer,
+                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                      BasisStationsparameter.awFehlerInformationen );
+          END_IF
         END_IF
 
         IF Messachse.bpFehler THEN
-          BasisStationsParameter.wFehlerNummer := Messachse.wpFehlerNr;
-          SpsError( eFehler_Station,
-                    BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                    BasisStationsparameter.awFehlerInformationen );
+          // Nummer des Bausteins nur uebernehmen, wenn er selbst schon einen Fehler meldet
+          IF ( Messachse.wpFehlerNr <> cMELDUNG_NULL ) THEN
+            BasisStationsParameter.wFehlerNummer := Messachse.wpFehlerNr;
+            SpsError( eFehler_Station,
+                      BasisStationsParameter.wFehlerNummer,
+                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                      BasisStationsparameter.awFehlerInformationen );
+          END_IF
         END_IF
 
         IF Kippen.bpFehler THEN
-          BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
-          SpsError( eFehler_Station,
-                    BasisStationsParameter.wFehlerNummer,
-                    BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
-                    AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
-                    BasisStationsparameter.awFehlerInformationen );
+          // Nummer des Bausteins nur uebernehmen, wenn er selbst schon einen Fehler meldet
+          IF ( Kippen.wpFehlerNr <> cMELDUNG_NULL ) THEN
+            BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
+            SpsError( eFehler_Station,
+                      BasisStationsParameter.wFehlerNummer,
+                      BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
+                      AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
+                      BasisStationsparameter.awFehlerInformationen );
+          END_IF
         END_IF
 
         steplReset := STEP_900_E;

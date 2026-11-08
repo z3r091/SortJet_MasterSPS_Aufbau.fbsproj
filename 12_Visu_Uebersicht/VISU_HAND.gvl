@@ -90,6 +90,6 @@ VAR_GLOBAL
   sL_HANDBETRIEB                           : STRING(120) := 'HANDBETRIEB';
   sL_Legende                               : STRING(120) := 'Taster (weiß) = Tippbetrieb solange gedrückt   |   Schalter (blau hinterlegt wenn EIN) = Ein/Aus   |   Gesperrt = grau';
   sL_Titel                                 : STRING(120) := 'Dreisbusch  -  Handbetrieb 201 - 208';
-  sL_Titel2                                : STRING(120) := 'Dreisbusch  -  Handbetrieb Shuttle / Fächerwagen';
+  sL_Titel2                                : STRING(120) := 'Dreisbusch  -  Handbetrieb Speicher';
 END_VAR
 END_NAMESPACE
