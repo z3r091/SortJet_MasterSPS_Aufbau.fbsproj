@@ -80,6 +80,12 @@ END_IF
 *)
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
 
+  IF NOT __ISVALIDREF(starrShuttleBasisParameter[wlIndex].stMKs) THEN
+    abgVerfahrfreigabeShuttle[wlIndex] := FALSE;
+    ablKonfiguriert[wlIndex] := FALSE;
+    CONTINUE;
+  END_IF
+
   ablKonfiguriert[wlIndex] := ( apgShuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MAX
                                 OR apgShuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MIN
                                 OR apgShuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MIN_MAX );
@@ -112,6 +118,12 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
 END_FOR
 
 FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
+
+  IF NOT __ISVALIDREF(starrTransfershuttleBasisParameter[wlIndex].stMKs) THEN
+    abgVerfahrfreigabeShuttle[wlIndex] := FALSE;
+    ablKonfiguriert[wlIndex] := FALSE;
+    CONTINUE;
+  END_IF
 
   ablKonfiguriert[wlIndex] := ( apgTransfershuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MAX
                                 OR apgTransfershuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MIN
@@ -241,8 +253,8 @@ ELSE
   arlAktuellerSicherheitsabstand[cSHUTTLE_152] := rgMkMinSecureDistanceTransfer;
 END_IF
 
-abgVerfahrfreigabeShuttle[cSHUTTLE_151] := TRUE;
-abgVerfahrfreigabeShuttle[cSHUTTLE_152] := TRUE;
+abgVerfahrfreigabeShuttle[cSHUTTLE_151] := __ISVALIDREF(starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs);
+abgVerfahrfreigabeShuttle[cSHUTTLE_152] := __ISVALIDREF(starrTransfershuttleBasisParameter[cSHUTTLE_152].stMKs);
 
 IF aTransfershuttles[cSHUTTLE_151].Querfahrt.bpInReference
    AND aTransfershuttles[cSHUTTLE_152].Querfahrt.bpInReference
