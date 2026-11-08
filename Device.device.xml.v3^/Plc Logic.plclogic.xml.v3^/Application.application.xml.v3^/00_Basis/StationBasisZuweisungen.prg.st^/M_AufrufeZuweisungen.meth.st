@@ -31,6 +31,10 @@ Zuweisung_207();
 Zuweisung_208();
 
 Zuweisung_301();
+Zuweisung_302();
+Zuweisung_303();
+Zuweisung_304();
+Zuweisung_305();
 
 Zuweisung_401();
 
