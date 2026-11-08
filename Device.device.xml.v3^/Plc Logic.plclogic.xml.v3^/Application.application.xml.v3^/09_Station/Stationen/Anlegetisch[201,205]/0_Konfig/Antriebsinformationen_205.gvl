@@ -7,13 +7,13 @@
 *)
 {attribute 'allow_unqualified_access'}
 NAMESPACE Antriebsinformationen_205
-VAR_GLOBAL CONSTANT
+VAR_GLOBAL
   
 //-------------------------------------------------------------------------------------------------
 // ANTRIEBSINFORMATION
 //-------------------------------------------------------------------------------------------------
 
-  apgInfoStation205Glastransport : AntriebsInformationen :=
+  apgInfoStation205Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
       wAchsID                                 :=     9,  // Achs ID aus dem EConSet 
       stTyp                                   := 'Belt',  // Typ                           
@@ -37,9 +37,9 @@ VAR_GLOBAL CONSTANT
       stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.KEINE,     // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
                                                    bVersorgungUeberXVR   := FALSE,                          // XVR-Modus: brueckt Hauptschalter 400 V und LS 230 V
                                                    bBremseLoesenFreigabe := FALSE )                         // Der Antrieb darf über eine Betriebsart die Bremse lösen
-    );
+    )];
 
-  apgInfoStation205Glastransport_Slave : AntriebsInformationen :=
+  apgInfoStation205Glastransport_Slave : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
       wAchsID                                 :=     65,  // Achs ID aus dem EConSet 
       stTyp                                   := 'BeltSl',  // Typ                           
@@ -63,7 +63,7 @@ VAR_GLOBAL CONSTANT
       stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.KEINE,     // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
                                                    bVersorgungUeberXVR   := FALSE,                          // XVR-Modus: brueckt Hauptschalter 400 V und LS 230 V
                                                    bBremseLoesenFreigabe := FALSE )                         // Der Antrieb darf über eine Betriebsart die Bremse lösen
-    );
+    )];
 
 
   apgInfoStation205Messachse : AntriebsInformationen :=

@@ -10,14 +10,14 @@ ACTION Zuweisung_205
 starrStationBasisParameter[cSTATION_205].stMKs REF= apgMKStation205;
 
 // Antriebsparameter zuweisen
-starrStationBasisParameter[cSTATION_205].stAntriebsparameter.stGlastransport[1]      := apgInfoStation205Glastransport;
-starrStationBasisParameter[cSTATION_205].stAntriebsparameter.stGlastransportSlave[1] := apgInfoStation205Glastransport_Slave;
-starrStationBasisParameter[cSTATION_205].stAntriebsparameter.stMessachse             := apgInfoStation205Messachse;
+starrStationBasisParameter[cSTATION_205].stAntriebsparameter.stGlastransport         REF= apgInfoStation205Glastransport;
+starrStationBasisParameter[cSTATION_205].stAntriebsparameter.stGlastransportSlave    REF= apgInfoStation205Glastransport_Slave;
+starrStationBasisParameter[cSTATION_205].stAntriebsparameter.stMessachse             REF= apgInfoStation205Messachse;
 
 
 // Parameter der Stationskomponenten zuweisen  
-starrStationBasisParameter[cSTATION_205].stParameterStationskomponenten.stGlastransport[1] := apgMKStation205Glastransport;
-starrStationBasisParameter[cSTATION_205].stParameterStationskomponenten.stMessachse        := apgMKStation205Messachse;
+starrStationBasisParameter[cSTATION_205].stParameterStationskomponenten.stGlastransport    REF= apgMKStation205Glastransport;
+starrStationBasisParameter[cSTATION_205].stParameterStationskomponenten.stMessachse        REF= apgMKStation205Messachse;
 
 
 (* Hinweis:

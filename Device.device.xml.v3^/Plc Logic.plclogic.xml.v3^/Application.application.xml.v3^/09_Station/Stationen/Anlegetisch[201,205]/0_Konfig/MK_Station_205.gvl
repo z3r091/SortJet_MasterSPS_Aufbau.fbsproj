@@ -114,7 +114,7 @@ VAR_GLOBAL
       // astShuttleAnhaltenQuellen
     );
 
-  apgMKStation205Glastransport : Parameter_Glastransport :=
+  apgMKStation205Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Glastransport := [
     (
       rLaengeStation                        := 2500, // Länge der Station
       rScheibenabstand                      :=  300, // Der Abstand zwischen zwei Scheiben auf der Station
@@ -131,7 +131,7 @@ VAR_GLOBAL
       rMesstoleranz                         :=   10, // Toleranz-Mass fuer die Scheibenlaengenmessung
       rMessstrecke                          := 2155, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
       rWegstreckeBisZurVerzoegerung         := 2000  // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll, dies gilt fuer Eintransportauftraege die das Bit "Letzte Scheibe" gesetzt haben
-    );
+    )];
 
   apgMKStation205Messachse : Parameter_Messachse :=
     (
