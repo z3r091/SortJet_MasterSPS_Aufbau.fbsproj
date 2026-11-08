@@ -15,6 +15,9 @@ bpAuftragAktiv := (    blBetriebartCheck
                     OR BasisStationsParameter.bEintransport[cWAND_1]
                     OR BasisStationsParameter.bAustransport[cWAND_1] );
 
+// Leuchte Sicherheitskreis
+out_bSicherheitskreisAusgeloest := NOT ( bpRolltorUnten OR bpFaecherwagenVorhanden );
+
 // Grundstellung: Arretierung offen, Rolltor unten (Faecherwagen darf in der Station stehen)
 bpBoxInHomePosition :=     blArretierungOffen
                        AND (    NOT BasisStationsParameter.stMKs.stStationsAufbau.bRolltor

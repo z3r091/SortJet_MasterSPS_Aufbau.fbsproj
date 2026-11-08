@@ -168,8 +168,6 @@ tplResetSchmersal( IN := blAckRequested OR NotHalt.in_bTasterNothaltQuittieren O
                    PT := T#500MS,
                    Q  => blResetSchmersal );
 
-out_bSicherheitskreisAusgeloest := blAckRequested OR ( usilErrorSafety <> 0 );
-
 // Meldung "Faecherwagen bald voll" gilt nur fuer den Faecherwagen in der Beladeposition
 IF NOT bpStatusStationInBeladePosition THEN
   bpMMIFWBaldVoll := FALSE;
