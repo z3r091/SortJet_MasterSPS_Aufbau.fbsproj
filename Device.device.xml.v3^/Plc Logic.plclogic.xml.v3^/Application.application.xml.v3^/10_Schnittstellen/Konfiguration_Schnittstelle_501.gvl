@@ -14,18 +14,18 @@ VAR_CONFIG
 //-------------------------------------------------------------------------------------------------
   // ------------------------------------ HARDWARE EINGAENGE ---------------------------------------
   // Standard Eingaenge
-  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bTasterGlasbruch                          AT %MX1.0    : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bTasterSpezial                            AT %MX1.0    : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bTasterGlasbruch                          AT %IX9.5    : BOOL; // IO-L - Signal 1 von VSG
+  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bTasterSpezial                            AT %IX9.6    : BOOL; // IO-L - Signal 2 von VSG
   // VSG Eingaenge
-  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bAutomatikBetrieb                         AT %MX1.0    : BOOL; // OPTION - VSG im Automatikbetrieb
-  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bGlasBereit                               AT %MX1.0    : BOOL; // OPTION - VSG Glas bereit
+  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bAutomatikBetrieb                         AT %IX9.7    : BOOL; // IO-L - Signal 3 von VSG (VSG im Automatikbetrieb)
+  Globale_Bausteine.aSchnittstelleEinlauf[501].in_bGlasBereit                               AT %IX10.0   : BOOL; // IO-L - Signal 4 von VSG (VSG Glas bereit)
 
   // ------------------------------------ HARDWARE AUSGAENGE ---------------------------------------
   // Standard Ausgaenge
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderBereit                            AT %MX5010.0 : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderGlasBereit                        AT %MX5010.1 : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteGlasbruch                        AT %MX5010.2 : BOOL; // OPTION
-  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteSpezial                          AT %MX5010.3 : BOOL; // OPTION
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderBereit                            AT %QX7.3    : BOOL; // IO-L - Signal 5 an VSG
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bSenderGlasBereit                        AT %QX7.4    : BOOL; // IO-L - Signal 6 an VSG
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteGlasbruch                        AT %QX7.5    : BOOL; // IO-L - Signal 7 an VSG
+  Globale_Bausteine.aSchnittstelleEinlauf[501].out_bLeuchteSpezial                          AT %QX7.6    : BOOL; // IO-L - Signal 8 an VSG
   Globale_Bausteine.aSchnittstelleEinlauf[501].out_bAmpelEventAktiv                         AT %MX5010.4 : BOOL; // OPTION
   Globale_Bausteine.aSchnittstelleEinlauf[501].Horn.out_bHorn                               AT %MX5010.5 : BOOL; // OPTION
   // VSG Ausgaenge

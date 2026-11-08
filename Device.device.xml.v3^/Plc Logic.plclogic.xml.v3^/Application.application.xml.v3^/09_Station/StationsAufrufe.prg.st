@@ -38,7 +38,7 @@ END_FOR
 //-------------------------------------------------------------------------------------------------
 
 // STATIONEN
-Anlegetisch201                   (BasisStationsParameter := starrStationBasisParameter[cSTATION_201]);
+Anlegetisch201                   (BasisStationsParameter := starrStationBasisParameter[cSTATION_201], in_bSensorKipptischUnten := EV_ToPLC_b201_geschlossen);
 Foerderer202                     (BasisStationsParameter := starrStationBasisParameter[cSTATION_202]);
 Foerderer203                     (BasisStationsParameter := starrStationBasisParameter[cSTATION_203]);
 Anlegetisch205                   (BasisStationsParameter := starrStationBasisParameter[cSTATION_205]);

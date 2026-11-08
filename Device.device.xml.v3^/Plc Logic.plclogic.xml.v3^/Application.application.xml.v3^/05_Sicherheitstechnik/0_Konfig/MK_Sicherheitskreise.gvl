@@ -10,39 +10,31 @@ NAMESPACE MK_Sicherheitskreise
 VAR_GLOBAL
 
 apgMKSicherheiskreis : ARRAY [cERSTER_SICHERHEITSKREIS ..cLETZTER_SICHERHEITSKREIS] OF Parameter_Schicherheitskreise := [
-  ( 
+  (
+    // SK1: Tueren 1/2, Shuttles 101/102, Transfershuttles 151/152, Stationen 204 und 206
     eSicherheitskreis   := eSicherheitskreis_1,                    // Nummer des Sicherheitskreises
     eaAutomatikkreis    := [eAutomatikkreis_1, eAutomatikkreis_2], // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
     eaTueren            := [eTuer_1, eTuer_2],                     // Konfig welche Türen zu dem Sicherheitskreis gehören
     eaDurchgang         := [eDurchgang_Undefiniert]                // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
   ),
   (
+    // SK2: Station 201 (Klapprahmen unten)
     eSicherheitskreis   := eSicherheitskreis_2,                    // Nummer des Sicherheitskreises
-    eaAutomatikkreis    := [eAutomatikkreis_3],                    // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
+    eaAutomatikkreis    := [eAutomatikkreis_2],                    // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
     eaTueren            := [eTuer_Undefiniert],                    // Konfig welche Türen zu dem Sicherheitskreis gehören
     eaDurchgang         := [eDurchgang_Undefiniert]                // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
   ),
   (
+    // SK3: Station 203 (Klapprahmen geschlossen, Durchgang 1)
     eSicherheitskreis   := eSicherheitskreis_3,                    // Nummer des Sicherheitskreises
-    eaAutomatikkreis    := [eAutomatikkreis_3],                    // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
-    eaTueren            := [eTuer_Undefiniert],                    // Konfig welche Türen zu dem Sicherheitskreis gehören
-    eaDurchgang         := [eDurchgang_Undefiniert]                // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
-  ),
-  (
-    eSicherheitskreis   := eSicherheitskreis_4,                    // Nummer des Sicherheitskreises
-    eaAutomatikkreis    := [eAutomatikkreis_4],                    // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
+    eaAutomatikkreis    := [eAutomatikkreis_2],                    // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
     eaTueren            := [eTuer_Undefiniert],                    // Konfig welche Türen zu dem Sicherheitskreis gehören
     eaDurchgang         := [eDurchgang_1]                          // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
   ),
   (
-    eSicherheitskreis   := eSicherheitskreis_5,                    // Nummer des Sicherheitskreises
-    eaAutomatikkreis    := [eAutomatikkreis_1],                    // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
-    eaTueren            := [eTuer_Undefiniert],                    // Konfig welche Türen zu dem Sicherheitskreis gehören
-    eaDurchgang         := [eDurchgang_Undefiniert]                // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
-  ),
-  (
-    eSicherheitskreis   := eSicherheitskreis_6,                    // Nummer des Sicherheitskreises
-    eaAutomatikkreis    := [eAutomatikkreis_1],                    // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
+    // SK4: Station 207 (Durchfassperre 208, SK1)
+    eSicherheitskreis   := eSicherheitskreis_4,                    // Nummer des Sicherheitskreises
+    eaAutomatikkreis    := [eAutomatikkreis_2],                    // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
     eaTueren            := [eTuer_Undefiniert],                    // Konfig welche Türen zu dem Sicherheitskreis gehören
     eaDurchgang         := [eDurchgang_Undefiniert]                // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
   )];

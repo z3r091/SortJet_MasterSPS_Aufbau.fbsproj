@@ -35,14 +35,20 @@ NotHalt.bpEingangNotHaltOK     := EV_ToPLC_bNothalt_OK;
    - Faecherwagen vorhanden: Variante Einfach (bpFaecherwagenVorhanden), Variante Lineareinheit
      nutzt stattdessen bpLichtschranke_OK und bpUntergestellErkannt
    - Bei Wechsel der Variante einer Instanz die Zuweisungen hier anpassen
-   - Fuer 304 und 305 gibt es noch keine Signale in EV_ToPLC_HarpRack
 *)
 aFaecherwagenstation[301].bpRolltorUnten        := EV_ToPLC_HarpRack.EV_ToPLC_bRolltor_Station301_Geschlossen;
 aFaecherwagenstation[302].bpRolltorUnten        := EV_ToPLC_HarpRack.EV_ToPLC_bRolltor_Station302_Geschlossen;
 aFaecherwagenstation[303].bpRolltorUnten        := EV_ToPLC_HarpRack.EV_ToPLC_bRolltor_Station303_Geschlossen;
+aFaecherwagenstation[304].bpRolltorUnten        := EV_ToPLC_HarpRack.EV_ToPLC_bRolltor_Station304_Geschlossen;
+aFaecherwagenstation[305].bpRolltorUnten        := EV_ToPLC_HarpRack.EV_ToPLC_bRolltor_Station305_Geschlossen;
 
 aFaecherwagenstation[301].bpFaecherwagenVorhanden := EV_ToPLC_HarpRack.EV_ToPLC_bUnterwagen_Station301_Vorhanden;
 aFaecherwagenstation[302].bpFaecherwagenVorhanden := EV_ToPLC_HarpRack.EV_ToPLC_bUnterwagen_Station302_Vorhanden;
 aFaecherwagenstation[303].bpFaecherwagenVorhanden := EV_ToPLC_HarpRack.EV_ToPLC_bUnterwagen_Station303_Vorhanden;
-// TODO: 304 und 305 (Faecherwagen vorhanden, Rolltor geschlossen) in EV_ToPLC_HarpRack ergaenzen und hier zuweisen
+aFaecherwagenstation[304].bpFaecherwagenVorhanden := EV_ToPLC_HarpRack.EV_ToPLC_bUnterwagen_Station304_Vorhanden;
+aFaecherwagenstation[305].bpFaecherwagenVorhanden := EV_ToPLC_HarpRack.EV_ToPLC_bUnterwagen_Station305_Vorhanden;
+
+// Durchgang 203: Klapprahmen geschlossen (Sicherheitssensor, SK3)
+aDurchgang[1].bpDurchgangGeschlossen := EV_ToPLC_b203_geschlossen;
+
 END_ACTION

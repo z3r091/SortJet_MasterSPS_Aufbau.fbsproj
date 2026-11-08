@@ -17,8 +17,8 @@ VAR_GLOBAL CONSTANT
   cANZAHL_ANTRIEBE                     : WORD := 29;
   
   // Ampeln / Hupen
-  cANZAHL_AMPELN                       : WORD := 2;
-  cANZAHL_HUPEN                        : WORD := 2;
+  cANZAHL_AMPELN                       : WORD := 3;
+  cANZAHL_HUPEN                        : WORD := 3;
 
   //Station
   cERSTE_STATION                       : WORD := 201;
@@ -65,18 +65,18 @@ VAR_GLOBAL CONSTANT
   cLETZTES_TERMINAL                    : WORD := 4; 
 
   // Automatikkreise
-  cANZAHL_AUTOMATIKKREISE              : WORD := 3;
+  cANZAHL_AUTOMATIKKREISE              : WORD := 2;
   cERSTER_AUTOMATIKKREIS               : WORD := 1;         
-  cLETZTER_AUTOMATIKKREIS              : WORD := 3;
+  cLETZTER_AUTOMATIKKREIS              : WORD := 2;
 
   // SystemCheck - Shuttle
   cERSTES_SHUTTLESTATIONENSYSTEMCHECK  : WORD := 101;
   cLETZTES_SHUTTLESTATIONENSYSTEMCHECK : WORD := 102;
 
   // Sicherheitskreise
-  cANZAHL_SICHERHEITSKREISE            : WORD := 6;
+  cANZAHL_SICHERHEITSKREISE            : WORD := 4;
   cERSTER_SICHERHEITSKREIS             : WORD := 1;
-  cLETZTER_SICHERHEITSKREIS            : WORD := 6;
+  cLETZTER_SICHERHEITSKREIS            : WORD := 4;
   
   // Türen
   cANZAHL_TUEREN                       : WORD := 2;

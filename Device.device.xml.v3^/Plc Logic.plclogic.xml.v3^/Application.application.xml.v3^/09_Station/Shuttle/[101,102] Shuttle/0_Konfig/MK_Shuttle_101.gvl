@@ -22,7 +22,7 @@ VAR_GLOBAL
       wMeldungsNummer                   := 600,                                                                                                         // Basis-Meldungsnummer (WatchIO)
       eStationsTyp                      := eInputshuttle,                                                                                               // Typ der Station
       eaAutomatikkreis                  := [eAutomatikkreis_1],                                                                                         // Automatikkreise, zu denen die Station gehoert
-      eaSicherheitskreis                := [eSicherheitskreis_1, eSicherheitskreis_2],                                                                  // Sicherheitskreise, in die die Station eingebunden ist
+      eaSicherheitskreis                := [eSicherheitskreis_1],                                                                                       // Sicherheitskreise, in die die Station eingebunden ist
       eSystemcheckZyklus                := eSystemcheckZyklus_1,                                                                                        // In welchem Zyklus des Systemchecks die Station geprueft wird
 
       stSchnittstellendaten             := (

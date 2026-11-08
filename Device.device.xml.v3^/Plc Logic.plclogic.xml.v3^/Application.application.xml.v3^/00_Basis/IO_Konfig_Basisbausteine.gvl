@@ -22,47 +22,47 @@ VAR_CONFIG
 // KONFIGURATION: AMPEL
 //-------------------------------------------------------------------------------------------------
 
-   // Ampel AK1
-  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteBlau                     AT %MX900.0  : BOOL; // OPTION
-  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteRot                      AT %MX902.2  : BOOL; // OPTION - TODO: Ampel Automatikkreis 1, Zuordnung zu den Ampeln im E-Plan offen
-  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteGelb                     AT %MX902.3  : BOOL; // OPTION - TODO: Ampel Automatikkreis 1, Zuordnung zu den Ampeln im E-Plan offen
-  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteGruen                    AT %MX902.4  : BOOL; // OPTION - TODO: Ampel Automatikkreis 1, Zuordnung zu den Ampeln im E-Plan offen
-  Globale_Bausteine.Horn_AK[1,1].out_bHorn                                  AT %MX902.5  : BOOL; // OPTION - TODO: Ampel Automatikkreis 1, Zuordnung zu den Ampeln im E-Plan offen
+  // Ampel AK1 / 1: Speicher Input +01001
+  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteBlau                     AT %QX2.4    : BOOL; // IO-L - Faecherwagen bereit zum ausschleusen Ampel blau
+  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteRot                      AT %QX2.3    : BOOL; // IO-L - Automatikkreis Stoerung Ampel rot
+  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteGelb                     AT %QX2.2    : BOOL; // IO-L - Automatikkreis Hand Ampel gelb
+  Globale_Bausteine.Ampel_AK[1,1].out_bAmpelLeuchteGruen                    AT %QX2.1    : BOOL; // IO-L - Automatikkreis Automatik Ampel gruen
+  Globale_Bausteine.Horn_AK[1,1].out_bHorn                                  AT %QX2.0    : BOOL; // IO-L - Automatikkreis Checkroutine laeuft Hupe
 
-   // Ampel AK1
-  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteBlau                     AT %MX900.1  : BOOL; // Option       
-  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteRot                      AT %MX900.2  : BOOL; // Option       
-  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteGelb                     AT %MX900.3  : BOOL; // Option       
-  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteGruen                    AT %MX900.4  : BOOL; // Option       
-  Globale_Bausteine.Horn_AK[1,2].out_bHorn                                  AT %MX900.5  : BOOL; // Option         
+  // Ampel AK1 / 2: Speicher Output +01001
+  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteBlau                     AT %QX3.1    : BOOL; // IO-L - Faecherwagen bereit zum ausschleusen Ampel blau
+  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteRot                      AT %QX3.0    : BOOL; // IO-L - Automatikkreis Stoerung Ampel rot
+  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteGelb                     AT %QX2.7    : BOOL; // IO-L - Automatikkreis Hand Ampel gelb
+  Globale_Bausteine.Ampel_AK[1,2].out_bAmpelLeuchteGruen                    AT %QX2.6    : BOOL; // IO-L - Automatikkreis Automatik Ampel gruen
+  Globale_Bausteine.Horn_AK[1,2].out_bHorn                                  AT %QX2.5    : BOOL; // IO-L - Automatikkreis Checkroutine laeuft Hupe
 
-   // Ampe2 AK1
-  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteBlau                     AT %MX900.6  : BOOL; // OPTION
-  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteRot                      AT %MX902.6  : BOOL; // OPTION - TODO: Ampel Automatikkreis 2, Zuordnung zu den Ampeln im E-Plan offen
-  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteGelb                     AT %MX902.7  : BOOL; // OPTION - TODO: Ampel Automatikkreis 2, Zuordnung zu den Ampeln im E-Plan offen
-  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteGruen                    AT %MX903.0  : BOOL; // OPTION - TODO: Ampel Automatikkreis 2, Zuordnung zu den Ampeln im E-Plan offen
-  Globale_Bausteine.Horn_AK[2,1].out_bHorn                                  AT %MX903.1  : BOOL; // OPTION - TODO: Ampel Automatikkreis 2, Zuordnung zu den Ampeln im E-Plan offen
+  // Ampel AK1 / 3: Faecherwagenstation +OP4
+  Globale_Bausteine.Ampel_AK[1,3].out_bAmpelLeuchteBlau                     AT %QX8.6    : BOOL; // IO-L - Faecherwagen bereit zum ausschleusen Ampel blau
+  Globale_Bausteine.Ampel_AK[1,3].out_bAmpelLeuchteRot                      AT %QX8.5    : BOOL; // IO-L - Automatikkreis Stoerung Ampel rot
+  Globale_Bausteine.Ampel_AK[1,3].out_bAmpelLeuchteGelb                     AT %QX8.4    : BOOL; // IO-L - Automatikkreis Hand Ampel gelb
+  Globale_Bausteine.Ampel_AK[1,3].out_bAmpelLeuchteGruen                    AT %QX8.3    : BOOL; // IO-L - Automatikkreis Automatik Ampel gruen
+  Globale_Bausteine.Horn_AK[1,3].out_bHorn                                  AT %QX8.2    : BOOL; // IO-L - Automatikkreis Checkroutine laeuft Hupe
 
-   // Ampe2 AK1
-  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteBlau                     AT %MX900.7  : BOOL; // Option 
-  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteRot                      AT %MX901.0  : BOOL; // Option 
-  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteGelb                     AT %MX901.1  : BOOL; // Option 
-  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteGruen                    AT %MX901.2  : BOOL; // Option 
-  Globale_Bausteine.Horn_AK[2,2].out_bHorn                                  AT %MX901.3  : BOOL; // Option           
+  // Ampel AK2 / 1: Eintransportlinie +OP1
+  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteBlau                     AT %MX900.0  : BOOL; // OPTION
+  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteRot                      AT %QX3.6    : BOOL; // IO-L - Automatikkreis Stoerung Ampel rot
+  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteGelb                     AT %QX3.5    : BOOL; // IO-L - Automatikkreis Hand Ampel gelb
+  Globale_Bausteine.Ampel_AK[2,1].out_bAmpelLeuchteGruen                    AT %QX3.4    : BOOL; // IO-L - Automatikkreis Automatik Ampel gruen
+  Globale_Bausteine.Horn_AK[2,1].out_bHorn                                  AT %QX3.3    : BOOL; // IO-L - Automatikkreis Checkroutine laeuft Hupe
 
-   // Ampe3 AK1
-  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteBlau                     AT %MX901.4  : BOOL; // OPTION
-  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteRot                      AT %MX903.2  : BOOL; // OPTION - TODO: Ampel Automatikkreis 3, Zuordnung zu den Ampeln im E-Plan offen
-  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteGelb                     AT %MX903.3  : BOOL; // OPTION - TODO: Ampel Automatikkreis 3, Zuordnung zu den Ampeln im E-Plan offen
-  Globale_Bausteine.Ampel_AK[3,1].out_bAmpelLeuchteGruen                    AT %MX903.4  : BOOL; // OPTION - TODO: Ampel Automatikkreis 3, Zuordnung zu den Ampeln im E-Plan offen
-  Globale_Bausteine.Horn_AK[3,1].out_bHorn                                  AT %MX903.5  : BOOL; // OPTION - TODO: Ampel Automatikkreis 3, Zuordnung zu den Ampeln im E-Plan offen
+  // Ampel AK2 / 2: Eintransportlinie +OP2
+  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteBlau                     AT %MX900.1  : BOOL; // OPTION
+  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteRot                      AT %QX4.4    : BOOL; // IO-L - Automatikkreis Stoerung Ampel rot
+  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteGelb                     AT %QX4.3    : BOOL; // IO-L - Automatikkreis Hand Ampel gelb
+  Globale_Bausteine.Ampel_AK[2,2].out_bAmpelLeuchteGruen                    AT %QX4.2    : BOOL; // IO-L - Automatikkreis Automatik Ampel gruen
+  Globale_Bausteine.Horn_AK[2,2].out_bHorn                                  AT %QX4.1    : BOOL; // IO-L - Automatikkreis Checkroutine laeuft Hupe
 
-   // Ampe3 AK1
-  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteBlau                     AT %MX901.5  : BOOL; // Option 
-  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteRot                      AT %MX901.6  : BOOL; // Option 
-  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteGelb                     AT %MX901.7  : BOOL; // Option 
-  Globale_Bausteine.Ampel_AK[3,2].out_bAmpelLeuchteGruen                    AT %MX902.0  : BOOL; // Option 
-  Globale_Bausteine.Horn_AK[3,2].out_bHorn                                  AT %MX902.1  : BOOL; // Option                 
+  // Ampel AK2 / 3
+  Globale_Bausteine.Ampel_AK[2,3].out_bAmpelLeuchteBlau                     AT %MX900.2  : BOOL; // OPTION
+  Globale_Bausteine.Ampel_AK[2,3].out_bAmpelLeuchteRot                      AT %MX900.3  : BOOL; // OPTION
+  Globale_Bausteine.Ampel_AK[2,3].out_bAmpelLeuchteGelb                     AT %MX900.4  : BOOL; // OPTION
+  Globale_Bausteine.Ampel_AK[2,3].out_bAmpelLeuchteGruen                    AT %MX900.5  : BOOL; // OPTION
+  Globale_Bausteine.Horn_AK[2,3].out_bHorn                                  AT %MX900.6  : BOOL; // OPTION
 
 
 //-------------------------------------------------------------------------------------------------

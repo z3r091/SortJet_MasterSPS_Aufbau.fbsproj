@@ -22,7 +22,7 @@ VAR_GLOBAL
       wMeldungsNummer                       := 1790,                                                                       // Basis-Meldungsnummer (WatchIO)
       eStationsTyp                          := eStation,                                                                   // Typ der Station
       eaAutomatikkreis                      := [eAutomatikkreis_2],                                                        // Automatikkreise, zu denen die Station gehoert
-      eaSicherheitskreis                    := [eSicherheitskreis_4],                                                      // Sicherheitskreise, in die die Station eingebunden ist
+      eaSicherheitskreis                    := [eSicherheitskreis_1],                                                      // Sicherheitskreise, in die die Station eingebunden ist
       eSystemcheckZyklus                    := eSystemcheckZyklus_1,                                                       // In welchem Zyklus des Systemchecks die Station geprueft wird
       stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DYNAMISCH,                                 // Station vor dieser Station (cSTATION_DYNAMISCH bei mehreren)
                                                  wNachfolgerStation := cSTATION_207,                                       // Station nach dieser Station (cSTATION_DYNAMISCH bei mehreren)

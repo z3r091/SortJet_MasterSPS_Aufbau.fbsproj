@@ -75,21 +75,18 @@ toflDruckluft102_OK( In := in_bDruckluft_102_OK, PT := ZEIT_DRUCKWAECHTERSIGNAL_
 
 
 // Auswertung und hier pruefen ob Betriebsstopp ausgeloest werden muss
+// AK1 = Shuttle-Bereich (101, 102, 151, 152, Faecherwagen)
 abpDruckluftOK[cAUTOMATIKKREIS_1] := (   ( toflDruckluftShuttleOK[cSHUTTLE_101].Q OR starrShuttleBasisParameter[cSHUTTLE_101].stMKs.bDeaktivieren OR NOT starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stStationsAufbau.bDruckluft )
+                                       AND ( toflDruckluftShuttleOK[cSHUTTLE_102].Q OR starrShuttleBasisParameter[cSHUTTLE_102].stMKs.bDeaktivieren OR NOT starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stStationsAufbau.bDruckluft )
                                        AND ( toflDruckluftTSShuttleOK[cSHUTTLE_151].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs.bDeaktivieren)
                                        AND ( toflDruckluftTSShuttleOK[cSHUTTLE_152].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_152].stMKs.bDeaktivieren)
                                        AND toflDruckluft101_OK.Q
-                                     ) OR bgInbetriebnahmeBit;
-                                     
-                                     
-abpDruckluftOK[cAUTOMATIKKREIS_2] := (   ( toflDruckluftShuttleOK[cSHUTTLE_102].Q OR starrShuttleBasisParameter[cSHUTTLE_102].stMKs.bDeaktivieren OR NOT starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stStationsAufbau.bDruckluft )
-                                       AND ( toflDruckluftTSShuttleOK[cSHUTTLE_151].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs.bDeaktivieren)
-                                       AND ( toflDruckluftTSShuttleOK[cSHUTTLE_152].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_152].stMKs.bDeaktivieren)
                                        AND toflDruckluft102_OK.Q
                                      ) OR bgInbetriebnahmeBit;
-                                     
-abpDruckluftOK[cAUTOMATIKKREIS_3] := ( TRUE
-                                     )OR bgInbetriebnahmeBit;
+
+// AK2 = Foerderstrecke (201 - 208), keine gemeinsame Druckluftueberwachung
+abpDruckluftOK[cAUTOMATIKKREIS_2] := ( TRUE
+                                     ) OR bgInbetriebnahmeBit;
 
 
 bpAnlageOK := ( ( in_bCAB2_LS_Netzteil_24V_OK
