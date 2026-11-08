@@ -10,7 +10,7 @@ __V3_META__
 __V3_CONTENT__
 <?xml version="1.0" encoding="utf-8"?>
 <Single xml:space="preserve" Type="{5861cd6f-95ff-4614-b597-9845cc9988e7}" Method="IArchivable">
-	<Single Name="UniqueIdGenerator" Type="string">4179</Single>
+	<Single Name="UniqueIdGenerator" Type="string">4451</Single>
 	<Null Name="TypeList" />
 	<Single Name="NeedsBusCycle" Type="bool">False</Single>
 	<Single Name="Id" Type="{05ee0b98-6639-4276-bc32-b75578b819ef}" Method="IArchivable">
@@ -90,15 +90,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">16777219</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4162</Single>
-								<Single Name="EditorPositionId" Type="long">4163</Single>
+								<Single Name="PositionId" Type="long">4434</Single>
+								<Single Name="EditorPositionId" Type="long">4435</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4162</Single>
+												<Single Name="Id" Type="long">4434</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_32_FW305_Port_X0</Single>
+												<Single Name="Variable" Type="string">Port_X0_Output_DO_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -115,15 +115,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">16777220</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4164</Single>
-								<Single Name="EditorPositionId" Type="long">4165</Single>
+								<Single Name="PositionId" Type="long">4436</Single>
+								<Single Name="EditorPositionId" Type="long">4437</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4164</Single>
+												<Single Name="Id" Type="long">4436</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_32_FW305_Port_X1</Single>
+												<Single Name="Variable" Type="string">Port_X1_Output_DO_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -140,15 +140,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">16777221</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4166</Single>
-								<Single Name="EditorPositionId" Type="long">4167</Single>
+								<Single Name="PositionId" Type="long">4438</Single>
+								<Single Name="EditorPositionId" Type="long">4439</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4166</Single>
+												<Single Name="Id" Type="long">4438</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_32_FW305_Port_X2</Single>
+												<Single Name="Variable" Type="string">Port_X2_Output_DO_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -165,15 +165,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">16777222</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4168</Single>
-								<Single Name="EditorPositionId" Type="long">4169</Single>
+								<Single Name="PositionId" Type="long">4440</Single>
+								<Single Name="EditorPositionId" Type="long">4441</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4168</Single>
+												<Single Name="Id" Type="long">4440</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_32_FW305_Port_X3</Single>
+												<Single Name="Variable" Type="string">Port_X3_Output_DO_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -190,15 +190,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">16777223</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4170</Single>
-								<Single Name="EditorPositionId" Type="long">4171</Single>
+								<Single Name="PositionId" Type="long">4442</Single>
+								<Single Name="EditorPositionId" Type="long">4443</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4170</Single>
+												<Single Name="Id" Type="long">4442</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_32_FW305_Port_X4</Single>
+												<Single Name="Variable" Type="string">Port_X4_Output_DO_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -215,15 +215,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">16777224</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4172</Single>
-								<Single Name="EditorPositionId" Type="long">4173</Single>
+								<Single Name="PositionId" Type="long">4444</Single>
+								<Single Name="EditorPositionId" Type="long">4445</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4172</Single>
+												<Single Name="Id" Type="long">4444</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_32_FW305_Port_X5</Single>
+												<Single Name="Variable" Type="string">Port_X5_Output_DO_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -240,15 +240,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">16777225</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4174</Single>
-								<Single Name="EditorPositionId" Type="long">4175</Single>
+								<Single Name="PositionId" Type="long">4446</Single>
+								<Single Name="EditorPositionId" Type="long">4447</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4174</Single>
+												<Single Name="Id" Type="long">4446</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_32_FW305_Port_X6</Single>
+												<Single Name="Variable" Type="string">Port_X6_Output_DO_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -265,15 +265,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">16777226</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4176</Single>
-								<Single Name="EditorPositionId" Type="long">4177</Single>
+								<Single Name="PositionId" Type="long">4448</Single>
+								<Single Name="EditorPositionId" Type="long">4449</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4176</Single>
+												<Single Name="Id" Type="long">4448</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_32_FW305_Port_X7</Single>
+												<Single Name="Variable" Type="string">Port_X7_Output_DO_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -290,15 +290,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">16777227</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4178</Single>
-								<Single Name="EditorPositionId" Type="long">4179</Single>
+								<Single Name="PositionId" Type="long">4450</Single>
+								<Single Name="EditorPositionId" Type="long">4451</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4178</Single>
+												<Single Name="Id" Type="long">4450</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SO_32_Reserved</Single>
+												<Single Name="Variable" Type="string">Reserved_13</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -315,13 +315,13 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554435</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4112</Single>
-								<Single Name="EditorPositionId" Type="long">4113</Single>
+								<Single Name="PositionId" Type="long">4384</Single>
+								<Single Name="EditorPositionId" Type="long">4385</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4112</Single>
+												<Single Name="Id" Type="long">4384</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
 												<Single Name="Variable" Type="string">SI_32_FW305_Rolltor_geschlossen</Single>
 											</Single>
@@ -340,13 +340,13 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554436</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4114</Single>
-								<Single Name="EditorPositionId" Type="long">4115</Single>
+								<Single Name="PositionId" Type="long">4386</Single>
+								<Single Name="EditorPositionId" Type="long">4387</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4114</Single>
+												<Single Name="Id" Type="long">4386</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
 												<Single Name="Variable" Type="string">SI_32_FW305_Nothalt</Single>
 											</Single>
@@ -365,13 +365,13 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554437</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4116</Single>
-								<Single Name="EditorPositionId" Type="long">4117</Single>
+								<Single Name="PositionId" Type="long">4388</Single>
+								<Single Name="EditorPositionId" Type="long">4389</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4116</Single>
+												<Single Name="Id" Type="long">4388</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
 												<Single Name="Variable" Type="string">SI_32_FW305_Faechergestell_vorhanden</Single>
 											</Single>
@@ -390,15 +390,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554438</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4118</Single>
-								<Single Name="EditorPositionId" Type="long">4119</Single>
+								<Single Name="PositionId" Type="long">4390</Single>
+								<Single Name="EditorPositionId" Type="long">4391</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4118</Single>
+												<Single Name="Id" Type="long">4390</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X3</Single>
+												<Single Name="Variable" Type="string">Port_X3_Input_X1_AND_X2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -415,15 +415,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554439</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4120</Single>
-								<Single Name="EditorPositionId" Type="long">4121</Single>
+								<Single Name="PositionId" Type="long">4392</Single>
+								<Single Name="EditorPositionId" Type="long">4393</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4120</Single>
+												<Single Name="Id" Type="long">4392</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X4</Single>
+												<Single Name="Variable" Type="string">Port_X4_Input_X1_AND_X2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -440,15 +440,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554440</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4122</Single>
-								<Single Name="EditorPositionId" Type="long">4123</Single>
+								<Single Name="PositionId" Type="long">4394</Single>
+								<Single Name="EditorPositionId" Type="long">4395</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4122</Single>
+												<Single Name="Id" Type="long">4394</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X5</Single>
+												<Single Name="Variable" Type="string">Port_X5_Input_X1_AND_X2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -465,15 +465,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554441</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4124</Single>
-								<Single Name="EditorPositionId" Type="long">4125</Single>
+								<Single Name="PositionId" Type="long">4396</Single>
+								<Single Name="EditorPositionId" Type="long">4397</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4124</Single>
+												<Single Name="Id" Type="long">4396</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X6</Single>
+												<Single Name="Variable" Type="string">Port_X6_Input_X1_AND_X2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -490,15 +490,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554442</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4126</Single>
-								<Single Name="EditorPositionId" Type="long">4127</Single>
+								<Single Name="PositionId" Type="long">4398</Single>
+								<Single Name="EditorPositionId" Type="long">4399</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4126</Single>
+												<Single Name="Id" Type="long">4398</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X7</Single>
+												<Single Name="Variable" Type="string">Port_X7_Input_X1_AND_X2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -515,15 +515,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554443</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4128</Single>
-								<Single Name="EditorPositionId" Type="long">4129</Single>
+								<Single Name="PositionId" Type="long">4400</Single>
+								<Single Name="EditorPositionId" Type="long">4401</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4128</Single>
+												<Single Name="Id" Type="long">4400</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Rolltor_geschlossen_X2</Single>
+												<Single Name="Variable" Type="string">Port_X0_Input_X2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -540,15 +540,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554444</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4130</Single>
-								<Single Name="EditorPositionId" Type="long">4131</Single>
+								<Single Name="PositionId" Type="long">4402</Single>
+								<Single Name="EditorPositionId" Type="long">4403</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4130</Single>
+												<Single Name="Id" Type="long">4402</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Nothalt_X2</Single>
+												<Single Name="Variable" Type="string">Port_X1_Input_X2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -565,15 +565,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554445</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4132</Single>
-								<Single Name="EditorPositionId" Type="long">4133</Single>
+								<Single Name="PositionId" Type="long">4404</Single>
+								<Single Name="EditorPositionId" Type="long">4405</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4132</Single>
+												<Single Name="Id" Type="long">4404</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Faechergestell_vorhanden_X2</Single>
+												<Single Name="Variable" Type="string">Port_X2_Input_X2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -590,15 +590,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554446</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4134</Single>
-								<Single Name="EditorPositionId" Type="long">4135</Single>
+								<Single Name="PositionId" Type="long">4406</Single>
+								<Single Name="EditorPositionId" Type="long">4407</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4134</Single>
+												<Single Name="Id" Type="long">4406</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X3_X2</Single>
+												<Single Name="Variable" Type="string">Port_X3_Input_X2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -615,15 +615,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554447</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4136</Single>
-								<Single Name="EditorPositionId" Type="long">4137</Single>
+								<Single Name="PositionId" Type="long">4408</Single>
+								<Single Name="EditorPositionId" Type="long">4409</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4136</Single>
+												<Single Name="Id" Type="long">4408</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X4_X2</Single>
+												<Single Name="Variable" Type="string">Port_X4_Input_X2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -640,15 +640,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554448</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4138</Single>
-								<Single Name="EditorPositionId" Type="long">4139</Single>
+								<Single Name="PositionId" Type="long">4410</Single>
+								<Single Name="EditorPositionId" Type="long">4411</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4138</Single>
+												<Single Name="Id" Type="long">4410</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X5_X2</Single>
+												<Single Name="Variable" Type="string">Port_X5_Input_X2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -665,15 +665,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554449</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4140</Single>
-								<Single Name="EditorPositionId" Type="long">4141</Single>
+								<Single Name="PositionId" Type="long">4412</Single>
+								<Single Name="EditorPositionId" Type="long">4413</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4140</Single>
+												<Single Name="Id" Type="long">4412</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X6_X2</Single>
+												<Single Name="Variable" Type="string">Port_X6_Input_X2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -690,15 +690,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554450</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4142</Single>
-								<Single Name="EditorPositionId" Type="long">4143</Single>
+								<Single Name="PositionId" Type="long">4414</Single>
+								<Single Name="EditorPositionId" Type="long">4415</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4142</Single>
+												<Single Name="Id" Type="long">4414</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X7_X2</Single>
+												<Single Name="Variable" Type="string">Port_X7_Input_X2_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -715,15 +715,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554451</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4144</Single>
-								<Single Name="EditorPositionId" Type="long">4145</Single>
+								<Single Name="PositionId" Type="long">4416</Single>
+								<Single Name="EditorPositionId" Type="long">4417</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4144</Single>
+												<Single Name="Id" Type="long">4416</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Rolltor_geschlossen_Qualifier</Single>
+												<Single Name="Variable" Type="string">Port_X0_Qualifier_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -740,15 +740,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554452</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4146</Single>
-								<Single Name="EditorPositionId" Type="long">4147</Single>
+								<Single Name="PositionId" Type="long">4418</Single>
+								<Single Name="EditorPositionId" Type="long">4419</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4146</Single>
+												<Single Name="Id" Type="long">4418</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Nothalt_Qualifier</Single>
+												<Single Name="Variable" Type="string">Port_X1_Qualifier_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -765,15 +765,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554453</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4148</Single>
-								<Single Name="EditorPositionId" Type="long">4149</Single>
+								<Single Name="PositionId" Type="long">4420</Single>
+								<Single Name="EditorPositionId" Type="long">4421</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4148</Single>
+												<Single Name="Id" Type="long">4420</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Faechergestell_vorhanden_Qualifier</Single>
+												<Single Name="Variable" Type="string">Port_X2_Qualifier_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -790,15 +790,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554454</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4150</Single>
-								<Single Name="EditorPositionId" Type="long">4151</Single>
+								<Single Name="PositionId" Type="long">4422</Single>
+								<Single Name="EditorPositionId" Type="long">4423</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4150</Single>
+												<Single Name="Id" Type="long">4422</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X3_Qualifier</Single>
+												<Single Name="Variable" Type="string">Port_X3_Qualifier_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -815,15 +815,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554455</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4152</Single>
-								<Single Name="EditorPositionId" Type="long">4153</Single>
+								<Single Name="PositionId" Type="long">4424</Single>
+								<Single Name="EditorPositionId" Type="long">4425</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4152</Single>
+												<Single Name="Id" Type="long">4424</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X4_Qualifier</Single>
+												<Single Name="Variable" Type="string">Port_X4_Qualifier_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -840,15 +840,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554456</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4154</Single>
-								<Single Name="EditorPositionId" Type="long">4155</Single>
+								<Single Name="PositionId" Type="long">4426</Single>
+								<Single Name="EditorPositionId" Type="long">4427</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4154</Single>
+												<Single Name="Id" Type="long">4426</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X5_Qualifier</Single>
+												<Single Name="Variable" Type="string">Port_X5_Qualifier_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -865,15 +865,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554457</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4156</Single>
-								<Single Name="EditorPositionId" Type="long">4157</Single>
+								<Single Name="PositionId" Type="long">4428</Single>
+								<Single Name="EditorPositionId" Type="long">4429</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4156</Single>
+												<Single Name="Id" Type="long">4428</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X6_Qualifier</Single>
+												<Single Name="Variable" Type="string">Port_X6_Qualifier_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -890,15 +890,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554458</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4158</Single>
-								<Single Name="EditorPositionId" Type="long">4159</Single>
+								<Single Name="PositionId" Type="long">4430</Single>
+								<Single Name="EditorPositionId" Type="long">4431</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4158</Single>
+												<Single Name="Id" Type="long">4430</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_FW305_Port_X7_Qualifier</Single>
+												<Single Name="Variable" Type="string">Port_X7_Qualifier_6</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -915,15 +915,15 @@ __V3_CONTENT__
 							<Single Name="Id" Type="uint">33554459</Single>
 							<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Input</Single>
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-								<Single Name="PositionId" Type="long">4160</Single>
-								<Single Name="EditorPositionId" Type="long">4161</Single>
+								<Single Name="PositionId" Type="long">4432</Single>
+								<Single Name="EditorPositionId" Type="long">4433</Single>
 								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 									<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 										<List2 Name="Mappings">
 											<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-												<Single Name="Id" Type="long">4160</Single>
+												<Single Name="Id" Type="long">4432</Single>
 												<Single Name="CreateVariable" Type="bool">True</Single>
-												<Single Name="Variable" Type="string">SI_32_Reserved</Single>
+												<Single Name="Variable" Type="string">Reserved_12</Single>
 											</Single>
 										</List2>
 									</Single>
@@ -1213,7 +1213,7 @@ __V3_CONTENT__
 	<List Name="CustomItems" Type="{7d23305a-7bb9-46e6-b58b-01ea5694add1}">
 		<Single Type="{dd6be685-9be1-40f4-855e-c5c0352a5200}" Method="IArchivable">
 			<Single Name="Name" Type="string">MappingCode</Single>
-			<Single Name="Data" Type="string">&lt;MappingCode&gt;AAAAASQAAADUCwAAAAAAAAEzEgDtxPgi//8AAP//AAABAAAAAAAAA0wAAAACAAAAAAAkAEZXMzA1XzQ5NkEwMl9GU29FXzRfQnl0ZV9JX08AAAAAAQAcAENPREVTWVMgU2FmZXR5IFY0LjQuMC4wAAAAABD8BQAAXgAAAAAADABJT0dST1VQAAEACAAkAAAAAgAQAEZTb0VNYXN0ZXIAAAQADABwR3JvdXAAAAYADABwUGFybXMAAAgAFABsb2dpY2FsTW9kdWxlSUQACgAMAGluc2l6ZQAADAAMAG91dHNpemUADgAMAGJJbk9rAAAADwAUACQ6Q09ORklHOmJ5MAAAAAARAAgAZnIwABMACAB0bzAAFAAUACQ6Q09ORklHOmZyMAAAAAAVABQAJDpDT05GSUc6dG8wAAAAABYADABFbmRJbgAAABcAIABQb3J0X1gwX0lucHV0X1gxX0FORF9YMl82AAAAGgAMAG9mZnNldAAAHAAMAHZhbDAAAAAAHQAgAFBvcnRfWDFfSW5wdXRfWDFfQU5EX1gyXzYAAAAfAAwAdmFsMQAAAAAgACAAUG9ydF9YMl9JbnB1dF9YMV9BTkRfWDJfNgAAACIADAB2YWwyAAAAACMAIABQb3J0X1gzX0lucHV0X1gxX0FORF9YMl82AAAAJQAMAHZhbDMAAAAAJgAgAFBvcnRfWDRfSW5wdXRfWDFfQU5EX1gyXzYAAAAoAAwAdmFsNAAAAAApACAAUG9ydF9YNV9JbnB1dF9YMV9BTkRfWDJfNgAAACsADAB2YWw1AAAAACwAIABQb3J0X1g2X0lucHV0X1gxX0FORF9YMl82AAAALgAMAHZhbDYAAAAALwAgAFBvcnRfWDdfSW5wdXRfWDFfQU5EX1gyXzYAAAAxAAwAdmFsNwAAAAAyABgAUG9ydF9YMF9JbnB1dF9YMl82AAAzABgAUG9ydF9YMV9JbnB1dF9YMl82AAA0ABgAUG9ydF9YMl9JbnB1dF9YMl82AAA1ABgAUG9ydF9YM19JbnB1dF9YMl82AAA2ABgAUG9ydF9YNF9JbnB1dF9YMl82AAA3ABgAUG9ydF9YNV9JbnB1dF9YMl82AAA4ABgAUG9ydF9YNl9JbnB1dF9YMl82AAA5ABgAUG9ydF9YN19JbnB1dF9YMl82AAA6ABgAUG9ydF9YMF9RdWFsaWZpZXJfNgA7ABgAUG9ydF9YMV9RdWFsaWZpZXJfNgA8ABgAUG9ydF9YMl9RdWFsaWZpZXJfNgA9ABgAUG9ydF9YM19RdWFsaWZpZXJfNgA+ABgAUG9ydF9YNF9RdWFsaWZpZXJfNgA/ABgAUG9ydF9YNV9RdWFsaWZpZXJfNgBAABgAUG9ydF9YNl9RdWFsaWZpZXJfNgBBABgAUG9ydF9YN19RdWFsaWZpZXJfNgBCABAAUmVzZXJ2ZWRfMTIARgAIAHZhbABHABgAUG9ydF9YMF9PdXRwdXRfRE9fNgBLABgAUG9ydF9YMV9PdXRwdXRfRE9fNgBNABgAUG9ydF9YMl9PdXRwdXRfRE9fNgBPABgAUG9ydF9YM19PdXRwdXRfRE9fNgBRABgAUG9ydF9YNF9PdXRwdXRfRE9fNgBTABgAUG9ydF9YNV9PdXRwdXRfRE9fNgBVABgAUG9ydF9YNl9PdXRwdXRfRE9fNgBXABgAUG9ydF9YN19PdXRwdXRfRE9fNgBZABAAUmVzZXJ2ZWRfMTMAGAAQAF9JYlNBRkVCT09MAEMAEABfSWJVU0FGRUlOVABIABAAX1FiU0FGRUJPT0wAWgAQAF9RYlVTQUZFSU5UAAMACIAEAAEABQAIgAYAAQAHAAiACAABAAkACIAKAAEACwAIgAwAAQANAAiADgABABAACIARAAEAEgAIgBMAAQAZAAiAGgAYABsACIAcABgAHgAIgB8AGAAhAAiAIgAYACQACIAlABgAJwAIgCgAGAAqAAiAKwAYAC0ACIAuABgAMAAIgDEAGABEAAiAGgBDAEUACIBGAEMASQAIgBoASABKAAiAHABIAEwACIAfAEgATgAIgCIASABQAAiAJQBIAFIACIAoAEgAVAAIgCsASABWAAiALgBIAFgACIAxAEgAWwAIgBoAWgBcAAiARgBaAACAIABTY2htZXJzYWwtU0ZCLUVDLnNkZC54bWwAAAAAAAAAEswAAAAMAAAAAAAAAAgAAACRAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAACAAAAEAAAAJEAAAAAAAAAAwAAACgAAACRAAAAAAAAAAQAAAAwAAAAkQAAAAAAAAAFAAAAAAAAAJEBAAAAAAAABgAAAAgAAACRAAAAAAAAAAcAAAAQAAAAkQAAAAAAAAAIAAAAJQAAALMBAAAAAAAACQAAAFgAAACRAQAAAAAAAAoAAAA4AAAAkQEAAAAAAAAAAIAAiFaHnwAAAAAAAAAAAAAAFUQCAABHAAAA//+0CQEAAgD//yQEBQD/////JBQHAAgA//8kBBAA/////yQEEgD/////JBQJAAkA//8kFAsACgD//yQEDQD/////OAIPAGGB//84AhQAkYH//zgCFQCRgf//JAEYABgA//8kAUMAQwD//yQBSABIAP//JAFaAFoA//8kBBkA/////yQEGwD/////JAQeAP////8kBCEA/////yQEJAD/////JAQnAP////8kBCoA/////yQELQD/////JAQwAP////8kBEQA/////yQERQD/////JARJAP////8kBEoA/////yQETAD/////JAROAP////8kBFAA/////yQEUgD/////JARUAP////8kBFYA/////yQEWAD/////JARbAP////8kBFwA/////6wZFwABAP//rBkdAAEA//+sGSAAAQD//6wZIwABAP//rBkmAAEA//+sGSkAAQD//6wZLAABAP//rBkvAAEA//+sGTIAAQD//6wZMwABAP//rBk0AAEA//+sGTUAAQD//6wZNgABAP//rBk3AAEA//+sGTgAAQD//6wZOQABAP//rBk6AAEA//+sGTsAAQD//6wZPAABAP//rBk9AAEA//+sGT4AAQD//6wZPwABAP//rBlAAAEA//+sGUEAAQD//6wZQgAFAP//sB1HAAEA//+wHUsAAQD//7AdTQABAP//sB1PAAEA//+wHVEAAQD//7AdUwABAP//sB1VAAEA//+wHVcAAQD//7AdWQAFAAAAACOMAQAAAAAAAQAAAEQPAAAQBQAAEwgAAAgHAAATCQAACAkAABMKAAAICwAAExQAABEQAAATFQAAERIAABMBAAAQAgAAGAAAAEUAAAABDQAAEQAAACAWAAAEAAAARAAAAAgZAAATGAAAEBgAABgbAAARFwAAEx4AABEdAAATIQAAESAAABMkAAARIwAAEycAABEmAAATKgAAESkAABMtAAARLAAAEzAAABEvAAATAAAARQAAAEQCAAAIGQAAExgAABAYAAAYGwAAETIAABMeAAARMwAAEyEAABE0AAATJAAAETUAABMnAAARNgAAEyoAABE3AAATLQAAETgAABMwAAAROQAAEwAAAEUAAABEAwAACBkAABMYAAAQGAAAGBsAABE6AAATHgAAETsAABMhAAARPAAAEyQAABE9AAATJwAAET4AABMqAAARPwAAEy0AABFAAAATMAAAEUEAABMAAABFAAAARAQAAAhEAAATQwAAEEMAABhFAAARQgAAEwAAAEUWAAACAAAAAAAAACXMAAAAAAAAAQAAAEQGAAAISQAAE0cAABFKAAATSwAAEUwAABNNAAARTgAAE08AABFQAAATUQAAEVIAABNTAAARVAAAE1UAABFWAAATVwAAEVgAABNIAAAQSAAAGAAAAEUAAABEBwAACFsAABNZAAARXAAAE1oAABBaAAAYAAAARQAAAAEAAABEDwAAEAUAABMIAAAIBwAAEwkAAAgJAAATCgAACAsAABMUAAAREAAAExUAABESAAATAQAAEAIAABgAAABFAAAAAD53gWU=&lt;/MappingCode&gt;</Single>
+			<Single Name="Data" Type="string">&lt;MappingCode&gt;AAAAASQAAADcCwAAAAAAAAEzEgAyRh3X//8AAP//AAABAAAAAAAAA0wAAAACAAAAAAAkAEZXMzA1XzQ5NkEwMl9GU29FXzRfQnl0ZV9JX08AAAAAAQAcAENPREVTWVMgU2FmZXR5IFY0LjQuMC4wAAAAABAEBgAAXgAAAAAADABJT0dST1VQAAEACAAkAAAAAgAQAEZTb0VNYXN0ZXIAAAQADABwR3JvdXAAAAYADABwUGFybXMAAAgAFABsb2dpY2FsTW9kdWxlSUQACgAMAGluc2l6ZQAADAAMAG91dHNpemUADgAMAGJJbk9rAAAADwAUACQ6Q09ORklHOmJ5MAAAAAARAAgAZnIwABMACAB0bzAAFAAUACQ6Q09ORklHOmZyMAAAAAAVABQAJDpDT05GSUc6dG8wAAAAABYADABFbmRJbgAAABcAJABTSV8zMl9GVzMwNV9Sb2xsdG9yX2dlc2NobG9zc2VuABoADABvZmZzZXQAABwADAB2YWwwAAAAAB0AGABTSV8zMl9GVzMwNV9Ob3RoYWx0AB8ADAB2YWwxAAAAACAALABTSV8zMl9GVzMwNV9GYWVjaGVyZ2VzdGVsbF92b3JoYW5kZW4AAAAAIgAMAHZhbDIAAAAAIwAgAFBvcnRfWDNfSW5wdXRfWDFfQU5EX1gyXzYAAAAlAAwAdmFsMwAAAAAmACAAUG9ydF9YNF9JbnB1dF9YMV9BTkRfWDJfNgAAACgADAB2YWw0AAAAACkAIABQb3J0X1g1X0lucHV0X1gxX0FORF9YMl82AAAAKwAMAHZhbDUAAAAALAAgAFBvcnRfWDZfSW5wdXRfWDFfQU5EX1gyXzYAAAAuAAwAdmFsNgAAAAAvACAAUG9ydF9YN19JbnB1dF9YMV9BTkRfWDJfNgAAADEADAB2YWw3AAAAADIAGABQb3J0X1gwX0lucHV0X1gyXzYAADMAGABQb3J0X1gxX0lucHV0X1gyXzYAADQAGABQb3J0X1gyX0lucHV0X1gyXzYAADUAGABQb3J0X1gzX0lucHV0X1gyXzYAADYAGABQb3J0X1g0X0lucHV0X1gyXzYAADcAGABQb3J0X1g1X0lucHV0X1gyXzYAADgAGABQb3J0X1g2X0lucHV0X1gyXzYAADkAGABQb3J0X1g3X0lucHV0X1gyXzYAADoAGABQb3J0X1gwX1F1YWxpZmllcl82ADsAGABQb3J0X1gxX1F1YWxpZmllcl82ADwAGABQb3J0X1gyX1F1YWxpZmllcl82AD0AGABQb3J0X1gzX1F1YWxpZmllcl82AD4AGABQb3J0X1g0X1F1YWxpZmllcl82AD8AGABQb3J0X1g1X1F1YWxpZmllcl82AEAAGABQb3J0X1g2X1F1YWxpZmllcl82AEEAGABQb3J0X1g3X1F1YWxpZmllcl82AEIAEABSZXNlcnZlZF8xMgBGAAgAdmFsAEcAGABQb3J0X1gwX091dHB1dF9ET182AEsAGABQb3J0X1gxX091dHB1dF9ET182AE0AGABQb3J0X1gyX091dHB1dF9ET182AE8AGABQb3J0X1gzX091dHB1dF9ET182AFEAGABQb3J0X1g0X091dHB1dF9ET182AFMAGABQb3J0X1g1X091dHB1dF9ET182AFUAGABQb3J0X1g2X091dHB1dF9ET182AFcAGABQb3J0X1g3X091dHB1dF9ET182AFkAEABSZXNlcnZlZF8xMwAYABAAX0liU0FGRUJPT0wAQwAQAF9JYlVTQUZFSU5UAEgAEABfUWJTQUZFQk9PTABaABAAX1FiVVNBRkVJTlQAAwAIgAQAAQAFAAiABgABAAcACIAIAAEACQAIgAoAAQALAAiADAABAA0ACIAOAAEAEAAIgBEAAQASAAiAEwABABkACIAaABgAGwAIgBwAGAAeAAiAHwAYACEACIAiABgAJAAIgCUAGAAnAAiAKAAYACoACIArABgALQAIgC4AGAAwAAiAMQAYAEQACIAaAEMARQAIgEYAQwBJAAiAGgBIAEoACIAcAEgATAAIgB8ASABOAAiAIgBIAFAACIAlAEgAUgAIgCgASABUAAiAKwBIAFYACIAuAEgAWAAIgDEASABbAAiAGgBaAFwACIBGAFoAAIAgAFNjaG1lcnNhbC1TRkItRUMuc2RkLnhtbAAAAAAAAAASzAAAAAwAAAAAAAAACAAAAJEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAIAAAAQAAAAkQAAAAAAAAADAAAAKAAAAJEAAAAAAAAABAAAADAAAACRAAAAAAAAAAUAAAAAAAAAkQEAAAAAAAAGAAAACAAAAJEAAAAAAAAABwAAABAAAACRAAAAAAAAAAgAAAAlAAAAswEAAAAAAAAJAAAAWAAAAJEBAAAAAAAACgAAADgAAACRAQAAAAAAAAAAgACIVoefAAAAAAAAAAAAAAAVRAIAAEcAAAD//7QJAQACAP//JAQFAP////8kFAcACAD//yQEEAD/////JAQSAP////8kFAkACQD//yQUCwAKAP//JAQNAP////84Ag8AYYH//zgCFACRgf//OAIVAJGB//8kARgAGAD//yQBQwBDAP//JAFIAEgA//8kAVoAWgD//yQEGQD/////JAQbAP////8kBB4A/////yQEIQD/////JAQkAP////8kBCcA/////yQEKgD/////JAQtAP////8kBDAA/////yQERAD/////JARFAP////8kBEkA/////yQESgD/////JARMAP////8kBE4A/////yQEUAD/////JARSAP////8kBFQA/////yQEVgD/////JARYAP////8kBFsA/////yQEXAD/////rBkXAAEA//+sGR0AAQD//6wZIAABAP//rBkjAAEA//+sGSYAAQD//6wZKQABAP//rBksAAEA//+sGS8AAQD//6wZMgABAP//rBkzAAEA//+sGTQAAQD//6wZNQABAP//rBk2AAEA//+sGTcAAQD//6wZOAABAP//rBk5AAEA//+sGToAAQD//6wZOwABAP//rBk8AAEA//+sGT0AAQD//6wZPgABAP//rBk/AAEA//+sGUAAAQD//6wZQQABAP//rBlCAAUA//+wHUcAAQD//7AdSwABAP//sB1NAAEA//+wHU8AAQD//7AdUQABAP//sB1TAAEA//+wHVUAAQD//7AdVwABAP//sB1ZAAUAAAAAI4wBAAAAAAABAAAARA8AABAFAAATCAAACAcAABMJAAAICQAAEwoAAAgLAAATFAAAERAAABMVAAAREgAAEwEAABACAAAYAAAARQAAAAENAAARAAAAIBYAAAQAAABEAAAACBkAABMYAAAQGAAAGBsAABEXAAATHgAAER0AABMhAAARIAAAEyQAABEjAAATJwAAESYAABMqAAARKQAAEy0AABEsAAATMAAAES8AABMAAABFAAAARAIAAAgZAAATGAAAEBgAABgbAAARMgAAEx4AABEzAAATIQAAETQAABMkAAARNQAAEycAABE2AAATKgAAETcAABMtAAAROAAAEzAAABE5AAATAAAARQAAAEQDAAAIGQAAExgAABAYAAAYGwAAEToAABMeAAAROwAAEyEAABE8AAATJAAAET0AABMnAAARPgAAEyoAABE/AAATLQAAEUAAABMwAAARQQAAEwAAAEUAAABEBAAACEQAABNDAAAQQwAAGEUAABFCAAATAAAARRYAAAIAAAAAAAAAJcwAAAAAAAABAAAARAYAAAhJAAATRwAAEUoAABNLAAARTAAAE00AABFOAAATTwAAEVAAABNRAAARUgAAE1MAABFUAAATVQAAEVYAABNXAAARWAAAE0gAABBIAAAYAAAARQAAAEQHAAAIWwAAE1kAABFcAAATWgAAEFoAABgAAABFAAAAAQAAAEQPAAAQBQAAEwgAAAgHAAATCQAACAkAABMKAAAICwAAExQAABEQAAATFQAAERIAABMBAAAQAgAAGAAAAEUAAAAAEbrBTg==&lt;/MappingCode&gt;</Single>
 		</Single>
 		<Single Type="{dd6be685-9be1-40f4-855e-c5c0352a5200}" Method="IArchivable">
 			<Single Name="Name" Type="string">SddFileMapping</Single>

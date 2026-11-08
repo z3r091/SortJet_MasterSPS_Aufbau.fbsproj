@@ -8,7 +8,7 @@ __V3_CONTENT__
 <?xml version="1.0" encoding="utf-8"?>
 <Single xml:space="preserve" Type="{4e1bf013-712b-4565-8a68-46a3ffefe3f0}" Method="IArchivable">
 	<Null Name="SafetyApplicationPinCode" />
-	<Array Name="SafetyApplicationDLCode" Type="byte">AAAAASQAAACIAAAAAAAAAAEDEAAboGJZ//8AAP//AAABAAAAAAAAAzgAAAACAAAAAAAQAFNhZmV0eUFwcAAAAAEAHABDT0RFU1lTIFNhZmV0eSBWNC4zLjAuMAAAAAAQDAAAAAAAAAAAAAAwIAAAAAAAAAEAAAAA/////////////////////8nM8TA=</Array>
+	<Array Name="SafetyApplicationDLCode" Type="byte">AAAAASQAAACIAAAAAAAAAAEDEAAboGJZ//8AAP//AAABAAAAAAAAAzgAAAACAAAAAAAQAFNhZmV0eUFwcAAAAAEAHABDT0RFU1lTIFNhZmV0eSBWNC40LjAuMAAAAAAQDAAAAAAAAAAAAAAwIAAAAAAAAAEAAAAA/////////////////////5yNhBo=</Array>
 	<Null Name="AppParamMappingCode" />
 	<Null Name="AppParamConfigCode" />
 	<Null Name="AppParamValFile" />
