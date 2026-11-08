@@ -96,7 +96,7 @@ VAR_OUTPUT
   bpUebergrosseScheibeUebergang : BOOL;
 
   // WORD 
-  wpFehlerNr                   : WORD;
+  wpFehlerNr                   : Fehlerkonstanten_EN;
 
   // DWORD 
   dwpWartezeit                 : DWORD; // STATISTIK: Zeitwerte fuer die Statistik zum auswerten

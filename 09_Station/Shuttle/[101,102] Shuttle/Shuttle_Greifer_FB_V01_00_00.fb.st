@@ -74,7 +74,7 @@ VAR_OUTPUT
   bpSystemCheckAbgeschlossen                     : BOOL;
 
   // WORD
-  wpFehlerNr                                     : WORD;
+  wpFehlerNr                                     : Fehlerkonstanten_EN;
   awpFehlerInformationen                         : ARRAY[0..25] OF WORD;
 
   // REAL

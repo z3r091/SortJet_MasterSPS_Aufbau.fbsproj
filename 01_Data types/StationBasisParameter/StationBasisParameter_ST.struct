@@ -30,7 +30,7 @@ TYPE StationBasisParameter_ST :
         
     // Fehlermanagment                                      
     bFehler                                   : BOOL := FALSE;             
-    wFehlerNummer                             : WORD;                 
+    wFehlerNummer                             : Fehlerkonstanten_EN;                 
     awFehlerInformationen                     : ARRAY[0..25] OF WORD;
                                               
     bCheckMitVorgaenger                       : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;

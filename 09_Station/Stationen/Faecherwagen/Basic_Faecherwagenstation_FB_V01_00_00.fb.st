@@ -37,7 +37,7 @@ VAR_OUTPUT
   bpHinweisEingriffErforderlich     : BOOL; // Bedienereingriff am Faecherwagen erforderlich (Ampel blau blinkend, Aktion Ampelsignal in Job)
 
   // WORD
-  wpFehlerNr                        : WORD; // FEHLER-AUSWERTUNG: Fehlernummer[Const]
+  wpFehlerNr                        : Fehlerkonstanten_EN; // FEHLER-AUSWERTUNG: Fehlernummer[Const]
 
 END_VAR
 VAR

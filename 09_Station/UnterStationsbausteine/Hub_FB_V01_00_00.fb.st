@@ -29,7 +29,7 @@ VAR_OUTPUT
   bpDone          : BOOL;
 
   // WORD
-  wpFehlerNr : WORD;
+  wpFehlerNr : Fehlerkonstanten_EN;
 
   // ENUM 
   epHubStatus  : Hub_EN; // Status: Gibt die Aktuelle Position des Antriebs aus

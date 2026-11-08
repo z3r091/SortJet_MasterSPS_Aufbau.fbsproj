@@ -31,7 +31,7 @@ VAR_OUTPUT
   bpDone                         : BOOL;
 
   // WORD
-  wpFehlerNr       : WORD;
+  wpFehlerNr       : Fehlerkonstanten_EN;
 
   // ENUM
   epStatusZylinder : PneumatikZylinderStatus_EN;

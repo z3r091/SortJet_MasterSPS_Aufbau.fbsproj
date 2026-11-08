@@ -38,7 +38,7 @@ VAR_OUTPUT
   bpInReferenz           : BOOL;
 
   // WORD
-  wpFehlerNr             : WORD;
+  wpFehlerNr             : Fehlerkonstanten_EN;
 
   // REAL 
   rpAktuelleKippPosition : REAL;

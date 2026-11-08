@@ -91,7 +91,7 @@ VAR_OUTPUT
   bpSensorAuslauf                        : BOOL; // Sensorik Ausgang: Setzen der Sensorik fuer die Transportkopplung
 
   // WORD 
-  wpFehlerNr              : WORD;
+  wpFehlerNr              : Fehlerkonstanten_EN;
   wpAusnahmefehlerTyp     : WORD := WORD#0; // Sensorfehlertyp: 0 = Allgemeiner Fehler / 1 = Einlauf / 2 = Auslauf / 3 = Ein- Aus- Lauf
   
   // REAL 

@@ -52,7 +52,7 @@ VAR_OUTPUT
   bpAusnahmeSituationSensorBelegt       : BOOL; // HINWEIS: Glas hat waehrend der Drehbewegung einen Sensor belegt -> Versuchen die Situation zu bereinigen
 
   // WORD
-  wpFehlerNr   : WORD; // Status: Fehlernummer
+  wpFehlerNr   : Fehlerkonstanten_EN; // Status: Fehlernummer
 
   // REAL
   rpAktuellePosition   : REAL ; // Status: Gibt die Aktuelle Position des Dreh-Antriebs aus

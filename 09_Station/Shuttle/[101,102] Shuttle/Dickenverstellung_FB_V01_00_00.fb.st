@@ -40,7 +40,7 @@ VAR_OUTPUT
   bpInReferenz              : BOOL; // Status: Baustein/Antrieb ist referenziert
 
   // WORD
-  wpFehlerNr : WORD;
+  wpFehlerNr : Fehlerkonstanten_EN;
 
   // ENUM
   eStatusStellung : PneumatikZylinderStatus_EN;

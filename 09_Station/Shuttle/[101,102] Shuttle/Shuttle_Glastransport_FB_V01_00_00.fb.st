@@ -95,7 +95,7 @@ VAR_OUTPUT
   bpGlasPositionierungGreiferAbgeschlossen    : BOOL; // STATUS: Scheibe fuer den Greifer positioniert
 
   // WORD
-  wpFehlerNr             : WORD;
+  wpFehlerNr             : Fehlerkonstanten_EN;
 
   // DWORD
   dwpWartezeit              : DWORD :=0 ;// STATISTIK: Beschreibt die Zeit zwischen Anlegeauftrag und betaetigen des Tasters zum Eintransport

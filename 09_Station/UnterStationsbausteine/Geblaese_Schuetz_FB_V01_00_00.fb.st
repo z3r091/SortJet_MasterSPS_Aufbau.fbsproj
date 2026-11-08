@@ -45,7 +45,7 @@ VAR_OUTPUT
   bpDrosselklappeOeffnen   : BOOL; // Drosselklappe oeffnen: angefordert und Geblaese laeuft
 
   // WORD 
-  wpFehlerNr : WORD;
+  wpFehlerNr : Fehlerkonstanten_EN;
 
 END_VAR
 VAR

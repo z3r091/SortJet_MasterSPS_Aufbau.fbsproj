@@ -51,7 +51,7 @@ VAR_OUTPUT
   bpAbbruchPositionierung        : BOOL := FALSE;
 
   // WORD
-  wpFehlerNr     : WORD; // Exception- Handle: Fehlernummer
+  wpFehlerNr     : Fehlerkonstanten_EN; // Exception- Handle: Fehlernummer
 
   // REAL
   rpAktPosition : REAL;
