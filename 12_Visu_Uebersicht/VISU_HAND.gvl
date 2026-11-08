@@ -10,9 +10,17 @@ NAMESPACE VISU_HAND
 VAR_GLOBAL
   st201  : VisuHand_Station_ST;
   st202  : VisuHand_Station_ST;
+  st203  : VisuHand_Station_ST;
+  st204  : VisuHand_Station_ST;
+  st205  : VisuHand_Station_ST;
+  st206  : VisuHand_Station_ST;
+  st207  : VisuHand_Station_ST;
+  st208  : VisuHand_Station_ST;
   st101  : VisuHand_Station_ST;
+  st102  : VisuHand_Station_ST;
   st151  : VisuHand_Station_ST;
-  astFW  : ARRAY[301..302] OF VisuHand_Station_ST;
+  st152  : VisuHand_Station_ST;
+  astFW  : ARRAY[301..305] OF VisuHand_Station_ST;
 
   bAnlageResetTaster : BOOL;          // Visu-Taster Anlagen-Reset (einfacher Druck)
   bAnlageResetAktiv  : BOOL;          // Reset laeuft (min. 1 s angezeigt, solange eine Station noch bReset hat)
@@ -22,6 +30,8 @@ VAR_GLOBAL
 
   // Beschriftungen der Visu "Handbetrieb" (benannt, damit Visu und GVL nicht unbemerkt auseinanderlaufen)
   sL_Riemen                                : STRING(120) := 'Riemen';
+  sL_Riemen_X                              : STRING(120) := 'Riemen X';
+  sL_Riemen_Y                              : STRING(120) := 'Riemen Y';
   sL_Zur_Zurueck                           : STRING(120) := '<< Zurück';
   sL_Vor_Vor                               : STRING(120) := 'Vor >>';
   sL_Anschlag                              : STRING(120) := 'Anschlag';
@@ -67,8 +77,19 @@ VAR_GLOBAL
   sL_Gegenhalter                           : STRING(120) := 'Gegenhalter';
   sL_Lichtschr                             : STRING(120) := 'Lichtschr.';
   sL_Quittieren                            : STRING(120) := 'Quittieren';
+  sL_Oeffnung                              : STRING(120) := 'Öffnung';
+  sL_16mm                                  : STRING(120) := '16 mm';
+  sL_23mm                                  : STRING(120) := '23 mm';
+  sL_Drehen                                : STRING(120) := 'Drehen';
+  sL_0Grad                                 : STRING(120) := '0°';
+  sL_180Grad                               : STRING(120) := '180°';
+  sL_270Grad                               : STRING(120) := '270°';
+  sL_Arretierung                           : STRING(120) := 'Arretierung';
+  sL_Einfahren                             : STRING(120) := 'Einfahren';
+  sL_Ausfahren                             : STRING(120) := 'Ausfahren';
   sL_HANDBETRIEB                           : STRING(120) := 'HANDBETRIEB';
   sL_Legende                               : STRING(120) := 'Taster (weiß) = Tippbetrieb solange gedrückt   |   Schalter (blau hinterlegt wenn EIN) = Ein/Aus   |   Gesperrt = grau';
-  sL_Titel                                 : STRING(120) := 'SortJet Area 22  -  Handbetrieb';
+  sL_Titel                                 : STRING(120) := 'Dreisbusch  -  Handbetrieb 201 - 208';
+  sL_Titel2                                : STRING(120) := 'Dreisbusch  -  Handbetrieb Shuttle / Fächerwagen';
 END_VAR
 END_NAMESPACE

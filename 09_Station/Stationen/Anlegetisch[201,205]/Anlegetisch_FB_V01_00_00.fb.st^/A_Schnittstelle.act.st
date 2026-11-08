@@ -56,6 +56,9 @@ abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bHubpaletteFehler            := Hubrahmen.bpFehler;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bHubpaletteSensorAusgefahren := Hubrahmen.in_bStatusZylinderAusgefahren;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bHubpaletteSensorEingefahren := Hubrahmen.in_bStatusZylinderEingefahren;
+
+abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bGeblaeseLaeuft[1]           := Geblaese.bpStarteGeblaese;
+abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bDrosselklappeOffen[1]       := Glastransport.Antrieb.wpAusgaengeUmrichter.cXG37_O_6;
                                                                                                                 
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bAmpelRot                    := out_bAmpelSignalRot OR abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bOutAmpelRot;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bAmpelGruen                  := out_bAmpelSignalGruenScheibeAnlegen OR abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bOutAmpelGruen;

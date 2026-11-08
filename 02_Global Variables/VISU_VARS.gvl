@@ -23,6 +23,8 @@ VAR_GLOBAL
 
   bgVISUGlastransportVor                     : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
   bgVISUGlastransportZurueck                 : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF BOOL;
+  bgVISUGlastransportYVor                    : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   // Eckuebergabe: Glastransport Y vor
+  bgVISUGlastransportYZurueck                : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   // Eckuebergabe: Glastransport Y zurueck
 
   bgVISUQuerfahrtVor                         : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
   bgVISUQuerfahrtZurueck                     : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;

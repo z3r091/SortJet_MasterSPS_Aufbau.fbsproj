@@ -68,7 +68,7 @@ VAR_GLOBAL
                                                  bHubrahmen                    := FALSE,                                     // Ausbaustufe: Hubrahmen (Riemen heben/senken)
                                                  bDrehen                       := FALSE,                                     // Ausbaustufe: Drehen
                                                  bQuerachse                    := FALSE,                                     // Ausbaustufe: Querachse
-                                                 bMessachse                    := FALSE,                                     // Ausbaustufe: Messachse (Anlegetisch, Anlegewand)
+                                                 bMessachse                    := TRUE,                                      // Ausbaustufe: Messachse (Anlegetisch, Anlegewand)
                                                  bDruckluft                    := FALSE,                                     // Druckluftueberwachung vorhanden
                                                  bAnschlag                     := FALSE,                                     // Ausbaustufe: Ausrichtanschlaege
                                                  bSensorAuslauf                := TRUE,                                      // Auslaufsensor vorhanden

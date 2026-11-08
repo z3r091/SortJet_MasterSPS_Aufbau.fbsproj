@@ -22,8 +22,10 @@ IF ( blBetriebsartHand ) THEN
                                          AND NOT ( dwlHandfunktionen.1 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] ) );
 
   // Glastransport Y
-  Glastransport_Y.bpHandfahrenPlus  := dwlHandfunktionen.3 AND NOT dwlHandfunktionen.4;
-  Glastransport_Y.bpHandfahrenMinus := dwlHandfunktionen.4 AND NOT dwlHandfunktionen.3;
+  Glastransport_Y.bpHandfahrenPlus  := (     ( dwlHandfunktionen.3 OR bgVISUGlastransportYVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+                                         AND NOT ( dwlHandfunktionen.4 OR bgVISUGlastransportYZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
+  Glastransport_Y.bpHandfahrenMinus := (     ( dwlHandfunktionen.4 OR bgVISUGlastransportYZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+                                         AND NOT ( dwlHandfunktionen.3 OR bgVISUGlastransportYVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
 
   // Hubrahmen
   Hubrahmen.bpStartAusfahren := (     ( dwlHandfunktionen.5 OR bgVISUHubW1Auf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )

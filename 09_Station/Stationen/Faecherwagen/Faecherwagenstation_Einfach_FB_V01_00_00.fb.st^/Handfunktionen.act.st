@@ -10,7 +10,7 @@ ACTION Handfunktionen
 // HANDFUNKTIONEN
 //-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   - Handbefehle (MMI-Bits, Rolltor auch Visu-Bits) nur im Handbetrieb wirksam
+   - Handbefehle (MMI-Bits, Rolltor und Arretierung auch Visu-Bits) nur im Handbetrieb wirksam
    - Bitverteilung: 1/2 Arretierung auf/zu, 5/6 Rolltor auf/ab
 *)
 blHandFreigabe := blBetriebsartHand;
@@ -19,8 +19,8 @@ IF    NOT BasisStationsParameter.bEintransport[cWAND_1]
       AND NOT BasisStationsParameter.bAustransport[cWAND_1]
       AND NOT blBetriebartCheck
 THEN
-  blArretierungOeffnen    := blHandFreigabe AND dwlHandfunktionen.1 AND NOT blArretierungSchliessen;
-  blArretierungSchliessen := blHandFreigabe AND dwlHandfunktionen.2 AND NOT blArretierungOeffnen;
+  blArretierungOeffnen    := blHandFreigabe AND ( dwlHandfunktionen.1 OR bgVISUFWGegenhalterEinfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blArretierungSchliessen;
+  blArretierungSchliessen := blHandFreigabe AND ( dwlHandfunktionen.2 OR bgVISUFWGegenhalterAusfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blArretierungOeffnen;
   blRolltorAuf            := blHandFreigabe AND ( dwlHandfunktionen.5 OR bgVISUFWRolltorHoch[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )   AND NOT blRolltorAb;
   blRolltorAb             := blHandFreigabe AND ( dwlHandfunktionen.6 OR bgVISUFWRolltorRunter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) AND NOT blRolltorAuf;
 

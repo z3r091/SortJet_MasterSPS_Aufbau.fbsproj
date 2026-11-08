@@ -86,7 +86,7 @@ VAR_GLOBAL
       rpGeschwindigkeitMessen                 :=         0,  // [mm/s] Geschwindigkeit beim Scheiben messen                         
       rpGeschwindigkeitSystemcheck            :=     500.0,  // [mm/s]   Geschwindigkeit im Systemcheck (nur Glastransport)
       rpGeschwindigkeitSystemcheckReduzierung :=     167.0,  // [mm/s]   Geschwindigkeit im Systemcheck bei belegtem Vorstop-Sensor (nur Glastransport)
-      stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.KEINE,     // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
+      stOptionen                              := ( eEndschalterQuelle    := Endschalterquelle_EN.UMRICHTER, // Hardware-Endschalter: KEINE, UMRICHTER oder SPS
                                                    bVersorgungUeberXVR   := FALSE,                          // XVR-Modus: brueckt Hauptschalter 400 V und LS 230 V
                                                    bBremseLoesenFreigabe := FALSE )                         // Der Antrieb darf über eine Betriebsart die Bremse lösen
     );

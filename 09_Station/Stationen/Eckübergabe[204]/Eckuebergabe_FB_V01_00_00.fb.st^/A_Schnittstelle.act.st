@@ -80,4 +80,9 @@ abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bSensorEinlaufVorab[1] := Glastransport_X.bpSensorEinlaufVorab;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bSensorAuslaufVorab[1] := Glastransport_X.bpSensorAuslaufVorab;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bSensorAuslauf[1]      := Glastransport_X.bpSensorAuslauf;
+
+// Status fuer die Visu (Hubrahmen)
+abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bHubpaletteFehler            := Hubrahmen.bpFehler;
+abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bHubpaletteSensorAusgefahren := Hubrahmen.in_bStatusZylinderAusgefahren;
+abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bHubpaletteSensorEingefahren := Hubrahmen.in_bStatusZylinderEingefahren;
 END_ACTION
