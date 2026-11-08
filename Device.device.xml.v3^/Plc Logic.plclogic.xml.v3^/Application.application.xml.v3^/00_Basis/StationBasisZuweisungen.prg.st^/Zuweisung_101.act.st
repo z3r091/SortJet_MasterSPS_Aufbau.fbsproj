@@ -32,7 +32,7 @@ starrShuttleBasisParameter[cSHUTTLE_101].stParameterStationskomponenten.stZentra
 *)
 
 // Transfershuttle des dynamischen Speichers  zuweisen
-FOR wlIndex := cSHUTTLE_151 TO cSHUTTLE_154 DO
+FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
   starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Station[wlIndex]                  := Rueckwaertig;
   starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[wlIndex]            := eGlastransport_Default;
   starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Kippen[wlIndex]                   := eKippen_Position_90Grad;
