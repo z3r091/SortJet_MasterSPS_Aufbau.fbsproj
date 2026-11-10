@@ -50,5 +50,4 @@ aFaecherwagenstation[305].bpFaecherwagenVorhanden := EV_ToPLC_HarpRack.EV_ToPLC_
 
 // Durchgang 203: Klapprahmen geschlossen (Sicherheitssensor, SK3)
 aDurchgang[1].bpDurchgangGeschlossen := EV_ToPLC_b203_geschlossen;
-
 END_ACTION

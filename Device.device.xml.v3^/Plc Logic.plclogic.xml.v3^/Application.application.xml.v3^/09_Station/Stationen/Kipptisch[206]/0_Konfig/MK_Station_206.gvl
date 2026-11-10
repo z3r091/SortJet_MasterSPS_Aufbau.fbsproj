@@ -140,8 +140,8 @@ VAR_GLOBAL
       tZeitAntriebsfreigabeErhalten         :=   TIME#180S, // [ms \ s] Energieeinsparrung: Zeiteinheit nach der die Antriebsfreigabe entzogen werden soll wenn keine Aktion ansteht [1 s = 1000 ms ]
       rToleranz                             :=           1, // Toleranz beim Entscheiden der aktuellen Position
       rPosition0Grad                        :=           0, // Waagerechte- Position 0 Grad: Position auf die die Station gehoben werden soll
-      rPosition84Grad                       :=       836.4, // Senkrechte- Position 84 Grad: Position auf die die Station gehoben werden soll
-      rPosition90Grad                       :=       214.5, // Senkrechte-Position 90 Grad : Position auf die die Station gesenkt werden soll
+      rPosition84Grad                       :=      224.64, // Senkrechte- Position 84 Grad: Position auf die die Station gehoben werden soll
+      rPosition90Grad                       :=      224.64, // Senkrechte-Position 90 Grad : Position auf die die Station gesenkt werden soll
       bKippenMitSchuetz                     :=       FALSE, // Kippen per Umrichter oder Schütz
       rPosition88_5Grad                     := 0.0,         // Senkrechte- Position 84 Grad: Position auf die die Station gehoben werden soll
       rPosition96Grad                       := 0.0          // Senkrechte-Position 96 Grad : Position auf die die Station gesenkt werden soll

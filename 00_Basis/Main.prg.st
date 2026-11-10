@@ -50,7 +50,7 @@ TCPMain();
 EtherCAT_Master.StartConfigWithLessDevice := TRUE;
 
 // OP1 bis OP5 einschalten, sobald EtherCAT laeuft
-%QX0.0 := %QX0.1 := %QX0.3 := %QX0.4 := %QX0.5 := bgEtherCatOK;
+%QX0.0 := %QX0.1 := %QX0.3 := %QX0.4 := %QX0.5 := bgEtherCatOK OR bgInbetriebnahmeBit;
 
 IF ( Auftraege.bgInbetriebnahmeAblaeufe ) THEN
   Auftraege();

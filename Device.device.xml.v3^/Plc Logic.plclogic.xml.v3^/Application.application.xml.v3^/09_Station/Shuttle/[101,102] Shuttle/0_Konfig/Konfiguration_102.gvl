@@ -16,9 +16,9 @@ VAR_CONFIG
                                                                                                                   
                                                                                                                            
   // Sicherungen \ Motorschutzschalter \ etc.  
-  Globale_Bausteine.aShuttle[102].in_bSicherungen230V_OK                                             AT %MX1.1   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[102].in_bLSQuerfahrtBremseOK                                            AT %IX71.0  : BOOL; // IO-L - Querfahrt Bremse Sicherung
-  Globale_Bausteine.aShuttle[102].in_bNetzteil_24V_OK                                                AT %IX70.1  : BOOL; // IO-L - Netzteil 24V OK
+  Globale_Bausteine.aShuttle[102].in_bSicherungen230V_OK                                             AT %MX1.1    : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[102].in_bLSQuerfahrtBremseOK                                            AT %IX111.0  : BOOL; // IO-L - Querfahrt Bremse Sicherung
+  Globale_Bausteine.aShuttle[102].in_bNetzteil_24V_OK                                                AT %IX110.1  : BOOL; // IO-L - Netzteil 24V OK
 
   
   Globale_Bausteine.aShuttle[102].Kippen.in_bMotorschutzschalter_OK                                  AT %MX1.1   : BOOL; // OPTION
@@ -26,13 +26,13 @@ VAR_CONFIG
   
   
   // Druckluft 
-  Globale_Bausteine.aShuttle[102].in_bSicherungKompressor_OK                                         AT %MX1.1  : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[102].in_bDruckluft_OK                                                   AT %IX74.5 : BOOL; // IO-L - Druckluft OK
+  Globale_Bausteine.aShuttle[102].in_bSicherungKompressor_OK                                         AT %MX1.1   : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[102].in_bDruckluft_OK                                                   AT %IX114.5 : BOOL; // IO-L - Druckluft OK
                                                                                                      
                                                                                                                                                                                                             
   //Geblaese Wand 1                                                                                         
-  Globale_Bausteine.aShuttle[102].Geblaese[1].in_bMotorschutzschalter_OK                             AT %IX71.1  : BOOL; // IO-L - Geblaesegruppe Wand 1 Sicherung + Motorschutz
-  Globale_Bausteine.aShuttle[102].Geblaese[1].out_bStarteGeblaese                                    AT %QX70.1   : BOOL; // IO-L - Geblaesegruppe Wand 1 einschalten
+  Globale_Bausteine.aShuttle[102].Geblaese[1].in_bMotorschutzschalter_OK                             AT %IX111.1  : BOOL; // IO-L - Geblaesegruppe Wand 1 Sicherung + Motorschutz
+  Globale_Bausteine.aShuttle[102].Geblaese[1].out_bStarteGeblaese                                    AT %QX110.1  : BOOL; // IO-L - Geblaesegruppe Wand 1 einschalten
                                                 
   // Wandverstellung Wand 1                                                                              
   Globale_Bausteine.aShuttle[102].in_bWandverstellungsAntriebsSicherungOK                            AT %MX1.1   : BOOL; // OPTION
@@ -151,15 +151,15 @@ VAR_CONFIG
   Globale_Bausteine.aShuttle[102].Wandverstellung[2].Gegenhalter_Schuetz.out_bMotorstarterReset      AT %MX1024.5 : BOOL; // OPTION
 
   // Greifer Wand 1 [Ausbaustufe stStationsAufbau.bGreifer] (Kanaele laut Schaltplan eintragen, Glasrueckhalter laut Parameter_Greifer, ohne Bauteil Eingang auf %MX1.1)
-  Globale_Bausteine.aShuttle[102].Greifer[1].in_bGreiferAusgefahren                                     AT %IX73.0  : BOOL; // IO-L - Greifer 1 ausgefahren zum Glas
-  Globale_Bausteine.aShuttle[102].Greifer[1].in_bGreiferEingefahren                                     AT %IX73.1  : BOOL; // IO-L - Greifer 1 eingefahren
-  Globale_Bausteine.aShuttle[102].Greifer[1].in_bGlasRueckhalterEinlaufEingefahren                      AT %MX1.1   : BOOL; // OPTION - Einlaufseite ohne Glasrueckhalter
-  Globale_Bausteine.aShuttle[102].Greifer[1].in_bGlasRueckhalterAuslaufEingefahren                      AT %IX73.4  : BOOL; // IO-L - Greifer 1 Haltebuegel eingefahren
+  Globale_Bausteine.aShuttle[102].Greifer[1].in_bGreiferAusgefahren                                     AT %IX113.0  : BOOL; // IO-L - Greifer 1 ausgefahren zum Glas
+  Globale_Bausteine.aShuttle[102].Greifer[1].in_bGreiferEingefahren                                     AT %IX113.1  : BOOL; // IO-L - Greifer 1 eingefahren
+  Globale_Bausteine.aShuttle[102].Greifer[1].in_bGlasRueckhalterEinlaufEingefahren                      AT %MX1.1    : BOOL; // OPTION - Einlaufseite ohne Glasrueckhalter
+  Globale_Bausteine.aShuttle[102].Greifer[1].in_bGlasRueckhalterAuslaufEingefahren                      AT %IX113.4  : BOOL; // IO-L - Greifer 1 Haltebuegel eingefahren
 
-  Globale_Bausteine.aShuttle[102].Greifer[1].out_bGreiferAusfahren                                      AT %QX70.7   : BOOL; // IO-L - Greifer 1 ausfahren zum Glas
-  Globale_Bausteine.aShuttle[102].Greifer[1].out_bGreiferEinfahren                                      AT %QX71.0   : BOOL; // IO-L - Greifer 1 einfahren
-  Globale_Bausteine.aShuttle[102].Greifer[1].out_bGlasRueckhalterEinlaufAusfahren                       AT %MX1025.0 : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[102].Greifer[1].out_bGlasRueckhalterAuslaufAusfahren                       AT %QX71.3   : BOOL; // IO-L - Greifer 1 Haltebuegel ausfahren
+  Globale_Bausteine.aShuttle[102].Greifer[1].out_bGreiferAusfahren                                      AT %QX110.7   : BOOL; // IO-L - Greifer 1 ausfahren zum Glas
+  Globale_Bausteine.aShuttle[102].Greifer[1].out_bGreiferEinfahren                                      AT %QX111.0   : BOOL; // IO-L - Greifer 1 einfahren
+  Globale_Bausteine.aShuttle[102].Greifer[1].out_bGlasRueckhalterEinlaufAusfahren                       AT %MX1025.0  : BOOL; // OPTION
+  Globale_Bausteine.aShuttle[102].Greifer[1].out_bGlasRueckhalterAuslaufAusfahren                       AT %QX111.3   : BOOL; // IO-L - Greifer 1 Haltebuegel ausfahren
 
   // Greiferzange Einlaufseite Wand 1 [nur mit Parameter_Greifer.bZangeEinlaufVorhanden]
   Globale_Bausteine.aShuttle[102].Greifer[1].Zange[1].in_bStatusZylinder_Alle_Eingefahren               AT %MX1.0   : BOOL; // OPTION
@@ -176,14 +176,14 @@ VAR_CONFIG
 
   // Greiferzange Auslaufseite Wand 1 [nur mit Parameter_Greifer.bZangeAuslaufVorhanden]
   Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].in_bStatusZylinder_Alle_Eingefahren               AT %MX1.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].in_bStatusZylinder_1_Ausgefahren                  AT %IX73.3  : BOOL; // IO-L - Greifer 1 Hub 1 geoeffnet
+  Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].in_bStatusZylinder_1_Ausgefahren                  AT %IX113.3 : BOOL; // IO-L - Greifer 1 Hub 1 geoeffnet
   Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].in_bStatusZylinder_2_Ausgefahren                  AT %MX1.0   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].in_bStatusZylinder_3_Ausgefahren                  AT %MX1.0   : BOOL; // OPTION
 
-  Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].out_bZylinder_1_Einfahren                         AT %QX71.2   : BOOL; // IO-L - Greifer 1 Hub 1 schliessen
+  Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].out_bZylinder_1_Einfahren                         AT %QX111.2  : BOOL; // IO-L - Greifer 1 Hub 1 schliessen
   Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].out_bZylinder_2_Einfahren                         AT %MX1026.1 : BOOL; // OPTION
   Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].out_bZylinder_3_Einfahren                         AT %MX1026.2 : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].out_bZylinder_1_Ausfahren                         AT %QX71.1   : BOOL; // IO-L - Greifer 1 Hub 1 oeffnen
+  Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].out_bZylinder_1_Ausfahren                         AT %QX111.1  : BOOL; // IO-L - Greifer 1 Hub 1 oeffnen
   Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].out_bZylinder_2_Ausfahren                         AT %MX1026.4 : BOOL; // OPTION
   Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].out_bZylinder_3_Ausfahren                         AT %MX1026.5 : BOOL; // OPTION
 

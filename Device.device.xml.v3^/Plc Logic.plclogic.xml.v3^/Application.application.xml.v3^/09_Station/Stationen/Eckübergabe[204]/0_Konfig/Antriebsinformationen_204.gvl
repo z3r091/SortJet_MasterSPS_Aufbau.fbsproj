@@ -16,8 +16,8 @@ VAR_GLOBAL
   // X-Achse
   apgInfoStation204Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
-      wAchsID                                 :=     7,  // Achs ID aus dem EConSet
-      stTyp                                   := 'Belt',  // Typ
+      wAchsID                                 :=      8,  // Achs ID aus dem EConSet
+      stTyp                                   := 'Rolls', // Typ
       wpSchaltschrank                         :=   2050,  // Daten aus dem Schaltplan
       wpSchaltplanreihe                       :=      2,  // Daten aus dem Schaltplan
       wpSchaltplanseite                       :=    100,  // Daten aus dem Schaltplan
@@ -69,7 +69,7 @@ VAR_GLOBAL
   // Y-Achse (Riemen im Hubrahmen)
   apgInfoStation204GlastransportY : ARRAY[cWAND_1..cANZAHL_WAENDE] OF AntriebsInformationen := [
     (
-      wAchsID                                 :=     8,  // Achs ID aus dem EConSet
+      wAchsID                                 :=     7,  // Achs ID aus dem EConSet
       stTyp                                   := 'Belt',  // Typ
       wpSchaltschrank                         :=   2051,  // Daten aus dem Schaltplan
       wpSchaltplanreihe                       :=      2,  // Daten aus dem Schaltplan

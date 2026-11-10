@@ -89,7 +89,7 @@ VAR_GLOBAL
                                             bSlaveAntrieb                 := FALSE,                                                                     // Glastransport mit Slave-Antrieb
                                             bRolltor                      := FALSE,                                                                     // Ausbaustufe Faecherwagen: Rolltor
                                             bKlemmzylinder                := FALSE,                                                                     // Ausbaustufe Faecherwagen: Klemmzylinder fixiert den Oberrahmen beim Ein- und Ausschleusen
-                                            bGreifer                      := [cANZAHL_WAENDE(FALSE)],                                                   // Shuttle: Greifer je Wand (Scheibe aus dem Faecherwagen ziehen bzw. hineinschieben)
+                                            bGreifer                      := [cANZAHL_WAENDE(TRUE)],                                                   // Shuttle: Greifer je Wand (Scheibe aus dem Faecherwagen ziehen bzw. hineinschieben)
                                             bRFID                         := FALSE,                                                                     // RFID-Leser vorhanden
                                             bAGV                          := FALSE,                                                                     // Ausbaustufe Faecherwagen: Betrieb mit AGV
                                             bKipparme                     := FALSE,                                                                     // Ausbaustufe: Kipparme
