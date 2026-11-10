@@ -800,7 +800,7 @@ __V3_CONTENT__
 		<Single Name="CommunicationSettingFilter" Type="int">1</Single>
 		<Single Name="CommunicationSettingSorting" Type="int">0</Single>
 		<Single Name="TrackingMode" Type="int">3</Single>
-		<Single Name="GatewayGuid" Type="System.Guid">14a784b4-d121-4c7f-9bde-b4b1577d8577</Single>
+		<Single Name="GatewayGuid" Type="System.Guid">75b1ad04-7aaf-476d-b858-843ef148f1f3</Single>
 		<Single Name="Address" Type="{06bee84e-fb7b-460d-bdbc-36d334cb5380}" Method="IArchivable">
 			<Array Name="Addr" Type="{9ba826d6-fdbc-4f85-99e6-e813fdd446c4}">
 				<Single Type="{9ba826d6-fdbc-4f85-99e6-e813fdd446c4}" Method="IArchivable">
@@ -821,13 +821,13 @@ __V3_CONTENT__
 			</Array>
 		</Single>
 		<Single Name="PromptAtLogin" Type="bool">False</Single>
-		<Single Name="SimulationMode" Type="bool">True</Single>
+		<Single Name="SimulationMode" Type="bool">False</Single>
 		<Single Name="SecureOnlineMode" Type="bool">False</Single>
 		<Single Name="SecureOnlineModeExplicitelySet" Type="bool">False</Single>
-		<Single Name="Name" Type="string">EXC89_192.168.100.77 - 05440F</Single>
+		<Single Name="Name" Type="string">EXC89_192.168.100.77 - 05888E</Single>
 		<Single Name="MonitoringIntervalMsec" Type="int">200</Single>
 		<Single Name="ScanInformation" Type="{03b12d85-7991-4556-8c0e-c0b3063eb6c4}" Method="IArchivable">
-			<Single Name="ScanInformationDeviceName" Type="string">EXC89_192.168.100.77 - 05440F</Single>
+			<Single Name="ScanInformationDeviceName" Type="string">EXC89_192.168.100.77 - 05888E</Single>
 			<Single Name="ScanInformationIPAddressAndPort" Type="string">192.168.100.77</Single>
 			<Single Name="ScanInformationTargetID" Type="string">103A 1088</Single>
 			<Single Name="ScanInformationTargetName" Type="string">EXC89</Single>

@@ -39,7 +39,7 @@ __V3_CONTENT__
 		<Single Name="AlwaysMappingMode" Type="{9d1b24fb-5845-4978-8458-564ca7830fec}">OnlyIfUnused</Single>
 		<Single Name="CreateBitChannels" Type="bool">False</Single>
 	</Single>
-	<Single Name="Disable" Type="bool">False</Single>
+	<Single Name="Disable" Type="bool">True</Single>
 	<Single Name="Exclude" Type="bool">False</Single>
 	<List Name="Connectors" Type="System.Collections.ArrayList" />
 	<Single Name="ConnectorList" Type="{52a6325f-063a-4748-86b6-ec8aa02d3232}" Method="IArchivable">

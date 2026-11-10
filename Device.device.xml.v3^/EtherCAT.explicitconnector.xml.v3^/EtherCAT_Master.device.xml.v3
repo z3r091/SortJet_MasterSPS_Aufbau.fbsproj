@@ -154,7 +154,7 @@ __V3_CONTENT__
 					<List Name="Adapters" Type="System.Collections.ArrayList">
 						<Single Type="{3f828f0b-c67b-430a-8c93-1e9bc324df64}" Method="IArchivable">
 							<List Name="Modules" Type="System.Collections.ArrayList">
-								<Single Type="System.Guid">9ca03351-aea5-466c-b0e6-dff940283b5c</Single>
+								<Single Type="System.Guid">129425dd-0ceb-476a-bcbc-31c5d24106e1</Single>
 								<Single Type="System.Guid">74a360df-0044-4c0c-abc0-7bee68df8dc3</Single>
 								<Single Type="System.Guid">0d5bdc36-82d0-4ff9-b25d-395b667d4e75</Single>
 								<Single Type="System.Guid">2123c9c7-5829-4d54-9b30-7f7a026ec856</Single>
@@ -2314,7 +2314,7 @@ __V3_CONTENT__
 					</List>
 					<Null Name="RequiredTasks" />
 					<Single Name="NeedsBusCycle" Type="bool">True</Single>
-					<Single Name="BusCycleTask" Type="string"></Single>
+					<Single Name="BusCycleTask" Type="string">FastTask</Single>
 					<Single Name="IoApp" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
 					<Single Name="IoAppSet" Type="bool">False</Single>
 					<Array Name="PositionIds" Type="long">/xAAAAAAAAAAEQAAAAAAAAERAAAAAAAA</Array>
@@ -2336,7 +2336,7 @@ __V3_CONTENT__
 					<Single Name="UpdateIOsInStop" Type="bool">False</Single>
 					<Single Name="StopResetBehaviourSetting" Type="{f333ad6d-dc68-4baa-a3a3-20be74eb2e18}">KeepCurrentValues</Single>
 					<Single Name="StopResetBehaviourUserProgram" Type="string"></Single>
-					<Single Name="BusCycleTaskGuid" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+					<Single Name="BusCycleTaskGuid" Type="System.Guid">954fd2a4-5c58-42ff-b6a5-686d091b6e93</Single>
 					<Single Name="PlcAlwaysMapping" Type="bool">False</Single>
 					<Single Name="PlCAlwaysMappingMode" Type="{9d1b24fb-5845-4978-8458-564ca7830fec}">OnlyIfUnused</Single>
 				</Single>

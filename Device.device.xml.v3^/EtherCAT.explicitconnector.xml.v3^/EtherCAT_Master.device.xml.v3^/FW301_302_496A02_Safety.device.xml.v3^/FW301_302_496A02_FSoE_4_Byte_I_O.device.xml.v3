@@ -342,6 +342,10 @@ __V3_CONTENT__
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="PositionId" Type="long">5155</Single>
 								<Single Name="EditorPositionId" Type="long">5156</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="AutomaticAddress" Type="bool">False</Single>
+									<Single Name="IecAddress" Type="string">%QB5300</Single>
+								</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">FSoE Command</Single>
 								</Single>
@@ -2088,6 +2092,10 @@ __V3_CONTENT__
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="PositionId" Type="long">5279</Single>
 								<Single Name="EditorPositionId" Type="long">5280</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="AutomaticAddress" Type="bool">False</Single>
+									<Single Name="IecAddress" Type="string">%IB5300</Single>
+								</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">FSoE Command</Single>
 								</Single>
