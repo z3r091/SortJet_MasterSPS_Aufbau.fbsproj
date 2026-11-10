@@ -85120,7 +85120,7 @@ __V3_CONTENT__
 									<Single Name="BaseName" Type="string">$(DeviceName)</Single>
 									<Single Name="Instance" Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 										<Single Name="CreateVariable" Type="bool">True</Single>
-										<Single Name="Variable" Type="string">UBM_BK_EC</Single>
+										<Single Name="Variable" Type="string">CAB2_489A02_InlineIO</Single>
 									</Single>
 									<Single Name="InitMethod" Type="string">Initialize</Single>
 									<List Name="CyclicCalls" Type="System.Collections.ArrayList" />
