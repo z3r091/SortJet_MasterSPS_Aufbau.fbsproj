@@ -279,16 +279,15 @@ THEN
     // EINTRANSPORT =====================
     STEP_410_E:
       (* Hinweis:
-         - Ansteuerung Drehen
+         - Ansteuerung Drehen und Kippen nur bei der letzten Scheibe
       *)
-      Drehen.epZielPosition :=  BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport;
-      Drehen.bpStarteAbsolutPositionierung := TRUE;
+      IF BasisStationsParameter.pAuftrag[wWand].bLetzteScheibe THEN
+        Drehen.epZielPosition :=  BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport;
+        Drehen.bpStarteAbsolutPositionierung := TRUE;
 
-      (* Hinweis:
-         - Ansteuerung Kippen
-      *)
-      Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachEintransport;
-      Kippen.bpPositionieren  := TRUE;
+        Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachEintransport;
+        Kippen.bpPositionieren  := TRUE;
+      END_IF
 
       (* Hinweis:
          - Ansteuerung Vortransport
@@ -340,7 +339,7 @@ THEN
          - Drehung abgeschlossen [Drehen von 0- 180 Grad ; 180 - 0 Grad ]
       *)
       IF (  ( Drehen.bpDone OR NOT Drehen.bpStarteAbsolutPositionierung )
-           AND Kippen.bpDone
+           AND ( Kippen.bpDone OR NOT Kippen.bpPositionieren )
            AND NOT Glastransport.bpVortransport AND NOT Glastransport.bpVortransportRueckwaertig )
       THEN
         Drehen.bpStarteAbsolutPositionierung := FALSE;

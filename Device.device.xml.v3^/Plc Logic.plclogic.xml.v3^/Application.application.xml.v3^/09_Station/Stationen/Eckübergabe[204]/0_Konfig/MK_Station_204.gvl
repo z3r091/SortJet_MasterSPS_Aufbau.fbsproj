@@ -44,6 +44,7 @@ VAR_GLOBAL
                                                         bMessrichtungNegativ                    := FALSE ),           // Negative Fahrtrichtung beim Messen
                                  // stAnlegetisch
                                  stEckuebergabe    := ( eRiemenAchse                            := eAchsrichtung_Y ), // Achse der Riemen im Hubrahmen (Hubrahmen oben = Riemenachse arbeitet). Default = Y
+                                 // stDrehstation
                                  bVorAbKomponentenAnsteuerung           := FALSE,                                     // VorAbKomponentenAnsteuerung Auftraege werden bearbeitet
                                  bVerstellungEinAusGefahrenLogikDrehen  := FALSE,                                     // Verstellung: Logik ein-/ausgefahren gedreht
                                  bLangsamfahrtNockenQuerfahrtAktivieren := FALSE,                                     // Querfahrt: Langsamfahrt-Nocken auswerten

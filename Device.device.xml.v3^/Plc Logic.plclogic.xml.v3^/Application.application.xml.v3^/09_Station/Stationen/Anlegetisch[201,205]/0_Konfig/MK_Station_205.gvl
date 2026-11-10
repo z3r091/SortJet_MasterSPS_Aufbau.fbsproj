@@ -51,6 +51,7 @@ VAR_GLOBAL
                                                                        bScheibenmessungSensorVorabAuslauf        := FALSE    // Scheibenmessung mit SensorVorabAuslauf z.B. Anlegewand
                                                                       ),   
                                                  // stEckuebergabe
+                                                 // stDrehstation
                                                  bVorAbKomponentenAnsteuerung              := FALSE,                         // VorAbKomponentenAnsteuerung Auftraege werden bearbeitet
                                                  bVerstellungEinAusGefahrenLogikDrehen     := FALSE,                         // Verstellung: Logik ein-/ausgefahren gedreht
                                                  bLangsamfahrtNockenQuerfahrtAktivieren    := FALSE,                         // Querfahrt: Langsamfahrt-Nocken auswerten

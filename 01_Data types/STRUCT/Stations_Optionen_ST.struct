@@ -12,6 +12,7 @@ TYPE Stations_Optionen_ST :
     stGlastransport                                               : Stations_Optionen_Glastransport_ST;
     stAnlegetisch                                                 : Stations_Optionen_Anlegetisch_ST;
     stEckuebergabe                                                : Stations_Optionen_Eckuebergabe_ST;
+    stDrehstation                                                 : Stations_Optionen_Drehstation_ST;
 
     bVorAbKomponentenAnsteuerung                                  : BOOL; // VorAbKomponentenAnsteuerung Auftraege werden bearbeitet
     bVerstellungEinAusGefahrenLogikDrehen                         : BOOL; // Verstellung: Logik ein-/ausgefahren gedreht

@@ -10,6 +10,8 @@ STRUCT
     Station                  : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF TransportRichtung_EN;
     Glastransport            : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Glastransport_EN;
     Drehen                   : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Drehen_EN;
+    DrehenNachEintransport   : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Drehen_EN;
+    DrehenNachAustransport   : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Drehen_EN;
     Kippen                   : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Kippen_EN;
     KippenNachEintransport   : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Kippen_EN;
     KippenNachAustransport   : ARRAY[cERSTES_SHUTTLE..cLETZTE_FREMDANLAGE_EINLAUF] OF Kippen_EN;

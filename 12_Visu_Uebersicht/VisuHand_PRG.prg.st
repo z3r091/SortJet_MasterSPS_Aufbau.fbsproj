@@ -127,6 +127,7 @@ FOR i := 201 TO 208 DO
         pH^.abZeileVorhanden[2] := pBP^.stMKs.stStationsAufbau.bDrehen;
         pH^.abZeileVorhanden[3] := pBP^.stMKs.stStationsAufbau.bDrehen;
         pH^.abZeileVorhanden[4] := pBP^.stMKs.stStationsAufbau.bDrehen;
+        pH^.abZeileVorhanden[5] := pBP^.stMKs.stStationsAufbau.bKippen[cWAND_1];
       208:
         pH^.abZeileVorhanden[2] := pBP^.stMKs.stStationsAufbau.bMessachse;
     END_CASE
@@ -211,6 +212,15 @@ FOR i := 201 TO 208 DO
       ELSE
         b := VisuHand_Set(stH := pH^, wZeile := 4, sText := '?', dwFarbe := dwO);
       END_IF
+      // 5 Kippen
+      CASE abgStationsstatusVisu[i].epKippStatus OF
+        Kippen_EN.eKippen_Position_84Grad: sKipp := '84°';    dwKipp := dwG;
+        Kippen_EN.eKippen_Position_90Grad: sKipp := '90°';    dwKipp := dwG;
+        Kippen_EN.eKippen_Fehler:          sKipp := 'Fehler'; dwKipp := dwR;
+        ELSE                                 sKipp := 'Zwischen'; dwKipp := dwO;
+      END_CASE
+      IF abgStationsstatusVisu[i].bKippenFehler THEN sKipp := 'Fehler'; dwKipp := dwR; END_IF
+      b := VisuHand_Set(stH := pH^, wZeile := 5, sText := sKipp, dwFarbe := dwKipp);
 
     208:
       // 2 Messachse

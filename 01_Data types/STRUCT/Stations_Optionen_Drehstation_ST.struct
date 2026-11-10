@@ -1,0 +1,12 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "92ab0f45-fb99-4ba5-8933-9ad26e49d2e9"
+	}
+}
+*)
+TYPE Stations_Optionen_Drehstation_ST :
+  STRUCT
+    bDrehpositionenVomMMI                                         : BOOL; // TRUE: Drehpositionen aus dem MMI-Auftrag; FALSE: aus der Stationskonfiguration [aEintransporte/aAustransporte]
+  END_STRUCT
+END_TYPE

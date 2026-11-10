@@ -25,7 +25,15 @@ IF ( AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Eintransport ) THEN
      - Abschluss der Schrittkette
   *)
   IF Eintransport[wStation, wWand].bpDone THEN
-    starrShuttleBasisParameter[wStation].bEintransportGewesen[wWand] := TRUE;
+    // Scheibe liegt nur definiert am Stopp-Sensor in Transportrichtung:
+    // vorwaerts auf Auslauf mit Auslauf-Stopp, rueckwaerts auf Einlauf mit Einlauf-Stopp
+    starrShuttleBasisParameter[wStation].bEintransportGewesen[wWand] :=
+         (     NOT starrShuttleBasisParameter[wStation].bRueckwaertsTransportieren[wWand]
+           AND ( starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eGlastransport = eGlastransport_AufAuslauf )
+           AND starrShuttleBasisParameter[wStation].stMKs.stStationsAufbau.bSensorAuslaufStopp )
+      OR (     starrShuttleBasisParameter[wStation].bRueckwaertsTransportieren[wWand]
+           AND ( starrShuttleBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eGlastransport = eGlastransport_AufEinlauf )
+           AND starrShuttleBasisParameter[wStation].stMKs.stStationsAufbau.bSensorEinlaufStopp );
     AuftragsdatenWand[wStation, wWand] := Eintransport[wStation, wWand].Auftragsdaten;
     Eintransport[wStation, wWand](bpReset := TRUE);
   END_IF

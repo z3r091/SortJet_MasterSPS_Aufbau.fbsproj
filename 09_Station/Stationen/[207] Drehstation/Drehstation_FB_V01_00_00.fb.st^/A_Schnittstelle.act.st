@@ -66,6 +66,10 @@ abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bDrehenArretierungEingefahren :=  Drehen.Arretierung.in_bStatusZylinderEingefahren;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bDrehenArretierungAusgefahren :=  Drehen.Arretierung.in_bStatusZylinderAusgefahren;
 
+// Kippen
+abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].epKippStatus                  :=  Kippen.epKippStatus;
+abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bKippenFehler                 :=  Kippen.bpFehler;
+
 // Querfahrt
 IF BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt THEN
   abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bQuerfahrtFehler              :=  Querfahrt.bpFehler;

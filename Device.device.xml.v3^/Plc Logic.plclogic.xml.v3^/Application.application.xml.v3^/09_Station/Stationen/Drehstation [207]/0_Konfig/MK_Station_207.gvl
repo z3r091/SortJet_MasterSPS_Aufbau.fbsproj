@@ -47,6 +47,7 @@ VAR_GLOBAL
                                                                       ),   
                                                  // stAnlegetisch
                                                  // stEckuebergabe
+                                                 stDrehstation   :=  ( bDrehpositionenVomMMI                     := FALSE ), // FALSE: Drehpositionen aus der Stationskonfiguration [aEintransporte/aAustransporte]
                                                  bVorAbKomponentenAnsteuerung              := FALSE,                         // VorAbKomponentenAnsteuerung Auftraege werden bearbeitet
                                                  bVerstellungEinAusGefahrenLogikDrehen     := FALSE,                         // Verstellung: Logik ein-/ausgefahren gedreht
                                                  bLangsamfahrtNockenQuerfahrtAktivieren    := FALSE,                         // Querfahrt: Langsamfahrt-Nocken auswerten

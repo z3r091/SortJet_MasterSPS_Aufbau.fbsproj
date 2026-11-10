@@ -2099,7 +2099,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">390574330</Single>
-							<Single Name="Value" Type="string">Kippen 86°</Single>
+							<Single Name="Value" Type="string">Kippen 84°</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">2340015797</Single>

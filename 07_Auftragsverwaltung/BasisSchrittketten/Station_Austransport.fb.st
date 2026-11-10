@@ -231,9 +231,14 @@ IF Auftragsdaten.wAuftrag = eStation_Austransport THEN
       ELSE
         starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eDickenverstellung := eZylinderStellung29mm;
       END_IF
-      starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition := REAL_TO_WORD(Auftragsdaten.rStationsZielposition);
+      IF starrStationBasisParameter[wStation].stMKs.stStationsOptionen.stDrehstation.bDrehpositionenVomMMI THEN
+        starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition                 := REAL_TO_WORD(Auftragsdaten.rStationsZielposition);
+        starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition_NachAustransport := REAL_TO_WORD(Auftragsdaten.rTransferposition2);
+      ELSE
+        starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition                 := starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.Drehen[Auftragsdaten.wTransferstationsNr1];
+        starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition_NachAustransport := starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.DrehenNachAustransport[Auftragsdaten.wTransferstationsNr1];
+      END_IF
       starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport := 0;
-      starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition_NachAustransport := REAL_TO_WORD(Auftragsdaten.rTransferposition2);
       starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eGlastransport := starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.Glastransport[Auftragsdaten.wTransferstationsNr1];
       starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eHub                  := starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.Hub[Auftragsdaten.wTransferstationsNr1];
       starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eHub_NachEintransport := 0;

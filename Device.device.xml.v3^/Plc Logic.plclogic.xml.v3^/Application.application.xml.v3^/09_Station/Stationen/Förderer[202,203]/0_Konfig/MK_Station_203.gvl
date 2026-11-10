@@ -47,6 +47,7 @@ VAR_GLOBAL
                                                                       ),   
                                                  // stAnlegetisch
                                                  // stEckuebergabe
+                                                 // stDrehstation
                                                  bVorAbKomponentenAnsteuerung              := FALSE,                         // VorAbKomponentenAnsteuerung Auftraege werden bearbeitet
                                                  bVerstellungEinAusGefahrenLogikDrehen     := FALSE,                         // Verstellung: Logik ein-/ausgefahren gedreht
                                                  bLangsamfahrtNockenQuerfahrtAktivieren    := FALSE,                         // Querfahrt: Langsamfahrt-Nocken auswerten

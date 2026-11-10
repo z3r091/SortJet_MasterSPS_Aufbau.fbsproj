@@ -52,4 +52,11 @@ starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintranspo
 starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Kippen[cSTATION_202]                   := eKippen_Position_84Grad;
 starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.KippenNachEintransport[cSTATION_202]   := eKippen_Default;
 starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_202] := TRUE;
+
+// Station 207
+starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Station[cSTATION_207]                  := Rueckwaertig;
+starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[cSTATION_207]            := eGlastransport_AufAuslaufVorab;
+starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Kippen[cSTATION_207]                   := eKippen_Position_90Grad;
+starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.KippenNachEintransport[cSTATION_207]   := eKippen_Position_90Grad;
+starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_207] := TRUE;
 END_ACTION

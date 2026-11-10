@@ -51,6 +51,7 @@ VAR_GLOBAL
                                                                        bAnlegetischMitEintransportVorgaenger     := FALSE    // VSG: Station entscheidet selbst zwischen Eintransport vom Vorgaenger und Anlegen
                                                                       ),
                                                  // stEckuebergabe
+                                                 // stDrehstation
                                                  bVorAbKomponentenAnsteuerung              := FALSE,                         // VorAbKomponentenAnsteuerung Auftraege werden bearbeitet
                                                  bVerstellungEinAusGefahrenLogikDrehen     := FALSE,                         // Verstellung: Logik ein-/ausgefahren gedreht
                                                  bLangsamfahrtNockenQuerfahrtAktivieren    := FALSE,                         // Querfahrt: Langsamfahrt-Nocken auswerten
