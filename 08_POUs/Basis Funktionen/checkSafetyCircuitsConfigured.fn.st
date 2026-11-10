@@ -1,10 +1,7 @@
 (* METADATA
 {
 	"v3Meta": {
-		"objectGuid": "dcded4cc-d766-4c84-a212-2fe6cc93f6db",
-		"properties": {
-			"_3S.CoDeSys.CFCObject.CFCProperty": "<?xml version=\"1.0\" encoding=\"utf-8\"?><Single xml:space=\"preserve\" Type=\"{97c1f2ea-5995-48b9-abd5-a3ab983c5def}\" Method=\"IArchivable\"><Single Name=\"UseExplicitExecutionOrder\" Type=\"bool\">False</Single></Single>"
-		}
+		"objectGuid": "dcded4cc-d766-4c84-a212-2fe6cc93f6db"
 	}
 }
 *)

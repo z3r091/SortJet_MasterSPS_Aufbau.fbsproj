@@ -32,7 +32,7 @@ EV_ToPLC_b203_geschlossen : BOOL;
 EV_ToPLC_b207_geschlossen : BOOL;
 END_VAR
 </Single>
-			<Null Name="LineInfoPersistence" />
+			<Single Name="LineInfoPersistence" Type="string">84198106-8635-47b3-9bcb-4d82a47346f1_Decl_LineIds</Single>
 		</Single>
 	</Single>
 	<Single Name="DeviceObject" Type="{5861cd6f-95ff-4614-b597-9845cc9988e7}" Method="IArchivable">

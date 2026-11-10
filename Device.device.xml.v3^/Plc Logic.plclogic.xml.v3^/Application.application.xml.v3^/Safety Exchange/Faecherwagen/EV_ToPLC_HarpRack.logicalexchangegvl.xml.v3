@@ -33,7 +33,7 @@ EV_ToPLC_bRolltor_Station304_Geschlossen : BOOL;
 EV_ToPLC_bRolltor_Station305_Geschlossen : BOOL;
 END_VAR
 </Single>
-			<Null Name="LineInfoPersistence" />
+			<Single Name="LineInfoPersistence" Type="string">7cd905ab-05fb-4bea-bf61-409472d68c7d_Decl_LineIds</Single>
 		</Single>
 	</Single>
 	<Single Name="DeviceObject" Type="{5861cd6f-95ff-4614-b597-9845cc9988e7}" Method="IArchivable">
