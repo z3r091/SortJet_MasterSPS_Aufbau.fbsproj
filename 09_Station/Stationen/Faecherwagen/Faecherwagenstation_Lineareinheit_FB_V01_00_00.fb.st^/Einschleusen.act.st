@@ -83,14 +83,14 @@ THEN
       // ---------------------------------------------------------------------------------------
 
       eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Warte_Auf_Faecherwagen_In_Box_100;
-      
+
       IF ( tonlFWInBox.Q ) THEN
         (* Hinweis:
            - Nachricht ans HMI
         *)
         wSps2FaecherwagenStationNr := BasisStationsParameter.stMKs.stStationsNummern.NummerSPS;
         MsgToMmi( auftragsnr_w := SB0_SPS_RACKLOGIN );
-        
+
         steplEinschleusen := STEP_105_E;
       END_IF
 
@@ -134,7 +134,7 @@ THEN
 
       IF ( blGegenhalterSchliessenDone )
       THEN
-      
+
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_RFID_Auslesen_Gegenhalter_Schliessen_115;
 
         blRFID_Auslesen := TRUE;
@@ -158,9 +158,9 @@ THEN
       tonlTimeoutReadRFID(IN := TRUE, PT := T#5S); // Timer falls der Chip nicht ausgelesen werden kann
 
       blRFID_Auslesen := TRUE;
-        
+
       IF ( blRFID_DataValid ) THEN
-   
+
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Rolltor_Oeffnen_120;
 
         wlRFID_NummerMerker   := wlRFID_Nummer;//Merken der Ausgelesenen RFID-Nummer um sie später ans MMI zu schicken
@@ -168,7 +168,7 @@ THEN
         blRFID_Auslesen       := FALSE;
         blRolltorAuf          := TRUE;
         steplEinschleusen     := STEP_120_E;
-    
+
       ELSIF tonlTimeoutReadRFID.Q AND BasisStationsParameter.stMKs.stStationsAufbau.bRFID THEN
 
         blRFID_Auslesen := FALSE;
@@ -301,7 +301,7 @@ THEN
       // - Sobald die Lineareinheit hinten angekommen ist wird der Greifer geöffnet, damit wir erneut nach vorne fahren können
       //
       // ---------------------------------------------------------------------------------------
-      
+
       IF ( blLineareinheitZurueckDone ) THEN
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Greifer_Oeffnen_150;
 
@@ -424,7 +424,7 @@ THEN
             wSps2MmiRackPosition := 0;
             wSps2MmiRackNumber   := wlRFID_NummerMerker;
             MsgToMmi(auftragsnr_w := SB0_SPS_RACKONLOADINGSTATION );
-    
+
             eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Abgeschlossen_InBeladeposition;
 
             steplEinschleusen := STEP_1000_E;
@@ -436,15 +436,15 @@ THEN
           wSps2MmiRackPosition := 0;
           wSps2MmiRackNumber   := 0;
           MsgToMmi(auftragsnr_w := SB0_SPS_RACKONLOADINGSTATION );
-    
+
           eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Abgeschlossen_InBeladeposition;
 
           steplEinschleusen := STEP_1000_E;
 
         END_IF
-        
+
       ELSE
-        
+
         eLetzterStatus := eLetzter_FW_Status.eEinschleusen_Fehler;
 
         wpFehlerNr := cMELDUNG_FAECHERWAGEN_NICHT_IN_LADEPOSITION;
@@ -472,7 +472,7 @@ THEN
 
       blGegenhalterOeffnen := TRUE;
       IF blGegenhalterOeffnenDone THEN
-      
+
         eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Abgeschlossen_InGrundstellung;
         blGegenhalterOeffnen := FALSE;
         steplEinschleusen := STEP_1000_E;

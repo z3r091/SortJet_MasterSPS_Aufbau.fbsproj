@@ -46,7 +46,7 @@ IF bpStarteFaecherwagensuche THEN
 
     // FÄCHERWAGENSUCHE ==============================
     STEP_10_E:
-      // FW mit FaecherwagenSuchSensor suchen 
+      // FW mit FaecherwagenSuchSensor suchen
       rtlRackPositionGefunden( CLK:= in_bFaecherwagenSuchSensor );
       IF rtlRackPositionGefunden.Q THEN
 

@@ -11,9 +11,9 @@ VAR_INPUT
   // BOOLEAN
   bpAktivieren                                       : BOOL;
   bpEintransport                                     : BOOL;
-  bpAustransport                                     : BOOL; 
-  bpVortransport                                     : BOOL; 
-  bpFahreReferenz                                    : BOOL; 
+  bpAustransport                                     : BOOL;
+  bpVortransport                                     : BOOL;
+  bpFahreReferenz                                    : BOOL;
   bpAutomatikAktiv                                   : BOOL;
   bpSlaveKopplung                                    : BOOL;
   bpCheck                                            : BOOL;
@@ -55,10 +55,10 @@ VAR_INPUT
   bpOptionMasterSlaveAustransport                    : BOOL;
   bpOptionTransfershuttleFaecherwagenKurzeScheibenTieferEintransportieren : BOOL; // Debug-Funktion: wird nur von Hand (Online) gesetzt, kurze Scheiben 150 mm tiefer eintransportieren
 
-  // REAL 
+  // REAL
   rpVorpositionierweg : REAL; // Auftragsdaten: Der Weg der Vorpositioniert werden soll
 
-  // STRUCT 
+  // STRUCT
   InGlasTransportVorgaenger   : Interface_GlasTransport; // STRUKTUR: Informationen ueber den Aus- Ein- Transport der Vorgaengerstation
   InGlasTransportNachfolger   : Interface_GlasTransport; // STRUKTUR: Informationen ueber den Aus- Ein- Transport der Nachfolge- Station
   stpInTransportVerbund       : Interface_TransfershuttleVerbund;
@@ -66,15 +66,15 @@ VAR_INPUT
   pSystemCheckDaten           : Auftragsdaten_ST;        // Hinweis: Daten fuer den SystemCheck
   stMasterSlaveConfig         : MasterSlaveConfig_ST;
   stStationsNummern           : Station_ST;
-  
-  // POINTER 
+
+  // POINTER
   ppParameterBaustein     : REFERENCE TO Parameter_TransfershuttleGlastransport;
   ppAntriebsInformationen : REFERENCE TO AntriebsInformationen;
 
 END_VAR
 VAR_OUTPUT
 
-  // BOOLEAN 
+  // BOOLEAN
   bpDone                                 : BOOL;
   bpFehler                               : BOOL;
   bpAktiv                                : BOOL;
@@ -90,15 +90,15 @@ VAR_OUTPUT
   bpSensorEinlauf                        : BOOL; // Sensorik Ausgang: Setzen der Sensorik fuer die Transportkopplung
   bpSensorAuslauf                        : BOOL; // Sensorik Ausgang: Setzen der Sensorik fuer die Transportkopplung
 
-  // WORD 
+  // WORD
   wpFehlerNr              : Fehlerkonstanten_EN;
   wpAusnahmefehlerTyp     : WORD := WORD#0; // Sensorfehlertyp: 0 = Allgemeiner Fehler / 1 = Einlauf / 2 = Auslauf / 3 = Ein- Aus- Lauf
-  
-  // REAL 
+
+  // REAL
   rpOutGeschwindigkeit   : REAL; // OUT STATUS: Aktuelle Geschwindigkeit
   rpVorpositionierterWeg : REAL; // OUT STATUS: Beschreibt den Weg der Vorpositioniert wurde
 
-  // STRUCT 
+  // STRUCT
   stpOutTransportVerbund : Interface_TransfershuttleVerbund;
 
 END_VAR
@@ -162,23 +162,23 @@ VAR
   ftriglEinlaufsensorBelegt           : F_TRIG; // fallende Flanke: Einlaufsensor wurde angefahren
 
   // TIMER
-  tonlGlastransportOben                             : TON; 
-  tonlAntriebNichtFreigegeben                       : TON; 
-  tonlUeberwachungSensorFreifahren                  : TON; 
+  tonlGlastransportOben                             : TON;
+  tonlAntriebNichtFreigegeben                       : TON;
+  tonlUeberwachungSensorFreifahren                  : TON;
   tonlKontrolleEinlaufOben                          : TON;
   tonlKontrolleEinlaufUnten                         : TON;
   tonlKontrolleAuslaufOben                          : TON;
   tonlKontrolleAuslaufUnten                         : TON;
-  tonlWartenAufAnheben                              : TON; 
-  tonlWartenAufSenken                               : TON; 
-  tonlEinlaufWirklichFrei                           : TON; 
-  tonlEinlaufsensorTesten                           : TON; 
-  tonlAuslaufsensorTesten                           : TON; 
-  tonlMaxWarteAufResetErfolgreich                   : TON; 
-  tonlUberwachungSlaveAktiv                         : TON; 
-  toflEinlaufsensor                                 : TOF; 
-  toflAuslaufsensor                                 : TOF; 
-  toflAutoAbschaltung                               : TOF; 
+  tonlWartenAufAnheben                              : TON;
+  tonlWartenAufSenken                               : TON;
+  tonlEinlaufWirklichFrei                           : TON;
+  tonlEinlaufsensorTesten                           : TON;
+  tonlAuslaufsensorTesten                           : TON;
+  tonlMaxWarteAufResetErfolgreich                   : TON;
+  tonlUberwachungSlaveAktiv                         : TON;
+  toflEinlaufsensor                                 : TOF;
+  toflAuslaufsensor                                 : TOF;
+  toflAutoAbschaltung                               : TOF;
   toflAntriebLaeuft                                 : TOF;
 
   // Antrieb

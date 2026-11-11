@@ -7,14 +7,14 @@
 *)
 FUNCTION_BLOCK Station_Glaslaengenmessung
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
   bpAbbruchAnlegeauftrag : BOOL;
-  
+
   // WORD
   wStation               : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
@@ -27,7 +27,7 @@ VAR_OUTPUT
 
 END_VAR
 VAR
-    
+
   // STEPS
   steplSchritt           : STEPS_TE;
 
@@ -62,7 +62,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Messfahrt ) THEN
       IF ( Auftragsdaten.rAuftragsLaenge > ( starrStationBasisParameter[wStation].stParameterStationskomponenten.stGlastransport[1].rMessstrecke - rgMKWegAnlegetischUebergroesseScheibeBerechnen ) ) THEN
         starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] := eScheibe_Maximal;
       ELSE
-        starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] := eScheibe_Default;    
+        starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] := eScheibe_Default;
       END_IF
 
       steplSchritt := STEP_20_E;
@@ -167,7 +167,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Messfahrt ) THEN
         CASE starrStationBasisParameter[wStation].wGlasTyp[cWAND_1] OF
 
           cMAXSCHEIBE:
-            Job_Stationen.abpResetTransportkopplung[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wNachfolgerStation, cWAND_1] := TRUE; 
+            Job_Stationen.abpResetTransportkopplung[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wNachfolgerStation, cWAND_1] := TRUE;
             Job_Stationen.AuftragsdatenWand[starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.wNachfolgerStation, cWAND_1].wAuftrag := eStation_Kein_Auftrag;
 
         END_CASE
@@ -187,7 +187,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Messfahrt ) THEN
          - Auftragsstatus zuweisen
       *)
       bpDone := TRUE;
-      
+
       Auftragsdaten.wAuftrag := eStation_Warte_Auf_Austransport;
 
   // MESSFAHRT ==================================================
@@ -199,6 +199,6 @@ IF bpReset THEN
   bpReset := FALSE;
   bpDone := FALSE;
   starrStationBasisParameter[wStation].bGlaslaengenmessung := FALSE;
-  steplSchritt := STEP_0_E;    
+  steplSchritt := STEP_0_E;
 END_IF
 END_FUNCTION_BLOCK

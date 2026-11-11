@@ -17,7 +17,7 @@ VAR_INPUT
   bpIOsBoschDrive               : BOOL;
 
   // EINGÄNGE
-  bpMotorschutzschalter_OK  : BOOL; 
+  bpMotorschutzschalter_OK  : BOOL;
   bpDrehzahlErreicht        : BOOL := TRUE; // Sanftanlauf: Drehzahl erreicht (ohne Sanftanlauf TRUE lassen)
 
   // DROSSELKLAPPE
@@ -44,27 +44,27 @@ VAR_OUTPUT
   bpStarteGeblaese         : BOOL; // Geblaese wird angesteuert (Schuetz)
   bpDrosselklappeOeffnen   : BOOL; // Drosselklappe oeffnen: angefordert und Geblaese laeuft
 
-  // WORD 
+  // WORD
   wpFehlerNr : Fehlerkonstanten_EN;
 
 END_VAR
 VAR
 
-  // BOOLEAN 
+  // BOOLEAN
   blErsterZyklus           : BOOL := TRUE; // Initialisierung
   blMeldungAbgesetzt       : BOOL := FALSE;
   blMotorschutzschalter_OK : BOOL;
 
-  // ARRAY 
+  // ARRAY
   awlErrorAdditional : ARRAY [0..25]  OF WORD;
 
   // STEPS
   steplStart      : Steps_TE;
 
   // TIMER
-  tonlStartGeblaese          : TON; 
-  tonlWarteAufGeblaeseLaeuft : TON; 
-  toflWarteAufWiederAnlauf   : TOF; 
+  tonlStartGeblaese          : TON;
+  tonlWarteAufGeblaeseLaeuft : TON;
+  toflWarteAufWiederAnlauf   : TOF;
   toflMotorschutz            : TOF;
   toflEnergiesparModus       : TOF; // Energiesparmodus: Geblaese nach der Abschaltzeit ohne Aktivitaet aus
   tonlMindestlaufzeit        : TON;
@@ -82,16 +82,16 @@ END_VAR
 VAR
 
   // HARDWARE EINGAENGE
-  in_bMotorschutzschalter_OK    AT %I* : BOOL; 
-  
-  // HARDWARE AUSGAENGE 
+  in_bMotorschutzschalter_OK    AT %I* : BOOL;
+
+  // HARDWARE AUSGAENGE
   out_bStarteGeblaese           AT %Q* : BOOL;
 
 END_VAR
 
 VAR CONSTANT
 
-  // TIME 
+  // TIME
   WARTEZEIT_BIS_WIEDERANLAUF          : TIME := T#7000MS;
   WARTEZEIT_BIS_GEBLAESE_HOCHGELAUFEN : TIME := T#2000MS;
 

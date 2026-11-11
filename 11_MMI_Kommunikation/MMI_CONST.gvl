@@ -36,7 +36,7 @@ VAR_GLOBAL CONSTANT
   SB0_SPS_RACKLOGIN                                  : WORD := 38; // Fächerwagen auf Einschleusestation angedockt
   SB0_SPS_STATUSRACKSTATION                          : WORD := 39; // Antwort auf die Nachricht: SB0_SPS_STATUSRACKSTATION
   SB0_SPS_SETSTATUSLOADINGSTATIONS                   : WORD := 44; // Antwort auf REQUESTSTATUSLOADINGSTATIONS mit 1 = frei; 2 = belegt; 0 = ungültig
-  SB0_SPS_SHEETREMOVEDAPPROVALWALL                   : WORD := 45; 
+  SB0_SPS_SHEETREMOVEDAPPROVALWALL                   : WORD := 45;
   SB0_SPS_SHEETONINPUTTABLE                          : WORD := 46;
   SB0_SPS_RACKPOSITION                               : WORD := 48;
   SB0_SPS_TURNSTATIONPOSITION                        : WORD := 49;
@@ -111,7 +111,7 @@ VAR_GLOBAL CONSTANT
   SB0_MMI_DRIVEOVERRIDE                              : WORD := 102;
   SB0_MMI_START_BELT_CLEANING                        : WORD := 103;
   SB0_MMI_CARRIER_POSITIONING                        : WORD := 104;
-  SB0_MMI_TS_REPOSITIONING_LITES                     : WORD := 110;  
+  SB0_MMI_TS_REPOSITIONING_LITES                     : WORD := 110;
   SB0_MMI_ANFORDERUNG_PUFFER_AUSFAHREN               : WORD := 111;
   SB0_MMI_ANFORDERUNG_PUFFER_EINFAHREN               : WORD := 112;
 

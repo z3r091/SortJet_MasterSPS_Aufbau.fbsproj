@@ -19,7 +19,7 @@ IF ( bpReset ) THEN
       wpFehlerNr := cMELDUNG_NULL;
       bpFehler   := FALSE;
       out_bHubAbSetzen  := FALSE;
-      out_bHubAufSetzen := FALSE; 
+      out_bHubAufSetzen := FALSE;
       out_bReset        := TRUE;
 
       IF ( NOT in_bMotorstarter_OK ) THEN
@@ -81,7 +81,7 @@ IF ( bpReset ) THEN
 
   // RESET =====================
   END_CASE
-  
+
 ELSE
 
   IF ( steplReset > STEP_0_E ) THEN

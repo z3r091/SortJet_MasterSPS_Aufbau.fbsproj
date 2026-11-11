@@ -50,7 +50,7 @@ IF ( M_SB0_MMI_SHUTTLEVORABPOSITIONIERUNG ) THEN
       Job_Stationen.AuftragsSpeicherStation[tMmi2SpsInfo.wVorabStationsNr].NeuerAuftrag.pPositionierAuftrag.rNennstromKonstantfahrt            := tMmi2SpsInfo.rNennstromKonstantfahrt;                                                // Hinweis: Nennstrom (A) in derKonstantfahrt
       Job_Stationen.AuftragsSpeicherStation[tMmi2SpsInfo.wVorabStationsNr].NeuerAuftrag.pPositionierAuftrag.rZeitintervalBeschleunigungsphase  := tMmi2SpsInfo.rZeitintervalBeschleunigungsphase;                                      // Hinweis: Zeit / Dauer der Beschleunigungsphase
       Job_Stationen.AuftragsSpeicherStation[tMmi2SpsInfo.wVorabStationsNr].NeuerAuftrag.pPositionierAuftrag.wAuftragstyp                       := tMmi2SpsInfo.wVorabAuftragstyp;                                                      // Hinweis: Zeit / Dauer der Beschleunigungsphase
-                                                                         
+
       Job_Stationen.AuftragsSpeicherStation[tMmi2SpsInfo.wVorabStationsNr].NeuerAuftrag.wAuftrag := eStation_Vorabpositionierung;
       Job_Stationen.AuftragsSpeicherStation[tMmi2SpsInfo.wVorabStationsNr](bpNeuerAuftrag := TRUE);
 

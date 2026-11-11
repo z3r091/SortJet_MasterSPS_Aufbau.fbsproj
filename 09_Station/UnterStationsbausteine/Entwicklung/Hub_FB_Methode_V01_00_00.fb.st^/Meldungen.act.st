@@ -18,7 +18,7 @@ IF (bpStartHubAb OR bpStartHubAuf) THEN
     bpStartHubAb  := FALSE;
     steplHubAb := STEP_900_E;
   END_IF
-  
+
   IF ( bpSensorAuslauf ) THEN
     wpFehlerNr := cMELDUNG_HUB_SENSOR_AUSLAUF_BELEGT;
     bpFehler      := TRUE;

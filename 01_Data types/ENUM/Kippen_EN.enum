@@ -8,11 +8,11 @@
 TYPE Kippen_EN :
 (
    eKippen_Fehler             := 999,
-   eKippen_Default            :=   0, 
-   eKippen_Position_0Grad     :=   1, 
+   eKippen_Default            :=   0,
+   eKippen_Position_0Grad     :=   1,
    eKippen_Position_84Grad    :=   2,
    eKippen_Position_90Grad    :=   3,
-   eKippen_Position_96Grad    :=   4, 
-   eKippen_Position_88_5Grad  :=   5  
+   eKippen_Position_96Grad    :=   4,
+   eKippen_Position_88_5Grad  :=   5
 ) WORD;
 END_TYPE

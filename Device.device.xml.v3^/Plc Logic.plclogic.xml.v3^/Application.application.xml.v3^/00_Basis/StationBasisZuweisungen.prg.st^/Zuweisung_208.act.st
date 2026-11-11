@@ -9,13 +9,13 @@ ACTION Zuweisung_208
 // Zuweisung der MK's
 starrStationBasisParameter[cSTATION_208].stMKs REF= apgMKStation208;
 
-// Antriebsparameter zuweisen  
+// Antriebsparameter zuweisen
 starrStationBasisParameter[cSTATION_208].stAntriebsparameter.stGlastransport               REF= apgInfoStation208Glastransport;
 starrStationBasisParameter[cSTATION_208].stAntriebsparameter.stGlastransportSlave          REF= apgInfoStation208GlastransportSlave;
 starrStationBasisParameter[cSTATION_208].stAntriebsparameter.stMessachse                   REF= apgInfoStation208Messachse;
 starrStationBasisParameter[cSTATION_208].stAntriebsparameter.stKippen                      REF= apgInfoStation208Kippen;
 
-// Parameter der Stationskomponenten zuweisen  
+// Parameter der Stationskomponenten zuweisen
 starrStationBasisParameter[cSTATION_208].stParameterStationskomponenten.stGlastransport    REF= apgMKStation208Glastransport;
 starrStationBasisParameter[cSTATION_208].stParameterStationskomponenten.stMessachse        REF= apgMKStation208Messachse;
 starrStationBasisParameter[cSTATION_208].stParameterStationskomponenten.stKippen           REF= apgMKStation208Kippen;

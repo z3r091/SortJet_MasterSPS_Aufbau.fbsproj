@@ -20,8 +20,8 @@ IF ( blBetriebsartHand ) THEN
   // Handfunktion:
   //   - Gebläse an / aus
   // Geblaese: Handfunktion im Geblaese-Baustein (bpHandEin, Aktion A_Geblaese)
-  
-  
+
+
   // Glastranspoert
   Glastransport.bpHandfahrenPlus  := (         ( dwlHandfunktionen.1 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] )
                                        AND NOT ( dwlHandfunktionen.2 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] ) );  // Bit 1 = Glastransport / Glastransport vor
@@ -46,7 +46,7 @@ IF ( blBetriebsartHand ) THEN
     Kippen.bpPositionieren := FALSE;
   END_IF
 
-  
+
   // Hub
   Hub.bpStartHubAuf   := ( dwlHandfunktionen.5 OR bgVISUHubW1Auf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                          AND NOT ( dwlHandfunktionen.6 OR bgVISUHubW1Ab[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] );
@@ -83,7 +83,7 @@ IF ( blBetriebsartHand ) THEN
     Roellchenleiste.bpStartPneumatik    := FALSE;
 
   END_IF
-  
+
   // Wandverstellung
   IF     ( ( dwlHandfunktionen.14 OR bgVISUGlastransportOeffnungMinimal[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1])
            AND NOT ( dwlHandfunktionen.15 OR bgVISUGlastransportOeffnungMittel[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1])
@@ -114,7 +114,7 @@ IF ( blBetriebsartHand ) THEN
     Wandverstellung.bpStartPneumatik    := FALSE;
 
   END_IF
-  
+
   // Handfunktionen [Querfahrt]:
   Querfahrt.bpReferenz        := ( dwlHandfunktionen.13 OR bgVISUQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                                  AND NOT ( dwlHandfunktionen.11 OR dwlHandfunktionen.12 OR bgVISUQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] OR bgVISUQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] );

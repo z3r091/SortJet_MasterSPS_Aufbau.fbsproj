@@ -16,7 +16,7 @@ END_VAR
 TransferShuttleBetriebsstopAktiv := FALSE;
 
 FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
-  
+
   IF NOT starrTransfershuttleBasisParameter[wlIndex].stMKs.bDeaktivieren THEN
 
     IF StationInAutomatikkreis(starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, eAutomatikkreis) THEN

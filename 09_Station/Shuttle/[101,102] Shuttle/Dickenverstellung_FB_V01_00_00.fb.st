@@ -19,7 +19,7 @@ VAR_INPUT
   bpOption3WegeLogikDrehen                       : BOOL;
   bpOptionRollenleisteSchuetzSchaltungAktivieren : BOOL;
   bpOptionGegenhalterSchuetzSchaltungAktivieren  : BOOL;
-  
+
   // ENUM
   epSollStellung : PneumatikZylinderStatus_EN;
 
@@ -29,7 +29,7 @@ VAR_INPUT
   // POINTER
   ppAntriebsInformationen : REFERENCE TO AntriebsInformationen;
   ppParameterBaustein     : REFERENCE TO Parameter_Dickenverstellung;  // Zeiger auf Parameterfeld
-  
+
 END_VAR
 VAR_OUTPUT
 

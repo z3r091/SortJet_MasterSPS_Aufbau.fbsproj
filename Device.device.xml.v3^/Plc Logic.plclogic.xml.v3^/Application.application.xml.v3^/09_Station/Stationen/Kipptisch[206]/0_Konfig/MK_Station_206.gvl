@@ -33,8 +33,8 @@ VAR_GLOBAL
                                                                      bSystemCheckMitVorgaengerBatchTransport     := FALSE, // derzeit ohne Funktion
                                                                      bSystemCheckMitNachfolgerBatchTransport     := FALSE, // derzeit ohne Funktion
                                                                      bOptionSystemCheckScheibeMittigLegen        := FALSE  // derzeit ohne Funktion
-                                                                    ),  
-                                                                     
+                                                                    ),
+
                                                  // stTransfershuttle
                                                  stGlastransport :=  ( bVortransport                             := FALSE, // Vortransport aktivieren [Bsp.: Nach einem Eintransport mit gesetztem Bit <Letzte Scheibe>]
                                                                        bTransportMasterSlaveEintransport         := FALSE, // derzeit ohne Funktion
@@ -45,7 +45,7 @@ VAR_GLOBAL
                                                                        bMessrichtungNegativ                      := FALSE, // Negative Fahrtrichtung beim Messen
                                                                        bScheibenmessungEintransport              := FALSE, // Scheibenmessung beim Eintransport
                                                                        bScheibenmessungSensorVorabAuslauf        := FALSE  // Scheibenmessung mit SensorVorabAuslauf z.B. Anlegewand
-                                                                      ),   
+                                                                      ),
                                                  // stAnlegetisch
                                                  // stEckuebergabe
                                                  // stDrehstation

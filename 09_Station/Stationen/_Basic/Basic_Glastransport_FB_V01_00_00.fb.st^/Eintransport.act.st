@@ -26,7 +26,7 @@ THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
     steplEintransport := STEP_900_E;
   END_IF
-  
+
   IF ( Antrieb_Slave.bpFehler ) THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT_SLAVE;
     steplEintransport := STEP_900_E;
@@ -75,10 +75,10 @@ THEN
                                                rpGlasstaerke := pAuftrag.rAuftragsDicke ) );
 
       blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
-   
+
       // Zeit für Statistik
       tlWarteZeitAufnahme := TIME();
-      
+
       // Keine Refernezfahrt bei Slave Antrieb
       // Sicherstellen das die Slavekopplung aktiv ist
       IF ( bpOptionSlaveAntrieb ) THEN
@@ -319,7 +319,7 @@ THEN
            Merken das sich noch eine Scheibe auf dem Sensor zum quittieren der Scheibe befindet.
       *)
       IF ( Antrieb.bpDone
-           AND toflEinlaufsensor.Q ) OR ( Antrieb.wpBetriebsart = HANDPLUS AND bpSensorAuslaufVorAb )  
+           AND toflEinlaufsensor.Q ) OR ( Antrieb.wpBetriebsart = HANDPLUS AND bpSensorAuslaufVorAb )
       THEN
         blScheibenMerker := TRUE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -416,16 +416,16 @@ THEN
           steplEintransport := STEP_300_E;
         ELSE
           tonlMaximaleZeitEinlaufsensorFreiFahren ( IN:= FALSE );
-          IF ( bpSensorEinlauf 
-               OR ( bpSensorEinlauf AND InGlasTransportVorgaenger.bAuslaufsensor ) ) 
-             AND bpSensorAuslaufVorab 
+          IF ( bpSensorEinlauf
+               OR ( bpSensorEinlauf AND InGlasTransportVorgaenger.bAuslaufsensor ) )
+             AND bpSensorAuslaufVorab
           THEN
             bpUebergrosseScheibeUebergang := TRUE;
             IF blScheibenMerker THEN
-              bprtScheibe := TRUE; 
+              bprtScheibe := TRUE;
               blScheibenMerker := FALSE;
             END_IF
-            steplEintransport := STEP_1000_E; 
+            steplEintransport := STEP_1000_E;
           ELSE
             steplEintransport := STEP_200_E;
           END_IF
@@ -534,7 +534,7 @@ THEN
       THEN
 
         IF blScheibenMerker THEN
-          bprtScheibe := TRUE; 
+          bprtScheibe := TRUE;
           blScheibenMerker := FALSE;
         END_IF
 

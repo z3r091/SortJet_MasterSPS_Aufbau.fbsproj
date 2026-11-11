@@ -13,7 +13,7 @@ ACTION Meldungen
 
 // WatchIO's
 wlWatchIONachrichtenNummer := BasisStationsParameter.stMKs.wMeldungsNummer;
-  
+
 // Vermeiden von doppelten Fehlermeldungen beim wechsel von <Automatik> in <Hand>
 IF (  blBetriebsartAutomatik
      AND BasisStationsParameter.bFehler )

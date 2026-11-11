@@ -17,7 +17,7 @@ IF ( blBetriebsartReferenz ) THEN
     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
     steplReferenz := STEP_900_E;
   END_IF
-  
+
   IF ( Querfahrt.bpFehler ) THEN
     Querfahrt.bpReferenz := FALSE;
     BasisStationsParameter.wFehlerNummer := Querfahrt.wpFehlerNr;

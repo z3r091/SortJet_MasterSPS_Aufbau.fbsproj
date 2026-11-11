@@ -5,7 +5,7 @@
 	}
 }
 *)
-// {attribute 'qualified_only'} 
+// {attribute 'qualified_only'}
 TYPE AntriebsBetriebsart_EN :
 (
   KEINE_FUNKTION               := 2#0000000000000000,

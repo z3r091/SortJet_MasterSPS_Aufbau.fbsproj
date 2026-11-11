@@ -10,7 +10,7 @@ ACTION Gegenhalter
 // Gegenhalter AB => FUER MULTIBELADUNG
 //-------------------------------------------------------------------------------------------------
 
-IF ( blGegenhalterOeffnen 
+IF ( blGegenhalterOeffnen
    //  AND bpUntergestellErkannt //safety eingang
    // AND NOT in_bFaecherwagenNichtInPos // Gestell ist auf dem Wagen
    (*AND BasisStationsParameter.bFreigabe*) )
@@ -93,7 +93,7 @@ END_IF
 // Gegenhalter AUF => FUER MULTIBELADUNG
 //-------------------------------------------------------------------------------------------------
 
-IF blGegenhalterSchliessen 
+IF blGegenhalterSchliessen
 // AND BasisStationsParameter.bFreigabe
 //  AND bpUntergestellErkannt //safety eingang
 // AND NOT in_bFaecherwagenNichtInPos // Gestell ist auf dem Wagen

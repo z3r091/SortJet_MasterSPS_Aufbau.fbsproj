@@ -18,8 +18,8 @@ IF( bpPositionierung ) THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_MESSACHSE;
     steplPositionieren := STEP_900_E;
   END_IF
-  
-  
+
+
   CASE steplPositionieren OF
     // POSITIONIEREN ====================
     STEP_0_E:

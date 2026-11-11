@@ -62,8 +62,8 @@ END_IF
 WatchIo( NOT Glastransport.Antrieb.bpLS_150F02_230V AND bgEtherCatOK,                                                               wlWatchIONachrichtenNummer + 0 );
 WatchIo( NOT Glastransport.Antrieb.bpHaupschalter400VEin AND bgEtherCatOK,                                                          wlWatchIONachrichtenNummer + 1 );
 WatchIo( NOT in_bMotorschutzGeblaese_Ok AND BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[cWAND_1],                        wlWatchIONachrichtenNummer + 2 );
-                                                                                                                                    
-// Messache                                                                                                                         
+
+// Messache
 WatchIo( NOT Messachse.Antrieb.bpLS_150F02_230V AND bgEtherCatOK AND BasisStationsParameter.stMKs.stStationsAufbau.bMessachse,      wlWatchIONachrichtenNummer + 3 );
 WatchIo( NOT Messachse.Antrieb.bpHaupschalter400VEin AND bgEtherCatOK AND BasisStationsParameter.stMKs.stStationsAufbau.bMessachse, wlWatchIONachrichtenNummer + 4 );
 WatchIo( NOT Messachse.bpInReferenz AND NOT blBetriebsartReferenz,                                                                  wlWatchIONachrichtenNummer + 5 );

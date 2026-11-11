@@ -11,7 +11,7 @@ ACTION Referenz
 //-------------------------------------------------------------------------------------------------
 // Referenzieren:
 //   - Antriebe referenzieren
-IF ( blBetriebsartReferenz ) THEN  
+IF ( blBetriebsartReferenz ) THEN
 
   // Ausnahmesituation
   IF ( Messachse.bpFehler ) THEN
@@ -19,14 +19,14 @@ IF ( blBetriebsartReferenz ) THEN
     BasisStationsParameter.wFehlerNummer := Messachse.wpFehlerNr;
     steplReferenz := STEP_900_E;
   END_IF
-  
+
   IF ( Glastransport.bpFehler ) THEN
     Glastransport.bpReferenz := FALSE;
     BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
     steplReferenz := STEP_900_E;
   END_IF
 
-  
+
   CASE steplReferenz OF
     // REFERENZ ============================
     STEP_0_E:

@@ -18,7 +18,7 @@ IF ( blBetriebartCheck ) THEN
     steplCheck := STEP_900_E;
   END_IF
 
-  
+
   CASE steplCheck OF
     // SYSTEM CHECK =========================
     STEP_0_E:
@@ -47,14 +47,14 @@ IF ( blBetriebartCheck ) THEN
           THEN
             BasisStationsParameter.bStationBelegt[cWAND_1] := TRUE;
           END_IF
-          
+
           rSps2MmiMessungScheibenlaenge   := -1;
           wSps2MmiMessungStationNummer    := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
           wSps2MmiMessungSlotNummer       := 1;
           iSps2MmiMessungScheibenanzahl   := BOOL_TO_INT(BasisStationsParameter.bStationBelegt[cWAND_1]);
-         
-          MsgToMmi( auftragsnr_w := SB0_SPS_SETSHEETSONSTATION );         
-         
+
+          MsgToMmi( auftragsnr_w := SB0_SPS_SETSHEETSONSTATION );
+
           steplCheck := STEP_800_E;
 
         ELSE

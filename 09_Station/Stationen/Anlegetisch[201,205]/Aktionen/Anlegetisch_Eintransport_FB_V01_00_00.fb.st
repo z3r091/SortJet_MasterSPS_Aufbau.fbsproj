@@ -42,20 +42,20 @@ THEN
     BasisStationsParameter.wFehlerNummer := Hubrahmen.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
-  
+
   IF Anschlag.bpFehler THEN
     Anschlag.bpStartEinfahren := FALSE;
     BasisStationsParameter.wFehlerNummer := Anschlag.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
-  
+
   IF Messachse.bpFehler THEN
     Messachse.bpPositionierung := FALSE;
     BasisStationsParameter.wFehlerNummer := Messachse.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
 
-  
+
   CASE steplAktion OF
     // EINTRANSPORT ==================================
     STEP_0_E:

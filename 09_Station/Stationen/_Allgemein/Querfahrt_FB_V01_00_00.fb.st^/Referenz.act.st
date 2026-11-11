@@ -10,7 +10,7 @@ ACTION Referenz
 // REFERENZ
 //-------------------------------------------------------------------------------------------------
 IF ( bpReferenz ) THEN
-  
+
   // Ausnahmesituation
   IF ( Antrieb.bpFehler ) THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;

@@ -42,7 +42,7 @@ IF ( bpPositionieren ) THEN
     steplPositionieren := STEP_900_E;
   END_IF
 
-  
+
   CASE steplPositionieren OF
     // POSITIONIEREN ===================================
     STEP_0_E:

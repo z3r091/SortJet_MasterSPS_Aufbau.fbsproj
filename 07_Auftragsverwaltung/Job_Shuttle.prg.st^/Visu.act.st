@@ -18,6 +18,6 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
 END_FOR
 
 FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
-  VisuAuftragsdaten[wlIndex].eStation := TO_WORD(AuftragsdatenTransfershuttle[wlIndex].wAuftrag);  
+  VisuAuftragsdaten[wlIndex].eStation := TO_WORD(AuftragsdatenTransfershuttle[wlIndex].wAuftrag);
 END_FOR
 END_ACTION

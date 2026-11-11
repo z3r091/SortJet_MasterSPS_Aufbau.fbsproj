@@ -33,7 +33,7 @@ THEN
 
     // VERFAHREN VORWÄRTS =============================
     STEP_10_E:
-     
+
       tonlTimeoutSensorShutle(IN := NOT in_bKlemmZylinderEingefahren, PT := TIMEOUT_SENSOR); //2min  WatchIO nach 10sec
 
       // Klemmzylinder nur pruefen, wenn er laut MK vorhanden ist (stStationsAufbau.bKlemmzylinder)
@@ -136,7 +136,7 @@ THEN
 
     // VERFAHREN RÜCKWÄRTS =============================
     STEP_10_E:
-     
+
       tonlTimeoutSensorShutle(IN := NOT in_bKlemmZylinderEingefahren, PT := TIMEOUT_SENSOR); //2min  WatchIO nach 10sec
 
       // Klemmzylinder nur pruefen, wenn er laut MK vorhanden ist (stStationsAufbau.bKlemmzylinder)
@@ -161,7 +161,7 @@ THEN
 
         steplLineareinheitZur := STEP_900_E;
       END_IF
-      
+
     // VERFAHREN RÜCKWÄRTS =============================
     STEP_20_E:
       out_bLinearEinheitZurueck := TRUE;
@@ -219,8 +219,8 @@ END_IF
 // MOVEMENT SHUTTLE
 
 IF blLineareinheitShuttle  // Richtung Shuttle
-   AND NOT blLineareinheitVor 
-   AND NOT blLineareinheitZurueck 
+   AND NOT blLineareinheitVor
+   AND NOT blLineareinheitZurueck
    AND BasisStationsParameter.bFreigabe
    AND bpUntergestellErkannt
 THEN
@@ -242,7 +242,7 @@ THEN
 
     // VERFAHREN SHUTTLE =============================
     STEP_10_E:
-     
+
       tonlTimeoutSensorShutle(IN := NOT in_bKlemmZylinderEingefahren, PT := TIMEOUT_SENSOR); //2min  WatchIO nach 10sec
 
       // Klemmzylinder nur pruefen, wenn er laut MK vorhanden ist (stStationsAufbau.bKlemmzylinder)

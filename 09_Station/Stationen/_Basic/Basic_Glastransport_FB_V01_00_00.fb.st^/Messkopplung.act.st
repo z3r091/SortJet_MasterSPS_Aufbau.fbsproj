@@ -19,7 +19,7 @@ THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT_MASTER;
     steplMesskopplung := STEP_900_E;
   END_IF
-  
+
   IF ( Antrieb_Slave.bpFehler ) THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT_SLAVE;
     steplMesskopplung := STEP_900_E;

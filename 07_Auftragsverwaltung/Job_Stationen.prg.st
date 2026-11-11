@@ -46,7 +46,7 @@ VAR
   wlLetzteScheibe,
   wlErsteScheibe : WORD;
 
-  // INT 
+  // INT
   ailScheibenZuQuittierenEintransport        : ARRAY [cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF INT; // Scheibenzaehlung fuer die Quittierung
   ailScheibenZuQuittierenAustransport        : ARRAY [cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF INT; // Scheibenzaehlung fuer die Quittierung
 
@@ -54,7 +54,7 @@ VAR
   rtlFehler          : ARRAY[cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF R_TRIG;
   rtlStartAutomatik  : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF R_TRIG;
 
-  // BAUSTEINE 
+  // BAUSTEINE
   Anlegen            : ARRAY[cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF Station_Anlegen;
   Abnehmen           : ARRAY[cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF Station_Abnehmen;
   Glashoehenmessung  : ARRAY[cERSTE_STATION..cLETZTE_STATION, cWAND_1..cANZAHL_WAENDE] OF Station_Glashoehenmessung;
@@ -97,7 +97,7 @@ FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
       Transportkopplung[wlIndex, wlIndexWand]( bpReset := TRUE );
       Messkopplung[wlIndex, wlIndexWand]( bpReset := TRUE );
       AuftragsdatenWand[wlIndex, wlIndexWand].wAuftrag := eStation_Kein_Auftrag;
-    END_IF  
+    END_IF
   END_FOR
 END_FOR
 

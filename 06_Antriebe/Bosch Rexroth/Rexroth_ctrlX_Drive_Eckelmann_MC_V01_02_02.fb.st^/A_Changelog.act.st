@@ -99,7 +99,7 @@ ACTION A_Changelog
   - Taktzeitoptimierung: Stillstandsposition nur bei aktiver Software-Endschalter-Bremswegueberwachung berechnen
   - Taktzeitoptimierung: MC_ReadAxisError nur im ErrorStop und einmalig zum Deaktivieren aufrufen
   - S277 Bit 12 wird geprüft, mit Fehlermeldung wenn nicht = 1
-  - Bei aktivierter Langsamfahrtnocke wird nicht auf Langsame Geschwindigkeit gestellt, wenn die Achse beim belegen der Nocke/Laser gerade am Verzögern ist. 
+  - Bei aktivierter Langsamfahrtnocke wird nicht auf Langsame Geschwindigkeit gestellt, wenn die Achse beim belegen der Nocke/Laser gerade am Verzögern ist.
      Würden wir während der Verzögerung die Geschwindigkeit reduzieren, würde der Verfahrbefehl abgebrochen und neu geschrieben werden in den MotionKernel.
      Dabei verlieren wir Zeit und die Achse würde ihre Zielposition überfahren.
   - Restweg positionierung kann nun auch auf Achsen Restweg fahren, die per wpSlave angegeben werden. Z. b. Greifer auf Riemen-Sensorik (Sensor 6-9)

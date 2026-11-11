@@ -7,13 +7,13 @@
 *)
 FUNCTION_BLOCK Station_Abnehmen
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
-  
+
   // WORD
   wStation               : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
@@ -29,7 +29,7 @@ VAR
 
   // INT
   ilScheibenZuQuittieren :  INT;
-  
+
   // STEPS
   steplSchritt           : STEPS_TE;
 

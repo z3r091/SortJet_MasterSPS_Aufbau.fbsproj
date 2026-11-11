@@ -7,13 +7,13 @@
 *)
 FUNCTION_BLOCK TS_Vortransport
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
-  
+
   // WORD
   wStation               : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
@@ -26,7 +26,7 @@ VAR_OUTPUT
 
 END_VAR
 VAR
-     
+
   // WORD
   wlVerbundStation       : WORD;
 

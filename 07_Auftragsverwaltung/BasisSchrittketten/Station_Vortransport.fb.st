@@ -7,14 +7,14 @@
 *)
 FUNCTION_BLOCK Station_Vortransport
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
-  
+
   // WORD
   wStation               : WORD;
   wWand                  : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
@@ -27,7 +27,7 @@ VAR_OUTPUT
 
 END_VAR
 VAR
-    
+
   // STEPS
   steplSchritt           : STEPS_TE;
 
@@ -43,13 +43,13 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vortransport ) THEN
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
       *)
-      
+
       IF checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation]) THEN
         steplSchritt := STEP_10_E;
       END_IF
 
     // EINTRANSPORT ==================================================
-    STEP_10_E:  
+    STEP_10_E:
       (* Hinweis:
          - Vortransport starten
       *)

@@ -16,11 +16,11 @@ bpSlave := EtherCAT_Master.FirstSlave;
 blECatOK := TRUE;
 WHILE(bpSlave <> 0)
 DO
-  blECatOK := blECatOK 
+  blECatOK := blECatOK
               AND (    bpSlave^.wState = 8
                     OR bpSlave^.IsConfigAsOptional  );
   bpSlave := bpSlave^.NextInstance;
-  
+
 END_WHILE
 
 bgEtherCatOK := blECatOK AND NOT EtherCAT_Master.xNeedsRestart AND NOT EtherCAT_Master.xRestart;

@@ -193,7 +193,7 @@ THEN
 
       // Master-Slave Austransport
       IF bpOptionMasterSlaveTransport THEN
-        
+
         Antrieb.wpMaster := InGlasTransportVorgaenger.wAchsID;
 
         // Wenn der Vorgänger "Rückwärtig" fährt, darf das Shuttle nicht "invertiert" gekoppelt werdem, da es sonst in der falsche Richtung fährt
@@ -202,13 +202,13 @@ THEN
         ELSE
           Antrieb.wpBetriebsart := INVERTIERTER_SYNC_AUF_MASTER;
         END_IF
-        
+
         IF ( Antrieb.bpDone ) THEN
           bpSlaveAktiv := TRUE;
           bpOutBereitZumAustransport := TRUE;
           steplAustransportRueckwaertig := STEP_240_E;
         END_IF
-      
+
       // Austransport Hand-Minus
       ELSE
 
@@ -216,14 +216,14 @@ THEN
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
         Antrieb.wpBetriebsart     := HANDMINUS;
-        
+
         bpOutBereitZumAustransport := TRUE;
-        
+
         steplAustransportRueckwaertig := STEP_210_E;
-        
+
       END_IF
-        
-        
+
+
     // AUSTRANSPORT ====================================
     STEP_210_E:
       bprtScheibe := FALSE;
@@ -273,9 +273,9 @@ THEN
 
 
     // AUSTRANSPORT ====================================
-    STEP_240_E:      
+    STEP_240_E:
       bprtScheibe := FALSE;
-      
+
       IF ( bpSensorEinlaufStopp ) THEN
         steplAustransportRueckwaertig := STEP_250_E;
       END_IF
@@ -290,7 +290,7 @@ THEN
       END_IF
 
     // AUSTRANSPORT ====================================
-    STEP_250_E:      
+    STEP_250_E:
       (* Hinweis:
          - Scheibenzaehler
       *)
@@ -317,7 +317,7 @@ THEN
 
       END_IF
 
-    
+
     // AUSTRANSPORT ====================================
     STEP_280_E:
       bprtScheibe := FALSE;
@@ -333,9 +333,9 @@ THEN
           steplAustransportRueckwaertig := STEP_300_E;
         END_IF
 
-      END_IF    
-    
-    
+      END_IF
+
+
     // AUSTRANSPORT ====================================
     STEP_300_E:
       // ---------------------------------------------------------------------------------------

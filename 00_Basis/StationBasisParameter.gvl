@@ -17,7 +17,7 @@ VAR_GLOBAL
   starrFaecherwagenBasisParameter              : ARRAY [cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR]  OF StationBasisParameter_ST;
   starrFremdanlageAuslaufStationBasisParameter : ARRAY [cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF]          OF StationBasisParameter_ST;
   starrFremdanlageEinlaufStationBasisParameter : ARRAY [cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF]          OF StationBasisParameter_ST;
-  
+
 END_VAR
 
 END_NAMESPACE

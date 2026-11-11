@@ -12,9 +12,9 @@ ACTION Hornsignal
 (* Hinweis:
    - Akustisches Signal wenn ein Fehler in der Einlauf- Strecke anliegt
 *)
-     
+
 FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
-  
+
   rtlFehlerAutomatikkreis[wlIndex]( CLK := Stop_Baustein.abpBetriebsstop[wlIndex] );
 
   IF (  rtlFehlerAutomatikkreis[wlIndex].Q ) THEN
@@ -23,8 +23,8 @@ FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
       Horn_AK[wlIndex,wlSubIndex].tpHornZeit       := T#5S;
       Horn_AK[wlIndex,wlSubIndex].bpHornAktivieren := TRUE;
     END_FOR
-    
+
   END_IF
-  
+
 END_FOR
 END_ACTION

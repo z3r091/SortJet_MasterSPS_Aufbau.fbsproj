@@ -9,7 +9,7 @@
 NAMESPACE MMI_Vars
 VAR_GLOBAL
   bgMMIOK : BOOL;
-  
+
   // SPS -> MMI
   dwSps2MmiHandfunktionenStatus                   : DWORD;
   wSps2MmiErrorShuttleNumber                      : WORD;
@@ -140,11 +140,11 @@ VAR_GLOBAL
   adwSps2Mmi_Daten_1                              : ARRAY [0..3] OF DWORD;
   adwSps2Mmi_Daten_2                              : ARRAY [0..3] OF DWORD;
   adwSps2Mmi_Daten_3                              : ARRAY [0..3] OF DWORD;
-  
+
   wSps2MmiKorrekturStatus                         : WORD;
-  
+
   stStationUpdate                                  : StationUpdate_ST;
-  
+
 
   // ---------------------------------------------------------------------------------------
   // MERKER - NACHRICHTEN

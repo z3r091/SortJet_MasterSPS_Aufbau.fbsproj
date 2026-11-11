@@ -18,7 +18,7 @@ THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
     steplVortransport := STEP_900_E;
   END_IF
-  
+
   IF ( Antrieb_Slave.bpFehler ) THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT_SLAVE;
     steplVortransport := STEP_900_E;

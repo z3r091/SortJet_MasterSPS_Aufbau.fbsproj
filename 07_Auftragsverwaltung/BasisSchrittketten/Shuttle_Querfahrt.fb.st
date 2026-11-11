@@ -7,14 +7,14 @@
 *)
 FUNCTION_BLOCK Shuttle_Querfahrt
 VAR_INPUT
-    
-  // BOOLEAN 
+
+  // BOOLEAN
   bpReset                : BOOL;
-  
+
   // WORD
   wStation               : WORD;
-  
-  // STRUKTUR 
+
+  // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
 END_VAR
@@ -26,13 +26,13 @@ VAR_OUTPUT
 
 END_VAR
 VAR
-    
-  // STEPS 
+
+  // STEPS
   steplSchritt                    : STEPS_TE;
 
-  // BAUSTEINE 
+  // BAUSTEINE
   PositionierAuftragsdatenPruefen : PositionierAuftragsdatenPruefen;
-  
+
 END_VAR
 // ****************************************************9*********************************************
 // STEUERUNG: POSITIONIEREN
@@ -81,7 +81,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
       *)
       starrShuttleBasisParameter[wStation].pAuftragVorabPositionierung := Auftragsdaten;
       starrShuttleBasisParameter[wStation].bVorabpositionieren := TRUE;
-        
+
       steplSchritt := STEP_20_E;
 
     // POSITIONIERUNG ===========================================

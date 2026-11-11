@@ -190,7 +190,7 @@ THEN
       // Lineareinheit nach hinten fahren
 
       eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Lineareinheit_Zurueck_140;
-    
+
       IF blLineareinheitZurueckDone THEN
         blLineareinheitZurueck := FALSE;
         IF tofTagPresent.Q THEN
@@ -199,7 +199,7 @@ THEN
         ELSE
           blRolltorAb            := FALSE; // Oberwagen evtl. nicht in Pos -> Rolltor stoppen bis Bediener quittiert (STEP_145 faehrt weiter)
           steplAusschleusen      := STEP_143_E;
-        
+
           SpsWarnung( eFehler_Station,
                       cMELDUNG_FAECHERWAGEN_OBERWAGEN_INPOS_VERLOREN,
                       BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
@@ -217,7 +217,7 @@ THEN
       //   - Bedienereingriff erforderlich
       bpHinweisEingriffErforderlich := TRUE;
 
-    
+
       IF rtlQuittierungEinschleusen.Q  OR tonlFWInBox.Q THEN
         steplAusschleusen := STEP_145_E;
       END_IF
@@ -227,7 +227,7 @@ THEN
       // Rolltor schließen
 
       bpHinweisEingriffErforderlich := FALSE;
-    
+
       eLetzterStatus := eLetzter_FW_Status.eAusschleusen_Rolltor_Ab_145;
 
       IF blRolltorAbDone THEN

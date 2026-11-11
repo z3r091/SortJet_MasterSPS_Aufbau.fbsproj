@@ -21,8 +21,8 @@ VAR_CONFIG
 
   SteuerungSicherheitskreise.in_bTasterSKFaecherwagenQuittieren            AT %IX10.2   : BOOL; // IO-L - Sicherheitskreis Faecherwagenstation quittieren (OP4)
   SteuerungSicherheitskreise.out_bLeuchtmelderSKFaecherwagenQuittieren     AT %QX9.0    : BOOL; // IO-L - Sicherheitskreis Faecherwagenstation ausgeloest (OP4)
-                                  
-  
+
+
 
 //-------------------------------------------------------------------------------------------------
 // KONFIGURATION:  DURCHGANG
@@ -40,13 +40,13 @@ VAR_CONFIG
   Globale_Bausteine.aDurchgang[1].out_bDurchgangSperren                    AT %QX10.3  : BOOL; // IO-L - 203 Entriegelung Klapprahmen sperren
   Globale_Bausteine.aDurchgang[1].out_bVerriegelungOeffnen                 AT %MX911.3 : BOOL; // OPTION - DURCHGANG: Verriegelung oeffnen
   Globale_Bausteine.aDurchgang[1].out_bVerriegelungSchliessen              AT %MX911.4 : BOOL; // OPTION - DURCHGANG: Verriegelung schliessen
-  
- 
- 
+
+
+
 //-------------------------------------------------------------------------------------------------
 // KONFIGURATION:  Puffer
 //-------------------------------------------------------------------------------------------------
-                                                         
+
   SteuerungSicherheitskreise.out_bPuffer_101_Ausfahren             AT %MX910.3 : BOOL; // OPTION
   SteuerungSicherheitskreise.out_bPuffer_101_Einfahren             AT %MX910.4 : BOOL; // OPTION
   SteuerungSicherheitskreise.out_bPuffer_102_Ausfahren             AT %MX910.5 : BOOL; // OPTION
@@ -55,6 +55,6 @@ VAR_CONFIG
   SteuerungSicherheitskreise.out_bPuffer_103_Einfahren             AT %MX911.0 : BOOL; // OPTION
   SteuerungSicherheitskreise.out_bPuffer_104_Ausfahren             AT %MX911.1 : BOOL; // OPTION
   SteuerungSicherheitskreise.out_bPuffer_104_Einfahren             AT %MX911.2 : BOOL; // OPTION
-  
+
 END_VAR
 END_NAMESPACE

@@ -30,13 +30,13 @@ IF ( M_SB0_MMI_TRANSFERSHUTTLECHECK ) THEN
   blTransfershuttleNummerPlausibel :=  PruefungWertImIntervall ( wpWert:= tMmi2SpsInfo.wTransfershuttle_Nummer1,
                                                                  wpIntervallMin  := cERSTES_TRANSFERSHUTTLE,
                                                                  wpIntervallMax := cLETZTES_TRANSFERSHUTTLE );
-                                 
-  // Wenn die Station plausibel ist weiter, ansonsten Fehlermeldung ausgeben                                 
+
+  // Wenn die Station plausibel ist weiter, ansonsten Fehlermeldung ausgeben
   IF ( blTransfershuttleNummerPlausibel ) THEN
-    
+
     // Prüfen ob der Speichervalidierung noch aktiv ist, wenn ja -> Fehlermeldung
-    IF ( Job_Shuttle.abpSpeicherfachValidierung[tMmi2SpsInfo.wTransfershuttle_Nummer1] ) THEN 
-      wpgFehlerdaten[0] := tMmi2SpsInfo.wTransfershuttle_Nummer1;      
+    IF ( Job_Shuttle.abpSpeicherfachValidierung[tMmi2SpsInfo.wTransfershuttle_Nummer1] ) THEN
+      wpgFehlerdaten[0] := tMmi2SpsInfo.wTransfershuttle_Nummer1;
       wpgFehlerdaten[1] := tMmi2SpsInfo.wTransfershuttle_Nummer1;
       SpsHinweis( eFehler_Station,
                   cMELDUNG_TS_SPEICHERVALIDIERUNG_NOCH_AKTIV,
@@ -51,7 +51,7 @@ IF ( M_SB0_MMI_TRANSFERSHUTTLECHECK ) THEN
       //  - wTransfershuttle_Nummer2 = 0   => Vortransport mit nur einem Transfershuttle
       //  - wTransfershuttle_Nummer2 <> 0  => Vortransport im Transfershuttle-Verbund
       // ---------------------------------------------------------------------------------------
-     
+
       IF ( tMmi2SpsInfo.wTransfershuttle_Nummer2 <> 0 ) THEN
         VailiderenTransfershuttleVerbund ( wTransferstation1 := tMmi2SpsInfo.wTransfershuttle_Nummer1 ,
                                            wTransferstation2 := tMmi2SpsInfo.wTransfershuttle_Nummer2 ,
@@ -59,21 +59,21 @@ IF ( M_SB0_MMI_TRANSFERSHUTTLECHECK ) THEN
                                            wTransferstationSlave  => tMmi2SpsInfo.wTransfershuttle_Nummer2,
                                            bpFehler               => blTransfershuttleVerbundNichtPlausibel );
       END_IF
-     
+
       wlStationsNummer := tMmi2SpsInfo.wTransfershuttle_Nummer1;
-     
+
       Job_Shuttle.starrAuftragsdatenSpeicherfachValidierung[wlStationsNummer].wStationsNr           := tMmi2SpsInfo.wTransfershuttle_Nummer1;
-     
+
       IF ( tMmi2SpsInfo.wTransfershuttle_GlasDicke = 0 ) THEN
         Job_Shuttle.starrAuftragsdatenSpeicherfachValidierung[wlStationsNummer].rAuftragsDicke      := 4.0;
       ELSE
         Job_Shuttle.starrAuftragsdatenSpeicherfachValidierung[wlStationsNummer].rAuftragsDicke      := 19.0;
       END_IF
-     
+
       Job_Shuttle.starrAuftragsdatenSpeicherfachValidierung[wlStationsNummer].rStationsZielposition := tMmi2SpsInfo.rTransfershuttle_SollPosition1;
       Job_Shuttle.starrAuftragsdatenSpeicherfachValidierung[wlStationsNummer].wTransferstationsNr1  := 0;
       Job_Shuttle.starrAuftragsdatenSpeicherfachValidierung[wlStationsNummer].rTransferposition1    := 0;
-     
+
       IF ( NOT blTransfershuttleVerbundNichtPlausibel ) THEN
         Job_Shuttle.starrAuftragsdatenSpeicherfachValidierung[wlStationsNummer].wTransferstationsNr2  := tMmi2SpsInfo.wTransfershuttle_Nummer2;
         Job_Shuttle.starrAuftragsdatenSpeicherfachValidierung[wlStationsNummer].rTransferposition2    := tMmi2SpsInfo.rTransfershuttle_SollPosition2;
@@ -81,10 +81,10 @@ IF ( M_SB0_MMI_TRANSFERSHUTTLECHECK ) THEN
         Job_Shuttle.starrAuftragsdatenSpeicherfachValidierung[wlStationsNummer].rTransferposition2    := 0;
         Job_Shuttle.starrAuftragsdatenSpeicherfachValidierung[wlStationsNummer].wTransferstationsNr2  := 0;
       END_IF
-     
+
       Job_Shuttle.abpSpeicherfachValidierung[wlStationsNummer] := TRUE;
-    END_IF   
-  
+    END_IF
+
   ELSE
     wpgFehlerdaten[0] := tMmi2SpsInfo.wTransfershuttle_Nummer1;
     wpgFehlerdaten[1] := tMmi2SpsInfo.wTransfershuttle_Nummer1;

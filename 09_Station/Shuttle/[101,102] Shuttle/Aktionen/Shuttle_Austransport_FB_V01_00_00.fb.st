@@ -44,13 +44,13 @@ THEN
     BasisStationsParameter.wFehlerNummer :=  Glastransport.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
-  
+
   IF ( Kippen.bpFehler ) THEN
     Kippen.bpPositionieren := FALSE;
     BasisStationsParameter.wFehlerNummer :=  Kippen.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
-  
+
   IF ( Wandverstellung.bpFehler ) THEN
     Wandverstellung.bpStartePositionierung := FALSE;
     BasisStationsParameter.wFehlerNummer :=  Wandverstellung.wpFehlerNr;

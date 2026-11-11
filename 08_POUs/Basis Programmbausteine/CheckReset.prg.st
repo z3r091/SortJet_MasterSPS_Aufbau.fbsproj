@@ -22,9 +22,9 @@ FOR wlIndexAutomatikkreis := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS D
     END_IF
   END_FOR
 
-  // Schleife des AK eine Iteration weiter 
+  // Schleife des AK eine Iteration weiter
   IF agbResetAktiv[wlIndexAutomatikkreis] THEN
-    CONTINUE; 
+    CONTINUE;
   END_IF
 
   FOR wlIndexStation := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
@@ -34,9 +34,9 @@ FOR wlIndexAutomatikkreis := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS D
     END_IF
   END_FOR
 
-  // Schleife des AK eine Iteration weiter 
+  // Schleife des AK eine Iteration weiter
   IF agbResetAktiv[wlIndexAutomatikkreis] THEN
-    CONTINUE; 
+    CONTINUE;
   END_IF
 
   FOR wlIndexStation := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
@@ -46,9 +46,9 @@ FOR wlIndexAutomatikkreis := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS D
     END_IF
   END_FOR
 
-  // Schleife des AK eine Iteration weiter 
+  // Schleife des AK eine Iteration weiter
   IF agbResetAktiv[wlIndexAutomatikkreis] THEN
-    CONTINUE; 
+    CONTINUE;
   END_IF
 
   FOR wlIndexStation := cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR DO
@@ -58,9 +58,9 @@ FOR wlIndexAutomatikkreis := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS D
     END_IF
   END_FOR
 
-  // Schleife des AK eine Iteration weiter 
+  // Schleife des AK eine Iteration weiter
   IF agbResetAktiv[wlIndexAutomatikkreis] THEN
-    CONTINUE; 
+    CONTINUE;
   END_IF
 
   FOR wlIndexStation := cERSTE_FREMDANLAGE_EINLAUF TO cLETZTE_FREMDANLAGE_EINLAUF DO
@@ -70,9 +70,9 @@ FOR wlIndexAutomatikkreis := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS D
     END_IF
   END_FOR
 
-  // Schleife des AK eine Iteration weiter 
+  // Schleife des AK eine Iteration weiter
   IF agbResetAktiv[wlIndexAutomatikkreis] THEN
-    CONTINUE; 
+    CONTINUE;
   END_IF
 
   FOR wlIndexStation := cERSTE_FREMDANLAGE_AUSLAUF TO cLETZTE_FREMDANLAGE_AUSLAUF DO

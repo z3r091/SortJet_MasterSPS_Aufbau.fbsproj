@@ -26,7 +26,7 @@ THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
     steplEintransportRueckwaertig := STEP_900_E;
   END_IF
-  
+
   IF ( Antrieb_Slave.bpFehler ) THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT_SLAVE;
     steplEintransportRueckwaertig := STEP_900_E;
@@ -150,11 +150,11 @@ THEN
         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
-      ELSE                       
+      ELSE
         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-      END_IF                     
+      END_IF
 
       // Antriebsposition merken
       rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
@@ -319,7 +319,7 @@ THEN
            Merken das sich noch eine Scheibe auf dem Sensor zum quittieren der Scheibe befindet.
       *)
       IF ( Antrieb.bpDone
-           AND toflAuslaufsensor.Q ) OR ( Antrieb.wpBetriebsart = HANDMINUS AND bpSensorAuslaufVorAb )  
+           AND toflAuslaufsensor.Q ) OR ( Antrieb.wpBetriebsart = HANDMINUS AND bpSensorAuslaufVorAb )
       THEN
         blScheibenMerker := TRUE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -416,16 +416,16 @@ THEN
           steplEintransportRueckwaertig := STEP_300_E;
         ELSE
           tonlMaximaleZeitAuslaufsensorFreiFahren ( IN:= FALSE );
-          IF (     bpSensorAuslauf 
-               OR ( bpSensorAuslauf AND InGlasTransportNachfolger.bEinlaufsensor ) ) 
+          IF (     bpSensorAuslauf
+               OR ( bpSensorAuslauf AND InGlasTransportNachfolger.bEinlaufsensor ) )
              AND bpSensorEinlaufVorAb
           THEN
             bpUebergrosseScheibeUebergang := TRUE;
             IF blScheibenMerker THEN
-              bprtScheibe := TRUE; 
+              bprtScheibe := TRUE;
               blScheibenMerker := FALSE;
             END_IF
-            steplEintransportRueckwaertig := STEP_1000_E; 
+            steplEintransportRueckwaertig := STEP_1000_E;
           ELSE
             steplEintransportRueckwaertig := STEP_200_E;
           END_IF
@@ -534,7 +534,7 @@ THEN
       THEN
 
         IF blScheibenMerker THEN
-          bprtScheibe := TRUE; 
+          bprtScheibe := TRUE;
           blScheibenMerker := FALSE;
         END_IF
 

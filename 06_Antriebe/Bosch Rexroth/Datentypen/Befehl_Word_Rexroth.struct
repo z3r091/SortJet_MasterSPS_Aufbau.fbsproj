@@ -11,7 +11,7 @@
 TYPE Befehl_Word_Rexroth :
    STRUCT
      wlSteuerword_1           : STW_1_ctrlX; // W 1
-     wlSteuerword_2           : STW_2_ctrlX; // W 2 
+     wlSteuerword_2           : STW_2_ctrlX; // W 2
      rlPositionier_Ziel       : REAL; // W 3 & 4
      wlSollGeschwindigkeit    : WORD; // W 5
      wlSollBeschleunigung     : WORD; // W 6

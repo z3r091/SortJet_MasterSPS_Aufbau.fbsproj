@@ -22,7 +22,7 @@ FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
     AuftragsSpeicherStation[wlIndex]();
     AuftragsdatenStation[wlIndex] := AuftragsSpeicherStation[wlIndex].AktAuftrag;
   END_IF
-  
+
   FOR wlIndexWand := cWAND_1 TO cANZAHL_WAENDE DO
 
     AuftragsSpeicherWand[wlIndex, wlIndexWand]();

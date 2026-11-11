@@ -9,11 +9,11 @@ ACTION Zuweisung_152
 // Zuweisung der MK's
 starrTransfershuttleBasisParameter[cSHUTTLE_152].stMKs REF= apgMKTransfershuttle152;
 
-// Antriebsparameter zuweisen  
+// Antriebsparameter zuweisen
 starrTransfershuttleBasisParameter[cSHUTTLE_152].stAntriebsparameter.stQuerfahrt             REF= apgInfoTransfershuttle152Querfahrt;
 starrTransfershuttleBasisParameter[cSHUTTLE_152].stAntriebsparameter.stGlastransport         REF= apgInfoTransfer152Glastransport;
 
-// Parameter der Stationskomponenten zuweisen  
+// Parameter der Stationskomponenten zuweisen
 starrTransfershuttleBasisParameter[cSHUTTLE_152].stParameterStationskomponenten.stGlastransportTransferShuttle    REF= apgTransfer152Glastransport;
 starrTransfershuttleBasisParameter[cSHUTTLE_152].stParameterStationskomponenten.stZentralSchmierung               REF= apgMKTransfershuttleZentralschmierung[cSHUTTLE_152];
 

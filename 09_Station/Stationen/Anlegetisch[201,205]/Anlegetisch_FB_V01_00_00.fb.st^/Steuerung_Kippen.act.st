@@ -49,7 +49,7 @@ THEN
   THEN
     out_bKipptischAuf := NOT tonlStatusKippenOben.Q AND ( ( in_bTasterKippenAuf AND in_bTasterAnforderungKippen ) OR ( in_bTasterKippenAuf_OP AND in_bTasterAnforderungKippen_OP ) );
     out_bKipptischAb  := NOT tonlStatusKippstatusUnten.Q AND ( ( in_bTasterKippenAb AND in_bTasterAnforderungKippen ) OR ( in_bTasterKippenAb_OP AND in_bTasterAnforderungKippen_OP ) );
-  ELSE               
+  ELSE
     out_bKipptischAuf := FALSE;
     out_bKipptischAb  := FALSE;
   END_IF

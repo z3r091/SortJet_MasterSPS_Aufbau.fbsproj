@@ -7,14 +7,14 @@
 *)
 FUNCTION_BLOCK Shuttle_Eintransport
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
-  
+
   // WORD
   wStation               : WORD;
   wWand                  : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
@@ -27,10 +27,10 @@ VAR_OUTPUT
 
 END_VAR
 VAR
-    
+
   // BOOLEAN
   blStationQuittiertScheiben : BOOL;
-  
+
   // WORD
   wlEintransportstation  : WORD;
 
@@ -76,7 +76,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
          - Uebergabe der Quellstation [Sender] fuer den Austransport [Zum ueberpruefen des Zustandes der Station]
       *)
       wlEintransportstation := Auftragsdaten.wTransferstationsNr1;
-      
+
       starrShuttleBasisParameter[wStation].bRueckwaertsTransportieren[wWand] := FALSE;
       starrShuttleBasisParameter[wStation].bTransferstationTransfershuttle[wWand] := FALSE;
 
@@ -317,7 +317,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       Job_Shuttle.AuftragsdatenTransfershuttle[wlEintransportstation]          := AuftragsdatenUmkopieren(FALSE, FALSE, Auftragsdaten);
       Job_Shuttle.AuftragsdatenTransfershuttle[wlEintransportstation].wAuftrag := eStation_Austransport;
 
-      starrShuttleBasisParameter[wStation].bScheibentrennen[wWand]                := FALSE; 
+      starrShuttleBasisParameter[wStation].bScheibentrennen[wWand]                := FALSE;
       starrShuttleBasisParameter[wStation].bRueckwaertsTransportieren[wWand]      := ( starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Station[wlEintransportstation] = Rueckwaertig );
       starrShuttleBasisParameter[wStation].bEintransport[wWand]                   := TRUE;
       starrShuttleBasisParameter[wStation].bTransferstationTransfershuttle[wWand] := TRUE;
@@ -362,7 +362,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       Job_Shuttle.AuftragsdatenTransfershuttle[Auftragsdaten.wTransferstationsNr2]          := AuftragsdatenUmkopieren(TRUE, FALSE, Auftragsdaten);
       Job_Shuttle.AuftragsdatenTransfershuttle[Auftragsdaten.wTransferstationsNr2].wAuftrag := eStation_Transportkopplung;
 
-      starrShuttleBasisParameter[wStation].bScheibentrennen[wWand]                := FALSE; 
+      starrShuttleBasisParameter[wStation].bScheibentrennen[wWand]                := FALSE;
       starrShuttleBasisParameter[wStation].bRueckwaertsTransportieren[wWand]      := ( starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Station[wlEintransportstation] = Rueckwaertig );
       starrShuttleBasisParameter[wStation].bEintransport[wWand]                   := TRUE;
       starrShuttleBasisParameter[wStation].bTransferstationTransfershuttle[wWand] := TRUE;

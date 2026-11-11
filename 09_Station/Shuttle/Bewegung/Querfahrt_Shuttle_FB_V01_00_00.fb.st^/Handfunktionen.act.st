@@ -14,7 +14,7 @@ IF (  NOT bpAutomatikAktiv
      AND NOT bpVerfahreShuttle
      AND NOT bpStartReferenz
      AND NOT bpReset
-     AND NOT bgVISUVerfahreShuttle[stStationsNummern.NummerSPS] 
+     AND NOT bgVISUVerfahreShuttle[stStationsNummern.NummerSPS]
      AND NOT bgVisuAntriebeVerfahrenAktiv )
 THEN
 

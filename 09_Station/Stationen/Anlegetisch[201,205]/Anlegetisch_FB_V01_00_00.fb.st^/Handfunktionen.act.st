@@ -99,7 +99,7 @@ IF( blBetriebsartHand )THEN
   IF NOT blMerkerAnschlagTasterFahren THEN
     Anschlag.bpStartAusfahren := (        ( dwlHandfunktionen.21 OR bgVISUAnschlaegeAuf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
                                    AND NOT ( dwlHandfunktionen.22 OR bgVISUAnschlaegeAb[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])  );
-    
+
     Anschlag.bpStartEinfahren := (        ( dwlHandfunktionen.22 OR bgVISUAnschlaegeAb[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
                                    AND NOT ( dwlHandfunktionen.21 OR bgVISUAnschlaegeAuf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])  );
   END_IF

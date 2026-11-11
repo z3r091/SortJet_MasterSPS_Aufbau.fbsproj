@@ -28,13 +28,13 @@ WatchIo(bpInitialisierung AND NOT blDruckluftOK, ioccInitBlockDruckluft);
 //   - ein SK offen ist
 //   - UND es mindestens eine Station gibt, die diesen SK nutzt
 //   - UND diese Station NICHT referenziert ist
-blAlleSkGeschlossen := TRUE; 
+blAlleSkGeschlossen := TRUE;
 
 IF NOT M_Init_Ok THEN
   FOR wlIndex := cERSTER_SICHERHEITSKREIS  TO cLETZTER_SICHERHEITSKREIS DO
-  
+
     IF NOT Sicherheitskreis[wlIndex].bpSicherheitskreisGeschlossen THEN
-  
+
       // SK ist offen -> nur relevant, falls eine NICHT referenzierte Station diesen SK braucht
       FOR wlSubIndex := cERSTE_STATION TO cLETZTE_STATION DO
         IF StationInSicherheitskreis(starrStationBasisParameter[wlSubIndex].stMKs.eaSicherheitskreis, wlIndex) THEN
@@ -55,18 +55,18 @@ IF NOT M_Init_Ok THEN
       FOR wlSubIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
         IF StationInSicherheitskreis(starrTransferShuttleBasisParameter[wlSubIndex].stMKs.eaSicherheitskreis, wlIndex) THEN
           IF NOT starrTransferShuttleBasisParameter[wlSubIndex].bIstReferenziert THEN
-            blAlleSkGeschlossen := FALSE;   
+            blAlleSkGeschlossen := FALSE;
             EXIT;
           END_IF
         END_IF
       END_FOR
-  
+
     END_IF
-  
+
     IF blAlleSkGeschlossen THEN
       EXIT; // SK-Schleife reicht
     END_IF
-  
+
   END_FOR
 END_IF
 
@@ -76,9 +76,9 @@ WatchIo(bpInitialisierung AND NOT blAlleSkGeschlossen, ioccInitBlockSK);
 blShuttleErreichbar := TRUE;
 wlMeldungsnummer := ioccInit101Referenz;
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
-  IF NOT aShuttle[wlIndex].blShuttleErreichbar 
-     AND NOT starrShuttleBasisParameter[wlIndex].stMKs.bDeaktivieren 
-  THEN 
+  IF NOT aShuttle[wlIndex].blShuttleErreichbar
+     AND NOT starrShuttleBasisParameter[wlIndex].stMKs.bDeaktivieren
+  THEN
     blShuttleErreichbar := FALSE;
   END_IF
   WatchIo((bpInitialisierung AND starrShuttleBasisParameter[wlIndex].bReferenz AND NOT starrShuttleBasisParameter[wlIndex].bIstReferenziert),wlMeldungsnummer);

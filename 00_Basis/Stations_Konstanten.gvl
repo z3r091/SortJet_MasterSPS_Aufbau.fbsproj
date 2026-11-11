@@ -13,8 +13,8 @@ VAR_GLOBAL CONSTANT
      - Konstanten die immer gleichbleiben in ihrer Benamung und nicht mehr
        angepasst werden muessen (ggf. der numerische Wert)
   *)
-  
-  // TEMPORAERE STATIONS (PLATZHALTER)                                     
+
+  // TEMPORAERE STATIONS (PLATZHALTER)
   cSTATION_DYNAMISCH       : WORD := 998;
   cSTATION_DEFAULT         : WORD := 999;
   cSTATION_TEMP            : WORD := 999;
@@ -69,8 +69,8 @@ VAR_GLOBAL CONSTANT
   cSTATION_228             : WORD := 228;
   cSTATION_229             : WORD := 229;
   cSTATION_230             : WORD := 230;
-                                     
-  // Faecherwagen                               
+
+  // Faecherwagen
   cSTATION_301             : WORD := 301;
   cSTATION_302             : WORD := 302;
   cSTATION_303             : WORD := 303;
@@ -78,14 +78,14 @@ VAR_GLOBAL CONSTANT
   cSTATION_305             : WORD := 305;
   cSTATION_306             : WORD := 306;
   cSTATION_307             : WORD := 307;
-                                     
-  // Fremdanlagen                             
+
+  // Fremdanlagen
   cSTATION_401             : WORD := 401;
   cSTATION_402             : WORD := 402;
   cSTATION_403             : WORD := 403;
-  cSTATION_404             : WORD := 404;                                     
-                                     
-  // Einlauflinien                                
+  cSTATION_404             : WORD := 404;
+
+  // Einlauflinien
   cSTATION_501             : WORD := 501;
   cSTATION_502             : WORD := 502;
   cSTATION_503             : WORD := 503;
@@ -118,13 +118,13 @@ VAR_GLOBAL CONSTANT
   cFREMDANLAGE_EINLAUF_1      : WORD := 501;
   cFREMDANLAGE_EINLAUF_2      : WORD := 502;
   cFREMDANLAGE_EINLAUF_3      : WORD := 503;
-  
+
   // Hydraulik-Kreise
   cHYDRAULIKSTATION_1         : WORD := 1;
   cHYDRAULIKSTATION_2         : WORD := 2;
   cHYDRAULIKSTATION_3         : WORD := 3;
 
-  // Wird benutzt für Horn \ Ampel 
+  // Wird benutzt für Horn \ Ampel
   cEINLAUFSEITE                        : WORD := 1;
   cAUSLAUFSEITE                        : WORD := 2;
 
@@ -152,7 +152,7 @@ VAR_GLOBAL CONSTANT
   cMMI_WAND_3                         : WORD := 2;
   cMMI_WAND_4                         : WORD := 3;
 
-  // HUBRAHMEN 
+  // HUBRAHMEN
   cHUBRAHMEN_1                        : WORD := 0;
   cHUBRAHMEN_2                        : WORD := 1;
 

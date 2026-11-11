@@ -18,7 +18,7 @@ THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
     steplAustransport := STEP_900_E;
   END_IF
-  
+
   IF ( Antrieb_Slave.bpFehler ) THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT_SLAVE;
     steplAustransport := STEP_900_E;
@@ -29,7 +29,7 @@ THEN
     steplAustransport := STEP_900_E;
   END_IF
 
-  
+
   // Ausnahmesituation:
   //   - Slave-Kopplung waehrend der Kette verloren
   IF ( NOT blAntriebsKopplungAktiv AND ( steplAustransport > STEP_0_E ) AND ( steplAustransport < STEP_900_E ) ) THEN
@@ -89,7 +89,7 @@ THEN
       bpOutBereitZumAustransport := TRUE;
       bpOutBereitZumEintransport := bpUebergrosseScheibeUebergang;
 
-      IF ( InGlasTransportNachfolger.bBereitZumEintransport ) 
+      IF ( InGlasTransportNachfolger.bBereitZumEintransport )
          AND ( NOT bpUebergrosseScheibeUebergang OR InGlasTransportVorgaenger.bBereitZumAustransport )
       THEN
 

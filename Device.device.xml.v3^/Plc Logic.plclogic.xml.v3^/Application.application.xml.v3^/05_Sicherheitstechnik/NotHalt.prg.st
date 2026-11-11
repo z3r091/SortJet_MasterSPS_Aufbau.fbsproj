@@ -7,18 +7,18 @@
 *)
 PROGRAM NotHalt
 VAR_INPUT
-  
+
   // BOOL
-  bpEingangNotHaltOK        : BOOL; // Not-Halt ok von SLC  
-  
+  bpEingangNotHaltOK        : BOOL; // Not-Halt ok von SLC
+
   // WORD
   wMeldungsnummer           : WORD;
-  
+
 END_VAR
 VAR_OUTPUT
 
   // BOOLE
-  bpNotHaltOK               : BOOL; 
+  bpNotHaltOK               : BOOL;
   bpTasterNothaltQuittieren : BOOL;
 
 END_VAR
@@ -26,28 +26,28 @@ VAR
 
   // BOOL
   blResetNotHalt     : BOOL := FALSE;
-    
-  // RS-FLIP FLOP 
+
+  // RS-FLIP FLOP
   NotHaltAusgeloest : SR;
   NotHaltQuittieren : RS;
 
-  // TIMER 
-  tonlNotHaltAusgeloest : TON; 
+  // TIMER
+  tonlNotHaltAusgeloest : TON;
 
 END_VAR
 VAR
-  // HARDWARE EINGAENGE 
+  // HARDWARE EINGAENGE
   in_bTasterNothaltQuittieren             AT %I* : BOOL; // Taster zum Quittieren des Nothalts und Reset der Safety-Module
 
-  
-  // HARDWARE AUSGAENGE 
-  out_bLeuchtdruckTasterNotHaltAusgeloest  AT %Q* : BOOL; 
-  
+
+  // HARDWARE AUSGAENGE
+  out_bLeuchtdruckTasterNotHaltAusgeloest  AT %Q* : BOOL;
+
 
 END_VAR
 VAR CONSTANT
 
-  // TIME VALUE 
+  // TIME VALUE
   cZEIT_NOTAUS_VERZOEGERUNG : TIME := T#100MS;
 
 END_VAR
@@ -67,15 +67,15 @@ Meldungen();
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: LOGIK
 //-------------------------------------------------------------------------------------------------
-// Kurze Verzoegerung das alle Signale durchgeschaltet haben 
+// Kurze Verzoegerung das alle Signale durchgeschaltet haben
 tonlNotHaltAusgeloest( IN := ( NOT bpEingangNotHaltOK OR bgSicherheitstechnikBruecken ),
                        PT := cZEIT_NOTAUS_VERZOEGERUNG );
-                      
+
 // NotHalt OK bilden
 bpNotHaltOK := (   NOT NotHaltAusgeloest.Q1
-                 OR Visu_Notaus_OK 
+                 OR Visu_Notaus_OK
                  OR bgSicherheitstechnikBruecken );
-                
+
 (* Hinweis:
    - Merker das der Notaus ausgeloest wurde
      => Bistabiele Funktion in der das  "set" dominant ist
@@ -88,11 +88,11 @@ NotHaltAusgeloest( SET1 := tonlNotHaltAusgeloest.Q,
      => Bistabiele Funktion in der das  "reset" dominant ist
 *)
 NotHaltQuittieren( SET   := ( in_bTasterNothaltQuittieren OR Interface_SLC.bpVisuResetNothalt ) ,
-                   RESET1:= NOT NotHaltAusgeloest.Q1); 
+                   RESET1:= NOT NotHaltAusgeloest.Q1);
 
 
-IF ( NotHaltQuittieren.Q1 
-     AND NOT tonlNotHaltAusgeloest.Q ) 
+IF ( NotHaltQuittieren.Q1
+     AND NOT tonlNotHaltAusgeloest.Q )
 THEN
   blResetNotHalt := TRUE;
 ELSE

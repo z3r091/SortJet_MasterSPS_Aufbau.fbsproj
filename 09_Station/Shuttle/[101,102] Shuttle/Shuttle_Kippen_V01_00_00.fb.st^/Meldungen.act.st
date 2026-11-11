@@ -11,23 +11,23 @@ ACTION Meldungen
 //-------------------------------------------------------------------------------------------------
 
 IF ( bpKippenSchuetz ) THEN
-  
+
   IF (bpStartAbkippen OR bpStartAufkippen) THEN
-  
+
     IF ( NOT bpFreigabe ) THEN
       wpFehlerNr := cMELDUNG_KIPPEN_KEINE_FREIGABE;
       bpFehler := TRUE;
       bpStartAufkippen := FALSE;
       bpStartAbkippen  := FALSE;
     END_IF
-    
+
     IF bpStartAbkippen AND bpStartAufkippen THEN
       wpFehlerNr := cMELDUNG_KIPPEN_AUF_UND_ABKIPPEN_ZEITGLEICH_AKTIV;
       bpFehler := TRUE;
       bpStartAufkippen := FALSE;
       bpStartAbkippen  := FALSE;
     END_IF
-  
+
   END_IF
 
   IF ( NOT in_bSensorNicht90Grad AND NOT in_bSensorNicht84Grad ) AND tonlTeilnehmerErreichbar.Q AND bpKippenSchuetz THEN
@@ -44,7 +44,7 @@ IF ( bpKippenSchuetz ) THEN
     bpStartAufkippen := FALSE;
     bpStartAbkippen  := FALSE;
   END_IF
-  
+
   toflMotorstarterOK( IN := in_bMotorstarter_OK , PT := T#5S );
   IF ( NOT toflMotorstarterOK.Q ) AND tonlTeilnehmerErreichbar.Q THEN
     wpFehlerNr := cMELDUNG_KIPPEN_MOTORSTARTER_NICHT_OK;
@@ -53,7 +53,7 @@ IF ( bpKippenSchuetz ) THEN
     bpStartAbkippen  := FALSE;
   END_IF
 
- 
+
 
 ELSE
   IF( NOT bpFehler

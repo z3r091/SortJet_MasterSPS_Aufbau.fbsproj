@@ -52,8 +52,8 @@ Combiwand208                     (BasisStationsParameter := starrStationBasisPar
 //-------------------------------------------------------------------------------------------------
 
 aSchnittstelleAuslauf[cSTATION_401] ( BasisStationsParameter := starrFremdanlageAuslaufStationBasisParameter[cSTATION_401],
-                                      bpEmpfaengerSensorEinlauf := FALSE );  
-                                      
+                                      bpEmpfaengerSensorEinlauf := FALSE );
+
 aSchnittstelleEinlauf[cSTATION_501] ( BasisStationsParameter := starrFremdanlageEinlaufStationBasisParameter[cSTATION_501],
                                       bpEmpfaengerSensorEinlauf := FALSE );
 END_PROGRAM

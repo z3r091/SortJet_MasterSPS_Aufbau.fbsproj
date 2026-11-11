@@ -34,7 +34,7 @@ VAR_GLOBAL
                                                                      bSystemCheckMitVorgaengerBatchTransport     := FALSE,   // derzeit ohne Funktion
                                                                      bSystemCheckMitNachfolgerBatchTransport     := FALSE,   // derzeit ohne Funktion
                                                                      bOptionSystemCheckScheibeMittigLegen        := FALSE ), // derzeit ohne Funktion
-                                                                     
+
                                                  // stTransfershuttle
                                                  stGlastransport :=  ( bVortransport                             := FALSE,   // Vortransport aktivieren [Bsp.: Nach einem Eintransport mit gesetztem Bit <Letzte Scheibe>]
                                                                        bTransportMasterSlaveEintransport         := FALSE,   // derzeit ohne Funktion
@@ -112,10 +112,10 @@ VAR_GLOBAL
                                                   rlLaengeMaxGlas := 0.0                                                     // maximal zulaessige Glaslaenge [mm]
                                                )]
       // astShuttleAnhaltenQuellen
-     );     
-                                       
+     );
+
    apgMKStation208Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Glastransport := [
-    (                                            
+    (
       rLaengeStation                        :=  5800, // Länge der Station
       rScheibenabstand                      :=   300, // Der Abstand zwischen zwei Scheiben auf der Station
       rWegUeberAuslauf                      :=    50, // Weg ueber den Auslaufsensor hinaus [mm]
@@ -145,7 +145,7 @@ VAR_GLOBAL
       rAbstandSensorenOberUndUnterkante     := 0.0,  // Rechnerischer Abstand zwischen dem Sensor der die Scheibenunterkante misst und dem Sensor der die Scheibenoberkante misst
       rOffsetNullLinie                      := 0.0   // Offset das auf den Wert des Abstands zur Null-Linie aufgerechnet wird, um dies evtl zu korrigieren
     );
-    
+
   apgMKStation208Kippen : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Kippen := [
     (
       tZeitlicheUeberwachungKippen          := TIME#5000MS, // [ms \ s] Verwendet fuer Antriebe die Ueber einen Schuetz angesteuert werden

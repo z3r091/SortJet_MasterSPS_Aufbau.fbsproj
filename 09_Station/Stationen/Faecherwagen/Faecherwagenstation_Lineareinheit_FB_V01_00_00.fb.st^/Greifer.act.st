@@ -10,10 +10,10 @@ ACTION Greifer
 // Greifer ÖFFNEN => FUER MULTIBELADUNG
 //-------------------------------------------------------------------------------------------------
 
-IF ( blGreiferOeffnen 
+IF ( blGreiferOeffnen
      //  AND blUntergestellErkannt //safety eingang
-     AND NOT blLinearEinheitSH // Der Greifer darf nicht geöffnet werden, wenn die Lineareinheit auf der Übergabeposition zum Shuttle steht. 
-   // Andernfalls können wir den Wagen nicht mehr greifen, da wir die Lineareinheit nur ganz nach vorn/hinten fahren können 
+     AND NOT blLinearEinheitSH // Der Greifer darf nicht geöffnet werden, wenn die Lineareinheit auf der Übergabeposition zum Shuttle steht.
+   // Andernfalls können wir den Wagen nicht mehr greifen, da wir die Lineareinheit nur ganz nach vorn/hinten fahren können
    (*AND BasisStationsParameter.bFreigabe*) )
 THEN
   CASE steplGreiferOeffnen OF
@@ -94,7 +94,7 @@ END_IF
 // Greifer SCHLIESSEN => FUER MULTIBELADUNG
 //-------------------------------------------------------------------------------------------------
 
-IF blGreiferSchliessen 
+IF blGreiferSchliessen
 // AND BasisStationsParameter.bFreigabe
 //  AND blUntergestellErkannt //safety eingang
 // AND NOT in_bFaecherwagenNichtInPos // Gestell ist auf dem Wagen

@@ -35,7 +35,7 @@ THEN
     // POSITIONIEREN ==============================
     STEP_0_E:
       steplPositionierungQuerfahrt := STEP_10_E;
- 
+
     // POSITIONIEREN ==============================
     STEP_10_E:
       (* Hinweis:
@@ -72,8 +72,8 @@ THEN
            das Verfahren abgeschlossen werden kann
            => Senden der Positionsnachricht [Steuerung]
       *)
-      IF (  Querfahrt.bpDone 
-         (* AND blZielPositionErreicht *) ) 
+      IF (  Querfahrt.bpDone
+         (* AND blZielPositionErreicht *) )
       THEN
 
         IF ( NOT tonlUpdateTimer.Q  )THEN

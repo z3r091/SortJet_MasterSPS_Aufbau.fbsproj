@@ -25,7 +25,7 @@ VAR
 
   // BOOL
   blErsterZyklus                      : BOOL := TRUE;
-  ablTimeOutMeldungGenerieren         : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL; 
+  ablTimeOutMeldungGenerieren         : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
   blCheckAktiv                        : BOOL;
   ablCheck                            : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS, 1..cMAX_ANZAHL_SYSTEMCHECKZYKLEN] OF BOOL;
   ablCheckDone                        : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS, 1..cMAX_ANZAHL_SYSTEMCHECKZYKLEN] OF BOOL;
@@ -54,7 +54,7 @@ VAR
   ailAnzahlShuttleCheckAktiv         : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF INT;
   ailAnzahlFWStationenCheckAktiv     : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF INT;
 
-  // TIMER                                                                                           
+  // TIMER
   atonlWarnungSystemCheckBeginnt     : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF TON;
   atonlWaitCheck                     : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF TON;
   atonlCheck                         : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF TON;
@@ -87,7 +87,7 @@ END_FOR
 Reset();
 // Wenn kein Systemcheck aktiv -> Rausspringen
 tonlCheckAktiv( IN  := NOT blCheckAktiv, PT := T#100MS);
-IF tonlCheckAktiv.Q THEN  
+IF tonlCheckAktiv.Q THEN
   RETURN; //Funktioniert noch nicht richtig
 END_IF
 

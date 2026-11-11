@@ -9,20 +9,20 @@ ACTION Referenz
 //-------------------------------------------------------------------------------------------------
 // AKTION REFERENZ
 //-------------------------------------------------------------------------------------------------
-IF ( blBetriebsartReferenz ) THEN  
+IF ( blBetriebsartReferenz ) THEN
 
-  // Ausnahmesituation      
+  // Ausnahmesituation
   IF ( Drehen.bpFehler ) THEN
     Drehen.bpReferenz := FALSE;
     BasisStationsParameter.wFehlerNummer := Drehen.wpFehlerNr;
     steplReferenz := STEP_900_E;
   END_IF
-  
+
   IF ( Glastransport.bpFehler ) THEN
     Glastransport.bpReferenz := FALSE;
     steplReferenz := STEP_900_E;
   END_IF
-  
+
   IF ( Kippen.bpFehler ) THEN
     Kippen.bpReferenz := FALSE;
     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
@@ -30,7 +30,7 @@ IF ( blBetriebsartReferenz ) THEN
   END_IF
   CASE steplReferenz OF
 
-  
+
     // REFERENZ ===========================
     STEP_0_E:
       BasisStationsParameter.bReferenzAbgeschlossen := FALSE;
@@ -42,7 +42,7 @@ IF ( blBetriebsartReferenz ) THEN
          -  Starten der Referenzfahrt
       *)
       Drehen.bpReferenz        := TRUE;
-      Kippen.bpReferenz        := TRUE; 
+      Kippen.bpReferenz        := TRUE;
       Glastransport.bpReferenz := TRUE;
       steplReferenz := STEP_20_E;
 

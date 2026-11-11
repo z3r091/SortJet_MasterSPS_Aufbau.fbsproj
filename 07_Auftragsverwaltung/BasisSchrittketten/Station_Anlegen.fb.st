@@ -7,14 +7,14 @@
 *)
 FUNCTION_BLOCK Station_Anlegen
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
   bpAbbruchAnlegeauftrag : BOOL;
-  
+
   // WORD
   wStation               : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
@@ -27,10 +27,10 @@ VAR_OUTPUT
 
 END_VAR
 VAR
-  
+
   // BOOL
   blAktiv                : BOOL;
-  
+
   // STEPS
   steplSchritt           : STEPS_TE;
 
@@ -89,7 +89,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
 
       starrStationBasisParameter[wStation].pAuftrag[cWAND_1] := Auftragsdaten;
       starrStationBasisParameter[wStation].bAnlegen := TRUE;
-       
+
       steplSchritt := STEP_30_E;
 
     // ANLEGEN ==================================================
@@ -150,7 +150,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Anlegen ) THEN
     // ANLEGEN ==================================================
     STEP_1000_E:
       bpDone := TRUE;
-       
+
       IF ( starrStationBasisParameter[wStation].eStatusAuftrag = eAuftragErfolgreich ) THEN
 
         IF Auftragsdaten.bModell  OR NOT (starrStationBasisParameter[wStation].stMKs.stStationsOptionen.stGlastransport.bScheibenVermessen) THEN

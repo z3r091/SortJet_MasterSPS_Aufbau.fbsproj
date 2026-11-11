@@ -17,8 +17,8 @@ rtlAutomatikActiv(CLK := bpSortierungInAutomatik );
 
 IF ( rtlAutomatikActiv.Q ) THEN
 
-  IF  ( blFremdanlageBereitZumTransport ) THEN 
-    rtlAuftragsdatenPlausibel( CLK := FALSE ); 
+  IF  ( blFremdanlageBereitZumTransport ) THEN
+    rtlAuftragsdatenPlausibel( CLK := FALSE );
   END_IF
 
 END_IF

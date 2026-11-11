@@ -19,13 +19,13 @@ VAR_INPUT
   bpTransfershuttleVerbundAktiv         : BOOL := false; // Hinweis: Transferverbund zwischen 2 Transvershuttle-Systmen aktiv
   bpScheibenNeuAusrichten               : BOOL;
 
-  // REAL 
+  // REAL
   rpVorpositionierweg                   : REAL; // Auftragsdaten: Der Weg der Vorpositioniert werden soll
 
-  // STRUCT 
+  // STRUCT
   stpInTransportVerbund                 : Interface_TransfershuttleVerbund; // STRUKTUR: Schnittstelle zwischen den Transfershuttlen
   pAuftragsdatenPositionieren           : PositionierAuftrag_ST; // Daten fur die Positionierung [Rampen / Soll- Position / Soll- Geschwindigkeit
-                                        
+
 END_VAR
 VAR_OUTPUT
 
@@ -38,21 +38,21 @@ VAR_OUTPUT
   // WORD
   wpAusnahmefehlerTyp    : WORD := WORD#0; // Sensorfehlertyp: 0 = Allgemeiner Fehler / 1 = Einlauf / 2 = Auslauf / 3 = Ein- Aus- Lauf
 
-  // DWORD 
+  // DWORD
   dwlHandfunktionen       : DWORD;  // Handfunktionen: 0..31 Bit
   dwpHandfunktionenReturn : DWORD;  // Aktive Handfunktionen, gleiche Bitbelegung wie dwlHandfunktionen
 
-  // INT 
+  // INT
   iPhaseSpeichervalidierung : INT;
 
-  // REAL 
+  // REAL
   rpVorpositionierterWeg          : REAL; // OUT-STATUS: Status wie weit vorpositioniert wurde
   rpIstPositionNachPositionierung : REAL;
 
-  // ENUM 
+  // ENUM
   ReservierungsStatus    : TransfershuttleReservierungsTyp_EN;
 
-  // STRUKTUR 
+  // STRUKTUR
   stpOutTransportVerbund : Interface_TransfershuttleVerbund; // STRUKTUR: Schnittstelle zwischen den Transfershuttlen
 
 END_VAR
@@ -65,12 +65,12 @@ VAR
   blErsterZyklus                             : BOOL := TRUE; // Initialisierung
   blZielPositionErreicht                     : BOOL;
   blShuttleKannSicherVerfahrenWerden         : BOOL := FALSE;
-  blUpdateTimer                              : BOOL; // VERFAHRLOGIK 
+  blUpdateTimer                              : BOOL; // VERFAHRLOGIK
   blValidierungLuftabfrageAuslaufUnten       : BOOL := FALSE;
   blValidierungLuftabfrageEinlaufUnten       : BOOL := FALSE;
   blHinweisGenerierenSKAusgeloest            : BOOL := FALSE;
 
-  // WORD 
+  // WORD
   wlWatchIONachrichtenNummer                 : WORD;
 
   // STEPS
@@ -83,19 +83,19 @@ VAR
   steplVorabpositionierung   : Steps_TE;
   steplScheibenNeuAusrichten : Steps_TE;
 
-  // TRIGGER 
+  // TRIGGER
   ftlBausteinDeaktivierung   : F_TRIG;
 
   // TIMER
-  tonlMaxWarteAufResetErfolgreich     : TON; 
-  tonlUpdateTimer                     : TON; 
+  tonlMaxWarteAufResetErfolgreich     : TON;
+  tonlUpdateTimer                     : TON;
   tonlWarteShuttleSicherVerfahren     : TON; // Max. Warte Zeit wenn Shuttle nicht verfahren koennte, damit die WatchIO vorher aufkommen koennen *)
 
 
   // BAUSTEINE
   Glastransport                   : Transfershuttle_Glastransport_FB_V01_00_00;
-  Zentralschmierung               : Zentralschmierung_DLS_4xxi_FB_V01_00_00;  
-  Querfahrt                       : Querfahrt_Shuttle_FB_V01_00_00; 
+  Zentralschmierung               : Zentralschmierung_DLS_4xxi_FB_V01_00_00;
+  Querfahrt                       : Querfahrt_Shuttle_FB_V01_00_00;
 
 END_VAR
 
@@ -114,7 +114,7 @@ VAR
   in_bDruckluftAuslaufSeiteOK                                 : BOOL;
   in_bDruckluftWartungseinheitOK                       AT %I* : BOOL;
   in_bLeitungsschutz_Querfahrt_OK                      AT %I* : BOOL;
-  
+
 END_VAR
 
 //-------------------------------------------------------------------------------------------------
@@ -161,7 +161,7 @@ END_IF
      => Der Baustein wird zum Ende der RETURN-Anweisung verlassen
 *)
 IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
-  
+
   IF ( apgTransfershuttleVerfahrparameter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].eParkposition = PARKPOSITION_MAX ) THEN
     BasisStationsParameter.rAktuellePositionQuerfahrt := apgTransfershuttleVerfahrparameter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].rParkpositionMaximum;
   ELSE

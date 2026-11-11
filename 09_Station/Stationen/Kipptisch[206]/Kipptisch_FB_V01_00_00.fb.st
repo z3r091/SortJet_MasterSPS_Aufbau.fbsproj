@@ -9,27 +9,27 @@ FUNCTION_BLOCK Kipptisch_FB_V01_00_00 EXTENDS Basic_Station_FB_V01_00_00
 
 VAR
 
-  // BOOL  
+  // BOOL
   blStartePositionWaagerecht           : BOOL;
-  blStartePositionSenkrecht            : BOOL; 
-  blBewegungAbgeschlossen              : BOOL; 
-  blUpdateTimer                        : BOOL; 
+  blStartePositionSenkrecht            : BOOL;
+  blBewegungAbgeschlossen              : BOOL;
+  blUpdateTimer                        : BOOL;
   blZielPositionErreicht               : BOOL; // Ueberpruefung ob die Zielposition aus dem Auftrag mit der aktuellen Position uebereinstimmt [Abweichung + - 1mm]
   blAktionImFehler                     : BOOL; // Eine der wandweisen Aktionen steht im Fehler
 
   blOption_Eintransport_Aufgekippt     : BOOL;
   blOption_Austransport_Aufgekippt     : BOOL;
-  
-  // TRIGGER 
+
+  // TRIGGER
   ftlGlastransportCheckMitNachfolger   : F_TRIG;
-                                      
-  // TIMER      
-  tonlUpdateTimer                      : TON; // Verfahrlogik                       
-                                      
-  //  STEPS   
+
+  // TIMER
+  tonlUpdateTimer                      : TON; // Verfahrlogik
+
+  //  STEPS
   steplKippenSenkrecht     : Steps_TE;
   steplKippenWaagerecht    : Steps_TE;
-  
+
   // BAUSTEINE
   Glastransport  : Kipptisch_Glastransport_FB_V01_00_00;
   Rollenleiste   : ZylinderPneumatik_3Wege_FB_V01_00_00;
@@ -154,6 +154,6 @@ END_IF
 // Ohne Querfahrt ist die Zielposition immer erreicht
 blZielPositionErreicht := (    NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt
                             OR  ( ABS( BasisStationsParameter.rAktuellePositionQuerfahrt - argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )
-                            OR  ( ABS( BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition - argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz ) 
+                            OR  ( ABS( BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition - argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )
                             OR  ( ABS(ABS(BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition) - ABS(BasisStationsParameter.rAktuellePositionQuerfahrt) ) <= rgMKZielPositionToleranz ) );
 END_FUNCTION_BLOCK

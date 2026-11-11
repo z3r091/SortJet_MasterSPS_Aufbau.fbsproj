@@ -50,7 +50,7 @@ VAR
   out_bAnforderungSK            AT %Q* : BOOL; // Anforderung zum öffnen des 2. SK - Brechanlage muss in sichere Stop-Position fahren und freigeben
   out_bSensorEinlauf            AT %Q* : BOOL; // Erster Sensor am RKT
   out_bReserve                  AT %Q* : BOOL; // Optional
-  
+
   out_wSpeed                    AT %Q* : WORD;
 
 END_VAR

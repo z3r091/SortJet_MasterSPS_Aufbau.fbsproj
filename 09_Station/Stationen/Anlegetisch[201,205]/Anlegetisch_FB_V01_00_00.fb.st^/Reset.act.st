@@ -24,8 +24,8 @@ IF( blBetriebsartReset )THEN
 
       Glastransport.bpAnforderungHandfunktion := FALSE;
 
-      BasisStationsParameter.eStatusAuftrag := eKeinStatus;   
-   
+      BasisStationsParameter.eStatusAuftrag := eKeinStatus;
+
       BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberEinlauf  := FALSE;
       BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberAuslauf  := FALSE;
       BasisStationsParameter.bStationBelegt[cWAND_1]                               := FALSE;

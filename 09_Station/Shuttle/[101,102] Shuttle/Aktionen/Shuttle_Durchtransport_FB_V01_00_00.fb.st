@@ -21,13 +21,13 @@ THEN
     BasisStationsParameter.wFehlerNummer :=  Glastransport.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
-  
+
   IF ( Kippen.bpFehler ) THEN
     Kippen.bpPositionieren := FALSE;
     BasisStationsParameter.wFehlerNummer :=  Kippen.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
-  
+
   IF ( Wandverstellung.bpFehler ) THEN
     Wandverstellung.bpStartePositionierung := FALSE;
     BasisStationsParameter.wFehlerNummer :=  Wandverstellung.wpFehlerNr;
@@ -68,7 +68,7 @@ THEN
 
           Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition;
           Kippen.bpPositionieren := TRUE;
-          
+
           steplAktion := STEP_20_E;
         END_IF
 
@@ -103,7 +103,7 @@ THEN
       *)
       IF Wandverstellung.bpDone THEN
         Wandverstellung.bpStartePositionierung := FALSE;
-        steplAktion := STEP_40_E;   
+        steplAktion := STEP_40_E;
       END_IF
 
     // DURCHTRANSPORT ==============================

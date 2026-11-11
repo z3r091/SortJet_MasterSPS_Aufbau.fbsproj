@@ -7,14 +7,14 @@
 *)
 FUNCTION_BLOCK Shuttle_Vorabkomponenten
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
-  
+
   // WORD
   wStation               : WORD;
   wWand                  : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : VorAbAuftragsdaten_ST;
 
@@ -27,10 +27,10 @@ VAR_OUTPUT
 
 END_VAR
 VAR
-     
+
   // BOOL
   blFreigabeVorabAuftrag     : BOOL;
-  
+
   // WORD
   wlNextTransferstation  : WORD;
 
@@ -58,12 +58,12 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
       *)
-      IF checkSafetyCircuitsNotBlocked(starrShuttleBasisParameter[wStation]) 
-         AND blFreigabeVorabAuftrag 
+      IF checkSafetyCircuitsNotBlocked(starrShuttleBasisParameter[wStation])
+         AND blFreigabeVorabAuftrag
       THEN
         IF ( Auftragsdaten.wTransferStation <> 0 ) THEN
           steplSchritt := STEP_10_E;
-        ELSE  
+        ELSE
           steplSchritt := STEP_1000_E;
         END_IF
       END_IF
@@ -91,7 +91,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
          - Austransport
       *)
       IF ( Auftragsdaten.wAuftragstyp.0 ) THEN
-        // Folgestation beruecksichtigen damit in verschiedene Richtungen vorpositioniert werden kann. 
+        // Folgestation beruecksichtigen damit in verschiedene Richtungen vorpositioniert werden kann.
         starrShuttleBasisParameter[wStation].pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eGlastransport := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.Glastransport[wlNextTransferstation];
         starrShuttleBasisParameter[wStation].pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eKippen_SollPosition := starrShuttleBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.Kippen[wlNextTransferstation];
       ELSE
@@ -121,7 +121,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
       END_IF
 
       // Auftrag übergeben
-      starrShuttleBasisParameter[wStation].bVorabKomponentenAnsteuerung[wWand] := TRUE; 
+      starrShuttleBasisParameter[wStation].bVorabKomponentenAnsteuerung[wWand] := TRUE;
 
       steplSchritt := STEP_400_E;
 
@@ -131,7 +131,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
          - Abschliessen des Austransports
       *)
       IF ( starrShuttleBasisParameter[wStation].bVorabKomponentenAnsteuerungAbgeschlossen[wWand] ) THEN
-        starrShuttleBasisParameter[wStation].bVorabKomponentenAnsteuerung[wWand] := FALSE; 
+        starrShuttleBasisParameter[wStation].bVorabKomponentenAnsteuerung[wWand] := FALSE;
         steplSchritt := STEP_1000_E;
       END_IF
 
@@ -149,7 +149,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_VorabAuftrag ) THEN
       END_IF
 
     // VORABKOMPONENETEN ===============================================
-    STEP_900_E: 
+    STEP_900_E:
       blFreigabeVorabAuftrag := FALSE;
       bpFehler := TRUE;
 

@@ -13,10 +13,10 @@ VAR_INPUT
   bpSensorAuslauf                  : BOOL;
   bpAktivieren                     : BOOL;
   bpPositionieren                  : BOOL;
-  bpReset                          : BOOL; 
+  bpReset                          : BOOL;
   bpReferenz                       : BOOL;
-  bpBetriebsartHand                : BOOL; 
-  bpFreigabe                       : BOOL; 
+  bpBetriebsartHand                : BOOL;
+  bpFreigabe                       : BOOL;
   bpLangsamKippen                  : BOOL;
   bpTeilnehmerErreichbar           : BOOL;
   bpKippenSchuetz                  : BOOL;
@@ -33,14 +33,14 @@ END_VAR
 VAR_OUTPUT
 
   // BOOL
-  bpDone                 : BOOL; 
+  bpDone                 : BOOL;
   bpFehler               : BOOL;
   bpInReferenz           : BOOL;
 
   // WORD
   wpFehlerNr             : Fehlerkonstanten_EN;
 
-  // REAL 
+  // REAL
   rpAktuelleKippPosition : REAL;
   rpOutGeschwindigkeit   : REAL;
 
@@ -57,13 +57,13 @@ VAR
   bpStartAufkippen              : BOOL;
   bpStartAbkippen               : BOOL;
 
-  // TIMER 
+  // TIMER
   tonlMaxWarteAufResetErfolgreich       : TON;
   tonlAntriebNichtFreigegeben           : TON; // Ueberwachung: Antrieb nicht betriebsbereit
-  tonlEndschalterFreifahren             : TON; 
-  tonlWarteSchrittEndschalterFreifahren : TON; 
-  tofHardwareEndschalterFrei            : TOF; 
-  toflReglerFreigabeErhalten            : TOF; 
+  tonlEndschalterFreifahren             : TON;
+  tonlWarteSchrittEndschalterFreifahren : TON;
+  tofHardwareEndschalterFrei            : TOF;
+  toflReglerFreigabeErhalten            : TOF;
   tonlSensorEinlauf                     : TON;
   tonlSensorAuslauf                     : TON;
   toflReset                             : TOF;
@@ -85,13 +85,13 @@ END_VAR
 VAR
 
   // HARDWARE EINGAENGE
-  in_bMotorschutzschalter_OK           AT %I* : BOOL; 
+  in_bMotorschutzschalter_OK           AT %I* : BOOL;
   in_bLeitungsschutzschalterBremseOK   AT %I* : BOOL;
   in_bMotorstarter_OK           : BOOL;
   in_bSensorNicht90Grad         : BOOL;
   in_bSensorNicht84Grad         : BOOL;
-                                      
-                                      
+
+
   // HARDWARE AUSGAENGE
   out_bKippenAbSetzen           : BOOL;
   out_bKippenAufSetzen          : BOOL;
@@ -163,7 +163,7 @@ IF ( NOT bpAktivieren ) THEN
   ELSE
     epKippStatus := eKippen_Default;
   END_IF
-  
+
   RETURN;
 
 END_IF
@@ -193,11 +193,11 @@ Reset();
 IF ( bpKippenSchuetz ) THEN
   // Bremse lösen
   out_bBremseLoesen := out_bKippenAbSetzen OR out_bKippenAufSetzen OR bgVISUKippenBremseLoesen[stStationsNummern.NummerSPS];
-  
+
   // Reset Motorstarter
   toflReset( IN := bpReset, PT := T#3S );
   out_bReset := toflReset.Q;
-  
+
   Kippen_Schuetz();
 
 ELSE
@@ -209,14 +209,14 @@ ELSE
     toflReglerFreigabeErhalten( IN := (   bpPositionieren
                                         OR bpReferenz ),
                                 PT := ppParameterBaustein.tZeitAntriebsfreigabeErhalten );
-    
-      
+
+
     // Aufruf
     Antrieb.bpFreigabe        := bpFreigabe AND toflReglerFreigabeErhalten.Q;
     Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
     Antrieb.stStationsNummern := stStationsNummern;
-    
+
   END_IF
-  
+
 END_IF
 END_FUNCTION_BLOCK

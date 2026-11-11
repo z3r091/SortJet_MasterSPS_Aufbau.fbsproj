@@ -66,10 +66,10 @@ IF ( bpAuftragsdatenVorhanden ) THEN
 
     IF( SysMemCmp( ADR( out_awSenderLadeID ), ADR( in_awEmpfaengerLadeIDGespiegelt ), SIZEOF( out_awSenderLadeID ) ) = 0 )THEN
       out_bSenderAuftragdatenPlausibel := TRUE ;
-      
+
     ELSE
       out_bSenderAuftragdatenPlausibel := FALSE ;
-      
+
     END_IF
 
   END_IF

@@ -12,7 +12,7 @@ ACTION Signal_Logger
 // Bei Signalwechsel Daten ins Log schreiben
 
 // Eingangsignale
-IF   ( in_bAutomatikBetrieb <> blTempAutomatikBetrieb ) 
+IF   ( in_bAutomatikBetrieb <> blTempAutomatikBetrieb )
      OR ( blTempSenderGlasBereit <> in_bGlasBereit)
 THEN
   blTempAutomatikBetrieb := in_bAutomatikBetrieb;
@@ -27,7 +27,7 @@ IF blInLogSchreiben THEN
   slInLogString := CONCAT(slInLogString, ': ');
   slInLogString := CONCAT(slInLogString, 'Bereit : ');
   slInLogString := CONCAT(slInLogString, BOOL_TO_STRING(in_bGlasBereit) );
-  
+
   SpsLogString(slInLogString);
 
   blInLogSchreiben := FALSE;
@@ -35,8 +35,8 @@ END_IF
 
 
 // Ausganssignale
-IF   ( out_bEinlaufsensor <> blTempEinlaufSensor ) 
-     OR ( out_bBereitZumEintrasport <> blTempGlasAbruf ) 
+IF   ( out_bEinlaufsensor <> blTempEinlaufSensor )
+     OR ( out_bBereitZumEintrasport <> blTempGlasAbruf )
 THEN
   blTempEinlaufSensor := out_bEinlaufsensor;
   blTempGlasAbruf     := out_bBereitZumEintrasport;

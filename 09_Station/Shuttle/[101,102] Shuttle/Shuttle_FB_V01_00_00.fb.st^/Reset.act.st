@@ -22,7 +22,7 @@ IF( blBetriebsartReset )THEN
 
       blNachSystemcheckMerker                := FALSE;
       blDatenlichtschrankeUnterbrochenMelden := FALSE;
-      
+
       BasisStationsParameter.bQuittungPositionierungZurueckgesetzt := FALSE;
 
       BasisStationsParameter.bCheck := FALSE;

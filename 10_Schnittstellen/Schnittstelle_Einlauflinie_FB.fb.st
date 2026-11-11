@@ -68,7 +68,7 @@ VAR
   strScheibenID : STRING;
 
   // TRIGGER
-  rtlAutomatikActiv                       : R_TRIG; 
+  rtlAutomatikActiv                       : R_TRIG;
   rtlFehlermeldungGenerierenKommunikation : R_TRIG;
   rtlAuftragsdatenPlausibel               : R_TRIG;
   ftlAuftragsdatenVorhanden               : F_TRIG;
@@ -98,8 +98,8 @@ VAR
   out_bEmpfaengerSensorEinlauf                  AT %Q* : BOOL;
   out_bEmpfaengerNotHaltAusgeloest               AT %Q* : BOOL;
   out_rEmpfaengerGeschwindigkeit                AT %Q* : REAL := REAL#0;
-  out_bEmpfaengerBetriebsbereit                        : BOOL; 
-  out_bEmpfaengerGlasuebernommen                       : BOOL; 
+  out_bEmpfaengerBetriebsbereit                        : BOOL;
+  out_bEmpfaengerGlasuebernommen                       : BOOL;
 
 END_VAR
 VAR CONSTANT

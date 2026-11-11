@@ -7,13 +7,13 @@
 *)
 FUNCTION_BLOCK TS_Querfahrt
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
-  
+
   // WORD
   wStation               : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
@@ -29,7 +29,7 @@ VAR
 
   // STEPS
   steplSchritt           : STEPS_TE;
-  
+
 END_VAR
 
 
@@ -187,7 +187,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung) THEN
 
   // POSITIONIERUNG ===========================================
   END_CASE
-  
+
 END_IF
 
 IF bpReset THEN

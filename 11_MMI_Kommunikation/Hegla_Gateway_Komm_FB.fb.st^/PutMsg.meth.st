@@ -16,7 +16,7 @@ END_VAR
 
 // Nachricht in den Kommunikationspuffer zum MMI eintragen bzw. in die Queue,
 //    falls der Kommunikationspuffer belegt ist.
-  
+
 IF( o_b_WatchdogOk <> TRUE )THEN
   RETURN;
 END_IF;

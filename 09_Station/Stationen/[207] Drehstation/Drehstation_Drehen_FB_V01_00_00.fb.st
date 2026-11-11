@@ -24,7 +24,7 @@ VAR_INPUT
   bpAusnahmeSituationAbfangen   : BOOL := FALSE; // Status ob bestimmte Ausnahmesituationen abgearbeitet werden sollen
   bpEinlaufSensor               : BOOL; // HARDWARE EINGAENGE: SENSOREN
   bpAuslaufSensor               : BOOL; // HARDWARE EINGAENGE: SENSOREN
-  
+
   // ENUM
   epZielPosition : Drehen_EN;
 
@@ -71,13 +71,13 @@ VAR
   rpZielPositionition  : REAL;
 
   // TIMER
-  tonlMaxWarteAufResetErfolgreich       : TON; 
+  tonlMaxWarteAufResetErfolgreich       : TON;
   tonlAntriebNichtFreigegeben           : TON; // Ueberwachung: Antrieb nicht betriebsbereit
-  tonlEndschalterFreifahren             : TON; 
-  tonlWarteSchrittEndschalterFreifahren : TON; 
-  tonlFreigabeErhalten                  : TON; 
-  toflReglerFreigabeErhalten            : TOF; 
-  toflHardwareEndschalterFrei           : TOF; 
+  tonlEndschalterFreifahren             : TON;
+  tonlWarteSchrittEndschalterFreifahren : TON;
+  tonlFreigabeErhalten                  : TON;
+  toflReglerFreigabeErhalten            : TOF;
+  toflHardwareEndschalterFrei           : TOF;
 
   // STEPS
   steplDrehBewegung          : Steps_TE;
@@ -218,7 +218,7 @@ Antrieb.bpFreigabe         := (     toflReglerFreigabeErhalten.Q
                                 AND bpFreigabe
                                 AND bpVerfahrFreigabe );
 Antrieb.rpRuckzeit         := ppAntriebsInformationen.rpMaxRuckzeit;
-Antrieb.stStationsNummern  := stStationsNummern; 
+Antrieb.stStationsNummern  := stStationsNummern;
 
 // Bausteinaufruf:
 //   - Drehantrieb
@@ -230,7 +230,7 @@ Arretierung();
 //-------------------------------------------------------------------------------------------------
 // AUSGAENGE
 //-------------------------------------------------------------------------------------------------
-bpDrehvorgangAktiv :=  ( bpStarteAbsolutPositionierung 
+bpDrehvorgangAktiv :=  ( bpStarteAbsolutPositionierung
                          OR bpStarteDrehBewegung );
 (* Hinweis:
    - Aktuelle Position des Antriebs

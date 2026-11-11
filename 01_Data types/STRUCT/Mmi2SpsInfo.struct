@@ -56,7 +56,7 @@ TYPE Mmi2SpsInfo :
 
     // SB0_MMI_SortierungDelete
     M_SB0_MMI_SortierungDelete               : WORD;
-    
+
 
     // SB0_MMI_SORTIERUNGAUTOMATIKSTART
     wAutomatikStartTransportLineNr           : WORD;        // AutomatikStart Liniennr 1-X (3)
@@ -369,12 +369,12 @@ TYPE Mmi2SpsInfo :
     wShuttleNummerFWSuche      : WORD;
     wShuttleFWSucheAN_AUS      : WORD;
     rShuttleFWSucheWeg         : REAL := 0.0;
-    
+
     // SB0_MMI_DRIVEOVERRIDE
     wMmi2SpsOverrideStation                    : WORD;
     wMmi2SpsOverrideValue                      : WORD;
 
-    // MSG 99 - SB0_MMI_WATCHDOGTEST  
+    // MSG 99 - SB0_MMI_WATCHDOGTEST
     wWatchDogTestCount                         : WORD;
     wModusAuswahl                              : WORD;
 

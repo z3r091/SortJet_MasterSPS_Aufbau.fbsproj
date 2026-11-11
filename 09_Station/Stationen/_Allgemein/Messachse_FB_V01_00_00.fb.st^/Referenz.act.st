@@ -10,8 +10,8 @@ ACTION Referenz
 // AKTION: REFERENZ
 //-------------------------------------------------------------------------------------------------
 
-IF ( bpReferenz 
-     OR bpHandReferenz ) 
+IF ( bpReferenz
+     OR bpHandReferenz )
 THEN
 
   (* Hinweis:
@@ -51,7 +51,7 @@ THEN
       IF ( NOT Antrieb.bpFehler ) THEN
         Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
 
-        IF ( Antrieb.bpMinSchalterBelegt 
+        IF ( Antrieb.bpMinSchalterBelegt
              OR Antrieb.bpMaxSchalterBelegt )
         THEN
           steplReferenz := STEP_20_E;

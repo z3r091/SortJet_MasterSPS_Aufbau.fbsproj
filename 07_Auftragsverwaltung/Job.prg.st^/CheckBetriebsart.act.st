@@ -18,8 +18,8 @@ blSendJobStatus := FALSE; // zurücksetzen
 
 
 // Wichtig !!!
-// Es muss nur das Statuswort für die Iso Linien angepasst werden. 
-// 6. Statuswort: Fremdanlage / ISO-Linie / Abnahmewand [AKTIV] 
+// Es muss nur das Statuswort für die Iso Linien angepasst werden.
+// 6. Statuswort: Fremdanlage / ISO-Linie / Abnahmewand [AKTIV]
 IF (  (awSPS2MMIMaschineStatusWord[6].0 <> FALSE ) ) THEN
   awSPS2MMIMaschineStatusWord[6].0 := FALSE;
   blSendJobStatus := TRUE;

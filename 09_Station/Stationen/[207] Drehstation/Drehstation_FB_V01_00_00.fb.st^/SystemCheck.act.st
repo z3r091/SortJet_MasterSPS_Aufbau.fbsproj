@@ -12,8 +12,8 @@ ACTION SystemCheck
 IF( blBetriebartCheck )THEN
 
   // Ausnahmesituation
-  
-  
+
+
   CASE ( steplCheck ) OF
     // SYSTEM CHECK=========================
     STEP_0_E:

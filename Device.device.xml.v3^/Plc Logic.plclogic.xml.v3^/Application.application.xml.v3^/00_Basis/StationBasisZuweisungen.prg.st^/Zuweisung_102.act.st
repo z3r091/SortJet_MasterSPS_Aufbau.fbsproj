@@ -9,7 +9,7 @@ ACTION Zuweisung_102
 // Zuweisung der MK's
 starrShuttleBasisParameter[cSHUTTLE_102].stMKs REF= apgMKShuttle102;
 
-// Antriebsparameter zuweisen  
+// Antriebsparameter zuweisen
 starrShuttleBasisParameter[cSHUTTLE_102].stAntriebsparameter.stGlastransport                   REF= apgInfoShuttle102Glastransport;
 starrShuttleBasisParameter[cSHUTTLE_102].stAntriebsparameter.stGlastransportSlave              REF= apgInfoShuttle102GlastransportSlave;
 starrShuttleBasisParameter[cSHUTTLE_102].stAntriebsparameter.stWandverstellung                 REF= apgInfoShuttle102Dickenverstellung;

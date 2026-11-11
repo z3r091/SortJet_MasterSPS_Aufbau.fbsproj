@@ -14,7 +14,7 @@ VAR_INPUT
   bpEintransportRueckwaertig       : BOOL;
   bpAustransport                   : BOOL;
   bpAustransportRueckwaertig       : BOOL;
-  bpVortransport                   : BOOL; 
+  bpVortransport                   : BOOL;
   bpVortransportRueckwaertig       : BOOL;
   bpMesskopplung                   : BOOL;
   bpDurchtransport                 : BOOL;
@@ -31,20 +31,20 @@ VAR_INPUT
   bpReset                          : BOOL;
   bpAutomatikAktiv                 : BOOL;
   bpFreigabe                       : BOOL;
-  bpMessrichtungNegativ            : BOOL; 
+  bpMessrichtungNegativ            : BOOL;
   bpCheckMitVorgaenger             : BOOL;
-  bpCheckMitNachfolger             : BOOL; 
+  bpCheckMitNachfolger             : BOOL;
   bpRueckwaertigerTransport        : BOOL;
   bpScheibentrennen                : BOOL;
   bpAbbruchVortransport            : BOOL;
-  
-  // Sensoren
-  bpSensorEinlauf                  : BOOL; 
-  bpSensorEinlaufVorAb             : BOOL; 
-  bpSensorAuslaufVorAb             : BOOL; 
-  bpSensorAuslauf                  : BOOL; 
 
-  // OPTIONEN 
+  // Sensoren
+  bpSensorEinlauf                  : BOOL;
+  bpSensorEinlaufVorAb             : BOOL;
+  bpSensorAuslaufVorAb             : BOOL;
+  bpSensorAuslauf                  : BOOL;
+
+  // OPTIONEN
   bpOptionMessungSystemCheckAktiv            : BOOL;
   bpOptionMasterSlaveTransport               : BOOL;
   bpOptionScheibenmessungEintransport        : BOOL;
@@ -53,19 +53,19 @@ VAR_INPUT
   bpOptionNachSystemcheckAufAuslaufsensor    : BOOL;
   bpOptionbScheibenmessungSensorVorabAuslauf : BOOL;
 
-  // WORD 
+  // WORD
   wlIndex : WORD := 0;
-  
-  // ENUM 
+
+  // ENUM
   eGlastyp : GlasTyp_EN;
 
-  // STRUCT 
+  // STRUCT
   InGlasTransportVorgaenger   : Interface_GlasTransport; // STRUKTUR: Informationen ueber den Aus- Ein- Transport der Vorgaengerstation
   InGlasTransportNachfolger   : Interface_GlasTransport; // STRUKTUR: Informationen ueber den Aus- Ein- Transport der Nachfolge- Station
   pAuftrag                    : Auftragsdaten_ST;            // AUFTRAG: Aktuelle daten zum Auftrag [Laenge, Hoehe, Modelle]
   stStationsNummern           : Station_ST;
 
-  // POINTER 
+  // POINTER
   ppParameterBaustein          : REFERENCE TO Parameter_Glastransport;
   ppAntriebsInformationen      : REFERENCE TO AntriebsInformationen;
   ppAntriebsInformationenSlave : REFERENCE TO AntriebsInformationen; // Wird nur verwendet um die Box Nummer anzeigen zu lassen
@@ -95,15 +95,15 @@ VAR_OUTPUT
   bpDurchtransportWarAktiv      : BOOL;
   bpUebergrosseScheibeUebergang : BOOL;
 
-  // WORD 
+  // WORD
   wpFehlerNr                   : Fehlerkonstanten_EN;
 
-  // DWORD 
+  // DWORD
   dwpWartezeit                 : DWORD; // STATISTIK: Zeitwerte fuer die Statistik zum auswerten
 
-  // REAL 
+  // REAL
   rpOutGeschwindigkeit         : REAL;
-  rpGemesseneGlaslaenge        : REAL;  
+  rpGemesseneGlaslaenge        : REAL;
 
 END_VAR
 
@@ -115,18 +115,18 @@ VAR
   in_bSensorAuslaufVorab        : BOOL;
   in_bSensorAuslauf             : BOOL;
 
-  // BOOL 
+  // BOOL
   blErsterZyklus                : BOOL := TRUE;
   blScheibenMerker              : BOOL;
   blReduzierteGeschwindigkeit   : BOOL;
   blAntriebsKopplungAktiv       : BOOL;
   blStarteSlaveKopplung         : BOOL;
-  
+
   // INT
   ilScheibenZaehler             : INT;
   ilIndexScheibenmessung        : INT := 1;
 
-  // REAL 
+  // REAL
   rlGefahreneStreckeEintransport    : REAL; // HINWEIS: Weg-Merker fuer die Strecke die beim Eintransport zurueck gelegt werden muss laut Auftrag
   rlPositionAntriebBeiStart         : REAL;
   rlMaxStreckeErsteScheibe          : REAL; // Max. Weg bis zur ersten Scheibe: Laenge der abgebenden Station, ohne bekannte Laenge die eigene Stationslaenge
@@ -135,7 +135,7 @@ VAR
   rlStreckeBisZurVerzoegerung       : REAL;
   rlScheibenMessung                 : ARRAY[1..10] OF REAL;
 
-  // STEPS 
+  // STEPS
   steplEintransport             : Steps_TE;
   steplEintransportRueckwaertig : Steps_TE;
   steplAustransport             : Steps_TE;
@@ -171,7 +171,7 @@ VAR
 
   rtlMessungOK                              : R_TRIG;
 
-  // TIME 
+  // TIME
   tlWarteZeitAufnahme    : TIME; // STATISTIK
 
 
@@ -188,7 +188,7 @@ END_VAR
 
 VAR CONSTANT
 
-  // TIME 
+  // TIME
   cUEBERWACHUNG_SLAVE_AKTIV           : TIME := T#1S;
   cMAX_ZEIT_SLAVE_KOPPLUNG_HERSTELLEN : TIME := T#30S; // inkl. Referenzfahrt von Master und Slave
 
@@ -202,7 +202,7 @@ IF ( blErsterZyklus ) THEN
   IF ( __ISVALIDREF(ppAntriebsInformationen) ) THEN
 
     blErsterZyklus            := FALSE;
-  
+
     // Antrieb referenzieren
     Antrieb       REF= pgAntriebe[ppAntriebsInformationen.wAchsID];
     IF ( __ISVALIDREF(ppAntriebsInformationenSlave) ) THEN
@@ -244,7 +244,7 @@ IF ( blErsterZyklus ) THEN
       Antrieb_Slave.rpVerzoegerung    := ppAntriebsInformationenSlave.rpMaxVerzoegerung;
       Antrieb_Slave.rpRuckzeit        := ppAntriebsInformationenSlave.rpMaxRuckzeit;
     END_IF
-    
+
     // Pointer
     //   - Initialisierung zur vermeidung von null Pointerexceptions
     //     => Scheibenmessung
@@ -402,8 +402,8 @@ ELSE
 END_IF
 
 // Freigabe für eine Bewegung
-bpVerfahrFreigabe :=  NOT ( bpSensorEinlauf 
-                            OR bpSensorAuslauf 
-                            OR bpEintransport 
+bpVerfahrFreigabe :=  NOT ( bpSensorEinlauf
+                            OR bpSensorAuslauf
+                            OR bpEintransport
                             OR bpAustransport );
 END_FUNCTION_BLOCK

@@ -36,13 +36,13 @@ VAR_GLOBAL
   tgTimeWarteAufCheckDone                               : TIME := T#2M;      // [ ZEITEINHEIT MINUTEN ] Zeit, die der Station gegeben wird um den Check durchzuführen [ DEFAULT 60000 ]
   tgTimeWarteAufInitDone                                : TIME := T#2M;      // Zeit, die der Station gegeben wird um die Initialisierung durchzuführen in min
   tgAntriebsverzoegerung                                : TIME := T#0MS;
-  
+
 
   // FAECHERWAGENSTATION
   dwgWarteZeitUeberwachungFaecherwagenPosition          : DWORD := 30;       // [Min] Zeit bis der Hydraulik- Zylinder fuer die Position "Oben" nochmal angesteuert wird um den FW oben zu halten
   wgTimeHydraulikUmlaufEin                              : WORD  := 3;        // Zeit in sec., bevor der Hydraulikumlauf eingeschaltet wird
 
-  
+
   // ALLGEMEIN GEWICHT
   rgReduzierteGeschwindigkeitGlasGewicht                : WORD  := 250;   // WICHTIG:[kg] Reduzieren der Beschleunigung und der Geschwindigkeit nach Glasgewicht
 

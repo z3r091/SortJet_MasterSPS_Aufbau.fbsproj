@@ -14,7 +14,7 @@ VAR
   // BOOL
   blECatOK                   : BOOL;
   blRestartEtherCatMMI       : BOOL;
-    
+
   // STEPS
   steplEtherCat_Restart      : Steps_TE;
 
@@ -22,7 +22,7 @@ VAR
   tonlWaitInit               : TON;
   tonl_Step                  : TON;
   tonlEtherCat_Start_TimeOut : TON;
-  
+
   // TRIGGER
   rtrigECatOK                : R_TRIG;
 END_VAR

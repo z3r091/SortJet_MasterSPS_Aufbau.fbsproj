@@ -25,7 +25,7 @@ IF( blBetriebartCheck )THEN
     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
     steplCheck := STEP_900_E;
   END_IF
- 
+
 
   CASE ( steplCheck ) OF
     // SYSTEM CHECK =========================
@@ -237,7 +237,7 @@ IF( blBetriebartCheck )THEN
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
       END_IF
-   
+
     // SYSTEM CHECK =========================
     STEP_900_E:
       BasisStationsParameter.bFehler := TRUE;

@@ -56,7 +56,7 @@ IF (  bpScheibenNeuAusrichten ) THEN
         blHinweisGenerierenSKAusgeloest := TRUE;
 
       END_IF
-    
+
     // SCHEIBEN AUSRICHTEN ==============================
     STEP_100_E:
       (* Anmerkung:

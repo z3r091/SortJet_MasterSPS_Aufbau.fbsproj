@@ -24,7 +24,7 @@ CASE( tSpsMessage.wAuftrag )OF
 
 
   // MSG 2
-  // Auftrag für den Anlegetisch (Start_Station) 
+  // Auftrag für den Anlegetisch (Start_Station)
   SB0_MMI_SortierungInputInQueue:
     tMmi2SpsInfo.wSortierungsInQueueLineNr         := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));  // Liniennr. wo das Glas aufgelegt werden soll
     tMmi2SpsInfo.wSortierungsInputInQueueStationNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[1])); // Tischnummer des Anlegetisches
@@ -52,30 +52,30 @@ CASE( tSpsMessage.wAuftrag )OF
     tMmi2SpsInfo.wCheckArea      := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
     tMmi2SpsInfo.wCheckRelease   := HMI_GetWORD(ADR(tSpsMessage.awDaten[1]));
     M_SB0_MMI_SortierungCheckInputQueue := TRUE;
-    
-    
+
+
   // MSG 7
   // Beliebige Station irgendeiner Linie die Daten löschen
   SB0_MMI_SORTIERUNGCANCELQUEUEDATA:   // SB0_MMI_SortierungDelete:
     tMmi2SpsInfo.wDeleteStationNr   := HMI_GetWORD(ADR(tSpsMessage.awDaten[0])); // Tischnummer des Anlegetisches
     tMmi2SpsInfo.wDeleteStationSlot := HMI_GetWORD(ADR(tSpsMessage.awDaten[1])); // Wandnummer  des Anlegetisches
     M_SB0_MMI_SORTIERUNGCANCELQUEUEDATA := TRUE;
-    
-  
+
+
   // MSG 8
   // Abbruch des offenen ISO Line Events
   SB0_MMI_SORTIERUNGCANCELISOLINEEVENT:
     M_SB0_MMI_SORTIERUNGCANCELISOLINEEVENT := TRUE;
 
-    
+
   // MSG 9
-  // Auftrag des entsprechenden Shuttles löschen 
+  // Auftrag des entsprechenden Shuttles löschen
   SB0_MMI_SortierungCancelShuttleData:
     tMmi2SpsInfo.wCancelShuttleDataShuttleNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
     M_SB0_MMI_SortierungCancelShuttleData := TRUE;
 
-    
-  // MSG 11 
+
+  // MSG 11
   // Start Automatik Foerder Transport der Glastransportstationen
   SB0_MMI_SORTIERUNGAUTOMATIKSTART:
     tMmi2SpsInfo.wAutomatikStartTransportLineNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
@@ -116,8 +116,8 @@ CASE( tSpsMessage.wAuftrag )OF
     M_SB0_MMI_SORTIERUNGFAECHERWAGENBALDVOLL := TRUE;
 
 
-  // MSG 15  
-  // Fächerwagenwechsel auch von verschiedenen Stationen möglich 
+  // MSG 15
+  // Fächerwagenwechsel auch von verschiedenen Stationen möglich
   SB0_MMI_SORTIERUNGFAECHERWAGENWECHSEL:
     tMmi2SpsInfo.wFaecherwagenwechsel       := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));   // DestStation / Zielstation
     tMmi2SpsInfo.wSps2FaecherwagenStationNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[1]));   // SourceStation / Startstation
@@ -128,13 +128,13 @@ CASE( tSpsMessage.wAuftrag )OF
   // HANDFUNKTIONEN: Stationen
   SB0_MMI_SetHandfunktion:
     FOR wlIndex := 0 TO (tSpsMessage.wLaenge-1) BY 6 DO
-      
+
       IF ( HMI_GetWORD(ADR(tSpsMessage.awDaten[0])) >= cERSTE_FAECHERWAGENSTATIONS_NR ) THEN
         adwgHandfunktionenFaecherwagenStationen[HMI_GetWORD(ADR(tSpsMessage.awDaten[wlIndex/2]))] := HMI_GetDWORD(ADR(tSpsMessage.awDaten[( (wlIndex)/2 )+1]));
       ELSE
         adwgHandfunktionenStationen[HMI_GetWORD(ADR(tSpsMessage.awDaten[wlIndex/2]))] := HMI_GetDWORD(ADR(tSpsMessage.awDaten[( (wlIndex)/2 )+1]));
-      END_IF      
-      
+      END_IF
+
     END_FOR
 
 
@@ -165,7 +165,7 @@ CASE( tSpsMessage.wAuftrag )OF
 
 
   // MSG 31
-  // Unabhaengige Quittung der Sondergläser durch Tasterdruck anfordern 
+  // Unabhaengige Quittung der Sondergläser durch Tasterdruck anfordern
   SB0_MMI_ISOQUITTUNG:
     M_SB0_MMI_ISOQUITTUNG:=TRUE;
     tMmi2SpsInfo.wISOStation    := HMI_GetWORD(ADR(tSpsMessage.awDaten[0])); (* Tischnummer des Anlegetisches *)// Liniennummer
@@ -178,10 +178,10 @@ CASE( tSpsMessage.wAuftrag )OF
     M_SB0_MMI_RELEASERACKLOGIN := TRUE;
     tMmi2SpsInfo.wSps2FaecherwagenStationNr  := HMI_GetWORD(ADR(tSpsMessage.awDaten[0])); // Stationsnummer wo der Wagen eingeschleust werden soll
     tMmi2SpsInfo.wlFreigabeEinschleuseJaNein := HMI_GetWORD(ADR(tSpsMessage.awDaten[1])); // Freigabe zum Einschleusen = 1 / Freigegebenen Wagen wieder löschen = 0
-    
+
 
   // MSG 40
-  // Anfrage vom MMI nach dem Status einer EINZELNEN Fächerwagenstation => belegt, Muting OK, RFID-Nr. 
+  // Anfrage vom MMI nach dem Status einer EINZELNEN Fächerwagenstation => belegt, Muting OK, RFID-Nr.
   SB0_MMI_GETSTATUSRACKSTATION:
     M_SB0_MMI_GETSTATUSRACKSTATION := TRUE;
     tMmi2SpsInfo.wSps2FaecherwagenStationNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[0])); // Stationsnummer wo angefragt wird
@@ -190,7 +190,7 @@ CASE( tSpsMessage.wAuftrag )OF
   // MSG 41
   SB0_MMI_DOCKRACK:
     M_SB0_MMI_DOCKRACK := TRUE;
-    tMmi2SpsInfo.wSps2FaecherwagenStationNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[0])); 
+    tMmi2SpsInfo.wSps2FaecherwagenStationNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
 
 
   // MSG 43
@@ -205,13 +205,13 @@ CASE( tSpsMessage.wAuftrag )OF
       igIndexFaecherwagenDatenEmpfangen := igIndexFaecherwagenDatenEmpfangen + 1;
     END_FOR
     M_SB0_MMI_REQUESTSTATUSLOADINGSTATIONS := bgEtherCatOK;
-  
 
-  // MSG 51 
+
+  // MSG 51
   SB0_MMI_REQUESTTILTSTATION:
     tMmi2SpsInfo.wSortierungsInputSwingStationNr := HMI_GetWORD(ADR(tSpsMessage.awDaten[0])); // Stationsnummer
     M_SB0_MMI_REQUESTTILTSTATION := TRUE;
-        
+
 
   // MSG 53
   // Positionierung ueber die Oberflaeche [Verfahrlogik]
@@ -224,14 +224,14 @@ CASE( tSpsMessage.wAuftrag )OF
 
 
   // MSG 55
-  // Fachaufnahme 
+  // Fachaufnahme
   SB0_MMI_FACHAUFNAHMESTART:
-    wlTemp := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));  
+    wlTemp := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
     AutomatischeFachaufnahme.bpStarteFachaufnahme := wlTemp.0;
     AutomatischeFachaufnahme.wpMMINummer          := HMI_GetWORD(ADR(tSpsMessage.awDaten[2]));
 
 
-  // MSG 56 
+  // MSG 56
   // Shuttle Fächerwagen ausmessen
   SB0_MMI_POSITIONMEASUREONOFF:
     tMmi2SpsInfo.wShuttleNummerFWSuche := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
@@ -241,7 +241,7 @@ CASE( tSpsMessage.wAuftrag )OF
 
 
   // MSG 67
-  // STATUS: Stationen (SystemCheck) 
+  // STATUS: Stationen (SystemCheck)
   SB0_MMI_STATIONSTATUS:
     tMmi2SpsInfo.wStationsNummer      := HMI_GetWORD(ADR(tSpsMessage.awDaten[0])); // Station Nr.
     tMmi2SpsInfo.wStationsStatusWord1 := HMI_GetWORD(ADR(tSpsMessage.awDaten[1])); // Manueller Modus
@@ -265,7 +265,7 @@ CASE( tSpsMessage.wAuftrag )OF
     tMmi2SpsInfo.wSystemCheckStationLetzteScheibe      := HMI_GetWORD(ADR(tSpsMessage.awDaten[3])); // Die Station ist bei gesetztem Bit- voll beladen
     tMmi2SpsInfo.wSystemCheckStationBeschichtungsSeite := HMI_GetWORD(ADR(tSpsMessage.awDaten[4])); // Beschichtungsseite
     tMmi2SpsInfo.wSystemCheckStationTyp                := HMI_GetWORD(ADR(tSpsMessage.awDaten[5])); // Hinweis: Kann benutzt werden fuer spezielle Bedingungen -> TeutoGlas Ausrichttypen fuer die Station 211 [Ausrichtfoerderer]
-    tMmi2SpsInfo.wSystemCheckStationSlot               := HMI_GetWORD(ADR(tSpsMessage.awDaten[6])); // Wandnr    
+    tMmi2SpsInfo.wSystemCheckStationSlot               := HMI_GetWORD(ADR(tSpsMessage.awDaten[6])); // Wandnr
     tMmi2SpsInfo.rSystemCheckStationSollPosition       := HMI_GetREAL(ADR(tSpsMessage.awDaten[7])); // Hinweis: Gibt Auskunft ueber die Position an der z.B. ein Antrieb gestanden hat / stehen soll
     tMmi2SpsInfo.rSystemCheckStationScheibenlaenge     := HMI_GetREAL(ADR(tSpsMessage.awDaten[9])); // ** NEU Startposition als ABS. Position *
     tMmi2SpsInfo.wSytstemCheckStationModellaktiv       := HMI_GetWORD(ADR(tSpsMessage.awDaten[11])); // Hinweis: die evtl. auf der Station/Shuttle befindliche Scheibe ist ein Modell
@@ -273,7 +273,7 @@ CASE( tSpsMessage.wAuftrag )OF
     tMmi2SpsInfo.rSystemCheckModellVersatzHinten       := HMI_GetREAL(ADR(tSpsMessage.awDaten[14])); // Modellversatz
     tMmi2SpsInfo.wSystemCheckScheibenDicke             := HMI_GetWORD(ADR(tSpsMessage.awDaten[16])); // Glasdicke ist binär, da für mehrere Wände die Dicke mit gegeben werden muss. Glas bis 13mm = 0 / Glasdicke > 13mm = 1
     tMmi2SpsInfo.rSystemcheckGlasGewicht               := HMI_GetREAL(ADR(tSpsMessage.awDaten[18])); // Glasgewicht, errechnet vom MMI
- 
+
     // Die Wandnummer wird Bitcodiert übergeben. In der SPS wird sie aber Dezimal benötigt
     // Wand 3
     IF tMmi2SpsInfo.wSystemCheckStationSlot = 4 THEN
@@ -291,31 +291,31 @@ CASE( tSpsMessage.wAuftrag )OF
     M_SB0_MMI_GETSORTIERUNGSHUTTLEPOS := TRUE;
 
 
-  // MSG 70 
-  // Anzeige der IO´s im MMI Service  WORT 0: 1 = sichtbar / 0 = unsichtbar  
+  // MSG 70
+  // Anzeige der IO´s im MMI Service  WORT 0: 1 = sichtbar / 0 = unsichtbar
   SB0_MMI_IOANZEIGE_AKTIVIEREN_DEAKTIVIEREN:
     M_SB0_MMI_IOANZEIGE_AKTIVIEREN_DEAKTIVIEREN := TRUE;
     tMmi2SpsInfo.wlIOsAnzeigeAktivierenDeaktivieren := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
 
 
   // MSG 71
-  // Uebergabe der Auftragsdaten von der HMI fuer die Fremdanlage      
+  // Uebergabe der Auftragsdaten von der HMI fuer die Fremdanlage
   SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE:
-    tMmi2SpsInfo.wFremdanlageNr       := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));    
+    tMmi2SpsInfo.wFremdanlageNr       := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
     tMmi2SpsInfo.wNachrichtenIndex    := HMI_GetWORD(ADR(tSpsMessage.awDaten[1]));
     tMmi2SpsInfo.wNachrichtenAnzahl   := HMI_GetWORD(ADR(tSpsMessage.awDaten[2]));
     tMmi2SpsInfo.wScheibenanzahl      := HMI_GetWORD(ADR(tSpsMessage.awDaten[3]));
     tMmi2SpsInfo.adwScheibenID_1[0]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[4]));
     tMmi2SpsInfo.adwScheibenID_1[1]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[6]));
-    tMmi2SpsInfo.adwScheibenID_1[2]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[8])); 
+    tMmi2SpsInfo.adwScheibenID_1[2]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[8]));
     tMmi2SpsInfo.adwScheibenID_1[3]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[10]));
     tMmi2SpsInfo.adwScheibenID_2[0]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[12]));
     tMmi2SpsInfo.adwScheibenID_2[1]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[14]));
-    tMmi2SpsInfo.adwScheibenID_2[2]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[16])); 
+    tMmi2SpsInfo.adwScheibenID_2[2]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[16]));
     tMmi2SpsInfo.adwScheibenID_2[3]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[18]));
     tMmi2SpsInfo.adwScheibenID_3[0]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[20]));
     tMmi2SpsInfo.adwScheibenID_3[1]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[22]));
-    tMmi2SpsInfo.adwScheibenID_3[2]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[24])); 
+    tMmi2SpsInfo.adwScheibenID_3[2]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[24]));
     tMmi2SpsInfo.adwScheibenID_3[3]   := HMI_GetDWORD(ADR(tSpsMessage.awDaten[26]));
 
     M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE := TRUE;
@@ -349,7 +349,7 @@ CASE( tSpsMessage.wAuftrag )OF
     tMmi2SpsInfo.wTransfershuttle_GlasDicke     := HMI_GetWORD(ADR(tSpsMessage.awDaten[2])); // HINWEIS: Unterteilung welche Luftabfrage genommen werden muss
     tMmi2SpsInfo.rTransfershuttle_SollPosition1 := HMI_GetReal(ADR(tSpsMessage.awDaten[3])); // HINWEIS: Soll-Position des Transfershuttles
     tMmi2SpsInfo.rTransfershuttle_SollPosition2 := HMI_GetReal(ADR(tSpsMessage.awDaten[5])); // HINWEIS: Soll-Position des Transfershuttles
-   
+
     M_SB0_MMI_TRANSFERSHUTTLECHECK := TRUE;
 
     // MSG 77/100
@@ -365,7 +365,7 @@ CASE( tSpsMessage.wAuftrag )OF
     END_IF
 
 
-  // MSG 81 
+  // MSG 81
   SB0_MMI_RESET_ETHERCAT:
     M_SB0_MMI_RESET_ETHERCAT := TRUE;
 
@@ -398,7 +398,7 @@ CASE( tSpsMessage.wAuftrag )OF
 
     tMmi2SpsInfo.wNachrichtenAnzahl := HMI_GetWORD(ADR(tSpsMessage.awDaten[15]));
     tMmi2SpsInfo.wNachrichtenIndex  := HMI_GetWORD(ADR(tSpsMessage.awDaten[28]));
- 
+
     IF    ( tMmi2SpsInfo.wStationsNr >= cERSTE_STATION )
     THEN
       M_SB0_MMI_SHEET_ORDER_STATION := TRUE;
@@ -419,9 +419,9 @@ CASE( tSpsMessage.wAuftrag )OF
   SB0_MMI_TS_REPOSITIONING_LITES:
     tMmi2SpsInfo.wStationsNr          := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));  // Stationsnummer der Quellstation
     tMmi2SpsInfo.rStationsPosition    := HMI_GetREAL(ADR(tSpsMessage.awDaten[1]));  // Stationsposition der Quellstation
-    tMmi2SpsInfo.wTransferstationsNr1 := HMI_GetWORD(ADR(tSpsMessage.awDaten[3])); 
+    tMmi2SpsInfo.wTransferstationsNr1 := HMI_GetWORD(ADR(tSpsMessage.awDaten[3]));
     tMmi2SpsInfo.rTransferposition1   := HMI_GetREAL(ADR(tSpsMessage.awDaten[4]));  // Stationsposition der Quellstation
-    tMmi2SpsInfo.rModellversatzHinten := HMI_GetREAL(ADR(tSpsMessage.awDaten[6])); 
+    tMmi2SpsInfo.rModellversatzHinten := HMI_GetREAL(ADR(tSpsMessage.awDaten[6]));
     tMmi2SpsInfo.rAuftragsDicke       := HMI_GetREAL(ADR(tSpsMessage.awDaten[8]));  // Dicke der Scheibe/Batch
 
     M_SB0_MMI_TS_REPOSITIONING_LITES := TRUE;
@@ -435,7 +435,7 @@ CASE( tSpsMessage.wAuftrag )OF
   SB0_MMI_ANFORDERUNG_PUFFER_EINFAHREN:
     tMmi2SpsInfo.wModusAuswahl := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
     M_SB0_MMI_ANFORDERUNG_PUFFER_EINFAHREN := TRUE;
-    
+
   ELSE
 
     MsgInterpret := FALSE;

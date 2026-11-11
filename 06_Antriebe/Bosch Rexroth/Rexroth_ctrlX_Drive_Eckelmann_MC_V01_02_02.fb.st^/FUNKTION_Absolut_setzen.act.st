@@ -10,26 +10,26 @@ IF bpAbsolutSetzen THEN
 
   CASE asteplSchritt[ABSOLUT_SETZEN] OF
 
-    STEP_0_E:  
+    STEP_0_E:
       bpAbsolutSetzenDone := FALSE;
       blReferenzLoeschen := TRUE; // Referenz ablöschen
       IF NOT bpIstReferenziert THEN
         blReferenzLoeschen := FALSE; // Referenz ablöschen
-        asteplSchritt[ABSOLUT_SETZEN] := STEP_10_E;        
-      END_IF  
+        asteplSchritt[ABSOLUT_SETZEN] := STEP_10_E;
+      END_IF
 
     STEP_10_E:
       blReferenzSetzen := TRUE; //Referenz setzen
       IF bpIstReferenziert THEN
-        blReferenzSetzen := FALSE; 
-        asteplSchritt[ABSOLUT_SETZEN] := STEP_1000_E;        
+        blReferenzSetzen := FALSE;
+        asteplSchritt[ABSOLUT_SETZEN] := STEP_1000_E;
       END_IF
 
     STEP_900_E:
       ;
 
     STEP_1000_E:
-      bpAbsolutSetzenDone := TRUE;  
+      bpAbsolutSetzenDone := TRUE;
 
   END_CASE
 

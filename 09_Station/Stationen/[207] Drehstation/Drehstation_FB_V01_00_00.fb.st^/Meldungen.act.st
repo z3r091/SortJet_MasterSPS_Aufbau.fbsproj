@@ -46,7 +46,7 @@ THEN
     BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_GEBLAESE;
     BasisStationsParameter.bFehler := TRUE;
   END_IF
-  
+
   IF ( Querfahrt.bpFehler ) THEN
     BasisStationsParameter.bFehler := TRUE;
     BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_QUERFAHRT;
@@ -63,7 +63,7 @@ WatchIo( NOT in_bMotorstarter_Geblaese_OK,                                      
 //Querfahrt
 WatchIo( NOT Querfahrt.Antrieb.bpLS_150F02_230V AND BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt,                                             wlWatchIONachrichtenNummer + 4 );
 WatchIo( ( Querfahrt.Antrieb.bpMinSchalterBelegt OR Querfahrt.Antrieb.bpMaxSchalterBelegt ) AND BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt, wlWatchIONachrichtenNummer + 5 );
-                            
+
 WatchIo( NOT Querfahrt.bpInReferenz AND NOT blBetriebsartReferenz AND BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt,                           wlWatchIONachrichtenNummer + 6 );
 WatchIo( Querfahrt.bpReferenz AND NOT Querfahrt.bpDone AND BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt,                                      wlWatchIONachrichtenNummer + 7 );
 

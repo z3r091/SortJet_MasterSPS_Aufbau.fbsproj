@@ -17,7 +17,7 @@ IF( bpFahreReferenz )THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
     steplReferenz := STEP_900_E;
   END_IF
-  
+
   IF ( Antrieb_Slave.bpFehler ) THEN
     Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
@@ -94,7 +94,7 @@ IF( bpFahreReferenz )THEN
       (* Hinweis:
          - Antrieb wurde referenziert
       *)
-      IF( Antrieb.bpDone 
+      IF( Antrieb.bpDone
           AND (Antrieb_Slave.bpDone OR NOT bpSlaveAntriebVorhanden ) )
       THEN
         Antrieb.wpBetriebsart       := KEINE_FUNKTION;

@@ -59,6 +59,6 @@ IF NOT bpFehlerMeldungDeaktiviert THEN
 
   WatchIo( blFehlermeldungGenerierenKommunikation ,wlWatchIONachrichtenNummer + 0 );
   WatchIo( blFehlermeldungGenerierenAuftragsdaten ,wlWatchIONachrichtenNummer + 1 );
-  
+
 END_IF
 END_ACTION

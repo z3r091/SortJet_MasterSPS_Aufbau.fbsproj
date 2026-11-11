@@ -7,13 +7,13 @@
 *)
 FUNCTION_BLOCK Schnittstelle_Einlauf_VSG EXTENDS Basic_Schnittstelle_FB_V01_00_00
 VAR_INPUT
-   
+
 END_VAR
 VAR_OUTPUT
 
-  // STRUCT 
+  // STRUCT
   OutGlasTransport   : Interface_LTR_VSG; // Signale zum LTR
-  
+
 END_VAR
 
 VAR_INPUT
@@ -21,14 +21,14 @@ VAR_INPUT
   // HARDWARE EINGAENGE
   in_bGlasBereit                          AT %I* : BOOL;
   in_bAutomatikBetrieb                    AT %I* : BOOL; // Scheiben werden automatisch eintransportiert
- 
+
 END_VAR
 
 VAR_OUTPUT
   // HARDWARE AUSGAENGE
   out_bEinlaufsensor                      AT %Q* : BOOL;
   out_bBereitZumEintrasport               AT %Q* : BOOL;
-  
+
 END_VAR
 
 // Schnittstelle zwischen LTR und VSG Anlage

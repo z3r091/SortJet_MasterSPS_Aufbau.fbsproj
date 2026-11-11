@@ -11,7 +11,7 @@ VAR_GLOBAL
 //-------------------------------------------------------------------------------------------------
 // DEKLARATION STATIONEN
 //-------------------------------------------------------------------------------------------------
-  // Stationen           
+  // Stationen
   // Faecherwagenstationen: eine Variante je Maschine, Variante hier ueber den Typ des Arrays waehlen
   //   - Faecherwagenstation_Lineareinheit_FB_V01_00_00 (Lineareinheit, Greifer, Gegenhalter, Entriegelung, RFID)
   //   - Faecherwagenstation_Hydraulik_FB_V01_00_00     (Hubrahmen, Verfahren, Zentrierung, Anschlag)
@@ -21,33 +21,33 @@ VAR_GLOBAL
 
   // Hydraulikaggregate der Faecherwagenstationen (Variante Hydraulik), Zuordnung ueber MK stStationsAufbau.wHydraulikstation
   aHydraulikstation               : ARRAY[cERSTE_HYDRAULIKSTATIONS_NR..cLETZTE_HYDRAULIKSTATIONS_NR] OF Hydraulik_FB_V01_00_00;
-  
+
   Anlegetisch201                  : Anlegetisch_FB_V01_00_00;
   Foerderer202                    : Foerderer_FB_V01_00_00;
   Foerderer203                    : Foerderer_FB_V01_00_00;
   Eckuebergabe204                 : Eckuebergabe_FB_V01_00_00;
   Anlegetisch205                  : Anlegetisch_FB_V01_00_00;
-  Kipptisch206                    : Kipptisch_FB_V01_00_00; 
+  Kipptisch206                    : Kipptisch_FB_V01_00_00;
   Combiwand208                    : AnlegeAbnahmeWand_FB_V01_00_00;
   Drehstation207                  : Drehstation_FB_V01_00_00;
 
   //  Shuttle
-  aShuttle                        : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Shuttle_FB_V01_00_00; 
+  aShuttle                        : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Shuttle_FB_V01_00_00;
   aTransfershuttles               : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Transfershuttle_FB_V01_00_00;
-  
+
   // Schnittstelle
   aSchnittstelleAuslauf           : ARRAY[cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF] OF Schnittstelle_Auslauflinie_Glaston_Koppler_FB;
   aSchnittstelleEinlauf           : ARRAY[cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF Schnittstelle_Einlauf_VSG;
-  
+
 //-------------------------------------------------------------------------------------------------
 // DEKLARATION BASIS-BAUSTEINE
 //-------------------------------------------------------------------------------------------------
 
-  //Sicherheitskreis 
+  //Sicherheitskreis
   Sicherheitskreis : ARRAY[cERSTER_SICHERHEITSKREIS..cLETZTER_SICHERHEITSKREIS] OF Sicherheitskreis_FB;
 
   // Türen
-  aTuer      : ARRAY[cERSTE_TUER..cLETZTE_TUER] OF Tuerschalter_FB;  
+  aTuer      : ARRAY[cERSTE_TUER..cLETZTE_TUER] OF Tuerschalter_FB;
   aDurchgang : ARRAY[cERSTER_DURCHGANG..cLETZTER_DURCHGANG] OF Durchgang_FB_V01_00_00;
 
   // Ampel

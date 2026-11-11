@@ -313,7 +313,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
          - Initialisierung der Daten
       *)
       IF bpBetriebsartHand THEN
-        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;        
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;
       ELSE
         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
       END_IF

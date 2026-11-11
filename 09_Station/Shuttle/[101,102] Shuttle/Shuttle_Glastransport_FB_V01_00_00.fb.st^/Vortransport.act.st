@@ -29,7 +29,7 @@ THEN
       (* Hinweis:
          - Sicherstellen das die Slavekopplung aktiv ist
       *)
-      IF ( blAntriebsKopplungAktiv  ) 
+      IF ( blAntriebsKopplungAktiv  )
       THEN
         steplVortransport := STEP_5_E;
       END_IF

@@ -24,7 +24,7 @@ IF ( blBetriebsartHand ) THEN
                                      OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]
                                      OR in_bKnebelGlastransportZurueck;  // Bit 2 = Glastransport / Glastransport zurück
   Glastransport.bpHandfahrenPlus  := ( BasisStationsParameter.dwHandfunktionen.1 AND NOT BasisStationsParameter.dwHandfunktionen.2 )
-                                     OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1] 
+                                     OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]
                                      OR in_bTasterGlasAngelegt
                                      OR in_bKnebelGlastransportVor;  (* Bit 2 = Glastransport / Glastransport zurück *);  // Bit 1 = Glastransport / Glastransport vor
 
@@ -53,21 +53,21 @@ IF ( blBetriebsartHand ) THEN
   // Handfunktion:
   //   - Kippen
   Messachse.bpHandplus     := (         ( BasisStationsParameter.dwHandfunktionen.18 OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-                                AND NOT (    BasisStationsParameter.dwHandfunktionen.19 
-                                          OR BasisStationsParameter.dwHandfunktionen.20 
-                                          OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] 
+                                AND NOT (    BasisStationsParameter.dwHandfunktionen.19
+                                          OR BasisStationsParameter.dwHandfunktionen.20
+                                          OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
                                           OR  bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
-                         
+
   Messachse.bpHandminus    := (         ( BasisStationsParameter.dwHandfunktionen.19 OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                                 AND NOT (    BasisStationsParameter.dwHandfunktionen.18
-                                          OR BasisStationsParameter.dwHandfunktionen.20 
-                                          OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]  
+                                          OR BasisStationsParameter.dwHandfunktionen.20
+                                          OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
                                           OR bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
 
   Messachse.bpHandReferenz := (         ( BasisStationsParameter.dwHandfunktionen.20 OR bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                                 AND NOT (    BasisStationsParameter.dwHandfunktionen.18
                                           OR BasisStationsParameter.dwHandfunktionen.19
-                                          OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] 
+                                          OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
                                           OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
 
 

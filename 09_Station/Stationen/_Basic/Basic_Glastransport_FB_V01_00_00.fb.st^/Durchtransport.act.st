@@ -16,7 +16,7 @@ IF (  bpDurchtransport ) THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
     steplDurchtransport := STEP_900_E;
   END_IF
-  
+
   IF ( Antrieb_Slave.bpFehler ) THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT_SLAVE;
     steplDurchtransport := STEP_900_E;
@@ -32,7 +32,7 @@ IF (  bpDurchtransport ) THEN
     steplDurchtransport := STEP_900_E;
   END_IF
 
-  
+
   // Ausnahmesituation:
   //   - Slave-Kopplung waehrend der Kette verloren
   IF ( NOT blAntriebsKopplungAktiv AND ( steplDurchtransport > STEP_0_E ) AND ( steplDurchtransport < STEP_900_E ) ) THEN

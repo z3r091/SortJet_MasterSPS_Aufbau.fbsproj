@@ -8,8 +8,8 @@
 FUNCTION_BLOCK Foerderer_FB_V01_00_00  EXTENDS Basic_Station_FB_V01_00_00
 
 VAR
- 
-  // BOOLEAN 
+
+  // BOOLEAN
   blGeblaeseAktiv                 : BOOL;
   blUpdateTimer                   : BOOL;
   blAktionImFehler                : BOOL; // Eine der wandweisen Aktionen steht im Fehler
@@ -19,11 +19,11 @@ VAR
   in_bSensorNicht84Grad           : BOOL;
   in_bSensorNicht90Grad           : BOOL;
   in_bDurchgangBelegt             : BOOL;
-    
-  // TRIGGER 
+
+  // TRIGGER
   rtlAutomatikActiv               : R_TRIG;
 
-  // TIMER 
+  // TIMER
   tonlUpdateTimer                 : TON; // Verfahrlogik
 
   // BAUSTEINE
@@ -131,6 +131,6 @@ Positionieren();
 // Ohne Querfahrt ist die Zielposition immer erreicht
 blZielPositionErreicht := (    NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt
                             OR  ( ABS( BasisStationsParameter.rAktuellePositionQuerfahrt - argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )
-                            OR  ( ABS( BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition - argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz ) 
+                            OR  ( ABS( BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition - argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )
                             OR  ( ABS(ABS(BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition) - ABS(BasisStationsParameter.rAktuellePositionQuerfahrt) ) <= rgMKZielPositionToleranz ) );
 END_FUNCTION_BLOCK

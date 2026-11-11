@@ -23,7 +23,7 @@ VAR_CONFIG
   // AUSGAENGE: Hydraulikstation 1 (cHYDRAULIKSTATION_1)
   Globale_Bausteine.aHydraulikstation[1].out_bHydraulikkreislauf_MotorEin                    AT %MX3000.0 : BOOL; // OPTION
   Globale_Bausteine.aHydraulikstation[1].out_bHydraulikkreislauf_UmlaufventilAuf             AT %MX3000.1 : BOOL; // OPTION
-  
+
 Globale_Bausteine.aFaecherwagenstation[301].out_bRolltorAb                                   AT %QX11.0  : BOOL; // IO-L - Rolltor 301 schliessen
 Globale_Bausteine.aFaecherwagenstation[301].out_bRolltorAuf                                  AT %QX11.1  : BOOL; // IO-L - Rolltor 301 oeffnen
 Globale_Bausteine.aFaecherwagenstation[302].out_bRolltorAb                                   AT %QX11.2  : BOOL; // IO-L - Rolltor 302 schliessen
@@ -40,7 +40,7 @@ Globale_Bausteine.aFaecherwagenstation[305].out_bRolltorAuf                     
   // Varianten Einfach und Hydraulik: IOs je Station in Konfiguration_FW_Einfach bzw. Konfiguration_FW_Hydraulik
 
 END_VAR
- 
+
 
 
 END_NAMESPACE

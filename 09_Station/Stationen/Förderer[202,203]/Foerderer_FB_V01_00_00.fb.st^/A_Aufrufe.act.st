@@ -19,12 +19,12 @@ Glastransport( stStationsNummern                       := BasisStationsParameter
                bpOptionMessungSystemCheckAktiv         := BasisStationsParameter.stMKs.stStationsOptionen.stSystemcheck.bScheibenVermessenSystemCheck,
                bpOptionMasterSlaveTransport            := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bTransportMasterSlaveAustransport,
                bpOptionAustransportISOLinie            := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bAustransportISOLinie,
-               bpOptionScheibenmessungEintransport     := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bScheibenmessungEintransport, 
+               bpOptionScheibenmessungEintransport     := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bScheibenmessungEintransport,
                bpOptionNachSystemcheckAufAuslaufsensor := BasisStationsParameter.stMKs.stStationsOptionen.stSystemcheck.bScheibeNachSystemcheckAufAuslauf,
                bpOptionSlaveAntrieb                    := BasisStationsParameter.stMKs.stStationsAufbau.bSlaveAntrieb );
 
 // Geblaese
-Geblaese( stStationsNummern                        := BasisStationsParameter.stMKs.stStationsNummern, 
+Geblaese( stStationsNummern                        := BasisStationsParameter.stMKs.stStationsNummern,
           bpFreigabe                               := BasisStationsParameter.bFreigabe, );
 
 // Kippen
@@ -45,7 +45,7 @@ Roellchenleiste( bpZylinderAbfragenVorhanden     := TRUE,
 // Wandverstellung
 Wandverstellung( bpZylinderAbfragenVorhanden     := TRUE,
                  bpEinAusFahrenLogikDrehen       := BasisStationsParameter.stMKs.stStationsOptionen.bVerstellungEinAusGefahrenLogikDrehen );
-                 
+
 // Querfahrt
 Querfahrt( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern,
            bpFreigabe        := BasisStationsParameter.bFreigabe,

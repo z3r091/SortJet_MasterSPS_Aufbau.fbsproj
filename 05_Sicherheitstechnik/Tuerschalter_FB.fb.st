@@ -14,7 +14,7 @@ VAR_INPUT
   bpWeitereTuerenGeoeffnet        : BOOL;
   bpTuerGeschlossen               : BOOL;
   in_bTasterNothaltNichtBetaetigt : BOOL := TRUE; // Oeffner - kommt von SLC (EV_ToPLC_Tueren_Nothalt_aktiv)
-  
+
   // WORD
   wSicherheitskreis           : WORD;
   wMeldungsnummer             : WORD;
@@ -30,7 +30,7 @@ VAR_OUTPUT
 END_VAR
 VAR
 
-  // TRIGGER 
+  // TRIGGER
   rtlTuerGeschlossen : R_TRIG;
   ftlTuerGeoeffnet   : F_TRIG;
 
@@ -40,15 +40,15 @@ VAR
 END_VAR
 VAR
 
-  // HARDWARE EINGAENGE 
+  // HARDWARE EINGAENGE
   in_bTasterAnforderungTuerOeffnen             : BOOL;
   in_bTasterQuittierungTuerGeschlossen         : BOOL;
 
-  // HARDWARE AUSGAENGE 
+  // HARDWARE AUSGAENGE
   out_bLeuchteFreigabeTuerOeffnen              : BOOL;
   out_bLeuchteTuerNichtGeschlossen             : BOOL;
   out_bLeuchteTuerNothaltAktiv                 : BOOL;
-  
+
 END_VAR
 (* Hinweis:
    - Dieser Baustein ist für Türschalter des Herstellers Euchner
@@ -99,7 +99,7 @@ THEN
 END_IF
 
 
-// Tür wieder schließen und zurücksetzen 
+// Tür wieder schließen und zurücksetzen
 rtlTuerGeschlossen(CLK := in_bTasterQuittierungTuerGeschlossen AND bpTuerGeschlossen );
 
 IF ( rtlTuerGeschlossen.Q  ) THEN

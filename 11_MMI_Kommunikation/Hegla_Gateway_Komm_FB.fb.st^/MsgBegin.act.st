@@ -13,7 +13,7 @@ Memcopy( ADR( MmiToSps ), ADR( MmiToSpsMem ), cSizeOfWord );
 IF( Memcomp( ADR( MmiToSps.smbMessageBlock ), ADR( MmiToSpsMem.smbMessageBlock ), SIZEOF( MmiToSps.smbMessageBlock ) ) <> 0 )THEN
   // Prüfen ob der neue Messageblock vom MMI gültig ist
   dwlChecksumme0 := Crc32( ADR(MmiToSpsMem.smbMessageBlock), SIZEOF( MmiToSps.smbMessageBlock ) - cSizeOfDWord );
-  
+
   // dwlChecksumme1 :=  MmiToSpsMem.smbMessageBlock.dwCrc32Checksumme;
   dwlChecksumme1 := HMI_GetDWORD( ADR( MmiToSpsMem.smbMessageBlock.dwCrc32Checksumme));
 

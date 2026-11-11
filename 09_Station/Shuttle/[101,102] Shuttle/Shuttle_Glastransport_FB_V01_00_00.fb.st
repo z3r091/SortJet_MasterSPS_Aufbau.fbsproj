@@ -42,7 +42,7 @@ VAR_INPUT
   bpTeilnehmerErreichbar           : BOOL;
   bpMessungSystemCheckAktiv        : BOOL;
   bpSlaveAntriebVorhanden          : BOOL;
-  
+
   // OPTIONEN
   bpOptionMasterSlaveTransport     : BOOL;
 
@@ -57,7 +57,7 @@ VAR_INPUT
 
   // WORD
   wpWandNr                    : WORD;
-  
+
   // ENUM
   eStationsTyp                 : StationsTyp_EN; // Typ der Station [ Shuttle \ Station \ Faecherwagen \ etc. ]
   wpGlastyp                   : GlasTyp_EN; // AUFTRAGSDATEN : Unterscheidung fuer den Eintransports -> Grosse Scheiben
@@ -159,12 +159,12 @@ VAR
   tonlMaxWarteAufResetErfolgreich    : TON; // EINSCHALTVERZOEGERUNG:
   tonlWarteSchritt                   : TON; // EINSCHALTVERZOEGERUNG:
   tonlAntriebNichtFreigegeben        : TON; // EINSCHALTVERZOEGERUNG:
-  tonlUberwachungSlaveAktiv          : TON; // EINSCHALTVERZOEGERUNG:  
+  tonlUberwachungSlaveAktiv          : TON; // EINSCHALTVERZOEGERUNG:
   tonlSlaveKopplungDeaktiviert       : TON;
   tonlSlaveAntriebNichtFreigegeben   : TON; // Ueberwachung: Master/Slave nicht betriebsbereit
   tonlUeberwachungSlaveGreifer       : TON; // Ueberwachung: Kopplung auf die Greiferachse
   tonlUeberwachungGreiferBetrieb      : TON; // Ueberwachung: Antrieb bereit fuer Korrekturfahrt / Positionierung fuer den Greifer
-  
+
   // TIME
   tlWarteZeiteAufnahme               : TIME; // STATISTIK: Zeit Ermittlung von evtl. Wartezeiten
 
@@ -182,7 +182,7 @@ END_VAR
 VAR CONSTANT
 
   // TIME
-  cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE : TIME := T#5S;  
+  cZEIT_UEBERWACHUNG_ANTRIEBSFREIGABE : TIME := T#5S;
   cUEBERWACHUNG_SLAVE_AKTIV           : TIME :=T#1S;
 
 END_VAR
@@ -371,7 +371,7 @@ toflAutoAbschaltung( IN := (  bpAutomatikAktiv
                      PT:= tgZeitAutoabschaltungEnergiesparModus );
 
 // Aufruf Antrieb
-Antrieb.bpFreigabe        := toflAutoAbschaltung.Q AND bpFreigabe; 
+Antrieb.bpFreigabe        := toflAutoAbschaltung.Q AND bpFreigabe;
 Antrieb.stStationsNummern := stStationsNummern;
 Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
 
@@ -379,7 +379,7 @@ Antrieb_Slave.bpFreigabe        := toflAutoAbschaltung.Q AND bpFreigabe;
 Antrieb_Slave.stStationsNummern := stStationsNummern;
 Antrieb_Slave.rpRuckzeit        := ppAntriebsInformationenSlave.rpMaxRuckzeit;
 
-  
+
 // Aufruf Scheibenmessung
 Scheibenmessung( stStationsNummern                   := stStationsNummern,
                  ppAntrieb                           := Antrieb,

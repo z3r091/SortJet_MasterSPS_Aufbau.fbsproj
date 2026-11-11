@@ -9,27 +9,27 @@
 FUNCTION_BLOCK Motorstarter_FB_V01_00_00
 VAR_INPUT
   bpReset                    : BOOL;
-  bpMotorstarterOK           : BOOL;  
+  bpMotorstarterOK           : BOOL;
   bpSensorNotNockeLinkslauf  : BOOL;
   bpSensorNotNockeRechtslauf : BOOL;
 END_VAR
 VAR_OUTPUT
   bpFehler   : BOOL;
   bpdone     : BOOL;
-  
+
   wpFehlerNr : Fehlerkonstanten_EN;
-  
+
   // IO's
   out_bLinkslauf   : BOOL;
   out_bRechtslauf  : BOOL;
   out_Reset        : BOOL;
   out_BremseLoesen : BOOL;
-  
+
 END_VAR
 VAR
-  // BOOLEAN 
+  // BOOLEAN
   blErsterZyklus : BOOL := TRUE;
-  
+
   // TIMER
   tonlFehlermeldungUnterdrueckenAntriebOK : TON;
 

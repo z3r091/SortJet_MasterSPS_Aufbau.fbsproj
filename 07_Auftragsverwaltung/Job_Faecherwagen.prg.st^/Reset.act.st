@@ -9,7 +9,7 @@ ACTION Reset
 //-------------------------------------------------------------------------------------------------
 // RESET
 //-------------------------------------------------------------------------------------------------
- 
+
 FOR wlIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
 
   IF ( abpReset[wlIndexReset] ) THEN

@@ -14,7 +14,7 @@ ACTION Auftraege
 *)
 IF ( M_SB0_MMI_SortierungInputInQueue ) THEN
 
- 
+
   CASE tMmi2SpsInfo.wSortierungsInputInQueueStationNr OF
 
     cERSTE_STATION..cLETZTE_STATION:
@@ -55,7 +55,7 @@ IF ( M_SB0_MMI_SORTIERUNGCANCELQUEUEDATA ) THEN
        WICHTIG:
      - Sicherstellen das die Stationen diesem Automatikkreis auch angehoehren
   *)
-  CASE tMmi2SpsInfo.wDeleteStationNr OF 
+  CASE tMmi2SpsInfo.wDeleteStationNr OF
 
     cERSTE_STATION..cLETZTE_STATION:
       IF NOT AutomatikAktiv(tMmi2SpsInfo.wDeleteStationNr) THEN
@@ -90,7 +90,7 @@ END_IF
    - -
 *)
 IF ( M_SB0_MMI_SHEET_ORDER_STATION ) THEN
-  
+
   IF ( tMmi2SpsInfo.wAuftragsWand = 0 ) THEN // WORKAROUND MMI
     tMmi2SpsInfo.wAuftragsWand := 1;
   END_IF
@@ -120,7 +120,7 @@ IF ( M_SB0_MMI_SHEET_ORDER_STATION ) THEN
 
       AuftragsSpeicherWand[tMmi2SpsInfo.wStationsNr, tMmi2SpsInfo.wAuftragsWand].NeuerAuftrag.rModellVersatzVorne     := tMmi2SpsInfo.rModellVersatzVorne;
       AuftragsSpeicherWand[tMmi2SpsInfo.wStationsNr, tMmi2SpsInfo.wAuftragsWand].NeuerAuftrag.rModellVersatzHinten    := tMmi2SpsInfo.rModellversatzHinten;
-    
+
       IF ((tMmi2SpsInfo.rModellVersatzVorne > 0) OR (tMmi2SpsInfo.rModellVersatzHinten > 0 ) ) THEN
         AuftragsSpeicherWand[tMmi2SpsInfo.wStationsNr, tMmi2SpsInfo.wAuftragsWand].NeuerAuftrag.bModell              := TRUE;
       END_IF
@@ -128,7 +128,7 @@ IF ( M_SB0_MMI_SHEET_ORDER_STATION ) THEN
       (* Hinweis:
          - Zuweisung der Bits "erste" und "letzte" Scheibe
       *)
- 
+
       ErsteUndLetzteScheibeBits( wpErsteUndLetzteScheibe:= tMmi2SpsInfo.wErsteLetzteScheibe ,
                                  wpLetzteScheibe => wlLetzteScheibe,
                                  wpErsteScheibe  => wlErsteScheibe );
@@ -188,13 +188,13 @@ IF ( M_SB0_MMI_SHEET_ORDER_STATION ) THEN
       END_IF
 
       Job_Fremdanlage.AuftragsSpeicherFremdanlage[tMmi2SpsInfo.wStationsNr]( bpNeuerAuftrag := TRUE );
- 
+
       M_SB0_MMI_SHEET_ORDER_STATION := FALSE;
 
     ELSE
 
       M_SB0_MMI_SHEET_ORDER_STATION := FALSE;
-    
+
       wpgFehlerdaten[0] := tMmi2SpsInfo.wStationsNr;
       wpgFehlerdaten[1] := tMmi2SpsInfo.wAuftragsWand;
       SpsError( eFehler_Station,
@@ -233,7 +233,7 @@ IF ( M_SB0_MMI_MEASSURERESULT ) THEN
                 tMmi2SpsInfo.wMmiNummerAnlegeStation,
                 AutomatikkreisBestimmen(tMmi2SpsInfo.wMmiNummerAnlegeStation),
                 wpgFehlerdaten );
- 
+
   END_CASE
 
 END_IF
@@ -313,8 +313,8 @@ IF ( M_SB0_MMI_REQUESTTILTSTATION ) THEN
 
     cERSTE_STATION..cLETZTE_STATION:
       AuftragsSpeicherWand[tMmi2SpsInfo.wSortierungsInputSwingStationNr, cWAND_1].NeuerAuftrag.wAuftrag      := eStation_Vortransport;
-      AuftragsSpeicherWand[tMmi2SpsInfo.wSortierungsInputSwingStationNr, cWAND_1].NeuerAuftrag.wStationsNr   := tMmi2SpsInfo.wSortierungsInputSwingStationNr; 
-      AuftragsSpeicherWand[tMmi2SpsInfo.wSortierungsInputSwingStationNr, cWAND_1].NeuerAuftrag.wStationsWand := cWAND_1; 
+      AuftragsSpeicherWand[tMmi2SpsInfo.wSortierungsInputSwingStationNr, cWAND_1].NeuerAuftrag.wStationsNr   := tMmi2SpsInfo.wSortierungsInputSwingStationNr;
+      AuftragsSpeicherWand[tMmi2SpsInfo.wSortierungsInputSwingStationNr, cWAND_1].NeuerAuftrag.wStationsWand := cWAND_1;
       AuftragsSpeicherWand[tMmi2SpsInfo.wSortierungsInputSwingStationNr, cWAND_1]( bpNeuerAuftrag := TRUE );
 
     ELSE

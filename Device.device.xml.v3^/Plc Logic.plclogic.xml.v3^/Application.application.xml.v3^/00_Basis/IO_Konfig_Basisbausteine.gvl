@@ -73,7 +73,7 @@ VAR_CONFIG
   StatusAnlage.in_bDruckluft_FW_OK                         AT %MX1.1   : BOOL; // OPTION
   StatusAnlage.in_bDruckluft_Puffer101_103_OK              AT %MX1.1   : BOOL; // OPTION
   StatusAnlage.in_bDruckluft_Puffer102_104_OK              AT %MX1.1   : BOOL; // OPTION
-  
+
   StatusAnlage.in_bCAB2_LS_Netzteil_24V_OK                 AT %IX0.4   : BOOL; // IO-L - Netzteil 24V OK
   StatusAnlage.in_bCAB2_KlimaGeraet_OK                     AT %IX0.2   : BOOL; // IO-L - Kuehlgeraet OK
   StatusAnlage.in_bCAB2_LS_Netzfilter_400V_OK              AT %IX0.0   : BOOL; // IO-L - Versorgung 400V Anlage OK
@@ -82,7 +82,7 @@ VAR_CONFIG
   StatusAnlage.in_bCAB2_LS_24V_Boxen_OK                    AT %IX0.6   : BOOL; // IO-L - Sicherungen 24V OK Sammelmeldung Steuerstromkreise Anlage
   StatusAnlage.in_bCAB2_LS_230V_OK                         AT %IX0.3   : BOOL; // IO-L - Versorgung OP/PC OK
   StatusAnlage.in_bCAB2_Sicherheitsrelais_201_Kippen_OK    AT %IX3.0   : BOOL; // IO-L - Sicherheitsrelais 201 Hydraulik / kippen OK
-  
+
 
 
 END_VAR

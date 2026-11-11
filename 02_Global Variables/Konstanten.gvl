@@ -35,7 +35,7 @@ VAR_GLOBAL CONSTANT
 
   // Maximale Anzahl konfigurierbarer Ueberwachungsquellen fuer bpShuttleAnhalten pro Shuttle
   cMAX_SHUTTLE_ANHALTEN_QUELLEN  : WORD := 6;
-  
+
 //-------------------------------------------------------------------------------------------------
 // BIT- MASKEN
 //-------------------------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ VAR_GLOBAL CONSTANT
 
   GLASSTAERKE_DEFAULT_MIN         : WORD := WORD#3;
   GLASSTAERKE_DEFAULT_MAX         : WORD := WORD#14;
-  
+
   // FAECHERWAGENSTATION
   cEINSCHLEUSESTATION : WORD := 1;
   cPUFFERSTATION      : WORD := 2;
@@ -273,8 +273,8 @@ VAR_GLOBAL CONSTANT
   cXG37_O_6       : WORD  := 6;
   cXG37_O_7       : WORD  := 7;
   cXG37_O_8       : WORD  := 8;
-  
-  
+
+
 END_VAR
 
 END_NAMESPACE

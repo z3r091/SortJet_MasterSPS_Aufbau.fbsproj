@@ -9,7 +9,7 @@ ACTION A_Baustein_Initialisierung
 //-------------------------------------------------------------------------------------------------
 // AKTION: AUFRUFE
 //-------------------------------------------------------------------------------------------------
-// Antriebsparameter zuweisen  
+// Antriebsparameter zuweisen
 Querfahrt.ppAntriebsInformationen        REF= BasisStationsParameter.stAntriebsparameter.stQuerfahrt;
 Glastransport.ppAntriebsInformationen    REF= BasisStationsParameter.stAntriebsparameter.stGlastransport[1];
 

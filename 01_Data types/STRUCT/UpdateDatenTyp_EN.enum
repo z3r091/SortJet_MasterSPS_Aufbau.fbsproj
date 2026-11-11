@@ -6,7 +6,7 @@
 }
 *)
 {attribute 'qualified_only'}
-TYPE UpdateDatenTyp_EN : ( 
+TYPE UpdateDatenTyp_EN : (
   NONE       := 0,
   TYP_WORD   := 1,
   TYP_DWORD  := 2,

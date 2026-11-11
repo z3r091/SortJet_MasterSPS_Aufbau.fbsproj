@@ -10,7 +10,7 @@ VAR_INPUT
 
   // BOOL
   abpReset  : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
-  
+
 END_VAR
 VAR_OUTPUT
 
@@ -53,7 +53,7 @@ VAR CONSTANT
 
   // WORD
   cBIT_ANZAHL_WORD : WORD := 16;
-  
+
 END_VAR
 
 //-------------------------------------------------------------------------------------------------

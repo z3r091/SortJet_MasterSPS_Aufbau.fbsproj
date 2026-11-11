@@ -7,10 +7,10 @@
 *)
 FUNCTION_BLOCK Hegla_Gateway_Komm_FB
 VAR_INPUT
-  
+
   SpsToMmi    : SPSTOMMI;
   MmiToSps    : MMITOSPS;
-  
+
 END_VAR
 VAR_OUTPUT
 
@@ -19,21 +19,21 @@ VAR_OUTPUT
 
 END_VAR
 VAR
-  tonlOpenForClient : TON;  
+  tonlOpenForClient : TON;
 
   smqSpsMessageQueue : SpsMessageQueue;
 
   tcpLastError : LINT;
   tcpTrace : INT;
-  
+
   bgTcpConnected : BOOL;
-  
+
   // MMI->SPS
   MmiToSpsMem : MMITOSPS;
 
   // SPS->MMI
   SpsToMmiMem : SPSTOMMI;
-  
+
   // Datentabelle für die CRC32-Prüfsummenberechnung
   adwgCrcTable : ARRAY[0..255] OF DWORD := [16#00000000, 16#77073096, 16#EE0E612C, 16#990951BA,
                                              16#076DC419, 16#706AF48F, 16#E963A535, 16#9E6495A3,
@@ -99,8 +99,8 @@ VAR
                                              16#BAD03605, 16#CDD70693, 16#54DE5729, 16#23D967BF,
                                              16#B3667A2E, 16#C4614AB8, 16#5D681B02, 16#2A6F2B94,
                                              16#B40BBE37, 16#C30C8EA1, 16#5A05DF1B, 16#2D02EF8D];
-                       
-  
+
+
   //GetMessage
   i : WORD;
 
@@ -113,11 +113,11 @@ VAR
 
   //MessageBegin
   dwlChecksumme0 : DWORD;
-  dwlChecksumme1 : DWORD;  
-  
+  dwlChecksumme1 : DWORD;
+
   //MsgPoll
   smlSpsMessage_POLL : SpsMessage;
- 
+
   //WatchDog
   dwlCrc32Value          : DWORD;
   dwAuftragsChecksumme_WatchDog   : DWORD;
@@ -126,8 +126,8 @@ VAR
   tlTimeDiff      : TIME;
   wlWatchdogOk      : WORD;
   bTimeOff        : BOOL;
-  wZyklenOff      : WORD;    
-  
+  wZyklenOff      : WORD;
+
   hSocket: RTS_IEC_HANDLE := RTS_INVALID_HANDLE;
   Client : TCP_CLIENT_ACCEPT;
 
@@ -137,7 +137,7 @@ VAR
   rtlVerbindungReset: R_TRIG;
   tnlVerbindungReset: TON;
   wlVerbindungReset: WORD := 5000;
-  
+
   // ReadMsg
   diReceived   : LINT;
   bBuffer_Read : ARRAY[0..1023] OF BYTE;
@@ -147,7 +147,7 @@ VAR
   diRemaining  : DINT;
   j            : WORD;
   pbCurPos_Read     : POINTER TO BYTE;
-  
+
   // SendMsg
   diSent        : LINT;
   bBuffer_Send  : ARRAY[0..1023] OF BYTE;
@@ -165,8 +165,8 @@ VAR
   tSendIoSystem: TIME := T#500MS;
   wSendIoSystem: WORD;
   wSendControlSystem: WORD;
-  wSendMsgBlock: WORD;     
-   
+  wSendMsgBlock: WORD;
+
   //ReadMsg
   l_b_ReadMsg_NewMsg : BOOL;
   l_b_ReadMsg_Body : BOOL;

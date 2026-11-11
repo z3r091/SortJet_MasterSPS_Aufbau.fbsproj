@@ -57,7 +57,7 @@ THEN
 
       out_bScheibenKontrolleAuslaufseiteAuf := TRUE;
       out_bScheibenKontrolleEinlaufseiteAuf := TRUE;
-      
+
       blScheibenKontrolleAuslaufseiteEin := TRUE;
       blScheibenKontrolleEinlaufseiteEin := TRUE;
 
@@ -99,7 +99,7 @@ THEN
                     wpgFehlerdaten );
 
         steplScheibenNeuAusrichten := STEP_800_E;
- 
+
       END_IF
 
     // SCHEIBEN NEU AUSRICHTEN ==============================
@@ -125,7 +125,7 @@ THEN
         ELSE
           Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
         END_IF
-      ELSE        
+      ELSE
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit20;
 
         Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberEinlaufEintransport;

@@ -7,21 +7,21 @@
 *)
 FUNCTION_BLOCK Schnittstelle_Einlauf_Portale EXTENDS Basic_Schnittstelle_FB_V01_00_00
 VAR_INPUT
-   
+
 END_VAR
 
 VAR_INPUT
 
   // HARDWARE EINGAENGE
   in_bGlasAufgestellt                     AT %I* : BOOL;
- 
+
 END_VAR
 
 VAR_OUTPUT
 
   // HARDWARE AUSGAENGE
   out_bBereitZumAufstellen               AT %Q* : BOOL;
-  
+
 END_VAR
 
 // Schnittstelle zwischen LTR und VSG Anlage

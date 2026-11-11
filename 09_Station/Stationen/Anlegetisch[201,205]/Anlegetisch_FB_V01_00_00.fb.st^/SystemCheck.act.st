@@ -14,14 +14,14 @@ ACTION SystemCheck
 *)
 IF( blBetriebartCheck )THEN
 
-  // Ausnahmesituation     
+  // Ausnahmesituation
   IF ( Glastransport.bpFehler ) THEN
     Glastransport.bpCheck := FALSE;
     Glastransport.bpReferenz := FALSE;
     steplCheck := STEP_900_E;
   END_IF
-  
-  
+
+
   CASE steplCheck OF
     // SYSTEM CHECK=========================
     STEP_0_E:

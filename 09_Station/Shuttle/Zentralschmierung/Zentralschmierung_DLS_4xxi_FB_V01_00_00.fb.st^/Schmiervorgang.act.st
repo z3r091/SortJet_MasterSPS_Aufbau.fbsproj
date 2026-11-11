@@ -19,7 +19,7 @@ END_IF
 IF rtlStarteSchmierung.Q THEN
 
 
-  blStarteSchmierung := TRUE;  
+  blStarteSchmierung := TRUE;
 
   wSps2MmiErrorNumber           := 110;
   wSps2MmiErrorShuttleNumber    := stStationsNummern.NummerIntern;
@@ -101,7 +101,7 @@ IF bpFreigabe THEN
            - Das Steuersignal so lange setzen wie notwendig,
               um einen Hub an der Zentralschmierung durchzuführen
         *)
-      
+
 
         tonSchmierkreisAnsteuerung(IN:= TRUE ,PT:=tAnsteuern);
         out_bSteuerSignal:= TRUE;
@@ -109,7 +109,7 @@ IF bpFreigabe THEN
           out_bSteuerSignal := FALSE;
           tonSchmierkreisAnsteuerung(IN:= FALSE);
           FOR wlIndex := cSCHMIERKREIS_1 TO cSCHMIERKREIS_2 DO
-            IF ablHubAktiv[wlIndex] THEN 
+            IF ablHubAktiv[wlIndex] THEN
               ailAktiverHub[wlIndex] := ailAktiverHub[wlIndex] + 1;
             END_IF
           END_FOR
@@ -256,7 +256,7 @@ IF bpFreigabe THEN
 
       // ZENTRALSCHMIERUNG ============================================================================
       Step_560_E:
-        IF ( ( ailAktiverHub[cSCHMIERKREIS_1] MOD iAnzahlHuebeBisGrossePause ) <> 0 ) OR ( ( ailAktiverHub[cSCHMIERKREIS_2] MOD iAnzahlHuebeBisGrossePause ) <> 0 ) OR 
+        IF ( ( ailAktiverHub[cSCHMIERKREIS_1] MOD iAnzahlHuebeBisGrossePause ) <> 0 ) OR ( ( ailAktiverHub[cSCHMIERKREIS_2] MOD iAnzahlHuebeBisGrossePause ) <> 0 ) OR
            atoflPause[cSCHMIERKREIS_1].Q OR atoflPause[cSCHMIERKREIS_2].Q THEN
 
           (* Hinweis:

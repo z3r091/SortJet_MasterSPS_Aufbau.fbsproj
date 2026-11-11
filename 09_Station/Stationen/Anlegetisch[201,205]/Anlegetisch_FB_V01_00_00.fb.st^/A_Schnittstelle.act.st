@@ -48,21 +48,21 @@ abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bMessachseSensorUnten        := Messachse.in_bSensorUnten;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bMessachseMinEndschalter     := Messachse.Antrieb.bpMinSchalterBelegt;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].rMessachseIstPos             := Messachse.rpIstPosition;
-                                                                                                                
+
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bAnschlagFehler              := Anschlag.bpFehler;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bAnschlagSensorAusgefahren   := Anschlag.in_bStatusZylinderAusgefahren;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bAnschlagSensorEingefahren   := Anschlag.in_bStatusZylinderEingefahren;
-                                                                                                                
+
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bHubpaletteFehler            := Hubrahmen.bpFehler;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bHubpaletteSensorAusgefahren := Hubrahmen.in_bStatusZylinderAusgefahren;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bHubpaletteSensorEingefahren := Hubrahmen.in_bStatusZylinderEingefahren;
 
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bGeblaeseLaeuft[1]           := Geblaese.bpStarteGeblaese;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bDrosselklappeOffen[1]       := Glastransport.Antrieb.wpAusgaengeUmrichter.cXG37_O_6;
-                                                                                                                
+
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bAmpelRot                    := out_bAmpelSignalRot OR abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bOutAmpelRot;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bAmpelGruen                  := out_bAmpelSignalGruenScheibeAnlegen OR abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bOutAmpelGruen;
-                                                                                                                
+
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bInTasterGlasAngelegt        := in_bTasterGlasAngelegt OR in_bFussschalterGlasAngelegt;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bInTasterGeblaese            := in_bTasterGeblaese1Ein;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bInTasterFehlmessung         := in_bTasterQuittierungScheibenmessung;
@@ -79,10 +79,10 @@ out_bLeuchteKipptischOffen := out_bLeuchteKipptischOffen_OP := NOT in_bSensorKip
 *)
 out_bAmpelSignalRot  := gbFlashbit03sec AND Stop_Baustein.blBetriebsstop;
 out_bSignalTasterScheibeAnlegen := out_bAmpelSignalGruenScheibeAnlegen;
-out_bAmpelSignalGlastransportAktiv := ( Glastransport.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.KEINE_FUNKTION 
-                                        AND Glastransport.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.REFERENZ 
-                                        AND Glastransport.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.RESET ) 
+out_bAmpelSignalGlastransportAktiv := ( Glastransport.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.KEINE_FUNKTION
+                                        AND Glastransport.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.REFERENZ
+                                        AND Glastransport.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.RESET )
                                       OR ( Messachse.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.KEINE_FUNKTION
-                                           AND Messachse.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.REFERENZ 
+                                           AND Messachse.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.REFERENZ
                                            AND Messachse.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.RESET );
 END_ACTION

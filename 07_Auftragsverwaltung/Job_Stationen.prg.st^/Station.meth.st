@@ -306,7 +306,7 @@ END_IF
 // STEUERUNG: MESSKOPPLUNG
 // *************************************************************************************************
 
-IF ( AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Messkopplung ) 
+IF ( AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Messkopplung )
 THEN
   (* Hinweis:
      - Aufruf der Schrittkette
@@ -362,7 +362,7 @@ ELSE
   (* Hinweis:
      - Reset der Schrittkette
   *)
-  IF ( Querfahrt[wStation].steplSchritt <> STEP_0_E ) THEN 
+  IF ( Querfahrt[wStation].steplSchritt <> STEP_0_E ) THEN
     Querfahrt[wStation](bpReset := TRUE);
   END_IF
 END_IF

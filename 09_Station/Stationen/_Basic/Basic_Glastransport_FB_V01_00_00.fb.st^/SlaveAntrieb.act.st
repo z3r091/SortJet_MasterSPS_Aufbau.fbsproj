@@ -36,7 +36,7 @@ THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
     steplSlave := STEP_900_E;
   END_IF
-  
+
   IF ( Antrieb_Slave.bpFehler ) THEN
     Antrieb_Slave.wpBetriebsart:= KEINE_FUNKTION;
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT_SLAVE;
@@ -57,9 +57,9 @@ THEN
     // SLAVE ANTRIEB ====================
     STEP_0_E:
       IF ( Antrieb.bpReglerBereit AND Antrieb_Slave.bpReglerBereit ) THEN
-        
-        IF ( ( ABS(Antrieb.rpIstPosition) > rgSchwellwertReferenzieren ) 
-             OR NOT Antrieb.bpIstReferenziert 
+
+        IF ( ( ABS(Antrieb.rpIstPosition) > rgSchwellwertReferenzieren )
+             OR NOT Antrieb.bpIstReferenziert
              OR ( ABS(Antrieb_Slave.rpIstPosition) > rgSchwellwertReferenzieren )
              OR NOT Antrieb_Slave.bpIstReferenziert )
         THEN
@@ -69,7 +69,7 @@ THEN
         ELSE
           steplSlave := STEP_100_E;
         END_IF
-      
+
       END_IF
 
     // SLAVE ANTRIEB ====================
@@ -78,7 +78,7 @@ THEN
          - Antrieb ist referenziert
       *)
       IF ( Antrieb.bpDone
-           AND Antrieb_Slave.bpDone ) 
+           AND Antrieb_Slave.bpDone )
       THEN
         Antrieb.wpBetriebsart       := KEINE_FUNKTION;
         Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;

@@ -36,17 +36,17 @@ VAR
   wlIndex                              : WORD;
   wlSubIndex                           : WORD;
   wlMeldungsnummer                     : WORD;
-    
-  // INT 
+
+  // INT
   ilAnzahlStationenReferenzAktiv       : INT;
   ilAnzahlShuttleReferenzAktiv         : INT;
   ilAnzahlTransfershuttleReferenzAktiv : INT;
 
-  // TIMER 
+  // TIMER
   tonlWait_Init                        : TON;
   tonlFreigabeReferenzierung           : TON;
 
-  // STEPS 
+  // STEPS
   steplInitialisierung                 : STEPS_TE;
 
 END_VAR
@@ -90,9 +90,9 @@ Init();
 //-------------------------------------------------------------------------------------------------
 // Setzen der Freigabe für die Initialisierung ( Referenzierung )
 //-------------------------------------------------------------------------------------------------
-// Abfrage ob kein Reset aktiv ist 
+// Abfrage ob kein Reset aktiv ist
 blFreigabeAutokreis := TRUE;
-FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO 
+FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
   IF agbResetAktiv[wlIndex] THEN
     blFreigabeAutokreis := FALSE;
   END_IF

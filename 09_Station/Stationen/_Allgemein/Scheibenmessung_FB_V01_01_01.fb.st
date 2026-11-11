@@ -14,7 +14,7 @@ VAR_INPUT
   bpDrehrichtungsumkehrMessung        : BOOL; // FALSE = Positive Drehrichtung , TRUE = Negative Drehrichtung
   bpAuswahlSensorVorabScheibenmessung : BOOL;
 
-  // REAL 
+  // REAL
   rpMessstrecke               : REAL;
   rpErwarteteScheibenLaenge   : REAL;
   rpFaktorBremswegverlaengern : REAL := 1.5;

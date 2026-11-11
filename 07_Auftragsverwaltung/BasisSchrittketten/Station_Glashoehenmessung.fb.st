@@ -7,14 +7,14 @@
 *)
 FUNCTION_BLOCK Station_Glashoehenmessung
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
   bpAbbruchAnlegeauftrag : BOOL;
-  
+
   // WORD
   wStation               : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
@@ -27,7 +27,7 @@ VAR_OUTPUT
 
 END_VAR
 VAR
-    
+
   // STEPS
   steplSchritt           : STEPS_TE;
 
@@ -123,7 +123,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Hoehenmessung ) THEN
          - Entsprechend dem Auftragsergebnis den Folgeauftrag zuweisen
       *)
       bpDone := TRUE;
-      
+
       IF ( starrStationBasisParameter[wStation].eStatusAuftrag = eAuftragErfolgreich ) THEN
         Auftragsdaten.wAuftrag := eStation_Messfahrt;
 

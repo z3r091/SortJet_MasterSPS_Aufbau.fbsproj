@@ -17,14 +17,14 @@ IF ( bpPositionieren ) THEN
     out_bKippenAufSetzen := FALSE;
     steplKippenSchuetz := STEP_900_E;
   END_IF
-  
+
   IF (bpSensorAuslauf ) THEN
     wpFehlerNr := cMELDUNG_KIPPEN_AUSLAUFSENSOR_BELEGT;
     out_bKippenAbSetzen  := FALSE;
     out_bKippenAufSetzen := FALSE;
     steplKippenSchuetz := STEP_900_E;
   END_IF
-  
+
   IF ( tonlMaxWarteZeit.Q )THEN
     wpFehlerNr := cMELDUNG_KIPPEN_KIPPT_NICHT_AB;
     out_bKippenAbSetzen  := FALSE;

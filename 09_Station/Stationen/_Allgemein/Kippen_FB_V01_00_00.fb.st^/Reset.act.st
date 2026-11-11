@@ -69,7 +69,7 @@ IF( bpReset )THEN
 
   // RESET ============================
   END_CASE
-  
+
 ELSE
 
   IF (steplReset > STEP_0_E) THEN

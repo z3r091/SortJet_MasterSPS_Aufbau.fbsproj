@@ -56,7 +56,7 @@ IF ( bpCheck ) THEN
 
       rlGefahreneStreckeEintransport := 0.0;
 
-      IF ( Antrieb.bpReglerBereit 
+      IF ( Antrieb.bpReglerBereit
            AND blAntriebsKopplungAktiv )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -436,7 +436,7 @@ IF ( bpCheck ) THEN
       *)
       IF ( toflAuslaufsensor.Q
            OR InGlasTransportNachfolger.bEinlaufsensor
-           OR InGlasTransportNachfolger.bAuslaufsensor ) 
+           OR InGlasTransportNachfolger.bAuslaufsensor )
       THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
         Antrieb.rpBeschleunigung  := (ppAntriebsInformationen.rpMaxBeschleunigung);
@@ -580,13 +580,13 @@ IF ( bpCheck ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
         IF ( bpMessungSystemCheckAktiv
-             AND NOT pAuftrag.bModell ) 
+             AND NOT pAuftrag.bModell )
         THEN
 
           IF ( bpStationBelegt ) THEN
             steplCheck := STEP_810_E;
           ELSE
-            steplCheck := STEP_890_E; 
+            steplCheck := STEP_890_E;
           END_IF
 
         ELSE // ohne Scheibenmesssung

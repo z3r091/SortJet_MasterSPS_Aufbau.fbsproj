@@ -11,6 +11,6 @@ STRUCT
   bSensor_2 : BOOL;
   bSensor_3 : BOOL;
   bSensor_4 : BOOL;
-  bSensor_5 : BOOL; 
+  bSensor_5 : BOOL;
 END_STRUCT
 END_TYPE

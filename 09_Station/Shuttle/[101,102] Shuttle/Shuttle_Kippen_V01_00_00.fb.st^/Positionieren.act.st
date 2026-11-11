@@ -42,7 +42,7 @@ IF ( bpPositionieren )THEN
           wpFehlerNr := cMELDUNG_ANTRIEB_NICHT_BETRIEBSBEREIT;
           steplPositionieren := STEP_900_E;
         END_IF
-      END_IF  
+      END_IF
 
     // AUFKIPPEN ================
     STEP_10_E:

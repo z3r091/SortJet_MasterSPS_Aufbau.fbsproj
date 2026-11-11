@@ -26,7 +26,7 @@ Glastransport( stStationsNummern                         := BasisStationsParamet
 // Kippen
 
 Kippen( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern,
-        bpFreigabe        := BasisStationsParameter.bFreigabe,  
+        bpFreigabe        := BasisStationsParameter.bFreigabe,
         bpAutomatikAktiv := NOT blBetriebsartHand,
         bpSensorEinlauf   := Glastransport.bpSensorEinlauf,
         bpSensorAuslauf   := Glastransport.bpSensorAuslauf );

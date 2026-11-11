@@ -218,7 +218,7 @@ IF ( NOT bpInitialisierung OR bpReset ) THEN
 
     bpInitialisierung := FALSE;
     tonlFreigabeReferenzierung( IN := FALSE );
- 
+
     steplInitialisierung := STEP_0_E;
 
     // SHUTTLE
@@ -226,17 +226,17 @@ IF ( NOT bpInitialisierung OR bpReset ) THEN
       starrShuttleBasisParameter[wlIndex].bReferenz := FALSE;
     END_FOR
 
-    // TRANSFERSHUTTLE 
+    // TRANSFERSHUTTLE
     FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
       starrTransfershuttleBasisParameter[wlIndex].bReferenz := FALSE;
     END_FOR
 
-    // STATIONEN 
+    // STATIONEN
     FOR wlIndex := cERSTE_STATION  TO cLETZTE_STATION DO
       starrStationBasisParameter[wlIndex].bReferenz := FALSE;
     END_FOR
 
-    // Reset 
+    // Reset
     bpFehler := FALSE;
     bpReset := FALSE;
 

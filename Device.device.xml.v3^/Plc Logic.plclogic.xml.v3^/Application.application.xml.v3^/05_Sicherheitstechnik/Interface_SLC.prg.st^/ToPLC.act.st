@@ -19,11 +19,11 @@ END_FOR
 // Sicherheitskreis geschlossen von SLC OK
 FOR wIndex := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO
   Sicherheitskreis[wIndex].bpSicherheitskreisGeschlossenSafety := GetBitFromWord(EV_ToPLC_SK_OK, (wIndex-1)) OR bgSicherheitstechnikBruecken;
-  
+
   // Wenn SK geschlossen wird EDM Fehler Reset ausführen
   rtlSKQuittiert[wIndex]( CLK := Sicherheitskreis[wIndex].bpSicherheitskreisGeschlossen );
   toflSKQuittiert[wIndex]( IN := rtlSKQuittiert[wIndex].Q, PT := T#100MS );
-  
+
 END_FOR
 
 // Not-Halt von SLC OK

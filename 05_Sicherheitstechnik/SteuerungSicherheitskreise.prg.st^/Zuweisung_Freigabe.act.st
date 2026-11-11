@@ -19,7 +19,7 @@ FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
   END_IF
 END_FOR
 
-// Shuttle 
+// Shuttle
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
   starrShuttleBasisParameter[wlIndex].bFreigabe :=  ( NotHalt.bpNotHaltOK AND checkSafetyCircuitsClosed(starrShuttleBasisParameter[wlIndex]) ) OR bgSicherheitstechnikBruecken;
 END_FOR

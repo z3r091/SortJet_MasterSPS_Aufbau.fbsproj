@@ -51,7 +51,7 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
           THEN
             ablStationCheckAktiv[wlIndex] := FALSE;
           END_IF
-        END_FOR        
+        END_FOR
 
         FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
           IF    ( StationInAutomatikkreis(starrShuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wpAutomatikkreis) )
@@ -175,7 +175,7 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
          - Zuweisen der Systemcheckdaten
       *)
       FOR wlIndexStationen := cERSTE_STATION TO cLETZTE_STATION DO
-        IF    starrStationBasisParameter[wlIndexStationen].stMKs.eSystemcheckZyklus = wpZyklus 
+        IF    starrStationBasisParameter[wlIndexStationen].stMKs.eSystemcheckZyklus = wpZyklus
               AND StationInAutomatikkreis(starrStationBasisParameter[wlIndexStationen].stMKs.eaAutomatikkreis, wpAutomatikkreis)
         THEN
           starrStationBasisParameter[wlIndexStationen].pAuftrag[cWAND_1] := abgDateStationCheck[wlIndexStationen, cWAND_1];
@@ -200,7 +200,7 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
       FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
 
         IF   StationInAutomatikkreis(starrStationBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wpAutomatikkreis)
-             AND (   starrStationBasisParameter[wlIndex].stMKs.eSystemcheckZyklus = wpZyklus 
+             AND (   starrStationBasisParameter[wlIndex].stMKs.eSystemcheckZyklus = wpZyklus
                    OR starrStationBasisParameter[wlIndex].bCheckMitVorgaenger[cWAND_1]
                    OR starrStationBasisParameter[wlIndex].bCheckMitNachfolger[cWAND_1] )
         THEN
@@ -215,7 +215,7 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
       FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
 
         IF StationInAutomatikkreis(starrShuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wpAutomatikkreis)
-           AND (   starrShuttleBasisParameter[wlIndex].stMKs.eSystemcheckZyklus = wpZyklus 
+           AND (   starrShuttleBasisParameter[wlIndex].stMKs.eSystemcheckZyklus = wpZyklus
                  OR starrShuttleBasisParameter[wlIndex].bCheckMitVorgaenger[cWAND_1]
                  OR starrShuttleBasisParameter[wlIndex].bCheckMitNachfolger[cWAND_1] )
         THEN
@@ -255,7 +255,7 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
       FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
 
         IF StationInAutomatikkreis(starrShuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wpAutomatikkreis)
-           AND (   starrShuttleBasisParameter[wlIndex].stMKs.eSystemcheckZyklus = wpZyklus 
+           AND (   starrShuttleBasisParameter[wlIndex].stMKs.eSystemcheckZyklus = wpZyklus
                  OR starrShuttleBasisParameter[wlIndex].bCheckMitVorgaenger[cWAND_1]
                  OR starrShuttleBasisParameter[wlIndex].bCheckMitNachfolger[cWAND_1] )
         THEN
@@ -276,7 +276,7 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
       FOR wlIndex :=   cERSTE_STATION TO cLETZTE_STATION DO
 
         IF StationInAutomatikkreis(starrStationBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wpAutomatikkreis)
-           AND (   starrStationBasisParameter[wlIndex].stMKs.eSystemcheckZyklus = wpZyklus 
+           AND (   starrStationBasisParameter[wlIndex].stMKs.eSystemcheckZyklus = wpZyklus
                  OR starrStationBasisParameter[wlIndex].bCheckMitVorgaenger[cWAND_1]
                  OR starrStationBasisParameter[wlIndex].bCheckMitNachfolger[cWAND_1] )
         THEN
@@ -445,10 +445,10 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
 
           asteplCheck[wpAutomatikkreis, wpZyklus] := STEP_900_E;
         END_IF
-  
+
         // FW
         FOR wlIndex :=   cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR DO
-  
+
           IF StationInAutomatikkreis(starrFaecherwagenBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wpAutomatikkreis)
              AND starrFaecherwagenBasisParameter[wlIndex].bFehler
              AND starrFaecherwagenBasisParameter[wlIndex].bCheck
@@ -460,10 +460,10 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
                       wlIndex,
                       AutomatikkreisBestimmen(wlIndex),
                       starrFaecherwagenBasisParameter[wlIndex].awFehlerInformationen );
-                
+
             asteplCheck[wpAutomatikkreis, wpZyklus] := STEP_900_E;
           END_IF
-  
+
         END_FOR
 
       END_FOR
@@ -484,7 +484,7 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
 ELSIF ( asteplCheck[wpAutomatikkreis, wpZyklus] <> STEP_0_E ) THEN
 
   ablCheckDone[wpAutomatikkreis, wpZyklus] := FALSE;
-      
+
   // SHUTTLE
   FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
     IF StationInAutomatikkreis(starrShuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wpAutomatikkreis) THEN

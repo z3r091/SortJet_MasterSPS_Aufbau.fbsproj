@@ -24,6 +24,6 @@ STRUCT
   cBIT_MOTION_AKTIV : BIT; //Motion der CORE ist noch in einer aktiven Betriebsart
   cBIT_LIVEBIT : BIT; //livebit der core
   cBIT_LANGSAMFAHR_MINIMUM : BIT; // langsamfahrnocke/laser minimum
-  cBIT_LANGSAMFAHR_MAXIMUM : BIT; // langsamfahrnocke/laser maximum 
+  cBIT_LANGSAMFAHR_MAXIMUM : BIT; // langsamfahrnocke/laser maximum
 END_STRUCT
 END_TYPE

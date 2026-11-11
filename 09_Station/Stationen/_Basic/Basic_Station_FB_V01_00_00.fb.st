@@ -15,7 +15,7 @@ END_VAR
 
 VAR_INPUT
 
-  
+
 END_VAR
 
 VAR_OUTPUT
@@ -27,16 +27,16 @@ END_VAR
 
 VAR
 
-  // BOOLEAN             
+  // BOOLEAN
   blErsterZyklus             : BOOL := TRUE; // Initialisierung
-  blBetriebsartHand          : BOOL; 
-  blBetriebsartReset         : BOOL; 
-  blBetriebartCheck          : BOOL; 
-  blBetriebsartAutomatik     : BOOL; 
-  blBetriebsartReferenz      : BOOL; 
+  blBetriebsartHand          : BOOL;
+  blBetriebsartReset         : BOOL;
+  blBetriebartCheck          : BOOL;
+  blBetriebsartAutomatik     : BOOL;
+  blBetriebsartReferenz      : BOOL;
   blMerkerFehlerAutomatik    : BOOL;
   blNachSystemcheckMerker    : BOOL; // Merkt sich, wenn der Systemcheck erfolgreich durchgeführt wurde, damit die Gebläse nicht nach dem Systemcheck ausgehen
-  
+
   // WORD
   wlBetriebsart              : WORD;
   wlWatchIONachrichtenNummer : WORD;
@@ -60,14 +60,14 @@ VAR
   steplGlaslaengenmessung    : Steps_TE;
   steplGlashoehenmessung     : Steps_TE;
   steplPositionieren         : Steps_TE;
-  
-  // TRIGGER  
+
+  // TRIGGER
   ftlBausteinDeaktivierung              : F_TRIG;
   rtlFehlerMeldungGenerierenHandbetrieb : R_TRIG;
-  
+
   // TIMER
-  tonlMaxWarteAufResetErfolgreich       : TON; 
-   
+  tonlMaxWarteAufResetErfolgreich       : TON;
+
 
 END_VAR
 
@@ -80,7 +80,7 @@ IF ( blErsterZyklus  ) THEN
 
   // Initialisierung des Bausteins
   A_Baustein_Initialisierung();
-  
+
 END_IF
 
 //-------------------------------------------------------------------------------------------------

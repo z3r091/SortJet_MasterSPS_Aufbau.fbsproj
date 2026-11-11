@@ -13,7 +13,7 @@ ACTION Zuweisung_Automatik
 // Stationen
 FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
   IF __ISVALIDREF(starrStationBasisParameter[wlIndex].stMKs) THEN
-    IF ( PruefungWertImIntervallAutomatikkreise( starrStationBasisParameter[wlIndex].stMKs.eaAutomatikkreis, cERSTER_AUTOMATIKKREIS, cLETZTER_AUTOMATIKKREIS) ) THEN 
+    IF ( PruefungWertImIntervallAutomatikkreise( starrStationBasisParameter[wlIndex].stMKs.eaAutomatikkreis, cERSTER_AUTOMATIKKREIS, cLETZTER_AUTOMATIKKREIS) ) THEN
       starrStationBasisParameter[wlIndex].bAutomatik := AutomatikAktiv(wlIndex) OR Visu_Start_Auto OR bgVISUAutomatikModusStation[wlIndex];
     ELSE
       starrStationBasisParameter[wlIndex].bAutomatik := FALSE;
@@ -21,7 +21,7 @@ FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
   END_IF
 END_FOR
 
-// Shuttle 
+// Shuttle
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
   IF __ISVALIDREF(starrShuttleBasisParameter[wlIndex].stMKs) THEN
     IF ( PruefungWertImIntervallAutomatikkreise( starrShuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, cERSTER_AUTOMATIKKREIS, cLETZTER_AUTOMATIKKREIS) ) THEN

@@ -15,28 +15,28 @@ VAR
   aStation1Wand : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
   aStation2Wand : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL;
 
-  // BLINK 
+  // BLINK
   Flasher02                  : BLINK;
   Flasher03                  : BLINK;
   Flasher05                  : BLINK;
   Flasher10                  : BLINK;
   Flasher12                  : BLINK;
-  
+
   // WORD
   wlIndex                    : WORD;
-  
-  // TRIGGER 
+
+  // TRIGGER
   rtlChangeWatchIOStatus     : R_TRIG;
 
   // Events
   sCallbackOnlineChange      : CB.CB_CALLBACK;
   peCallbackStopOnlineChange : CB.ERROR;
-  
+
 END_VAR
 
 VAR_OUTPUT
 
-  // TRIGGER 
+  // TRIGGER
   rtlEtherCatOK              : R_TRIG;
 END_VAR
 // -------------------------------------------------------------------------

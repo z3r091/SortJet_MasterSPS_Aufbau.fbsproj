@@ -13,10 +13,10 @@ VAR_INPUT
 
 END_VAR
 VAR
-  // BOOL 
+  // BOOL
   findInWORDArray               : BOOL;
   bSicherheitskreisIstDurchgang : BOOL;
-  
+
   // WORD
   wlIndexSicherheitskreis : WORD;
 

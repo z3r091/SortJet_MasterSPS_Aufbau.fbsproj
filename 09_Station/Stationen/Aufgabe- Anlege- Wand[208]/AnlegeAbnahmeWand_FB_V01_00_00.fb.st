@@ -10,7 +10,7 @@ FUNCTION_BLOCK AnlegeAbnahmeWand_FB_V01_00_00 EXTENDS Basic_Station_FB_V01_00_00
 VAR_INPUT
 
   // BOOLEAN
-  bpFreigabeBereichsScanner : BOOL := TRUE; 
+  bpFreigabeBereichsScanner : BOOL := TRUE;
 
 END_VAR
 
@@ -27,11 +27,11 @@ VAR
   // REAL
   rlScheibenHoehe            : REAL;
   rlAbstandZurNulllinie      : REAL;
-    
+
   // INT
   ilScheibenZaehler          : INT;
 
-  
+
   // TRIGGER
   rtlTasterQuittierung                  : R_TRIG;
   rtlFussleisteStart                    : R_TRIG;
@@ -49,16 +49,16 @@ VAR
   ftlGlastransportCheckMitNachfolger    : F_TRIG;
 
   // TIMER
-  tonlQuittierungGlasAbgenommen         : TON; 
-  tonlFreigabeErhalten                  : TON; 
-  
+  tonlQuittierungGlasAbgenommen         : TON;
+  tonlFreigabeErhalten                  : TON;
+
   // TIME
   tlZeitBereitAnzulegen                 : TIME;
-                                       
-  // ENUM 
+
+  // ENUM
   epTypeHoehenmessung : ModusHoehenvermessung_EN;
 
-  // BAUSTEINE 
+  // BAUSTEINE
   Glastransport     : AnlegeAbnahmeWand_Glastransport_FB_V01_00_00;
   Messachse         : Messachse_FB_V01_00_00;
   Kippen            : Kippen_FB_V01_00_00;
@@ -92,7 +92,7 @@ END_VAR
 
 
 VAR
-  
+
   // Taster
   in_bFussTaster                                  : BOOL; // Signal Fusstaster
   in_bTasterGlasAngelegt                   AT %I* : BOOL; // Signal Scheibe ist angelegt gelber Leuchtdrucktaster
@@ -100,7 +100,7 @@ VAR
   in_bKnebelGlastransportZurueck           AT %I* : BOOL; // Knebelschalter: Glastransport zurück
   in_bKnebelGlastransportVor               AT %I* : BOOL; // Knebelschalter: Glastransport vor
   in_bTasterQuittierungGlasAbgenommen      AT %I* : BOOL;
-  in_bTasterGeblaeseEin                    AT %I* : BOOL; 
+  in_bTasterGeblaeseEin                    AT %I* : BOOL;
   in_bTasterGlasbruch                      AT %I* : BOOL;
   in_bLichtschrankeQuittiert               AT %I* : BOOL;
   in_bLichtschrankeFehler                  AT %I* : BOOL;
@@ -120,7 +120,7 @@ VAR
   out_bAbschrankungEinfahren               AT %Q* : BOOL; // Impulsventil: bewegliche Abschrankung einfahren (oeffnen)
   out_bAbschrankungAusfahren               AT %Q* : BOOL; // Impulsventil: bewegliche Abschrankung ausfahren (schliessen)
 
-    
+
 END_VAR
 //-------------------------------------------------------------------------------------------------
 // MASTER AUFRUFEN

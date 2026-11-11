@@ -12,8 +12,8 @@ ACTION Signal_Logger
 // Bei Signalwechsel Daten ins Log schreiben
 
 // Eingangsignale
-IF ( in_bGlasAbruf <> blTempGlasAbruf ) 
-   OR ( in_bAnforderungSK <> blTempAnforderungSK ) 
+IF ( in_bGlasAbruf <> blTempGlasAbruf )
+   OR ( in_bAnforderungSK <> blTempAnforderungSK )
 THEN
   blTempGlasAbruf     := in_bGlasAbruf;
   blTempAnforderungSK := in_bAnforderungSK;
@@ -34,9 +34,9 @@ END_IF
 
 
 // Ausganssignale
-IF   ( out_bSenderBereit <> blTempSenderBereit ) 
-     OR ( out_bSenderGlasBereit <> blTempSenderGlasBereit ) 
-     OR ( blTempFreigabeSK <> out_bFreigabeSK ) 
+IF   ( out_bSenderBereit <> blTempSenderBereit )
+     OR ( out_bSenderGlasBereit <> blTempSenderGlasBereit )
+     OR ( blTempFreigabeSK <> out_bFreigabeSK )
 THEN
   blTempSenderBereit     := out_bSenderBereit;
   blTempSenderGlasBereit := out_bSenderGlasBereit;

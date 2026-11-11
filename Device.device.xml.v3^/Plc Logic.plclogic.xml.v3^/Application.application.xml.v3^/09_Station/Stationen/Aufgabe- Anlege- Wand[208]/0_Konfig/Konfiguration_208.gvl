@@ -17,8 +17,8 @@ VAR_CONFIG
   Globale_Bausteine.Combiwand208.in_bKnebelGlastransportVor                               AT %IX4.1    : BOOL; // IO-L - 208 Riemen vor
   Globale_Bausteine.Combiwand208.in_bTasterGlasbruch                                      AT %IX4.3    : BOOL; // IO-L - 208 Glasbruch
   Globale_Bausteine.Combiwand208.in_bTasterQuittierungGlasAbgenommen                      AT %IX3.7    : BOOL; // IO-L - 208 quittieren Scheibe aufgelegt (gleicher Taster wie Glas angelegt)
-                                                                                          
-  // Lampen/Ampel                                                                         
+
+  // Lampen/Ampel
   Globale_Bausteine.Combiwand208.out_bAmpelSignalGruen                                    AT %QX5.0    : BOOL; // IO-L - 208 Freigabe Scheibe anlegen Ampel gruen
   Globale_Bausteine.Combiwand208.out_bSignalScheibeAufgegeben                             AT %QX4.5    : BOOL; // IO-L - 208 quittieren Scheibe aufgelegt
   Globale_Bausteine.Combiwand208.out_bSignalScheibeFehlmessung                            AT %QX4.6    : BOOL; // IO-L - 208 Scheibe Fehlmessung
@@ -30,43 +30,43 @@ VAR_CONFIG
   Globale_Bausteine.Combiwand208.out_bAbschrankungEinfahren                               AT %QX10.4   : BOOL; // IO-L - 208 bewegliche Abschrankung einfahren (oeffnen)
   Globale_Bausteine.Combiwand208.out_bAbschrankungAusfahren                               AT %QX10.5   : BOOL; // IO-L - 208 bewegliche Abschrankung ausfahren (schliessen)
 
-                                                                                                        
-  // Lichtschranke                                                                                      
+
+  // Lichtschranke
   Globale_Bausteine.Combiwand208.in_bLichtschrankeQuittiert                               AT %MX1.1    : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.in_bLichtschrankeFehler                                  AT %MX1.1    : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.out_bLichtschrankeAusgeloest                             AT %MX2080.2 : BOOL; // OPTION - Lichtschranke an der Station ausgelöst und nicht quittiert
-                                                                                                        
-                                                                                                        
-  // Gebläse                                                                                            
+
+
+  // Gebläse
   Globale_Bausteine.Combiwand208.in_bTasterGeblaeseEin                                    AT %MX1.0     : BOOL; // OPTION - Taster Geblaese ein
   Globale_Bausteine.Combiwand208.in_bMotorschutzGeblaese_Ok                               AT %MX1.1     : BOOL; // OPTION - Motorschutzschalter / Sicherung des Antriebs
   Globale_Bausteine.Combiwand208.out_bGeblaeseEin                                         AT %MX2080.3  : BOOL; // OPTION - Geblaese starten (Schuetz)
-                                                                                                        
-                                                                                                        
-  // Dickenverstellung                                                                                  
+
+
+  // Dickenverstellung
   Globale_Bausteine.Combiwand208.Dickenverstellung.in_bStatusZylinder1Ausgefahren         AT %MX1.0     : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Dickenverstellung.in_bStatusZylinder1Eingefahren         AT %MX1.0     : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Dickenverstellung.in_bStatusZylinder2Ausgefahren         AT %MX1.0     : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Dickenverstellung.in_bStatusZylinder2Eingefahren         AT %MX1.0     : BOOL; // OPTION
-                                                                                                        
+
   Globale_Bausteine.Combiwand208.Dickenverstellung.out_bZylinder1Ausfahren                AT %MX2080.4  : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Dickenverstellung.out_bZylinder1Einfahren                AT %MX2080.5  : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Dickenverstellung.out_bZylinder2Ausfahren                AT %MX2080.6  : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Dickenverstellung.out_bZylinder2Einfahren                AT %MX2080.7  : BOOL; // OPTION
-                                                                                                        
-                                                                                                        
-  // Kippen                                                                                             
+
+
+  // Kippen
   Globale_Bausteine.Combiwand208.Kippen.in_bMotorschutzschalter_OK                        AT %MX1.1     : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Kippen.in_bMotorstarter_OK                               AT %MX1.1     : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Kippen.in_bLSBremse_OK                                   AT %MX1.1     : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Kippen.in_bLS400V_OK                                     AT %MX1.1     : BOOL; // OPTION
-                                                                                                        
+
   Globale_Bausteine.Combiwand208.Kippen.out_bKippen84Grad                                 AT %MX2081.0  : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Kippen.out_bKippen90Grad                                 AT %MX2081.1  : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Kippen.out_bBremseLoesen                                 AT %MX2081.2  : BOOL; // OPTION
   Globale_Bausteine.Combiwand208.Kippen.out_bReset                                        AT %MX2081.3  : BOOL; // OPTION
-  
- 
+
+
 
 
   // Nicht vorhandene Komponenten (der Basic erwartet sie, die Instanzen bleiben deaktiviert): Eingaenge auf %MX1.x, Ausgaenge auf freie Merker

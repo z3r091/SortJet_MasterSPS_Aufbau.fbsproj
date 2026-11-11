@@ -39,7 +39,7 @@ IF ( blStartePositionSenkrecht ) THEN
       BasisStationsParameter.bFehler := TRUE;
 
     // KIPPEN SENKRECHT ===========================
-    STEP_1000_E: 
+    STEP_1000_E:
       blBewegungAbgeschlossen := TRUE;
 
   // KIPPEN SENKRECHT ===========================

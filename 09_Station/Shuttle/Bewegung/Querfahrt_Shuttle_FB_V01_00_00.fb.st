@@ -28,7 +28,7 @@ VAR_INPUT
   wpAuftragsTyp                          : WORD; // Bit 1 = Positionierauftrag mit Messgeschwindigkeit (RackSuche), aus dem Positionierauftrag (Vorabpositionierung)
 
   // REAL
-  rpDestinationPosition                  : REAL; // ZielPosition  
+  rpDestinationPosition                  : REAL; // ZielPosition
   rpMinPosSwEsEingrenzung                : REAL;
   rpMaxPosSwEsEingrenzung                : REAL;
 
@@ -216,7 +216,7 @@ Meldungen();
 //-------------------------------------------------------------------------------------------------
 IF ( bpSofortStop OR NOT abgVerfahrfreigabeShuttle[stStationsNummern.NummerSPS] ) OR NOT bpFreigabe THEN
   Antrieb.bpFreigabe := FALSE;
-END_IF 
+END_IF
 
 Antrieb.stStationsNummern            := stStationsNummern;
 

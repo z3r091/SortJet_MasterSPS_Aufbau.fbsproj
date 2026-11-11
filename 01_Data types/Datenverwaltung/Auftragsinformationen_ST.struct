@@ -9,7 +9,7 @@ TYPE Auftragsinformationen_ST :
   STRUCT
     wAuftragsInformationen               : WORD;
 
-   // Das Attribute 'relative_offset' erstzen die Funktion Bitaccess 
+   // Das Attribute 'relative_offset' erstzen die Funktion Bitaccess
   {attribute 'relative_offset' := '0'}
 
   // Die Bytes im Word werden getauscht
@@ -21,7 +21,7 @@ TYPE Auftragsinformationen_ST :
   cBit_13                    : BIT;
   cBit_14                    : BIT;
   cBit_15                    : BIT;
-  cBIT_AUFTRAGSTYP           : BIT; // 1=Eintransport 0=Austransport 
+  cBIT_AUFTRAGSTYP           : BIT; // 1=Eintransport 0=Austransport
   cBIT_SRCSTATION_EMPTY      : BIT; // Quellstation im Anschluss leer
   cBIT_TARGET_FW             : BIT; // Ziel Faecherwagen
   cBIT_WALL_1_EMPTY          : BIT; // NUR Shuttlestation (!) Wand 1 (der Shuttlestation) nach Austransport leer

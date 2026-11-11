@@ -13,17 +13,17 @@ ACTION Reset
 IF( blBetriebsartReset )THEN
   CASE steplReset OF
     // RESET ============================
-    STEP_0_E:    
+    STEP_0_E:
 
-      BasisStationsParameter.eStatusAuftrag := eKeinStatus;   
-   
+      BasisStationsParameter.eStatusAuftrag := eKeinStatus;
+
       BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberEinlauf  := FALSE;
       BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberAuslauf  := FALSE;
       BasisStationsParameter.bStationBelegt[cWAND_1]                               := FALSE;
       BasisStationsParameter.bCheckMitVorgaenger[cWAND_1]                          := FALSE;
       BasisStationsParameter.bCheckMitNachfolger[cWAND_1]                          := FALSE;
       BasisStationsParameter.bCheckAbgeschlossen                                   := FALSE;
-     
+
       blNachSystemcheckMerker := FALSE;
 
       steplReset := STEP_10_E;

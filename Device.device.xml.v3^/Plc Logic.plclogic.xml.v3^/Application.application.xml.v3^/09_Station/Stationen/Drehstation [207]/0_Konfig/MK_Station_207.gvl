@@ -33,7 +33,7 @@ VAR_GLOBAL
                                                                      bSystemCheckMitVorgaengerBatchTransport     := FALSE,   // derzeit ohne Funktion
                                                                      bSystemCheckMitNachfolgerBatchTransport     := FALSE,   // derzeit ohne Funktion
                                                                      bOptionSystemCheckScheibeMittigLegen        := FALSE ), // derzeit ohne Funktion
-                                                                     
+
                                                  // stTransfershuttle
                                                  stGlastransport :=  ( bVortransport                             := FALSE,   // Vortransport aktivieren [Bsp.: Nach einem Eintransport mit gesetztem Bit <Letzte Scheibe>]
                                                                        bTransportMasterSlaveEintransport         := FALSE,   // derzeit ohne Funktion
@@ -44,7 +44,7 @@ VAR_GLOBAL
                                                                        bMessrichtungNegativ                      := FALSE,   // Negative Fahrtrichtung beim Messen
                                                                        bScheibenmessungEintransport              := FALSE,   // Scheibenmessung beim Eintransport
                                                                        bScheibenmessungSensorVorabAuslauf        := FALSE    // Scheibenmessung mit SensorVorabAuslauf z.B. Anlegewand
-                                                                      ),   
+                                                                      ),
                                                  // stAnlegetisch
                                                  // stEckuebergabe
                                                  stDrehstation   :=  ( bDrehpositionenVomMMI                     := FALSE ), // FALSE: Drehpositionen aus der Stationskonfiguration [aEintransporte/aAustransporte]
@@ -154,7 +154,7 @@ VAR_GLOBAL
        bKippenMitSchuetz                     :=  TRUE,  // Kippen per Umrichter oder Schütz
        rPosition88_5Grad                     := 0.0     // Senkrechte- Position 84 Grad: Position auf die die Station gehoben werden soll
     )];
-  
+
   apgMKStation207Querfahrt : Parameter_Querfahrt :=
     (
       tZeitAntriebsfreigabeErhalten          := T#10S // Energieeinsparung: Zeit nach der die Antriebsfreigabe entzogen wird, wenn keine Aktion ansteht

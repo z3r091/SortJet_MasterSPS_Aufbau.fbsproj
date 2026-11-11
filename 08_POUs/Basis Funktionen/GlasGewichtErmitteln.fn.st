@@ -34,7 +34,7 @@ VAR CONSTANT
 
 END_VAR
 
- 
+
 rlErgebnis := REAL#0;
 
 rlLaenge  := rpGlaslaenge / cUMRECHNUNG_MM_IN_DM;

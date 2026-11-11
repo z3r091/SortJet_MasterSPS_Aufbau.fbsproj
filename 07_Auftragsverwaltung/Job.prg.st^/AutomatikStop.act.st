@@ -29,7 +29,7 @@ IF ( M_SB0_MMI_SortierungAutomatik_Stop ) THEN
   Initialisierung.bpReset := TRUE;
 
   FOR i := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
-  
+
     mask := SHR(tMmi2SpsInfo.wAutomatikStopArea, i-1);
     IF mask.0 THEN
       M_Automatik_Aktiv[i]                     := FALSE;
@@ -42,7 +42,7 @@ IF ( M_SB0_MMI_SortierungAutomatik_Stop ) THEN
       Initialisierung.bpReset                  := TRUE;
       Interface_SLC.bpResetOperatorAcknowledge := TRUE;
     END_IF
-  
+
   END_FOR
 
 END_IF

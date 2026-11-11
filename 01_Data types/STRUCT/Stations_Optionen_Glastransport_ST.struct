@@ -17,9 +17,9 @@ TYPE Stations_Optionen_Glastransport_ST :
     bScheibenmessungEintransport                                  : BOOL; // Scheibenmessung beim Eintransport
     bScheibenmessungSensorVorabAuslauf                            : BOOL; // Scheibenmessung mit SensorVorabAuslauf z.B. Anlegewand
     bMessrichtungNegativ                                          : BOOL; // Negative Fahrtrichtung beim Messen
-    
-    
-    
-    
+
+
+
+
   END_STRUCT
 END_TYPE

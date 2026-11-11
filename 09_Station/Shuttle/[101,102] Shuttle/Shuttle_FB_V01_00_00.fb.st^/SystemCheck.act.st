@@ -113,7 +113,7 @@ IF ( blBetriebartCheck ) THEN
         FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
           Glastransport[wlIndex].bpCheck := FALSE;
         END_FOR
-       
+
         IF ( NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippenSchuetz ) THEN
           wSPS2MMIShuttleNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
           IF ( Kippen.epKippStatus = eKippen_Position_90Grad ) OR ( Kippen.epKippStatus = eKippen_Position_84Grad ) OR ( Kippen.epKippStatus = eKippen_Position_96Grad ) THEN

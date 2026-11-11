@@ -41,7 +41,7 @@ IF bgStepLogging THEN
     stlLogString := CONCAT(stlLogString, WORD_TO_STRING(steplCheck));
 
     steplCheckMerker := steplCheck;
-  
+
   END_IF
 
 END_IF

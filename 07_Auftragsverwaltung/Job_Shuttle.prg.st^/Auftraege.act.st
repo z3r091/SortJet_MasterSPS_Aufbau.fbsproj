@@ -15,7 +15,7 @@ ACTION Auftraege
 IF ( M_SB0_MMI_SHEET_ORDER_SHUTTLE ) THEN
 
   CASE tMmi2SpsInfo.wStationsNr OF
-    
+
     cERSTES_SHUTTLE..cLETZTES_SHUTTLE:
       LocalAuftragsSpeicher REF= AuftragsSpeicherWand[tMmi2SpsInfo.wStationsNr, tMmi2SpsInfo.wAuftragsWand];
       M_SB0_MMI_SHEET_ORDER_SHUTTLE := FALSE;
@@ -23,10 +23,10 @@ IF ( M_SB0_MMI_SHEET_ORDER_SHUTTLE ) THEN
     cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE:
       LocalAuftragsSpeicher REF= AuftragsSpeicherTransfershuttle[tMmi2SpsInfo.wStationsNr];
       M_SB0_MMI_SHEET_ORDER_SHUTTLE := FALSE;
-  
+
   END_CASE
 
-  IF __ISVALIDREF(LocalAuftragsSpeicher) THEN 
+  IF __ISVALIDREF(LocalAuftragsSpeicher) THEN
 
     LocalAuftragsSpeicher.NeuerAuftrag.wStationsNr            := tMmi2SpsInfo.wStationsNr;
     LocalAuftragsSpeicher.NeuerAuftrag.rVorabPosition         := tMmi2SpsInfo.rStationsPosition;
@@ -44,9 +44,9 @@ IF ( M_SB0_MMI_SHEET_ORDER_SHUTTLE ) THEN
     LocalAuftragsSpeicher.NeuerAuftrag.wTransferwand          := tMmi2SpsInfo.wTransferwand;         // Stationswand der Zielstationen 1
     LocalAuftragsSpeicher.NeuerAuftrag.stAuftragsInformationen.wAuftragsInformationen := tMmi2SpsInfo.wAuftragsTyp;            // Zusaetzliche Auftrags- Informationen
 
-    // Soll Drehpos der Folgestation für den Eintransport    
+    // Soll Drehpos der Folgestation für den Eintransport
     LocalAuftragsSpeicher.NeuerAuftrag.wTransferVersatzVorne   := tMmi2SpsInfo.rTransferstationModellversatzVorne;
-    // Soll Drehpos der Folgestation nach dem Eintransport    
+    // Soll Drehpos der Folgestation nach dem Eintransport
     LocalAuftragsSpeicher.NeuerAuftrag.wTransferVersatzHinten  := tMmi2SpsInfo.rTransferstationModellversatzHinten;
 
     (* Hinweis:
@@ -170,12 +170,12 @@ IF ( M_SB0_MMI_SHUTTLE_INFORMATION ) THEN
 
             VorAbAuftragsDaten[tMmi2SpsInfo.wAuftrag_ShuttleNummer, tMmi2SpsInfo.wAuftrag_ShuttleWand].stAuftragsInformationen.wAuftragsInformationen := tMmi2SpsInfo.wAuftrag_Modus;
             VorAbAuftragsDaten[tMmi2SpsInfo.wAuftrag_ShuttleNummer, tMmi2SpsInfo.wAuftrag_ShuttleWand].wAuftrag := eStation_VorabAuftrag;
-      
+
           END_IF
-       
+
         cWAND_1_2: //eigentlich Wand 1 und 2, da dies Bitcodiert ist, kommt dies als Wand3
           FOR wlIndexWand := cWAND_1 TO cANZAHL_WAENDE DO
-     
+
             IF ( VorAbAuftragsDaten[tMmi2SpsInfo.wAuftrag_ShuttleNummer, wlIndexWand].wAuftrag = eStation_Kein_Auftrag ) THEN
 
               VorAbAuftragsDaten[tMmi2SpsInfo.wAuftrag_ShuttleNummer, wlIndexWand].rLaenge                := tMmi2SpsInfo.rAuftrag_Laenge;
@@ -185,10 +185,10 @@ IF ( M_SB0_MMI_SHUTTLE_INFORMATION ) THEN
               VorAbAuftragsDaten[tMmi2SpsInfo.wAuftrag_ShuttleNummer, wlIndexWand].wShuttleWandNummer     := wlIndexWand;
               VorAbAuftragsDaten[tMmi2SpsInfo.wAuftrag_ShuttleNummer, wlIndexWand].wTransferWand          := tMmi2SpsInfo.wAuftrag_TransferWand;
               VorAbAuftragsDaten[tMmi2SpsInfo.wAuftrag_ShuttleNummer, wlIndexWand].wShuttleNummer         := tMmi2SpsInfo.wAuftrag_ShuttleNummer;
-      
+
               VorAbAuftragsDaten[tMmi2SpsInfo.wAuftrag_ShuttleNummer, wlIndexWand].stAuftragsInformationen.wAuftragsInformationen := tMmi2SpsInfo.wAuftrag_Modus;
               VorAbAuftragsDaten[tMmi2SpsInfo.wAuftrag_ShuttleNummer, wlIndexWand].wAuftrag := eStation_VorabAuftrag;
-      
+
             END_IF
 
           END_FOR
@@ -313,7 +313,7 @@ IF ( M_SB0_MMI_SORTIERUNGCANCELSHUTTLEDATA ) THEN
         Job_Shuttle.AuftragsdatenTransfershuttle[tMmi2SpsInfo.wCancelShuttleDataShuttleNr].wAuftrag :=  eStation_Kein_Auftrag;
       END_IF
 
-  END_CASE 
+  END_CASE
 
 END_IF
 

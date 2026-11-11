@@ -9,13 +9,13 @@ FUNCTION_BLOCK Hub_FB_V01_00_00
 VAR_INPUT
 
   // BOOLEAN
-  bpAktivieren               : BOOL; 
+  bpAktivieren               : BOOL;
   bpStartHubAuf              : BOOL;
   bpStartHubAb               : BOOL;
   bpReset                    : BOOL;
-  bpSensorEinlaufNachfolger  : BOOL; 
-  bpSensorAuslaufVorgaenger  : BOOL; 
-  bpSensorEinlauf            : BOOL; 
+  bpSensorEinlaufNachfolger  : BOOL;
+  bpSensorAuslaufVorgaenger  : BOOL;
+  bpSensorEinlauf            : BOOL;
   bpSensorAuslauf            : BOOL;
 
   // STRUCT
@@ -31,14 +31,14 @@ VAR_OUTPUT
   // WORD
   wpFehlerNr : Fehlerkonstanten_EN;
 
-  // ENUM 
+  // ENUM
   epHubStatus  : Hub_EN; // Status: Gibt die Aktuelle Position des Antriebs aus
 
 END_VAR
 
 VAR
 
-  // BOOLEAN 
+  // BOOLEAN
   blErsterZyklus        : BOOL := TRUE;
 
   // TIMER
@@ -52,16 +52,16 @@ VAR
   steplHubAb    : Steps_TE;
   steplHubAuf   : Steps_TE;
   steplReset    : Steps_TE;
-  
+
 END_VAR
 
 VAR
-  // HARDWARE EINGÄNGE 
+  // HARDWARE EINGÄNGE
   in_bSensorNichtUnten             AT%I* : BOOL;
   in_bSensorNichtOben              AT%I* : BOOL;
-  in_bMotorstarter_OK              AT%I* : BOOL; 
-  in_bLSBremse_OK                  AT%I* : BOOL; 
-  in_bLS400V_OK                    AT%I* : BOOL; 
+  in_bMotorstarter_OK              AT%I* : BOOL;
+  in_bLSBremse_OK                  AT%I* : BOOL;
+  in_bLS400V_OK                    AT%I* : BOOL;
 
   // HARDWARE AUSGÄNGE
   out_bHubAbSetzen                 AT%Q* : BOOL;
@@ -73,7 +73,7 @@ END_VAR
 
 VAR CONSTANT
 
-  // TIME 
+  // TIME
   MAXIMALE_WARTEZEIT_HUB                       : TIME := T#5000MS; // Maximale Wartezeit die abgewartet wird bis der Hub-Antrieb auf Position gefahren ist
 
 END_VAR

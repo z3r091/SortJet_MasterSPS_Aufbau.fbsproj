@@ -7,7 +7,7 @@
 *)
 METHOD INTERNAL Master_Transfershuttle
 VAR_INPUT
-  wStation : WORD; 
+  wStation : WORD;
 END_VAR
 
 
@@ -48,7 +48,7 @@ ELSE
   (* Hinweis:
      - Reset der Schrittkette
   *)
-  IF ( TS_Eintransport[wStation].steplSchritt <> STEP_0_E ) THEN 
+  IF ( TS_Eintransport[wStation].steplSchritt <> STEP_0_E ) THEN
     TS_Eintransport[wStation](bpReset := TRUE);
   END_IF
 END_IF
@@ -90,7 +90,7 @@ ELSE
   (* Hinweis:
      - Reset der Schrittkette
   *)
-  IF ( TS_Austransport[wStation].steplSchritt <> STEP_0_E ) THEN 
+  IF ( TS_Austransport[wStation].steplSchritt <> STEP_0_E ) THEN
     TS_Austransport[wStation](bpReset := TRUE);
   END_IF
 END_IF
@@ -122,7 +122,7 @@ ELSE
   (* Hinweis:
      - Reset der Schrittkette
   *)
-  IF ( TS_Vortransport[wStation].steplSchritt <> STEP_0_E ) THEN 
+  IF ( TS_Vortransport[wStation].steplSchritt <> STEP_0_E ) THEN
     TS_Vortransport[wStation](bpReset := TRUE);
   END_IF
 END_IF
@@ -154,7 +154,7 @@ ELSE
   (* Hinweis:
      - Reset der Schrittkette
   *)
-  IF ( TS_Querfahrt[wStation].steplSchritt <> STEP_0_E ) THEN 
+  IF ( TS_Querfahrt[wStation].steplSchritt <> STEP_0_E ) THEN
     TS_Querfahrt[wStation](bpReset := TRUE);
   END_IF
 END_IF

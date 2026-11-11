@@ -18,14 +18,14 @@ VAR_INPUT
   AuftragsSpeicherTransfershuttle  : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE]          OF AuftragsSpeicher;
   AuftragsSpeicherShuttle          : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE]                          OF AuftragsSpeicher;
   AuftragsSpeicherWand             : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF AuftragsSpeicher;
-  
+
   // STRUCT
   AuftragsdatenStation                       : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE]                                  OF Auftragsdaten_ST;
   AuftragsdatenWand                          : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE]         OF Auftragsdaten_ST;
   VorAbAuftragsDaten                         : ARRAY [cERSTES_SHUTTLE..cLETZTES_TRANSFERSHUTTLE, cWAND_1..cANZAHL_WAENDE] OF VorAbAuftragsdaten_ST; // Ermoeglicht ein paralleles abarbeiten von bestimmten Auftraegen
   VisuAuftragsdaten                          : ARRAY [cERSTES_SHUTTLE..cLETZTES_TRANSFERSHUTTLE]                          OF Visu_Auftraege_ST;
   AuftragsdatenTransfershuttle               : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE]                  OF Auftragsdaten_ST;
-  starrAuftragsdatenSpeicherfachValidierung  : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE]                  OF Auftragsdaten_ST;  
+  starrAuftragsdatenSpeicherfachValidierung  : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE]                  OF Auftragsdaten_ST;
 
   LocalAuftragsSpeicher             : REFERENCE TO AuftragsSpeicher;
 
@@ -62,7 +62,7 @@ VAR
   asteplSpeicherfachValidierung   : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Steps_TE;
   asteplFaecherwagenSuche         : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Steps_TE;
 
-  // TON 
+  // TON
   atonlWarteAufMasterAuftrag      : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF TON;
 
   // SH - BAUSTEINE
@@ -117,7 +117,7 @@ FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
       abpResetTransportkopplung[wlIndex] := FALSE;
       TS_Transportkopplung[wlIndex]( bpReset := TRUE );
       AuftragsdatenTransfershuttle[wlIndex].wAuftrag := eStation_Kein_Auftrag;
-    END_IF  
+    END_IF
   END_IF
 END_FOR
 
@@ -130,20 +130,20 @@ END_FOR
 Auftraege();
 
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
-  
+
   FOR wlIndexWand := cWAND_1 TO cANZAHL_WAENDE DO
     rtlFehler[wlIndex,wlIndexWand]( CLK := blFehler[wlIndex,wlIndexWand] );
     ShuttleWandAuftraege(wlIndex, wlIndexWand);
   END_FOR
-  
+
   ShuttleQuerfahrt(wlIndex);
-  
+
 END_FOR
 
 FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
   rtlFehlerTS[wlIndex]( CLK := blFehlerTS[wlIndex] );
   IF starrTransfershuttleBasisParameter[wlIndex].stMKs.stStationsOptionen.stTransfershuttle.bMasterStation THEN
-    Master_Transfershuttle(wlIndex); 
+    Master_Transfershuttle(wlIndex);
   ELSE
     Slave_Transfershuttle(wlIndex);
   END_IF

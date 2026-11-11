@@ -10,7 +10,7 @@ VAR_INPUT
   in_Word   : WORD;
   in_Number : WORD;
 END_VAR
-VAR   
+VAR
   wIndex    : WORD;
 END_VAR
 

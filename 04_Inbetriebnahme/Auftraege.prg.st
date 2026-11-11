@@ -15,11 +15,11 @@ VAR_INPUT
   bgInbetriebnahmeStationsauftrag            : BOOL;
   bgInbetriebnahmeShuttelAuftrag             : BOOL;
   bgInbetriebnahmeShuttelverfahrAuftrag      : BOOL;
-  bgButtonVortransportTransfershuttleAuftrag : BOOL; 
+  bgButtonVortransportTransfershuttleAuftrag : BOOL;
   bgButtonAnlegeAuftrag                      : BOOL;
   bgButtonStationsAuftrag                    : BOOL;
   bgAuftragGenerieren                        : BOOL;
-  
+
   bgStartAufgekippt                          : BOOL;
   bgEndeAufgekippt                           : BOOL;
 
@@ -42,7 +42,7 @@ VAR_INPUT
   rlInbetriebnahmeStation_TransferStationPosition_1 : REAL :=REAL#0;
   rlInbetriebnahmeStation_TransferStationPosition_2 : REAL :=REAL#0;
   wlTransferwand                                    : WORD;
- 
+
 
   bgInbetriebnahmeShuttleEintransportAuftrag   : BOOL;
   bgInbetriebnahmeShuttleAustransportAuftrag   : BOOL;

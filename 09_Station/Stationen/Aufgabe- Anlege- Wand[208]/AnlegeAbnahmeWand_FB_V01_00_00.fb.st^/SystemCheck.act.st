@@ -20,13 +20,13 @@ IF ( blBetriebartCheck ) THEN
     BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
     steplCheck := STEP_900_E;
   END_IF
-  
+
   IF ( Kippen.bpFehler ) THEN
     Kippen.bpPositionieren := FALSE;
     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
     steplCheck := STEP_900_E;
   END_IF
-  
+
   CASE steplCheck OF
     // SYSTEM CHECK=========================
     STEP_0_E:
@@ -42,8 +42,8 @@ IF ( blBetriebartCheck ) THEN
       ELSE
 
         BasisStationsParameter.bStationBelegt[cWAND_1] := ( Glastransport.bpSensorEinlauf
-                                                            OR Glastransport.bpSensorAuslauf 
-                                                            OR Glastransport.bpSensorEinlaufVorAb 
+                                                            OR Glastransport.bpSensorAuslauf
+                                                            OR Glastransport.bpSensorEinlaufVorAb
                                                             OR Glastransport.bpSensorAuslaufVorAb );
 
         wSPS2MMIStationsNummer := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
@@ -227,7 +227,7 @@ IF ( blBetriebartCheck ) THEN
          - Aufgabescheibe: Transferstation = Folge- Station (Vorgaenger bzw. Nachfolger )
       *)
       IF ( BasisStationsParameter.pAuftrag[cWAND_1].wTransferstationsNr1 = BasisStationsParameter.stMKs.stStationsNummern.NummerSPS ) THEN
- 
+
         IF ( NOT BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN
 
         (* Hinweis:
@@ -237,13 +237,13 @@ IF ( blBetriebartCheck ) THEN
         //        MsgToMmi(auftragsnr_w := SB0_SPS_SHEETREMOVEDAPPROVALWALL);
 
         END_IF
-     
+
       ELSE
 
         IF BasisStationsParameter.bStationBelegt[cWAND_1] THEN
 
           IF ( BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben = 0 )THEN
-              
+
             SpsHinweis( eFehler_Station,
                         cMELDUNG_SYSTEMCHECK_SCHEIBE_NEU_ANLEGEN,
                         BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
@@ -281,10 +281,10 @@ IF ( blBetriebartCheck ) THEN
 
     // SYSTEM CHECK=========================
     STEP_1000_E:
-      // Auftrag für erneuten Automatikbetrieb setzen      
-      IF //starrStationBasisParameter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].stMKs.stStationsOptionen.bScheibeAbnehmenNachEintransport 
+      // Auftrag für erneuten Automatikbetrieb setzen
+      IF //starrStationBasisParameter[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].stMKs.stStationsOptionen.bScheibeAbnehmenNachEintransport
         BasisStationsParameter.pAuftrag[cWAND_1].stAuftragsInformationen.cBit_11 // Bit 11 = 1 -> Abnahme
-        AND ( BasisStationsParameter.bStationBelegt[cWAND_1] OR BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben > 0) 
+        AND ( BasisStationsParameter.bStationBelegt[cWAND_1] OR BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben > 0)
       THEN
         BasisStationsParameter.pAuftragNachSystemcheck[cWAND_1] := eStation_Abnehmen;
       ELSIF ( BasisStationsParameter.bStationBelegt[cWAND_1] ) THEN

@@ -32,6 +32,6 @@ CASE ( steplCheck ) OF
 
 END_CASE
 
-// Aufruf Basic_Station Aktion  
+// Aufruf Basic_Station Aktion
 SUPER^.SystemCheck();
 END_ACTION

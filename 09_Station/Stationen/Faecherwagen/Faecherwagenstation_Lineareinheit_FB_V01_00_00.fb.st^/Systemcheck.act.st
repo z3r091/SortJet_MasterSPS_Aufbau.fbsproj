@@ -19,20 +19,20 @@ IF blBetriebartCheck THEN
       // Initialisieren und auf Freigabe warten
       bpDone := FALSE;
 
-      IF ( eLetzterStatus = eLetzter_FW_Status.eKeine_Info ) OR 
-         ( eLetzterStatus = eLetzter_FW_Status.eEinschleusen_Starten_0 ) OR 
-         ( eLetzterStatus = eLetzter_FW_Status.eEinschleusen_Warte_Auf_Faecherwagen_In_Box_100 ) OR 
-         ( eLetzterStatus = eLetzter_FW_Status.eEinschleusen_Warten_Auf_Lichtschranke_Und_Quittierung_105 ) OR 
-         ( eLetzterStatus = eLetzter_FW_Status.eEinschleusen_Fehler ) OR 
-         ( eLetzterStatus = eLetzter_FW_Status.eEinschleusen_Abgeschlossen_InBeladeposition ) OR 
-         ( eLetzterStatus = eLetzter_FW_Status.eAusschleusen_Starten_0 ) OR 
-         ( eLetzterStatus = eLetzter_FW_Status.eAusschleusen_Warten_Auf_Start_10 ) OR 
-         ( eLetzterStatus = eLetzter_FW_Status.eAusschleusen_Abgeschlossen_InGrundstellung ) OR 
+      IF ( eLetzterStatus = eLetzter_FW_Status.eKeine_Info ) OR
+         ( eLetzterStatus = eLetzter_FW_Status.eEinschleusen_Starten_0 ) OR
+         ( eLetzterStatus = eLetzter_FW_Status.eEinschleusen_Warte_Auf_Faecherwagen_In_Box_100 ) OR
+         ( eLetzterStatus = eLetzter_FW_Status.eEinschleusen_Warten_Auf_Lichtschranke_Und_Quittierung_105 ) OR
+         ( eLetzterStatus = eLetzter_FW_Status.eEinschleusen_Fehler ) OR
+         ( eLetzterStatus = eLetzter_FW_Status.eEinschleusen_Abgeschlossen_InBeladeposition ) OR
+         ( eLetzterStatus = eLetzter_FW_Status.eAusschleusen_Starten_0 ) OR
+         ( eLetzterStatus = eLetzter_FW_Status.eAusschleusen_Warten_Auf_Start_10 ) OR
+         ( eLetzterStatus = eLetzter_FW_Status.eAusschleusen_Abgeschlossen_InGrundstellung ) OR
          ( eLetzterStatus = eLetzter_FW_Status.eAusschleusen_Fehler )
       THEN
-    
+
         steplCheck := STEP_1000_E;
-      
+
       ELSIF bpUntergestellErkannt AND bpLichtschranke_OK AND BasisStationsParameter.bFreigabe THEN
 
         CASE eLetzterStatus OF
@@ -161,7 +161,7 @@ IF blBetriebartCheck THEN
             steplAusschleusen := STEP_150_E;
             BasisStationsParameter.bAustransport[1] := TRUE;
             steplCheck := STEP_200_E;
-      
+
           ELSE
             BasisStationsParameter.wFehlerNummer := cMELDUNG_FAECHERWAGEN_SYSTEMCHECK_NICHT_MOEGLICH;
             steplCheck := STEP_900_E;
@@ -201,7 +201,7 @@ IF blBetriebartCheck THEN
     // SYSTEMCHECK ============================================================================
     STEP_910_E:
       // Fehler bleibt aktiv bis Reset
-      ; 
+      ;
 
     // SYSTEMCHECK ============================================================================
     STEP_1000_E:

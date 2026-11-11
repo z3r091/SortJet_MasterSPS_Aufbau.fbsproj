@@ -19,7 +19,7 @@ bpAnforderungBetriebsstopp := Glastransport.bpAnforderungBetriebsstopp;
 // Ausgaenge:
 //   - Der Auftragsstatus [cSHUTTLE_VORABPOSITIONIEREN] muss zurueck gesetzt werden
 BasisStationsParameter.bPositionierAuftragZuruecksetzen := Querfahrt.bpAuftragsstatusZuruecksetzen;
- 
+
 
 (* Anmerkung:
    - Ausgabe des Fehlertyp (Sensor \ etc. )

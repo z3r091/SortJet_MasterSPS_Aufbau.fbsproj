@@ -9,7 +9,7 @@ METHOD CloseSocket : BOOL
 //  Closes a socket and sets it invalid.
 //  Return: Success of operation
 VAR_INPUT
-  hSocket: POINTER TO RTS_IEC_HANDLE; // Address of Socket-ID  
+  hSocket: POINTER TO RTS_IEC_HANDLE; // Address of Socket-ID
 END_VAR
 VAR
   uiResult : UDINT;
@@ -18,7 +18,7 @@ CloseSocket := FALSE;
 IF ( hSocket <> 0 ) AND ( hSocket^ <> RTS_INVALID_HANDLE )
 THEN
   uiResult:= SysSockClose(hSocket^);
-  IF uiResult = CmpErrors.Errors.ERR_OK 
+  IF uiResult = CmpErrors.Errors.ERR_OK
   THEN
     CloseSocket:= TRUE;
   ELSE

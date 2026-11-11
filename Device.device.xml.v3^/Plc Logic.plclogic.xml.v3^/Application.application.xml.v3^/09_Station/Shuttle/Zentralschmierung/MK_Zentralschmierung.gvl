@@ -8,7 +8,7 @@
 {attribute 'allow_unqualified_access'}
 NAMESPACE MK_Zentralschmierung
 VAR_GLOBAL
-  
+
   // Zentralschmierung Shuttle
   apgMKShuttleZentralschmierung : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Parameter_Zentralschmierung_DLS_4xxi :=[
     // ----------------------------------- SHUTTLE 101 ---------------------------------------------------
@@ -21,7 +21,7 @@ VAR_GLOBAL
       aiAnzahlHuebe                   := [3,20],             // Anzahl der Hübe die die Schmierung machen soll
       adiZuFahrenderWegBisSchmierung  := [21600000,24500000] // Zu fahrende Strecke nach der geschmiert werden muss in mm
     )];
-  
+
 
   // Zentralschmierung Transfershuttle
   apgMKTransfershuttleZentralschmierung : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE ] OF Parameter_Zentralschmierung_DLS_4xxi :=[
@@ -35,6 +35,6 @@ VAR_GLOBAL
       aiAnzahlHuebe                   := [3,20],             // Anzahl der Hübe die die Schmierung machen soll
       adiZuFahrenderWegBisSchmierung  := [11300000,40500000] // Zu fahrende Strecke nach der geschmiert werden muss in mm
     )];
-  
+
 END_VAR
 END_NAMESPACE

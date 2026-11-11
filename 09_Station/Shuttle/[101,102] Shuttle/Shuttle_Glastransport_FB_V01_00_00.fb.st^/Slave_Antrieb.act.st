@@ -51,8 +51,8 @@ THEN
 
       IF ( Antrieb.bpReglerBereit AND Antrieb_Slave.bpReglerBereit ) THEN
 
-        IF ( ( ABS(Antrieb.rpIstPosition) > rgSchwellwertReferenzieren ) 
-             OR NOT Antrieb.bpIstReferenziert 
+        IF ( ( ABS(Antrieb.rpIstPosition) > rgSchwellwertReferenzieren )
+             OR NOT Antrieb.bpIstReferenziert
              OR ( ABS(Antrieb_Slave.rpIstPosition) > rgSchwellwertReferenzieren )
              OR NOT Antrieb_Slave.bpIstReferenziert )
         THEN
@@ -80,7 +80,7 @@ THEN
          - Referenzieren des Antriebs abgeschlossen [Ist-Position = 0  bzw. 1]
       *)
       IF ( Antrieb.bpDone
-           AND Antrieb_Slave.bpDone ) 
+           AND Antrieb_Slave.bpDone )
       THEN
         Antrieb.wpBetriebsart       := KEINE_FUNKTION;
         Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;

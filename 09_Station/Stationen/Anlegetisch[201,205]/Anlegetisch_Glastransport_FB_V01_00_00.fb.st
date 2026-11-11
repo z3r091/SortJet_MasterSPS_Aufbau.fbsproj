@@ -15,7 +15,7 @@ END_VAR
 
 VAR
 // BOOL
-  
+
 END_VAR
 (* Hinweis:
    - Master aufrufen

@@ -94,7 +94,7 @@ IF ( DiagnoseAuswertung.eType = eRexroth_Fehler_Error ) THEN // Type = 16#F
     DiagnoseAuswertung.bDeleteable := FALSE;
   END_IF
 END_IF
- 
+
 // Type C -> Bit 20 = 1 -> Kommando beendet, Bit 20 = 0 -> Kommando in Bearbeitung
 DiagnoseAuswertung.bCommandActive := FALSE; // Status zurücksetzen
 IF ( DiagnoseAuswertung.eType = eRexroth_Fehler_Command ) THEN // Type = 16#CXXXX (und nicht 16#CXXX0)

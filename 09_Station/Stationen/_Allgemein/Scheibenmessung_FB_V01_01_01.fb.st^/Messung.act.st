@@ -51,7 +51,7 @@ IF ( bpGlasvermessung ) THEN
       (* Hinweis:
          - Pruefen ob der Sensor belegt ist
       *)
-      IF pbpEinlaufSensor THEN 
+      IF pbpEinlaufSensor THEN
         steplGlasvermessung := STEP_20_E;
       ELSE
         wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_BELEGT_RESTWEGPOSITIONIERUNG;
@@ -106,7 +106,7 @@ IF ( bpGlasvermessung ) THEN
       IF (rtlMessung_OK.Q)THEN
         rlMessergebnisMerker := ppAntrieb.rpMessErgebnis;
       END_IF
-      
+
       (* Anmerkung:
          - Scheibenmessung wurde abgeschlossen
          - Ausgabe der gemessenen Glaslaenge
@@ -119,44 +119,44 @@ IF ( bpGlasvermessung ) THEN
 
         steplGlasvermessung := STEP_50_E;
       ELSE
-        
+
         // Ausnahmesituation
         rlGefahrenerWeg := ABS(ppAntrieb.rpIstPosition - rlPositionAntriebBeiStart);
-        
+
         // Auslaufsensor schaltet nicht -> Messstrecke + 50mm abgefahren und Auslaufsensor hat nicht geschaltet
-        IF ( rlGefahrenerWeg > ( rpMessstrecke + 50 ) ) 
+        IF ( rlGefahrenerWeg > ( rpMessstrecke + 50 ) )
            AND NOT ppAntrieb.blSensoren[ppAntrieb.eSensorAuswahl_Messung_2]
-        THEN 
+        THEN
           ppAntrieb.wpBetriebsart := KEINE_FUNKTION;
           wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
           steplGlasvermessung := STEP_900_E;
         END_IF
 
-        // Einlaufsensor wird nicht frei 
-        CASE epGlastyp OF 
-        
+        // Einlaufsensor wird nicht frei
+        CASE epGlastyp OF
+
           // Default Scheibe -> Messstrecke + 50mm abgefahren und Einlaufsensor hat immernoch geschaltet
-          eScheibe_Default:         
-            IF ( rlGefahrenerWeg > ( rpMessstrecke + 50 ) ) 
+          eScheibe_Default:
+            IF ( rlGefahrenerWeg > ( rpMessstrecke + 50 ) )
                AND  ppAntrieb.blSensoren[ppAntrieb.eSensorAuswahl_Messung_1]
-            THEN 
+            THEN
               ppAntrieb.wpBetriebsart := KEINE_FUNKTION;
               wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;
               steplGlasvermessung := STEP_900_E;
-            END_IF           
-             
+            END_IF
+
           // Max Scheibe -> Max Glas Länge + 50mm abgefahren und Einlaufsensor hat immer noch geschaltet
-          eScheibe_Maximal:       
-            IF ( rlGefahrenerWeg > ( starrStationBasisParameter[stStationsNummern.NummerSPS].stMKs.stGlasdaten[cWAND_1].rlMaxGlasLaenge + 50 ) ) 
+          eScheibe_Maximal:
+            IF ( rlGefahrenerWeg > ( starrStationBasisParameter[stStationsNummern.NummerSPS].stMKs.stGlasdaten[cWAND_1].rlMaxGlasLaenge + 50 ) )
                AND  ppAntrieb.blSensoren[ppAntrieb.eSensorAuswahl_Messung_1]
-            THEN 
+            THEN
               ppAntrieb.wpBetriebsart := KEINE_FUNKTION;
               wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;
               steplGlasvermessung := STEP_900_E;
-            END_IF        
-          
+            END_IF
+
         END_CASE
-       
+
       END_IF
 
     // GLASVERMESSUNG ================================

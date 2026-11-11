@@ -11,7 +11,7 @@ ACTION A_Changelog
 
 - 2026-04-15 - V01_00_00:
   - Übernahme des Bausteins; Erste Version die Freigegeben wird/wurde
-  
+
 - 2026-04-15 - V01_01_00: Daniel Vogelsang
   -  Aktion Messung
      - In Step 30 wird überwacht, ob der Einlaufsensor nach einem bestimmten weg frei wird. Der Auslaufsensor wird Glastyp abhängig ebenfalls überwacht, ob dieser True wird.

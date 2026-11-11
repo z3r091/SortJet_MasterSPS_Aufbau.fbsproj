@@ -8,7 +8,7 @@
 TYPE Parameter_Messachse :
   STRUCT
     rPositionUeberScheibenhoehe       : REAL; // Position der Zentrierleiste ueber dem Glas so dass das Glas angelegt werden kann
-    rKorrekturOffset                  : REAL; // Korrektur der Position um einen Bestimmten Wert (Offset) 
+    rKorrekturOffset                  : REAL; // Korrektur der Position um einen Bestimmten Wert (Offset)
     rVerfahrbereichsOffset            : REAL; // Korrektur des Verfahrens wenn
     rKorrekturOffsetVSGEintransport   : REAL; // Korrektur der Position um einen Bestimmten Wert (Offset) beim Eintransport von VSG
     rOffsetMessung                    : REAL; // ?

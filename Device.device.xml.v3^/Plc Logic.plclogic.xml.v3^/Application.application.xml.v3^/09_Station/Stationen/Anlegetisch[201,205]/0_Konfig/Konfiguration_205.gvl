@@ -8,7 +8,7 @@
 {attribute 'allow_unqualified_access'}
 NAMESPACE Konfiguration_205
 VAR_CONFIG
-  
+
   // Taster
   Globale_Bausteine.Anlegetisch205.in_bKnebelRiemenVor                                   AT %IX7.4    : BOOL; // IO-L - 205 Riemen vor
   Globale_Bausteine.Anlegetisch205.in_bKnebelRiemenZurueck                               AT %IX7.5    : BOOL; // IO-L - 205 Riemen zurueck
@@ -24,13 +24,13 @@ VAR_CONFIG
   Globale_Bausteine.Anlegetisch205.out_bAmpelSignalGruenScheibeAnlegen                   AT %MX2051.5 : BOOL; // OPTION - Ampel laeuft ueber die Umrichter-IOs
   Globale_Bausteine.Anlegetisch205.out_bAmpelSignalGlastransportAktiv                    AT %MX2050.2 : BOOL; // OPTION - Ampel Glastransport aktiv
   //Glasbruch QX3.0
-    
+
   // Gebläse
   Globale_Bausteine.Anlegetisch205.in_bMotorschutzGeblaese_Ok                            AT %IX1.2    : BOOL; // IO-L - 205 Geblaese Sanftstarter / Sicherung OK
   Globale_Bausteine.Anlegetisch205.in_bDrehzahlErreicht                                  AT %IX1.5    : BOOL; // IO-L - 205 Geblaese BY-PASSED
   Globale_Bausteine.Anlegetisch205.in_bTasterGeblaese1Ein                                AT %IX7.2    : BOOL; // IO-L - 205 Geblaese ein
   Globale_Bausteine.Anlegetisch205.in_bTasterGeblaese2Ein                                AT %MX1.0    : BOOL; // OPTION
-  
+
   Globale_Bausteine.Anlegetisch205.out_bGeblaese1Ein                                     AT %QX0.7    : BOOL; // IO-L - 205 Geblaese einschalten
   Globale_Bausteine.Anlegetisch205.out_bGeblaese2Ein                                     AT %MX2050.3 : BOOL; // OPTION
 
@@ -47,7 +47,7 @@ VAR_CONFIG
   Globale_Bausteine.Anlegetisch205.in_bSensorKippsicherungOffen                          AT %MX1.0    : BOOL; // OPTION
   Globale_Bausteine.Anlegetisch205.in_bSchaltleisteAusgeloest                            AT %MX1.0    : BOOL; // OPTION
   Globale_Bausteine.Anlegetisch205.in_bMotorschutzHydraulik                              AT %MX1.1    : BOOL; // OPTION
-  
+
   //Kippen angefordert_OP  QX1.6
   //Kippen angefordert_LTR QX2.0
   Globale_Bausteine.Anlegetisch205.out_bKipptischAuf                                     AT %MX2051.6 : BOOL; // OPTION
@@ -70,7 +70,7 @@ VAR_CONFIG
   Globale_Bausteine.Anlegetisch205.in_bSensorKipparmeAnschlaegeOben                      AT %MX1.0    : BOOL; // OPTION
   Globale_Bausteine.Anlegetisch205.in_bSensorKipparmeNichtOben                           AT %MX1.0    : BOOL; // OPTION
   Globale_Bausteine.Anlegetisch205.in_bSensorKipparmeNichtUnten                          AT %MX1.0    : BOOL; // OPTION
-  
+
   Globale_Bausteine.Anlegetisch205.out_bKipparmeAuf                                      AT %MX2051.0 : BOOL; // OPTION
   Globale_Bausteine.Anlegetisch205.out_bKipparmeAb                                       AT %MX2051.1 : BOOL; // OPTION
   Globale_Bausteine.Anlegetisch205.out_bKipparmeAnschlaegeAuf                            AT %MX2051.2 : BOOL; // OPTION

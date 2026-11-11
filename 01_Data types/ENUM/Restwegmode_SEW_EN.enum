@@ -42,7 +42,7 @@ TYPE Restwegmode_SEW_EN :
   Negativ_Steigend_Sensor8 := 2#0000010000010010,
   Negativ_Fallend_Sensor8  := 2#0000010000000010,
   Positiv_Steigend_Sensor9 := 2#0000100000010001,
-  Positiv_Fallend_Sensor9  := 2#0000100000000001, 
+  Positiv_Fallend_Sensor9  := 2#0000100000000001,
   Negativ_Steigend_Sensor9 := 2#0000100000010010,
   Negativ_Fallend_Sensor9  := 2#0000100000000010
 ) WORD;

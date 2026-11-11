@@ -60,7 +60,7 @@ IF blBetriebsartReset THEN
       BasisStationsParameter.bFehler     := FALSE;
 
       bpHinweisEingriffErforderlich := FALSE;
-    
+
       wpFehlerNr := cMELDUNG_NULL;
       steplReset := STEP_1000_E;
 

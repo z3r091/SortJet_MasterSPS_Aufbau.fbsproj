@@ -22,7 +22,7 @@ VAR_OUTPUT
   bpDone          : BOOL;
   bpResourceAktiv : BOOL;
 
-  // WORD 
+  // WORD
   wpFehlerNr      : Fehlerkonstanten_EN;
 
 END_VAR
@@ -38,7 +38,7 @@ VAR
   tonlMaximaleWartezeitAufReset           : TON;
   tonlFehlermeldungUnterdrueckenAntriebOK : TON;
 
-  // STEPS 
+  // STEPS
   steplVerstellungOeffnen      : Steps_TE;
   steplVerstellungSchliessen   : Steps_TE;
   steplReset                   : Steps_TE;
@@ -52,8 +52,8 @@ VAR
   in_bMotorstarter_OK              AT %I* : BOOL; // Sicherung des Kippantriebs ÖFFNER KONTAKT !!
   in_bBremseOK                     AT %I* : BOOL; // Sicherung des Kippantriebs ÖFFNER KONTAKT !!
   in_bSicherungMotorOK             AT %I* : BOOL;
-  
-  // HARDWARE AUSGÄNGE 
+
+  // HARDWARE AUSGÄNGE
   out_bVerstellungSchliessen       AT %Q* : BOOL;
   out_bVerstellungOeffnen          AT %Q* : BOOL;
   out_bBremseOeffnen               AT %Q* : BOOL;

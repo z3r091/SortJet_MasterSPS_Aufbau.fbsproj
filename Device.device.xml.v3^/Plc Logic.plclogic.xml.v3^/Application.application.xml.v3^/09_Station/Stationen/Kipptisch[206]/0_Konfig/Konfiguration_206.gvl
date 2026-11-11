@@ -11,7 +11,7 @@ VAR_CONFIG
 //-------------------------------------------------------------------------------------------------
 // KONFIGURATION: BAUSTEIN IO´s
 //-------------------------------------------------------------------------------------------------
-  
+
   // Rollenleiste (Zylinder 1: Geoeffnet = ausgefahren, Geschlossen = eingefahren; Zylinder 2 ohne Funktion)
   Globale_Bausteine.Kipptisch206.Rollenleiste.in_bStatusZylinder1Ausgefahren                      AT %MX1.0   : BOOL; // OPTION
   Globale_Bausteine.Kipptisch206.Rollenleiste.in_bStatusZylinder1Eingefahren                      AT %MX1.0   : BOOL; // OPTION

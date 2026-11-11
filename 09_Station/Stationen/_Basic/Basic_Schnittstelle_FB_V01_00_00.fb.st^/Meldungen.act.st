@@ -11,6 +11,6 @@ ACTION Meldungen
 //-------------------------------------------------------------------------------------------------
 // Meldungsnummer übergeben
 wlWatchIONachrichtenNummer := BasisStationsParameter.stMKs.wMeldungsNummer;
-  
+
 WatchIoControl(T#30S ,wlWatchIONachrichtenNummer + 2  ,( blSenderBereit AND blSenderGlasBereit AND NOT blBereitZumEintransport));
 END_ACTION

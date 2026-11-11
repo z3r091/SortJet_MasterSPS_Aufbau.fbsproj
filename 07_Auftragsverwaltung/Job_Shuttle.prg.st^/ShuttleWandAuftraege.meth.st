@@ -177,7 +177,7 @@ ELSE
   (* Hinweis:
      - Reset der Schrittkette
   *)
-  IF ( Racksuche[wStation].steplSchritt <> STEP_0_E ) THEN 
+  IF ( Racksuche[wStation].steplSchritt <> STEP_0_E ) THEN
     Racksuche[wStation](bpReset := TRUE);
   END_IF
 END_IF

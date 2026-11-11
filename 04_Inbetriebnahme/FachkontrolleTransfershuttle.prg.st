@@ -12,7 +12,7 @@ VAR_INPUT
   bpReset               : BOOL;
   bpAktiv               : BOOL := FALSE;
   bpStarteFachkontrolle : BOOL;
-  bpPositionKorrigieren : BOOL := FALSE; 
+  bpPositionKorrigieren : BOOL := FALSE;
 
   // WORD
   wpStationNumber : WORD := 0;
@@ -104,8 +104,8 @@ ELSE
 
         // ----------------------------------------------------------
         STEP_5_E:
-          tonlWartezeit(IN := NOT aTransfershuttles[wpStationNumber].Querfahrt.Antrieb.bpReglerBereit 
-                         AND NOT aTransfershuttles[wpStationNumber].Querfahrt.Antrieb.bpFreigabe, 
+          tonlWartezeit(IN := NOT aTransfershuttles[wpStationNumber].Querfahrt.Antrieb.bpReglerBereit
+                         AND NOT aTransfershuttles[wpStationNumber].Querfahrt.Antrieb.bpFreigabe,
                          PT := T#2S);
           IF tonlWartezeit.Q THEN
             tonlWartezeit(IN := FALSE);
@@ -223,7 +223,7 @@ ELSE
           MsgToMmi(auftragsnr_w := SB0_SPS_TRANSFERSHUTTLEBUFFERSLOTPOS );
 
           IF rpPosition <> rpErmitteltePosition THEN
-            wpgFehlerdaten[0] := REAL_TO_WORD(rpPosition); 
+            wpgFehlerdaten[0] := REAL_TO_WORD(rpPosition);
             wpgFehlerdaten[1] := REAL_TO_WORD(rpErmitteltePosition);
             wpgFehlerdaten[2] := REAL_TO_WORD(wpSpeicherNr);
             wpgFehlerdaten[3] := REAL_TO_WORD(wpFachNr);
@@ -234,7 +234,7 @@ ELSE
                           AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wpStationNumber].stMKs.stStationsNummern.NummerSPS),
                           wpgFehlerdaten );
             END_IF
-          END_IF  
+          END_IF
           bpStarteFachkontrolle := FALSE;
       END_CASE
 

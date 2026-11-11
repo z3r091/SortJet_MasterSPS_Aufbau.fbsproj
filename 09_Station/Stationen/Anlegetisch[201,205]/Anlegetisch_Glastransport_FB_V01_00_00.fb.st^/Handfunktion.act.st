@@ -35,7 +35,7 @@ THEN
   ELSE
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
   END_IF
-  
+
 ELSIF ( (  bpScheibeVorFahren )
         AND bpAnforderungHandfunktion )
 THEN
@@ -55,10 +55,10 @@ THEN
 
   ELSE
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
-  END_IF  
-  
-ELSIF ( ftlScheibeZurueckFahren.Q 
-        OR ftlScheibeVorFahren.Q ) 
+  END_IF
+
+ELSIF ( ftlScheibeZurueckFahren.Q
+        OR ftlScheibeVorFahren.Q )
 THEN
   bpScheibeZurueckFahren := FALSE;
   bpScheibeVorFahren     := FALSE;

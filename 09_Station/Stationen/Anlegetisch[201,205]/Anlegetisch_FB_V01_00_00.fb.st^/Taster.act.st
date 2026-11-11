@@ -96,7 +96,7 @@ IF  NOT Anlegen.bpAnlegenInVorbereitung THEN
     Anschlag.bpStartAusfahren    := FALSE;
     blMerkerAnschlagTasterFahren := FALSE;
     Anschlag.bpReset             :=TRUE;
- 
+
   END_IF
 END_IF
 END_ACTION

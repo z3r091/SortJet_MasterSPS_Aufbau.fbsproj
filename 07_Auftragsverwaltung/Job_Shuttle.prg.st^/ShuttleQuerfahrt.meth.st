@@ -37,7 +37,7 @@ ELSE
   (* Hinweis:
      - Reset der Schrittkette
   *)
-  IF ( Querfahrt[wStation].steplSchritt <> STEP_0_E ) THEN 
+  IF ( Querfahrt[wStation].steplSchritt <> STEP_0_E ) THEN
     Querfahrt[wStation](bpReset := TRUE);
   END_IF
 END_IF

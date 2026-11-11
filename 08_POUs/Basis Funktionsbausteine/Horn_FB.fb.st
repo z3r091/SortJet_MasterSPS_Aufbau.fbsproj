@@ -28,7 +28,7 @@ VAR
   // BOOL
   blHornAktiv : BOOL;
 
-  // TRIEGGER 
+  // TRIEGGER
   ftlHornAus  : F_TRIG;
 
   // TIMER
@@ -122,7 +122,7 @@ ELSE
 
   ELSE
     bpHornAktivieren := FALSE;
-    out_bHorn := FALSE; 
+    out_bHorn := FALSE;
 
   END_IF
 

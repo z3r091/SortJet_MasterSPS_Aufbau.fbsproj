@@ -34,7 +34,7 @@ VAR
   // INT
   ilIndex       : INT;
 
-  // TRIGGER 
+  // TRIGGER
   rtlInitAmpel  : R_TRIG;
 
   // BLINK

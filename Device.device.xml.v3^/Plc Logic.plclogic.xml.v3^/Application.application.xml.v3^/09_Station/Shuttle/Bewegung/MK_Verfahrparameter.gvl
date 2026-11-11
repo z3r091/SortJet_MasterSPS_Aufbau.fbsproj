@@ -25,20 +25,20 @@ VAR_GLOBAL
  rgMkMinSecureDistanceShuttlesAtParkPos                : REAL := 2500; // Absoluter Abstand zwischen den Shuttlen wenn eines der Shuttle in Parkposition ist
  rgMkMinSecureDistanceTransferAtParkPos                : REAL := 240; // Absoluter Abstand zwischen den Transfershuttlen wenn eines der Shuttle in Parkposition ist
 
- 
+
 //-------------------------------------------------------------------------------------------------
 // VERFAHREN - SHUTTLE BASIS PARAMETER
 //-------------------------------------------------------------------------------------------------
 
  apgShuttleVerfahrparameter : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Parameter_Querfahrt_Shuttle :=[
   // Shuttle 101
-  ( 
+  (
    eParkposition                                       := PARKPOSITION_MIN, // => Angabe ob das Shuttle eine Min- \ Max- \ Min-Max- Parkposition besitzt
    rParkpositionMinimum                                :=  -2829,           // => Parkposition (Handminus - Richtung) minimum
    rParkpositionMaximum                                :=  0                // => Parkposition (Handplus - Richtung) maximum
   ),
   // Shuttle 102
-  ( 
+  (
    eParkposition                                       := PARKPOSITION_MIN,
    rParkpositionMinimum                                :=  0,
    rParkpositionMaximum                                :=  15983
@@ -46,13 +46,13 @@ VAR_GLOBAL
 
  apgTransfershuttleVerfahrparameter : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Parameter_Querfahrt_Shuttle :=[
   // Shuttle 151
-  ( 
+  (
    eParkposition                                       := PARKPOSITION_MIN, // => Angabe ob das Shuttle eine Min- \ Max- \ Min-Max- Parkposition besitzt
    rParkpositionMinimum                                :=  -2957,           // => Parkposition (Handminus - Richtung) minimum
    rParkpositionMaximum                                :=     0             // => Parkposition (Handplus - Richtung) maximum
   ),
   // Shuttle 152
-  ( 
+  (
    eParkposition                                       := PARKPOSITION_MAX,
    rParkpositionMinimum                                :=     0,
    rParkpositionMaximum                                := 15170

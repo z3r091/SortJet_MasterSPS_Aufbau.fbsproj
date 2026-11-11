@@ -16,7 +16,7 @@ TYPE Interface_GlasTransport :
     wAchsID                    : WORD;
     rLaengeStation             : REAL; // Laenge der Station (Wegueberwachung der Nachbarstation bei der ersten Scheibe im Eintransport)
     bEinlaufsensor             : REFERENCE TO BOOL REF= bgFALSE;
-    bAuslaufsensor             : REFERENCE TO BOOL REF= bgFALSE; 
+    bAuslaufsensor             : REFERENCE TO BOOL REF= bgFALSE;
     bBereitZumAustransport     : REFERENCE TO BOOL REF= bgFALSE;
     bBereitZumEintransport     : REFERENCE TO BOOL REF= bgFALSE;
     bTransportAbgeschlossen    : REFERENCE TO BOOL REF= bgFALSE;
@@ -27,6 +27,6 @@ TYPE Interface_GlasTransport :
     bScheibeFaehrtUeberAuslauf : REFERENCE TO BOOL REF= bgFALSE;
     bScheibeFaehrtUeberEinlauf : REFERENCE TO BOOL REF= bgFALSE;
    bTransportRueckwaertig      : REFERENCE TO BOOL REF= bgFALSE;
-   bAutomatikBetriebAktiv      : REFERENCE TO BOOL REF= bgFALSE;  
+   bAutomatikBetriebAktiv      : REFERENCE TO BOOL REF= bgFALSE;
   END_STRUCT
 END_TYPE

@@ -15,7 +15,7 @@ VAR_GLOBAL CONSTANT
 
   // Antriebe
   cANZAHL_ANTRIEBE                     : WORD := 29;
-  
+
   // Ampeln / Hupen
   cANZAHL_AMPELN                       : WORD := 3;
   cANZAHL_HUPEN                        : WORD := 3;
@@ -41,7 +41,7 @@ VAR_GLOBAL CONSTANT
   // Speicher
   cERSTER_SPEICHER                     : WORD := 1;
   cLETZTER_SPEICHER                    : WORD := 1;
-  
+
   // Faecherwagen
   cERSTE_FAECHERWAGENSTATIONS_NR       : WORD := 301;
   cLETZTE_FAECHERWAGENSTATIONS_NR      : WORD := 305;
@@ -62,11 +62,11 @@ VAR_GLOBAL CONSTANT
 
   // Terminal
   cERSTES_TERMINAL                     : WORD := 1;
-  cLETZTES_TERMINAL                    : WORD := 4; 
+  cLETZTES_TERMINAL                    : WORD := 4;
 
   // Automatikkreise
   cANZAHL_AUTOMATIKKREISE              : WORD := 2;
-  cERSTER_AUTOMATIKKREIS               : WORD := 1;         
+  cERSTER_AUTOMATIKKREIS               : WORD := 1;
   cLETZTER_AUTOMATIKKREIS              : WORD := 2;
 
   // SystemCheck - Shuttle
@@ -77,12 +77,12 @@ VAR_GLOBAL CONSTANT
   cANZAHL_SICHERHEITSKREISE            : WORD := 4;
   cERSTER_SICHERHEITSKREIS             : WORD := 1;
   cLETZTER_SICHERHEITSKREIS            : WORD := 4;
-  
+
   // Türen
   cANZAHL_TUEREN                       : WORD := 2;
   cERSTE_TUER                          : WORD := 1;
   cLETZTE_TUER                         : WORD := 2;
-  
+
   // Durchgänge Klappförderer/Türen in der Station
   cANZAHL_DURCHGANGE                   : WORD := 1;
   cERSTER_DURCHGANG                    : WORD := 1;
@@ -103,8 +103,8 @@ VAR_GLOBAL CONSTANT
 //-------------------------------------------------------------------------------------------------
 // DEFINITIONEN
 //-------------------------------------------------------------------------------------------------
- 
-  // AUTOMATIKKREISE 
+
+  // AUTOMATIKKREISE
   cAUTOMATIKKREIS_1                     : WORD := 1;
   cAUTOMATIKKREIS_2                     : WORD := 2;
   cAUTOMATIKKREIS_3                     : WORD := 3;
@@ -124,7 +124,7 @@ VAR_GLOBAL CONSTANT
   cSTOPP_AUTOMATIKKREIS_TRANSFERSHUTTLE  : WORD := 2#0000000000001000;
   cSTOPP_ALLE_AUTOMATIKKREIS             : WORD := 2#0000000000000111;
 
-  // WAENDE 
+  // WAENDE
   cWAND_DEFAULT                        : WORD := 0;
   cWAND_1                              : WORD := 2#0000000000000001;
   cWAND_2                              : WORD := 2#0000000000000010;

@@ -10,12 +10,12 @@ FUNCTION_BLOCK Anlegetisch_FB_V01_00_00 EXTENDS Basic_Station_FB_V01_00_00
 VAR_INPUT
 
   // BOOLEAN
-  bpAbbruchAnlegeauftrag            : BOOL;  // Der Anlegeauftrag wurde vom MMI abgebrochen  
+  bpAbbruchAnlegeauftrag            : BOOL;  // Der Anlegeauftrag wurde vom MMI abgebrochen
   bpFreigabeScheibe                 : BOOL;  // Wird vom MMI gesetzt. Scheibe wurde erfolgreich vom Scanner vermessen
   bpKeineFreigabeScheibe            : BOOL;  // Wird vom MMI gesetzt. Scheibe wurde nicht erfolgreich vom Scanner vermessen
-  
+
   in_bSensorKipptischUnten          : BOOL;
-  
+
   // Safety Eingang
   in_bSchaltleisteAusgeloest_Safety : BOOL; // Schaltleiste am Tisch. Verhinderung von Quetschungen
 
@@ -44,14 +44,14 @@ VAR
   blAnschlagAutomatischFahren     : BOOL;
   blMerkerAnschlagTasterFahren    : BOOL;
 
-  // TIME 
+  // TIME
   tlZeitBereitAnzulegen                 : TIME; // STATISTIK: Zeiteinheit zum Vergleichen
-  toflEinlaufsensor                     : TOF; 
+  toflEinlaufsensor                     : TOF;
   toflZeitlicheSperrungGlasbruch        : TOF;
-  tonlTasterGlasbruch                   : TON; 
-  tonlTasterGlasAbgenommen              : TON; 
-  tonlStatusKippstatusUnten             : TON; 
-  tonlStatusKippenOben                  : TON; 
+  tonlTasterGlasbruch                   : TON;
+  tonlTasterGlasAbgenommen              : TON;
+  tonlStatusKippstatusUnten             : TON;
+  tonlStatusKippenOben                  : TON;
   toflDruckluftOK                       : TOF;
   tonlKnebelZurueck                     : TON;
 
@@ -116,27 +116,27 @@ VAR
 
   // Taster
   in_bFussschalterGlasAngelegt                    : BOOL; // Fusspedal - Fusstaster: Quittierung Glas angelegt
-  in_bTasterGlasAngelegt                   AT %I* : BOOL; // Weißer Leuchtdrucktaster: Quittierung Glas angelegt 
-  in_bTasterQuittierungScheibenmessung     AT %I* : BOOL; // Weißer Leuchtdrucktaster 
-  in_bKnebelRiemenVor                      AT %I* : BOOL; // Knebeltaster zum zurückfahren der Riemen 
-  in_bKnebelRiemenZurueck                  AT %I* : BOOL; // Knebeltaster zum zurückfahren der Riemen 
-  in_bTasterGlasBruch                      AT %I* : BOOL; 
+  in_bTasterGlasAngelegt                   AT %I* : BOOL; // Weißer Leuchtdrucktaster: Quittierung Glas angelegt
+  in_bTasterQuittierungScheibenmessung     AT %I* : BOOL; // Weißer Leuchtdrucktaster
+  in_bKnebelRiemenVor                      AT %I* : BOOL; // Knebeltaster zum zurückfahren der Riemen
+  in_bKnebelRiemenZurueck                  AT %I* : BOOL; // Knebeltaster zum zurückfahren der Riemen
+  in_bTasterGlasBruch                      AT %I* : BOOL;
   in_bTasterGlasAbgenommen                 AT %I* : BOOL;
   in_bTasterAnschlaege                     AT %I* : BOOL;
-  
+
   // Basic
   in_bDruckluft_OK                                : BOOL; // Druckluftversorung OK
-  
+
   // Gebläse
   in_bTasterGeblaese1Ein                   AT %I* : BOOL;
   in_bTasterGeblaese2Ein                   AT %I* : BOOL;
   in_bMotorschutzGeblaese_Ok               AT %I* : BOOL;
   in_bDrehzahlErreicht                     AT %I* : BOOL; // Das Sanftanlaufmodul gibt ein Signal raus, wenn die Drehzahl erreicht ist
-  
+
   out_bDrosselklappeOeffnen                       : BOOL;
-  out_bGeblaese1Ein                        AT %Q* : BOOL;  
+  out_bGeblaese1Ein                        AT %Q* : BOOL;
   out_bGeblaese2Ein                        AT %Q* : BOOL;
-  
+
   // Hydraulisch Kippen
   in_bMotorschutzHydraulik                 AT %I* : BOOL;
   in_bTasterKippenAuf                      AT %I* : BOOL;
@@ -149,7 +149,7 @@ VAR
   in_bSensorKippsicherungGeschlossen       AT %I* : BOOL;
   in_bSensorKippsicherungOffen             AT %I* : BOOL;
   in_bSchaltleisteAusgeloest               AT %I* : BOOL; // Schaltleiste die das Kippen-Abschaltet wenn diese auf etwas trifft
-  
+
   out_bHydraulikpumpeEin                   AT %Q* : BOOL;
   out_bHydraulikpumpeUmlaufVentil          AT %Q* : BOOL;
   out_bKippsicherungoeffnen                AT %Q* : BOOL;
@@ -158,10 +158,10 @@ VAR
   out_bLeuchteKipptischOffen               AT %Q* : BOOL;
   out_bLeuchteKipptischOffen_OP            AT %Q* : BOOL;
   out_bSchaltleisteAusgeloest              AT %Q* : BOOL;
-  out_bKipptischHornWarnsignal             AT %Q* : BOOL;  
+  out_bKipptischHornWarnsignal             AT %Q* : BOOL;
   out_bKipptischAmpelWarnsignal            AT %Q* : BOOL;
   out_bAmpelSignalGlastransportAktiv       AT %Q* : BOOL;
-  
+
   // Kipparme
   in_bTasterKipparmeAuf                    AT %I* : BOOL;
   in_bTasterKipparmeAb                     AT %I* : BOOL;
@@ -170,21 +170,21 @@ VAR
   in_bSensorKipparmeNichtUnten             AT %I* : BOOL;
   in_bSensorKipparmeAnschlaegeOben         AT %I* : BOOL;
   in_bSensorKipparmeAnschlaegeUnten        AT %I* : BOOL;
- 
+
   out_bKipparmeAuf                         AT %Q* : BOOL;
   out_bKipparmeAb                          AT %Q* : BOOL;
   out_bKipparmeAnschlaegeAuf               AT %Q* : BOOL;
   out_bKipparmeAnschlaegeAb                AT %Q* : BOOL;
-  
+
 
   // HARDWARE AUSGAENGE
-  out_bAmpelSignalRot                      AT %Q* : BOOL; // Rote Ampel     
+  out_bAmpelSignalRot                      AT %Q* : BOOL; // Rote Ampel
   out_bAmpelSignalGruenScheibeAnlegen      AT %Q* : BOOL; // Gruene Ampel
 
   out_bSignalTasterScheibeQuittieren       AT %Q* : BOOL; // Gelber Leuchdrucktaster | Fehlmessung quittiern
   out_bSignalTasterScheibeAnlegen          AT %Q* : BOOL; // Weißer Leuchdrucktaster | Scheibe anlegen
-  
-  
+
+
 
 END_VAR
 VAR CONSTANT
@@ -462,7 +462,7 @@ IF ( rtlAustransportStart.Q ) THEN
   blMerkerDrosselklappeAuf := FALSE;
 END_IF
 
-// Gesonderte Funktionalitaet 
+// Gesonderte Funktionalitaet
 Steuerung_Kippen();
 
 IF BasisStationsParameter.stMKs.stStationsAufbau.bKipparme THEN

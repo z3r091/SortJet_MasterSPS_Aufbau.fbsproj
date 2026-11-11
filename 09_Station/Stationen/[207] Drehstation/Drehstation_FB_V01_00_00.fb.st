@@ -13,17 +13,17 @@ END_VAR
 
 VAR_OUTPUT
 
-  // BOOLEAN 
+  // BOOLEAN
   bpVorabDrehenAktiv                 : BOOL;
 
 END_VAR
 VAR
 
-  // BOOLEAN 
-  blGeblaeseAktiv                    : BOOL; 
+  // BOOLEAN
+  blGeblaeseAktiv                    : BOOL;
   blUpdateTimer                      : BOOL;
   blAktionImFehler                   : BOOL; // Eine der wandweisen Aktionen steht im Fehler
- 
+
   // TRIGGER
   rtlAutomatikActiv                  : R_TRIG;
   ftlGlastransportCheckMitNachfolger : F_TRIG;
@@ -32,11 +32,11 @@ VAR
   toflGeblaeseHandfahren             : TOF;
   tonlUpdateTimer                    : TON;
 
-  // STEPS  
+  // STEPS
   steplVorabDrehen                   : Steps_TE; // Drehen
   steplPositionierungQuerfahrt       : Steps_TE; // Querfahrt
 
-  // BAUSTEINE 
+  // BAUSTEINE
   Glastransport                      : Drehstation_Glastransport_FB_V01_00_00;
   Drehen                             : Drehstation_Drehen_FB_V01_00_00;
   Kippen                             : Kippen_FB_V01_00_00;

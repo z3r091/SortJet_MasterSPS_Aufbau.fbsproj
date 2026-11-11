@@ -5,7 +5,7 @@
 	}
 }
 *)
-// {attribute 'qualified_only'} 
+// {attribute 'qualified_only'}
 // Legt fest, welcher Sensor der Quelle geprueft wird.
 TYPE ShuttleAnhaltenSensorTyp_EN :
 (

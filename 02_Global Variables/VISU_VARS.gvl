@@ -77,7 +77,7 @@ VAR_GLOBAL
   bgVISUKippenW3Runter                       : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
   bgVISUKippenW3Referenz                     : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
   bgVISUKippenBremseLoesen                   : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
-  
+
   bgVISUKippenGrundstellung                  : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
   bgVISUKippenUebergabePosition              : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
   bgVISUKippenReferenz                       : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
@@ -180,14 +180,14 @@ VAR_GLOBAL
   bgBerechnen                         : BOOL;
 
   abgStationsstatusVisu               : ARRAY[101..cLETZTE_STATION] OF Stationsstatus_Visu_ST;
-  
+
 // Antriebe verfahren
   bgVisuAntriebeVerfahrenAktiv        : BOOL;
   wgAuswahlAchsID                     : WORD := 0;
   rgZielPos                           : REAL := 0;
   rgGeschwindigkeit                   : REAL := 0;
   wgMasterNummer                      : WORD := 0;
-  
+
   bgVISUTest : BOOL;
   rtlVisuTest : R_TRIG;
   // Test ofne Einlauflinie

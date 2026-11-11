@@ -21,8 +21,8 @@ ACTION Ausgaenge
 (* Hinweis:
    - Auftrag aktiv
 *)
-bpAuftragAktiv := (  blBetriebartCheck 
-                    OR BasisStationsParameter.bEintransport[1] 
+bpAuftragAktiv := (  blBetriebartCheck
+                    OR BasisStationsParameter.bEintransport[1]
                     OR BasisStationsParameter.bAustransport[1] );
 
 // Leuchte Sicherheitskreis: Variante zeigt den Zustand der Lichtschranke

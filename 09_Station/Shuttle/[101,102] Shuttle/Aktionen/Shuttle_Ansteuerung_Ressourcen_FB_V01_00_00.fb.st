@@ -48,7 +48,7 @@ THEN
     BasisStationsParameter.wFehlerNummer :=  Kippen.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
-  
+
   IF ( Wandverstellung.bpFehler ) THEN
     Wandverstellung.bpStartePositionierung := FALSE;
     BasisStationsParameter.wFehlerNummer :=  Wandverstellung.wpFehlerNr;
@@ -105,7 +105,7 @@ THEN
       steplAktion := STEP_20_E;
 
     // VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ========================
-    STEP_20_E:  
+    STEP_20_E:
       (* Hinweis:
          - Glastransport ansteuern
          - Laeuft der Eintransport noch (bEintransport) oder ist er gerade abgeschlossen (Eintransport gewesen),
@@ -217,7 +217,7 @@ THEN
 
       Wandverstellung.bpStartePositionierung          := FALSE;
       Kippen.bpPositionieren                          := FALSE;
-       
+
       BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wWand] := TRUE;
 
   // VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ========================
@@ -228,7 +228,7 @@ END_IF
 IF ( NOT BasisStationsParameter.bVorabKomponentenAnsteuerung[wWand] ) THEN
 
   IF ( steplAktion > STEP_0_E ) THEN
-    
+
     IF ( NOT BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wWand] ) THEN
 
       Glastransport.bpVortransport                    := FALSE;
@@ -245,7 +245,7 @@ IF ( NOT BasisStationsParameter.bVorabKomponentenAnsteuerung[wWand] ) THEN
       Greifer.bpStarteVorabPositionierungEintransport := FALSE;
       blMitGreifer := FALSE;
     END_IF
-   
+
     BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wWand] := FALSE;
 
     steplAktion := STEP_0_E;

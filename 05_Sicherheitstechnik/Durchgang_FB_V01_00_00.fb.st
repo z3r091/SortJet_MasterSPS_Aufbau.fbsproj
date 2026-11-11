@@ -13,14 +13,14 @@ VAR_INPUT
   bpDurchgangGeschlossen           : BOOL;
   bpSKGeschlossen                  : BOOL;
   bpAbschrankung_Geschlossen       : BOOL;     //Signal aus der Safety, das die Abschrankung geschlossen ist
-  
+
   // WORD
   wSicherheitskreis                : WORD;
-  
+
   //Baustein
   BeweglicheAbschrankung          : ZylinderPneumatik_FB_V01_00_00;
-  
-  // POINTER 
+
+  // POINTER
   ppParameterBaustein          : REFERENCE TO Parameter_Durchgang;
 
 END_VAR
@@ -40,7 +40,7 @@ VAR
 
   // TIMER
   tonlNotEinlass     : TON;
-  
+
 END_VAR
 VAR
 
@@ -49,7 +49,7 @@ VAR
   in_bTasterAnforderungOeffnen_2          AT %I* : BOOL;
   in_bTasterQuittierungSchliessen_1       AT %I* : BOOL;
   in_bTasterQuittierungSchliessen_2       AT %I* : BOOL;
- 
+
   // HARDWARE AUSGÄNGE
   out_bLeuchteTasterAnforderungDurchgang1  AT %Q* : BOOL;
   out_bLeuchteTasterAnforderungDurchgang2  AT %Q* : BOOL;
@@ -58,23 +58,23 @@ VAR
   out_bDurchgangSperren                    AT %Q* : BOOL;
   out_bVerriegelungOeffnen                 AT %Q* : BOOL;
   out_bVerriegelungSchliessen              AT %Q* : BOOL;
-  
+
 END_VAR
 //-------------------------------------------------------------------------------------------------
 // Initialisierung
 //-------------------------------------------------------------------------------------------------
 IF ( blErsterZyklus  ) THEN
   blErsterZyklus := FALSE;
-  
-  IF bpDurchgangGeschlossen THEN  
+
+  IF bpDurchgangGeschlossen THEN
     out_bDurchgangSperren := TRUE;
-    bpAnforderungZumDurchgangOffnenGestellt := FALSE;  
+    bpAnforderungZumDurchgangOffnenGestellt := FALSE;
   END_IF
 END_IF
-  
+
 bpAbschrankung_Geschlossen:= BeweglicheAbschrankung.in_bStatusZylinderEingefahren;
-  
- 
+
+
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: EINSTELLUNGEN
 //-------------------------------------------------------------------------------------------------
@@ -105,7 +105,7 @@ out_bLeuchteTasterAnforderungDurchgang1 := out_bLeuchteTasterAnforderungDurchgan
 
 // Bewegliche Abschrankung schließen
 IF ( bpFreigabeZumOeffnenDurchgang
-     AND bpAnforderungZumDurchgangOffnenGestellt 
+     AND bpAnforderungZumDurchgangOffnenGestellt
      AND ppParameterBaustein.bBeweglicheAbschrankung
      AND NOT( BeweglicheAbschrankung.epStatusZylinder = eZylinderEingefahren) )
 THEN
@@ -115,7 +115,7 @@ ELSE
   BeweglicheAbschrankung.bpStartEinfahren := FALSE;//Einfahren = schließen
 END_IF
 
-IF BeweglicheAbschrankung.bpDone AND BeweglicheAbschrankung.bpStartEinfahren THEN   
+IF BeweglicheAbschrankung.bpDone AND BeweglicheAbschrankung.bpStartEinfahren THEN
   BeweglicheAbschrankung.bpStartEinfahren := FALSE;//Ausfahren = öffnen
 END_IF
 
@@ -130,20 +130,20 @@ ELSE
 END_IF
 
 
-// Tür wieder schließen und zurücksetzen 
-rtlTuerGeschlossen(CLK := ( in_bTasterQuittierungSchliessen_1 OR in_bTasterQuittierungSchliessen_2 ) AND bpDurchgangGeschlossen ); 
+// Tür wieder schließen und zurücksetzen
+rtlTuerGeschlossen(CLK := ( in_bTasterQuittierungSchliessen_1 OR in_bTasterQuittierungSchliessen_2 ) AND bpDurchgangGeschlossen );
 IF ( rtlTuerGeschlossen.Q  ) THEN
   bpAnforderungZumDurchgangOffnenGestellt := FALSE;
 END_IF
 
-//IF ppParameterBaustein.bBeweglicheAbschrankung AND bpDurchgangGeschlossenVerriegelt AND NOT bpAnforderungZumDurchgangOffnenGestellt THEN 
-IF ppParameterBaustein.bBeweglicheAbschrankung AND bpDurchgangGeschlossen 
-   AND NOT bpAnforderungZumDurchgangOffnenGestellt AND NOT ( BeweglicheAbschrankung.epStatusZylinder =eZylinderAusgefahren) THEN 
+//IF ppParameterBaustein.bBeweglicheAbschrankung AND bpDurchgangGeschlossenVerriegelt AND NOT bpAnforderungZumDurchgangOffnenGestellt THEN
+IF ppParameterBaustein.bBeweglicheAbschrankung AND bpDurchgangGeschlossen
+   AND NOT bpAnforderungZumDurchgangOffnenGestellt AND NOT ( BeweglicheAbschrankung.epStatusZylinder =eZylinderAusgefahren) THEN
   BeweglicheAbschrankung.bpStartEinfahren := FALSE;//Einfahren = schließen
   BeweglicheAbschrankung.bpStartAusfahren := TRUE; //Ausfahren = öffnen
 END_IF
 
-IF BeweglicheAbschrankung.bpDone AND BeweglicheAbschrankung.bpStartAusfahren THEN   
+IF BeweglicheAbschrankung.bpDone AND BeweglicheAbschrankung.bpStartAusfahren THEN
   BeweglicheAbschrankung.bpStartAusfahren := FALSE;//Ausfahren = öffnen
 END_IF
 

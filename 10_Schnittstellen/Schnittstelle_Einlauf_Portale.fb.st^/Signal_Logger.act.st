@@ -21,7 +21,7 @@ IF blInLogSchreiben THEN
 
   slInLogString := CONCAT(WORD_TO_STRING(BasisStationsParameter.stMKs.stStationsNummern.NummerExtern), ' Aufgestellt: ');
   slInLogString := CONCAT(slInLogString, BOOL_TO_STRING(in_bGlasAufgestellt) );
-  
+
   SpsLogString(slInLogString);
 
   blInLogSchreiben := FALSE;

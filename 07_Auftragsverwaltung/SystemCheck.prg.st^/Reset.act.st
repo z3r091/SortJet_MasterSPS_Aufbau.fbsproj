@@ -35,9 +35,9 @@ FOR wlIndexAutomatikkreis := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS D
     END_FOR
 
     abpReset[wlIndexAutomatikkreis] := FALSE;
-    
+
     wlAktiverZyklus := 1;
-    
+
     FOR wlIndexSystemcheckZyklus := 1 TO wgAnzahlSystemcheckZyklen DO
       ablCheck[wlIndexAutomatikkreis, wlIndexSystemcheckZyklus] := FALSE;
       ablCheckDone[wlIndexAutomatikkreis, wlIndexSystemcheckZyklus] := FALSE;

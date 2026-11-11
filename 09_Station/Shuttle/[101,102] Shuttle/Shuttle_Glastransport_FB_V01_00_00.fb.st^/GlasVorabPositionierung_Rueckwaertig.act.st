@@ -33,7 +33,7 @@ THEN
       *)
       bpDone := FALSE;
 
-      IF ( Antrieb.bpReglerBereit 
+      IF ( Antrieb.bpReglerBereit
            AND blAntriebsKopplungAktiv )
       THEN
         steplVorabpositionierenRueckwaertig := STEP_10_E;

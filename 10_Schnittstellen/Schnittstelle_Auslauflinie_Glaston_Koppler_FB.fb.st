@@ -12,13 +12,13 @@ VAR_INPUT
   // BOOL
   bpAuftragsdatenVorhanden  : BOOL;
 
-  // STRUCT 
-  Auftragsdaten             : Schnittstelle_Auftragsdaten_ST; 
+  // STRUCT
+  Auftragsdaten             : Schnittstelle_Auftragsdaten_ST;
 
 END_VAR
 VAR_OUTPUT
 
- 
+
 END_VAR
 VAR
 
@@ -28,11 +28,11 @@ VAR
   blFehlermeldungGenerierenKommunikation  : BOOL;
   blFehlermeldungGenerierenAuftragsdaten  : BOOL;
   bpFehlerMeldungDeaktiviert              : BOOL := FALSE;
-  
+
   // BYTE
   aOutByteLadeID             : ARRAY [0..15] OF BYTE; // Visualisierung: Lade-ID byteweise
 
-  // WORD 
+  // WORD
   wlVerbindungsVersuche      : WORD;
   wlLiveCounterSortJet       : WORD;
   wlLiveCounterFremdanlage   : WORD;
@@ -49,26 +49,26 @@ VAR
   ilIndex                    : INT;
 
   // TRIGGER
-  ftlGlasBereit                           : F_TRIG; // Hinweis: Glas-Sender besitzt noch einen aktiven Transport-Zustand 
+  ftlGlasBereit                           : F_TRIG; // Hinweis: Glas-Sender besitzt noch einen aktiven Transport-Zustand
   ftlFremdanlageDatenVerarbeitet          : F_TRIG;
   rtlFehlermeldungGenerierenAuftragsdaten : R_TRIG;
   rtlFehlermeldungGenerierenKommunikation : R_TRIG;
 
 
   // TIMER
-  tonlZeitLiveCounterNichtAequivalent     : TON; 
-  tonlZeitLiveCounterInkrementieren       : TON; 
-  tonlZeitAuftragsdatenNichtAequivalent   : TON; 
-  tonlManuellerModus                      : TON; 
+  tonlZeitLiveCounterNichtAequivalent     : TON;
+  tonlZeitLiveCounterInkrementieren       : TON;
+  tonlZeitAuftragsdatenNichtAequivalent   : TON;
+  tonlManuellerModus                      : TON;
   tonlAuftragdatenVorhanden               : TON;
-  
+
   // STRING
   strScheibenID  : STRING;
 
   // REFERENZ
   stlVorgaenger  : REFERENCE TO StationBasisParameter_ST; // SortJet- Station vor der Schnittstelle (SF/SB)
 
-  
+
 END_VAR
 
 VAR
@@ -115,7 +115,7 @@ VAR CONSTANT
 
   // WORD
   cVERBINDUNGSVERSUCHE_BIS_FEHLER  : WORD := 5;         // WICHTIG: Aenderung an diesem Wert veraendert das Verhalten ab wieviel Kommunikations-Versuchen wann ein Fehler ausgegeben wird
-  
+
   // INT
   cWERTEBREICH_INT                 : INT  := 32767; // WICHTIG: Aenderung an diesem Wert aendert den Wertebereich eines INTs [positiver Wertebereich]
   cWERTEBREICH_WORD                : WORD := 32767; // WICHTIG: Aenderung an diesem Wert aendert den Wertebereich eines INTs [positiver Wertebereich]
@@ -141,7 +141,7 @@ IF ( blErsterZyklus  ) THEN
 
   bpAuftragsdatenVorhanden      := FALSE;
   AuftragsSpeicher.bpAktivieren := TRUE;
-    
+
 END_IF
 
 //-------------------------------------------------------------------------------------------------
@@ -186,7 +186,7 @@ IF ( BasisStationsParameter.bReset ) THEN
 
   BasisStationsParameter.bReset := FALSE;
 
-  // TODO   
+  // TODO
   Auftragsdaten.wScheibenAnzahl := 0;
   Auftragsdaten.stScheibenID.adwScheibenID_1[0] := 0;
   Auftragsdaten.stScheibenID.adwScheibenID_1[1] := 0;

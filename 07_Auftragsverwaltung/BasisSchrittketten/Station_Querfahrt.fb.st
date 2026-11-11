@@ -7,13 +7,13 @@
 *)
 FUNCTION_BLOCK Station_Querfahrt
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
-  
+
   // WORD
   wStation               : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
@@ -26,10 +26,10 @@ VAR_OUTPUT
 
 END_VAR
 VAR
-  
+
   // STEPS
   steplSchritt           : STEPS_TE;
-  
+
   // BAUSTEINE
   PositionierAuftragsdatenPruefen : PositionierAuftragsdatenPruefen;
 
@@ -80,7 +80,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
       *)
       starrStationBasisParameter[wStation].pAuftragVorabPositionierung := Auftragsdaten;
       starrStationBasisParameter[wStation].bVorabpositionieren := TRUE;
-        
+
       steplSchritt := STEP_20_E;
 
     // POSITIONIERUNG ===========================================

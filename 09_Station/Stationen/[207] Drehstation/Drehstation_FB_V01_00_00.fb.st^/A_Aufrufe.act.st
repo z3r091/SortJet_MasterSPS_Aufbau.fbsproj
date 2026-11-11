@@ -41,7 +41,7 @@ Kippen( stStationsNummern                      := BasisStationsParameter.stMKs.s
 Querfahrt( stStationsNummern                   := BasisStationsParameter.stMKs.stStationsNummern,
            bpAutomatikAktiv                    := BasisStationsParameter.bAutomatik,
            bpFreigabe                          := BasisStationsParameter.bFreigabe,
-           bpReglungAktivSchalten              := Drehen.bpDrehvorgangAktiv );    
+           bpReglungAktivSchalten              := Drehen.bpDrehvorgangAktiv );
 
 // Geblaese
 Geblaese( stStationsNummern                    := BasisStationsParameter.stMKs.stStationsNummern,
@@ -54,6 +54,6 @@ Querachse( bpZylinderAbfragenVorhanden         := TRUE,
            bpEinAusFahrenLogikDrehen           := BasisStationsParameter.stMKs.stStationsOptionen.bVerstellungEinAusGefahrenLogikDrehen );
 
 // Dickenverstellung
-Dickenverstellung( bpZylinderAbfragenVorhanden := TRUE , 
+Dickenverstellung( bpZylinderAbfragenVorhanden := TRUE ,
                    bpEinAusFahrenLogikDrehen   := BasisStationsParameter.stMKs.stStationsOptionen.bVerstellungEinAusGefahrenLogikDrehen );
 END_ACTION

@@ -27,12 +27,12 @@ IF( blBetriebsartReset )THEN
       Messachse.bpPositionierung    := FALSE;
 
       Glastransport.bpEintransport             := FALSE;
-      Glastransport.bpEintransportRueckwaertig := FALSE;    
+      Glastransport.bpEintransportRueckwaertig := FALSE;
       Glastransport.bpAustransport             := FALSE;
-      Glastransport.bpAustransportRueckwaertig := FALSE;    
+      Glastransport.bpAustransportRueckwaertig := FALSE;
 
       BasisStationsParameter.eStatusAuftrag := eKeinStatus;
-      
+
       BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberEinlauf  := FALSE;
       BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberAuslauf  := FALSE;
       BasisStationsParameter.bStationBelegt[cWAND_1]                               := FALSE;

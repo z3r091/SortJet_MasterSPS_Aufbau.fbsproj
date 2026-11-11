@@ -35,7 +35,7 @@ BasisStationsParameter.bIstReferenziert := Kippen.Antrieb.bpIstReferenziert
                                            AND Querfahrt.bpInReferenz;
 
 BasisStationsParameter.rAktuellePositionQuerfahrt := Querfahrt.rpAktuellePosition;
-                                       
+
 BasisStationsParameter.bAuftragAktiv    := (   BasisStationsParameter.bAnlegen
                                              OR BasisStationsParameter.bAbnehmen
                                              OR BasisStationsParameter.bEintransport[cWAND_1]

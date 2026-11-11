@@ -12,7 +12,7 @@ VAR_INPUT
 END_VAR
 VAR
   msg_st  : SpsMessage;
-  
+
   wlIndex : WORD;
 
   wlAnzahl, wlWert, wlBenoetigt : WORD;
@@ -74,7 +74,7 @@ CASE( auftragsnr_w ) OF
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[0] ), wVal := wSps2MmiStationsNummer );// Stationsnummer
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[1] ), wVal := wSPS2MMIStationEventStatus );// Station Event-Typ
 
-    
+
   SB0_SPS_ErrorMSG:
     msg_st.wAuftrag := auftragsnr_w;  // Konstanten Nr. !!
     msg_st.wLaenge := 10;
@@ -101,7 +101,7 @@ CASE( auftragsnr_w ) OF
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[6] ), wVal := wSps2MmiDebugLogWord7);
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[7] ), wVal := wSps2MmiDebugLogWord8);
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[8] ), wVal := wSps2MmiDebugLogWord9);
-        
+
   (* Hinweis:
      - Nachricht fuer die Scheibenmessung der Stationen
   *)
@@ -117,7 +117,7 @@ CASE( auftragsnr_w ) OF
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[1] ), wVal := wSps2MmiMessungSlotNummer );
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[2] ), wVal := INT_TO_WORD(iSps2MmiMessungScheibenanzahl) );
     HMI_PutREAL( pbyAddr := ADR( msg_st.awDaten[3] ), rVal := rSps2MmiMessungScheibenlaenge );
-    
+
   (* Hinweis:
      - Auftragsquittierung fuer die Scheibenvorpositionierung im Speicher mit dem Transfershuttle
   *)
@@ -129,14 +129,14 @@ CASE( auftragsnr_w ) OF
     HMI_PutREAL( pbyAddr := ADR( msg_st.awDaten[2] ), rVal := rgSPS2MMIExtractionShuttleGefahrenerWeg );
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[4] ), wVal := wSps2MmiQuittierungVortransportStationsNr2 );
 
-    
+
   SB0_SPS_SORTIERUNGQUITTUNGVONISOLINIE:
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 2;
     HMI_PutWORD( pbyAddr := ADR( msg_st.awDaten[0] ), wVal := wSps2MmiQuittISOLineNr );
     HMI_PutDWORD( pbyAddr := ADR( msg_st.awDaten[1] ), dwVal := dwSps2MmiWartezeit );
 
-    
+
   (* Hinweis:
      - Transporstatus der Eckuebergabe/Anlegetisch [Scanner] zum MMI
   *)
@@ -163,7 +163,7 @@ CASE( auftragsnr_w ) OF
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[1] ), wVal  := wgSps2MmiPosDrehStation );
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[2] ), wVal  := wgSps2MmiOldPosDrehStation );
 
-    
+
   SB0_SPS_SYSTEMCHECKFINISHED:
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 1;
@@ -179,7 +179,7 @@ CASE( auftragsnr_w ) OF
     FOR wlIndex:=0 TO cMaxScheibenBeiScheibenMessung DO
       HMI_PutREAL(  pbyAddr := ADR( msg_st.awDaten[(2*(wlIndex)) + 3] ), rVal  := rSps2MmiMeasureResult[wlIndex] );
     END_FOR
-    
+
     // Werte zuruecksetzen
     wSps2MmiMeasureShuttleNummer  := 0;
     wSps2MmiMessungSlotNummer     := 0;
@@ -192,7 +192,7 @@ CASE( auftragsnr_w ) OF
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 2;
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ), wVal  := wSps2MmiStationsNummer );
-    
+
 
   SB0_SPS_SHUTTLEVORABPOSITIONIERUNGUPDATE:
     msg_st.wAuftrag := auftragsnr_w;
@@ -229,7 +229,7 @@ CASE( auftragsnr_w ) OF
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ), wVal  := wgSps2MmiShuttleNr );
     HMI_PutREAL( pbyAddr := ADR( msg_st.awDaten[1] ),  rVal := rSps2MmiPosition );
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[3] ), wVal  := wSps2ShuttleStopped[wgSps2MmiShuttleNr] );
-    
+
     SB0_SPS_TRANSFERSHUTTLEBUFFERSLOTPOS,
       SB0_SPS_LIFTEDTRANSFERSHUTTLEPOSITION:
     msg_st.wAuftrag := auftragsnr_w;
@@ -238,17 +238,17 @@ CASE( auftragsnr_w ) OF
     HMI_PutREAL(  pbyAddr := ADR( msg_st.awDaten[1] ), rVal  := wSps2MmiValidierungsPosition );
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[3] ), wVal  := wSps2MmiValidierungsSpeicher );
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[4] ), wVal  := wSps2MmiValidierungsFach );
-    
-    
+
+
   SB0_SPS_SHUTTLEVORABPOSITIONIERUNGREADY:
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 3;
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ), wVal  := wSps2MmiStationsNummer );
     HMI_PutREAL(  pbyAddr := ADR( msg_st.awDaten[1] ), rVal  := rSps2MmiPosition );
-    
+
     argZuletztQuittiertePositionShuttle[wSps2MmiStationsNummer] := rSps2MmiPosition;
-    
-    
+
+
   SB0_SPS_TRANSFERSHUTTLEFEHLER:
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 6;
@@ -262,15 +262,15 @@ CASE( auftragsnr_w ) OF
     msg_st.wLaenge := 6;
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ), wVal  := wgSps2MmiShuttleNr );
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[1] ), wVal  := wSps2MmiValidierungsStatus );
-    
+
 
   SB0_SPS_FACHAUFNAHMEDATEN:
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 4;
     HMI_PutREAL(  pbyAddr := ADR( msg_st.awDaten[1] ), rVal  := rSPS2MMIFachaufnahmePosition );
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[3] ), wVal  := wSPS2MMIFachaufnahmeAnalogwert );
-    
-    
+
+
   (* Hinweis:
      - Neue Nachricht zum quittieren von Aufträgen
   *)
@@ -305,7 +305,7 @@ CASE( auftragsnr_w ) OF
     HMI_PutDWORD(  pbyAddr := ADR( msg_st.awDaten[24] ),  dwVal  := adwSps2Mmi_Daten_3[2] );
     HMI_PutDWORD(  pbyAddr := ADR( msg_st.awDaten[26] ),  dwVal  := adwSps2Mmi_Daten_3[3] );
 
-    
+
   (* Hinweis:
      - Ausmessen von FW
   *)
@@ -314,9 +314,9 @@ CASE( auftragsnr_w ) OF
     msg_st.wLaenge := 5;
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ),  wVal  := wSps2MmiStationsNummer );
     HMI_PutREAL(  pbyAddr := ADR( msg_st.awDaten[1] ),  rVal  := rSps2MmiPosition );
-   
- 
-    
+
+
+
   SB0_SPS_STATIONSTATUS:
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 2;
@@ -335,7 +335,7 @@ CASE( auftragsnr_w ) OF
     msg_st.wLaenge := 3;
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ),  wVal  := wSps2MmiWatchDogTestCount );
 
-    
+
   // ++++++++++++++++++++++++ Fächerwagenstationen ++++++++++++++++++++++++++++++++++++
   (* Hinweis [FAECHERWAGEN]:
      - Faecherwagenwechsel von Station A nach B erfolgreich
@@ -357,7 +357,7 @@ CASE( auftragsnr_w ) OF
     msg_st.wLaenge := 2;
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ),  wVal  := wSps2FaecherwagenStationNr );
 
-    
+
   SB0_SPS_SortierungRackinPos: // Fächerwagenwechsel von Station A nach B erfolgreich
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 2;
@@ -373,7 +373,7 @@ CASE( auftragsnr_w ) OF
        => Groesse des Arrays <awSps2MmmiStatusFaecherwagenstation> beachten ggf. den Index vergroessern
        => <igIndexFaecherwagenDatenSenden> Aufgrund des Datenwortes das bei "0" startet [Index]
   *)
-   
+
   (* Hinweis [FAECHERWAGEN]:
      - Anforderung zum einbuchen des Faecherwagens
         => Status: 1 = FW auf Station 1 / 2 = FW auf Station 2 / etc.
@@ -396,14 +396,14 @@ CASE( auftragsnr_w ) OF
       HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[igIndexFaecherwagenDatenSenden] ),  wVal  := awSps2MmiStatusFaecherwagenstationen[igIndexFaecherwagenDatenSenden] );
       igIndexFaecherwagenDatenSenden := igIndexFaecherwagenDatenSenden + 1;
     END_FOR
-    
-    
+
+
   SB0_SPS_SORTIERUNGRACKSTATIONSTATUS:
     msg_st.wAuftrag := auftragsnr_w;
     msg_st.wLaenge := 4;
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ),  wVal  := wSps2MmiRackNumber );
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[1] ),  wVal  := wSps2MmiRackStatus );// 1 Wagen wird ausgeschleust, 2 Wagen wird Notausgeschleust
-    
+
   //  - Anfrage vom MMI nach dem Status einer EINZELNEN Fächerwagenstation => belegt, Muting OK, RFID-Nr.
   SB0_SPS_STATUSRACKSTATION:
     msg_st.wAuftrag := auftragsnr_w;

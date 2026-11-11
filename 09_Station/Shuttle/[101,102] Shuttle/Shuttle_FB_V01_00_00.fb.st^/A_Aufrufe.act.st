@@ -88,7 +88,7 @@ Kippen( bpKippenSchuetz        := BasisStationsParameter.stMKs.stStationsAufbau.
         bpBetriebsartHand      := blBetriebsartHand,
         bpSensorEinlauf        := blAlleEinlaufStoppSensoren,
         bpSensorAuslauf        := blAlleAuslaufStoppSensoren,
-        bpFreigabe             := ( BasisStationsParameter.bFreigabe 
+        bpFreigabe             := ( BasisStationsParameter.bFreigabe
                                     AND blAlleVerfahrfreigaben
                                     AND blAlleGreiferSicher
                                     AND NOT bpShuttleAnhalten

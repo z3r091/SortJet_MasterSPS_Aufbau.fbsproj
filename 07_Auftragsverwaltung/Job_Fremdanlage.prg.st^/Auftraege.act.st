@@ -39,7 +39,7 @@ IF ( M_SB0_MMI_SORTIERUNGCANCELISOLINEEVENT ) THEN
 
     cERSTE_FREMDANLAGE..cLETZTE_FREMDANLAGE:
       aSchnittstelleAuslauf[tMmi2SpsInfo.wDeleteISOLinienStationNr].bpResetISOLinieEvent := TRUE;
-      
+
   END_CASE
 
 END_IF
@@ -139,7 +139,7 @@ IF ( M_SB0_MMI_AUFTRAGSDATEN_FREMDANLAGE ) THEN
           aSchnittstelleAuslauf[tMmi2SpsInfo.wFremdanlageNr].AuftragsSpeicher.ppEingabeWert.stScheibenID    := stAuftragScheibenIDs;
           aSchnittstelleAuslauf[tMmi2SpsInfo.wFremdanlageNr].AuftragsSpeicher.ppEingabeWert.wScheibenAnzahl := tMmi2SpsInfo.wScheibenanzahl;
           aSchnittstelleAuslauf[tMmi2SpsInfo.wFremdanlageNr].AuftragsSpeicher( bpWerteSchreiben  := TRUE );
-  
+
           stAuftragScheibenIDs.adwScheibenID_1[0]  := 0;
           stAuftragScheibenIDs.adwScheibenID_1[1]  := 0;
           stAuftragScheibenIDs.adwScheibenID_1[2]  := 0;

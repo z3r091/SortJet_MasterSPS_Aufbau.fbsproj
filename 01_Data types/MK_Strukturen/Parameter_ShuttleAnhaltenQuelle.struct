@@ -18,4 +18,3 @@ TYPE Parameter_ShuttleAnhaltenQuelle :
     eSensorTyp     : ShuttleAnhaltenSensorTyp_EN;  // Einlauf- oder Auslaufsensor pruefen
   END_STRUCT
 END_TYPE
- 

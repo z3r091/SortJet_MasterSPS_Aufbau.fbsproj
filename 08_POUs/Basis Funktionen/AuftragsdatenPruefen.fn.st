@@ -17,7 +17,7 @@ VAR_INPUT
 
 END_VAR
 VAR
-  Basis : REFERENCE TO StationBasisParameter_ST; 
+  Basis : REFERENCE TO StationBasisParameter_ST;
 END_VAR
 Basis REF= getBasis(wpMmiNummer);
 AuftragsdatenPruefen := TRUE;

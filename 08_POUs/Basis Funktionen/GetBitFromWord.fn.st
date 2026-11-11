@@ -6,7 +6,7 @@
 }
 *)
 FUNCTION GetBitFromWord : Bool
-VAR_INPUT    
+VAR_INPUT
   Value : WORD;   // Das Wort, aus dem du die Bits auslesen willst
   Index : Word;    // Welches Bit (0..15)
 END_VAR

@@ -21,16 +21,16 @@ VAR_GLOBAL
   pgAntriebe   : ARRAY[0..65] OF Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
   bgEtherCatOK : BOOL;
 
-  // Aktivieren \ Deaktivieren des SystemChecks  
+  // Aktivieren \ Deaktivieren des SystemChecks
   bgSystemCheck : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL := [ cANZAHL_AUTOMATIKKREISE(TRUE) ]; // SystemCheck [AutomatikKreis 1]: FALSE -> Der SystemCheck wird sofort quittiert  TRUE -> SystemCheck wird normal ausgefuehrt
 
-  // Prüfung ob Reset in einem AK aktiv ist 
+  // Prüfung ob Reset in einem AK aktiv ist
   agbResetAktiv : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
 
   bgSimulationSiKreisGeschlossen : ARRAY[cERSTER_SICHERHEITSKREIS..cLETZTER_SICHERHEITSKREIS] OF BOOL; // Damit synchronisiert wird, müssen die SKs geschlossen sein - da dies manchmal nicht gegeben ist, kann hiermit
-  
+
   bgMeldungStromschienenUeberbrueckung : BOOL := FALSE;
-  
+
   wgStatusPuffer101Oben    : WORD;
   wgStatusPuffer102Unten   : WORD;
   wgStatusPuffer103Oben    : WORD;
@@ -46,7 +46,7 @@ VAR_GLOBAL
   *)
   bgShuttleEintransportSperren             : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF BOOL;
   bgShuttleAustransportSperren             : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF BOOL;
-  
+
   (* Hinweis:
      - Pointer- Konstanten [Muessen Global definiert werden]
        => Nicht veraendern
@@ -64,9 +64,9 @@ VAR_GLOBAL
   *)
   wgLogLevel : WORD := 0;
   bgTSLog    : BOOL := TRUE;
-  
+
   bgStepLogging : BOOL := FALSE;
-  
+
   Visu_Start_Auto          : BOOL;
   Visu_Notaus_OK           : BOOL := FALSE;
 
@@ -155,6 +155,6 @@ VAR_GLOBAL
 // SYSTEMCHECK
 //-------------------------------------------------------------------------------------------------
   wgAnzahlSystemcheckZyklen              : WORD; //  Wird automatisch erkannt
- 
+
 END_VAR
 END_NAMESPACE

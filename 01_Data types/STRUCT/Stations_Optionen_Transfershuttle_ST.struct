@@ -6,7 +6,7 @@
 }
 *)
 TYPE Stations_Optionen_Transfershuttle_ST :
-  STRUCT  
+  STRUCT
     bMasterStation                                                : BOOL; // Ob es sich um ein Master (Master-Slave) - Station handelt. Aktuell gebraucht bei Transfershuttle- Verbund
     bTransferShuttleFuerFaecherwagen                              : BOOL; // Transfershuttle beschickt Faecherwagen
     bTransferShuttleMitUltraschallSensoren                        : BOOL; // Luftabfragen als Ultraschallsensoren (Schliesser)

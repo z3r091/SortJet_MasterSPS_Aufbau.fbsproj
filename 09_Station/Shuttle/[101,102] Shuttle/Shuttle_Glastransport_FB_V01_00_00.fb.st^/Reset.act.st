@@ -54,7 +54,7 @@ IF ( bpReset ) THEN
 
     // RESET ===============================
     STEP_20_E:
-      IF( Antrieb.bpDone 
+      IF( Antrieb.bpDone
           AND ( Antrieb_Slave.bpDone OR NOT bpSlaveAntriebVorhanden ))
       THEN
         Antrieb.wpBetriebsart       := KEINE_FUNKTION;
@@ -67,7 +67,7 @@ IF ( bpReset ) THEN
       *)
       IF ( ( NOT Antrieb.bpDone
              OR NOT Antrieb_Slave.bpDone )
-           AND tonlMaxWarteAufResetErfolgreich.Q ) 
+           AND tonlMaxWarteAufResetErfolgreich.Q )
       THEN
         Antrieb.wpBetriebsart       := KEINE_FUNKTION;
         Antrieb_Slave.wpBetriebsart := KEINE_FUNKTION;

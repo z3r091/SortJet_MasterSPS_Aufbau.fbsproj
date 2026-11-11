@@ -19,21 +19,21 @@ FOR wlIndex := cERSTE_STATION TO cLETZTE_FREMDANLAGE_EINLAUF DO
 
   // Struktur für die Zielstation der Kopplung finden
   stLokaleKopplungZielStation REF= getBasis(wlIndex);
-  
+
   IF __ISVALIDREF(stLokaleKopplungZielStation) THEN
 
     // Kopplung Vorgänger
     stLokaleKopplungsStation REF= getBasis(stLokaleKopplungZielStation.stMKs.stSchnittstellendaten.wVorgaengerStation);
-  
+
     IF __ISVALIDREF(stLokaleKopplungsStation) THEN
       FOR wlIndexWand := cWAND_1 TO cANZAHL_WAENDE DO
         stLokaleKopplungZielStation.InGlasTransportVorgaenger[wlIndexWand] := stLokaleKopplungsStation.OutGlasTransport[cWAND_1];
       END_FOR
     END_IF
-  
+
     // Kopplung Nachfolger
     stLokaleKopplungsStation REF= getBasis(stLokaleKopplungZielStation.stMKs.stSchnittstellendaten.wNachfolgerStation);
-  
+
     IF __ISVALIDREF(stLokaleKopplungsStation) THEN
       FOR wlIndexWand := cWAND_1 TO cANZAHL_WAENDE DO
         stLokaleKopplungZielStation.InGlasTransportNachfolger[wlIndexWand] := stLokaleKopplungsStation.OutGlasTransport[cWAND_1];

@@ -223,7 +223,7 @@ IF ( bpCheck ) THEN
              AND NOT bpCheckMitVorgaenger )
       THEN
         steplCheck := STEP_600_E;
-      
+
       ELSE
         (* Fehlerbehandlung:
         *)
@@ -291,7 +291,7 @@ IF ( bpCheck ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_NICHT_FREI;
         steplCheck := STEP_900_E;
-      END_IF                 
+      END_IF
 
     // SYSTEM CHECK=========================
     STEP_500_E:
@@ -301,7 +301,7 @@ IF ( bpCheck ) THEN
       //  Hinweis:
       // - Transport in die "negative" Richtung
       // ---------------------------------------------------------------------------------------
-      
+
       bpOutBereitZumAustransport := TRUE;
 
       Antrieb.rpGeschwindigkeit := InGlasTransportVorgaenger.rGeschwindigkeit;

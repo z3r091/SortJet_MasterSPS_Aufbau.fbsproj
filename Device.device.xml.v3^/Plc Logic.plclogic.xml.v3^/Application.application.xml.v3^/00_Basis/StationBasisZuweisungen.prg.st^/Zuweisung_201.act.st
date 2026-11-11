@@ -15,7 +15,7 @@ starrStationBasisParameter[cSTATION_201].stAntriebsparameter.stGlastransportSlav
 starrStationBasisParameter[cSTATION_201].stAntriebsparameter.stMessachse             REF= apgInfoStation201Messachse;
 
 
-// Parameter der Stationskomponenten zuweisen  
+// Parameter der Stationskomponenten zuweisen
 starrStationBasisParameter[cSTATION_201].stParameterStationskomponenten.stGlastransport    REF= apgMKStation201Glastransport;
 starrStationBasisParameter[cSTATION_201].stParameterStationskomponenten.stMessachse        REF= apgMKStation201Messachse;
 

@@ -16,12 +16,12 @@ IF ( bpReferenz )THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
     steplReferenz := STEP_900_E;
   END_IF
-  
+
   IF ( Antrieb_Slave.bpFehler ) THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT_SLAVE;
     steplReferenz := STEP_900_E;
   END_IF
-  
+
 
   CASE steplReferenz OF
     // REFERENZ =========================
@@ -53,7 +53,7 @@ IF ( bpReferenz )THEN
                                     PT := T#150MS );
 
       IF (  NOT Antrieb.bpAntrieblaeuft
-           AND NOT Antrieb_Slave.bpAntrieblaeuft 
+           AND NOT Antrieb_Slave.bpAntrieblaeuft
            AND ( tonlSlaveKopplungDeaktiviert.Q OR NOT bpOptionSlaveAntrieb ) )
       THEN
 
@@ -62,14 +62,14 @@ IF ( bpReferenz )THEN
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
         Antrieb.wpBetriebsart     := AntriebsBetriebsart_EN.REFERENZ;
-     
+
         IF bpOptionSlaveAntrieb THEN
           Antrieb_Slave.rpZielPosition    := 0;
           Antrieb_Slave.rpGeschwindigkeit := 0;
           Antrieb_Slave.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
           Antrieb_Slave.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
           Antrieb_Slave.wpBetriebsart     := AntriebsBetriebsart_EN.REFERENZ;
-        END_IF 
+        END_IF
 
         steplReferenz := STEP_20_E;
 

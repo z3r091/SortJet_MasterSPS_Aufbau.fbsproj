@@ -10,7 +10,7 @@ PROGRAM Interface_SLC
 VAR_INPUT
 
   // BOOL
-  bpResetOperatorAcknowledge : BOOL; 
+  bpResetOperatorAcknowledge : BOOL;
   bpEDMFehlerAktiv           : BOOL;
 
 END_VAR
@@ -23,18 +23,18 @@ VAR_OUTPUT
 END_VAR
 
 VAR
-  
-  // BOOLEAN 
+
+  // BOOLEAN
   bpVisuResetEDM                  : BOOL := FALSE;
   bpVisuResetFSoEMaster           : BOOL;
-  bpVisuResetNothalt              : BOOL;  
+  bpVisuResetNothalt              : BOOL;
   bResetDurchSK                   : BOOL;
-  ablSKAbgefallen                 : ARRAY[1..16] OF BOOL; 
-  
+  ablSKAbgefallen                 : ARRAY[1..16] OF BOOL;
+
   // WORD
   wIndex                         : WORD := 0;
   wlbitPos                       : WORD;
-  
+
   // TIMER
   toflResetOA                                    : TOF;
   toflSKQuittiert                                : ARRAY[cERSTER_SICHERHEITSKREIS..cLETZTER_SICHERHEITSKREIS] OF tof;

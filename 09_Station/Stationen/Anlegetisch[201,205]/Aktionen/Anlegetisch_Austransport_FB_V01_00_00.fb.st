@@ -31,15 +31,15 @@ THEN
     BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
- 
+
   IF ( Hubrahmen.bpFehler ) THEN
     Hubrahmen.bpStartAusfahren := FALSE;
     BasisStationsParameter.awFehlerInformationen[1] := cHUBRAHMEN_1;
-    BasisStationsParameter.wFehlerNummer := Hubrahmen.wpFehlerNr; 
+    BasisStationsParameter.wFehlerNummer := Hubrahmen.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
-  
-  
+
+
   CASE steplAktion OF
     // AUSTRANSPORT ==============================
     STEP_0_E:

@@ -8,7 +8,7 @@
 FUNCTION_BLOCK Zentralschmierung_DLS_4xxi_FB_V01_00_00
 VAR_INPUT
 
-  // BOOLEAN 
+  // BOOLEAN
   bpStartSchmierungHand  : BOOL;
   bpReset                : BOOL;
   bpFreigabe             : BOOL;
@@ -16,26 +16,26 @@ VAR_INPUT
   bpAktivieren           : BOOL;
 
   // DINT
-  dipAktuelleAntriebsPosition : DINT; // Istposition des Shuttles 
+  dipAktuelleAntriebsPosition : DINT; // Istposition des Shuttles
 
-  // POINTER 
-  ppParameterBaustein : REFERENCE TO Parameter_Zentralschmierung_DLS_4xxi; 
+  // POINTER
+  ppParameterBaustein : REFERENCE TO Parameter_Zentralschmierung_DLS_4xxi;
 
-  // STRUKTUR 
+  // STRUKTUR
   stStationsNummern : Station_ST;
 END_VAR
 VAR_OUTPUT
 
-  // BOOLEAN 
-  bpFehler         : BOOL; // Die Pumpe meldet einen Fehler 
-  bpInternerFehler : BOOL; // Der SPS-Baustein meldet einen Fehler 
+  // BOOLEAN
+  bpFehler         : BOOL; // Die Pumpe meldet einen Fehler
+  bpInternerFehler : BOOL; // Der SPS-Baustein meldet einen Fehler
 
 END_VAR
 VAR
-  // BOOLEAN 
+  // BOOLEAN
   blErsterZyklus            : BOOL := TRUE;
-  blStarteSchmierung        : BOOL; // Schrittketten-starter zur Schmierung 
-  blFettLeer                : BOOL; // Merker wenn 1Hz Signal an Status anliegt 
+  blStarteSchmierung        : BOOL; // Schrittketten-starter zur Schmierung
+  blFettLeer                : BOOL; // Merker wenn 1Hz Signal an Status anliegt
   blSchmierhubOk            : BOOL;
   blSchmierhubOkBaldLeer    : BOOL;
   blKeineOderLeereKartusche : BOOL;
@@ -45,31 +45,31 @@ VAR
   ablHubAktiv               : ARRAY[cSCHMIERKREIS_1..cSCHMIERKREIS_2] OF BOOL;
 
   // DINT
-  diAltePosition        : DINT; // Vergleichsposition ALT für Schmierung 
-  diNeuePosition        : DINT; // Vergleichsposition NEU für Schmierung 
+  diAltePosition        : DINT; // Vergleichsposition ALT für Schmierung
+  diNeuePosition        : DINT; // Vergleichsposition NEU für Schmierung
   adiGefahrenerWeg      : ARRAY[cSCHMIERKREIS_1..cSCHMIERKREIS_2] OF DINT; // Aktuell gefahrener Weg seit letzter Schmierung der Zahnstange
-  diPositionsUnterschied : DINT; // Unterschied der Vergleichspositionen 
+  diPositionsUnterschied : DINT; // Unterschied der Vergleichspositionen
 
   // INT
-  ailAktiverHub : ARRAY[cSCHMIERKREIS_1..cSCHMIERKREIS_2] OF INT; // Aktueller Hub der durchgeführt wird wenn Schmierung aktiv 
+  ailAktiverHub : ARRAY[cSCHMIERKREIS_1..cSCHMIERKREIS_2] OF INT; // Aktueller Hub der durchgeführt wird wenn Schmierung aktiv
 
-  // WORD 
+  // WORD
   wlIndex : WORD;
 
   // TIMER
-  tonlWartezeitBisFehler            : TON; // Wartezeit bis ein Fehler generiert wird 
-  tonlSteuerSignal_Reset_Starten    : TON; // Dauer, die das Steuersignal anstehen muss, um einen Reset durchzuführen 
-  tonlWartezeitFuerSchmierHub       : TON; // Wartezeit, bis der Hub von der Pumpe komplett durchgeführt wurde 
+  tonlWartezeitBisFehler            : TON; // Wartezeit bis ein Fehler generiert wird
+  tonlSteuerSignal_Reset_Starten    : TON; // Dauer, die das Steuersignal anstehen muss, um einen Reset durchzuführen
+  tonlWartezeitFuerSchmierHub       : TON; // Wartezeit, bis der Hub von der Pumpe komplett durchgeführt wurde
   tonlSchmierungBetriebsbereit      : TON;
   tonlSchmierungNichtBetriebsbereit : TON;
   tonSchmierkreisAnsteuerung        : TON; // NEU Ausschaltverzögerung um 2s,5s, ... ansteuerung zu ermöglischen
-  tonlFunktionskontrolle            : TON; //NEU Einschaltverzögerung für die Funktionskontrolle welche nach jedem Hub überprüft werden muss 
+  tonlFunktionskontrolle            : TON; //NEU Einschaltverzögerung für die Funktionskontrolle welche nach jedem Hub überprüft werden muss
   atoflPause                        : ARRAY[cSCHMIERKREIS_1..cSCHMIERKREIS_2] OF TOF;
 
   // TIME
   tAnsteuern: TIME; // NEU Steuersignal zum auswählend es Schmierkreises Zeit wird im Baustein Schmierung deffiniert
 
-  /// TRIGGER 
+  /// TRIGGER
   rtlStarteSchmierung     : R_TRIG;
   ftlSignal               : F_TRIG;
   rtlSignal               : R_TRIG;
@@ -81,26 +81,26 @@ VAR
   //Bausteine
   Taktberechnung  : Taktberechnung_FB;
 
-  // STEPS 
+  // STEPS
   steplSchmierung : STEPS_TE;
   steplReset      : STEPS_TE;
 
-  //  STRING 
+  //  STRING
   slInLogString: STRING;
 
-  //Ein/Ausgänge zum Mappen in der Config 
-  in_bStatus        : BOOL; // Signal, dass die Schmierung erfolgreich ist, oder Fehlersignal 
-  out_bSteuerSignal : BOOL; // Ausgang der die Zentralschmierung ansteuert 
+  //Ein/Ausgänge zum Mappen in der Config
+  in_bStatus        : BOOL; // Signal, dass die Schmierung erfolgreich ist, oder Fehlersignal
+  out_bSteuerSignal : BOOL; // Ausgang der die Zentralschmierung ansteuert
 END_VAR
 
 VAR CONSTANT
 
-  tPause           : TIME := TIME#10M0S0MS; // Zeitwert, die pausiert werden muss, wenn wAnzahlHuebeBisGrossePause erreicht wurde 
-  tResetStarten    : TIME := TIME#10S0MS; // Steuersignal zum starten des Resets 
-  tDauerEinHub     : TIME := TIME#30S0MS; //14,25für Hub ok, Zeitwert wie lange ein Hub der Schmierpumpe dauert 
+  tPause           : TIME := TIME#10M0S0MS; // Zeitwert, die pausiert werden muss, wenn wAnzahlHuebeBisGrossePause erreicht wurde
+  tResetStarten    : TIME := TIME#10S0MS; // Steuersignal zum starten des Resets
+  tDauerEinHub     : TIME := TIME#30S0MS; //14,25für Hub ok, Zeitwert wie lange ein Hub der Schmierpumpe dauert
   tAnsteuernKreise : ARRAY[cSCHMIERKREIS_1..cSCHMIERKREIS_1_2] OF TIME := [TIME#2S0MS, TIME#5S0MS, TIME#8S0MS];
 
-  iAnzahlHuebeBisGrossePause: INT := 10; // Anzahl der Hübe bis tPause gewartet werden muss für weitere Hübe 
+  iAnzahlHuebeBisGrossePause: INT := 10; // Anzahl der Hübe bis tPause gewartet werden muss für weitere Hübe
 END_VAR
 
 //-------------------------------------------------------------------------------------------------

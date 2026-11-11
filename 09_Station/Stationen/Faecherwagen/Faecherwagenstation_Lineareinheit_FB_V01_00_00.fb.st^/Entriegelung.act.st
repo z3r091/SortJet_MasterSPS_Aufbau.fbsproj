@@ -10,7 +10,7 @@ ACTION Entriegelung
 // ENTRIEGELUNG AUF => FUER MULTIBELADUNG
 //-------------------------------------------------------------------------------------------------
 
-IF ( blEntriegelungOeffnen 
+IF ( blEntriegelungOeffnen
    //AND bpUntergestellErkannt //safety eingang
    // AND NOT in_bFaecherwagenNichtInPos // Gestell ist auf dem Wagen
    (*AND BasisStationsParameter.bFreigabe*) )
@@ -93,7 +93,7 @@ END_IF
 // ENTRIEGELUNG AB => FUER MULTIBELADUNG
 //-------------------------------------------------------------------------------------------------
 
-IF blEntriegelungSchliessen 
+IF blEntriegelungSchliessen
 // AND BasisStationsParameter.bFreigabe
 //AND bpUntergestellErkannt //safety eingang
 THEN

@@ -32,14 +32,14 @@ IF blRFID_Auslesen THEN
       // ---------------------------------------------------------------------------------------
 
       FOR wlIndexByte := ERSTES_ZEICHEN TO (ERSTE_ZIFFER_RFID + ANZAHL_ZIFFERN_RFID - 1) DO//in den Bytes 16-23 stehen die relevanten Daten des RFID-Chips
-        abylBytesRFID[wlIndexByte].0:= ablRFID[wlIndexByte,0]; 
-        abylBytesRFID[wlIndexByte].1:= ablRFID[wlIndexByte,1]; 
-        abylBytesRFID[wlIndexByte].2:= ablRFID[wlIndexByte,2]; 
-        abylBytesRFID[wlIndexByte].3:= ablRFID[wlIndexByte,3]; 
-        abylBytesRFID[wlIndexByte].4:= ablRFID[wlIndexByte,4]; 
-        abylBytesRFID[wlIndexByte].5:= ablRFID[wlIndexByte,5]; 
-        abylBytesRFID[wlIndexByte].6:= ablRFID[wlIndexByte,6]; 
-        abylBytesRFID[wlIndexByte].7:= ablRFID[wlIndexByte,7]; 
+        abylBytesRFID[wlIndexByte].0:= ablRFID[wlIndexByte,0];
+        abylBytesRFID[wlIndexByte].1:= ablRFID[wlIndexByte,1];
+        abylBytesRFID[wlIndexByte].2:= ablRFID[wlIndexByte,2];
+        abylBytesRFID[wlIndexByte].3:= ablRFID[wlIndexByte,3];
+        abylBytesRFID[wlIndexByte].4:= ablRFID[wlIndexByte,4];
+        abylBytesRFID[wlIndexByte].5:= ablRFID[wlIndexByte,5];
+        abylBytesRFID[wlIndexByte].6:= ablRFID[wlIndexByte,6];
+        abylBytesRFID[wlIndexByte].7:= ablRFID[wlIndexByte,7];
       END_FOR
 
 

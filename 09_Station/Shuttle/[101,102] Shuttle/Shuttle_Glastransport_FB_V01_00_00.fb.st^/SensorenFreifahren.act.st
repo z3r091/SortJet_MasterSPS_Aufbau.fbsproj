@@ -34,7 +34,7 @@ THEN
       *)
 
 
-      IF ( Antrieb.bpReglerBereit 
+      IF ( Antrieb.bpReglerBereit
            AND blAntriebsKopplungAktiv )
       THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;

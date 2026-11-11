@@ -7,13 +7,13 @@
 *)
 FUNCTION_BLOCK Shuttle_RackSuche
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
-  
+
   // WORD
   wStation               : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
@@ -47,7 +47,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_RackSuche ) THEN
               starrShuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
               AutomatikkreisBestimmen(wStation),
               starrShuttleBasisParameter[wStation].awFehlerInformationen );
-          
+
     steplSchritt := STEP_900_E;
   END_IF
 

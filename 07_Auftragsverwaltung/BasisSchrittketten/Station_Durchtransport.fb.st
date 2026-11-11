@@ -7,14 +7,14 @@
 *)
 FUNCTION_BLOCK Station_Durchtransport
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
-  
+
   // WORD
   wStation               : WORD;
   wWand                  : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
@@ -27,15 +27,15 @@ VAR_OUTPUT
 
 END_VAR
 VAR
-    
+
   // BOOLEAN
   blStationQuittiertScheiben             : BOOL;
   blKopplungGefundenEintransport         : BOOL;
   blKopplungGefundenAustransport         : BOOL;
-  
+
   // INT
   ilScheibenZuQuittieren : INT;
-  
+
   // WORD
   wlEintransportstation : WORD;
   wlAustransportstation : WORD;
@@ -234,7 +234,7 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
       starrStationBasisParameter[wStation].pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachEintransport := 0;
 
       starrStationBasisParameter[wStation].bScheibentrennen[wWand]           := FALSE;
-      starrStationBasisParameter[wStation].bRueckwaertsTransportieren[wWand] := ( starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Station[wlEintransportstation] = Rueckwaertig ) 
+      starrStationBasisParameter[wStation].bRueckwaertsTransportieren[wWand] := ( starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aEintransporte.Station[wlEintransportstation] = Rueckwaertig )
                                                                                 AND ( starrStationBasisParameter[wStation].stMKs.stSchnittstellendaten.aAustransporte.Station[wlAustransportstation] = Rueckwaertig );
       starrStationBasisParameter[wStation].bDurchtransport[wWand]            := TRUE;
 
@@ -248,7 +248,7 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
          - Scheibe quittieren, sofern dies nötig ist
       *)
       blStationQuittiertScheiben := TRUE;
-      
+
       IF ( starrStationBasisParameter[wStation].OutGlasTransport[wWand].bQuittScheibe ) THEN
 
         IF ( ilScheibenZuQuittieren > 0 ) AND blStationQuittiertScheiben THEN
@@ -261,7 +261,7 @@ IF Auftragsdaten.wAuftrag = eStation_Durchtransport THEN
           wSPS2MMIAuftragstyp  := 0;
 
           MsgToMmi(auftragsnr_w := SB0_SPS_QUIT_SHEET_ORDER );
-          
+
         END_IF
 
         ilScheibenZuQuittieren := ilScheibenZuQuittieren - 1;

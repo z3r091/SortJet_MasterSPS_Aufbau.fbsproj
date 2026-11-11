@@ -23,20 +23,20 @@ THEN
   //   - Plus - Minus
   Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
   Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-  
+
   IF NOT bgVisuAntriebeVerfahrenAktiv then
     IF ( bpHandfahrenPositiv AND NOT bpHandfahrenNegativ ) AND Antrieb.bpReglerBereit THEN
       Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;
       Antrieb.wpBetriebsart     := HANDPLUS;
-    
+
     ELSIF ( bpHandfahrenNegativ AND NOT bpHandfahrenPositiv ) AND Antrieb.bpReglerBereit THEN
       Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;
       Antrieb.wpBetriebsart     := HANDMINUS;
-    
+
     ELSIF ( NOT bpHandfahrenNegativ AND NOT bpHandfahrenPositiv ) THEN
       Antrieb.rpGeschwindigkeit := REAL#0;
       Antrieb.wpBetriebsart     := KEINE_FUNKTION;
-    
+
     END_IF
   END_IF
 

@@ -27,16 +27,16 @@ VAR_GLOBAL CONSTANT
   ioccNotausAnOP9Betaetigt                           : WORD := 10;
   ioccNotausAnOP10Betaetigt                          : WORD := 11;
 
-  ioccNotausAnTuer1Betaetigt                         : WORD := 21; 
-  ioccNotausAnTuer2Betaetigt                         : WORD := 22; 
-  ioccNotausAnTuer3Betaetigt                         : WORD := 23; 
-  ioccNotausAnTuer4Betaetigt                         : WORD := 24; 
-  ioccNotausAnTuer5Betaetigt                         : WORD := 25; 
-  ioccNotausAnTuer6Betaetigt                         : WORD := 26; 
-  ioccNotausAnTuer7Betaetigt                         : WORD := 27; 
-  ioccNotausAnTuer8Betaetigt                         : WORD := 28; 
-  ioccNotausAnTuer9Betaetigt                         : WORD := 29; 
-  ioccNotausAnTuer10Betaetigt                        : WORD := 30; 
+  ioccNotausAnTuer1Betaetigt                         : WORD := 21;
+  ioccNotausAnTuer2Betaetigt                         : WORD := 22;
+  ioccNotausAnTuer3Betaetigt                         : WORD := 23;
+  ioccNotausAnTuer4Betaetigt                         : WORD := 24;
+  ioccNotausAnTuer5Betaetigt                         : WORD := 25;
+  ioccNotausAnTuer6Betaetigt                         : WORD := 26;
+  ioccNotausAnTuer7Betaetigt                         : WORD := 27;
+  ioccNotausAnTuer8Betaetigt                         : WORD := 28;
+  ioccNotausAnTuer9Betaetigt                         : WORD := 29;
+  ioccNotausAnTuer10Betaetigt                        : WORD := 30;
 
   // Stationen
   ioccNotaus1Betaetigt                               : WORD := 35;
@@ -50,7 +50,7 @@ VAR_GLOBAL CONSTANT
   ioccNotaus9Betaetigt                               : WORD := 43;
   ioccNotaus10Betaetigt                              : WORD := 44;
 
-  
+
 // ================================================= SICHERHEITSKREISE =================================================
   ioccSiKreis1                                       : WORD := 60; // Sicherheitskreis 1 ausgeloest
   ioccSiKreis2                                       : WORD := 61; // Sicherheitskreis 2 ausgeloest
@@ -64,11 +64,11 @@ VAR_GLOBAL CONSTANT
   ioccSiKreis10                                      : WORD := 69; // Sicherheitskreis 10 ausgeloest
 
 // ================================================= Meldungen =================================================
-  ioccEtherCatNotRunning                             : WORD := 70; 
-  
+  ioccEtherCatNotRunning                             : WORD := 70;
+
 // ================================================= STATUS ANLAGE =================================================
   ioccCAB2_Klimageraet_Nicht_OK                      : WORD := 100;
-  ioccCAB2_Netzteil_24V_Nicht_Ok                     : WORD := 101; 
+  ioccCAB2_Netzteil_24V_Nicht_Ok                     : WORD := 101;
   ioccCAB2_LS_24V_Schaltschrank_Nicht_OK             : WORD := 102;
   ioccCAB2_LS_24V_Boxen_Nicht_OK                     : WORD := 103;
   ioccCAB2_LS_400V_Nicht_OK_                         : WORD := 104;
@@ -108,8 +108,8 @@ VAR_GLOBAL CONSTANT
   ioccInitBlockDruckluft                             : WORD := 142;  // Initialisierung blockiert Druckluft
   ioccInitBlockPowerrail                             : WORD := 143;  // Initialisierung blockiert Stromschiene
   ioccInitBlockSK                                    : WORD := 144;  // Initialisierung blockiert durch SK
-  
-  
+
+
   ioccInit101Referenz                                : WORD := 150;
   ioccInit102Referenz                                : WORD := 151;
   ioccInit103Referenz                                : WORD := 152;
@@ -167,7 +167,7 @@ VAR_GLOBAL CONSTANT
   ioccCheckWaitInit                                  : WORD := 210; // Systemcheck wird nach der Initialisierung gestartet
   ioccCheckBlockDruckluft                            : WORD := 211; // Druckluft blockt den SystemCheck
   ioccCheckBlockPowerrail                            : WORD := 212;  // Initialisierung blockiert Stromschiene
-  
+
   ioccCheckWaitSK_AK1                                : WORD := 220; // AK 1 durch einen SK geblockt
   ioccCheckWaitSK_AK2                                : WORD := 221; // AK 2 durch einen SK geblockt
   ioccCheckWaitSK_AK3                                : WORD := 222; // AK 3 durch einen SK geblockt
@@ -196,8 +196,8 @@ VAR_GLOBAL CONSTANT
   ioccShuttle8VerfahrfreigabeFehlt                   : WORD := 247; // Shuttle 8  ->  Verfahrfreigabe Querfahrt
   ioccShuttle9VerfahrfreigabeFehlt                   : WORD := 248; // Shuttle 9  ->  Verfahrfreigabe Querfahrt
   ioccShuttle10VerfahrfreigabeFehlt                  : WORD := 249; // Shuttle 10 ->  Verfahrfreigabe Querfahrt
-  
-  
+
+
   // ================================================= VERFAHRFREIGABE TRANSSHUTTLE  ======================================
   ioccTransfershuttle1VerfahrfreigabeFehlt           : WORD := 250; // TRANSSHUTTLE 1 ->  Verfahrfreigabe Querfahrt
   ioccTransfershuttle2VerfahrfreigabeFehlt           : WORD := 251; // TRANSSHUTTLE 2 ->  Verfahrfreigabe Querfahrt
@@ -208,8 +208,8 @@ VAR_GLOBAL CONSTANT
   ioccTransfershuttle7VerfahrfreigabeFehlt           : WORD := 256; // TRANSSHUTTLE 7 ->  Verfahrfreigabe Querfahrt
   ioccTransfershuttle8VerfahrfreigabeFehlt           : WORD := 257; // TRANSSHUTTLE 8 ->  Verfahrfreigabe Querfahrt
   ioccTransfershuttle9VerfahrfreigabeFehlt           : WORD := 258; // TRANSSHUTTLE 9 ->  Verfahrfreigabe Querfahrt
-  ioccTransfershuttle10VerfahrfreigabeFehlt          : WORD := 259; // TRANSSHUTTLE 10 ->  Verfahrfreigabe Querfahrt     
-  
+  ioccTransfershuttle10VerfahrfreigabeFehlt          : WORD := 259; // TRANSSHUTTLE 10 ->  Verfahrfreigabe Querfahrt
+
 // ================================================= STROMSCHIENE ======================================
   ioccUeberwachungRelaisInputStromschieneEingeschaltet  : WORD := 275;
   ioccUeberwachungRelaisOutputStromschieneEingeschaltet : WORD := 276;
@@ -219,7 +219,7 @@ VAR_GLOBAL CONSTANT
 
   ioccUeberbrueckungStromschieneInputAktiv              : WORD := 279;
   ioccUeberbrueckungStromschieneOutputAktiv             : WORD := 280;
-  
+
   ioccPhasenUeberwachungStromschieneInputAktiv          : WORD := 281;
   ioccPhasenUeberwachungStromschieneOutputAktiv         : WORD := 282;
 
@@ -234,16 +234,16 @@ VAR_GLOBAL CONSTANT
   ioccDurchgang8NichtGeschlossen                      : WORD := 307;
   ioccDurchgang9NichtGeschlossen                      : WORD := 308;
   ioccDurchgang10NichtGeschlossen                     : WORD := 309;
-  
-  ioccDurchgang1Blockiert                             : WORD := 310;  
-  ioccDurchgang2Blockiert                             : WORD := 311;  
-  ioccDurchgang3Blockiert                             : WORD := 312;  
-  ioccDurchgang4Blockiert                             : WORD := 313;  
-  ioccDurchgang5Blockiert                             : WORD := 314;  
-  ioccDurchgang6Blockiert                             : WORD := 315;  
-  ioccDurchgang7Blockiert                             : WORD := 316;  
-  ioccDurchgang8Blockiert                             : WORD := 317;  
-  ioccDurchgang9Blockiert                             : WORD := 318;  
+
+  ioccDurchgang1Blockiert                             : WORD := 310;
+  ioccDurchgang2Blockiert                             : WORD := 311;
+  ioccDurchgang3Blockiert                             : WORD := 312;
+  ioccDurchgang4Blockiert                             : WORD := 313;
+  ioccDurchgang5Blockiert                             : WORD := 314;
+  ioccDurchgang6Blockiert                             : WORD := 315;
+  ioccDurchgang7Blockiert                             : WORD := 316;
+  ioccDurchgang8Blockiert                             : WORD := 317;
+  ioccDurchgang9Blockiert                             : WORD := 318;
   ioccDurchgang10Blockiert                            : WORD := 319;
 
   ioccDurchgang1AbschrankungNichGeschlossen           : WORD := 320;
@@ -265,8 +265,8 @@ VAR_GLOBAL CONSTANT
   ioccDurchgang9AbschrankungNichGeschlossen           : WORD := 336;
   ioccDurchgang9AbschrankungNichGeoeffnet             : WORD := 337;
   ioccDurchgang10AbschrankungNichGeschlossen          : WORD := 338;
-  ioccDurchgang10AbschrankungNichGeoeffnet            : WORD := 339;  
-  
+  ioccDurchgang10AbschrankungNichGeoeffnet            : WORD := 339;
+
 
 // ================================================= TRANSFERSHUTTLE ALLGEMEIN ==============================================
   // Transfershuttle 1
@@ -292,7 +292,7 @@ VAR_GLOBAL CONSTANT
   ioccTransfershuttle1QuerfahrtKeineReferenz               : WORD := 368;
   ioccTransfershuttle1AuslaufsensorBelegt                  : WORD := 369;
   ioccTransfershuttle1EinlaufsensorBelegt                  : WORD := 370;
-  
+
   ioccTransfershuttle1TransportGeblocktSicherheitskreis    : WORD := 373;
 
 
@@ -345,7 +345,7 @@ VAR_GLOBAL CONSTANT
   ioccTransfershuttle3QuerfahrtKeineReferenz               : WORD := 428;
   ioccTransfershuttle3AuslaufsensorBelegt                  : WORD := 429;
   ioccTransfershuttle3EinlaufsensorBelegt                  : WORD := 430;
-  ioccTransfershuttle3UCS11B_NotHaltAusgeloest              : WORD := 431; 
+  ioccTransfershuttle3UCS11B_NotHaltAusgeloest              : WORD := 431;
   ioccTransfershuttle3UCS11B_Stoerung                      : WORD := 432;
   ioccTransfershuttle3TransportGeblocktSicherheitskreis    : WORD := 433;
 
@@ -400,7 +400,7 @@ VAR_GLOBAL CONSTANT
   ioccTransfershuttle5QuerfahrtKeineReferenz               : WORD := 488;
   ioccTransfershuttle5AuslaufsensorBelegt                  : WORD := 489;
   ioccTransfershuttle5EinlaufsensorBelegt                  : WORD := 490;
-  ioccTransfershuttle5UCS11B_NotHaltAusgeloest              : WORD := 491; 
+  ioccTransfershuttle5UCS11B_NotHaltAusgeloest              : WORD := 491;
   ioccTransfershuttle5UCS11B_Stoerung                      : WORD := 492;
   ioccTransfershuttle5TransportGeblocktSicherheitskreis    : WORD := 493;
 
@@ -427,7 +427,7 @@ VAR_GLOBAL CONSTANT
   ioccTransfershuttle6QuerfahrtKeineReferenz               : WORD := 518;
   ioccTransfershuttle6AuslaufsensorBelegt                  : WORD := 519;
   ioccTransfershuttle6EinlaufsensorBelegt                  : WORD := 520;
-  ioccTransfershuttle6UCS11B_NotHaltAusgeloest              : WORD := 521; 
+  ioccTransfershuttle6UCS11B_NotHaltAusgeloest              : WORD := 521;
   ioccTransfershuttle6UCS11B_Stoerung                      : WORD := 522;
   ioccTransfershuttle6TransportGeblocktSicherheitskreis    : WORD := 523;
 
@@ -454,7 +454,7 @@ VAR_GLOBAL CONSTANT
   ioccTransfershuttle7QuerfahrtKeineReferenz               : WORD := 548;
   ioccTransfershuttle7AuslaufsensorBelegt                  : WORD := 549;
   ioccTransfershuttle7EinlaufsensorBelegt                  : WORD := 550;
-  ioccTransfershuttle7UCS11B_NotHaltAusgeloest              : WORD := 551; 
+  ioccTransfershuttle7UCS11B_NotHaltAusgeloest              : WORD := 551;
   ioccTransfershuttle7UCS11B_Stoerung                      : WORD := 552;
   ioccTransfershuttle7TransportGeblocktSicherheitskreis    : WORD := 553;
 
@@ -513,8 +513,8 @@ VAR_GLOBAL CONSTANT
   ioccStation101_Druckluft                                 : WORD := 624; // 24
                                                                           // 25
                                                                           // 26
-  ioccStation101_Verfahrfreigabe_W1                        : WORD := 627; // 27 
-  ioccStation101_Verfahrfreigabe_W2                        : WORD := 628; // 28 
+  ioccStation101_Verfahrfreigabe_W1                        : WORD := 627; // 27
+  ioccStation101_Verfahrfreigabe_W2                        : WORD := 628; // 28
   ioccStation101_Verfahrfreigabe_Anhalten                  : WORD := 629; // 29
                                                                           // 32
   ioccStation101_Zentralschmierung_nicht_OK                : WORD := 633; // 33
@@ -552,9 +552,9 @@ VAR_GLOBAL CONSTANT
   ioccStation102_Druckluft                                 : WORD := 674; // 24
                                                                           // 25
                                                                           // 26
-  ioccStation102_Verfahrfreigabe_W1                        : WORD := 677; // 27 
-  ioccStation102_Verfahrfreigabe_W2                        : WORD := 678; // 28 
-  ioccStation102_Verfahrfreigabe_Anhalten                  : WORD := 679; // 29 
+  ioccStation102_Verfahrfreigabe_W1                        : WORD := 677; // 27
+  ioccStation102_Verfahrfreigabe_W2                        : WORD := 678; // 28
+  ioccStation102_Verfahrfreigabe_Anhalten                  : WORD := 679; // 29
                                                                           // 32
   ioccStation102_Zentralschmierung_nicht_OK                : WORD := 683; // 33
   ioccStation102_ThermokontaktBremswiderstand_Riemen_W1    : WORD := 684; // 34
@@ -563,7 +563,7 @@ VAR_GLOBAL CONSTANT
   ioccStation102_Leitungsschutz_Kippen_Bremse              : WORD := 687; // 37
   ioccStation102_Leitungsschutz_wandverstellung            : WORD := 688; // 38
   ioccStation102_Leitungsschutz_Wandverstellung_Bremse     : WORD := 689; // 39
-  
+
 
   // SHUTTLE 103
   ioccStation103_DatenLichtschranke_Station_Unterbrochen   : WORD := 700; // 0
@@ -591,9 +591,9 @@ VAR_GLOBAL CONSTANT
   ioccStation103_Druckluft                                 : WORD := 724; // 24
                                                                           // 25
                                                                           // 26
-  ioccStation103_Verfahrfreigabe_W1                        : WORD := 727; // 27 
-  ioccStation103_Verfahrfreigabe_W2                        : WORD := 728; // 28 
-  ioccStation103_Verfahrfreigabe_Anhalten                  : WORD := 729; // 29 
+  ioccStation103_Verfahrfreigabe_W1                        : WORD := 727; // 27
+  ioccStation103_Verfahrfreigabe_W2                        : WORD := 728; // 28
+  ioccStation103_Verfahrfreigabe_Anhalten                  : WORD := 729; // 29
                                                                           // 32
   ioccStation103_Zentralschmierung_nicht_OK                : WORD := 733; // 33
   ioccStation103_ThermokontaktBremswiderstand_Riemen_W1    : WORD := 734; // 34
@@ -630,8 +630,8 @@ VAR_GLOBAL CONSTANT
   ioccStation104_Druckluft                                 : WORD := 774; // 24
                                                                           // 25
                                                                           // 26
-  ioccStation104_Verfahrfreigabe_W1                        : WORD := 777; // 27 
-  ioccStation104_Verfahrfreigabe_W2                        : WORD := 778; // 28 
+  ioccStation104_Verfahrfreigabe_W1                        : WORD := 777; // 27
+  ioccStation104_Verfahrfreigabe_W2                        : WORD := 778; // 28
   ioccStation104_Verfahrfreigabe_Anhalten                  : WORD := 779; // 29
                                                                           // 32
   ioccStation104_Zentralschmierung_nicht_OK                : WORD := 783; // 33
@@ -646,8 +646,8 @@ VAR_GLOBAL CONSTANT
   // ================================================= Safety (SICHERHEITSTECHNIK) MELDUNGEN ===============================
   ioccSLC_Error_FSoE_Master                                : WORD := 1000;
   ioccSLC_EDM_FehlerAktiv                                  : WORD := 1001;
-  ioccSLC_Safety_Operator_Acknowledge_Requested            : WORD := 1002; 
-  
+  ioccSLC_Safety_Operator_Acknowledge_Requested            : WORD := 1002;
+
   // 1011 - 1059 EDM
   ioccSLC_EDM_Error01                                      : WORD := 1011;
   ioccSLC_EDM_Error02                                      : WORD := 1012;
@@ -715,7 +715,7 @@ VAR_GLOBAL CONSTANT
   ioccSLC_Error_Equivalent_14                              : WORD := 1072;
   ioccSLC_Error_Equivalent_15                              : WORD := 1073;
   ioccSLC_Error_Equivalent_16                              : WORD := 1074;
-  
+
   // 1075 - 1090 SLC Error Equivalent Tueren
   ioccSLC_Error_Equivalent_Tuer_1                          : WORD := 1075;
   ioccSLC_Error_Equivalent_Tuer_2                          : WORD := 1076;
@@ -733,8 +733,8 @@ VAR_GLOBAL CONSTANT
   ioccSLC_Error_Equivalent_Tuer_14                         : WORD := 1088;
   ioccSLC_Error_Equivalent_Tuer_15                         : WORD := 1089;
   ioccSLC_Error_Equivalent_Tuer_16                         : WORD := 1090;
-  
-  
+
+
   ioccSLC_EDM_Error49                                      : WORD := 1091;
   ioccSLC_EDM_Error50                                      : WORD := 1092;
   ioccSLC_EDM_Error51                                      : WORD := 1093;
@@ -751,7 +751,7 @@ VAR_GLOBAL CONSTANT
   ioccSLC_EDM_Error62                                      : WORD := 1104;
   ioccSLC_EDM_Error63                                      : WORD := 1105;
   ioccSLC_EDM_Error64                                      : WORD := 1106;
-  
+
 // ================================================= SCHNITTSTELLE ==========================================================
   ioccSchnittstelle_Linie_1_KommunikationsTimeOut          : WORD := 1300;
   ioccSchnittstelle_Linie_1_Daten_Nicht_Aequivalent        : WORD := 1301;
@@ -932,8 +932,8 @@ VAR_GLOBAL CONSTANT
   ioccStromschieneNeustartAktiv                         : WORD := 2020;
   ioccStromschieneNeustartAktiv_Quittieren              : WORD := 2021;
 
- 
-  
+
+
 END_VAR
 
 

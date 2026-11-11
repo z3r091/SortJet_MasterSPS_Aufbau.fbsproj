@@ -8,7 +8,7 @@
 FUNCTION_BLOCK Basic_Schnittstelle_FB_V01_00_00
 VAR_IN_OUT
 
-  // STRUKT 
+  // STRUKT
   BasisStationsParameter     : StationBasisParameter_ST;
 
 END_VAR
@@ -17,29 +17,29 @@ VAR_INPUT
 
   // BOOL
   bpEmpfaengerSensorEinlauf  : BOOL;
-  bpResetISOLinieEvent       : BOOL;  
-  bpStarteIGEvent            : BOOL;  
-              
+  bpResetISOLinieEvent       : BOOL;
+  bpStarteIGEvent            : BOOL;
+
   // WORD
   wpAuftragsTyp              : WORD; // Unterteilung => 0 = Scheibe vom Sortjet , 1 = Scheibe soll Manuell angelegt werden *)
-  
-  // STRUCT  
+
+  // STRUCT
   AuftragsSpeicher           : Auftragswarteschlange_Fremdanlage_FB;
-              
+
 END_VAR
 
 VAR_OUTPUT
 
   // BOOL
   bpISOLineEventAktiv       : BOOL; // Offenes ISO Linie Event nach aussen weitergeben
-  
-  // REAL                   
-  rpGeschwindigkeit          : REAL;    
-  
+
+  // REAL
+  rpGeschwindigkeit          : REAL;
+
   //DWORD
   dwpWartezeit     : DWORD;// STATISTIK: Beschreibt die Zeit zwischen Anlegeauftrag und betaetigen des Tasters zum Eintransport
-              
-  
+
+
 END_VAR
 
 VAR
@@ -47,10 +47,10 @@ VAR
   // BOOL
   blErsterZyklus             : BOOL := TRUE;
   bEmpfaengerSensorEinlauf   : BOOL; // Eingang Einlaufsensor von Umrichter Box
-  blBereitZumEintransport    : BOOL;      
-  blBereitZumAustransport    : BOOL;    
+  blBereitZumEintransport    : BOOL;
+  blBereitZumAustransport    : BOOL;
   blAutomatikBetriebAktiv    : BOOL;
-  blSenderBereit             : BOOL; 
+  blSenderBereit             : BOOL;
   blSenderGlasBereit         : BOOL;
   blInLogSchreiben           : BOOL;
   blOutLogSchreiben          : BOOL;
@@ -61,26 +61,26 @@ VAR
   blTempGlasAbruf            : BOOL;
   blTempEinlaufSensor        : BOOL;
   blTempAutomatikBetrieb     : BOOL;
-  blUebergabeGlas            : BOOL; // Schrittkettenvariable 
-  blStartISOLinie            : BOOL; // Schrittkettenvariable 
-  
+  blUebergabeGlas            : BOOL; // Schrittkettenvariable
+  blStartISOLinie            : BOOL; // Schrittkettenvariable
+
   // WORD
   wlWatchIONachrichtenNummer : WORD;
-    
+
   //TRIGGER
   rtlTasterSpezial           : R_TRIG;
   rtlTasterGlasbruch         : R_TRIG;
-  
+
   // STRING
   slInLogString              : STRING;
   slOutLogString             : STRING;
-  
+
   // TIME
   tlWarteZeiteAufnahme       : TIME;
-  
-  // STEPS                 
+
+  // STEPS
   steplUebergabeGlas         : Steps_TE;
-  
+
   // BAUSTEINE
   Horn                       : Horn_FB;
 
@@ -94,18 +94,18 @@ END_VAR
 
 VAR_INPUT
 
-  // HARDWARE EINGAENGE 
-  in_bEmpfaengerSensorEinlauf         : BOOL; // Einlaufsensor 
-  in_bTasterGlasbruch           AT%I* : BOOL; // Taster, Gegenscheibe wurde ausgeschleust  
+  // HARDWARE EINGAENGE
+  in_bEmpfaengerSensorEinlauf         : BOOL; // Einlaufsensor
+  in_bTasterGlasbruch           AT%I* : BOOL; // Taster, Gegenscheibe wurde ausgeschleust
   in_bTasterSpezial             AT%I* : BOOL; // Taster, Sonderscheibe zugestellt
-  
-  // HARDWARE AUSGAENGE 
+
+  // HARDWARE AUSGAENGE
   out_bSenderBereit             AT %Q* : BOOL; // Anlage zum Transport bereit
   out_bSenderGlasBereit         AT %Q* : BOOL; // Glas bereit zum Transport
   out_bLeuchteGlasbruch         AT %Q* : BOOL;
-  out_bLeuchteSpezial           AT %Q* : BOOL; 
-  out_bAmpelEventAktiv          AT %Q* : BOOL; 
- 
+  out_bLeuchteSpezial           AT %Q* : BOOL;
+  out_bAmpelEventAktiv          AT %Q* : BOOL;
+
 END_VAR
 
 

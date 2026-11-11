@@ -16,7 +16,7 @@ IF bpBremseLoesen THEN
       IF ppAntriebsInformationen.stOptionen.bBremseLoesenFreigabe THEN
         blBremseLoesen := TRUE; // Bremse lösen
         IF bpBremseGeloest THEN
-          asteplSchritt[BREMSE_LOESEN] := STEP_1000_E;        
+          asteplSchritt[BREMSE_LOESEN] := STEP_1000_E;
         END_IF
       ELSE
         asteplSchritt[BREMSE_LOESEN] := STEP_900_E;

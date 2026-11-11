@@ -11,7 +11,7 @@
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //
 //  ACHTUNG! Eine Zuweisungsaenderung oder neu einfuegen von Meldungen muessen in der dazugehoerigen
-//           Initialiserungsdatei angepasst werden! Wird dies nicht beruecksichtgt kann dies in  
+//           Initialiserungsdatei angepasst werden! Wird dies nicht beruecksichtgt kann dies in
 //           falsch Meldungen resultieren!
 //
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -70,7 +70,7 @@ TYPE TE_Functions ://ATTENTION: Synchronisation with HControl!!! Holds the IDs o
   Idle                             := 50,
   Test                             := 51,
   ProcessRemasterJob               := 52,
-  Init                             := 53, 
+  Init                             := 53,
   Stop                             := 54,
   Umgreifen                        := 55,
   BlowOffVacuum                    := 56,

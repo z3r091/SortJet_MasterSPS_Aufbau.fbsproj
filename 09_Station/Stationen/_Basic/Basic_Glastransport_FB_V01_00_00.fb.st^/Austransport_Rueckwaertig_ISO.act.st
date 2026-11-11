@@ -19,7 +19,7 @@ THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
     steplAustransportRueckwaertig := STEP_900_E;
   END_IF
-  
+
   IF ( Antrieb_Slave.bpFehler ) THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT_SLAVE;
     steplAustransportRueckwaertig := STEP_900_E;
@@ -89,7 +89,7 @@ THEN
       bpOutBereitZumAustransport := TRUE;
       bpOutBereitZumEintransport := bpUebergrosseScheibeUebergang;
 
-      IF ( InGlasTransportVorgaenger.bBereitZumEintransport ) 
+      IF ( InGlasTransportVorgaenger.bBereitZumEintransport )
          AND ( NOT bpUebergrosseScheibeUebergang OR InGlasTransportNachfolger.bBereitZumAustransport )
       THEN
         dwpWartezeit := TIME_TO_DWORD(TIME()- tlWarteZeitAufnahme);

@@ -8,7 +8,7 @@
 {attribute 'allow_unqualified_access'}
 NAMESPACE Konfiguration_201
 VAR_CONFIG
-  
+
   // Taster
   Globale_Bausteine.Anlegetisch201.in_bKnebelRiemenVor                                   AT %IX6.1    : BOOL; // IO-L - 201 Riemen vor
   Globale_Bausteine.Anlegetisch201.in_bKnebelRiemenZurueck                               AT %IX6.2    : BOOL; // IO-L - 201 Riemen zurueck
@@ -24,13 +24,13 @@ VAR_CONFIG
   Globale_Bausteine.Anlegetisch201.out_bAmpelSignalGruenScheibeAnlegen                   AT %QX5.3    : BOOL; // IO-L - 201 Freigabe Scheibe anlegen Ampel gruen
   Globale_Bausteine.Anlegetisch201.out_bAmpelSignalGlastransportAktiv                    AT %MX2010.2 : BOOL; // OPTION - Ampel Glastransport aktiv
   //Glasbruch QX3.0
-    
+
   // Gebläse
   Globale_Bausteine.Anlegetisch201.in_bMotorschutzGeblaese_Ok                            AT %IX1.1    : BOOL; // IO-L - 201 Geblaese Sanftstarter / Sicherung OK
   Globale_Bausteine.Anlegetisch201.in_bDrehzahlErreicht                                  AT %IX1.4    : BOOL; // IO-L - 201 Geblaese BY-PASSED
   Globale_Bausteine.Anlegetisch201.in_bTasterGeblaese1Ein                                AT %IX4.7    : BOOL; // IO-L - 201 Taster Geblaese ein
   Globale_Bausteine.Anlegetisch201.in_bTasterGeblaese2Ein                                AT %MX1.0    : BOOL; // OPTION
-  
+
   Globale_Bausteine.Anlegetisch201.out_bGeblaese1Ein                                     AT %QX0.6    : BOOL; // IO-L - 201 Geblaese einschalten
   Globale_Bausteine.Anlegetisch201.out_bGeblaese2Ein                                     AT %MX2010.3 : BOOL; // OPTION
 
@@ -47,7 +47,7 @@ VAR_CONFIG
   Globale_Bausteine.Anlegetisch201.in_bSensorKippsicherungOffen                          AT %IX4.4    : BOOL; // IO-L - 201 Kippsicherung offen
   Globale_Bausteine.Anlegetisch201.in_bSchaltleisteAusgeloest                            AT %IX10.7   : BOOL; // IO-L - 201 Schaltleiste ausgeloest
   Globale_Bausteine.Anlegetisch201.in_bMotorschutzHydraulik                              AT %IX1.6    : BOOL; // IO-L - 201 Hydraulik Motorstarter / Sicherung OK
-  
+
   //Kippen angefordert_OP  QX1.6
   //Kippen angefordert_LTR QX2.0
   Globale_Bausteine.Anlegetisch201.out_bKipptischAuf                                     AT %QX10.0   : BOOL; // IO-L - 201 kippen auf
@@ -70,7 +70,7 @@ VAR_CONFIG
   Globale_Bausteine.Anlegetisch201.in_bSensorKipparmeAnschlaegeOben                      AT %MX1.0    : BOOL; // OPTION
   Globale_Bausteine.Anlegetisch201.in_bSensorKipparmeNichtOben                           AT %MX1.0    : BOOL; // OPTION
   Globale_Bausteine.Anlegetisch201.in_bSensorKipparmeNichtUnten                          AT %MX1.0    : BOOL; // OPTION
-  
+
   Globale_Bausteine.Anlegetisch201.out_bKipparmeAuf                                      AT %MX2011.6 : BOOL; // OPTION
   Globale_Bausteine.Anlegetisch201.out_bKipparmeAb                                       AT %MX2011.7 : BOOL; // OPTION
   Globale_Bausteine.Anlegetisch201.out_bKipparmeAnschlaegeAuf                            AT %MX2012.0 : BOOL; // OPTION

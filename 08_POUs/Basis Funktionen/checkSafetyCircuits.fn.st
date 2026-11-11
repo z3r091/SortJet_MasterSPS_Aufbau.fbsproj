@@ -16,7 +16,7 @@ END_VAR
 // It will checked if the safety circuit configured for this station
 
 checkSafetyCircuits := FALSE;
-  
+
 FOR wIndexMK := 0 TO cANZAHL_SICHERHEITSKREISE DO
   IF ( SaftyCircuit = StationData.stMKs.eaSicherheitskreis[wIndexMK] ) THEN
     checkSafetyCircuits := TRUE;

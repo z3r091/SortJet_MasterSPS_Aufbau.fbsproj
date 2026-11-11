@@ -118,7 +118,7 @@ IF ( bpPositionieren ) THEN
       *)
       CASE epZielPosition OF
 
-        
+
         eKippen_Position_84Grad:
 
           IF ( NOT bpSensorNicht84Grad AND bpSensorNicht90Grad) THEN
@@ -153,7 +153,7 @@ IF ( bpPositionieren ) THEN
           END_IF
 
       END_CASE
- 
+
     // POSITIONIEREN ===================================
     STEP_900_E:
       bpFehler := TRUE;

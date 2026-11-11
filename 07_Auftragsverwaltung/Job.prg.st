@@ -7,7 +7,7 @@
 *)
 PROGRAM Job
 VAR
- 
+
   // BOOLEAN
   blMerkerMmiNichtOk        : BOOL;
   blMerkerNachrichtabsetzen : BOOL;

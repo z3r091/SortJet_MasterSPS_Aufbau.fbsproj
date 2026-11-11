@@ -258,7 +258,7 @@ THEN
         ELSE
           Antrieb.wpBetriebsart := SYNC_AUF_MASTER;
         END_IF
-        
+
         IF ( Antrieb.bpDone ) THEN
           bpSlaveAktiv := TRUE;
           bpOutBereitZumAustransport := TRUE;
@@ -267,7 +267,7 @@ THEN
 
       // Austransport Hand-Minus
       ELSE
-        
+
         Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -371,7 +371,7 @@ THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
         rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
-          
+
         // TODO Option zum auslauf freifahren / ansonsten nur auslaufstopp
         IF NOT bpSensorAuslaufStopp THEN
           steplAustransport := STEP_1000_E;

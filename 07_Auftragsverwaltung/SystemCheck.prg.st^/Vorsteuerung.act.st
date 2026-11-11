@@ -11,7 +11,7 @@ FOR wlIndexAutomatikkreis := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS D
   // Systemcheck aktiv, Zyklen aufteilen
   IF abpCheck[wlIndexAutomatikkreis] THEN
 
-    // Systemcheck starten    
+    // Systemcheck starten
     IF NOT ablCheck[wlIndexAutomatikkreis, wlAktiverZyklus] THEN
       ablCheck[wlIndexAutomatikkreis, wlAktiverZyklus] := TRUE;
     END_IF
@@ -37,7 +37,7 @@ FOR wlIndexAutomatikkreis := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS D
         wlAktiverZyklus := wlAktiverZyklus + 1;
       END_IF
     END_IF
-    
+
   // Systemcheck nicht aktiv, alles resetten
   ELSE
     wlAktiverZyklus := 1;

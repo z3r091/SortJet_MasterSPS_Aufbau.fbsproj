@@ -21,8 +21,8 @@ IF( blBetriebsartReset )THEN
       Drehen.bpStarteAbsolutPositionierung := FALSE;
       Drehen.bpStarteDrehBewegung := FALSE;
 
-      BasisStationsParameter.eStatusAuftrag := eKeinStatus;   
-   
+      BasisStationsParameter.eStatusAuftrag := eKeinStatus;
+
       BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberEinlauf  := FALSE;
       BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberAuslauf  := FALSE;
       BasisStationsParameter.bRueckwaertsTransportieren[cWAND_1]                   := FALSE;
@@ -139,7 +139,7 @@ IF( blBetriebsartReset )THEN
 
   // RESET ===============================
   END_CASE
-  
+
 ELSE
 
   IF ( steplReset > STEP_0_E )THEN

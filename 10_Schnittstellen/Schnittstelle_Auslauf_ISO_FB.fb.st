@@ -9,14 +9,14 @@ FUNCTION_BLOCK Schnittstelle_Auslauf_ISO_FB EXTENDS Basic_Schnittstelle_FB_V01_0
 
 VAR_INPUT
 END_VAR
-VAR_OUTPUT    
+VAR_OUTPUT
 END_VAR
 VAR
-      
-  // STEPS                       
+
+  // STEPS
   steplStartIsolinie       : Steps_TE;
 
-  // TRIGGER 
+  // TRIGGER
   rtlAutomatik             : R_TRIG;
   rtlGlasAbruf             : R_TRIG;
   ftlGlasAbruf             : F_TRIG;
@@ -25,9 +25,9 @@ END_VAR
 
 VAR_INPUT
 
-  // HARDWARE EINGAENGE 
-  in_bGlasAbruf                 AT%I* : BOOL; // Signal von ISO-Linie 
-  in_bTransportRueckwaerts      AT%I* : BOOL; // Signal von ISO-Linie 
+  // HARDWARE EINGAENGE
+  in_bGlasAbruf                 AT%I* : BOOL; // Signal von ISO-Linie
+  in_bTransportRueckwaerts      AT%I* : BOOL; // Signal von ISO-Linie
 
   // ANALOGWERT
   in_wAnalogwertISOLinie        AT%I* : WORD; // Geschwindigkeit von der ISO-Linie

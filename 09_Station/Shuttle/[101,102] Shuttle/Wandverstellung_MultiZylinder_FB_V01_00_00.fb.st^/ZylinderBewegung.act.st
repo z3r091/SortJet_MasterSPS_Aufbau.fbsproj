@@ -118,7 +118,7 @@ IF ( bpStartZylinderBewegung ) THEN
 
       CASE epSollZylinderStellung OF
 
-        eZylinderStellung16mm: 
+        eZylinderStellung16mm:
           out_bZylinder_1_Einfahren := TRUE;
           out_bZylinder_2_Einfahren := TRUE;
 

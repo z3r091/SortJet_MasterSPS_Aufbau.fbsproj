@@ -10,8 +10,8 @@ ACTION Verfahren
 // VERFAHREN
 //-------------------------------------------------------------------------------------------------
 
-IF ( bpVerfahreShuttle 
-     OR bgVisuVerfahreShuttle[stStationsNummern.NummerSPS] ) 
+IF ( bpVerfahreShuttle
+     OR bgVisuVerfahreShuttle[stStationsNummern.NummerSPS] )
 THEN
 
   (* Fehlerbehandlung:
@@ -34,7 +34,7 @@ THEN
       IF ( ABS(rpDestinationPosition - rpAktPosition) > 0.5) THEN
 
         IF (  Antrieb.bpIstReferenziert
-             AND bpFreigabe ) 
+             AND bpFreigabe )
         THEN
 
           blFreigabeGesetzt := TRUE;

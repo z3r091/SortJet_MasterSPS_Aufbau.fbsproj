@@ -11,7 +11,7 @@ ACTION IO_Zuweisung
 //-------------------------------------------------------------------------------------------------
 
 CASE BasisStationsParameter.stMKs.stStationsNummern.NummerSPS OF
- 
+
     ;
 
   ELSE

@@ -6,7 +6,7 @@
 }
 *)
 TYPE FremdanlagenTyp_EN :
-  ( 
+  (
     eDefault    :=  0,
     eLISEC      :=  1,
     eFOREL      :=  2,

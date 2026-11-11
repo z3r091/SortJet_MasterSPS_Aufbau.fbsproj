@@ -17,7 +17,7 @@ IF ( bpCheck ) THEN
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
     steplCheck := STEP_900_E;
   END_IF
-  
+
   IF ( Antrieb_Slave.bpFehler ) THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT_SLAVE;
@@ -97,7 +97,7 @@ IF ( bpCheck ) THEN
         ELSE
           steplCheck := STEP_100_E; // VERERBTER SCHRITT - NICHT ABÄNDERN !!!
         END_IF
-        
+
       END_IF
 
       // Fehlersituation:
@@ -315,7 +315,7 @@ IF ( bpCheck ) THEN
       END_IF
 
       IF ( bpSensorAuslaufVorab
-           OR bpSensorAuslauf  ) 
+           OR bpSensorAuslauf  )
       THEN
         bpStationBelegt := TRUE;
 

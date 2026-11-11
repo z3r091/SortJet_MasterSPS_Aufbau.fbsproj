@@ -32,7 +32,7 @@ END_VAR
 // EINTRANSPORT WAND 1
 //-------------------------------------------------------------------------------------------------
 IF ( BasisStationsParameter.bEintransport[wWand]
-     AND bpAutomatikAktiv ) 
+     AND bpAutomatikAktiv )
 THEN
 
   // Ausnahmesituation
@@ -41,13 +41,13 @@ THEN
     BasisStationsParameter.wFehlerNummer :=  Glastransport.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
-  
+
   IF ( Kippen.bpFehler ) THEN
     Kippen.bpPositionieren := FALSE;
     BasisStationsParameter.wFehlerNummer :=  Kippen.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
-  
+
   IF ( Wandverstellung.bpFehler ) THEN
     Wandverstellung.bpStartePositionierung := FALSE;
     BasisStationsParameter.wFehlerNummer :=  Wandverstellung.wpFehlerNr;
@@ -132,7 +132,7 @@ THEN
       *)
       IF Wandverstellung.bpDone THEN
         Wandverstellung.bpStartePositionierung := FALSE;
-        steplAktion := STEP_40_E;   
+        steplAktion := STEP_40_E;
       END_IF
 
     // EINTRANSPORT ==============================

@@ -22,7 +22,7 @@ END_VAR
 IF ( blErsterZyklus ) THEN
 
   M_AufrufeZuweisungen();
-  
+
   // Fehlerinformationen zuweisen
   FOR wlIndex := cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR DO
     IF __ISVALIDREF(starrFaecherwagenBasisParameter[wlIndex].stMKs) THEN
@@ -30,36 +30,36 @@ IF ( blErsterZyklus ) THEN
     END_IF
   END_FOR
 
-  FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO  
+  FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
     IF __ISVALIDREF(starrStationBasisParameter[wlIndex].stMKs) THEN
-      starrStationBasisParameter[wlIndex].awFehlerInformationen[0] := starrStationBasisParameter[wlIndex].stMKs.stStationsNummern.NummerExtern;   
+      starrStationBasisParameter[wlIndex].awFehlerInformationen[0] := starrStationBasisParameter[wlIndex].stMKs.stStationsNummern.NummerExtern;
     END_IF
   END_FOR
-  
-  FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO  
+
+  FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
     IF __ISVALIDREF(starrShuttleBasisParameter[wlIndex].stMKs) THEN
-      starrShuttleBasisParameter[wlIndex].awFehlerInformationen[0] := starrShuttleBasisParameter[wlIndex].stMKs.stStationsNummern.NummerExtern;   
+      starrShuttleBasisParameter[wlIndex].awFehlerInformationen[0] := starrShuttleBasisParameter[wlIndex].stMKs.stStationsNummern.NummerExtern;
     END_IF
   END_FOR
-  
-  FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO  
+
+  FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
     IF __ISVALIDREF(starrTransfershuttleBasisParameter[wlIndex].stMKs) THEN
-      starrTransfershuttleBasisParameter[wlIndex].awFehlerInformationen[0] := starrTransfershuttleBasisParameter[wlIndex].stMKs.stStationsNummern.NummerExtern;   
+      starrTransfershuttleBasisParameter[wlIndex].awFehlerInformationen[0] := starrTransfershuttleBasisParameter[wlIndex].stMKs.stStationsNummern.NummerExtern;
     END_IF
   END_FOR
-  
-  FOR wlIndex := cERSTE_FREMDANLAGE_AUSLAUF TO cLETZTE_FREMDANLAGE_AUSLAUF DO  
+
+  FOR wlIndex := cERSTE_FREMDANLAGE_AUSLAUF TO cLETZTE_FREMDANLAGE_AUSLAUF DO
     IF __ISVALIDREF(starrFremdanlageAuslaufStationBasisParameter[wlIndex].stMKs) THEN
-      starrFremdanlageAuslaufStationBasisParameter[wlIndex].awFehlerInformationen[0] := starrFremdanlageAuslaufStationBasisParameter[wlIndex].stMKs.stStationsNummern.NummerExtern;   
+      starrFremdanlageAuslaufStationBasisParameter[wlIndex].awFehlerInformationen[0] := starrFremdanlageAuslaufStationBasisParameter[wlIndex].stMKs.stStationsNummern.NummerExtern;
     END_IF
   END_FOR
-  
-  FOR wlIndex := cERSTE_FREMDANLAGE_EINLAUF TO cLETZTE_FREMDANLAGE_EINLAUF DO  
+
+  FOR wlIndex := cERSTE_FREMDANLAGE_EINLAUF TO cLETZTE_FREMDANLAGE_EINLAUF DO
     IF __ISVALIDREF(starrFremdanlageEinlaufStationBasisParameter[wlIndex].stMKs) THEN
-      starrFremdanlageEinlaufStationBasisParameter[wlIndex].awFehlerInformationen[0] := starrFremdanlageEinlaufStationBasisParameter[wlIndex].stMKs.stStationsNummern.NummerExtern;   
+      starrFremdanlageEinlaufStationBasisParameter[wlIndex].awFehlerInformationen[0] := starrFremdanlageEinlaufStationBasisParameter[wlIndex].stMKs.stStationsNummern.NummerExtern;
     END_IF
   END_FOR
-  
+
   blErsterZyklus := FALSE;
 END_IF
 END_PROGRAM

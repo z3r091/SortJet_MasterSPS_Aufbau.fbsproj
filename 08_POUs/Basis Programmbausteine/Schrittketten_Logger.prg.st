@@ -20,22 +20,22 @@ VAR
 
 END_VAR
 sBezeichnung[0]   := ' - ';
-wiSchrittkette[0] := 0;     
+wiSchrittkette[0] := 0;
 
 sBezeichnung[1]   := ' - ';
-wiSchrittkette[1] := 0;    
+wiSchrittkette[1] := 0;
 
 sBezeichnung[2]   :=  ' - ';
-wiSchrittkette[2] :=  0;       
+wiSchrittkette[2] :=  0;
 
 sBezeichnung[3]   :=  ' - ';
-wiSchrittkette[3] :=  0;    
+wiSchrittkette[3] :=  0;
 
 sBezeichnung[4]   := ' - ';
 wiSchrittkette[4] := 0;
 
 sBezeichnung[5]   := ' - ';
-wiSchrittkette[5] := 0;    
+wiSchrittkette[5] := 0;
 
 sBezeichnung[6]   := ' - ';
 wiSchrittkette[6] := 0;

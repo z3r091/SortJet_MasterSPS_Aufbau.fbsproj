@@ -73,7 +73,7 @@ THEN
 
   // Starten der Zentralschmierung
   Zentralschmierung.bpStartSchmierungHand := ( dwlHandfunktionen.17 OR bgVisuTFSZentralschmierungStarten[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] );
-  
+
 
   (* Anmerkung [BREITE ABFRAGEN]:
      - Optional

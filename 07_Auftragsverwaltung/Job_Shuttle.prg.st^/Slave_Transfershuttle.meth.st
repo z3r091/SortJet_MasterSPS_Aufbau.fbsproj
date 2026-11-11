@@ -29,7 +29,7 @@ IF ( AuftragsdatenTransfershuttle[wStation].wAuftrag = eStation_Transportkopplun
         IF ( ( awlGlasSender[wStation - 1] >= cERSTES_INPUTSHUTTLE )
              AND ( awlGlasSender[wStation - 1] <= cLETZTES_INPUTSHUTTLE ) )
         THEN
-          AutomatikFehlerTransfershuttleSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler, cSPEICHER_EINLAUFSEITE);    
+          AutomatikFehlerTransfershuttleSetzen(starrTransferShuttleBasisParameter[wStation].stMKs.eaAutomatikkreis, abpFehler, cSPEICHER_EINLAUFSEITE);
         ELSIF ( ( awlGlasSender[wStation - 1] >= cERSTES_OUTPUTSHUTTLE )
                 AND ( awlGlasSender[wStation - 1] <= cLETZTES_OUTPUTSHUTTLE ) )
         THEN
@@ -61,7 +61,7 @@ ELSE
   (* Hinweis:
      - Reset der Schrittkette
   *)
-  IF ( TS_Transportkopplung[wStation].steplSchritt <> STEP_0_E ) THEN 
+  IF ( TS_Transportkopplung[wStation].steplSchritt <> STEP_0_E ) THEN
     TS_Transportkopplung[wStation](bpReset := TRUE);
   END_IF
 END_IF
@@ -93,7 +93,7 @@ ELSE
   (* Hinweis:
      - Reset der Schrittkette
   *)
-  IF ( TS_Querfahrt[wStation].steplSchritt <> STEP_0_E ) THEN 
+  IF ( TS_Querfahrt[wStation].steplSchritt <> STEP_0_E ) THEN
     TS_Querfahrt[wStation](bpReset := TRUE);
   END_IF
 END_IF

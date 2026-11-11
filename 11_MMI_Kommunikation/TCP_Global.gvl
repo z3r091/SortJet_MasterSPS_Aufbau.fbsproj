@@ -23,7 +23,7 @@ VAR_GLOBAL CONSTANT
   cMsg_ControlSystem : WORD := 16#0003;
   cMsg_IOSystem      : WORD := 16#0004;
   cMsg_Drives        : WORD := 16#0005;
-  cMsg_MsgDirect     : WORD := 16#0006;  
+  cMsg_MsgDirect     : WORD := 16#0006;
   cMsg_MsgDirectAck  : WORD := 16#0007;
 END_VAR
 END_NAMESPACE

@@ -18,7 +18,7 @@ FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cANZAHL_AUTOMATIKKREISE DO
 
   IF eaAutomatikkreise[wlIndex] <> 0 THEN
     abpFehler[eaAutomatikkreise[wlIndex]] := TRUE;
-  END_IF 
+  END_IF
 
 END_FOR
 

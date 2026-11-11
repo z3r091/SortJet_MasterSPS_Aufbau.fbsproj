@@ -7,14 +7,14 @@
 *)
 FUNCTION_BLOCK Station_Messkopplung
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
-  
+
   // WORD
   wStation               : WORD;
   wWand                  : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
@@ -105,6 +105,6 @@ IF bpReset THEN
   bpReset := FALSE;
   bpDone := FALSE;
   starrStationBasisParameter[wStation].bMesskopplung[wWand] := FALSE;
-  steplSchritt := STEP_0_E;    
+  steplSchritt := STEP_0_E;
 END_IF
 END_FUNCTION_BLOCK

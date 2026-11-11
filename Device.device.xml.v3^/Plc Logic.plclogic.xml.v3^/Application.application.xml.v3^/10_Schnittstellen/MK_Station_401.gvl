@@ -52,6 +52,6 @@ VAR_GLOBAL
       eSystemcheckZyklus                    := eSystemcheckZyklus_Undefiniert                        // In welchem Zyklus des Systemchecks die Station geprueft wird
       // astShuttleAnhaltenQuellen
    );
- 
+
 END_VAR
 END_NAMESPACE

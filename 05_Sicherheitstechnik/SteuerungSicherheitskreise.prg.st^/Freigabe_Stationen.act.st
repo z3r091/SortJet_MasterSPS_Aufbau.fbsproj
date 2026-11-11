@@ -9,7 +9,7 @@ ACTION Freigabe_Stationen
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: FREIGABEN SHUTTLE [SICHERHEITSKREIS]
 //-------------------------------------------------------------------------------------------------
-// Freigaben Shuttle 
+// Freigaben Shuttle
 FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
   ablSicherheitskreisFreigabeShuttle[wlIndex] := NOT starrShuttleBasisParameter[wlIndex].bAuftragAktiv
                                                  OR starrShuttleBasisParameter[wlIndex].bFehler;
@@ -80,7 +80,7 @@ END_FOR
 // Freigabe für den Sicherheitskreis anhand der Stationskonfig setzen
 FOR wlIndexSK := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO
   Sicherheitskreis[wlIndexSK].bpFreigabeStationen := TRUE;
-  
+
   // Check Station
   FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
     IF checkSafetyCircuits(starrStationBasisParameter[wlIndex], wlIndexSK ) THEN // Prüfen ob die Station zu dem Sicherheitskreis gehört
@@ -89,7 +89,7 @@ FOR wlIndexSK := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO
         // Durchgang in dem Sicherheitskreis
         IF ( apgMKDurchgang[wlIndexDurchgang].eZuBlockierenderSK = wlIndexSK ) THEN
           // Es wird auf Freigabe STation und Öffnen Blockieren geschaut
-          IF NOT ablSicherheitskreisFreigabeStation[wlIndex] 
+          IF NOT ablSicherheitskreisFreigabeStation[wlIndex]
              OR starrStationBasisParameter[wlIndex].bSKOeffnenBlockierenDurchgang // z.B. Sensor belegt bei einer Station mit Durchgang
           THEN
             Sicherheitskreis[wlIndexSK].bpFreigabeStationen := FALSE;
@@ -127,6 +127,6 @@ FOR wlIndexSK := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO
       END_IF
     END_IF
   END_FOR
-  
+
 END_FOR
 END_ACTION

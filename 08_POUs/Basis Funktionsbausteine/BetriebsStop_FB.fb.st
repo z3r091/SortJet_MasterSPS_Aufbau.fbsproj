@@ -22,7 +22,7 @@ VAR
   // WORD
   wlIndex                    : WORD;
   wMeldungsNrInkrementieren  : WORD := 0;
-  
+
 END_VAR
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: BETRIEBSSTATUS

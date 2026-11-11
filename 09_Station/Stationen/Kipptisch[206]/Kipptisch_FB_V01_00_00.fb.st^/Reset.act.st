@@ -21,8 +21,8 @@ IF( blBetriebsartReset )THEN
       blStartePositionSenkrecht  := FALSE;
       Kippen.bpPositionieren := FALSE;
 
-      BasisStationsParameter.eStatusAuftrag := eKeinStatus;   
-   
+      BasisStationsParameter.eStatusAuftrag := eKeinStatus;
+
       BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberEinlauf  := FALSE;
       BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberAuslauf  := FALSE;
       BasisStationsParameter.bStationBelegt[cWAND_1]                               := FALSE;
@@ -54,7 +54,7 @@ IF( blBetriebsartReset )THEN
          - Warten bis die Antriebe ihren Reset durchgefuehrt haben
       *)
       IF (  Kippen.bpDone
-           AND Glastransport.bpDone 
+           AND Glastransport.bpDone
            AND Querfahrt.bpDone )
       THEN
         Glastransport.bpReset := FALSE;

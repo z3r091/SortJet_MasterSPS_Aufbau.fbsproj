@@ -7,13 +7,13 @@
 *)
 FUNCTION_BLOCK TS_Transportkopplung
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
-  
+
   // WORD
   wStation               : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 

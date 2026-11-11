@@ -216,7 +216,7 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
       bgInbetriebnahmeShuttelAuftrag := TRUE;
 
     END_IF
-      
+
   ELSIF ( bgShuttleAuswahl_153 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )
@@ -246,7 +246,7 @@ IF ( bgButtonShuttleAuftragSetzen ) THEN
       bgInbetriebnahmeShuttelAuftrag := TRUE;
 
     END_IF
-      
+
   ELSIF ( bgShuttleAuswahl_155 ) THEN
 
     IF (( bgInbetriebnahmeShuttleEintransportAuftrag AND bgInbetriebnahmeShuttleAustransportAuftrag  )

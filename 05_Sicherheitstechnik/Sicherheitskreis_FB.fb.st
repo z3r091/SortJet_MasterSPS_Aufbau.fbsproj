@@ -23,10 +23,10 @@ VAR_OUTPUT
   bpFreigabeZumBetretenDesSicherheitskreises : BOOL;
   bpFreigabeSafetyAusloesen                  : BOOL;
   bpFreigabeTuerenOeffnen                    : BOOL;
-  
+
   // TIMER
   tonlSKFreigabe                             : TON;
-  
+
 END_VAR
 VAR
 
@@ -34,7 +34,7 @@ VAR
   rtlSKGeschlossen        : R_TRIG;
   ftlAnforderung          : F_TRIG;
 
-  // TIMER 
+  // TIMER
   tonlStationenFreigabeSK : TON;
   tonlSKGeschlossen       : TON;
 

@@ -6,7 +6,7 @@
 }
 *)
 TYPE Parameter_Schicherheitskreise :
-  STRUCT    
+  STRUCT
     eSicherheitskreis : Sicherheitskreis_EN;                                                          // Nummer des Sicherheitskreises
     eaAutomatikkreis   : ARRAY[cERSTER_AUTOMATIKKREIS..cANZAHL_AUTOMATIKKREISE] OF Automatikkreis_EN; // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
     eaTueren          : ARRAY[cERSTE_TUER..cANZAHL_TUEREN] OF Tueren_EN;                              // Konfig welche Türen zu dem Sicherheitskreis gehören

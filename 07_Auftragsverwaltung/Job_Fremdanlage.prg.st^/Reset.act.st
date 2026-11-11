@@ -26,7 +26,7 @@ FOR wlIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
         starrFremdanlageAuslaufStationBasisParameter[wlIndex].bReset := NOT starrFremdanlageAuslaufStationBasisParameter[wlIndex].stMKs.bDeaktivieren;
       END_IF
     END_FOR
-  
+
     // Schnittstelle Einlauf Reset
     FOR wlIndex := cERSTE_FREMDANLAGE_EINLAUF TO cLETZTE_FREMDANLAGE_EINLAUF DO
       IF StationInAutomatikkreis(starrFremdanlageEinlaufStationBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wlIndexReset) THEN

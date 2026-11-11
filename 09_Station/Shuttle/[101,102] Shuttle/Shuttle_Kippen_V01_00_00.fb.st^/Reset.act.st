@@ -19,14 +19,14 @@ IF ( bpReset ) THEN
       bpPositionieren := FALSE;
 
       IF ( bpKippenSchuetz ) THEN
-        bpFehler              := FALSE;  
+        bpFehler              := FALSE;
         out_bKippenAbSetzen   := FALSE;
         out_bKippenAufSetzen  := FALSE;
-  
-        wpFehlerNr := cMELDUNG_NULL;  
-         
+
+        wpFehlerNr := cMELDUNG_NULL;
+
         steplReset := STEP_1000_E;
-       
+
       ELSE
         Antrieb.wpBetriebsart:= KEINE_FUNKTION;
 

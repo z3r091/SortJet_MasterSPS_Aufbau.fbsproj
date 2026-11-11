@@ -10,6 +10,6 @@ TYPE Stations_Optionen_Anlegetisch_ST :
     bIstAnlegestation                                             : BOOL; // Station an der Scheiben angelegt werden [Anlegetisch, Anlegewand]; im Systemcheck-Verbund nur mit genau einer Scheibe
     bAnlegetischMitEintransportVorgaenger                         : BOOL; // VSG: Station entscheidet selbst zwischen Eintransport vom Vorgaenger und Anlegen
     bAnschlagAutomatischAusfahren                                 : BOOL; // Anschlaege beim Anlegen automatisch ausfahren (Vorgabe, am Taster umschaltbar)
-    
+
   END_STRUCT
 END_TYPE

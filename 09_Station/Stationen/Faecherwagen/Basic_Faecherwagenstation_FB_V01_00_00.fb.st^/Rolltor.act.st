@@ -29,7 +29,7 @@ IF blRolltorAuf THEN
 
     // ROLLTOR HOCH  ============================
     STEP_5_E:
-      out_bRolltorAuf := TRUE; 
+      out_bRolltorAuf := TRUE;
       out_bRolltorAb  := FALSE;
       tonlZeitHochfahren(IN := TRUE, PT := t#60s);
       steplRolltorAuf := STEP_10_E;

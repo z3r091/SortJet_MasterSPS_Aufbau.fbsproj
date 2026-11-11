@@ -7,13 +7,13 @@
 *)
 FUNCTION_BLOCK TS_Eintransport
 VAR_INPUT
-    
+
   // BOOLEAN
   bpReset                : BOOL;
-  
+
   // WORD
   wStation               : WORD;
-  
+
   // STRUKTUR
   Auftragsdaten          : Auftragsdaten_ST;
 
@@ -28,7 +28,7 @@ END_VAR
 VAR
   // BOOLEAN
   blStationQuittiertScheiben : BOOL;
-  
+
   // WORD
   wlEintransportstation  : WORD;
 
@@ -223,7 +223,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
       (* Anmerkung:
          - Gueltige Anzahl von Scheiben wurden quittiert
       *)
-      IF ( ilScheibenZuQuittieren = 0 ) THEN  
+      IF ( ilScheibenZuQuittieren = 0 ) THEN
         starrTransfershuttleBasisParameter[wStation].bEintransport[cWAND_1] := FALSE;
         steplSchritt := STEP_1000_E;
 
@@ -255,11 +255,11 @@ IF ( Auftragsdaten.wAuftrag = eStation_Eintransport ) THEN
                   starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerIntern,
                   AutomatikkreisBestimmen(starrTransfershuttleBasisParameter[wStation].stMKs.stStationsNummern.NummerSPS),
                   wpgFehlerdaten );
-        
+
         starrTransfershuttleBasisParameter[wStation].bEintransport[cWAND_1] := FALSE;
         steplSchritt := STEP_900_E;
       END_IF
-  
+
     // EINTRANSPORT  ===========================================
     STEP_900_E:
       (* Hinweis:

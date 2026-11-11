@@ -23,7 +23,7 @@ END_FOR
 // Station 2 – je nach Drehrichtung
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   IF aStation2Wand[wlIndex] THEN
-        
+
     IF NOT bgVisu2StationenDrehrichtungWechsel THEN
       // normale Richtung
       bgVISUGlastransportVor[iGewaehlteStation2, wlIndex]     := bgVisu2StationenVor;

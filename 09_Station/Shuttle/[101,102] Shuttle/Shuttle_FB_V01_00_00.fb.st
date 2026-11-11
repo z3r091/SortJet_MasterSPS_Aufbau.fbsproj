@@ -17,7 +17,7 @@ VAR_INPUT
   // BOOLEAN
   bpShuttleAnhalten                      : BOOL; // HINWEIS: Nehmen der Verfahrfreigabe wenn bei der Folge- bzw. Nachfolgestation der Einlauf- / Auslauf- Sensor belegt wurde
   bpStarteFaecherwagensuche              : BOOL; // Der Fächerwagen kann mittels Sensor gesucht werden um die Fachpositionen zu bestimmen
-    
+
   // WORD
   rpMinPosSwEsEingrenzung                : REAL;
   rpMaxPosSwEsEingrenzung                : REAL;
@@ -69,8 +69,8 @@ VAR
   rlLetztePosition  : REAL;
 
   // TIMER
-  tonlMaxWarteAufResetErfolgreich       : TON; 
-  tonlUpdateTimer                       : TON; // Verfahrlogik 
+  tonlMaxWarteAufResetErfolgreich       : TON;
+  tonlUpdateTimer                       : TON; // Verfahrlogik
   tonWaitTimerAnsteuerungResourcen      : ARRAY[cWAND_1..cANZAHL_WAENDE] OF TON;
   tonWaitTimerAnsteuerungResourcenDone  : ARRAY[cWAND_1..cANZAHL_WAENDE] OF TON;
 
@@ -99,7 +99,7 @@ VAR
   steplFaecherwagensuche           : STEPS_TE;
 
   // BAUSTEINE
-  Querfahrt                       : Querfahrt_Shuttle_FB_V01_00_00; 
+  Querfahrt                       : Querfahrt_Shuttle_FB_V01_00_00;
   Zentralschmierung               : Zentralschmierung_DLS_4xxi_FB_V01_00_00;
   Glastransport                   : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Shuttle_Glastransport_FB_V01_00_00;
   Geblaese                        : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Geblaese_Schuetz_FB_V01_00_00;
@@ -245,19 +245,19 @@ IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
   FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
     BasisStationsParameter.bEintransportAbgeschlossen[wlIndex] := TRUE;
     BasisStationsParameter.bAustransportAbgeschlossen[wlIndex] := TRUE;
-    
+
     IF ( BasisStationsParameter.bCheck ) THEN
-      
+
       IF BasisStationsParameter.stMKs.stStationsAufbau.bGlastransport[wlIndex] THEN
         rSps2MmiMessungScheibenlaenge   := 0;
         wSps2MmiMessungStationNummer    := BasisStationsParameter.stMKs.stStationsNummern.NummerIntern;
         wSps2MmiMessungSlotNummer       := wlIndex;
         iSps2MmiMessungScheibenanzahl   := 0;
-        
+
         MsgToMmi( auftragsnr_w := SB0_SPS_SETSHEETSONSTATION );
       END_IF
-    END_IF    
-    
+    END_IF
+
   END_FOR
 
   BasisStationsParameter.bIstReferenziert       := TRUE;
@@ -284,7 +284,7 @@ SystemCheck();
    - Automatik-Aktionen
 *)
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
-  Eintransport[wlIndex]( BasisStationsParameter := BasisStationsParameter, 
+  Eintransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
                          wWand := wlIndex,
                          bpGeblaeseAktiv := Geblaese[wlIndex].bpDone,
                          bpAutomatikAktiv := BasisStationsParameter.bAutomatik,
@@ -297,7 +297,7 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                          bpGreiferAktiv := BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex],
                          Greifer := Greifer[wlIndex]
                        );
-  Austransport[wlIndex]( BasisStationsParameter := BasisStationsParameter, 
+  Austransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
                          wWand := wlIndex,
                          bpGeblaeseAktiv := Geblaese[wlIndex].bpDone,
                          bpAutomatikAktiv := BasisStationsParameter.bAutomatik,
@@ -310,8 +310,8 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                          bpGreiferAktiv := BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex],
                          Greifer := Greifer[wlIndex]
                        );
-                         
-  Durchtransport[wlIndex]( BasisStationsParameter := BasisStationsParameter, 
+
+  Durchtransport[wlIndex]( BasisStationsParameter := BasisStationsParameter,
                            wWand := wlIndex,
                            bpGeblaeseAktiv := Geblaese[wlIndex].bpDone,
                            bpAutomatikAktiv := BasisStationsParameter.bAutomatik,

@@ -14,7 +14,7 @@ AuftragsSpeicher( bpReset := TRUE );
 blUebergabeGlas := FALSE;
 wpAuftragsTyp := 0;
 steplUebergabeGlas := STEP_0_E;
-  
+
 BasisStationsParameter.bCheckMitVorgaenger[cWAND_1] := FALSE;
 BasisStationsParameter.bCheckMitNachfolger[cWAND_1] := FALSE;
 BasisStationsParameter.bFehler                      := FALSE;
