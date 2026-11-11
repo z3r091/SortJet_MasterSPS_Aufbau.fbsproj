@@ -9,8 +9,7 @@ __V3_CONTENT__
 <Single xml:space="preserve" Type="{7bb2e02b-39dd-46f5-b184-3df239f2f856}" Method="IArchivable">
 	<Single Name="Interface" Type="{a9ed5b7e-75c5-4651-af16-d2c27e98cb94}" Method="IArchivable">
 		<Single Name="TextDocument" Type="{f3878285-8e4f-490b-bb1b-9acbb7eb04db}" Method="IArchivable">
-			<Single Name="TextBlobForSerialisation" Type="string">{attribute 'qualified_only'}
-VAR_GLOBAL
+			<Single Name="TextBlobForSerialisation" Type="string">VAR_GLOBAL
 //EV_ToPLC_HarpRack : 
 EV_ToPLC_bUnterwagen_Station301_Vorhanden : BOOL;
 //EV_ToPLC_HarpRack : 
@@ -47,7 +46,7 @@ END_VAR
 		</Single>
 	</Single>
 	<Single Name="DeviceObject" Type="{5861cd6f-95ff-4614-b597-9845cc9988e7}" Method="IArchivable">
-		<Single Name="UniqueIdGenerator" Type="string">5579</Single>
+		<Single Name="UniqueIdGenerator" Type="string">5611</Single>
 		<Null Name="TypeList" />
 		<Single Name="NeedsBusCycle" Type="bool">False</Single>
 		<Single Name="Id" Type="{05ee0b98-6639-4276-bc32-b75578b819ef}" Method="IArchivable">
@@ -115,13 +114,13 @@ END_VAR
 								<Single Name="Id" Type="uint">1</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5548</Single>
-									<Single Name="EditorPositionId" Type="long">5549</Single>
+									<Single Name="PositionId" Type="long">5580</Single>
+									<Single Name="EditorPositionId" Type="long">5581</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5548</Single>
+													<Single Name="Id" Type="long">5580</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bUnterwagen_Station301_Vorhanden</Single>
 												</Single>
@@ -140,13 +139,13 @@ END_VAR
 								<Single Name="Id" Type="uint">2</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5550</Single>
-									<Single Name="EditorPositionId" Type="long">5551</Single>
+									<Single Name="PositionId" Type="long">5582</Single>
+									<Single Name="EditorPositionId" Type="long">5583</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5550</Single>
+													<Single Name="Id" Type="long">5582</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bUnterwagen_Station302_Vorhanden</Single>
 												</Single>
@@ -165,13 +164,13 @@ END_VAR
 								<Single Name="Id" Type="uint">3</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5552</Single>
-									<Single Name="EditorPositionId" Type="long">5553</Single>
+									<Single Name="PositionId" Type="long">5584</Single>
+									<Single Name="EditorPositionId" Type="long">5585</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5552</Single>
+													<Single Name="Id" Type="long">5584</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bUnterwagen_Station303_Vorhanden</Single>
 												</Single>
@@ -190,13 +189,13 @@ END_VAR
 								<Single Name="Id" Type="uint">4</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5554</Single>
-									<Single Name="EditorPositionId" Type="long">5555</Single>
+									<Single Name="PositionId" Type="long">5586</Single>
+									<Single Name="EditorPositionId" Type="long">5587</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5554</Single>
+													<Single Name="Id" Type="long">5586</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bUnterwagen_Station304_Vorhanden</Single>
 												</Single>
@@ -215,13 +214,13 @@ END_VAR
 								<Single Name="Id" Type="uint">5</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5556</Single>
-									<Single Name="EditorPositionId" Type="long">5557</Single>
+									<Single Name="PositionId" Type="long">5588</Single>
+									<Single Name="EditorPositionId" Type="long">5589</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5556</Single>
+													<Single Name="Id" Type="long">5588</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bUnterwagen_Station305_Vorhanden</Single>
 												</Single>
@@ -240,13 +239,13 @@ END_VAR
 								<Single Name="Id" Type="uint">6</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5558</Single>
-									<Single Name="EditorPositionId" Type="long">5559</Single>
+									<Single Name="PositionId" Type="long">5590</Single>
+									<Single Name="EditorPositionId" Type="long">5591</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5558</Single>
+													<Single Name="Id" Type="long">5590</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bRolltor_Station301_Geschlossen</Single>
 												</Single>
@@ -265,13 +264,13 @@ END_VAR
 								<Single Name="Id" Type="uint">7</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5560</Single>
-									<Single Name="EditorPositionId" Type="long">5561</Single>
+									<Single Name="PositionId" Type="long">5592</Single>
+									<Single Name="EditorPositionId" Type="long">5593</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5560</Single>
+													<Single Name="Id" Type="long">5592</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bRolltor_Station302_Geschlossen</Single>
 												</Single>
@@ -290,13 +289,13 @@ END_VAR
 								<Single Name="Id" Type="uint">8</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5562</Single>
-									<Single Name="EditorPositionId" Type="long">5563</Single>
+									<Single Name="PositionId" Type="long">5594</Single>
+									<Single Name="EditorPositionId" Type="long">5595</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5562</Single>
+													<Single Name="Id" Type="long">5594</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bRolltor_Station303_Geschlossen</Single>
 												</Single>
@@ -315,13 +314,13 @@ END_VAR
 								<Single Name="Id" Type="uint">9</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5564</Single>
-									<Single Name="EditorPositionId" Type="long">5565</Single>
+									<Single Name="PositionId" Type="long">5596</Single>
+									<Single Name="EditorPositionId" Type="long">5597</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5564</Single>
+													<Single Name="Id" Type="long">5596</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bRolltor_Station304_Geschlossen</Single>
 												</Single>
@@ -340,13 +339,13 @@ END_VAR
 								<Single Name="Id" Type="uint">10</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5566</Single>
-									<Single Name="EditorPositionId" Type="long">5567</Single>
+									<Single Name="PositionId" Type="long">5598</Single>
+									<Single Name="EditorPositionId" Type="long">5599</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5566</Single>
+													<Single Name="Id" Type="long">5598</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bRolltor_Station305_Geschlossen</Single>
 												</Single>
@@ -365,13 +364,13 @@ END_VAR
 								<Single Name="Id" Type="uint">11</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5568</Single>
-									<Single Name="EditorPositionId" Type="long">5569</Single>
+									<Single Name="PositionId" Type="long">5600</Single>
+									<Single Name="EditorPositionId" Type="long">5601</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5568</Single>
+													<Single Name="Id" Type="long">5600</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bNothalt_Station301_OK</Single>
 												</Single>
@@ -390,13 +389,13 @@ END_VAR
 								<Single Name="Id" Type="uint">12</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5570</Single>
-									<Single Name="EditorPositionId" Type="long">5571</Single>
+									<Single Name="PositionId" Type="long">5602</Single>
+									<Single Name="EditorPositionId" Type="long">5603</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5570</Single>
+													<Single Name="Id" Type="long">5602</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bNothalt_Station302_OK</Single>
 												</Single>
@@ -415,13 +414,13 @@ END_VAR
 								<Single Name="Id" Type="uint">13</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5572</Single>
-									<Single Name="EditorPositionId" Type="long">5573</Single>
+									<Single Name="PositionId" Type="long">5604</Single>
+									<Single Name="EditorPositionId" Type="long">5605</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5572</Single>
+													<Single Name="Id" Type="long">5604</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bNothalt_Station303_OK</Single>
 												</Single>
@@ -440,13 +439,13 @@ END_VAR
 								<Single Name="Id" Type="uint">14</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5574</Single>
-									<Single Name="EditorPositionId" Type="long">5575</Single>
+									<Single Name="PositionId" Type="long">5606</Single>
+									<Single Name="EditorPositionId" Type="long">5607</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5574</Single>
+													<Single Name="Id" Type="long">5606</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bNothalt_Station304_OK</Single>
 												</Single>
@@ -465,13 +464,13 @@ END_VAR
 								<Single Name="Id" Type="uint">15</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5576</Single>
-									<Single Name="EditorPositionId" Type="long">5577</Single>
+									<Single Name="PositionId" Type="long">5608</Single>
+									<Single Name="EditorPositionId" Type="long">5609</Single>
 									<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Id" Type="long">5576</Single>
+													<Single Name="Id" Type="long">5608</Single>
 													<Single Name="CreateVariable" Type="bool">True</Single>
 													<Single Name="Variable" Type="string">EV_ToPLC_bNothalt_Station305_OK</Single>
 												</Single>
@@ -490,8 +489,8 @@ END_VAR
 								<Single Name="Id" Type="uint">16</Single>
 								<Single Name="ChannelType" Type="{abf9b454-3972-4b82-88a2-feef15a02f10}">Output</Single>
 								<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
-									<Single Name="PositionId" Type="long">5578</Single>
-									<Single Name="EditorPositionId" Type="long">5579</Single>
+									<Single Name="PositionId" Type="long">5610</Single>
+									<Single Name="EditorPositionId" Type="long">5611</Single>
 									<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 										<Single Name="Default" Type="string">bit15</Single>
 									</Single>
@@ -739,5 +738,5 @@ END_VAR
 	</Single>
 	<Single Name="LogicalLanguageModelPositionId" Type="long">-1</Single>
 	<Single Name="UseCombinedType" Type="bool">False</Single>
-	<Single Name="QualifiedOnly" Type="bool">True</Single>
+	<Single Name="QualifiedOnly" Type="bool">False</Single>
 </Single>
