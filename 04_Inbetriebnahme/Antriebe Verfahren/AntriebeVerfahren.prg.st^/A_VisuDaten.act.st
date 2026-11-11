@@ -216,6 +216,32 @@ FOR wlNcZeile := 23 TO 29 DO
 END_FOR
 
 //-------------------------------------------------------------------------------------------------
+// AUSWAHLFENSTER DER ACHSEN (nur Achsen mit Namen, in ID-Reihenfolge)
+//-------------------------------------------------------------------------------------------------
+IF ( blAuswahlOffen ) THEN
+  wlAuswahlAnzahl := 0;
+  FOR wlNcIndex := 0 TO 65 DO
+    IF ( pgAntriebe[wlNcIndex].slAchsname <> '' ) THEN
+      awlAuswahlId[wlAuswahlAnzahl] := wlNcIndex;
+      asAuswahl[wlAuswahlAnzahl]    := CONCAT( CONCAT( WORD_TO_STRING( wlNcIndex ), '   ' ), pgAntriebe[wlNcIndex].slAchsname );
+      IF ( wlNcIndex = wgAuswahlAchsID ) THEN
+        adwAuswahl[wlAuswahlAnzahl] := VISU_UEBERSICHT.cFARBE_BLAU;
+      ELSIF ( pgAntriebe[wlNcIndex].bpFehler ) THEN
+        adwAuswahl[wlAuswahlAnzahl] := VISU_UEBERSICHT.cFARBE_ROT;
+      ELSIF ( NOT pgAntriebe[wlNcIndex].bpIstReferenziert ) THEN
+        adwAuswahl[wlAuswahlAnzahl] := VISU_UEBERSICHT.cFARBE_ORANGE;
+      ELSE
+        adwAuswahl[wlAuswahlAnzahl] := VISU_UEBERSICHT.cFARBE_GRAU;
+      END_IF
+      wlAuswahlAnzahl := wlAuswahlAnzahl + 1;
+    END_IF
+  END_FOR
+  FOR wlNcIndex := 0 TO 65 DO
+    abAuswahlFrei[wlNcIndex] := ( wlNcIndex >= wlAuswahlAnzahl );
+  END_FOR
+END_IF
+
+//-------------------------------------------------------------------------------------------------
 // OVERRIDE-LEISTE
 //-------------------------------------------------------------------------------------------------
 sOverride := VisuAv_Zahl( rWert := rpOverrideVisu, uiNachkomma := 0, sEinheit := ' %' );

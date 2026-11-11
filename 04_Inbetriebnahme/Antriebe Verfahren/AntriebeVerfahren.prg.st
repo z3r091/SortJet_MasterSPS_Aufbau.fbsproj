@@ -24,6 +24,9 @@ VAR_INPUT
   bpAbsolutSetzen  : BOOL; // Taster: Absolutwert setzen starten (laeuft bis Done, Stopp oder Reset)
   bpAchseVor       : BOOL; // Taster: naechste vorhandene Achse
   bpAchseZurueck   : BOOL; // Taster: vorherige vorhandene Achse
+  bpAuswahlOeffnen    : BOOL; // Taster: Auswahlfenster der Achsen oeffnen / schliessen
+  bpAuswahlSchliessen : BOOL; // Taster: Tippen neben die Liste schliesst das Auswahlfenster
+  abAuswahlTaster     : ARRAY[0..65] OF BOOL; // Taster je Listenplatz im Auswahlfenster
 
   bpRestwegPositiv         : BOOL;
   bpRestwegNegativ         : BOOL;
@@ -66,6 +69,7 @@ VAR
   rtlAchseZurueck   : R_TRIG;
   rtlOverrideMinus  : R_TRIG;
   rtlOverridePlus   : R_TRIG;
+  rtlAuswahlOeffnen : R_TRIG;
   ftlVisuAktiv      : F_TRIG;
 
   ftlHandPlusMinus  : f_trig;
@@ -105,6 +109,14 @@ VAR
   asWert   : ARRAY[1..29] OF STRING(80);
   adwFarbe : ARRAY[1..29] OF DWORD;
   asNc     : ARRAY[0..15] OF STRING(255);
+
+  // Auswahlfenster der Achsen: Listenplatz -> Achs-ID, nur Achsen mit Namen
+  blAuswahlOffen : BOOL;
+  awlAuswahlId   : ARRAY[0..65] OF WORD;
+  asAuswahl      : ARRAY[0..65] OF STRING(60);
+  adwAuswahl     : ARRAY[0..65] OF DWORD;
+  abAuswahlFrei  : ARRAY[0..65] OF BOOL; // Listenplatz ohne Achse (ausgeblendet)
+  wlAuswahlAnzahl : WORD;
 
   // Override-Leiste
   sOverride        : STRING(40);
@@ -195,6 +207,9 @@ VAR
   sL_Uebernehmen  : STRING(30) := 'übernehmen';
   sL_Minus        : STRING(10) := '-';
   sL_Plus         : STRING(10) := '+';
+  sL_Liste        : STRING(20) := 'Liste';
+  sL_AuswahlTitel : STRING(80) := 'Achse wählen   (blau = gewählt, rot = Fehler, orange = nicht referenziert)';
+  sL_Leer         : STRING(2)  := '';
 END_VAR
 
 rtlStartAbsolut( CLK := bpStartAbsolut);
@@ -242,6 +257,33 @@ ELSIF ( rtlAchseZurueck.Q ) THEN
     END_IF
   END_FOR
 END_IF
+
+(* Hinweis:
+   - Auswahlfenster: ein Tipp auf einen Listenplatz waehlt die Achse und schliesst das Fenster,
+     ein Tipp neben die Liste schliesst es ohne Auswahl
+   - Die Taster werden hier zurueckgesetzt, weil das Element beim Schliessen verschwindet
+*)
+rtlAuswahlOeffnen( CLK := bpAuswahlOeffnen );
+IF ( rtlAuswahlOeffnen.Q ) THEN
+  blAuswahlOffen := NOT blAuswahlOffen;
+END_IF
+
+IF ( blAuswahlOffen ) THEN
+  FOR i := 0 TO 65 DO
+    IF ( abAuswahlTaster[i] AND ( UINT_TO_WORD( i ) < wlAuswahlAnzahl ) ) THEN
+      wgAuswahlAchsID := awlAuswahlId[i];
+      blAuswahlOffen  := FALSE;
+    END_IF
+  END_FOR
+  IF ( bpAuswahlSchliessen ) THEN
+    blAuswahlOffen := FALSE;
+  END_IF
+END_IF
+
+FOR i := 0 TO 65 DO
+  abAuswahlTaster[i] := FALSE;
+END_FOR
+bpAuswahlSchliessen := FALSE;
 
 IF ( wgAuswahlAchsID > 65 ) THEN
   wgAuswahlAchsID := 65;
