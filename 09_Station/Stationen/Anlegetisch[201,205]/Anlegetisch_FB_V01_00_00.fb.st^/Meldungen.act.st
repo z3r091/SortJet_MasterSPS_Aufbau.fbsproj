@@ -58,7 +58,7 @@ WatchIo( NOT toflDruckluftOK.Q,                                                 
 
 // Messache
 WatchIo( NOT Messachse.Antrieb.bpLS_150F02_230V,                                          wlWatchIONachrichtenNummer + 4 );
-WatchIo( NOT Glastransport.Antrieb.bpHaupschalter400VEin AND bgEtherCatOK,                wlWatchIONachrichtenNummer + 5 );
+WatchIo( NOT Messachse.Antrieb.bpHaupschalter400VEin AND bgEtherCatOK,                    wlWatchIONachrichtenNummer + 5 );
 WatchIo( NOT Messachse.bpInReferenz  AND NOT blBetriebsartReferenz,                       wlWatchIONachrichtenNummer + 6 );
 WatchIo( Messachse.Antrieb.bpMaxSchalterBelegt OR Messachse.Antrieb.bpMinSchalterBelegt,  wlWatchIONachrichtenNummer + 7 );
 WatchIo( Messachse.bpReferenz AND NOT Messachse.bpDone,                                   wlWatchIONachrichtenNummer + 8 );

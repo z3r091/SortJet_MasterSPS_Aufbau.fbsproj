@@ -44,7 +44,7 @@ apgMKDurchgang : ARRAY [cERSTER_DURCHGANG..cANZAHL_DURCHGANGE] OF Parameter_Durc
    eDurchgang              := eDurchgang_1,        // Nummer des Durchgangs
    eZuBlockierenderSK      := eSicherheitskreis_3, // Sicherheitskreis, der beim Oeffnen blockiert wird
    bBeweglicheAbschrankung := FALSE,               // bewegliche Abschrankung am Durchgang vorhanden
-   wMeldungsNummer         := 0                    // Basis-Meldungsnummer (WatchIO)
+   wMeldungsNummer         := 320                  // Basis-Meldungsnummer (WatchIO)
   )];
 
 END_VAR

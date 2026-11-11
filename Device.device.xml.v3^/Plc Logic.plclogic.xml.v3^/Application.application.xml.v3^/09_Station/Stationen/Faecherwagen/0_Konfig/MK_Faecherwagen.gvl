@@ -11,7 +11,7 @@ VAR_GLOBAL
   apgMKFaecherwagenstation : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF Parameter_Station :=[
     (
      stStationsNummern         := (  NummerIntern    :=   301,                                 // Stationsnummer fuer das MMI und die Stationsangabe der Meldungen
-                                     NummerExtern    := 13301,                                 // Stationsnummer fuer Bedienermeldungen
+                                     NummerExtern    :=  1301,                                 // Stationsnummer fuer Bedienermeldungen
                                      NummerSPS       :=   301 ),                               // Stationsnummer SPS-intern (Indizes)
       bDeaktivieren             := FALSE,                                                      // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer           := 1400,                                                       // Basis-Meldungsnummer (WatchIO)
@@ -62,7 +62,7 @@ VAR_GLOBAL
     ),
     (
      stStationsNummern         := (  NummerIntern    :=   302,                                 // Stationsnummer fuer das MMI und die Stationsangabe der Meldungen
-                                     NummerExtern    := 13302,                                 // Stationsnummer fuer Bedienermeldungen
+                                     NummerExtern    :=  1302,                                 // Stationsnummer fuer Bedienermeldungen
                                      NummerSPS       :=   302 ),                               // Stationsnummer SPS-intern (Indizes)
       bDeaktivieren             := FALSE,                                                      // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer           := 1420,                                                       // Basis-Meldungsnummer (WatchIO)
@@ -113,7 +113,7 @@ VAR_GLOBAL
     ),
     (
      stStationsNummern         := (  NummerIntern    :=   303,                                 // Stationsnummer fuer das MMI und die Stationsangabe der Meldungen
-                                     NummerExtern    := 13303,                                 // Stationsnummer fuer Bedienermeldungen
+                                     NummerExtern    :=  1303,                                 // Stationsnummer fuer Bedienermeldungen
                                      NummerSPS       :=   303 ),                               // Stationsnummer SPS-intern (Indizes)
       bDeaktivieren             := FALSE,                                                      // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer           := 1440,                                                       // Basis-Meldungsnummer (WatchIO)
@@ -164,7 +164,7 @@ VAR_GLOBAL
     ),
     (
      stStationsNummern         := (  NummerIntern    :=   304,                                 // Stationsnummer fuer das MMI und die Stationsangabe der Meldungen
-                                     NummerExtern    := 13304,                                 // Stationsnummer fuer Bedienermeldungen
+                                     NummerExtern    :=  1304,                                 // Stationsnummer fuer Bedienermeldungen
                                      NummerSPS       :=   304 ),                               // Stationsnummer SPS-intern (Indizes)
       bDeaktivieren             := FALSE,                                                      // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer           := 1460,                                                       // Basis-Meldungsnummer (WatchIO)
@@ -215,7 +215,7 @@ VAR_GLOBAL
     ),
     (
      stStationsNummern         := (  NummerIntern    :=   305,                                 // Stationsnummer fuer das MMI und die Stationsangabe der Meldungen
-                                     NummerExtern    := 13305,                                 // Stationsnummer fuer Bedienermeldungen
+                                     NummerExtern    :=  1305,                                 // Stationsnummer fuer Bedienermeldungen
                                      NummerSPS       :=   305 ),                               // Stationsnummer SPS-intern (Indizes)
       bDeaktivieren             := FALSE,                                                      // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer           := 1480,                                                       // Basis-Meldungsnummer (WatchIO)

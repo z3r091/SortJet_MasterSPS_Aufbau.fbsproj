@@ -16,4 +16,6 @@ WatchIo( NOT bpNotHaltOK, ioccNotausBetaetigt );
 WatchIo( NOT EV_ToPLC_bNothalt_CAB2_OK AND NOT Interface_SLC.bpOperatorAcknowledgeRequested,                        wMeldungsnummer + 0 );
 WatchIo( NOT EV_ToPLC_bNothalt_Station201_Vorderseite_OK AND NOT Interface_SLC.bpOperatorAcknowledgeRequested,      wMeldungsnummer + 1 );
 WatchIo( NOT EV_ToPLC_bNothalt_Station201_Rueckseite_OK AND NOT Interface_SLC.bpOperatorAcknowledgeRequested,       wMeldungsnummer + 2 );
+// Nothalt 203 Bedienseite = Nothalt OP 2, Meldung ueber die Terminals
+WatchIo( NOT EV_ToPLC_bNothalt_Station205_Vorderseite_OK AND NOT Interface_SLC.bpOperatorAcknowledgeRequested,      wMeldungsnummer + 4 );
 END_ACTION
