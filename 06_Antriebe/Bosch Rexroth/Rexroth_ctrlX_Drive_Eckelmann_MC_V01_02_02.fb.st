@@ -466,6 +466,16 @@ CASE eAchsStatus OF
   // In diesem Zustand ist ausschließlich der Reset erlaubt
   AXIS_ERROR_OR_DISABLED:
     blAchseStoppen := FALSE; // Achse nicht mehr am Stoppen oder am Error-Stoppen - manuelles Stoppen kann beendet werden
+
+    // Im Errorstop die aktive Betriebsart abbrechen, damit nach dem Reset kein Execute mehr ansteht und eine neue Flanke noetig ist
+    // Nur bei Errorstop, ein reines Disabled (z. B. Freigabeentzug) behaelt die Schrittkette fuer den Wiederanlauf
+    IF l_mc_ReadStatus.Errorstop AND ( wlAktiveBetriebsart <> KEINE_FUNKTION ) AND ( wlAktiveBetriebsart <> RESET ) THEN
+      ResetStepsUndMcAktionen();
+      asteplSchritt[wlAktiveBetriebsart] := STEP_0_E;
+      wlAktiveBetriebsart := KEINE_FUNKTION;
+      bpDone := FALSE;
+    END_IF
+
     IF NOT bpAntrieblaeuft THEN // Reset nur wenn der Antrieb zum Stillstand gekommen ist
       IF wlAngeforderteBetriebsart = RESET THEN // Im Errorstop nur Reset erlauben
         BETRIEBSART_Reset();

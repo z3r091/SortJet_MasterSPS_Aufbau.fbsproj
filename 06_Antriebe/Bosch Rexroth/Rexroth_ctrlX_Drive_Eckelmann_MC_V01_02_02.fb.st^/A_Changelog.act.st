@@ -165,6 +165,8 @@ ACTION A_Changelog
   - BETRIEBSART_Reset Schritt 250: l_mc_Reset.Error wird bewusst nicht ausgewertet. Der Isophon-Changelog nennt diesen Punkt, der Code ist dort aber zu Recht auskommentiert.
   - BETRIEBSART_Reset: Neuer Schritt 260, wartet nach MC_Reset 1 s, bevor bei weiter anstehendem Fehler der Reset per CoE laeuft (aus dem Isophon-Zweig).
   - _Statusword und Simulation: Widerspruchspruefung der Software-Endschalter auf das Ergebnis (rpMinPosition > rpMaxPosition) umgestellt. Vorher nur, wenn beide externen Grenzen gesetzt waren.
+  - 2026-11-11: Errorstop (AXIS_ERROR_OR_DISABLED mit l_mc_ReadStatus.Errorstop) bricht die aktive Betriebsart ab (ResetStepsUndMcAktionen, Schritt 0, KEINE_FUNKTION, bpDone := FALSE).
+    Vorher blieb z. B. HANDPLUS in Schritt 400/1000 mit MoveVelocity.Execute = TRUE stehen, nach dem Reset fehlte die neue Flanke. Ein reines Disabled (Freigabeentzug) behaelt die Schrittkette weiterhin fuer den Wiederanlauf.
 
 *)
 END_ACTION
