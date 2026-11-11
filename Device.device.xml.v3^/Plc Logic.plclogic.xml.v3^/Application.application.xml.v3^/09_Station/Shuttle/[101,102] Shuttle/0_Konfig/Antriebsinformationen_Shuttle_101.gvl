@@ -24,7 +24,7 @@ VAR_GLOBAL
       rpHandGeschwindigkeit                   :=       200,  // [mm/s]   Hand- Geschwindigkeit
       rpEinrichtGeschwindigkeit               :=        50,  // [mm/s]   Max Geschwindigkeit während der Einrichtung der Anlage
       rpReferenzGeschwindigkeit               :=        50,  // [mm/s]   Geschwindigkeit für die Referenzfahrt
-      rpMaxBeschleunigung                     :=      3500,  // [mm/s^2] Max Beschleunigung
+      rpMaxBeschleunigung                     :=      3000,  // [mm/s^2] Max Beschleunigung
       rpMaxVerzoegerung                       :=      4000,  // [mm/s^2] Max Verzoegerung
       rpMaxRuckzeit                           :=       300,  // [ms]     Ruckzeit des Antriebs
       rpReduzierteBeschleunigung              :=      3500,  // [mm/s^2] Reduzierte Beschleunigung
