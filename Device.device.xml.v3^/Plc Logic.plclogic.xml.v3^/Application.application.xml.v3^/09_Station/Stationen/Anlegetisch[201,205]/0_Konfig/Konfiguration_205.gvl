@@ -20,6 +20,7 @@ VAR_CONFIG
 
   Globale_Bausteine.Anlegetisch205.out_bSignalTasterScheibeAnlegen                       AT %MX2050.0 : BOOL; // OPTION - Leuchte im weißen Taster Scheibe anlegen
   Globale_Bausteine.Anlegetisch205.out_bSignalTasterScheibeQuittieren                    AT %QX6.4    : BOOL; // IO-L - 205 Fehlmessung Scheibe ausgeloest
+  Globale_Bausteine.Anlegetisch205.out_bSignalScheibeGlasbruch                           AT %QX6.5    : BOOL; // IO-L - 205 Glasbruch Meldung (wird nicht beschrieben)
   Globale_Bausteine.Anlegetisch205.out_bAmpelSignalRot                                   AT %MX2050.1 : BOOL; // OPTION - Ampel rot
   Globale_Bausteine.Anlegetisch205.out_bAmpelSignalGruenScheibeAnlegen                   AT %MX2051.5 : BOOL; // OPTION - Ampel laeuft ueber die Umrichter-IOs
   Globale_Bausteine.Anlegetisch205.out_bAmpelSignalGlastransportAktiv                    AT %MX2050.2 : BOOL; // OPTION - Ampel Glastransport aktiv

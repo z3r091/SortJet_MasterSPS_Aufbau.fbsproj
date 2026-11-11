@@ -20,6 +20,7 @@ VAR_CONFIG
 
   Globale_Bausteine.Anlegetisch201.out_bSignalTasterScheibeAnlegen                       AT %QX6.0    : BOOL; // IO-L - 201 Austransport Start Meldung
   Globale_Bausteine.Anlegetisch201.out_bSignalTasterScheibeQuittieren                    AT %QX5.6    : BOOL; // IO-L - 201 Fehlmessung Scheibe ausgeloest
+  Globale_Bausteine.Anlegetisch201.out_bSignalScheibeGlasbruch                           AT %QX5.7    : BOOL; // IO-L - 201 Glasbruch Meldung (wird nicht beschrieben)
   Globale_Bausteine.Anlegetisch201.out_bAmpelSignalRot                                   AT %QX5.5    : BOOL; // IO-L - 201 Stoerung im Betriebsablauf Ampel rot
   Globale_Bausteine.Anlegetisch201.out_bAmpelSignalGruenScheibeAnlegen                   AT %QX5.3    : BOOL; // IO-L - 201 Freigabe Scheibe anlegen Ampel gruen
   Globale_Bausteine.Anlegetisch201.out_bAmpelSignalGlastransportAktiv                    AT %MX2010.2 : BOOL; // OPTION - Ampel Glastransport aktiv

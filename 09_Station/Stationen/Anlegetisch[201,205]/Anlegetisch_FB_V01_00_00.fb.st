@@ -183,6 +183,7 @@ VAR
 
   out_bSignalTasterScheibeQuittieren       AT %Q* : BOOL; // Gelber Leuchdrucktaster | Fehlmessung quittiern
   out_bSignalTasterScheibeAnlegen          AT %Q* : BOOL; // Weißer Leuchdrucktaster | Scheibe anlegen
+  out_bSignalScheibeGlasbruch              AT %Q* : BOOL; // Leuchte Glasbruch Meldung, wird nicht beschrieben
 
 
 

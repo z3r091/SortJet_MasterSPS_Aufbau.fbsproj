@@ -175,8 +175,8 @@ VAR_CONFIG
   Globale_Bausteine.aShuttle[102].Greifer[1].Zange[1].out_bZylinder_3_Ausfahren                         AT %MX1025.7 : BOOL; // OPTION
 
   // Greiferzange Auslaufseite Wand 1 [nur mit Parameter_Greifer.bZangeAuslaufVorhanden]
-  Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].in_bStatusZylinder_Alle_Eingefahren               AT %MX1.0   : BOOL; // OPTION
-  Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].in_bStatusZylinder_1_Ausgefahren                  AT %IX113.3 : BOOL; // IO-L - Greifer 1 Hub 1 geoeffnet
+  Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].in_bStatusZylinder_Alle_Eingefahren               AT %IX113.2 : BOOL; // IO-L - Greifer 1 Hub 1 geschlossen (nicht ausgewertet, bZangeAbfragenVorhanden = FALSE)
+  Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].in_bStatusZylinder_1_Ausgefahren                 AT %IX113.3 : BOOL; // IO-L - Greifer 1 Hub 1 geoeffnet
   Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].in_bStatusZylinder_2_Ausgefahren                  AT %MX1.0   : BOOL; // OPTION
   Globale_Bausteine.aShuttle[102].Greifer[1].Zange[2].in_bStatusZylinder_3_Ausgefahren                  AT %MX1.0   : BOOL; // OPTION
 
