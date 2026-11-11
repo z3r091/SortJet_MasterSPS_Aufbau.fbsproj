@@ -20,7 +20,7 @@ VAR_GLOBAL
            [Wenn sich zwei Shuttle auf einer Bahn befinden]
  *)
  rgMkMinSecureDistanceShuttles                         : REAL := 4000; // Absoluter Abstand zwischen den Shuttlen (Input- und Outputshuttle)
- rgMkMinSecureDistanceTransfer                         : REAL := 429; // Absoluter Abstand zwischen den Transfershuttlen
+ rgMkMinSecureDistanceTransfer                         : REAL := 430; // Absoluter Abstand zwischen den Transfershuttlen
 
  rgMkMinSecureDistanceShuttlesAtParkPos                : REAL := 2500; // Absoluter Abstand zwischen den Shuttlen wenn eines der Shuttle in Parkposition ist
  rgMkMinSecureDistanceTransferAtParkPos                : REAL := 240; // Absoluter Abstand zwischen den Transfershuttlen wenn eines der Shuttle in Parkposition ist
@@ -48,14 +48,14 @@ VAR_GLOBAL
   // Shuttle 151
   (
    eParkposition                                       := PARKPOSITION_MIN, // => Angabe ob das Shuttle eine Min- \ Max- \ Min-Max- Parkposition besitzt
-   rParkpositionMinimum                                :=  -2957,           // => Parkposition (Handminus - Richtung) minimum
+   rParkpositionMinimum                                :=  -885,           // => Parkposition (Handminus - Richtung) minimum
    rParkpositionMaximum                                :=     0             // => Parkposition (Handplus - Richtung) maximum
   ),
   // Shuttle 152
   (
    eParkposition                                       := PARKPOSITION_MAX,
    rParkpositionMinimum                                :=     0,
-   rParkpositionMaximum                                := 15170
+   rParkpositionMaximum                                := 5635
   )];
 
   // PARAMETER
