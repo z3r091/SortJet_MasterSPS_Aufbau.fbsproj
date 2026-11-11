@@ -31,6 +31,6 @@ starrStationBasisParameter[cSTATION_202].stMKs.stSchnittstellendaten.aEintranspo
 starrStationBasisParameter[cSTATION_202].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_201] := TRUE;
 
 // Austransport
-starrStationBasisParameter[cSTATION_202].stMKs.stSchnittstellendaten.aAustransporte.Station[cSHUTTLE_101]                  := Vorwaertig;
-starrStationBasisParameter[cSTATION_202].stMKs.stSchnittstellendaten.aAustransporte.bStationQuittiertScheibe[cSHUTTLE_101] := FALSE;
+starrStationBasisParameter[cSTATION_202].stMKs.stSchnittstellendaten.aAustransporte.Station[cSTATION_203]                  := Vorwaertig;
+starrStationBasisParameter[cSTATION_202].stMKs.stSchnittstellendaten.aAustransporte.bStationQuittiertScheibe[cSTATION_203] := FALSE;
 END_ACTION

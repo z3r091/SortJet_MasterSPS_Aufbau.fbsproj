@@ -25,7 +25,7 @@ VAR_GLOBAL
       eaSicherheitskreis                    := [eSicherheitskreis_Undefiniert],                                              // Sicherheitskreise, in die die Station eingebunden ist
       eSystemcheckZyklus                    := eSystemcheckZyklus_1,                                                         // In welchem Zyklus des Systemchecks die Station geprueft wird
       stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_201,                                         // Station vor dieser Station (cSTATION_DYNAMISCH bei mehreren)
-                                                 wNachfolgerStation := cSTATION_DYNAMISCH,                                   // Station nach dieser Station (cSTATION_DYNAMISCH bei mehreren)
+                                                 wNachfolgerStation := cSTATION_203,                                         // Station nach dieser Station (cSTATION_DYNAMISCH bei mehreren)
                                                  bStationIstShuttle := FALSE                                                 // Station ist ein Shuttle
                                                ),
       stStationsOptionen                    := ( stSystemcheck :=  ( bScheibenVermessenSystemCheck               := FALSE,   // Scheiben im Systemcheck vermessen

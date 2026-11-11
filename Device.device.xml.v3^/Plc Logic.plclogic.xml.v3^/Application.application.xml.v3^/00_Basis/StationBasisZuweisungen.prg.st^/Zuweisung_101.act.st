@@ -46,13 +46,6 @@ FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
   starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aAustransporte.bStationQuittiertScheibe[wlIndex] := TRUE;
 END_FOR
 
-// Station 203
-starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Station[cSTATION_202]                  := Vorwaertig;
-starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[cSTATION_202]            := eGlastransport_AufEinlaufVorab;
-starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Kippen[cSTATION_202]                   := eKippen_Position_84Grad;
-starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.KippenNachEintransport[cSTATION_202]   := eKippen_Default;
-starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_202] := TRUE;
-
 // Station 207
 starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Station[cSTATION_207]                  := Rueckwaertig;
 starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[cSTATION_207]            := eGlastransport_AufAuslaufVorab;

@@ -24,8 +24,8 @@ VAR_GLOBAL
       eaAutomatikkreis                      := [eAutomatikkreis_2],                                                          // Automatikkreise, zu denen die Station gehoert
       eaSicherheitskreis                    := [eSicherheitskreis_3],                                                        // Sicherheitskreise, in die die Station eingebunden ist
       eSystemcheckZyklus                    := eSystemcheckZyklus_1,                                                         // In welchem Zyklus des Systemchecks die Station geprueft wird
-      stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DEFAULT,                                     // Station vor dieser Station (cSTATION_DYNAMISCH bei mehreren)
-                                                 wNachfolgerStation := cSTATION_202,                                         // Station nach dieser Station (cSTATION_DYNAMISCH bei mehreren)
+      stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_202,                                         // Station vor dieser Station (cSTATION_DYNAMISCH bei mehreren)
+                                                 wNachfolgerStation := cSTATION_204,                                         // Station nach dieser Station (cSTATION_DYNAMISCH bei mehreren)
                                                  bStationIstShuttle := FALSE                                                 // Station ist ein Shuttle
                                                ),
       stStationsOptionen                    := ( stSystemcheck :=  ( bScheibenVermessenSystemCheck               := FALSE,   // Scheiben im Systemcheck vermessen
@@ -51,8 +51,8 @@ VAR_GLOBAL
                                                  bVorAbKomponentenAnsteuerung              := FALSE,                         // VorAbKomponentenAnsteuerung Auftraege werden bearbeitet
                                                  bVerstellungEinAusGefahrenLogikDrehen     := FALSE,                         // Verstellung: Logik ein-/ausgefahren gedreht
                                                  bLangsamfahrtNockenQuerfahrtAktivieren    := FALSE,                         // Querfahrt: Langsamfahrt-Nocken auswerten
-                                                 bSKBlockierenDurchVorabSensoren           := FALSE,                         // Vorab-Sensoren belegt blockieren das Oeffnen des Sicherheitskreises
-                                                 bStationLeerfahrenBeiSkAnforderung        := FALSE,                         // Station bei Anforderung Sicherheitskreis leerfahren
+                                                 bSKBlockierenDurchVorabSensoren           := TRUE,                          // Vorab-Sensoren belegt blockieren das Oeffnen des Sicherheitskreises
+                                                 bStationLeerfahrenBeiSkAnforderung        := TRUE,                          // Station bei Anforderung Sicherheitskreis leerfahren
                                                  bGlasAbgenommenAutomatischQuittieren      := FALSE,                         // derzeit ohne Funktion
                                                  bScheibeAbnehmenNachEintransport          := FALSE                          // Scheibe nach dem Eintransport wieder abnehmen
                                                ),

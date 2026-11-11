@@ -18,7 +18,6 @@ VAR
   // HARDWARE EINGAENGE
   in_bSensorNicht84Grad           : BOOL;
   in_bSensorNicht90Grad           : BOOL;
-  in_bDurchgangBelegt             : BOOL;
 
   // TRIGGER
   rtlAutomatikActiv               : R_TRIG;

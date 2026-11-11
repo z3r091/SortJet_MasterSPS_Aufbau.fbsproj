@@ -25,6 +25,7 @@ starrTransfershuttleBasisParameter[cSHUTTLE_151].stParameterStationskomponenten.
 starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs.stSchnittstellendaten.aEintransporte.Station[cSHUTTLE_101] := Vorwaertig;
 starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs.stSchnittstellendaten.aAustransporte.Station[cSHUTTLE_101] := Rueckwaertig;
 
-starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs.stSchnittstellendaten.aEintransporte.Station[cSHUTTLE_103] := Rueckwaertig;
-starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs.stSchnittstellendaten.aAustransporte.Station[cSHUTTLE_103] := Vorwaertig;
+// Shuttle 102
+starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs.stSchnittstellendaten.aEintransporte.Station[cSHUTTLE_102] := Rueckwaertig;
+starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs.stSchnittstellendaten.aAustransporte.Station[cSHUTTLE_102] := Vorwaertig;
 END_ACTION

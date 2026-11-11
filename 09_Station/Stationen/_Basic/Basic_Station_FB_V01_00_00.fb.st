@@ -121,12 +121,12 @@ IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
   A_ScheibenDeaktivierteStationMelden();
 
   FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
-    BasisStationsParameter.bAustransportAbgeschlossen[wlIndex]   := FALSE;
-    BasisStationsParameter.bDurchtransportAbgeschlossen[wlIndex] := FALSE;
-    BasisStationsParameter.bEintransportAbgeschlossen[wlIndex]   := FALSE;
-    BasisStationsParameter.bMesskopplungAbgeschlossen[wlIndex]   := FALSE;
-    BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wlIndex] := FALSE;
-    BasisStationsParameter.bVortransportAbgeschlossen[wlIndex]   := FALSE;
+    BasisStationsParameter.bAustransportAbgeschlossen[wlIndex]   := TRUE;
+    BasisStationsParameter.bDurchtransportAbgeschlossen[wlIndex] := TRUE;
+    BasisStationsParameter.bEintransportAbgeschlossen[wlIndex]   := TRUE;
+    BasisStationsParameter.bMesskopplungAbgeschlossen[wlIndex]   := TRUE;
+    BasisStationsParameter.bVorabKomponentenAnsteuerungAbgeschlossen[wlIndex] := TRUE;
+    BasisStationsParameter.bVortransportAbgeschlossen[wlIndex]   := TRUE;
     BasisStationsParameter.bStationBelegt[wlIndex]               := FALSE;
   END_FOR
 

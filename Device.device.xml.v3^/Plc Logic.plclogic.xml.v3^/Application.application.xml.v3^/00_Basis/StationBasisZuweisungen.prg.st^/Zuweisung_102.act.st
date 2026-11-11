@@ -46,10 +46,11 @@ FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
   starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aAustransporte.bStationQuittiertScheibe[wlIndex] := TRUE;
 END_FOR
 
-// Station 203
-starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aEintransporte.Station[cSTATION_202]                  := Vorwaertig;
-starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[cSTATION_202]            := eGlastransport_AufAuslauf;
-starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aEintransporte.Kippen[cSTATION_202]                   := eKippen_Position_84Grad;
-starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aEintransporte.KippenNachEintransport[cSTATION_202]   := eKippen_Default;
-starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_202] := TRUE;
+// Faecherwagenstationen: Austransport mit dem Greifer auf der Auslaufseite
+FOR wlIndex := cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR DO
+  starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aAustransporte.Station[wlIndex]                  := Vorwaertig;
+  starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aAustransporte.Glastransport[wlIndex]            := eGlastransport_AufAuslauf;
+  starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aAustransporte.Greifer[wlIndex]                  := eGreiferAuslaufseite;
+  starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aAustransporte.bStationQuittiertScheibe[wlIndex] := TRUE;
+END_FOR
 END_ACTION

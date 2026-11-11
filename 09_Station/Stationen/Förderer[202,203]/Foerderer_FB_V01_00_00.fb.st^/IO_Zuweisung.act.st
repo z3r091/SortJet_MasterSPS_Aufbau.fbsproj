@@ -23,8 +23,5 @@ CASE BasisStationsParameter.stMKs.stStationsNummern.NummerSPS OF
     Kippen.bpSensorNicht84Grad := in_bSensorNicht84Grad;
     Kippen.bpSensorNicht90Grad := in_bSensorNicht90Grad;
 
-    // Durchgang belegt
-    in_bDurchgangBelegt := Glastransport.Antrieb.udipEingaengeUmrichter.cXG31_2_I_2;
-
 END_CASE
 END_ACTION

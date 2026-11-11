@@ -118,6 +118,8 @@ IF ( blBetriebartCheck ) THEN
       //  Hinweis:
       //  - Nachricht an den Bediener senden wenn die Daten nicht passen
       // ---------------------------------------------------------------------------------------
+      steplCheck := STEP_1000_E;
+
       IF (    ( BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben = 0 )
            AND BasisStationsParameter.bStationBelegt[cWAND_1] )
       THEN
@@ -127,6 +129,12 @@ IF ( blBetriebartCheck ) THEN
                     BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
+
+        IF NOT StationHatShuttleNachbar( BasisStationsParameter ) THEN
+          BasisStationsParameter.wFehlerNummer         := cMELDUNG_SYSTEMCHECK_SCHEIBE_GEFUNDEN;
+          BasisStationsParameter.awFehlerInformationen := wpgFehlerdaten;
+          steplCheck                                   := STEP_900_E;
+        END_IF
       END_IF
 
       IF (    ( BasisStationsParameter.pAuftrag[cWAND_1].wAnzahlScheiben <> 0 )
@@ -138,9 +146,13 @@ IF ( blBetriebartCheck ) THEN
                     BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
                     AutomatikkreisBestimmen(BasisStationsParameter.stMKs.stStationsNummern.NummerSPS),
                     wpgFehlerdaten );
-      END_IF
 
-      steplCheck := STEP_1000_E;
+        IF NOT StationHatShuttleNachbar( BasisStationsParameter ) THEN
+          BasisStationsParameter.wFehlerNummer         := cMELDUNG_SYSTEMCHECK_KEINE_SCHEIBE_GEFUNDEN;
+          BasisStationsParameter.awFehlerInformationen := wpgFehlerdaten;
+          steplCheck                                   := STEP_900_E;
+        END_IF
+      END_IF
 
     //=== SYSTEM CHECK ====================================================================================
     STEP_900_E:
