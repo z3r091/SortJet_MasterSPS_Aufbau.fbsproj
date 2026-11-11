@@ -144,6 +144,7 @@ VAR
   blS277PruefungNotwendig                : BOOL := TRUE;
   blCoeS277ReadExecute                   : BOOL;
   blCoeS277ReadGestartet                 : BOOL;
+  blS277LesenFehlgeschlagen              : BOOL; // Letzter Lesezugriff abgebrochen, neuer Versuch nach cTIME_S277_WIEDERHOLEN
   ablSimSensorAlt                        : ARRAY[eSensoren.Sensor_1..eSensoren.Sensor_9] OF BOOL;
 
   // Jerk-Profil des laufenden Fahrbefehls; Ruecksetzen in ResetStepsUndMcAktionen.
@@ -231,6 +232,7 @@ VAR
   tonlTouchprobeNeustart              : TON;
   tonlSimRestwegFlankeTimeout         : TON;
   tonlWarteAufReset                   : TON;
+  tonlS277Wiederholen                 : TON;
 
   // R_TRIG
   rtl_Fehlermeldung                   : R_TRIG;
@@ -275,6 +277,7 @@ VAR CONSTANT
   // TIME
   cTIME_HARDWARE_FREIGABE                : TIME := T#10S;
   cTIME_TOUCHPROBE_NEUSTART              : TIME := T#3S;
+  cTIME_S277_WIEDERHOLEN                 : TIME := T#10S;
 
   // REAL
   cFAKTOR_GESCHWINDIGKEIT_LINEAR         : REAL := 60;

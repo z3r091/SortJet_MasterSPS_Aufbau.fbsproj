@@ -165,8 +165,14 @@ ACTION A_Changelog
   - BETRIEBSART_Reset Schritt 250: l_mc_Reset.Error wird bewusst nicht ausgewertet. Der Isophon-Changelog nennt diesen Punkt, der Code ist dort aber zu Recht auskommentiert.
   - BETRIEBSART_Reset: Neuer Schritt 260, wartet nach MC_Reset 1 s, bevor bei weiter anstehendem Fehler der Reset per CoE laeuft (aus dem Isophon-Zweig).
   - _Statusword und Simulation: Widerspruchspruefung der Software-Endschalter auf das Ergebnis (rpMinPosition > rpMaxPosition) umgestellt. Vorher nur, wenn beide externen Grenzen gesetzt waren.
-  - 2026-11-11: Errorstop (AXIS_ERROR_OR_DISABLED mit l_mc_ReadStatus.Errorstop) bricht die aktive Betriebsart ab (ResetStepsUndMcAktionen, Schritt 0, KEINE_FUNKTION, bpDone := FALSE).
+  - Errorstop (AXIS_ERROR_OR_DISABLED mit l_mc_ReadStatus.Errorstop) bricht die aktive Betriebsart ab (ResetStepsUndMcAktionen, Schritt 0, KEINE_FUNKTION, bpDone := FALSE).
     Vorher blieb z. B. HANDPLUS in Schritt 400/1000 mit MoveVelocity.Execute = TRUE stehen, nach dem Reset fehlte die neue Flanke. Ein reines Disabled (Freigabeentzug) behaelt die Schrittkette weiterhin fuer den Wiederanlauf.
+  - PruefeFirmwareReferenzBit (S-0-0277 Bit 11): Ein abgebrochener CoE-Lesezugriff wurde als fertig gewertet und meldete mit udiEncoderProperties = 0 faelschlich Fehler 999.
+    Jetzt wird nur ein erfolgreiches Lesen ausgewertet; nach Abbruch neuer Versuch nach cTIME_S277_WIEDERHOLEN (10 s), Status in blS277LesenFehlgeschlagen.
+    Die Pruefung startet weiterhin erst bei bestehender MMI-Verbindung (Job.tonlMmiOk).
+  - CoeReadObject (eigener FB, betrifft l_fb_CoeLesen und l_fb_CoeS277Lesen): ruht im Grundzustand und liest erst nach einer Execute-Flanke.
+    Vorher startete der erste Aufruf mit i_b_Execute := FALSE einen Lesezugriff ohne Parameter (EcID 0), was je Achse beim Hochlauf einen PlcError 8002 erzeugte.
+    Bei neuem Execute werden o_b_Aborted und der Timeout-Zaehler zurueckgesetzt.
 
 *)
 END_ACTION

@@ -6,10 +6,14 @@
 }
 *)
 ACTION PruefeFirmwareReferenzBit
-// Start Read einmalig anstoßen
-IF NOT blCoeS277ReadGestartet THEN
+// Nach fehlgeschlagenem Lesen erst nach Wartezeit erneut versuchen
+tonlS277Wiederholen( IN := blS277LesenFehlgeschlagen, PT := cTIME_S277_WIEDERHOLEN );
+
+// Start Read anstoßen (einmalig bzw. erneut nach Abbruch)
+IF NOT blCoeS277ReadGestartet AND ( NOT blS277LesenFehlgeschlagen OR tonlS277Wiederholen.Q ) THEN
   blCoeS277ReadExecute := TRUE;
   blCoeS277ReadGestartet := TRUE;
+  blS277LesenFehlgeschlagen := FALSE;
 END_IF
 
 // FB aufrufen
@@ -27,13 +31,18 @@ l_fb_CoeS277Lesen
 // Execute nur einen Zyklus TRUE
 blCoeS277ReadExecute := FALSE;
 
-// Wenn Read fertig ist, Ergebnis prüfen
+// Wenn Read fertig ist, Ergebnis prüfen; ein abgebrochenes Lesen liefert keinen gültigen Wert
 IF blCoeS277ReadGestartet AND l_fb_CoeS277Lesen.o_b_Done THEN
 
   blCoeS277ReadGestartet := FALSE;
-  blS277PruefungNotwendig := FALSE;
 
-  IF NOT udiEncoderProperties.11 THEN
+  IF l_fb_CoeS277Lesen.o_b_Aborted THEN
+    blS277LesenFehlgeschlagen := TRUE;
+  ELSE
+    blS277PruefungNotwendig := FALSE;
+  END_IF
+
+  IF NOT blS277PruefungNotwendig AND NOT udiEncoderProperties.11 THEN
     awlFehlerinformationen[0] := stStationsNummern.NummerExtern;
     awlFehlerinformationen[1] := ppAntriebsInformationen.wpSchaltplanseite;
     awlFehlerinformationen[2] := ppAntriebsInformationen.wpSchaltplanReihe;

@@ -129,9 +129,12 @@ ELSE
 END_IF
 
 // 16 Referenzbit: S-0-0277 Bit 11 (Firmware 0612), Pruefung einmalig nach dem Hochlauf
-IF ( stlAchse.blS277PruefungNotwendig ) THEN
-  asWert[16] := SEL( stlAchse.blCoeS277ReadGestartet, 'Prüfung ausstehend', 'wird gelesen' );
-  adwFarbe[16] := SEL( stlAchse.blCoeS277ReadGestartet, VISU_UEBERSICHT.cFARBE_ORANGE, VISU_UEBERSICHT.cFARBE_BLAU );
+IF ( stlAchse.blS277PruefungNotwendig AND stlAchse.blCoeS277ReadGestartet ) THEN
+  asWert[16] := 'wird gelesen';         adwFarbe[16] := VISU_UEBERSICHT.cFARBE_BLAU;
+ELSIF ( stlAchse.blS277PruefungNotwendig AND stlAchse.blS277LesenFehlgeschlagen ) THEN
+  asWert[16] := 'Lesen fehlgeschlagen, neuer Versuch'; adwFarbe[16] := VISU_UEBERSICHT.cFARBE_ORANGE;
+ELSIF ( stlAchse.blS277PruefungNotwendig ) THEN
+  asWert[16] := 'Prüfung ausstehend';   adwFarbe[16] := VISU_UEBERSICHT.cFARBE_ORANGE;
 ELSIF ( stlAchse.udiEncoderProperties.11 ) THEN
   asWert[16] := 'Bit 11 gesetzt';       adwFarbe[16] := VISU_UEBERSICHT.cFARBE_GRUEN;
 ELSE

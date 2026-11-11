@@ -17,7 +17,7 @@ VAR_INPUT
 END_VAR
 VAR
   l_ec_ReadErrorFromDevice : EC_CoeReadObject;
-  steplSchritt       : STEPS_TE;
+  steplSchritt       : STEPS_TE := STEP_1001_E; // Grundzustand: kein Lesen bis zur ersten Execute-Flanke
   l_ui_TimeOutCount  : UINT;
   l_a_udi_AbortMsg  : ARRAY[0..4] OF UDINT;
 END_VAR
@@ -38,6 +38,8 @@ IF  i_b_Execute
 THEN
   i_b_Execute := FALSE;
   o_b_Done := FALSE;
+  o_b_Aborted := FALSE;
+  l_ui_TimeOutCount := 0;
   steplSchritt := STEP_0_E;
 END_IF
 
