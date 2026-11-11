@@ -21,6 +21,7 @@ STRUCT
   dwSensorEinlaufVorab : DWORD := 16#FFE4E7EB;
   dwSensorAuslaufVorab : DWORD := 16#FFE4E7EB;
   dwSensorAuslauf      : DWORD := 16#FFE4E7EB;
+  dwSensorAuslaufStopp : DWORD := 16#FFE4E7EB; // Nur Shuttle mit MK bSensorAuslaufStopp
   sInfo1               : STRING(60);
   sInfo2               : STRING(60);
   sInfo3               : STRING(60);

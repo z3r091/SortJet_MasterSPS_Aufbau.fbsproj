@@ -181,7 +181,8 @@ FOR wIdx := 101 TO 102 DO
   pKarte^.dwSensorEinlauf      := VisuUeb_Sensor(abgStationsstatusVisu[wIdx].bSensorEinlauf[1]);
   pKarte^.dwSensorEinlaufVorab := VisuUeb_Sensor(abgStationsstatusVisu[wIdx].bSensorEinlaufVorab[1]);
   pKarte^.dwSensorAuslaufVorab := VisuUeb_Sensor(abgStationsstatusVisu[wIdx].bSensorAuslaufVorab[1]);
-  pKarte^.dwSensorAuslauf      := VisuUeb_Sensor(abgStationsstatusVisu[wIdx].bSensorAuslauf[1] OR abgStationsstatusVisu[wIdx].bSensorAuslaufStopp[1]);
+  pKarte^.dwSensorAuslauf      := VisuUeb_Sensor(abgStationsstatusVisu[wIdx].bSensorAuslauf[1]);
+  pKarte^.dwSensorAuslaufStopp := VisuUeb_Sensor(abgStationsstatusVisu[wIdx].bSensorAuslaufStopp[1]);
   CASE abgStationsstatusVisu[wIdx].epKippStatus OF
     Kippen_EN.eKippen_Position_0Grad:    sKipp := 'Kippen 0°';
     Kippen_EN.eKippen_Position_84Grad:   sKipp := 'Kippen 84°';

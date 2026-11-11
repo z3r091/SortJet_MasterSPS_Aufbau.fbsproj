@@ -77,6 +77,7 @@ VAR_GLOBAL
   sLblEV            : STRING(4)  := 'EV';
   sLblAV            : STRING(4)  := 'AV';
   sLblA             : STRING(4)  := 'A';
+  sLblAS            : STRING(4)  := 'AS';
   sLblQuer101       : STRING(60) := 'QUERFAHRT SHUTTLE 101';
   sLblQuer102       : STRING(60) := 'QUERFAHRT SHUTTLE 102';
   sLblWagen101      : STRING(20) := '101';
