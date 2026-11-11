@@ -97,9 +97,9 @@ WatchIo( blShuttleErreichbar AND NOT in_bSicherungen230V_OK                     
 WatchIo( blShuttleErreichbar AND NOT in_bLSQuerfahrtBremseOK                                                                                ,wlWatchIONachrichtenNummer + 8 );
 WatchIo( blShuttleErreichbar AND NOT Querfahrt.in_bLeistungsschutzFremdluefter                                                              ,wlWatchIONachrichtenNummer + 9 );
 
-WatchIo( blShuttleErreichbar AND NOT Kippen.bpInReferenz                                                                                    ,wlWatchIONachrichtenNummer + 10 );
-WatchIo( blShuttleErreichbar AND Kippen.Antrieb.bpMinSchalterBelegt                                                                         ,wlWatchIONachrichtenNummer + 11 );
-WatchIo( blShuttleErreichbar AND Kippen.Antrieb.bpMaxSchalterBelegt                                                                         ,wlWatchIONachrichtenNummer + 12 );
+WatchIo( blShuttleErreichbar AND Kippen.bpAktivieren AND NOT Kippen.bpInReferenz                                                           ,wlWatchIONachrichtenNummer + 10 );
+WatchIo( blShuttleErreichbar AND Kippen.bpAktivieren AND Kippen.Antrieb.bpMinSchalterBelegt                                                ,wlWatchIONachrichtenNummer + 11 );
+WatchIo( blShuttleErreichbar AND Kippen.bpAktivieren AND Kippen.Antrieb.bpMaxSchalterBelegt                                                ,wlWatchIONachrichtenNummer + 12 );
 
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   WatchIo( blShuttleErreichbar AND NOT Geblaese[wlIndex].toflMotorschutz.Q AND Geblaese[wlIndex].bpAktivieren                             ,wlWatchIONachrichtenNummer + (15 + (wlIndex - cWAND_1)) );
@@ -134,8 +134,8 @@ WatchIo( blShuttleErreichbar AND Querfahrt.bpVerfahreShuttle AND bpShuttleAnhalt
 
 WatchIo( blShuttleErreichbar AND ( Zentralschmierung.bpFehler OR Zentralschmierung.blFettLeer )                                             ,wlWatchIONachrichtenNummer + 33 );
 
-WatchIo( blShuttleErreichbar AND ( NOT Kippen.toflMotorSicherungOK.Q OR NOT Kippen.toflMotorstarterOK.Q )                                   ,wlWatchIONachrichtenNummer + 36 );
-WatchIo( blShuttleErreichbar AND NOT Kippen.in_bLeitungsschutzschalterBremseOK                                                              ,wlWatchIONachrichtenNummer + 37 );
+WatchIo( blShuttleErreichbar AND Kippen.bpAktivieren AND ( NOT Kippen.toflMotorSicherungOK.Q OR NOT Kippen.toflMotorstarterOK.Q )          ,wlWatchIONachrichtenNummer + 36 );
+WatchIo( blShuttleErreichbar AND Kippen.bpAktivieren AND NOT Kippen.in_bLeitungsschutzschalterBremseOK                                     ,wlWatchIONachrichtenNummer + 37 );
 WatchIo( blShuttleErreichbar AND NOT in_bWandverstellungsAntriebsSicherungOK                                                                ,wlWatchIONachrichtenNummer + 38 );
 WatchIo( blShuttleErreichbar AND NOT in_bWandverstellungsBremsSicherungOK                                                                   ,wlWatchIONachrichtenNummer + 39 );
 

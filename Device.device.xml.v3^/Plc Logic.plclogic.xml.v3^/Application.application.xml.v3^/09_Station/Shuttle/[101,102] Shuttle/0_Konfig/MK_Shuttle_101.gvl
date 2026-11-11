@@ -68,9 +68,9 @@ VAR_GLOBAL
       stStationsAufbau                  := (
                                             bGeblase                      := [cANZAHL_WAENDE(TRUE)],                                                    // Ausbaustufe: Geblaese je Wand
                                             bGlastransport                := [cANZAHL_WAENDE(TRUE)],                                                    // Ausbaustufe: Glastransport je Wand
-                                            bKippen                       := [cANZAHL_WAENDE(TRUE)],                                                    // Ausbaustufe: Kippen je Wand
-                                            bKippenSchuetz                := TRUE,                                                                      // Kippen ueber Schuetz statt Umrichter
-                                            bTransportVerstellung         := [cANZAHL_WAENDE(TRUE)],                                                    // Ausbaustufe Shuttle: Transport-/Dickenverstellung je Wand
+                                            bKippen                       := [cANZAHL_WAENDE(FALSE)],                                                   // Ausbaustufe: Kippen je Wand
+                                            bKippenSchuetz                := FALSE,                                                                     // Kippen ueber Schuetz statt Umrichter
+                                            bTransportVerstellung         := [cANZAHL_WAENDE(FALSE)],                                                    // Ausbaustufe Shuttle: Transport-/Dickenverstellung je Wand
                                             bWandverstellungMotorisch     := FALSE,                                                                     // Shuttle: Transport-/Wandverstellung mit Antrieb statt pneumatisch
                                             bHub                          := FALSE,                                                                     // Ausbaustufe: Hub der Station
                                             bHubrahmen                    := FALSE,                                                                     // Ausbaustufe: Hubrahmen (Riemen heben/senken)

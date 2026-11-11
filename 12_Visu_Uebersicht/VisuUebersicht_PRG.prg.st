@@ -192,8 +192,12 @@ FOR wIdx := 101 TO 102 DO
     Kippen_EN.eKippen_Fehler:            sKipp := 'Kippen FEHLER';
     ELSE                                   sKipp := 'Kippen Zwischenpos.';
   END_CASE
-  pKarte^.sInfo1 := CONCAT(sKipp, SEL(abgStationsstatusVisu[wIdx].bGeblaeseLaeuft[1], ' | Gebläse aus', ' | Gebläse EIN'));
-  pKarte^.dwInfo1Farbe := SEL(abgStationsstatusVisu[wIdx].bKippenFehler, VISU_UEBERSICHT.cFARBE_TEXT, VISU_UEBERSICHT.cFARBE_ROT);
+  IF ( Globale_Bausteine.aShuttle[wIdx].Kippen.bpAktivieren ) THEN
+    pKarte^.sInfo1 := CONCAT(sKipp, SEL(abgStationsstatusVisu[wIdx].bGeblaeseLaeuft[1], ' | Gebläse aus', ' | Gebläse EIN'));
+  ELSE
+    pKarte^.sInfo1 := SEL(abgStationsstatusVisu[wIdx].bGeblaeseLaeuft[1], 'Gebläse aus', 'Gebläse EIN');
+  END_IF
+  pKarte^.dwInfo1Farbe := SEL(abgStationsstatusVisu[wIdx].bKippenFehler AND Globale_Bausteine.aShuttle[wIdx].Kippen.bpAktivieren, VISU_UEBERSICHT.cFARBE_TEXT, VISU_UEBERSICHT.cFARBE_ROT);
 
   // Fahrwegsgrenzen aus dem Antrieb (Software-Endlagen)
   IF __ISVALIDREF(Globale_Bausteine.aShuttle[wIdx].Querfahrt.Antrieb) THEN
