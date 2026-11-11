@@ -10,7 +10,7 @@ TYPE Stations_Optionen_Glastransport_ST :
   STRUCT
     bVortransport                                                 : BOOL; // Vortransport aktivieren [Bsp.: Nach einem Eintransport mit gesetztem Bit <Letzte Scheibe>]
     bTransportMasterSlaveEintransport                             : BOOL; // derzeit ohne Funktion
-    bTransportMasterSlaveAustransport                             : BOOL; // derzeit ohne Funktion
+    bTransportMasterSlaveAustransport                             : BOOL; // Austransport als Slave auf die Glastransport-Achse des Nachfolgers (SYNC_AUF_MASTER, bei rückwärtigem Nachfolger invertiert)
     bGLasUebernahmeSenkrecht                                      : BOOL; // RKT - Eintransport in Senkrechter-Position bzw. in Waagerechter- Position [default]
     bAustransportISOLinie                                         : BOOL; // Austransport an eine ISO-Linie
     bScheibenVermessen                                            : BOOL; // Scheibenmessung am Anlegetisch/Anlegewand
