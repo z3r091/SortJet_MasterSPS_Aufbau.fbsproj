@@ -50,6 +50,11 @@ THEN
     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
   END_IF
 
+  IF ( Abschrankung.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bDurchlaufSperreZumNachfolger ) THEN
+    BasisStationsParameter.bFehler := TRUE;
+    BasisStationsParameter.wFehlerNummer := Abschrankung.wpFehlerNr;
+  END_IF
+
 END_IF
 
 

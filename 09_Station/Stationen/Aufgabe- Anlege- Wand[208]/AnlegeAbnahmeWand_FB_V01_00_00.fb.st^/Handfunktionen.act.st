@@ -14,6 +14,7 @@ ACTION Handfunktionen
      Seite 1:  0 Geblaese (Aktion Geblaese), 1/2 Glastransport vor/zurueck
      Seite 2:  7 Kippen 84 Grad, 8 Kippen 90 Grad
      Seite 3:  18/19/20 Messachse vor/zurueck/Referenz
+     Seite 4:  21/22 Abschrankung oeffnen/schliessen
 *)
 IF ( blBetriebsartHand ) THEN
 
@@ -70,9 +71,16 @@ IF ( blBetriebsartHand ) THEN
                                           OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
 
 
-  
-  
-  
+  // Handfunktion:
+  //   - Bewegliche Abschrankung zum Nachfolger oeffnen (einfahren) bzw. schliessen (ausfahren)
+  IF ( BasisStationsParameter.stMKs.stStationsAufbau.bDurchlaufSperreZumNachfolger ) THEN
+    Abschrankung.bpStartEinfahren := (         ( BasisStationsParameter.dwHandfunktionen.21 OR bgVISUZylinder1Einfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+                                       AND NOT ( BasisStationsParameter.dwHandfunktionen.22 OR bgVISUZylinder1Ausfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
+
+    Abschrankung.bpStartAusfahren := (         ( BasisStationsParameter.dwHandfunktionen.22 OR bgVISUZylinder1Ausfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+                                       AND NOT ( BasisStationsParameter.dwHandfunktionen.21 OR bgVISUZylinder1Einfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
+  END_IF
+
 END_IF
 
 HandfunktionenStatus();

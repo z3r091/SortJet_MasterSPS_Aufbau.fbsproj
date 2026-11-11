@@ -24,7 +24,12 @@ VAR_CONFIG
   Globale_Bausteine.Combiwand208.out_bSignalScheibeFehlmessung                            AT %QX4.6    : BOOL; // IO-L - 208 Scheibe Fehlmessung
   Globale_Bausteine.Combiwand208.out_bSignalScheibeGlasbruch                              AT %QX4.7    : BOOL; // IO-L - 208 Glasbruch Meldung
   Globale_Bausteine.Combiwand208.out_bSignalScheibeAbnehmen                               AT %MX2080.1 : BOOL; // OPTION
-  
+
+  // Bewegliche Abschrankung zum Nachfolger (geschlossen kommt ueber die Safety)
+  Globale_Bausteine.Combiwand208.in_bSensorAbschrankungOffen                              AT %IX9.0    : BOOL; // IO-L - 208 bewegliche Abschrankung offen
+  Globale_Bausteine.Combiwand208.out_bAbschrankungEinfahren                               AT %QX10.4   : BOOL; // IO-L - 208 bewegliche Abschrankung einfahren (oeffnen)
+  Globale_Bausteine.Combiwand208.out_bAbschrankungAusfahren                               AT %QX10.5   : BOOL; // IO-L - 208 bewegliche Abschrankung ausfahren (schliessen)
+
                                                                                                         
   // Lichtschranke                                                                                      
   Globale_Bausteine.Combiwand208.in_bLichtschrankeQuittiert                               AT %MX1.1    : BOOL; // OPTION

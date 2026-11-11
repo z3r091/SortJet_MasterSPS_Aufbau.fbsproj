@@ -8,7 +8,7 @@ __V3_CONTENT__
 <?xml version="1.0" encoding="utf-8"?>
 <Single xml:space="preserve" Type="{f18bec89-9fef-401d-9953-2f11739a6808}" Method="IArchivable">
 	<Null Name="LastVisuLanguageModelEntry" />
-	<Single Name="UniqueIdGenerator" Type="string">512</Single>
+	<Single Name="UniqueIdGenerator" Type="string">519</Single>
 	<Single Name="VisualElemList" Type="{f285c9a3-7019-446b-b98c-ccec3a0af8fa}" Method="IArchivable">
 		<List Name="VisualElementList" Type="{ef9d0b20-c96e-48db-b361-2ded4063150e}">
 			<Single Type="{f86c2928-8614-4cca-824b-e819ac4d58c4}" Method="IArchivable">
@@ -30423,7 +30423,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">2134141914</Single>
-							<Single Name="Value" Type="short">156</Single>
+							<Single Name="Value" Type="short">198</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">550940142</Single>
@@ -30431,7 +30431,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1473355128</Single>
-							<Single Name="Value" Type="short">612</Single>
+							<Single Name="Value" Type="short">633</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">494569607</Single>
@@ -33365,6 +33365,988 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
 							<Single Name="Id" Type="long">1649127785</Single>
+							<Single Name="Value" Type="short">868</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">357335551</Single>
+							<Single Name="Value" Type="short">678</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2422045748</Single>
+							<Single Name="Value" Type="short">384</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2134141914</Single>
+							<Single Name="Value" Type="short">1</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">550940142</Single>
+							<Single Name="Value" Type="short">1060</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1473355128</Single>
+							<Single Name="Value" Type="short">678</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">494569607</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4293191659</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2812299069</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4293191659</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">135947015</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4293191659</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">493260384</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4293191659</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2678395525</Single>
+							<Single Name="Value" Type="short">0</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1782330054</Single>
+							<Single Name="Value" Type="string">BS_SOLID</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2827249010</Single>
+							<Single Name="Value" Type="string">PS_HOLLOW</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2340015797</Single>
+							<Single Name="Value" Type="string">HCENTER</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2565699834</Single>
+							<Single Name="Value" Type="string">VCENTER</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">3729828405</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="string">Arial</Single>
+								<Single Type="float">11</Single>
+								<Single Type="uint">0</Single>
+								<Single Type="byte">0</Single>
+								<Single Type="uint">4280232243</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">3719097617</Single>
+							<Single Name="Value" Type="int">0</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">571893170</Single>
+							<Single Name="Value" Type="string"></Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2597686782</Single>
+							<Single Name="Value" Type="bool">True</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">390574330</Single>
+							<Single Name="Value" Type="string"></Single>
+						</Single>
+					</List>
+				</Single>
+				<Single Name="VisualElementName" Type="string">Rectangle</Single>
+				<Single Name="VisualElementTypeName" Type="string">VISUFBELEMSIMPLE</Single>
+				<Single Name="VisualElementIsRectangle" Type="bool">True</Single>
+				<Single Name="VisualElementIdentifier" Type="string">GenElemInst_512</Single>
+				<Null Name="VisualElementOfflinePaintCommands" />
+				<Null Name="VisualElementFrameInformation" />
+				<Dictionary Type="System.Collections.Hashtable" Name="VisualElementInputActions" />
+				<Single Name="VisualElementIdentification" Type="System.Guid">b8c836c3-3033-4277-84b1-a3c6a96b75de</Single>
+				<Single Name="VisualElementOwningObjectGuid" Type="System.Guid">cb010791-44dd-4671-a017-4e997dc0fdb5</Single>
+				<Array Name="LMGuids" Type="System.Guid" />
+				<Dictionary Type="System.Collections.Hashtable" Name="SubElements" />
+				<Single Name="VisualElementId" Type="int">512</Single>
+				<List Name="UserManagementAccessRights" Type="System.Collections.ArrayList" />
+				<Single Name="AnimationDuration" Type="string">0</Single>
+				<Single Name="BringToForeground" Type="string"></Single>
+				<Single Name="ElementVersion" Type="byte">0</Single>
+				<Null Name="TabOrder" />
+			</Single>
+			<Single Type="{f86c2928-8614-4cca-824b-e819ac4d58c4}" Method="IArchivable">
+				<Array Name="ConfiguredComplexInputs" Type="{1de566f6-72a7-494c-9353-9a418172c96e}" />
+				<List Name="Elements" Type="System.Collections.ArrayList" />
+				<Null Name="VisualElementDescription" />
+				<Single Name="VisualElemMemberList" Type="{17e26cd1-bb9b-47fe-a3d5-18fcd63b9c96}" Method="IArchivable">
+					<List Name="VisualElemMemberList" Type="{a4b83bea-3742-489c-9fe8-d96d68dba7ab}">
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">564465120</Single>
+							<Single Name="Value" Type="string">VISU_ST_RECTANGLE</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1649127785</Single>
+							<Single Name="Value" Type="short">868</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">357335551</Single>
+							<Single Name="Value" Type="short">682</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2422045748</Single>
+							<Single Name="Value" Type="short">86</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2134141914</Single>
+							<Single Name="Value" Type="short">32</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">550940142</Single>
+							<Single Name="Value" Type="short">911</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1473355128</Single>
+							<Single Name="Value" Type="short">698</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">494569607</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4291547865</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2812299069</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4294967295</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">135947015</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4291547865</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">493260384</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4294967295</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2678395525</Single>
+							<Single Name="Value" Type="short">0</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1782330054</Single>
+							<Single Name="Value" Type="string">BS_HOLLOW</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2827249010</Single>
+							<Single Name="Value" Type="string">PS_HOLLOW</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">390574330</Single>
+							<Single Name="Value" Type="string">%s</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2340015797</Single>
+							<Single Name="Value" Type="string">LEFT</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2565699834</Single>
+							<Single Name="Value" Type="string">VCENTER</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">3729828405</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="string">Arial</Single>
+								<Single Type="float">10</Single>
+								<Single Type="uint">2</Single>
+								<Single Type="byte">0</Single>
+								<Single Type="uint">4280232243</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2477733581</Single>
+							<Single Name="Value" Type="string">VISU_HAND.sL_Abschrankung</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">3719097617</Single>
+							<Single Name="Value" Type="int">0</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">571893170</Single>
+							<Single Name="Value" Type="string"></Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2597686782</Single>
+							<Single Name="Value" Type="bool">False</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2880254039</Single>
+							<Single Name="Value" Type="string">NOT VISU_HAND.st208.abZeileVorhanden[3]</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">823443203</Single>
+							<Single Name="Value" Type="string">2456</Single>
+						</Single>
+					</List>
+				</Single>
+				<Single Name="VisualElementName" Type="string">Rectangle</Single>
+				<Single Name="VisualElementTypeName" Type="string">VISUFBELEMSIMPLE</Single>
+				<Single Name="VisualElementIsRectangle" Type="bool">True</Single>
+				<Single Name="VisualElementIdentifier" Type="string">GenElemInst_513</Single>
+				<Null Name="VisualElementOfflinePaintCommands" />
+				<Null Name="VisualElementFrameInformation" />
+				<Dictionary Type="System.Collections.Hashtable" Name="VisualElementInputActions" />
+				<Single Name="VisualElementIdentification" Type="System.Guid">e71d7588-94b5-4cdc-91a8-12ae98869bfb</Single>
+				<Single Name="VisualElementOwningObjectGuid" Type="System.Guid">cb010791-44dd-4671-a017-4e997dc0fdb5</Single>
+				<Array Name="LMGuids" Type="System.Guid" />
+				<Dictionary Type="System.Collections.Hashtable" Name="SubElements" />
+				<Single Name="VisualElementId" Type="int">513</Single>
+				<List Name="UserManagementAccessRights" Type="System.Collections.ArrayList" />
+				<Single Name="AnimationDuration" Type="string">0</Single>
+				<Single Name="BringToForeground" Type="string"></Single>
+				<Single Name="ElementVersion" Type="byte">0</Single>
+				<Null Name="TabOrder" />
+			</Single>
+			<Single Type="{f86c2928-8614-4cca-824b-e819ac4d58c4}" Method="IArchivable">
+				<Array Name="ConfiguredComplexInputs" Type="{1de566f6-72a7-494c-9353-9a418172c96e}">
+					<Single Type="{1de566f6-72a7-494c-9353-9a418172c96e}" Method="IArchivable">
+						<Null Name="DescriptionTree" />
+						<Single Name="VisualElemMemberList" Type="{17e26cd1-bb9b-47fe-a3d5-18fcd63b9c96}" Method="IArchivable">
+							<List Name="VisualElemMemberList" Type="{a4b83bea-3742-489c-9fe8-d96d68dba7ab}">
+								<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+									<Single Name="Id" Type="long">1186196937</Single>
+									<Single Name="Value" Type="string">VISU_VARS.bgVISUZylinder1Einfahren[208]</Single>
+								</Single>
+							</List>
+						</Single>
+						<Single Name="SignatureName" Type="string">Visu_TapInput</Single>
+						<Single Name="Name" Type="string">Tap</Single>
+						<Single Name="Description" Type="string">Configure the tapping of a boolean variable</Single>
+					</Single>
+				</Array>
+				<List Name="Elements" Type="System.Collections.ArrayList" />
+				<Null Name="VisualElementDescription" />
+				<Single Name="VisualElemMemberList" Type="{17e26cd1-bb9b-47fe-a3d5-18fcd63b9c96}" Method="IArchivable">
+					<List Name="VisualElemMemberList" Type="{a4b83bea-3742-489c-9fe8-d96d68dba7ab}">
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">564465120</Single>
+							<Single Name="Value" Type="string">VISU_ST_ROUNDRECT</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1649127785</Single>
+							<Single Name="Value" Type="short">956</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">357335551</Single>
+							<Single Name="Value" Type="short">682</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2422045748</Single>
+							<Single Name="Value" Type="short">106</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2134141914</Single>
+							<Single Name="Value" Type="short">32</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">550940142</Single>
+							<Single Name="Value" Type="short">1009</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1473355128</Single>
+							<Single Name="Value" Type="short">698</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">494569607</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4281303277</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2812299069</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4294967295</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">135947015</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4281303277</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">493260384</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4290763259</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2678395525</Single>
+							<Single Name="Value" Type="short">2</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1782330054</Single>
+							<Single Name="Value" Type="string">BS_SOLID</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2827249010</Single>
+							<Single Name="Value" Type="string">PS_SOLID</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">390574330</Single>
+							<Single Name="Value" Type="string">%s</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2340015797</Single>
+							<Single Name="Value" Type="string">HCENTER</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2565699834</Single>
+							<Single Name="Value" Type="string">VCENTER</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">3729828405</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="string">Arial</Single>
+								<Single Type="float">10</Single>
+								<Single Type="uint">2</Single>
+								<Single Type="byte">0</Single>
+								<Single Type="uint">4281303277</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2477733581</Single>
+							<Single Name="Value" Type="string">VISU_HAND.sL_Oeffnen</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">3719097617</Single>
+							<Single Name="Value" Type="int">0</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">571893170</Single>
+							<Single Name="Value" Type="string"></Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2597686782</Single>
+							<Single Name="Value" Type="bool">False</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2880254039</Single>
+							<Single Name="Value" Type="string">(VISU_HAND.st208.bGesperrt) OR NOT VISU_HAND.st208.abZeileVorhanden[3]</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1999528970</Single>
+							<Single Name="Value" Type="string">VISU_VARS.bgVISUZylinder1Einfahren[208]</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">823443203</Single>
+							<Single Name="Value" Type="string">2456</Single>
+						</Single>
+					</List>
+				</Single>
+				<Single Name="VisualElementName" Type="string">Rectangle</Single>
+				<Single Name="VisualElementTypeName" Type="string">VISUFBELEMSIMPLE</Single>
+				<Single Name="VisualElementIsRectangle" Type="bool">True</Single>
+				<Single Name="VisualElementIdentifier" Type="string">GenElemInst_514</Single>
+				<Null Name="VisualElementOfflinePaintCommands" />
+				<Null Name="VisualElementFrameInformation" />
+				<Dictionary Type="System.Collections.Hashtable" Name="VisualElementInputActions" />
+				<Single Name="VisualElementIdentification" Type="System.Guid">bd148086-c616-4be4-ac91-aca440f6cbc8</Single>
+				<Single Name="VisualElementOwningObjectGuid" Type="System.Guid">cb010791-44dd-4671-a017-4e997dc0fdb5</Single>
+				<Array Name="LMGuids" Type="System.Guid" />
+				<Dictionary Type="System.Collections.Hashtable" Name="SubElements" />
+				<Single Name="VisualElementId" Type="int">514</Single>
+				<List Name="UserManagementAccessRights" Type="System.Collections.ArrayList" />
+				<Single Name="AnimationDuration" Type="string">0</Single>
+				<Single Name="BringToForeground" Type="string"></Single>
+				<Single Name="ElementVersion" Type="byte">0</Single>
+				<Null Name="TabOrder" />
+			</Single>
+			<Single Type="{f86c2928-8614-4cca-824b-e819ac4d58c4}" Method="IArchivable">
+				<Array Name="ConfiguredComplexInputs" Type="{1de566f6-72a7-494c-9353-9a418172c96e}" />
+				<List Name="Elements" Type="System.Collections.ArrayList" />
+				<Null Name="VisualElementDescription" />
+				<Single Name="VisualElemMemberList" Type="{17e26cd1-bb9b-47fe-a3d5-18fcd63b9c96}" Method="IArchivable">
+					<List Name="VisualElemMemberList" Type="{a4b83bea-3742-489c-9fe8-d96d68dba7ab}">
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">564465120</Single>
+							<Single Name="Value" Type="string">VISU_ST_ROUNDRECT</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1649127785</Single>
+							<Single Name="Value" Type="short">956</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">357335551</Single>
+							<Single Name="Value" Type="short">682</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2422045748</Single>
+							<Single Name="Value" Type="short">106</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2134141914</Single>
+							<Single Name="Value" Type="short">32</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">550940142</Single>
+							<Single Name="Value" Type="short">1009</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1473355128</Single>
+							<Single Name="Value" Type="short">698</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">494569607</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4292468452</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2812299069</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4294309882</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">135947015</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4292468452</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">493260384</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4294309882</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2678395525</Single>
+							<Single Name="Value" Type="short">1</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1782330054</Single>
+							<Single Name="Value" Type="string">BS_SOLID</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2827249010</Single>
+							<Single Name="Value" Type="string">PS_SOLID</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">390574330</Single>
+							<Single Name="Value" Type="string">%s</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2340015797</Single>
+							<Single Name="Value" Type="string">HCENTER</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2565699834</Single>
+							<Single Name="Value" Type="string">VCENTER</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">3729828405</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="string">Arial</Single>
+								<Single Type="float">10</Single>
+								<Single Type="uint">2</Single>
+								<Single Type="byte">0</Single>
+								<Single Type="uint">4289771713</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2477733581</Single>
+							<Single Name="Value" Type="string">VISU_HAND.sL_Oeffnen</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">3719097617</Single>
+							<Single Name="Value" Type="int">0</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">571893170</Single>
+							<Single Name="Value" Type="string"></Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2597686782</Single>
+							<Single Name="Value" Type="bool">False</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2880254039</Single>
+							<Single Name="Value" Type="string">(NOT VISU_HAND.st208.bGesperrt) OR NOT VISU_HAND.st208.abZeileVorhanden[3]</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">823443203</Single>
+							<Single Name="Value" Type="string">2456</Single>
+						</Single>
+					</List>
+				</Single>
+				<Single Name="VisualElementName" Type="string">Rectangle</Single>
+				<Single Name="VisualElementTypeName" Type="string">VISUFBELEMSIMPLE</Single>
+				<Single Name="VisualElementIsRectangle" Type="bool">True</Single>
+				<Single Name="VisualElementIdentifier" Type="string">GenElemInst_515</Single>
+				<Null Name="VisualElementOfflinePaintCommands" />
+				<Null Name="VisualElementFrameInformation" />
+				<Dictionary Type="System.Collections.Hashtable" Name="VisualElementInputActions" />
+				<Single Name="VisualElementIdentification" Type="System.Guid">a975e306-8df5-4f88-a4f6-0e5c14671891</Single>
+				<Single Name="VisualElementOwningObjectGuid" Type="System.Guid">cb010791-44dd-4671-a017-4e997dc0fdb5</Single>
+				<Array Name="LMGuids" Type="System.Guid" />
+				<Dictionary Type="System.Collections.Hashtable" Name="SubElements" />
+				<Single Name="VisualElementId" Type="int">515</Single>
+				<List Name="UserManagementAccessRights" Type="System.Collections.ArrayList" />
+				<Single Name="AnimationDuration" Type="string">0</Single>
+				<Single Name="BringToForeground" Type="string"></Single>
+				<Single Name="ElementVersion" Type="byte">0</Single>
+				<Null Name="TabOrder" />
+			</Single>
+			<Single Type="{f86c2928-8614-4cca-824b-e819ac4d58c4}" Method="IArchivable">
+				<Array Name="ConfiguredComplexInputs" Type="{1de566f6-72a7-494c-9353-9a418172c96e}">
+					<Single Type="{1de566f6-72a7-494c-9353-9a418172c96e}" Method="IArchivable">
+						<Null Name="DescriptionTree" />
+						<Single Name="VisualElemMemberList" Type="{17e26cd1-bb9b-47fe-a3d5-18fcd63b9c96}" Method="IArchivable">
+							<List Name="VisualElemMemberList" Type="{a4b83bea-3742-489c-9fe8-d96d68dba7ab}">
+								<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+									<Single Name="Id" Type="long">1186196937</Single>
+									<Single Name="Value" Type="string">VISU_VARS.bgVISUZylinder1Ausfahren[208]</Single>
+								</Single>
+							</List>
+						</Single>
+						<Single Name="SignatureName" Type="string">Visu_TapInput</Single>
+						<Single Name="Name" Type="string">Tap</Single>
+						<Single Name="Description" Type="string">Configure the tapping of a boolean variable</Single>
+					</Single>
+				</Array>
+				<List Name="Elements" Type="System.Collections.ArrayList" />
+				<Null Name="VisualElementDescription" />
+				<Single Name="VisualElemMemberList" Type="{17e26cd1-bb9b-47fe-a3d5-18fcd63b9c96}" Method="IArchivable">
+					<List Name="VisualElemMemberList" Type="{a4b83bea-3742-489c-9fe8-d96d68dba7ab}">
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">564465120</Single>
+							<Single Name="Value" Type="string">VISU_ST_ROUNDRECT</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1649127785</Single>
+							<Single Name="Value" Type="short">1068</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">357335551</Single>
+							<Single Name="Value" Type="short">682</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2422045748</Single>
+							<Single Name="Value" Type="short">106</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2134141914</Single>
+							<Single Name="Value" Type="short">32</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">550940142</Single>
+							<Single Name="Value" Type="short">1121</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1473355128</Single>
+							<Single Name="Value" Type="short">698</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">494569607</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4281303277</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2812299069</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4294967295</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">135947015</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4281303277</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">493260384</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4290763259</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2678395525</Single>
+							<Single Name="Value" Type="short">2</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1782330054</Single>
+							<Single Name="Value" Type="string">BS_SOLID</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2827249010</Single>
+							<Single Name="Value" Type="string">PS_SOLID</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">390574330</Single>
+							<Single Name="Value" Type="string">%s</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2340015797</Single>
+							<Single Name="Value" Type="string">HCENTER</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2565699834</Single>
+							<Single Name="Value" Type="string">VCENTER</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">3729828405</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="string">Arial</Single>
+								<Single Type="float">10</Single>
+								<Single Type="uint">2</Single>
+								<Single Type="byte">0</Single>
+								<Single Type="uint">4281303277</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2477733581</Single>
+							<Single Name="Value" Type="string">VISU_HAND.sL_Schliessen</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">3719097617</Single>
+							<Single Name="Value" Type="int">0</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">571893170</Single>
+							<Single Name="Value" Type="string"></Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2597686782</Single>
+							<Single Name="Value" Type="bool">False</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2880254039</Single>
+							<Single Name="Value" Type="string">(VISU_HAND.st208.bGesperrt) OR NOT VISU_HAND.st208.abZeileVorhanden[3]</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1999528970</Single>
+							<Single Name="Value" Type="string">VISU_VARS.bgVISUZylinder1Ausfahren[208]</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">823443203</Single>
+							<Single Name="Value" Type="string">2456</Single>
+						</Single>
+					</List>
+				</Single>
+				<Single Name="VisualElementName" Type="string">Rectangle</Single>
+				<Single Name="VisualElementTypeName" Type="string">VISUFBELEMSIMPLE</Single>
+				<Single Name="VisualElementIsRectangle" Type="bool">True</Single>
+				<Single Name="VisualElementIdentifier" Type="string">GenElemInst_516</Single>
+				<Null Name="VisualElementOfflinePaintCommands" />
+				<Null Name="VisualElementFrameInformation" />
+				<Dictionary Type="System.Collections.Hashtable" Name="VisualElementInputActions" />
+				<Single Name="VisualElementIdentification" Type="System.Guid">7b13fe20-c31d-4e4e-a47e-e76e126a2322</Single>
+				<Single Name="VisualElementOwningObjectGuid" Type="System.Guid">cb010791-44dd-4671-a017-4e997dc0fdb5</Single>
+				<Array Name="LMGuids" Type="System.Guid" />
+				<Dictionary Type="System.Collections.Hashtable" Name="SubElements" />
+				<Single Name="VisualElementId" Type="int">516</Single>
+				<List Name="UserManagementAccessRights" Type="System.Collections.ArrayList" />
+				<Single Name="AnimationDuration" Type="string">0</Single>
+				<Single Name="BringToForeground" Type="string"></Single>
+				<Single Name="ElementVersion" Type="byte">0</Single>
+				<Null Name="TabOrder" />
+			</Single>
+			<Single Type="{f86c2928-8614-4cca-824b-e819ac4d58c4}" Method="IArchivable">
+				<Array Name="ConfiguredComplexInputs" Type="{1de566f6-72a7-494c-9353-9a418172c96e}" />
+				<List Name="Elements" Type="System.Collections.ArrayList" />
+				<Null Name="VisualElementDescription" />
+				<Single Name="VisualElemMemberList" Type="{17e26cd1-bb9b-47fe-a3d5-18fcd63b9c96}" Method="IArchivable">
+					<List Name="VisualElemMemberList" Type="{a4b83bea-3742-489c-9fe8-d96d68dba7ab}">
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">564465120</Single>
+							<Single Name="Value" Type="string">VISU_ST_ROUNDRECT</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1649127785</Single>
+							<Single Name="Value" Type="short">1068</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">357335551</Single>
+							<Single Name="Value" Type="short">682</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2422045748</Single>
+							<Single Name="Value" Type="short">106</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2134141914</Single>
+							<Single Name="Value" Type="short">32</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">550940142</Single>
+							<Single Name="Value" Type="short">1121</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1473355128</Single>
+							<Single Name="Value" Type="short">698</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">494569607</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4292468452</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2812299069</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4294309882</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">135947015</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4292468452</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">493260384</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4294309882</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2678395525</Single>
+							<Single Name="Value" Type="short">1</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1782330054</Single>
+							<Single Name="Value" Type="string">BS_SOLID</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2827249010</Single>
+							<Single Name="Value" Type="string">PS_SOLID</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">390574330</Single>
+							<Single Name="Value" Type="string">%s</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2340015797</Single>
+							<Single Name="Value" Type="string">HCENTER</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2565699834</Single>
+							<Single Name="Value" Type="string">VCENTER</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">3729828405</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="string">Arial</Single>
+								<Single Type="float">10</Single>
+								<Single Type="uint">2</Single>
+								<Single Type="byte">0</Single>
+								<Single Type="uint">4289771713</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2477733581</Single>
+							<Single Name="Value" Type="string">VISU_HAND.sL_Schliessen</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">3719097617</Single>
+							<Single Name="Value" Type="int">0</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">571893170</Single>
+							<Single Name="Value" Type="string"></Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2597686782</Single>
+							<Single Name="Value" Type="bool">False</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2880254039</Single>
+							<Single Name="Value" Type="string">(NOT VISU_HAND.st208.bGesperrt) OR NOT VISU_HAND.st208.abZeileVorhanden[3]</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">823443203</Single>
+							<Single Name="Value" Type="string">2456</Single>
+						</Single>
+					</List>
+				</Single>
+				<Single Name="VisualElementName" Type="string">Rectangle</Single>
+				<Single Name="VisualElementTypeName" Type="string">VISUFBELEMSIMPLE</Single>
+				<Single Name="VisualElementIsRectangle" Type="bool">True</Single>
+				<Single Name="VisualElementIdentifier" Type="string">GenElemInst_517</Single>
+				<Null Name="VisualElementOfflinePaintCommands" />
+				<Null Name="VisualElementFrameInformation" />
+				<Dictionary Type="System.Collections.Hashtable" Name="VisualElementInputActions" />
+				<Single Name="VisualElementIdentification" Type="System.Guid">0ee56999-a46d-473c-b2f4-d635488371d1</Single>
+				<Single Name="VisualElementOwningObjectGuid" Type="System.Guid">cb010791-44dd-4671-a017-4e997dc0fdb5</Single>
+				<Array Name="LMGuids" Type="System.Guid" />
+				<Dictionary Type="System.Collections.Hashtable" Name="SubElements" />
+				<Single Name="VisualElementId" Type="int">517</Single>
+				<List Name="UserManagementAccessRights" Type="System.Collections.ArrayList" />
+				<Single Name="AnimationDuration" Type="string">0</Single>
+				<Single Name="BringToForeground" Type="string"></Single>
+				<Single Name="ElementVersion" Type="byte">0</Single>
+				<Null Name="TabOrder" />
+			</Single>
+			<Single Type="{f86c2928-8614-4cca-824b-e819ac4d58c4}" Method="IArchivable">
+				<Array Name="ConfiguredComplexInputs" Type="{1de566f6-72a7-494c-9353-9a418172c96e}" />
+				<List Name="Elements" Type="System.Collections.ArrayList" />
+				<Null Name="VisualElementDescription" />
+				<Single Name="VisualElemMemberList" Type="{17e26cd1-bb9b-47fe-a3d5-18fcd63b9c96}" Method="IArchivable">
+					<List Name="VisualElemMemberList" Type="{a4b83bea-3742-489c-9fe8-d96d68dba7ab}">
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">564465120</Single>
+							<Single Name="Value" Type="string">VISU_ST_ROUNDRECT</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1649127785</Single>
+							<Single Name="Value" Type="short">1180</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">357335551</Single>
+							<Single Name="Value" Type="short">687</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2422045748</Single>
+							<Single Name="Value" Type="short">72</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2134141914</Single>
+							<Single Name="Value" Type="short">22</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">550940142</Single>
+							<Single Name="Value" Type="short">1216</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1473355128</Single>
+							<Single Name="Value" Type="short">698</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">494569607</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4294967295</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2812299069</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4288325041</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">135947015</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4294967295</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">493260384</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="uint">4288325041</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2678395525</Single>
+							<Single Name="Value" Type="short">0</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1782330054</Single>
+							<Single Name="Value" Type="string">BS_SOLID</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2827249010</Single>
+							<Single Name="Value" Type="string">PS_HOLLOW</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">390574330</Single>
+							<Single Name="Value" Type="string">%s</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2340015797</Single>
+							<Single Name="Value" Type="string">HCENTER</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2565699834</Single>
+							<Single Name="Value" Type="string">VCENTER</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">3729828405</Single>
+							<List Name="Value" Type="System.Collections.ArrayList">
+								<Single Type="string">Arial</Single>
+								<Single Type="float">9</Single>
+								<Single Type="uint">2</Single>
+								<Single Type="byte">0</Single>
+								<Single Type="uint">4294967295</Single>
+							</List>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2477733581</Single>
+							<Single Name="Value" Type="string">VISU_HAND.st208.asStatus[3]</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">3719097617</Single>
+							<Single Name="Value" Type="int">0</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">571893170</Single>
+							<Single Name="Value" Type="string"></Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2597686782</Single>
+							<Single Name="Value" Type="bool">False</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">2880254039</Single>
+							<Single Name="Value" Type="string">NOT VISU_HAND.st208.abZeileVorhanden[3]</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">401380312</Single>
+							<Single Name="Value" Type="string">VISU_HAND.st208.adwStatus[3]</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">823443203</Single>
+							<Single Name="Value" Type="string">2456</Single>
+						</Single>
+					</List>
+				</Single>
+				<Single Name="VisualElementName" Type="string">Rectangle</Single>
+				<Single Name="VisualElementTypeName" Type="string">VISUFBELEMSIMPLE</Single>
+				<Single Name="VisualElementIsRectangle" Type="bool">True</Single>
+				<Single Name="VisualElementIdentifier" Type="string">GenElemInst_518</Single>
+				<Null Name="VisualElementOfflinePaintCommands" />
+				<Null Name="VisualElementFrameInformation" />
+				<Dictionary Type="System.Collections.Hashtable" Name="VisualElementInputActions" />
+				<Single Name="VisualElementIdentification" Type="System.Guid">3d3049ca-79aa-4a76-b69d-57c01567daff</Single>
+				<Single Name="VisualElementOwningObjectGuid" Type="System.Guid">cb010791-44dd-4671-a017-4e997dc0fdb5</Single>
+				<Array Name="LMGuids" Type="System.Guid" />
+				<Dictionary Type="System.Collections.Hashtable" Name="SubElements" />
+				<Single Name="VisualElementId" Type="int">518</Single>
+				<List Name="UserManagementAccessRights" Type="System.Collections.ArrayList" />
+				<Single Name="AnimationDuration" Type="string">0</Single>
+				<Single Name="BringToForeground" Type="string"></Single>
+				<Single Name="ElementVersion" Type="byte">0</Single>
+				<Null Name="TabOrder" />
+			</Single>
+			<Single Type="{f86c2928-8614-4cca-824b-e819ac4d58c4}" Method="IArchivable">
+				<Array Name="ConfiguredComplexInputs" Type="{1de566f6-72a7-494c-9353-9a418172c96e}" />
+				<List Name="Elements" Type="System.Collections.ArrayList" />
+				<Null Name="VisualElementDescription" />
+				<Single Name="VisualElemMemberList" Type="{17e26cd1-bb9b-47fe-a3d5-18fcd63b9c96}" Method="IArchivable">
+					<List Name="VisualElemMemberList" Type="{a4b83bea-3742-489c-9fe8-d96d68dba7ab}">
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">564465120</Single>
+							<Single Name="Value" Type="string">VISU_ST_RECTANGLE</Single>
+						</Single>
+						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
+							<Single Name="Id" Type="long">1649127785</Single>
 							<Single Name="Value" Type="short">16</Single>
 						</Single>
 						<Single Type="{c694e3a2-5c0b-4177-ab35-cb06bd5a6a02}" Method="IArchivable">
@@ -33979,7 +34961,7 @@ __V3_CONTENT__
 		</Single>
 		<Single Name="DialogDut" Type="System.Guid">d24acd76-d901-4a9d-9583-e1f8d30de9c1</Single>
 	</Single>
-	<Single Name="LastUsedIdForIdentifier" Type="int">504</Single>
+	<Single Name="LastUsedIdForIdentifier" Type="int">518</Single>
 	<Single Name="TextDocument" Type="{f3878285-8e4f-490b-bb1b-9acbb7eb04db}" Method="IArchivable">
 		<Single Name="TextBlobForSerialisation" Type="string"></Single>
 		<Null Name="LineInfoPersistence" />

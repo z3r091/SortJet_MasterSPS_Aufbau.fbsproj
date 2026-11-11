@@ -47,6 +47,10 @@ abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bMessachseMinEndschalter     :=  Messachse.Antrieb.bpMinSchalterBelegt;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].rMessachseIstPos             :=  Messachse.rpIstPosition;
 
+abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bAbschrankungFehler          :=  Abschrankung.bpFehler;
+abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bAbschrankungOffen           :=  Abschrankung.in_bStatusZylinderEingefahren;
+abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bAbschrankungGeschlossen     :=  Abschrankung.in_bStatusZylinderAusgefahren;
+
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bAmpelRot                    :=  out_bAmpelSignalRot;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bAmpelGruen                  :=  out_bAmpelSignalGruen;
 END_ACTION

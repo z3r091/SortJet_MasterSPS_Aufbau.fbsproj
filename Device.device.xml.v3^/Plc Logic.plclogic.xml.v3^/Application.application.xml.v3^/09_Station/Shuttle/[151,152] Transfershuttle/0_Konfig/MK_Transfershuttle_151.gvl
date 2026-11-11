@@ -85,7 +85,7 @@ VAR_GLOBAL
                                             bSensorEinlauf                := TRUE,                    // Einlaufsensor vorhanden
                                             bSensorEinlaufStopp           := FALSE,                   // Shuttle: zusaetzlicher Stopp-Sensor am Einlauf (ohne: Einlaufsensor), Gegenstueck zum Auslauf-Stopp im Rueckwaertstransport
                                             bSensorAuslaufStopp           := FALSE,                   // Shuttle: zusaetzlicher Stopp-Sensor am Auslauf (ohne: Auslaufsensor), Verfahrfreigabe und Scheibe hat Shuttle verlassen
-                                            bDurchlaufSperreZumNachfolger := FALSE,                   // derzeit ohne Funktion
+                                            bDurchlaufSperreZumNachfolger := FALSE,                   // Ausbaustufe: bewegliche Abschrankung zum Nachfolger
                                             bQuerfahrt                    := TRUE,                    // Ausbaustufe: Querfahrt
                                             bDLSSchmiersystem             := TRUE,                    // Zentralschmierung DLS vorhanden
                                             bWandverstellung              := [ FALSE ],               // Ausbaustufe Station: Wandverstellung je Wand

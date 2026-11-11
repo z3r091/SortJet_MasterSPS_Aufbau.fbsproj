@@ -55,6 +55,7 @@ IF( blBetriebsartReset )THEN
          - Bausteine welche sich selbst zurueck setzen
       *)
       Dickenverstellung.bpReset := TRUE;
+      Abschrankung.bpReset      := TRUE;
 
       steplReset := STEP_20_E;
 

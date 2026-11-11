@@ -43,6 +43,11 @@ TYPE Stationsstatus_Visu_ST :
     bHubpaletteSensorAusgefahren    : BOOL;
     bHubpaletteSensorEingefahren    : BOOL;
 
+    // Bewegliche Abschrankung zum Nachfolger
+    bAbschrankungFehler             : BOOL;
+    bAbschrankungOffen              : BOOL;
+    bAbschrankungGeschlossen        : BOOL;
+
     // Kippen
     bKippenFehler                   : BOOL;
     bKippenAntriebReferenziert      : BOOL;

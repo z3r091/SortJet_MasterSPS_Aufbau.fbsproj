@@ -33,4 +33,7 @@ Kippen( stStationsNummern                    := BasisStationsParameter.stMKs.stS
 // Dickenverstellung
 Dickenverstellung( bpZylinderAbfragenVorhanden := TRUE,
                    bpEinAusFahrenLogikDrehen   := BasisStationsParameter.stMKs.stStationsOptionen.bVerstellungEinAusGefahrenLogikDrehen );
+
+// Bewegliche Abschrankung zum Nachfolger
+Abschrankung();
 END_ACTION

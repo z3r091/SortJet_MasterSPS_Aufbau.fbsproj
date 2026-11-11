@@ -19,6 +19,8 @@ THEN
   dwpHandfunktionenReturn.18 := Messachse.bpHandplus;
   dwpHandfunktionenReturn.19 := Messachse.bpHandminus;
   dwpHandfunktionenReturn.20 := Messachse.bpHandReferenz;
+  dwpHandfunktionenReturn.21 := Abschrankung.bpStartEinfahren;
+  dwpHandfunktionenReturn.22 := Abschrankung.bpStartAusfahren;
 ELSE
   dwpHandfunktionenReturn := 0;
 END_IF

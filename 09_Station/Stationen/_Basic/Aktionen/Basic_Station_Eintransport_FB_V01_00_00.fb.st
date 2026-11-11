@@ -22,6 +22,12 @@ VAR_INPUT
   Messachse         : REFERENCE TO Messachse_FB_V01_00_00;
   Dickenverstellung : REFERENCE TO ZylinderPneumatik_3Wege_FB_V01_00_00;
 
+  (* Hinweis:
+     - Nur mit der Ausbaustufe bDurchlaufSperreZumNachfolger wird die Referenz benutzt,
+       ohne diese Ausbaustufe muss die Station sie nicht uebergeben
+  *)
+  Abschrankung      : REFERENCE TO ZylinderPneumatik_FB_V01_00_00;
+
 END_VAR
 VAR
 
@@ -29,11 +35,16 @@ VAR
   blVortransportGestartet : BOOL; // Vortransport zum Vorab-Sensor laeuft gemeinsam mit den Nachbewegungen
   blMessachseFertig       : BOOL; // Messachse auf Position oder nicht vorhanden
   blDickenverstellungFertig : BOOL; // Dickenverstellung auf Position oder nicht vorhanden
+  blMitAbschrankung         : BOOL; // Rueckwaertiger Eintransport vom Nachfolger durch die bewegliche Abschrankung
+  blAbschrankungFertig      : BOOL; // Abschrankung in der Endlage oder nicht beteiligt
 
 END_VAR
 //-------------------------------------------------------------------------------------------------
 // EINTRANSPORT
 //-------------------------------------------------------------------------------------------------
+blMitAbschrankung := (     BasisStationsParameter.stMKs.stStationsAufbau.bDurchlaufSperreZumNachfolger
+                       AND BasisStationsParameter.bRueckwaertsTransportieren[wWand] );
+
 IF ( BasisStationsParameter.bEintransport[wWand]
      AND bpAutomatikAktiv )
 THEN
@@ -100,6 +111,15 @@ THEN
     END_IF
   END_IF
 
+  IF ( blMitAbschrankung ) THEN
+    IF ( Abschrankung.bpFehler ) THEN
+      Abschrankung.bpStartEinfahren := FALSE;
+      Abschrankung.bpStartAusfahren := FALSE;
+      BasisStationsParameter.wFehlerNummer := Abschrankung.wpFehlerNr;
+      steplAktion := STEP_900_E;
+    END_IF
+  END_IF
+
   CASE steplAktion OF
     // EINTRANSPORT ===============================
     STEP_0_E:
@@ -155,6 +175,14 @@ THEN
           Hub.bpStartHubAb  := ( BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eHub = eHub_Unten );
         END_IF
 
+        (* Hinweis:
+           - Bewegliche Abschrankung zum Nachfolger oeffnen (einfahren)
+        *)
+        IF ( blMitAbschrankung ) THEN
+          Abschrankung.bpStartAusfahren := FALSE;
+          Abschrankung.bpStartEinfahren := TRUE;
+        END_IF
+
         steplAktion := STEP_20_E;
       END_IF
 
@@ -171,9 +199,16 @@ THEN
         blDickenverstellungFertig := Dickenverstellung.bpDone;
       END_IF
 
+      blAbschrankungFertig := TRUE;
+
+      IF ( blMitAbschrankung ) THEN
+        blAbschrankungFertig := Abschrankung.bpDone;
+      END_IF
+
       IF ( ( Kippen.bpDone )
            AND blMessachseFertig
            AND blDickenverstellungFertig
+           AND blAbschrankungFertig
            AND ( Roellchenleiste.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bRoellchenleiste[wWand] )
            AND ( Wandverstellung.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bWandverstellung[wWand] )
            AND ( Hub.bpDone OR NOT ( Hub.bpStartHubAuf OR Hub.bpStartHubAb ) OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bHub ) )
@@ -236,12 +271,38 @@ THEN
         Glastransport.bpEintransportRueckwaertig := FALSE;
         bpDrosselklappeOeffnen                   := FALSE;
 
+        (* Hinweis:
+           - Bewegliche Abschrankung zum Nachfolger schliessen (ausfahren)
+        *)
+        IF ( blMitAbschrankung ) THEN
+          Abschrankung.bpStartEinfahren := FALSE;
+          Abschrankung.bpStartAusfahren := TRUE;
+        END_IF
+
+        steplAktion := STEP_150_E;
+      END_IF
+
+    // EINTRANSPORT =====================
+    STEP_150_E:
+      (* Hinweis:
+         - Warten bis die bewegliche Abschrankung geschlossen ist (ohne Abschrankung sofort weiter)
+      *)
+      blAbschrankungFertig := TRUE;
+
+      IF ( blMitAbschrankung ) THEN
+        blAbschrankungFertig := Abschrankung.bpDone;
+      END_IF
+
+      IF ( blAbschrankungFertig ) THEN
+        IF ( blMitAbschrankung ) THEN
+          Abschrankung.bpStartAusfahren := FALSE;
+        END_IF
+
         IF ( BasisStationsParameter.pAuftrag[wWand].bLetzteScheibe) THEN
           steplAktion := STEP_200_E;
         ELSE
           steplAktion := STEP_1000_E;
         END_IF
-
       END_IF
 
     // EINTRANSPORT =====================
@@ -338,6 +399,11 @@ ELSE
 
     IF ( BasisStationsParameter.stMKs.stStationsAufbau.bMessachse ) THEN
       Messachse.bpPositionierung := FALSE;
+    END_IF
+
+    IF ( BasisStationsParameter.stMKs.stStationsAufbau.bDurchlaufSperreZumNachfolger ) THEN
+      Abschrankung.bpStartEinfahren := FALSE;
+      Abschrankung.bpStartAusfahren := FALSE;
     END_IF
 
     steplAktion := STEP_0_E;

@@ -130,6 +130,7 @@ FOR i := 201 TO 208 DO
         pH^.abZeileVorhanden[5] := pBP^.stMKs.stStationsAufbau.bKippen[cWAND_1];
       208:
         pH^.abZeileVorhanden[2] := pBP^.stMKs.stStationsAufbau.bMessachse;
+        pH^.abZeileVorhanden[3] := pBP^.stMKs.stStationsAufbau.bDurchlaufSperreZumNachfolger;
     END_CASE
   END_IF
 
@@ -227,6 +228,12 @@ FOR i := 201 TO 208 DO
       b := VisuHand_Set(stH := pH^, wZeile := 2,
                          sText   := VisuUeb_MmText(sPrefix := '', rWert := abgStationsstatusVisu[i].rMessachseIstPos, sEinheit := ' mm'),
                          dwFarbe := SEL(abgStationsstatusVisu[i].bMessachseFehler, SEL(pBP^.bIstReferenziert, dwO, dwG), dwR));
+      // 3 Bewegliche Abschrankung
+      IF abgStationsstatusVisu[i].bAbschrankungFehler THEN             b := VisuHand_Set(stH := pH^, wZeile := 3, sText := 'Fehler', dwFarbe := dwR);
+      ELSIF abgStationsstatusVisu[i].bAbschrankungGeschlossen THEN     b := VisuHand_Set(stH := pH^, wZeile := 3, sText := 'zu',     dwFarbe := dwG);
+      ELSIF abgStationsstatusVisu[i].bAbschrankungOffen THEN           b := VisuHand_Set(stH := pH^, wZeile := 3, sText := 'offen',  dwFarbe := dwO);
+      ELSE                                                             b := VisuHand_Set(stH := pH^, wZeile := 3, sText := '?',      dwFarbe := dwO);
+      END_IF
   END_CASE
 END_FOR
 

@@ -48,6 +48,11 @@ Kippen.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWA
 Dickenverstellung.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[cWAND_1];
 
 (* Hinweis:
+   - Bewegliche Abschrankung zum Nachfolger
+*)
+Abschrankung.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bDurchlaufSperreZumNachfolger;
+
+(* Hinweis:
    - Geblaese
 *)
 Geblaese.bpAktivieren := BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[cWAND_1];

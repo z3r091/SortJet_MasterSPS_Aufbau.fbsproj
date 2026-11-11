@@ -63,6 +63,7 @@ VAR
   Messachse         : Messachse_FB_V01_00_00;
   Kippen            : Kippen_FB_V01_00_00;
   Dickenverstellung : ZylinderPneumatik_3Wege_FB_V01_00_00;
+  Abschrankung      : ZylinderPneumatik_FB_V01_00_00; // Bewegliche Abschrankung zum Nachfolger: ausgefahren = geschlossen, eingefahren = offen
 
   (* Hinweis:
      - Die Wand hat keinen Hub, keine Roellchenleiste, keine Wandverstellung und kein Geblaese ueber
@@ -103,7 +104,8 @@ VAR
   in_bTasterGlasbruch                      AT %I* : BOOL;
   in_bLichtschrankeQuittiert               AT %I* : BOOL;
   in_bLichtschrankeFehler                  AT %I* : BOOL;
-  in_bMotorschutzGeblaese_Ok               AT %I* : BOOL; 
+  in_bMotorschutzGeblaese_Ok               AT %I* : BOOL;
+  in_bSensorAbschrankungOffen              AT %I* : BOOL; // Initiator: bewegliche Abschrankung offen
 
   // HARDWARE AUSGAENGE
   out_bDrosselklappeOeffnen                       : BOOL; // Drosselklappe oeffnen / schliessen
@@ -115,7 +117,9 @@ VAR
   out_bSignalScheibeGlasbruch              AT %Q* : BOOL; // gelber Leuchdrucktaster
   out_bGeblaeseEin                         AT %Q* : BOOL; // Geblaese starten (Schuetz)
   out_bLichtschrankeAusgeloest             AT %Q* : BOOL; // Signal im OP das die Lichtschranke ausgelöst hat und nicht quittiert ist
-  
+  out_bAbschrankungEinfahren               AT %Q* : BOOL; // Impulsventil: bewegliche Abschrankung einfahren (oeffnen)
+  out_bAbschrankungAusfahren               AT %Q* : BOOL; // Impulsventil: bewegliche Abschrankung ausfahren (schliessen)
+
     
 END_VAR
 //-------------------------------------------------------------------------------------------------
@@ -135,6 +139,12 @@ END_IF
 // IO ZUWEISUNG
 //-------------------------------------------------------------------------------------------------
 in_bFussTaster := pgAntriebe[Glastransport.ppAntriebsInformationen.wAchsID].udipEingaengeUmrichter.cXG37_2_IO_2;
+
+// Bewegliche Abschrankung: "geschlossen" kommt vom Sicherheitssensor ueber die Safety
+Abschrankung.in_bStatusZylinderEingefahren := in_bSensorAbschrankungOffen;
+Abschrankung.in_bStatusZylinderAusgefahren := EV_ToPLC_b207_geschlossen;
+out_bAbschrankungEinfahren := Abschrankung.out_bZylinderEinfahren;
+out_bAbschrankungAusfahren := Abschrankung.out_bZylinderAusfahren;
 
 Glastransport.Antrieb.wpAusgaengeUmrichter.cXG37_IO_3  := out_bAmpelSignalRot;
 Glastransport.Antrieb.wpAusgaengeUmrichter.cXG37_IO_4  := out_bAmpelSignalGruen;
@@ -173,7 +183,8 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                          Wandverstellung         := WandverstellungUnbenutzt,
                          Geblaese                := Geblaese,
                          Messachse               := Messachse,
-                         Dickenverstellung       := Dickenverstellung );
+                         Dickenverstellung       := Dickenverstellung,
+                         Abschrankung            := Abschrankung );
 
   Vortransport[wlIndex]( BasisStationsParameter  := BasisStationsParameter,
                          wWand                   := wlIndex,
@@ -315,7 +326,8 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                          Kippen                  := Kippen,
                          Hub                     := HubUnbenutzt,
                          Geblaese                := Geblaese,
-                         Messachse               := Messachse );
+                         Messachse               := Messachse,
+                         Abschrankung            := Abschrankung );
 END_FOR
 
 (* Hinweis:

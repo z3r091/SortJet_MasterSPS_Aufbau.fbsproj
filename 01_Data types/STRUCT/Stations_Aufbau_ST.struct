@@ -25,7 +25,7 @@ TYPE Stations_Aufbau_ST:
     bSensorEinlauf                          : BOOL;                                   // Einlaufsensor vorhanden
     bSensorEinlaufStopp                     : BOOL;                                   // Shuttle: zusaetzlicher Stopp-Sensor am Einlauf (ohne: Einlaufsensor), Gegenstueck zum Auslauf-Stopp im Rueckwaertstransport
     bSensorAuslaufStopp                     : BOOL;                                   // Shuttle: zusaetzlicher Stopp-Sensor am Auslauf (ohne: Auslaufsensor), Verfahrfreigabe und Scheibe hat Shuttle verlassen
-    bDurchlaufSperreZumNachfolger           : BOOL;                                   // derzeit ohne Funktion
+    bDurchlaufSperreZumNachfolger           : BOOL;                                   // Ausbaustufe: bewegliche Abschrankung zum Nachfolger
     bKippenSchuetz                          : BOOL;                                   // Kippen ueber Schuetz statt Umrichter
     bQuerfahrt                              : BOOL;                                   // Ausbaustufe: Querfahrt
     bDurchgang                              : BOOL;                                   // Station ist Teil eines Durchgangs (belegt = Oeffnen blockiert)

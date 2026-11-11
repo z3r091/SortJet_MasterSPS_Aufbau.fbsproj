@@ -72,6 +72,6 @@ WatchIo( Drehen.Antrieb.bpMinSchalterBelegt OR Drehen.Antrieb.bpMaxSchalterBeleg
 WatchIo( NOT Drehen.bpInReferenz AND NOT blBetriebsartReferenz,                                                                                           wlWatchIONachrichtenNummer + 9 );
 WatchIo( Drehen.bpReferenz AND NOT Drehen.bpDone,                                                                                                         wlWatchIONachrichtenNummer + 10 );
 
-// Durchfassperre 208
-WatchIo( NOT EV_ToPLC_b207_geschlossen,                                                                                                                  wlWatchIONachrichtenNummer + 11 );
+// Durchfassperre 208: nur melden, wenn gedreht werden soll und die Sperre laenger als 10 s offen ist
+WatchIoControl( T#10S, wlWatchIONachrichtenNummer + 11, ( Drehen.bpDrehvorgangAktiv OR Drehen.bpReferenz ) AND NOT EV_ToPLC_b207_geschlossen );
 END_ACTION
