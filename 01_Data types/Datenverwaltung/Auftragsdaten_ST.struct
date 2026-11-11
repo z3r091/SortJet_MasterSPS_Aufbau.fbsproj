@@ -36,7 +36,6 @@ TYPE Auftragsdaten_ST :
     stAuftragsOptionen                   : Auftrags_Optionen_ST;
 
     // Verfahrlogik_Neu
-    pPositionierAuftrag                  : PositionierAuftrag_ST; // Wichtig: Struktur fuer die neue Verfahrlogik - Ersetzt normal die folgenden Variablen
     rVorabPosition                       : REAL;
     rVorabUpdateZeit                     : REAL;
     rVorabBeschleunigung                 : REAL;
@@ -45,6 +44,7 @@ TYPE Auftragsdaten_ST :
     rNennstromBeschleunigungsphase       : REAL;
     rNennstromKonstantfahrt              : REAL;
     rZeitintervalBeschleunigungsphase    : REAL;
+    wVorabAuftragstyp                    : WORD; // Auftragstyp der Vorabpositionierung [tMmi2SpsInfo.wVorabAuftragstyp]
 
     rAuftragsGewicht                     : REAL;
 

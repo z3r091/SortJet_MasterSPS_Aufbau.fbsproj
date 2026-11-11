@@ -64,8 +64,8 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
       *)
       steplSchritt := STEP_10_E;
 
-      PositionierAuftragsdatenPruefen.pPositionierAuftragsdaten := Auftragsdaten.pPositionierAuftrag;
-      PositionierAuftragsdatenPruefen.pAntriebsinformationen    := starrStationBasisParameter[wStation].stAntriebsparameter.stQuerfahrt;
+      PositionierAuftragsdatenPruefen.rpSollPosition   := Auftragsdaten.rVorabPosition;
+      PositionierAuftragsdatenPruefen.wpStationsNummer := wStation;
 
       PositionierAuftragsdatenPruefen();
 

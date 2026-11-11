@@ -10,29 +10,29 @@ ACTION Positionen
 // ************************ START - Position pruefen *********************
 //_________________________________________________________________________
 
-IF ( pPositionierAuftragsdaten.rSollPosition > getRealShuttleMaxPos(pPositionierAuftragsdaten.wStationsNummer) ) THEN
+IF ( rpSollPosition > getRealShuttleMaxPos(wpStationsNummer) ) THEN
 
-  wpgFehlerdaten[0] := pPositionierAuftragsdaten.wStationsNummer;
-  wpgFehlerdaten[1] := REAL_TO_WORD(getRealShuttleMaxPos(pPositionierAuftragsdaten.wStationsNummer));
-  wpgFehlerdaten[2] := REAL_TO_WORD(pPositionierAuftragsdaten.rSollPosition);
+  wpgFehlerdaten[0] := wpStationsNummer;
+  wpgFehlerdaten[1] := REAL_TO_WORD(getRealShuttleMaxPos(wpStationsNummer));
+  wpgFehlerdaten[2] := REAL_TO_WORD(rpSollPosition);
   SpsError( eFehler_Station,
             cMELDUNG_AUFTRAGSDATEN_ZIELPOSITION_ZU_GROSS,
-            pPositionierAuftragsdaten.wStationsNummer,
-            AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer),
+            wpStationsNummer,
+            AutomatikkreisBestimmen(wpStationsNummer),
             wpgFehlerdaten );
 
   bpErgebnis:=FALSE;
 END_IF
 
-IF ( pPositionierAuftragsdaten.rSollPosition < getRealShuttleMinPos(pPositionierAuftragsdaten.wStationsNummer) ) THEN
+IF ( rpSollPosition < getRealShuttleMinPos(wpStationsNummer) ) THEN
 
-  wpgFehlerdaten[0] := pPositionierAuftragsdaten.wStationsNummer;
-  wpgFehlerdaten[1] := REAL_TO_WORD(getRealShuttleMinPos(pPositionierAuftragsdaten.wStationsNummer));
-  wpgFehlerdaten[2] := REAL_TO_WORD(pPositionierAuftragsdaten.rSollPosition);
+  wpgFehlerdaten[0] := wpStationsNummer;
+  wpgFehlerdaten[1] := REAL_TO_WORD(getRealShuttleMinPos(wpStationsNummer));
+  wpgFehlerdaten[2] := REAL_TO_WORD(rpSollPosition);
   SpsError( eFehler_Station,
             cMELDUNG_AUFTRAGSDATEN_ZIELPOSITION_ZU_KLEIN,
-            pPositionierAuftragsdaten.wStationsNummer,
-            AutomatikkreisBestimmen(pPositionierAuftragsdaten.wStationsNummer),
+            wpStationsNummer,
+            AutomatikkreisBestimmen(wpStationsNummer),
             wpgFehlerdaten );
 
   bpErgebnis := FALSE;

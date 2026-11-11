@@ -24,7 +24,6 @@ VAR_INPUT
 
   // STRUCT
   stpInTransportVerbund                 : Interface_TransfershuttleVerbund; // STRUKTUR: Schnittstelle zwischen den Transfershuttlen
-  pAuftragsdatenPositionieren           : PositionierAuftrag_ST; // Daten fur die Positionierung [Rampen / Soll- Position / Soll- Geschwindigkeit
 
 END_VAR
 VAR_OUTPUT

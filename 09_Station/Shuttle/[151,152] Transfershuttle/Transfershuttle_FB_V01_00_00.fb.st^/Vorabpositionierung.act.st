@@ -53,7 +53,7 @@ THEN
       // Shuttle auf Position fahren
       IF ( Glastransport.bpBereitZumVerfahren AND blShuttleKannSicherVerfahrenWerden ) THEN
         Querfahrt.rpDestinationPosition := BasisStationsParameter.pAuftragVorabPositionierung.rVorabPosition;
-        Querfahrt.wpAuftragsTyp         := BasisStationsParameter.pAuftragVorabPositionierung.pPositionierAuftrag.wAuftragstyp; // Bit 1 = Positionierauftrag mit Messgeschwindigkeit
+        Querfahrt.wpAuftragsTyp         := BasisStationsParameter.pAuftragVorabPositionierung.wVorabAuftragstyp; // Bit 1 = Positionierauftrag mit Messgeschwindigkeit
         steplVorabpositionierung := STEP_20_E;
       END_IF
 
@@ -131,7 +131,7 @@ THEN
       //
       //   HINWEIS:
       //   - Nach dem Positionieren kann das Transfershuttle heben wenn der Folgeauftrag ein Ein- bzw. Aus- Transportauftrag ist
-      IF ( pAuftragsdatenPositionieren.wAuftragstyp  = cFOLGEAUFTRAG_AKTIV ) THEN
+      IF ( BasisStationsParameter.pAuftragVorabPositionierung.wVorabAuftragstyp = cFOLGEAUFTRAG_AKTIV ) THEN
 
         IF ( BasisStationsParameter.pVorAbAuftragsdaten[cWAND_1].wShuttleNummer = BasisStationsParameter.stMKs.stStationsNummern.NummerSPS )
         THEN

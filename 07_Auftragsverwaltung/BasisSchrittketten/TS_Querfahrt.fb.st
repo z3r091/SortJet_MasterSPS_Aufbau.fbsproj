@@ -65,7 +65,6 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung) THEN
          - Uebergabe der Auftragsdaten
       *)
       starrTransfershuttleBasisParameter[wStation].pAuftragVorabPositionierung := Auftragsdaten;
-      aTransfershuttles[wStation].pAuftragsdatenPositionieren := Auftragsdaten.pPositionierAuftrag;
       starrTransfershuttleBasisParameter[wStation].bVorabpositionieren := TRUE;
 
       steplSchritt := STEP_20_E;

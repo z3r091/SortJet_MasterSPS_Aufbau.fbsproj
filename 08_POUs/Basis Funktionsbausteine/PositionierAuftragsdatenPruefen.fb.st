@@ -8,9 +8,8 @@
 FUNCTION_BLOCK PositionierAuftragsdatenPruefen
 VAR_INPUT
 
-  // STRUCT
-  pPositionierAuftragsdaten  : PositionierAuftrag_ST; // Daten fur die Positionierung [Rampen / Soll- Position / Soll- Geschwindigkeit / Stromwerte
-  pAntriebsinformationen     : AntriebsInformationen;
+  rpSollPosition   : REAL; // Zielposition der Positionierung
+  wpStationsNummer : WORD; // Station, die positioniert werden soll
 
 END_VAR
 
@@ -29,6 +28,4 @@ END_VAR
 bpErgebnis := TRUE;
 
 Positionen();
-// Rampen();
-//Geschwindigkeit();
 END_FUNCTION_BLOCK

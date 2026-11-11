@@ -129,7 +129,5 @@ Positionieren();
 
 // Ohne Querfahrt ist die Zielposition immer erreicht
 blZielPositionErreicht := (    NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt
-                            OR  ( ABS( BasisStationsParameter.rAktuellePositionQuerfahrt - argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )
-                            OR  ( ABS( BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition - argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )
-                            OR  ( ABS(ABS(BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition) - ABS(BasisStationsParameter.rAktuellePositionQuerfahrt) ) <= rgMKZielPositionToleranz ) );
+                            OR ( ABS( BasisStationsParameter.rAktuellePositionQuerfahrt - BasisStationsParameter.pAuftrag[cWAND_1].rStationsZielposition ) <= rgMKZielPositionToleranz ) );
 END_FUNCTION_BLOCK

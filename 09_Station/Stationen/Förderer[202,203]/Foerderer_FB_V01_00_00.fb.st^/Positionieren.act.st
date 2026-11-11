@@ -39,7 +39,7 @@ THEN
       (* Hinweis:
          - Station auf eine definierte Position verfahren
       *)
-      Querfahrt.rpZielPosition  := BasisStationsParameter.pAuftragVorabPositionierung.pPositionierAuftrag.rSollPosition;
+      Querfahrt.rpZielPosition  := BasisStationsParameter.pAuftragVorabPositionierung.rVorabPosition;
       Querfahrt.bpPositionieren := TRUE;
 
       steplPositionieren := STEP_20_E;

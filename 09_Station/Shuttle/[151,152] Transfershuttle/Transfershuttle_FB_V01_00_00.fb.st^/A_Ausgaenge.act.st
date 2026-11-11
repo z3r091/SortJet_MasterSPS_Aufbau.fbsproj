@@ -42,9 +42,7 @@ bpShuttleKannSicherVerfahrenWerden := Glastransport.bpBereitZumVerfahren;
 (* Anmerkung:
    - Positionsabfrage ob die Position korrekt angefahren wurde
 *)
-blZielPositionErreicht := (     ( ABS( BasisStationsParameter.rAktuellePositionQuerfahrt - argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )
-                            OR ( ABS( BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition - argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) <= rgMKZielPositionToleranz )
-                            OR  ( ABS(ABS(BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition) - ABS(BasisStationsParameter.rAktuellePositionQuerfahrt) ) <= rgMKZielPositionToleranz ) );
+blZielPositionErreicht := ( ABS( BasisStationsParameter.rAktuellePositionQuerfahrt - BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition ) <= rgMKZielPositionToleranz );
 
 (* Hinweis:
    - Abfrage ob die Luftabfrage [Ein- Aus- Lauf] unten ist
