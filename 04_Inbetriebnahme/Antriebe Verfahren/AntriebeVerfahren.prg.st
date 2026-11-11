@@ -70,11 +70,7 @@ VAR
 
   ftlHandPlusMinus  : f_trig;
 
-  // TIMER
-  tonlErsterZyklus  :ton;;
-
   // BOOL
-  bInit : BOOL := TRUE;
   blAbsolutSetzenAktiv : BOOL;
   blFreigeben          : BOOL; // Bits der zuletzt bedienten Achse zuruecknehmen
 
@@ -85,9 +81,6 @@ VAR
 END_VAR
 
 VAR_OUTPUT
-  astlAchseName : ARRAY[0..35] OF STRING;
-  uiAchsenAnzahl : UINT := 35;
-
   // Override aus der Visu: nur wirksam, wenn die Bedienung aktiv ist und der Override ausdruecklich uebernommen wurde
   bpOverrideWirksam : BOOL;
   rpOverrideVisu    : REAL := 100.0; // [%]
@@ -221,19 +214,6 @@ rtlOverrideMinus( CLK := bpOverrideMinus );
 rtlOverridePlus( CLK := bpOverridePlus );
 ftlVisuAktiv( CLK := bgVisuAntriebeVerfahrenAktiv );
 ftlHandPlusMinus( CLK := bpHandPlus OR bpHandMinus );
-
-tonlErsterZyklus( IN := NOT Main.blErsterZyklus, PT := T#1S);
-
-IF tonlErsterZyklus.Q THEN
-  bInit := TRUE;
-END_IF
-
-IF bInit THEN // Initialisieren
-  FOR i := 0 TO uiAchsenAnzahl DO
-    astlAchseName[i] := pgAntriebe[i].slAchsname;
-  END_FOR
-  bInit := FALSE;
-END_IF
 
 //-------------------------------------------------------------------------------------------------
 // ACHSAUSWAHL
