@@ -14,7 +14,12 @@ END_VAR
 //    - Antrieb
 IF NOT Main.blErsterZyklus THEN
   FOR i := 0 TO 64 DO
-    pgAntriebe[i]( rpOverride := rgMaschinenGeschwindigkeitsOverride );
+    // Visu "Antriebe_Verfahren": uebernommener Override gilt nur fuer die gewaehlte Achse
+    IF ( AntriebeVerfahren.bpOverrideWirksam AND ( INT_TO_WORD( i ) = wgAuswahlAchsID ) ) THEN
+      pgAntriebe[i]( rpOverride := AntriebeVerfahren.rpOverrideVisu );
+    ELSE
+      pgAntriebe[i]( rpOverride := rgMaschinenGeschwindigkeitsOverride );
+    END_IF
   END_FOR
   pgAntriebe[65]();
 END_IF
