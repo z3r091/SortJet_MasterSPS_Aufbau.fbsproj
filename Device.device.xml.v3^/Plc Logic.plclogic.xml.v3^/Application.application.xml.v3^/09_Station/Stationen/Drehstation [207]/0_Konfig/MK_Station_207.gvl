@@ -56,7 +56,7 @@ VAR_GLOBAL
                                                  bGlasAbgenommenAutomatischQuittieren      := FALSE,                         // derzeit ohne Funktion
                                                  bScheibeAbnehmenNachEintransport          := FALSE                          // Scheibe nach dem Eintransport wieder abnehmen
                                                ),
-      stStationsAufbau                      := ( bGeblase                      := [ cANZAHL_WAENDE(FALSE) ],                 // Ausbaustufe: Geblaese je Wand
+      stStationsAufbau                      := ( bGeblase                      := [ cANZAHL_WAENDE(TRUE) ],                  // Ausbaustufe: Geblaese je Wand
                                                  bGlastransport                := [ cANZAHL_WAENDE(TRUE) ],                  // Ausbaustufe: Glastransport je Wand
                                                  bKippen                       := [ cANZAHL_WAENDE(TRUE) ],                  // Ausbaustufe: Kippen je Wand
                                                  bKippenSchuetz                := TRUE,                                      // Kippen ueber Schuetz statt Umrichter
@@ -134,8 +134,8 @@ VAR_GLOBAL
     (
       tZeitAntriebsfreigabeErhalten        := T#180S,             // [ms \ s] Energieeinsparrung: Zeiteinheit nach der die Antriebsfreigabe entzogen werden soll wenn keine Aktion ansteht [1 s = 1000 ms ]
       rToleranz                            :=   0.1,              // Toleranz beim Entscheiden der aktuellen Position
-      rDrehposition_0_Grad                 :=     0,              // Drehposition fuer die 0 Grad
-      rDrehposition_90_Grad                :=  3521.07,           // Drehposition fuer die 90 Grad
+      rDrehposition_0_Grad                 :=  -6.75,              // Drehposition fuer die 0 Grad
+      rDrehposition_90_Grad                := 433.03,           // Drehposition fuer die 90 Grad
       rDrehposition_180_Grad               :=     0,              // Drehposition fuer die 180 Grad
       rDrehposition_270_Grad               :=     0,              // Drehposition fuer die 270 Grad
       bArretierung                         :=  TRUE,              // Arretierung vorhanden

@@ -72,13 +72,13 @@ VAR_GLOBAL
       wpSchaltschrank                         :=      2042,  // Daten aus dem Schaltplan
       wpSchaltplanreihe                       :=        02,  // Daten aus dem Schaltplan
       wpSchaltplanseite                       :=        65,  // Daten aus dem Schaltplan
-      rpMaxGeschwindigkeit                    :=       300,  // [Grad/s] MAX- Geschwindigkeit für die der Antrieb ausgelegt ist // Max 556
-      rpHandGeschwindigkeit                   :=        30,  // [Grad/s] Hand- Geschwindigkeit
+      rpMaxGeschwindigkeit                    :=       350,  // [Grad/s] MAX- Geschwindigkeit für die der Antrieb ausgelegt ist // Max 556
+      rpHandGeschwindigkeit                   :=       150,  // [Grad/s] Hand- Geschwindigkeit
       rpReduzierteGeschwindigkeit             :=        20,  // [Grad/s] Reduzierte Geschwindigkeit für die bestimmte Situationen
       rpReferenzGeschwindigkeit               :=         1,  // [Grad/s] Geschwindigkeit für die Referenzfahrt
       rpEinrichtGeschwindigkeit               :=        10,  // [Grad/s] Max Geschwindigkeit während der Einrichtung der Anlage
-      rpMaxBeschleunigung                     :=       500,  // [Grad/s^2] max Beschleunigung für die der Antrieb ausgelegt ist // Max 1026
-      rpMaxVerzoegerung                       :=       500,  // [Grad/s^2] max Verzoegerung für die der Antrieb ausgelegt ist // Max 1026
+      rpMaxBeschleunigung                     :=       300,  // [Grad/s^2] max Beschleunigung für die der Antrieb ausgelegt ist // Max 1026
+      rpMaxVerzoegerung                       :=       300,  // [Grad/s^2] max Verzoegerung für die der Antrieb ausgelegt ist // Max 1026
       rpMaxRuckzeit                           :=       200,   // [ms]     Ruckzeit des Antriebs
       rpReduzierteBeschleunigung              :=       0.5,  // [Grad/s^2] Reduzierte Beschleunigung
       rpReduzierteVerzoegerung                :=       0.5,  // [Grad/s^2] Reduzierte Verzoegerung
