@@ -159,8 +159,8 @@ __V3_CONTENT__
 								<Single Type="System.Guid">0d5bdc36-82d0-4ff9-b25d-395b667d4e75</Single>
 								<Single Type="System.Guid">2123c9c7-5829-4d54-9b30-7f7a026ec856</Single>
 								<Single Type="System.Guid">a36e6b49-3def-4aac-89bb-8096e60ebac5</Single>
-								<Single Type="System.Guid">a837ae4f-643e-4011-994e-e7fac8c4f63e</Single>
-								<Single Type="System.Guid">2a2bffd5-91c4-44e6-82e7-7ac1dab2d19e</Single>
+								<Single Type="System.Guid">0f188e00-06bd-4587-b388-06e6977f5fc6</Single>
+								<Single Type="System.Guid">0b6fd5e5-d3f8-4e51-bf2d-d61a96fd912a</Single>
 							</List>
 							<Single Name="MaxDevices" Type="int">1024</Single>
 							<Single Name="SupportPlaceholderObjects" Type="bool">False</Single>
