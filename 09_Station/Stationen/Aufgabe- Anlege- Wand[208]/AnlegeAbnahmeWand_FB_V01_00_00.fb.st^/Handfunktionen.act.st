@@ -25,7 +25,6 @@ IF ( blBetriebsartHand ) THEN
                                      OR in_bKnebelGlastransportZurueck;  // Bit 2 = Glastransport / Glastransport zurück
   Glastransport.bpHandfahrenPlus  := ( BasisStationsParameter.dwHandfunktionen.1 AND NOT BasisStationsParameter.dwHandfunktionen.2 )
                                      OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]
-                                     OR in_bTasterGlasAngelegt
                                      OR in_bKnebelGlastransportVor;  (* Bit 2 = Glastransport / Glastransport zurück *);  // Bit 1 = Glastransport / Glastransport vor
 
 
