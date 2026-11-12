@@ -154,7 +154,6 @@ VAR_GLOBAL
 
   bgVisuStart                                : BOOL := FALSE;
 
-  bgVISUDummy                                : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
 
   bgVISUFehlerAusloesen                      : BOOL;
 
@@ -188,8 +187,6 @@ VAR_GLOBAL
   rgGeschwindigkeit                   : REAL := 0;
   wgMasterNummer                      : WORD := 0;
 
-  bgVISUTest : BOOL;
-  rtlVisuTest : R_TRIG;
   // Test ofne Einlauflinie
   bgVisuQuittEintransport             : ARRAY [101..cLETZTE_STATION] OF BOOL;
 

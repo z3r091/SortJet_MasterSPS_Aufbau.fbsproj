@@ -22,9 +22,6 @@ Kippen.ppParameterBaustein                 REF= BasisStationsParameter.stParamet
 Querfahrt.ppParameterBaustein              REF= BasisStationsParameter.stParameterStationskomponenten.stQuerfahrt;
 Drehen.ppParameterBaustein                 REF= BasisStationsParameter.stParameterStationskomponenten.stDrehen;
 
-// Aktuelle Position initialisieren
-argZuletztQuittiertePositionShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] := Querfahrt.rpAktuellePosition;
-
 // Aktivierungen
 Glastransport.bpAktivieren     := BasisStationsParameter.stMKs.stStationsAufbau.bGlastransport[cWAND_1];
 Drehen.bpAktivieren            := BasisStationsParameter.stMKs.stStationsAufbau.bDrehen;

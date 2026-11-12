@@ -102,7 +102,6 @@ VAR_GLOBAL
 
   // Verfahrueberwachung
   abgVerfahrfreigabeShuttle                    : ARRAY[cERSTES_SHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
-  argZuletztQuittiertePositionShuttle          : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF REAL;
 
   // Init
   M_Init_Ok        : BOOL;

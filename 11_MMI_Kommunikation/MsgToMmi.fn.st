@@ -246,8 +246,6 @@ CASE( auftragsnr_w ) OF
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ), wVal  := wSps2MmiStationsNummer );
     HMI_PutREAL(  pbyAddr := ADR( msg_st.awDaten[1] ), rVal  := rSps2MmiPosition );
 
-    argZuletztQuittiertePositionShuttle[wSps2MmiStationsNummer] := rSps2MmiPosition;
-
 
   SB0_SPS_TRANSFERSHUTTLEFEHLER:
     msg_st.wAuftrag := auftragsnr_w;
