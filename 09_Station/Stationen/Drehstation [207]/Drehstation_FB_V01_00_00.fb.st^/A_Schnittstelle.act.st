@@ -44,7 +44,7 @@ BasisStationsParameter.rAktuellePositionQuerfahrt := Querfahrt.rpAktuellePositio
 BasisStationsParameter.rAktuellePositionDrehen    := Drehen.rpAktuellePosition;
 BasisStationsParameter.eDrehPositionsStatus       := Drehen.epDrehPositionsStatus;
 
-BasisStationsParameter.bIstReferenziert           := ( Drehen.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bDrehen )
+BasisStationsParameter.bIstReferenziert           :=     ( Drehen.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bDrehen )
                                                      AND ( Kippen.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1] )
                                                      AND ( Querfahrt.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt );
 
