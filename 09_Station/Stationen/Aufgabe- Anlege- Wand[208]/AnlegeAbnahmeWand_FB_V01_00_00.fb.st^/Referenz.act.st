@@ -24,7 +24,10 @@ IF ( blBetriebsartReferenz )THEN
     // REFERENZ ============================
     STEP_5_E:
 
-      Messachse.bpReferenz     := TRUE;
+      (* Hinweis:
+         - Achsen nur referenzieren, wenn sie laut Ausbaustufe vorhanden und noch nicht referenziert sind
+      *)
+      Messachse.bpReferenz     := BasisStationsParameter.stMKs.stStationsAufbau.bMessachse AND NOT Messachse.bpInReferenz;
       Glastransport.bpReferenz := TRUE;
       steplReferenz := STEP_10_E;
 

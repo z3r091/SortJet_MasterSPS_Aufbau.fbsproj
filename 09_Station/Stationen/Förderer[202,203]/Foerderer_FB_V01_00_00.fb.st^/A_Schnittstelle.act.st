@@ -30,7 +30,7 @@ BasisStationsParameter.OutGlasTransport[cWAND_1].bScheibeFaehrtUeberAuslauf REF=
 BasisStationsParameter.OutGlasTransport[cWAND_1].bTransportRueckwaertig     REF= BasisStationsParameter.bRueckwaertsTransportieren[cWAND_1];
 // ---------------------------------------------------------------------------------------
 
-BasisStationsParameter.bIstReferenziert := Querfahrt.bpInReferenz;
+BasisStationsParameter.bIstReferenziert := ( Querfahrt.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt );
 
 BasisStationsParameter.rAktuellePositionQuerfahrt := Querfahrt.rpAktuellePosition;
 

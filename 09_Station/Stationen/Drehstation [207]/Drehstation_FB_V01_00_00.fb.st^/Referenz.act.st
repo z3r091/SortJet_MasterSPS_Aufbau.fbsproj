@@ -12,7 +12,7 @@ ACTION Referenz
 IF ( blBetriebsartReferenz ) THEN
 
   // Ausnahmesituation
-  IF ( Drehen.bpFehler ) THEN
+  IF ( Drehen.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bDrehen ) THEN
     Drehen.bpReferenz := FALSE;
     BasisStationsParameter.wFehlerNummer := Drehen.wpFehlerNr;
     steplReferenz := STEP_900_E;
@@ -20,12 +20,19 @@ IF ( blBetriebsartReferenz ) THEN
 
   IF ( Glastransport.bpFehler ) THEN
     Glastransport.bpReferenz := FALSE;
+    BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
     steplReferenz := STEP_900_E;
   END_IF
 
-  IF ( Kippen.bpFehler ) THEN
+  IF ( Kippen.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1] ) THEN
     Kippen.bpReferenz := FALSE;
     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
+    steplReferenz := STEP_900_E;
+  END_IF
+
+  IF ( Querfahrt.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt ) THEN
+    Querfahrt.bpReferenz := FALSE;
+    BasisStationsParameter.wFehlerNummer := Querfahrt.wpFehlerNr;
     steplReferenz := STEP_900_E;
   END_IF
   CASE steplReferenz OF
@@ -41,8 +48,9 @@ IF ( blBetriebsartReferenz ) THEN
       (* Hinweis:
          -  Starten der Referenzfahrt
       *)
-      Drehen.bpReferenz        := TRUE;
-      Kippen.bpReferenz        := TRUE;
+      Drehen.bpReferenz        := BasisStationsParameter.stMKs.stStationsAufbau.bDrehen           AND NOT Drehen.bpInReferenz;
+      Kippen.bpReferenz        := BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1] AND NOT Kippen.bpInReferenz;
+      Querfahrt.bpReferenz     := BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt        AND NOT Querfahrt.bpInReferenz;
       Glastransport.bpReferenz := TRUE;
       steplReferenz := STEP_20_E;
 
@@ -51,7 +59,7 @@ IF ( blBetriebsartReferenz ) THEN
       (* Hinweis:
          - Referenzfahrt abgeschlossen
       *)
-      IF ( Drehen.bpDone ) THEN
+      IF ( Drehen.bpDone OR NOT Drehen.bpReferenz ) THEN
         Drehen.bpReferenz := FALSE;
         steplReferenz := STEP_100_E;
       END_IF
@@ -68,8 +76,9 @@ IF ( blBetriebsartReferenz ) THEN
       (* Hinweis:
          - Referenzfahrt abgeschlossen
       *)
-      IF ( Kippen.bpDone ) THEN
-        Kippen.bpReferenz := FALSE;
+      IF ( ( Kippen.bpDone OR NOT Kippen.bpReferenz ) AND ( Querfahrt.bpDone OR NOT Querfahrt.bpReferenz ) ) THEN
+        Kippen.bpReferenz    := FALSE;
+        Querfahrt.bpReferenz := FALSE;
         steplReferenz := STEP_1000_E;
       END_IF
 
@@ -89,6 +98,7 @@ ELSE
     Glastransport.bpReferenz := FALSE;
     Kippen.bpReferenz        := FALSE;
     Drehen.bpReferenz        := FALSE;
+    Querfahrt.bpReferenz     := FALSE;
     steplReferenz := STEP_0_E;
   END_IF
 

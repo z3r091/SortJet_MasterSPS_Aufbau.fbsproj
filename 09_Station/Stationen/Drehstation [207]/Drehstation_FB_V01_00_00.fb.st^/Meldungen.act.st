@@ -37,41 +37,51 @@ THEN
     BasisStationsParameter.bFehler := TRUE;
   END_IF
 
-  IF ( Drehen.bpFehler ) THEN
+  IF ( Drehen.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bDrehen ) THEN
     BasisStationsParameter.wFehlerNummer := Drehen.wpFehlerNr;
     BasisStationsParameter.bFehler := TRUE;
   END_IF
 
-  IF ( Geblaese.bpFehler ) THEN
+  IF ( Geblaese.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[cWAND_1] ) THEN
     BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_GEBLAESE;
     BasisStationsParameter.bFehler := TRUE;
   END_IF
 
-  IF ( Querfahrt.bpFehler ) THEN
+  IF ( Querfahrt.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt ) THEN
     BasisStationsParameter.bFehler := TRUE;
     BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_QUERFAHRT;
   END_IF
 
 END_IF
 
-// WatchIO's
-WatchIo( NOT Glastransport.Antrieb.bpLS_150F02_230V,                                                                                                      wlWatchIONachrichtenNummer + 0 );
-WatchIo( NOT Drehen.Antrieb.bpLS_150F02_230V,                                                                                                             wlWatchIONachrichtenNummer + 1 );
-WatchIo( NOT Glastransport.Antrieb_Slave.bpLS_150F02_230V AND BasisStationsParameter.stMKs.stStationsAufbau.bGlastransportSlaveVorhanden,                 wlWatchIONachrichtenNummer + 2 );
-WatchIo( NOT in_bMotorstarter_Geblaese_OK,                                                                                                                wlWatchIONachrichtenNummer + 3 );
+// WatchIO's (nur fuer vorhandene Komponenten laut Ausbaustufe)
+WatchIo( NOT Glastransport.Antrieb.bpLS_150F02_230V,                                      wlWatchIONachrichtenNummer + 0 );
 
-//Querfahrt
-WatchIo( NOT Querfahrt.Antrieb.bpLS_150F02_230V AND BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt,                                             wlWatchIONachrichtenNummer + 4 );
-WatchIo( ( Querfahrt.Antrieb.bpMinSchalterBelegt OR Querfahrt.Antrieb.bpMaxSchalterBelegt ) AND BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt, wlWatchIONachrichtenNummer + 5 );
+IF ( BasisStationsParameter.stMKs.stStationsAufbau.bGlastransportSlaveVorhanden ) THEN
+  WatchIo( NOT Glastransport.Antrieb_Slave.bpLS_150F02_230V,                              wlWatchIONachrichtenNummer + 2 );
+END_IF
 
-WatchIo( NOT Querfahrt.bpInReferenz AND NOT blBetriebsartReferenz AND BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt,                           wlWatchIONachrichtenNummer + 6 );
-WatchIo( Querfahrt.bpReferenz AND NOT Querfahrt.bpDone AND BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt,                                      wlWatchIONachrichtenNummer + 7 );
+// Geblaese
+IF ( BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[cWAND_1] ) THEN
+  WatchIo( NOT in_bMotorstarter_Geblaese_OK,                                              wlWatchIONachrichtenNummer + 3 );
+END_IF
+
+// Querfahrt
+IF ( BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt ) THEN
+  WatchIo( NOT Querfahrt.Antrieb.bpLS_150F02_230V,                                        wlWatchIONachrichtenNummer + 4 );
+  WatchIo( Querfahrt.Antrieb.bpMinSchalterBelegt OR Querfahrt.Antrieb.bpMaxSchalterBelegt, wlWatchIONachrichtenNummer + 5 );
+  WatchIo( NOT Querfahrt.bpInReferenz AND NOT blBetriebsartReferenz,                      wlWatchIONachrichtenNummer + 6 );
+  WatchIo( Querfahrt.bpReferenz AND NOT Querfahrt.bpDone,                                 wlWatchIONachrichtenNummer + 7 );
+END_IF
 
 // Drehen
-WatchIo( Drehen.Antrieb.bpMinSchalterBelegt OR Drehen.Antrieb.bpMaxSchalterBelegt,                                                                        wlWatchIONachrichtenNummer + 8 );
-WatchIo( NOT Drehen.bpInReferenz AND NOT blBetriebsartReferenz,                                                                                           wlWatchIONachrichtenNummer + 9 );
-WatchIo( Drehen.bpReferenz AND NOT Drehen.bpDone,                                                                                                         wlWatchIONachrichtenNummer + 10 );
+IF ( BasisStationsParameter.stMKs.stStationsAufbau.bDrehen ) THEN
+  WatchIo( NOT Drehen.Antrieb.bpLS_150F02_230V,                                           wlWatchIONachrichtenNummer + 1 );
+  WatchIo( Drehen.Antrieb.bpMinSchalterBelegt OR Drehen.Antrieb.bpMaxSchalterBelegt,      wlWatchIONachrichtenNummer + 8 );
+  WatchIo( NOT Drehen.bpInReferenz AND NOT blBetriebsartReferenz,                         wlWatchIONachrichtenNummer + 9 );
+  WatchIo( Drehen.bpReferenz AND NOT Drehen.bpDone,                                       wlWatchIONachrichtenNummer + 10 );
 
-// Durchfassperre 208: nur melden, wenn gedreht werden soll und die Sperre laenger als 10 s offen ist
-WatchIoControl( T#10S, wlWatchIONachrichtenNummer + 11, ( Drehen.bpDrehvorgangAktiv OR Drehen.bpReferenz ) AND NOT EV_ToPLC_b207_geschlossen );
+  // Durchfassperre 208: nur melden, wenn gedreht werden soll und die Sperre laenger als 10 s offen ist
+  WatchIoControl( T#10S, wlWatchIONachrichtenNummer + 11, ( Drehen.bpDrehvorgangAktiv OR Drehen.bpReferenz ) AND NOT EV_ToPLC_b207_geschlossen );
+END_IF
 END_ACTION

@@ -38,7 +38,7 @@ THEN
     BasisStationsParameter.wFehlerNummer := Glastransport_Y.wpFehlerNr;
   END_IF
 
-  IF ( Hubrahmen.bpFehler ) THEN
+  IF ( Hubrahmen.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen ) THEN
     BasisStationsParameter.bFehler       := TRUE;
     BasisStationsParameter.wFehlerNummer := Hubrahmen.wpFehlerNr;
   END_IF

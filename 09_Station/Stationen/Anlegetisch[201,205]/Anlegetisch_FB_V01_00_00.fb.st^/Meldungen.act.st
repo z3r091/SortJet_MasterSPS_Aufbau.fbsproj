@@ -38,35 +38,49 @@ THEN
     BasisStationsParameter.wFehlerNummer := Glastransport.wpFehlerNr;
   END_IF
 
-  IF ( Messachse.bpFehler ) THEN
+  IF ( Messachse.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bMessachse ) THEN
     BasisStationsParameter.bFehler := TRUE;
     BasisStationsParameter.wFehlerNummer := Messachse.wpFehlerNr;
   END_IF
 
-  IF ( Hubrahmen.bpFehler ) THEN
+  IF ( Hubrahmen.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen ) THEN
     BasisStationsParameter.bFehler := TRUE;
     BasisStationsParameter.wFehlerNummer := Hubrahmen.wpFehlerNr;
   END_IF
 
 END_IF
 
-// WatchIO's
+// WatchIO's (nur fuer vorhandene Komponenten laut Ausbaustufe)
 WatchIo( NOT Glastransport.Antrieb.bpLS_150F02_230V,                                      wlWatchIONachrichtenNummer + 0 );
 WatchIo( NOT Glastransport.Antrieb.bpHaupschalter400VEin AND bgEtherCatOK,                wlWatchIONachrichtenNummer + 1 );
-WatchIo( NotHalt.bpNotHaltOK AND NOT in_bMotorschutzGeblaese_Ok,                          wlWatchIONachrichtenNummer + 2 );
-WatchIo( NOT toflDruckluftOK.Q,                                                           wlWatchIONachrichtenNummer + 3 );
 
-// Messache
-WatchIo( NOT Messachse.Antrieb.bpLS_150F02_230V,                                          wlWatchIONachrichtenNummer + 4 );
-WatchIo( NOT Messachse.Antrieb.bpHaupschalter400VEin AND bgEtherCatOK,                    wlWatchIONachrichtenNummer + 5 );
-WatchIo( NOT Messachse.bpInReferenz  AND NOT blBetriebsartReferenz,                       wlWatchIONachrichtenNummer + 6 );
-WatchIo( Messachse.Antrieb.bpMaxSchalterBelegt OR Messachse.Antrieb.bpMinSchalterBelegt,  wlWatchIONachrichtenNummer + 7 );
-WatchIo( Messachse.bpReferenz AND NOT Messachse.bpDone,                                   wlWatchIONachrichtenNummer + 8 );
+// Geblaese
+IF ( BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[cWAND_1] ) THEN
+  WatchIo( NotHalt.bpNotHaltOK AND NOT in_bMotorschutzGeblaese_Ok,                        wlWatchIONachrichtenNummer + 2 );
+END_IF
 
-// Kippen
-WatchIo( NOT in_bMotorschutzHydraulik,                                                    wlWatchIONachrichtenNummer + 9 );
-WatchIo( out_bSchaltleisteAusgeloest,                                                     wlWatchIONachrichtenNummer + 10 );
+// Druckluft
+IF ( BasisStationsParameter.stMKs.stStationsAufbau.bDruckluft ) THEN
+  WatchIo( NOT toflDruckluftOK.Q,                                                         wlWatchIONachrichtenNummer + 3 );
+END_IF
+
+// Messachse
+IF ( BasisStationsParameter.stMKs.stStationsAufbau.bMessachse ) THEN
+  WatchIo( NOT Messachse.Antrieb.bpLS_150F02_230V,                                        wlWatchIONachrichtenNummer + 4 );
+  WatchIo( NOT Messachse.Antrieb.bpHaupschalter400VEin AND bgEtherCatOK,                  wlWatchIONachrichtenNummer + 5 );
+  WatchIo( NOT Messachse.bpInReferenz AND NOT blBetriebsartReferenz,                      wlWatchIONachrichtenNummer + 6 );
+  WatchIo( Messachse.Antrieb.bpMaxSchalterBelegt OR Messachse.Antrieb.bpMinSchalterBelegt, wlWatchIONachrichtenNummer + 7 );
+  WatchIo( Messachse.bpReferenz AND NOT Messachse.bpDone,                                 wlWatchIONachrichtenNummer + 8 );
+END_IF
+
+// Kippen (Kipptisch)
+IF ( BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1] ) THEN
+  WatchIo( NOT in_bMotorschutzHydraulik,                                                  wlWatchIONachrichtenNummer + 9 );
+  WatchIo( out_bSchaltleisteAusgeloest,                                                   wlWatchIONachrichtenNummer + 10 );
+END_IF
 
 // Kipparme
-WatchIo( NOT in_bMotorschutschalterKipparme,                                              wlWatchIONachrichtenNummer + 11 );
+IF ( BasisStationsParameter.stMKs.stStationsAufbau.bKipparme ) THEN
+  WatchIo( NOT in_bMotorschutschalterKipparme,                                            wlWatchIONachrichtenNummer + 11 );
+END_IF
 END_ACTION

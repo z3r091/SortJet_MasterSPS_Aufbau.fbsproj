@@ -24,10 +24,10 @@ IF ( blBetriebsartReferenz ) THEN
            ansonsten da Absolutgeber nur in Hand Referenzfahrt starten
       *)
       FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
-        Wandverstellung[wlIndex].bpReferenz := NOT Wandverstellung[wlIndex].bpInReferenz;
-        Greifer[wlIndex].bpFahreReferenz    := BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex] AND NOT Greifer[wlIndex].bpIstInReferenz;
+        Wandverstellung[wlIndex].bpReferenz := BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[wlIndex] AND NOT Wandverstellung[wlIndex].bpInReferenz;
+        Greifer[wlIndex].bpFahreReferenz    := BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex];   // Greifer referenziert immer
       END_FOR
-      Querfahrt.bpStartReferenz := NOT Querfahrt.bpInReference;
+      Querfahrt.bpStartReferenz := BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt AND NOT Querfahrt.bpInReference;
 
       steplReferenz := STEP_20_E;
 
@@ -43,7 +43,7 @@ IF ( blBetriebsartReferenz ) THEN
                          AND ( Greifer[wlIndex].bpDone OR NOT Greifer[wlIndex].bpFahreReferenz );
       END_FOR
 
-      IF blDone AND ( Querfahrt.bpDone OR Querfahrt.bpInReference ) THEN
+      IF blDone AND ( Querfahrt.bpDone OR NOT Querfahrt.bpStartReferenz ) THEN
         FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
           Greifer[wlIndex].bpFahreReferenz := FALSE;
         END_FOR

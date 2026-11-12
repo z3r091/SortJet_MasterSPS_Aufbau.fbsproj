@@ -31,7 +31,7 @@ BasisStationsParameter.OutGlasTransport[cWAND_1].bTransportRueckwaertig     REF=
 
 // ---------------------------------------------------------------------------------------
 // BAUSTEIN BASISPARAMETER
-BasisStationsParameter.bIstReferenziert        := Messachse.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bMessachse;
+BasisStationsParameter.bIstReferenziert        := ( Messachse.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bMessachse );
 
 // SK Freigeben obwohl Auftrag aktiv
 BasisStationsParameter.bSKFreigabeBeiAktivemAuftrag := ( BasisStationsParameter.bAnlegen

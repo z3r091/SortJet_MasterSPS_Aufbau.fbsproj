@@ -14,7 +14,7 @@ SUPER^.A_Schnittstelle();
 
 // ---------------------------------------------------------------------------------------
 
-BasisStationsParameter.bIstReferenziert        := Messachse.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bMessachse;
+BasisStationsParameter.bIstReferenziert        := ( Messachse.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bMessachse );
 
 (* Hinweis:
    - Abhandlung des Ein-Aus- Transports [Setzen der Variablen das man bereit ist zum Glastransport]

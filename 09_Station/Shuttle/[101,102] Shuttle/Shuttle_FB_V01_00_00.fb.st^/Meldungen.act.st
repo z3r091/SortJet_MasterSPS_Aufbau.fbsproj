@@ -29,7 +29,7 @@ IF ( NOT ( blFehlerAktiv
            OR ( steplResetAntrieb = STEP_900_E )
            OR ( steplReferenz     = STEP_900_E ) ) )
 THEN
-  IF ( Querfahrt.bpFehler ) THEN
+  IF ( Querfahrt.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt ) THEN
     BasisStationsParameter.bFehler := Querfahrt.bpFehler;
     BasisStationsParameter.wFehlerNummer := Querfahrt.wpFehlerNr;
   END_IF
@@ -38,7 +38,7 @@ THEN
       BasisStationsParameter.bFehler := Glastransport[wlIndex].bpFehler;
       BasisStationsParameter.wFehlerNummer := Glastransport[wlIndex].wpFehlerNr;
     END_IF
-    IF ( Geblaese[wlIndex].bpFehler ) THEN
+    IF ( Geblaese[wlIndex].bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[wlIndex] ) THEN
       BasisStationsParameter.bFehler := TRUE;
       BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_GEBLAESE;
     END_IF
@@ -86,58 +86,75 @@ blShuttleErreichbar := TRUE;
 
 wlWatchIONachrichtenNummer := BasisStationsParameter.stMKs.wMeldungsNummer;
 
-WatchIo( blShuttleErreichbar AND NOT in_bDatenlichtschrankeShuttleOK                                                                        ,wlWatchIONachrichtenNummer + 0 );
-WatchIo( blShuttleErreichbar AND NOT in_bDatenlichtschrankeShuttlebahnOK                                                                    ,wlWatchIONachrichtenNummer + 1 );
-WatchIo( blShuttleErreichbar AND NOT in_bNetzteil_24V_OK                                                                                    ,wlWatchIONachrichtenNummer + 2 );
-WatchIo( blShuttleErreichbar AND NOT in_bSicherungen24V_OK                                                                                  ,wlWatchIONachrichtenNummer + 3 );
-WatchIo( blShuttleErreichbar AND NOT in_bKlimageraet_OK                                                                                     ,wlWatchIONachrichtenNummer + 4 );
-WatchIo( blShuttleErreichbar AND NOT in_bSicherungKompressor_OK                                                                             ,wlWatchIONachrichtenNummer + 5 );
-WatchIo( blShuttleErreichbar AND NOT in_bSicherungen230V_OK                                                                                 ,wlWatchIONachrichtenNummer + 6 );
+// Allgemein
+WatchIo( blShuttleErreichbar AND NOT in_bDatenlichtschrankeShuttleOK,                                       wlWatchIONachrichtenNummer + 0 );
+WatchIo( blShuttleErreichbar AND NOT in_bDatenlichtschrankeShuttlebahnOK,                                   wlWatchIONachrichtenNummer + 1 );
+WatchIo( blShuttleErreichbar AND NOT in_bNetzteil_24V_OK,                                                   wlWatchIONachrichtenNummer + 2 );
+WatchIo( blShuttleErreichbar AND NOT in_bSicherungen24V_OK,                                                 wlWatchIONachrichtenNummer + 3 );
+WatchIo( blShuttleErreichbar AND NOT in_bKlimageraet_OK,                                                    wlWatchIONachrichtenNummer + 4 );
+WatchIo( blShuttleErreichbar AND NOT in_bSicherungKompressor_OK,                                            wlWatchIONachrichtenNummer + 5 );
+WatchIo( blShuttleErreichbar AND NOT in_bSicherungen230V_OK,                                                wlWatchIONachrichtenNummer + 6 );
 
-WatchIo( blShuttleErreichbar AND NOT in_bLSQuerfahrtBremseOK                                                                                ,wlWatchIONachrichtenNummer + 8 );
-WatchIo( blShuttleErreichbar AND NOT Querfahrt.in_bLeistungsschutzFremdluefter                                                              ,wlWatchIONachrichtenNummer + 9 );
+// Querfahrt
+IF ( BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt ) THEN
+  WatchIo( blShuttleErreichbar AND NOT in_bLSQuerfahrtBremseOK,                                             wlWatchIONachrichtenNummer + 8 );
+  WatchIo( blShuttleErreichbar AND NOT Querfahrt.in_bLeistungsschutzFremdluefter,                           wlWatchIONachrichtenNummer + 9 );
+  WatchIo( blShuttleErreichbar AND NOT Querfahrt.Antrieb.bpIstReferenziert,                                 wlWatchIONachrichtenNummer + 19 );
+  WatchIo( blShuttleErreichbar AND Querfahrt.Antrieb.bpMinSchalterBelegt,                                   wlWatchIONachrichtenNummer + 20 );
+  WatchIo( blShuttleErreichbar AND Querfahrt.Antrieb.bpMaxSchalterBelegt,                                   wlWatchIONachrichtenNummer + 21 );
+  FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+    WatchIo( blShuttleErreichbar AND Querfahrt.bpVerfahreShuttle AND NOT Glastransport[wlIndex].bpVerfahrFreigabe, wlWatchIONachrichtenNummer + (27 + (wlIndex - cWAND_1)) );
+  END_FOR
+  WatchIo( blShuttleErreichbar AND Querfahrt.bpVerfahreShuttle AND bpShuttleAnhalten,                       wlWatchIONachrichtenNummer + 29 );
+END_IF
 
-WatchIo( blShuttleErreichbar AND Kippen.bpAktivieren AND NOT Kippen.bpInReferenz                                                           ,wlWatchIONachrichtenNummer + 10 );
-WatchIo( blShuttleErreichbar AND Kippen.bpAktivieren AND Kippen.Antrieb.bpMinSchalterBelegt                                                ,wlWatchIONachrichtenNummer + 11 );
-WatchIo( blShuttleErreichbar AND Kippen.bpAktivieren AND Kippen.Antrieb.bpMaxSchalterBelegt                                                ,wlWatchIONachrichtenNummer + 12 );
+// Kippen
+IF ( BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1] ) THEN
+  WatchIo( blShuttleErreichbar AND NOT Kippen.bpInReferenz,                                                 wlWatchIONachrichtenNummer + 10 );
+  WatchIo( blShuttleErreichbar AND Kippen.Antrieb.bpMinSchalterBelegt,                                      wlWatchIONachrichtenNummer + 11 );
+  WatchIo( blShuttleErreichbar AND Kippen.Antrieb.bpMaxSchalterBelegt,                                      wlWatchIONachrichtenNummer + 12 );
+  WatchIo( blShuttleErreichbar AND ( NOT Kippen.toflMotorSicherungOK.Q OR NOT Kippen.toflMotorstarterOK.Q ), wlWatchIONachrichtenNummer + 36 );
+  WatchIo( blShuttleErreichbar AND NOT Kippen.in_bLeitungsschutzschalterBremseOK,                           wlWatchIONachrichtenNummer + 37 );
+END_IF
 
+// Geblaese je Wand
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
-  WatchIo( blShuttleErreichbar AND NOT Geblaese[wlIndex].toflMotorschutz.Q AND Geblaese[wlIndex].bpAktivieren                             ,wlWatchIONachrichtenNummer + (15 + (wlIndex - cWAND_1)) );
+  IF ( BasisStationsParameter.stMKs.stStationsAufbau.bGeblase[wlIndex] ) THEN
+    WatchIo( blShuttleErreichbar AND NOT Geblaese[wlIndex].toflMotorschutz.Q,                               wlWatchIONachrichtenNummer + (15 + (wlIndex - cWAND_1)) );
+  END_IF
 END_FOR
 
-WatchIo( blShuttleErreichbar AND NOT Querfahrt.Antrieb.bpIstReferenziert                                                                    ,wlWatchIONachrichtenNummer + 19 );
-WatchIo( blShuttleErreichbar AND Querfahrt.Antrieb.bpMinSchalterBelegt                                                                      ,wlWatchIONachrichtenNummer + 20 );
-WatchIo( blShuttleErreichbar AND Querfahrt.Antrieb.bpMaxSchalterBelegt                                                                      ,wlWatchIONachrichtenNummer + 21 );
-
-// Greifer [Ausbaustufe]:
+// Greifer je Wand:
 //   - +22 Greiferachse nicht referenziert
 //   - +25 Glasrueckhalter nicht eingefahren, ohne dass er angesteuert ist
 //   - +30 Querfahrt angefordert und Greifer nicht in sicherer Position
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   IF ( BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex] ) THEN
-    WatchIo( blShuttleErreichbar AND NOT Greifer[wlIndex].bpIstInReferenz                                                                ,wlWatchIONachrichtenNummer + (22 + (wlIndex - cWAND_1)) );
+    WatchIo( blShuttleErreichbar AND NOT Greifer[wlIndex].bpIstInReferenz,                                  wlWatchIONachrichtenNummer + (22 + (wlIndex - cWAND_1)) );
     WatchIoControl( T#5S, wlWatchIONachrichtenNummer + (25 + (wlIndex - cWAND_1)),
                     (     blShuttleErreichbar
                       AND NOT Greifer[wlIndex].bpGlasRueckhalterEingefahren
                       AND NOT Greifer[wlIndex].out_bGlasRueckhalterEinlaufAusfahren
                       AND NOT Greifer[wlIndex].out_bGlasRueckhalterAuslaufAusfahren ) );
-    WatchIo( blShuttleErreichbar AND Querfahrt.bpVerfahreShuttle AND NOT Greifer[wlIndex].bpSicherePosition                              ,wlWatchIONachrichtenNummer + (30 + (wlIndex - cWAND_1)) );
+    WatchIo( blShuttleErreichbar AND Querfahrt.bpVerfahreShuttle AND NOT Greifer[wlIndex].bpSicherePosition, wlWatchIONachrichtenNummer + (30 + (wlIndex - cWAND_1)) );
   END_IF
 END_FOR
 
-WatchIo( blShuttleErreichbar AND NOT StatusAnlage.toflDruckluftShuttleOK[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].Q        ,wlWatchIONachrichtenNummer + 24 );
+// Druckluft
+IF ( BasisStationsParameter.stMKs.stStationsAufbau.bDruckluft ) THEN
+  WatchIo( blShuttleErreichbar AND NOT StatusAnlage.toflDruckluftShuttleOK[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].Q, wlWatchIONachrichtenNummer + 24 );
+END_IF
 
-FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
-  WatchIo( blShuttleErreichbar AND Querfahrt.bpVerfahreShuttle AND NOT Glastransport[wlIndex].bpVerfahrFreigabe,                           wlWatchIONachrichtenNummer + (27 + (wlIndex - cWAND_1)) );
-END_FOR
-WatchIo( blShuttleErreichbar AND Querfahrt.bpVerfahreShuttle AND bpShuttleAnhalten                                                          ,wlWatchIONachrichtenNummer + 29 );
+// Zentralschmierung
+IF ( BasisStationsParameter.stMKs.stStationsAufbau.bDLSSchmiersystem ) THEN
+  WatchIo( blShuttleErreichbar AND ( Zentralschmierung.bpFehler OR Zentralschmierung.blFettLeer ),          wlWatchIONachrichtenNummer + 33 );
+END_IF
 
-WatchIo( blShuttleErreichbar AND ( Zentralschmierung.bpFehler OR Zentralschmierung.blFettLeer )                                             ,wlWatchIONachrichtenNummer + 33 );
-
-WatchIo( blShuttleErreichbar AND Kippen.bpAktivieren AND ( NOT Kippen.toflMotorSicherungOK.Q OR NOT Kippen.toflMotorstarterOK.Q )          ,wlWatchIONachrichtenNummer + 36 );
-WatchIo( blShuttleErreichbar AND Kippen.bpAktivieren AND NOT Kippen.in_bLeitungsschutzschalterBremseOK                                     ,wlWatchIONachrichtenNummer + 37 );
-WatchIo( blShuttleErreichbar AND NOT in_bWandverstellungsAntriebsSicherungOK                                                                ,wlWatchIONachrichtenNummer + 38 );
-WatchIo( blShuttleErreichbar AND NOT in_bWandverstellungsBremsSicherungOK                                                                   ,wlWatchIONachrichtenNummer + 39 );
+// Transport-/Wandverstellung
+IF ( BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[cWAND_1] ) THEN
+  WatchIo( blShuttleErreichbar AND NOT in_bWandverstellungsAntriebsSicherungOK,                             wlWatchIONachrichtenNummer + 38 );
+  WatchIo( blShuttleErreichbar AND NOT in_bWandverstellungsBremsSicherungOK,                                wlWatchIONachrichtenNummer + 39 );
+END_IF
 
 //-------------------------------------------------------------------------------------------------
 // S T A R T - Hinweismeldung beim Durchschreiten der Datenlichtschranke

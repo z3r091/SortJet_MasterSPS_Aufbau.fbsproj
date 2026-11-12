@@ -39,8 +39,8 @@ END_FOR
 
 // ---------------------------------------------------------------------------------------
 // BAUSTEIN BASISPARAMETER
-BasisStationsParameter.bIstReferenziert        := Querfahrt.Antrieb.bpIstReferenziert
-                                              AND ( Kippen.bpInReferenz OR NOT Kippen.bpAktivieren );
+BasisStationsParameter.bIstReferenziert        := ( Querfahrt.Antrieb.bpIstReferenziert OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt )
+                                              AND ( Kippen.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1] );
 
 // Greifer [Ausbaustufe]
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO

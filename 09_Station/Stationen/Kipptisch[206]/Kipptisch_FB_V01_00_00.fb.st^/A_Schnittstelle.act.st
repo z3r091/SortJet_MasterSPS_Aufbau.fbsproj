@@ -31,8 +31,8 @@ BasisStationsParameter.OutGlasTransport[cWAND_1].bTransportRueckwaertig     REF=
 
 // ---------------------------------------------------------------------------------------
 
-BasisStationsParameter.bIstReferenziert := Kippen.Antrieb.bpIstReferenziert
-                                           AND Querfahrt.bpInReferenz;
+BasisStationsParameter.bIstReferenziert := ( Kippen.Antrieb.bpIstReferenziert OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1] )
+                                           AND ( Querfahrt.bpInReferenz OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt );
 
 BasisStationsParameter.rAktuellePositionQuerfahrt := Querfahrt.rpAktuellePosition;
 

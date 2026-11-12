@@ -14,7 +14,7 @@ ACTION Referenz
 IF ( blBetriebsartReferenz ) THEN
 
   // Ausnahmesituation
-  IF ( Messachse.bpFehler ) THEN
+  IF ( Messachse.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bMessachse ) THEN
     Messachse.bpReferenz := FALSE;
     BasisStationsParameter.wFehlerNummer := Messachse.wpFehlerNr;
     steplReferenz := STEP_900_E;
@@ -38,7 +38,10 @@ IF ( blBetriebsartReferenz ) THEN
 
     // REFERENZ ============================
     STEP_10_E:
-      Messachse.bpReferenz     := TRUE;
+      (* Hinweis:
+         - Achsen nur referenzieren, wenn sie laut Ausbaustufe vorhanden und noch nicht referenziert sind
+      *)
+      Messachse.bpReferenz     := BasisStationsParameter.stMKs.stStationsAufbau.bMessachse AND NOT Messachse.bpInReferenz;
       Glastransport.bpReferenz := TRUE;
 
       steplReferenz := STEP_20_E;
@@ -48,7 +51,7 @@ IF ( blBetriebsartReferenz ) THEN
       (* Hinweis:
          - Referenzierung Abgeschlossen
       *)
-      IF ( Messachse.bpDone ) THEN
+      IF ( Messachse.bpDone OR NOT Messachse.bpReferenz ) THEN
         Messachse.bpReferenz := FALSE;
         steplReferenz := STEP_30_E;
       END_IF
