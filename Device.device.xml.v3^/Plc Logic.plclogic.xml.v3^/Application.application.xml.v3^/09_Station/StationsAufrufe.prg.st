@@ -38,14 +38,14 @@ END_FOR
 //-------------------------------------------------------------------------------------------------
 
 // STATIONEN
-Anlegetisch201                   (BasisStationsParameter := starrStationBasisParameter[cSTATION_201], in_bSensorKipptischUnten := EV_ToPLC_b201_geschlossen);
-Foerderer202                     (BasisStationsParameter := starrStationBasisParameter[cSTATION_202]);
-Foerderer203                     (BasisStationsParameter := starrStationBasisParameter[cSTATION_203]);
-Anlegetisch205                   (BasisStationsParameter := starrStationBasisParameter[cSTATION_205]);
-Eckuebergabe204                  (BasisStationsParameter := starrStationBasisParameter[cSTATION_204]);
-Kipptisch206                     (BasisStationsParameter := starrStationBasisParameter[cSTATION_206]);
-Drehstation207                   (BasisStationsParameter := starrStationBasisParameter[cSTATION_207]);
-Combiwand208                     (BasisStationsParameter := starrStationBasisParameter[cSTATION_208]);
+Anlegetisch201                   ( BasisStationsParameter := starrStationBasisParameter[cSTATION_201], in_bSensorKipptischUnten := EV_ToPLC_b201_geschlossen );
+Foerderer202                     ( BasisStationsParameter := starrStationBasisParameter[cSTATION_202] );
+Foerderer203                     ( BasisStationsParameter := starrStationBasisParameter[cSTATION_203] );
+Anlegetisch205                   ( BasisStationsParameter := starrStationBasisParameter[cSTATION_205], in_bSensorKipptischUnten := TRUE );
+Eckuebergabe204                  ( BasisStationsParameter := starrStationBasisParameter[cSTATION_204] );
+Kipptisch206                     ( BasisStationsParameter := starrStationBasisParameter[cSTATION_206] );
+Drehstation207                   ( BasisStationsParameter := starrStationBasisParameter[cSTATION_207] );
+Combiwand208                     ( BasisStationsParameter := starrStationBasisParameter[cSTATION_208] );
 
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: SCHNITTSTELLEN
