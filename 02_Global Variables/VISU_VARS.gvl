@@ -26,6 +26,18 @@ VAR_GLOBAL
   bgVISUGlastransportYVor                    : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   // Eckuebergabe: Glastransport Y vor
   bgVISUGlastransportYZurueck                : ARRAY[cERSTE_STATION..cLETZTE_STATION] OF BOOL;   // Eckuebergabe: Glastransport Y zurueck
 
+  // HANDFUNKTIONEN: GREIFER (nur Shuttle, je Wand; Tipptaster der Visu "Handbetrieb Speicher")
+  bgVISUGreiferVor                           : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF BOOL; // Greiferachse vor
+  bgVISUGreiferZurueck                       : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF BOOL; // Greiferachse zurueck
+  bgVISUGreiferReferenz                      : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF BOOL; // Greiferachse referenzieren
+  bgVISUGreiferAusfahren                     : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF BOOL; // Greifer zum Glas ausfahren
+  bgVISUGreiferEinfahren                     : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF BOOL; // Greifer einfahren
+  bgVISUGreiferZangeSchliessen               : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF BOOL; // Greiferzange schliessen
+  bgVISUGreiferZangeOeffnen16mm              : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF BOOL; // Greiferzange oeffnen 16 mm
+  bgVISUGreiferZangeOeffnen23mm              : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF BOOL; // Greiferzange oeffnen 23 mm
+  bgVISUGreiferZangeOeffnen29mm              : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF BOOL; // Greiferzange oeffnen 29 mm
+  bgVISUGreiferGlasRueckhalterAusfahren      : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE, cWAND_1..cANZAHL_WAENDE] OF BOOL; // Glasrueckhalter (Haltebuegel) ausfahren
+
   bgVISUQuerfahrtVor                         : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
   bgVISUQuerfahrtZurueck                     : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;
   bgVISUQuerfahrtReferenz                    : ARRAY[cERSTES_SHUTTLE..cLETZTE_STATION] OF BOOL;

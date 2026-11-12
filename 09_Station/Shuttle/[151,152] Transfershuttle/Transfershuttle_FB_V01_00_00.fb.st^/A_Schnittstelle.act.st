@@ -37,7 +37,7 @@ stpOutTransportVerbund := Glastransport.stpOutTransportVerbund;
 
 // ---------------------------------------------------------------------------------------
 // BAUSTEIN BASISPARAMETER
-BasisStationsParameter.bIstReferenziert        := Querfahrt.Antrieb.bpIstReferenziert;
+BasisStationsParameter.bIstReferenziert        := ( Querfahrt.Antrieb.bpIstReferenziert OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt );
 BasisStationsParameter.bAuftragAktiv           := (   BasisStationsParameter.bAnlegen
                                                     OR BasisStationsParameter.bAbnehmen
                                                     OR BasisStationsParameter.bEintransport[cWAND_1]
@@ -56,12 +56,17 @@ dwlHandfunktionen                               := BasisStationsParameter.dwHand
 // Status für die Visu
 
 // Wand 1
-IF BasisStationsParameter.stMKs.stStationsOptionen.stTransfershuttle.bTransferShuttleMitUltraschallSensoren THEN // Ultraschallsensoren sind keine Öffner sondern schließer - Logik negieren!
-  abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bSensorEinlauf[1] := NOT in_bSensorScheibenKontrolleEinlaufSeiteFrei;
-  abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bSensorAuslauf[1] := NOT in_bSensorScheibenKontrolleAuslaufSeiteFrei;
-ELSE
+(* Hinweis:
+   - Visu: bSensorEinlauf / bSensorAuslauf = TRUE -> Scheibe erkannt (belegt)
+   - Luftabfrage (Standard) ist ein Oeffner: Eingang TRUE = frei -> negieren
+   - Ultraschallsensoren sind Schliesser: Eingang TRUE = belegt -> direkt
+*)
+IF BasisStationsParameter.stMKs.stStationsOptionen.stTransfershuttle.bTransferShuttleMitUltraschallSensoren THEN
   abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bSensorEinlauf[1] := in_bSensorScheibenKontrolleEinlaufSeiteFrei;
   abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bSensorAuslauf[1] := in_bSensorScheibenKontrolleAuslaufSeiteFrei;
+ELSE
+  abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bSensorEinlauf[1] := NOT in_bSensorScheibenKontrolleEinlaufSeiteFrei;
+  abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bSensorAuslauf[1] := NOT in_bSensorScheibenKontrolleAuslaufSeiteFrei;
 END_IF
 
 //Wand 2

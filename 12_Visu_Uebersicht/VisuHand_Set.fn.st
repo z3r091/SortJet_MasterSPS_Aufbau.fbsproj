@@ -14,7 +14,7 @@ VAR_INPUT
   sText   : STRING(30);
   dwFarbe : DWORD;
 END_VAR
-IF wZeile >= 1 AND wZeile <= 7 THEN
+IF wZeile >= 1 AND wZeile <= 10 THEN // Grenzen wie VisuHand_Station_ST.asStatus
   stH.asStatus[wZeile]  := sText;
   stH.adwStatus[wZeile] := dwFarbe;
 END_IF

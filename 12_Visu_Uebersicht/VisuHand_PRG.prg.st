@@ -14,6 +14,7 @@ VAR
   dwKipp : DWORD;
   pBP  : POINTER TO StationBasisParameter_ST;
   pH   : POINTER TO VisuHand_Station_ST;
+  pGr  : POINTER TO Shuttle_Greifer_FB_V01_00_00; // Greifer Wand 1 des Shuttles (Zeilen 7 - 10)
 
   // Reset
   afbResetSt       : ARRAY[201..208] OF VisuHand_Reset_FB;
@@ -128,6 +129,7 @@ FOR i := 201 TO 208 DO
         pH^.abZeileVorhanden[3] := pBP^.stMKs.stStationsAufbau.bDrehen;
         pH^.abZeileVorhanden[4] := pBP^.stMKs.stStationsAufbau.bDrehen;
         pH^.abZeileVorhanden[5] := pBP^.stMKs.stStationsAufbau.bKippen[cWAND_1];
+        pH^.abZeileVorhanden[6] := pBP^.stMKs.stStationsAufbau.bGeblase[cWAND_1];
       208:
         pH^.abZeileVorhanden[2] := pBP^.stMKs.stStationsAufbau.bMessachse;
         pH^.abZeileVorhanden[3] := pBP^.stMKs.stStationsAufbau.bDurchlaufSperreZumNachfolger;
@@ -222,6 +224,8 @@ FOR i := 201 TO 208 DO
       END_CASE
       IF abgStationsstatusVisu[i].bKippenFehler THEN sKipp := 'Fehler'; dwKipp := dwR; END_IF
       b := VisuHand_Set(stH := pH^, wZeile := 5, sText := sKipp, dwFarbe := dwKipp);
+      // 6 Geblaese
+      b := VisuHand_Set(stH := pH^, wZeile := 6, sText := SEL(abgStationsstatusVisu[i].bGeblaeseLaeuft[1], 'aus', 'EIN'), dwFarbe := SEL(abgStationsstatusVisu[i].bGeblaeseLaeuft[1], dwGR, dwB));
 
     208:
       // 2 Messachse
@@ -246,6 +250,9 @@ IF VISU_HAND.st205.bGesperrt THEN
   VISU_VARS.bgVISUGeblaese[205, cWAND_1] := FALSE;
   VISU_VARS.bgVISUDrosselklappeAUF[205]  := FALSE;
 END_IF
+IF VISU_HAND.st207.bGesperrt THEN
+  VISU_VARS.bgVISUGeblaese[207, cWAND_1] := FALSE;
+END_IF
 
 // -------------------------------------------------------------------------------------------
 // [101] / [102] SHUTTLE
@@ -261,6 +268,11 @@ FOR i := 101 TO 102 DO
     pH^.abZeileVorhanden[4] := pBP^.stMKs.stStationsAufbau.bKippen[cWAND_1];
     pH^.abZeileVorhanden[5] := pBP^.stMKs.stStationsAufbau.bQuerfahrt;
     pH^.abZeileVorhanden[6] := pBP^.stMKs.stStationsAufbau.bDLSSchmiersystem;
+    // 7 - 10 Greifer (Ausbaustufe je Wand, in der Visu nur bei 102)
+    pH^.abZeileVorhanden[7]  := pBP^.stMKs.stStationsAufbau.bGreifer[cWAND_1];
+    pH^.abZeileVorhanden[8]  := pBP^.stMKs.stStationsAufbau.bGreifer[cWAND_1];
+    pH^.abZeileVorhanden[9]  := pBP^.stMKs.stStationsAufbau.bGreifer[cWAND_1];
+    pH^.abZeileVorhanden[10] := pBP^.stMKs.stStationsAufbau.bGreifer[cWAND_1];
   END_IF
   IF pH^.bGesperrt THEN
     VISU_VARS.bgVISUGeblaese[i, cWAND_1] := FALSE;
@@ -296,6 +308,32 @@ FOR i := 101 TO 102 DO
                      dwFarbe := SEL(abgStationsstatusVisu[i].bQuerfahrtFehler, SEL(abgStationsstatusVisu[i].bQuerfahrtAntriebReferenziert, dwO, dwG), dwR));
   // 6 Schmierung
   b := VisuHand_Set(stH := pH^, wZeile := 6, sText := '', dwFarbe := dwGR);
+
+  // 7 - 10 Greifer (Wand 1)
+  IF pH^.abZeileVorhanden[7] THEN
+    pGr := ADR(Globale_Bausteine.aShuttle[i].Greifer[cWAND_1]);
+    // 7 Greiferachse
+    b := VisuHand_Set(stH := pH^, wZeile := 7,
+                       sText   := VisuUeb_MmText(sPrefix := '', rWert := pGr^.rpIstPosition, sEinheit := ' mm'),
+                       dwFarbe := SEL(pGr^.bpFehler, SEL(pGr^.bpIstInReferenz, dwO, dwG), dwR));
+    // 8 Greifer aus- / eingefahren
+    IF pGr^.in_bGreiferAusgefahren AND NOT pGr^.in_bGreiferEingefahren THEN
+      b := VisuHand_Set(stH := pH^, wZeile := 8, sText := 'ausgefahren', dwFarbe := dwB);
+    ELSIF pGr^.in_bGreiferEingefahren AND NOT pGr^.in_bGreiferAusgefahren THEN
+      b := VisuHand_Set(stH := pH^, wZeile := 8, sText := 'eingefahren', dwFarbe := dwG);
+    ELSE
+      b := VisuHand_Set(stH := pH^, wZeile := 8, sText := '?',           dwFarbe := dwO);
+    END_IF
+    // 9 Greiferzange Auslaufseite (Zange[2] = cZANGE_AUSLAUF im Greifer-Baustein);
+    //   nur die Abfrage "offen" wird verwendet (Abfrage "geschlossen" laut MK nicht ausgewertet)
+    b := VisuHand_Set(stH := pH^, wZeile := 9,
+                       sText   := SEL(pGr^.Zange[2].in_bStatusZylinder_1_Ausgefahren, 'zu', 'offen'),
+                       dwFarbe := SEL(pGr^.Zange[2].in_bStatusZylinder_1_Ausgefahren, dwG, dwB));
+    // 10 Glasrueckhalter
+    b := VisuHand_Set(stH := pH^, wZeile := 10,
+                       sText   := SEL(pGr^.bpGlasRueckhalterEingefahren, 'ausgefahren', 'eingefahren'),
+                       dwFarbe := SEL(pGr^.bpGlasRueckhalterEingefahren, dwB, dwG));
+  END_IF
 END_FOR
 
 // -------------------------------------------------------------------------------------------

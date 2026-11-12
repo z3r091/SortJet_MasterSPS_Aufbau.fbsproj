@@ -118,9 +118,20 @@ IF ( blErsterZyklus ) THEN
 END_IF
 
 //-------------------------------------------------------------------------------------------------
-// Deaktivierung
+// BAUSTEIN: DEAKTIVIERUNG
 //-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Schnittstelle deaktiviert (MK bDeaktivieren): Ausgaenge zur Fremdanlage abschalten, Baustein verlassen.
+     Abgeleitete Bausteine pruefen nach SUPER^() selbst und schalten ihre eigenen Ausgaenge ab
+*)
 IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
+  out_bSenderBereit     := FALSE;
+  out_bSenderGlasBereit := FALSE;
+  out_bLeuchteGlasbruch := FALSE;
+  out_bLeuchteSpezial   := FALSE;
+  out_bAmpelEventAktiv  := FALSE;
+  bpISOLineEventAktiv   := FALSE;
+  rpGeschwindigkeit     := 0;
   RETURN;
 END_IF
 

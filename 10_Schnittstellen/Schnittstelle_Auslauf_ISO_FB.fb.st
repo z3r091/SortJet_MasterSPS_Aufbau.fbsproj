@@ -40,6 +40,16 @@ END_VAR
 SUPER^(BasisStationsParameter := BasisStationsParameter);
 
 //-------------------------------------------------------------------------------------------------
+// BAUSTEIN: DEAKTIVIERUNG
+//-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Schnittstelle deaktiviert (MK bDeaktivieren): Baustein verlassen (Ausgaenge schaltet der Basis-Baustein ab)
+*)
+IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
+  RETURN;
+END_IF
+
+//-------------------------------------------------------------------------------------------------
 // BAUSTEIN: AKTIONEN
 //-------------------------------------------------------------------------------------------------
 CASE BasisStationsParameter.stMKs.stFremdanlage.eTypSchnittstelle OF

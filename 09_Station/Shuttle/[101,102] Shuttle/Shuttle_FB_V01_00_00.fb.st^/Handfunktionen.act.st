@@ -174,19 +174,30 @@ IF ( blBetriebsartHand ) THEN
   //   - Glasrueckhalter ausfahren
   FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
     IF ( BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex] ) THEN
-      Greifer[wlIndex].bpHandfahrenPlus  := dwlHandfunktionen.18 AND NOT ( dwlHandfunktionen.19 OR dwlHandfunktionen.20 );
-      Greifer[wlIndex].bpHandfahrenMinus := dwlHandfunktionen.19 AND NOT ( dwlHandfunktionen.18 OR dwlHandfunktionen.20 );
-      Greifer[wlIndex].bpFahreReferenz   := dwlHandfunktionen.20 AND NOT ( dwlHandfunktionen.18 OR dwlHandfunktionen.19 );
+      // Taster: MMI-Bit oder Visu "Handbetrieb Speicher"
+      blGreiferVor        := dwlHandfunktionen.18 OR bgVISUGreiferVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, wlIndex];
+      blGreiferZurueck    := dwlHandfunktionen.19 OR bgVISUGreiferZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, wlIndex];
+      blGreiferReferenz   := dwlHandfunktionen.20 OR bgVISUGreiferReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, wlIndex];
+      blGreiferAusfahren  := dwlHandfunktionen.21 OR bgVISUGreiferAusfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, wlIndex];
+      blGreiferEinfahren  := dwlHandfunktionen.22 OR bgVISUGreiferEinfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, wlIndex];
 
-      Greifer[wlIndex].bpHandGreiferAusfahren := dwlHandfunktionen.21 AND NOT dwlHandfunktionen.22;
-      Greifer[wlIndex].bpHandGreiferEinfahren := dwlHandfunktionen.22 AND NOT dwlHandfunktionen.21;
+      // Greiferachse vor / zurueck / Referenz (gegenseitig verriegelt)
+      Greifer[wlIndex].bpHandfahrenPlus  := blGreiferVor      AND NOT ( blGreiferZurueck OR blGreiferReferenz );
+      Greifer[wlIndex].bpHandfahrenMinus := blGreiferZurueck  AND NOT ( blGreiferVor     OR blGreiferReferenz );
+      Greifer[wlIndex].bpFahreReferenz   := blGreiferReferenz AND NOT ( blGreiferVor     OR blGreiferZurueck  );
 
-      Greifer[wlIndex].bpHandZangeSchliessen  := dwlHandfunktionen.23;
-      Greifer[wlIndex].bpHandZangeOeffnen16mm := dwlHandfunktionen.24;
-      Greifer[wlIndex].bpHandZangeOeffnen23mm := dwlHandfunktionen.25;
-      Greifer[wlIndex].bpHandZangeOeffnen29mm := dwlHandfunktionen.26;
+      // Greifer aus- / einfahren (gegenseitig verriegelt)
+      Greifer[wlIndex].bpHandGreiferAusfahren := blGreiferAusfahren AND NOT blGreiferEinfahren;
+      Greifer[wlIndex].bpHandGreiferEinfahren := blGreiferEinfahren AND NOT blGreiferAusfahren;
 
-      Greifer[wlIndex].bpHandGlasRueckhalterAusfahren := dwlHandfunktionen.27;
+      // Greiferzange schliessen / oeffnen 16 / 23 / 29 mm
+      Greifer[wlIndex].bpHandZangeSchliessen  := dwlHandfunktionen.23 OR bgVISUGreiferZangeSchliessen[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, wlIndex];
+      Greifer[wlIndex].bpHandZangeOeffnen16mm := dwlHandfunktionen.24 OR bgVISUGreiferZangeOeffnen16mm[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, wlIndex];
+      Greifer[wlIndex].bpHandZangeOeffnen23mm := dwlHandfunktionen.25 OR bgVISUGreiferZangeOeffnen23mm[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, wlIndex];
+      Greifer[wlIndex].bpHandZangeOeffnen29mm := dwlHandfunktionen.26 OR bgVISUGreiferZangeOeffnen29mm[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, wlIndex];
+
+      // Glasrueckhalter ausfahren
+      Greifer[wlIndex].bpHandGlasRueckhalterAusfahren := dwlHandfunktionen.27 OR bgVISUGreiferGlasRueckhalterAusfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, wlIndex];
     END_IF
   END_FOR
 

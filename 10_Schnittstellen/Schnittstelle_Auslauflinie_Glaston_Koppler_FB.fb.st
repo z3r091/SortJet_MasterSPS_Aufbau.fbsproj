@@ -145,6 +145,18 @@ IF ( blErsterZyklus  ) THEN
 END_IF
 
 //-------------------------------------------------------------------------------------------------
+// BAUSTEIN: DEAKTIVIERUNG
+//-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Schnittstelle deaktiviert (MK bDeaktivieren): Signalwort zum Empfaenger nullen, Baustein verlassen
+     (der LiveCounter bleibt stehen -> Empfaenger erkennt die fehlende Kommunikation)
+*)
+IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
+  out_wSenderSignale := 0;
+  RETURN;
+END_IF
+
+//-------------------------------------------------------------------------------------------------
 // TIMER
 //-------------------------------------------------------------------------------------------------
 (* Hinweis:

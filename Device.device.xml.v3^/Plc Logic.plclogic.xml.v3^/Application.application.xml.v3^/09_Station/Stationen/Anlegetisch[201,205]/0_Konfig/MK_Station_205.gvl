@@ -62,7 +62,7 @@ VAR_GLOBAL
                                                ),
       stStationsAufbau                      := ( bGeblase                      := [ cANZAHL_WAENDE(TRUE) ],                  // Ausbaustufe: Geblaese je Wand
                                                  bGlastransport                := [ cANZAHL_WAENDE(TRUE) ],                  // Ausbaustufe: Glastransport je Wand
-                                                 bKippen                       := [ cANZAHL_WAENDE(TRUE) ],                  // Ausbaustufe: Kippen je Wand
+                                                 bKippen                       := [ cANZAHL_WAENDE(FALSE) ],                 // Ausbaustufe: Kippen je Wand (kein Kipptisch an 205)
                                                  bKippenSchuetz                := FALSE,                                     // Kippen ueber Schuetz statt Umrichter
                                                  bTransportVerstellung         := [ cANZAHL_WAENDE(FALSE) ],                 // Ausbaustufe Shuttle: Transport-/Dickenverstellung je Wand
                                                  bHub                          := FALSE,                                     // Ausbaustufe: Hub der Station

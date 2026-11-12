@@ -41,6 +41,19 @@ END_VAR
 SUPER^(BasisStationsParameter := BasisStationsParameter);
 
 //-------------------------------------------------------------------------------------------------
+// BAUSTEIN: DEAKTIVIERUNG
+//-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Schnittstelle deaktiviert (MK bDeaktivieren): Ausgaenge abschalten, Baustein verlassen
+*)
+IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
+  out_bFreigabeSK := FALSE;
+  bpAnforderungSK := FALSE;
+  bpGlasAbruf     := FALSE;
+  RETURN;
+END_IF
+
+//-------------------------------------------------------------------------------------------------
 // BAUSTEIN: AKTIONEN
 //-------------------------------------------------------------------------------------------------
 

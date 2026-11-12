@@ -31,10 +31,20 @@ END_VAR
 // Der SlaveMode bleibt so lange aktiv, bis wir das Signal "out_bBereitZumEintrasport" wegnehmen.
 
 //-------------------------------------------------------------------------------------------------
-// INITIALISIERUNG
+// MASTER AUFRUFEN
 //-------------------------------------------------------------------------------------------------
-// Master aufrufen
 SUPER^(BasisStationsParameter := BasisStationsParameter);
+
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: DEAKTIVIERUNG
+//-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Schnittstelle deaktiviert (MK bDeaktivieren): Ausgaenge abschalten, Baustein verlassen
+*)
+IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
+  out_bBereitZumAufstellen := FALSE;
+  RETURN;
+END_IF
 
 //IF BasisStationsParameter.stMKs.stFremdanlage.bSignaleLoggen THEN
 Signal_Logger();

@@ -80,6 +80,10 @@ VAR_GLOBAL
   sL_Oeffnung                              : STRING(120) := 'Öffnung';
   sL_16mm                                  : STRING(120) := '16 mm';
   sL_23mm                                  : STRING(120) := '23 mm';
+  sL_29mm                                  : STRING(120) := '29 mm';
+  sL_Greiferachse                          : STRING(120) := 'Gr.-Achse';
+  sL_Zange                                 : STRING(120) := 'Zange';
+  sL_Rueckhalter                           : STRING(120) := 'Rückhalter';
   sL_Drehen                                : STRING(120) := 'Drehen';
   sL_0Grad                                 : STRING(120) := '0°';
   sL_180Grad                               : STRING(120) := '180°';

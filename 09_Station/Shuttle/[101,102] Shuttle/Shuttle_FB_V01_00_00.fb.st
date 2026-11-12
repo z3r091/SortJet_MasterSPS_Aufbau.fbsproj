@@ -116,14 +116,16 @@ END_VAR
 VAR
   // Alle Sensoren
   blAlleEinlaufStoppSensoren : BOOL; // wirksame Einlauf-Stopp-Sensoren (ohne MK: Einlaufsensor)
-  blAlleAuslaufSensoren      : BOOL;
-  blAlleEinlaufVorabSensoren : BOOL;
-  blAlleAuslaufVorabSensoren : BOOL;
   blAlleAuslaufStoppSensoren : BOOL;
   ablSensorEinlaufStopp      : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // wirksamer Einlauf-Stopp-Sensor (ohne MK: Einlaufsensor)
   ablSensorAuslaufStopp      : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // wirksamer Auslauf-Stopp-Sensor (ohne MK: Auslaufsensor)
   blAlleVerfahrfreigaben     : BOOL;
   blAlleGreiferSicher        : BOOL; // Alle Greifer in sicherer Position mit eingefahrenen Glasrueckhaltern (oder nicht vorhanden)
+  blGreiferVor               : BOOL; // Handbetrieb Greifer: Taster MMI oder Visu (Aktion Handfunktionen)
+  blGreiferZurueck           : BOOL;
+  blGreiferReferenz          : BOOL;
+  blGreiferAusfahren         : BOOL;
+  blGreiferEinfahren         : BOOL;
   ablQuittScheibe            : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Scheibenquittierung Glastransport bzw. Greifer
   blDone                     : BOOL;
   blFehlerAktiv              : BOOL;
@@ -187,9 +189,6 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
 END_FOR
 
 blAlleEinlaufStoppSensoren := FALSE;
-blAlleAuslaufSensoren      := FALSE;
-blAlleEinlaufVorabSensoren := FALSE;
-blAlleAuslaufVorabSensoren := FALSE;
 blAlleAuslaufStoppSensoren := FALSE;
 blAlleVerfahrfreigaben     := TRUE;
 blAlleGreiferSicher        := TRUE;
@@ -199,9 +198,6 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                                 AND (    ( Greifer[wlIndex].bpSicherePosition AND Greifer[wlIndex].bpGlasRueckhalterEingefahren )
                                       OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex] );
   blAlleEinlaufStoppSensoren := blAlleEinlaufStoppSensoren OR ablSensorEinlaufStopp[wlIndex];
-  blAlleAuslaufSensoren      := blAlleAuslaufSensoren OR in_bSensorAuslauf[wlIndex];
-  blAlleEinlaufVorabSensoren := blAlleEinlaufVorabSensoren OR in_bSensorEinlaufVorab[wlIndex];
-  blAlleAuslaufVorabSensoren := blAlleAuslaufVorabSensoren OR in_bSensorAuslaufVorab[wlIndex];
   blAlleAuslaufStoppSensoren := blAlleAuslaufStoppSensoren OR ablSensorAuslaufStopp[wlIndex];
   blAlleVerfahrfreigaben     := blAlleVerfahrfreigaben AND Glastransport[wlIndex].bpVerfahrFreigabe;
 END_FOR
