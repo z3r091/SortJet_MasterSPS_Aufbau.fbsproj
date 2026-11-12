@@ -1,3 +1,0 @@
-*.st      diff=codesys
-*.gvl     diff=codesys
-*.dut     diff=codesys
