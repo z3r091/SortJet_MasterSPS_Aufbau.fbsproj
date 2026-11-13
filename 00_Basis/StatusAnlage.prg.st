@@ -8,7 +8,6 @@
 PROGRAM StatusAnlage
 VAR
 
-
   // WORD
   wlIndex          : WORD;
 
@@ -26,13 +25,14 @@ VAR
   toflDruckluftTSShuttleOK         : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF TOF;
   toflDruckluft101_OK              : TOF;
   toflDruckluft102_OK              : TOF;
+  toflDruckluftFW_OK               : TOF;
 
 END_VAR
 
 VAR
 
   // Druckluft
-  in_bDruckluft_FW_OK                         AT %I*   : BOOL; // Wartungseinheit
+  in_bDruckluft_FW_OK                                  : BOOL; // Wartungseinheit
   in_bDruckluft_101_OK                        AT %I*   : BOOL; // Wartungseinheit
   in_bDruckluft_102_OK                        AT %I*   : BOOL; // Wartungseinheit
 
@@ -72,7 +72,7 @@ END_FOR
 
 toflDruckluft101_OK( In := in_bDruckluft_101_OK, PT := ZEIT_DRUCKWAECHTERSIGNAL_ENTPRELLT );
 toflDruckluft102_OK( In := in_bDruckluft_102_OK, PT := ZEIT_DRUCKWAECHTERSIGNAL_ENTPRELLT );
-
+toflDruckluftFW_OK( In := in_bDruckluft_FW_OK OR %MX1.1, PT := ZEIT_DRUCKWAECHTERSIGNAL_ENTPRELLT ); // TODO wenn Wartungseinheit verbaut
 
 // Auswertung und hier pruefen ob Betriebsstopp ausgeloest werden muss
 // AK1 = Shuttle-Bereich (101, 102, 151, 152, Faecherwagen)
@@ -82,6 +82,7 @@ abpDruckluftOK[cAUTOMATIKKREIS_1] := (   ( toflDruckluftShuttleOK[cSHUTTLE_101].
                                        AND ( toflDruckluftTSShuttleOK[cSHUTTLE_152].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_152].stMKs.bDeaktivieren)
                                        AND toflDruckluft101_OK.Q
                                        AND toflDruckluft102_OK.Q
+									   AND toflDruckluftFW_OK.Q
                                      ) OR bgInbetriebnahmeBit;
 
 // AK2 = Foerderstrecke (201 - 208), keine gemeinsame Druckluftueberwachung
@@ -108,4 +109,5 @@ WatchIo(NOT in_bCAB2_LS_230V_OK,                                  ioccCAB2_LS_23
 
 WatchIo(NOT bgInbetriebnahmeBit AND NOT toflDruckluft101_OK.Q,  ioccDruckluft1);
 WatchIo(NOT bgInbetriebnahmeBit AND NOT toflDruckluft102_OK.Q,  ioccDruckluft2);
+WatchIo(NOT bgInbetriebnahmeBit AND NOT toflDruckluftFW_OK.Q,   ioccDruckluft3);
 END_PROGRAM

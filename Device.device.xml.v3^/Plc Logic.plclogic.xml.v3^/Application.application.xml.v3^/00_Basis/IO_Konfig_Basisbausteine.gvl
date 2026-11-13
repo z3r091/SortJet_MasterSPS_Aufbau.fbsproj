@@ -70,7 +70,6 @@ VAR_CONFIG
 //-------------------------------------------------------------------------------------------------
 
   // HARDWARE EINGAENGE
-  StatusAnlage.in_bDruckluft_FW_OK                         AT %MX1.1   : BOOL; // OPTION
   StatusAnlage.in_bDruckluft_Puffer101_103_OK              AT %MX1.1   : BOOL; // OPTION
   StatusAnlage.in_bDruckluft_Puffer102_104_OK              AT %MX1.1   : BOOL; // OPTION
 
