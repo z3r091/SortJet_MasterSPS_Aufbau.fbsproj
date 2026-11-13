@@ -134,7 +134,7 @@ VAR_GLOBAL
 
   apgTransfer152Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_TransfershuttleGlastransport := [
     (
-      rlLaengeStation                    := 5100, // Länge der Station
+      rlLaengeStation                    := 3945, // Länge der Station
       rStopFreiFahren                    := 300,  // So weit soll die Scheibe beim Austransport länger fahren
       rWegUeberEinlaufEintransport       := 70,   // Eintransport vorwaerts: Abstand Scheibenhinterkante zum Einlaufsensor [mm]
       rWegUeberEinlaufAustransport       := 50,   // Lage Auf Einlauf: Scheibe liegt um diesen Weg auf dem Einlaufsensor [mm]

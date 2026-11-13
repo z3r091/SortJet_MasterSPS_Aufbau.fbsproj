@@ -126,8 +126,8 @@ VAR_GLOBAL
       rWegUeberAuslaufAustransport          :=   10, // Lage Auf Auslauf: Weg ueber den Auslaufsensor hinaus [mm]
       rWegEinlaufsensorZuVorStopSensor      := 2700, // Beschreibt den Weg vum eine Scheibe beim EIntransport vom Einlaufsensor bis ueberden Vorabstopsensor zu verfahren
       rMesstoleranz                         :=   10, // Toleranz-Mass fuer die Scheibenlaengenmessung
-      rMessstrecke                          := 2750, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
-      rWegstreckeBisZurVerzoegerung         := 1900  // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll, dies gilt fuer Eintransportauftraege die das Bit "Letzte Scheibe" gesetzt haben
+      rMessstrecke                          := 2740, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
+      rWegstreckeBisZurVerzoegerung         := 2200  // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll, dies gilt fuer Eintransportauftraege die das Bit "Letzte Scheibe" gesetzt haben
     )];
 
   apgMKStation207Drehen : Parameter_Drehen :=

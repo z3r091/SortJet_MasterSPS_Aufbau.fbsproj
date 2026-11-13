@@ -116,7 +116,7 @@ VAR_GLOBAL
 
    apgMKStation208Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Glastransport := [
     (
-      rLaengeStation                        :=  5800, // Länge der Station
+      rLaengeStation                        :=  3300, // Länge der Station
       rScheibenabstand                      :=   300, // Der Abstand zwischen zwei Scheiben auf der Station
       rWegUeberAuslauf                      :=    50, // Weg ueber den Auslaufsensor hinaus [mm]
       rWegUeberEinlauf                      :=    50, // Weg ueber den Einlaufsensor hinaus [mm]
@@ -127,10 +127,10 @@ VAR_GLOBAL
       rWegUeberEinlaufAustransport          :=    30, // Lage Auf Einlauf: Scheibe liegt um diesen Weg auf dem Einlaufsensor [mm]
       rWegUeberAuslaufEintransport          :=    30, // Eintransport rueckwaerts: Abstand Scheibenhinterkante zum Auslaufsensor [mm]
       rWegUeberAuslaufAustransport          :=    15, // Lage Auf Auslauf: Weg ueber den Auslaufsensor hinaus [mm]
-      rWegEinlaufsensorZuVorStopSensor      :=  3550, // Beschreibt den Weg vum eine Scheibe beim EIntransport vom Einlaufsensor bis ueberden Vorabstopsensor zu verfahren
+      rWegEinlaufsensorZuVorStopSensor      :=  3160, // Beschreibt den Weg vum eine Scheibe beim EIntransport vom Einlaufsensor bis ueberden Vorabstopsensor zu verfahren
       rMesstoleranz                         :=    10, // Toleranz-Mass fuer die Scheibenlaengenmessung
-      rMessstrecke                          :=  3630, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
-      rWegstreckeBisZurVerzoegerung         :=  3100  // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll, dies gilt fuer Eintransportauftraege die das Bit "Letzte Scheibe" gesetzt haben
+      rMessstrecke                          :=  3210, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
+      rWegstreckeBisZurVerzoegerung         :=  2660  // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll, dies gilt fuer Eintransportauftraege die das Bit "Letzte Scheibe" gesetzt haben
     )];
 
   apgMKStation208Messachse: Parameter_Messachse :=
