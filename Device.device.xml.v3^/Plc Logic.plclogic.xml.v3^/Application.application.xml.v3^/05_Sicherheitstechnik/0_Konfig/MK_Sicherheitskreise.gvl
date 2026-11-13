@@ -15,28 +15,32 @@ apgMKSicherheiskreis : ARRAY [cERSTER_SICHERHEITSKREIS ..cLETZTER_SICHERHEITSKRE
     eSicherheitskreis   := eSicherheitskreis_1,                    // Nummer des Sicherheitskreises
     eaAutomatikkreis    := [eAutomatikkreis_1, eAutomatikkreis_2], // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
     eaTueren            := [eTuer_1, eTuer_2],                     // Konfig welche Türen zu dem Sicherheitskreis gehören
-    eaDurchgang         := [eDurchgang_Undefiniert]                // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+    eaDurchgang         := [eDurchgang_Undefiniert],               // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+	bMeldetOffen        := TRUE                                    // Konfig welche festlegt, ob der geöffnete SK eine WatchIO aufruft
   ),
   (
     // SK2: Station 201 (Klapprahmen unten)
     eSicherheitskreis   := eSicherheitskreis_2,                    // Nummer des Sicherheitskreises
     eaAutomatikkreis    := [eAutomatikkreis_2],                    // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
     eaTueren            := [eTuer_Undefiniert],                    // Konfig welche Türen zu dem Sicherheitskreis gehören
-    eaDurchgang         := [eDurchgang_Undefiniert]                // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+    eaDurchgang         := [eDurchgang_Undefiniert],               // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+	bMeldetOffen        := FALSE                                   // Konfig welche festlegt, ob der geöffnete SK eine WatchIO aufruft
   ),
   (
     // SK3: Station 203 (Klapprahmen geschlossen, Durchgang 1)
     eSicherheitskreis   := eSicherheitskreis_3,                    // Nummer des Sicherheitskreises
     eaAutomatikkreis    := [eAutomatikkreis_2],                    // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
     eaTueren            := [eTuer_Undefiniert],                    // Konfig welche Türen zu dem Sicherheitskreis gehören
-    eaDurchgang         := [eDurchgang_1]                          // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+    eaDurchgang         := [eDurchgang_1],                         // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+	bMeldetOffen        := FALSE                                   // Konfig welche festlegt, ob der geöffnete SK eine WatchIO aufruft
   ),
   (
     // SK4: Station 207 (Durchfassperre 208, SK1)
     eSicherheitskreis   := eSicherheitskreis_4,                    // Nummer des Sicherheitskreises
     eaAutomatikkreis    := [eAutomatikkreis_2],                    // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
     eaTueren            := [eTuer_Undefiniert],                    // Konfig welche Türen zu dem Sicherheitskreis gehören
-    eaDurchgang         := [eDurchgang_Undefiniert]                // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+    eaDurchgang         := [eDurchgang_Undefiniert],               // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+	bMeldetOffen        := FALSE                                   // Konfig welche festlegt, ob der geöffnete SK eine WatchIO aufruft
   )];
 
 apgMKDurchgang : ARRAY [cERSTER_DURCHGANG..cANZAHL_DURCHGANGE] OF Parameter_Durchgang := [

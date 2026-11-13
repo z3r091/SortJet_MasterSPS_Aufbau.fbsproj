@@ -12,7 +12,7 @@ ACTION Meldungen
 // Status der Sicherheiskreis
 wlMeldungsnummer := ( ioccSiKreis1 -1 );
 FOR wlIndex := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO
-  WatchIo( NOT Sicherheitskreis[wlIndex].bpSicherheitskreisGeschlossen, ( wlMeldungsnummer + wlIndex ) );
+  WatchIo( NOT Sicherheitskreis[wlIndex].bpSicherheitskreisGeschlossen AND apgMKSicherheiskreis[wlIndex].bMeldetOffen, ( wlMeldungsnummer + wlIndex ) );
 END_FOR
 
 // Status der Tueren

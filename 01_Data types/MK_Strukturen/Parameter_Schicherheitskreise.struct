@@ -7,10 +7,10 @@
 *)
 TYPE Parameter_Schicherheitskreise :
   STRUCT
-    eSicherheitskreis : Sicherheitskreis_EN;                                                          // Nummer des Sicherheitskreises
-    eaAutomatikkreis   : ARRAY[cERSTER_AUTOMATIKKREIS..cANZAHL_AUTOMATIKKREISE] OF Automatikkreis_EN; // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
-    eaTueren          : ARRAY[cERSTE_TUER..cANZAHL_TUEREN] OF Tueren_EN;                              // Konfig welche Türen zu dem Sicherheitskreis gehören
-    eaDurchgang       : ARRAY[cERSTER_DURCHGANG..cANZAHL_DURCHGANGE] OF Durchgang_EN;                 // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
-
+    eSicherheitskreis  : Sicherheitskreis_EN;                                                          // Nummer des Sicherheitskreises
+    eaAutomatikkreis   : ARRAY[cERSTER_AUTOMATIKKREIS..cANZAHL_AUTOMATIKKREISE] OF Automatikkreis_EN;  // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
+    eaTueren           : ARRAY[cERSTE_TUER..cANZAHL_TUEREN] OF Tueren_EN;                              // Konfig welche Türen zu dem Sicherheitskreis gehören
+    eaDurchgang        : ARRAY[cERSTER_DURCHGANG..cANZAHL_DURCHGANGE] OF Durchgang_EN;                 // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
+    bMeldetOffen       : BOOL;                                                                         // Konfig welche festlegt, ob der geöffnete SK eine WatchIO aufruft
   END_STRUCT
 END_TYPE
