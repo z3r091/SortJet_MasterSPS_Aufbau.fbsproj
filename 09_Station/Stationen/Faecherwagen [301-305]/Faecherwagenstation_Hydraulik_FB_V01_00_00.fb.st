@@ -6,6 +6,12 @@
 }
 *)
 FUNCTION_BLOCK Faecherwagenstation_Hydraulik_FB_V01_00_00 EXTENDS Basic_Faecherwagenstation_FB_V01_00_00
+VAR_INPUT
+
+  // BOOL
+  in_bDruckluftOK                  : BOOL;
+
+END_VAR
 VAR_OUTPUT
 
   // BOOL

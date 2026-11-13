@@ -14,9 +14,6 @@ VAR_GLOBAL
 // ALLGEMEINE VARIABLEN
 //-------------------------------------------------------------------------------------------------
 
-  // Workaround für Output/Input Warnungen
-  bgDruckluftFaecherwagenstationenOK : BOOL;
-
   // Pointer auf alle Antriebe
   pgAntriebe   : ARRAY[0..65] OF Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
   bgEtherCatOK : BOOL;

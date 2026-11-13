@@ -10,7 +10,6 @@ VAR
 
   // BOOL
   blErsterZyklus              : BOOL := TRUE;
-  in_bDruckluftFaecherwagenOK : BOOL;
 
   // WORD
   wlIndex   : WORD;

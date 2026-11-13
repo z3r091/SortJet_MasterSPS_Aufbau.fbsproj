@@ -10,5 +10,5 @@ ACTION Zuweisung_301
 starrFaecherwagenBasisParameter[cSTATION_301].stMKs REF= apgMKFaecherwagenstation[cSTATION_301];
 
 // Zuweisung Sammel-IOs
-bgDruckluftFaecherwagenstationenOK := in_bDruckluftFaecherwagenOK;
+aFaecherwagenstation[cSTATION_301].in_bDruckluftOK := StatusAnlage.in_bDruckluft_FW_OK;
 END_ACTION
