@@ -328,9 +328,6 @@ out_bFreigabeSchleusen := blTasterLeuchteAnforderung;
 // GESONDERTE LOGIK
 //-------------------------------------------------------------------------------------------------
 
-// Globale Eingänge mappen
-in_bDruckluftOK := bgDruckluftFaecherwagenstationenOK;
-
 (* Hinweis:
    - Ausschleusen erzwingen
 *)
@@ -385,7 +382,7 @@ tonUntergestellErkannt (IN:= NOT bpUntergestellErkannt, PT:= T#2S);
 //   - Hat Vorrang vor dem Zwangs-Zurueck unten, Ausgaenge bleiben aus bis Rolltor oben oder Greifer offen
 //   - Die mechanische Oberwagensperre schaltet gegenlaeufig zum Greifer und wird nicht eigens angesteuert
 blOberwagenBewegenGesperrt :=     BasisStationsParameter.stMKs.stStationsAufbau.bRolltor
-                              AND in_bNichtRolltorGeoeffnet
+                              AND NOT in_bRolltorGeoeffnet
                               AND NOT blGreiferOffen
                               AND NOT blLinearEinheitHinten
                               AND NOT blLinearEinheitSH;
@@ -396,7 +393,7 @@ IF blOberwagenBewegenGesperrt THEN
   blVentilReset             := FALSE;
 
 ELSIF (    tonUntergestellErkannt.Q
-        OR ( in_bNichtRolltorGeoeffnet AND NOT blLinVorBeiRolltorFahrt ) ) THEN // Einschleusen: Vorfahren waehrend Rolltor hochfaehrt erlaubt
+        OR ( NOT in_bRolltorGeoeffnet AND NOT blLinVorBeiRolltorFahrt ) ) THEN // Einschleusen: Vorfahren waehrend Rolltor hochfaehrt erlaubt
 
   blVentilReset := TRUE;
 

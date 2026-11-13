@@ -30,7 +30,7 @@ IF NOT BasisStationsParameter.stMKs.stStationsAufbau.bAGV THEN
                                      AND in_bMutingSensorLinks
                                      AND blAnschlagUntenOderOhne
                                      AND (    NOT BasisStationsParameter.stMKs.stStationsAufbau.bRolltor
-                                           OR ( NOT in_bNichtRolltorGeoeffnet AND NOT bpRolltorUnten ) );
+                                           OR ( in_bRolltorGeoeffnet AND NOT bpRolltorUnten ) );
 
   // Station in einer undefinierten Position
   blStationsposUndefiniert :=     NOT bpBoxInHomePosition
@@ -48,12 +48,12 @@ ELSE
                                      AND ( in_bRFID_DataValid OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bRFID )
                                      AND blAnschlagUntenOderOhne
                                      AND (    NOT BasisStationsParameter.stMKs.stStationsAufbau.bRolltor
-                                           OR ( NOT in_bNichtRolltorGeoeffnet AND NOT bpRolltorUnten ) );
+                                           OR ( in_bRolltorGeoeffnet AND NOT bpRolltorUnten ) );
 
   // Station in einer undefinierten Position: Rolltor weder oben noch unten
   blStationsposUndefiniert :=     NOT bpAuftragAktiv
                               AND BasisStationsParameter.stMKs.stStationsAufbau.bRolltor
-                              AND in_bNichtRolltorGeoeffnet
+                              AND NOT in_bRolltorGeoeffnet
                               AND NOT bpRolltorUnten;
 
 END_IF

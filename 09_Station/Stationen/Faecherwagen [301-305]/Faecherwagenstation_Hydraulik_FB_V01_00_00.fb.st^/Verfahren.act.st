@@ -15,7 +15,7 @@ ACTION Verfahren
 IF     blFaecherwagenVor
    AND NOT blFaecherwagenZurueck
    AND (    NOT BasisStationsParameter.stMKs.stStationsAufbau.bRolltor
-         OR NOT in_bNichtRolltorGeoeffnet )
+         OR in_bRolltorGeoeffnet )
    AND BasisStationsParameter.bFreigabe
 THEN
   CASE steplFaecherwagenVor OF

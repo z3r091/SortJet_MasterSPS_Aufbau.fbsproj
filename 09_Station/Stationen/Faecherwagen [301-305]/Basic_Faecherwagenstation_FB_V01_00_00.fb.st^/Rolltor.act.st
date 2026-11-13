@@ -6,9 +6,8 @@
 }
 *)
 ACTION Rolltor
-// @TEXT_IMPLEMENTATION := 'ST'
 // ROLLTOR (alle Varianten, Option stStationsAufbau.bRolltor)
-
+// ROLLTOR HOCH
 // ROLLTOR HOCH
 
 IF blRolltorAuf THEN
@@ -21,7 +20,8 @@ IF blRolltorAuf THEN
       tonlUeberwachungRolltor(IN := FALSE);
       tonlRolltorOeffnenSchliesen(IN := FALSE);
 
-      IF in_bNichtRolltorGeoeffnet AND BasisStationsParameter.stMKs.stStationsAufbau.bRolltor THEN
+      // Schließer: TRUE = Rolltor geöffnet -> nur fahren, wenn NICHT geöffnet
+      IF (NOT in_bRolltorGeoeffnet) AND BasisStationsParameter.stMKs.stStationsAufbau.bRolltor THEN
         steplRolltorAuf := STEP_5_E;
       ELSE
         steplRolltorAuf := STEP_1000_E;
@@ -36,8 +36,10 @@ IF blRolltorAuf THEN
 
     // ROLLTOR HOCH  ============================
     STEP_10_E:
-      tonlUeberwachungRolltor( IN := in_bNichtRolltorGeoeffnet, PT := cZEIT_UEBERWACHUNG_ROLLTOR );
-      tonlRolltorOeffnenSchliesen( IN := NOT in_bNichtRolltorGeoeffnet, PT := T#500MS );
+      // Überwachung läuft, solange das Tor noch NICHT geöffnet ist
+      tonlUeberwachungRolltor( IN := NOT in_bRolltorGeoeffnet, PT := cZEIT_UEBERWACHUNG_ROLLTOR );
+      // Endlage "geöffnet" entprellen
+      tonlRolltorOeffnenSchliesen( IN := in_bRolltorGeoeffnet, PT := T#500MS );
       tonlZeitHochfahren(IN := TRUE, PT := t#60s);
 
       IF tonlRolltorOeffnenSchliesen.Q THEN
@@ -90,7 +92,7 @@ END_IF
 
 // *********************************************************************************
 // ROLLTOR RUNTER
-
+// *********************************************************************************
 IF blRolltorAb AND blRolltorAbFreigabe // Variante gibt das Schliessen frei (z.B. Lineareinheit aus dem Bereich des Rolltors)
 THEN
   CASE steplRolltorAb OF

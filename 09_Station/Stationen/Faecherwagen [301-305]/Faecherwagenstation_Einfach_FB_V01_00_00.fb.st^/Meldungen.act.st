@@ -30,7 +30,7 @@ WatchIoControl( T#100S, wlIoccMeldungsNummer + 10, BasisStationsParameter.bEintr
 WatchIoControl( T#0S, wlIoccMeldungsNummer + 12, blStationsposUndefiniert );
 
 IF ( BasisStationsParameter.stMKs.stStationsAufbau.bRolltor ) THEN
-  WatchIoControl( T#15S, wlIoccMeldungsNummer + 8, out_bRolltorAuf AND in_bNichtRolltorGeoeffnet );
+  WatchIoControl( T#15S, wlIoccMeldungsNummer + 8, out_bRolltorAuf AND NOT in_bRolltorGeoeffnet );
   WatchIoControl( T#15S, wlIoccMeldungsNummer + 9, out_bRolltorAb AND NOT bpRolltorUnten );
   WatchIo( NOT in_bAbrollsicherungOK, wlIoccMeldungsNummer + 13 );
 END_IF

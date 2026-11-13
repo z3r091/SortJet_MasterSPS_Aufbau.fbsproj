@@ -27,7 +27,7 @@ bpBoxInHomePosition :=     blArretierungOffen
 bpStatusStationInBeladePosition :=     bpFaecherwagenVorhanden
                                    AND blArretierungGeschlossen
                                    AND (    NOT BasisStationsParameter.stMKs.stStationsAufbau.bRolltor
-                                         OR ( NOT in_bNichtRolltorGeoeffnet AND NOT bpRolltorUnten ) );
+                                         OR ( in_bRolltorGeoeffnet AND NOT bpRolltorUnten ) );
 
 // Schnittstelle zum Shuttle
 bpOutBereitZumEintransport := bpStatusStationInBeladePosition;

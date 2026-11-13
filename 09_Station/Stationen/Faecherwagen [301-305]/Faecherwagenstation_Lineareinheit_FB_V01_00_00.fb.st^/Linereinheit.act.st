@@ -10,7 +10,7 @@ ACTION Linereinheit
 IF blLineareinheitVor
    AND NOT blLineareinheitZurueck
    AND NOT blLineareinheitShuttle
-   AND (    ( NOT in_bNichtRolltorGeoeffnet AND BasisStationsParameter.stMKs.stStationsAufbau.bRolltor )
+   AND (    ( in_bRolltorGeoeffnet AND BasisStationsParameter.stMKs.stStationsAufbau.bRolltor )
          OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bRolltor
          OR blLinVorBeiRolltorFahrt ) // Einschleusen: Vorfahren waehrend das Rolltor hochfaehrt
    AND bpUntergestellErkannt

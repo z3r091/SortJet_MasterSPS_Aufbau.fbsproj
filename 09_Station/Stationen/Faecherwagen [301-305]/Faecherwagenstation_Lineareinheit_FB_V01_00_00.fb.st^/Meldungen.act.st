@@ -47,7 +47,7 @@ WatchIoControl(T#0S, wlioccFWagenStationSIKreisausgeloest, ( NOT bpLichtschranke
 WatchIoControl(T#0S, wlioccRolltorBlockiertdurchFWNichtinPos, ( steplAusschleusen = STEP_143_E ) );
 
 IF ( BasisStationsParameter.stMKs.stStationsAufbau.bRolltor ) THEN
-  WatchIoControl(T#15S, wlioccFWStationRolltorNichtOben,     (out_bRolltorAuf AND NOT in_bNichtRolltorGeoeffnet));
+  WatchIoControl(T#15S, wlioccFWStationRolltorNichtOben,     (out_bRolltorAuf AND NOT in_bRolltorGeoeffnet));
   WatchIoControl(T#15S, wlioccFWStationRolltorNichtUnten,    (out_bRolltorAb AND NOT bpRolltorUnten));
 END_IF
 

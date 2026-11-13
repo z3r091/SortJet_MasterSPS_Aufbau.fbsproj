@@ -20,10 +20,10 @@ THEN
   astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bAuftragAktiv                  := bpAuftragAktiv;
   astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bFehler                        := BasisStationsParameter.bFehler;
   astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].eStatus                        := eLetzterStatus;
-  astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bRolltorOben                   := NOT in_bNichtRolltorGeoeffnet;
+  astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bRolltorOben                   := in_bRolltorGeoeffnet;
   astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bRolltorUnten                  := bpRolltorUnten;
   astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].wRFID_Nummer                   := wlRFID_Nummer;
-  astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].abEndlage[5]                   := NOT in_bNichtRolltorGeoeffnet;
+  astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].abEndlage[5]                   := in_bRolltorGeoeffnet;
   astgFaecherwagenstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].abEndlage[6]                   := bpRolltorUnten;
 END_IF
 END_ACTION

@@ -10,6 +10,7 @@ VAR_INPUT
 
   // BOOL
   bpFaecherwagenVorhanden          : BOOL; // Faecherwagen vorhanden, Sicherheitssensor ueber die SLC (Interface_SLC)
+  in_bDruckluftOK                  : BOOL;
 
 END_VAR
 VAR

@@ -83,7 +83,7 @@ VAR
   elLetzterStatusGesendet           : eLetzter_FW_Status; // Zuletzt ans MMI gemeldeter Status (STATION_UPDATE)
 
   // HARDWARE: ROLLTOR
-  in_bNichtRolltorGeoeffnet         : BOOL; // TRUE = Rolltor nicht oben (Oeffner), im Geraetebaum gemappt
+  in_bRolltorGeoeffnet                     : BOOL; // TRUE = Rolltor oben, im Geraetebaum gemappt
   out_bRolltorAb                    AT %Q* : BOOL;
   out_bRolltorAuf                   AT %Q* : BOOL;
 
@@ -164,7 +164,7 @@ IF rtlSafetyError.Q THEN
 
 END_IF
 
-tplResetSchmersal( IN := blAckRequested OR NotHalt.in_bTasterNothaltQuittieren OR in_bResetSicherheitskreis,
+tplResetSchmersal( IN := blAckRequested XOR ( NotHalt.in_bTasterNothaltQuittieren OR in_bResetSicherheitskreis ),
                    PT := T#500MS,
                    Q  => blResetSchmersal );
 
