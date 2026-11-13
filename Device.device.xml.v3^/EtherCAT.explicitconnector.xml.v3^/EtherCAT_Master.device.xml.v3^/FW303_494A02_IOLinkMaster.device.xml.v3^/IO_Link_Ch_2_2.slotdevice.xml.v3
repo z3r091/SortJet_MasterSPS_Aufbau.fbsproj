@@ -586,7 +586,7 @@ __V3_CONTENT__
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 													<Single Name="Id" Type="long">4707</Single>
-													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[304].in_bNichtRolltorGeoeffnet</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[304].in_bRolltorGeoeffnet</Single>
 												</Single>
 											</List2>
 										</Single>
@@ -779,7 +779,7 @@ __V3_CONTENT__
 										<Single Name="Mappings" Type="{8a62c05c-4fee-4b4a-8600-a677aedc92c7}" Method="IArchivable">
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
-													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[303].in_bNichtRolltorGeoeffnet</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[303].in_bRolltorGeoeffnet</Single>
 												</Single>
 											</List2>
 										</Single>

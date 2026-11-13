@@ -342,6 +342,10 @@ __V3_CONTENT__
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="PositionId" Type="long">4653</Single>
 								<Single Name="EditorPositionId" Type="long">4654</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="AutomaticAddress" Type="bool">False</Single>
+									<Single Name="IecAddress" Type="string">%QB5900</Single>
+								</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">FSoE Master Command</Single>
 								</Single>
@@ -353,6 +357,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">25</Single>
 							<Single Name="ParamType" Type="string">std:USINT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777219</Single>
@@ -375,6 +380,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">25</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777220</Single>
@@ -397,6 +403,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">25</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777221</Single>
@@ -419,6 +426,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">25</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777222</Single>
@@ -441,6 +449,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">25</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777223</Single>
@@ -463,6 +472,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">25</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777224</Single>
@@ -485,6 +495,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">25</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777225</Single>
@@ -507,6 +518,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">25</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777226</Single>
@@ -529,6 +541,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">25</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777227</Single>
@@ -1035,6 +1048,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">25</Single>
 							<Single Name="ParamType" Type="string">std:UINT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">16777228</Single>
@@ -1541,6 +1555,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">25</Single>
 							<Single Name="ParamType" Type="string">std:UINT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554432</Single>
@@ -1810,6 +1825,10 @@ __V3_CONTENT__
 								<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
 								<Single Name="PositionId" Type="long">4759</Single>
 								<Single Name="EditorPositionId" Type="long">4760</Single>
+								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
+									<Single Name="AutomaticAddress" Type="bool">False</Single>
+									<Single Name="IecAddress" Type="string">%IB55900</Single>
+								</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">FSoE Slave Command</Single>
 								</Single>
@@ -1821,6 +1840,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">26</Single>
 							<Single Name="ParamType" Type="string">std:USINT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554435</Single>
@@ -1843,6 +1863,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">26</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554436</Single>
@@ -1865,6 +1886,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">26</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554437</Single>
@@ -1887,6 +1909,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">26</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554438</Single>
@@ -1909,6 +1932,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">26</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554439</Single>
@@ -1931,6 +1955,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">26</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554440</Single>
@@ -1953,6 +1978,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">26</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554441</Single>
@@ -1975,6 +2001,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">26</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554442</Single>
@@ -1997,6 +2024,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">26</Single>
 							<Single Name="ParamType" Type="string">std:BIT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554443</Single>
@@ -2503,6 +2531,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">26</Single>
 							<Single Name="ParamType" Type="string">std:UINT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">33554444</Single>
@@ -3009,6 +3038,7 @@ __V3_CONTENT__
 							</Single>
 							<Single Name="SectionId" Type="int">26</Single>
 							<Single Name="ParamType" Type="string">std:UINT</Single>
+							<Single Name="LogicalParameter" Type="bool">True</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">268435456</Single>
@@ -3151,7 +3181,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048192</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -3368,7 +3397,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048194</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -3504,7 +3532,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048195</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -3640,7 +3667,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048196</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -3776,7 +3802,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048197</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -3912,7 +3937,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048198</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -4048,7 +4072,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048199</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -4170,7 +4193,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048200</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -4306,7 +4328,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879048201</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -4442,7 +4463,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375872</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -4659,7 +4679,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375874</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -4795,7 +4814,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375875</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -4931,7 +4949,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375876</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -5067,7 +5084,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375877</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -5203,7 +5219,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375878</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -5339,7 +5354,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375879</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -5475,7 +5489,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375880</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -5611,7 +5624,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375881</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -5747,7 +5759,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375882</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -5883,7 +5894,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375883</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
@@ -6019,7 +6029,6 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1879375884</Single>
-							<Single Name="Download" Type="bool">False</Single>
 							<Single Name="DalaElement" Type="{87130527-d8a8-4a3f-a43d-fabaec05f356}" Method="IArchivable">
 								<Single Name="SubElements" Type="{45b6f676-61a0-4c78-a679-8c725851fa1e}" Method="IArchivable">
 									<List2 Name="elements">
