@@ -410,21 +410,6 @@ CASE( auftragsnr_w ) OF
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[1] ),  wVal  := wgRackPresent );
     HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[2] ),  wVal  := INT_TO_WORD(igRackNumber) );
 
-
-  (* Hinweis:
-     - Antwort auf das Ein- und Ausfahren der Puffer
-  *)
-  SB0_SPS_PUFFERSTATUS:
-    msg_st.wAuftrag := auftragsnr_w;
-    msg_st.wLaenge := 6;
-    HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[0] ),  wVal  := wgStatusPuffer101Oben );
-    HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[1] ),  wVal  := wgStatusPuffer102Unten );
-    HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[2] ),  wVal  := wgStatusPuffer103Oben );
-    HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[3] ),  wVal  := wgStatusPuffer104Unten );
-    HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[4] ),  wVal  := wgStatusTorOben );
-    HMI_PutWORD(  pbyAddr := ADR( msg_st.awDaten[5] ),  wVal  := wgStatusTorUnten );
-
-
   (* Hinweis:
      - Generisches Stations-Update: [0] Station, [1] Updatetyp, [2] Anzahl Werte, danach je Wert: Datentyp + Wert
   *)

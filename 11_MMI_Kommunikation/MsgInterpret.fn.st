@@ -426,16 +426,6 @@ CASE( tSpsMessage.wAuftrag )OF
 
     M_SB0_MMI_TS_REPOSITIONING_LITES := TRUE;
 
-  // MSG 111 Ausfahren der Puffer auf der Shuttlebahn
-  SB0_MMI_ANFORDERUNG_PUFFER_AUSFAHREN:
-    tMmi2SpsInfo.wModusAuswahl := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
-    M_SB0_MMI_ANFORDERUNG_PUFFER_AUSFAHREN := TRUE;
-
-  // MSG 112 Einfahren der Puffer auf der Shuttlebahn
-  SB0_MMI_ANFORDERUNG_PUFFER_EINFAHREN:
-    tMmi2SpsInfo.wModusAuswahl := HMI_GetWORD(ADR(tSpsMessage.awDaten[0]));
-    M_SB0_MMI_ANFORDERUNG_PUFFER_EINFAHREN := TRUE;
-
   ELSE
 
     MsgInterpret := FALSE;

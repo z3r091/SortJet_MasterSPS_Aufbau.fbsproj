@@ -76,7 +76,7 @@ VAR_GLOBAL
 
   // Globale Einstellungen
   bgInitialisierungUeberbruecken           : BOOL := FALSE; // Init überspringen
-  bgInbetriebnahmeBit                      : BOOL := TRUE; // Inbetriebnahme de/aktivieren
+  bgInbetriebnahmeBit                      : BOOL := FALSE; // Inbetriebnahme de/aktivieren
   bgHornAktivieren                         : BOOL := FALSE;  // Horn / Hupe an der Anlage de/aktivieren
   bgSicherheitstechnikBruecken             : BOOL := FALSE; // Inbetriebnahme de/aktivieren
   bgMMIBruecken                            : BOOL := FALSE;

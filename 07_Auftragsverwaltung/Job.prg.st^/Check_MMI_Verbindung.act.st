@@ -26,7 +26,6 @@ tonlMmiOk(IN:=TCPMain.l_fb_SortjetHMI.o_b_WatchdogOk,pt:=T#2S);
 rtlMmiOk(CLK:=tonlMmiOk.Q);
 IF ( rtlMmiOk.Q ) THEN
   blSendJobStatus := TRUE;
-  MsgToMmi( auftragsnr_w := SB0_SPS_PUFFERSTATUS );
 END_IF
 
 IF ( NOT TCPMain.l_fb_SortjetHMI.o_b_WatchdogOk ) THEN
