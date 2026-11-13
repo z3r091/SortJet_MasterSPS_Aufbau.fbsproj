@@ -14,7 +14,7 @@ VAR_CONFIG
 
   // Leitungsschutzschalter
   Globale_Bausteine.aTransfershuttles[152].in_bLeitungsschutz_Querfahrt_OK                                     AT %IX1.0    : BOOL; // IO-L - 152 Querfahrt Sicherung
-  Globale_Bausteine.aTransfershuttles[152].in_bDruckluftWartungseinheitOK                                    AT %IX3.1    : BOOL; // IO-L - 151 - 152 Druckluft OK
+  Globale_Bausteine.aTransfershuttles[152].in_bDruckluftWartungseinheitOK                                      AT %IX3.1    : BOOL; // IO-L - 151 - 152 Druckluft OK
 
 END_VAR
 

@@ -16,7 +16,7 @@ VAR_CONFIG
 
   // Druckluft Wartungseinheiten Shuttle (TODO: Eingaenge aus Schaltplan, Platzhalter %MX1.1 = TRUE = OK)
   StatusAnlage.in_bDruckluft_101_OK                                       AT %MX1.1      : BOOL; // OPTION
-  StatusAnlage.in_bDruckluft_102_OK                                       AT %MX1.1      : BOOL; // OPTION
+  StatusAnlage.in_bDruckluft_102_OK                                       AT %IX114.5    : BOOL; // OPTION
 
 //-------------------------------------------------------------------------------------------------
 // KONFIGURATION: AMPEL
@@ -70,9 +70,6 @@ VAR_CONFIG
 //-------------------------------------------------------------------------------------------------
 
   // HARDWARE EINGAENGE
-  StatusAnlage.in_bDruckluft_Puffer101_103_OK              AT %MX1.1   : BOOL; // OPTION
-  StatusAnlage.in_bDruckluft_Puffer102_104_OK              AT %MX1.1   : BOOL; // OPTION
-
   StatusAnlage.in_bCAB2_LS_Netzteil_24V_OK                 AT %IX0.4   : BOOL; // IO-L - Netzteil 24V OK
   StatusAnlage.in_bCAB2_KlimaGeraet_OK                     AT %IX0.2   : BOOL; // IO-L - Kuehlgeraet OK
   StatusAnlage.in_bCAB2_LS_Netzfilter_400V_OK              AT %IX0.0   : BOOL; // IO-L - Versorgung 400V Anlage OK
