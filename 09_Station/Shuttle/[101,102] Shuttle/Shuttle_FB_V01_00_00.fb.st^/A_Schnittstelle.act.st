@@ -29,7 +29,7 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                               OR ( Greifer[wlIndex].bprtScheibe AND BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex] );
 
   BasisStationsParameter.OutGlasTransport[wlIndex].bQuittScheibe              REF= ablQuittScheibe[wlIndex];
-  BasisStationsParameter.OutGlasTransport[wlIndex].bFreigabe                  REF= BasisStationsParameter.bFreigabe;
+  BasisStationsParameter.OutGlasTransport[wlIndex].bFreigabe                  REF= BasisStationsParameter.stFreigabe.bGlastransport;
   BasisStationsParameter.OutGlasTransport[wlIndex].bTransportAbgeschlossen    REF= bgFALSE;
   BasisStationsParameter.OutGlasTransport[wlIndex].bScheibeFaehrtUeberEinlauf REF= bgFALSE;
   BasisStationsParameter.OutGlasTransport[wlIndex].bScheibeFaehrtUeberAuslauf REF= bgFALSE;

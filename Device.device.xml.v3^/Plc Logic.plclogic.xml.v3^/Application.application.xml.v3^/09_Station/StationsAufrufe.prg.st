@@ -9,7 +9,6 @@ PROGRAM StationsAufrufe
 VAR
   wlIndex      : WORD;
 END_VAR
-
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: AUFRUF BAUSTEINE
 //-------------------------------------------------------------------------------------------------
@@ -26,7 +25,8 @@ END_FOR
 
 // Faecherwagenstationen (Variante ueber den Typ von aFaecherwagenstation)
 FOR wlIndex := cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR DO
-  aFaecherwagenstation[wlIndex]( BasisStationsParameter := starrFaecherwagenBasisParameter[wlIndex] );
+  aFaecherwagenstation[wlIndex]( BasisStationsParameter := starrFaecherwagenBasisParameter[wlIndex], 
+                                 in_bDruckluftOK := StatusAnlage.in_bDruckluft_FW_OK );
 END_FOR
 // Hydraulikstationen nach den Faecherwagenstationen aufrufen (Anforderungen der Stationen aus diesem Zyklus)
 FOR wlIndex := cERSTE_HYDRAULIKSTATIONS_NR TO cLETZTE_HYDRAULIKSTATIONS_NR DO

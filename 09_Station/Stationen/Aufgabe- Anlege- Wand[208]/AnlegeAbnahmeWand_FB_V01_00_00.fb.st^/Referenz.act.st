@@ -17,7 +17,7 @@ IF ( blBetriebsartReferenz )THEN
     STEP_0_E:
       BasisStationsParameter.bReferenzAbgeschlossen := FALSE;
 
-      IF BasisStationsParameter.bFreigabe THEN
+      IF BasisStationsParameter.stFreigabe.bAlles THEN
         steplReferenz := STEP_5_E;
       END_IF
 

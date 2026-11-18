@@ -40,7 +40,7 @@ IF( blBetriebartCheck )THEN
          - Sollte es sich z.B. um eine Station handeln die in einen anderen SK transportiert
            kann die <<Freigabe>> [Hardware-] entzogen sein wenn dieser geoeffnet ist.
       *)
-      IF ( BasisStationsParameter.bFreigabe ) THEN
+      IF ( BasisStationsParameter.stFreigabe.bGlastransport ) THEN
         steplCheck := STEP_10_E;
       END_IF
 

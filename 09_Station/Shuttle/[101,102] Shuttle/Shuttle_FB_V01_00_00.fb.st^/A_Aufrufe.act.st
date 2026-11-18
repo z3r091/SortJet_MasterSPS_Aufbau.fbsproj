@@ -18,7 +18,7 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   Glastransport[wlIndex]( stStationsNummern                        := BasisStationsParameter.stMKs.stStationsNummern,
                           wpWandNr                                 := wlIndex,
                           bpAutomatikAktiv                         := BasisStationsParameter.bAutomatik,
-                          bpFreigabe                               := BasisStationsParameter.bFreigabe,
+                          bpFreigabe                               := BasisStationsParameter.stFreigabe.bGlastransport,
                           eStationsTyp                              := BasisStationsParameter.stMKs.eStationsTyp,
                           InGlasTransportVorgaenger                := BasisStationsParameter.InGlasTransportVorgaenger[wlIndex],
                           InGlasTransportNachfolger                := BasisStationsParameter.InGlasTransportNachfolger[wlIndex],
@@ -44,7 +44,8 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
     Glastransport[wlIndex].bpStarteSlaveKopplungGreifer := FALSE;
   END_IF
 
-  Greifer[wlIndex]( bpFreigabe              := BasisStationsParameter.bFreigabe,
+  Greifer[wlIndex]( bpFreigabe              := BasisStationsParameter.stFreigabe.bGreifer,
+                    bpFreigabePneumatik     := BasisStationsParameter.stFreigabe.bPneumatik,
                     bpAutomatikAktiv        := BasisStationsParameter.bAutomatik,
                     bpTeilnehmerErreichbar  := blShuttleErreichbar,
                     bpSlaveKopplungAktiv    := Glastransport[wlIndex].bpGreiferSlaveAktiv,
@@ -55,13 +56,13 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
 
   // Aufruf:
   //   - Glas-Dickenverstellung [Wand | Scheibenfuehrung]
-  Wandverstellung[wlIndex]( bpFreigabe                                     := BasisStationsParameter.bFreigabe,
+  Wandverstellung[wlIndex]( bpFreigabe                                     := BasisStationsParameter.stFreigabe.bWandverstellung,
                             stStationsNummern                              := BasisStationsParameter.stMKs.stStationsNummern,
                             bpOptionMotorischAktivieren                    := BasisStationsParameter.stMKs.stStationsAufbau.bWandverstellungMotorisch );
 
   // Aufruf:
   //   - Geblaese Zuweisung:
-  Geblaese[wlIndex]( bpFreigabe := BasisStationsParameter.bFreigabe,
+  Geblaese[wlIndex]( bpFreigabe := BasisStationsParameter.stFreigabe.bGeblaese,
                      stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern,
                      bpTeilnehmerErreichbar := blShuttleErreichbar );
 
@@ -75,7 +76,7 @@ Querfahrt( stStationsNummern              := BasisStationsParameter.stMKs.stStat
            bpTeilnehmerErreichbar         := blShuttleErreichbar,
            rpMinPosSwEsEingrenzung        := rpMinPosSwEsEingrenzung,
            rpMaxPosSwEsEingrenzung        := rpMaxPosSwEsEingrenzung,
-           bpFreigabe                     := BasisStationsParameter.bFreigabe AND abgVerfahrfreigabeShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS],
+           bpFreigabe                     := BasisStationsParameter.stFreigabe.bQuerfahrt AND abgVerfahrfreigabeShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS],
            bpVerfahrfreigabe              :=(    blAlleVerfahrfreigaben
                                               AND blAlleGreiferSicher
                                               AND NOT bpShuttleAnhalten ) );
@@ -88,7 +89,7 @@ Kippen( bpKippenSchuetz        := BasisStationsParameter.stMKs.stStationsAufbau.
         bpBetriebsartHand      := blBetriebsartHand,
         bpSensorEinlauf        := blAlleEinlaufStoppSensoren,
         bpSensorAuslauf        := blAlleAuslaufStoppSensoren,
-        bpFreigabe             := ( BasisStationsParameter.bFreigabe
+        bpFreigabe             := ( BasisStationsParameter.stFreigabe.bKippen
                                     AND blAlleVerfahrfreigaben
                                     AND blAlleGreiferSicher
                                     AND NOT bpShuttleAnhalten
@@ -96,7 +97,7 @@ Kippen( bpKippenSchuetz        := BasisStationsParameter.stMKs.stStationsAufbau.
 
 // Zentralschmierung
 Zentralschmierung( stStationsNummern           := BasisStationsParameter.stMKs.stStationsNummern,
-                   bpFreigabe                  := BasisStationsParameter.bFreigabe,
+                   bpFreigabe                  := BasisStationsParameter.stFreigabe.bAlles,
                    dipAktuelleAntriebsPosition := REAL_TO_DINT( Querfahrt.rpAktPosition ), // Übergbabe der Aktuellen Position
                    bpTeilnehmerErreichbar      := blShuttleErreichbar );
 END_ACTION

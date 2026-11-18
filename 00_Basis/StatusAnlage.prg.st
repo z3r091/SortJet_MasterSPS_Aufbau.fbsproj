@@ -82,7 +82,7 @@ abpDruckluftOK[cAUTOMATIKKREIS_1] := (   ( toflDruckluftShuttleOK[cSHUTTLE_101].
                                        AND ( toflDruckluftTSShuttleOK[cSHUTTLE_152].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_152].stMKs.bDeaktivieren)
                                        AND toflDruckluft101_OK.Q
                                        AND toflDruckluft102_OK.Q
-									   AND toflDruckluftFW_OK.Q
+                                       AND toflDruckluftFW_OK.Q
                                      ) OR bgInbetriebnahmeBit;
 
 // AK2 = Foerderstrecke (201 - 208), keine gemeinsame Druckluftueberwachung

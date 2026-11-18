@@ -49,6 +49,7 @@ VAR_GLOBAL
                                                ),
       // stGlasdaten
       eaSicherheitskreis                    := [eSicherheitskreis_Undefiniert],                      // Sicherheitskreise, in die die Station eingebunden ist
+      // astSicherheitskreisTeilabschaltung
       eSystemcheckZyklus                    := eSystemcheckZyklus_Undefiniert                        // In welchem Zyklus des Systemchecks die Station geprueft wird
       // astShuttleAnhaltenQuellen
    );

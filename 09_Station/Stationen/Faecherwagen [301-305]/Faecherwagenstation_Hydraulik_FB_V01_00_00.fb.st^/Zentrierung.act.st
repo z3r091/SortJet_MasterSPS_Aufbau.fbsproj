@@ -11,7 +11,7 @@ ACTION Zentrierung
 //-------------------------------------------------------------------------------------------------
 IF     blZentrierungOeffnen
    AND NOT blZentrierungSchliessen
-   AND BasisStationsParameter.bFreigabe
+   AND BasisStationsParameter.stFreigabe.bAlles
 THEN
   CASE steplZentrierungOeffnen OF
     // ZENTRIERUNG OEFFNEN =============================
@@ -99,7 +99,7 @@ END_IF
 //-------------------------------------------------------------------------------------------------
 IF     blZentrierungSchliessen
    AND NOT blZentrierungOeffnen
-   AND BasisStationsParameter.bFreigabe
+   AND BasisStationsParameter.stFreigabe.bAlles
 THEN
   CASE steplZentrierungSchliessen OF
     // ZENTRIERUNG SCHLIESSEN =============================

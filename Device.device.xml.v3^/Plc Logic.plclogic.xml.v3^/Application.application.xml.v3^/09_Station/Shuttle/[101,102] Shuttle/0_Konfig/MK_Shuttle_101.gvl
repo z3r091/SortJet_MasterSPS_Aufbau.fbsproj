@@ -23,6 +23,7 @@ VAR_GLOBAL
       eStationsTyp                      := eInputshuttle,                                                                                               // Typ der Station
       eaAutomatikkreis                  := [eAutomatikkreis_1],                                                                                         // Automatikkreise, zu denen die Station gehoert
       eaSicherheitskreis                := [eSicherheitskreis_1],                                                                                       // Sicherheitskreise, in die die Station eingebunden ist
+      // astSicherheitskreisTeilabschaltung
       eSystemcheckZyklus                := eSystemcheckZyklus_1,                                                                                        // In welchem Zyklus des Systemchecks die Station geprueft wird
 
       stSchnittstellendaten             := (
@@ -145,7 +146,7 @@ VAR_GLOBAL
 
   apgMKShuttle101Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_ShuttleGlastransport := [
     (
-      rLaengeStation                    := 5100, // Länge der Station
+      rLaengeStation                    := 2800, // Länge der Station
       rScheibenabstand                  := 300,  // Der Abstand zwischen zwei Scheiben auf der Station
       rWegUeberEinlauf                  := 250,  // Weg ueber den Einlaufsensor hinaus [mm]
       rWegUeberEinlaufRueck             := 50,   // So weit soll ueber den Einlaufsensor gefahren werden
@@ -157,8 +158,8 @@ VAR_GLOBAL
       rWegUeberSensorSystemCheck        := 15,   // Der Weg der Ueber ein die Sensoren zum vermessen der Scheiben
       rWegUeberwachungSensor            := 500,  // Beschreibt die Wegstrecke die der Ein- Auslaufsensor frei gefahren werden darf bevor ein Fehler gemeldet wird
       rMesstoleranz                     := 5,    // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
-      rMessstrecke                      := 3656, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
-      rWegstreckeBisZurVerzoegerung     := 3000  // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll
+      rMessstrecke                      := 2750, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
+      rWegstreckeBisZurVerzoegerung     := 2250  // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll
     )];
 
 //-------------------------------------------------------------------------------------------------

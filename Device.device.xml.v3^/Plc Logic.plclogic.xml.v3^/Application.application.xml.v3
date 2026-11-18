@@ -2,7 +2,10 @@ __V3_META__
 {
 	"objectGuid": "3f230a1b-4162-429a-9fbb-d2e30a70a3fc",
 	"objectTypeGuid": "639b491f-5557-464c-af91-1471bac9f549",
-	"embeddedObjectTypeGuids": []
+	"embeddedObjectTypeGuids": [],
+	"properties": {
+		"_3S.CoDeSys.LanguageModelManager.BuildProperty": "<?xml version=\"1.0\" encoding=\"utf-8\"?><Single xml:space=\"preserve\" Type=\"{24568a24-c491-472c-a21f-ee5d33859fab}\" Method=\"IArchivable\"><Single Name=\"MemoryReserveForOnlineChange\" Type=\"int\">0</Single><Single Name=\"ExcludeFromBuild\" Type=\"bool\">False</Single><Single Name=\"External\" Type=\"bool\">False</Single><Single Name=\"EnableSystemCall\" Type=\"bool\">False</Single><Single Name=\"CompilerDefines\" Type=\"string\">VISU_USEPROPERTYINFO</Single><Single Name=\"LinkAlways\" Type=\"bool\">False</Single><Array Name=\"Undefines\" Type=\"string\" /></Single>"
+	}
 }
 __V3_CONTENT__
 <?xml version="1.0" encoding="utf-8"?>

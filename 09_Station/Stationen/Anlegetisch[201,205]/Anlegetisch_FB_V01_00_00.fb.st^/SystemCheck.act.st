@@ -44,7 +44,7 @@ IF( blBetriebartCheck )THEN
       (* Hinweis:
          - Bereit zum Referenzieren
       *)
-      IF ( BasisStationsParameter.bFreigabe ) THEN
+      IF ( BasisStationsParameter.stFreigabe.bGlastransport ) THEN
         Glastransport.bpReferenz := TRUE;
         steplCheck := STEP_20_E;
       ELSE

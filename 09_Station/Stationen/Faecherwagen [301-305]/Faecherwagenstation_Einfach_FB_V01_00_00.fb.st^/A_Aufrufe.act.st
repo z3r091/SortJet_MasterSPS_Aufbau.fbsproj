@@ -15,7 +15,7 @@ Arretierung.in_bStatusZylinderEingefahren := in_bArretierungEingefahren;
 Arretierung.bpStartAusfahren              := blArretierungSchliessen AND NOT blArretierungOeffnen;
 Arretierung.bpStartEinfahren              := blArretierungOeffnen AND NOT blArretierungSchliessen;
 
-Arretierung();
+Arretierung( bpFreigabe := BasisStationsParameter.stFreigabe.bPneumatik );
 
 out_bArretierungAusfahren := Arretierung.out_bZylinderAusfahren;
 out_bArretierungEinfahren := Arretierung.out_bZylinderEinfahren;

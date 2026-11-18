@@ -15,5 +15,6 @@ TYPE Parameter_Drehen :
     rDrehposition_270_Grad         : REAL;      // Drehposition fuer die 270 Grad
     bArretierung                   : BOOL;      // Arretierung vorhanden
     eZielDrehpositionLeer          : Drehen_EN; // derzeit ohne Funktion
+    astKippenJeDrehposition        : ARRAY[0..3] OF Parameter_Drehen_Kippen; // Kippposition je Drehposition: [0] = 0 Grad, [1] = 90 Grad, [2] = 180 Grad, [3] = 270 Grad
   END_STRUCT
 END_TYPE

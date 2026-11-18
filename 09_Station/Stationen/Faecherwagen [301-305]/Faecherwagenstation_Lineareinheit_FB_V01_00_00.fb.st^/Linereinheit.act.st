@@ -14,7 +14,7 @@ IF blLineareinheitVor
          OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bRolltor
          OR blLinVorBeiRolltorFahrt ) // Einschleusen: Vorfahren waehrend das Rolltor hochfaehrt
    AND bpUntergestellErkannt
-   AND BasisStationsParameter.bFreigabe
+   AND BasisStationsParameter.stFreigabe.bAlles
 THEN
   CASE steplLineareinheitVor OF
     // VERFAHREN VORWÄRTS =============================
@@ -26,7 +26,7 @@ THEN
       IF blLinearEinheitVorne THEN
         steplLineareinheitVor := STEP_1000_E;
       ELSE
-        IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+        IF BasisStationsParameter.stFreigabe.bAlles AND bpLichtschranke_OK THEN
           steplLineareinheitVor := STEP_10_E;
         END_IF
       END_IF
@@ -117,7 +117,7 @@ END_IF
 IF blLineareinheitZurueck AND // Richtung Shuttle
    NOT blLineareinheitVor
    AND NOT blLineareinheitShuttle
-   AND BasisStationsParameter.bFreigabe
+   AND BasisStationsParameter.stFreigabe.bAlles
    AND bpUntergestellErkannt
 THEN
   CASE steplLineareinheitZur OF
@@ -221,7 +221,7 @@ END_IF
 IF blLineareinheitShuttle  // Richtung Shuttle
    AND NOT blLineareinheitVor
    AND NOT blLineareinheitZurueck
-   AND BasisStationsParameter.bFreigabe
+   AND BasisStationsParameter.stFreigabe.bAlles
    AND bpUntergestellErkannt
 THEN
   CASE steplLineareinheitShuttle OF
@@ -234,7 +234,7 @@ THEN
       IF blLinearEinheitSH THEN
         steplLineareinheitShuttle := STEP_1000_E;
       ELSE
-        IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+        IF BasisStationsParameter.stFreigabe.bAlles AND bpLichtschranke_OK THEN
           steplLineareinheitShuttle := STEP_10_E;
         END_IF
       END_IF

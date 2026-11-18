@@ -11,12 +11,16 @@ VAR_INPUT
   // BOOLEAN
   bpReset            : BOOL;
   bpAktivieren       : BOOL;
+
+  bpFreigabe         : BOOL; // FREIGABE Pneumatik: ohne Freigabe Ventile aus, Bewegung pausiert (Startbefehl bleibt erhalten)
   bpStartAusfahren   : BOOL; // BETRIEBTYP: Zylinder wird ausgefahren
   bpStartEinfahren   : BOOL; // BETRIEBTYP: Zylinder wird eingefahren
 
   // OPTIONEN
   bpAbfrageAusgefahrenVorhanden : BOOL := TRUE;   // Endlagensensor ausgefahren vorhanden, sonst gilt die Endlage nach tpBewegungszeit
   bpAbfrageEingefahrenVorhanden : BOOL := TRUE;   // Endlagensensor eingefahren vorhanden, sonst gilt die Endlage nach tpBewegungszeit
+  bpAbfrageAusgefahrenOeffner   : BOOL := FALSE;   // Endlagensensor ausgefahren vorhanden, sonst gilt die Endlage nach tpBewegungszeit
+  bpAbfrageEingefahrenOeffner   : BOOL := FALSE;   // Endlagensensor eingefahren vorhanden, sonst gilt die Endlage nach tpBewegungszeit
   tpBewegungszeit               : TIME := T#1S; // Bewegungszeit je Richtung ohne Endlagensensor
 
   // HARDWARE EINGAENGE
@@ -98,11 +102,34 @@ IF ( bpReset OR NOT bpAktivieren ) THEN
 
 END_IF
 
+IF bpAbfrageEingefahrenOeffner THEN
+  in_bStatusZylinderEingefahren := NOT in_bStatusZylinderEingefahren;
+END_IF
+IF bpAbfrageAusgefahrenOeffner THEN
+  in_bStatusZylinderAusgefahren := NOT in_bStatusZylinderAusgefahren;
+END_IF
+
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: AKTIONEN
 //-------------------------------------------------------------------------------------------------
-Ausfahren();
-Einfahren();
+(* Hinweis Freigabe Pneumatik:
+   - Ohne Freigabe: Ventile aus, Ketten und Ueberwachungszeiten zuruecksetzen (kein Timeout-Fehler)
+   - Der Startbefehl bleibt erhalten: kommt die Freigabe zurueck, wird die Bewegung neu gestartet
+*)
+IF NOT bpFreigabe THEN
+  out_bZylinderAusfahren := FALSE;
+  out_bZylinderEinfahren := FALSE;
+  steplAusfahren := STEP_0_E;
+  steplEinfahren := STEP_0_E;
+  tonZylinderAusgefahren( IN := FALSE );
+  tonZylinderEingefahren( IN := FALSE );
+  tonlBewegungszeitAusfahren( IN := FALSE );
+  tonlBewegungszeitEinfahren( IN := FALSE );
+  bpDone := FALSE;
+ELSE
+  Ausfahren();
+  Einfahren();
+END_IF
 
 //-------------------------------------------------------------------------------------------------
 // STATUS DES ZYLINDERS

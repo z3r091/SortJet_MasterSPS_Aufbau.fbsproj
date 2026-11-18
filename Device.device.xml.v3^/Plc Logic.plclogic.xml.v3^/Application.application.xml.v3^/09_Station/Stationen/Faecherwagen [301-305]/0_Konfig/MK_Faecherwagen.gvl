@@ -16,12 +16,13 @@ VAR_GLOBAL
       bDeaktivieren             := FALSE,                                                      // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer           := 1400,                                                       // Basis-Meldungsnummer (WatchIO)
       eStationsTyp              := eFaecherwagen,                                              // Typ der Station
-      eaAutomatikkreis          := [eAutomatikkreis_1],                                        // Automatikkreise, zu denen die Station gehoert
+      eaAutomatikkreis          := [eAutomatikkreis_2],                                        // Automatikkreise, zu denen die Station gehoert
      // stStationsParameter
      // stSchnittstellendaten
      // stFremdanlage
      // stGlasdaten
       eaSicherheitskreis        := [eSicherheitskreis_1],                                      // Sicherheitskreise, in die die Station eingebunden ist
+      // astSicherheitskreisTeilabschaltung
       eSystemcheckZyklus        := eSystemcheckZyklus_1,                                       // In welchem Zyklus des Systemchecks die Station geprueft wird
      // stStationsOptionen
       stStationsAufbau          := ( bAnschlag                     := FALSE,                   // Ausbaustufe: Ausrichtanschlaege
@@ -67,12 +68,13 @@ VAR_GLOBAL
       bDeaktivieren             := FALSE,                                                      // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer           := 1420,                                                       // Basis-Meldungsnummer (WatchIO)
       eStationsTyp              := eFaecherwagen,                                              // Typ der Station
-      eaAutomatikkreis          := [eAutomatikkreis_1],                                        // Automatikkreise, zu denen die Station gehoert
+      eaAutomatikkreis          := [eAutomatikkreis_2],                                        // Automatikkreise, zu denen die Station gehoert
      // stStationsParameter
      // stSchnittstellendaten
      // stFremdanlage
      // stGlasdaten
       eaSicherheitskreis        := [eSicherheitskreis_1],                                      // Sicherheitskreise, in die die Station eingebunden ist
+      // astSicherheitskreisTeilabschaltung
       eSystemcheckZyklus        := eSystemcheckZyklus_1,                                       // In welchem Zyklus des Systemchecks die Station geprueft wird
      // stStationsOptionen
       stStationsAufbau          := ( bAnschlag                     := FALSE,                   // Ausbaustufe: Ausrichtanschlaege
@@ -118,12 +120,13 @@ VAR_GLOBAL
       bDeaktivieren             := FALSE,                                                      // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer           := 1440,                                                       // Basis-Meldungsnummer (WatchIO)
       eStationsTyp              := eFaecherwagen,                                              // Typ der Station
-      eaAutomatikkreis          := [eAutomatikkreis_1],                                        // Automatikkreise, zu denen die Station gehoert
+      eaAutomatikkreis          := [eAutomatikkreis_2],                                        // Automatikkreise, zu denen die Station gehoert
      // stStationsParameter
      // stSchnittstellendaten
      // stFremdanlage
      // stGlasdaten
       eaSicherheitskreis        := [eSicherheitskreis_1],                                      // Sicherheitskreise, in die die Station eingebunden ist
+      // astSicherheitskreisTeilabschaltung
       eSystemcheckZyklus        := eSystemcheckZyklus_1,                                       // In welchem Zyklus des Systemchecks die Station geprueft wird
      // stStationsOptionen
       stStationsAufbau          := ( bAnschlag                     := FALSE,                   // Ausbaustufe: Ausrichtanschlaege
@@ -169,12 +172,13 @@ VAR_GLOBAL
       bDeaktivieren             := FALSE,                                                      // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer           := 1460,                                                       // Basis-Meldungsnummer (WatchIO)
       eStationsTyp              := eFaecherwagen,                                              // Typ der Station
-      eaAutomatikkreis          := [eAutomatikkreis_1],                                        // Automatikkreise, zu denen die Station gehoert
+      eaAutomatikkreis          := [eAutomatikkreis_2],                                        // Automatikkreise, zu denen die Station gehoert
      // stStationsParameter
      // stSchnittstellendaten
      // stFremdanlage
      // stGlasdaten
       eaSicherheitskreis        := [eSicherheitskreis_1],                                      // Sicherheitskreise, in die die Station eingebunden ist
+      // astSicherheitskreisTeilabschaltung
       eSystemcheckZyklus        := eSystemcheckZyklus_1,                                       // In welchem Zyklus des Systemchecks die Station geprueft wird
      // stStationsOptionen
       stStationsAufbau          := ( bAnschlag                     := FALSE,                   // Ausbaustufe: Ausrichtanschlaege
@@ -220,12 +224,13 @@ VAR_GLOBAL
       bDeaktivieren             := FALSE,                                                      // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer           := 1480,                                                       // Basis-Meldungsnummer (WatchIO)
       eStationsTyp              := eFaecherwagen,                                              // Typ der Station
-      eaAutomatikkreis          := [eAutomatikkreis_1],                                        // Automatikkreise, zu denen die Station gehoert
+      eaAutomatikkreis          := [eAutomatikkreis_2],                                        // Automatikkreise, zu denen die Station gehoert
      // stStationsParameter
      // stSchnittstellendaten
      // stFremdanlage
      // stGlasdaten
       eaSicherheitskreis        := [eSicherheitskreis_1],                                      // Sicherheitskreise, in die die Station eingebunden ist
+      // astSicherheitskreisTeilabschaltung
       eSystemcheckZyklus        := eSystemcheckZyklus_1,                                       // In welchem Zyklus des Systemchecks die Station geprueft wird
      // stStationsOptionen
       stStationsAufbau          := ( bAnschlag                     := FALSE,                   // Ausbaustufe: Ausrichtanschlaege
@@ -267,6 +272,4 @@ VAR_GLOBAL
 
 
 END_VAR
-
-
 END_NAMESPACE

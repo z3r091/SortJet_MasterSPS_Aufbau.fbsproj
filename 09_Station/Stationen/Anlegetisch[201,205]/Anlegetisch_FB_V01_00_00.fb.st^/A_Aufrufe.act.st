@@ -11,7 +11,7 @@ ACTION A_Aufrufe
 //-------------------------------------------------------------------------------------------------
 // Glastransport
 Glastransport( stStationsNummern              := BasisStationsParameter.stMKs.stStationsNummern,
-               bpFreigabe                     := BasisStationsParameter.bFreigabe AND NOT ( in_bTasterAnforderungKippen OR in_bTasterAnforderungKippen_OP ),
+               bpFreigabe                     := BasisStationsParameter.stFreigabe.bGlastransport AND NOT ( in_bTasterAnforderungKippen OR in_bTasterAnforderungKippen_OP ),
                bpAutomatikAktiv               := BasisStationsParameter.bAutomatik,
                InGlasTransportVorgaenger      := BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1],
                InGlasTransportNachfolger      := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1],
@@ -20,14 +20,14 @@ Glastransport( stStationsNummern              := BasisStationsParameter.stMKs.st
                bpOptionSlaveAntrieb           := BasisStationsParameter.stMKs.stStationsAufbau.bSlaveAntrieb );
 
 // Höhenkontrolle
-Messachse( bpFreigabe                   := BasisStationsParameter.bFreigabe AND NOT ( in_bTasterAnforderungKippen OR in_bTasterAnforderungKippen_OP ),
+Messachse( bpFreigabe                   := BasisStationsParameter.stFreigabe.bMessachse AND NOT ( in_bTasterAnforderungKippen OR in_bTasterAnforderungKippen_OP ),
            stStationsNummern            := BasisStationsParameter.stMKs.stStationsNummern,
            bpBetriebsartHand            := blBetriebsartHand,
            bpFusstaster                 := rtlFussleisteStart.Q );
 
 // Hubrahmen
-Hubrahmen();
+Hubrahmen( bpFreigabe := BasisStationsParameter.stFreigabe.bPneumatik );
 
 // Anschlag
-Anschlag();
+Anschlag( bpFreigabe := BasisStationsParameter.stFreigabe.bPneumatik );
 END_ACTION

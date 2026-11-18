@@ -34,28 +34,28 @@ VAR_GLOBAL
   // Shuttle 101
   (
    eParkposition                                       := PARKPOSITION_MIN, // => Angabe ob das Shuttle eine Min- \ Max- \ Min-Max- Parkposition besitzt
-   rParkpositionMinimum                                :=  -2829,           // => Parkposition (Handminus - Richtung) minimum
+   rParkpositionMinimum                                :=  0,               // => Parkposition (Handminus - Richtung) minimum
    rParkpositionMaximum                                :=  0                // => Parkposition (Handplus - Richtung) maximum
   ),
   // Shuttle 102
   (
    eParkposition                                       := PARKPOSITION_MIN,
    rParkpositionMinimum                                :=  0,
-   rParkpositionMaximum                                :=  15983
+   rParkpositionMaximum                                :=  0
   )];
 
  apgTransfershuttleVerfahrparameter : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Parameter_Querfahrt_Shuttle :=[
   // Shuttle 151
   (
    eParkposition                                       := PARKPOSITION_MIN, // => Angabe ob das Shuttle eine Min- \ Max- \ Min-Max- Parkposition besitzt
-   rParkpositionMinimum                                :=  -885,           // => Parkposition (Handminus - Richtung) minimum
+   rParkpositionMinimum                                :=  -885,            // => Parkposition (Handminus - Richtung) minimum
    rParkpositionMaximum                                :=     0             // => Parkposition (Handplus - Richtung) maximum
   ),
   // Shuttle 152
   (
    eParkposition                                       := PARKPOSITION_MAX,
    rParkpositionMinimum                                :=     0,
-   rParkpositionMaximum                                := 5635
+   rParkpositionMaximum                                :=  5635
   )];
 
   // PARAMETER

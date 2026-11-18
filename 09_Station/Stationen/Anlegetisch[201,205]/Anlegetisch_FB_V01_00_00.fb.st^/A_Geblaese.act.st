@@ -49,7 +49,7 @@ END_IF
      und die Drosselklappe darf oeffnen
 *)
 Geblaese( stStationsNummern          := BasisStationsParameter.stMKs.stStationsNummern,
-          bpFreigabe                 := BasisStationsParameter.bFreigabe,
+          bpFreigabe                 := BasisStationsParameter.stFreigabe.bGeblaese,
           bpIOsBoschDrive            := TRUE,
           bpMotorschutzschalter_OK   := in_bMotorschutzGeblaese_Ok,
           bpDrehzahlErreicht         := in_bDrehzahlErreicht,

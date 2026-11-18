@@ -12,7 +12,7 @@ ACTION A_Aufrufe
 // Glastransport
 Glastransport( stStationsNummern                          := BasisStationsParameter.stMKs.stStationsNummern,
                bpAutomatikAktiv                           := BasisStationsParameter.bAutomatik,
-               bpFreigabe                                 := BasisStationsParameter.bFreigabe,
+               bpFreigabe                                 := BasisStationsParameter.stFreigabe.bGlastransport,
                InGlasTransportVorgaenger                  := BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1],
                InGlasTransportNachfolger                  := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1],
                bpMessrichtungNegativ                      := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bMessrichtungNegativ,
@@ -22,7 +22,7 @@ Glastransport( stStationsNummern                          := BasisStationsParame
 
 // Messachse
 Messachse( stStationsNummern           := BasisStationsParameter.stMKs.stStationsNummern,
-           bpFreigabe                  := BasisStationsParameter.bFreigabe AND bpFreigabeBereichsScanner,
+           bpFreigabe                  := BasisStationsParameter.stFreigabe.bMessachse AND bpFreigabeBereichsScanner,
            bpBetriebsartHand           := blBetriebsartHand );
 
 // Kippen
@@ -31,9 +31,11 @@ Kippen( stStationsNummern                    := BasisStationsParameter.stMKs.stS
         bpSensorAuslauf                      := Glastransport.bpSensorAuslauf );
 
 // Dickenverstellung
-Dickenverstellung( bpZylinderAbfragenVorhanden := TRUE,
+Dickenverstellung( bpFreigabe                  := BasisStationsParameter.stFreigabe.bPneumatik,
+                   bpZylinderAbfragenVorhanden := TRUE,
                    bpEinAusFahrenLogikDrehen   := BasisStationsParameter.stMKs.stStationsOptionen.bVerstellungEinAusGefahrenLogikDrehen );
 
 // Bewegliche Abschrankung zum Nachfolger
-Abschrankung();
+Abschrankung( bpFreigabe                  := BasisStationsParameter.stFreigabe.bPneumatik,
+              bpAbfrageEingefahrenOeffner := TRUE );
 END_ACTION

@@ -21,8 +21,9 @@ VAR_GLOBAL
       bDeaktivieren                     := FALSE,                                                                                                        // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer                   := 650,                                                                                                         // Basis-Meldungsnummer (WatchIO)
       eStationsTyp                      := eInputshuttle,                                                                                               // Typ der Station
-      eaAutomatikkreis                  := [eAutomatikkreis_1],                                                                                         // Automatikkreise, zu denen die Station gehoert
+      eaAutomatikkreis                  := [eAutomatikkreis_2],                                                                                         // Automatikkreise, zu denen die Station gehoert
       eaSicherheitskreis                := [eSicherheitskreis_1],                                                                                       // Sicherheitskreise, in die die Station eingebunden ist
+      // astSicherheitskreisTeilabschaltung
       eSystemcheckZyklus                := eSystemcheckZyklus_1,                                                                                        // In welchem Zyklus des Systemchecks die Station geprueft wird
       stSchnittstellendaten             := (
                                             wVorgaengerStation := cSTATION_DEFAULT,                                                                     // Station vor dieser Station (cSTATION_DYNAMISCH bei mehreren)
@@ -141,7 +142,7 @@ VAR_GLOBAL
 
 apgMKShuttle102Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_ShuttleGlastransport := [
   (
-    rLaengeStation                    := 5100, // Länge der Station
+    rLaengeStation                    := 2800, // Länge der Station
     rScheibenabstand                  := 300,  // Der Abstand zwischen zwei Scheiben auf der Station
     rWegUeberEinlauf                  := 250,  // Weg ueber den Einlaufsensor hinaus [mm]
     rWegUeberEinlaufRueck             := 50,   // So weit soll ueber den Einlaufsensor gefahren werden
@@ -153,8 +154,8 @@ apgMKShuttle102Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Shutt
     rWegUeberSensorSystemCheck        := 15,   // Der Weg der Ueber ein die Sensoren zum vermessen der Scheiben
     rWegUeberwachungSensor            := 500,  // Beschreibt die Wegstrecke die der Ein- Auslaufsensor frei gefahren werden darf bevor ein Fehler gemeldet wird
     rMesstoleranz                     := 5,    // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
-    rMessstrecke                      := 3656, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
-    rWegstreckeBisZurVerzoegerung     := 3000  // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll
+    rMessstrecke                      := 2750, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
+    rWegstreckeBisZurVerzoegerung     := 2250  // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll
   )];
 
 //-------------------------------------------------------------------------------------------------
@@ -194,48 +195,48 @@ apgMKShuttle102Kippen : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Kippen := [
   apgMKShuttle102Greifer : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Greifer := [
     (
       eGreiferTyp                                  := eGreiferAuslaufseite, // Greiferseite, wenn der Auftrag keine Seite vorgibt (Systemcheck, Grundstellung)
-      tZeitAntriebsfreigabeErhalten                := TIME#10s0ms,          // Energieeinsparung: Zeit nach der die Antriebsfreigabe entzogen wird, wenn keine Aktion ansteht
+      tZeitAntriebsfreigabeErhalten                := TIME#180S,            // Energieeinsparung: Zeit nach der die Antriebsfreigabe entzogen wird, wenn keine Aktion ansteht
       tUeberwachungZylinder                        := TIME#5s0ms,           // Zeitueberwachung Greifer aus-/einfahren, Greiferzange und Glasrueckhalter
       tUeberwachungBewegung                        := TIME#30s0ms,          // Zeitueberwachung einer Fahrt der Greiferachse
       tUeberwachungKopplung                        := TIME#10s0ms,          // Zeitueberwachung Kopplung / Entkopplung des Glastransports auf die Greiferachse
       bZangeAbfragenVorhanden                      := FALSE,                // Endlagenabfragen der Greiferzange vorhanden (sonst nur Bewegungszeit)
       bZangeEinlaufVorhanden                       := FALSE,                // Greiferzange Einlaufseite vorhanden (Ablaeufe ueber die Einlaufseite nur damit)
-      bZangeAuslaufVorhanden                       := TRUE,                 // Greiferzange Auslaufseite vorhanden (Ablaeufe ueber die Auslaufseite nur damit)
+      bZangeAuslaufVorhanden                       :=  TRUE,                // Greiferzange Auslaufseite vorhanden (Ablaeufe ueber die Auslaufseite nur damit)
       bGlasRueckhalterEinlaufVorhanden             := FALSE,                // Glasrueckhalter Einlaufseite vorhanden (sonst Ausgang aus, gilt als eingefahren)
-      bGlasRueckhalterAuslaufVorhanden             := TRUE,                 // Glasrueckhalter Auslaufseite vorhanden (sonst Ausgang aus, gilt als eingefahren)
-      rGrundstellungsPosition_Einlauf              := 0,                    // Grundstellung [Home-Position] Greiferseite Einlauf
-      rGrundstellungsPosition_Auslauf              := 0,                    // Grundstellung [Home-Position] Greiferseite Auslauf
-      rGrundstellungsPosition_EinlaufEintransport  := 0,                    // Vorabposition vor einem Eintransport ueber die Einlaufseite
-      rGrundstellungsPosition_AuslaufEintransport  := 0,                    // Vorabposition vor einem Eintransport ueber die Auslaufseite
-      rUebergabePosition_Einlauf                   := 0,                    // Position, bis zu der die Scheibe in den Faecherwagen geschoben wird [Einlaufseite]
-      rUebernahmePosition_Einlauf                  := 0,                    // Position, an der die Scheibe im Faecherwagen gegriffen wird [Einlaufseite]
-      rUebergabePosition_Auslauf                   := 0,                    // Position, bis zu der die Scheibe in den Faecherwagen geschoben wird [Auslaufseite]
-      rUebernahmePosition_Auslauf                  := 0,                    // Position, an der die Scheibe im Faecherwagen gegriffen wird [Auslaufseite]
-      rOffsetPosition                              := 0,                    // Abstand der Greiferzange hinter der Glaskante beim Positionieren (Sicherheitsmass gegen Glasbeschaedigung)
-      rWegBisZumEinlaufsensor                      := 0,                    // Weg vom Referenzpunkt bis zum Einlaufsensor
-      rWegBisZumAuslaufsensor                      := 0,                    // Weg vom Referenzpunkt bis zum Auslaufsensor
-      rSicherPositionMinimal                       := 0,                    // Zwischen Minimal und Maximal ragt der Greifer nicht ueber das Shuttle (Querfahrt erlaubt)
-      rSicherPositionMaximal                       := 0,                    // Zwischen Minimal und Maximal ragt der Greifer nicht ueber das Shuttle (Querfahrt erlaubt)
-      rWegBisZumSicherenEinklappen                 := 0,                    // Weg nach dem Austransport, ab dem der Greifer eingefahren wird [10 - 100 mm]
-      rGlasEintransportOffset_Einlauf              := 0,                    // Eintransport letzte Scheibe: Weg ueber den Einlaufsensor [Auftragslaenge + Offset]
-      rGlasEintransportOffset_Auslauf              := 0,                    // Eintransport letzte Scheibe: Weg ueber den Auslaufsensor [Auftragslaenge + Offset]
-      rGlasEintransportOffset_EinlaufSammeln       := 0,                    // Eintransport weiterer Scheiben: Weg ueber den Einlaufsensor [Auftragslaenge + Offset]
-      rGlasEintransportOffset_AuslaufSammeln       := 0,                    // Eintransport weiterer Scheiben: Weg ueber den Auslaufsensor [Auftragslaenge + Offset]
-      rLaengeUebergroesseScheibe                   := 0,                    // Ab dieser Scheibenlaenge zieht der Greifer nur bis rPositionUebergrosseScheibe, den Rest zieht der Glastransport
-      rPositionUebergrosseScheibe_Einlauf          := 0,                    // Maximale Position mit uebergrosser Scheibe [Einlaufseite]
-      rPositionUebergrosseScheibe_Auslauf          := 0,                    // Maximale Position mit uebergrosser Scheibe [Auslaufseite]
-      rGreiferAusDemGlasFahrPosition               := 0,                    // Weg, um die geoeffnete Greiferzange vom Glas zu befreien
-      rMaximalerWegSensorFreiFahren                := 0,                    // Maximaler Weg der Korrekturfahrt, bis der Sensor frei sein muss
-      rWegSensorUeberwachungEintransport           := 0,                    // Nach diesem Weg im Eintransport muss die Scheibe den Sensor belegen, sonst hat der Greifer keine Scheibe
-      rKorrekturOffset_Einlauf                     := 0,                    // Weg der Greiferzange in das Glas vor dem Greifen beim Austransport [Einlaufseite]
-      rKorrekturOffset_Auslauf                     := 0,                    // Weg der Greiferzange in das Glas vor dem Greifen beim Austransport [Auslaufseite]
-      rWegGlasUebergabeposition                    := 0,                    // Weg der Scheibe ueber den Sensor der Greiferseite vor dem Austransport
-      rWegGlasUebergabepositionLang                := 0,                    // Wie rWegGlasUebergabeposition, fuer uebergrosse Scheiben
-      rLaengeReduzierteGeschwindigkeit             := 0,                    // Austransport: Scheiben ab dieser Laenge komplett mit reduzierter Geschwindigkeit in den Faecherwagen
-      rLaengeReduzierteGeschwindigkeitEintransport := 0,                    // Eintransport: Weg mit reduzierter Geschwindigkeit bei schweren Scheiben
-      rLaengeReduzierteGeschwindigkeitAustransport := 0,                    // Austransport: erster Weg mit reduzierter Geschwindigkeit in den Faecherwagen
-      rMinimalPosition                             := 0,                    // Minimale Zielposition der Greiferachse (Plausibilitaet)
-      rMaximalPosition                             := 0                     // Maximale Zielposition der Greiferachse (Plausibilitaet)
+      bGlasRueckhalterAuslaufVorhanden             :=  TRUE,                // Glasrueckhalter Auslaufseite vorhanden (sonst Ausgang aus, gilt als eingefahren)
+      rGrundstellungsPosition_Einlauf              :=    25,                // Grundstellung [Home-Position] Greiferseite Einlauf
+      rGrundstellungsPosition_Auslauf              :=  2070,                // Grundstellung [Home-Position] Greiferseite Auslauf
+      rGrundstellungsPosition_EinlaufEintransport  :=    25,                // Vorabposition vor einem Eintransport ueber die Einlaufseite
+      rGrundstellungsPosition_AuslaufEintransport  :=  2070,                // Vorabposition vor einem Eintransport ueber die Auslaufseite
+      rUebergabePosition_Einlauf                   :=    25,                // Position, bis zu der die Scheibe in den Faecherwagen geschoben wird [Einlaufseite]
+      rUebernahmePosition_Einlauf                  :=    25,                // Position, an der die Scheibe im Faecherwagen gegriffen wird [Einlaufseite]
+      rUebergabePosition_Auslauf                   :=  2350,                // Position, bis zu der die Scheibe in den Faecherwagen geschoben wird [Auslaufseite]
+      rUebernahmePosition_Auslauf                  :=  2350,                // Position, an der die Scheibe im Faecherwagen gegriffen wird [Auslaufseite]
+      rOffsetPosition                              :=    15,                // Abstand der Greiferzange hinter der Glaskante beim Positionieren (Sicherheitsmass gegen Glasbeschaedigung)
+      rWegBisZumEinlaufsensor                      :=    25,                // Weg vom Referenzpunkt bis zum Einlaufsensor
+      rWegBisZumAuslaufsensor                      :=  2075,                // Weg vom Referenzpunkt bis zum Auslaufsensor
+      rSicherPositionMinimal                       :=    25,                // Zwischen Minimal und Maximal ragt der Greifer nicht ueber das Shuttle (Querfahrt erlaubt)
+      rSicherPositionMaximal                       :=  2195,                // Zwischen Minimal und Maximal ragt der Greifer nicht ueber das Shuttle (Querfahrt erlaubt)
+      rWegBisZumSicherenEinklappen                 :=    50,                // Weg nach dem Austransport, ab dem der Greifer eingefahren wird [10 - 100 mm]
+      rGlasEintransportOffset_Einlauf              :=    50,                // Eintransport letzte Scheibe: Weg ueber den Einlaufsensor [Auftragslaenge + Offset]
+      rGlasEintransportOffset_Auslauf              :=    50,                // Eintransport letzte Scheibe: Weg ueber den Auslaufsensor [Auftragslaenge + Offset]
+      rGlasEintransportOffset_EinlaufSammeln       :=   450,                // Eintransport weiterer Scheiben: Weg ueber den Einlaufsensor [Auftragslaenge + Offset]
+      rGlasEintransportOffset_AuslaufSammeln       :=   370,                // Eintransport weiterer Scheiben: Weg ueber den Auslaufsensor [Auftragslaenge + Offset]
+      rLaengeUebergroesseScheibe                   :=  2300,                // Ab dieser Scheibenlaenge zieht der Greifer nur bis rPositionUebergrosseScheibe, den Rest zieht der Glastransport
+      rPositionUebergrosseScheibe_Einlauf          :=  2500,                // Maximale Position mit uebergrosser Scheibe [Einlaufseite]
+      rPositionUebergrosseScheibe_Auslauf          :=  2500,                // Maximale Position mit uebergrosser Scheibe [Auslaufseite]
+      rGreiferAusDemGlasFahrPosition               :=    50,                // Weg, um die geoeffnete Greiferzange vom Glas zu befreien
+      rMaximalerWegSensorFreiFahren                :=   200,                // Maximaler Weg der Korrekturfahrt, bis der Sensor frei sein muss
+      rWegSensorUeberwachungEintransport           :=   300,                // Nach diesem Weg im Eintransport muss die Scheibe den Sensor belegen, sonst hat der Greifer keine Scheibe
+      rKorrekturOffset_Einlauf                     :=    10,                // Weg der Greiferzange in das Glas vor dem Greifen beim Austransport [Einlaufseite]
+      rKorrekturOffset_Auslauf                     :=    10,                // Weg der Greiferzange in das Glas vor dem Greifen beim Austransport [Auslaufseite]
+      rWegGlasUebergabeposition                    :=    50,                // Weg der Scheibe ueber den Sensor der Greiferseite vor dem Austransport
+      rWegGlasUebergabepositionLang                :=   350,                // Wie rWegGlasUebergabeposition, fuer uebergrosse Scheiben
+      rLaengeReduzierteGeschwindigkeit             :=  2000,                // Austransport: Scheiben ab dieser Laenge komplett mit reduzierter Geschwindigkeit in den Faecherwagen
+      rLaengeReduzierteGeschwindigkeitEintransport :=  2000,                // Eintransport: Weg mit reduzierter Geschwindigkeit bei schweren Scheiben
+      rLaengeReduzierteGeschwindigkeitAustransport :=  2000,                // Austransport: erster Weg mit reduzierter Geschwindigkeit in den Faecherwagen
+      rMinimalPosition                             :=    25,                // Minimale Zielposition der Greiferachse (Plausibilitaet)
+      rMaximalPosition                             :=  2390                 // Maximale Zielposition der Greiferachse (Plausibilitaet)
     )];
 
 END_VAR

@@ -34,12 +34,12 @@ ELSIF bFaecherwagen AND (stBP.bEintransport[cWAND_1] OR stBP.bAustransport[cWAND
   stH.bGesperrt := TRUE;  stH.sSperrgrund := 'Gesperrt: Ein-/Ausschleusen aktiv';
 ELSE
   stH.bGesperrt := FALSE;
-  stH.sSperrgrund := SEL(stBP.bFreigabe, 'Hand frei - keine Sicherheitsfreigabe', 'Handbetrieb freigegeben');
+  stH.sSperrgrund := SEL(stBP.stFreigabe.bAlles, 'Hand frei - keine Sicherheitsfreigabe', 'Handbetrieb freigegeben');
 END_IF
 
 IF stH.bGesperrt THEN
   stH.dwSperrFarbe := VISU_UEBERSICHT.cFARBE_GRAU;
-ELSIF NOT stBP.bFreigabe THEN
+ELSIF NOT stBP.stFreigabe.bAlles THEN
   stH.dwSperrFarbe := VISU_UEBERSICHT.cFARBE_ORANGE;
 ELSE
   stH.dwSperrFarbe := VISU_UEBERSICHT.cFARBE_GRUEN;

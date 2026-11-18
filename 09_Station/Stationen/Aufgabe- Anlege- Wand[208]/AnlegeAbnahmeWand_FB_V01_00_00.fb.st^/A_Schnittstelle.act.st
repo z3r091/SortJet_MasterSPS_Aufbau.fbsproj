@@ -35,6 +35,11 @@ BasisStationsParameter.OutGlasTransport[cWAND_1].bTransportRueckwaertig     REF=
 // Statistik
 BasisStationsParameter.dwWartezeit[cWAND_1] := Glastransport.dwpWartezeit;
 
+(* Hinweis:
+   - Ampelsignal "Rot" für den Bediener wenn Betriebsstop ausgeloest worden ist
+*)
+out_bAmpelSignalRot  := gbFlashbit02sec AND Stop_Baustein.blBetriebsstop;
+
 // Status für die Visu
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bSensorEinlauf[1]            := Glastransport.bpSensorEinlauf;
 abgStationsstatusVisu[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS].bSensorEinlaufVorab[1]       := Glastransport.bpSensorEinlaufVorab;

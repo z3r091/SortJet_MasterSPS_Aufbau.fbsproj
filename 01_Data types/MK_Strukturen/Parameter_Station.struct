@@ -19,6 +19,7 @@ TYPE Parameter_Station :
     stFremdanlage         : Stations_Parameter_Fremdanlage_ST;
     stGlasdaten           : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Glas;
     eaSicherheitskreis    : ARRAY[0..cANZAHL_SICHERHEITSKREISE] OF Sicherheitskreis_EN;                  // Sicherheitskreise, in die die Station eingebunden ist
+    astSicherheitskreisTeilabschaltung : ARRAY[0..cANZAHL_SICHERHEITSKREISE] OF SK_Teilabschaltung_ST;   // Optional: SK schaltet nur einzelne Komponenten ab (Standard: SK schaltet alles ab)
     eSystemcheckZyklus    : SystemcheckZyklen_EN;                                                        // In welchem Zyklus des Systemchecks die Station geprueft wird
     // Nicht benoetigte Eintraege: bAktiv := FALSE lassen.
     astShuttleAnhaltenQuellen : ARRAY[1..cMAX_SHUTTLE_ANHALTEN_QUELLEN] OF Parameter_ShuttleAnhaltenQuelle;

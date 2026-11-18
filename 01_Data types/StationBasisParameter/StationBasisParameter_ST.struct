@@ -7,7 +7,7 @@
 *)
 TYPE StationBasisParameter_ST :
   STRUCT
-    bFreigabe                                 : BOOL; // Freigabe
+    stFreigabe                                : SK_Freigabe_Komponenten_ST; // Freigaben: bAlles (ganze Station) und je Komponente (inkl. Teilabschaltung)
     bAutomatik                                : BOOL; // Betriebsart Hand \ Automatik
     bIstReferenziert                          : BOOL; // Station ist referenziert
 

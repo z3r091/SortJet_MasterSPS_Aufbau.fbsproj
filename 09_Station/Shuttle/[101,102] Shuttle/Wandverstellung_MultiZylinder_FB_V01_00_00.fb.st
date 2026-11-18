@@ -11,6 +11,7 @@ VAR_INPUT
   // BOOLEAN
   bpReset                     : BOOL;
   bpAktivieren                : BOOL;
+  bpFreigabe                  : BOOL; // FREIGABE Pneumatik: ohne Freigabe Ventile aus, Bewegung pausiert (Startbefehl bleibt erhalten)
   bpStartZylinderBewegung     : BOOL; // BETRIEBTYP: Zylinder wird ausgefahren
   bpZylinderAbfragenVorhanden : BOOL := FALSE; // Hinweis: Manche Zylinder haben keine Abfragen
 
@@ -104,7 +105,24 @@ END_IF
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: AKTIONEN
 //-------------------------------------------------------------------------------------------------
-ZylinderBewegung();
+(* Hinweis Freigabe Pneumatik:
+   - Ohne Freigabe: Ventile aus, Kette und Ueberwachungszeiten zuruecksetzen (kein Timeout-Fehler)
+   - Der Startbefehl bleibt erhalten: kommt die Freigabe zurueck, wird die Bewegung neu gestartet
+*)
+IF NOT bpFreigabe THEN
+  out_bZylinder_1_Einfahren := FALSE;
+  out_bZylinder_2_Einfahren := FALSE;
+  out_bZylinder_1_Ausfahren := FALSE;
+  out_bZylinder_2_Ausfahren := FALSE;
+  steplZylinderStellung := STEP_0_E;
+  tonlStellung13mm( IN := FALSE );
+  tonlStellung23mm( IN := FALSE );
+  tonlStellung29mm( IN := FALSE );
+  tonlWartezeitZylinderStellung( IN := FALSE );
+  bpDone := FALSE;
+ELSE
+  ZylinderBewegung();
+END_IF
 
 //-------------------------------------------------------------------------------------------------
 // STATUS DER ZYLINDER

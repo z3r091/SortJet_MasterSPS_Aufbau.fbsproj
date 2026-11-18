@@ -19,6 +19,7 @@ VAR_INPUT
   bpHandZentrierungAusfahren    : BOOL; // Handfunktionen: Zentrierung ausfahren
   bpHandZentrierungEinfahren    : BOOL; // Handfunktionen: Zentrierung einfahren
   bpFreigabe                    : BOOL; // FREIGABE: Antrieb freigegeben
+  bpFreigabePneumatik           : BOOL; // FREIGABE Pneumatik: Arretierung / Zentrierung
   bpStarteZentrierungAusfahren  : BOOL; // BETRIEBSART: Zentrierung ausfahren
   bpStarteZentrierungEinfahren  : BOOL; // BETRIEBSART: Zentrierung einfahren
   bpAusnahmeSituationAbfangen   : BOOL := FALSE; // Status ob bestimmte Ausnahmesituationen abgearbeitet werden sollen
@@ -95,7 +96,6 @@ VAR
   Antrieb : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
 
 END_VAR
-
 //-------------------------------------------------------------------------------------------------
 // INITIALISIERUNG
 //-------------------------------------------------------------------------------------------------
@@ -223,7 +223,7 @@ Antrieb.stStationsNummern  := stStationsNummern;
 // Bausteinaufruf:
 //   - Drehantrieb
 //   - Arretierung
-Arretierung();
+Arretierung( bpFreigabe := bpFreigabePneumatik );
 
 
 

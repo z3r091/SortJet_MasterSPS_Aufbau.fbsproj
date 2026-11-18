@@ -52,7 +52,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
         ELSIF starrShuttleBasisParameter[wStation].stMKs.bDeaktivieren THEN
           steplSchritt := STEP_600_E;
         ELSE
-          steplSchritt := STEP_10_E;
+          steplSchritt := STEP_5_E;
         END_IF
 
       END_IF

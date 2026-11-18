@@ -64,7 +64,7 @@ END_IF
    - Geblaese-Baustein: Schuetz, Motorschutz, Wiederanlaufsperre, Hochlauf und Drosselklappe
 *)
 Geblaese( stStationsNummern          := BasisStationsParameter.stMKs.stStationsNummern,
-          bpFreigabe                 := BasisStationsParameter.bFreigabe,
+          bpFreigabe                 := BasisStationsParameter.stFreigabe.bGeblaese,
           bpIOsBoschDrive            := TRUE,
           bpMotorschutzschalter_OK   := in_bMotorschutzGeblaese_Ok,
           bpDrosselklappeAnforderung := out_bDrosselklappeOeffnen );

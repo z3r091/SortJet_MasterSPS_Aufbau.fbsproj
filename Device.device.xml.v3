@@ -799,8 +799,8 @@ __V3_CONTENT__
 		<Single Name="SaveLocally" Type="bool">False</Single>
 		<Single Name="CommunicationSettingFilter" Type="int">1</Single>
 		<Single Name="CommunicationSettingSorting" Type="int">0</Single>
-		<Single Name="TrackingMode" Type="int">3</Single>
-		<Single Name="GatewayGuid" Type="System.Guid">75b1ad04-7aaf-476d-b858-843ef148f1f3</Single>
+		<Single Name="TrackingMode" Type="int">1</Single>
+		<Single Name="GatewayGuid" Type="System.Guid">00783a45-0c79-4b65-894a-daec47e052fc</Single>
 		<Single Name="Address" Type="{06bee84e-fb7b-460d-bdbc-36d334cb5380}" Method="IArchivable">
 			<Array Name="Addr" Type="{9ba826d6-fdbc-4f85-99e6-e813fdd446c4}">
 				<Single Type="{9ba826d6-fdbc-4f85-99e6-e813fdd446c4}" Method="IArchivable">
@@ -828,7 +828,7 @@ __V3_CONTENT__
 		<Single Name="MonitoringIntervalMsec" Type="int">200</Single>
 		<Single Name="ScanInformation" Type="{03b12d85-7991-4556-8c0e-c0b3063eb6c4}" Method="IArchivable">
 			<Single Name="ScanInformationDeviceName" Type="string">EXC89_192.168.100.77 - 05888E</Single>
-			<Single Name="ScanInformationIPAddressAndPort" Type="string">192.168.100.77</Single>
+			<Single Name="ScanInformationIPAddressAndPort" Type="string"></Single>
 			<Single Name="ScanInformationTargetID" Type="string">103A 1088</Single>
 			<Single Name="ScanInformationTargetName" Type="string">EXC89</Single>
 			<Single Name="ScanInformationTargetType" Type="string">4096</Single>

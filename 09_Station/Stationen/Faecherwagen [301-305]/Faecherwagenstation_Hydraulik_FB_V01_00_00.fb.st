@@ -6,12 +6,6 @@
 }
 *)
 FUNCTION_BLOCK Faecherwagenstation_Hydraulik_FB_V01_00_00 EXTENDS Basic_Faecherwagenstation_FB_V01_00_00
-VAR_INPUT
-
-  // BOOL
-  in_bDruckluftOK                  : BOOL;
-
-END_VAR
 VAR_OUTPUT
 
   // BOOL
@@ -186,7 +180,6 @@ VAR CONSTANT
   ZEIT_STARTUP_SICHERHEITSRELAIS   : TIME := T#5S;
 
 END_VAR
-
 //-------------------------------------------------------------------------------------------------
 // MASTER AUFRUFEN
 //-------------------------------------------------------------------------------------------------
@@ -322,7 +315,7 @@ IF ( rtlLogIn.Q ) THEN
 END_IF
 
 // Hydraulikaggregat einschalten, solange eine hydraulische Bewegung angefordert und nicht fertig ist
-blAnforderungHydraulik :=     BasisStationsParameter.bFreigabe
+blAnforderungHydraulik :=     BasisStationsParameter.stFreigabe.bAlles
                           AND (    ( blHubrahmenHeben        AND NOT blHubrahmenHebenDone )
                                 OR ( blHubrahmenSenken       AND NOT blHubrahmenSenkenDone )
                                 OR ( blFaecherwagenVor       AND NOT blFaecherwagenVorDone )

@@ -12,9 +12,11 @@ VAR
   ablKonfiguriert                           : ARRAY[cERSTES_SHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL; // Shuttle / Transfershuttle ist in dieser Anlage vorhanden
   ablShuttleInParkpos                       : ARRAY[cERSTES_SHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
   ablShuttleStehtOhnePositionsveraenderung  : ARRAY[cERSTES_SHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL;
+  ablInReferenz                             : ARRAY[cERSTES_SHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF BOOL; // Querfahrt-Antrieb referenziert (direkt aus pgAntriebe)
 
   // WORD
   wlIndex    : WORD;
+  wlAchsID   : WORD; // Achs-ID des Querfahrt-Antriebs
 
   // REAL
   rlAlteZeit                               : REAL;
@@ -97,12 +99,21 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
     arrParkpositionen[wlIndex].rParkpositionMinimum := apgShuttleVerfahrparameter[wlIndex].rParkpositionMinimum;
     arlVerzoegerung[wlIndex]                        := apgVerfahrueberwachung[wlIndex].rMaxVerzoegerungsRampeUeberwachung;
 
-    IF ( NOT starrShuttleBasisParameter[wlIndex].stMKs.bDeaktivieren ) THEN
-      arlActPosShuttle[wlIndex]      := aShuttle[wlIndex].Querfahrt.rpAktPosition;
-      arlActGeschwindigkeit[wlIndex] := aShuttle[wlIndex].Querfahrt.rpAktSpeed;
+    (* Hinweis:
+       - Position / Geschwindigkeit / Referenz direkt aus dem Querfahrt-Antrieb (pgAntriebe, laeuft ebenfalls in der FastTask)
+       - NICHT ueber aShuttle[].Querfahrt lesen: das ist eine Instanz der MainTask -> Mehrfach-Task-Zugriff auf deren E/As (C0373)
+    *)
+    IF (     NOT starrShuttleBasisParameter[wlIndex].stMKs.bDeaktivieren
+         AND __ISVALIDREF(starrShuttleBasisParameter[wlIndex].stAntriebsparameter.stQuerfahrt) )
+    THEN
+      wlAchsID                       := starrShuttleBasisParameter[wlIndex].stAntriebsparameter.stQuerfahrt.wAchsID;
+      arlActPosShuttle[wlIndex]      := pgAntriebe[wlAchsID].rpIstPosition;
+      arlActGeschwindigkeit[wlIndex] := pgAntriebe[wlAchsID].rpIstGeschwindigkeit;
+      ablInReferenz[wlIndex]         := pgAntriebe[wlAchsID].bpIstReferenziert;
     ELSE
       arlActPosShuttle[wlIndex]      := SEL( apgShuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MAX, -50000.0, 50000.0 );
       arlActGeschwindigkeit[wlIndex] := 0;
+      ablInReferenz[wlIndex]         := FALSE;
     END_IF
 
   ELSE
@@ -136,12 +147,21 @@ FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
     arrParkpositionen[wlIndex].rParkpositionMinimum := apgTransfershuttleVerfahrparameter[wlIndex].rParkpositionMinimum;
     arlVerzoegerung[wlIndex]                        := apgVerfahrueberwachungTransfershuttle[wlIndex].rMaxVerzoegerungsRampeUeberwachung;
 
-    IF ( NOT starrTransfershuttleBasisParameter[wlIndex].stMKs.bDeaktivieren ) THEN
-      arlActPosShuttle[wlIndex]      := aTransfershuttles[wlIndex].Querfahrt.rpAktPosition;
-      arlActGeschwindigkeit[wlIndex] := aTransfershuttles[wlIndex].Querfahrt.rpAktSpeed;
+    (* Hinweis:
+       - Position / Geschwindigkeit / Referenz direkt aus dem Querfahrt-Antrieb (pgAntriebe, laeuft ebenfalls in der FastTask)
+       - NICHT ueber aTransfershuttles[].Querfahrt lesen: das ist eine Instanz der MainTask -> Mehrfach-Task-Zugriff auf deren E/As (C0373)
+    *)
+    IF (     NOT starrTransfershuttleBasisParameter[wlIndex].stMKs.bDeaktivieren
+         AND __ISVALIDREF(starrTransfershuttleBasisParameter[wlIndex].stAntriebsparameter.stQuerfahrt) )
+    THEN
+      wlAchsID                       := starrTransfershuttleBasisParameter[wlIndex].stAntriebsparameter.stQuerfahrt.wAchsID;
+      arlActPosShuttle[wlIndex]      := pgAntriebe[wlAchsID].rpIstPosition;
+      arlActGeschwindigkeit[wlIndex] := pgAntriebe[wlAchsID].rpIstGeschwindigkeit;
+      ablInReferenz[wlIndex]         := pgAntriebe[wlAchsID].bpIstReferenziert;
     ELSE
       arlActPosShuttle[wlIndex]      := SEL( apgTransfershuttleVerfahrparameter[wlIndex].eParkposition = PARKPOSITION_MAX, -50000.0, 50000.0 );
       arlActGeschwindigkeit[wlIndex] := 0;
+      ablInReferenz[wlIndex]         := FALSE;
     END_IF
 
   ELSE
@@ -256,8 +276,8 @@ END_IF
 abgVerfahrfreigabeShuttle[cSHUTTLE_151] := __ISVALIDREF(starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs);
 abgVerfahrfreigabeShuttle[cSHUTTLE_152] := __ISVALIDREF(starrTransfershuttleBasisParameter[cSHUTTLE_152].stMKs);
 
-IF aTransfershuttles[cSHUTTLE_151].Querfahrt.bpInReference
-   AND aTransfershuttles[cSHUTTLE_152].Querfahrt.bpInReference
+IF ablInReferenz[cSHUTTLE_151]
+   AND ablInReferenz[cSHUTTLE_152]
 THEN
 
   // 151 darf nicht ueber 152 hinaus (minus Sicherheitsabstand)
@@ -296,8 +316,8 @@ END_IF
      abgVerfahrfreigabeShuttle[cSHUTTLE_101] := TRUE;
      abgVerfahrfreigabeShuttle[cSHUTTLE_102] := TRUE;
 
-     IF aShuttle[cSHUTTLE_101].Querfahrt.bpInReference
-     AND aShuttle[cSHUTTLE_102].Querfahrt.bpInReference
+     IF ablInReferenz[cSHUTTLE_101]
+     AND ablInReferenz[cSHUTTLE_102]
      THEN
 
      IF arlErrechneteStillstandposition[cSHUTTLE_101] >

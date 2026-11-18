@@ -22,8 +22,9 @@ VAR_GLOBAL
       bDeaktivieren                         := FALSE,                                                                        // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer                       := 1830,                                                                         // Basis-Meldungsnummer (WatchIO)
       eStationsTyp                          := eStation,                                                                     // Typ der Station
-      eaAutomatikkreis                      := [eAutomatikkreis_2],                                                          // Automatikkreise, zu denen die Station gehoert
+      eaAutomatikkreis                      := [eAutomatikkreis_1],                                                          // Automatikkreise, zu denen die Station gehoert
       eaSicherheitskreis                    := [eSicherheitskreis_Undefiniert],                                              // Sicherheitskreise, in die die Station eingebunden ist
+      // astSicherheitskreisTeilabschaltung
       eSystemcheckZyklus                    := eSystemcheckZyklus_1,                                                         // In welchem Zyklus des Systemchecks die Station geprueft wird
       stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DEFAULT,                                     // Station vor dieser Station (cSTATION_DYNAMISCH bei mehreren)
                                                  wNachfolgerStation := cSTATION_207,                                         // Station nach dieser Station (cSTATION_DYNAMISCH bei mehreren)
@@ -163,5 +164,4 @@ VAR_GLOBAL
 
 
 END_VAR
-
 END_NAMESPACE

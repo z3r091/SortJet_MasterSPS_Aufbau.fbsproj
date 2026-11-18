@@ -32,7 +32,6 @@ VAR
   steplSchritt           : STEPS_TE;
 
 END_VAR
-
 //-------------------------------------------------------------------------------------------------
 // STEUERUNG ANLEGEN
 //-------------------------------------------------------------------------------------------------
@@ -43,7 +42,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Hoehenmessung ) THEN
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
       *)
-      IF checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation]) THEN
+      IF checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation], eSKKomponente_Messachse) THEN
         steplSchritt := STEP_10_E;
       END_IF
 

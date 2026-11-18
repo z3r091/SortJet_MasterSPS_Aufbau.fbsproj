@@ -14,7 +14,7 @@ IF ( blGreiferOeffnen
      //  AND blUntergestellErkannt //safety eingang
      AND NOT blLinearEinheitSH // Der Greifer darf nicht geöffnet werden, wenn die Lineareinheit auf der Übergabeposition zum Shuttle steht.
    // Andernfalls können wir den Wagen nicht mehr greifen, da wir die Lineareinheit nur ganz nach vorn/hinten fahren können
-   (*AND BasisStationsParameter.bFreigabe*) )
+   (*AND BasisStationsParameter.stFreigabe.bAlles*) )
 THEN
   CASE steplGreiferOeffnen OF
 
@@ -29,7 +29,7 @@ THEN
       THEN
         steplGreiferOeffnen := STEP_1000_E;
       ELSE
-        IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+        IF BasisStationsParameter.stFreigabe.bAlles AND bpLichtschranke_OK THEN
           out_bGreiferEinfahren := TRUE;
           out_bGreiferAusfahren  := FALSE;
           steplGreiferOeffnen := STEP_10_E;
@@ -95,7 +95,7 @@ END_IF
 //-------------------------------------------------------------------------------------------------
 
 IF blGreiferSchliessen
-// AND BasisStationsParameter.bFreigabe
+// AND BasisStationsParameter.stFreigabe.bAlles
 //  AND blUntergestellErkannt //safety eingang
 // AND NOT in_bFaecherwagenNichtInPos // Gestell ist auf dem Wagen
 THEN
@@ -112,7 +112,7 @@ THEN
       THEN
         steplGreiferSchliessen := STEP_1000_E;
       ELSE
-        IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+        IF BasisStationsParameter.stFreigabe.bAlles AND bpLichtschranke_OK THEN
           out_bGreiferAusfahren := TRUE;
           out_bGreiferEinfahren  := FALSE;
           steplGreiferSchliessen := STEP_10_E;

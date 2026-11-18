@@ -34,7 +34,6 @@ VAR
   PositionierAuftragsdatenPruefen : PositionierAuftragsdatenPruefen;
 
 END_VAR
-
 // ****************************************************9*********************************************
 // STEUERUNG: POSITIONIEREN
 // *************************************************************************************************
@@ -46,12 +45,12 @@ IF ( Auftragsdaten.wAuftrag = eStation_Vorabpositionierung ) THEN
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
       *)
-      IF checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation]) THEN
+      IF checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation], eSKKomponente_Querfahrt) THEN
 
         IF ( ABS( starrStationBasisParameter[wStation].rAktuellePositionQuerfahrt - Auftragsdaten.rVorabPosition ) <= rgMKZielPositionToleranz ) THEN
           steplSchritt := STEP_500_E;
         ELSE
-          steplSchritt := STEP_10_E;
+          steplSchritt := STEP_5_E;
         END_IF
 
       END_IF

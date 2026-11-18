@@ -13,6 +13,7 @@ VAR_INPUT
 
   // BOOLEAN
   bpAktivieren     : BOOL; // AKTIVIERUNG: stStationsAufbau.bHubrahmen
+  bpFreigabe       : BOOL; // FREIGABE Pneumatik: ohne Freigabe Ventil aus (Feder faehrt zurueck), Bewegung pausiert (Startbefehl bleibt erhalten)
   bpStartAusfahren : BOOL; // BETRIEBTYP: Zylinder wird ausgefahren
   bpStartEinfahren : BOOL; // BETRIEBTYP: Zylinder wird eingefahren
   bpReset          : BOOL; // BETRIEBTYP: Zylinderbaustein wird zurueckgesetzt
@@ -98,8 +99,23 @@ END_IF
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: AKTIONEN
 //-------------------------------------------------------------------------------------------------
-Ausfahren();
-Einfahren();
+(* Hinweis Freigabe Pneumatik:
+   - Ohne Freigabe: Ventil aus, Ketten und Ueberwachungszeiten zuruecksetzen (kein Timeout-Fehler)
+   - Der Startbefehl bleibt erhalten: kommt die Freigabe zurueck, wird die Bewegung neu gestartet
+*)
+IF NOT bpFreigabe THEN
+  out_bZylinderAusfahren := FALSE;
+  steplAusfahren := STEP_0_E;
+  steplEinfahren := STEP_0_E;
+  tonlZylinderAusgefahren( IN := FALSE );
+  tonlZylinderEingefahren( IN := FALSE );
+  tonlBewegungszeitAusfahren( IN := FALSE );
+  tonlBewegungszeitEinfahren( IN := FALSE );
+  bpDone := FALSE;
+ELSE
+  Ausfahren();
+  Einfahren();
+END_IF
 
 //-------------------------------------------------------------------------------------------------
 // STATUS DES ZYLINDERS

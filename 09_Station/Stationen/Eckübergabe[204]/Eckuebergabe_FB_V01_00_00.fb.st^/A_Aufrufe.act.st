@@ -12,7 +12,7 @@ ACTION A_Aufrufe
 // Glastransport X
 Glastransport_X( stStationsNummern                       := BasisStationsParameter.stMKs.stStationsNummern,
                  bpAutomatikAktiv                        := BasisStationsParameter.bAutomatik,
-                 bpFreigabe                              := BasisStationsParameter.bFreigabe,
+                 bpFreigabe                              := BasisStationsParameter.stFreigabe.bGlastransport,
                  InGlasTransportVorgaenger               := BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1],
                  InGlasTransportNachfolger               := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1],
                  bpMessrichtungNegativ                   := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bMessrichtungNegativ,
@@ -26,7 +26,7 @@ Glastransport_X( stStationsNummern                       := BasisStationsParamet
 // Glastransport Y
 Glastransport_Y( stStationsNummern                       := BasisStationsParameter.stMKs.stStationsNummern,
                  bpAutomatikAktiv                        := BasisStationsParameter.bAutomatik,
-                 bpFreigabe                              := BasisStationsParameter.bFreigabe,
+                 bpFreigabe                              := BasisStationsParameter.stFreigabe.bGlastransport,
                  InGlasTransportVorgaenger               := BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1],
                  InGlasTransportNachfolger               := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1],
                  bpMessrichtungNegativ                   := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bMessrichtungNegativ,
@@ -38,5 +38,5 @@ Glastransport_Y( stStationsNummern                       := BasisStationsParamet
                  bpOptionSlaveAntrieb                    := FALSE );
 
 // Hubrahmen
-Hubrahmen();
+Hubrahmen( bpFreigabe := BasisStationsParameter.stFreigabe.bPneumatik );
 END_ACTION

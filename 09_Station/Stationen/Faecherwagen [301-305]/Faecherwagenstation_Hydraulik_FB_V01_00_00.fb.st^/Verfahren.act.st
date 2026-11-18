@@ -16,7 +16,7 @@ IF     blFaecherwagenVor
    AND NOT blFaecherwagenZurueck
    AND (    NOT BasisStationsParameter.stMKs.stStationsAufbau.bRolltor
          OR in_bRolltorGeoeffnet )
-   AND BasisStationsParameter.bFreigabe
+   AND BasisStationsParameter.stFreigabe.bAlles
 THEN
   CASE steplFaecherwagenVor OF
     // FAECHERWAGEN VOR =============================
@@ -121,7 +121,7 @@ END_IF
 *)
 IF     blFaecherwagenZurueck
    AND NOT blFaecherwagenVor
-   AND BasisStationsParameter.bFreigabe
+   AND BasisStationsParameter.stFreigabe.bAlles
 THEN
   CASE steplFaecherwagenZurueck OF
     // FAECHERWAGEN ZURUECK =============================

@@ -301,6 +301,12 @@ IF (  bpStarteAbsolutPositionierung ) THEN
         eDrehPosition90Grad:
           rpZielPositionition := ppParameterBaustein.rDrehposition_90_Grad;
 
+        eDrehPosition180Grad:
+          rpZielPositionition := ppParameterBaustein.rDrehposition_180_Grad;
+
+        eDrehPosition270Grad:
+          rpZielPositionition := ppParameterBaustein.rDrehposition_270_Grad;
+
         ELSE
           wpFehlerNr := cMELDUNG_DREHEN_UNDEFINIERTE_POSITION;
           steplAbsolutPositionieren := STEP_900_E;
@@ -379,8 +385,10 @@ IF (  bpStarteAbsolutPositionierung ) THEN
       // ---------------------------------------------------------------------------------------
       CASE epZielPosition OF
 
-          eDrehPosition0Grad,
-            eDrehPosition90Grad:
+        eDrehPosition0Grad,
+        eDrehPosition90Grad,
+        eDrehPosition180Grad,
+        eDrehPosition270Grad:
 
           Arretierung.bpStartAusfahren := TRUE;
           steplAbsolutPositionieren := STEP_210_E;

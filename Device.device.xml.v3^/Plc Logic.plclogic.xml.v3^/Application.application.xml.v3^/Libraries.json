@@ -179,7 +179,7 @@
 			"libraryReference": {
 				"$type": "Placeholder",
 				"placeholder": "System_VisuElem3DPath",
-				"defaultResolution": "VisuElem3DPath, 4.1.0.0 (System)",
+				"defaultResolution": "VisuElem3DPath, 4.7.0.0 (System)",
 				"resolverGuid": "2717eb6a-dd07-4c66-8d8d-cacebd7b18ae",
 				"allowUnqualifiedAccess": true
 			}
@@ -189,7 +189,7 @@
 			"libraryReference": {
 				"$type": "Placeholder",
 				"placeholder": "System_VisuElemCamDisplayer",
-				"defaultResolution": "VisuElemCamDisplayer, 4.2.0.0 (System)",
+				"defaultResolution": "VisuElemCamDisplayer, 4.7.0.0 (System)",
 				"resolverGuid": "2717eb6a-dd07-4c66-8d8d-cacebd7b18ae",
 				"allowUnqualifiedAccess": true
 			}
@@ -199,7 +199,7 @@
 			"libraryReference": {
 				"$type": "Placeholder",
 				"placeholder": "System_VisuElemMeter",
-				"defaultResolution": "VisuElemMeter, 4.3.0.0 (System)",
+				"defaultResolution": "VisuElemMeter, 4.10.0.0 (System)",
 				"resolverGuid": "2717eb6a-dd07-4c66-8d8d-cacebd7b18ae",
 				"allowUnqualifiedAccess": true
 			}
@@ -209,7 +209,7 @@
 			"libraryReference": {
 				"$type": "Placeholder",
 				"placeholder": "System_VisuElems",
-				"defaultResolution": "VisuElems, 4.3.0.0 (System)",
+				"defaultResolution": "VisuElems, 4.10.0.0 (System)",
 				"resolverGuid": "2717eb6a-dd07-4c66-8d8d-cacebd7b18ae",
 				"allowUnqualifiedAccess": true
 			}
@@ -219,7 +219,7 @@
 			"libraryReference": {
 				"$type": "Placeholder",
 				"placeholder": "System_VisuElemsAlarm",
-				"defaultResolution": "VisuElemsAlarm, 4.3.0.0 (System)",
+				"defaultResolution": "VisuElemsAlarm, 4.10.0.0 (System)",
 				"resolverGuid": "2717eb6a-dd07-4c66-8d8d-cacebd7b18ae",
 				"allowUnqualifiedAccess": true
 			}
@@ -229,7 +229,7 @@
 			"libraryReference": {
 				"$type": "Placeholder",
 				"placeholder": "System_VisuElemsDateTime",
-				"defaultResolution": "VisuElemsDateTime, 4.2.0.0 (System)",
+				"defaultResolution": "VisuElemsDateTime, 4.9.0.0 (System)",
 				"resolverGuid": "2717eb6a-dd07-4c66-8d8d-cacebd7b18ae",
 				"allowUnqualifiedAccess": true
 			}
@@ -239,7 +239,7 @@
 			"libraryReference": {
 				"$type": "Placeholder",
 				"placeholder": "System_VisuElemsSpecialControls",
-				"defaultResolution": "VisuElemsSpecialControls, 4.2.0.0 (System)",
+				"defaultResolution": "VisuElemsSpecialControls, 4.7.0.0 (System)",
 				"resolverGuid": "2717eb6a-dd07-4c66-8d8d-cacebd7b18ae",
 				"allowUnqualifiedAccess": true
 			}
@@ -249,7 +249,7 @@
 			"libraryReference": {
 				"$type": "Placeholder",
 				"placeholder": "System_VisuElemsWinControls",
-				"defaultResolution": "VisuElemsWinControls, 4.3.0.0 (System)",
+				"defaultResolution": "VisuElemsWinControls, 4.10.0.0 (System)",
 				"resolverGuid": "2717eb6a-dd07-4c66-8d8d-cacebd7b18ae",
 				"allowUnqualifiedAccess": true
 			}
@@ -259,7 +259,7 @@
 			"libraryReference": {
 				"$type": "Placeholder",
 				"placeholder": "System_VisuElemTextEditor",
-				"defaultResolution": "VisuElemTextEditor, 4.3.0.0 (System)",
+				"defaultResolution": "VisuElemTextEditor, 4.8.0.0 (System)",
 				"resolverGuid": "2717eb6a-dd07-4c66-8d8d-cacebd7b18ae",
 				"allowUnqualifiedAccess": true
 			}
@@ -269,7 +269,7 @@
 			"libraryReference": {
 				"$type": "Placeholder",
 				"placeholder": "System_VisuElemTrace",
-				"defaultResolution": "VisuElemTrace, 4.3.0.0 (System)",
+				"defaultResolution": "VisuElemTrace, 4.10.0.0 (System)",
 				"resolverGuid": "2717eb6a-dd07-4c66-8d8d-cacebd7b18ae",
 				"allowUnqualifiedAccess": true
 			}
@@ -279,7 +279,7 @@
 			"libraryReference": {
 				"$type": "Placeholder",
 				"placeholder": "System_VisuElemXYChart",
-				"defaultResolution": "VisuElemXYChart, 4.2.0.0 (System)",
+				"defaultResolution": "VisuElemXYChart, 4.10.0.0 (System)",
 				"resolverGuid": "2717eb6a-dd07-4c66-8d8d-cacebd7b18ae",
 				"allowUnqualifiedAccess": true
 			}
@@ -289,7 +289,7 @@
 			"libraryReference": {
 				"$type": "Placeholder",
 				"placeholder": "System_VisuInputs",
-				"defaultResolution": "VisuInputs, 4.2.0.0 (System)",
+				"defaultResolution": "VisuInputs, 4.7.0.0 (System)",
 				"resolverGuid": "2717eb6a-dd07-4c66-8d8d-cacebd7b18ae",
 				"allowUnqualifiedAccess": true
 			}
@@ -299,7 +299,7 @@
 			"libraryReference": {
 				"$type": "Placeholder",
 				"placeholder": "System_VisuNativeControl",
-				"defaultResolution": "VisuNativeControl, 4.3.0.0 (System)",
+				"defaultResolution": "VisuNativeControl, 4.9.0.0 (System)",
 				"resolverGuid": "2717eb6a-dd07-4c66-8d8d-cacebd7b18ae",
 				"allowUnqualifiedAccess": true
 			}

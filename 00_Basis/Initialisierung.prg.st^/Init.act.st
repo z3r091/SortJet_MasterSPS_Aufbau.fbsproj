@@ -157,7 +157,7 @@ THEN
         FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
           starrShuttleBasisParameter[wlIndex].bReferenz := FALSE;
 
-          IF ( NOT starrShuttleBasisParameter[wlIndex].bFehler ) THEN
+          IF ( starrShuttleBasisParameter[wlIndex].bFehler ) THEN
             SpsError( eFehler_Station,
                       starrShuttleBasisParameter[wlIndex].wFehlerNummer,
                       wlIndex,
@@ -171,7 +171,7 @@ THEN
         FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
           starrTransfershuttleBasisParameter[wlIndex].bReferenz := FALSE;
 
-          IF ( NOT starrTransfershuttleBasisParameter[wlIndex].bFehler ) THEN
+          IF ( starrTransfershuttleBasisParameter[wlIndex].bFehler ) THEN
             SpsError( eFehler_Station,
                       starrTransfershuttleBasisParameter[wlIndex].wFehlerNummer,
                       wlIndex,

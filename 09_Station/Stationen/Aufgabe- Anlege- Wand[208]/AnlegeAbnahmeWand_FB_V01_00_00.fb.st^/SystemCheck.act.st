@@ -26,6 +26,12 @@ IF ( blBetriebartCheck ) THEN
     BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
     steplCheck := STEP_900_E;
   END_IF
+  IF ( Abschrankung.bpFehler AND ( Abschrankung.bpStartAusfahren OR Abschrankung.bpStartEinfahren ) ) THEN
+    Abschrankung.bpStartAusfahren := FALSE;
+    Abschrankung.bpStartEinfahren := FALSE;
+    BasisStationsParameter.wFehlerNummer := Abschrankung.wpFehlerNr;
+    steplCheck := STEP_900_E;
+  END_IF
 
   CASE steplCheck OF
     // SYSTEM CHECK=========================
@@ -35,7 +41,7 @@ IF ( blBetriebartCheck ) THEN
       *)
       BasisStationsParameter.bStationBelegt[cWAND_1] := FALSE;
 
-      IF ( BasisStationsParameter.bFreigabe ) THEN
+      IF ( BasisStationsParameter.stFreigabe.bGlastransport ) THEN
 
         steplCheck := STEP_10_E;
 
@@ -89,7 +95,19 @@ IF ( blBetriebartCheck ) THEN
         IF ( in_bMotorschutzGeblaese_Ok ) THEN
           // blGeblaeseAnforderung     := TRUE;
           out_bDrosselklappeOeffnen := TRUE;
-          steplCheck := STEP_20_E;
+
+          (* Hinweis:
+             - Verbund-Check mit dem Nachfolger: die Scheibe faehrt durch die bewegliche Abschrankung
+               => Abschrankung vor dem Glastransport-Check oeffnen (einfahren), nach dem Check wieder schliessen (STEP_110)
+          *)
+          IF (     BasisStationsParameter.stMKs.stStationsAufbau.bDurchlaufSperreZumNachfolger
+               AND BasisStationsParameter.bCheckMitNachfolger[cWAND_1] )
+          THEN
+            Abschrankung.bpStartAusfahren := FALSE;
+            Abschrankung.bpStartEinfahren := TRUE;
+          END_IF
+
+          steplCheck := STEP_15_E;
         ELSE
           out_bDrosselklappeOeffnen := FALSE;
           BasisStationsParameter.wFehlerNummer := cMELDUNG_ANTRIEB_GEBLAESE;
@@ -98,6 +116,14 @@ IF ( blBetriebartCheck ) THEN
 
       END_IF
 
+    // SYSTEM CHECK=========================
+    STEP_15_E:
+      (* Hinweis:
+         - Warten bis die Abschrankung offen ist (nur bei Verbund-Check mit dem Nachfolger angefordert)
+      *)
+      IF ( Abschrankung.bpDone OR NOT Abschrankung.bpStartEinfahren ) THEN
+        steplCheck := STEP_20_E;
+      END_IF
     // SYSTEM CHECK=========================
     STEP_20_E:
       (* Anmerkung:
@@ -181,12 +207,24 @@ IF ( blBetriebartCheck ) THEN
       Kippen.epZielPosition := eKippen_Position_84Grad;
       Kippen.bpPositionieren := BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1];
 
+      (* Hinweis:
+         - Bewegliche Abschrankung zum Nachfolger schliessen (ausfahren), der Glastransport-Check ist fertig
+           (bei Verbund-Check mit dem Nachfolger wurde sie in STEP_10 geoeffnet, ohne Verbund wird sie hier zugefahren)
+      *)
+      IF ( BasisStationsParameter.stMKs.stStationsAufbau.bDurchlaufSperreZumNachfolger ) THEN
+        Abschrankung.bpStartEinfahren := FALSE;
+        Abschrankung.bpStartAusfahren := TRUE;
+      END_IF
+
       steplCheck := STEP_120_E;
 
     // SYSTEM CHECK=========================
     STEP_120_E:
-      IF ( (Kippen.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1]) ) THEN
+      IF (     ( Kippen.bpDone OR NOT BasisStationsParameter.stMKs.stStationsAufbau.bKippen[cWAND_1] )
+           AND ( Abschrankung.bpDone OR NOT Abschrankung.bpStartAusfahren ) )
+      THEN
         Kippen.bpPositionieren := FALSE;
+        Abschrankung.bpStartAusfahren := FALSE;
         steplCheck := STEP_200_E;
       END_IF
 
@@ -304,6 +342,10 @@ ELSE
     out_bDrosselklappeOeffnen := FALSE;
     Kippen.bpPositionieren := FALSE;
     Glastransport.bpCheck := FALSE;
+    IF ( BasisStationsParameter.stMKs.stStationsAufbau.bDurchlaufSperreZumNachfolger ) THEN
+      Abschrankung.bpStartAusfahren := FALSE;
+      Abschrankung.bpStartEinfahren := FALSE;
+    END_IF
   END_IF
 END_IF
 END_ACTION

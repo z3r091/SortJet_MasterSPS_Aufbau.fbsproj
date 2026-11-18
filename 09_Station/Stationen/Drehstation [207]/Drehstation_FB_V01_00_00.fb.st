@@ -31,6 +31,7 @@ VAR
   // TIMER
   toflGeblaeseHandfahren             : TOF;
   tonlUpdateTimer                    : TON;
+  tonlCheckWarteFreigabe             : TON; // Systemcheck: Drehen / Kippen wartet auf Freigabe (Teilabschaltung SK)
 
   // STEPS
   steplVorabDrehen                   : Steps_TE; // Drehen
@@ -61,7 +62,6 @@ VAR
 
 
 END_VAR
-
 //-------------------------------------------------------------------------------------------------
 // MASTER AUFRUFEN
 //-------------------------------------------------------------------------------------------------

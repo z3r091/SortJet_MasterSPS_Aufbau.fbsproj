@@ -49,7 +49,13 @@ THEN
             IF ( bpVerfahrfreigabe ) THEN
               STEP_Mov_Shuttle_W := STEP_10_E;
             ELSE
-              STEP_Mov_Shuttle_W := STEP_140_E;
+              // wSps2MmiMeasureSlotNummer  := 0; 0 =  Shuttle bremst noch / 1 = Shuttle gestoppt und steht
+              wgSps2MmiShuttleNr                                  := stStationsNummern.NummerIntern;
+              rSps2MmiPosition                                    := Antrieb.rpIstPosition;
+              wSps2ShuttleStopped[stStationsNummern.NummerSPS] := 0;
+              MsgToMmi(SB0_SPS_SHUTTLEVORABPOSITIONIERUNGABBRUCH);
+
+              STEP_Mov_Shuttle_W := STEP_130_E;
             END_IF
 
           ELSE
@@ -237,7 +243,7 @@ THEN
         // wSps2MmiMeasureSlotNummer  := 0; 0 =  Shuttle bremst noch / 1 = Shuttle gestoppt und steht
         wgSps2MmiShuttleNr                                  := stStationsNummern.NummerIntern;
         rSps2MmiPosition                                    := Antrieb.rpIstPosition;
-        wSps2ShuttleStopped[stStationsNummern.NummerIntern] := 0;
+        wSps2ShuttleStopped[stStationsNummern.NummerSPS] := 0;
         MsgToMmi(SB0_SPS_SHUTTLEVORABPOSITIONIERUNGABBRUCH);
 
         // Medlung ausgeben das ein Verfahrabbruch stattgefunden hat

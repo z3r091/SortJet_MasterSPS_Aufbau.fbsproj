@@ -12,7 +12,7 @@ ACTION A_Aufrufe
 // Glastransport
 Glastransport( stStationsNummern                       := BasisStationsParameter.stMKs.stStationsNummern,
                bpAutomatikAktiv                        := BasisStationsParameter.bAutomatik,
-               bpFreigabe                              := BasisStationsParameter.bFreigabe,
+               bpFreigabe                              := BasisStationsParameter.stFreigabe.bGlastransport,
                InGlasTransportVorgaenger               := BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1],
                InGlasTransportNachfolger               := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1],
                bpMessrichtungNegativ                   := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bMessrichtungNegativ,
@@ -25,7 +25,7 @@ Glastransport( stStationsNummern                       := BasisStationsParameter
 
 // Geblaese
 Geblaese( stStationsNummern                        := BasisStationsParameter.stMKs.stStationsNummern,
-          bpFreigabe                               := BasisStationsParameter.bFreigabe, );
+          bpFreigabe                               := BasisStationsParameter.stFreigabe.bGeblaese, );
 
 // Kippen
 Kippen( stStationsNummern                          := BasisStationsParameter.stMKs.stStationsNummern,
@@ -39,16 +39,18 @@ Hub( stStationsNummern                             := BasisStationsParameter.stM
      bpSensorAuslauf                               := Glastransport.bpSensorAuslauf );
 
 // Roellchenleiste
-Roellchenleiste( bpZylinderAbfragenVorhanden     := TRUE,
+Roellchenleiste( bpFreigabe                      := BasisStationsParameter.stFreigabe.bPneumatik,
+                 bpZylinderAbfragenVorhanden     := TRUE,
                  bpEinAusFahrenLogikDrehen       := BasisStationsParameter.stMKs.stStationsOptionen.bVerstellungEinAusGefahrenLogikDrehen );
 
 // Wandverstellung
-Wandverstellung( bpZylinderAbfragenVorhanden     := TRUE,
+Wandverstellung( bpFreigabe                      := BasisStationsParameter.stFreigabe.bPneumatik,
+                 bpZylinderAbfragenVorhanden     := TRUE,
                  bpEinAusFahrenLogikDrehen       := BasisStationsParameter.stMKs.stStationsOptionen.bVerstellungEinAusGefahrenLogikDrehen );
 
 // Querfahrt
 Querfahrt( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern,
-           bpFreigabe        := BasisStationsParameter.bFreigabe,
+           bpFreigabe        := BasisStationsParameter.stFreigabe.bQuerfahrt,
            bpSensorEinlauf   := Glastransport.bpSensorEinlauf,
            bpSensorAuslauf   := Glastransport.bpSensorAuslauf );
 END_ACTION

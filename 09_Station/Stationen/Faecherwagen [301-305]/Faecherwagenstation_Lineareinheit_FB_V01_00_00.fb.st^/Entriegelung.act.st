@@ -13,7 +13,7 @@ ACTION Entriegelung
 IF ( blEntriegelungOeffnen
    //AND bpUntergestellErkannt //safety eingang
    // AND NOT in_bFaecherwagenNichtInPos // Gestell ist auf dem Wagen
-   (*AND BasisStationsParameter.bFreigabe*) )
+   (*AND BasisStationsParameter.stFreigabe.bAlles*) )
 THEN
   CASE steplEntriegelungOeffnen OF
 
@@ -28,7 +28,7 @@ THEN
       THEN
         steplEntriegelungOeffnen := STEP_1000_E;
       ELSE
-        IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+        IF BasisStationsParameter.stFreigabe.bAlles AND bpLichtschranke_OK THEN
           out_bEntriegelungAusfahren := TRUE;
           out_bEntriegelungEinfahren  := FALSE;
           steplEntriegelungOeffnen := STEP_10_E;
@@ -94,7 +94,7 @@ END_IF
 //-------------------------------------------------------------------------------------------------
 
 IF blEntriegelungSchliessen
-// AND BasisStationsParameter.bFreigabe
+// AND BasisStationsParameter.stFreigabe.bAlles
 //AND bpUntergestellErkannt //safety eingang
 THEN
   CASE steplEntriegelungSchliessen OF
@@ -110,7 +110,7 @@ THEN
       THEN
         steplEntriegelungSchliessen := STEP_1000_E;
       ELSE
-        IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+        IF BasisStationsParameter.stFreigabe.bAlles AND bpLichtschranke_OK THEN
           out_bEntriegelungEinfahren := TRUE;
           out_bEntriegelungAusfahren  := FALSE;
           steplEntriegelungSchliessen := STEP_10_E;

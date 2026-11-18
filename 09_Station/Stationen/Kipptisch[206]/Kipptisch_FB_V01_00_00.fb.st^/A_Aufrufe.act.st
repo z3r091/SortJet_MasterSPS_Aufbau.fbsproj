@@ -12,7 +12,7 @@ ACTION A_Aufrufe
 // Glastransport
 Glastransport( stStationsNummern                         := BasisStationsParameter.stMKs.stStationsNummern,
                bpAutomatikAktiv                          := BasisStationsParameter.bAutomatik,
-               bpFreigabe                                := BasisStationsParameter.bFreigabe,
+               bpFreigabe                                := BasisStationsParameter.stFreigabe.bGlastransport,
                InGlasTransportVorgaenger                 := BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1],
                InGlasTransportNachfolger                 := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1],
                bpOptionMessungSystemCheckAktiv           := BasisStationsParameter.stMKs.stStationsOptionen.stSystemcheck.bScheibenVermessenSystemCheck,
@@ -26,18 +26,19 @@ Glastransport( stStationsNummern                         := BasisStationsParamet
 // Kippen
 
 Kippen( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern,
-        bpFreigabe        := BasisStationsParameter.bFreigabe,
+        bpFreigabe        := BasisStationsParameter.stFreigabe.bKippen,
         bpAutomatikAktiv := NOT blBetriebsartHand,
         bpSensorEinlauf   := Glastransport.bpSensorEinlauf,
         bpSensorAuslauf   := Glastransport.bpSensorAuslauf );
 
 // Querfahrt
 Querfahrt( stStationsNummern := BasisStationsParameter.stMKs.stStationsNummern,
-           bpFreigabe        := BasisStationsParameter.bFreigabe,
+           bpFreigabe        := BasisStationsParameter.stFreigabe.bQuerfahrt,
            bpSensorEinlauf   := Glastransport.bpSensorEinlauf,
            bpSensorAuslauf   := Glastransport.bpSensorAuslauf );
 
 // Rollenleiste
-Rollenleiste( bpZweiterZylinderVorhanden := FALSE,
+Rollenleiste( bpFreigabe                 := BasisStationsParameter.stFreigabe.bPneumatik,
+              bpZweiterZylinderVorhanden := FALSE,
               tpWartezeitOhneAbfrage     := T#1S );
 END_ACTION

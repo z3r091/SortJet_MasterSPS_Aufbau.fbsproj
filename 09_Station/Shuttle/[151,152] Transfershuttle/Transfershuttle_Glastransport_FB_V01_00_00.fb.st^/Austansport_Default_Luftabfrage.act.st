@@ -392,20 +392,17 @@ THEN
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
       END_IF
 
-      IF bpOptionMasterSlaveAustransport THEN
-        Antrieb.wpMaster := InGlasTransportNachfolger.wAchsID;
-        Antrieb.wpBetriebsart     := SYNC_AUF_MASTER;
-      ELSE
-        Antrieb.wpBetriebsart     := HANDPLUS;
-      END_IF
-
       ilScheibenZaehler := WORD_TO_INT( pAuftrag.wAnzahlScheiben );
 
-      IF NOT bpOptionMasterSlaveAustransport THEN
+      IF bpOptionMasterSlaveAustransport THEN
+        // Master-Slave: auf den Nachfolger koppeln, bereit erst nach erfolgter Kopplung (STEP_105)
+        Antrieb.wpMaster      := InGlasTransportNachfolger.wAchsID;
+        Antrieb.wpBetriebsart := SYNC_AUF_MASTER;
+        steplAustransportDefaultLuftabfrage := STEP_105_E;
+      ELSE
+        Antrieb.wpBetriebsart := HANDPLUS;
         bpOutBereitZumAustransport := TRUE;
         steplAustransportDefaultLuftabfrage := STEP_110_E;
-      ELSE
-        steplAustransportDefaultLuftabfrage := STEP_105_E;
       END_IF
 
     // AUSTRANSPORT [HANDPLUS - DEFAULT LUFTABFRAGE] ===========================================
@@ -754,20 +751,17 @@ THEN
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
       END_IF
 
-      IF bpOptionMasterSlaveAustransport THEN
-        Antrieb.wpMaster := InGlasTransportVorgaenger.wAchsID;
-        Antrieb.wpBetriebsart     := SYNC_AUF_MASTER;
-      ELSE
-        Antrieb.wpBetriebsart     := HANDMINUS;
-      END_IF
-
       ilScheibenZaehler := WORD_TO_INT( pAuftrag.wAnzahlScheiben );
 
-      IF NOT bpOptionMasterSlaveAustransport THEN
+      IF bpOptionMasterSlaveAustransport THEN
+        // Master-Slave: auf den Vorgaenger koppeln, bereit erst nach erfolgter Kopplung (STEP_465)
+        Antrieb.wpMaster      := InGlasTransportVorgaenger.wAchsID;
+        Antrieb.wpBetriebsart := SYNC_AUF_MASTER;
+        steplAustransportDefaultLuftabfrage := STEP_465_E;
+      ELSE
+        Antrieb.wpBetriebsart := HANDMINUS;
         bpOutBereitZumAustransport := TRUE;
         steplAustransportDefaultLuftabfrage := STEP_470_E;
-      ELSE
-        steplAustransportDefaultLuftabfrage := STEP_465_E;
       END_IF
 
     // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================

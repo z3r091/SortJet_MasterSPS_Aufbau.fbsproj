@@ -29,7 +29,7 @@ BasisStationsParameter.bAuftragAktiv           := (   BasisStationsParameter.bAn
 BasisStationsParameter.OutGlasTransport[cWAND_1].stStationsNummern          := BasisStationsParameter.stMKs.stStationsNummern;
 BasisStationsParameter.OutGlasTransport[cWAND_1].wStationsTyp               := BasisStationsParameter.stMKs.eStationsTyp;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bFehler                    REF= BasisStationsParameter.bFehler;
-BasisStationsParameter.OutGlasTransport[cWAND_1].bFreigabe                  REF= BasisStationsParameter.bFreigabe;
+BasisStationsParameter.OutGlasTransport[cWAND_1].bFreigabe                  REF= BasisStationsParameter.stFreigabe.bGlastransport;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bTransportAbgeschlossen    REF= bgFALSE;
 BasisStationsParameter.OutGlasTransport[cWAND_1].bTransportRueckwaertig     REF= BasisStationsParameter.bRueckwaertsTransportieren[cWAND_1];
 

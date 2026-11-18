@@ -27,7 +27,7 @@ IF( blBetriebartCheck )THEN
          - Sollte es sich z.B. um eine Station handeln die in einen anderen SK transportiert
            kann die <<Freigabe>> [Hardware-] entzogen sein wenn dieser geoeffnet ist.
       *)
-      IF ( BasisStationsParameter.bFreigabe ) THEN
+      IF ( BasisStationsParameter.stFreigabe.bGlastransport AND BasisStationsParameter.stFreigabe.bGeblaese ) THEN
         steplCheck := STEP_10_E;
 
       ELSE
@@ -123,53 +123,23 @@ IF( blBetriebartCheck )THEN
          - Wenn vom MMI -1 kommt (d. h. das MMI hat auf der Station keine Scheiben oder keine Drehpos für die Scheiben) muss das umgewandelt werden!
       *)
       Drehen.epZielPosition := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rStationsZielposition);
+      tonlCheckWarteFreigabe( IN := FALSE );
 
       (* Hinweis:
-         - Ansteuerung Kippen
+         - Gueltige Drehpositionen: 90 Grad (Anlegewand 208), 0 / 180 Grad (Kipptisch 206 / Shuttle 101)
+         - Kippen aus Drehposition und Letzter Scheibe (MK: Parameter_Drehen.astKippenJeDrehposition), leere Station wie ohne Letzte Scheibe
+         - Gedreht / gekippt wird nur, wenn die Ist-Position von der Soll-Position abweicht
       *)
-      IF BasisStationsParameter.bStationBelegt[cWAND_1] THEN
-
-        CASE Drehen.epZielPosition OF
-
-          eDrehPosition0Grad:
-            Kippen.epZielPosition := eKippen_Position_84Grad;
-            Kippen.bpPositionieren  := TRUE;
-
-          eDrehPosition90Grad:
-            Kippen.epZielPosition := eKippen_Position_90Grad;
-            Kippen.bpPositionieren  := TRUE;
-
-        END_CASE
-
-      ELSE
-
-        Kippen.epZielPosition := eKippen_Position_84Grad;
-        Kippen.bpPositionieren  := TRUE;
-
-      END_IF
-
       CASE Drehen.epZielPosition OF
 
-        eDrehPosition0Grad:
-          Kippen.epZielPosition := eKippen_Position_84Grad;
-          Kippen.bpPositionieren  := TRUE;
+        eDrehPosition0Grad, eDrehPosition90Grad, eDrehPosition180Grad:
+          Kippen.epZielPosition  := SEL( (     BasisStationsParameter.bStationBelegt[cWAND_1]
+                                           AND BasisStationsParameter.pAuftrag[cWAND_1].bLetzteScheibe ),
+                                         Drehen.ppParameterBaustein.astKippenJeDrehposition[ LIMIT( 0, TO_INT(Drehen.epZielPosition) / 90, 3 ) ].eKippenOhneLetzteScheibe,
+                                         Drehen.ppParameterBaustein.astKippenJeDrehposition[ LIMIT( 0, TO_INT(Drehen.epZielPosition) / 90, 3 ) ].eKippenMitLetzterScheibe );
+          Kippen.bpPositionieren := ( Kippen.epKippStatus <> Kippen.epZielPosition ); // nur kippen, wenn Ist <> Soll
 
-          (* Hinweis:
-             - Das drehen wird immer angestossen - Pruefung ob gedreht werden muss findet im Dreh- Baustein statt
-          *)
-          Drehen.bpStarteAbsolutPositionierung := TRUE;
-
-          steplCheck := STEP_130_E;
-
-        eDrehPosition90Grad:
-          Kippen.epZielPosition := eKippen_Position_90Grad;
-          Kippen.bpPositionieren  := TRUE;
-          steplCheck := STEP_130_E;
-
-          (* Hinweis:
-             - Das drehen wird immer angestossen - Pruefung ob gedreht werden muss findet im Dreh- Baustein statt
-          *)
-          Drehen.bpStarteAbsolutPositionierung := TRUE;
+          Drehen.bpStarteAbsolutPositionierung := ( Drehen.epDrehPositionsStatus <> Drehen.epZielPosition ); // nur drehen, wenn Ist <> Soll
 
           steplCheck := STEP_130_E;
 
@@ -188,7 +158,22 @@ IF( blBetriebartCheck )THEN
       *)
       IF ( Drehen.bpDone OR NOT Drehen.bpStarteAbsolutPositionierung ) THEN
         Drehen.bpStarteAbsolutPositionierung := FALSE;
+        tonlCheckWarteFreigabe( IN := FALSE );
         steplCheck := STEP_210_E;
+      END_IF
+
+      (* Fehlerbehandlung:
+         - Drehen muss drehen, hat aber keine Freigabe (z.B. Teilabschaltung durch offenen SK)
+           => nicht endlos warten, nach der Wartezeit Systemcheck mit Meldung abbrechen
+      *)
+      tonlCheckWarteFreigabe( IN := Drehen.bpStarteAbsolutPositionierung AND NOT BasisStationsParameter.stFreigabe.bDrehen,
+                              PT := T#10S );
+      IF ( tonlCheckWarteFreigabe.Q ) THEN
+        tonlCheckWarteFreigabe( IN := FALSE );
+        Drehen.bpStarteAbsolutPositionierung := FALSE;
+        Kippen.bpPositionieren := FALSE;
+        BasisStationsParameter.wFehlerNummer := cMELDUNG_SYSTEMCHECK_KANN_NICHT_DURCHGEFUEHRT_WERDEN;
+        steplCheck := STEP_900_E;
       END_IF
 
       (* Fehlerbehandlung:
@@ -202,7 +187,21 @@ IF( blBetriebartCheck )THEN
 
     // SYSTEM CHECK =========================
     STEP_210_E:
-      IF Kippen.bpDone OR NOT Kippen.bpPositionieren THEN
+      (* Fehlerbehandlung:
+         - Kippen muss kippen, hat aber keine Freigabe (z.B. Teilabschaltung durch offenen SK)
+           => nicht endlos warten, nach der Wartezeit Systemcheck mit Meldung abbrechen
+      *)
+      tonlCheckWarteFreigabe( IN := Kippen.bpPositionieren AND NOT BasisStationsParameter.stFreigabe.bKippen,
+                              PT := T#10S );
+      IF ( tonlCheckWarteFreigabe.Q ) THEN
+        tonlCheckWarteFreigabe( IN := FALSE );
+        Kippen.bpPositionieren := FALSE;
+        BasisStationsParameter.wFehlerNummer := cMELDUNG_KIPPEN_KEINE_FREIGABE;
+        steplCheck := STEP_900_E;
+      END_IF
+
+      IF ( steplCheck = STEP_210_E ) AND ( Kippen.bpDone OR NOT Kippen.bpPositionieren ) THEN
+        tonlCheckWarteFreigabe( IN := FALSE );
         Kippen.bpPositionieren := FALSE;
 
         steplCheck := STEP_800_E;

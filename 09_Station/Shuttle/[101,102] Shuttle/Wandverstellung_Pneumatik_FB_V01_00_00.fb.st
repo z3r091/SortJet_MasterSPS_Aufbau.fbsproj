@@ -13,6 +13,7 @@ VAR_INPUT
   bpWandverstellungSchliessen : BOOL;
   bpReset                     : BOOL;
   bpAktivieren                : BOOL;
+  bpFreigabe                  : BOOL; // FREIGABE Pneumatik: ohne Freigabe Ventile aus, Bewegung pausiert (Startbefehl bleibt erhalten)
 
   // OPTIONEN
   bpAbfrageGeoeffnetVorhanden   : BOOL := TRUE;   // Endlagensensoren geoeffnet vorhanden, sonst gilt die Endlage nach tpBewegungszeit
@@ -58,7 +59,6 @@ VAR
   out_bWandverstellungSchliessen   AT %Q* : BOOL; // AKTION: Verstellen der Wandoeffnung -> Minimal Geoeffnet
 
 END_VAR
-
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: RESET / DEAKTIVIERT
 //-------------------------------------------------------------------------------------------------
@@ -99,6 +99,24 @@ END_IF
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: AKTIONEN
 //-------------------------------------------------------------------------------------------------
-WandverstellungOeffnen();
-WandverstellungSchliessen();
+(* Hinweis Freigabe Pneumatik:
+   - Ohne Freigabe: Ventile aus, Ketten und Ueberwachungszeiten zuruecksetzen (kein Timeout-Fehler)
+   - Der Startbefehl bleibt erhalten: kommt die Freigabe zurueck, wird die Bewegung neu gestartet
+*)
+IF NOT bpFreigabe THEN
+  out_bWandverstellungOeffnen    := FALSE;
+  out_bWandverstellungSchliessen := FALSE;
+  steplWandverstellungOeffnen    := STEP_0_E;
+  steplWandverstellungSchliessen := STEP_0_E;
+  tonlEingefahrenWandEinlaufseite( IN := FALSE );
+  tonlAusgefahrenWandEinlaufseite( IN := FALSE );
+  tonlEingefahrenWandAuslaufseite( IN := FALSE );
+  tonlAusgefahrenWandAuslaufseite( IN := FALSE );
+  tonlBewegungszeitOeffnen( IN := FALSE );
+  tonlBewegungszeitSchliessen( IN := FALSE );
+  bpDone := FALSE;
+ELSE
+  WandverstellungOeffnen();
+  WandverstellungSchliessen();
+END_IF
 END_FUNCTION_BLOCK

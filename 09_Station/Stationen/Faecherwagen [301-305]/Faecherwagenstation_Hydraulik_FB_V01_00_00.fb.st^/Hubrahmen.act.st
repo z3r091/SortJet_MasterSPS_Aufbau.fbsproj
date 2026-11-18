@@ -11,7 +11,7 @@ ACTION Hubrahmen
 //-------------------------------------------------------------------------------------------------
 IF     blHubrahmenHeben
    AND NOT blHubrahmenSenken
-   AND BasisStationsParameter.bFreigabe
+   AND BasisStationsParameter.stFreigabe.bAlles
 THEN
   CASE steplHubrahmenHeben OF
     // HUBRAHMEN HEBEN =============================
@@ -111,7 +111,7 @@ END_IF
 //-------------------------------------------------------------------------------------------------
 IF     blHubrahmenSenken
    AND NOT blHubrahmenHeben
-   AND BasisStationsParameter.bFreigabe
+   AND BasisStationsParameter.stFreigabe.bAlles
 THEN
   CASE steplHubrahmenSenken OF
     // HUBRAHMEN SENKEN =============================

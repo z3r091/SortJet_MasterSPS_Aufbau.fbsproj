@@ -83,9 +83,9 @@ FOR wlIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
         // Der zu resettende AK entspricht dem ERSTEN (INPUTSEITE) konfigurierten AK des TS
         // UND Doppelte Sicherheit: Nochmal prüfen, dass das TS im zu resetten AK ist
         // UND Automatik des zu resettenden AK darf NICHT mehr TRUE sein
-        IF        wlIndexReset = starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[1]
-                  AND     StationInAutomatikkreis(starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wlIndexReset)
-                  AND NOT M_Automatik_Aktiv[starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[1]]
+        IF                ( wlIndexReset = starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[1] )
+                 AND_THEN StationInAutomatikkreis(starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wlIndexReset)
+                 AND_THEN NOT M_Automatik_Aktiv[starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[1]]
         THEN
           IF ( ( ( AuftragsdatenTransfershuttle[wlIndex].wAuftrag = eStation_Eintransport )
                  OR ( AuftragsdatenTransfershuttle[wlIndex].wAuftrag = eStation_Scheibenkorrektur )
@@ -113,13 +113,15 @@ FOR wlIndexReset := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
             END_IF
           END_IF
         END_IF
-
         // Der zu resettende AK entspricht dem ZWEITEN (OUTPUTSEITE) konfigurierten AK des TS
+        // WICHTIG: Erst pruefen, ob es ueberhaupt einen 2. AK gibt (Zugriffsverletzung bei nur einem AK)
         // UND Doppelte Sicherheit: Nochmal prüfen, dass das TS im zu resetten AK ist
         // UND Automatik des zu resettenden AK darf NICHT mehr TRUE sein
-        IF        wlIndexReset = starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[wlAutomatikkreis2]
-                  AND_THEN     StationInAutomatikkreis(starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wlIndexReset)
-                  AND_THEN NOT M_Automatik_Aktiv[starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[wlAutomatikkreis2]]
+        IF                ( cANZAHL_AUTOMATIKKREISE > 1 )
+                 AND_THEN ( starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[wlAutomatikkreis2] <> 0 )
+                 AND_THEN ( wlIndexReset =starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[wlAutomatikkreis2] )
+                 AND_THEN StationInAutomatikkreis(starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wlIndexReset)
+                 AND_THEN NOT M_Automatik_Aktiv[starrTransfershuttleBasisParameter[wlIndex].stMKs.eaAutomatikkreis[wlAutomatikkreis2]]
         THEN
           IF ( ( ( AuftragsdatenTransfershuttle[wlIndex].wAuftrag = eStation_Austransport )
                  OR ( AuftragsdatenTransfershuttle[wlIndex].wAuftrag = eStation_Scheibenkorrektur )

@@ -12,7 +12,7 @@ ACTION A_Aufrufe
 // Glastransport
 Glastransport( stStationsNummern                              := BasisStationsParameter.stMKs.stStationsNummern,
                bpAutomatikAktiv                               := BasisStationsParameter.bAutomatik,
-               bpFreigabe                                     := BasisStationsParameter.bFreigabe,
+               bpFreigabe                                     := BasisStationsParameter.stFreigabe.bGlastransport,
                InGlasTransportVorgaenger                      := BasisStationsParameter.InGlasTransportVorgaenger[cWAND_1],
                InGlasTransportNachfolger                      := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1],
                stpInTransportVerbund                          := stpInTransportVerbund,
@@ -67,7 +67,7 @@ END_IF
 // Querfahrt
 Querfahrt( stStationsNummern   := BasisStationsParameter.stMKs.stStationsNummern,
            bpAutomatikAktiv    := BasisStationsParameter.bAutomatik,
-           bpFreigabe          := (     BasisStationsParameter.bFreigabe
+           bpFreigabe          := (     BasisStationsParameter.stFreigabe.bQuerfahrt
                                     AND abgVerfahrfreigabeShuttle[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
                                     AND blShuttleKannSicherVerfahrenWerden ),
            bpVerfahrFreigabe   := (     blShuttleKannSicherVerfahrenWerden
@@ -78,7 +78,7 @@ Querfahrt( stStationsNummern   := BasisStationsParameter.stMKs.stStationsNummern
 
 //Zentralschmierung
 Zentralschmierung( stStationsNummern           := BasisStationsParameter.stMKs.stStationsNummern,
-                   bpFreigabe                  := BasisStationsParameter.bFreigabe,
+                   bpFreigabe                  := BasisStationsParameter.stFreigabe.bAlles,
                    dipAktuelleAntriebsPosition := REAL_TO_DINT( Querfahrt.rpAktPosition ), // Übergbabe der Aktuellen Position
                    bpTeilnehmerErreichbar      := TRUE );
 END_ACTION

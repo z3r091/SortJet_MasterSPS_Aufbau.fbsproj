@@ -32,7 +32,6 @@ VAR
   steplSchritt           : STEPS_TE;
 
 END_VAR
-
 //-------------------------------------------------------------------------------------------------
 // STEUERUNG: MESSUNG
 //-------------------------------------------------------------------------------------------------
@@ -43,7 +42,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Messfahrt ) THEN
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
       *)
-      IF checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation]) THEN
+      IF checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation], eSKKomponente_Glastransport) THEN
         steplSchritt := STEP_10_E;
       END_IF
 

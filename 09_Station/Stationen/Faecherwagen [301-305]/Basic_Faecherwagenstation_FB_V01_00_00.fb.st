@@ -98,7 +98,6 @@ VAR CONSTANT
   cZEIT_UEBERWACHUNG_ROLLTOR        : TIME := T#60S;
 
 END_VAR
-
 //-------------------------------------------------------------------------------------------------
 // MASTER AUFRUFEN
 //-------------------------------------------------------------------------------------------------
@@ -146,7 +145,7 @@ END_IF
 //-------------------------------------------------------------------------------------------------
 // TIMER
 //-------------------------------------------------------------------------------------------------
-tonlFreigabe( IN := BasisStationsParameter.bFreigabe, PT := T#1S );
+tonlFreigabe( IN := BasisStationsParameter.stFreigabe.bAlles, PT := T#1S );
 
 bpFehler := BasisStationsParameter.bFehler;
 

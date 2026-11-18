@@ -13,7 +13,7 @@ ACTION Gegenhalter
 IF ( blGegenhalterOeffnen
    //  AND bpUntergestellErkannt //safety eingang
    // AND NOT in_bFaecherwagenNichtInPos // Gestell ist auf dem Wagen
-   (*AND BasisStationsParameter.bFreigabe*) )
+   (*AND BasisStationsParameter.stFreigabe.bAlles*) )
 THEN
   CASE steplGegenhalterOeffnen OF
 
@@ -28,7 +28,7 @@ THEN
       THEN
         steplGegenhalterOeffnen := STEP_1000_E;
       ELSE
-        IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+        IF BasisStationsParameter.stFreigabe.bAlles AND bpLichtschranke_OK THEN
           out_bGegenhalterEinfahren := TRUE;
           out_bGegenhalterAusfahren  := FALSE;
           steplGegenhalterOeffnen := STEP_10_E;
@@ -94,7 +94,7 @@ END_IF
 //-------------------------------------------------------------------------------------------------
 
 IF blGegenhalterSchliessen
-// AND BasisStationsParameter.bFreigabe
+// AND BasisStationsParameter.stFreigabe.bAlles
 //  AND bpUntergestellErkannt //safety eingang
 // AND NOT in_bFaecherwagenNichtInPos // Gestell ist auf dem Wagen
 THEN
@@ -111,7 +111,7 @@ THEN
       THEN
         steplGegenhalterSchliessen := STEP_1000_E;
       ELSE
-        IF BasisStationsParameter.bFreigabe AND bpLichtschranke_OK THEN
+        IF BasisStationsParameter.stFreigabe.bAlles AND bpLichtschranke_OK THEN
           out_bGegenhalterAusfahren := TRUE;
           out_bGegenhalterEinfahren  := FALSE;
           steplGegenhalterSchliessen := STEP_10_E;

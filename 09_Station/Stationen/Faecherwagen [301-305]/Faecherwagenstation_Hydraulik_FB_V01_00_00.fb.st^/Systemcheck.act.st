@@ -34,7 +34,7 @@ IF blBetriebartCheck THEN
         eLetzter_FW_Status.eEinschleusen_Zentrierung_Schliessen_170,
         eLetzter_FW_Status.eEinschleusen_Auswertung_180:
 
-          IF blFaecherwagenErkannt AND BasisStationsParameter.bFreigabe THEN
+          IF blFaecherwagenErkannt AND BasisStationsParameter.stFreigabe.bAlles THEN
 
             CASE eLetzterStatus OF
               eLetzter_FW_Status.eEinschleusen_Hubrahmen_Heben_110:
@@ -68,7 +68,7 @@ IF blBetriebartCheck THEN
         eLetzter_FW_Status.eAusschleusen_Hubrahmen_Senken_140,
         eLetzter_FW_Status.eAusschleusen_Abgeschlossen_150:
 
-          IF BasisStationsParameter.bFreigabe THEN
+          IF BasisStationsParameter.stFreigabe.bAlles THEN
 
             CASE eLetzterStatus OF
               eLetzter_FW_Status.eAusschleusen_Anschlag_Ab_100:

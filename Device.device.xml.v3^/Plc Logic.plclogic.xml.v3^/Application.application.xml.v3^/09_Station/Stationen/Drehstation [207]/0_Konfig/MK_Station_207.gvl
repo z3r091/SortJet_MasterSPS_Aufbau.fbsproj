@@ -21,8 +21,12 @@ VAR_GLOBAL
       bDeaktivieren                         := FALSE,                                                                        // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer                       := 1810,                                                                         // Basis-Meldungsnummer (WatchIO)
       eStationsTyp                          := eStation,                                                                     // Typ der Station
-      eaAutomatikkreis                      := [eAutomatikkreis_2],                                                          // Automatikkreise, zu denen die Station gehoert
-      eaSicherheitskreis                    := [eSicherheitskreis_4],                                                        // Sicherheitskreise, in die die Station eingebunden ist
+      eaAutomatikkreis                      := [eAutomatikkreis_1],                                                          // Automatikkreise, zu denen die Station gehoert
+      eaSicherheitskreis                    := [eSicherheitskreis_1, eSicherheitskreis_4],                                   // Sicherheitskreise, in die die Station eingebunden ist
+      astSicherheitskreisTeilabschaltung    := [ ( eSicherheitskreis := eSicherheitskreis_4,                                 // SK4 (Abschrankung 208) schaltet nur Drehen/Kippen ab,
+                                                   bTeilabschaltung  := TRUE,                                                //   Glastransport, Geblaese, Querfahrt und Pneumatik bleiben aktiv
+                                                   bDrehen           := TRUE,
+                                                   bKippen           := TRUE ) ],
       eSystemcheckZyklus                    := eSystemcheckZyklus_1,                                                         // In welchem Zyklus des Systemchecks die Station geprueft wird
       stSchnittstellendaten                 := ( wVorgaengerStation := cSTATION_DYNAMISCH,                                   // Station vor dieser Station (cSTATION_DYNAMISCH bei mehreren)
                                                  wNachfolgerStation := cSHUTTLE_101,                                         // Station nach dieser Station (cSTATION_DYNAMISCH bei mehreren)
@@ -47,7 +51,7 @@ VAR_GLOBAL
                                                                       ),
                                                  // stAnlegetisch
                                                  // stEckuebergabe
-                                                 stDrehstation   :=  ( bDrehpositionenVomMMI                     := FALSE ), // FALSE: Drehpositionen aus der Stationskonfiguration [aEintransporte/aAustransporte]
+                                                 stDrehstation   :=  ( bDrehpositionenVomMMI                     := FALSE ),  // TRUE: Drehpositionen aus den MMI-Auftragsdaten; FALSE: aus der Stationskonfiguration [aEintransporte/aAustransporte]
                                                  bVorAbKomponentenAnsteuerung              := FALSE,                         // VorAbKomponentenAnsteuerung Auftraege werden bearbeitet
                                                  bVerstellungEinAusGefahrenLogikDrehen     := FALSE,                         // Verstellung: Logik ein-/ausgefahren gedreht
                                                  bLangsamfahrtNockenQuerfahrtAktivieren    := FALSE,                         // Querfahrt: Langsamfahrt-Nocken auswerten
@@ -132,14 +136,22 @@ VAR_GLOBAL
 
   apgMKStation207Drehen : Parameter_Drehen :=
     (
-      tZeitAntriebsfreigabeErhalten        := T#180S,             // [ms \ s] Energieeinsparrung: Zeiteinheit nach der die Antriebsfreigabe entzogen werden soll wenn keine Aktion ansteht [1 s = 1000 ms ]
-      rToleranz                            :=   0.1,              // Toleranz beim Entscheiden der aktuellen Position
-      rDrehposition_0_Grad                 :=  -6.75,              // Drehposition fuer die 0 Grad
-      rDrehposition_90_Grad                := 433.03,           // Drehposition fuer die 90 Grad
-      rDrehposition_180_Grad               :=     0,              // Drehposition fuer die 180 Grad
-      rDrehposition_270_Grad               :=     0,              // Drehposition fuer die 270 Grad
-      bArretierung                         :=  TRUE,              // Arretierung vorhanden
-      eZielDrehpositionLeer                := eDrehPosition90Grad // derzeit ohne Funktion
+      tZeitAntriebsfreigabeErhalten        := T#180S,               // [ms \ s] Energieeinsparrung: Zeiteinheit nach der die Antriebsfreigabe entzogen werden soll wenn keine Aktion ansteht [1 s = 1000 ms ]
+      rToleranz                            :=    0.1,               // Toleranz beim Entscheiden der aktuellen Position
+      rDrehposition_0_Grad                 :=   2.83,               // Drehposition fuer die 0 Grad   -> Shuttle 101 / Kipptisch 206 (gedreht). TODO: einmessen (errechnet: 90 Grad - 439.78)
+      rDrehposition_90_Grad                :=    441,               // Drehposition fuer die 90 Grad  -> Anlegewand 208 (bisher 0 Grad)
+      rDrehposition_180_Grad               := 880.87,               // Drehposition fuer die 180 Grad -> Shuttle 101 / Kipptisch 206 (bisher 90 Grad)
+      rDrehposition_270_Grad               :=      0,               // Drehposition fuer die 270 Grad
+      bArretierung                         :=    TRUE,              // Arretierung vorhanden
+      eZielDrehpositionLeer                := eDrehPosition180Grad, // derzeit ohne Funktion
+      astKippenJeDrehposition              := [ ( eKippenOhneLetzteScheibe := eKippen_Position_84Grad,     // [0]   0 Grad -> Shuttle 101 / Kipptisch 206 (TODO: ohne Letzte Scheibe spaeter 90 Grad)
+                                                  eKippenMitLetzterScheibe := eKippen_Position_90Grad ),
+                                                ( eKippenOhneLetzteScheibe := eKippen_Position_84Grad,     // [1]  90 Grad -> Anlegewand 208
+                                                  eKippenMitLetzterScheibe := eKippen_Position_84Grad ),
+                                                ( eKippenOhneLetzteScheibe := eKippen_Position_84Grad,     // [2] 180 Grad -> Shuttle 101 / Kipptisch 206 (TODO: ohne Letzte Scheibe spaeter 90 Grad)
+                                                  eKippenMitLetzterScheibe := eKippen_Position_90Grad ),
+                                                ( eKippenOhneLetzteScheibe := eKippen_Default,             // [3] 270 Grad -> nicht genutzt
+                                                  eKippenMitLetzterScheibe := eKippen_Default ) ]
     );
 
   apgMKStation207Kippen : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Kippen := [
@@ -162,5 +174,4 @@ VAR_GLOBAL
 
 
 END_VAR
-
 END_NAMESPACE

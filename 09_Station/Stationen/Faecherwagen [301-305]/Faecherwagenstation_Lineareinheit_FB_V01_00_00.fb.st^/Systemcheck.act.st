@@ -33,7 +33,7 @@ IF blBetriebartCheck THEN
 
         steplCheck := STEP_1000_E;
 
-      ELSIF bpUntergestellErkannt AND bpLichtschranke_OK AND BasisStationsParameter.bFreigabe THEN
+      ELSIF bpUntergestellErkannt AND bpLichtschranke_OK AND BasisStationsParameter.stFreigabe.bAlles THEN
 
         CASE eLetzterStatus OF
 

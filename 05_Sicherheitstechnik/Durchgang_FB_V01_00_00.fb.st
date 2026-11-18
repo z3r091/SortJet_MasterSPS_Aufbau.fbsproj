@@ -165,7 +165,7 @@ bpStatusDurchgangNichtGeschlossen       := NOT bpSKGeschlossen;
 out_bLeuchteTasterQuittierungDurchgang1 := out_bLeuchteTasterQuittierungDurchgang2 := NOT bpDurchgangGeschlossen;
 
 // Aufruf der Unterbausteine
-BeweglicheAbschrankung(bpAktivieren:=ppParameterBaustein.bBeweglicheAbschrankung, bpReset := Job_Stationen.abpReset[apgMKSicherheiskreis[ppParameterBaustein.eZuBlockierenderSK].eaAutomatikkreis[1]]);
+BeweglicheAbschrankung(bpAktivieren:=ppParameterBaustein.bBeweglicheAbschrankung, bpFreigabe := TRUE, bpReset := Job_Stationen.abpReset[apgMKSicherheiskreis[ppParameterBaustein.eZuBlockierenderSK].eaAutomatikkreis[1]]);
 
 
 // Meldungen für den Unterbaustein

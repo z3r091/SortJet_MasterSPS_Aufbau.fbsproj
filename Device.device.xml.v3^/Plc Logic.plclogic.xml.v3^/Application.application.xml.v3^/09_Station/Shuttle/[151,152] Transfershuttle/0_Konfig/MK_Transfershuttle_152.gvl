@@ -18,11 +18,12 @@ VAR_GLOBAL
       stStationsNummern                 := ( NummerIntern := 152,                                     // Stationsnummer fuer das MMI und die Stationsangabe der Meldungen
                                              NummerExtern := 1152,                                    // Stationsnummer fuer Bedienermeldungen
                                              NummerSPS    := 152 ),                                   // Stationsnummer SPS-intern (Indizes)
-      bDeaktivieren                     := FALSE,                                                      // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
+      bDeaktivieren                     := FALSE,                                                     // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer                   := 380,                                                       // Basis-Meldungsnummer (WatchIO)
       eStationsTyp                      := eTransfershuttle,                                          // Typ der Station
-      eaAutomatikkreis                  := [eAutomatikkreis_1],                                       // Automatikkreise, zu denen die Station gehoert
+      eaAutomatikkreis                  := [eAutomatikkreis_1, eAutomatikkreis_2],                    // Automatikkreise, zu denen die Station gehoert
       eaSicherheitskreis                := [eSicherheitskreis_1],                                     // Sicherheitskreise, in die die Station eingebunden ist
+      // astSicherheitskreisTeilabschaltung
       eSystemcheckZyklus                := eSystemcheckZyklus_1,                                      // In welchem Zyklus des Systemchecks die Station geprueft wird
       stSchnittstellendaten             := ( wVorgaengerStation := cSTATION_DEFAULT,                  // Station vor dieser Station (cSTATION_DYNAMISCH bei mehreren)
                                              wNachfolgerStation := cSTATION_DEFAULT,                  // Station nach dieser Station (cSTATION_DYNAMISCH bei mehreren)

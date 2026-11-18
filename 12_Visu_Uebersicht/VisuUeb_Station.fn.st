@@ -78,7 +78,7 @@ ELSIF stBP.bGlaslaengenmessung THEN           stKarte.sFunktion := 'Glaslängenm
 ELSIF stBP.bGlashoehenmessung THEN            stKarte.sFunktion := 'Glashöhenmessung';
 ELSIF stBP.bVorabpositionieren THEN           stKarte.sFunktion := 'Vorabpositionierung';
 ELSIF stBP.bAuftragAktiv THEN                 stKarte.sFunktion := 'Auftrag aktiv';
-ELSIF stBP.bFreigabe THEN                     stKarte.sFunktion := 'Bereit';
+ELSIF stBP.stFreigabe.bAlles THEN                     stKarte.sFunktion := 'Bereit';
 ELSE                                          stKarte.sFunktion := 'Keine Freigabe';
 END_IF
 

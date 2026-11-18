@@ -17,7 +17,7 @@ rtlFussleisteStart(CLK := NOT in_bTasterGlasAngelegt AND NOT in_bFussTaster);
    - -Freigabe mit Timer überlegt, da von SI Relais der unverzögerte Kontakt auf die SPS
      verdrahtet wurde. Der verzögerte Kontakt (Leistung) ist mit 1,2 sec versehen
 *)
-tonlFreigabeErhalten(IN:= BasisStationsParameter.bFreigabe ,PT:= t#2s);
+tonlFreigabeErhalten(IN:= ( BasisStationsParameter.stFreigabe.bGlastransport AND BasisStationsParameter.stFreigabe.bGeblaese ) ,PT:= t#2s);
 
 ftlGlastransportCheckMitNachfolger( CLK := Glastransport.bpCheckMitNachfolger );
 END_ACTION

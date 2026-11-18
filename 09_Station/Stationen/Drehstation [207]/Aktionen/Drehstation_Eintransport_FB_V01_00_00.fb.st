@@ -105,17 +105,24 @@ THEN
       (* Hinweis:
          - Ansteuerung Kippen
       *)
-      Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition;
+      //   - Kippposition aus Drehposition und Letzter Scheibe (MK: Parameter_Drehen.astKippenJeDrehposition)
+      Kippen.epZielPosition := SEL( BasisStationsParameter.pAuftrag[wWand].bLetzteScheibe,
+                                    Drehen.ppParameterBaustein.astKippenJeDrehposition[ LIMIT( 0, TO_INT(BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition) / 90, 3 ) ].eKippenOhneLetzteScheibe,
+                                    Drehen.ppParameterBaustein.astKippenJeDrehposition[ LIMIT( 0, TO_INT(BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition) / 90, 3 ) ].eKippenMitLetzterScheibe );
       Kippen.bpPositionieren  := TRUE;
 
       (* Hinweis:
          - Ansteuerung Drehen
+         - Gueltige Eintransport-Positionen: 90 Grad (Anlegewand 208), 0 / 180 Grad (Kipptisch 206)
       *)
-      IF ( BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition <> Drehen.epDrehPositionsStatus ) THEN
-        Drehen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition;
+      Drehen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition;
+      IF ( Drehen.epZielPosition <> Drehen.epDrehPositionsStatus ) THEN
         Drehen.bpStarteAbsolutPositionierung := TRUE;
       END_IF
-      IF Drehen.epZielPosition <> eDrehPosition0Grad THEN
+      IF NOT (    ( Drehen.epZielPosition = eDrehPosition0Grad )
+               OR ( Drehen.epZielPosition = eDrehPosition90Grad )
+               OR ( Drehen.epZielPosition = eDrehPosition180Grad ) )
+      THEN
         BasisStationsParameter.wFehlerNummer := cMELDUNG_AUFTRAGSDATEN_UNGUELTIGE_DREHPOSITION;
         steplAktion := STEP_900_E;
       ELSE
@@ -236,7 +243,9 @@ THEN
 
         END_CASE
 
-        Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachEintransport;
+        Kippen.epZielPosition := SEL( BasisStationsParameter.pAuftrag[wWand].bLetzteScheibe,
+                              Drehen.ppParameterBaustein.astKippenJeDrehposition[ LIMIT( 0, TO_INT(BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport) / 90, 3 ) ].eKippenOhneLetzteScheibe,
+                              Drehen.ppParameterBaustein.astKippenJeDrehposition[ LIMIT( 0, TO_INT(BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport) / 90, 3 ) ].eKippenMitLetzterScheibe );
         Kippen.bpPositionieren := TRUE;
 
       END_IF
@@ -285,7 +294,9 @@ THEN
         Drehen.epZielPosition :=  BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport;
         Drehen.bpStarteAbsolutPositionierung := TRUE;
 
-        Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachEintransport;
+        Kippen.epZielPosition := SEL( BasisStationsParameter.pAuftrag[wWand].bLetzteScheibe,
+                              Drehen.ppParameterBaustein.astKippenJeDrehposition[ LIMIT( 0, TO_INT(BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport) / 90, 3 ) ].eKippenOhneLetzteScheibe,
+                              Drehen.ppParameterBaustein.astKippenJeDrehposition[ LIMIT( 0, TO_INT(BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport) / 90, 3 ) ].eKippenMitLetzterScheibe );
         Kippen.bpPositionieren  := TRUE;
       END_IF
 

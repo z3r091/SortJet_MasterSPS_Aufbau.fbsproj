@@ -42,7 +42,7 @@ IF ( Auftragsdaten.wAuftrag = eStation_Transportkopplung ) THEN
       (* Hinweis:
          - Ueberpruefung des Sicherheitskreises
       *)
-      IF checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation]) THEN
+      IF checkSafetyCircuitsNotBlocked(starrStationBasisParameter[wStation], eSKKomponente_Glastransport) THEN
         steplSchritt := STEP_30_E;
       END_IF
 

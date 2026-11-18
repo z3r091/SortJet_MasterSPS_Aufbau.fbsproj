@@ -15,7 +15,7 @@ Anschlag.in_bStatusZylinderEingefahren := in_bAnschlagUnten;
 Anschlag.bpStartAusfahren              := blAnschlagAuf AND NOT blAnschlagAb;
 Anschlag.bpStartEinfahren              := blAnschlagAb AND NOT blAnschlagAuf;
 
-Anschlag();
+Anschlag( bpFreigabe := BasisStationsParameter.stFreigabe.bPneumatik );
 
 out_bAnschlagAuf := Anschlag.out_bZylinderAusfahren;
 out_bAnschlagAb  := Anschlag.out_bZylinderEinfahren;
@@ -53,7 +53,7 @@ AnschlagHorizontal.in_bStatusZylinderEingefahren := in_bAnschlagHinten;
 AnschlagHorizontal.bpStartAusfahren              := blAnschlagVor AND NOT blAnschlagZurueck;
 AnschlagHorizontal.bpStartEinfahren              := blAnschlagZurueck AND NOT blAnschlagVor;
 
-AnschlagHorizontal();
+AnschlagHorizontal( bpFreigabe := BasisStationsParameter.stFreigabe.bPneumatik );
 
 out_bAnschlagVor     := AnschlagHorizontal.out_bZylinderAusfahren;
 out_bAnschlagZurueck := AnschlagHorizontal.out_bZylinderEinfahren;

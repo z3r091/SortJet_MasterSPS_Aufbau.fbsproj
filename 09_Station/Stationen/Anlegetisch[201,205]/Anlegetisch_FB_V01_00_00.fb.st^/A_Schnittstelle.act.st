@@ -77,7 +77,7 @@ out_bLeuchteKipptischOffen := out_bLeuchteKipptischOffen_OP := NOT in_bSensorKip
 (* Hinweis:
    - Ampelsignal "Rot" für den Bediener wenn Betriebsstop ausgeloest worden ist
 *)
-out_bAmpelSignalRot  := gbFlashbit03sec AND Stop_Baustein.blBetriebsstop;
+out_bAmpelSignalRot  := gbFlashbit02sec AND Stop_Baustein.blBetriebsstop;
 out_bSignalTasterScheibeAnlegen := out_bAmpelSignalGruenScheibeAnlegen;
 out_bAmpelSignalGlastransportAktiv := ( Glastransport.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.KEINE_FUNKTION
                                         AND Glastransport.Antrieb.wpBetriebsart <> AntriebsBetriebsart_EN.REFERENZ

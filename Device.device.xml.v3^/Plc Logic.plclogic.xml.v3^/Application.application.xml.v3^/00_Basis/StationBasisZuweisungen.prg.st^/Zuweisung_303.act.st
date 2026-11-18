@@ -10,5 +10,5 @@ ACTION Zuweisung_303
 starrFaecherwagenBasisParameter[cSTATION_303].stMKs REF= apgMKFaecherwagenstation[cSTATION_303];
 
 // Zuweisung Sammel-IOs
-aFaecherwagenstation[cSTATION_303].in_bDruckluftOK := StatusAnlage.in_bDruckluft_FW_OK;
+// in_bDruckluftOK: wird zyklisch beim Aufruf in StationsAufrufe (MainTask) uebergeben - nicht hier (SlowTask, Mehrfach-Task-Zugriff auf E/As)
 END_ACTION

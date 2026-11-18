@@ -11,6 +11,7 @@ VAR_INPUT
   // BOOLEAN
   bpAktivieren                            : BOOL := FALSE; // WICHTIG: Aktivieren des Bausteins (stStationsAufbau.bGreifer)
   bpFreigabe                              : BOOL; // STATUS: Der Greifer ist freigegeben und kann Prozesse abarbeiten
+  bpFreigabePneumatik                     : BOOL; // FREIGABE Pneumatik: Greifer-Hub, Greiferzangen, Glasrueckhalter
   bpAutomatikAktiv                        : BOOL;
   bpTeilnehmerErreichbar                  : BOOL;
   bpReset                                 : BOOL;
@@ -429,11 +430,12 @@ Antrieb.stStationsNummern := stStationsNummern;
 Antrieb.rpRuckzeit        := ppAntriebsInformationen.rpMaxRuckzeit;
 
 // Aufruf Pneumatik
-GreiferHub( in_bStatusZylinderAusgefahren := in_bGreiferAusgefahren,
+GreiferHub( bpFreigabe                    := bpFreigabePneumatik,
+            in_bStatusZylinderAusgefahren := in_bGreiferAusgefahren,
             in_bStatusZylinderEingefahren := in_bGreiferEingefahren );
 
-Zange[cZANGE_EINLAUF]( bpZylinderAbfragenVorhanden := ppParameterGreifer.bZangeAbfragenVorhanden );
-Zange[cZANGE_AUSLAUF]( bpZylinderAbfragenVorhanden := ppParameterGreifer.bZangeAbfragenVorhanden );
+Zange[cZANGE_EINLAUF]( bpFreigabe := bpFreigabePneumatik, bpZylinderAbfragenVorhanden := ppParameterGreifer.bZangeAbfragenVorhanden );
+Zange[cZANGE_AUSLAUF]( bpFreigabe := bpFreigabePneumatik, bpZylinderAbfragenVorhanden := ppParameterGreifer.bZangeAbfragenVorhanden );
 
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: AUSGAENGE
@@ -441,6 +443,6 @@ Zange[cZANGE_AUSLAUF]( bpZylinderAbfragenVorhanden := ppParameterGreifer.bZangeA
 out_bGreiferAusfahren := GreiferHub.out_bZylinderAusfahren;
 out_bGreiferEinfahren := GreiferHub.out_bZylinderEinfahren;
 
-out_bGlasRueckhalterEinlaufAusfahren := ablRueckhalterAusfahren[cZANGE_EINLAUF] AND ppParameterGreifer.bGlasRueckhalterEinlaufVorhanden;
-out_bGlasRueckhalterAuslaufAusfahren := ablRueckhalterAusfahren[cZANGE_AUSLAUF] AND ppParameterGreifer.bGlasRueckhalterAuslaufVorhanden;
+out_bGlasRueckhalterEinlaufAusfahren := ablRueckhalterAusfahren[cZANGE_EINLAUF] AND ppParameterGreifer.bGlasRueckhalterEinlaufVorhanden AND bpFreigabePneumatik;
+out_bGlasRueckhalterAuslaufAusfahren := ablRueckhalterAusfahren[cZANGE_AUSLAUF] AND ppParameterGreifer.bGlasRueckhalterAuslaufVorhanden AND bpFreigabePneumatik;
 END_FUNCTION_BLOCK

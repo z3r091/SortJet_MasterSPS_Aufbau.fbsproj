@@ -1,0 +1,22 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "ac3305d3-52c8-4f01-a8df-d5adde500f5c"
+	}
+}
+*)
+// Komponenten einer Station, fuer die die Sicherheitskreise geprueft werden
+TYPE SK_Komponente_EN :
+  (
+    eSKKomponente_Alles           := 0, // Alle Sicherheitskreise der Station zaehlen (auch die mit Teilabschaltung)
+    eSKKomponente_Glastransport   := 1,
+    eSKKomponente_Geblaese        := 2,
+    eSKKomponente_Drehen          := 3,
+    eSKKomponente_Kippen          := 4,
+    eSKKomponente_Querfahrt       := 5,
+    eSKKomponente_Pneumatik       := 6, // alle Pneumatik-Bausteine der Station (Zylinder, Zangen, Arretierungen, ...)
+    eSKKomponente_Greifer         := 7,
+    eSKKomponente_Wandverstellung := 8,
+    eSKKomponente_Messachse       := 9
+  ) WORD;
+END_TYPE
