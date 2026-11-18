@@ -1,6 +1,6 @@
 __V3_META__
 {
-	"objectGuid": "bd23d70a-d708-4687-8515-4f3d25066b8d",
+	"objectGuid": "eabac218-571d-480f-a168-d7bde2736ad1",
 	"objectTypeGuid": "225bfe47-7336-4dbc-9419-4105a7c831fa",
 	"embeddedObjectTypeGuids": [],
 	"properties": {
@@ -31,7 +31,7 @@ __V3_CONTENT__
 	</Single>
 	<Single Name="DeviceParameterSet" Type="{abc12bfe-e34e-4b2c-a058-42c6e7e03a13}" Method="IArchivable">
 		<List2 Name="Params" />
-		<Single Name="LmGuid" Type="System.Guid">12bffc55-eea7-595f-8fac-901356ac9741</Single>
+		<Single Name="LmGuid" Type="System.Guid">158aca63-9b76-5f9c-a32e-a20b49e61414</Single>
 		<Null Name="Sections" />
 		<Single Name="InitOnOnlineChange" Type="bool">False</Single>
 		<Single Name="AlwaysMapping" Type="bool">False</Single>
@@ -63,7 +63,7 @@ __V3_CONTENT__
 							<Single Name="AllowEmptySlot" Type="bool">False</Single>
 							<Null Name="DefaultModules" />
 							<Array Name="Modules" Type="System.Guid">
-								<Single Type="System.Guid">129425dd-0ceb-476a-bcbc-31c5d24106e1</Single>
+								<Single Type="System.Guid">f1b16f46-8f2a-47c8-b0c2-fa3f4d6562f4</Single>
 							</Array>
 							<Single Name="IncludeSlotNumber" Type="bool">False</Single>
 							<Single Name="StartSlotNumber" Type="uint">0</Single>
@@ -94,10 +94,6 @@ __V3_CONTENT__
 							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
 								<Single Name="PositionId" Type="long">4583</Single>
 								<Single Name="EditorPositionId" Type="long">4584</Single>
-								<Single Name="IoMapping" Type="{d6d934cf-5ec0-42c3-b628-2a7aea7d364c}" Method="IArchivable">
-									<Single Name="AutomaticAddress" Type="bool">False</Single>
-									<Single Name="IecAddress" Type="string">%QX0.0</Single>
-								</Single>
 								<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
 									<Single Name="Default" Type="string">DO1</Single>
 								</Single>
@@ -970,7 +966,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048192</Single>
 								<Single Name="TypeName" Type="string">RxTxPdo</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">808a1022-650e-578f-b517-4e688573d7c5</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">e3f13f7e-de50-5ef5-861f-109135f4f84a</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">2</Single>
 							<Single Name="ParamType" Type="string">localTypes:RxTxPdo</Single>
@@ -1105,7 +1101,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048194</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">a8cd14b6-fbb1-58e0-9e59-893dfa6a3455</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">d009adc7-d71e-52c0-8e98-51f7b78dc015</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">3</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -1240,7 +1236,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048195</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">7280a634-14e9-5b56-95c3-cd5a7911b706</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">c8dd5702-52c6-585c-9a6c-ccdb64c8939f</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">4</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -1375,7 +1371,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048196</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">12b6ff75-227a-515b-9fcb-0dd4432bdd66</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">36a63857-7891-5410-b748-960bbd616f68</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">5</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -1510,7 +1506,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048197</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">e50a0ff4-46be-5d0e-8a4d-68ae28e872a7</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">4e6b4465-d846-572c-aae3-9ac704c190f8</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">6</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -1645,7 +1641,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048198</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">f5cec321-e1fe-5fcb-8a78-3256274427b1</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">8015ecdc-e799-5fb6-a11f-91a505229286</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">7</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -1780,7 +1776,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048199</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">18d998b4-ed74-56ec-be97-f7940f36d056</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">30473b97-149c-58a7-9f39-e733f0deef31</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">8</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -1915,7 +1911,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048200</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">a612f835-f86e-57de-a91c-db3bb305563a</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">94db9396-1051-5e2a-bd1c-5577c72c5706</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">9</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -2050,7 +2046,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048201</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">6af3fc23-ab25-5aa9-9898-669dc9fed5c0</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">80eb91a4-6f19-5a48-a585-5fee28ebcdb7</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">10</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -2185,7 +2181,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048202</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">25f5b5cd-76d8-501c-8a27-58e5c3ef2e80</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">f734d451-6653-58a8-ae5a-bdd1b3aa1e4d</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">11</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -2320,7 +2316,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048203</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">29e76fec-8f3b-53ca-89b8-4aa870072ecf</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">e8f98e7c-2f30-55f2-8b1a-3be5d16779f4</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">12</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -2455,7 +2451,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048204</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">f713d3bf-fd97-555f-b860-7526afe04513</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">fd6a8a50-3765-538f-975f-7f50a7709b24</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">13</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -2590,7 +2586,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048205</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">064bca29-d83a-557f-8f29-9dc3b713fafb</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">7f8544d9-17bf-58f8-a1c0-6b5062d30d2c</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">14</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -2725,7 +2721,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048206</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">ccade10c-f2e3-5f0e-ac02-b5361d2a1ff9</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">57b31233-542d-5fdc-9a5c-9a2b5f399637</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">15</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -2860,7 +2856,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048207</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">82ffcd73-b793-5e1e-9c7e-c43cfe77a3ba</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">95138310-46b2-5786-994a-f52024c47d55</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">16</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -2995,7 +2991,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048208</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">00839454-ef74-5800-bd4a-5c7ba72c6a58</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">b952ab37-8fc3-5b70-ac94-118f78ab90df</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">17</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -3130,7 +3126,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879048209</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">2bd09183-0669-55d0-8d87-7cf650416476</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">9172a925-f929-5781-bd71-f34f06eb4a18</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">18</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -3343,7 +3339,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879375872</Single>
 								<Single Name="TypeName" Type="string">RxTxPdo</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">d0fff750-00ef-57a2-90f2-8d0e33235559</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">a8c1a8a0-3258-5c40-8bc9-3d6f69753589</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">20</Single>
 							<Single Name="ParamType" Type="string">localTypes:RxTxPdo</Single>
@@ -3478,7 +3474,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1879375874</Single>
 								<Single Name="TypeName" Type="string">Entry</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">3042484a-7f8a-554a-be3d-de13ac2ed7f1</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">a466bd3f-65b3-59cf-a9e9-0e04ab79a956</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">21</Single>
 							<Single Name="ParamType" Type="string">localTypes:Entry</Single>
@@ -3577,7 +3573,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096770</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">c899a68b-358f-5391-bd7f-28e8f8752a47</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">a7a44103-02e1-57d3-8ac1-0fec86919cf4</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">3</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -3676,7 +3672,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096771</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">b370883a-5d61-5e77-b170-87cce1c7faff</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">4c9ddb0c-e1ec-57f7-be1a-43c275093bc9</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">4</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -3775,7 +3771,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096772</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">e8e6384f-3b22-51ff-9ea1-ab47f00d5cde</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">b7ac0fd8-fbb3-5565-b2c8-7fb3680fe033</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">5</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -3874,7 +3870,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096773</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">0645829b-8792-5d4a-a43f-ef373e7a6db9</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">ef0d4936-babc-55fa-864c-50b88ac24ae5</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">6</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -3973,7 +3969,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096774</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">0bcbf267-9be6-5fcd-9982-4d06a2da7ead</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">24e0240a-4033-5bbe-8464-e45c9b9b9629</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">7</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -4072,7 +4068,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096775</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">4877f907-79dc-5c0d-ac94-b4f25fa71ddd</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">451b183c-0ea8-56be-8596-ab299e1fadc1</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">8</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -4171,7 +4167,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096776</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">b906b1ec-d9c0-5e04-b225-4db5423ea8c3</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">3e291afe-a496-5098-acb0-fc92e409ab1a</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">9</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -4270,7 +4266,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096777</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">bc78840d-cb82-5fd1-9118-ca43aafae708</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">7fac2873-0029-5947-bb70-a0108071a2a3</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">10</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -4369,7 +4365,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096778</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">6c108cdb-38e4-52aa-8aa3-9fa3469a09b2</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">59025e09-f4fa-5057-85a4-76f580c3bf62</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">11</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -4468,7 +4464,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096779</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">8387cb38-e66f-5b9d-a0b8-a1902b26efde</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">db96ee85-57de-55ae-9ff6-9c6d2aa0cb85</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">12</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -4567,7 +4563,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096780</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">5584fdf9-3efe-5707-b977-f5f6e7ad4fb2</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">b653390c-6b21-50bd-84d2-53e7dc32275b</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">13</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -4666,7 +4662,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096781</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">0a3ad33f-decd-5928-98d2-155ebf202c80</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">c7682387-9496-5c9b-9ebc-6c6b39a8ff31</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">14</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -4765,7 +4761,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096782</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">893efb49-8e59-5003-9e65-94e78bb0ca87</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">146d5c19-2a22-5570-ae88-44f003491f2d</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">15</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -4864,7 +4860,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096783</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">267cc51a-b15f-51f2-9f8b-35312a3bc2f7</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">16b5bbb2-75ec-5261-8cc7-b90314e65e05</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">16</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -4963,7 +4959,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096784</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">dba54876-96ee-56cb-ba00-0f737c51f1d6</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">9bd26767-aef5-530f-a8b2-2ea52af17b20</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">17</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -5062,7 +5058,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880096785</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">be037a24-e306-5905-be42-bf3f14381259</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">a9734f50-f01e-5db5-b3ec-327b980287bf</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">18</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -5161,7 +5157,7 @@ __V3_CONTENT__
 								</Single>
 								<Single Name="Identifier" Type="string">1880424450</Single>
 								<Single Name="TypeName" Type="string">PDO_Information</Single>
-								<Single Name="LmStructTypeGuid" Type="System.Guid">16631444-7a08-55ed-8738-05770a62616b</Single>
+								<Single Name="LmStructTypeGuid" Type="System.Guid">d005af6c-831a-5145-ae36-2e5eaa41ac2f</Single>
 							</Single>
 							<Single Name="SectionId" Type="int">21</Single>
 							<Single Name="ParamType" Type="string">localTypes:PDO_Information</Single>
@@ -5195,7 +5191,7 @@ __V3_CONTENT__
 							<Single Name="IndexInDevDesc" Type="long">41</Single>
 						</Single>
 					</List2>
-					<Single Name="LmGuid" Type="System.Guid">8aedda78-35dd-505a-a19d-7ed332c0ff35</Single>
+					<Single Name="LmGuid" Type="System.Guid">5614a044-0d05-52f1-b8cd-ecf4b1de7edd</Single>
 					<List2 Name="Sections">
 						<Single Type="{33f58abf-62ae-4277-a80b-74c57ea00c50}" Method="IArchivable">
 							<Single Name="Name" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
@@ -5527,7 +5523,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{33f58abf-62ae-4277-a80b-74c57ea00c50}" Method="IArchivable">
 							<Single Name="Name" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
-								<Single Name="Default" Type="string">16#160B Output</Single>
+								<Single Name="Default" Type="string">16#160C Output</Single>
 							</Single>
 							<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable" />
 							<Single Name="ParentId" Type="int">-1</Single>
@@ -5537,7 +5533,7 @@ __V3_CONTENT__
 						</Single>
 						<Single Type="{33f58abf-62ae-4277-a80b-74c57ea00c50}" Method="IArchivable">
 							<Single Name="Name" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
-								<Single Name="Default" Type="string">16#1A0B Input</Single>
+								<Single Name="Default" Type="string">16#1A0C Input</Single>
 							</Single>
 							<Single Name="Description" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable" />
 							<Single Name="ParentId" Type="int">-1</Single>
@@ -5681,10 +5677,10 @@ __V3_CONTENT__
 		<Single Name="PlCAlwaysMappingMode" Type="{9d1b24fb-5845-4978-8458-564ca7830fec}">OnlyIfUnused</Single>
 	</Single>
 	<List Name="CustomItems" Type="{7d23305a-7bb9-46e6-b58b-01ea5694add1}" />
-	<Single Name="IoConfigGlobalsGuid" Type="System.Guid">29a76ee8-7acf-510b-a382-dae70945eee3</Single>
-	<Single Name="IoConfigGlobalsMappingGuid" Type="System.Guid">f3d2b497-9f80-55b8-b7c7-208233934fa5</Single>
-	<Single Name="IoConfigVarConfigGuid" Type="System.Guid">54f38197-8cf3-568c-9eb8-cd49c7c1c930</Single>
-	<Single Name="IoConfigErrorPouGuid" Type="System.Guid">9cdffa41-8953-59bd-a463-827396d819ad</Single>
+	<Single Name="IoConfigGlobalsGuid" Type="System.Guid">7391361d-3a04-5d51-aac5-c5ddc7a99684</Single>
+	<Single Name="IoConfigGlobalsMappingGuid" Type="System.Guid">7e3c3159-14d0-54e2-ad82-eaab3a5d4736</Single>
+	<Single Name="IoConfigVarConfigGuid" Type="System.Guid">d5f508c8-7d17-5d35-a671-3291ffd1aa75</Single>
+	<Single Name="IoConfigErrorPouGuid" Type="System.Guid">767d7337-0c7c-52a8-ac7f-cae5eeb1ff27</Single>
 	<Single Name="ModuleId" Type="int">-1</Single>
 	<Null Name="IoUpdateTask" />
 	<Array Name="FunctionalChildren" Type="System.Guid" />

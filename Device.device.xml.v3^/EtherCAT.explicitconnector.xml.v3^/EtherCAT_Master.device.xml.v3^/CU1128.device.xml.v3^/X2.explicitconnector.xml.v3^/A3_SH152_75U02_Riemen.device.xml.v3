@@ -8987,7 +8987,7 @@ __V3_CONTENT__
 									<Single Name="Default" Type="string">DC sync0 cycletime</Single>
 								</Single>
 								<Single Name="Identifier" Type="string">1610633216</Single>
-								<Single Name="Value" Type="string">2000</Single>
+								<Single Name="Value" Type="string">4000</Single>
 								<Single Name="Type" Type="string">DWORD</Single>
 								<Single Name="Default" Type="string">0</Single>
 							</Single>
@@ -9098,7 +9098,7 @@ __V3_CONTENT__
 									<Single Name="Default" Type="string">DC sync1 cycletime</Single>
 								</Single>
 								<Single Name="Identifier" Type="string">1610764288</Single>
-								<Single Name="Value" Type="string">2000</Single>
+								<Single Name="Value" Type="string">4000</Single>
 								<Single Name="Type" Type="string">DWORD</Single>
 								<Single Name="Default" Type="string">0</Single>
 							</Single>

@@ -154,7 +154,7 @@ __V3_CONTENT__
 					<List Name="Adapters" Type="System.Collections.ArrayList">
 						<Single Type="{3f828f0b-c67b-430a-8c93-1e9bc324df64}" Method="IArchivable">
 							<List Name="Modules" Type="System.Collections.ArrayList">
-								<Single Type="System.Guid">129425dd-0ceb-476a-bcbc-31c5d24106e1</Single>
+								<Single Type="System.Guid">f1b16f46-8f2a-47c8-b0c2-fa3f4d6562f4</Single>
 								<Single Type="System.Guid">74a360df-0044-4c0c-abc0-7bee68df8dc3</Single>
 								<Single Type="System.Guid">0d5bdc36-82d0-4ff9-b25d-395b667d4e75</Single>
 								<Single Type="System.Guid">2123c9c7-5829-4d54-9b30-7f7a026ec856</Single>
@@ -237,7 +237,7 @@ __V3_CONTENT__
 									<Single Name="Default" Type="string">MasterCycleTime</Single>
 								</Single>
 								<Single Name="Identifier" Type="string">805326848</Single>
-								<Single Name="Value" Type="string">2000</Single>
+								<Single Name="Value" Type="string">4000</Single>
 								<Single Name="Type" Type="string">DWORD</Single>
 								<Single Name="Default" Type="string">2000</Single>
 							</Single>

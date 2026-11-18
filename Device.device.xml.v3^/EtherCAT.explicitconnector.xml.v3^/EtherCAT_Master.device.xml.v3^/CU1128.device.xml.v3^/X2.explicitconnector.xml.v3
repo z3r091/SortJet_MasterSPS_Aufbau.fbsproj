@@ -26,7 +26,7 @@ __V3_CONTENT__
 				<List Name="Modules" Type="System.Collections.ArrayList">
 					<Single Type="System.Guid">62e0513e-4d72-4aec-a462-f504d4731cc9</Single>
 					<Single Type="System.Guid">0fd8efd0-635c-4db7-98b1-9220d868d024</Single>
-					<Single Type="System.Guid">dbb46f61-9ee4-4631-8c73-4105d803190a</Single>
+					<Single Type="System.Guid">49d02ccb-238e-47c9-a6ba-4da5e8c14f2d</Single>
 					<Single Type="System.Guid">03df58e5-9d36-44b7-afcf-54fc8cab0be7</Single>
 					<Single Type="System.Guid">5a233129-7dff-4938-8180-55c5e26aebcf</Single>
 					<Single Type="System.Guid">6d2683c1-b235-4cd8-ad13-aad69e331948</Single>

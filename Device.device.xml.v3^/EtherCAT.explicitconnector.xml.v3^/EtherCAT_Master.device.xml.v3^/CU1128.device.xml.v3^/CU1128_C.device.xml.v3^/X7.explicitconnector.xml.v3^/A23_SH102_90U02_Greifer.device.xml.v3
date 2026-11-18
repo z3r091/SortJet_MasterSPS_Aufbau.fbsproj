@@ -10,7 +10,7 @@ __V3_META__
 __V3_CONTENT__
 <?xml version="1.0" encoding="utf-8"?>
 <Single xml:space="preserve" Type="{225bfe47-7336-4dbc-9419-4105a7c831fa}" Method="IArchivable">
-	<Single Name="UniqueIdGenerator" Type="string">9739</Single>
+	<Single Name="UniqueIdGenerator" Type="string">9743</Single>
 	<Null Name="TypeList" />
 	<Single Name="NeedsBusCycle" Type="bool">False</Single>
 	<Single Name="Id" Type="{05ee0b98-6639-4276-bc32-b75578b819ef}" Method="IArchivable">
@@ -8938,7 +8938,7 @@ __V3_CONTENT__
 									<Single Name="Default" Type="string">DC sync0 cycletime</Single>
 								</Single>
 								<Single Name="Identifier" Type="string">1610633216</Single>
-								<Single Name="Value" Type="string">2000</Single>
+								<Single Name="Value" Type="string">4000</Single>
 								<Single Name="Type" Type="string">DWORD</Single>
 								<Single Name="Default" Type="string">0</Single>
 							</Single>
@@ -9049,7 +9049,7 @@ __V3_CONTENT__
 									<Single Name="Default" Type="string">DC sync1 cycletime</Single>
 								</Single>
 								<Single Name="Identifier" Type="string">1610764288</Single>
-								<Single Name="Value" Type="string">2000</Single>
+								<Single Name="Value" Type="string">4000</Single>
 								<Single Name="Type" Type="string">DWORD</Single>
 								<Single Name="Default" Type="string">0</Single>
 							</Single>
@@ -9142,6 +9142,36 @@ __V3_CONTENT__
 							<Single Name="SectionId" Type="int">1</Single>
 							<Single Name="ParamType" Type="string">std:WORD</Single>
 							<Single Name="IndexInDevDesc" Type="long">23</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">1610835201</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">9740</Single>
+								<Single Name="EditorPositionId" Type="long">9741</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">Latch 0 control</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">1610835201</Single>
+								<Single Name="Value" Type="string">0</Single>
+								<Single Name="Type" Type="string">BYTE</Single>
+							</Single>
+							<Single Name="SectionId" Type="int">1</Single>
+							<Single Name="ParamType" Type="string">std:BYTE</Single>
+						</Single>
+						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+							<Single Name="Id" Type="uint">1610835202</Single>
+							<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+								<Single Name="PositionId" Type="long">9742</Single>
+								<Single Name="EditorPositionId" Type="long">9743</Single>
+								<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+									<Single Name="Default" Type="string">Latch 1 control</Single>
+								</Single>
+								<Single Name="Identifier" Type="string">1610835202</Single>
+								<Single Name="Value" Type="string">0</Single>
+								<Single Name="Type" Type="string">BYTE</Single>
+							</Single>
+							<Single Name="SectionId" Type="int">1</Single>
+							<Single Name="ParamType" Type="string">std:BYTE</Single>
 						</Single>
 						<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
 							<Single Name="Id" Type="uint">1627389952</Single>
