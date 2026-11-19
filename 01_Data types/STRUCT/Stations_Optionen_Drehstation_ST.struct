@@ -8,5 +8,6 @@
 TYPE Stations_Optionen_Drehstation_ST :
   STRUCT
     bDrehpositionenVomMMI                                         : BOOL; // TRUE: Drehpositionen aus dem MMI-Auftrag; FALSE: aus der Stationskonfiguration [aEintransporte/aAustransporte]
+    wStandardTransferstation                                      : WORD; // Systemcheck (Drehpositionen nicht vom MMI): Transferstation, die verwendet wird, wenn die Auftragsdaten 0 enthalten
   END_STRUCT
 END_TYPE

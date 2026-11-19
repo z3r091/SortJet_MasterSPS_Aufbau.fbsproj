@@ -19,6 +19,9 @@ VAR_OUTPUT
 END_VAR
 VAR
 
+  // WORD
+  wlCheckTransferstation             : WORD; // Systemcheck: Transferstation aus den Auftragsdaten
+
   // BOOLEAN
   blGeblaeseAktiv                    : BOOL;
   blUpdateTimer                      : BOOL;

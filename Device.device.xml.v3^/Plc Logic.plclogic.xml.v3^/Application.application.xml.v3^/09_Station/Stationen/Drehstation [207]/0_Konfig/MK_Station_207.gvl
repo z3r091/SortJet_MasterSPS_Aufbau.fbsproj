@@ -51,7 +51,8 @@ VAR_GLOBAL
                                                                       ),
                                                  // stAnlegetisch
                                                  // stEckuebergabe
-                                                 stDrehstation   :=  ( bDrehpositionenVomMMI                     := FALSE ),  // TRUE: Drehpositionen aus den MMI-Auftragsdaten; FALSE: aus der Stationskonfiguration [aEintransporte/aAustransporte]
+                                                 stDrehstation   :=  ( bDrehpositionenVomMMI                     := FALSE,            // TRUE: Drehpositionen aus den MMI-Auftragsdaten; FALSE: aus der Stationskonfiguration [aEintransporte/aAustransporte]
+                                                                       wStandardTransferstation                  := cSTATION_206 ),   // Systemcheck (Drehpositionen nicht vom MMI): Transferstation, wenn die Auftragsdaten 0 enthalten
                                                  bVorAbKomponentenAnsteuerung              := FALSE,                         // VorAbKomponentenAnsteuerung Auftraege werden bearbeitet
                                                  bVerstellungEinAusGefahrenLogikDrehen     := FALSE,                         // Verstellung: Logik ein-/ausgefahren gedreht
                                                  bLangsamfahrtNockenQuerfahrtAktivieren    := FALSE,                         // Querfahrt: Langsamfahrt-Nocken auswerten
