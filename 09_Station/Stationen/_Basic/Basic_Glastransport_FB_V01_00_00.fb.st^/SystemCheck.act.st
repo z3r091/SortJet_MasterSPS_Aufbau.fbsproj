@@ -204,12 +204,12 @@ IF ( bpCheck ) THEN
             Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberEinlauf;
             Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor2;
           ELSE
-            Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberEinlauf;
+            Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberEinlauf;
             Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor2;
           END_IF
         ELSE
           IF ( NOT bpSensorEinlauf ) THEN
-            Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberEinlaufEintransport;
+            Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberEinlaufEintransport;
             Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
           ELSE
             Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberEinlaufEintransport;
@@ -1035,18 +1035,23 @@ IF ( bpCheck ) THEN
       END_IF
 
       IF bpOptionNachSystemcheckAufAuslaufsensor THEN
-        // Langsam fahren, damit der Sensor nicht überfahren wird // TODO TESTEN
+        // Langsam fahren, damit der Sensor nicht überfahren wird
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
         IF bpSensorAuslauf THEN
           Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberEinlauf;
           Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor2;
         ELSE
-          Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberEinlauf;
+          Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberEinlauf;
           Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor2;
         END_IF
       ELSE
-        Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberEinlaufEintransport;
-        Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
+        IF ( NOT bpSensorEinlauf ) THEN
+          Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberEinlaufEintransport;
+          Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
+        ELSE
+          Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberEinlaufEintransport;
+          Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor1;
+        END_IF
       END_IF
       Antrieb.wpBetriebsart     := RESTWEG;
 
