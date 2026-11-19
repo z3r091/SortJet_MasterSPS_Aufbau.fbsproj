@@ -30,7 +30,7 @@ VAR_GLOBAL
                                                  bStationIstShuttle := FALSE                                               // Station ist ein Shuttle
                                                ),
       stStationsOptionen                    := ( stSystemcheck :=  ( bScheibenVermessenSystemCheck               := TRUE,  // Scheiben im Systemcheck vermessen
-                                                                     bScheibeNachSystemcheckAufAuslauf           := FALSE, // Scheibe nach dem Systemcheck auf den Auslaufsensor fahren
+                                                                     bScheibeNachSystemcheckAufAuslauf           := TRUE,  // Scheibe nach dem Systemcheck auf den Auslaufsensor fahren
                                                                      bSystemCheckMitVorgaengerBatchTransport     := FALSE, // derzeit ohne Funktion
                                                                      bSystemCheckMitNachfolgerBatchTransport     := FALSE, // derzeit ohne Funktion
                                                                      bOptionSystemCheckScheibeMittigLegen        := FALSE  // derzeit ohne Funktion

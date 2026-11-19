@@ -29,7 +29,7 @@ VAR_GLOBAL
                                  wNachfolgerStation := cSTATION_206,                                                  // Station nach dieser Station (cSTATION_DYNAMISCH bei mehreren)
                                  bStationIstShuttle := FALSE ),                                                       // Station ist ein Shuttle
       stStationsOptionen    := ( stSystemcheck     := ( bScheibenVermessenSystemCheck           := FALSE,             // Scheiben im Systemcheck vermessen
-                                                        bScheibeNachSystemcheckAufAuslauf       := FALSE,             // Scheibe nach dem Systemcheck auf den Auslaufsensor fahren
+                                                        bScheibeNachSystemcheckAufAuslauf       := TRUE,              // Scheibe nach dem Systemcheck auf den Auslaufsensor fahren
                                                         bSystemCheckMitVorgaengerBatchTransport := FALSE,             // derzeit ohne Funktion
                                                         bSystemCheckMitNachfolgerBatchTransport := FALSE,             // derzeit ohne Funktion
                                                         bOptionSystemCheckScheibeMittigLegen    := FALSE ),           // derzeit ohne Funktion
