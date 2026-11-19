@@ -178,7 +178,15 @@ IF ( bpCheck ) THEN
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
 
-        Antrieb.rpZielposition    := ppParameterBaustein.rWegUeberSensorSystemCheck;
+        (* Hinweis:
+           - Mit Scheibenmessung bleibt die Scheibe auf dem Einlaufsensor stehen (die Messung braucht den belegten Einlaufsensor)
+           - Ohne Scheibenmessung wird der Einlaufsensor freigefahren
+        *)
+        IF ( bpMessungSystemCheckAktiv AND NOT pAuftrag.bModell ) THEN
+          Antrieb.rpZielposition  := - ppParameterBaustein.rWegUeberSensorSystemCheck;
+        ELSE
+          Antrieb.rpZielposition  := ppParameterBaustein.rWegUeberSensorSystemCheck;
+        END_IF
         Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
         Antrieb.wpBetriebsart     := RESTWEG;
 
@@ -187,21 +195,30 @@ IF ( bpCheck ) THEN
       ELSE
         bpStationBelegt := TRUE;
 
-        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
+        (* Hinweis:
+           - Mit Scheibenmessung liegt die Scheibe schon auf dem Einlaufsensor: nicht freifahren
+        *)
+        IF ( bpMessungSystemCheckAktiv AND NOT pAuftrag.bModell ) THEN
+          steplCheck := STEP_100_E;
 
-        IF ( bpSensorEinlaufVorab ) THEN
-          Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
         ELSE
-          Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
+          rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
+
+          IF ( bpSensorEinlaufVorab ) THEN
+            Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
+          ELSE
+            Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
+          END_IF
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+
+          Antrieb.rpZielposition    := ppParameterBaustein.rWegUeberEinlauf;
+          Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor1;
+          Antrieb.wpBetriebsart     := RESTWEG;
+
+          steplCheck := STEP_40_E;
+
         END_IF
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-
-        Antrieb.rpZielposition    := ppParameterBaustein.rWegUeberEinlauf;
-        Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor1;
-        Antrieb.wpBetriebsart     := RESTWEG;
-
-        steplCheck := STEP_40_E;
 
       END_IF
 
