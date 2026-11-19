@@ -28,9 +28,13 @@ starrStationBasisParameter[cSTATION_206].stParameterStationskomponenten.stKippen
 // Eintransport von der Eckuebergabe 204
 starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aEintransporte.Station[cSTATION_204]                  := Vorwaertig;
 starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[cSTATION_204]            := eGlastransport_AufAuslaufVorab;
+starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aEintransporte.Kippen[cSTATION_204]                   := eKippen_Position_0Grad;
+starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aEintransporte.KippenNachEintransport[cSTATION_204]   := eKippen_Position_84Grad;
 starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_204] := TRUE;
 
 // Austransport an die Drehstation 207
 starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aAustransporte.Station[cSTATION_207]                  := Vorwaertig;
+starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aAustransporte.Kippen[cSTATION_207]                   := eKippen_Position_84Grad;
+starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aAustransporte.KippenNachAustransport[cSTATION_207]   := eKippen_Position_0Grad;
 starrStationBasisParameter[cSTATION_206].stMKs.stSchnittstellendaten.aAustransporte.bStationQuittiertScheibe[cSTATION_207] := FALSE;
 END_ACTION
