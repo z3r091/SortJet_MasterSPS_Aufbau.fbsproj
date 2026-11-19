@@ -26,7 +26,7 @@ starrStationBasisParameter[cSTATION_207].stParameterStationskomponenten.stQuerfa
    - Zuweisung der Transportrichtungen im Automatik-Betrieb für die Glastransporte
    - Drehpositionen der Drehstation:
        90 Grad      -> Anlegewand 208
-       0 / 180 Grad -> Kipptisch 206 / Shuttle 101 (180 Grad = bisherige 90-Grad-Position, 0 Grad = um 180 Grad gedreht)
+       0 / 180 Grad -> Kipptisch 206 / Shuttle 101 (0 Grad = bisherige 90-Grad-Position, 180 Grad = um 180 Grad gedreht)
    - Drehpositionen kommen vom MMI (bDrehpositionenVomMMI = TRUE), daher hier keine Drehen-Eintraege
      (Drehen / DrehenNachEintransport / DrehenNachAustransport).
      ACHTUNG: Wird bDrehpositionenVomMMI auf FALSE gesetzt, muessen die Drehen-Eintraege hier wieder ergaenzt werden,
@@ -41,7 +41,7 @@ starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintranspo
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.Kippen[cSTATION_208]                   := eKippen_Position_84Grad;
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.KippenNachEintransport[cSTATION_208]   := eKippen_Position_90Grad;
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.Drehen[cSTATION_208]                   := eDrehPosition90Grad;
-starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.DrehenNachEintransport[cSTATION_208]   := eDrehPosition180Grad;
+starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.DrehenNachEintransport[cSTATION_208]   := eDrehPosition0Grad;
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_208] := TRUE;
 
 // Eintransport vom Kipptisch 206 (Drehposition 0 / 180 Grad, vom MMI)
@@ -49,15 +49,15 @@ starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintranspo
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[cSTATION_206]            := eGlastransport_AufAuslaufVorab;
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.Kippen[cSTATION_206]                   := eKippen_Position_84Grad;
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.KippenNachEintransport[cSTATION_206]   := eKippen_Position_90Grad;
-starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.Drehen[cSTATION_206]                   := eDrehPosition180Grad;
-starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.DrehenNachEintransport[cSTATION_206]   := eDrehPosition180Grad;
+starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.Drehen[cSTATION_206]                   := eDrehPosition0Grad;
+starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.DrehenNachEintransport[cSTATION_206]   := eDrehPosition0Grad;
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[cSTATION_206] := TRUE;
 
 // Austransport an das Shuttle 101 (Drehposition 0 / 180 Grad, vom MMI)
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aAustransporte.Station[cSHUTTLE_101]                  := Vorwaertig;
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aAustransporte.Kippen[cSHUTTLE_101]                   := eKippen_Position_90Grad;
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aAustransporte.KippenNachAustransport[cSHUTTLE_101]   := eKippen_Position_84Grad;
-starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aAustransporte.Drehen[cSHUTTLE_101]                   := eDrehPosition180Grad;
-starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aAustransporte.DrehenNachAustransport[cSHUTTLE_101]   := eDrehPosition180Grad;
+starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aAustransporte.Drehen[cSHUTTLE_101]                   := eDrehPosition0Grad;
+starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aAustransporte.DrehenNachAustransport[cSHUTTLE_101]   := eDrehPosition0Grad;
 starrStationBasisParameter[cSTATION_207].stMKs.stSchnittstellendaten.aAustransporte.bStationQuittiertScheibe[cSHUTTLE_101] := FALSE;
 END_ACTION

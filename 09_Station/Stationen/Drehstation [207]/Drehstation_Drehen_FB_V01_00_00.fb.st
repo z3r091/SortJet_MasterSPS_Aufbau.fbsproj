@@ -184,13 +184,9 @@ tonlFreigabeErhalten( IN := bpFreigabe, PT := T#1s );
 (* Hinweis:
    - Betriebstypen
      => AbsolutPositionierung:;
-   - Positionieren mit Zielvorgabe
-     => AutarkePositionierung
-   - Positionierung ohen Zielvorgabe
 *)
 AbsolutPositionierung();
 
-//AutarkePositionierung();
 (* Hinweis:
    - Basis- Aktion
 *)

@@ -21,7 +21,7 @@ Glastransport( stStationsNummern                       := BasisStationsParameter
                bpOptionMasterSlaveTransport            := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bTransportMasterSlaveAustransport,
                bpOptionAustransportISOLinie            := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bAustransportISOLinie,
                bpOptionScheibenmessungEintransport     := BasisStationsParameter.stMKs.stStationsOptionen.stGlastransport.bScheibenmessungEintransport,
-               bpOptionNachSystemcheckAufAuslaufsensor := BasisStationsParameter.stMKs.stStationsOptionen.stSystemcheck.bScheibeNachSystemcheckAufAuslauf,
+               bpOptionNachSystemcheckAufAuslaufsensor := blNachSystemcheckAufAuslauf,
                bpOptionSlaveAntrieb                    := BasisStationsParameter.stMKs.stStationsAufbau.bSlaveAntrieb );
 
 // Drehen

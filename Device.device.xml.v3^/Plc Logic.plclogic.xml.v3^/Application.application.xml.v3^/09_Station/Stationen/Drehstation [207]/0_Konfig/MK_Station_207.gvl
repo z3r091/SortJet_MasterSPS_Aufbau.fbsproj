@@ -139,12 +139,12 @@ VAR_GLOBAL
     (
       tZeitAntriebsfreigabeErhalten        := T#180S,               // [ms \ s] Energieeinsparrung: Zeiteinheit nach der die Antriebsfreigabe entzogen werden soll wenn keine Aktion ansteht [1 s = 1000 ms ]
       rToleranz                            :=    0.1,               // Toleranz beim Entscheiden der aktuellen Position
-      rDrehposition_0_Grad                 :=   2.83,               // Drehposition fuer die 0 Grad   -> Shuttle 101 / Kipptisch 206 (gedreht). TODO: einmessen (errechnet: 90 Grad - 439.78)
+      rDrehposition_0_Grad                 := 880.87,               // Drehposition fuer die 0 Grad   -> Shuttle 101 / Kipptisch 206 (bisher 90 Grad)
       rDrehposition_90_Grad                :=    441,               // Drehposition fuer die 90 Grad  -> Anlegewand 208 (bisher 0 Grad)
-      rDrehposition_180_Grad               := 880.87,               // Drehposition fuer die 180 Grad -> Shuttle 101 / Kipptisch 206 (bisher 90 Grad)
+      rDrehposition_180_Grad               :=   2.83,               // Drehposition fuer die 180 Grad -> Shuttle 101 / Kipptisch 206 (gedreht). TODO: einmessen (errechnet: 90 Grad - 439.78)
       rDrehposition_270_Grad               :=      0,               // Drehposition fuer die 270 Grad
       bArretierung                         :=    TRUE,              // Arretierung vorhanden
-      eZielDrehpositionLeer                := eDrehPosition180Grad, // derzeit ohne Funktion
+      eZielDrehpositionLeer                := eDrehPosition0Grad,   // derzeit ohne Funktion
       astKippenJeDrehposition              := [ ( eKippenOhneLetzteScheibe := eKippen_Position_84Grad,     // [0]   0 Grad -> Shuttle 101 / Kipptisch 206 (TODO: ohne Letzte Scheibe spaeter 90 Grad)
                                                   eKippenMitLetzterScheibe := eKippen_Position_90Grad ),
                                                 ( eKippenOhneLetzteScheibe := eKippen_Position_84Grad,     // [1]  90 Grad -> Anlegewand 208

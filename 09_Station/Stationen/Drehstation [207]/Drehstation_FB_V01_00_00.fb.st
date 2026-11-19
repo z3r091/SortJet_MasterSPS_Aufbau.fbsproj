@@ -26,6 +26,8 @@ VAR
   blGeblaeseAktiv                    : BOOL;
   blUpdateTimer                      : BOOL;
   blAktionImFehler                   : BOOL; // Eine der wandweisen Aktionen steht im Fehler
+  blNachSystemcheckAufAuslauf        : BOOL; // Systemcheck: Scheibe nach dem Systemcheck auf den Auslaufsensor (MK und Zielposition)
+  blCheckRueckwaertig                : BOOL; // Systemcheck: Transport der Zielposition ist rueckwaertig (aus der Zuweisung)
 
   // TRIGGER
   rtlAutomatikActiv                  : R_TRIG;

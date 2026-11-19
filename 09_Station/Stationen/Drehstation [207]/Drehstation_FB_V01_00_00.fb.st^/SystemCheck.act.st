@@ -76,6 +76,41 @@ IF( blBetriebartCheck )THEN
       // - n/c
       // ---------------------------------------------------------------------------------------
 
+      (* Hinweis:
+         - Zielposition und Transportrichtung der Drehstation vor dem Glastransport bestimmen, da sie die Ablage der Scheibe bestimmen
+         - Transferstation aus den Auftragsdaten, 0 => Standard-Transferstation aus der MK
+         - Die Transportrichtung kommt aus der Stationszuweisung (Station[x] der Ein- bzw. Austransporte) der Transferstation
+         - Die Zielposition kommt vom MMI (bDrehpositionenVomMMI) oder aus der Stationszuweisung (Drehen[x])
+      *)
+      wlCheckTransferstation := BasisStationsParameter.pAuftrag[cWAND_1].wTransferstationsNr1;
+      IF ( wlCheckTransferstation = 0 ) THEN
+        wlCheckTransferstation := BasisStationsParameter.stMKs.stStationsOptionen.stDrehstation.wStandardTransferstation;
+      END_IF
+
+      blCheckRueckwaertig := FALSE;
+      Drehen.epZielPosition := eDrehPositionUndefiniert;
+
+      IF ( wlCheckTransferstation >= cERSTES_SHUTTLE ) AND ( wlCheckTransferstation <= cLETZTE_FREMDANLAGE_EINLAUF ) THEN
+        IF ( BasisStationsParameter.stMKs.stSchnittstellendaten.aEintransporte.Station[wlCheckTransferstation] <> TransportRichtung_EN.Default ) THEN
+          Drehen.epZielPosition := BasisStationsParameter.stMKs.stSchnittstellendaten.aEintransporte.Drehen[wlCheckTransferstation];
+          blCheckRueckwaertig   := ( BasisStationsParameter.stMKs.stSchnittstellendaten.aEintransporte.Station[wlCheckTransferstation] = TransportRichtung_EN.Rueckwaertig );
+        ELSIF ( BasisStationsParameter.stMKs.stSchnittstellendaten.aAustransporte.Station[wlCheckTransferstation] <> TransportRichtung_EN.Default ) THEN
+          Drehen.epZielPosition := BasisStationsParameter.stMKs.stSchnittstellendaten.aAustransporte.Drehen[wlCheckTransferstation];
+          blCheckRueckwaertig   := ( BasisStationsParameter.stMKs.stSchnittstellendaten.aAustransporte.Station[wlCheckTransferstation] = TransportRichtung_EN.Rueckwaertig );
+        END_IF
+      END_IF
+
+      IF ( BasisStationsParameter.stMKs.stStationsOptionen.stDrehstation.bDrehpositionenVomMMI ) THEN
+        Drehen.epZielPosition := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rStationsZielposition);
+      END_IF
+
+      (* Hinweis:
+         - MK bScheibeNachSystemcheckAufAuslauf: Scheibe bleibt in Transportrichtung vorne (TRUE) oder hinten (FALSE) liegen
+         - Physischer Sensor: bei rueckwaertigem Transport vertauschen sich vorne und hinten
+      *)
+      blNachSystemcheckAufAuslauf := BasisStationsParameter.stMKs.stStationsOptionen.stSystemcheck.bScheibeNachSystemcheckAufAuslauf
+                                     XOR blCheckRueckwaertig;
+
       Glastransport.bpCheckMitNachfolger := BasisStationsParameter.bCheckMitNachfolger[cWAND_1];
       Glastransport.bpCheckMitVorgaenger := BasisStationsParameter.bCheckMitVorgaenger[cWAND_1];
 
@@ -122,27 +157,6 @@ IF( blBetriebartCheck )THEN
          - Pruefen ob die Station steht wo sie stehen soll
          - Wenn vom MMI -1 kommt (d. h. das MMI hat auf der Station keine Scheiben oder keine Drehpos für die Scheiben) muss das umgewandelt werden!
       *)
-      IF ( BasisStationsParameter.stMKs.stStationsOptionen.stDrehstation.bDrehpositionenVomMMI ) THEN
-        Drehen.epZielPosition := REAL_TO_WORD(BasisStationsParameter.pAuftrag[cWAND_1].rStationsZielposition);
-      ELSE
-        (* Hinweis:
-           - Drehposition aus der Stationskonfiguration anhand der Transferstation der Auftragsdaten
-           - Transferstation 0 => Standard-Transferstation aus der MK
-        *)
-        wlCheckTransferstation := BasisStationsParameter.pAuftrag[cWAND_1].wTransferstationsNr1;
-        IF ( wlCheckTransferstation = 0 ) THEN
-          wlCheckTransferstation := BasisStationsParameter.stMKs.stStationsOptionen.stDrehstation.wStandardTransferstation;
-        END_IF
-
-        Drehen.epZielPosition := eDrehPositionUndefiniert;
-        IF ( wlCheckTransferstation >= cERSTES_SHUTTLE ) AND ( wlCheckTransferstation <= cLETZTE_FREMDANLAGE_EINLAUF ) THEN
-          IF ( BasisStationsParameter.stMKs.stSchnittstellendaten.aEintransporte.Station[wlCheckTransferstation] <> TransportRichtung_EN.Default ) THEN
-            Drehen.epZielPosition := BasisStationsParameter.stMKs.stSchnittstellendaten.aEintransporte.Drehen[wlCheckTransferstation];
-          ELSIF ( BasisStationsParameter.stMKs.stSchnittstellendaten.aAustransporte.Station[wlCheckTransferstation] <> TransportRichtung_EN.Default ) THEN
-            Drehen.epZielPosition := BasisStationsParameter.stMKs.stSchnittstellendaten.aAustransporte.Drehen[wlCheckTransferstation];
-          END_IF
-        END_IF
-      END_IF
       tonlCheckWarteFreigabe( IN := FALSE );
 
       (* Hinweis:
