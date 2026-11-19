@@ -20,6 +20,8 @@ VAR
   pAchse        : POINTER TO VisuUeb_Achse_ST;
   pInit         : POINTER TO BOOL;
   pMin, pMax    : POINTER TO REAL;
+  rQuerMin      : REAL;
+  rQuerMax      : REAL;
   bDummy        : BOOL;
   wIdx          : WORD;
   sNr           : STRING(5);
@@ -168,6 +170,15 @@ VISU_UEBERSICHT.st208.dwInfo1Farbe := SEL(abgStationsstatusVisu[208].bMessachseF
 VISU_UEBERSICHT.st208.sInfo2 := CONCAT('Ampel ', SEL(abgStationsstatusVisu[208].bAmpelRot, SEL(abgStationsstatusVisu[208].bAmpelGruen, 'aus', 'grün'), 'rot'));
 
 // [101] / [102] Shuttle
+// Beide Querfahrten gehoeren zum selben Koordinatensystem: gemeinsamer Darstellungsbereich,
+// damit gleiche Position = gleiche Hoehe in der Visu (Bereich der Vorrunde)
+IF VISU_UEBERSICHT.bSkalierung101Init AND VISU_UEBERSICHT.bSkalierung102Init THEN
+  rQuerMin := MIN(VISU_UEBERSICHT.rMin101, VISU_UEBERSICHT.rMin102);
+  rQuerMax := MAX(VISU_UEBERSICHT.rMax101, VISU_UEBERSICHT.rMax102);
+ELSE
+  rQuerMin := 0.0;
+  rQuerMax := 0.0;
+END_IF
 FOR wIdx := 101 TO 102 DO
   IF wIdx = 101 THEN
     pKarte := ADR(VISU_UEBERSICHT.st101); pAchse := ADR(VISU_UEBERSICHT.stAchse101); sTitel := '101  Shuttle';
@@ -215,7 +226,9 @@ FOR wIdx := 101 TO 102 DO
                  bMinEnd         := abgStationsstatusVisu[wIdx].bQuerfahrtMinEndschalter,
                  bMaxEnd         := abgStationsstatusVisu[wIdx].bQuerfahrtMaxEndschalter,
                  bNeuLernen      := bLernen,
-                 bBlink          := bBlink);
+                 bBlink          := bBlink,
+                 rSkalaMin       := rQuerMin,
+                 rSkalaMax       := rQuerMax);
   pKarte^.sInfo2 := pAchse^.sIstPos;
   pKarte^.sInfo3 := pAchse^.sZielPos;
 END_FOR

@@ -23,11 +23,14 @@ VAR_INPUT
   bMaxEnd         : BOOL;
   bNeuLernen      : BOOL;
   bBlink          : BOOL;
+  rSkalaMin       : REAL;  // gemeinsamer Darstellungsbereich mehrerer Achsen (Max <= Min: eigener Bereich)
+  rSkalaMax       : REAL;
 END_VAR
 VAR
   rSpanne : REAL;
   rFaktor : REAL;
   iWeg    : INT;
+  rDarstMin : REAL;
 END_VAR
 // Skalierung lernen (nur mit gueltiger Referenz)
 IF bNeuLernen THEN
@@ -47,12 +50,18 @@ IF bReferenziert THEN
   END_IF
 END_IF
 
-rSpanne := MAX(rMax - rMin, VISU_UEBERSICHT.cMIN_SPANNE_MM);
+IF rSkalaMax > rSkalaMin THEN
+  rDarstMin := rSkalaMin;
+  rSpanne   := MAX(rSkalaMax - rSkalaMin, VISU_UEBERSICHT.cMIN_SPANNE_MM);
+ELSE
+  rDarstMin := rMin;
+  rSpanne   := MAX(rMax - rMin, VISU_UEBERSICHT.cMIN_SPANNE_MM);
+END_IF
 iWeg    := VISU_UEBERSICHT.cBAHN_LAENGE_PX - VISU_UEBERSICHT.cWAGEN_LAENGE_PX;
 
-rFaktor := LIMIT(0.0, (rIst - rMin) / rSpanne, 1.0);
+rFaktor := LIMIT(0.0, (rIst - rDarstMin) / rSpanne, 1.0);
 stAchse.iPixel := REAL_TO_INT(rFaktor * INT_TO_REAL(iWeg));
-rFaktor := LIMIT(0.0, (rZiel - rMin) / rSpanne, 1.0);
+rFaktor := LIMIT(0.0, (rZiel - rDarstMin) / rSpanne, 1.0);
 stAchse.iZielPixel := REAL_TO_INT(rFaktor * INT_TO_REAL(iWeg));
 
 stAchse.rIstPos         := rIst;
