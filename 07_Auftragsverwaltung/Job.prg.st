@@ -25,9 +25,9 @@ VAR
   wlIndexAK                 : WORD := 0; // Ampel blau: Automatikkreis der Station (Index)
   wlAK                      : WORD := 0; // Ampel blau: Automatikkreis der Station
   wlIndexStationen          : WORD := 0;
-  wlIndexSeite              : WORD := 0; // Automatikkreis-Index der Seiten eines Transfershuttles
   wIndexReset               : WORD := 0;
   wIndexCheck               : WORD := 0;
+  wlIndexSeite              : WORD := 0; // Automatikkreis-Index der Seiten eines Transfershuttles
 
   // LREAL
   lrlAktuelleZeit : LREAL;
