@@ -267,7 +267,9 @@ FOR wIdx := 151 TO 152 DO
                  bMinEnd         := abgStationsstatusVisu[wIdx].bQuerfahrtMinEndschalter,
                  bMaxEnd         := abgStationsstatusVisu[wIdx].bQuerfahrtMaxEndschalter,
                  bNeuLernen      := bLernen,
-                 bBlink          := bBlink);
+                 bBlink          := bBlink,
+                 rSkalaMin       := 0.0,
+                 rSkalaMax       := 0.0);
   pKarte^.sInfo2 := pAchse^.sIstPos;
   pKarte^.sInfo3 := CONCAT(CONCAT(pAchse^.sZielPos, '   '), pAchse^.sSpeed);
 END_FOR
