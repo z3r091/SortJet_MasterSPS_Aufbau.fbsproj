@@ -26,7 +26,21 @@ FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
 
   FOR wlIndexStationen := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
     IF starrTransferShuttleBasisParameter[wlIndexStationen].bFehler AND StationInAutomatikkreis(starrTransferShuttleBasisParameter[wlIndexStationen].stMKs.eaAutomatikkreis, wlIndex) THEN
-      ablFehlerAktiv[wlIndex] := TRUE;
+      (* Hinweis:
+         - Ein TS mit 2 Automatikkreisen hat je Seite einen eigenen Fehler (AutomatikFehlerTransfershuttleSetzen):
+           nur der Automatikkreis der betroffenen Seite gilt als fehlerhaft
+         - Ist in keinem seiner Automatikkreise ein Fehler gesetzt, gilt der Fehler fuer alle seine Automatikkreise
+      *)
+      blTsSeiteFehlerGesetzt := FALSE;
+      FOR wlIndexSeite := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
+        IF StationInAutomatikkreis(starrTransferShuttleBasisParameter[wlIndexStationen].stMKs.eaAutomatikkreis, wlIndexSeite) AND Job_Shuttle.abpFehler[wlIndexSeite] THEN
+          blTsSeiteFehlerGesetzt := TRUE;
+        END_IF
+      END_FOR
+
+      IF NOT blTsSeiteFehlerGesetzt OR Job_Shuttle.abpFehler[wlIndex] THEN
+        ablFehlerAktiv[wlIndex] := TRUE;
+      END_IF
     END_IF
   END_FOR
 

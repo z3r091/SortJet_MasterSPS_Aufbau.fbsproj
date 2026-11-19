@@ -12,6 +12,7 @@ VAR
   blMerkerMmiNichtOk        : BOOL;
   blMerkerNachrichtabsetzen : BOOL;
   blSendJobStatus           : BOOL;
+  blTsSeiteFehlerGesetzt    : BOOL; // Fehler-Seite eines Transfershuttles in abpFehler gesetzt
   ablFehlerAktiv            : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
 
   // WORD
@@ -24,6 +25,7 @@ VAR
   wlIndexAK                 : WORD := 0; // Ampel blau: Automatikkreis der Station (Index)
   wlAK                      : WORD := 0; // Ampel blau: Automatikkreis der Station
   wlIndexStationen          : WORD := 0;
+  wlIndexSeite              : WORD := 0; // Automatikkreis-Index der Seiten eines Transfershuttles
   wIndexReset               : WORD := 0;
   wIndexCheck               : WORD := 0;
 
