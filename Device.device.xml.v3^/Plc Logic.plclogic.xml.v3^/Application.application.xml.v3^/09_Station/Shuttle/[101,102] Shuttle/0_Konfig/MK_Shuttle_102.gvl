@@ -20,7 +20,7 @@ VAR_GLOBAL
                                              NummerSPS    := 102 ),                                                                                     // Stationsnummer SPS-intern (Indizes)
       bDeaktivieren                     := FALSE,                                                                                                        // Station deaktiviert (keine Auftraege, keine Referenzfahrt)
       wMeldungsNummer                   := 650,                                                                                                         // Basis-Meldungsnummer (WatchIO)
-      eStationsTyp                      := eInputshuttle,                                                                                               // Typ der Station
+      eStationsTyp                      := eOutputshuttle,                                                                                               // Typ der Station
       eaAutomatikkreis                  := [eAutomatikkreis_2],                                                                                         // Automatikkreise, zu denen die Station gehoert
       eaSicherheitskreis                := [eSicherheitskreis_1],                                                                                       // Sicherheitskreise, in die die Station eingebunden ist
       // astSicherheitskreisTeilabschaltung
@@ -143,8 +143,8 @@ VAR_GLOBAL
 apgMKShuttle102Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_ShuttleGlastransport := [
   (
     rLaengeStation                    := 2800, // Länge der Station
-    rScheibenabstand                  := 300,  // Der Abstand zwischen zwei Scheiben auf der Station
-    rWegUeberEinlauf                  := 250,  // Weg ueber den Einlaufsensor hinaus [mm]
+    rScheibenabstand                  := 450,  // Der Abstand zwischen zwei Scheiben auf der Station
+    rWegUeberEinlauf                  := 320,  // Weg ueber den Einlaufsensor hinaus [mm]
     rWegUeberEinlaufRueck             := 50,   // So weit soll ueber den Einlaufsensor gefahren werden
     rUeberwachungEinlaufsensor        := 500,  // Der Abstand vom Auslaufsensor der Vorgängerstation zum Einlaufsensor
     rWegUeberAuslauf                  := 50,   // Weg ueber den Auslaufsensor hinaus [mm]
@@ -205,9 +205,9 @@ apgMKShuttle102Kippen : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Kippen := [
       bGlasRueckhalterEinlaufVorhanden             := FALSE,                // Glasrueckhalter Einlaufseite vorhanden (sonst Ausgang aus, gilt als eingefahren)
       bGlasRueckhalterAuslaufVorhanden             :=  TRUE,                // Glasrueckhalter Auslaufseite vorhanden (sonst Ausgang aus, gilt als eingefahren)
       rGrundstellungsPosition_Einlauf              :=    25,                // Grundstellung [Home-Position] Greiferseite Einlauf
-      rGrundstellungsPosition_Auslauf              :=  2070,                // Grundstellung [Home-Position] Greiferseite Auslauf
+      rGrundstellungsPosition_Auslauf              :=  1780,                // Grundstellung [Home-Position] Greiferseite Auslauf
       rGrundstellungsPosition_EinlaufEintransport  :=    25,                // Vorabposition vor einem Eintransport ueber die Einlaufseite
-      rGrundstellungsPosition_AuslaufEintransport  :=  2070,                // Vorabposition vor einem Eintransport ueber die Auslaufseite
+      rGrundstellungsPosition_AuslaufEintransport  :=  1780,                // Vorabposition vor einem Eintransport ueber die Auslaufseite
       rUebergabePosition_Einlauf                   :=    25,                // Position, bis zu der die Scheibe in den Faecherwagen geschoben wird [Einlaufseite]
       rUebernahmePosition_Einlauf                  :=    25,                // Position, an der die Scheibe im Faecherwagen gegriffen wird [Einlaufseite]
       rUebergabePosition_Auslauf                   :=  2350,                // Position, bis zu der die Scheibe in den Faecherwagen geschoben wird [Auslaufseite]

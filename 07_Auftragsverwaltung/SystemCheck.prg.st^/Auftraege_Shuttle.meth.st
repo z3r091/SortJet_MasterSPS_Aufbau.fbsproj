@@ -22,19 +22,24 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
       CASE starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].wTransferstationsNr1 OF
 
         cERSTE_STATION..cLETZTE_STATION:
-          starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport := eGlastransport_AufAuslauf;
-          starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Position_84Grad;
+          starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport := eGlastransport_AufEinlaufVorab;
+          starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Position_90Grad;
           Auftraege_Shuttle := TRUE;
 
-          cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE,
-            cSPEICHER_1..cSPEICHER_2:
+        cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE,
+        cSPEICHER_1..cSPEICHER_2:
           starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport := eGlastransport_AufAuslauf;
           starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Position_90Grad;//1.5
           Auftraege_Shuttle := TRUE;
 
+        cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR:
+          starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport := eGlastransport_AufAuslauf;
+          starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Position_90Grad;
+          Auftraege_Shuttle := TRUE;
+
         ELSE
           starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport := eGlastransport_AufAuslauf;
-          starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Default;
+          starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Position_90Grad;
           Auftraege_Shuttle := TRUE;
 
       END_CASE
@@ -42,20 +47,25 @@ FOR wlIndex := cERSTES_SHUTTLE TO cLETZTES_SHUTTLE DO
     ELSIF starrShuttleBasisParameter[wlIndex].stMKs.eStationsTyp = eOutputshuttle THEN//103,104
       CASE starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].wTransferstationsNr1 OF
 
-          cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE,
-            cSPEICHER_1:
+        cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE,
+        cSPEICHER_1:
           starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport := eGlastransport_AufEinlaufVorab;
           starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Position_90Grad;//1.5
           Auftraege_Shuttle := TRUE;
 
         cERSTE_STATION..cLETZTE_STATION:
           starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport := eGlastransport_AufAuslauf;
-          starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Position_84Grad;
+          starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Position_90Grad;
+          Auftraege_Shuttle := TRUE;
+
+        cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR:
+          starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport := eGlastransport_AufAuslauf;
+          starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Position_90Grad;
           Auftraege_Shuttle := TRUE;
 
         ELSE
           starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eGlastransport := eGlastransport_AufEinlaufVorab;
-          starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Default;
+          starrShuttleBasisParameter[wlIndex].pAuftrag[cWAND_1].stAuftragsOptionen.eKippen_SollPosition := eKippen_Position_90Grad;
           Auftraege_Shuttle := TRUE;
 
       END_CASE

@@ -33,14 +33,14 @@ starrShuttleBasisParameter[cSHUTTLE_102].stParameterStationskomponenten.stZentra
 
 // Transfershuttle des dynamischen Speichers  zuweisen
 FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
-  starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aEintransporte.Station[wlIndex]                  := Rueckwaertig;
-  starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[wlIndex]            := eGlastransport_Default;
+  starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aEintransporte.Station[wlIndex]                  := Vorwaertig;
+  starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aEintransporte.Glastransport[wlIndex]            := eGlastransport_AufAuslauf;
   starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aEintransporte.Kippen[wlIndex]                   := eKippen_Position_90Grad;
   starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aEintransporte.KippenNachEintransport[wlIndex]   := eKippen_Position_90Grad;
   starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aEintransporte.bStationQuittiertScheibe[wlIndex] := TRUE;
 
-  starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aAustransporte.Station[wlIndex]                  := Vorwaertig;
-  starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aAustransporte.Glastransport[wlIndex]            := eGlastransport_AufAuslauf;
+  starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aAustransporte.Station[wlIndex]                  := Rueckwaertig;
+  starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aAustransporte.Glastransport[wlIndex]            := eGlastransport_AufEinlaufVorab;
   starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aAustransporte.Kippen[wlIndex]                   := eKippen_Position_90Grad;
   starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aAustransporte.KippenNachAustransport[wlIndex]   := eKippen_Position_84Grad;
   starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stSchnittstellendaten.aAustransporte.bStationQuittiertScheibe[wlIndex] := TRUE;
