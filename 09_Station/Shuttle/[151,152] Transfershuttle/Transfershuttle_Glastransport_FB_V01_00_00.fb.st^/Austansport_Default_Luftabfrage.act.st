@@ -227,9 +227,6 @@ THEN
       *)
       Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
-      // Bereit zum Austransport melden, aber nur wenn es nicht mit FW Stationen ist UND kein Master/Slave ist (Austransport ISO relevant, Glasabruf kommt nur wenn Bereit Signal vorhanden)
-      bpOutBereitZumAustransport := NOT IsBetweenWORD(pAuftrag.wTransferstationsNr2, cERSTE_FAECHERWAGENSTATIONS_NR, cLETZTE_FAECHERWAGENSTATIONS_NR) AND NOT bpOptionMasterSlaveAustransport;
-
       IF IsBetweenWORD(pAuftrag.wTransferstationsNr2, cERSTE_FAECHERWAGENSTATIONS_NR, cLETZTE_FAECHERWAGENSTATIONS_NR) THEN
         IF ( InGlasTransportVorgaenger.bBereitZumAustransport AND InGlasTransportNachfolger.bBereitZumEintransport ) THEN
           IF ( pAuftrag.bErsteScheibe ) THEN

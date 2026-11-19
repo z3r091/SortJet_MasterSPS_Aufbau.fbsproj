@@ -116,6 +116,11 @@ IF ( Auftragsdaten.wAuftrag = eStation_Austransport ) THEN
         cERSTES_INPUTSHUTTLE..cLETZTES_INPUTSHUTTLE,
         cERSTES_OUTPUTSHUTTLE..cLETZTES_OUTPUTSHUTTLE:
             IF ( Job_Shuttle.AuftragsdatenWand[wlAustransportstation, Auftragsdaten.wTransferwand].wAuftrag  = eStation_Eintransport ) THEN
+              
+              // Kopplung zur Station herstellen
+              starrTransfershuttleBasisParameter[wStation].InGlasTransportNachfolger[cWAND_1] := starrShuttleBasisParameter[wlAustransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
+              starrTransfershuttleBasisParameter[wStation].InGlasTransportVorgaenger[cWAND_1] := starrShuttleBasisParameter[wlAustransportstation].OutGlasTransport[Auftragsdaten.wTransferwand];
+
               steplSchritt := STEP_20_E;
             END_IF
 
