@@ -18,6 +18,7 @@ VAR
   wlIndex          : WORD;
   wlSubIndex       : WORD;
   wlIndexStationen : WORD;
+  wlStationOhneDaten : WORD; // Externe Stationsnummer der ersten Station ohne Auftragsdaten
 
 END_VAR
 
@@ -101,6 +102,7 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
            => Sicherheitskreise / Druckluft / NotAus etc. okay melden
       *)
       blSystemcheckdatenErhalten := TRUE;
+      wlStationOhneDaten := 0;
 
       FOR wlIndexStationen := cERSTE_STATION TO cLETZTE_STATION DO
         IF ( starrStationBasisParameter[wlIndexStationen].stMKs.eSystemcheckZyklus = wpZyklus )
@@ -109,6 +111,9 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
         THEN
           IF NOT abpStationsDatenErhalten[wlIndexStationen, cWAND_1] THEN
             blSystemcheckdatenErhalten := FALSE;
+            IF ( wlStationOhneDaten = 0 ) THEN
+              wlStationOhneDaten := starrStationBasisParameter[wlIndexStationen].stMKs.stStationsNummern.NummerExtern;
+            END_IF
           END_IF
         END_IF
       END_FOR
@@ -120,6 +125,9 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
         THEN
           IF NOT abpStationsDatenErhalten[wlIndexStationen, cWAND_1] THEN
             blSystemcheckdatenErhalten := FALSE;
+            IF ( wlStationOhneDaten = 0 ) THEN
+              wlStationOhneDaten := starrShuttleBasisParameter[wlIndexStationen].stMKs.stStationsNummern.NummerExtern;
+            END_IF
           END_IF
         END_IF
       END_FOR
@@ -135,6 +143,7 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
       atonlCheckWarteAufMMIDaten[wpAutomatikkreis]( IN :=  TRUE, PT := T#5S);
       IF atonlCheckWarteAufMMIDaten[wpAutomatikkreis].Q THEN
         atonlCheckWarteAufMMIDaten[wpAutomatikkreis]( IN :=  FALSE );
+        wpgFehlerdaten[0] := wlStationOhneDaten;
         SpsError( eFehler_Station,
                   cMELDUNG_SYSTEMCHECK_AUFTRAGSDATEN_TIMEOUT,
                   0,
