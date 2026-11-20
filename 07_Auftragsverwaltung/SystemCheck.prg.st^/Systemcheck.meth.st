@@ -15,9 +15,9 @@ VAR
 
   blSystemcheckdatenErhalten : BOOL;
 
-  wlIndex          : WORD;
-  wlSubIndex       : WORD;
-  wlIndexStationen : WORD;
+  wlIndex            : WORD;
+  wlSubIndex         : WORD;
+  wlIndexStationen   : WORD;
   wlStationOhneDaten : WORD; // Externe Stationsnummer der ersten Station ohne Auftragsdaten
 
 END_VAR

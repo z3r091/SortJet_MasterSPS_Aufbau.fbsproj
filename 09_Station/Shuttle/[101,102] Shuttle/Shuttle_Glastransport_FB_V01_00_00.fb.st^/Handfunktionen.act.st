@@ -11,6 +11,7 @@ ACTION Handfunktionen
 //-------------------------------------------------------------------------------------------------
 IF (  NOT bpAutomatikAktiv
      AND NOT bpCheck
+     AND NOT bpStarteSlaveKopplungGreifer
      AND NOT bpReset
      AND NOT bpFahreReferenz
      AND NOT bgVisuAntriebeVerfahrenAktiv  )

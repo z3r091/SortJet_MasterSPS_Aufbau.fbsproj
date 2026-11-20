@@ -367,6 +367,7 @@ toflAutoAbschaltung( IN := (  bpAutomatikAktiv
                      OR bpHandfahrenMinus
                      OR bpHandfahrenPlus
                      OR bpFahreReferenz
+                     OR bpStarteSlaveKopplungGreifer
                      OR blStarteSlaveKopplung,
                      PT:= tgZeitAutoabschaltungEnergiesparModus );
 

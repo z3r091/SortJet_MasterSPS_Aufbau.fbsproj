@@ -327,7 +327,7 @@ THEN
          - Einlaufsensor belegt
          - Verfahrweg- Ueberwachung
       *)
-      IF ( bpSensorEinlauf ) THEN
+      IF ( bpSensorEinlauf AND bpSensorAuslauf ) THEN
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT;
         steplAustransport := STEP_900_E;
       END_IF

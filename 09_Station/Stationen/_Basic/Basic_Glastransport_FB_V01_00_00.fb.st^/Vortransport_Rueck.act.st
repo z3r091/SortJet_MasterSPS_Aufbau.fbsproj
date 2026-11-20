@@ -24,7 +24,6 @@ THEN
     steplVortransportRueckwaertig := STEP_900_E;
   END_IF
 
-
   // Ausnahmesituation:
   //   - Slave-Kopplung waehrend der Kette verloren
   IF ( NOT blAntriebsKopplungAktiv AND ( steplVortransportRueckwaertig > STEP_0_E ) AND ( steplVortransportRueckwaertig < STEP_900_E ) ) THEN

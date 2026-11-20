@@ -12,7 +12,8 @@ ACTION GlasPositionierungGreifer
 (* Hinweis:
    - Scheibe vor dem Austransport mit dem Greifer um rpWegGlasUebergabeposition ueber den Sensor
      der Greiferseite positionieren (Restwegpositionierung)
-   - Belegter Sensor der Greiferseite wird zuerst frei gefahren
+   - Ist der Sensor der Greiferseite schon belegt, steht die Scheibe durch die Vorab-Ansteuerung
+     bereits in Position: es wird nicht neu positioniert
 *)
 IF (     bpStarteGlasPositionierungGreifer
      AND bpFreigabe
@@ -55,58 +56,23 @@ THEN
     // GLAS POSITIONIEREN GREIFER ==============================
     STEP_10_E:
       (* Hinweis:
-         - Sensor der Greiferseite belegt: zuerst frei fahren
+         - Sensor der Greiferseite belegt: Scheibe steht bereits in Position (Vorab-Ansteuerung)
+         - Sensor frei: Scheibe neu auf den Sensor positionieren
       *)
       rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
       IF (    (     bpGlasPositionierungEinlaufseite AND bpSensorEinlauf )
            OR ( NOT bpGlasPositionierungEinlaufseite AND bpSensorAuslauf ) )
       THEN
-        steplGlasPositionierungGreifer := STEP_20_E;
+        steplGlasPositionierungGreifer := STEP_1000_E;
       ELSE
         steplGlasPositionierungGreifer := STEP_100_E;
       END_IF
 
     // GLAS POSITIONIEREN GREIFER ==============================
-    STEP_20_E:
-      (* Hinweis:
-         - Einlaufseite: in positive Richtung frei fahren, Auslaufseite: in negative Richtung
-      *)
-      IF (    (     bpGlasPositionierungEinlaufseite AND toflEinlaufsensor.Q )
-           OR ( NOT bpGlasPositionierungEinlaufseite AND toflAuslaufsensor.Q ) )
-      THEN
-        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-        IF ( bpGlasPositionierungEinlaufseite ) THEN
-          Antrieb.wpBetriebsart := HANDPLUS;
-        ELSE
-          Antrieb.wpBetriebsart := HANDMINUS;
-        END_IF
-      ELSE
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
-          steplGlasPositionierungGreifer := STEP_100_E;
-        END_IF
-      END_IF
-
-      (* Fehlerbehandlung:
-         - Wegueberwachung
-      *)
-      IF ( ABS( rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition ) > ppParameterBaustein.rWegUeberwachungSensor ) THEN
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        IF ( bpGlasPositionierungEinlaufseite ) THEN
-          wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_NICHT_FREI;
-        ELSE
-          wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_NICHT_FREI;
-        END_IF
-        steplGlasPositionierungGreifer := STEP_900_E;
-      END_IF
-
-    // GLAS POSITIONIEREN GREIFER ==============================
     STEP_100_E:
       (* Hinweis:
-         - Restwegpositionierung ueber den Sensor der Greiferseite
+         - Sensor der Greiferseite frei: Restwegpositionierung ueber den Sensor der Greiferseite
            => Auslaufseite: positiv, steigende Flanke Sensor 2
            => Einlaufseite: negativ, steigende Flanke Sensor 1
       *)

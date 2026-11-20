@@ -30,20 +30,11 @@ CASE asteplSchritt[wlSchrittkette] OF
   STEP_200_E:
     tonlHardwareFreigabe( IN := NOT bpReglerBereit, PT := cTIME_HARDWARE_FREIGABE );
     IF bpReglerBereit THEN // Nur weitermachen wenn der Umrichter bereit ist
-      asteplSchritt[wlSchrittkette] := STEP_300_E;
+      asteplSchritt[wlSchrittkette] := STEP_400_E;
     ELSIF tonlHardwareFreigabe.Q THEN
       asteplSchritt[wlSchrittkette] := STEP_900_E;
       blInternerFehler := TRUE;
       Antriebsfehler.wlBausteinFehlerNr := cKeineHardwareReglerFreigabeBeiPositionierung;
-    END_IF
-
-  STEP_300_E:
-    IF bpIstReferenziert THEN // Nur weitermachen wenn der Umrichter in Referenz meldet
-      asteplSchritt[wlSchrittkette] := STEP_400_E;
-    ELSE
-      asteplSchritt[wlSchrittkette] := STEP_900_E;
-      blInternerFehler := TRUE;
-      Antriebsfehler.wlBausteinFehlerNr := cKeinReferenzpunktBeiPosAbs;
     END_IF
 
   STEP_400_E:

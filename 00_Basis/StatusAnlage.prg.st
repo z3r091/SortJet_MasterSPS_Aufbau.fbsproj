@@ -26,6 +26,8 @@ VAR
   toflDruckluft101_OK              : TOF;
   toflDruckluft102_OK              : TOF;
   toflDruckluftFW_OK               : TOF;
+  toflDruckluftAnlegetisch201_OK   : TOF;
+  toflDruckluftAnlegetisch205_OK   : TOF;
 
 END_VAR
 
@@ -70,23 +72,32 @@ FOR wlIndex := cERSTES_TRANSFERSHUTTLE TO cLETZTES_TRANSFERSHUTTLE DO
                                      PT := ZEIT_DRUCKWAECHTERSIGNAL_ENTPRELLT );
 END_FOR
 
+// Entprellen des Druckwaechters => ANLEGETISCH
+toflDruckluftAnlegetisch201_OK( IN := Globale_Bausteine.Anlegetisch201.in_bDruckluft_OK OR starrStationBasisParameter[cSTATION_201].stMKs.bDeaktivieren OR NOT starrStationBasisParameter[cSTATION_201].stMKs.stStationsAufbau.bDruckluft ,
+                                PT := ZEIT_DRUCKWAECHTERSIGNAL_ENTPRELLT );
+toflDruckluftAnlegetisch205_OK( IN := Globale_Bausteine.Anlegetisch205.in_bDruckluft_OK OR starrStationBasisParameter[cSTATION_205].stMKs.bDeaktivieren OR NOT starrStationBasisParameter[cSTATION_205].stMKs.stStationsAufbau.bDruckluft ,
+                                PT := ZEIT_DRUCKWAECHTERSIGNAL_ENTPRELLT );
+
 toflDruckluft101_OK( In := in_bDruckluft_101_OK, PT := ZEIT_DRUCKWAECHTERSIGNAL_ENTPRELLT );
 toflDruckluft102_OK( In := in_bDruckluft_102_OK, PT := ZEIT_DRUCKWAECHTERSIGNAL_ENTPRELLT );
 toflDruckluftFW_OK( In := in_bDruckluft_FW_OK OR %MX1.1, PT := ZEIT_DRUCKWAECHTERSIGNAL_ENTPRELLT ); // TODO wenn Wartungseinheit verbaut
 
 // Auswertung und hier pruefen ob Betriebsstopp ausgeloest werden muss
-// AK1 = Shuttle-Bereich (101, 102, 151, 152, Faecherwagen)
+// AK1 = Foerderstrecke (201 - 208), Shuttle 101 und die Transfershuttles (151, 152)
 abpDruckluftOK[cAUTOMATIKKREIS_1] := (   ( toflDruckluftShuttleOK[cSHUTTLE_101].Q OR starrShuttleBasisParameter[cSHUTTLE_101].stMKs.bDeaktivieren OR NOT starrShuttleBasisParameter[cSHUTTLE_101].stMKs.stStationsAufbau.bDruckluft )
-                                       AND ( toflDruckluftShuttleOK[cSHUTTLE_102].Q OR starrShuttleBasisParameter[cSHUTTLE_102].stMKs.bDeaktivieren OR NOT starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stStationsAufbau.bDruckluft )
+                                       AND toflDruckluft101_OK.Q
+                                       AND toflDruckluftAnlegetisch201_OK.Q
+                                       AND toflDruckluftAnlegetisch205_OK.Q
                                        AND ( toflDruckluftTSShuttleOK[cSHUTTLE_151].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs.bDeaktivieren)
                                        AND ( toflDruckluftTSShuttleOK[cSHUTTLE_152].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_152].stMKs.bDeaktivieren)
-                                       AND toflDruckluft101_OK.Q
-                                       AND toflDruckluft102_OK.Q
-                                       AND toflDruckluftFW_OK.Q
                                      ) OR bgInbetriebnahmeBit;
 
-// AK2 = Foerderstrecke (201 - 208), keine gemeinsame Druckluftueberwachung
-abpDruckluftOK[cAUTOMATIKKREIS_2] := ( TRUE
+// AK2 = Shuttle 102, Transfershuttles (151, 152) und Faecherwagen (301 - 305)
+abpDruckluftOK[cAUTOMATIKKREIS_2] := (   ( toflDruckluftShuttleOK[cSHUTTLE_102].Q OR starrShuttleBasisParameter[cSHUTTLE_102].stMKs.bDeaktivieren OR NOT starrShuttleBasisParameter[cSHUTTLE_102].stMKs.stStationsAufbau.bDruckluft )
+                                       AND toflDruckluft102_OK.Q
+                                       AND toflDruckluftFW_OK.Q
+                                       AND ( toflDruckluftTSShuttleOK[cSHUTTLE_151].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_151].stMKs.bDeaktivieren)
+                                       AND ( toflDruckluftTSShuttleOK[cSHUTTLE_152].Q OR starrTransfershuttleBasisParameter[cSHUTTLE_152].stMKs.bDeaktivieren)
                                      ) OR bgInbetriebnahmeBit;
 
 
