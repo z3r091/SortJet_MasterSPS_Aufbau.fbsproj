@@ -114,14 +114,6 @@ THEN
         Kippen.bpPositionieren := FALSE;
         bpDrosselklappeOeffnen := TRUE;
 
-        (* Hinweis:
-           - Bewegliche Abschrankung zum Nachfolger oeffnen (einfahren)
-        *)
-        IF ( blMitAbschrankung ) THEN
-          Abschrankung.bpStartAusfahren := FALSE;
-          Abschrankung.bpStartEinfahren := TRUE;
-        END_IF
-
         steplAktion := STEP_10_E;
       END_IF
 
@@ -170,10 +162,20 @@ THEN
         blMessachseFertig := Messachse.bpDone;
       END_IF
 
+      (* Hinweis:
+         - Bewegliche Abschrankung zum Nachfolger erst oeffnen (einfahren), wenn der Nachfolger bereit zum Eintransport ist
+           (z.B. Drehstation steht in der Zielposition), vorher bleibt sie geschlossen
+      *)
       blAbschrankungFertig := TRUE;
 
       IF ( blMitAbschrankung ) THEN
-        blAbschrankungFertig := Abschrankung.bpDone;
+        // Erst auswerten, dann Kommando setzen: ein altes bpDone darf im Zyklus des Startens nicht als fertig zaehlen
+        blAbschrankungFertig := ( Abschrankung.bpStartEinfahren AND Abschrankung.bpDone );
+
+        IF ( BasisStationsParameter.InGlasTransportNachfolger[wWand].bBereitZumEintransport ) THEN
+          Abschrankung.bpStartAusfahren := FALSE;
+          Abschrankung.bpStartEinfahren := TRUE;
+        END_IF
       END_IF
 
       Glastransport.bpAbbruchVortransport := blVortransportGestartet AND BasisStationsParameter.InGlasTransportNachfolger[wWand].bBereitZumEintransport;

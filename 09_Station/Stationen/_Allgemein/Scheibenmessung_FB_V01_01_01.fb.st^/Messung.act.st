@@ -72,7 +72,16 @@ IF ( bpGlasvermessung ) THEN
       ppAntrieb.rpVerzoegerung                      := ppAntriebsInformationen.rpMaxVerzoegerung;
       ppAntrieb.rpRuckzeit                          := ppAntriebsInformationen.rpMaxRuckzeit;
       ppAntrieb.eSensorAuswahl_Messung_1            := eSensoren.Sensor_1;
-      ppAntrieb.eSensorAuswahl_Messung_2            := eSensoren.Sensor_2;
+
+      (* Hinweis:
+         - Messende am Auslaufsensor (Sensor 2), mit der Option am Vorab-Auslaufsensor (Sensor 4)
+      *)
+      IF ( bpAuswahlSensorVorabScheibenmessung ) THEN
+        ppAntrieb.eSensorAuswahl_Messung_2          := eSensoren.Sensor_4;
+      ELSE
+        ppAntrieb.eSensorAuswahl_Messung_2          := eSensoren.Sensor_2;
+      END_IF
+
       ppAntrieb.bpDrehrichtungsumkehrMessung        := bpDrehrichtungsumkehrMessung ;
       ppAntrieb.bpAuswahlSensorVorabScheibenmessung := bpAuswahlSensorVorabScheibenmessung;
 
