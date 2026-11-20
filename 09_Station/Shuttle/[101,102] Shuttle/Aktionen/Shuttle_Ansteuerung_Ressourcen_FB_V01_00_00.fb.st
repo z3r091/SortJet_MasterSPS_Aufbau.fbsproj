@@ -55,12 +55,6 @@ THEN
     steplAktion := STEP_900_E;
   END_IF
 
-  IF ( Kippen.bpFehler ) THEN
-    Kippen.bpPositionieren := FALSE;
-    BasisStationsParameter.wFehlerNummer := Kippen.wpFehlerNr;
-    steplAktion := STEP_900_E;
-  END_IF
-
   IF ( blMitGreifer AND Greifer.bpFehler ) THEN
     Greifer.bpPositionieren                         := FALSE;
     Greifer.bpStarteVorabPositionierungEintransport := FALSE;
@@ -93,16 +87,24 @@ THEN
       (* Hinweis:
          - Wandverstellung ansteuern
          - Kippen ansteuern
+         - Erst wenn der Glastransport seinen Eintransport beendet hat: Ein vorzeitig quittierter
+           Eintransport (letzte Scheibe, Freigabe Querfahrt) laeuft im Glastransport noch weiter,
+           waehrend bEintransport bereits FALSE ist. Kippen, Wandverstellung und Greifer duerfen
+           die noch fahrende Scheibe nicht beeinflussen (Fehler: Scheibe faehrt auf den Auslaufstopp).
       *)
-      Wandverstellung.epSollStellung         := BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eDickenverstellung;
-      Wandverstellung.bpStartePositionierung := TRUE;
+      IF (     NOT Glastransport.bpEintransport
+           AND NOT Glastransport.bpRueckwaertsEintransportieren )
+      THEN
+        Wandverstellung.epSollStellung         := BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eDickenverstellung;
+        Wandverstellung.bpStartePositionierung := TRUE;
 
-      IF BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eKippen_SollPosition <> eKippen_Default THEN
-        Kippen.epZielPosition := BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eKippen_SollPosition;
-        Kippen.bpPositionieren := TRUE;
+        IF BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eKippen_SollPosition <> eKippen_Default THEN
+          Kippen.epZielPosition := BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eKippen_SollPosition;
+          Kippen.bpPositionieren := TRUE;
+        END_IF
+
+        steplAktion := STEP_20_E;
       END_IF
-
-      steplAktion := STEP_20_E;
 
     // VORAB KOMPONENTEN ANSTEUERUNG WAND 1 ========================
     STEP_20_E:
@@ -144,11 +146,13 @@ THEN
          - Greifer [Ausbaustufe] waehrend der Querfahrt vorpositionieren
            => Austransport: Greifer hinter die Glaskante stellen
            => Eintransport: Greifer an die Wandseite stellen und ausfahren
-         - Entfaellt solange der Eintransport noch aktiv ist
+         - Entfaellt solange der Eintransport noch aktiv ist (Auftrag oder Glastransport)
       *)
       IF (     blMitGreifer
            AND NOT Greifer.bpAuftragAktiv
-           AND NOT BasisStationsParameter.bEintransport[wWand] )
+           AND NOT BasisStationsParameter.bEintransport[wWand]
+           AND NOT Glastransport.bpEintransport
+           AND NOT Glastransport.bpRueckwaertsEintransportieren )
       THEN
         Greifer.epGreiferTyp := BasisStationsParameter.pVorAbAuftragsdaten[wWand].stAuftragsOptionen.eGreiferTyp;
 
