@@ -1,0 +1,1155 @@
+__V3_META__
+{
+	"objectGuid": "b3af2719-1a6b-4bbe-bd6f-7235bcad7d52",
+	"objectTypeGuid": "f7aa3620-8073-4c91-b6ec-86ed9eb60303",
+	"embeddedObjectTypeGuids": []
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{f7aa3620-8073-4c91-b6ec-86ed9eb60303}" Method="IArchivable">
+	<Dictionary Type="System.Collections.Hashtable" Name="TraceDataConfig" />
+	<Dictionary Type="System.Collections.Hashtable" Name="TraceOutputConfig" />
+	<Single Name="TraceSettings" Type="{8aaaee37-d2e1-4e99-b58f-acd4f8bf698f}" Method="IArchivable">
+		<Single Name="AutoSave" Type="bool">False</Single>
+		<Null Name="AutoSaveFileName" />
+		<Single Name="RefreshDuration" Type="int">500</Single>
+		<Single Name="BufferPerVariable" Type="uint">99999</Single>
+		<Single Name="HorizontalOrder" Type="bool">True</Single>
+		<Single Name="OverrideRTSBufferSize" Type="bool">False</Single>
+	</Single>
+	<Null Name="RecordList" />
+	<Single Name="Record" Type="{988743cb-81f4-49a7-8a04-2490e2ab1c5e}" Method="IArchivable">
+		<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+		<Single Name="VariableList" Type="{adcdd50b-433c-4999-986a-b4c67e7333be}" Method="IArchivable">
+			<List Name="InnerList" Type="System.Collections.ArrayList">
+				<Single Type="{b6a18d24-a045-4a81-a2ac-7044c6f553c0}" Method="IArchivable">
+					<Single Name="VariableName" Type="string">aShuttle[101].Glastransport[1].steplAustransport</Single>
+					<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+					<Single Name="GraphColor" Type="int">-8586240</Single>
+					<Single Name="GraphName" Type="string"></Single>
+					<Single Name="GraphType" Type="int">1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="MaxWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMaxWarning" Type="bool">False</Single>
+					<Single Name="MaxColor" Type="int">-65536</Single>
+					<Single Name="MinWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMinWarning" Type="bool">False</Single>
+					<Single Name="MinColor" Type="int">-16777216</Single>
+					<Single Name="YAxis" Type="int">0</Single>
+					<Single Name="guid" Type="System.Guid">92b1f388-45ae-4789-b02c-b91c8228c1b4</Single>
+					<Single Name="YAxisSettings" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+						<Single Name="Mode" Type="int">0</Single>
+						<Single Name="Min" Type="double">-12</Single>
+						<Single Name="Max" Type="double">12</Single>
+						<Single Name="Range" Type="double">24</Single>
+						<Single Name="DrawDesc" Type="bool">False</Single>
+						<Single Name="Desc" Type="string"></Single>
+						<Single Name="Col" Type="int">-16777216</Single>
+						<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+							<Single Name="Name" Type="string">Arial</Single>
+							<Single Name="Size" Type="float">8</Single>
+							<Single Name="Flags" Type="uint">0</Single>
+						</Single>
+						<Single Name="Grid" Type="bool">True</Single>
+						<Single Name="GridCol" Type="int">-8355712</Single>
+						<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+						<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+						<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+					</Single>
+					<Single Name="Enabled" Type="bool">True</Single>
+				</Single>
+				<Single Type="{b6a18d24-a045-4a81-a2ac-7044c6f553c0}" Method="IArchivable">
+					<Single Name="VariableName" Type="string">aShuttle[101].Glastransport[1].bpSensorAuslauf</Single>
+					<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+					<Single Name="GraphColor" Type="int">-40121</Single>
+					<Single Name="GraphName" Type="string"></Single>
+					<Single Name="GraphType" Type="int">1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="MaxWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMaxWarning" Type="bool">False</Single>
+					<Single Name="MaxColor" Type="int">-65536</Single>
+					<Single Name="MinWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMinWarning" Type="bool">False</Single>
+					<Single Name="MinColor" Type="int">-16777216</Single>
+					<Single Name="YAxis" Type="int">0</Single>
+					<Single Name="guid" Type="System.Guid">fedf5a72-f1b8-4747-9c64-8ed613b4b37a</Single>
+					<Single Name="YAxisSettings" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+						<Single Name="Mode" Type="int">0</Single>
+						<Single Name="Min" Type="double">-12</Single>
+						<Single Name="Max" Type="double">12</Single>
+						<Single Name="Range" Type="double">24</Single>
+						<Single Name="DrawDesc" Type="bool">False</Single>
+						<Single Name="Desc" Type="string"></Single>
+						<Single Name="Col" Type="int">-16777216</Single>
+						<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+							<Single Name="Name" Type="string">Arial</Single>
+							<Single Name="Size" Type="float">8</Single>
+							<Single Name="Flags" Type="uint">0</Single>
+						</Single>
+						<Single Name="Grid" Type="bool">True</Single>
+						<Single Name="GridCol" Type="int">-8355712</Single>
+						<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+						<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+						<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+					</Single>
+					<Single Name="Enabled" Type="bool">True</Single>
+				</Single>
+				<Single Type="{b6a18d24-a045-4a81-a2ac-7044c6f553c0}" Method="IArchivable">
+					<Single Name="VariableName" Type="string">aShuttle[101].Glastransport[1].bpSensorAuslaufStopp</Single>
+					<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+					<Single Name="GraphColor" Type="int">-4343957</Single>
+					<Single Name="GraphName" Type="string"></Single>
+					<Single Name="GraphType" Type="int">1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="MaxWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMaxWarning" Type="bool">False</Single>
+					<Single Name="MaxColor" Type="int">-65536</Single>
+					<Single Name="MinWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMinWarning" Type="bool">False</Single>
+					<Single Name="MinColor" Type="int">-16777216</Single>
+					<Single Name="YAxis" Type="int">0</Single>
+					<Single Name="guid" Type="System.Guid">c17f7bf9-18ea-445f-bcf8-f877263ff955</Single>
+					<Single Name="YAxisSettings" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+						<Single Name="Mode" Type="int">0</Single>
+						<Single Name="Min" Type="double">-12</Single>
+						<Single Name="Max" Type="double">12</Single>
+						<Single Name="Range" Type="double">24</Single>
+						<Single Name="DrawDesc" Type="bool">False</Single>
+						<Single Name="Desc" Type="string"></Single>
+						<Single Name="Col" Type="int">-16777216</Single>
+						<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+							<Single Name="Name" Type="string">Arial</Single>
+							<Single Name="Size" Type="float">8</Single>
+							<Single Name="Flags" Type="uint">0</Single>
+						</Single>
+						<Single Name="Grid" Type="bool">True</Single>
+						<Single Name="GridCol" Type="int">-8355712</Single>
+						<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+						<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+						<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+					</Single>
+					<Single Name="Enabled" Type="bool">True</Single>
+				</Single>
+				<Single Type="{b6a18d24-a045-4a81-a2ac-7044c6f553c0}" Method="IArchivable">
+					<Single Name="VariableName" Type="string">aShuttle[101].Glastransport[1].Antrieb.rpIstGeschwindigkeit</Single>
+					<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+					<Single Name="GraphColor" Type="int">-16711936</Single>
+					<Single Name="GraphName" Type="string"></Single>
+					<Single Name="GraphType" Type="int">1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="MaxWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMaxWarning" Type="bool">False</Single>
+					<Single Name="MaxColor" Type="int">-65536</Single>
+					<Single Name="MinWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMinWarning" Type="bool">False</Single>
+					<Single Name="MinColor" Type="int">-16777216</Single>
+					<Single Name="YAxis" Type="int">0</Single>
+					<Single Name="guid" Type="System.Guid">4e7bc4fe-ab53-4317-a00d-3551c9a11e1b</Single>
+					<Single Name="YAxisSettings" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+						<Single Name="Mode" Type="int">0</Single>
+						<Single Name="Min" Type="double">-12</Single>
+						<Single Name="Max" Type="double">12</Single>
+						<Single Name="Range" Type="double">24</Single>
+						<Single Name="DrawDesc" Type="bool">False</Single>
+						<Single Name="Desc" Type="string"></Single>
+						<Single Name="Col" Type="int">-16777216</Single>
+						<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+							<Single Name="Name" Type="string">Arial</Single>
+							<Single Name="Size" Type="float">8</Single>
+							<Single Name="Flags" Type="uint">0</Single>
+						</Single>
+						<Single Name="Grid" Type="bool">True</Single>
+						<Single Name="GridCol" Type="int">-8355712</Single>
+						<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+						<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+						<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+					</Single>
+					<Single Name="Enabled" Type="bool">True</Single>
+				</Single>
+				<Single Type="{b6a18d24-a045-4a81-a2ac-7044c6f553c0}" Method="IArchivable">
+					<Single Name="VariableName" Type="string">aShuttle[101].Glastransport[1].bpFehler</Single>
+					<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+					<Single Name="GraphColor" Type="int">-10510688</Single>
+					<Single Name="GraphName" Type="string"></Single>
+					<Single Name="GraphType" Type="int">1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="MaxWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMaxWarning" Type="bool">False</Single>
+					<Single Name="MaxColor" Type="int">-65536</Single>
+					<Single Name="MinWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMinWarning" Type="bool">False</Single>
+					<Single Name="MinColor" Type="int">-16777216</Single>
+					<Single Name="YAxis" Type="int">0</Single>
+					<Single Name="guid" Type="System.Guid">6a6492e9-ba46-48d8-af68-4da04758aa25</Single>
+					<Single Name="YAxisSettings" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+						<Single Name="Mode" Type="int">0</Single>
+						<Single Name="Min" Type="double">-12</Single>
+						<Single Name="Max" Type="double">12</Single>
+						<Single Name="Range" Type="double">24</Single>
+						<Single Name="DrawDesc" Type="bool">False</Single>
+						<Single Name="Desc" Type="string"></Single>
+						<Single Name="Col" Type="int">-16777216</Single>
+						<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+							<Single Name="Name" Type="string">Arial</Single>
+							<Single Name="Size" Type="float">8</Single>
+							<Single Name="Flags" Type="uint">0</Single>
+						</Single>
+						<Single Name="Grid" Type="bool">True</Single>
+						<Single Name="GridCol" Type="int">-8355712</Single>
+						<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+						<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+						<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+					</Single>
+					<Single Name="Enabled" Type="bool">True</Single>
+				</Single>
+				<Single Type="{b6a18d24-a045-4a81-a2ac-7044c6f553c0}" Method="IArchivable">
+					<Single Name="VariableName" Type="string">aTransfershuttles[151].Glastransport.steplEintransportDefaultLuftabfrage</Single>
+					<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+					<Single Name="GraphColor" Type="int">-4586240</Single>
+					<Single Name="GraphName" Type="string"></Single>
+					<Single Name="GraphType" Type="int">1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="MaxWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMaxWarning" Type="bool">False</Single>
+					<Single Name="MaxColor" Type="int">-65536</Single>
+					<Single Name="MinWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMinWarning" Type="bool">False</Single>
+					<Single Name="MinColor" Type="int">-16777216</Single>
+					<Single Name="YAxis" Type="int">0</Single>
+					<Single Name="guid" Type="System.Guid">b86de7aa-7b0f-4137-a7d4-888390afde7a</Single>
+					<Single Name="YAxisSettings" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+						<Single Name="Mode" Type="int">0</Single>
+						<Single Name="Min" Type="double">-12</Single>
+						<Single Name="Max" Type="double">12</Single>
+						<Single Name="Range" Type="double">24</Single>
+						<Single Name="DrawDesc" Type="bool">False</Single>
+						<Single Name="Desc" Type="string"></Single>
+						<Single Name="Col" Type="int">-16777216</Single>
+						<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+							<Single Name="Name" Type="string">Arial</Single>
+							<Single Name="Size" Type="float">8</Single>
+							<Single Name="Flags" Type="uint">0</Single>
+						</Single>
+						<Single Name="Grid" Type="bool">True</Single>
+						<Single Name="GridCol" Type="int">-8355712</Single>
+						<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+						<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+						<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+					</Single>
+					<Single Name="Enabled" Type="bool">True</Single>
+				</Single>
+				<Single Type="{b6a18d24-a045-4a81-a2ac-7044c6f553c0}" Method="IArchivable">
+					<Single Name="VariableName" Type="string">aTransfershuttles[151].Glastransport.bpSensorEinlauf</Single>
+					<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+					<Single Name="GraphColor" Type="int">-16744448</Single>
+					<Single Name="GraphName" Type="string"></Single>
+					<Single Name="GraphType" Type="int">1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="MaxWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMaxWarning" Type="bool">False</Single>
+					<Single Name="MaxColor" Type="int">-65536</Single>
+					<Single Name="MinWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMinWarning" Type="bool">False</Single>
+					<Single Name="MinColor" Type="int">-16777216</Single>
+					<Single Name="YAxis" Type="int">0</Single>
+					<Single Name="guid" Type="System.Guid">c4439a92-d7ad-4b24-8730-f0c395c5f16f</Single>
+					<Single Name="YAxisSettings" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+						<Single Name="Mode" Type="int">0</Single>
+						<Single Name="Min" Type="double">-12</Single>
+						<Single Name="Max" Type="double">12</Single>
+						<Single Name="Range" Type="double">24</Single>
+						<Single Name="DrawDesc" Type="bool">False</Single>
+						<Single Name="Desc" Type="string"></Single>
+						<Single Name="Col" Type="int">-16777216</Single>
+						<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+							<Single Name="Name" Type="string">Arial</Single>
+							<Single Name="Size" Type="float">8</Single>
+							<Single Name="Flags" Type="uint">0</Single>
+						</Single>
+						<Single Name="Grid" Type="bool">True</Single>
+						<Single Name="GridCol" Type="int">-8355712</Single>
+						<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+						<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+						<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+					</Single>
+					<Single Name="Enabled" Type="bool">True</Single>
+				</Single>
+				<Single Type="{b6a18d24-a045-4a81-a2ac-7044c6f553c0}" Method="IArchivable">
+					<Single Name="VariableName" Type="string">aTransfershuttles[151].Glastransport.bpSensorAuslauf</Single>
+					<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+					<Single Name="GraphColor" Type="int">-65536</Single>
+					<Single Name="GraphName" Type="string"></Single>
+					<Single Name="GraphType" Type="int">1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="MaxWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMaxWarning" Type="bool">False</Single>
+					<Single Name="MaxColor" Type="int">-65536</Single>
+					<Single Name="MinWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMinWarning" Type="bool">False</Single>
+					<Single Name="MinColor" Type="int">-16777216</Single>
+					<Single Name="YAxis" Type="int">0</Single>
+					<Single Name="guid" Type="System.Guid">2eba9b0b-c69c-4f86-a5f3-e32de7bf3cb4</Single>
+					<Single Name="YAxisSettings" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+						<Single Name="Mode" Type="int">0</Single>
+						<Single Name="Min" Type="double">-12</Single>
+						<Single Name="Max" Type="double">12</Single>
+						<Single Name="Range" Type="double">24</Single>
+						<Single Name="DrawDesc" Type="bool">False</Single>
+						<Single Name="Desc" Type="string"></Single>
+						<Single Name="Col" Type="int">-16777216</Single>
+						<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+							<Single Name="Name" Type="string">Arial</Single>
+							<Single Name="Size" Type="float">8</Single>
+							<Single Name="Flags" Type="uint">0</Single>
+						</Single>
+						<Single Name="Grid" Type="bool">True</Single>
+						<Single Name="GridCol" Type="int">-8355712</Single>
+						<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+						<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+						<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+					</Single>
+					<Single Name="Enabled" Type="bool">True</Single>
+				</Single>
+				<Single Type="{b6a18d24-a045-4a81-a2ac-7044c6f553c0}" Method="IArchivable">
+					<Single Name="VariableName" Type="string">aTransfershuttles[151].Glastransport.bpScheibeFaehrtUeberAuslauf</Single>
+					<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+					<Single Name="GraphColor" Type="int">-23296</Single>
+					<Single Name="GraphName" Type="string"></Single>
+					<Single Name="GraphType" Type="int">1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="MaxWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMaxWarning" Type="bool">False</Single>
+					<Single Name="MaxColor" Type="int">-65536</Single>
+					<Single Name="MinWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMinWarning" Type="bool">False</Single>
+					<Single Name="MinColor" Type="int">-16777216</Single>
+					<Single Name="YAxis" Type="int">0</Single>
+					<Single Name="guid" Type="System.Guid">98ee8cf4-d732-4792-8d90-5c067912abd2</Single>
+					<Single Name="YAxisSettings" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+						<Single Name="Mode" Type="int">0</Single>
+						<Single Name="Min" Type="double">-12</Single>
+						<Single Name="Max" Type="double">12</Single>
+						<Single Name="Range" Type="double">24</Single>
+						<Single Name="DrawDesc" Type="bool">False</Single>
+						<Single Name="Desc" Type="string"></Single>
+						<Single Name="Col" Type="int">-16777216</Single>
+						<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+							<Single Name="Name" Type="string">Arial</Single>
+							<Single Name="Size" Type="float">8</Single>
+							<Single Name="Flags" Type="uint">0</Single>
+						</Single>
+						<Single Name="Grid" Type="bool">True</Single>
+						<Single Name="GridCol" Type="int">-8355712</Single>
+						<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+						<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+						<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+					</Single>
+					<Single Name="Enabled" Type="bool">True</Single>
+				</Single>
+				<Single Type="{b6a18d24-a045-4a81-a2ac-7044c6f553c0}" Method="IArchivable">
+					<Single Name="VariableName" Type="string">aTransfershuttles[151].Glastransport.bpOutBereitZumEintransport</Single>
+					<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+					<Single Name="GraphColor" Type="int">-8355712</Single>
+					<Single Name="GraphName" Type="string"></Single>
+					<Single Name="GraphType" Type="int">1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="MaxWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMaxWarning" Type="bool">False</Single>
+					<Single Name="MaxColor" Type="int">-65536</Single>
+					<Single Name="MinWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMinWarning" Type="bool">False</Single>
+					<Single Name="MinColor" Type="int">-16777216</Single>
+					<Single Name="YAxis" Type="int">0</Single>
+					<Single Name="guid" Type="System.Guid">4cf77d4b-282e-48e3-9489-45568b8456a8</Single>
+					<Single Name="YAxisSettings" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+						<Single Name="Mode" Type="int">0</Single>
+						<Single Name="Min" Type="double">-12</Single>
+						<Single Name="Max" Type="double">12</Single>
+						<Single Name="Range" Type="double">24</Single>
+						<Single Name="DrawDesc" Type="bool">False</Single>
+						<Single Name="Desc" Type="string"></Single>
+						<Single Name="Col" Type="int">-16777216</Single>
+						<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+							<Single Name="Name" Type="string">Arial</Single>
+							<Single Name="Size" Type="float">8</Single>
+							<Single Name="Flags" Type="uint">0</Single>
+						</Single>
+						<Single Name="Grid" Type="bool">True</Single>
+						<Single Name="GridCol" Type="int">-8355712</Single>
+						<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+						<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+						<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+					</Single>
+					<Single Name="Enabled" Type="bool">True</Single>
+				</Single>
+				<Single Type="{b6a18d24-a045-4a81-a2ac-7044c6f553c0}" Method="IArchivable">
+					<Single Name="VariableName" Type="string">aTransfershuttles[151].Glastransport.Antrieb.rpIstPosition</Single>
+					<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+					<Single Name="GraphColor" Type="int">-16776961</Single>
+					<Single Name="GraphName" Type="string"></Single>
+					<Single Name="GraphType" Type="int">1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="MaxWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMaxWarning" Type="bool">False</Single>
+					<Single Name="MaxColor" Type="int">-65536</Single>
+					<Single Name="MinWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMinWarning" Type="bool">False</Single>
+					<Single Name="MinColor" Type="int">-16777216</Single>
+					<Single Name="YAxis" Type="int">0</Single>
+					<Single Name="guid" Type="System.Guid">1bd868cd-5a99-4400-8734-d91fa87413a2</Single>
+					<Single Name="YAxisSettings" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+						<Single Name="Mode" Type="int">0</Single>
+						<Single Name="Min" Type="double">-12</Single>
+						<Single Name="Max" Type="double">12</Single>
+						<Single Name="Range" Type="double">24</Single>
+						<Single Name="DrawDesc" Type="bool">False</Single>
+						<Single Name="Desc" Type="string"></Single>
+						<Single Name="Col" Type="int">-16777216</Single>
+						<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+							<Single Name="Name" Type="string">Arial</Single>
+							<Single Name="Size" Type="float">8</Single>
+							<Single Name="Flags" Type="uint">0</Single>
+						</Single>
+						<Single Name="Grid" Type="bool">True</Single>
+						<Single Name="GridCol" Type="int">-8355712</Single>
+						<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+						<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+						<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+					</Single>
+					<Single Name="Enabled" Type="bool">True</Single>
+				</Single>
+				<Single Type="{b6a18d24-a045-4a81-a2ac-7044c6f553c0}" Method="IArchivable">
+					<Single Name="VariableName" Type="string">aTransfershuttles[151].Glastransport.Antrieb.rpIstGeschwindigkeit</Single>
+					<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+					<Single Name="GraphColor" Type="int">-65281</Single>
+					<Single Name="GraphName" Type="string"></Single>
+					<Single Name="GraphType" Type="int">1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="MaxWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMaxWarning" Type="bool">False</Single>
+					<Single Name="MaxColor" Type="int">-65536</Single>
+					<Single Name="MinWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMinWarning" Type="bool">False</Single>
+					<Single Name="MinColor" Type="int">-16777216</Single>
+					<Single Name="YAxis" Type="int">0</Single>
+					<Single Name="guid" Type="System.Guid">a2d51429-6be9-4214-a1dd-177463996a92</Single>
+					<Single Name="YAxisSettings" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+						<Single Name="Mode" Type="int">0</Single>
+						<Single Name="Min" Type="double">-12</Single>
+						<Single Name="Max" Type="double">12</Single>
+						<Single Name="Range" Type="double">24</Single>
+						<Single Name="DrawDesc" Type="bool">False</Single>
+						<Single Name="Desc" Type="string"></Single>
+						<Single Name="Col" Type="int">-16777216</Single>
+						<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+							<Single Name="Name" Type="string">Arial</Single>
+							<Single Name="Size" Type="float">8</Single>
+							<Single Name="Flags" Type="uint">0</Single>
+						</Single>
+						<Single Name="Grid" Type="bool">True</Single>
+						<Single Name="GridCol" Type="int">-8355712</Single>
+						<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+						<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+						<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+					</Single>
+					<Single Name="Enabled" Type="bool">True</Single>
+				</Single>
+				<Single Type="{b6a18d24-a045-4a81-a2ac-7044c6f553c0}" Method="IArchivable">
+					<Single Name="VariableName" Type="string">aTransfershuttles[151].Glastransport.Antrieb.wpBetriebsart</Single>
+					<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+					<Single Name="GraphColor" Type="int">-5658199</Single>
+					<Single Name="GraphName" Type="string"></Single>
+					<Single Name="GraphType" Type="int">1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="MaxWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMaxWarning" Type="bool">False</Single>
+					<Single Name="MaxColor" Type="int">-65536</Single>
+					<Single Name="MinWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMinWarning" Type="bool">False</Single>
+					<Single Name="MinColor" Type="int">-16777216</Single>
+					<Single Name="YAxis" Type="int">0</Single>
+					<Single Name="guid" Type="System.Guid">89043525-0220-465b-aa13-6560f3c5baa2</Single>
+					<Single Name="YAxisSettings" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+						<Single Name="Mode" Type="int">0</Single>
+						<Single Name="Min" Type="double">-12</Single>
+						<Single Name="Max" Type="double">12</Single>
+						<Single Name="Range" Type="double">24</Single>
+						<Single Name="DrawDesc" Type="bool">False</Single>
+						<Single Name="Desc" Type="string"></Single>
+						<Single Name="Col" Type="int">-16777216</Single>
+						<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+							<Single Name="Name" Type="string">Arial</Single>
+							<Single Name="Size" Type="float">8</Single>
+							<Single Name="Flags" Type="uint">0</Single>
+						</Single>
+						<Single Name="Grid" Type="bool">True</Single>
+						<Single Name="GridCol" Type="int">-8355712</Single>
+						<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+						<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+						<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+					</Single>
+					<Single Name="Enabled" Type="bool">True</Single>
+				</Single>
+				<Single Type="{b6a18d24-a045-4a81-a2ac-7044c6f553c0}" Method="IArchivable">
+					<Single Name="VariableName" Type="string">aTransfershuttles[151].Glastransport.bpFehler</Single>
+					<Dictionary Type="System.Collections.Hashtable" Name="PlotLib" />
+					<Single Name="GraphColor" Type="int">-7667712</Single>
+					<Single Name="GraphName" Type="string"></Single>
+					<Single Name="GraphType" Type="int">1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="MaxWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMaxWarning" Type="bool">False</Single>
+					<Single Name="MaxColor" Type="int">-65536</Single>
+					<Single Name="MinWarningArea" Type="float">0</Single>
+					<Single Name="ActivateMinWarning" Type="bool">False</Single>
+					<Single Name="MinColor" Type="int">-16777216</Single>
+					<Single Name="YAxis" Type="int">0</Single>
+					<Single Name="guid" Type="System.Guid">f6811e62-00f9-41a2-8893-7ceebf60572a</Single>
+					<Single Name="YAxisSettings" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+						<Single Name="Mode" Type="int">0</Single>
+						<Single Name="Min" Type="double">-12</Single>
+						<Single Name="Max" Type="double">12</Single>
+						<Single Name="Range" Type="double">24</Single>
+						<Single Name="DrawDesc" Type="bool">False</Single>
+						<Single Name="Desc" Type="string"></Single>
+						<Single Name="Col" Type="int">-16777216</Single>
+						<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+							<Single Name="Name" Type="string">Arial</Single>
+							<Single Name="Size" Type="float">8</Single>
+							<Single Name="Flags" Type="uint">0</Single>
+						</Single>
+						<Single Name="Grid" Type="bool">True</Single>
+						<Single Name="GridCol" Type="int">-8355712</Single>
+						<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+						<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+						<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+					</Single>
+					<Single Name="Enabled" Type="bool">True</Single>
+				</Single>
+			</List>
+		</Single>
+		<Single Name="TriggerVariable" Type="string"></Single>
+		<Single Name="TriggerEdge" Type="{33a32e6c-d512-4195-9e73-520baca05512}">None</Single>
+		<Single Name="TriggerLevel" Type="string"></Single>
+		<Single Name="TriggerPosition" Type="byte">51</Single>
+		<Single Name="TriggerFlags" Type="{7be0d640-5118-4d1b-bbfd-95754f90c80d}">Undefined</Single>
+		<Single Name="TaskName" Type="string">MainTask</Single>
+		<Single Name="BufferEntries" Type="uint">201</Single>
+		<Single Name="EveryNCycles" Type="uint">1</Single>
+		<Single Name="guidPOU" Type="System.Guid">33d5c715-8295-484e-aec2-e6a5bee8d9fd</Single>
+		<Single Name="Comment" Type="string"></Single>
+		<Single Name="Condition" Type="string"></Single>
+		<Single Name="MicroSeconds" Type="bool">False</Single>
+		<Single Name="Autostart" Type="bool">False</Single>
+		<Single Name="GenerateVisuCode" Type="bool">False</Single>
+		<Single Name="Visible" Type="bool">True</Single>
+		<Single Name="Selected" Type="bool">False</Single>
+		<Single Name="RecordName" Type="string">Trace_101_Austransport_151_Eintransport</Single>
+		<Single Name="PostTriggerSamples" Type="uint">51</Single>
+		<Single Name="Appearance" Type="{99dff181-10ad-4b60-af8a-66ab1d5eebe9}" Method="IArchivable">
+			<Single Name="tAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+				<Single Name="Mode" Type="int">0</Single>
+				<Single Name="Min" Type="double">0</Single>
+				<Single Name="Max" Type="double">10000</Single>
+				<Single Name="Range" Type="double">10000</Single>
+				<Single Name="DrawDesc" Type="bool">False</Single>
+				<Single Name="Desc" Type="string"></Single>
+				<Single Name="Col" Type="int">-16777216</Single>
+				<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+					<Single Name="Name" Type="string">Arial</Single>
+					<Single Name="Size" Type="float">8</Single>
+					<Single Name="Flags" Type="uint">0</Single>
+				</Single>
+				<Single Name="Grid" Type="bool">True</Single>
+				<Single Name="GridCol" Type="int">-8355712</Single>
+				<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+				<Single Name="TickMarkFixedDistance" Type="double">1000</Single>
+				<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+			</Single>
+			<Single Name="yAxisCommon" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+				<Single Name="Mode" Type="int">0</Single>
+				<Single Name="Min" Type="double">-12</Single>
+				<Single Name="Max" Type="double">12</Single>
+				<Single Name="Range" Type="double">24</Single>
+				<Single Name="DrawDesc" Type="bool">False</Single>
+				<Single Name="Desc" Type="string"></Single>
+				<Single Name="Col" Type="int">-16777216</Single>
+				<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+					<Single Name="Name" Type="string">Arial</Single>
+					<Single Name="Size" Type="float">8</Single>
+					<Single Name="Flags" Type="uint">0</Single>
+				</Single>
+				<Single Name="Grid" Type="bool">True</Single>
+				<Single Name="GridCol" Type="int">-8355712</Single>
+				<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+				<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+				<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+			</Single>
+			<Single Name="diagSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+				<Single Name="Col" Type="int">-1</Single>
+				<Single Name="ColSel" Type="int">-657956</Single>
+			</Single>
+		</Single>
+		<Single Name="WrittenWithVersionGE_V3420" Type="bool">True</Single>
+		<Single Name="WrittenWithVersionGE_V3510" Type="bool">True</Single>
+		<Single Name="TimeAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+			<Single Name="Mode" Type="int">0</Single>
+			<Single Name="Min" Type="double">0</Single>
+			<Single Name="Max" Type="double">10000</Single>
+			<Single Name="Range" Type="double">10000</Single>
+			<Single Name="DrawDesc" Type="bool">False</Single>
+			<Single Name="Desc" Type="string"></Single>
+			<Single Name="Col" Type="int">-16777216</Single>
+			<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+				<Single Name="Name" Type="string">Arial</Single>
+				<Single Name="Size" Type="float">8</Single>
+				<Single Name="Flags" Type="uint">0</Single>
+			</Single>
+			<Single Name="Grid" Type="bool">True</Single>
+			<Single Name="GridCol" Type="int">-8355712</Single>
+			<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+			<Single Name="TickMarkFixedDistance" Type="double">1000</Single>
+			<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+		</Single>
+		<Single Name="Diagrams" Type="{09c4e4de-82a7-4bc3-b8ac-0eed481c722d}" Method="IArchivable">
+			<List2 Name="Diagrams">
+				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
+					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
+						<Single Name="DiagramSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+							<Single Name="Col" Type="int">-1</Single>
+							<Single Name="ColSel" Type="int">-657956</Single>
+						</Single>
+						<Single Name="YAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+							<Single Name="Mode" Type="int">0</Single>
+							<Single Name="Min" Type="double">-12</Single>
+							<Single Name="Max" Type="double">12</Single>
+							<Single Name="Range" Type="double">24</Single>
+							<Single Name="DrawDesc" Type="bool">False</Single>
+							<Single Name="Desc" Type="string"></Single>
+							<Single Name="Col" Type="int">-16777216</Single>
+							<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+								<Single Name="Name" Type="string">Arial</Single>
+								<Single Name="Size" Type="float">8</Single>
+								<Single Name="Flags" Type="uint">0</Single>
+							</Single>
+							<Single Name="Grid" Type="bool">True</Single>
+							<Single Name="GridCol" Type="int">-8355712</Single>
+							<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+							<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+							<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+						</Single>
+					</Single>
+					<Single Name="Variables" Type="{732a698e-182d-4c08-be90-b42c1a34ebae}" Method="IArchivable">
+						<List2 Name="Variables">
+							<Single Type="{8d42fb88-c20c-44ee-9563-111d64032744}" Method="IArchivable">
+								<Single Name="Visible" Type="bool">True</Single>
+								<Single Name="ReferencedVarGuid" Type="System.Guid">92b1f388-45ae-4789-b02c-b91c8228c1b4</Single>
+							</Single>
+						</List2>
+					</Single>
+					<Single Name="Name" Type="string">Diagramm 1</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">8f5a3871-7355-429b-97c4-41983911e777</Single>
+				</Single>
+				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
+					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
+						<Single Name="DiagramSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+							<Single Name="Col" Type="int">-1</Single>
+							<Single Name="ColSel" Type="int">-657956</Single>
+						</Single>
+						<Single Name="YAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+							<Single Name="Mode" Type="int">0</Single>
+							<Single Name="Min" Type="double">-12</Single>
+							<Single Name="Max" Type="double">12</Single>
+							<Single Name="Range" Type="double">24</Single>
+							<Single Name="DrawDesc" Type="bool">False</Single>
+							<Single Name="Desc" Type="string"></Single>
+							<Single Name="Col" Type="int">-16777216</Single>
+							<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+								<Single Name="Name" Type="string">Arial</Single>
+								<Single Name="Size" Type="float">8</Single>
+								<Single Name="Flags" Type="uint">0</Single>
+							</Single>
+							<Single Name="Grid" Type="bool">True</Single>
+							<Single Name="GridCol" Type="int">-8355712</Single>
+							<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+							<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+							<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+						</Single>
+					</Single>
+					<Single Name="Variables" Type="{732a698e-182d-4c08-be90-b42c1a34ebae}" Method="IArchivable">
+						<List2 Name="Variables">
+							<Single Type="{8d42fb88-c20c-44ee-9563-111d64032744}" Method="IArchivable">
+								<Single Name="Visible" Type="bool">True</Single>
+								<Single Name="ReferencedVarGuid" Type="System.Guid">fedf5a72-f1b8-4747-9c64-8ed613b4b37a</Single>
+							</Single>
+						</List2>
+					</Single>
+					<Single Name="Name" Type="string">Diagramm 2</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">22de4aa2-05a3-4c89-9bb3-0f18e5a57b7f</Single>
+				</Single>
+				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
+					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
+						<Single Name="DiagramSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+							<Single Name="Col" Type="int">-1</Single>
+							<Single Name="ColSel" Type="int">-657956</Single>
+						</Single>
+						<Single Name="YAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+							<Single Name="Mode" Type="int">0</Single>
+							<Single Name="Min" Type="double">-12</Single>
+							<Single Name="Max" Type="double">12</Single>
+							<Single Name="Range" Type="double">24</Single>
+							<Single Name="DrawDesc" Type="bool">False</Single>
+							<Single Name="Desc" Type="string"></Single>
+							<Single Name="Col" Type="int">-16777216</Single>
+							<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+								<Single Name="Name" Type="string">Arial</Single>
+								<Single Name="Size" Type="float">8</Single>
+								<Single Name="Flags" Type="uint">0</Single>
+							</Single>
+							<Single Name="Grid" Type="bool">True</Single>
+							<Single Name="GridCol" Type="int">-8355712</Single>
+							<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+							<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+							<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+						</Single>
+					</Single>
+					<Single Name="Variables" Type="{732a698e-182d-4c08-be90-b42c1a34ebae}" Method="IArchivable">
+						<List2 Name="Variables">
+							<Single Type="{8d42fb88-c20c-44ee-9563-111d64032744}" Method="IArchivable">
+								<Single Name="Visible" Type="bool">True</Single>
+								<Single Name="ReferencedVarGuid" Type="System.Guid">c17f7bf9-18ea-445f-bcf8-f877263ff955</Single>
+							</Single>
+						</List2>
+					</Single>
+					<Single Name="Name" Type="string">Diagramm 3</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">b85840d4-b1b7-4f11-bbfa-8ca5180c46a6</Single>
+				</Single>
+				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
+					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
+						<Single Name="DiagramSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+							<Single Name="Col" Type="int">-1</Single>
+							<Single Name="ColSel" Type="int">-657956</Single>
+						</Single>
+						<Single Name="YAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+							<Single Name="Mode" Type="int">0</Single>
+							<Single Name="Min" Type="double">-12</Single>
+							<Single Name="Max" Type="double">12</Single>
+							<Single Name="Range" Type="double">24</Single>
+							<Single Name="DrawDesc" Type="bool">False</Single>
+							<Single Name="Desc" Type="string"></Single>
+							<Single Name="Col" Type="int">-16777216</Single>
+							<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+								<Single Name="Name" Type="string">Arial</Single>
+								<Single Name="Size" Type="float">8</Single>
+								<Single Name="Flags" Type="uint">0</Single>
+							</Single>
+							<Single Name="Grid" Type="bool">True</Single>
+							<Single Name="GridCol" Type="int">-8355712</Single>
+							<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+							<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+							<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+						</Single>
+					</Single>
+					<Single Name="Variables" Type="{732a698e-182d-4c08-be90-b42c1a34ebae}" Method="IArchivable">
+						<List2 Name="Variables">
+							<Single Type="{8d42fb88-c20c-44ee-9563-111d64032744}" Method="IArchivable">
+								<Single Name="Visible" Type="bool">True</Single>
+								<Single Name="ReferencedVarGuid" Type="System.Guid">4e7bc4fe-ab53-4317-a00d-3551c9a11e1b</Single>
+							</Single>
+						</List2>
+					</Single>
+					<Single Name="Name" Type="string">Diagramm 4</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">ada39e48-2bd2-4873-8368-8979a9f03b00</Single>
+				</Single>
+				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
+					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
+						<Single Name="DiagramSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+							<Single Name="Col" Type="int">-1</Single>
+							<Single Name="ColSel" Type="int">-657956</Single>
+						</Single>
+						<Single Name="YAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+							<Single Name="Mode" Type="int">0</Single>
+							<Single Name="Min" Type="double">-12</Single>
+							<Single Name="Max" Type="double">12</Single>
+							<Single Name="Range" Type="double">24</Single>
+							<Single Name="DrawDesc" Type="bool">False</Single>
+							<Single Name="Desc" Type="string"></Single>
+							<Single Name="Col" Type="int">-16777216</Single>
+							<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+								<Single Name="Name" Type="string">Arial</Single>
+								<Single Name="Size" Type="float">8</Single>
+								<Single Name="Flags" Type="uint">0</Single>
+							</Single>
+							<Single Name="Grid" Type="bool">True</Single>
+							<Single Name="GridCol" Type="int">-8355712</Single>
+							<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+							<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+							<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+						</Single>
+					</Single>
+					<Single Name="Variables" Type="{732a698e-182d-4c08-be90-b42c1a34ebae}" Method="IArchivable">
+						<List2 Name="Variables">
+							<Single Type="{8d42fb88-c20c-44ee-9563-111d64032744}" Method="IArchivable">
+								<Single Name="Visible" Type="bool">True</Single>
+								<Single Name="ReferencedVarGuid" Type="System.Guid">6a6492e9-ba46-48d8-af68-4da04758aa25</Single>
+							</Single>
+						</List2>
+					</Single>
+					<Single Name="Name" Type="string">Diagramm 5</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">b2346794-b654-4aa2-9ad0-be35e0442634</Single>
+				</Single>
+				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
+					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
+						<Single Name="DiagramSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+							<Single Name="Col" Type="int">-1</Single>
+							<Single Name="ColSel" Type="int">-657956</Single>
+						</Single>
+						<Single Name="YAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+							<Single Name="Mode" Type="int">0</Single>
+							<Single Name="Min" Type="double">-12</Single>
+							<Single Name="Max" Type="double">12</Single>
+							<Single Name="Range" Type="double">24</Single>
+							<Single Name="DrawDesc" Type="bool">False</Single>
+							<Single Name="Desc" Type="string"></Single>
+							<Single Name="Col" Type="int">-16777216</Single>
+							<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+								<Single Name="Name" Type="string">Arial</Single>
+								<Single Name="Size" Type="float">8</Single>
+								<Single Name="Flags" Type="uint">0</Single>
+							</Single>
+							<Single Name="Grid" Type="bool">True</Single>
+							<Single Name="GridCol" Type="int">-8355712</Single>
+							<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+							<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+							<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+						</Single>
+					</Single>
+					<Single Name="Variables" Type="{732a698e-182d-4c08-be90-b42c1a34ebae}" Method="IArchivable">
+						<List2 Name="Variables">
+							<Single Type="{8d42fb88-c20c-44ee-9563-111d64032744}" Method="IArchivable">
+								<Single Name="Visible" Type="bool">True</Single>
+								<Single Name="ReferencedVarGuid" Type="System.Guid">b86de7aa-7b0f-4137-a7d4-888390afde7a</Single>
+							</Single>
+						</List2>
+					</Single>
+					<Single Name="Name" Type="string">Diagramm 6</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">604f64af-35b3-4c30-8696-7a524521d974</Single>
+				</Single>
+				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
+					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
+						<Single Name="DiagramSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+							<Single Name="Col" Type="int">-1</Single>
+							<Single Name="ColSel" Type="int">-657956</Single>
+						</Single>
+						<Single Name="YAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+							<Single Name="Mode" Type="int">0</Single>
+							<Single Name="Min" Type="double">-12</Single>
+							<Single Name="Max" Type="double">12</Single>
+							<Single Name="Range" Type="double">24</Single>
+							<Single Name="DrawDesc" Type="bool">False</Single>
+							<Single Name="Desc" Type="string"></Single>
+							<Single Name="Col" Type="int">-16777216</Single>
+							<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+								<Single Name="Name" Type="string">Arial</Single>
+								<Single Name="Size" Type="float">8</Single>
+								<Single Name="Flags" Type="uint">0</Single>
+							</Single>
+							<Single Name="Grid" Type="bool">True</Single>
+							<Single Name="GridCol" Type="int">-8355712</Single>
+							<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+							<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+							<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+						</Single>
+					</Single>
+					<Single Name="Variables" Type="{732a698e-182d-4c08-be90-b42c1a34ebae}" Method="IArchivable">
+						<List2 Name="Variables">
+							<Single Type="{8d42fb88-c20c-44ee-9563-111d64032744}" Method="IArchivable">
+								<Single Name="Visible" Type="bool">True</Single>
+								<Single Name="ReferencedVarGuid" Type="System.Guid">c4439a92-d7ad-4b24-8730-f0c395c5f16f</Single>
+							</Single>
+						</List2>
+					</Single>
+					<Single Name="Name" Type="string">Diagramm 7</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">468b09b6-9b73-4fae-bb79-774971d38a7e</Single>
+				</Single>
+				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
+					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
+						<Single Name="DiagramSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+							<Single Name="Col" Type="int">-1</Single>
+							<Single Name="ColSel" Type="int">-657956</Single>
+						</Single>
+						<Single Name="YAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+							<Single Name="Mode" Type="int">0</Single>
+							<Single Name="Min" Type="double">-12</Single>
+							<Single Name="Max" Type="double">12</Single>
+							<Single Name="Range" Type="double">24</Single>
+							<Single Name="DrawDesc" Type="bool">False</Single>
+							<Single Name="Desc" Type="string"></Single>
+							<Single Name="Col" Type="int">-16777216</Single>
+							<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+								<Single Name="Name" Type="string">Arial</Single>
+								<Single Name="Size" Type="float">8</Single>
+								<Single Name="Flags" Type="uint">0</Single>
+							</Single>
+							<Single Name="Grid" Type="bool">True</Single>
+							<Single Name="GridCol" Type="int">-8355712</Single>
+							<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+							<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+							<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+						</Single>
+					</Single>
+					<Single Name="Variables" Type="{732a698e-182d-4c08-be90-b42c1a34ebae}" Method="IArchivable">
+						<List2 Name="Variables">
+							<Single Type="{8d42fb88-c20c-44ee-9563-111d64032744}" Method="IArchivable">
+								<Single Name="Visible" Type="bool">True</Single>
+								<Single Name="ReferencedVarGuid" Type="System.Guid">2eba9b0b-c69c-4f86-a5f3-e32de7bf3cb4</Single>
+							</Single>
+						</List2>
+					</Single>
+					<Single Name="Name" Type="string">Diagramm 8</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">7e42297f-e5a6-45a9-b553-f087ec12b6cc</Single>
+				</Single>
+				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
+					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
+						<Single Name="DiagramSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+							<Single Name="Col" Type="int">-1</Single>
+							<Single Name="ColSel" Type="int">-657956</Single>
+						</Single>
+						<Single Name="YAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+							<Single Name="Mode" Type="int">0</Single>
+							<Single Name="Min" Type="double">-12</Single>
+							<Single Name="Max" Type="double">12</Single>
+							<Single Name="Range" Type="double">24</Single>
+							<Single Name="DrawDesc" Type="bool">False</Single>
+							<Single Name="Desc" Type="string"></Single>
+							<Single Name="Col" Type="int">-16777216</Single>
+							<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+								<Single Name="Name" Type="string">Arial</Single>
+								<Single Name="Size" Type="float">8</Single>
+								<Single Name="Flags" Type="uint">0</Single>
+							</Single>
+							<Single Name="Grid" Type="bool">True</Single>
+							<Single Name="GridCol" Type="int">-8355712</Single>
+							<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+							<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+							<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+						</Single>
+					</Single>
+					<Single Name="Variables" Type="{732a698e-182d-4c08-be90-b42c1a34ebae}" Method="IArchivable">
+						<List2 Name="Variables">
+							<Single Type="{8d42fb88-c20c-44ee-9563-111d64032744}" Method="IArchivable">
+								<Single Name="Visible" Type="bool">True</Single>
+								<Single Name="ReferencedVarGuid" Type="System.Guid">98ee8cf4-d732-4792-8d90-5c067912abd2</Single>
+							</Single>
+						</List2>
+					</Single>
+					<Single Name="Name" Type="string">Diagramm 9</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">e205ca67-b117-4002-8fdd-3315c2258e64</Single>
+				</Single>
+				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
+					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
+						<Single Name="DiagramSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+							<Single Name="Col" Type="int">-1</Single>
+							<Single Name="ColSel" Type="int">-657956</Single>
+						</Single>
+						<Single Name="YAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+							<Single Name="Mode" Type="int">0</Single>
+							<Single Name="Min" Type="double">-12</Single>
+							<Single Name="Max" Type="double">12</Single>
+							<Single Name="Range" Type="double">24</Single>
+							<Single Name="DrawDesc" Type="bool">False</Single>
+							<Single Name="Desc" Type="string"></Single>
+							<Single Name="Col" Type="int">-16777216</Single>
+							<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+								<Single Name="Name" Type="string">Arial</Single>
+								<Single Name="Size" Type="float">8</Single>
+								<Single Name="Flags" Type="uint">0</Single>
+							</Single>
+							<Single Name="Grid" Type="bool">True</Single>
+							<Single Name="GridCol" Type="int">-8355712</Single>
+							<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+							<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+							<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+						</Single>
+					</Single>
+					<Single Name="Variables" Type="{732a698e-182d-4c08-be90-b42c1a34ebae}" Method="IArchivable">
+						<List2 Name="Variables">
+							<Single Type="{8d42fb88-c20c-44ee-9563-111d64032744}" Method="IArchivable">
+								<Single Name="Visible" Type="bool">True</Single>
+								<Single Name="ReferencedVarGuid" Type="System.Guid">4cf77d4b-282e-48e3-9489-45568b8456a8</Single>
+							</Single>
+						</List2>
+					</Single>
+					<Single Name="Name" Type="string">Diagramm 10</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">70cf2803-ab31-4872-bd2d-db270338a740</Single>
+				</Single>
+				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
+					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
+						<Single Name="DiagramSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+							<Single Name="Col" Type="int">-1</Single>
+							<Single Name="ColSel" Type="int">-657956</Single>
+						</Single>
+						<Single Name="YAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+							<Single Name="Mode" Type="int">0</Single>
+							<Single Name="Min" Type="double">-12</Single>
+							<Single Name="Max" Type="double">12</Single>
+							<Single Name="Range" Type="double">24</Single>
+							<Single Name="DrawDesc" Type="bool">False</Single>
+							<Single Name="Desc" Type="string"></Single>
+							<Single Name="Col" Type="int">-16777216</Single>
+							<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+								<Single Name="Name" Type="string">Arial</Single>
+								<Single Name="Size" Type="float">8</Single>
+								<Single Name="Flags" Type="uint">0</Single>
+							</Single>
+							<Single Name="Grid" Type="bool">True</Single>
+							<Single Name="GridCol" Type="int">-8355712</Single>
+							<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+							<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+							<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+						</Single>
+					</Single>
+					<Single Name="Variables" Type="{732a698e-182d-4c08-be90-b42c1a34ebae}" Method="IArchivable">
+						<List2 Name="Variables">
+							<Single Type="{8d42fb88-c20c-44ee-9563-111d64032744}" Method="IArchivable">
+								<Single Name="Visible" Type="bool">True</Single>
+								<Single Name="ReferencedVarGuid" Type="System.Guid">1bd868cd-5a99-4400-8734-d91fa87413a2</Single>
+							</Single>
+						</List2>
+					</Single>
+					<Single Name="Name" Type="string">Diagramm 11</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">9465285b-46a9-4689-89be-eae23ebc9115</Single>
+				</Single>
+				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
+					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
+						<Single Name="DiagramSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+							<Single Name="Col" Type="int">-1</Single>
+							<Single Name="ColSel" Type="int">-657956</Single>
+						</Single>
+						<Single Name="YAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+							<Single Name="Mode" Type="int">0</Single>
+							<Single Name="Min" Type="double">-12</Single>
+							<Single Name="Max" Type="double">12</Single>
+							<Single Name="Range" Type="double">24</Single>
+							<Single Name="DrawDesc" Type="bool">False</Single>
+							<Single Name="Desc" Type="string"></Single>
+							<Single Name="Col" Type="int">-16777216</Single>
+							<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+								<Single Name="Name" Type="string">Arial</Single>
+								<Single Name="Size" Type="float">8</Single>
+								<Single Name="Flags" Type="uint">0</Single>
+							</Single>
+							<Single Name="Grid" Type="bool">True</Single>
+							<Single Name="GridCol" Type="int">-8355712</Single>
+							<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+							<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+							<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+						</Single>
+					</Single>
+					<Single Name="Variables" Type="{732a698e-182d-4c08-be90-b42c1a34ebae}" Method="IArchivable">
+						<List2 Name="Variables">
+							<Single Type="{8d42fb88-c20c-44ee-9563-111d64032744}" Method="IArchivable">
+								<Single Name="Visible" Type="bool">True</Single>
+								<Single Name="ReferencedVarGuid" Type="System.Guid">a2d51429-6be9-4214-a1dd-177463996a92</Single>
+							</Single>
+						</List2>
+					</Single>
+					<Single Name="Name" Type="string">Diagramm 12</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">c33df8cd-b701-41df-885e-340fef37ea8a</Single>
+				</Single>
+				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
+					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
+						<Single Name="DiagramSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+							<Single Name="Col" Type="int">-1</Single>
+							<Single Name="ColSel" Type="int">-657956</Single>
+						</Single>
+						<Single Name="YAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+							<Single Name="Mode" Type="int">0</Single>
+							<Single Name="Min" Type="double">-12</Single>
+							<Single Name="Max" Type="double">12</Single>
+							<Single Name="Range" Type="double">24</Single>
+							<Single Name="DrawDesc" Type="bool">False</Single>
+							<Single Name="Desc" Type="string"></Single>
+							<Single Name="Col" Type="int">-16777216</Single>
+							<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+								<Single Name="Name" Type="string">Arial</Single>
+								<Single Name="Size" Type="float">8</Single>
+								<Single Name="Flags" Type="uint">0</Single>
+							</Single>
+							<Single Name="Grid" Type="bool">True</Single>
+							<Single Name="GridCol" Type="int">-8355712</Single>
+							<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+							<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+							<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+						</Single>
+					</Single>
+					<Single Name="Variables" Type="{732a698e-182d-4c08-be90-b42c1a34ebae}" Method="IArchivable">
+						<List2 Name="Variables">
+							<Single Type="{8d42fb88-c20c-44ee-9563-111d64032744}" Method="IArchivable">
+								<Single Name="Visible" Type="bool">True</Single>
+								<Single Name="ReferencedVarGuid" Type="System.Guid">89043525-0220-465b-aa13-6560f3c5baa2</Single>
+							</Single>
+						</List2>
+					</Single>
+					<Single Name="Name" Type="string">Diagramm 13</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">73130633-ab72-4ed5-be1c-e190422cab50</Single>
+				</Single>
+				<Single Type="{528b663d-e04a-446a-80df-13e5dea35f57}" Method="IArchivable">
+					<Single Name="Appearance" Type="{0ebf0881-00e4-43f4-9e5d-c297518b153e}" Method="IArchivable">
+						<Single Name="DiagramSettings" Type="{61889f9a-966b-4cce-8523-bdfa9a5ab097}" Method="IArchivable">
+							<Single Name="Col" Type="int">-1</Single>
+							<Single Name="ColSel" Type="int">-657956</Single>
+						</Single>
+						<Single Name="YAxis" Type="{6ace1446-1a6b-4117-97c0-65c2081a8054}" Method="IArchivable">
+							<Single Name="Mode" Type="int">0</Single>
+							<Single Name="Min" Type="double">-12</Single>
+							<Single Name="Max" Type="double">12</Single>
+							<Single Name="Range" Type="double">24</Single>
+							<Single Name="DrawDesc" Type="bool">False</Single>
+							<Single Name="Desc" Type="string"></Single>
+							<Single Name="Col" Type="int">-16777216</Single>
+							<Single Name="Font" Type="{3371a5fa-e13c-4960-9e27-0a2c6ba51cd5}" Method="IArchivable">
+								<Single Name="Name" Type="string">Arial</Single>
+								<Single Name="Size" Type="float">8</Single>
+								<Single Name="Flags" Type="uint">0</Single>
+							</Single>
+							<Single Name="Grid" Type="bool">True</Single>
+							<Single Name="GridCol" Type="int">-8355712</Single>
+							<Single Name="TickMarkFixedSpacing" Type="bool">False</Single>
+							<Single Name="TickMarkFixedDistance" Type="double">1</Single>
+							<Single Name="TickMarkFixedSubdivisions" Type="int">1</Single>
+						</Single>
+					</Single>
+					<Single Name="Variables" Type="{732a698e-182d-4c08-be90-b42c1a34ebae}" Method="IArchivable">
+						<List2 Name="Variables">
+							<Single Type="{8d42fb88-c20c-44ee-9563-111d64032744}" Method="IArchivable">
+								<Single Name="Visible" Type="bool">True</Single>
+								<Single Name="ReferencedVarGuid" Type="System.Guid">f6811e62-00f9-41a2-8893-7ceebf60572a</Single>
+							</Single>
+						</List2>
+					</Single>
+					<Single Name="Name" Type="string">Diagramm 14</Single>
+					<Single Name="Visible" Type="bool">True</Single>
+					<Single Name="DiagramGuid" Type="System.Guid">c72322c0-4165-4494-a2ef-9dfbcf7a2dc8</Single>
+				</Single>
+			</List2>
+		</Single>
+	</Single>
+	<Single Name="AppGuid" Type="System.Guid">047e94bc-e7a1-4850-bd3c-18b742675466</Single>
+	<Single Name="DownloadGuid" Type="System.Guid">820f1a96-0377-4f73-9d16-3e8ebb9b2296</Single>
+	<Single Name="ExitGuid" Type="System.Guid">b47296d5-d3ec-4c1b-8e23-13127cac3a74</Single>
+	<Dictionary Type="System.Collections.Hashtable" Name="VisuCodeGuids" />
+</Single>

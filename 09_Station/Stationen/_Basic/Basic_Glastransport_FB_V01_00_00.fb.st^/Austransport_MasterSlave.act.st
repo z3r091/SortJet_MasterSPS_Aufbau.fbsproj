@@ -324,7 +324,7 @@ THEN
       END_IF
 
       (* Fehlerbehandlung:
-         - Einlaufsensor belegt
+         - Einlauf- und Auslaufsensor gleichzeitig belegt
          - Verfahrweg- Ueberwachung
       *)
       IF ( bpSensorEinlauf AND bpSensorAuslauf ) THEN

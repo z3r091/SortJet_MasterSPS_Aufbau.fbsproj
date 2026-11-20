@@ -173,6 +173,7 @@ ACTION A_Changelog
   - CoeReadObject (eigener FB, betrifft l_fb_CoeLesen und l_fb_CoeS277Lesen): ruht im Grundzustand und liest erst nach einer Execute-Flanke.
     Vorher startete der erste Aufruf mit i_b_Execute := FALSE einen Lesezugriff ohne Parameter (EcID 0), was je Achse beim Hochlauf einen PlcError 8002 erzeugte.
     Bei neuem Execute werden o_b_Aborted und der Timeout-Zaehler zurueckgesetzt.
+  - BETRIEBSART_MasterSlave Schritt 200: Bei Reglerbereit geht es direkt weiter zu Schritt 400. Der Schritt 300 (Pruefung bpIstReferenziert, Fehler cKeinReferenzpunktBeiPosAbs) entfaellt, ein Slave kann so auch ohne Referenz auf den Master synchronisieren.
 
 *)
 END_ACTION
