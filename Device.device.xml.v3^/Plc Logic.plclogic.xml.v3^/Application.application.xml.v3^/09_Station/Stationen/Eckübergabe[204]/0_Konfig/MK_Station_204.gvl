@@ -94,10 +94,10 @@ VAR_GLOBAL
                                  rMaxPosSwEsEingrenzung                  := 0,                                        // Externer zusaetzlicher Software-Endschalter MAX; 0 = inaktiv; darf den MK-MAX nur weiter eingrenzen
                                  rPosFreigabePufferAusfahren             := 0 ),                                      // derzeit ohne Funktion
       // stFremdanlage
-      stGlasdaten           := [( rlMinGlasLaenge := 350,                                                             // minimal zulässige GlasLänge
+      stGlasdaten           := [( rlMinGlasLaenge := 250,                                                             // minimal zulässige GlasLänge
                                   rlMaxGlasLaenge := 5000,                                                            // maximale zulässige GlasLänge
                                   rlMinGlasHoehe  := 250,                                                             // minimal zulässige GlasHöhe
-                                  rlMaxGlasHoehe  := 2800,                                                            // maximale zulässige GlasHöhe
+                                  rlMaxGlasHoehe  := 5000,                                                            // maximale zulässige GlasHöhe
                                   rlMinGlasDicke  := 2.2,                                                             // minimal zulässige GlasDicke
                                   rlMaxGlasDicke  := 19,                                                              // maximal zulaessige Glasdicke [mm]
                                   rlLaengeMaxGlas := 0 )]                                                             // maximal zulaessige Glaslaenge [mm]

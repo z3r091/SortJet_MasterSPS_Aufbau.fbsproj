@@ -105,10 +105,10 @@ VAR_GLOBAL
                                               ),
       // stFremdanlage
       stGlasdaten                           := [(
-                                                 rlMinGlasLaenge                  := 350,                                    // minimal zulässige GlasLänge
-                                                 rlMaxGlasLaenge                  := 4500,                                   // maximale zulässige GlasLänge
-                                                 rlMinGlasHoehe                   := 250,                                    // minimal zulässige GlasHöhe
-                                                 rlMaxGlasHoehe                   := 2810,                                   // maximale zulässige GlasHöhe
+                                                 rlMinGlasLaenge                  := 250,                                    // minimal zulässige GlasLänge
+                                                 rlMaxGlasLaenge                  := 2810,                                   // maximale zulässige GlasLänge
+                                                 rlMinGlasHoehe                   := 350,                                    // minimal zulässige GlasHöhe
+                                                 rlMaxGlasHoehe                   := 4500,                                   // maximale zulässige GlasHöhe
                                                  rlMinGlasDicke                   := 0.5,                                    // minimal zulässige GlasDicke
                                                  rlMaxGlasDicke                   := 24,                                     // maximal zulaessige Glasdicke [mm]
                                                  rlLaengeMaxGlas                  := 0.0                                     // maximal zulaessige Glaslaenge [mm]
