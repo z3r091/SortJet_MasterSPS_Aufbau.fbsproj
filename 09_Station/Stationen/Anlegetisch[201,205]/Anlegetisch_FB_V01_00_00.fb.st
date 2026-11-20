@@ -359,15 +359,22 @@ ELSIF ( ftlDrosselklappeAnforderung.Q ) THEN
   blMerkerDrosselklappeAuf := FALSE;
 END_IF
 
-// Anlegen ist Automatikbetrieb: Handfunktionen (Knebel Riemen, Hubrahmen) greifen, solange das Anlegen auf den Bediener wartet
+(* Hinweis:
+   - Anlegen ist Automatikbetrieb: Waehrend die Aktion auf den Bediener wartet, greifen die Handfunktionen,
+     der Knebel faehrt die Scheibe vor / zurueck
+*)
 blBedienerEingriff := (     Anlegen.bpBedienerEingriff
                            OR Glaslaengenmessung.bpBedienerEingriff
                            OR Glashoehenmessung.bpBedienerEingriff );
 ftlAnlegenBedienerEingriff( CLK := blBedienerEingriff );
 IF ( blBedienerEingriff ) THEN
   Glastransport.bpAnforderungHandfunktion := TRUE;
+  Glastransport.bpScheibeZurueckFahren    := ( in_bKnebelRiemenZurueck AND NOT in_bKnebelRiemenVor );
+  Glastransport.bpScheibeVorFahren        := ( in_bKnebelRiemenVor AND NOT in_bKnebelRiemenZurueck );
 ELSIF ( ftlAnlegenBedienerEingriff.Q ) THEN
   Glastransport.bpAnforderungHandfunktion := FALSE;
+  Glastransport.bpScheibeZurueckFahren    := FALSE;
+  Glastransport.bpScheibeVorFahren        := FALSE;
 END_IF
 
 (* Hinweis:
@@ -446,6 +453,7 @@ IF ( BasisStationsParameter.bGlaslaengenmessung OR ftlGlaslaengenmessungAktiv.Q 
   out_bAmpelSignalGruenScheibeAnlegen := Glaslaengenmessung.bpAnlegenLampe;
   out_bSignalTasterScheibeQuittieren  := Glaslaengenmessung.bpSignalFehlmessung;
 END_IF
+
 (* Hinweis:
    - Automatik-Aktion Austransport je Wand
    - Beim Start des Austransports ist die Drosselklappe zu

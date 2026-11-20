@@ -42,7 +42,7 @@ VAR_GLOBAL
                                                                        bTransportMasterSlaveAustransport         := FALSE,   // derzeit ohne Funktion
                                                                        bGLasUebernahmeSenkrecht                  := FALSE,   // RKT - Eintransport in Senkrechter-Position bzw. in Waagerechter- Position [default]
                                                                        bAustransportISOLinie                     := FALSE,   // Austransport an eine ISO-Linie
-                                                                       bScheibenVermessen                        := FALSE,   // Scheibenmessung am Anlegetisch/Anlegewand
+                                                                       bScheibenVermessen                        := TRUE,    // Scheibenmessung am Anlegetisch/Anlegewand
                                                                        bMessrichtungNegativ                      := FALSE,   // Negative Fahrtrichtung beim Messen
                                                                        bScheibenmessungEintransport              := FALSE,   // Scheibenmessung beim Eintransport
                                                                        bScheibenmessungSensorVorabAuslauf        := TRUE     // Scheibenmessung mit SensorVorabAuslauf z.B. Anlegewand

@@ -233,8 +233,8 @@ apgMKShuttle102Kippen : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Kippen := [
       rWegGlasUebergabeposition                    :=    50,                // Weg der Scheibe ueber den Sensor der Greiferseite vor dem Austransport
       rWegGlasUebergabepositionLang                :=   350,                // Wie rWegGlasUebergabeposition, fuer uebergrosse Scheiben
       rLaengeReduzierteGeschwindigkeit             :=  2000,                // Austransport: Scheiben ab dieser Laenge komplett mit reduzierter Geschwindigkeit in den Faecherwagen
-      rLaengeReduzierteGeschwindigkeitEintransport :=   450,                // Eintransport: Weg mit reduzierter Geschwindigkeit bei schweren Scheiben
-      rLaengeReduzierteGeschwindigkeitAustransport :=   450,                // Austransport: erster Weg mit reduzierter Geschwindigkeit in den Faecherwagen
+      rLaengeReduzierteGeschwindigkeitEintransport :=   300,                // Eintransport: Weg mit reduzierter Geschwindigkeit bei schweren Scheiben
+      rLaengeReduzierteGeschwindigkeitAustransport :=   300,                // Austransport: erster Weg mit reduzierter Geschwindigkeit in den Faecherwagen
       rMinimalPosition                             :=    25,                // Minimale Zielposition der Greiferachse (Plausibilitaet)
       rMaximalPosition                             :=  2390                 // Maximale Zielposition der Greiferachse (Plausibilitaet)
     )];
