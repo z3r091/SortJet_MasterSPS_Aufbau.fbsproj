@@ -158,7 +158,7 @@ VAR_GLOBAL
       rWegUeberSensorSystemCheck        := 15,   // Der Weg der Ueber ein die Sensoren zum vermessen der Scheiben
       rWegUeberwachungSensor            := 500,  // Beschreibt die Wegstrecke die der Ein- Auslaufsensor frei gefahren werden darf bevor ein Fehler gemeldet wird
       rMesstoleranz                     := 5,    // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
-      rMessstrecke                      := 2750, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
+      rMessstrecke                      := 2650, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
       rWegstreckeBisZurVerzoegerung     := 2250  // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll
     )];
 

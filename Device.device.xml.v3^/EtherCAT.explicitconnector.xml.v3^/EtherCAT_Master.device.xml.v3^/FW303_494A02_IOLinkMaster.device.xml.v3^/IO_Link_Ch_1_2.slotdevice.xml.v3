@@ -194,7 +194,7 @@ __V3_CONTENT__
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 													<Single Name="Id" Type="long">4663</Single>
-													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].out_bFreigabeSchleusen</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[302].out_bFreigabeSchleusen</Single>
 												</Single>
 											</List2>
 										</Single>
@@ -240,7 +240,7 @@ __V3_CONTENT__
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 													<Single Name="Id" Type="long">4667</Single>
-													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].out_bSicherheitskreisAusgeloest</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[302].out_bSicherheitskreisAusgeloest</Single>
 												</Single>
 											</List2>
 										</Single>
@@ -358,7 +358,7 @@ __V3_CONTENT__
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 													<Single Name="Id" Type="long">4679</Single>
-													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[302].out_bFreigabeSchleusen</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].out_bFreigabeSchleusen</Single>
 												</Single>
 											</List2>
 										</Single>
@@ -404,7 +404,7 @@ __V3_CONTENT__
 											<List2 Name="Mappings">
 												<Single Type="{47edf8ea-3f84-452c-b998-e18f878578d3}" Method="IArchivable">
 													<Single Name="Id" Type="long">4683</Single>
-													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[302].out_bSicherheitskreisAusgeloest</Single>
+													<Single Name="Variable" Type="string">Application.Globale_Bausteine.aFaecherwagenstation[301].out_bSicherheitskreisAusgeloest</Single>
 												</Single>
 											</List2>
 										</Single>

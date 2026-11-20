@@ -120,13 +120,13 @@ VAR_GLOBAL
       rWegUeberSensorenSystemCheck          :=   15, // Der Weg der Ueber ein die Sensoren zum vermessen der Scheiben
       rUeberwachungAuslaufsensor            :=  500, // Ueberwachung des Auslaufsensors [Strecke in der der Auslaufsensor Frei / ueberfahren werden soll]
       rUeberwachungEinlaufsensor            :=  500, // Ueberwachung des Einlaufsensors [Strecke in der der Einlaufsensor Frei / ueberfahren werden soll]
-      rWegUeberEinlaufEintransport          :=   30, // Eintransport vorwaerts: Abstand Scheibenhinterkante zum Einlaufsensor [mm]
+      rWegUeberEinlaufEintransport          :=   80, // Eintransport vorwaerts: Abstand Scheibenhinterkante zum Einlaufsensor [mm]
       rWegUeberEinlaufAustransport          :=   50, // Lage Auf Einlauf: Scheibe liegt um diesen Weg auf dem Einlaufsensor [mm]
       rWegUeberAuslaufEintransport          :=   50, // Eintransport rueckwaerts: Abstand Scheibenhinterkante zum Auslaufsensor [mm]
       rWegUeberAuslaufAustransport          :=   50, // Lage Auf Auslauf: Weg ueber den Auslaufsensor hinaus [mm]
       rWegEinlaufsensorZuVorStopSensor      := 4500, // Beschreibt den Weg vum eine Scheibe beim EIntransport vom Einlaufsensor bis ueberden Vorabstopsensor zu verfahren
       rMesstoleranz                         :=   10, // Toleranz-Mass fuer die Scheibenlaengenmessung
-      rMessstrecke                          := 4545, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
+      rMessstrecke                          := 4535, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
       rWegstreckeBisZurVerzoegerung         := 4000  // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll, dies gilt fuer Eintransportauftraege die das Bit "Letzte Scheibe" gesetzt haben
     )];
 
