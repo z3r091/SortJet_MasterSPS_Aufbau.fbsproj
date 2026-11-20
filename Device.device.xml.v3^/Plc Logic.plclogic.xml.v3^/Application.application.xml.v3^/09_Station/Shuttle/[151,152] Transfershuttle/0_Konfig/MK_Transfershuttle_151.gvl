@@ -119,11 +119,11 @@ VAR_GLOBAL
       stGlasdaten                       := [
                                             (
                                               rlMinGlasLaenge := 350,                                 // minimal zulässige GlasLänge
-                                              rlMaxGlasLaenge := 5000,                                // maximale zulässige GlasLänge
-                                              rlMinGlasHoehe  := 250,                                 // minimal zulässige GlasHöhe
-                                              rlMaxGlasHoehe  := 2800,                                // maximale zulässige GlasHöhe
-                                              rlMinGlasDicke  := 0.5,                                 // minimal zulässige GlasDicke
-                                              rlMaxGlasDicke  := 19,                                  // maximal zulaessige Glasdicke [mm]
+                                              rlMaxGlasLaenge := 2500,                                // maximale zulässige GlasLänge
+                                              rlMinGlasHoehe  := 190,                                 // minimal zulässige GlasHöhe
+                                              rlMaxGlasHoehe  := 1800,                                // maximale zulässige GlasHöhe
+                                              rlMinGlasDicke  := 3,                                 // minimal zulässige GlasDicke
+                                              rlMaxGlasDicke  := 12.76,                                  // maximal zulaessige Glasdicke [mm]
                                               rlLaengeMaxGlas := 0.0                                  // maximal zulaessige Glaslaenge [mm]
                                             )]
       // astShuttleAnhaltenQuellen

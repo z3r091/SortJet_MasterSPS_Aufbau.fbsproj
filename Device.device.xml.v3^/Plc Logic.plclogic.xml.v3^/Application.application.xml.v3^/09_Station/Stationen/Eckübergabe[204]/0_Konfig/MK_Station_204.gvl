@@ -94,12 +94,12 @@ VAR_GLOBAL
                                  rMaxPosSwEsEingrenzung                  := 0,                                        // Externer zusaetzlicher Software-Endschalter MAX; 0 = inaktiv; darf den MK-MAX nur weiter eingrenzen
                                  rPosFreigabePufferAusfahren             := 0 ),                                      // derzeit ohne Funktion
       // stFremdanlage
-      stGlasdaten           := [( rlMinGlasLaenge := 250,                                                             // minimal zulässige GlasLänge
-                                  rlMaxGlasLaenge := 5000,                                                            // maximale zulässige GlasLänge
-                                  rlMinGlasHoehe  := 250,                                                             // minimal zulässige GlasHöhe
-                                  rlMaxGlasHoehe  := 5000,                                                            // maximale zulässige GlasHöhe
-                                  rlMinGlasDicke  := 2.2,                                                             // minimal zulässige GlasDicke
-                                  rlMaxGlasDicke  := 19,                                                              // maximal zulaessige Glasdicke [mm]
+      stGlasdaten           := [( rlMinGlasLaenge := 190,                                                             // minimal zulässige GlasLänge
+                                  rlMaxGlasLaenge := 2500,                                                            // maximale zulässige GlasLänge
+                                  rlMinGlasHoehe  := 190,                                                             // minimal zulässige GlasHöhe
+                                  rlMaxGlasHoehe  := 2500,                                                            // maximale zulässige GlasHöhe
+                                  rlMinGlasDicke  := 3,                                                             // minimal zulässige GlasDicke
+                                  rlMaxGlasDicke  := 12.76,                                                              // maximal zulaessige Glasdicke [mm]
                                   rlLaengeMaxGlas := 0 )]                                                             // maximal zulaessige Glaslaenge [mm]
       // astShuttleAnhaltenQuellen
     );
