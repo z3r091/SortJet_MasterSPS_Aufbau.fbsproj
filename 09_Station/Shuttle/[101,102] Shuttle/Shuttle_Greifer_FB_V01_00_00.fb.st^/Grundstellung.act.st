@@ -61,13 +61,17 @@ THEN
          - Greiferachse in die Grundstellung [Home-Position] fahren
       *)
       IF ( bpAutomatikAktiv ) THEN
-        M_Fahren( epBetriebsart     := ABSOLUT,
-                  rpZielPosition    := rlGrundstellungsPosition,
-                  rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit );
+        Antrieb.rpZielposition    := rlGrundstellungsPosition;
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.wpBetriebsart     := ABSOLUT;
       ELSE
-        M_Fahren( epBetriebsart     := ABSOLUT,
-                  rpZielPosition    := rlGrundstellungsPosition,
-                  rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit );
+        Antrieb.rpZielposition    := rlGrundstellungsPosition;
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.wpBetriebsart     := ABSOLUT;
       END_IF
 
       steplGrundstellungsfahrt := STEP_20_E;
@@ -80,7 +84,7 @@ THEN
       tonlUeberwachungGrundstellung( IN := TRUE, PT := ppParameterGreifer.tUeberwachungBewegung );
 
       IF (    ( rlRichtung * ( Antrieb.rpIstPosition - rlUebergabePosition ) >= ppParameterGreifer.rWegBisZumSicherenEinklappen )
-           OR M_PositionErreicht() )
+           OR ( Antrieb.bpDone AND ( ABS( Antrieb.rpZielposition - Antrieb.rpIstPosition ) <= cTOLERANZ_POSITION ) ) )
       THEN
         GreiferHub.bpStartAusfahren := FALSE;
         GreiferHub.bpStartEinfahren := TRUE;
@@ -116,7 +120,8 @@ THEN
       *)
       tonlUeberwachungGrundstellung( IN := TRUE, PT := ppParameterGreifer.tUeberwachungBewegung );
 
-      IF ( M_PositionErreicht() ) THEN
+      IF (     Antrieb.bpDone
+          AND ( ABS( Antrieb.rpZielposition - Antrieb.rpIstPosition ) <= cTOLERANZ_POSITION ) ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplGrundstellungsfahrt := STEP_1000_E;
       END_IF

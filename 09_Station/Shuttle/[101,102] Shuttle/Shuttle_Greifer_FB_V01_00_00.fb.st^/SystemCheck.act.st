@@ -161,9 +161,11 @@ IF ( bpCheck ) THEN
       IF (     ( rlZielPosition < Antrieb.rpMaxPosition )
            AND ( rlZielPosition > Antrieb.rpMinPosition ) )
       THEN
-        M_Fahren( epBetriebsart     := RELATIV,
-                  rpZielPosition    := rlRichtung * ppParameterGreifer.rGreiferAusDemGlasFahrPosition,
-                  rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit );
+        Antrieb.rpZielposition    := rlRichtung * ppParameterGreifer.rGreiferAusDemGlasFahrPosition;
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.wpBetriebsart     := RELATIV;
         steplCheck := STEP_130_E;
       ELSE
         wpFehlerNr := cMELDUNG_SYSTEMCHECK_GREIFER_STOESSEL_IST_ZUSTAND_NICHT_LOESBAR;
@@ -247,9 +249,11 @@ IF ( bpCheck ) THEN
 
       IF ( bpSlaveKopplungAktiv ) THEN
         IF ( blSensorSeite AND NOT blSensorGegenseite ) THEN
-          M_Fahren( epBetriebsart     := ABSOLUT,
-                    rpZielPosition    := rlPositionUebergrosseScheibe,
-                    rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit );
+          Antrieb.rpZielposition    := rlPositionUebergrosseScheibe;
+          Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+          Antrieb.wpBetriebsart     := ABSOLUT;
           steplCheck := STEP_430_E;
         ELSE
           wpFehlerNr := cMELDUNG_SYSTEMCHECK_GREIFER_STOESSEL_IST_ZUSTAND_NICHT_LOESBAR;
@@ -276,7 +280,8 @@ IF ( bpCheck ) THEN
           steplCheck := STEP_440_E;
         END_IF
 
-      ELSIF ( M_PositionErreicht() ) THEN
+      ELSIF (     Antrieb.bpDone
+             AND ( ABS( Antrieb.rpZielposition - Antrieb.rpIstPosition ) <= cTOLERANZ_POSITION ) ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplCheck := STEP_440_E;
 
@@ -339,9 +344,11 @@ IF ( bpCheck ) THEN
         IF (     ( rlZielPosition < Antrieb.rpMaxPosition )
              AND ( rlZielPosition > Antrieb.rpMinPosition ) )
         THEN
-          M_Fahren( epBetriebsart     := RELATIV,
-                    rpZielPosition    := rlRichtung * ppParameterGreifer.rGreiferAusDemGlasFahrPosition,
-                    rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit );
+          Antrieb.rpZielposition    := rlRichtung * ppParameterGreifer.rGreiferAusDemGlasFahrPosition;
+          Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+          Antrieb.wpBetriebsart     := RELATIV;
           steplCheck := STEP_460_E;
         ELSE
           wpFehlerNr := cMELDUNG_SYSTEMCHECK_GREIFER_STOESSEL_IST_ZUSTAND_NICHT_LOESBAR;
@@ -444,9 +451,11 @@ IF ( bpCheck ) THEN
       IF ( bpSlaveKopplungAktiv ) THEN
         rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
 
-        M_Fahren( epBetriebsart     := ABSOLUT,
-                  rpZielPosition    := rlUebergabePosition,
-                  rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit );
+        Antrieb.rpZielposition    := rlUebergabePosition;
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.wpBetriebsart     := ABSOLUT;
 
         steplCheck := STEP_530_E;
       END_IF
@@ -473,7 +482,8 @@ IF ( bpCheck ) THEN
         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
       END_IF
 
-      IF ( M_PositionErreicht() ) THEN
+      IF (     Antrieb.bpDone
+          AND ( ABS( Antrieb.rpZielposition - Antrieb.rpIstPosition ) <= cTOLERANZ_POSITION ) ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         bprtScheibe := TRUE;
         steplCheck := STEP_540_E;

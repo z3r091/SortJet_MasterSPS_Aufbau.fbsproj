@@ -109,9 +109,11 @@ THEN
         GreiferHub.bpStartAusfahren            := FALSE;
         Zange[ilZange].bpStartZylinderBewegung := FALSE;
 
-        M_Fahren( epBetriebsart     := ABSOLUT,
-                  rpZielPosition    := rlUebernahmePosition,
-                  rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit );
+        Antrieb.rpZielposition    := rlUebernahmePosition;
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.wpBetriebsart     := ABSOLUT;
 
         steplEintransport := STEP_120_E;
       END_IF
@@ -137,7 +139,8 @@ THEN
       *)
       tonlUeberwachungEintransport( IN := TRUE, PT := ppParameterGreifer.tUeberwachungBewegung );
 
-      IF ( M_PositionErreicht() ) THEN
+      IF (     Antrieb.bpDone
+          AND ( ABS( Antrieb.rpZielposition - Antrieb.rpIstPosition ) <= cTOLERANZ_POSITION ) ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplEintransport := STEP_130_E;
       END_IF
@@ -204,14 +207,17 @@ THEN
         blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
 
         IF ( blReduzierteGeschwindigkeit ) THEN
-          M_Fahren( epBetriebsart     := ABSOLUT,
-                    rpZielPosition    := rlZielPosition,
-                    rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit );
-          Antrieb.rpBeschleunigung := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+          Antrieb.rpZielposition    := rlZielPosition;
+          Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+          Antrieb.wpBetriebsart     := ABSOLUT;
         ELSE
-          M_Fahren( epBetriebsart     := ABSOLUT,
-                    rpZielPosition    := rlZielPosition,
-                    rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit );
+          Antrieb.rpZielposition    := rlZielPosition;
+          Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+          Antrieb.wpBetriebsart     := ABSOLUT;
         END_IF
 
         steplEintransport := STEP_150_E;
@@ -275,7 +281,8 @@ THEN
         Antrieb.rpGeschwindigkeit   := ppAntriebsInformationen.rpMaxGeschwindigkeit;
       END_IF
 
-      IF ( M_PositionErreicht() ) THEN
+      IF (     Antrieb.bpDone
+          AND ( ABS( Antrieb.rpZielposition - Antrieb.rpIstPosition ) <= cTOLERANZ_POSITION ) ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplEintransport := STEP_170_E;
       END_IF
@@ -335,9 +342,17 @@ THEN
       // ---------------------------------------------------------------------------------------
       IF ( toflSensorSeite.Q ) THEN
         IF ( rlRichtung > 0.0 ) THEN
-          M_Fahren( epBetriebsart := HANDPLUS, rpZielPosition := 0.0, rpGeschwindigkeit := rgGeschwindigkeitVerySlow );
+          Antrieb.rpZielposition    := 0.0;
+          Antrieb.rpGeschwindigkeit := rgGeschwindigkeitVerySlow;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+          Antrieb.wpBetriebsart     := HANDPLUS;
         ELSE
-          M_Fahren( epBetriebsart := HANDMINUS, rpZielPosition := 0.0, rpGeschwindigkeit := rgGeschwindigkeitVerySlow );
+          Antrieb.rpZielposition    := 0.0;
+          Antrieb.rpGeschwindigkeit := rgGeschwindigkeitVerySlow;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+          Antrieb.wpBetriebsart     := HANDMINUS;
         END_IF
       ELSE
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -422,9 +437,11 @@ THEN
       (* Hinweis:
          - Greiferzange aus dem Glas fahren (in Zugrichtung)
       *)
-      M_Fahren( epBetriebsart     := RELATIV,
-                rpZielPosition    := rlRichtung * ppParameterGreifer.rGreiferAusDemGlasFahrPosition,
-                rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit );
+      Antrieb.rpZielposition    := rlRichtung * ppParameterGreifer.rGreiferAusDemGlasFahrPosition;
+      Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      Antrieb.wpBetriebsart     := RELATIV;
 
       steplEintransport := STEP_220_E;
 
@@ -484,9 +501,11 @@ THEN
       IF ( rlRichtung * ( Antrieb.rpIstPosition - rlGrundstellungGegenseite ) < 0.0 ) THEN
         steplEintransport := STEP_260_E;
       ELSE
-        M_Fahren( epBetriebsart     := ABSOLUT,
-                  rpZielPosition    := rlGrundstellungGegenseite,
-                  rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit );
+        Antrieb.rpZielposition    := rlGrundstellungGegenseite;
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.wpBetriebsart     := ABSOLUT;
         steplEintransport := STEP_250_E;
       END_IF
 
@@ -494,7 +513,8 @@ THEN
     STEP_250_E:
       tonlUeberwachungEintransport( IN := TRUE, PT := ppParameterGreifer.tUeberwachungBewegung );
 
-      IF ( M_PositionErreicht() ) THEN
+      IF (     Antrieb.bpDone
+          AND ( ABS( Antrieb.rpZielposition - Antrieb.rpIstPosition ) <= cTOLERANZ_POSITION ) ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplEintransport := STEP_260_E;
       END_IF

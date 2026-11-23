@@ -99,11 +99,13 @@ THEN
         GreiferHub.bpStartAusfahren            := FALSE;
         Zange[ilZange].bpStartZylinderBewegung := FALSE;
 
-        M_Fahren( epBetriebsart     := ABSOLUT,
-                  rpZielPosition    := rlWegBisZumSensor
-                                       + rlRichtung * ( pAuftrag.rAuftragsLaenge - rpWegGlasUebergabeposition )
-                                       - rlRichtung * rlKorrekturOffset,
-                  rpGeschwindigkeit := rgGeschwindigkeitVorpositionieren );
+        Antrieb.rpZielposition    := rlWegBisZumSensor
+                                     + rlRichtung * ( pAuftrag.rAuftragsLaenge - rpWegGlasUebergabeposition )
+                                     - rlRichtung * rlKorrekturOffset;
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitVorpositionieren;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.wpBetriebsart     := ABSOLUT;
 
         steplAustransport := STEP_110_E;
       END_IF
@@ -121,7 +123,8 @@ THEN
     STEP_110_E:
       tonlUeberwachungAustransport( IN := TRUE, PT := ppParameterGreifer.tUeberwachungBewegung );
 
-      IF ( M_PositionErreicht() ) THEN
+      IF (     Antrieb.bpDone
+          AND ( ABS( Antrieb.rpZielposition - Antrieb.rpIstPosition ) <= cTOLERANZ_POSITION ) ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplAustransport := STEP_120_E;
       END_IF
@@ -167,9 +170,11 @@ THEN
       IF ( bpSlaveKopplungAktiv ) THEN
         rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
 
-        M_Fahren( epBetriebsart     := ABSOLUT,
-                  rpZielPosition    := rlUebergabePosition,
-                  rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit );
+        Antrieb.rpZielposition    := rlUebergabePosition;
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.wpBetriebsart     := ABSOLUT;
 
         steplAustransport := STEP_140_E;
       END_IF
@@ -195,7 +200,8 @@ THEN
         Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
       END_IF
 
-      IF ( M_PositionErreicht() ) THEN
+      IF (     Antrieb.bpDone
+          AND ( ABS( Antrieb.rpZielposition - Antrieb.rpIstPosition ) <= cTOLERANZ_POSITION ) ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         bprtScheibe := TRUE;
         steplAustransport := STEP_150_E;
@@ -237,9 +243,11 @@ THEN
       (* Hinweis:
          - Greiferachse in die Grundstellung fahren (Kopplung bleibt bestehen)
       *)
-      M_Fahren( epBetriebsart     := ABSOLUT,
-                rpZielPosition    := rlGrundstellungsPosition,
-                rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit );
+      Antrieb.rpZielposition    := rlGrundstellungsPosition;
+      Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      Antrieb.wpBetriebsart     := ABSOLUT;
 
       steplAustransport := STEP_180_E;
 
@@ -289,7 +297,8 @@ THEN
       *)
       tonlUeberwachungAustransport( IN := TRUE, PT := ppParameterGreifer.tUeberwachungBewegung );
 
-      IF ( M_PositionErreicht() ) THEN
+      IF (     Antrieb.bpDone
+          AND ( ABS( Antrieb.rpZielposition - Antrieb.rpIstPosition ) <= cTOLERANZ_POSITION ) ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplAustransport := STEP_1000_E;
       END_IF

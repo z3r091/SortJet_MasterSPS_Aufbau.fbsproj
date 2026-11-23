@@ -84,9 +84,11 @@ THEN
       IF ( GreiferHub.bpDone ) THEN
         GreiferHub.bpStartEinfahren := FALSE;
 
-        M_Fahren( epBetriebsart     := ABSOLUT,
-                  rpZielPosition    := rlGrundstellungEintransport,
-                  rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit );
+        Antrieb.rpZielposition    := rlGrundstellungEintransport;
+        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.wpBetriebsart     := ABSOLUT;
 
         steplVorabPositionierungEintransport := STEP_20_E;
       END_IF
@@ -100,7 +102,8 @@ THEN
     STEP_20_E:
       tonlUeberwachungVorab( IN := TRUE, PT := ppParameterGreifer.tUeberwachungBewegung );
 
-      IF ( M_PositionErreicht() ) THEN
+      IF (     Antrieb.bpDone
+          AND ( ABS( Antrieb.rpZielposition - Antrieb.rpIstPosition ) <= cTOLERANZ_POSITION ) ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
         GreiferHub.bpStartEinfahren := FALSE;

@@ -98,7 +98,7 @@ VAR_GLOBAL
                                             bMessachseAmEndeVomTisch      := FALSE                                                                      // Messachse am Ende des Tisches (Hoehenfehler fragt den Bediener)
                                           ),
       stStationsParameter               := (
-                                            rLaengeUebergroesseScheibe              := 5000,                                                            // Shuttle: ab dieser Scheibenlaenge gilt die Scheibe als uebergross [mm]
+                                            rLaengeUebergroesseScheibe              := 2000,                                                          // Shuttle: ab dieser Scheibenlaenge gilt die Scheibe als uebergross [mm]
                                             rMinGlasHoeheAutomatischenEintransport  := 500,                                                             // VSG: Mindesthoehe fuer automatischen Eintransport [mm]
                                             rMinGlasLaengeAutomatischenEintransport := 500,                                                             // VSG: Mindestlaenge fuer automatischen Eintransport [mm]
                                             wMaximaleAnzahlAktiverAuftraege         := 1,                                                               // derzeit ohne Funktion
@@ -222,7 +222,7 @@ apgMKShuttle102Kippen : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Kippen := [
       rGlasEintransportOffset_Auslauf              :=    50,                // Eintransport letzte Scheibe: Weg ueber den Auslaufsensor [Auftragslaenge + Offset]
       rGlasEintransportOffset_EinlaufSammeln       :=   450,                // Eintransport weiterer Scheiben: Weg ueber den Einlaufsensor [Auftragslaenge + Offset]
       rGlasEintransportOffset_AuslaufSammeln       :=   370,                // Eintransport weiterer Scheiben: Weg ueber den Auslaufsensor [Auftragslaenge + Offset]
-      rLaengeUebergroesseScheibe                   :=  2300,                // Ab dieser Scheibenlaenge zieht der Greifer nur bis rPositionUebergrosseScheibe, den Rest zieht der Glastransport
+      rLaengeUebergroesseScheibe                   :=  2000,              // Ab dieser Scheibenlaenge zieht der Greifer nur bis rPositionUebergrosseScheibe, den Rest zieht der Glastransport
       rPositionUebergrosseScheibe_Einlauf          :=   500,                // Maximale Position mit uebergrosser Scheibe [Einlaufseite]
       rPositionUebergrosseScheibe_Auslauf          :=   500,                // Maximale Position mit uebergrosser Scheibe [Auslaufseite]
       rGreiferAusDemGlasFahrPosition               :=    50,                // Weg, um die geoeffnete Greiferzange vom Glas zu befreien
@@ -231,7 +231,7 @@ apgMKShuttle102Kippen : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Kippen := [
       rKorrekturOffset_Einlauf                     :=    10,                // Weg der Greiferzange in das Glas vor dem Greifen beim Austransport [Einlaufseite]
       rKorrekturOffset_Auslauf                     :=    10,                // Weg der Greiferzange in das Glas vor dem Greifen beim Austransport [Auslaufseite]
       rWegGlasUebergabeposition                    :=    50,                // Weg der Scheibe ueber den Sensor der Greiferseite vor dem Austransport
-      rWegGlasUebergabepositionLang                :=   350,                // Wie rWegGlasUebergabeposition, fuer uebergrosse Scheiben
+      rWegGlasUebergabepositionLang                :=   500,                // Wie rWegGlasUebergabeposition, fuer uebergrosse Scheiben
       rLaengeReduzierteGeschwindigkeit             :=  2000,                // Austransport: Scheiben ab dieser Laenge komplett mit reduzierter Geschwindigkeit in den Faecherwagen
       rLaengeReduzierteGeschwindigkeitEintransport :=   300,                // Eintransport: Weg mit reduzierter Geschwindigkeit bei schweren Scheiben
       rLaengeReduzierteGeschwindigkeitAustransport :=   300,                // Austransport: erster Weg mit reduzierter Geschwindigkeit in den Faecherwagen

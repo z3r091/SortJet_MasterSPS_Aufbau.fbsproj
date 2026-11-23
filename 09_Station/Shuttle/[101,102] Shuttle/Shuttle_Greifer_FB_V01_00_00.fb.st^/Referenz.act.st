@@ -110,9 +110,17 @@ IF ( bpFahreReferenz ) THEN
                                   PT := T#1S );
 
       IF ( Antrieb.bpMinSchalterBelegt ) THEN
-        M_Fahren( epBetriebsart := HANDPLUS, rpZielPosition := 0.0, rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren );
+        Antrieb.rpZielposition    := 0.0;
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.wpBetriebsart     := HANDPLUS;
       ELSIF ( Antrieb.bpMaxSchalterBelegt ) THEN
-        M_Fahren( epBetriebsart := HANDMINUS, rpZielPosition := 0.0, rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren );
+        Antrieb.rpZielposition    := 0.0;
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        Antrieb.wpBetriebsart     := HANDMINUS;
       END_IF
 
       IF ( NOT tofHardwareEndschalterFrei.Q ) THEN
@@ -156,9 +164,11 @@ IF ( bpFahreReferenz ) THEN
       (* Hinweis:
          - Antrieb referenzieren
       *)
-      M_Fahren( epBetriebsart     := AntriebsBetriebsart_EN.REFERENZ,
-                rpZielPosition    := Antrieb.rpIstPosition,
-                rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit );
+      Antrieb.rpZielposition    := Antrieb.rpIstPosition;
+      Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      Antrieb.wpBetriebsart     := AntriebsBetriebsart_EN.REFERENZ;
 
       steplReferenz := STEP_110_E;
 

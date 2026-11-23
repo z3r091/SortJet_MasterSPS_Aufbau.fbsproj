@@ -96,9 +96,11 @@ THEN
         IF (     ( rlZielPosition < ppParameterGreifer.rMaximalPosition )
              AND ( rlZielPosition > ppParameterGreifer.rMinimalPosition ) )
         THEN
-          M_Fahren( epBetriebsart     := ABSOLUT,
-                    rpZielPosition    := rlZielPosition,
-                    rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit );
+          Antrieb.rpZielposition    := rlZielPosition;
+          Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+          Antrieb.wpBetriebsart     := ABSOLUT;
           steplPositionieren := STEP_20_E;
         ELSE
           awpFehlerInformationen[0] := stStationsNummern.NummerExtern;
@@ -119,7 +121,8 @@ THEN
     STEP_20_E:
       tonlUeberwachungPositionieren( IN := TRUE, PT := ppParameterGreifer.tUeberwachungBewegung );
 
-      IF ( M_PositionErreicht() ) THEN
+      IF (     Antrieb.bpDone
+          AND ( ABS( Antrieb.rpZielposition - Antrieb.rpIstPosition ) <= cTOLERANZ_POSITION ) ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplPositionieren := STEP_1000_E;
       END_IF

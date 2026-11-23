@@ -29,15 +29,19 @@ THEN
   //   - Greiferachse verfahren
   IF NOT bgVisuAntriebeVerfahrenAktiv THEN
     IF ( bpHandfahrenPlus AND NOT bpHandfahrenMinus ) THEN
-      M_Fahren( epBetriebsart     := ABSOLUT,
-                rpZielPosition    := ppParameterGreifer.rUebergabePosition_Auslauf,
-                rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit );
+      Antrieb.rpZielposition    := ppParameterGreifer.rUebergabePosition_Auslauf;
+      Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;
+      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      Antrieb.wpBetriebsart     := ABSOLUT;
       bpVorpositioniertEintransport := FALSE;
 
     ELSIF ( bpHandfahrenMinus AND NOT bpHandfahrenPlus ) THEN
-      M_Fahren( epBetriebsart     := ABSOLUT,
-                rpZielPosition    := ppParameterGreifer.rUebergabePosition_Einlauf,
-                rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit );
+      Antrieb.rpZielposition    := ppParameterGreifer.rUebergabePosition_Einlauf;
+      Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;
+      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      Antrieb.wpBetriebsart     := ABSOLUT;
       bpVorpositioniertEintransport := FALSE;
 
     ELSE
