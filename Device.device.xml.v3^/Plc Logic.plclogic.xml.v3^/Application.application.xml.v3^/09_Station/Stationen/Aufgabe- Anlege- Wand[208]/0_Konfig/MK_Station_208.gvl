@@ -39,7 +39,7 @@ VAR_GLOBAL
                                                  // stTransfershuttle
                                                  stGlastransport :=  ( bVortransport                             := FALSE,   // Vortransport aktivieren [Bsp.: Nach einem Eintransport mit gesetztem Bit <Letzte Scheibe>]
                                                                        bTransportMasterSlaveEintransport         := FALSE,   // derzeit ohne Funktion
-                                                                       bTransportMasterSlaveAustransport         := FALSE,   // derzeit ohne Funktion
+                                                                       bTransportMasterSlaveAustransport         := TRUE ,   // Austransport als Slave auf die Achse des Nachfolgers
                                                                        bGLasUebernahmeSenkrecht                  := FALSE,   // RKT - Eintransport in Senkrechter-Position bzw. in Waagerechter- Position [default]
                                                                        bAustransportISOLinie                     := FALSE,   // Austransport an eine ISO-Linie
                                                                        bScheibenVermessen                        := TRUE,    // Scheibenmessung am Anlegetisch/Anlegewand
@@ -130,7 +130,7 @@ VAR_GLOBAL
       rWegUeberAuslaufAustransport          :=    15, // Lage Auf Auslauf: Weg ueber den Auslaufsensor hinaus [mm]
       rWegEinlaufsensorZuVorStopSensor      :=  3160, // Beschreibt den Weg vum eine Scheibe beim EIntransport vom Einlaufsensor bis ueberden Vorabstopsensor zu verfahren
       rMesstoleranz                         :=    10, // Toleranz-Mass fuer die Scheibenlaengenmessung
-      rMessstrecke                          :=  3210, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
+      rMessstrecke                          :=  2904, // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
       rWegstreckeBisZurVerzoegerung         :=  2660  // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll, dies gilt fuer Eintransportauftraege die das Bit "Letzte Scheibe" gesetzt haben
     )];
 

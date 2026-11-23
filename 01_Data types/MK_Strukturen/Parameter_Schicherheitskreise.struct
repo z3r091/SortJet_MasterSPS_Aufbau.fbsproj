@@ -12,5 +12,6 @@ TYPE Parameter_Schicherheitskreise :
     eaTueren           : ARRAY[cERSTE_TUER..cANZAHL_TUEREN] OF Tueren_EN;                              // Konfig welche Türen zu dem Sicherheitskreis gehören
     eaDurchgang        : ARRAY[cERSTER_DURCHGANG..cANZAHL_DURCHGANGE] OF Durchgang_EN;                 // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
     bMeldetOffen       : BOOL;                                                                         // Konfig welche festlegt, ob der geöffnete SK eine WatchIO aufruft
+    bBlockiertSystemcheck : BOOL;                                                                      // Konfig welche festlegt, ob der geöffnete SK den Start des Systemchecks blockiert
   END_STRUCT
 END_TYPE

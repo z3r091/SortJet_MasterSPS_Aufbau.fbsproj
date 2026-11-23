@@ -39,7 +39,7 @@ FOR wlIndexSicherheitskreis := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSK
     END_IF
   END_FOR
 
-  IF NOT bSicherheitskreisIstDurchgang THEN
+  IF NOT bSicherheitskreisIstDurchgang AND apgMKSicherheiskreis[wlIndexSicherheitskreis].bBlockiertSystemcheck THEN
 
     findInWORDArray := FALSE;
 

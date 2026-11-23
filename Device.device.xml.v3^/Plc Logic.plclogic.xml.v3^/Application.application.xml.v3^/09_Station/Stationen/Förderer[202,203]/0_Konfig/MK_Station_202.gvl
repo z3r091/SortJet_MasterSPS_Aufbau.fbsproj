@@ -38,7 +38,7 @@ VAR_GLOBAL
                                                  // stTransfershuttle
                                                  stGlastransport :=  ( bVortransport                             := FALSE,   // Vortransport aktivieren [Bsp.: Nach einem Eintransport mit gesetztem Bit <Letzte Scheibe>]
                                                                        bTransportMasterSlaveEintransport         := FALSE,   // derzeit ohne Funktion
-                                                                       bTransportMasterSlaveAustransport         := FALSE,   // derzeit ohne Funktion
+                                                                       bTransportMasterSlaveAustransport         := TRUE ,   // Austransport als Slave auf die Achse des Nachfolgers
                                                                        bGLasUebernahmeSenkrecht                  := FALSE,   // RKT - Eintransport in Senkrechter-Position bzw. in Waagerechter- Position [default]
                                                                        bAustransportISOLinie                     := FALSE,   // Austransport an eine ISO-Linie
                                                                        bScheibenVermessen                        := FALSE,   // Scheibenmessung am Anlegetisch/Anlegewand
