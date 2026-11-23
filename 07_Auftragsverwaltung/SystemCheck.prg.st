@@ -26,6 +26,7 @@ VAR
   // BOOL
   blErsterZyklus                      : BOOL := TRUE;
   ablTimeOutMeldungGenerieren         : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL;
+  ablStationFehlerImCheck             : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF BOOL; // mind. eine Station hat den Check mit Fehler beendet
   blCheckAktiv                        : BOOL;
   ablCheck                            : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS, 1..cMAX_ANZAHL_SYSTEMCHECKZYKLEN] OF BOOL;
   ablCheckDone                        : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS, 1..cMAX_ANZAHL_SYSTEMCHECKZYKLEN] OF BOOL;

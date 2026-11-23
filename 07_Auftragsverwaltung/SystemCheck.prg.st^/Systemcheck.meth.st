@@ -44,6 +44,7 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
         ailAnzahlFWStationenCheckAktiv[wpAutomatikkreis]  := 0;
 
         ablTimeOutMeldungGenerieren[wpAutomatikkreis] := TRUE;
+        ablStationFehlerImCheck[wpAutomatikkreis]     := FALSE;
 
         // Status zurueck setzen
         FOR wlIndex := cERSTE_STATION TO cLETZTE_STATION DO
@@ -325,7 +326,14 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
            AND ailAnzahlStationenCheckAktiv[wpAutomatikkreis]       = 0
            AND ailAnzahlFWStationenCheckAktiv[wpAutomatikkreis]     = 0 )
       THEN
-        asteplCheck[wpAutomatikkreis, wpZyklus] := STEP_1000_E;
+        (* Hinweis:
+           - Alle Stationen haben den Check beendet, Stationen mit Fehler wurden bereits gemeldet
+        *)
+        IF ( ablStationFehlerImCheck[wpAutomatikkreis] ) THEN
+          asteplCheck[wpAutomatikkreis, wpZyklus] := STEP_900_E;
+        ELSE
+          asteplCheck[wpAutomatikkreis, wpZyklus] := STEP_1000_E;
+        END_IF
 
       END_IF
 
@@ -431,7 +439,9 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
                     AutomatikkreisBestimmen(wlIndex),
                     starrShuttleBasisParameter[wlIndex].awFehlerInformationen );
 
-          asteplCheck[wpAutomatikkreis, wpZyklus] := STEP_900_E;
+          ailAnzahlShuttleCheckAktiv[wpAutomatikkreis] := ailAnzahlShuttleCheckAktiv[wpAutomatikkreis] - 1;
+          ablShuttleCheckAktiv[wlIndex]                := FALSE;
+          ablStationFehlerImCheck[wpAutomatikkreis]    := TRUE;
 
         END_IF
 
@@ -452,28 +462,32 @@ IF ablCheck[wpAutomatikkreis, wpZyklus] THEN
                     AutomatikkreisBestimmen(wlIndex),
                     starrStationBasisParameter[wlIndex].awFehlerInformationen );
 
-          asteplCheck[wpAutomatikkreis, wpZyklus] := STEP_900_E;
+          ailAnzahlStationenCheckAktiv[wpAutomatikkreis] := ailAnzahlStationenCheckAktiv[wpAutomatikkreis] - 1;
+          ablStationCheckAktiv[wlIndex]                  := FALSE;
+          ablStationFehlerImCheck[wpAutomatikkreis]      := TRUE;
         END_IF
 
-        // FW
-        FOR wlIndex :=   cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR DO
+      END_FOR
 
-          IF StationInAutomatikkreis(starrFaecherwagenBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wpAutomatikkreis)
-             AND starrFaecherwagenBasisParameter[wlIndex].bFehler
-             AND starrFaecherwagenBasisParameter[wlIndex].bCheck
-          THEN
-            starrFaecherwagenBasisParameter[wlIndex].bCheck := FALSE;
-            wpgFehlerdaten[0] := starrFaecherwagenBasisParameter[wlIndex].wFehlerNummer;
-            SpsError( eFehler_Station,
-                      starrFaecherwagenBasisParameter[wlIndex].wFehlerNummer,
-                      wlIndex,
-                      AutomatikkreisBestimmen(wlIndex),
-                      starrFaecherwagenBasisParameter[wlIndex].awFehlerInformationen );
+      // FW
+      FOR wlIndex :=   cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR DO
 
-            asteplCheck[wpAutomatikkreis, wpZyklus] := STEP_900_E;
-          END_IF
+        IF StationInAutomatikkreis(starrFaecherwagenBasisParameter[wlIndex].stMKs.eaAutomatikkreis, wpAutomatikkreis)
+           AND starrFaecherwagenBasisParameter[wlIndex].bFehler
+           AND starrFaecherwagenBasisParameter[wlIndex].bCheck
+        THEN
+          starrFaecherwagenBasisParameter[wlIndex].bCheck := FALSE;
+          wpgFehlerdaten[0] := starrFaecherwagenBasisParameter[wlIndex].wFehlerNummer;
+          SpsError( eFehler_Station,
+                    starrFaecherwagenBasisParameter[wlIndex].wFehlerNummer,
+                    wlIndex,
+                    AutomatikkreisBestimmen(wlIndex),
+                    starrFaecherwagenBasisParameter[wlIndex].awFehlerInformationen );
 
-        END_FOR
+          ailAnzahlFWStationenCheckAktiv[wpAutomatikkreis] := ailAnzahlFWStationenCheckAktiv[wpAutomatikkreis] - 1;
+          ablFWCheckAktiv[wlIndex]                         := FALSE;
+          ablStationFehlerImCheck[wpAutomatikkreis]        := TRUE;
+        END_IF
 
       END_FOR
 
