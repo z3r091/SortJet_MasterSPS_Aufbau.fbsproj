@@ -11,6 +11,9 @@ VAR_INPUT
   // WORD
   wlAutomatikkreis : WORD;
 
+  // BOOL
+  bNurSystemcheckBlockierende : BOOL := FALSE; // TRUE: nur Sicherheitskreise beruecksichtigen, die den Systemcheck blockieren [MK bBlockiertSystemcheck]
+
 END_VAR
 VAR
   // BOOL
@@ -39,7 +42,7 @@ FOR wlIndexSicherheitskreis := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSK
     END_IF
   END_FOR
 
-  IF NOT bSicherheitskreisIstDurchgang AND apgMKSicherheiskreis[wlIndexSicherheitskreis].bBlockiertSystemcheck THEN
+  IF NOT bSicherheitskreisIstDurchgang THEN
 
     findInWORDArray := FALSE;
 
@@ -50,7 +53,7 @@ FOR wlIndexSicherheitskreis := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSK
       END_IF
     END_FOR
 
-    IF findInWORDArray THEN
+    IF findInWORDArray AND ( NOT bNurSystemcheckBlockierende OR apgMKSicherheiskreis[wlIndexSicherheitskreis].bBlockiertSystemcheck ) THEN
       checkSafetyCircuitsClosedFromAutomaticCircuit :=
                                                       checkSafetyCircuitsClosedFromAutomaticCircuit
                                                       AND Sicherheitskreis[wlIndexSicherheitskreis].bpSicherheitskreisGeschlossen;

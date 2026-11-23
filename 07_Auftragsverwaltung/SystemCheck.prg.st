@@ -110,7 +110,7 @@ FOR wlIndexAutomatikkreis := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS D
   atonlWaitCheck[wlIndexAutomatikkreis]( IN := ( M_INIT_OK
                                                  AND NotHalt.bpNotHaltOK
                                                  AND EtherCAT_Master.xConfigFinished
-                                                 AND checkSafetyCircuitsClosedFromAutomaticCircuit(wlIndexAutomatikkreis)
+                                                 AND checkSafetyCircuitsClosedFromAutomaticCircuit(wlIndexAutomatikkreis, TRUE)
                                                  AND ( TCPMain.l_fb_SortjetHMI.o_b_WatchdogOk OR bgMMIBruecken )
                                                  AND StatusAnlage.bpAnlageOK ),
                                          PT := T#3S);
