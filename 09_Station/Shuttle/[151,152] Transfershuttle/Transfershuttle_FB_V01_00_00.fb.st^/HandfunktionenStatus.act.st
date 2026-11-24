@@ -13,14 +13,13 @@ IF    NOT BasisStationsParameter.stMKs.bDeaktivieren
       AND NOT BasisStationsParameter.bCheck
       AND NOT BasisStationsParameter.bReferenz
       AND NOT bpScheibenNeuAusrichten
-      AND NOT bgSimAktiv // Demo/Messe: Handbits kommen aus der Simulation -> nicht ans MMI melden
 THEN
-  dwpHandfunktionenReturn.1  := Glastransport.bpHandfahrenPositiv;
-  dwpHandfunktionenReturn.2  := Glastransport.bpHandfahrenNegativ;
+  dwpHandfunktionenReturn.1  := Glastransport.bpHandfahrenPlus;
+  dwpHandfunktionenReturn.2  := Glastransport.bpHandfahrenMinus;
   dwpHandfunktionenReturn.5  := Glastransport.bpHandGlastransportAnheben;
-  dwpHandfunktionenReturn.11 := Querfahrt.bpHandplus;
-  dwpHandfunktionenReturn.12 := Querfahrt.bpHandminus;
-  dwpHandfunktionenReturn.13 := Querfahrt.bpStartReferenz;
+  dwpHandfunktionenReturn.11 := Querfahrt.bpHandfahrenPlus;
+  dwpHandfunktionenReturn.12 := Querfahrt.bpHandfahrenMinus;
+  dwpHandfunktionenReturn.13 := Querfahrt.bpReferenz;
   dwpHandfunktionenReturn.17 := Zentralschmierung.bpStartSchmierungHand;
   dwpHandfunktionenReturn.21 := Glastransport.bpHandScheibenKontrolleEinlaufseiteAnheben;
   dwpHandfunktionenReturn.22 := Glastransport.bpHandScheibenKontrolleEinlaufseiteEin;

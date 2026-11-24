@@ -34,7 +34,7 @@ THEN
 
   IF ( Hubrahmen.bpFehler ) THEN
     Hubrahmen.bpStartAusfahren := FALSE;
-    BasisStationsParameter.awFehlerInformationen[1] := cHUBRAHMEN_1;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_HUBRAHMEN;
     BasisStationsParameter.wFehlerNummer := Hubrahmen.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF

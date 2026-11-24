@@ -145,12 +145,40 @@ IF ( bpCheck ) THEN
           wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT;
           steplCheck := STEP_900_E;
         ELSE
+          rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
+
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+          Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
+
+          // Freifahren per Restweg
+          Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberAuslaufEintransport;
+          IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+            Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor2;
+          ELSE
+            Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor2;
+          END_IF
+          Antrieb.wpBetriebsart     := RESTWEG;
 
           steplCheck := STEP_60_E;
         END_IF
 
       ELSE
         IF ( blEinlaufSensor ) THEN
+          rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
+
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+          Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
+
+          // Freifahren per Restweg
+          Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberEinlaufEintransport;
+          IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+            Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor1;
+          ELSE
+            Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
+          END_IF
+          Antrieb.wpBetriebsart     := RESTWEG;
 
           steplCheck := STEP_70_E;
 
@@ -168,7 +196,7 @@ IF ( bpCheck ) THEN
       (* Anmerkung:
          - Glas steht über Auslauf steht,
       *)
-      IF ( NOT blAuslaufSensor ) THEN
+      IF ( Antrieb.bpDone AND NOT blAuslaufSensor ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
         IF ( pSystemCheckDaten.wAnzahlScheiben = 0 ) THEN
@@ -180,21 +208,21 @@ IF ( bpCheck ) THEN
         END_IF
         steplCheck := STEP_800_E;
 
-      ELSE
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung ;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung ;
-        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
+      END_IF
 
-        Antrieb.wpBetriebsart     := HANDMINUS;
+      IF ( Antrieb.bpDone AND blAuslaufSensor ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_NICHT_FREI;
+        steplCheck := STEP_900_E;
       END_IF
 
       (* Fehlerbehandlung:
          - Wegüberwachung
          - Einlaufsensor angefahren
       *)
-      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_BELEGT;
+        wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_NICHT_FREI;
         steplCheck := STEP_900_E;
       END_IF
 
@@ -210,7 +238,7 @@ IF ( bpCheck ) THEN
       (* Anmerkung:
          - Glas steht über Einlauf
       *)
-      IF ( NOT blEinlaufSensor ) THEN
+      IF ( Antrieb.bpDone AND NOT blEinlaufSensor ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         IF ( pSystemCheckDaten.wAnzahlScheiben = 0 ) THEN
           SpsWarnung( eFehler_Station,
@@ -221,12 +249,12 @@ IF ( bpCheck ) THEN
         END_IF
         steplCheck := STEP_800_E;
 
-      ELSE
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung ;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung ;
-        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
+      END_IF
 
-        Antrieb.wpBetriebsart     := HANDPLUS;
+      IF ( Antrieb.bpDone AND blEinlaufSensor ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_NICHT_FREI;
+        steplCheck := STEP_900_E;
       END_IF
 
 
@@ -237,7 +265,7 @@ IF ( bpCheck ) THEN
       *)
       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_BELEGT;
+        wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_NICHT_FREI;
         steplCheck := STEP_900_E;
       END_IF
 
@@ -250,12 +278,16 @@ IF ( bpCheck ) THEN
     // SYSTEM CHECK=========================
     STEP_800_E:
       (* Anmerkung:
-         - alles beenden und Shuttle absenken
+         - alles beenden und Shuttle absenken, erst wenn der Antrieb steht (nach dem Freifahren)
       *)
-      out_bShuttleAnheben := FALSE;
-      out_bScheibenKontrolleAuslaufseiteAuf := FALSE;
-      out_bScheibenKontrolleEinlaufseiteAuf := FALSE;
-      steplCheck := STEP_1000_E;
+      Antrieb.wpBetriebsart := KEINE_FUNKTION;
+
+      IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
+        out_bShuttleAnheben := FALSE;
+        out_bScheibenKontrolleAuslaufseiteAuf := FALSE;
+        out_bScheibenKontrolleEinlaufseiteAuf := FALSE;
+        steplCheck := STEP_1000_E;
+      END_IF
 
     // SYSTEM CHECK=========================
     STEP_900_E:

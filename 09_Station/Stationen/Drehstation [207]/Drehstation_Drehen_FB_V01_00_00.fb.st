@@ -53,7 +53,8 @@ VAR_OUTPUT
   bpAusnahmeSituationSensorBelegt       : BOOL; // HINWEIS: Glas hat waehrend der Drehbewegung einen Sensor belegt -> Versuchen die Situation zu bereinigen
 
   // WORD
-  wpFehlerNr   : Fehlerkonstanten_EN; // Status: Fehlernummer
+  wpFehlerNr      : Fehlerkonstanten_EN; // Status: Fehlernummer
+  wpFehlerKennung : WORD;                // Zylinder-Kennung bei Zylinderfehlern (cZYLINDER_*), sonst cZYLINDER_KEINE
 
   // REAL
   rpAktuellePosition   : REAL ; // Status: Gibt die Aktuelle Position des Dreh-Antriebs aus
@@ -148,6 +149,7 @@ IF ( NOT bpAktivieren ) THEN
 
   bpFehler   := FALSE;
   wpFehlerNr := cMELDUNG_NULL;
+  wpFehlerKennung := cZYLINDER_KEINE;
 
   RETURN;
 

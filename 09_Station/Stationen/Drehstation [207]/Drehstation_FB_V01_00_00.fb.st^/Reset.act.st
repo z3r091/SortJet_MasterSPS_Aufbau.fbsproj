@@ -99,6 +99,7 @@ IF( blBetriebsartReset )THEN
         IF Drehen.bpFehler THEN
           // Nummer des Bausteins nur uebernehmen, wenn er selbst schon einen Fehler meldet
           IF ( Drehen.wpFehlerNr <> cMELDUNG_NULL ) THEN
+            BasisStationsParameter.awFehlerInformationen[1] := Drehen.wpFehlerKennung;
             BasisStationsParameter.wFehlerNummer := Drehen.wpFehlerNr;
             SpsError( eFehler_Station,
                       BasisStationsParameter.wFehlerNummer,

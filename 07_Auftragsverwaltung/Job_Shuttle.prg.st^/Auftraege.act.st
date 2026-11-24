@@ -152,8 +152,9 @@ IF ( M_SB0_MMI_SHUTTLE_INFORMATION ) THEN
     cERSTE_STATION..cLETZTE_STATION:
       ;
     cERSTES_SHUTTLE..cLETZTES_SHUTTLE:
-      IF tMmi2SpsInfo.wAuftrag_ShuttleWand = 0 THEN // TODO
-        tMmi2SpsInfo.wAuftrag_ShuttleWand := 1;
+      // Rueckfall: Schickt das MMI keine Wand (0), gilt Wand 1
+      IF tMmi2SpsInfo.wAuftrag_ShuttleWand = 0 THEN
+        tMmi2SpsInfo.wAuftrag_ShuttleWand := cWAND_1;
       END_IF
       CASE tMmi2SpsInfo.wAuftrag_ShuttleWand OF
 

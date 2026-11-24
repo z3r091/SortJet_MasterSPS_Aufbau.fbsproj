@@ -311,7 +311,19 @@ THEN
         steplAustransport := STEP_1000_E;
       END_IF
 
-      IF ( toflAuslaufsensor.Q ) THEN
+      (* Hinweis:
+         - Scheibe liegt im Uebergang (eigener Sensor und Sensor des Partners belegt): nicht freifahren,
+           der Austransport ist fertig
+      *)
+      IF ( toflAuslaufsensor.Q AND InGlasTransportNachfolger.bEinlaufsensor ) THEN
+        bpOutBereitZumAustransport := FALSE;
+        bpOutBereitZumEintransport := FALSE;
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+
+        steplAustransport := STEP_1000_E;
+      END_IF
+
+      IF ( toflAuslaufsensor.Q AND NOT InGlasTransportNachfolger.bEinlaufsensor ) THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
 
         IF blReduzierteGeschwindigkeit THEN

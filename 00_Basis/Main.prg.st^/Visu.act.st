@@ -12,6 +12,12 @@ IF rtlChangeWatchIOStatus.Q THEN
   WatchIo( NOT bgVISUWatchIOAktiv, wgVISUWatchIONr );
 END_IF
 
+// Wandauswahl aus der Visu (Anlagen_Funktionen: bgStation1W1/W2, bgStation2W1/W2)
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  aStation1Wand[wlIndex] := SEL( wlIndex = cWAND_1, bgStation1W2, bgStation1W1 );
+  aStation2Wand[wlIndex] := SEL( wlIndex = cWAND_1, bgStation2W2, bgStation2W1 );
+END_FOR
+
 // Station 1
 FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
   IF aStation1Wand[wlIndex] THEN

@@ -13,7 +13,6 @@ IF (      bpBetriebsartHand
      AND NOT bpPositionierung
      AND NOT bpReferenz
      AND NOT bpReset
-     AND NOT bpHandReferenz
      AND NOT bpVermessen_Oberkante_1_Sensor
      AND NOT bpVermessen_OberUndUnterkante_2_Sensoren
      AND NOT bgVisuAntriebeVerfahrenAktiv )
@@ -23,7 +22,7 @@ THEN
   Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
   Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpHandGeschwindigkeit;
 
-  IF( bpHandplus AND NOT bpHandminus ) THEN
+  IF( bpHandfahrenPlus AND NOT bpHandfahrenMinus ) THEN
 
     IF ( Antrieb.bpIstReferenziert ) THEN
       Antrieb.rpZielposition    := Antrieb.rpMaxPosition;
@@ -32,7 +31,7 @@ THEN
       Antrieb.wpBetriebsart := HANDPLUS;
     END_IF
 
-  ELSIF( bpHandminus AND NOT bpHandplus)THEN
+  ELSIF( bpHandfahrenMinus AND NOT bpHandfahrenPlus)THEN
 
     IF ( Antrieb.bpIstReferenziert ) THEN
       Antrieb.rpZielposition    := Antrieb.rpMinPosition;
@@ -41,7 +40,7 @@ THEN
       Antrieb.wpBetriebsart := HANDMINUS;
     END_IF
 
-  ELSIF( NOT bpHandplus AND NOT bpHandminus ) THEN
+  ELSIF( NOT bpHandfahrenPlus AND NOT bpHandfahrenMinus ) THEN
     Antrieb.wpBetriebsart :=  KEINE_FUNKTION;
   END_IF
 

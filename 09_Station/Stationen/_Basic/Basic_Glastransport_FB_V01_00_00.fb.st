@@ -121,6 +121,7 @@ VAR
   blReduzierteGeschwindigkeit   : BOOL;
   blAntriebsKopplungAktiv       : BOOL;
   blStarteSlaveKopplung         : BOOL;
+  blSlaveKopplungHergestellt    : BOOL; // Kopplung in dieser Anforderung neu hergestellt (SYNC_AUF_MASTER fertig)
 
   // INT
   ilScheibenZaehler             : INT;
@@ -309,10 +310,12 @@ tonlMaxWarteAufResetErfolgreich(IN:=bpReset,pt:=tgMaxWartezeitReset-T#1S);
 //-------------------------------------------------------------------------------------------------
 // 2. Riemen/Rollen vorhanden -> Kipptisch
 //   - Vor den Schrittketten, damit diese die Kopplung im selben Zyklus sehen
-//   - Kopplung gilt, wenn der Slave synchron ist und die Kopplung angefordert ist
+//   - Kopplung gilt, wenn der Slave synchron ist, die Kopplung angefordert ist und in dieser Anforderung
+//     neu hergestellt wurde (sonst gilt beim direkten Wechsel z. B. Eintransport -> Vortransport noch kurz
+//     das alte Synchron-Signal des Antriebs, und die neue Kette meldet "Slave-Kopplung verloren")
 IF bpOptionSlaveAntrieb THEN
   SlaveAntrieb();
-  blAntriebsKopplungAktiv := Antrieb_Slave.bpAchseSychron AND blStarteSlaveKopplung;
+  blAntriebsKopplungAktiv := Antrieb_Slave.bpAchseSychron AND blStarteSlaveKopplung AND blSlaveKopplungHergestellt;
 ELSE
   blAntriebsKopplungAktiv := TRUE;
 END_IF

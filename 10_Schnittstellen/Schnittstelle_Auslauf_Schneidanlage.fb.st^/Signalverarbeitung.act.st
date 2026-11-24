@@ -19,13 +19,7 @@ ELSIF NOT BasisStationsParameter.stMKs.stFremdanlage.bAnalogwertAktiv THEN
     rpGeschwindigkeit := 0.0;
   END_IF
 
-// Analogwert aktiv
-//ELSIF (in_wAnalogwertISOLinie >= BasisStationsParameter.stMKs.stFremdanlage.wMindestAnalogWert) AND ( blBereitZumEintransport OR in_bTransportRueckwaerts ) THEN
-//  IF in_bTransportRueckwaerts THEN
-//    rpGeschwindigkeit := - WORD_TO_REAL(in_wAnalogwertISOLinie) / BasisStationsParameter.stMKs.stFremdanlage.rAnalogWertVerhaeltniss;
-//  ELSE
-//    rpGeschwindigkeit := WORD_TO_REAL(in_wAnalogwertISOLinie) / BasisStationsParameter.stMKs.stFremdanlage.rAnalogWertVerhaeltniss;
-//  END_IF
+// Analogwert aktiv: bei der Schneidanlage nicht vorhanden
 ELSE
   rpGeschwindigkeit := 0;
 END_IF

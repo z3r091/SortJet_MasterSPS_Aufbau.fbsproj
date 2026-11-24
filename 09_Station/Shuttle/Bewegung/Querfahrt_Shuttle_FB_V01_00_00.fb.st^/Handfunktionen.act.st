@@ -12,13 +12,13 @@ ACTION Handfunktionen
 
 IF (  NOT bpAutomatikAktiv
      AND NOT bpVerfahreShuttle
-     AND NOT bpStartReferenz
+     AND NOT bpReferenz
      AND NOT bpReset
      AND NOT bgVISUVerfahreShuttle[stStationsNummern.NummerSPS]
      AND NOT bgVisuAntriebeVerfahrenAktiv )
 THEN
 
-  IF ( bpHandplus AND NOT bpHandminus ) THEN
+  IF ( bpHandfahrenPlus AND NOT bpHandfahrenMinus ) THEN
 
     Antrieb.bpFreigabe := blFreigabeGesetzt := bpFreigabe AND bpVerfahrfreigabe;
 
@@ -36,7 +36,7 @@ THEN
       Antrieb.wpBetriebsart := HANDPLUS;
     END_IF
 
-  ELSIF ( bpHandminus AND NOT bpHandplus ) THEN
+  ELSIF ( bpHandfahrenMinus AND NOT bpHandfahrenPlus ) THEN
 
     Antrieb.bpFreigabe := blFreigabeGesetzt := bpFreigabe AND bpVerfahrfreigabe;
 
@@ -54,7 +54,7 @@ THEN
       Antrieb.wpBetriebsart := HANDPLUS;
     END_IF
 
-  ELSIF ( NOT bpHandminus AND NOT bpHandplus ) THEN
+  ELSIF ( NOT bpHandfahrenMinus AND NOT bpHandfahrenPlus ) THEN
     blFreigabeGesetzt := FALSE;
     Antrieb.bpFreigabe := tofAntriebFreigabe.Q; // Zeitverzögert abschalten
     Antrieb.wpBetriebsart := KEINE_FUNKTION;

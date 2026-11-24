@@ -9,13 +9,20 @@ ACTION Austransport_Rueckwertig
 //-------------------------------------------------------------------------------------------------
 // AUSTRANSPORT [NEGATIVE- RICHTUNG]
 //-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Spiegelbild der Aktion Austransport (gleiche Schritte), getauscht sind nur
+     => Richtung (HANDMINUS, Negativ-Restwegmodi), Ausgangssensor = Einlaufsensor, Vorab/Stopp = Einlaufseite
+     => Empfaenger ist der Vorgaenger
+*)
 IF (  bpRueckwaertsAustransportieren
      AND NOT bpEintransport
      AND NOT bpRueckwaertsEintransportieren
      AND bpAutomatikAktiv )
 THEN
 
-  // Ausnahmesituationen:
+  // Fehlerverhalten:
+  //  - Antrieb
+  //  - Vorgaenger meldet Fehler
   IF ( Antrieb.bpFehler ) THEN
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     wpFehlerNr := cMELDUNG_ANTRIEB_GLASTRANSPORT;
@@ -32,21 +39,18 @@ THEN
      - Starten der Schrittkette
   *)
   CASE steplAustransportRueckwaertig OF
-    // AUSTRANSPORT ====================================
+    // AUSTRANSPORT ==============================
     STEP_0_E:
       (* Hinweis:
-         - Variablen initialisierung
+         - Variablen initialisieren
       *)
+      rlGefahreneStreckeEintransport := 0.0;
+
       tlWarteZeiteAufnahme := TIME();
 
-      rlGefahreneStreckeEintransport := REAL#0;
+      tonlAntriebNichtFreigegeben(IN:=FALSE);
+      tonlWarteSchritt(IN:=FALSE);
 
-      bprtScheibe        := FALSE;
-      blSensorFreiFahren := FALSE;
-
-
-      tonlWarteSchritt(IN := FALSE);
-      tonlAntriebNichtFreigegeben(IN := FALSE);
 
       steplAustransportRueckwaertig := STEP_5_E;
 
@@ -59,10 +63,13 @@ THEN
         steplAustransportRueckwaertig := STEP_10_E;
       END_IF
 
-    // AUSTRANSPORT ====================================
+    // AUSTRANSPORT ==============================
     STEP_10_E:
+      (* Hinweis:
+         - Antriebueberpruefen ob bereit zum verfahren.
+      *)
       IF ( Antrieb.bpReglerBereit ) THEN
-        Antrieb.rpGeschwindigkeit := REAL#0;
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
         Antrieb.wpBetriebsart     := KEINE_FUNKTION;
@@ -81,64 +88,109 @@ THEN
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
-    // AUSTRANSPORT ====================================
+    // AUSTRANSPORT ==============================GEHT NICHT WEGEN MASTER SLAVE KOPPLUNG
     STEP_20_E:
+      // ---------------------------------------------------------------------------------------
+      //  OPTIONAL - REFERENZIEREN DES ANTRIEBS
+      //
+      //  Hinweis:
+      // - n/c
+      // ---------------------------------------------------------------------------------------
+
+      Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
+      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+
+      Antrieb.wpBetriebsart     := AntriebsBetriebsart_EN.REFERENZ;
+
+      steplAustransportRueckwaertig := STEP_30_E;
+
+    // AUSTRANSPORT =========================
+    STEP_30_E:
       (* Hinweis:
-         - Pruefen ob der Glas-Empfaenger bereit ist
+         - Referenzieren des Antriebs abgeschlossen [Ist-Position = 0  bzw. 1]
       *)
-      IF ( InGlasTransportVorgaenger.bBereitZumEintransport  ) THEN
+      IF ( Antrieb.bpDone ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplAustransportRueckwaertig := STEP_40_E;
+      END_IF
+
+    // AUSTRANSPORT ==============================
+    STEP_40_E:
+      // ---------------------------------------------------------------------------------------
+      //  KOPPLUNG [ SCHNITTSTELLE ZWISCHEN DEN STATIONEN]
+      //
+      //  Hinweis:
+      // - n/c
+      // ---------------------------------------------------------------------------------------
+
+      IF ( InGlasTransportVorgaenger.bBereitZumEintransport ) THEN
 
         dwpWartezeit := TIME_TO_DWORD(TIME()- tlWarteZeiteAufnahme);
 
         IF ( NOT pAuftrag.bErsteScheibe ) THEN
-          steplAustransportRueckwaertig := STEP_100_E;
+          steplAustransportRueckwaertig := STEP_50_E;
         ELSE
-          steplAustransportRueckwaertig := STEP_200_E;
+          steplAustransportRueckwaertig := STEP_100_E;
         END_IF
 
       END_IF
 
-    // AUSTRANSPORT ====================================
-    STEP_100_E:
-      (* Hinweis:
-         - Sensorik pruefen [Restweg Positioniert]
-      *)
-      IF ( NOT bpSensorEinlauf ) THEN
+    // AUSTRANSPORT ==============================
+    STEP_50_E:
+      // Pruefen ob der Einlaufsensor belegt ist.
+      //   - Einlaufsensor nicht belegt, Glas auf den Einlaufsensor positionieren
+      //   - Einlaufsensor belegt, Glas bereit zum Austransport
+      IF ( NOT bpSensorEinlauf  ) THEN
         rlAntriebIstPositionBeiStart  := Antrieb.rpIstPosition;
 
-        Antrieb.rpGeschwindigkeit := ppAntriebsInformationen.rpMaxGeschwindigkeit;
+        IF ( bpSensorEinlaufVorab ) THEN
+          Antrieb.rpGeschwindigkeit := rgGeschwindigkeit20;
+        ELSE
+          Antrieb.rpGeschwindigkeit := rgGeschwindigkeit40;
+        END_IF
+
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
 
-        Antrieb.rpZielposition    := - ( ppParameterBaustein.rWegUeberAuslaufRueck - pAuftrag.rModellVersatzVorne );
+        Antrieb.rpZielposition    := - ( ppParameterBaustein.rWegUeberEinlaufRueck - pAuftrag.rModellVersatzVorne );
+
         Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
         Antrieb.wpBetriebsart     := RESTWEG;
 
-        steplAustransportRueckwaertig := STEP_110_E;
+        steplAustransportRueckwaertig := STEP_60_E;
 
       ELSE
 
-        IF (  NOT InGlasTransportVorgaenger.bAuslaufsensor
-             AND NOT blSensorFreifahren )
-        THEN
-          blSensorFreifahren := TRUE;
-          steplAustransportRueckwaertig  := STEP_300_E;
+        (* Hinweis:
+           - Inputshuttle sollten beim ersten Austransport schon auf den Einlaufsensor-Positioniert sein, dies
+             muss hier gesondert abgefragt werden
+        *)
+        IF ( eStationsTyp = eInputshuttle ) THEN
+
+          IF ( bpSensorEinlaufStopp ) THEN
+            steplAustransportRueckwaertig := STEP_80_E;
+          ELSE
+            steplAustransportRueckwaertig := STEP_100_E;
+          END_IF
 
         ELSE
-          steplAustransportRueckwaertig := STEP_200_E;
+          steplAustransportRueckwaertig := STEP_80_E;
 
         END_IF
 
       END_IF
 
-    // AUSTRANSPORT ====================================
-    STEP_110_E:
-      // Wird der Vorstop- Sensor ueberfahren die Geschwindigkeit des
-      //   Antriebsdrosseln.
+    // AUSTRANSPORT ==============================
+    STEP_60_E:
+      (* Hinweis:
+         - Geschwindigkeit reduzieren
+      *)
       IF ( bpSensorEinlaufVorab ) THEN
         rlAntriebIstPositionBeiStart  := Antrieb.rpIstPosition;
-        Antrieb.rpGeschwindigkeit     := rgGeschwindigkeit10;
-        steplAustransportRueckwaertig := STEP_120_E;
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeit20;
+
+        steplAustransportRueckwaertig := STEP_70_E;
       END_IF
 
       (* Fehlerbehandlung:
@@ -147,25 +199,27 @@ THEN
       *)
       IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_UND_AUSLAUFVORAB_SCHALTEN_NICHT;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_UND_EINLAUFVORAB_SCHALTEN_NICHT;
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
-    // AUSTRANSPORT ====================================
-    STEP_120_E:
+    // AUSTRANSPORT ==============================
+    STEP_70_E:
       (* Hinweis:
-         - Restweg- Positionierung abgeschlossen auf den Auslauf-Sensor
+         - Restweg- Positionierung abgeschlossen auf den Einlauf-Sensor
       *)
-      IF (  Antrieb.bpDone
+      IF ( Antrieb.bpDone
            AND bpSensorEinlauf )
       THEN
-        Antrieb.rpGeschwindigkeit := REAL#0;
-        Antrieb.wpBetriebsart     := KEINE_FUNKTION;
-        steplAustransportRueckwaertig := STEP_200_E;
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplAustransportRueckwaertig := STEP_80_E;
       END_IF
 
-      // Ausnahmesituation
-      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rUeberwachungAuslaufsensor ) THEN
+      (* Fehlerbehandlung:
+         - Glas moeglicherweise verkeilt \ gebrochen da der Einlaufsensor nicht schaltet
+           bzw. nicht angefahren wird (Stationslaemge abfahren)
+      *)
+      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rUeberwachungEinlaufsensor ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
         steplAustransportRueckwaertig := STEP_900_E;
@@ -179,15 +233,22 @@ THEN
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
-    // AUSTRANSPORT ====================================
-    STEP_200_E:
+    // AUSTRANSPORT ==============================
+    STEP_80_E:
+      IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplAustransportRueckwaertig := STEP_100_E;
+      END_IF
+
+    // AUSTRANSPORT ==============================
+    STEP_100_E:
       // ---------------------------------------------------------------------------------------
-      //  STARTEN DES TRANSPORTS
+      //  STARTEN DES AUSTRANSPORTS
       //
       //  Hinweis:
-      // - Transport "NEGATIVE" Richtung
+      // - n/c
       // ---------------------------------------------------------------------------------------
-      ilScheibenZaehler := WORD_TO_INT( pAuftrag.wAnzahlScheiben );
+      ilScheibenZaehler := WORD_TO_INT(pAuftrag.wAnzahlScheiben);
 
       rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
@@ -206,7 +267,7 @@ THEN
         IF ( Antrieb.bpDone ) THEN
           bpSlaveAktiv := TRUE;
           bpOutBereitZumAustransport := TRUE;
-          steplAustransportRueckwaertig := STEP_240_E;
+          steplAustransportRueckwaertig := STEP_215_E;
         END_IF
 
       // Austransport Hand-Minus
@@ -219,18 +280,19 @@ THEN
 
         bpOutBereitZumAustransport := TRUE;
 
-        steplAustransportRueckwaertig := STEP_210_E;
-
+        steplAustransportRueckwaertig := STEP_110_E;
       END_IF
 
-
-    // AUSTRANSPORT ====================================
-    STEP_210_E:
+    // AUSTRANSPORT ==============================
+    STEP_110_E:
+      (* Hinweis:
+         - Vorgaenger nicht bereit: kein Abbruch, der Antrieb folgt der Geschwindigkeit des Vorgaengers und wartet
+      *)
       bprtScheibe := FALSE;
       Antrieb.rpGeschwindigkeit := InGlasTransportVorgaenger.rGeschwindigkeit;
 
       IF ( bpSensorEinlaufStopp ) THEN
-        steplAustransportRueckwaertig := STEP_220_E;
+        steplAustransportRueckwaertig :=  STEP_120_E;
       END_IF
 
       (* Fehlerbehandlung:
@@ -244,40 +306,11 @@ THEN
       END_IF
 
     // AUSTRANSPORT ====================================
-    STEP_220_E:
-      (* Hinweis:
-         - Scheibenzaehler
-      *)
-      bprtScheibe := FALSE;
-      Antrieb.rpGeschwindigkeit := InGlasTransportVorgaenger.rGeschwindigkeit;
-
-      IF ( NOT bpSensorEinlaufStopp ) THEN
-        bprtScheibe := TRUE;
-        ilScheibenZaehler := ilScheibenZaehler - 1;
-
-        IF ( ilScheibenZaehler > 0 ) THEN
-          dwpWartezeit := 0;
-
-          // Wegueberwachung fuer die naechste Scheibe neu starten
-          rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
-          steplAustransportRueckwaertig := STEP_210_E;
-
-        ELSE
-          Antrieb.rpGeschwindigkeit := REAL#0;
-          Antrieb.wpBetriebsart     := KEINE_FUNKTION;
-          steplAustransportRueckwaertig := STEP_280_E;
-
-        END_IF
-
-      END_IF
-
-
-    // AUSTRANSPORT ====================================
-    STEP_240_E:
+    STEP_215_E:
       bprtScheibe := FALSE;
 
       IF ( bpSensorEinlaufStopp ) THEN
-        steplAustransportRueckwaertig := STEP_250_E;
+        steplAustransportRueckwaertig := STEP_120_E;
       END_IF
 
       (* Fehlerbehandlung:
@@ -289,60 +322,73 @@ THEN
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
-    // AUSTRANSPORT ====================================
-    STEP_250_E:
+    // AUSTRANSPORT ==============================
+    STEP_120_E:
       (* Hinweis:
          - Scheibenzaehler
       *)
       bprtScheibe := FALSE;
-      Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
+      Antrieb.rpGeschwindigkeit := InGlasTransportVorgaenger.rGeschwindigkeit;
 
       IF ( NOT bpSensorEinlaufStopp ) THEN
         bprtScheibe := TRUE;
-        ilScheibenZaehler := ilScheibenZaehler - 1;
-
+        ilScheibenZaehler := ( ilScheibenZaehler - 1 );
         IF ( ilScheibenZaehler > 0 ) THEN
+
           dwpWartezeit := 0;
 
           // Wegueberwachung fuer die naechste Scheibe neu starten
           rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
-          steplAustransportRueckwaertig := STEP_210_E;
+          steplAustransportRueckwaertig := STEP_110_E;
 
         ELSE
+          Antrieb.wpBetriebsart := KEINE_FUNKTION;
           Antrieb.rpGeschwindigkeit := REAL#0;
-          Antrieb.wpBetriebsart     := KEINE_FUNKTION;
-          steplAustransportRueckwaertig := STEP_280_E;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
 
+          steplAustransportRueckwaertig :=   STEP_140_E;
         END_IF
 
       END_IF
 
+    // AUSTRANSPORT ==============================
+    STEP_140_E:
 
-    // AUSTRANSPORT ====================================
-    STEP_280_E:
       bprtScheibe := FALSE;
+      dwpWartezeit := 0;
 
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
+
         bpOutBereitZumAustransport := FALSE;
-        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
+
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
-        IF ( NOT bpSensorEinlaufStopp ) THEN
-          steplAustransportRueckwaertig := STEP_400_E;
+        rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
+
+        // Freifahren nur bis der Stopp-Sensor frei ist; ohne Stopp-Sensor (MK bSensorEinlaufStopp = FALSE)
+        // ist bpSensorEinlaufStopp der Einlaufsensor, dann wird der Einlauf freigefahren
+        IF NOT bpSensorEinlaufStopp THEN
+          steplAustransportRueckwaertig := STEP_1000_E;
+
+        // Scheibe liegt im Uebergang (eigener Sensor und Sensor des Partners belegt): nicht freifahren, fertig
+        ELSIF ( InGlasTransportVorgaenger.bAuslaufsensor ) THEN
+          steplAustransportRueckwaertig := STEP_1000_E;
+
         ELSE
-          steplAustransportRueckwaertig := STEP_300_E;
+          steplAustransportRueckwaertig := STEP_200_E;
+
         END_IF
 
       END_IF
 
-
-    // AUSTRANSPORT ====================================
-    STEP_300_E:
+    // AUSTRANSPORT ==============================
+    STEP_200_E:
       // ---------------------------------------------------------------------------------------
-      //  SENSOR FREIFAHREN
+      //  EINLAUFSENSOR FREIFAHREN
       //
       //  Hinweis:
-      // - Transport "Positive" Richtung
+      // - n/c
       // ---------------------------------------------------------------------------------------
 
       IF (  NOT Antrieb.bpAntrieblaeuft
@@ -351,15 +397,10 @@ THEN
         bpOutBereitZumAustransport := FALSE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
-        IF ( blSensorFreifahren ) THEN
-          steplAustransportRueckwaertig  :=  STEP_10_E;
-        ELSE
-          steplAustransportRueckwaertig  :=  STEP_800_E;
-        END_IF
-
+        steplAustransportRueckwaertig := STEP_1000_E;
       END_IF
 
-      IF ( toflEinlaufsensorFrei.Q ) THEN
+      IF ( bpSensorEinlauf ) THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
@@ -369,7 +410,7 @@ THEN
       END_IF
 
       (* Fehlerbehandlung:
-         - Einlaufsensor belegt
+         - Auslaufsensor belegt
          - Verfahrweg- Ueberwachung
       *)
       IF ( bpSensorAuslauf ) THEN
@@ -387,33 +428,6 @@ THEN
       END_IF
 
     // AUSTRANSPORT ==============================
-    STEP_400_E:
-      // ---------------------------------------------------------------------------------------
-      //  REFERENZ
-      //
-      //  Hinweis:
-      // - Antrieb Referenzieren
-      // ---------------------------------------------------------------------------------------
-      // GEHT NICHT WEGEN MASTER SLAVE KOPPLUNG
-      //      Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
-      //      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.wpMaxBeschleunigung;
-      //      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.wpMaxVerzoegerung;
-      //
-      //      Antrieb.wpBetriebsart     := REFERENZ;
-      //
-      //      steplAustransportRueckwaertig := STEP_410_E;
-      steplAustransportRueckwaertig := STEP_1000_E;
-    // AUSTRANSPORT =========================
-    STEP_410_E:
-      (* Hinweis:
-         - Referenzieren des Antriebs abgeschlossen [Ist-Position = 0  bzw. 1]
-      *)
-      IF ( Antrieb.bpDone ) THEN
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        steplAustransportRueckwaertig := STEP_1000_E;
-      END_IF
-
-    // AUSTRANSPORT ==============================
     STEP_900_E:
       (* Fehlerbehandlung:
       *)
@@ -422,18 +436,19 @@ THEN
 
     // AUSTRANSPORT ==============================
     STEP_1000_E:
-      bpOutBereitZumAustransport := FALSE;
       bprtScheibe := FALSE;
       bpDone := TRUE;
 
   // AUSTRANSPORT ==============================
   END_CASE
 ELSE
+
   IF ( steplAustransportRueckwaertig > STEP_0_E ) THEN
     bpDone := FALSE;
     bpOutBereitZumAustransport := FALSE;
     Antrieb.wpBetriebsart := KEINE_FUNKTION;
     steplAustransportRueckwaertig := STEP_0_E;
   END_IF
+
 END_IF
 END_ACTION

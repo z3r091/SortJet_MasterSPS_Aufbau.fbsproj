@@ -45,6 +45,7 @@ THEN
 
   IF ( Hubrahmen.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen ) THEN
     BasisStationsParameter.bFehler := TRUE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_HUBRAHMEN;
     BasisStationsParameter.wFehlerNummer := Hubrahmen.wpFehlerNr;
   END_IF
 

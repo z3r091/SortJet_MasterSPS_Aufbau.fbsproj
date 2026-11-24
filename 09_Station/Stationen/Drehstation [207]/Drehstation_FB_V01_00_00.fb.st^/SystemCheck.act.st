@@ -215,6 +215,7 @@ IF( blBetriebartCheck )THEN
       *)
       IF ( Drehen.bpFehler ) THEN
         Drehen.bpStarteAbsolutPositionierung := FALSE;
+        BasisStationsParameter.awFehlerInformationen[1] := Drehen.wpFehlerKennung;
         BasisStationsParameter.wFehlerNummer := Drehen.wpFehlerNr;
         steplCheck := STEP_900_E;
       END_IF

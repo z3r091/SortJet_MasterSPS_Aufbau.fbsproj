@@ -10,8 +10,7 @@ ACTION Referenz
 // AKTION: REFERENZ
 //-------------------------------------------------------------------------------------------------
 
-IF ( bpReferenz
-     OR bpHandReferenz )
+IF ( bpReferenz )
 THEN
 
   (* Hinweis:

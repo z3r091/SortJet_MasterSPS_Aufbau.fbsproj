@@ -22,7 +22,7 @@ END_IF
 
 IF bDeaktiviert THEN
   stH.bGesperrt := TRUE;  stH.sSperrgrund := 'Gesperrt: Station deaktiviert';
-ELSIF stBP.bAutomatik AND (bFaecherwagen OR NOT Global_Vars.bgSimAktiv) THEN
+ELSIF stBP.bAutomatik THEN
   stH.bGesperrt := TRUE;  stH.sSperrgrund := 'Gesperrt: Automatik aktiv';
 ELSIF stBP.bReset THEN
   stH.bGesperrt := TRUE;  stH.sSperrgrund := 'Gesperrt: Reset läuft';

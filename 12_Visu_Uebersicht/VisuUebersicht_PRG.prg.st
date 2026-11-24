@@ -89,7 +89,6 @@ bDummy := VisuUeb_Lampe(stLampe := VISU_UEBERSICHT.stInit,           sText := 'I
 bDummy := VisuUeb_Lampe(stLampe := VISU_UEBERSICHT.stMMI,            sText := 'MMI',           bOK := MMI_Vars.bgMMIOK OR Global_Vars.bgMMIBruecken, bWarnung := Global_Vars.bgMMIBruecken, bNeutral := FALSE);
 bDummy := VisuUeb_Lampe(stLampe := VISU_UEBERSICHT.stBetriebsstop,   sText := SEL(Globale_Bausteine.Stop_Baustein.abpBetriebsstop[1], 'Betrieb', 'BETRIEBSSTOP'), bOK := NOT Globale_Bausteine.Stop_Baustein.abpBetriebsstop[1], bWarnung := FALSE, bNeutral := FALSE);
 bDummy := VisuUeb_Lampe(stLampe := VISU_UEBERSICHT.stInbetriebnahme, sText := 'IBN-Modus',     bOK := FALSE, bWarnung := TRUE, bNeutral := NOT Global_Vars.bgInbetriebnahmeBit);
-bDummy := VisuUeb_Lampe(stLampe := VISU_UEBERSICHT.stSimulation,     sText := 'Simulation',    bOK := FALSE, bWarnung := TRUE, bNeutral := NOT Global_Vars.bgSimAktiv);
 
 // -------------------------------------------------------------------------------------------
 // STATIONEN

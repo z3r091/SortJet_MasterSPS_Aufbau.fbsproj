@@ -27,13 +27,12 @@ starrStationBasisParameter[cSTATION_207].stParameterStationskomponenten.stQuerfa
    - Drehpositionen der Drehstation:
        90 Grad      -> Anlegewand 208
        0 / 180 Grad -> Kipptisch 206 / Shuttle 101 (0 Grad = bisherige 90-Grad-Position, 180 Grad = um 180 Grad gedreht)
-   - Drehpositionen kommen vom MMI (bDrehpositionenVomMMI = TRUE), daher hier keine Drehen-Eintraege
-     (Drehen / DrehenNachEintransport / DrehenNachAustransport).
-     ACHTUNG: Wird bDrehpositionenVomMMI auf FALSE gesetzt, muessen die Drehen-Eintraege hier wieder ergaenzt werden,
-     sonst stehen sie auf 0 = eDrehPosition0Grad!
-   - Kippen der Drehstation VOR der Aktion kommt aus den Kippen-Eintraegen hier (Kippen).
-     Kippen NACH dem Ein- und Austransport und im Systemcheck kommt aus der Drehposition
-     (MK: apgMKStation207Drehen.astKippenJeDrehposition), daher hier kein KippenNachEintransport / KippenNachAustransport.
+   - Drehpositionen kommen aktuell aus dieser Zuweisung (MK bDrehpositionenVomMMI = FALSE): Drehen / DrehenNachEintransport /
+     DrehenNachAustransport unten gelten. Spaeter kommen sie vom MMI (bDrehpositionenVomMMI = TRUE), dann werden die
+     Drehen-Eintraege hier nicht mehr ausgewertet.
+   - Kippen der Drehstation VOR der Aktion kommt aus den Kippen-Eintraegen hier (Kippen),
+     NACH dem Ein- und Austransport aus KippenNachEintransport / KippenNachAustransport.
+     Nur der Systemcheck nimmt die Kippposition aus der Drehposition (MK: apgMKStation207Drehen.astKippenJeDrehposition).
 *)
 
 // Eintransport von der Anlegewand 208 (Drehposition 90 Grad, vom MMI)

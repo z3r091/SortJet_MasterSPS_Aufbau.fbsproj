@@ -36,6 +36,7 @@ THEN
 
   IF ( Drehen.bpFehler ) THEN
     Drehen.bpStarteAbsolutPositionierung := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := Drehen.wpFehlerKennung;
     BasisStationsParameter.wFehlerNummer := Drehen.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
@@ -48,12 +49,14 @@ THEN
 
   IF ( Dickenverstellung.bpFehler ) THEN
     Dickenverstellung.bpStartPneumatik := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_DICKENVERSTELLUNG;
     BasisStationsParameter.wFehlerNummer := Dickenverstellung.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
 
   IF ( Querachse.bpFehler ) THEN
     Querachse.bpStartPneumatik := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_QUERACHSE;
     BasisStationsParameter.wFehlerNummer := Querachse.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
@@ -168,9 +171,7 @@ THEN
       //  STARTEN DES GLAS-TRANSPORTS [EINTRANSPORT]
       //
       //  Hinweis:
-      //  - Anhand der Drehposition bestimmen um welchen Eintransport-Typ es sich handelt
-      //    => Position 0 Grad   : Transport ueber den Einlaufsensor
-      //    => Position 180 Grad : Transport ueber den Auslaufsensor
+      //  - Die Transportrichtung kommt aus der Zuweisung der Vorgaengerstation (aEintransporte, bRueckwaertsTransportieren)
       // ---------------------------------------------------------------------------------------
 
       Glastransport.pAuftrag                   := BasisStationsParameter.pAuftrag[wWand];
@@ -241,8 +242,8 @@ THEN
 
         END_CASE
 
-        //   - Kippposition nach dem Eintransport aus der Drehposition nach dem Eintransport, Letzte Scheibe (MK: Parameter_Drehen.astKippenJeDrehposition)
-        Kippen.epZielPosition := Drehen.ppParameterBaustein.astKippenJeDrehposition[ LIMIT( 0, TO_INT(BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport) / 90, 3 ) ].eKippenMitLetzterScheibe;
+        //   - Kippposition nach dem Eintransport aus den Auftragsoptionen (eKippen_SollPosition_NachEintransport)
+        Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachEintransport;
         Kippen.bpPositionieren := TRUE;
 
       END_IF
@@ -291,8 +292,8 @@ THEN
         Drehen.epZielPosition :=  BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport;
         Drehen.bpStarteAbsolutPositionierung := TRUE;
 
-        //   - Kippposition nach dem Eintransport aus der Drehposition nach dem Eintransport, Letzte Scheibe (MK: Parameter_Drehen.astKippenJeDrehposition)
-        Kippen.epZielPosition := Drehen.ppParameterBaustein.astKippenJeDrehposition[ LIMIT( 0, TO_INT(BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eDrehen_Sollposition_NachEintransport) / 90, 3 ) ].eKippenMitLetzterScheibe;
+        //   - Kippposition nach dem Eintransport aus den Auftragsoptionen (eKippen_SollPosition_NachEintransport)
+        Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachEintransport;
         Kippen.bpPositionieren  := TRUE;
       END_IF
 
@@ -358,6 +359,7 @@ THEN
       //   - Drehen
       IF ( Drehen.bpFehler ) THEN
         Drehen.bpStarteAbsolutPositionierung := FALSE;
+        BasisStationsParameter.awFehlerInformationen[1] := Drehen.wpFehlerKennung;
         BasisStationsParameter.wFehlerNummer := Drehen.wpFehlerNr;
         steplAktion := STEP_900_E;
       END_IF

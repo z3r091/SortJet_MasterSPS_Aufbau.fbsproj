@@ -165,8 +165,8 @@ THEN
 
           (* Hinweis:
              - Lage der letzten Scheibe laut Konfiguration (eGlastransport), Seiten physisch
-               => Auf Einlauf: Scheibe faehrt um rWegUeberEinlaufAustransport ueber den Einlaufsensor (Ende der Fahrt)
-               => Auf Auslauf: Scheibe bleibt um rWegUeberAuslaufAustransport auf dem Auslaufsensor liegen (Laenge - Weg)
+               => Auf Einlauf: Scheibe faehrt um rWegUeberEinlauf ueber den Einlaufsensor (Ende der Fahrt)
+               => Auf Auslauf: Scheibe bleibt um rWegUeberAuslauf auf dem Auslaufsensor liegen (Laenge - Weg)
                => Vorab-Optionen: Scheibe bleibt am Eingang (Auslauf) stehen (gesammelt), positioniert wird erst bei der Vorabpositionierung
              - Einzelscheibe (erste und letzte Scheibe) bei AufEinlaufVorab: direkt um rWegEinlaufsensorZuVorStopSensor auf den Vorab-Sensor
              - Ziel = Flankenposition + Zielwert, rueckwaerts deshalb negativ
@@ -188,11 +188,11 @@ THEN
               Antrieb.wpRestwegMode  := Negativ_Steigend_Sensor2;
 
             eGlastransport_AufAuslauf:
-              Antrieb.rpZielPosition := - ( pAuftrag.rAuftragsLaenge - ppParameterBaustein.rWegUeberAuslaufAustransport - pAuftrag.rModellVersatzVorne );
+              Antrieb.rpZielPosition := - ( pAuftrag.rAuftragsLaenge - ppParameterBaustein.rWegUeberAuslauf - pAuftrag.rModellVersatzVorne );
               Antrieb.wpRestwegMode  := Negativ_Steigend_Sensor2;
 
             eGlastransport_AufEinlauf:
-              Antrieb.rpZielPosition := - ( ppParameterBaustein.rWegUeberEinlaufAustransport - pAuftrag.rModellVersatzVorne );
+              Antrieb.rpZielPosition := - ( ppParameterBaustein.rWegUeberEinlauf - pAuftrag.rModellVersatzVorne );
               Antrieb.wpRestwegMode  := Negativ_Steigend_Sensor1;
 
           ELSE
@@ -255,7 +255,7 @@ THEN
       ELSE
 
         IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition)
-             >  (ppParameterBaustein.rUeberwachungEinlaufsensor) )
+             >  (ppParameterBaustein.rUeberwachungAuslaufsensor) )
         THEN
           wpFehlerNr := cMELDUNG_EINTRANSPORT_SENSOR_AUSLAUF_SCHALTET_NICHT;
           steplEintransportRueckwaertig := STEP_900_E;
@@ -319,7 +319,7 @@ THEN
            Merken das sich noch eine Scheibe auf dem Sensor zum quittieren der Scheibe befindet.
       *)
       IF ( Antrieb.bpDone
-           AND toflAuslaufsensor.Q ) OR ( Antrieb.wpBetriebsart = HANDMINUS AND bpSensorAuslaufVorAb )
+           AND toflAuslaufsensor.Q ) OR ( Antrieb.wpBetriebsart = HANDMINUS AND bpSensorEinlaufVorAb )
       THEN
         blScheibenMerker := TRUE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
@@ -412,13 +412,17 @@ THEN
       IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
 
         IF ( tonlEinlaufsensor.Q ) THEN
-          tonlMaximaleZeitAuslaufsensorFreiFahren ( IN:= FALSE);
+          tonlMaximaleZeitEinlaufsensorFreiFahren ( IN:= FALSE);
           steplEintransportRueckwaertig := STEP_300_E;
         ELSE
           tonlMaximaleZeitAuslaufsensorFreiFahren ( IN:= FALSE );
+          (* Hinweis:
+             - Scheibe liegt im Uebergang (Eingangssensor belegt und Vorab-Sensor bzw. Sensor des Partners belegt):
+               nicht freifahren
+          *)
           IF (     bpSensorAuslauf
-               OR ( bpSensorAuslauf AND InGlasTransportNachfolger.bEinlaufsensor ) )
-             AND bpSensorEinlaufVorAb
+               AND (    bpSensorEinlaufVorAb
+                     OR InGlasTransportNachfolger.bEinlaufsensor ) )
           THEN
             bpUebergrosseScheibeUebergang := TRUE;
             IF blScheibenMerker THEN

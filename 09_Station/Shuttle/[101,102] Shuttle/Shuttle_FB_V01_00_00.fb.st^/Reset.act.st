@@ -143,6 +143,7 @@ IF( blBetriebsartReset )THEN
           THEN
             // Nummer des Bausteins nur uebernehmen, wenn er selbst schon einen Fehler meldet
             IF ( Greifer[wlIndex].wpFehlerNr <> cMELDUNG_NULL ) THEN
+              BasisStationsParameter.awFehlerInformationen[1] := Greifer[wlIndex].wpFehlerKennung;
               BasisStationsParameter.wFehlerNummer := Greifer[wlIndex].wpFehlerNr;
               SpsError( eFehler_Station,
                         BasisStationsParameter.wFehlerNummer,

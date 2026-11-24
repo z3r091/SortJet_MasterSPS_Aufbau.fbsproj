@@ -26,6 +26,7 @@ THEN
 
   IF ( GreiferHub.bpFehler ) THEN
     wpFehlerNr := GreiferHub.wpFehlerNr;
+    wpFehlerKennung := cZYLINDER_GREIFER_HUB;
     steplGrundstellungsfahrt := STEP_900_E;
   END_IF
 

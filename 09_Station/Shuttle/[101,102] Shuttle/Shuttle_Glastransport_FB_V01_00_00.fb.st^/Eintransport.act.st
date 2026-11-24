@@ -172,6 +172,20 @@ THEN
           rlGeschwindigkeitEintransport := rgGeschwindigkeit40;
         END_IF
 
+        (* Hinweis:
+           - Reduzieren der Geschwindigkeit nach Glasgewicht
+             => Da es passieren kann dass das Glas rutschen kann
+        *)
+        rlGlasgewicht := ( GlasGewichtErmitteln( rpGlaslaenge := pAuftrag.rAuftragsLaenge,
+                                                 rpGlasbreite := pAuftrag.rAuftragsHoehe,
+                                                 rpGlasstaerke := SEL( pAuftrag.rAuftragsDicke > wgUnterteilerMinMaxGlasdicke, GLASSTAERKE_DEFAULT_MIN, GLASSTAERKE_DEFAULT_MAX ) ) );
+
+        IF ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht ) THEN
+          rlGeschwindigkeitEintransport := ppAntriebsInformationen.rpReduzierteGeschwindigkeit;
+          blReduzierteGeschwindigkeit   := TRUE;
+        ELSE
+          blReduzierteGeschwindigkeit   := FALSE;
+        END_IF
 
         Antrieb.rpGeschwindigkeit := rlGeschwindigkeitEintransport;
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
@@ -244,7 +258,8 @@ THEN
 
       // Vorabstop- Sensor:
       //   - Geschwindigkeit verringern
-      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) >= ppParameterBaustein.rWegstreckeBisZurVerzoegerung )
+      IF ( ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) >= ppParameterBaustein.rWegstreckeBisZurVerzoegerung)
+           AND NOT blReduzierteGeschwindigkeit )
       THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit30;
       END_IF
@@ -342,7 +357,8 @@ THEN
       (* Hinweis:
          - Geschwindigkeit verringern
       *)
-      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) >= ppParameterBaustein.rWegstreckeBisZurVerzoegerung )
+      IF ( ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) >= ppParameterBaustein.rWegstreckeBisZurVerzoegerung)
+           AND NOT blReduzierteGeschwindigkeit )
       THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit30;
       END_IF
@@ -410,7 +426,8 @@ THEN
       (* Hinweis:
          - Geschwindigkeit verringern
       *)
-      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) >= ppParameterBaustein.rWegstreckeBisZurVerzoegerung )
+      IF ( ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) >= ppParameterBaustein.rWegstreckeBisZurVerzoegerung)
+           AND NOT blReduzierteGeschwindigkeit )
       THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit30;
       END_IF
@@ -445,7 +462,24 @@ THEN
       bprtScheibe := FALSE;
       dwpWartezeit := 0;
 
-      IF ( NOT toflEinlaufsensor.Q ) THEN
+      (* Hinweis:
+         - Scheibe liegt im Uebergang (Eingangssensor und Sensor des Partners belegt): nicht freifahren, fertig
+      *)
+      IF ( bpSensorEinlauf AND InGlasTransportVorgaenger.bAuslaufsensor ) THEN
+
+        IF ( blScheibenMerker ) THEN
+          blScheibenMerker := FALSE;
+          bprtScheibe := TRUE;
+        END_IF
+
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        bpOutBereitZumEintransport := FALSE;
+
+        rlGefahreneStreckeEintransport := ABS(rlGefahreneStreckeEintransport - Antrieb.rpIstPosition);
+
+        steplEintransport := STEP_1000_E;
+
+      ELSIF ( NOT toflEinlaufsensor.Q ) THEN
 
         IF ( blScheibenMerker ) THEN
           blScheibenMerker := FALSE;
@@ -766,7 +800,24 @@ THEN
       bprtScheibe := FALSE;
       dwpWartezeit := 0;
 
-      IF ( NOT toflEinlaufsensor.Q ) THEN
+      (* Hinweis:
+         - Scheibe liegt im Uebergang (Eingangssensor und Sensor des Partners belegt): nicht freifahren, fertig
+      *)
+      IF ( bpSensorEinlauf AND InGlasTransportVorgaenger.bAuslaufsensor ) THEN
+
+        IF ( blScheibenMerker ) THEN
+          blScheibenMerker := FALSE;
+          bprtScheibe := TRUE;
+        END_IF
+
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        bpOutBereitZumEintransport := FALSE;
+
+        rlGefahreneStreckeEintransport := ABS(rlGefahreneStreckeEintransport - Antrieb.rpIstPosition);
+
+        steplEintransport := STEP_1000_E;
+
+      ELSIF ( NOT toflEinlaufsensor.Q ) THEN
 
         IF ( blScheibenMerker ) THEN
           blScheibenMerker := FALSE;

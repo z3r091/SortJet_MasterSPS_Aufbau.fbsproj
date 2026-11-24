@@ -34,6 +34,7 @@ rtlAnschlagFehler( CLK := Anschlag.bpFehler );
 
 IF ( rtlAnschlagFehler.Q ) THEN
   wpFehlerNr := Anschlag.wpFehlerNr;
+  BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_ANSCHLAG;
   SpsError( eFehler_Station,
             wpFehlerNr,
             BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,
@@ -72,6 +73,7 @@ rtlAnschlagHorizontalFehler( CLK := AnschlagHorizontal.bpFehler );
 
 IF ( rtlAnschlagHorizontalFehler.Q ) THEN
   wpFehlerNr := AnschlagHorizontal.wpFehlerNr;
+  BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_ANSCHLAG_HORIZONTAL;
   SpsError( eFehler_Station,
             wpFehlerNr,
             BasisStationsParameter.stMKs.stStationsNummern.NummerIntern,

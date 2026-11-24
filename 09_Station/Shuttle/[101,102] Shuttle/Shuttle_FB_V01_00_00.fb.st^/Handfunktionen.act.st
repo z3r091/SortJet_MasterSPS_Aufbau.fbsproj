@@ -143,21 +143,21 @@ IF ( blBetriebsartHand ) THEN
   // Handfunktion [Querfahrt]:
   //   - Referenz
   //   - Handplus / Handminus
-  Querfahrt.bpStartReferenz := ((  dwlHandfunktionen.13
+  Querfahrt.bpReferenz := ((  dwlHandfunktionen.13
                                   OR bgVISUQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                                  AND NOT (   dwlHandfunktionen.11
                                            OR dwlHandfunktionen.12
                                            OR bgVISUQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
                                            OR bgVISUQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
 
-  Querfahrt.bpHandplus := (( dwlHandfunktionen.11
+  Querfahrt.bpHandfahrenPlus := (( dwlHandfunktionen.11
                              OR bgVISUQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                             AND NOT (   dwlHandfunktionen.12
                                       OR dwlHandfunktionen.13
                                       OR bgVISUQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
                                       OR bgVISUQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
 
-  Querfahrt.bpHandminus := (( dwlHandfunktionen.12
+  Querfahrt.bpHandfahrenMinus := (( dwlHandfunktionen.12
                               OR bgVISUQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
                              AND NOT (    dwlHandfunktionen.11
                                        OR dwlHandfunktionen.13

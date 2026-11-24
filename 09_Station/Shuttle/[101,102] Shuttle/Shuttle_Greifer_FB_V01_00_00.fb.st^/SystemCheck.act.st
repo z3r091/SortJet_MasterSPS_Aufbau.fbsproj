@@ -30,6 +30,7 @@ IF ( bpCheck ) THEN
 
   IF ( GreiferHub.bpFehler ) THEN
     wpFehlerNr := GreiferHub.wpFehlerNr;
+    wpFehlerKennung := cZYLINDER_GREIFER_HUB;
     steplCheck := STEP_900_E;
   END_IF
 
@@ -41,6 +42,7 @@ IF ( bpCheck ) THEN
 
   IF ( Zange[ilZange].bpFehler ) THEN
     wpFehlerNr := Zange[ilZange].wpFehlerNr;
+    wpFehlerKennung := SEL( ilZange = cZANGE_EINLAUF, cZYLINDER_ZANGE_AUSLAUF, cZYLINDER_ZANGE_EINLAUF );
     steplCheck := STEP_900_E;
   END_IF
 

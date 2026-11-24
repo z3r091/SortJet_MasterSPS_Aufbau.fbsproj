@@ -20,6 +20,7 @@ IF ( blBetriebartCheck ) THEN
 
   IF ( Hubrahmen.bpFehler ) THEN
     blHubrahmenPositionieren := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_HUBRAHMEN;
     BasisStationsParameter.wFehlerNummer := Hubrahmen.wpFehlerNr;
     steplCheck := STEP_900_E;
   END_IF

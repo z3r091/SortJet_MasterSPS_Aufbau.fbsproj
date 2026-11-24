@@ -17,20 +17,20 @@ IF ( BasisStationsParameter.bReferenz ) THEN
 
     // REFERENZ ==============================
     STEP_10_E:
-      Querfahrt.bpStartReferenz := BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt AND NOT Querfahrt.bpInReference;
+      Querfahrt.bpReferenz := BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt AND NOT Querfahrt.bpInReference;
       Glastransport.bpFahreReferenz := TRUE;
       steplReferenz := STEP_20_E;
 
     // REFERENZ ==============================
     STEP_20_E:
-      IF ( Querfahrt.bpDone OR NOT Querfahrt.bpStartReferenz ) AND ( Glastransport.bpDone ) THEN
-        Querfahrt.bpStartReferenz := FALSE;
+      IF ( Querfahrt.bpDone OR NOT Querfahrt.bpReferenz ) AND ( Glastransport.bpDone ) THEN
+        Querfahrt.bpReferenz := FALSE;
         Glastransport.bpFahreReferenz := FALSE;
         steplReferenz := STEP_1000_E;
       END_IF
 
       IF ( Querfahrt.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt ) THEN
-        Querfahrt.bpStartReferenz := FALSE;
+        Querfahrt.bpReferenz := FALSE;
         BasisStationsParameter.wFehlerNummer := Querfahrt.wpFehlerNr;
         steplReferenz := STEP_900_E;
       END_IF
@@ -54,7 +54,7 @@ IF ( BasisStationsParameter.bReferenz ) THEN
 ELSE
   IF ( steplReferenz > STEP_0_E ) THEN
     BasisStationsParameter.bReferenzAbgeschlossen := FALSE;
-    Querfahrt.bpStartReferenz := FALSE;
+    Querfahrt.bpReferenz := FALSE;
     Glastransport.bpFahreReferenz := FALSE;
     steplReferenz := STEP_0_E;
   END_IF

@@ -60,6 +60,7 @@ IF( bpReferenz )THEN
       IF ( Arretierung.bpFehler) THEN
         Arretierung.bpStartEinfahren := FALSE;
         wpFehlerNr := Arretierung.wpFehlerNr;
+        wpFehlerKennung := cZYLINDER_ARRETIERUNG;
         steplReferenz := STEP_900_E;
       END_IF
 
@@ -269,6 +270,7 @@ IF( bpReferenz )THEN
       IF ( Arretierung.bpFehler ) THEN
         Arretierung.bpStartAusfahren := FALSE;
         wpFehlerNr := Arretierung.wpFehlerNr;
+        wpFehlerKennung := cZYLINDER_ARRETIERUNG;
         steplReferenz := STEP_900_E;
       END_IF
 

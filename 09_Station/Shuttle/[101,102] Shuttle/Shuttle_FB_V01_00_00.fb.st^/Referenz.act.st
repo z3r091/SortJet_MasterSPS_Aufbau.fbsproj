@@ -27,7 +27,7 @@ IF ( blBetriebsartReferenz ) THEN
         Wandverstellung[wlIndex].bpReferenz := BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[wlIndex] AND NOT Wandverstellung[wlIndex].bpInReferenz;
         Greifer[wlIndex].bpFahreReferenz    := BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex];   // Greifer referenziert immer
       END_FOR
-      Querfahrt.bpStartReferenz := BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt AND NOT Querfahrt.bpInReference;
+      Querfahrt.bpReferenz := BasisStationsParameter.stMKs.stStationsAufbau.bQuerfahrt AND NOT Querfahrt.bpInReference;
 
       steplReferenz := STEP_20_E;
 
@@ -43,7 +43,7 @@ IF ( blBetriebsartReferenz ) THEN
                          AND ( Greifer[wlIndex].bpDone OR NOT Greifer[wlIndex].bpFahreReferenz );
       END_FOR
 
-      IF blDone AND ( Querfahrt.bpDone OR NOT Querfahrt.bpStartReferenz ) THEN
+      IF blDone AND ( Querfahrt.bpDone OR NOT Querfahrt.bpReferenz ) THEN
         FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
           Greifer[wlIndex].bpFahreReferenz := FALSE;
         END_FOR
@@ -61,6 +61,7 @@ IF ( blBetriebsartReferenz ) THEN
         END_IF
         IF ( Greifer[wlIndex].bpFehler AND Greifer[wlIndex].bpFahreReferenz ) THEN
           Greifer[wlIndex].bpFahreReferenz := FALSE;
+          BasisStationsParameter.awFehlerInformationen[1] := Greifer[wlIndex].wpFehlerKennung;
           BasisStationsParameter.wFehlerNummer := Greifer[wlIndex].wpFehlerNr;
           steplReferenz := STEP_900_E;
         END_IF

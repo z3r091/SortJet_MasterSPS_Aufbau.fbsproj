@@ -59,6 +59,7 @@ THEN
     Greifer.bpPositionieren                         := FALSE;
     Greifer.bpStarteVorabPositionierungEintransport := FALSE;
     BasisStationsParameter.awFehlerInformationen    := Greifer.awpFehlerInformationen;
+    BasisStationsParameter.awFehlerInformationen[1] := Greifer.wpFehlerKennung;
     BasisStationsParameter.wFehlerNummer            := Greifer.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF

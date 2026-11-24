@@ -39,6 +39,7 @@ VAR
   // TRIGGER
   rtlErwzungenesAuschleusen  : ARRAY [cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF R_TRIG;
   rtlErwzungenesEinschleusen : ARRAY [cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF R_TRIG;
+  rtlFehler                  : ARRAY [cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF R_TRIG;
   rtlAutomatikKreis          : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF R_TRIG;
   rtlSystemCheckKreis        : ARRAY [cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS] OF R_TRIG;
 
@@ -145,6 +146,19 @@ IF( dwDifference <> 0 AND bgEtherCatOK ) THEN
   MsgToMmi(auftragsnr_w := SB0_SPS_SETSTATUSLOADINGSTATIONS );
 END_IF
 
+//-------------------------------------------------------------------------------------------------
+// FEHLER DER FAECHERWAGENSTATIONEN
+//-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Ein Fehler der Station setzt den Fehler in ihren Automatikkreisen (wie bei Stationen und Shuttle),
+     der Betriebsstop wertet abpFehler aus. Das Zuruecksetzen erfolgt in der Aktion Reset.
+*)
+FOR wlIndexFaecherwagenStation := cERSTE_FAECHERWAGENSTATIONS_NR TO cLETZTE_FAECHERWAGENSTATIONS_NR DO
+  rtlFehler[wlIndexFaecherwagenStation]( CLK := starrFaecherwagenBasisParameter[wlIndexFaecherwagenStation].bFehler );
+  IF ( rtlFehler[wlIndexFaecherwagenStation].Q ) THEN
+    AutomatikFehlerSetzen( starrFaecherwagenBasisParameter[wlIndexFaecherwagenStation].stMKs.eaAutomatikkreis, abpFehler );
+  END_IF
+END_FOR
 //-------------------------------------------------------------------------------------------------
 // AKTIONEN
 //-------------------------------------------------------------------------------------------------

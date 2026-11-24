@@ -44,12 +44,14 @@ THEN
 
   IF ( Roellchenleiste.bpFehler ) THEN
     Roellchenleiste.bpStartPneumatik := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_ROELLCHENLEISTE;
     BasisStationsParameter.wFehlerNummer := Roellchenleiste.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
 
   IF ( Wandverstellung.bpFehler ) THEN
     Wandverstellung.bpStartPneumatik := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_WANDVERSTELLUNG;
     BasisStationsParameter.wFehlerNummer := Wandverstellung.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF

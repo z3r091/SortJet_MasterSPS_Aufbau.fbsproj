@@ -38,6 +38,7 @@ THEN
   END_IF
 
   IF ( Drehen.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bDrehen ) THEN
+    BasisStationsParameter.awFehlerInformationen[1] := Drehen.wpFehlerKennung;
     BasisStationsParameter.wFehlerNummer := Drehen.wpFehlerNr;
     BasisStationsParameter.bFehler := TRUE;
   END_IF

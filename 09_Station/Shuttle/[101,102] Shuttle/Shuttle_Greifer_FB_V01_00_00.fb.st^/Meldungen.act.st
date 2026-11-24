@@ -26,10 +26,13 @@ IF (     NOT bpFehler
 THEN
   IF ( GreiferHub.bpFehler ) THEN
     wpFehlerNr := GreiferHub.wpFehlerNr;
+    wpFehlerKennung := cZYLINDER_GREIFER_HUB;
   ELSIF ( Zange[cZANGE_EINLAUF].bpFehler ) THEN
     wpFehlerNr := Zange[cZANGE_EINLAUF].wpFehlerNr;
+    wpFehlerKennung := cZYLINDER_ZANGE_EINLAUF;
   ELSE
     wpFehlerNr := Zange[cZANGE_AUSLAUF].wpFehlerNr;
+    wpFehlerKennung := cZYLINDER_ZANGE_AUSLAUF;
   END_IF
   bpFehler := TRUE;
 END_IF

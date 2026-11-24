@@ -33,10 +33,12 @@ IF ( bpStartZylinderBewegung ) THEN
       //  Hinweis:
       //  - Vor dem Oeffnen muessen alle Zylinder eingefahren sein
       //  - Beim Schliessen direkt in die Soll-Stellung
+      //  - Ist die Zange geschlossen, sind schon alle Zylinder eingefahren: direkt in die Soll-Stellung
       // ---------------------------------------------------------------------------------------
 
       IF (     ( epSollZylinderStellung <> eZylinderGeschlossen )
-           AND ( epSollZylinderStellung <> epStatusZylinderStellung ) )
+           AND ( epSollZylinderStellung <> epStatusZylinderStellung )
+           AND ( epStatusZylinderStellung <> eZylinderGeschlossen ) )
       THEN
         out_bZylinder_1_Einfahren := TRUE;
         out_bZylinder_2_Einfahren := TRUE;

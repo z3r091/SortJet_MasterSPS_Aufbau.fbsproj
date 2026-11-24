@@ -11,7 +11,6 @@ IF    NOT BasisStationsParameter.stMKs.bDeaktivieren
       AND NOT BasisStationsParameter.bEintransport[1]
       AND NOT BasisStationsParameter.bAustransport[1]
       AND NOT blBetriebartCheck
-      AND NOT bgSimAktiv // Demo/Messe: Handbits kommen aus der Simulation -> nicht ans MMI melden
 THEN
   dwpHandfunktionenReturn.0  := blGegenhalterOeffnen;
   dwpHandfunktionenReturn.1  := blGegenhalterSchliessen;

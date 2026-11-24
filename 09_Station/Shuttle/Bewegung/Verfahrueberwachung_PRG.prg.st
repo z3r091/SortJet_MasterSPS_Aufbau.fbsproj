@@ -300,7 +300,7 @@ END_IF
 // BAUSTEIN: ABSTANDSUEBERWACHUNG SHUTTLE 101 <-> 102 (DUMMY, AUSKOMMENTIERT)
 //-------------------------------------------------------------------------------------------------
 (* Hinweis:
-   - Nur noetig, wenn sich zwei Shuttle auf EINER Bahn befinden (bei Dreisbusch nicht: 101 und 102 fahren auf getrennten Bahnen)
+   - Nur noetig, wenn sich zwei Shuttle auf EINER Bahn befinden (bei getrennten Bahnen nicht: 101 und 102 fahren dann unabhaengig)
    - Zum Aktivieren: Kommentar entfernen. MKs rgMkMinSecureDistanceShuttles / ...AtParkPos sind vorhanden
    - Aufbau wie bei den Transfershuttle: 101 liegt auf der kleineren Position, 102 auf der groesseren
    - Fuer weitere Paare auf einer Bahn kopieren und die Nummern anpassen

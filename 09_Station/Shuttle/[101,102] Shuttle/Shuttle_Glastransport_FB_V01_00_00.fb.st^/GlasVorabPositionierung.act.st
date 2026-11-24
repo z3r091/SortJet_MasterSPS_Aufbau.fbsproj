@@ -69,7 +69,7 @@ THEN
 
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
         Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-        Antrieb.rpZielposition    := ( ppParameterBaustein.rWegUeberAuslauf - pAuftrag.rModellVersatzHinten );
+        Antrieb.rpZielposition    := ( ppParameterBaustein.rWegUeberAuslauf - pAuftrag.rModellVersatzVorne );
         Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor2;
         Antrieb.wpBetriebsart     := RESTWEG;
 
@@ -166,60 +166,6 @@ THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_BELEGT;
         steplVorabpositionieren := STEP_900_E;
-      END_IF
-
-    // GLAS POSITIONIEREN ====================
-    STEP_100_E:
-      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< AUSLAUFSENSOR FREI FAHREN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-      //
-      //   Hinweis:
-      //   - Versuchen den Auslaufsensor frei zufahren
-      // TODO Option zum auslauf freifahren / ansonsten nur auslaufstopp   // toflAuslaufsensorFrei
-      IF (  NOT Antrieb.bpAntrieblaeuft
-           AND NOT toflAuslaufsensorSTOP.Q )
-      THEN
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-
-        steplVorabpositionieren := STEP_110_E;
-
-      END_IF
-
-      IF ( toflAuslaufsensorSTOP.Q ) THEN
-        Antrieb.rpGeschwindigkeit := rgGeschwindigkeit05;
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-        Antrieb.wpBetriebsart     := HANDMINUS;
-
-      ELSE
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-
-      END_IF
-
-      (* Fehlerbehandlung:
-         - Einlaufsensor belegt
-         - Verfahrweg- Ueberwachung
-      *)
-      IF ( bpSensorEinlauf ) THEN
-        bpOutBereitZumAustransport := FALSE;
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT;
-        steplVorabpositionieren := STEP_900_E;
-      END_IF
-
-      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
-        bpOutBereitZumAustransport := FALSE;
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_NICHT_FREI;
-        steplVorabpositionieren := STEP_900_E;
-      END_IF
-
-    // GLAS POSITIONIEREN ====================
-    STEP_110_E:
-      (* Hinweis:
-         - Zum Anfang springen
-      *)
-      IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
-        steplVorabpositionieren := STEP_1000_E;
       END_IF
 
     // GLAS VORPOSITIONIEREN ====================

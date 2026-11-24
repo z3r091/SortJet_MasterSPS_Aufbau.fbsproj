@@ -7,6 +7,16 @@
 *)
 {attribute 'excludefrombuild'}
 FUNCTION_BLOCK Schnittstelle_Einlauf_HeglaBrechanlage_FB
+(*
+//=================================================================================================
+// !!! TODO !!! TODO !!! TODO !!! TODO !!! TODO !!! TODO !!! TODO !!! TODO !!! TODO !!! TODO !!!
+//=================================================================================================
+// - Dieser Baustein erbt NICHT von Basic_Schnittstelle_FB_V01_00_00.
+// - Er ist nicht instanziiert und nicht im Build (excludefrombuild).
+// - Vor der Verwendung auf die Basis-Schnittstelle umstellen:
+//     EXTENDS, SUPER^, Reset und Meldungen der Basis nutzen, danach testen.
+//=================================================================================================
+*)
 VAR_INPUT
 
   // BOOL

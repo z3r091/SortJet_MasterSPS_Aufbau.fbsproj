@@ -22,8 +22,8 @@ VAR_INPUT
   bpHand                                             : BOOL;
   bpFreigabe                                         : BOOL;
   bpShuttleAbsenken                                  : BOOL;
-  bpHandfahrenPositiv                                : BOOL;
-  bpHandfahrenNegativ                                : BOOL;
+  bpHandfahrenPlus                                : BOOL;
+  bpHandfahrenMinus                                : BOOL;
   bpHandGlastransportAnheben                         : BOOL;
   bpHandScheibenKontrolleEinlaufseiteAnheben         : BOOL;
   bpHandScheibenKontrolleAuslaufseiteAnheben         : BOOL;
@@ -114,6 +114,7 @@ VAR
   blMeldungAuslaufAbfrageBelegt                : BOOL := FALSE; // Hinweis: Sensorik beim Pruefen belegt
   blMeldungEinlaufAbfrageBelegt                : BOOL := FALSE; // Hinweis: Sensorik beim Pruefen belegt
   blSensorPruefungEinlaufsensorBelegt          : BOOL := FALSE;
+  blSensorPruefungAuslaufsensorBelegt          : BOOL := FALSE;
   blAbgeschlossenAustransport                  : BOOL := FALSE;
   blAbgeschlossenEintransport                  : BOOL := FALSE;
   blEintransportDefaultLuftabfrage             : BOOL := FALSE;
@@ -172,12 +173,15 @@ VAR
   tonlWartenAufAnheben                              : TON;
   tonlWartenAufSenken                               : TON;
   tonlEinlaufWirklichFrei                           : TON;
+  tonlAuslaufWirklichFrei                           : TON;
   tonlEinlaufsensorTesten                           : TON;
   tonlAuslaufsensorTesten                           : TON;
   tonlMaxWarteAufResetErfolgreich                   : TON;
   tonlUberwachungSlaveAktiv                         : TON;
-  toflEinlaufsensor                                 : TOF;
-  toflAuslaufsensor                                 : TOF;
+  tonlEinlaufsensorFrei                             : TON; // Luftsensor Einlauf frei, entprellt
+  tonlEinlaufsensorBelegt                           : TON; // Luftsensor Einlauf belegt, entprellt
+  tonlAuslaufsensorFrei                             : TON; // Luftsensor Auslauf frei, entprellt
+  tonlAuslaufsensorBelegt                           : TON; // Luftsensor Auslauf belegt, entprellt
   toflAutoAbschaltung                               : TOF;
   toflAntriebLaeuft                                 : TOF;
 
@@ -293,8 +297,11 @@ tonlGlastransportOben(IN := blSensorGlastransportOben, PT := t#500ms);
 //   - [TIMER] Kontrolle Sensoren:
 //     => Einlauf- Sensoren [ Luftsenoren] Frei | Belegt
 //     => Auslauf- Sensoren [ Luftsenoren] Frei | Belegt
-toflEinlaufsensor(IN:= bpSensorScheibenKontrolleEinlaufseiteFrei, PT := t#50ms);
-toflAuslaufsensor(IN:= bpSensorScheibenKontrolleAuslaufSeiteFrei, PT := t#50ms);
+//     => frei und belegt werden beide entprellt (50 ms), Scheibenzaehlung erst bei sicher freiem Sensor
+tonlEinlaufsensorFrei(IN:= bpSensorScheibenKontrolleEinlaufseiteFrei, PT := t#50ms);
+tonlEinlaufsensorBelegt(IN:= NOT bpSensorScheibenKontrolleEinlaufseiteFrei, PT := t#50ms);
+tonlAuslaufsensorFrei(IN:= bpSensorScheibenKontrolleAuslaufSeiteFrei, PT := t#50ms);
+tonlAuslaufsensorBelegt(IN:= NOT bpSensorScheibenKontrolleAuslaufSeiteFrei, PT := t#50ms);
 
 // LUFTABFRAGEN [3- 12 MM]
 //   - [TIMER] Kontrolle Sensoren:
@@ -309,12 +316,13 @@ tonlKontrolleAuslaufOben(IN := bpSensorScheibenKontrolleAuslaufseiteOben, PT := 
 // LUFTABFRAGEN [3- 12 MM]
 //   - Sensorik freifahren
 tonlEinlaufWirklichFrei(IN:= NOT blEinlaufsensor, PT := t#500ms);
+tonlAuslaufWirklichFrei(IN:= NOT blAuslaufsensor, PT := t#500ms);
 
 // LUFTABFRAGEN [3- 12 MM]
 //   - Sensoren:
 //     => Einlauf / Auslauf
-blEinlaufsensor := NOT toflEinlaufsensor.Q AND ( blDruckluftEinlaufSeiteOK OR bpOptionTransfershuttleMitUltraschallSensoren );
-blAuslaufsensor := NOT toflAuslaufsensor.Q AND ( blDruckluftAuslaufSeiteOK OR bpOptionTransfershuttleMitUltraschallSensoren );
+blEinlaufsensor := tonlEinlaufsensorBelegt.Q AND ( blDruckluftEinlaufSeiteOK OR bpOptionTransfershuttleMitUltraschallSensoren );
+blAuslaufsensor := tonlAuslaufsensorBelegt.Q AND ( blDruckluftAuslaufSeiteOK OR bpOptionTransfershuttleMitUltraschallSensoren );
 
 (* Hinweis [3- 12 MM]:
    - Abfrage ob die Station bereit fuer den Glastransport ist
@@ -403,8 +411,8 @@ toflAutoAbschaltung( IN := (  bpAutomatikAktiv
                      OR bpSlaveKopplung
                      OR bpSpeicherfachValidierung
                      OR bpScheibenNeuAusrichten
-                     OR bpHandfahrenPositiv
-                     OR bpHandfahrenNegativ
+                     OR bpHandfahrenPlus
+                     OR bpHandfahrenMinus
                      OR bpFahreReferenz,
                      PT:=( WORD_TO_TIME(ppParameterBaustein.wEnergieSparZeit)*1000) );
 

@@ -38,10 +38,12 @@ BasisStationsParameter.bPositionierAuftragZuruecksetzen := Querfahrt.bpAuftragss
 BasisStationsParameter.rAktuellePositionQuerfahrt := Querfahrt.rpAktPosition;
 
 
-// Positionsabfrage:
-//   - Wurde die Zielposition aus dem Auftrag erreicht, bzw. stimmt die aktuelle Shuttleposition mit der
-//     Position aus dem Auftrag ueberein.
-blZielPositionErreicht := ( ABS( BasisStationsParameter.rAktuellePositionQuerfahrt - BasisStationsParameter.pAuftrag[cWAND_1].rVorabPosition ) <= rgMKZielPositionToleranz );
+// Positionsabfrage je Wand:
+//   - Wurde die Zielposition aus dem Auftrag der Wand erreicht, bzw. stimmt die aktuelle Shuttleposition mit der
+//     Position aus dem Auftrag dieser Wand ueberein.
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  ablZielPositionErreicht[wlIndex] := ( ABS( BasisStationsParameter.rAktuellePositionQuerfahrt - BasisStationsParameter.pAuftrag[wlIndex].rVorabPosition ) <= rgMKZielPositionToleranz );
+END_FOR
 
 (* Hinweis:
    - Gibt an wann wann sich der Antrieb melden muss

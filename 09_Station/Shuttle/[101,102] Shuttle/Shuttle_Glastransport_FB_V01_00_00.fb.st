@@ -277,7 +277,7 @@ toflEinlaufsensorSTOP(IN := bpSensorEinlaufStopp, PT := t#50ms);
 // TIMER:
 //   - Sensorenflackern
 //     => Haelt die positive Flanke des Auslaufsensor eine gewissen Zeit aufrecht ( Freifahren des Sensors )
-toflAuslaufsensorFrei(IN := bpSensorAuslauf, PT := t#300ms);
+toflAuslaufsensorFrei(IN := bpSensorAuslauf, PT := t#100ms);
 toflEinlaufsensorFrei(IN := bpSensorEinlauf, PT := t#100ms);
 
 

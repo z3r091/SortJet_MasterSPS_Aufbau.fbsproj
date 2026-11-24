@@ -15,6 +15,7 @@ TYPE Parameter_Greifer :
     tUeberwachungBewegung                         : TIME; // Zeitueberwachung einer Fahrt der Greiferachse
     tUeberwachungKopplung                         : TIME; // Zeitueberwachung Kopplung / Entkopplung des Glastransports auf die Greiferachse
     bZangeAbfragenVorhanden                       : BOOL; // Endlagenabfragen der Greiferzange vorhanden (sonst nur Bewegungszeit)
+    tZangeBewegungszeit                           : TIME := T#700MS; // Bewegungszeit der Greiferzange ohne Endlagenabfragen bzw. beim Schliessen auf Glas
     bZangeEinlaufVorhanden                        : BOOL; // Greiferzange Einlaufseite vorhanden (Ablaeufe ueber die Einlaufseite nur damit)
     bZangeAuslaufVorhanden                        : BOOL; // Greiferzange Auslaufseite vorhanden (Ablaeufe ueber die Auslaufseite nur damit)
     bGlasRueckhalterEinlaufVorhanden              : BOOL; // Glasrueckhalter Einlaufseite vorhanden (sonst Ausgang aus, gilt als eingefahren)

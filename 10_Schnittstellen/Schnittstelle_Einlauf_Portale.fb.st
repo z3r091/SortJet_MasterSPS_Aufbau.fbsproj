@@ -8,10 +8,6 @@
 FUNCTION_BLOCK Schnittstelle_Einlauf_Portale EXTENDS Basic_Schnittstelle_FB_V01_00_00
 VAR_INPUT
 
-END_VAR
-
-VAR_INPUT
-
   // HARDWARE EINGAENGE
   in_bGlasAufgestellt                     AT %I* : BOOL;
 
@@ -24,11 +20,9 @@ VAR_OUTPUT
 
 END_VAR
 
-// Schnittstelle zwischen LTR und VSG Anlage
-// Sobald wir einen Anlageauftrag bekommen und das Signal "in_bAutomatikBetrieb" ansteht, gehen wir in Eintrasport.
-// Dort setzen wir "out_bBereitZumEintrasport" und warten bis das Signal "in_bGlasBereit" ansteht. Dieses wird von
-// der VSG gesetzt wenn Glas bereit liegt und die Riemen in SlaveMode sind. Wir starten dann denn Eintransport.
-// Der SlaveMode bleibt so lange aktiv, bis wir das Signal "out_bBereitZumEintrasport" wegnehmen.
+// Schnittstelle zu den Portalen (Glas aufstellen)
+// - "out_bBereitZumAufstellen": die Folgestation ist bereit zum Eintransport, das Portal darf Glas aufstellen
+// - "in_bGlasAufgestellt": das Portal hat Glas aufgestellt, die Folgestation startet den Eintransport
 
 //-------------------------------------------------------------------------------------------------
 // MASTER AUFRUFEN
@@ -46,20 +40,28 @@ IF ( BasisStationsParameter.stMKs.bDeaktivieren ) THEN
   RETURN;
 END_IF
 
-//IF BasisStationsParameter.stMKs.stFremdanlage.bSignaleLoggen THEN
-Signal_Logger();
-//END_IF
+IF BasisStationsParameter.stMKs.stFremdanlage.bSignaleLoggen THEN
+  Signal_Logger();
+END_IF
 
 //-------------------------------------------------------------------------------------------------
 // SCHNITTSTELLE
 //-------------------------------------------------------------------------------------------------
-// Signale von der VSG
+// Signale vom Portal
 blBereitZumAustransport := in_bGlasAufgestellt OR bgVisu_Schnittstelle_Einlauf_Force_GlasBereit[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS];
+
+//-------------------------------------------------------------------------------------------------
+// MELDUNGEN
+//-------------------------------------------------------------------------------------------------
+// Portal hat Glas aufgestellt, die Station ist aber 30 s nicht bereit zum Eintransport [wMeldungsNummer + 2]
+WatchIoControl( T#30S,
+                BasisStationsParameter.stMKs.wMeldungsNummer + 2,
+                blBereitZumAustransport AND NOT BasisStationsParameter.InGlasTransportNachfolger[cWAND_1].bBereitZumEintransport );
 
 //-------------------------------------------------------------------------------------------------
 // AUSGAENGE
 //-------------------------------------------------------------------------------------------------
-// Signale zur VSG
+// Signale zum Portal
 out_bBereitZumAufstellen := BasisStationsParameter.InGlasTransportNachfolger[cWAND_1].bBereitZumEintransport;
 
 //-------------------------------------------------------------------------------------------------

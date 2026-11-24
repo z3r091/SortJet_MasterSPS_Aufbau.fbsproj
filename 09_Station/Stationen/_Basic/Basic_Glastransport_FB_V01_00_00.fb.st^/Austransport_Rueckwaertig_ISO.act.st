@@ -126,7 +126,7 @@ THEN
           Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
         END_IF
 
-        Antrieb.rpZielposition    := - ( ppParameterBaustein.rWegUeberAuslaufAustransport - pAuftrag.rModellVersatzVorne );
+        Antrieb.rpZielposition    := - ( ppParameterBaustein.rWegUeberEinlaufAustransport - pAuftrag.rModellVersatzVorne );
         Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
         Antrieb.wpBetriebsart     := RESTWEG;
 
@@ -183,7 +183,7 @@ THEN
          - Glas moeglicherweise verkeilt da der Auslaufsensor nicht schaltet
            bzw. nicht angefahren wird (Stationslaemge abfahren)
       *)
-      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rUeberwachungAuslaufsensor ) THEN
+      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rUeberwachungEinlaufsensor ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
         steplAustransportRueckwaertig := STEP_900_E;
@@ -310,7 +310,19 @@ THEN
         steplAustransportRueckwaertig := STEP_1000_E;
       END_IF
 
-      IF ( toflEinlaufsensor.Q ) THEN
+      (* Hinweis:
+         - Scheibe liegt im Uebergang (eigener Sensor und Sensor des Partners belegt): nicht freifahren,
+           der Austransport ist fertig
+      *)
+      IF ( toflEinlaufsensor.Q AND InGlasTransportVorgaenger.bAuslaufsensor ) THEN
+        bpOutBereitZumAustransport := FALSE;
+        bpOutBereitZumEintransport := FALSE;
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+
+        steplAustransportRueckwaertig := STEP_1000_E;
+      END_IF
+
+      IF ( toflEinlaufsensor.Q AND NOT InGlasTransportVorgaenger.bAuslaufsensor ) THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
 
         IF blReduzierteGeschwindigkeit THEN
@@ -337,7 +349,7 @@ THEN
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF
 
-      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rUeberwachungAuslaufsensor ) THEN
+      IF ( ABS(rlPositionAntriebBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rUeberwachungEinlaufsensor ) THEN
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;
         steplAustransportRueckwaertig := STEP_900_E;
       END_IF

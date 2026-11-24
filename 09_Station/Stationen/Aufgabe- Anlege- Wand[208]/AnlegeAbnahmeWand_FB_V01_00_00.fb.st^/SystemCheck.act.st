@@ -29,6 +29,7 @@ IF ( blBetriebartCheck ) THEN
   IF ( Abschrankung.bpFehler AND ( Abschrankung.bpStartAusfahren OR Abschrankung.bpStartEinfahren ) ) THEN
     Abschrankung.bpStartAusfahren := FALSE;
     Abschrankung.bpStartEinfahren := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_ABSCHRANKUNG;
     BasisStationsParameter.wFehlerNummer := Abschrankung.wpFehlerNr;
     steplCheck := STEP_900_E;
   END_IF

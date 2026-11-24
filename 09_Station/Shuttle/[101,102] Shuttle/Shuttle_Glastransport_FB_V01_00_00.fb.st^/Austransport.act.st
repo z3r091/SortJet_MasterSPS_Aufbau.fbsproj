@@ -280,17 +280,14 @@ THEN
 
     // AUSTRANSPORT ==============================
     STEP_110_E:
-
+      (* Hinweis:
+         - Nachfolger nicht bereit: kein Abbruch, der Antrieb folgt der Geschwindigkeit des Nachfolgers und wartet
+      *)
       bprtScheibe := FALSE;
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
 
       IF ( bpSensorAuslaufStopp ) THEN
         steplAustransport :=  STEP_120_E;
-      END_IF
-
-      IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) THEN
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        steplAustransport :=  STEP_140_E;
       END_IF
 
       (* Fehlerbehandlung:
@@ -350,14 +347,6 @@ THEN
 
       END_IF
 
-      IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) THEN
-        Antrieb.rpGeschwindigkeit := REAL#0;
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-
-        steplAustransport := STEP_140_E;
-      END_IF
-
     // AUSTRANSPORT ==============================
     STEP_140_E:
 
@@ -372,8 +361,13 @@ THEN
 
         rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
-        // TODO Option zum auslauf freifahren / ansonsten nur auslaufstopp
+        // Freifahren nur bis der Stopp-Sensor frei ist; ohne Stopp-Sensor (MK bSensorAuslaufStopp = FALSE)
+        // ist bpSensorAuslaufStopp der Auslaufsensor, dann wird der Auslauf freigefahren
         IF NOT bpSensorAuslaufStopp THEN
+          steplAustransport := STEP_1000_E;
+
+        // Scheibe liegt im Uebergang (eigener Sensor und Sensor des Partners belegt): nicht freifahren, fertig
+        ELSIF ( InGlasTransportNachfolger.bEinlaufsensor ) THEN
           steplAustransport := STEP_1000_E;
 
         ELSE

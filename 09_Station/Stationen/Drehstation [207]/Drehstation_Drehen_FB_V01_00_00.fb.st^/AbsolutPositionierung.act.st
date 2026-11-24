@@ -178,6 +178,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
       IF ( Arretierung.bpFehler ) THEN
         Arretierung.bpStartEinfahren := FALSE;
         wpFehlerNr := Arretierung.wpFehlerNr;
+        wpFehlerKennung := cZYLINDER_ARRETIERUNG;
         steplAbsolutPositionieren := STEP_900_E;
       END_IF
 
@@ -434,6 +435,7 @@ IF (  bpStarteAbsolutPositionierung ) THEN
       IF ( Arretierung.bpFehler ) THEN
         Arretierung.bpStartAusfahren := FALSE;
         wpFehlerNr := Arretierung.wpFehlerNr;
+        wpFehlerKennung := cZYLINDER_ARRETIERUNG;
         steplAbsolutPositionieren := STEP_900_E;
       END_IF
 

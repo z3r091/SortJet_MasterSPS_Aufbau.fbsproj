@@ -9,18 +9,17 @@ ACTION HandfunktionenStatus
 // Aktive Handfunktionen mit der Bitbelegung des MMI-Befehls zurueckmelden (siehe Aktion Handfunktionen).
 IF    NOT BasisStationsParameter.stMKs.bDeaktivieren
       AND blBetriebsartHand
-      AND NOT bgSimAktiv // Demo/Messe: Handbits kommen aus der Simulation -> nicht ans MMI melden
 THEN
   dwpHandfunktionenReturn.0  := out_bGeblaeseEin;
   dwpHandfunktionenReturn.1  := Glastransport.bpHandfahrenPlus;
   dwpHandfunktionenReturn.2  := Glastransport.bpHandfahrenMinus;
   dwpHandfunktionenReturn.7  := Kippen.bpPositionieren AND ( Kippen.epZielPosition = eKippen_Position_84Grad );
   dwpHandfunktionenReturn.8  := Kippen.bpPositionieren AND ( Kippen.epZielPosition = eKippen_Position_90Grad );
-  dwpHandfunktionenReturn.18 := Messachse.bpHandplus;
-  dwpHandfunktionenReturn.19 := Messachse.bpHandminus;
-  dwpHandfunktionenReturn.20 := Messachse.bpHandReferenz;
-  dwpHandfunktionenReturn.21 := Abschrankung.bpStartEinfahren;
-  dwpHandfunktionenReturn.22 := Abschrankung.bpStartAusfahren;
+  dwpHandfunktionenReturn.18 := Messachse.bpHandfahrenPlus;
+  dwpHandfunktionenReturn.19 := Messachse.bpHandfahrenMinus;
+  dwpHandfunktionenReturn.20 := Messachse.bpReferenz;
+  dwpHandfunktionenReturn.21 := Abschrankung.bpStartAusfahren;
+  dwpHandfunktionenReturn.22 := Abschrankung.bpStartEinfahren;
 ELSE
   dwpHandfunktionenReturn := 0;
 END_IF

@@ -44,6 +44,14 @@ IF ( bpCheck ) THEN
     steplCheck := STEP_900_E;
   END_IF
 
+  // Ausnahmesituation:
+  //   - Slave-Kopplung waehrend der Kette verloren
+  IF ( NOT blAntriebsKopplungAktiv AND ( steplCheck > STEP_0_E ) AND ( steplCheck < STEP_900_E ) ) THEN
+    Antrieb.wpBetriebsart := KEINE_FUNKTION;
+    wpFehlerNr := cMELDUNG_SYSTEMCHECK_SLAVE_KOPPLUNG_VERLOREN;
+    steplCheck := STEP_900_E;
+  END_IF
+
   CASE ( steplCheck ) OF
     // SYSTEM CHECK=========================
     STEP_0_E:
@@ -55,6 +63,8 @@ IF ( bpCheck ) THEN
 
 
       rlGefahreneStreckeEintransport := 0.0;
+
+      blReduzierteGeschwindigkeit := ( pAuftrag.rAuftragsGewicht > rgReduzierteGeschwindigkeitGlasGewicht );
 
       IF ( Antrieb.bpReglerBereit
            AND blAntriebsKopplungAktiv )
@@ -175,8 +185,13 @@ IF ( bpCheck ) THEN
           Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
         END_IF
 
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        IF blReduzierteGeschwindigkeit THEN
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+        ELSE
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        END_IF
 
         (* Hinweis:
            - Mit Scheibenmessung bleibt die Scheibe auf dem Einlaufsensor stehen (die Messung braucht den belegten Einlaufsensor)
@@ -209,8 +224,13 @@ IF ( bpCheck ) THEN
           ELSE
             Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
           END_IF
-          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+          IF blReduzierteGeschwindigkeit THEN
+            Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+            Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+          ELSE
+            Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+            Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+          END_IF
 
           Antrieb.rpZielposition    := ppParameterBaustein.rWegUeberEinlauf;
           Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor1;
@@ -327,9 +347,15 @@ IF ( bpCheck ) THEN
       *)
       rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
-      Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
-      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      IF blReduzierteGeschwindigkeit THEN
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeit20;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+      ELSE
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      END_IF
 
       Antrieb.rpZielposition    := ppParameterBaustein.rWegUeberEinlauf;
       Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor1;
@@ -390,8 +416,13 @@ IF ( bpCheck ) THEN
          - Soll- Wertkopplung mit einem Transfershuttle
       *)
       Antrieb.rpGeschwindigkeit := InGlasTransportNachfolger.rGeschwindigkeit;
-      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      IF blReduzierteGeschwindigkeit THEN
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+      ELSE
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      END_IF
       Antrieb.wpBetriebsart     := HANDPLUS;
 
       bpOutBereitZumAustransport:=TRUE;
@@ -517,9 +548,15 @@ IF ( bpCheck ) THEN
       IF NOT bpSensorEinlauf THEN
         rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
-        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        IF blReduzierteGeschwindigkeit THEN
+          Antrieb.rpGeschwindigkeit := rgGeschwindigkeit20;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+        ELSE
+          Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        END_IF
 
         Antrieb.rpZielposition    := - ppParameterBaustein.rWegUeberEinlauf;
         Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
@@ -569,7 +606,7 @@ IF ( bpCheck ) THEN
       *)
       IF NOT bpSensorAuslauf AND NOT bpSensorEinlauf AND NOT Antrieb.bpAntrieblaeuft THEN
         bpOutBereitZumEintransport := FALSE;
-        Antrieb.wpBetriebsart := RESTWEG;
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplCheck := STEP_100_E;
       END_IF
 
@@ -611,8 +648,12 @@ IF ( bpCheck ) THEN
           rlScheibenMessungErgebnis := 1;
 
           IF ( bpStationBelegt ) THEN
-            pAuftrag.stAuftragsOptionen.eGlastransport := eGlastransport_AufEinlauf;
-            steplCheck := STEP_850_E;
+            IF bpScheibeNachSystemcheckAufAuslaufsensor THEN
+              steplCheck := STEP_845_E;
+            ELSE
+              pAuftrag.stAuftragsOptionen.eGlastransport := eGlastransport_AufEinlauf;
+              steplCheck := STEP_850_E;
+            END_IF
           ELSE
             steplCheck := STEP_890_E;
           END_IF
@@ -631,8 +672,13 @@ IF ( bpCheck ) THEN
 
         Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberSensorSystemCheck;
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        IF blReduzierteGeschwindigkeit THEN
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+        ELSE
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        END_IF
         Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
         Antrieb.wpBetriebsart     := RESTWEG;
 
@@ -713,11 +759,17 @@ IF ( bpCheck ) THEN
       *)
       rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
-      Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
-      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      IF blReduzierteGeschwindigkeit THEN
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeit20;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+      ELSE
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      END_IF
 
-      Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberEinlaufRueck;
+      Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberAuslaufRueck;
       Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor2;
       Antrieb.wpBetriebsart     := RESTWEG;
 
@@ -753,9 +805,15 @@ IF ( bpCheck ) THEN
       *)
       rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
-      Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
-      Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-      Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      IF blReduzierteGeschwindigkeit THEN
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeit20;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+      ELSE
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSystemcheck;
+        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+      END_IF
 
       CASE pAuftrag.stAuftragsOptionen.eGlastransport OF
 

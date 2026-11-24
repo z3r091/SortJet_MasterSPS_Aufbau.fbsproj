@@ -52,6 +52,7 @@ THEN
 
   IF ( Abschrankung.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bDurchlaufSperreZumNachfolger ) THEN
     BasisStationsParameter.bFehler := TRUE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_ABSCHRANKUNG;
     BasisStationsParameter.wFehlerNummer := Abschrankung.wpFehlerNr;
   END_IF
 

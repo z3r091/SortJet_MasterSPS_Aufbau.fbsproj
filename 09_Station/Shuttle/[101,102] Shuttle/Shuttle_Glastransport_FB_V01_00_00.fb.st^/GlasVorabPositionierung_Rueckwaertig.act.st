@@ -169,60 +169,6 @@ THEN
         steplVorabpositionierenRueckwaertig := STEP_900_E;
       END_IF
 
-    // GLAS POSITIONIEREN ====================
-    STEP_100_E:
-      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< EINLAUFSENSOR FREI FAHREN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-      //
-      //   Hinweis:
-      //   - Versuchen den Einlaufsensor frei zufahren
-      // TODO Option zum einlauf freifahren / ansonsten nur einlaufstopp   // toflEinlaufsensorFrei
-      IF (  NOT Antrieb.bpAntrieblaeuft
-           AND NOT toflEinlaufsensorSTOP.Q )
-      THEN
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-
-        steplVorabpositionierenRueckwaertig := STEP_110_E;
-
-      END_IF
-
-      IF ( toflEinlaufsensorSTOP.Q ) THEN
-        Antrieb.rpGeschwindigkeit := rgGeschwindigkeit05;
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-        Antrieb.wpBetriebsart     := HANDPLUS;
-
-      ELSE
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-
-      END_IF
-
-      (* Fehlerbehandlung:
-         - Auslaufsensor belegt
-         - Verfahrweg- Ueberwachung
-      *)
-      IF ( bpSensorAuslauf ) THEN
-        bpOutBereitZumAustransport := FALSE;
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT;
-        steplVorabpositionierenRueckwaertig := STEP_900_E;
-      END_IF
-
-      IF ( ABS(rlAntriebIstPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rLaengeStation ) THEN
-        bpOutBereitZumAustransport := FALSE;
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_NICHT_FREI;
-        steplVorabpositionierenRueckwaertig := STEP_900_E;
-      END_IF
-
-    // GLAS POSITIONIEREN ====================
-    STEP_110_E:
-      (* Hinweis:
-         - Zum Anfang springen
-      *)
-      IF ( NOT Antrieb.bpAntrieblaeuft ) THEN
-        steplVorabpositionierenRueckwaertig := STEP_1000_E;
-      END_IF
-
     // GLAS VORPOSITIONIEREN ====================
     STEP_900_E:
       (* Fehlerbehandlung:

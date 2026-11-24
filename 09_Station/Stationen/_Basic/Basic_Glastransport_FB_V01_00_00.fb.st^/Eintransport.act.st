@@ -164,8 +164,8 @@ THEN
 
           (* Hinweis:
              - Lage der letzten Scheibe laut Konfiguration (eGlastransport)
-               => Auf Einlauf: Scheibe bleibt um rWegUeberEinlaufAustransport auf dem Einlaufsensor liegen (Laenge - Weg)
-               => Auf Auslauf: Scheibe faehrt um rWegUeberAuslaufAustransport ueber den Auslaufsensor
+               => Auf Einlauf: Scheibe bleibt um rWegUeberEinlauf auf dem Einlaufsensor liegen (Laenge - Weg)
+               => Auf Auslauf: Scheibe faehrt um rWegUeberAuslauf ueber den Auslaufsensor
                => Vorab-Optionen: Scheibe bleibt am Eingang stehen (gesammelt), positioniert wird erst bei der Vorabpositionierung
              - Einzelscheibe (erste und letzte Scheibe) bei AufAuslaufVorab: direkt um rWegEinlaufsensorZuVorStopSensor auf den Vorab-Sensor
           *)
@@ -186,11 +186,11 @@ THEN
               Antrieb.wpRestwegMode  := Positiv_Steigend_Sensor1;
 
             eGlastransport_AufEinlauf:
-              Antrieb.rpZielPosition := (( pAuftrag.rAuftragsLaenge - ppParameterBaustein.rWegUeberEinlaufAustransport ) - pAuftrag.rModellVersatzVorne);
+              Antrieb.rpZielPosition := (( pAuftrag.rAuftragsLaenge - ppParameterBaustein.rWegUeberEinlauf ) - pAuftrag.rModellVersatzVorne);
               Antrieb.wpRestwegMode  := Positiv_Steigend_Sensor1;
 
             eGlastransport_AufAuslauf:
-              Antrieb.rpZielPosition := ( ppParameterBaustein.rWegUeberAuslaufAustransport - pAuftrag.rModellVersatzVorne );
+              Antrieb.rpZielPosition := ( ppParameterBaustein.rWegUeberAuslauf - pAuftrag.rModellVersatzVorne );
               Antrieb.wpRestwegMode  := Positiv_Steigend_Sensor2;
 
           ELSE
@@ -416,9 +416,13 @@ THEN
           steplEintransport := STEP_300_E;
         ELSE
           tonlMaximaleZeitEinlaufsensorFreiFahren ( IN:= FALSE );
-          IF ( bpSensorEinlauf
-               OR ( bpSensorEinlauf AND InGlasTransportVorgaenger.bAuslaufsensor ) )
-             AND bpSensorAuslaufVorab
+          (* Hinweis:
+             - Scheibe liegt im Uebergang (Eingangssensor belegt und Vorab-Sensor bzw. Sensor des Partners belegt):
+               nicht freifahren
+          *)
+          IF (     bpSensorEinlauf
+               AND (    bpSensorAuslaufVorab
+                     OR InGlasTransportVorgaenger.bAuslaufsensor ) )
           THEN
             bpUebergrosseScheibeUebergang := TRUE;
             IF blScheibenMerker THEN

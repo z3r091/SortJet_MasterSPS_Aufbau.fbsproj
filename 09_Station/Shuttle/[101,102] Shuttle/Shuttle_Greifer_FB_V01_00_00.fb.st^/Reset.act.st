@@ -88,6 +88,7 @@ IF ( bpReset ) THEN
     // RESET ==============================
     STEP_1000_E:
       wpFehlerNr := cMELDUNG_NULL;
+      wpFehlerKennung := cZYLINDER_KEINE;
       bpFehler   := FALSE;
       bpDone     := TRUE;
 

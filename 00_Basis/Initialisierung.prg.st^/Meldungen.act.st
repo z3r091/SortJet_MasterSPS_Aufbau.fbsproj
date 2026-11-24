@@ -25,15 +25,17 @@ WatchIo(bpInitialisierung AND NOT blDruckluftOK, ioccInitBlockDruckluft);
 
 // Alle SK's abfragen und Meldung abgeben
 // Init darf nur blocken, wenn:
+//   - die Sicherheitstechnik nicht gebrueckt ist
 //   - ein SK offen ist
+//   - UND dieser SK die Initialisierung blockieren darf [MK bBlockiertStart]
 //   - UND es mindestens eine Station gibt, die diesen SK nutzt
 //   - UND diese Station NICHT referenziert ist
 blAlleSkGeschlossen := TRUE;
 
-IF NOT M_Init_Ok THEN
+IF NOT M_Init_Ok AND NOT bgSicherheitstechnikBruecken THEN
   FOR wlIndex := cERSTER_SICHERHEITSKREIS  TO cLETZTER_SICHERHEITSKREIS DO
 
-    IF NOT Sicherheitskreis[wlIndex].bpSicherheitskreisGeschlossen THEN
+    IF NOT Sicherheitskreis[wlIndex].bpSicherheitskreisGeschlossen AND apgMKSicherheiskreis[wlIndex].bBlockiertStart THEN
 
       // SK ist offen -> nur relevant, falls eine NICHT referenzierte Station diesen SK braucht
       FOR wlSubIndex := cERSTE_STATION TO cLETZTE_STATION DO

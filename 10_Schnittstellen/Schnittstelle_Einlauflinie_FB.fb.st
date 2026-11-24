@@ -7,6 +7,17 @@
 *)
 {attribute 'excludefrombuild'}
 FUNCTION_BLOCK Schnittstelle_Einlauflinie_FB
+(*
+//=================================================================================================
+// !!! TODO !!! TODO !!! TODO !!! TODO !!! TODO !!! TODO !!! TODO !!! TODO !!! TODO !!! TODO !!!
+//=================================================================================================
+// - Dieser Baustein ist UNFERTIG.
+// - Er erbt NICHT von Basic_Schnittstelle_FB_V01_00_00.
+// - Er ist nicht instanziiert und nicht im Build (excludefrombuild).
+// - Vor der Verwendung fertigstellen und auf die Basis-Schnittstelle umstellen:
+//     EXTENDS, SUPER^, Reset und Meldungen der Basis nutzen, danach testen.
+//=================================================================================================
+*)
 VAR_INPUT
 
   // BOOLEAN

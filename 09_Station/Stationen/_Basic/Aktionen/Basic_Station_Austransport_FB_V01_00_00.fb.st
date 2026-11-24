@@ -94,6 +94,7 @@ THEN
     IF ( Abschrankung.bpFehler ) THEN
       Abschrankung.bpStartEinfahren := FALSE;
       Abschrankung.bpStartAusfahren := FALSE;
+      BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_ABSCHRANKUNG;
       BasisStationsParameter.wFehlerNummer := Abschrankung.wpFehlerNr;
       steplAktion := STEP_900_E;
     END_IF

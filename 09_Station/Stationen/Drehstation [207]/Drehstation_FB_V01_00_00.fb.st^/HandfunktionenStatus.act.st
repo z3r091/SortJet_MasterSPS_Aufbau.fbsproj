@@ -10,7 +10,6 @@ ACTION HandfunktionenStatus
 IF    NOT BasisStationsParameter.stMKs.bDeaktivieren
       AND blBetriebsartHand
       AND NOT BasisStationsParameter.bVorabpositionieren
-      AND NOT bgSimAktiv // Demo/Messe: Handbits kommen aus der Simulation -> nicht ans MMI melden
 THEN
   dwpHandfunktionenReturn.0  := Geblaese.bpStart;
   dwpHandfunktionenReturn.1  := Glastransport.bpHandfahrenPlus;

@@ -200,6 +200,7 @@ apgMKShuttle102Kippen : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Kippen := [
       tUeberwachungBewegung                        := TIME#30s0ms,          // Zeitueberwachung einer Fahrt der Greiferachse
       tUeberwachungKopplung                        := TIME#10s0ms,          // Zeitueberwachung Kopplung / Entkopplung des Glastransports auf die Greiferachse
       bZangeAbfragenVorhanden                      := FALSE,                // Endlagenabfragen der Greiferzange vorhanden (sonst nur Bewegungszeit)
+      tZangeBewegungszeit                          := T#400MS,              // Bewegungszeit der Greiferzange ohne Endlagenabfragen bzw. beim Schliessen auf Glas
       bZangeEinlaufVorhanden                       := FALSE,                // Greiferzange Einlaufseite vorhanden (Ablaeufe ueber die Einlaufseite nur damit)
       bZangeAuslaufVorhanden                       :=  TRUE,                // Greiferzange Auslaufseite vorhanden (Ablaeufe ueber die Auslaufseite nur damit)
       bGlasRueckhalterEinlaufVorhanden             := FALSE,                // Glasrueckhalter Einlaufseite vorhanden (sonst Ausgang aus, gilt als eingefahren)

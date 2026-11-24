@@ -156,6 +156,23 @@ VAR_GLOBAL CONSTANT
   cHUBRAHMEN_1                        : WORD := 0;
   cHUBRAHMEN_2                        : WORD := 1;
 
+  // ZYLINDER KENNUNG
+  //   - Bei Zylinderfehlern (nicht aus-/eingefahren, Stellung ungueltig) in awFehlerInformationen[1]
+  //   - Damit ist im Fehlertext erkennbar, welcher Zylinder der Station gemeint ist
+  cZYLINDER_KEINE                     : WORD := 0;
+  cZYLINDER_HUBRAHMEN                 : WORD := 1;
+  cZYLINDER_ANSCHLAG                  : WORD := 2;
+  cZYLINDER_ANSCHLAG_HORIZONTAL       : WORD := 3;
+  cZYLINDER_ABSCHRANKUNG              : WORD := 4;
+  cZYLINDER_DICKENVERSTELLUNG         : WORD := 5;
+  cZYLINDER_ROELLCHENLEISTE           : WORD := 6;
+  cZYLINDER_WANDVERSTELLUNG           : WORD := 7;
+  cZYLINDER_QUERACHSE                 : WORD := 8;
+  cZYLINDER_ARRETIERUNG               : WORD := 9;
+  cZYLINDER_GREIFER_HUB               : WORD := 10;
+  cZYLINDER_ZANGE_EINLAUF             : WORD := 11;
+  cZYLINDER_ZANGE_AUSLAUF             : WORD := 12;
+
   // EBENEN
   cEBENE_1                            : WORD := 2#0000000000000001; // 1;
   cEBENE_2                            : WORD := 2#0000000000000010; // 2;

@@ -105,7 +105,7 @@ IF( blBetriebsartHand )THEN
   END_IF
 
   // Hoehenkontrolle
-  Messachse.bpHandplus := ( (  dwlHandfunktionen.18
+  Messachse.bpHandfahrenPlus := ( (  dwlHandfunktionen.18
                               OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                             AND NOT(  dwlHandfunktionen.19
                                      OR dwlHandfunktionen.20
@@ -113,7 +113,7 @@ IF( blBetriebsartHand )THEN
                                      OR bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
 
 
-  Messachse.bpHandminus := ( ( dwlHandfunktionen.19
+  Messachse.bpHandfahrenMinus := ( ( dwlHandfunktionen.19
                                OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                              AND NOT(  dwlHandfunktionen.18
                                       OR dwlHandfunktionen.20

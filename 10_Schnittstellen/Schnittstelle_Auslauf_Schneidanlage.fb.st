@@ -26,12 +26,9 @@ VAR_INPUT
 
   // HARDWARE EINGAENGE
   in_bGlasAbruf                 AT%I* : BOOL; // Signal von Schneidanlage
-  in_bTransportRueckwaerts      AT%I* : BOOL; // Signal von Schneidanlage
-  in_bRiemenVor                 AT%I* : BOOL; // Signal von Schneidanlage
-  in_bRiemenZurueck             AT%I* : BOOL; // Signal von Schneidanlage
   in_bAnforderungSK             AT%I* : BOOL; // Signal von Schneidanlage
 
-  out_bFreigabeSK               AT%Q* : BOOL; // Signal von Schneidanlage
+  out_bFreigabeSK               AT%Q* : BOOL; // Signal an Schneidanlage
 
 END_VAR
 
@@ -74,6 +71,9 @@ blSenderGlasBereit := ( (*( BasisStationsParameter.bAutomatik )
 
 bpAnforderungSK := in_bAnforderungSK OR bgVisu_Schnittstelle_Force_AnforderungSK[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS];
 bpGlasAbruf     := in_bGlasAbruf OR bgVisu_Schnittstelle_Force_GlasAbruf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS];
+
+// SK-Freigabe an die Schneidanlage: nur auf Anforderung und bei Freigabe der Schnittstelle
+out_bFreigabeSK := bpAnforderungSK AND BasisStationsParameter.stFreigabe.bAlles;
 
 bgVisu_Schnittstelle_GlasAbruf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]     := in_bGlasAbruf OR bgVisu_Schnittstelle_Force_GlasAbruf[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS];
 bgVisu_Schnittstelle_AnforderungSK[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] := in_bAnforderungSK OR bgVisu_Schnittstelle_Force_AnforderungSK[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS];

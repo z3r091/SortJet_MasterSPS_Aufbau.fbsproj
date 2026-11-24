@@ -111,6 +111,7 @@ THEN
     IF ( blAnschlagFehler ) THEN
       Anschlag.bpStartAusfahren := FALSE;
       Anschlag.bpStartEinfahren := FALSE;
+      BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_ANSCHLAG;
       BasisStationsParameter.wFehlerNummer := Anschlag.wpFehlerNr;
       steplAktion := STEP_900_E;
     END_IF
@@ -120,6 +121,7 @@ THEN
     IF ( blHubrahmenFehler ) THEN
       Hubrahmen.bpStartAusfahren := FALSE;
       Hubrahmen.bpStartEinfahren := FALSE;
+      BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_HUBRAHMEN;
       BasisStationsParameter.wFehlerNummer := Hubrahmen.wpFehlerNr;
       steplAktion := STEP_900_E;
     END_IF
@@ -266,7 +268,7 @@ THEN
           Hubrahmen.bpStartEinfahren := FALSE;
           Hubrahmen.bpStartAusfahren := FALSE;
 
-          BasisStationsParameter.awFehlerInformationen[1] := cHUBRAHMEN_1;
+          BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_HUBRAHMEN;
           BasisStationsParameter.wFehlerNummer := Hubrahmen.wpFehlerNr;
 
           steplAktion := STEP_900_E;
@@ -386,7 +388,7 @@ THEN
           Hubrahmen.bpStartEinfahren := FALSE;
           Hubrahmen.bpStartAusfahren := FALSE;
 
-          BasisStationsParameter.awFehlerInformationen[1] := cHUBRAHMEN_1;
+          BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_HUBRAHMEN;
           BasisStationsParameter.wFehlerNummer := Hubrahmen.wpFehlerNr;
 
           steplAktion := STEP_900_E;

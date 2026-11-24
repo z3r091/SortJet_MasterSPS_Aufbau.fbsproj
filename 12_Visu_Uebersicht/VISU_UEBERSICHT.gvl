@@ -9,7 +9,7 @@
 NAMESPACE VISU_UEBERSICHT
 VAR_GLOBAL
   // Kopfzeile / Anlagenstatus
-  sTitel            : STRING(80) := 'SortJet Glas Dreisbusch  -  Anlagenübersicht';
+  sTitel            : STRING(80) := 'SortJet -  Anlagenübersicht';
   sUntertitel       : STRING(120) := 'Anlegetisch 201/205 > Eckübergabe 204 > Drehstation 207 > Shuttle 101 > Speicher > Shuttle 102 > Fächerwagen';
   stAutomatik       : VisuUeb_Lampe_ST;
   stSK1             : VisuUeb_Lampe_ST;
@@ -29,7 +29,6 @@ VAR_GLOBAL
   stMMI             : VisuUeb_Lampe_ST;
   stBetriebsstop    : VisuUeb_Lampe_ST;
   stInbetriebnahme  : VisuUeb_Lampe_ST;
-  stSimulation      : VisuUeb_Lampe_ST;
   sStoerungen       : STRING(80);
   dwStoerungenFarbe : DWORD := 16#FF2EAD5B;
 

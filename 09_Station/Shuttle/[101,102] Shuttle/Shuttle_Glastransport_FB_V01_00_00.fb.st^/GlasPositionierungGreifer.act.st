@@ -86,7 +86,7 @@ THEN
         Antrieb.rpZielposition := - ( rpWegGlasUebergabeposition - pAuftrag.rModellVersatzVorne );
         Antrieb.wpRestwegMode  := Negativ_Steigend_Sensor1;
       ELSE
-        Antrieb.rpZielposition := ( rpWegGlasUebergabeposition - pAuftrag.rModellVersatzHinten );
+        Antrieb.rpZielposition := ( rpWegGlasUebergabeposition - pAuftrag.rModellVersatzVorne );
         Antrieb.wpRestwegMode  := Positiv_Steigend_Sensor2;
       END_IF
 

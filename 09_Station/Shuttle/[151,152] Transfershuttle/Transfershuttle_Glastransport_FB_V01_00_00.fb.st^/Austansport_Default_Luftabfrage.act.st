@@ -84,23 +84,88 @@ THEN
         steplAustransportDefaultLuftabfrage := STEP_30_E;
       END_IF
 
-      // Ausnahmesituation:
-      //   - Auslaufsensor ist belegt
-      //     => Versuchen diesen Frei-Zufahren
-      //     => Shuttle durch das Vorab-Heben schon oben
-      IF (  tonlAuslaufsensorTesten.Q
-           AND NOT tonlEinlaufsensorTesten.Q
-           AND bpSensorScheibenKontrolleEinlaufSeiteFrei )
-      THEN
-        IF NOT pAuftrag.bErsteScheibe THEN
-          blMeldungAuslaufAbfrageBelegt := TRUE;
-        END_IF
-        steplAustransportDefaultLuftabfrage := STEP_30_E;
-      END_IF
+      (* Hinweis:
+         - Richtungsabhaengig: der Sensor der Ausgangsseite darf belegt sein (Scheibe steht schon bereit),
+           der Sensor der Eingangsseite wird per Restweg freigefahren
+           => vorwaerts: Ausgang = Auslauf, Eingang = Einlauf
+           => rueckwaerts: Ausgang = Einlauf, Eingang = Auslauf
+      *)
+      IF ( NOT bpRueckwaertsAustransportieren ) THEN
 
-      IF ( tonlEinlaufsensorTesten.Q ) THEN
-        wpFehlerNr := cMELDUNG_TS_EINLAUFSENSOR_WIRD_NICHT_FREI;
-        steplAustransportDefaultLuftabfrage := STEP_20_E;
+        // Auslaufsensor belegt: Scheibe steht bereit (Shuttle durch das Vorab-Heben schon oben)
+        IF (  tonlAuslaufsensorTesten.Q
+             AND NOT tonlEinlaufsensorTesten.Q
+             AND bpSensorScheibenKontrolleEinlaufSeiteFrei )
+        THEN
+          IF NOT pAuftrag.bErsteScheibe THEN
+            blMeldungAuslaufAbfrageBelegt := TRUE;
+          END_IF
+          steplAustransportDefaultLuftabfrage := STEP_30_E;
+        END_IF
+
+        IF ( tonlEinlaufsensorTesten.Q ) THEN
+          rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
+
+          IF ( blReduzierteGeschwindigkeit ) THEN
+            Antrieb.rpGeschwindigkeit := rgGeschwindigkeit05;
+            Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+            Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+          ELSE
+            Antrieb.rpGeschwindigkeit := rgGeschwindigkeit15;
+            Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+            Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+          END_IF
+
+          // Einlaufsensor per Restweg freifahren
+          Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberEinlaufAustransport;
+          IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+            Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor1;
+          ELSE
+            Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
+          END_IF
+          Antrieb.wpBetriebsart     := RESTWEG;
+
+          steplAustransportDefaultLuftabfrage := STEP_20_E;
+        END_IF
+
+      ELSE
+
+        // Einlaufsensor belegt: Scheibe steht bereit (Shuttle durch das Vorab-Heben schon oben)
+        IF (  tonlEinlaufsensorTesten.Q
+             AND NOT tonlAuslaufsensorTesten.Q
+             AND bpSensorScheibenKontrolleAuslaufseiteFrei )
+        THEN
+          IF NOT pAuftrag.bErsteScheibe THEN
+            blMeldungEinlaufAbfrageBelegt := TRUE;
+          END_IF
+          steplAustransportDefaultLuftabfrage := STEP_30_E;
+        END_IF
+
+        IF ( tonlAuslaufsensorTesten.Q ) THEN
+          rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
+
+          IF ( blReduzierteGeschwindigkeit ) THEN
+            Antrieb.rpGeschwindigkeit := rgGeschwindigkeit05;
+            Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+            Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+          ELSE
+            Antrieb.rpGeschwindigkeit := rgGeschwindigkeit15;
+            Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+            Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+          END_IF
+
+          // Auslaufsensor per Restweg freifahren
+          Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberAuslaufAustransport;
+          IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+            Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor2;
+          ELSE
+            Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor2;
+          END_IF
+          Antrieb.wpBetriebsart     := RESTWEG;
+
+          steplAustransportDefaultLuftabfrage := STEP_25_E;
+        END_IF
+
       END_IF
 
     // AUSTRANSPORT ==============================
@@ -109,39 +174,24 @@ THEN
       //  EINLAUFSENSOR FREIFAHREN
       //
       //  Hinweis:
-      //  - Einlaufsensor belegt und diesen frei fahren
+      //  - Einlaufsensor belegt und diesen per Restweg frei fahren
+      //  - Ueberwachung des gegenueberliegenden Sensors (Auslauf) und der Wegstrecke
       // ---------------------------------------------------------------------------------------
-      IF (  NOT Antrieb.bpAntrieblaeuft
-           AND NOT blEinlaufSensor )
-      THEN
+      IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
-        (* Hinweis:
-           - Sensorik war beim pruefen belegt ( Vorabanheben )
-        *)
-        tonlEinlaufsensorTesten(IN:= FALSE);
-        tonlAuslaufsensorTesten(IN:= FALSE);
+        IF ( NOT blEinlaufSensor ) THEN
+          (* Hinweis:
+             - Sensorik war beim pruefen belegt ( Vorabanheben )
+          *)
+          tonlEinlaufsensorTesten(IN:= FALSE);
+          tonlAuslaufsensorTesten(IN:= FALSE);
 
-        steplAustransportDefaultLuftabfrage := STEP_0_E;
-
-      END_IF
-
-      IF ( NOT tonlEinlaufWirklichFrei.Q )THEN
-
-        IF ( blReduzierteGeschwindigkeit ) THEN
-          Antrieb.rpGeschwindigkeit := rgGeschwindigkeit05;
-          Antrieb.rpBeschleunigung := ppAntriebsInformationen.rpReduzierteBeschleunigung;
-          Antrieb.rpVerzoegerung   := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+          steplAustransportDefaultLuftabfrage := STEP_0_E;
         ELSE
-          Antrieb.rpGeschwindigkeit := rgGeschwindigkeit15;
-          Antrieb.rpBeschleunigung := ppAntriebsInformationen.rpMaxBeschleunigung;
-          Antrieb.rpVerzoegerung   := ppAntriebsInformationen.rpMaxVerzoegerung;
+          wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;
+          steplAustransportDefaultLuftabfrage := STEP_900_E;
         END_IF
-
-        Antrieb.wpBetriebsart    := HANDPLUS;
-
-      ELSE
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
 
       END_IF
 
@@ -162,6 +212,49 @@ THEN
       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;
+        steplAustransportDefaultLuftabfrage := STEP_900_E;
+      END_IF
+
+    // AUSTRANSPORT ==============================
+    STEP_25_E:
+      // ---------------------------------------------------------------------------------------
+      //  AUSLAUFSENSOR FREIFAHREN [RUECKWAERTS]
+      //
+      //  Hinweis:
+      //  - Auslaufsensor belegt und diesen per Restweg frei fahren
+      //  - Ueberwachung des gegenueberliegenden Sensors (Einlauf) und der Wegstrecke
+      // ---------------------------------------------------------------------------------------
+      IF ( Antrieb.bpDone ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+
+        IF ( NOT blAuslaufSensor ) THEN
+          tonlEinlaufsensorTesten(IN:= FALSE);
+          tonlAuslaufsensorTesten(IN:= FALSE);
+
+          steplAustransportDefaultLuftabfrage := STEP_0_E;
+        ELSE
+          wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI;
+          steplAustransportDefaultLuftabfrage := STEP_900_E;
+        END_IF
+
+      END_IF
+
+      // Ausnahmesituation:
+      //   - Einlaufsensor angefahren
+      //   - Wegstrecke ueberfahren
+      IF ( blEinlaufSensor ) THEN
+        bpScheibeFaehrtUeberEinlauf := TRUE;
+        bpAnforderungBetriebsstopp  := TRUE;
+
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+
+        wpFehlerNr := SEL( blAuslaufSensor, cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_BELEGT, cMELDUNG_EINTRANSPORT_SENSOR_EINLAUF_UND_AUSLAUF_BELEGT );
+        steplAustransportDefaultLuftabfrage := STEP_900_E;
+      END_IF
+
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI;
         steplAustransportDefaultLuftabfrage := STEP_900_E;
       END_IF
 
@@ -248,25 +341,24 @@ THEN
     // AUSTRANSPORT [HANDPLUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_50_E:
       (* Hinweis:
-         - Scheibepositionieren
+         - Scheibe auf den Auslaufsensor positionieren
+         - Auslaufsensor schon belegt: erst per Restweg freifahren (STEP_70), danach erneut positionieren
       *)
       rlAntriebsPositionBeiStart  := Antrieb.rpIstPosition;
 
       IF ( bpSensorScheibenKontrolleAuslaufseiteFrei ) THEN
-
-        rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
 
         IF ( blReduzierteGeschwindigkeit ) THEN
           Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
           Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
           Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
         ELSE
-          Antrieb.rpGeschwindigkeit := rgAutoGeschwindigkeitTSVortransport ;
+          Antrieb.rpGeschwindigkeit := rgAutoGeschwindigkeitTSVortransport;
           Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
           Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
         END_IF
 
-        Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberAuslaufAustransport;
+        Antrieb.rpZielPosition    := ( ppParameterBaustein.rWegUeberAuslaufAustransport - pAuftrag.rModellVersatzVorne );
 
         IF bpOptionTransfershuttleMitUltraschallSensoren THEN
           Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor2;
@@ -279,20 +371,24 @@ THEN
 
       ELSE
 
-        (* Anmerkung:
-           - Scheibe zurueck ueber den Auslaufsensor positionieren und erneut die Restweg-Positionierung starten
-        *)
-        IF ( blReduzierteGeschwindigkeit ) THEN
-          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
-          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
-        ELSE
-          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-        END_IF
+          IF ( blReduzierteGeschwindigkeit ) THEN
+            Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+            Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+          ELSE
+            Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+            Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+          END_IF
 
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
 
-        Antrieb.wpBetriebsart     := HANDMINUS;
+        Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberAuslaufAustransport;
+
+        IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+          Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor2;
+        ELSE
+          Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor2;
+        END_IF
+        Antrieb.wpBetriebsart     := RESTWEG;
 
         steplAustransportDefaultLuftabfrage := STEP_70_E;
 
@@ -301,17 +397,21 @@ THEN
     // AUSTRANSPORT [HANDPLUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_70_E:
       (* Hinweis:
-         - Ueberwachung -> ggf. Fehlerbehandlung
+         - Auslaufsensor per Restweg freigefahren: erneut positionieren
+         - Ueberwachung des gegenueberliegenden Sensors (Einlauf) und der Wegstrecke
       *)
       blMeldungAuslaufAbfrageBelegt := FALSE;
 
-      IF bpSensorScheibenKontrolleAuslaufseiteFrei THEN
+      IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-      END_IF
 
-      IF (  bpSensorScheibenKontrolleAuslaufseiteFrei AND NOT Antrieb.bpAntrieblaeuft ) THEN
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        steplAustransportDefaultLuftabfrage := STEP_50_E;
+        IF ( bpSensorScheibenKontrolleAuslaufseiteFrei ) THEN
+          steplAustransportDefaultLuftabfrage := STEP_50_E;
+        ELSE
+          wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_NICHT_FREI;
+          steplAustransportDefaultLuftabfrage := STEP_900_E;
+        END_IF
+
       END_IF
 
       (* Fehlerbehandlung:
@@ -419,7 +519,7 @@ THEN
       bprtScheibe := FALSE;
       Antrieb.rpGeschwindigkeit  := InGlasTransportNachfolger.rGeschwindigkeit;
 
-      IF ( NOT toflAuslaufsensor.Q ) THEN
+      IF ( tonlAuslaufsensorBelegt.Q ) THEN
         steplAustransportDefaultLuftabfrage := STEP_120_E;
       END_IF
 
@@ -441,7 +541,7 @@ THEN
       Antrieb.rpGeschwindigkeit :=  InGlasTransportNachfolger.rGeschwindigkeit;
       bprtScheibe := FALSE;
 
-      IF ( toflAuslaufsensor.Q ) THEN
+      IF ( tonlAuslaufsensorFrei.Q ) THEN
         bprtScheibe := TRUE;
         ilScheibenZaehler := ilScheibenZaehler - 1;
         // Wegueberwachung fuer die naechste Scheibe starten
@@ -449,11 +549,6 @@ THEN
         steplAustransportDefaultLuftabfrage := STEP_130_E;
       END_IF
 
-      IF ( NOT InGlasTransportNachfolger.bBereitZumEintransport ) THEN
-        bpOutBereitZumAustransport := FALSE;
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        steplAustransportDefaultLuftabfrage := STEP_140_E;
-      END_IF
 
     // AUSTRANSPORT [HANDPLUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_130_E:
@@ -477,14 +572,6 @@ THEN
           steplAustransportDefaultLuftabfrage := STEP_120_E;
         END_IF
 
-      END_IF
-
-      IF (  ( ilScheibenZaehler > 0 )
-           AND NOT InGlasTransportNachfolger.bBereitZumEintransport )
-      THEN
-        bpOutBereitZumAustransport := FALSE;
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        steplAustransportDefaultLuftabfrage := STEP_140_E;
       END_IF
 
       (* Fehlerbehandlung:
@@ -516,7 +603,7 @@ THEN
           steplAustransportDefaultLuftabfrage := STEP_150_E;
 
         ELSE
-          steplAustransportDefaultLuftabfrage := STEP_800_E;
+          steplAustransportDefaultLuftabfrage := STEP_170_E;
 
         END_IF
 
@@ -525,7 +612,7 @@ THEN
     // AUSTRANSPORT [HANDPLUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_150_E:
       (* Hinweis:
-         - Auslaufsensor freifahren
+         - Auslaufsensor per Restweg freifahren
       *)
       IF ( blReduzierteGeschwindigkeit ) THEN
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
@@ -537,22 +624,32 @@ THEN
 
       Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
 
-      Antrieb.wpBetriebsart     := HANDMINUS;
+      Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberAuslaufAustransport;
+
+      IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+        Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor2;
+      ELSE
+        Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor2;
+      END_IF
+      Antrieb.wpBetriebsart     := RESTWEG;
 
       steplAustransportDefaultLuftabfrage := STEP_160_E;
 
     // AUSTRANSPORT [HANDPLUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_160_E:
-      IF ( toflAuslaufsensor.Q ) THEN
+      (* Hinweis:
+         - Freifahren abgeschlossen
+         - Ueberwachung des gegenueberliegenden Sensors (Einlauf) und der Wegstrecke
+      *)
+      IF ( Antrieb.bpDone ) THEN
         bpScheibeFaehrtUeberAuslauf := FALSE;
-        Antrieb.rpGeschwindigkeit := REAL#0;
         Antrieb.wpBetriebsart     := KEINE_FUNKTION;
 
         IF ( blAuslaufSensor ) THEN
           wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_NICHT_FREI;
           steplAustransportDefaultLuftabfrage := STEP_900_E;
         ELSE
-          steplAustransportDefaultLuftabfrage := STEP_800_E;
+          steplAustransportDefaultLuftabfrage := STEP_170_E;
         END_IF
 
       END_IF
@@ -571,6 +668,16 @@ THEN
 
         wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_BELEGT;
         steplAustransportDefaultLuftabfrage := STEP_900_E;
+      END_IF
+
+    // AUSTRANSPORT [HANDPLUS - DEFAULT LUFTABFRAGE] ===========================================
+    STEP_170_E:
+      (* Hinweis:
+         - Eigener Auslaufsensor frei: erst absenken, wenn auch der Einlaufsensor des Nachfolgers frei ist
+           (die Scheibe liegt sonst noch im Uebergang)
+      *)
+      IF ( NOT InGlasTransportNachfolger.bEinlaufsensor ) THEN
+        steplAustransportDefaultLuftabfrage := STEP_800_E;
       END_IF
 
     // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
@@ -605,28 +712,27 @@ THEN
       END_IF
 
 
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
+    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_410_E:
       (* Hinweis:
-         - Scheibenvorpositionieren
+         - Scheibe auf den Einlaufsensor positionieren
+         - Einlaufsensor schon belegt: erst per Restweg freifahren (STEP_70), danach erneut positionieren
       *)
       rlAntriebsPositionBeiStart  := Antrieb.rpIstPosition;
 
-      IF ( bpSensorScheibenKontrolleEinlaufSeiteFrei ) THEN
-
-        rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
+      IF ( bpSensorScheibenKontrolleEinlaufseiteFrei ) THEN
 
         IF ( blReduzierteGeschwindigkeit ) THEN
+          Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
           Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
           Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
-          Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
         ELSE
           Antrieb.rpGeschwindigkeit := rgAutoGeschwindigkeitTSVortransport;
           Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
           Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
         END_IF
 
-        Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberEinlaufAustransport;
+        Antrieb.rpZielPosition    := - ( ppParameterBaustein.rWegUeberEinlaufAustransport - pAuftrag.rModellVersatzVorne );
 
         IF bpOptionTransfershuttleMitUltraschallSensoren THEN
           Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
@@ -639,61 +745,69 @@ THEN
 
       ELSE
 
-        (* Anmerkung:
-           - Scheibe zurueck ueber den Sensor positionieren und erneut die Restweg-Positionierung starten
-        *)
-        IF ( blReduzierteGeschwindigkeit ) THEN
-          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
-          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
-          Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
-        ELSE
-          Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
-          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-        END_IF
+          IF ( blReduzierteGeschwindigkeit ) THEN
+            Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+            Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+          ELSE
+            Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+            Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+          END_IF
 
-        Antrieb.rpZielPosition    := ( ppParameterBaustein.rMaxPosAuslaufSensorFreiFahren);
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
+
+        Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberEinlaufAustransport;
+
+        IF bpOptionTransfershuttleMitUltraschallSensoren THEN
+          Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor1;
+        ELSE
+          Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
+        END_IF
         Antrieb.wpBetriebsart     := RESTWEG;
 
-        steplAustransportDefaultLuftabfrage := STEP_420_E;
-
-      END_IF
-
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
-    STEP_420_E:
-      (* Hinweis:
-         - Aufgrund von Problemen hier auf NOT DONE abfragen
-      *)
-      IF ( NOT Antrieb.bpDone ) THEN
         steplAustransportDefaultLuftabfrage := STEP_430_E;
+
       END_IF
 
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
+    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_430_E:
       (* Hinweis:
-         - Ueberwachung -> ggf. Fehlerbehandlung
+         - Einlaufsensor per Restweg freigefahren: erneut positionieren
+         - Ueberwachung des gegenueberliegenden Sensors (Auslauf) und der Wegstrecke
       *)
-      IF (  bpSensorScheibenKontrolleEinlaufSeiteFrei ) THEN
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        steplAustransportDefaultLuftabfrage := STEP_410_E;
+      blMeldungEinlaufAbfrageBelegt := FALSE;
 
-      ELSIF (Antrieb.bpDone
-              AND NOT bpSensorScheibenKontrolleEinlaufSeiteFrei )
-      THEN
+      IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;
-        steplAustransportDefaultLuftabfrage := STEP_900_E;
+
+        IF ( bpSensorScheibenKontrolleEinlaufseiteFrei ) THEN
+          steplAustransportDefaultLuftabfrage := STEP_410_E;
+        ELSE
+          wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;
+          steplAustransportDefaultLuftabfrage := STEP_900_E;
+        END_IF
 
       END_IF
 
-      IF ( NOT bpSensorScheibenKontrolleAuslaufseiteFrei ) THEN
+      (* Fehlerbehandlung:
+         - Auslaufsensor
+      *)
+      IF ( NOT bpSensorScheibenKontrolleAuslaufSeiteFrei ) THEN
         bpAnforderungBetriebsstopp := TRUE;
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_AUSLAUF_BELEGT;
         steplAustransportDefaultLuftabfrage := STEP_900_E;
       END_IF
 
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
+      (* Fehlerbehandlung:
+         - Wegueberwachung
+      *)
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rMaxPosEinlaufSensorFreiFahren ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_NICHT_FREI;
+        steplAustransportDefaultLuftabfrage := STEP_900_E;
+      END_IF
+
+    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_440_E:
       (* Hinweis:
          - Aufgrund von Problemen hier auf NOT DONE abfragen
@@ -702,12 +816,12 @@ THEN
         steplAustransportDefaultLuftabfrage := STEP_450_E;
       END_IF
 
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
+    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_450_E:
       (* Hinweis:
          - Merken wann der Einlaufsensor angefahren wurde
       *)
-      ftriglEinlaufsensorBelegt(CLK:= bpSensorScheibenKontrolleEinlaufSeiteFrei );
+      ftriglEinlaufsensorBelegt(CLK:= bpSensorScheibenKontrolleEinlaufseiteFrei );
 
       IF ( ftriglEinlaufsensorBelegt.Q ) THEN
         rlAntriebspositionBeiAuslaufSensorBelegung := Antrieb.rpIstPosition;
@@ -719,6 +833,7 @@ THEN
       IF ( Antrieb.bpDone ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         steplAustransportDefaultLuftabfrage := STEP_460_E;
+
       END_IF
 
       (* Fehlerbehandlung:
@@ -726,14 +841,14 @@ THEN
       *)
       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
         steplAustransportDefaultLuftabfrage := STEP_900_E;
       END_IF
 
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
+    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_460_E:
       // Starten des Austransports
-      //    - Soll-Wertkopplung
+      //    - Soll-Wertkopplung [Transfershuttle - Outputshuttle]
       //    - Scheibenzaehler initialisieren
       //    - Bit zum Austransport setzen
       rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
@@ -751,7 +866,7 @@ THEN
       ilScheibenZaehler := WORD_TO_INT( pAuftrag.wAnzahlScheiben );
 
       IF bpOptionMasterSlaveAustransport THEN
-        // Master-Slave: auf den Vorgaenger koppeln, bereit erst nach erfolgter Kopplung (STEP_465)
+        // Master-Slave: auf den Vorgaenger koppeln, bereit erst nach erfolgter Kopplung (STEP_105)
         Antrieb.wpMaster      := InGlasTransportVorgaenger.wAchsID;
         Antrieb.wpBetriebsart := SYNC_AUF_MASTER;
         steplAustransportDefaultLuftabfrage := STEP_465_E;
@@ -761,7 +876,7 @@ THEN
         steplAustransportDefaultLuftabfrage := STEP_470_E;
       END_IF
 
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
+    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_465_E:
       IF ( Antrieb.bpDone ) THEN
         bpSlaveAktiv := TRUE;
@@ -769,46 +884,47 @@ THEN
         steplAustransportDefaultLuftabfrage := STEP_470_E;
       END_IF
 
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
+    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_470_E:
       (* Hinweis:
-         - Sicherstellen das der Auslaufsensor belegt, wenn mit der Quittierung der Scheiben
+         - Sicherstellen das der Einlaufsensor belegt, wenn mit der Quittierung der Scheiben
            gestartet wird.
       *)
+      bprtScheibe := FALSE;
       Antrieb.rpGeschwindigkeit  := InGlasTransportVorgaenger.rGeschwindigkeit;
 
-      IF ( NOT toflEinlaufsensor.Q ) THEN
+      IF ( tonlEinlaufsensorBelegt.Q ) THEN
         steplAustransportDefaultLuftabfrage := STEP_480_E;
       END_IF
 
       (* Fehlerbehandlung:
          - Wegueberwachung
       *)
-
       IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rlLaengeStation ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT;
+        wpFehlerNr := cMELDUNG_AUSTRANSPORT_SENSOR_EINLAUF_SCHALTET_NICHT_WEG_UEBERWACHUNG;
         steplAustransportDefaultLuftabfrage := STEP_900_E;
       END_IF
 
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
+    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_480_E:
       (* Hinweis [ WECHSEL- SCHRITT ]:
-         - Auslaufsensor wurde frei
+         - Einlaufsensor wurde frei
             => Scheibenzaehler dekrementieren
       *)
       Antrieb.rpGeschwindigkeit :=  InGlasTransportVorgaenger.rGeschwindigkeit;
       bprtScheibe := FALSE;
 
-      IF ( toflEinlaufsensor.Q ) THEN
+      IF ( tonlEinlaufsensorFrei.Q ) THEN
         bprtScheibe := TRUE;
-        ilScheibenZaehler := ilScheibenZaehler - 1 ;
+        ilScheibenZaehler := ilScheibenZaehler - 1;
         // Wegueberwachung fuer die naechste Scheibe starten
         rlAntriebsPositionBeiStart := Antrieb.rpIstPosition;
         steplAustransportDefaultLuftabfrage := STEP_490_E;
       END_IF
 
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
+
+    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_490_E:
       (* Hinweis [ WECHSEL- SCHRITT ]:
          - Scheibenzaehler pruefen
@@ -820,11 +936,13 @@ THEN
 
       IF ( ilScheibenZaehler <= 0 ) THEN
         bpOutBereitZumAustransport := FALSE;
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        Antrieb.rpGeschwindigkeit := REAL#0;
+        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung * 1.5;
+        Antrieb.wpBetriebsart     := KEINE_FUNKTION;
         steplAustransportDefaultLuftabfrage := STEP_500_E;
       ELSE
 
-        IF ( NOT bpSensorScheibenKontrolleEinlaufSeiteFrei ) THEN
+        IF ( NOT bpSensorScheibenKontrolleEinlaufseiteFrei ) THEN
           steplAustransportDefaultLuftabfrage := STEP_480_E;
         END_IF
 
@@ -842,33 +960,33 @@ THEN
         steplAustransportDefaultLuftabfrage := STEP_900_E;
       END_IF
 
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
+    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_500_E:
       (* Hinweis:
          - Antrieb steht
-         - Pruefen des Auslaufsensors
+         - Pruefen des Einlaufsensors
          - Master-Slave- Kopplung ist beendet (Antrieb nicht mehr synchron)
       *)
       bpSlaveAktiv := FALSE;
 
       IF ( NOT toflAntriebLaeuft.Q ) THEN
 
-        rlAntriebsPositionBeiStart:= Antrieb.rpIstPosition;
-
-        IF ( NOT bpSensorScheibenKontrolleEinlaufSeiteFrei ) THEN
+        IF ( NOT bpSensorScheibenKontrolleEinlaufseiteFrei ) THEN
+          bpScheibeFaehrtUeberEinlauf := TRUE;
+          rlAntriebsPositionBeiStart:= Antrieb.rpIstPosition;
           steplAustransportDefaultLuftabfrage := STEP_510_E;
 
         ELSE
-          steplAustransportDefaultLuftabfrage := STEP_530_E;
+          steplAustransportDefaultLuftabfrage := STEP_525_E;
 
         END_IF
 
       END_IF
 
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
+    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_510_E:
       (* Hinweis:
-         - Auslaufsensor freifaheren
+         - Einlaufsensor per Restweg freifahren
       *)
       IF ( blReduzierteGeschwindigkeit ) THEN
         Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
@@ -881,97 +999,59 @@ THEN
       Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
 
       Antrieb.rpZielPosition    := ppParameterBaustein.rWegUeberEinlaufAustransport;
+
       IF bpOptionTransfershuttleMitUltraschallSensoren THEN
         Antrieb.wpRestwegMode     := Positiv_Fallend_Sensor1;
       ELSE
         Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor1;
       END_IF
-
       Antrieb.wpBetriebsart     := RESTWEG;
 
       steplAustransportDefaultLuftabfrage := STEP_520_E;
 
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
+    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ===========================================
     STEP_520_E:
+      (* Hinweis:
+         - Freifahren abgeschlossen
+         - Ueberwachung des gegenueberliegenden Sensors (Auslauf) und der Wegstrecke
+      *)
       IF ( Antrieb.bpDone ) THEN
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        bpScheibeFaehrtUeberEinlauf := FALSE;
+        Antrieb.wpBetriebsart     := KEINE_FUNKTION;
 
         IF ( blEinlaufSensor ) THEN
           wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_NICHT_FREI;
           steplAustransportDefaultLuftabfrage := STEP_900_E;
         ELSE
-          steplAustransportDefaultLuftabfrage := STEP_800_E;
+          steplAustransportDefaultLuftabfrage := STEP_525_E;
         END_IF
 
       END_IF
 
-      (* Fehlerbehandlung:
-         - Wegueberwachung
-      *)
-      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rStopFreiFahren ) THEN
+      // Prozess:
+      //   - Ausnahmefehler
+      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition) > ppParameterBaustein.rStopFreiFahren ) THEN
         Antrieb.wpBetriebsart := KEINE_FUNKTION;
         wpFehlerNr := cMELDUNG_SENSOR_EINLAUF_NICHT_FREI;
         steplAustransportDefaultLuftabfrage := STEP_900_E;
       END_IF
 
       IF ( blAuslaufSensor ) THEN
-        bpAnforderungBetriebsstopp := TRUE;
         Antrieb.rpGeschwindigkeit := REAL#0;
         Antrieb.wpBetriebsart     := KEINE_FUNKTION;
+
         wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_BELEGT;
         steplAustransportDefaultLuftabfrage := STEP_900_E;
       END_IF
 
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
-    STEP_530_E:
+    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ===========================================
+    STEP_525_E:
       (* Hinweis:
-         - Transfershuttle müssen auch fertig sein!
-           Besonderheit: die Transfershuttle positionieren nach einem Austransport die
-           noch im Speicher gebliebenen Gläser neu über die Luftschrnake damit neue Gläser hinzu
-           gestellt werden können
+         - Eigener Einlaufsensor frei: erst absenken, wenn auch der Auslaufsensor des Vorgaengers frei ist
+           (die Scheibe liegt sonst noch im Uebergang)
       *)
-      IF ( blReduzierteGeschwindigkeit ) THEN
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
-      ELSE
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
-      END_IF
-
-      Antrieb.rpGeschwindigkeit := rgGeschwindigkeit10;
-
-      rlZielPosition            := - ppParameterBaustein.rWegUeberEinlaufEintransport;
-      Antrieb.rpZielPosition    := rlZielPosition;
-      IF bpOptionTransfershuttleMitUltraschallSensoren THEN
-        Antrieb.wpRestwegMode     := Negativ_Steigend_Sensor1;
-      ELSE
-        Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor1;
-      END_IF
-      Antrieb.wpBetriebsart := RESTWEG;
-
-      steplAustransportDefaultLuftabfrage := STEP_540_E;
-
-    // AUSTRANSPORT [HANDMINUS - DEFAULT LUFTABFRAGE] ==========================================
-    STEP_540_E:
-      IF ( Antrieb.bpDone ) THEN
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        steplAustransportDefaultLuftabfrage := STEP_1000_E;
-      END_IF
-
-      // Keine Scheibe gefunden im Fach
-      //   - Wegueberwachung
-      IF ( ABS(rlAntriebsPositionBeiStart - Antrieb.rpIstPosition)> ppParameterBaustein.rgAbstandLuftAbfrageAuslaufShuttle ) THEN
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        steplAustransportDefaultLuftabfrage := STEP_1000_E;
-      END_IF
-
-
-      IF ( blAuslaufSensor ) THEN
-        bpAnforderungBetriebsstopp := TRUE;
-        Antrieb.rpGeschwindigkeit := REAL#0;
-        Antrieb.wpBetriebsart     := KEINE_FUNKTION;
-        wpFehlerNr := cMELDUNG_SENSOR_AUSLAUF_BELEGT;
-        steplAustransportDefaultLuftabfrage := STEP_900_E;
+      IF ( NOT InGlasTransportVorgaenger.bAuslaufsensor ) THEN
+        steplAustransportDefaultLuftabfrage := STEP_800_E;
       END_IF
 
     // AUSTRANSPORT ============================================================================

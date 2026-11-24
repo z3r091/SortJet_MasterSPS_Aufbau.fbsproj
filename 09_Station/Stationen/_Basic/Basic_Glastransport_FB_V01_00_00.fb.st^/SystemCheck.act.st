@@ -201,10 +201,10 @@ IF ( bpCheck ) THEN
 
         IF bpOptionNachSystemcheckAufAuslaufsensor THEN
           IF ( NOT bpSensorAuslauf ) THEN
-            Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberEinlauf;
+            Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberAuslauf;
             Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor2;
           ELSE
-            Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberEinlauf;
+            Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberAuslauf;
             Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor2;
           END_IF
         ELSE
@@ -570,14 +570,14 @@ IF ( bpCheck ) THEN
       (* Anmerkung:
          - Es wird eine Glasposition gesendet
       *)
-      IF ( (  NOT toflEinlaufsensor.Q OR ( ( InGlasTransportVorgaenger.bAuslaufsensor OR toflEinlaufsensor.Q ) AND bpSensorAuslaufVorab ) )  // 20240319 Update übergroße Scheiben LTR-TW
+      IF ( (  NOT toflEinlaufsensor.Q OR ( ( InGlasTransportVorgaenger.bAuslaufsensor OR toflEinlaufsensor.Q ) AND bpSensorAuslaufVorab ) )
            AND NOT Antrieb.bpAntrieblaeuft )
       THEN
-        IF ( ( InGlasTransportVorgaenger.bAuslaufsensor OR toflEinlaufsensor.Q ) AND bpSensorAuslaufVorab ) THEN // 20240319 Update übergroße Scheiben LTR-TW
+        IF ( ( InGlasTransportVorgaenger.bAuslaufsensor OR toflEinlaufsensor.Q ) AND bpSensorAuslaufVorab ) THEN
           IF ( pAuftrag.wAnzahlScheiben = 0 ) THEN
             bprtScheibe := TRUE;
           END_IF
-          bpUebergrosseScheibeUebergang := TRUE; // 20240319 Update übergroße Scheiben LTR-TW
+          bpUebergrosseScheibeUebergang := TRUE;
           bpStationBelegt := TRUE;
           steplCheck := STEP_890_E;
         ELSE
@@ -607,22 +607,13 @@ IF ( bpCheck ) THEN
     // SYSTEM CHECK=========================
     STEP_500_E:
       // ---------------------------------------------------------------------------------------
-      //  RUECKWERTIGER- TRANSPORT MIT DER VORGAENGERSTATION
+      //  RUECKWERTIGER- TRANSPORT MIT DER VORGAENGERSTATION (Spiegel von STEP_600)
       //
-      //  Hinweis:
-      // - Transport in die "negative" Richtung
+      //  Hint:
+      //  - Transport in "Negative" Richtung ( Einlaufseite )
       // ---------------------------------------------------------------------------------------
 
       IF ( InGlasTransportVorgaenger.bBereitZumEintransport ) THEN
-
-        Antrieb.rpGeschwindigkeit := InGlasTransportVorgaenger.rGeschwindigkeit;
-
-        Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
-
-        Antrieb.wpBetriebsart     := HANDMINUS;
-
-        bpOutBereitZumAustransport := TRUE;
 
         steplCheck := STEP_510_E;
 
@@ -630,25 +621,47 @@ IF ( bpCheck ) THEN
 
     // SYSTEM CHECK=========================
     STEP_510_E:
-      (* Hinweis:
-         - Scheibenzaehler
-      *)
-      bprtScheibe := FALSE;
+      bpOutBereitZumAustransport := TRUE;
+
       Antrieb.rpGeschwindigkeit := InGlasTransportVorgaenger.rGeschwindigkeit;
-      Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
-      Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
 
-
-      (* Hinweis:
-         - Sollte das Glas-Abruf -Bit abfallen, so muss der Antrieb sofort anhalten
-      *)
-      IF ( NOT InGlasTransportVorgaenger.bBereitZumEintransport ) THEN
-        Antrieb.rpGeschwindigkeit := 0.0;
-        steplCheck := STEP_520_E;
+      IF blReduzierteGeschwindigkeit THEN
+        Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+        Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+      ELSE
+        Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
+        Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
       END_IF
+
+      Antrieb.wpBetriebsart     := HANDMINUS;
+
+      steplCheck := STEP_520_E;
 
     // SYSTEM CHECK=========================
     STEP_520_E:
+      (* Hinweis:
+         - Geschwindigkeit der Nachfolgestation uebergeben
+      *)
+      Antrieb.rpGeschwindigkeit := InGlasTransportVorgaenger.rGeschwindigkeit;
+
+      IF ( ( NOT toflEinlaufsensor.Q AND NOT InGlasTransportVorgaenger.bAuslaufsensor )
+           OR NOT InGlasTransportVorgaenger.bBereitZumEintransport )
+      THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplCheck := STEP_530_E;
+      END_IF
+
+
+      IF NOT InGlasTransportVorgaenger.bBereitZumEintransport THEN
+        IF bpSensorEinlauf OR InGlasTransportVorgaenger.bAuslaufsensor THEN
+          bpUebergrosseScheibeUebergang := TRUE;
+        END_IF
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplCheck := STEP_530_E;
+      END_IF
+
+    // SYSTEM CHECK=========================
+    STEP_530_E:
       (* Anmerkung:
          - Antrieb in keine Funktion setzen
       *)
@@ -660,13 +673,54 @@ IF ( bpCheck ) THEN
         bpOutBereitZumAustransport := FALSE;
 
         IF ( bpSensorEinlauf ) THEN
-          wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_BELEGT;
-          steplCheck := STEP_900_E;
+          rlPositionAntriebBeiStart  := Antrieb.rpIstPosition;
+          steplCheck := STEP_540_E;
         ELSE
           bpCheckMitVorgaenger := FALSE;
-          steplCheck := STEP_110_E;
+          steplCheck := STEP_100_E;
         END_IF
 
+      END_IF
+
+    // SYSTEM CHECK=========================
+    STEP_540_E:
+      (* Anmerkung:
+         - Pruefen ob nicht noch eine Scheibe auf den Einlaufsensor gerutscht ist
+      *)
+      bprtScheibe := FALSE;
+
+      IF ( NOT toflEinlaufsensor.Q ) THEN
+        bpCheckMitVorgaenger := FALSE;
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        steplCheck := STEP_110_E;
+      ELSE
+        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
+
+        IF blReduzierteGeschwindigkeit THEN
+          Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+          Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+        ELSE
+          Antrieb.rpBeschleunigung   := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung     := ppAntriebsInformationen.rpMaxVerzoegerung;
+        END_IF
+
+        Antrieb.wpBetriebsart     := HANDPLUS;
+      END_IF
+
+      (* Fehlerbehandlung:
+         - Auslaufsensor
+         - Verfahrwegueberwachung
+      *)
+      IF ( bpSensorAuslauf ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_AUSLAUF_BELEGT;
+        steplCheck := STEP_900_E;
+      END_IF
+
+      IF ( ABS( rlPositionAntriebBeiStart - Antrieb.rpIstPosition ) > ppParameterBaustein.rLaengeStation ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_SYSTEMCHECK_SENSOR_EINLAUF_NICHT_FREI;
+        steplCheck := STEP_900_E;
       END_IF
 
     // SYSTEM CHECK=========================
@@ -833,34 +887,26 @@ IF ( bpCheck ) THEN
     // SYSTEM CHECK=========================
     STEP_700_E:
       // ---------------------------------------------------------------------------------------
-      //  RUECKWERTIGER- TRANSPORT MIT DER NACHFOLGESTATION
+      //  RUECKWERTIGER- TRANSPORT MIT DER NACHFOLGESTATION (Spiegel von STEP_400)
       //
-      //  Hinweis:
-      // - Transport in die "NEGATIVE" Richtung
+      //  Hint:
+      //  - Transport in "Negative" Richtung
       // ---------------------------------------------------------------------------------------
+
       bpOutBereitZumEintransport := TRUE;
       Antrieb.rpGeschwindigkeit := 0.0;
 
       IF ( InGlasTransportNachfolger.bBereitZumAustransport ) THEN
         rlPositionAntriebBeiStart := Antrieb.rpIstPosition;
         steplCheck := STEP_710_E;
-
       END_IF
 
     // SYSTEM CHECK=========================
     STEP_710_E:
       (* Anmerkung:
-         - Glas wird auf die Station gezogen und es wird eine Glasposition gesendet
+         - Glas wird auf die Station gezogen
       *)
-      IF (  NOT toflAuslaufsensor.Q
-           AND NOT Antrieb.bpAntrieblaeuft )
-      THEN
-        Antrieb.wpBetriebsart := KEINE_FUNKTION;
-        bpCheckMitNachfolger := FALSE;
-        steplCheck := STEP_110_E;
-      END_IF
-
-      IF ( toflAuslaufsensor.Q ) THEN
+      IF (  NOT bpSensorEinlaufVorAb ) THEN
 
         IF blReduzierteGeschwindigkeit THEN
           Antrieb.rpGeschwindigkeit  := rgGeschwindigkeit20;
@@ -879,8 +925,29 @@ IF ( bpCheck ) THEN
 
       END_IF
 
+      (* Anmerkung:
+         - Es wird eine Glasposition gesendet
+      *)
+      IF ( (  NOT toflAuslaufsensor.Q OR ( ( InGlasTransportNachfolger.bEinlaufsensor OR toflAuslaufsensor.Q ) AND bpSensorEinlaufVorab ) )
+           AND NOT Antrieb.bpAntrieblaeuft )
+      THEN
+        IF ( ( InGlasTransportNachfolger.bEinlaufsensor OR toflAuslaufsensor.Q ) AND bpSensorEinlaufVorab ) THEN
+          IF ( pAuftrag.wAnzahlScheiben = 0 ) THEN
+            bprtScheibe := TRUE;
+          END_IF
+          bpUebergrosseScheibeUebergang := TRUE;
+          bpStationBelegt := TRUE;
+          steplCheck := STEP_890_E;
+        ELSE
+          bprtScheibe := TRUE;
+          steplCheck := STEP_110_E;
+        END_IF
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        bpCheckMitNachfolger := FALSE;
+      END_IF
+
       (* Fehlerbehandlung:
-         - Auslaufsensor
+         - Einlaufsensor
          - Riemenverfahrweg- Ueberwachung
       *)
       IF ( bpSensorEinlauf ) THEN
@@ -1038,10 +1105,10 @@ IF ( bpCheck ) THEN
         // Langsam fahren, damit der Sensor nicht überfahren wird
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
         IF bpSensorAuslauf THEN
-          Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberEinlauf;
+          Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberAuslauf;
           Antrieb.wpRestwegMode     := Negativ_Fallend_Sensor2;
         ELSE
-          Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberEinlauf;
+          Antrieb.rpZielPosition    := - ppParameterBaustein.rWegUeberAuslauf;
           Antrieb.wpRestwegMode     := Positiv_Steigend_Sensor2;
         END_IF
       ELSE

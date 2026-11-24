@@ -35,6 +35,7 @@ THEN
 
   IF ( Drehen.bpFehler ) THEN
     Drehen.bpStarteAbsolutPositionierung := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := Drehen.wpFehlerKennung;
     BasisStationsParameter.wFehlerNummer := Drehen.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
@@ -47,12 +48,14 @@ THEN
 
   IF ( Dickenverstellung.bpFehler ) THEN
     Dickenverstellung.bpStartPneumatik := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_DICKENVERSTELLUNG;
     BasisStationsParameter.wFehlerNummer := Dickenverstellung.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
 
   IF ( Querachse.bpFehler ) THEN
     Querachse.bpStartPneumatik := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_QUERACHSE;
     BasisStationsParameter.wFehlerNummer := Querachse.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
@@ -221,8 +224,8 @@ THEN
          - Ansteuerung Kippen
       *)
       IF BasisStationsParameter.pAuftrag[wWand].stAuftragsInformationen.cBIT_SRCSTATION_EMPTY THEN
-        //   - Kippposition nach dem Austransport aus der Zieldrehposition, Letzte Scheibe der Station (MK: Parameter_Drehen.astKippenJeDrehposition)
-        Kippen.epZielPosition := Drehen.ppParameterBaustein.astKippenJeDrehposition[ LIMIT( 0, TO_INT(Drehen.epZielPosition) / 90, 3 ) ].eKippenMitLetzterScheibe;
+        //   - Kippposition nach dem Austransport aus den Auftragsoptionen (eKippen_SollPosition_NachAustransport)
+        Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachAustransport;
         Kippen.bpPositionieren  := TRUE;
       END_IF
 

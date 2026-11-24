@@ -14,7 +14,7 @@ ACTION Handfunktionen
      Seite 1:  0 Geblaese (Aktion Geblaese), 1/2 Glastransport vor/zurueck
      Seite 2:  7 Kippen 84 Grad, 8 Kippen 90 Grad
      Seite 3:  18/19/20 Messachse vor/zurueck/Referenz
-     Seite 4:  21/22 Abschrankung oeffnen/schliessen
+     Seite 4:  21/22 Abschrankung schliessen (ausfahren) / oeffnen (einfahren), wie Anschlag aus/ein
 *)
 IF ( blBetriebsartHand ) THEN
 
@@ -51,19 +51,19 @@ IF ( blBetriebsartHand ) THEN
 
   // Handfunktion:
   //   - Kippen
-  Messachse.bpHandplus     := (         ( BasisStationsParameter.dwHandfunktionen.18 OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+  Messachse.bpHandfahrenPlus     := (         ( BasisStationsParameter.dwHandfunktionen.18 OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                                 AND NOT (    BasisStationsParameter.dwHandfunktionen.19
                                           OR BasisStationsParameter.dwHandfunktionen.20
                                           OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
                                           OR  bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
 
-  Messachse.bpHandminus    := (         ( BasisStationsParameter.dwHandfunktionen.19 OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+  Messachse.bpHandfahrenMinus    := (         ( BasisStationsParameter.dwHandfunktionen.19 OR bgVISUHoehenkontrolleZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                                 AND NOT (    BasisStationsParameter.dwHandfunktionen.18
                                           OR BasisStationsParameter.dwHandfunktionen.20
                                           OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
                                           OR bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
 
-  Messachse.bpHandReferenz := (         ( BasisStationsParameter.dwHandfunktionen.20 OR bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+  Messachse.bpReferenz := (         ( BasisStationsParameter.dwHandfunktionen.20 OR bgVISUHoehenkontrolleReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                                 AND NOT (    BasisStationsParameter.dwHandfunktionen.18
                                           OR BasisStationsParameter.dwHandfunktionen.19
                                           OR bgVISUHoehenkontrolleVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
@@ -73,11 +73,11 @@ IF ( blBetriebsartHand ) THEN
   // Handfunktion:
   //   - Bewegliche Abschrankung zum Nachfolger oeffnen (einfahren) bzw. schliessen (ausfahren)
   IF ( BasisStationsParameter.stMKs.stStationsAufbau.bDurchlaufSperreZumNachfolger ) THEN
-    Abschrankung.bpStartEinfahren := (         ( BasisStationsParameter.dwHandfunktionen.21 OR bgVISUZylinder1Einfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-                                       AND NOT ( BasisStationsParameter.dwHandfunktionen.22 OR bgVISUZylinder1Ausfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
+    Abschrankung.bpStartEinfahren := (         ( BasisStationsParameter.dwHandfunktionen.22 OR bgVISUZylinder1Einfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+                                       AND NOT ( BasisStationsParameter.dwHandfunktionen.21 OR bgVISUZylinder1Ausfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
 
-    Abschrankung.bpStartAusfahren := (         ( BasisStationsParameter.dwHandfunktionen.22 OR bgVISUZylinder1Ausfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
-                                       AND NOT ( BasisStationsParameter.dwHandfunktionen.21 OR bgVISUZylinder1Einfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
+    Abschrankung.bpStartAusfahren := (         ( BasisStationsParameter.dwHandfunktionen.21 OR bgVISUZylinder1Ausfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+                                       AND NOT ( BasisStationsParameter.dwHandfunktionen.22 OR bgVISUZylinder1Einfahren[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ) );
   END_IF
 
 END_IF

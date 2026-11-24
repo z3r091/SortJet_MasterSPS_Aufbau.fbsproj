@@ -45,7 +45,7 @@ VAR
   blBetriebartCheck                      : BOOL;
   blBetriebsartAutomatik                 : BOOL;
   blBetriebsartReferenz                  : BOOL;
-  blZielPositionErreicht                 : BOOL; // Ueberpruefung ob die Zielposition aus dem Auftrag mit der aktuellen Position uebereinstimmt [Abweichung + - 1mm]
+  ablZielPositionErreicht                : ARRAY[cWAND_1..cANZAHL_WAENDE] OF BOOL; // Je Wand: Zielposition aus dem Auftrag der Wand stimmt mit der aktuellen Position ueberein [Toleranz rgMKZielPositionToleranz]
   blVorAbAuftragAktiv                    : ARRAY [cWAND_1..cANZAHL_WAENDE] OF BOOL; // STATUS: Merker ob die Komponenten Ansteuerung aktiv ist [Angesteuert mit dem Starten der Querfahrt](Autark gesteuert)
   blUpdateTimer                          : BOOL;
   blNachSystemcheckMerker                : BOOL; // Merkt sich, wenn der Systemcheck erfolgreich durchgeführt wurde, damit die Gebläse nicht nach dem Systemcheck ausgehen
@@ -285,7 +285,7 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                          bpGeblaeseAktiv := Geblaese[wlIndex].bpDone,
                          bpAutomatikAktiv := BasisStationsParameter.bAutomatik,
                          bpVorAbAuftragAktiv := blVorAbAuftragAktiv[wlIndex],
-                         bpZielPositionErreicht := blZielPositionErreicht,
+                         bpZielPositionErreicht := ablZielPositionErreicht[wlIndex],
                          Glastransport := Glastransport[wlIndex],
                          Kippen := Kippen,
                          Wandverstellung := Wandverstellung[wlIndex],
@@ -298,7 +298,7 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                          bpGeblaeseAktiv := Geblaese[wlIndex].bpDone,
                          bpAutomatikAktiv := BasisStationsParameter.bAutomatik,
                          bpVorAbAuftragAktiv := blVorAbAuftragAktiv[wlIndex],
-                         bpZielPositionErreicht := blZielPositionErreicht,
+                         bpZielPositionErreicht := ablZielPositionErreicht[wlIndex],
                          Glastransport := Glastransport[wlIndex],
                          Kippen := Kippen,
                          Wandverstellung := Wandverstellung[wlIndex],
@@ -312,7 +312,7 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                            bpGeblaeseAktiv := Geblaese[wlIndex].bpDone,
                            bpAutomatikAktiv := BasisStationsParameter.bAutomatik,
                            bpVorAbAuftragAktiv := blVorAbAuftragAktiv[wlIndex],
-                           bpZielPositionErreicht := blZielPositionErreicht,
+                           bpZielPositionErreicht := ablZielPositionErreicht[wlIndex],
                            Glastransport := Glastransport[wlIndex],
                            Kippen := Kippen,
                            Wandverstellung := Wandverstellung[wlIndex],
@@ -323,7 +323,7 @@ FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
                                   bpGeblaeseAktiv := Geblaese[wlIndex].bpDone,
                                   bpAutomatikAktiv := BasisStationsParameter.bAutomatik,
                                   bpVorAbAuftragAktiv := blVorAbAuftragAktiv[wlIndex],
-                                  bpZielPositionErreicht := blZielPositionErreicht,
+                                  bpZielPositionErreicht := ablZielPositionErreicht[wlIndex],
                                   Glastransport := Glastransport[wlIndex],
                                   Kippen := Kippen,
                                   Wandverstellung := Wandverstellung[wlIndex],

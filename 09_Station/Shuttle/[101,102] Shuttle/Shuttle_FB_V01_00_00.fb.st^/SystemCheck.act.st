@@ -28,6 +28,7 @@ IF ( blBetriebartCheck ) THEN
     END_IF
 
     IF ( Greifer[wlIndex].bpFehler AND Greifer[wlIndex].bpCheck ) THEN
+      BasisStationsParameter.awFehlerInformationen[1] := Greifer[wlIndex].wpFehlerKennung;
       BasisStationsParameter.wFehlerNummer := Greifer[wlIndex].wpFehlerNr;
       steplCheck:=STEP_900_E;
     END_IF

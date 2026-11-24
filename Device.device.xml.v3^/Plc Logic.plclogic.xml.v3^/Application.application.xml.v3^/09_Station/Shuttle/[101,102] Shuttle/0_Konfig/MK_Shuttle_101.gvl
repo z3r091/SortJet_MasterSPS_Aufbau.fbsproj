@@ -205,6 +205,7 @@ VAR_GLOBAL
       tUeberwachungBewegung                        := TIME#30s0ms,          // Zeitueberwachung einer Fahrt der Greiferachse
       tUeberwachungKopplung                        := TIME#10s0ms,          // Zeitueberwachung Kopplung / Entkopplung des Glastransports auf die Greiferachse
       bZangeAbfragenVorhanden                      := FALSE,                // Endlagenabfragen der Greiferzange vorhanden (sonst nur Bewegungszeit)
+      tZangeBewegungszeit                          := T#400MS,              // Bewegungszeit der Greiferzange ohne Endlagenabfragen bzw. beim Schliessen auf Glas
       bZangeEinlaufVorhanden                       := FALSE,                // Greiferzange Einlaufseite vorhanden (Ablaeufe ueber die Einlaufseite nur damit)
       bZangeAuslaufVorhanden                       := FALSE,                // Greiferzange Auslaufseite vorhanden (Ablaeufe ueber die Auslaufseite nur damit) - 101 ohne Greifer
       bGlasRueckhalterEinlaufVorhanden             := FALSE,                // Glasrueckhalter Einlaufseite vorhanden (sonst Ausgang aus, gilt als eingefahren)

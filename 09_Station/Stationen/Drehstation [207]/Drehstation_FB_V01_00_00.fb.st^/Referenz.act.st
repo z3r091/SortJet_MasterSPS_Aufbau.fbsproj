@@ -14,6 +14,7 @@ IF ( blBetriebsartReferenz ) THEN
   // Ausnahmesituation
   IF ( Drehen.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bDrehen ) THEN
     Drehen.bpReferenz := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := Drehen.wpFehlerKennung;
     BasisStationsParameter.wFehlerNummer := Drehen.wpFehlerNr;
     steplReferenz := STEP_900_E;
   END_IF

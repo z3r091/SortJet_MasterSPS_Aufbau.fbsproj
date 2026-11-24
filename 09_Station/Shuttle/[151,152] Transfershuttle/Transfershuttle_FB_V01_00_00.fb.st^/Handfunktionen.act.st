@@ -30,10 +30,10 @@ THEN
 
   // Handfunktion:
   //   - Glastransport vor / zurück
-  Glastransport.bpHandfahrenPositiv  := ((dwlHandfunktionen.1 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]) AND NOT
+  Glastransport.bpHandfahrenPlus  := ((dwlHandfunktionen.1 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]) AND NOT
                                           (dwlHandfunktionen.2 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]));  // Bit 1 = Glastransport vor
 
-  Glastransport.bpHandfahrenNegativ  := ((dwlHandfunktionen.2 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]) AND NOT
+  Glastransport.bpHandfahrenMinus  := ((dwlHandfunktionen.2 OR bgVISUGlastransportZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]) AND NOT
                                           (dwlHandfunktionen.1 OR bgVISUGlastransportVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS, cWAND_1]));  // Bit 2 = Glastransport zurück
 
   (* Anmerkung:
@@ -53,19 +53,19 @@ THEN
      - Querfahrt
        => Erst aktivieren wenn nötig
   *)
-  Querfahrt.bpStartReferenz := (( dwlHandfunktionen.13 OR bgVisuTFSQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
+  Querfahrt.bpReferenz := (( dwlHandfunktionen.13 OR bgVisuTFSQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS])
                                  AND NOT (   dwlHandfunktionen.11
                                            OR dwlHandfunktionen.12
                                            OR bgVisuTFSQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
                                            OR bgVisuTFSQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
 
-  Querfahrt.bpHandplus      := ((  dwlHandfunktionen.11 OR bgVisuTFSQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+  Querfahrt.bpHandfahrenPlus      := ((  dwlHandfunktionen.11 OR bgVisuTFSQuerfahrtVor[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                                  AND NOT (   dwlHandfunktionen.12
                                            OR dwlHandfunktionen.13
                                            OR bgVisuTFSQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]
                                            OR bgVisuTFSQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] ));
 
-  Querfahrt.bpHandminus     := (( dwlHandfunktionen.12 OR bgVisuTFSQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
+  Querfahrt.bpHandfahrenMinus     := (( dwlHandfunktionen.12 OR bgVisuTFSQuerfahrtZurueck[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] )
                                  AND NOT (   dwlHandfunktionen.11
                                            OR dwlHandfunktionen.13
                                            OR bgVisuTFSQuerfahrtReferenz[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS]

@@ -12,7 +12,7 @@ ACTION Referenz
 (* Hinweis:
    - Antrieb Referenzfahrt starten
 *)
-IF ( bpStartReferenz ) THEN
+IF ( bpReferenz ) THEN
 
   (* Ausnahmefehler:
      - ANTRIEB

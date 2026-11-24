@@ -58,15 +58,17 @@ END_IF
 // *************************************************************************************************
 
 IF ( AuftragsdatenWand[wStation, wWand].wAuftrag = eStation_Austransport ) THEN
-  starrShuttleBasisParameter[wStation].bEintransportGewesen[wWand] := FALSE;
   (* Hinweis:
      - Aufruf der Schrittkette
+     - bEintransportGewesen bleibt bis zum Ende des Austransports stehen: Die Vorab-Ansteuerung wartet, bis der
+       Glastransport den Eintransport beendet hat, und prueft den Merker erst danach (Verbrauch dort)
   *)
   Austransport[wStation, wWand]( Auftragsdaten := AuftragsdatenWand[wStation, wWand], wStation := wStation, wWand := wWand);
   (* Hinweis:
      - Abschluss der Schrittkette
   *)
   IF Austransport[wStation, wWand].bpDone THEN
+    starrShuttleBasisParameter[wStation].bEintransportGewesen[wWand] := FALSE;
     AuftragsdatenWand[wStation, wWand] := Austransport[wStation, wWand].Auftragsdaten;
     Austransport[wStation, wWand](bpReset := TRUE);
   END_IF

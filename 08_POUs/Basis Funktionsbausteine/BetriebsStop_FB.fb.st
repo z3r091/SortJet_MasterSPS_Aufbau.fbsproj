@@ -47,6 +47,7 @@ wMeldungsNrInkrementieren := 0;
 FOR wlIndex := cERSTER_AUTOMATIKKREIS TO cLETZTER_AUTOMATIKKREIS DO
   abpBetriebsstop[wlIndex] :=    Job_Stationen.abpFehler[wlIndex]
                                  OR Job_Shuttle.abpFehler[wlIndex]
+                                 OR Job_Faecherwagen.abpFehler[wlIndex]
                                  OR NOT StatusAnlage.abpDruckluftOK[wlIndex]
                                  OR NOT StatusAnlage.bpAnlageOK
                                  OR blBetriebsstop;

@@ -56,6 +56,8 @@ THEN
   CASE steplSlave OF
     // SLAVE ANTRIEB ====================
     STEP_0_E:
+      blSlaveKopplungHergestellt := FALSE;
+
       IF ( Antrieb.bpReglerBereit AND Antrieb_Slave.bpReglerBereit ) THEN
 
         IF ( ( ABS(Antrieb.rpIstPosition) > rgSchwellwertReferenzieren )
@@ -93,6 +95,7 @@ THEN
       Antrieb_Slave.wpBetriebsart        := SYNC_AUF_MASTER;
 
       IF ( Antrieb_Slave.bpDone ) THEN
+        blSlaveKopplungHergestellt := TRUE;
         steplSlave := STEP_200_E;
       END_IF
 
@@ -115,6 +118,7 @@ THEN
       (* Fehlerbehandlung:
       *)
       Antrieb_Slave.wpBetriebsart:= KEINE_FUNKTION;
+      blSlaveKopplungHergestellt := FALSE;
       bpFehler := TRUE;
 
     // SLAVE ANTRIEB ====================
@@ -126,6 +130,7 @@ THEN
 ELSE
 
   tonlSlaveKopplungHerstellen( IN := FALSE );
+  blSlaveKopplungHergestellt := FALSE;
 
   IF (steplSlave > STEP_0_E) THEN
     tonlUberwachungSlaveAktiv( IN := FALSE );

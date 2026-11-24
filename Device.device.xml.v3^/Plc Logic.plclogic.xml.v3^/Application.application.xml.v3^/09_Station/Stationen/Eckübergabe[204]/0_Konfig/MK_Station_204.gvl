@@ -104,7 +104,7 @@ VAR_GLOBAL
       // astShuttleAnhaltenQuellen
     );
 
-  // X-Achse (TODO: Masse von der Maschine uebernehmen)
+  // X-Achse
   apgMKStation204Glastransport : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Glastransport := [
     (
       rLaengeStation                        := 6200, // Länge der Station
@@ -124,7 +124,7 @@ VAR_GLOBAL
       rWegstreckeBisZurVerzoegerung         := 5550  // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll, dies gilt fuer Eintransportauftraege die das Bit "Letzte Scheibe" gesetzt haben
     )];
 
-  // Y-Achse, Riemen im Hubrahmen (TODO: Masse von der Maschine uebernehmen)
+  // Y-Achse, Riemen im Hubrahmen
   apgMKStation204GlastransportY : ARRAY[cWAND_1..cANZAHL_WAENDE] OF Parameter_Glastransport := [
     (
       rLaengeStation                        := 2300, // Länge der Station

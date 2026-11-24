@@ -15,6 +15,7 @@ IF ( BasisStationsParameter.bVorabDrehen ) THEN
   // Ausnahmesituation
   IF ( Drehen.bpFehler ) THEN
     Drehen.bpStarteAbsolutPositionierung := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := Drehen.wpFehlerKennung;
     BasisStationsParameter.wFehlerNummer := Drehen.wpFehlerNr;
     steplVorabDrehen := STEP_900_E;
   END_IF

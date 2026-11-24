@@ -76,7 +76,8 @@ VAR_OUTPUT
 
   // WORD
   wpFehlerNr                                     : Fehlerkonstanten_EN;
-  awpFehlerInformationen                         : ARRAY[0..25] OF WORD;
+  wpFehlerKennung                                : WORD; // Zylinder-Kennung bei Zylinderfehlern (cZYLINDER_*), sonst cZYLINDER_KEINE
+  awpFehlerInformationen                        : ARRAY[0..25] OF WORD;
 
   // REAL
   rpWegGlasUebergabeposition                     : REAL; // Weg der Scheibe ueber den Sensor der Greiferseite vor dem Austransport
@@ -220,6 +221,7 @@ IF ( NOT bpAktivieren ) THEN
   bpDone                                         := FALSE;
   bpFehler                                       := FALSE;
   wpFehlerNr                                     := cMELDUNG_NULL;
+  wpFehlerKennung                                := cZYLINDER_KEINE;
   bprtScheibe                                    := FALSE;
   bpIstInReferenz                                := FALSE;
   bpSicherePosition                              := FALSE;
@@ -434,8 +436,8 @@ GreiferHub( bpFreigabe                    := bpFreigabePneumatik,
             in_bStatusZylinderAusgefahren := in_bGreiferAusgefahren,
             in_bStatusZylinderEingefahren := in_bGreiferEingefahren );
 
-Zange[cZANGE_EINLAUF]( bpFreigabe := bpFreigabePneumatik, bpZylinderAbfragenVorhanden := ppParameterGreifer.bZangeAbfragenVorhanden );
-Zange[cZANGE_AUSLAUF]( bpFreigabe := bpFreigabePneumatik, bpZylinderAbfragenVorhanden := ppParameterGreifer.bZangeAbfragenVorhanden );
+Zange[cZANGE_EINLAUF]( bpFreigabe := bpFreigabePneumatik, bpZylinderAbfragenVorhanden := ppParameterGreifer.bZangeAbfragenVorhanden, tpBewegungszeit := ppParameterGreifer.tZangeBewegungszeit );
+Zange[cZANGE_AUSLAUF]( bpFreigabe := bpFreigabePneumatik, bpZylinderAbfragenVorhanden := ppParameterGreifer.bZangeAbfragenVorhanden, tpBewegungszeit := ppParameterGreifer.tZangeBewegungszeit );
 
 //-------------------------------------------------------------------------------------------------
 // BAUSTEIN: AUSGAENGE

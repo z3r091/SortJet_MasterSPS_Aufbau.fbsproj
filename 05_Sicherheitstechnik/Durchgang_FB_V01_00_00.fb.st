@@ -72,7 +72,7 @@ IF ( blErsterZyklus  ) THEN
   END_IF
 END_IF
 
-bpAbschrankung_Geschlossen:= BeweglicheAbschrankung.in_bStatusZylinderEingefahren;
+bpAbschrankung_Geschlossen:= BeweglicheAbschrankung.in_bStatusZylinderAusgefahren; // Ausgefahren = geschlossen
 
 
 //-------------------------------------------------------------------------------------------------
@@ -107,16 +107,16 @@ out_bLeuchteTasterAnforderungDurchgang1 := out_bLeuchteTasterAnforderungDurchgan
 IF ( bpFreigabeZumOeffnenDurchgang
      AND bpAnforderungZumDurchgangOffnenGestellt
      AND ppParameterBaustein.bBeweglicheAbschrankung
-     AND NOT( BeweglicheAbschrankung.epStatusZylinder = eZylinderEingefahren) )
+     AND NOT( BeweglicheAbschrankung.epStatusZylinder = eZylinderAusgefahren) )
 THEN
-  BeweglicheAbschrankung.bpStartEinfahren := TRUE; //Einfahren = schließen
-  BeweglicheAbschrankung.bpStartAusfahren := FALSE;//Ausfahren = öffnen
+  BeweglicheAbschrankung.bpStartAusfahren := TRUE; //Ausfahren = schließen
+  BeweglicheAbschrankung.bpStartEinfahren := FALSE;//Einfahren = öffnen
 ELSE
-  BeweglicheAbschrankung.bpStartEinfahren := FALSE;//Einfahren = schließen
+  BeweglicheAbschrankung.bpStartAusfahren := FALSE;//Ausfahren = schließen
 END_IF
 
-IF BeweglicheAbschrankung.bpDone AND BeweglicheAbschrankung.bpStartEinfahren THEN
-  BeweglicheAbschrankung.bpStartEinfahren := FALSE;//Ausfahren = öffnen
+IF BeweglicheAbschrankung.bpDone AND BeweglicheAbschrankung.bpStartAusfahren THEN
+  BeweglicheAbschrankung.bpStartAusfahren := FALSE;//Ausfahren = schließen
 END_IF
 
 // Tür oeffnen
@@ -138,13 +138,13 @@ END_IF
 
 //IF ppParameterBaustein.bBeweglicheAbschrankung AND bpDurchgangGeschlossenVerriegelt AND NOT bpAnforderungZumDurchgangOffnenGestellt THEN
 IF ppParameterBaustein.bBeweglicheAbschrankung AND bpDurchgangGeschlossen
-   AND NOT bpAnforderungZumDurchgangOffnenGestellt AND NOT ( BeweglicheAbschrankung.epStatusZylinder =eZylinderAusgefahren) THEN
-  BeweglicheAbschrankung.bpStartEinfahren := FALSE;//Einfahren = schließen
-  BeweglicheAbschrankung.bpStartAusfahren := TRUE; //Ausfahren = öffnen
+   AND NOT bpAnforderungZumDurchgangOffnenGestellt AND NOT ( BeweglicheAbschrankung.epStatusZylinder =eZylinderEingefahren) THEN
+  BeweglicheAbschrankung.bpStartAusfahren := FALSE;//Ausfahren = schließen
+  BeweglicheAbschrankung.bpStartEinfahren := TRUE; //Einfahren = öffnen
 END_IF
 
-IF BeweglicheAbschrankung.bpDone AND BeweglicheAbschrankung.bpStartAusfahren THEN
-  BeweglicheAbschrankung.bpStartAusfahren := FALSE;//Ausfahren = öffnen
+IF BeweglicheAbschrankung.bpDone AND BeweglicheAbschrankung.bpStartEinfahren THEN
+  BeweglicheAbschrankung.bpStartEinfahren := FALSE;//Einfahren = öffnen
 END_IF
 
 // Bolzen ausfahren lassen
@@ -169,6 +169,6 @@ BeweglicheAbschrankung(bpAktivieren:=ppParameterBaustein.bBeweglicheAbschrankung
 
 
 // Meldungen für den Unterbaustein
-WatchIoControl(T#10S, ppParameterBaustein.wMeldungsNummer + 0, (BeweglicheAbschrankung.wpFehlerNr = cMELDUNG_ZYLINDER_NICHT_EINGEFAHREN)); //Fehler beim SChließen des Durchgangs
-WatchIoControl(T#10S, ppParameterBaustein.wMeldungsNummer + 1, (BeweglicheAbschrankung.wpFehlerNr = cMELDUNG_ZYLINDER_NICHT_AUSGEFAHREN)); //Fehler beim Öffnen des Durchgangs
+WatchIoControl(T#10S, ppParameterBaustein.wMeldungsNummer + 0, (BeweglicheAbschrankung.wpFehlerNr = cMELDUNG_ZYLINDER_NICHT_AUSGEFAHREN)); //Fehler beim Schließen des Durchgangs (Ausfahren)
+WatchIoControl(T#10S, ppParameterBaustein.wMeldungsNummer + 1, (BeweglicheAbschrankung.wpFehlerNr = cMELDUNG_ZYLINDER_NICHT_EINGEFAHREN)); //Fehler beim Öffnen des Durchgangs (Einfahren)
 END_FUNCTION_BLOCK

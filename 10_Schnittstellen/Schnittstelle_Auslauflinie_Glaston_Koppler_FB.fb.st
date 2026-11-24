@@ -65,6 +65,9 @@ VAR
   // STRING
   strScheibenID  : STRING;
 
+  // STRUCT
+  stlAuftragsdatenLeer : Schnittstelle_Auftragsdaten_ST; // Leere Auftragsdaten zum Loeschen beim Reset
+
   // REFERENZ
   stlVorgaenger  : REFERENCE TO StationBasisParameter_ST; // SortJet- Station vor der Schnittstelle (SF/SB)
 
@@ -198,12 +201,8 @@ IF ( BasisStationsParameter.bReset ) THEN
 
   BasisStationsParameter.bReset := FALSE;
 
-  // TODO
-  Auftragsdaten.wScheibenAnzahl := 0;
-  Auftragsdaten.stScheibenID.adwScheibenID_1[0] := 0;
-  Auftragsdaten.stScheibenID.adwScheibenID_1[1] := 0;
-  Auftragsdaten.stScheibenID.adwScheibenID_1[2] := 0;
-  Auftragsdaten.stScheibenID.adwScheibenID_1[3] := 0;
+  // Auftragsdaten komplett loeschen
+  Auftragsdaten := stlAuftragsdatenLeer;
 
 END_IF
 

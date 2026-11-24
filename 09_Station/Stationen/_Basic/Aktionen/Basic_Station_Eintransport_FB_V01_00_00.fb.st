@@ -75,12 +75,14 @@ THEN
 
   IF ( Roellchenleiste.bpFehler ) THEN
     Roellchenleiste.bpStartPneumatik := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_ROELLCHENLEISTE;
     BasisStationsParameter.wFehlerNummer := Roellchenleiste.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
 
   IF ( Wandverstellung.bpFehler ) THEN
     Wandverstellung.bpStartPneumatik := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_WANDVERSTELLUNG;
     BasisStationsParameter.wFehlerNummer := Wandverstellung.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
@@ -106,6 +108,7 @@ THEN
   IF ( BasisStationsParameter.stMKs.stStationsAufbau.bTransportVerstellung[wWand] ) THEN
     IF ( Dickenverstellung.bpFehler ) THEN
       Dickenverstellung.bpStartPneumatik := FALSE;
+      BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_DICKENVERSTELLUNG;
       BasisStationsParameter.wFehlerNummer := Dickenverstellung.wpFehlerNr;
       steplAktion := STEP_900_E;
     END_IF
@@ -115,6 +118,7 @@ THEN
     IF ( Abschrankung.bpFehler ) THEN
       Abschrankung.bpStartEinfahren := FALSE;
       Abschrankung.bpStartAusfahren := FALSE;
+      BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_ABSCHRANKUNG;
       BasisStationsParameter.wFehlerNummer := Abschrankung.wpFehlerNr;
       steplAktion := STEP_900_E;
     END_IF
@@ -255,9 +259,10 @@ THEN
            - Richtung ist Invertiert zur Eintransport- Position
         *)
         Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachEintransport;
-        Kippen.bpLangsamKippen := (     ( Kippen.epZielPosition = eKippen_Position_90Grad )
-                                    AND ( BasisStationsParameter.pAuftrag[wWand].rAuftragsDicke < 3 )
-                                    AND ( BasisStationsParameter.pAuftrag[wWand].rAuftragsHoehe > 1200 ) );
+        Kippen.bpLangsamKippen := (     (    ( Kippen.epZielPosition = eKippen_Position_90Grad )
+                                          OR ( Kippen.epZielPosition = eKippen_Position_84Grad ) )
+                                    AND (    ( BasisStationsParameter.pAuftrag[wWand].rAuftragsDicke < 3 )
+                                          OR ( BasisStationsParameter.pAuftrag[wWand].rAuftragsHoehe > 1200 ) ) );
         Kippen.bpPositionieren := TRUE;
 
         IF ( BasisStationsParameter.stMKs.stStationsAufbau.bHub ) THEN
@@ -319,9 +324,10 @@ THEN
          - Richtung ist Invertiert zur Eintransport- Position
       *)
       Kippen.epZielPosition := BasisStationsParameter.pAuftrag[wWand].stAuftragsOptionen.eKippen_SollPosition_NachEintransport;
-      Kippen.bpLangsamKippen := (     ( Kippen.epZielPosition = eKippen_Position_90Grad )
-                                  AND ( BasisStationsParameter.pAuftrag[wWand].rAuftragsDicke < 3 )
-                                  AND ( BasisStationsParameter.pAuftrag[wWand].rAuftragsHoehe > 1200 ) );
+      Kippen.bpLangsamKippen := (     (    ( Kippen.epZielPosition = eKippen_Position_90Grad )
+                                            OR ( Kippen.epZielPosition = eKippen_Position_84Grad ) )
+                                  AND (    ( BasisStationsParameter.pAuftrag[wWand].rAuftragsDicke < 3 )
+                                       OR ( BasisStationsParameter.pAuftrag[wWand].rAuftragsHoehe > 1200 ) ) );
       Kippen.bpPositionieren := TRUE;
 
       (* Hinweis:

@@ -39,12 +39,14 @@ THEN
   // Ausnahmesituation
   IF Hubrahmen.bpFehler THEN
     Hubrahmen.bpStartAusfahren := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_HUBRAHMEN;
     BasisStationsParameter.wFehlerNummer := Hubrahmen.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
 
   IF Anschlag.bpFehler THEN
     Anschlag.bpStartEinfahren := FALSE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_ANSCHLAG;
     BasisStationsParameter.wFehlerNummer := Anschlag.wpFehlerNr;
     steplAktion := STEP_900_E;
   END_IF
@@ -172,6 +174,7 @@ THEN
       END_IF
       IF Anschlag.bpFehler THEN
         Anschlag.bpStartAusfahren := FALSE;
+        BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_ANSCHLAG;
         BasisStationsParameter.wFehlerNummer := Anschlag.wpFehlerNr;
         steplAktion := STEP_900_E;
       END_IF

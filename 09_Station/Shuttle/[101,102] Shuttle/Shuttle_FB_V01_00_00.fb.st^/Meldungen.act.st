@@ -44,6 +44,7 @@ THEN
     END_IF
     IF ( Greifer[wlIndex].bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bGreifer[wlIndex] ) THEN
       BasisStationsParameter.bFehler := TRUE;
+      BasisStationsParameter.awFehlerInformationen[1] := Greifer[wlIndex].wpFehlerKennung;
       BasisStationsParameter.wFehlerNummer := Greifer[wlIndex].wpFehlerNr;
     END_IF
   END_FOR

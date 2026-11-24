@@ -27,8 +27,15 @@ THEN
     STEP_0_E:
 
       (* Hinweis:
+         - Reduzieren der Geschwindigkeit + Rampen nach Glasgewicht
          - Sicherstellen das die Slavekopplung aktiv ist
       *)
+      rlGlasgewicht := ( GlasGewichtErmitteln( rpGlaslaenge  := pAuftrag.rAuftragsLaenge,
+                                               rpGlasbreite  := pAuftrag.rAuftragsHoehe,
+                                               rpGlasstaerke := pAuftrag.rAuftragsDicke ) );
+
+      blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
+
       IF ( blAntriebsKopplungAktiv  )
       THEN
         steplVortransport := STEP_5_E;
@@ -42,21 +49,31 @@ THEN
       THEN
         rlAntriebIstPositionBeiStart  := Antrieb.rpIstPosition;
 
-        Antrieb.rpGeschwindigkeit := rgGeschwindigkeit30;
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        IF ( blReduzierteGeschwindigkeit ) THEN
+          Antrieb.rpGeschwindigkeit := rgGeschwindigkeit20;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+        ELSE
+          Antrieb.rpGeschwindigkeit := rgGeschwindigkeit30;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        END_IF
+
         Antrieb.wpBetriebsart     := HANDPLUS;
 
         steplVortransport := STEP_10_E;
       ELSE
+        steplVortransport := STEP_1000_E;
 
-        IF ( bpSensorAuslauf ) THEN
-          rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
-          steplVortransport := STEP_20_E;
-        ELSE
-          steplVortransport := STEP_1000_E;
-        END_IF
+      END_IF
 
+      (* Fehlerbehandlung:
+         - Auslaufsensor belegt (wie Basic_Glastransport)
+      *)
+      IF ( bpSensorAuslauf ) THEN
+        Antrieb.wpBetriebsart := KEINE_FUNKTION;
+        wpFehlerNr := cMELDUNG_VORTRANSPORT_SENSOR_AUSLAUF_BELEGT;
+        steplVortransport := STEP_900_E;
       END_IF
 
     // VORTRANSPORT ==============================
@@ -100,8 +117,15 @@ THEN
 
       IF ( toflAuslaufsensor.Q ) THEN
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeitVerySlow;
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+
+        IF ( blReduzierteGeschwindigkeit ) THEN
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+        ELSE
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        END_IF
+
         Antrieb.wpBetriebsart     := HANDMINUS;
       ELSE
         Antrieb.wpBetriebsart := KEINE_FUNKTION;

@@ -11,9 +11,9 @@ VAR_INPUT
   // BOOLEAN
   bpAktivieren                           : BOOL; // Hinweis: Baustein aktivieren
   bpReset                                : BOOL; // BETRIEBSART: Fehler zuruecksetzen
-  bpStartReferenz                        : BOOL;
-  bpHandplus                             : BOOL;
-  bpHandminus                            : BOOL;
+  bpReferenz                        : BOOL;
+  bpHandfahrenPlus                             : BOOL;
+  bpHandfahrenMinus                            : BOOL;
   bpFreigabe                             : BOOL; // Sicherheitsfreigabe Regler darf Freigeben
   bpAutomatikAktiv                       : BOOL; // BETRIEBSART: Umschaltung der Geschwindigkeit
   bpVerfahreShuttle                      : BOOL; // Befehl zum Positionieren

@@ -29,6 +29,16 @@ THEN
          - Vortransport nur wenn es keinen Modelversatz gibt
       *)
       bpDone := FALSE;
+
+      (* Hinweis:
+         - Reduzieren der Geschwindigkeit + Rampen nach Glasgewicht
+      *)
+      rlGlasgewicht := ( GlasGewichtErmitteln( rpGlaslaenge  := pAuftrag.rAuftragsLaenge,
+                                               rpGlasbreite  := pAuftrag.rAuftragsHoehe,
+                                               rpGlasstaerke := pAuftrag.rAuftragsDicke ) );
+
+      blReduzierteGeschwindigkeit := ( rlGlasgewicht > rgReduzierteGeschwindigkeitGlasGewicht );
+
       IF ( blAntriebsKopplungAktiv ) THEN
         steplVortransportRueckwertig := STEP_10_E;
       END_IF
@@ -36,13 +46,20 @@ THEN
     // VORTRANSPORT ==============================
     STEP_10_E:
       IF (  NOT bpSensorEinlaufVorab
-           AND pAuftrag.rModellVersatzVorne = 0 )
+           AND pAuftrag.rModellVersatzHinten = 0.0 )
       THEN
         rlAntriebIstPositionBeiStart := Antrieb.rpIstPosition;
 
-        Antrieb.rpGeschwindigkeit := rgGeschwindigkeitVorpositionieren;
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        IF ( blReduzierteGeschwindigkeit ) THEN
+          Antrieb.rpGeschwindigkeit := rgGeschwindigkeit20;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+        ELSE
+          Antrieb.rpGeschwindigkeit := rgGeschwindigkeitVorpositionieren;
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        END_IF
+
         Antrieb.wpBetriebsart     := HANDMINUS;
 
         steplVortransportRueckwertig := STEP_20_E;
@@ -115,8 +132,15 @@ THEN
         steplVortransportRueckwertig := STEP_1000_E;
       ELSE
         Antrieb.rpGeschwindigkeit := rgGeschwindigkeitSensorenFreifahren;
-        Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
-        Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+
+        IF ( blReduzierteGeschwindigkeit ) THEN
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpReduzierteBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpReduzierteVerzoegerung;
+        ELSE
+          Antrieb.rpBeschleunigung  := ppAntriebsInformationen.rpMaxBeschleunigung;
+          Antrieb.rpVerzoegerung    := ppAntriebsInformationen.rpMaxVerzoegerung;
+        END_IF
+
         Antrieb.wpBetriebsart     := HANDPLUS;
       END_IF
 

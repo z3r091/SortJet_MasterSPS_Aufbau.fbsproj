@@ -66,6 +66,14 @@ blBereitZumAustransport := in_bGlasBereit OR bgVisu_Schnittstelle_Einlauf_Force_
 blAutomatikBetriebAktiv := in_bAutomatikBetrieb OR bgVisu_Schnittstelle_Force_AutomatikBetrieb[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS];;
 
 //-------------------------------------------------------------------------------------------------
+// MELDUNGEN
+//-------------------------------------------------------------------------------------------------
+// VSG-Linie hat Glas bereit, die Station ist aber 30 s nicht bereit zum Eintransport [wMeldungsNummer + 2]
+WatchIoControl( T#30S,
+                BasisStationsParameter.stMKs.wMeldungsNummer + 2,
+                blBereitZumAustransport AND NOT BasisStationsParameter.InGlasTransportNachfolger[cWAND_1].bBereitZumEintransport );
+
+//-------------------------------------------------------------------------------------------------
 // AUSGAENGE
 //-------------------------------------------------------------------------------------------------
 // Signale zur VSG

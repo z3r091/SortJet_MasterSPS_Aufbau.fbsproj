@@ -16,13 +16,12 @@ VAR_INPUT
   bpReset                                  : BOOL;
   bpReferenz                               : BOOL;
   bpFreigabe                               : BOOL;
-  bpHandplus                               : BOOL;
-  bpHandminus                              : BOOL;
-  bpHandReferenz                           : BOOL;
+  bpHandfahrenPlus                         : BOOL;
+  bpHandfahrenMinus                        : BOOL;
   bpBetriebsartHand                        : BOOL;
   bpFusstaster                             : BOOL;
 
-  // REAL
+ // REAL
   rpZielPosition                           : REAL;
   rpErwarteteScheibenHoehe                 : REAL;
 
@@ -210,9 +209,8 @@ END_IF
 //-------------------------------------------------------------------------------------------------
 toflReglerFreigabeErhalten( IN := (   bpPositionierung
                                     OR bpReferenz
-                                    OR bpHandReferenz
-                                    OR bpHandplus
-                                    OR bpHandminus
+                                    OR bpHandfahrenPlus
+                                    OR bpHandfahrenMinus
                                     OR bpVermessen_OberUndUnterkante_2_Sensoren
                                     OR bpVermessen_Oberkante_1_Sensor
                                     OR bpReset ),
