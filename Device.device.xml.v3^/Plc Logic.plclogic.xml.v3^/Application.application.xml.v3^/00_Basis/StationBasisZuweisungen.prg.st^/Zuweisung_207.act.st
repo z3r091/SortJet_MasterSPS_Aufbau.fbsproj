@@ -31,8 +31,9 @@ starrStationBasisParameter[cSTATION_207].stParameterStationskomponenten.stQuerfa
      (Drehen / DrehenNachEintransport / DrehenNachAustransport).
      ACHTUNG: Wird bDrehpositionenVomMMI auf FALSE gesetzt, muessen die Drehen-Eintraege hier wieder ergaenzt werden,
      sonst stehen sie auf 0 = eDrehPosition0Grad!
-   - Kippen der Drehstation wird NICHT aus den Kippen-Eintraegen hier bestimmt, sondern aus Drehposition
-     und Letzter Scheibe (MK: apgMKStation207Drehen.astKippenJeDrehposition). Die Kippen-Eintraege bleiben nur zur Info stehen.
+   - Kippen der Drehstation VOR der Aktion kommt aus den Kippen-Eintraegen hier (Kippen).
+     Kippen NACH dem Ein- und Austransport und im Systemcheck kommt aus der Drehposition
+     (MK: apgMKStation207Drehen.astKippenJeDrehposition), daher hier kein KippenNachEintransport / KippenNachAustransport.
 *)
 
 // Eintransport von der Anlegewand 208 (Drehposition 90 Grad, vom MMI)
