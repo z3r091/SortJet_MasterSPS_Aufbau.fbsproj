@@ -94,7 +94,7 @@ VAR
   // ----------------------------------------------------------------------------------------------
   // VISU "Antriebe_Verfahren" (Aktion A_VisuDaten)
   // ----------------------------------------------------------------------------------------------
-  stlAchse     : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
+  stlAchse     : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_00_00;
   blRotativ    : BOOL;
   sEinheitPos  : STRING(12);
   sEinheitGeschw : STRING(12);

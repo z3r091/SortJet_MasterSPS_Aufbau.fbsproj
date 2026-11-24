@@ -5,7 +5,7 @@
 	}
 }
 *)
-FUNCTION_BLOCK Scheibenmessung_FB_V01_01_01
+FUNCTION_BLOCK Scheibenmessung_FB_V01_00_00
 VAR_INPUT
 
   // BOOL
@@ -20,7 +20,7 @@ VAR_INPUT
   rpFaktorBremswegverlaengern : REAL := 1.5;
 
   // POINTER
-  ppAntrieb               : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
+  ppAntrieb               : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_00_00;
   pbpEinlaufSensor        : REFERENCE TO BOOL;
   pbpVorstopSensor        : REFERENCE TO BOOL;
   ppAntriebsInformationen : REFERENCE TO AntriebsInformationen;

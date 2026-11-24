@@ -80,7 +80,7 @@ VAR
   steplPositionieren  : Steps_TE;
 
   // Antrieb
-  Antrieb : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
+  Antrieb : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_00_00;
 
 END_VAR
 

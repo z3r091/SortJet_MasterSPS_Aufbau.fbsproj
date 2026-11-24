@@ -156,7 +156,7 @@ VAR
   tonlUeberwachungReferenz               : TON;
 
   // BAUSTEINE
-  Antrieb      : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_02_02;
+  Antrieb      : REFERENCE TO Rexroth_ctrlX_Drive_Eckelmann_MC_V01_00_00;
   GreiferHub   : ZylinderPneumatik_FB_V01_00_00; // Greifer aus- / einfahren (ausgefahren = auf Glashoehe)
   Zange        : ARRAY[cZANGE_EINLAUF..cZANGE_AUSLAUF] OF Greiferzange_FB_V01_00_00;
 
