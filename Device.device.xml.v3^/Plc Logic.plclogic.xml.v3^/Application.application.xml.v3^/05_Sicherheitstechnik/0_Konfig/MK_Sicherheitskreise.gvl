@@ -17,7 +17,7 @@ apgMKSicherheiskreis : ARRAY [cERSTER_SICHERHEITSKREIS ..cLETZTER_SICHERHEITSKRE
     eaTueren            := [eTuer_1, eTuer_2],                     // Konfig welche Türen zu dem Sicherheitskreis gehören
     eaDurchgang         := [eDurchgang_Undefiniert],               // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
     bMeldetOffen        := TRUE,                                   // Konfig welche festlegt, ob der geöffnete SK eine WatchIO aufruft
-    bBlockiertStart     := TRUE                                  // Konfig welche festlegt, ob der geöffnete SK den Start des Systemchecks und die Initialisierung blockiert
+    bBlockiertStart     := TRUE                                    // Konfig welche festlegt, ob der geöffnete SK den Start des Systemchecks und die Initialisierung blockiert
   ),
   (
     // SK2: Station 201 (Klapprahmen unten)
@@ -26,7 +26,7 @@ apgMKSicherheiskreis : ARRAY [cERSTER_SICHERHEITSKREIS ..cLETZTER_SICHERHEITSKRE
     eaTueren            := [eTuer_Undefiniert],                    // Konfig welche Türen zu dem Sicherheitskreis gehören
     eaDurchgang         := [eDurchgang_Undefiniert],               // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
     bMeldetOffen        := FALSE,                                  // Konfig welche festlegt, ob der geöffnete SK eine WatchIO aufruft
-    bBlockiertStart     := FALSE                                 // Konfig welche festlegt, ob der geöffnete SK den Start des Systemchecks und die Initialisierung blockiert
+    bBlockiertStart     := FALSE                                   // Konfig welche festlegt, ob der geöffnete SK den Start des Systemchecks und die Initialisierung blockiert
   ),
   (
     // SK3: Station 203 (Klapprahmen geschlossen, Durchgang 1)
@@ -34,7 +34,7 @@ apgMKSicherheiskreis : ARRAY [cERSTER_SICHERHEITSKREIS ..cLETZTER_SICHERHEITSKRE
     eaAutomatikkreis    := [eAutomatikkreis_1],                    // Konfig welcher Automatikkreis zu dem Sicherheitskreis gehören
     eaTueren            := [eTuer_Undefiniert],                    // Konfig welche Türen zu dem Sicherheitskreis gehören
     eaDurchgang         := [eDurchgang_1],                         // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
-    bMeldetOffen        := FALSE,                                  // Konfig welche festlegt, ob der geöffnete SK eine WatchIO aufruft
+    bMeldetOffen        := FALSE,                                    // Konfig welche festlegt, ob der geöffnete SK eine WatchIO aufruft
     bBlockiertStart     := FALSE                                 // Konfig welche festlegt, ob der geöffnete SK den Start des Systemchecks und die Initialisierung blockiert
   ),
   (
@@ -44,7 +44,7 @@ apgMKSicherheiskreis : ARRAY [cERSTER_SICHERHEITSKREIS ..cLETZTER_SICHERHEITSKRE
     eaTueren            := [eTuer_Undefiniert],                    // Konfig welche Türen zu dem Sicherheitskreis gehören
     eaDurchgang         := [eDurchgang_Undefiniert],               // Konfig welche Durchgänge zu dem Sicherheitskreis gehören
     bMeldetOffen        := FALSE,                                  // Konfig welche festlegt, ob der geöffnete SK eine WatchIO aufruft
-    bBlockiertStart     := FALSE                                 // Konfig welche festlegt, ob der geöffnete SK den Start des Systemchecks und die Initialisierung blockiert
+    bBlockiertStart     := FALSE                                   // Konfig welche festlegt, ob der geöffnete SK den Start des Systemchecks und die Initialisierung blockiert
   )];
 
 apgMKDurchgang : ARRAY [cERSTER_DURCHGANG..cANZAHL_DURCHGANGE] OF Parameter_Durchgang := [
