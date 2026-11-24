@@ -1,0 +1,60 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "2ae09765-202e-4c14-82a3-22fcfb509a85"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE Konfiguration_Sicherheit
+VAR_CONFIG
+//-------------------------------------------------------------------------------------------------
+// KONFIGURATION: NOTHALT
+//-------------------------------------------------------------------------------------------------
+
+  NotHalt.in_bTasterNothaltQuittieren                                      AT %IX1.3    : BOOL; // IO-L - Nothalt quittieren
+  NotHalt.out_bLeuchtdruckTasterNotHaltAusgeloest                          AT %QX0.2    : BOOL; // IO-L - Nothalt ausgeloest
+
+//-------------------------------------------------------------------------------------------------
+// KONFIGURATION: Faecherwagenstationene
+//-------------------------------------------------------------------------------------------------
+
+  SteuerungSicherheitskreise.in_bTasterSKFaecherwagenQuittieren            AT %IX10.2   : BOOL; // IO-L - Sicherheitskreis Faecherwagenstation quittieren (OP4)
+  SteuerungSicherheitskreise.out_bLeuchtmelderSKFaecherwagenQuittieren     AT %QX9.0    : BOOL; // IO-L - Sicherheitskreis Faecherwagenstation ausgeloest (OP4)
+
+
+
+//-------------------------------------------------------------------------------------------------
+// KONFIGURATION:  DURCHGANG
+//-------------------------------------------------------------------------------------------------
+  // DURCHGANG 1: Klappfoerderer 203 (eigener Sicherheitskreis, Zuordnung noch offen)
+  Globale_Bausteine.aDurchgang[1].in_bTasterAnforderungOeffnen_1           AT %IX3.5  : BOOL; // IO-L - 203 Anforderung Durchgang (OP2)
+  Globale_Bausteine.aDurchgang[1].in_bTasterAnforderungOeffnen_2           AT %IX7.0  : BOOL; // IO-L - 203 Taster Klapprahmen Anforderung Durchgang Bedienseite
+  Globale_Bausteine.aDurchgang[1].in_bTasterQuittierungSchliessen_1        AT %IX3.6  : BOOL; // IO-L - 203 Durchgang quittieren (OP2)
+  Globale_Bausteine.aDurchgang[1].in_bTasterQuittierungSchliessen_2        AT %IX7.1  : BOOL; // IO-L - 203 Taster Klapprahmen quittieren Bedienseite
+
+  Globale_Bausteine.aDurchgang[1].out_bLeuchteTasterAnforderungDurchgang1  AT %QX3.7   : BOOL; // IO-L - 203 Meldung Anforderung Durchgang (OP2)
+  Globale_Bausteine.aDurchgang[1].out_bLeuchteTasterAnforderungDurchgang2  AT %QX6.2   : BOOL; // IO-L - 203 Meldung Klapprahmen Anforderung Durchgang Bedienseite
+  Globale_Bausteine.aDurchgang[1].out_bLeuchteTasterQuittierungDurchgang1  AT %QX4.0   : BOOL; // IO-L - 203 Durchgang quittieren (OP2)
+  Globale_Bausteine.aDurchgang[1].out_bLeuchteTasterQuittierungDurchgang2  AT %QX6.3   : BOOL; // IO-L - 203 Meldung Klapprahmen quittieren Bedienseite
+  Globale_Bausteine.aDurchgang[1].out_bDurchgangSperren                    AT %QX10.3  : BOOL; // IO-L - 203 Entriegelung Klapprahmen sperren
+  Globale_Bausteine.aDurchgang[1].out_bVerriegelungOeffnen                 AT %MX911.3 : BOOL; // OPTION - DURCHGANG: Verriegelung oeffnen
+  Globale_Bausteine.aDurchgang[1].out_bVerriegelungSchliessen              AT %MX911.4 : BOOL; // OPTION - DURCHGANG: Verriegelung schliessen
+
+
+
+//-------------------------------------------------------------------------------------------------
+// KONFIGURATION:  Puffer
+//-------------------------------------------------------------------------------------------------
+
+  SteuerungSicherheitskreise.out_bPuffer_101_Ausfahren             AT %MX910.3 : BOOL; // OPTION
+  SteuerungSicherheitskreise.out_bPuffer_101_Einfahren             AT %MX910.4 : BOOL; // OPTION
+  SteuerungSicherheitskreise.out_bPuffer_102_Ausfahren             AT %MX910.5 : BOOL; // OPTION
+  SteuerungSicherheitskreise.out_bPuffer_102_Einfahren             AT %MX910.6 : BOOL; // OPTION
+  SteuerungSicherheitskreise.out_bPuffer_103_Ausfahren             AT %MX910.7 : BOOL; // OPTION
+  SteuerungSicherheitskreise.out_bPuffer_103_Einfahren             AT %MX911.0 : BOOL; // OPTION
+  SteuerungSicherheitskreise.out_bPuffer_104_Ausfahren             AT %MX911.1 : BOOL; // OPTION
+  SteuerungSicherheitskreise.out_bPuffer_104_Einfahren             AT %MX911.2 : BOOL; // OPTION
+
+END_VAR
+END_NAMESPACE

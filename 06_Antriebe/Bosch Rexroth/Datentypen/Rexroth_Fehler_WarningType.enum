@@ -1,0 +1,17 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "936a313a-8a2e-48bc-b695-0bcd2e76b124"
+	}
+}
+*)
+TYPE Rexroth_Fehler_WarningType :
+(
+  eRexroth_Warning_None             := 16#0,
+  eRexroth_Warning_Fatal_Safety     := 16#83,
+  eRexroth_Warning_Fatal            := 16#8,
+  eRexroth_Warning_Interface        := 16#4,
+  eRexroth_Warning_Non_Fatal_Safety := 16#3,
+  eRexroth_Warning_Non_Fatal        := 16#2
+) BYTE;
+END_TYPE

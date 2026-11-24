@@ -1,0 +1,13 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "87cc7380-6aae-4db7-bd0e-ede9367585f2"
+	}
+}
+*)
+TYPE Antrieb :
+STRUCT
+ awPAE : ARRAY[0..9] OF WORD;
+ awPAA : ARRAY[0..9] OF WORD;
+END_STRUCT
+END_TYPE

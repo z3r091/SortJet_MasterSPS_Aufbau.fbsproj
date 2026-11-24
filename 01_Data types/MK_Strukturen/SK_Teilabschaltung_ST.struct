@@ -1,0 +1,26 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "329c2118-ae87-4928-987b-3ac2eae09a7d"
+	}
+}
+*)
+// Teilabschaltung eines Sicherheitskreises an einer Station
+// Standard: Jeder SK aus eaSicherheitskreis schaltet die gesamte Station ab (bFreigabe).
+// Ist fuer einen SK hier ein Eintrag mit bTeilabschaltung = TRUE vorhanden, schaltet dieser SK
+// NUR die mit TRUE markierten Komponenten ab. Die globale Stationsfreigabe bleibt dann bestehen.
+TYPE SK_Teilabschaltung_ST :
+  STRUCT
+    eSicherheitskreis : Sicherheitskreis_EN; // Sicherheitskreis (muss auch in eaSicherheitskreis stehen)
+    bTeilabschaltung  : BOOL;                // TRUE: SK schaltet nur die unten markierten Komponenten ab
+    bGlastransport    : BOOL;                // Komponente wird durch den SK abgeschaltet
+    bGeblaese         : BOOL;                // Komponente wird durch den SK abgeschaltet
+    bDrehen           : BOOL;                // Komponente wird durch den SK abgeschaltet
+    bKippen           : BOOL;                // Komponente wird durch den SK abgeschaltet
+    bQuerfahrt        : BOOL;                // Komponente wird durch den SK abgeschaltet
+    bPneumatik        : BOOL;                // Komponente wird durch den SK abgeschaltet (alle Pneumatik-Bausteine)
+    bGreifer          : BOOL;                // Komponente wird durch den SK abgeschaltet
+    bWandverstellung  : BOOL;                // Komponente wird durch den SK abgeschaltet
+    bMessachse        : BOOL;                // Komponente wird durch den SK abgeschaltet
+  END_STRUCT
+END_TYPE

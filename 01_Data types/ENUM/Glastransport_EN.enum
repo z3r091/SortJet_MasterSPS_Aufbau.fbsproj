@@ -1,0 +1,18 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "5637b03b-3d0c-472c-8bff-b06eb30e5596"
+	}
+}
+*)
+TYPE Glastransport_EN :
+  (
+    eGlastransport_Fehler                      := 999,
+    eGlastransport_Default                     := 0,
+    eGlastransport_AufAuslauf                  := 1,
+    eGlastransport_AufEinlauf                  := 2,
+    eGlastransport_AufAuslaufVorab             := 3,
+    eGlastransport_AufEinlaufVorab             := 4,
+    eGlastransport_Rueckwertig                 := 5
+  ) WORD;
+END_TYPE

@@ -1,0 +1,27 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "163a2c79-0908-45e4-9ee8-40b9f21d1914"
+	}
+}
+*)
+TYPE Hub_EN :
+  (
+    eHub_Fehler                   := 999,
+    eHub_Default                  := 0,
+    eHub_Undefiniert              := 1,
+    eHub_PositionW1               := 2,
+    eHub_PositionW2               := 3,
+    eHub_Nachfolger               := 4,
+    eHub_Vorgaenger               := 5,
+    eHub_Unten                    := 6,
+    eHub_Oben                     := 7,
+    eHub_MaxOben                  := 8,
+    eHub_Heben                    := 9,
+    eHub_Senken                   := 10,
+    eHub_Heben_Nach_Eintransport  := 11,
+    eHub_Senken_Nach_Eintransport := 12,
+    eHub_Heben_Nach_Austransport  := 13,
+    eHub_Senken_Nach_Austransport := 14
+  ) WORD;
+END_TYPE

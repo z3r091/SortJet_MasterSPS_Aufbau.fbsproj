@@ -1,0 +1,17 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "31b060bc-5cd2-407c-8a70-ffe1e3f6d2cb"
+	}
+}
+*)
+TYPE Stations_Optionen_Systemcheck_ST :
+  STRUCT
+    bScheibenVermessenSystemCheck                                 : BOOL; // Scheiben im Systemcheck vermessen
+    bScheibeNachSystemcheckAufAuslauf                             : BOOL; // Scheibe nach dem Systemcheck auf den Auslaufsensor fahren
+    bSystemCheckMitVorgaengerBatchTransport                       : BOOL; // derzeit ohne Funktion
+    bSystemCheckMitNachfolgerBatchTransport                       : BOOL; // derzeit ohne Funktion
+    bOptionSystemCheckScheibeMittigLegen                          : BOOL; // derzeit ohne Funktion
+
+  END_STRUCT
+END_TYPE

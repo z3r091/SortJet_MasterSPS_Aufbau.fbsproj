@@ -1,0 +1,15 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "3c08dd75-728d-4a69-90a5-130fcab08cda"
+	}
+}
+*)
+{attribute 'excludefrombuild'}
+ACTION A_Changelog
+(* !!! VERSIONSÄNDERUNGEN WERDEN HIER DETAILLIERT DOKUMENTIERT !!!
+
+- 2026-11-24 - V01_00_00: Tobias Brekerbohm
+  - Erste Freigabe SortJet-Master
+*)
+END_ACTION

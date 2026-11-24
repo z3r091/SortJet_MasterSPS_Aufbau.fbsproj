@@ -1,0 +1,41 @@
+__V3_META__
+{
+	"objectGuid": "ab6fd18b-39bf-4bf2-bd81-ca896750bdaf",
+	"objectTypeGuid": "798a495b-0fcc-4a5e-b03f-8eea9279fe3f",
+	"embeddedObjectTypeGuids": [
+		"dc15b5d9-c1aa-43bd-80f8-d39a11045849",
+		"cf2cfce8-d0f1-4ec1-8159-87ed6ec03282"
+	]
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{798a495b-0fcc-4a5e-b03f-8eea9279fe3f}" Method="IArchivable">
+	<Array Name="SafetyPOUCode" Type="byte">AAAAASQAAACUAQAAAAAAAAEiAwAUuQpn//8AAP//AAABAAAAAAAAA0AAAAACAAAAAAAYAEludGVyZmFjZV9Ob3RoYWx0AAAAAQAcAENPREVTWVMgU2FmZXR5IFY0LjQuMC4wAAAAABDEAAAABgAAAAAAHABFVl9Ub1BMQ19iTm90aGFsdF9PSwAAAAABABQAR19Ob3RoYWx0X09LAAAAAAIAHABHX05vdGhhbHRfT0tfdmVyem9lZ2VydAADACAATm90aGFsdCBPSyBNZWxkdW5nIGFuIFBMQwAAAAQARABBdXNnw6RuZ2UgdW5kIFLDvGNrbWVsZHVuZ2VuIGFiZnJhZ2VuIHVuZCBhbiBTUFMgd2VpdGVyZ2ViZW4AAAAABQAIAEFORAAAAAASHAAAAAEAAAAAAAAAAAAAALMBAAAAAAAAAAAAFSQAAAADAAAA//8kAgAAAIH//yQCAQABgf//JAICAAGBAAAAJiwAAAAAAAABAAAAwAMAAMEEAADCAQAAEQIAABEAAAAhAAAAEgAAAADJnzKF</Array>
+	<Array Name="SafetyPOUIDTableCode" Type="byte">AAAARSQAAAADAAAAAAAAAAcAAAABAAAABgAAAAIAAAAFAAAAAAAAREwAAAAIAAAACAAAAAEAAAAYAAAABAAAABkAAAAFAAAAHAAAAAYAAAAdAAAABwAAACAAAAADAAAAJAAAABUAAAAlAAAAFAAAAHrWt84=</Array>
+	<Dictionary Type="System.Collections.Hashtable" Name="DeclIdsHashtable">
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776069</Single>
+			</Key>
+			<Value>
+				<Single Type="int">5</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776070</Single>
+			</Key>
+			<Value>
+				<Single Type="int">6</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776071</Single>
+			</Key>
+			<Value>
+				<Single Type="int">7</Single>
+			</Value>
+		</Entry>
+	</Dictionary>
+</Single>

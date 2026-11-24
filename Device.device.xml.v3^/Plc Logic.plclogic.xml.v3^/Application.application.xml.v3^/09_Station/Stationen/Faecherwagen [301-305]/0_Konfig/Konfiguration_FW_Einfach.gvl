@@ -1,0 +1,43 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "02dda72b-1e55-4a9f-86bc-3e1987758175"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE Konfiguration_FW_Einfach
+VAR_CONFIG
+
+//-------------------------------------------------------------------------------------------------
+// KONFIGURATION: FAECHERWAGENSTATIONEN VARIANTE EINFACH
+// Nur verwenden, wenn aFaecherwagenstation (Globale_Bausteine) vom Typ Faecherwagenstation_Einfach_FB_V01_00_00 ist,
+// sonst Attribut excludefrombuild setzen. Es darf immer nur eine Variante im Build sein.
+// Arretierung (Gegenhalter) und Schleusen-Taster/-Leuchte liegen am IO-Link und sind im Geraetebaum gemappt.
+// Faecherwagen vorhanden kommt aus der SLC (Interface_SLC, bpFaecherwagenVorhanden).
+// Platzhalter: Eingaenge %MX1.0 (FALSE) / %MX1.1 (TRUE)
+//-------------------------------------------------------------------------------------------------
+
+  // ------------------------------------ STATION 301 ------------------------------------------------
+  // EINGAENGE
+  Globale_Bausteine.aFaecherwagenstation[301].in_bAbrollsicherungOK                             AT %IX0.1    : BOOL; // IO-L - Abrollsicherung OK (Sammelmeldung Versorgung FW1 Rolltore / Abrollsicherung OK)
+
+  // ------------------------------------ STATION 302 ------------------------------------------------
+  // EINGAENGE
+  Globale_Bausteine.aFaecherwagenstation[302].in_bAbrollsicherungOK                             AT %IX0.1    : BOOL; // IO-L - Abrollsicherung OK (Sammelmeldung Versorgung FW1 Rolltore / Abrollsicherung OK)
+
+  // ------------------------------------ STATION 303 ------------------------------------------------
+  // EINGAENGE
+  Globale_Bausteine.aFaecherwagenstation[303].in_bAbrollsicherungOK                             AT %IX0.1    : BOOL; // IO-L - Abrollsicherung OK (Sammelmeldung Versorgung FW1 Rolltore / Abrollsicherung OK)
+
+  // ------------------------------------ STATION 304 ------------------------------------------------
+  // EINGAENGE
+  Globale_Bausteine.aFaecherwagenstation[304].in_bAbrollsicherungOK                             AT %IX0.1    : BOOL; // IO-L - Abrollsicherung OK (Sammelmeldung Versorgung FW1 Rolltore / Abrollsicherung OK)
+
+  // ------------------------------------ STATION 305 ------------------------------------------------
+  // EINGAENGE
+  Globale_Bausteine.aFaecherwagenstation[305].in_bAbrollsicherungOK                             AT %IX0.1    : BOOL; // IO-L - Abrollsicherung OK (Sammelmeldung Versorgung FW1 Rolltore / Abrollsicherung OK)
+
+END_VAR
+
+END_NAMESPACE

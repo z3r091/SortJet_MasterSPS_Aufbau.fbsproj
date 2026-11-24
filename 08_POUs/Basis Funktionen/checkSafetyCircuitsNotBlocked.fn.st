@@ -1,0 +1,39 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "93537a12-23ea-4a31-94f7-53154eb0b75f"
+	}
+}
+*)
+FUNCTION checkSafetyCircuitsNotBlocked : BOOL
+VAR_INPUT
+  StationData : REFERENCE TO StationBasisParameter_ST;
+  eKomponente : SK_Komponente_EN := eSKKomponente_Alles; // Optional: Pruefung fuer eine Komponente (beruecksichtigt Teilabschaltung), Standard: jeder SK zaehlt
+END_VAR
+VAR
+  arrCircuits : ARRAY[cERSTER_SICHERHEITSKREIS..cLETZTER_SICHERHEITSKREIS] OF BOOL;
+  wIndex   : WORD := 0;
+  wIndexMK : WORD := 0;
+END_VAR
+// It will checked if the safety circuit is activ
+
+checkSafetyCircuitsNotBlocked := TRUE;
+
+FOR wIndex := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO
+  arrCircuits[wIndex] :=         Sicherheitskreis[wIndex].bpSicherheitskreisGeschlossen
+                                 AND NOT Sicherheitskreis[wIndex].bpStationenBlocken
+                                 AND NOT Sicherheitskreis[wIndex].bpAnforderungSKGestellt
+                                 AND NOT Sicherheitskreis[wIndex].bpAnforderungSicherheitkreisAusloesen;
+END_FOR
+
+FOR wIndex := cERSTER_SICHERHEITSKREIS TO cLETZTER_SICHERHEITSKREIS DO
+  FOR wIndexMK := 0 TO cANZAHL_SICHERHEITSKREISE DO
+    IF ( wIndex = StationData.stMKs.eaSicherheitskreis[wIndexMK] ) THEN
+      IF ( ( NOT arrCircuits[wIndex] ) AND ( NOT bgSicherheitstechnikBruecken ) AND checkSafetyCircuitAffectsComponent(StationData, wIndex, eKomponente) ) THEN
+        checkSafetyCircuitsNotBlocked := FALSE;
+        EXIT;
+      END_IF
+    END_IF
+  END_FOR
+END_FOR
+END_FUNCTION

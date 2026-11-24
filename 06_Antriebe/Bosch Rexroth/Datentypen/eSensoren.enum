@@ -1,0 +1,22 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "040cdcec-ba21-41b9-9b7e-e697b0a6414a"
+	}
+}
+*)
+{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE eSensoren :
+(
+  Sensor_1      := 1,
+  Sensor_2      := 2,
+  Sensor_3      := 3,
+  Sensor_4      := 4,
+  Sensor_5      := 5,
+  Sensor_6      := 6,
+  Sensor_7      := 7,
+  Sensor_8      := 8,
+  Sensor_9      := 9
+) WORD;
+END_TYPE

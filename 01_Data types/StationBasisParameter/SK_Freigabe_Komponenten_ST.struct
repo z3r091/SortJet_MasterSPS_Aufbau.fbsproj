@@ -1,0 +1,23 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "e02daaa8-1d83-4a83-81d4-9b6e08ffe4ec"
+	}
+}
+*)
+// Freigaben der Station (NotHalt + Sicherheitskreise, beruecksichtigt Teilabschaltungen)
+// Gesetzt zentral in SteuerungSicherheitskreise.Zuweisung_Freigabe -> setFreigabeKomponenten
+TYPE SK_Freigabe_Komponenten_ST :
+  STRUCT
+    bAlles           : BOOL; // NotHalt OK und ALLE Sicherheitskreise der Station geschlossen (ganze Station frei)
+    bGlastransport   : BOOL;
+    bGeblaese        : BOOL;
+    bDrehen          : BOOL;
+    bKippen          : BOOL;
+    bQuerfahrt       : BOOL;
+    bPneumatik       : BOOL; // alle Pneumatik-Bausteine der Station
+    bGreifer         : BOOL;
+    bWandverstellung : BOOL;
+    bMessachse       : BOOL;
+  END_STRUCT
+END_TYPE

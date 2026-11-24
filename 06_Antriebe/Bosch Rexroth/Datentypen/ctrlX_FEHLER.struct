@@ -1,0 +1,13 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "84292980-8cc8-4e38-9855-e5a065ac879c"
+	}
+}
+*)
+TYPE ctrlX_FEHLER :
+STRUCT
+ wlBausteinFehlerNr : DWORD;
+ wlAntriebsFehler   : DWORD;
+END_STRUCT
+END_TYPE

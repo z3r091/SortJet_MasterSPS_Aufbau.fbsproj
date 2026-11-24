@@ -1,0 +1,361 @@
+__V3_META__
+{
+	"objectGuid": "ecfeea7a-a629-4aa8-a159-4c6782ed0c43",
+	"objectTypeGuid": "798a495b-0fcc-4a5e-b03f-8eea9279fe3f",
+	"embeddedObjectTypeGuids": [
+		"dc15b5d9-c1aa-43bd-80f8-d39a11045849",
+		"cf2cfce8-d0f1-4ec1-8159-87ed6ec03282"
+	]
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{798a495b-0fcc-4a5e-b03f-8eea9279fe3f}" Method="IArchivable">
+	<Array Name="SafetyPOUCode" Type="byte">AAAAASQAAACEEAAAAAAAAAEiAwCgBT28//8AAP//AAABAAAAAAAAAzgAAAACAAAAAAAQAFNLXzFfTWFpbgAAAAEAHABDT0RFU1lTIFNhZmV0eSBWNC40LjAuMAAAAAAQRAkAAIcAAAAAACAARVZfVG9TTENfYlNLXzFfQXVzbG9lc2VuAAAAAAEAGABFVl9Ub1NMQ19iUmVzZXRfRURNAAIAFABHX05vdGhhbHRfT0sAAAAAAwAQAEdfU0tfMV9PSwAAAAQAHABHX1NLXzFfT0tfVmVyem9lZ2VydAAAAAAFABAAU0ZfVE9GX1NLXzEABgAMAFNGX1RPRgAABwAcAFNGX0VtZXJnZW5jeVN0b3BfU0tfMQAAAAgAGABTRl9FbWVyZ2VuY3lTdG9wAAAAAAkAGABNX1NLXzFfT0tfSU5URVJOAAAAAAoAEABTRl9FRE1fU0sxAAALAAwAU0ZfRURNAAAMABgAU0ZfRURNX1NLMV9TSDEwMQAAAAANABgARVZfVG9QTENfYlNLMV9PSwAAAAAOACgAU0k3XzJfU0tfMV9SdWVja21lbGR1bmdfdmVyem9lZ2VydAAADwAcAFNPN182X1NLXzFfdmVyem9lZ2VydAAAABAAHABTTzdfN19TS18xX3VudmVyem9lZ2VydAARACAAU08xNl81X1NIMTAxX1NLX3ZlcnpvZWdlcnQAABIALABTSTE2XzFfU0gxMDFfU0tfUnVlY2ttZWxkdW5nX3ZlcnpvZWdlcnQAEwAkAFNPMTZfNl9TSDEwMV9TS191bnZlcnpvZWdlcnQAAAAAFAAYAFNGX0VETV9TSzFfU0gxMDIAAAAAFQAgAFNJXzE1X1R1ZXJfMV9nZXNjaGxvc3NlbgAAAAAWACAAU0lfMTVfVHVlcl8yX2dlc2NobG9zc2VuAAAAABcAHABTSV8xNV9UdWVyXzJfdmVycmllZ2VsdAAYABwAU0lfMTVfVHVlcl8xX3ZlcnJpZWdlbHQAGQAkAFNPMTdfNl9TSDEwMl9TS191bnZlcnpvZWdlcnQAAAAAGgAQAEVETV9FUlJPUl81ABsAEABFRE1fRVJST1JfNgAcABAARURNX0VSUk9SXzcAHQAQAEVETV9FUlJPUl84AB4AIABTTzE3XzVfU0gxMDJfU0tfdmVyem9lZ2VydAAAHwAsAFNJMTdfMV9TSDEwMl9TS19SdWVja21lbGR1bmdfdmVyem9lZ2VydAAgABwAU084XzdfU0tfMjA0X3ZlcnpvZWdlcnQAIQAsAFNJOF8zX1NLXzIwNF9SdWVja21lbGR1bmdfdmVyem9lZ2VydAAAAAAiABQAU0ZfRURNX1NLMV8yMDYAACMAFABTRl9FRE1fU0sxXzIwNAAAJAAUAEVETV9FUlJPUl8xNAAAAAAlABQARURNX0VSUk9SXzE2AAAAACYAEABHX1NLXzMwMV9PSwAnABAAR19TS18zMDJfT0sAKAAQAEdfU0tfMzAzX09LACkAEABHX1NLXzMwNF9PSwAqABAAR19TS18zMDVfT0sAKwA0AFNJOV8xX1NLXzIwNl8yMDhfUmllbWVuX1J1ZWNrbWVsZHVuZ192ZXJ6b2VnZXJ0ACwAKABTTzlfNV9TS18yMDZfMjA4X1JpZW1lbl92ZXJ6b2VnZXJ0AAAtADgAU2ljaGVyaGVpdHNrcmVpcyBFaW5nw6RuZ2UgYWJmcmFnZW4gdW5kIGF1c2zDtnNlbgAAAC4AaABMw7ZzdCBhdXMgd2VubiB2b24gZGVyIFNQUyBkYXMgU2lnbmFsIGtvbW10LCBOb3RoYWx0IGF1c2zDtnN0LCBvZGVyIGVpbmVyIGRlciBFaW5nw6RuZ2UgYWJmw6RsbHQAAAAALwAIAEFORAAwAAgATk9UADEAIABTaWNoZXJoZWl0c2tyZWlzIE9LIHNldHplbgAAMgBwAC0gQXVzZ2FuZyAiU0sgT0siIGFuIFBMQyB3ZWl0ZXJsZWl0ZW4NCi0gIlNLIHZlcnpvZWdlcnQiIHNldHplbg0KLSBBdXNnYW5nICJTSyBTaHV0dGxlIHVudmVyem9lZ2VydCIgc2V0emVuADQACABJTgAANgAIAFBUAAA4AAgAUQAAADoACABFVAAAPAAQAEFjdGl2YXRlAAAAAD4AEABTX0VTdG9wSW4AAABAABQAU19TdGFydFJlc2V0AAAAAEIAEABTX0F1dG9SZXNldABEAAwAUmVzZXQAAABGAAwAUmVhZHkAAABIABAAU19FU3RvcE91dAAASgAMAEVycm9yAAAATAAQAERpYWdDb2RlAAAAAE0ALABTaWNoZXJoZWl0c2tyZWlzIFNIMTAxIE9LIHZlcnpvZWdlcnQAAAAATgAwAC0gQXVzZ2FuZyAiU0sgU2h1dHRsZSB2ZXJ6b2VnZXJ0IiBzZXR6ZW4AAAAAUQAUAFNfT3V0Q29udHJvbAAAAABTAAwAU19FRE0xAABVAAwAU19FRE0yAABXABQATW9uaXRvcmluZ1RpbWUAAFsAEABTX0VETV9PdXQAAABoACwAU2ljaGVyaGVpdHNrcmVpcyBTSDEwMyBPSyB2ZXJ6b2VnZXJ0AAAAADMACIA0AAUANQAIgDYABQA3AAiAOAAFADkACIA6AAUAOwAIgDwABwA9AAiAPgAHAD8ACIBAAAcAQQAIgEIABwBDAAiARAAHAEUACIBGAAcARwAIgEgABwBJAAiASgAHAEsACIBMAAcATwAIgDwACgBQAAiAUQAKAFIACIBTAAoAVAAIgFUACgBWAAiAVwAKAFgACIBAAAoAWQAIgEQACgBaAAiAWwAKAFwACIBKAAoAXQAIgEwACgBeAAiAPAAMAF8ACIBRAAwAYAAIgFMADABhAAiAVQAMAGIACIBXAAwAYwAIgEAADABkAAiARAAMAGUACIBbAAwAZgAIgEoADABnAAiATAAMAGkACIA8ABQAagAIgFEAFABrAAiAUwAUAGwACIBVABQAbQAIgFcAFABuAAiAQAAUAG8ACIBEABQAcAAIgFsAFABxAAiASgAUAHIACIBMABQAcwAIgDwAIwB0AAiAUQAjAHUACIBTACMAdgAIgFUAIwB3AAiAVwAjAHgACIBAACMAeQAIgEQAIwB6AAiAWwAjAHsACIBKACMAfAAIgEwAIwB9AAiAPAAiAH4ACIBRACIAfwAIgFMAIgCAAAiAVQAiAIEACIBXACIAggAIgEAAIgCDAAiARAAiAIQACIBbACIAhQAIgEoAIgCGAAiATAAiAAAAABJcAAAABQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAAAAALMBAAAAAAAAAgAAAAEAAAABAAAAAAAAAAMAAADQBwAApQIAAAAAAAAEAAAA6AMAAKUCAAAAAAAAAAAAFVQDAABpAAAA//8kAgAAAIH//yQCAQAAgf//JAICAAGB//8kAgMAAYH//yQCBAABgf//JAMFAAYA//8kAwcACAD//yQTCQAAAP//JAMKAAsA//8kAwwACwD//yQCDQAAgf//JAIOAAGB//8kAg8AAYH//yQCEAABgf//JAIRAAGB//8kAhIAAYH//yQCEwABgf//JAMUAAsA//8kAhUAAYH//yQCFgABgf//JAIXAAGB//8kAhgAAYH//yQCGQABgf//JAIaAACB//8kAhsAAIH//yQCHAAAgf//JAIdAACB//8kAh4AAYH//yQCHwABgf//JAIgAAGB//8kAiEAAYH//yQDIgALAP//JAMjAAsA//8kAiQAAIH//yQCJQAAgf//JAImAAGB//8kAicAAYH//yQCKAABgf//JAIpAAGB//8kAioAAYH//yQCKwABgf//JAIsAAGB//8kBDMA/////yQENQD/////JAQ3AP////8kBDkA/////yQEOwD/////JAQ9AP////8kBD8A/////yQEQQD/////JARDAP////8kBEUA/////yQERwD/////JARJAP////8kBEsA/////yQETwD/////JARQAP////8kBFIA/////yQEVAD/////JARWAP////8kBFgA/////yQEWQD/////JARaAP////8kBFwA/////yQEXQD/////JAReAP////8kBF8A/////yQEYAD/////JARhAP////8kBGIA/////yQEYwD/////JARkAP////8kBGUA/////yQEZgD/////JARnAP////8kBGkA/////yQEagD/////JARrAP////8kBGwA/////yQEbQD/////JARuAP////8kBG8A/////yQEcAD/////JARxAP////8kBHIA/////yQEcwD/////JAR0AP////8kBHUA/////yQEdgD/////JAR3AP////8kBHgA/////yQEeQD/////JAR6AP////8kBHsA/////yQEfAD/////JAR9AP////8kBH4A/////yQEfwD/////JASAAP////8kBIEA/////yQEggD/////JASDAP////8kBIQA/////yQEhQD/////JASGAP//AAAAJjQDAAAAAAABAQAAwC0AAMEuAADCAAAAEQAAACACAAARAAAAIRUAABEYAAARAAAAIQAAASEWAAARFwAAEQAAACEAAAEhJwAAEQAAASEmAAARAAABIScAABEAAAEhKAAAEQAAASEpAAARAAABISoAABEAAAEhCQAAEgAAAAEBAADAMQAAwTIAAMIAAABEAAAARAIAAAg7AAATCQAAET0AABMCAAAIPwAAEwIAAAhBAAATAgAACEMAABMHAAAQCAAAGEUAAENHAAARSQAAERoAABNLAABDAAAARRkAABITAAASEAAAEg0AABIDAAASMwAAEwMAAAg1AAATBQAAEAYAABg3AAAROQAAQwAAAEUEAAASAAAAAQEAAMBNAADBTgAAwgAAAEQCAAAITwAAEwQAABFQAAATDgAAEVIAABMOAAARVAAAEwQAAAhWAAATAgAACFgAABMBAAARWQAAEwoAABALAAAYWgAAEVwAABEbAAATXQAAQwAAAEUPAAASAAAAAQEAAMBNAADBTgAAwgAAAEQCAAAIXgAAEwQAABFfAAATEgAAEWAAABMSAAARYQAAEwQAAAhiAAATAgAACGMAABMBAAARZAAAEwwAABALAAAYZQAAEWYAABEcAAATZwAAQwAAAEURAAASAAAAAQEAAMBoAADBTgAAwgAAAEQCAAAIaQAAEwQAABFqAAATHwAAEWsAABMfAAARbAAAEwQAAAhtAAATAgAACG4AABMBAAARbwAAExQAABALAAAYcAAAEXEAABEdAAATcgAAQwAAAEUeAAASAAAAAQEAAMBoAADBTgAAwgAAAEQCAAAIcwAAEwQAABF0AAATIQAAEXUAABMhAAARdgAAEwQAAAh3AAATAgAACHgAABMBAAAReQAAEyMAABALAAAYegAAEXsAABEkAAATfAAAQwAAAEUgAAASAAAAAQEAAMBoAADBTgAAwgAAAEQCAAAIfQAAEwQAABF+AAATKwAAEX8AABMrAAARgAAAEwQAAAiBAAATAgAACIIAABMBAAARgwAAEyIAABALAAAYhAAAEYUAABElAAAThgAAQwAAAEUsAAASAAAAAP050i8=</Array>
+	<Array Name="SafetyPOUIDTableCode" Type="byte">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</Array>
+	<Dictionary Type="System.Collections.Hashtable" Name="DeclIdsHashtable">
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776082</Single>
+			</Key>
+			<Value>
+				<Single Type="int">18</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776083</Single>
+			</Key>
+			<Value>
+				<Single Type="int">19</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776089</Single>
+			</Key>
+			<Value>
+				<Single Type="int">25</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776094</Single>
+			</Key>
+			<Value>
+				<Single Type="int">30</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776095</Single>
+			</Key>
+			<Value>
+				<Single Type="int">31</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776096</Single>
+			</Key>
+			<Value>
+				<Single Type="int">32</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776098</Single>
+			</Key>
+			<Value>
+				<Single Type="int">34</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776240</Single>
+			</Key>
+			<Value>
+				<Single Type="int">176</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776246</Single>
+			</Key>
+			<Value>
+				<Single Type="int">182</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776249</Single>
+			</Key>
+			<Value>
+				<Single Type="int">185</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776250</Single>
+			</Key>
+			<Value>
+				<Single Type="int">186</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776251</Single>
+			</Key>
+			<Value>
+				<Single Type="int">187</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776254</Single>
+			</Key>
+			<Value>
+				<Single Type="int">190</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776256</Single>
+			</Key>
+			<Value>
+				<Single Type="int">192</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776259</Single>
+			</Key>
+			<Value>
+				<Single Type="int">195</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776261</Single>
+			</Key>
+			<Value>
+				<Single Type="int">197</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776266</Single>
+			</Key>
+			<Value>
+				<Single Type="int">202</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776268</Single>
+			</Key>
+			<Value>
+				<Single Type="int">204</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776269</Single>
+			</Key>
+			<Value>
+				<Single Type="int">205</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776270</Single>
+			</Key>
+			<Value>
+				<Single Type="int">206</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776271</Single>
+			</Key>
+			<Value>
+				<Single Type="int">207</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776272</Single>
+			</Key>
+			<Value>
+				<Single Type="int">208</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776273</Single>
+			</Key>
+			<Value>
+				<Single Type="int">209</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776274</Single>
+			</Key>
+			<Value>
+				<Single Type="int">210</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776275</Single>
+			</Key>
+			<Value>
+				<Single Type="int">211</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776276</Single>
+			</Key>
+			<Value>
+				<Single Type="int">212</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776277</Single>
+			</Key>
+			<Value>
+				<Single Type="int">213</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776278</Single>
+			</Key>
+			<Value>
+				<Single Type="int">214</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776282</Single>
+			</Key>
+			<Value>
+				<Single Type="int">218</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776284</Single>
+			</Key>
+			<Value>
+				<Single Type="int">220</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776286</Single>
+			</Key>
+			<Value>
+				<Single Type="int">222</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776287</Single>
+			</Key>
+			<Value>
+				<Single Type="int">223</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776288</Single>
+			</Key>
+			<Value>
+				<Single Type="int">224</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776292</Single>
+			</Key>
+			<Value>
+				<Single Type="int">228</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776294</Single>
+			</Key>
+			<Value>
+				<Single Type="int">230</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776295</Single>
+			</Key>
+			<Value>
+				<Single Type="int">231</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776296</Single>
+			</Key>
+			<Value>
+				<Single Type="int">232</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776297</Single>
+			</Key>
+			<Value>
+				<Single Type="int">233</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776298</Single>
+			</Key>
+			<Value>
+				<Single Type="int">234</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776299</Single>
+			</Key>
+			<Value>
+				<Single Type="int">235</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776300</Single>
+			</Key>
+			<Value>
+				<Single Type="int">236</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776301</Single>
+			</Key>
+			<Value>
+				<Single Type="int">237</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281470681743359</Single>
+			</Key>
+			<Value>
+				<Single Type="int">-2</Single>
+			</Value>
+		</Entry>
+	</Dictionary>
+</Single>

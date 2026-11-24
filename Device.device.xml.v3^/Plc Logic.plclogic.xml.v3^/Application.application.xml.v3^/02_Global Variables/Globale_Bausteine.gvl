@@ -1,0 +1,64 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "c0b2509b-d59e-4208-8460-0d0b0cc08bc5"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE Globale_Bausteine
+VAR_GLOBAL
+//-------------------------------------------------------------------------------------------------
+// DEKLARATION STATIONEN
+//-------------------------------------------------------------------------------------------------
+  // Stationen
+  // Faecherwagenstationen: eine Variante je Maschine, Variante hier ueber den Typ des Arrays waehlen
+  //   - Faecherwagenstation_Lineareinheit_FB_V01_00_00 (Lineareinheit, Greifer, Gegenhalter, Entriegelung, RFID)
+  //   - Faecherwagenstation_Hydraulik_FB_V01_00_00     (Hubrahmen, Verfahren, Zentrierung, Anschlag)
+  //   - Faecherwagenstation_Einfach_FB_V01_00_00       (Arretierung des ganzen Faecherwagens, Rolltor)
+  //   IOs an Standardmodulen in Konfiguration_FW_*, IOs an IO-Link (Hub/Master) im Geraetebaum gemappt
+  aFaecherwagenstation            : ARRAY[cERSTE_FAECHERWAGENSTATIONS_NR..cLETZTE_FAECHERWAGENSTATIONS_NR] OF Faecherwagenstation_Einfach_FB_V01_00_00;
+
+  // Hydraulikaggregate der Faecherwagenstationen (Variante Hydraulik), Zuordnung ueber MK stStationsAufbau.wHydraulikstation
+  aHydraulikstation               : ARRAY[cERSTE_HYDRAULIKSTATIONS_NR..cLETZTE_HYDRAULIKSTATIONS_NR] OF Hydraulik_FB_V01_00_00;
+
+  Anlegetisch201                  : Anlegetisch_FB_V01_00_00;
+  Foerderer202                    : Foerderer_FB_V01_00_00;
+  Foerderer203                    : Foerderer_FB_V01_00_00;
+  Eckuebergabe204                 : Eckuebergabe_FB_V01_00_00;
+  Anlegetisch205                  : Anlegetisch_FB_V01_00_00;
+  Kipptisch206                    : Kipptisch_FB_V01_00_00;
+  Combiwand208                    : AnlegeAbnahmeWand_FB_V01_00_00;
+  Drehstation207                  : Drehstation_FB_V01_00_00;
+
+  //  Shuttle
+  aShuttle                        : ARRAY[cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Shuttle_FB_V01_00_00;
+  aTransfershuttles               : ARRAY[cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Transfershuttle_FB_V01_00_00;
+
+  // Schnittstelle
+  aSchnittstelleAuslauf           : ARRAY[cERSTE_FREMDANLAGE_AUSLAUF..cLETZTE_FREMDANLAGE_AUSLAUF] OF Schnittstelle_Auslauflinie_Glaston_Koppler_FB;
+  aSchnittstelleEinlauf           : ARRAY[cERSTE_FREMDANLAGE_EINLAUF..cLETZTE_FREMDANLAGE_EINLAUF] OF Schnittstelle_Einlauf_VSG;
+
+//-------------------------------------------------------------------------------------------------
+// DEKLARATION BASIS-BAUSTEINE
+//-------------------------------------------------------------------------------------------------
+
+  //Sicherheitskreis
+  Sicherheitskreis : ARRAY[cERSTER_SICHERHEITSKREIS..cLETZTER_SICHERHEITSKREIS] OF Sicherheitskreis_FB;
+
+  // Türen
+  aTuer      : ARRAY[cERSTE_TUER..cLETZTE_TUER] OF Tuerschalter_FB;
+  aDurchgang : ARRAY[cERSTER_DURCHGANG..cLETZTER_DURCHGANG] OF Durchgang_FB_V01_00_00;
+
+  // Ampel
+  Ampel_AK : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS,1..cANZAHL_AMPELN] OF Ampel_FB;
+
+  // Horn
+  Horn_AK  : ARRAY[cERSTER_AUTOMATIKKREIS..cLETZTER_AUTOMATIKKREIS,1..cANZAHL_HUPEN] OF Horn_FB;
+
+  // Betriebsstop
+  Stop_Baustein : BetriebsStop_FB;
+
+END_VAR
+
+END_NAMESPACE

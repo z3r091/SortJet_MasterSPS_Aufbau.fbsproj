@@ -1,0 +1,15 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "ebf9c543-46d9-41c2-b2bf-085f8790dbcc"
+	}
+}
+*)
+TYPE Parameter_Durchgang :
+  STRUCT
+    eDurchgang              : Durchgang_EN;        // Nummer des Durchgangs
+    eZuBlockierenderSK      : Sicherheitskreis_EN; // Sicherheitskreis, der beim Oeffnen blockiert wird
+    bBeweglicheAbschrankung : BOOL;                // bewegliche Abschrankung am Durchgang vorhanden
+    wMeldungsNummer         : WORD;                // Basis-Meldungsnummer (WatchIO)
+  END_STRUCT
+END_TYPE

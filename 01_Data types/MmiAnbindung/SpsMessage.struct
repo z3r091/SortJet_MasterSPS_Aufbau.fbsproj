@@ -1,0 +1,14 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "fc0c7f6f-9301-4951-a4e8-8b8e391d82c7"
+	}
+}
+*)
+TYPE SpsMessage:
+STRUCT
+ wAuftrag : WORD;
+ wLaenge  : WORD;
+ awDaten  : ARRAY[0..29] OF WORD;
+END_STRUCT
+END_TYPE

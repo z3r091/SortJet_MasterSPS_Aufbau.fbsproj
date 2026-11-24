@@ -1,0 +1,25 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "fcc42b46-2847-42d1-94aa-cdc4b943d5a3"
+	}
+}
+*)
+TYPE VisuUeb_Achse_ST :
+STRUCT
+  rIstPos          : REAL;
+  rZielPos         : REAL;
+  rSpeed           : REAL;
+  sIstPos          : STRING(40);
+  sZielPos         : STRING(40);
+  sSpeed           : STRING(40);
+  sBereich         : STRING(60);
+  iPixel           : INT;  // Verschiebung Fahrwagen [px]
+  iZielPixel       : INT;  // Verschiebung Zielmarke [px]
+  bPositionierung  : BOOL;
+  bReferenziert    : BOOL;
+  dwKoerperFarbe   : DWORD := 16#FF2F80ED;
+  dwMinEndFarbe    : DWORD := 16#FFE4E7EB;
+  dwMaxEndFarbe    : DWORD := 16#FFE4E7EB;
+END_STRUCT
+END_TYPE

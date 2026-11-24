@@ -1,0 +1,29 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "fe390a4c-2cd6-4897-94e7-7d0bd59fe026"
+	}
+}
+*)
+(* Hinweis:
+   - Glasauflage [Rollen / Riemen etc. ]
+*)
+TYPE Parameter_Glastransport :
+  STRUCT
+    rLaengeStation                        : REAL; // Länge der Station
+    rScheibenabstand                      : REAL; // Der Abstand zwischen zwei Scheiben auf der Station
+    rWegUeberEinlauf                      : REAL; // Weg ueber den Einlaufsensor hinaus [mm]
+    rWegUeberAuslauf                      : REAL; // Weg ueber den Auslaufsensor hinaus [mm]
+    rWegUeberSensorenSystemCheck          : REAL; // Der Weg der Ueber ein die Sensoren zum vermessen der Scheiben
+    rUeberwachungAuslaufsensor            : REAL; // Ueberwachung des Auslaufsensors [Strecke in der der Auslaufsensor Frei / ueberfahren werden soll]
+    rUeberwachungEinlaufsensor            : REAL; // Ueberwachung des Einlaufsensors [Strecke in der der Einlaufsensor Frei / ueberfahren werden soll]
+    rWegUeberEinlaufEintransport          : REAL; // Eintransport vorwaerts: Abstand Scheibenhinterkante zum Einlaufsensor [mm]
+    rWegUeberEinlaufAustransport          : REAL; // Lage Auf Einlauf: Scheibe liegt um diesen Weg auf dem Einlaufsensor [mm]
+    rWegUeberAuslaufEintransport          : REAL; // Eintransport rueckwaerts: Abstand Scheibenhinterkante zum Auslaufsensor [mm]
+    rWegUeberAuslaufAustransport          : REAL; // Lage Auf Auslauf: Weg ueber den Auslaufsensor hinaus [mm]
+    rWegEinlaufsensorZuVorStopSensor      : REAL; // Beschreibt den Weg vum eine Scheibe beim EIntransport vom Einlaufsensor bis ueberden Vorabstopsensor zu verfahren
+    rMesstoleranz                         : REAL; // Toleranz-Mass fuer die Scheibenlaengenmessung
+    rMessstrecke                          : REAL; // Beschreibt die Strecke ziwischen 2 Sensoren die der Antrieb verfaehrt
+    rWegstreckeBisZurVerzoegerung         : REAL; // Beschreibt die Strecke die gefahren werden soll bis der Antrieb abgebremst werden soll, dies gilt fuer Eintransportauftraege die das Bit "Letzte Scheibe" gesetzt haben
+  END_STRUCT
+END_TYPE

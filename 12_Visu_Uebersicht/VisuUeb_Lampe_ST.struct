@@ -1,0 +1,13 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "25e6deff-f412-4b6e-97b2-ea81a2346c0a"
+	}
+}
+*)
+TYPE VisuUeb_Lampe_ST :
+STRUCT
+  sText   : STRING(40);
+  dwFarbe : DWORD := 16#FF9AA5B1; // ARGB
+END_STRUCT
+END_TYPE

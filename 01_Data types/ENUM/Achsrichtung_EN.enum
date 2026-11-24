@@ -1,0 +1,14 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "01de5667-199f-46ae-ace2-ed3334f23f1e"
+	}
+}
+*)
+TYPE Achsrichtung_EN :
+(
+    eAchsrichtung_Default := 0, // keine Achsauswahl, Station mit nur einer Glastransport-Achse
+    eAchsrichtung_X       := 1, // Glastransport ueber die X-Achse
+    eAchsrichtung_Y       := 2  // Glastransport ueber die Y-Achse
+) WORD;
+END_TYPE

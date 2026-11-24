@@ -1,0 +1,22 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "8322b154-6dc3-4711-91d1-5f49e074f305"
+	}
+}
+*)
+TYPE Sicherheitskreis_EN :
+  (
+    eSicherheitskreis_Undefiniert := 0,
+    eSicherheitskreis_1           := 1,
+    eSicherheitskreis_2           := 2,
+    eSicherheitskreis_3           := 3,
+    eSicherheitskreis_4           := 4,
+    eSicherheitskreis_5           := 5,
+    eSicherheitskreis_6           := 6,
+    eSicherheitskreis_7           := 7,
+    eSicherheitskreis_8           := 8,
+    eSicherheitskreis_9           := 9,
+    eSicherheitskreis_10          := 10
+  ) WORD;
+END_TYPE

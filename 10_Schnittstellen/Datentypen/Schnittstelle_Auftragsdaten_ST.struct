@@ -1,0 +1,13 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "d4666125-4e7d-43c7-8799-eff1d62d649e"
+	}
+}
+*)
+TYPE Schnittstelle_Auftragsdaten_ST :
+  STRUCT
+    wScheibenAnzahl  : WORD;
+    stScheibenID     : Schnittstelle_ScheibenIDs;
+  END_STRUCT
+END_TYPE

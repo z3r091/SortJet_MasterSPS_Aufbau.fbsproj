@@ -1,0 +1,26 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "d1a8c055-e553-4ad3-b9fd-e854b6194fb2"
+	}
+}
+*)
+ACTION Signalverarbeitung
+blBereitZumEintransport := in_bGlasAbruf OR ( in_bTasterGlasbruch AND in_bTasterSpezial ) OR VISU_VARS.abgVISUFreigabeFremdanlage[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS];
+
+IF ( in_bTasterGlasbruch AND in_bTasterSpezial ) OR VISU_VARS.abgVISUFreigabeFremdanlage[BasisStationsParameter.stMKs.stStationsNummern.NummerSPS] THEN
+  rpGeschwindigkeit := BasisStationsParameter.stMKs.stFremdanlage.rGeschwindigkeit;
+
+// Analogwert nicht aktiv
+ELSIF NOT BasisStationsParameter.stMKs.stFremdanlage.bAnalogwertAktiv THEN
+  IF blBereitZumEintransport THEN
+    rpGeschwindigkeit := BasisStationsParameter.stMKs.stFremdanlage.rGeschwindigkeit;
+  ELSE
+    rpGeschwindigkeit := 0.0;
+  END_IF
+
+// Analogwert aktiv: bei der Schneidanlage nicht vorhanden
+ELSE
+  rpGeschwindigkeit := 0;
+END_IF
+END_ACTION

@@ -1,0 +1,9 @@
+__V3_META__
+{
+	"objectGuid": "8f2a5efd-d0b4-4e9d-8001-16909ee4369e",
+	"objectTypeGuid": "0dc0719e-4e0c-4e69-92c3-e0db4a7735aa",
+	"embeddedObjectTypeGuids": []
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{0dc0719e-4e0c-4e69-92c3-e0db4a7735aa}" Method="IArchivable" />

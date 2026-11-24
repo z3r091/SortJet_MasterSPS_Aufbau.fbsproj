@@ -1,0 +1,97 @@
+__V3_META__
+{
+	"objectGuid": "b94213e5-689c-42f9-998e-ef37ff08e40c",
+	"objectTypeGuid": "798a495b-0fcc-4a5e-b03f-8eea9279fe3f",
+	"embeddedObjectTypeGuids": [
+		"dc15b5d9-c1aa-43bd-80f8-d39a11045849",
+		"cf2cfce8-d0f1-4ec1-8159-87ed6ec03282"
+	]
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{798a495b-0fcc-4a5e-b03f-8eea9279fe3f}" Method="IArchivable">
+	<Array Name="SafetyPOUCode" Type="byte">AAAAASQAAACgAwAAAAAAAAEiBADu5wt7//8AAP//AAABAAAAAAAAA0QAAAACAAAAAAAcAEZhZWNoZXJ3YWdlbl9FaW5mYWNoX0ZCAAEAHABDT0RFU1lTIFNhZmV0eSBWNC4zLjAuMAAAAAAQEAIAABAAAAAAABAAQUNUSVZBVEUAAAAAAQAMAEFDVElWRQAAAgAQAE5vdGhhbHRfT0sAAAMAIABTSV9GYWVjaGVyd2FnZW5fdm9yaGFuZGVuAAAABAAcAFNJX1JvbGx0b3JfZ2VzY2hsb3NzZW4AAAUAFABTSV9Ob3RoYWx0X09LAAAABgAcAEZhZWNoZXJ3YWdlbl92b3JoYW5kZW4AAAcAGABSb2xsdG9yX2dlc2NobG9zc2VuAAgAEABGV19TS19PSwAAAAAJABQARldfTk9USEFMVF9PSwAAAAoAPABEcnVja2x1ZnRhYnNjaGFsdHVuZyBkZXIgRsOkY2hlcndhZ2Vuc3RhdGlvbiBhbnN0ZXVlcm4AAAsACABBTkQADAAIAE9SAAANAAgATk9UAA4AcABTY2huaXR0c3RlbGxlbiBTaWduYWwgendpc2NoZW4gZGVyIHNpY2hlcmVuIHVuZCB1bnNpY2hlcmVuIFN0ZXVlcnVuZywgb2IgZWluIFVudGVyd2FnZW4gZXJrYW5udCB3b3JkZW4gaXN0AAAPAGwAU2Nobml0dHN0ZWxsZW4gU2lnbmFsIHp3aXNjaGVuIGRlciBzaWNoZXJlbiB1bmQgdW5zaWNoZXJlbiBTdGV1ZXJ1bmcsIG9iIGRhcyBSb2xsdG9yIGdlc2NobG9zc2VuIGlzdAAAAAAAAAASPAAAAAMAAAAAAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAswEAAAAAAAAAAAAVXAAAAAoAAAD//0QTAAAAAP//ZBMBAAAA//9EEwIAAAD//0QTAwAAAP//RBMEAAAA//9EEwUAAAD//2QTBgABAP//ZBMHAAEA//9kEwgAAAD//2QTCQABAAAAACaQAAAAAAAAAQIAAMAAAAARAQAAEgAAAAECAADACgAAwQIAABEEAAARAwAAEQAAACIAAAAhCAAAEgAAAAECAADAAAAAEQAAACAAAAADAAAAAQIAAMAOAADBBQAAEQkAABIAAAABAgAAwA4AAMEDAAARBgAAEgAAAAECAADADwAAwQQAABEHAAASAAAAAAGw0+Q=</Array>
+	<Array Name="SafetyPOUIDTableCode" Type="byte">AAAARVwAAAAKAAAAAAAAAAIAAAABAAAAAQAAAAIAAAAMAAAAAwAAAAUAAAAEAAAAKAAAAAUAAAAGAAAABgAAABMAAAAHAAAAFQAAAAgAAAAnAAAACQAAACYAAAAAAABENAEAACUAAAAIAAAALAEAABAAAAAtAQAAEQAAAC4BAAAUAAAAMAEAABUAAAAvAQAAGAAAABAAAAAkAAAA4AAAACUAAADhAAAAKAAAAOYAAAApAAAA5wAAACwAAADoAAAALQAAAOkAAAAwAAAA5QAAADQAAADfAAAAOAAAADsBAAA5AAAAOgEAADwAAAAxAQAARAAAADQBAABFAAAANQEAAEgAAAAzAQAATAAAADcBAABNAAAANgEAAFAAAAA8AQAAXAAAAD0BAABdAAAAPgEAAGAAAABAAQAAYQAAAD8BAABkAAAABgAAAHAAAAAMAAAAcQAAAA0AAAB0AAAADwAAAHUAAAAOAAAAeAAAAAcAAACEAAAACAAAAIUAAAAJAAAAiAAAAAsAAACJAAAACgAAAGS3Gxg=</Array>
+	<Dictionary Type="System.Collections.Hashtable" Name="DeclIdsHashtable">
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776065</Single>
+			</Key>
+			<Value>
+				<Single Type="int">1</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776066</Single>
+			</Key>
+			<Value>
+				<Single Type="int">2</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776069</Single>
+			</Key>
+			<Value>
+				<Single Type="int">5</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776070</Single>
+			</Key>
+			<Value>
+				<Single Type="int">6</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776076</Single>
+			</Key>
+			<Value>
+				<Single Type="int">12</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776083</Single>
+			</Key>
+			<Value>
+				<Single Type="int">19</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776085</Single>
+			</Key>
+			<Value>
+				<Single Type="int">21</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776102</Single>
+			</Key>
+			<Value>
+				<Single Type="int">38</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776103</Single>
+			</Key>
+			<Value>
+				<Single Type="int">39</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776104</Single>
+			</Key>
+			<Value>
+				<Single Type="int">40</Single>
+			</Value>
+		</Entry>
+	</Dictionary>
+</Single>

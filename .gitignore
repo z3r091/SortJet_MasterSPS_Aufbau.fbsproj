@@ -1,0 +1,4 @@
+# CODESYS-Hilfsdateien (Caches, Benutzereinstellungen), werden beim Oeffnen/Uebersetzen neu erzeugt
+.auxiliaries/
+.sidecars/
+.FBS_Project_Related/projectinspectiondata.xml

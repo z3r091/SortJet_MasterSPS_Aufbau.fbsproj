@@ -1,0 +1,13 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "71a1b90b-4c1f-49fe-ac89-401d2e984f9e"
+	}
+}
+*)
+TYPE MmiToSps :
+STRUCT
+ wWatchdog       : WORD;
+ smbMessageBlock : SpsMessageBlock;
+END_STRUCT
+END_TYPE

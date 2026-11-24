@@ -1,0 +1,41 @@
+__V3_META__
+{
+	"objectGuid": "a090cb6f-6f02-46f7-bcba-825e2c6e4e8b",
+	"objectTypeGuid": "798a495b-0fcc-4a5e-b03f-8eea9279fe3f",
+	"embeddedObjectTypeGuids": [
+		"dc15b5d9-c1aa-43bd-80f8-d39a11045849",
+		"cf2cfce8-d0f1-4ec1-8159-87ed6ec03282"
+	]
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{798a495b-0fcc-4a5e-b03f-8eea9279fe3f}" Method="IArchivable">
+	<Array Name="SafetyPOUCode" Type="byte">AAAAASQAAAAgAQAAAAAAAAEiBAAao3HL//8AAP//AAABAAAAAAAAAzgAAAACAAAAAAAQAEFjaHNlX0ZCAAAAAAEAHABDT0RFU1lTIFNhZmV0eSBWNC40LjAuMAAAAAAQVAAAAAMAAAAAABAATk9UQVVTX1NLAAAAAQAcAE9fTW9kZVNlbGVjdGlvblNpZ25hbAAAAAIAHABPX0VtZXJnZW5jeVN0b3BTaWduYWwAAAAAAAASLAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAQAAAAAAAACzAQAAAAAAAAAAABUkAAAAAwAAAP//RBMAAAAA//9kEwEAAAD//2QTAgAAAAAAACYgAAAAAAAAAQEAAMAAAAARAQAAEgIAABIAAAAAsx+pcA==</Array>
+	<Array Name="SafetyPOUIDTableCode" Type="byte">AAAARSQAAAADAAAAAAAAAAMAAAABAAAABQAAAAIAAAAEAAAAAAAARDwAAAAGAAAACAAAAAEAAAAQAAAAAgAAABEAAAADAAAAFAAAAAUAAAAVAAAABAAAABkAAAAGAAAAfjvrRw==</Array>
+	<Dictionary Type="System.Collections.Hashtable" Name="DeclIdsHashtable">
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776067</Single>
+			</Key>
+			<Value>
+				<Single Type="int">3</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776068</Single>
+			</Key>
+			<Value>
+				<Single Type="int">4</Single>
+			</Value>
+		</Entry>
+		<Entry>
+			<Key>
+				<Single Type="long">281466386776069</Single>
+			</Key>
+			<Value>
+				<Single Type="int">5</Single>
+			</Value>
+		</Entry>
+	</Dictionary>
+</Single>

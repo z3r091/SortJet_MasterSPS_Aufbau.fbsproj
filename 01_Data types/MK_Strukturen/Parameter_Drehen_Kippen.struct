@@ -1,0 +1,14 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "fcc75df0-d654-4392-b8ae-e4c4d8a2ba0e"
+	}
+}
+*)
+// Kippposition der Drehstation je Drehposition (projektspezifisch in der MK der Station)
+TYPE Parameter_Drehen_Kippen :
+  STRUCT
+    eKippenOhneLetzteScheibe : Kippen_EN; // Kippposition, wenn der Auftrag NICHT die letzte Scheibe ist (bzw. Station leer)
+    eKippenMitLetzterScheibe : Kippen_EN; // Kippposition, wenn der Auftrag die letzte Scheibe ist
+  END_STRUCT
+END_TYPE

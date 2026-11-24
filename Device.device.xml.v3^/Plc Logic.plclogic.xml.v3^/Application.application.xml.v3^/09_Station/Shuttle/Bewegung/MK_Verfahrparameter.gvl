@@ -1,0 +1,87 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "d931bc38-7d87-4ca0-bbd2-35904d82fc52"
+	}
+}
+*)
+{attribute 'allow_unqualified_access'}
+NAMESPACE MK_Verfahrparameter
+VAR_GLOBAL
+
+//-------------------------------------------------------------------------------------------------
+// VERFAHRKONTROLLE
+//-------------------------------------------------------------------------------------------------
+
+ (* Hinweis:
+    - Variablen fuer die Verfahrkontrolle
+      => Diese muessen bei jeder Inbetriebnahme ueberprueft werden
+    - Messen des Abstandes von Wand 1 zu Wand 1 ~ 0,5 m - 1 m Abstand der Shuttlepuffer
+           [Wenn sich zwei Shuttle auf einer Bahn befinden]
+ *)
+ rgMkMinSecureDistanceShuttles                         : REAL := 4000; // Absoluter Abstand zwischen den Shuttlen (Input- und Outputshuttle)
+ rgMkMinSecureDistanceTransfer                         : REAL := 430; // Absoluter Abstand zwischen den Transfershuttlen
+
+ rgMkMinSecureDistanceShuttlesAtParkPos                : REAL := 2500; // Absoluter Abstand zwischen den Shuttlen wenn eines der Shuttle in Parkposition ist
+ rgMkMinSecureDistanceTransferAtParkPos                : REAL := 240; // Absoluter Abstand zwischen den Transfershuttlen wenn eines der Shuttle in Parkposition ist
+
+
+//-------------------------------------------------------------------------------------------------
+// VERFAHREN - SHUTTLE BASIS PARAMETER
+//-------------------------------------------------------------------------------------------------
+
+ apgShuttleVerfahrparameter : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Parameter_Querfahrt_Shuttle :=[
+  // Shuttle 101
+  (
+   eParkposition                                       := PARKPOSITION_MIN, // => Angabe ob das Shuttle eine Min- \ Max- \ Min-Max- Parkposition besitzt
+   rParkpositionMinimum                                :=  0,               // => Parkposition (Handminus - Richtung) minimum
+   rParkpositionMaximum                                :=  0                // => Parkposition (Handplus - Richtung) maximum
+  ),
+  // Shuttle 102
+  (
+   eParkposition                                       := PARKPOSITION_MIN,
+   rParkpositionMinimum                                :=  0,
+   rParkpositionMaximum                                :=  0
+  )];
+
+ apgTransfershuttleVerfahrparameter : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Parameter_Querfahrt_Shuttle :=[
+  // Shuttle 151
+  (
+   eParkposition                                       := PARKPOSITION_MIN, // => Angabe ob das Shuttle eine Min- \ Max- \ Min-Max- Parkposition besitzt
+   rParkpositionMinimum                                :=  -885,            // => Parkposition (Handminus - Richtung) minimum
+   rParkpositionMaximum                                :=     0             // => Parkposition (Handplus - Richtung) maximum
+  ),
+  // Shuttle 152
+  (
+   eParkposition                                       := PARKPOSITION_MAX,
+   rParkpositionMinimum                                :=     0,
+   rParkpositionMaximum                                :=  5635
+  )];
+
+  // PARAMETER
+  //   - Verfahrueberwachung
+  //     => Einstellen der Geschwindigkeiten
+  apgVerfahrueberwachung : ARRAY [cERSTES_SHUTTLE..cLETZTES_SHUTTLE] OF Parameter_Verfahrueberwachung :=[
+    (
+      rMaxVerzoegerungsRampeUeberwachung  := 2500 // Maximale muss in mm/s^2 angegeben werden
+    ),
+    (
+      rMaxVerzoegerungsRampeUeberwachung  := 2500 // Maximale muss in mm/s^2 angegeben werden
+    )];
+
+  // PARAMETER
+  //   - Verfahrueberwachung
+  //     => Einstellen der Geschwindigkeiten
+  apgVerfahrueberwachungTransfershuttle : ARRAY [cERSTES_TRANSFERSHUTTLE..cLETZTES_TRANSFERSHUTTLE] OF Parameter_Verfahrueberwachung :=[
+  // Shuttle 151
+    (
+      rMaxVerzoegerungsRampeUeberwachung  := 5000 // Maximale muss in mm/s^2 angegeben werden
+    ),
+  // Shuttle 152
+    (
+      rMaxVerzoegerungsRampeUeberwachung  := 5000 // Maximale muss in mm/s^2 angegeben werden
+    )];
+
+END_VAR
+
+END_NAMESPACE

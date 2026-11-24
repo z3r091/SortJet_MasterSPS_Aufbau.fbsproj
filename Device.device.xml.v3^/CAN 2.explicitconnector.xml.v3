@@ -1,0 +1,164 @@
+__V3_META__
+{
+	"objectGuid": "00bc7f66-bb49-4de2-af78-b871f474b5dd",
+	"objectTypeGuid": "e9159722-55bc-49e5-8034-fbd278ef718f",
+	"embeddedObjectTypeGuids": [],
+	"properties": {
+		"_3S.CoDeSys.DeviceObject.ModuleType": "<?xml version=\"1.0\" encoding=\"utf-8\"?><Single xml:space=\"preserve\" Type=\"{0f5fe9f2-6f78-44e8-be24-5879c0c99599}\" Method=\"IArchivable\"><Single Name=\"ModuleType\" Type=\"int\">33280</Single></Single>"
+	}
+}
+__V3_CONTENT__
+<?xml version="1.0" encoding="utf-8"?>
+<Single xml:space="preserve" Type="{e9159722-55bc-49e5-8034-fbd278ef718f}" Method="IArchivable">
+	<Single Name="VisibleInterfaceName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+		<Single Name="Namespace" Type="string">localStrings</Single>
+		<Single Name="Identifier" Type="string">fieldbusName2</Single>
+		<Single Name="Default" Type="string">CAN 2</Single>
+	</Single>
+	<Single Name="ModuleType" Type="ushort">33280</Single>
+	<Single Name="Interface" Type="string">Eckelmann.CanRoot2</Single>
+	<Single Name="Role" Type="{6827a808-5967-49c4-a827-10f6c446e075}">Parent</Single>
+	<Single Name="ConnectorId" Type="int">4</Single>
+	<Single Name="Hostpath" Type="int">-1</Single>
+	<Single Name="Adapters" Type="{1da2f14a-1c63-4268-9171-3b6869b8ccd6}" Method="IArchivable">
+		<List Name="Adapters" Type="System.Collections.ArrayList">
+			<Single Type="{6d49a564-d0d1-4914-86ee-4465387ab144}" Method="IArchivable">
+				<Single Name="AllowEmptySlot" Type="bool">True</Single>
+				<Array Name="DefaultModules" Type="{05ee0b98-6639-4276-bc32-b75578b819ef}" />
+				<Array Name="Modules" Type="System.Guid">
+					<Single Type="System.Guid">a0c76171-43ac-4c57-8ad4-a4cc57fb1587</Single>
+				</Array>
+				<Single Name="IncludeSlotNumber" Type="bool">False</Single>
+				<Single Name="StartSlotNumber" Type="uint">0</Single>
+				<Null Name="SlotNames" />
+				<Single Name="HiddenSlot" Type="bool">False</Single>
+			</Single>
+		</List>
+	</Single>
+	<Single Name="HostParameterSet" Type="{abc12bfe-e34e-4b2c-a058-42c6e7e03a13}" Method="IArchivable">
+		<List2 Name="Params">
+			<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+				<Single Name="Id" Type="uint">6000</Single>
+				<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+				<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+				<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+					<Null Name="FilterFlags" />
+					<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+					<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+					<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+						<Single Name="Default" Type="string">CAN2</Single>
+					</Single>
+					<Single Name="Identifier" Type="string">6000</Single>
+					<Single Name="Value" Type="string">'CAN 2'</Single>
+					<Single Name="Type" Type="string">STRING</Single>
+					<Single Name="Default" Type="string">'CAN 2'</Single>
+				</Single>
+				<Single Name="ParamType" Type="string">std:STRING</Single>
+				<Single Name="IndexInDevDesc" Type="long">0</Single>
+			</Single>
+			<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+				<Single Name="Id" Type="uint">6050</Single>
+				<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+				<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+				<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+					<Null Name="FilterFlags" />
+					<Single Name="OfflineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+					<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">None</Single>
+					<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+						<Single Name="Default" Type="string">Instance</Single>
+					</Single>
+					<Single Name="Identifier" Type="string">6050</Single>
+					<Single Name="Value" Type="string">1</Single>
+					<Single Name="Type" Type="string">WORD</Single>
+					<Single Name="Default" Type="string">1</Single>
+				</Single>
+				<Single Name="ParamType" Type="string">std:WORD</Single>
+				<Single Name="IndexInDevDesc" Type="long">1</Single>
+			</Single>
+			<Single Type="{8c994079-f3c6-4484-9643-9258628feecd}" Method="IArchivable">
+				<Single Name="Id" Type="uint">6052</Single>
+				<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">Read</Single>
+				<Single Name="DalaElement" Type="{08a69302-82ff-4bf9-a55d-a6014ee63990}" Method="IArchivable">
+					<Null Name="FilterFlags" />
+					<Single Name="OnlineAccess" Type="{f7a1fdea-1444-4931-82ab-fdb68bf81bcf}">Read</Single>
+					<Single Name="VisibleName" Type="{35cf7b1a-a4cd-490b-8ebe-385e61fcc6d9}" Method="IArchivable">
+						<Single Name="Namespace" Type="string">localStrings</Single>
+						<Single Name="Identifier" Type="string">CheckCANAvailability</Single>
+						<Single Name="Default" Type="string">Error message with missing CAN interface or license</Single>
+					</Single>
+					<Single Name="Identifier" Type="string">6052</Single>
+					<Single Name="Value" Type="string">TRUE</Single>
+					<Single Name="Type" Type="string">BOOL</Single>
+					<Single Name="Default" Type="string">TRUE</Single>
+				</Single>
+				<Single Name="ParamType" Type="string">std:BOOL</Single>
+				<Single Name="IndexInDevDesc" Type="long">2</Single>
+			</Single>
+		</List2>
+		<Single Name="LmGuid" Type="System.Guid">852fce14-654d-57f6-9039-314323cd6943</Single>
+		<Null Name="Sections" />
+		<Single Name="InitOnOnlineChange" Type="bool">False</Single>
+		<Single Name="AlwaysMapping" Type="bool">False</Single>
+		<Null Name="EditorName" />
+		<Single Name="AlwaysMappingMode" Type="{9d1b24fb-5845-4978-8458-564ca7830fec}">OnlyIfUnused</Single>
+		<Single Name="CreateBitChannels" Type="bool">False</Single>
+	</Single>
+	<Single Name="BusCycleTaskGuid" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+	<Single Name="DriverInfo" Type="{4f958885-8d0a-4b58-83b6-29cfd1c9cfca}" Method="IArchivable">
+		<List Name="RequiredLibs" Type="System.Collections.ArrayList" />
+		<Null Name="RequiredTasks" />
+		<Single Name="NeedsBusCycle" Type="bool">False</Single>
+		<Single Name="BusCycleTask" Type="string"></Single>
+		<Single Name="IoApp" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+		<Single Name="IoAppSet" Type="bool">False</Single>
+		<Array Name="PositionIds" Type="long" />
+		<Single Name="UseSlowestTask" Type="bool">False</Single>
+		<Single Name="NeedsBusCycleBeforeRead" Type="bool">False</Single>
+		<Single Name="GenerateForceVariables" Type="bool">False</Single>
+		<Single Name="EnableDiagnosis" Type="bool">False</Single>
+		<Single Name="AdditionalParameterSetting" Type="uint">0</Single>
+		<Single Name="ShowWarningsAsErrors" Type="bool">False</Single>
+		<Single Name="DiagnosisCheckboxMode" Type="{96a7290c-b036-44e1-a965-c279cddf134b}">Enabled</Single>
+		<Single Name="SkipOverlapCheck" Type="bool">False</Single>
+		<Single Name="SymbolicAccessMode" Type="{866ccdec-84a7-4590-aeab-383c7bd79437}">Disabled</Single>
+		<Single Name="OnlineChangeDevice" Type="{e1779e08-585f-4d22-83e1-f36476fd1df5}">Hidden</Single>
+		<Single Name="SupportOnlineChange" Type="bool">False</Single>
+		<Single Name="DeviceScanSupported" Type="bool">False</Single>
+		<Single Name="DeviceNominateSupported" Type="bool">False</Single>
+		<Single Name="DeviceIdentifySupported" Type="bool">False</Single>
+		<Single Name="DeviceUploadDescriptionSupported" Type="bool">False</Single>
+		<Single Name="UpdateIOsInStop" Type="bool">False</Single>
+		<Single Name="StopResetBehaviourSetting" Type="{f333ad6d-dc68-4baa-a3a3-20be74eb2e18}">KeepCurrentValues</Single>
+		<Single Name="StopResetBehaviourUserProgram" Type="string"></Single>
+		<Single Name="BusCycleTaskGuid" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+		<Single Name="PlcAlwaysMapping" Type="bool">False</Single>
+		<Single Name="PlCAlwaysMappingMode" Type="{9d1b24fb-5845-4978-8458-564ca7830fec}">OnlyIfUnused</Single>
+	</Single>
+	<List Name="CustomItems" Type="{7d23305a-7bb9-46e6-b58b-01ea5694add1}" />
+	<Single Name="ModuleId" Type="int">-1</Single>
+	<Null Name="IoUpdateTask" />
+	<List Name="AdditionalInterfaces" Type="System.Collections.ArrayList">
+		<Single Type="string">Eckelmann.Extension88</Single>
+	</List>
+	<List Name="Constraints" Type="System.Collections.ArrayList" />
+	<Single Name="hideInStatusPage" Type="bool">False</Single>
+	<Single Name="updateAllowed" Type="bool">True</Single>
+	<Single Name="fixedInputAddress" Type="string"></Single>
+	<Single Name="fixedOutputAddress" Type="string"></Single>
+	<Single Name="DownloadParamsDevDescOrder" Type="bool">False</Single>
+	<List Name="AllowOnlyDevices" Type="System.Collections.ArrayList" />
+	<Single Name="InitialStatusFlag" Type="uint">1</Single>
+	<Single Name="UseBlobInitConst" Type="bool">False</Single>
+	<Single Name="AlwaysMappingMode" Type="{9d1b24fb-5845-4978-8458-564ca7830fec}">OnlyIfUnused</Single>
+	<Single Name="ConnectorGroup" Type="uint">0</Single>
+	<Array Name="AllowedPages" Type="string" />
+	<Single Name="AlwaysMapping" Type="bool">False</Single>
+	<Single Name="Client" Type="string"></Single>
+	<Single Name="MaxInputSize" Type="uint">0</Single>
+	<Single Name="MaxOutputSize" Type="uint">0</Single>
+	<Single Name="MaxInOutputSize" Type="uint">0</Single>
+	<Single Name="ClientTypeGuid" Type="System.Guid">00000000-0000-0000-0000-000000000000</Single>
+	<Single Name="ClientConnectorInterface" Type="string"></Single>
+	<Single Name="ClientConnectorId" Type="int">-1</Single>
+	<Single Name="AlwaysMappingDisabled" Type="bool">False</Single>
+</Single>

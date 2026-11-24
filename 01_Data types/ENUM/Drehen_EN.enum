@@ -1,0 +1,16 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "1efbabfc-bd2b-4abb-ba8f-f91fee53dc84"
+	}
+}
+*)
+TYPE Drehen_EN :
+  (
+    eDrehPositionUndefiniert := 999,
+    eDrehPosition0Grad       := 0,
+    eDrehPosition90Grad      := 90,
+    eDrehPosition180Grad     := 180,
+    eDrehPosition270Grad     := 270
+  ) WORD;
+END_TYPE

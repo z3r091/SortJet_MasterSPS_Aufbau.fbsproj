@@ -1,0 +1,53 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "d594440a-245c-4d8b-b035-4039646a8e1d"
+	}
+}
+*)
+ACTION Meldungen
+//==================================================================================================
+// AKTION MELDUNGEN
+//==================================================================================================
+// Master aufrufen
+SUPER^.Meldungen();
+
+// Fehlerbehandlung
+// Hinweis:
+// - Diese Fehlerbehandlung sollte nur dann aufgerufen werden wenn in den Schrittketten der
+//   Fehler nicht abgefangen wurde.
+blAktionImFehler := FALSE;
+FOR wlIndex := cWAND_1 TO cANZAHL_WAENDE DO
+  blAktionImFehler :=    blAktionImFehler
+                      OR Eintransport[wlIndex].bpFehler
+                      OR Austransport[wlIndex].bpFehler
+                      OR Vortransport[wlIndex].bpFehler;
+END_FOR
+
+IF ( NOT (   blAktionImFehler
+           OR ( steplCheck         = STEP_900_E )
+           OR ( steplReset         = STEP_900_E ) ) )
+THEN
+  IF ( Glastransport_X.bpFehler ) THEN
+    BasisStationsParameter.bFehler       := TRUE;
+    BasisStationsParameter.wFehlerNummer := Glastransport_X.wpFehlerNr;
+  END_IF
+
+  IF ( Glastransport_Y.bpFehler ) THEN
+    BasisStationsParameter.bFehler       := TRUE;
+    BasisStationsParameter.wFehlerNummer := Glastransport_Y.wpFehlerNr;
+  END_IF
+
+  IF ( Hubrahmen.bpFehler AND BasisStationsParameter.stMKs.stStationsAufbau.bHubrahmen ) THEN
+    BasisStationsParameter.bFehler       := TRUE;
+    BasisStationsParameter.awFehlerInformationen[1] := cZYLINDER_HUBRAHMEN;
+    BasisStationsParameter.wFehlerNummer := Hubrahmen.wpFehlerNr;
+  END_IF
+END_IF
+
+// WatchIO's
+WatchIo( NOT Glastransport_X.Antrieb.bpLS_150F02_230V AND bgEtherCatOK,      wlWatchIONachrichtenNummer + 0 );
+WatchIo( NOT Glastransport_X.Antrieb.bpHaupschalter400VEin AND bgEtherCatOK, wlWatchIONachrichtenNummer + 1 );
+WatchIo( NOT Glastransport_Y.Antrieb.bpLS_150F02_230V AND bgEtherCatOK,      wlWatchIONachrichtenNummer + 2 );
+WatchIo( NOT Glastransport_Y.Antrieb.bpHaupschalter400VEin AND bgEtherCatOK, wlWatchIONachrichtenNummer + 3 );
+END_ACTION

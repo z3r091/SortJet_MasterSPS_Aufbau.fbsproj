@@ -1,0 +1,161 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "57ebb36f-f22e-4632-9b59-8f205a70f04c"
+	}
+}
+*)
+FUNCTION_BLOCK Wandverstellung_MultiZylinder_FB_V01_00_00
+VAR_INPUT
+
+  // BOOLEAN
+  bpReset                     : BOOL;
+  bpAktivieren                : BOOL;
+  bpFreigabe                  : BOOL; // FREIGABE Pneumatik: ohne Freigabe Ventile aus, Bewegung pausiert (Startbefehl bleibt erhalten)
+  bpStartZylinderBewegung     : BOOL; // BETRIEBTYP: Zylinder wird ausgefahren
+  bpZylinderAbfragenVorhanden : BOOL := FALSE; // Hinweis: Manche Zylinder haben keine Abfragen
+
+  // TIME
+  tpBewegungszeit             : TIME := T#1S; // Bewegungszeit je Richtung ohne Abfragen
+
+  // ENUM
+  epSollZylinderStellung  : PneumatikZylinderStatus_EN;
+
+END_VAR
+
+VAR_OUTPUT
+
+  // BOOLEAN
+  bpFehler                       : BOOL;
+  bpDone                         : BOOL;
+
+  // WORD
+  wpFehlerNr       : Fehlerkonstanten_EN;
+
+  // ENUM
+  epStatusZylinderStellung : PneumatikZylinderStatus_EN;
+
+END_VAR
+
+VAR
+
+  // STEPS
+  steplZylinderStellung   : Steps_TE;
+
+  // TIMER
+  tonlStellung13mm               : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben
+  tonlStellung23mm               : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder ausgefahren wurde. Sonst wird ein Fehlerausgegeben
+  tonlStellung29mm               : TON; // EINSCHALTVERZOEGERUNG: Warten bis der Zylinder eingefahren wurde. Sonst wird ein Fehlerausgegeben
+  tonlWartezeitZylinderStellung  : TON; // EINSCHALTVERZOEGERUNG: wenn keine Abfragen verbaut sind, pauschal die Schaltung der Ventile zurücksetzen
+
+
+END_VAR
+
+VAR
+
+  // HARDWAREEINGAENGE
+  in_bStatusZylinder_1_Ausgefahren     AT %I* : BOOL; // STATUS: Zylinderabfrage [Ausgefahren]
+  in_bStatusZylinder_2_Ausgefahren     AT %I* : BOOL; // STATUS: Zylinderabfrage [Ausgefahren]
+  in_bStatusZylinder_Alle_Eingefahren  AT %I* : BOOL; // STATUS: Zylinderabfrage [Eingefahren]
+
+
+
+  // HARDWAREAUSGAENGE
+  out_bZylinder_1_Einfahren    AT %Q* : BOOL; // Impuls Zylinder: x mm Hub
+  out_bZylinder_2_Einfahren    AT %Q* : BOOL; // Impuls Zylinder: X mm Hub
+  out_bZylinder_1_Ausfahren    AT %Q* : BOOL; // Impuls Zylinder: x mm Hub
+  out_bZylinder_2_Ausfahren    AT %Q* : BOOL; // Impuls Zylinder: x mm Hub
+
+END_VAR
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: RESET / DEAKTIVIERT
+//-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Reset oder deaktiviert: Ausgaenge aus, Kette und Timer zuruecksetzen, Done und Fehler loeschen
+   - Der Baustein setzt bpReset selbst zurueck, der Aufrufer wartet nicht auf Done
+   - Ein deaktivierter Baustein meldet kein Done; der Aufrufer verknuepft das Warten auf Done
+     mit der Aktivierung aus der MK (z.B. Wandverstellung.bpDone OR NOT stStationsAufbau.bX)
+*)
+IF ( bpReset OR NOT bpAktivieren ) THEN
+
+  out_bZylinder_1_Einfahren := FALSE;
+  out_bZylinder_2_Einfahren := FALSE;
+  out_bZylinder_1_Ausfahren := FALSE;
+  out_bZylinder_2_Ausfahren := FALSE;
+
+  bpStartZylinderBewegung := FALSE;
+
+  steplZylinderStellung := STEP_0_E;
+
+  tonlStellung13mm( IN := FALSE );
+  tonlStellung23mm( IN := FALSE );
+  tonlStellung29mm( IN := FALSE );
+  tonlWartezeitZylinderStellung( IN := FALSE );
+
+  bpDone     := FALSE;
+  bpFehler   := FALSE;
+  wpFehlerNr := cMELDUNG_NULL;
+
+  bpReset := FALSE;
+
+  RETURN;
+
+END_IF
+
+//-------------------------------------------------------------------------------------------------
+// BAUSTEIN: AKTIONEN
+//-------------------------------------------------------------------------------------------------
+(* Hinweis Freigabe Pneumatik:
+   - Ohne Freigabe: Ventile aus, Kette und Ueberwachungszeiten zuruecksetzen (kein Timeout-Fehler)
+   - Der Startbefehl bleibt erhalten: kommt die Freigabe zurueck, wird die Bewegung neu gestartet
+*)
+IF NOT bpFreigabe THEN
+  out_bZylinder_1_Einfahren := FALSE;
+  out_bZylinder_2_Einfahren := FALSE;
+  out_bZylinder_1_Ausfahren := FALSE;
+  out_bZylinder_2_Ausfahren := FALSE;
+  steplZylinderStellung := STEP_0_E;
+  tonlStellung13mm( IN := FALSE );
+  tonlStellung23mm( IN := FALSE );
+  tonlStellung29mm( IN := FALSE );
+  tonlWartezeitZylinderStellung( IN := FALSE );
+  bpDone := FALSE;
+ELSE
+  ZylinderBewegung();
+END_IF
+
+//-------------------------------------------------------------------------------------------------
+// STATUS DER ZYLINDER
+//-------------------------------------------------------------------------------------------------
+(* Hinweis:
+   - Status aus der Sensorik, wenn Abfragen vorhanden sind
+   - Ohne Abfragen bleibt der Status, den die Schrittkette nach der Bewegungszeit setzt
+*)
+IF ( bpZylinderAbfragenVorhanden ) THEN
+
+  // Stellung 29mm
+  IF (     in_bStatusZylinder_1_Ausgefahren
+       AND in_bStatusZylinder_2_Ausgefahren )
+  THEN
+    epStatusZylinderStellung := eZylinderStellung29mm;
+
+  // Stellung 23mm
+  ELSIF (     in_bStatusZylinder_1_Ausgefahren
+          AND NOT in_bStatusZylinder_2_Ausgefahren )
+  THEN
+    epStatusZylinderStellung := eZylinderStellung23mm;
+
+  // Stellung 13mm
+  ELSIF (     in_bStatusZylinder_Alle_Eingefahren
+          AND NOT in_bStatusZylinder_1_Ausgefahren
+          AND NOT in_bStatusZylinder_2_Ausgefahren )
+  THEN
+    epStatusZylinderStellung := eZylinderStellung16mm;
+
+  ELSE
+    epStatusZylinderStellung := eZylinderUndefiniert;
+
+  END_IF
+
+END_IF
+END_FUNCTION_BLOCK

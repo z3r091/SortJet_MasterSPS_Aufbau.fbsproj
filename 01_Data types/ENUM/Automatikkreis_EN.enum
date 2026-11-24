@@ -1,0 +1,24 @@
+(* METADATA
+{
+	"v3Meta": {
+		"objectGuid": "c4a2862a-7dc9-4090-a07e-a2128bb2ebbd"
+	}
+}
+*)
+TYPE Automatikkreis_EN :
+  (
+    eAutomatikkreis_Undefiniert := 0,
+    eAutomatikkreis_1           := 1,
+    eAutomatikkreis_2           := 2,
+    eAutomatikkreis_3           := 3,
+    eAutomatikkreis_4           := 4,
+    eAutomatikkreis_5           := 5,
+    eAutomatikkreis_6           := 6,
+    eAutomatikkreis_7           := 7,
+    eAutomatikkreis_8           := 8,
+    eAutomatikkreis_9           := 9,
+    eAutomatikkreis_10          := 10,
+    eAutomatikkreis_11          := 11,
+    eAutomatikkreis_12          := 12
+  ) WORD;
+END_TYPE
